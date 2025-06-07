@@ -1,8 +1,21 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Footer.css';
 import logo from '../../assets/images/LOGO.png';
+import { navigationConfig } from '../../utils/navigationConfig';
 
 const Footer = () => {
+    const navigate = useNavigate();
+
+    const navigateToPage = (url) => {
+        // Handle navigation - external links open in new tab, internal routes use React Router
+        if (url.startsWith('http://') || url.startsWith('https://')) {
+            window.open(url, '_blank', 'noopener,noreferrer');
+        } else {
+            // Use React Router for internal navigation
+            navigate(url);
+        }
+    };
     return (
         <footer className="main-footer">
             <div className="footer-content">
@@ -27,12 +40,12 @@ const Footer = () => {
                         <div className="footer-section">
                             <h4>Quick Links</h4>
                             <ul className="footer-links">
-                                <li><a href="#">About NIT Goa</a></li>
-                                <li><a href="#">Admissions</a></li>
-                                <li><a href="#">Academic Programs</a></li>
-                                <li><a href="#">Research</a></li>
-                                <li><a href="#">Campus Life</a></li>
-                                <li><a href="#">Career Services</a></li>
+                                <li><button className="footer-link-btn" onClick={() => navigateToPage(navigationConfig.dropdowns.quickLinks.about)}>About NIT Goa</button></li>
+                                <li><button className="footer-link-btn" onClick={() => navigateToPage(navigationConfig.dropdowns.quickLinks.admissions)}>Admissions</button></li>
+                                <li><button className="footer-link-btn" onClick={() => navigateToPage(navigationConfig.dropdowns.quickLinks.academicPrograms)}>Academic Programs</button></li>
+                                <li><button className="footer-link-btn" onClick={() => navigateToPage(navigationConfig.dropdowns.quickLinks.research)}>Research</button></li>
+                                <li><button className="footer-link-btn" onClick={() => navigateToPage(navigationConfig.dropdowns.quickLinks.campusLife)}>Campus Life</button></li>
+                                <li><button className="footer-link-btn" onClick={() => navigateToPage(navigationConfig.dropdowns.quickLinks.careerServices)}>Career Services</button></li>
                             </ul>
                         </div>
 
@@ -40,12 +53,12 @@ const Footer = () => {
                         <div className="footer-section">
                             <h4>Academics</h4>
                             <ul className="footer-links">
-                                <li><a href="#">Computer Science & Engineering</a></li>
-                                <li><a href="#">Electronics & Communication</a></li>
-                                <li><a href="#">Mechanical Engineering</a></li>
-                                <li><a href="#">Civil Engineering</a></li>
-                                <li><a href="#">Electrical Engineering</a></li>
-                                <li><a href="#">Mathematics & Computing</a></li>
+                                <li><button className="footer-link-btn" onClick={() => navigateToPage(navigationConfig.dropdowns.departments.cse)}>Computer Science & Engineering</button></li>
+                                <li><button className="footer-link-btn" onClick={() => navigateToPage(navigationConfig.dropdowns.departments.ece)}>Electronics & Communication</button></li>
+                                <li><button className="footer-link-btn" onClick={() => navigateToPage(navigationConfig.dropdowns.departments.me)}>Mechanical Engineering</button></li>
+                                <li><button className="footer-link-btn" onClick={() => navigateToPage(navigationConfig.dropdowns.departments.ce)}>Civil Engineering</button></li>
+                                <li><button className="footer-link-btn" onClick={() => navigateToPage(navigationConfig.dropdowns.departments.ee)}>Electrical Engineering</button></li>
+                                <li><button className="footer-link-btn" onClick={() => navigateToPage(navigationConfig.dropdowns.departments.mac)}>Mathematics & Computing</button></li>
                             </ul>
                         </div>
 
@@ -81,10 +94,10 @@ const Footer = () => {
                             <p>&copy; 2024 National Institute of Technology Goa. All rights reserved.</p>
                         </div>
                         <div className="footer-bottom-links">
-                            <a href="#">Privacy Policy</a>
-                            <a href="#">Terms of Use</a>
-                            <a href="#">RTI</a>
-                            <a href="#">Sitemap</a>
+                            <button className="footer-bottom-btn" onClick={() => navigateToPage(navigationConfig.external.privacyPolicy)}>Privacy Policy</button>
+                            <button className="footer-bottom-btn" onClick={() => navigateToPage(navigationConfig.external.termsOfUse)}>Terms of Use</button>
+                            <button className="footer-bottom-btn" onClick={() => navigateToPage(navigationConfig.external.rti)}>RTI</button>
+                            <button className="footer-bottom-btn" onClick={() => navigateToPage(navigationConfig.external.sitemap)}>Sitemap</button>
                         </div>
                     </div>
                 </div>

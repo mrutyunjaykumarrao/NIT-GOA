@@ -161,6 +161,64 @@
     color: #3498db;
 }
 
+/* Footer link buttons styling */
+.footer-link-btn, .footer-bottom-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: left;
+    color: #bdc3c7;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 0;
+    display: block;
+    width: 100%;
+}
+
+.footer-link-btn:hover, .footer-bottom-btn:hover {
+    color: #3498db;
+    padding-left: 10px;
+}
+
+.footer-link-btn::before {
+    content: '→';
+    position: absolute;
+    left: -15px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.footer-link-btn:hover::before {
+    opacity: 1;
+    left: -10px;
+}
+
+.footer-bottom-btn {
+    font-size: 0.9rem;
+    display: inline;
+    width: auto;
+}
+
+.footer-bottom-btn:hover {
+    padding-left: 0;
+}
+
+.footer-bottom-btn::before {
+    display: none;
+}
+
+/* Focus styles for accessibility */
+.footer-link-btn:focus, .footer-bottom-btn:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+    color: #3498db;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .footer-content {
