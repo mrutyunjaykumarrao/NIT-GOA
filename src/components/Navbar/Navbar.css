@@ -1,0 +1,327 @@
+/* Top Navigation Bar */
+.top-nav {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 8px 0;
+    font-size: 14px;
+}
+
+.top-nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.top-nav-left {
+    display: flex;
+    gap: 20px;
+}
+
+.top-nav-link {
+    color: #495057;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.top-nav-link:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.language-selector {
+    padding: 4px 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: white;
+    color: #495057;
+    font-size: 14px;
+}
+
+/* Main Header */
+.main-header {
+    background-color: white;
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.main-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.institute-info {
+    text-align: left;
+}
+
+.institute-name-hindi {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    color: #2c3e50;
+    font-family: 'Devanagari Sangam MN', serif;
+}
+
+.institute-name-english {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 5px 0 0 0;
+    color: #34495e;
+}
+
+.constitution-logo {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Main Navigation */
+.main-nav {
+    background-color: #2c3e50;
+    position: relative;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 15px 20px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.nav-link:hover {
+    background-color: #34495e;
+    color: #3498db;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dropdown-arrow {
+    font-size: 10px;
+    transition: transform 0.3s ease;
+}
+
+.dropdown.show .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 220px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-link {
+    display: block;
+    color: #495057;
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.dropdown-link:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+    padding-left: 25px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .top-nav-left {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .top-nav-link {
+        font-size: 12px;
+    }
+
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .header-left {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .institute-name-hindi {
+        font-size: 20px;
+    }
+
+    .institute-name-english {
+        font-size: 16px;
+    }
+
+    .main-logo,
+    .constitution-logo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background-color: #2c3e50;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .nav-menu-active {
+        max-height: 500px;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-link {
+        border-bottom: 1px solid #34495e;
+        text-align: left;
+    }
+
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        background-color: #34495e;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .dropdown-menu.show {
+        max-height: 300px;
+    }
+
+    .dropdown-link {
+        color: #bdc3c7;
+        border-bottom: 1px solid #2c3e50;
+        padding-left: 40px;
+    }
+
+    .dropdown-link:hover {
+        background-color: #2c3e50;
+        color: #3498db;
+        padding-left: 45px;
+    }
+}
+
+@media (max-width: 480px) {
+    .top-nav-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .top-nav-left {
+        justify-content: center;
+    }
+
+    .institute-name-hindi {
+        font-size: 18px;
+    }
+
+    .institute-name-english {
+        font-size: 14px;
+    }
+
+    .nav-link {
+        font-size: 13px;
+        padding: 12px 15px;
+    }
+}
