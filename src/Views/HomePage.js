@@ -1,8 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './HomePage.css';
 import heroImage from '../assets/images/HeroImage1.png';
+import { navigationConfig, handleNavigation } from '../utils/navigationConfig';
 
 const HomePage = () => {
+    const navigate = useNavigate();
     return (
         <div className="homepage">
             {/* Hero Section */}
@@ -18,8 +21,8 @@ const HomePage = () => {
                             cutting-edge research, and fostering innovation for societal development.
                         </p>
                         <div className="hero-buttons">
-                            <button className="btn btn-primary">Explore Academics</button>
-                            <button className="btn btn-outline">Campus Tour</button>
+                            <button className="btn btn-primary" onClick={() => handleNavigation(navigationConfig.internal.academics, navigate)}>Explore Academics</button>
+                            <button className="btn btn-outline" onClick={() => handleNavigation(navigationConfig.internal.campus, navigate)}>Campus Tour</button>
                         </div>
                     </div>
                     <div className="hero-image">
@@ -36,22 +39,22 @@ const HomePage = () => {
                         <div className="quick-link-card">
                             <h3>Admissions</h3>
                             <p>Apply for undergraduate and postgraduate programs</p>
-                            <a href="#" className="link-button">Learn More</a>
+                            <button className="link-button" onClick={() => handleNavigation(navigationConfig.internal.admissions, navigate)}>Learn More</button>
                         </div>
                         <div className="quick-link-card">
                             <h3>Research</h3>
                             <p>Explore our cutting-edge research initiatives</p>
-                            <a href="#" className="link-button">Learn More</a>
+                            <button className="link-button" onClick={() => handleNavigation(navigationConfig.internal.research, navigate)}>Learn More</button>
                         </div>
                         <div className="quick-link-card">
                             <h3>Campus Life</h3>
                             <p>Discover student activities and facilities</p>
-                            <a href="#" className="link-button">Learn More</a>
+                            <button className="link-button" onClick={() => handleNavigation(navigationConfig.internal.campus, navigate)}>Learn More</button>
                         </div>
                         <div className="quick-link-card">
                             <h3>Placements</h3>
                             <p>Career opportunities and industry partnerships</p>
-                            <a href="#" className="link-button">Learn More</a>
+                            <button className="link-button" onClick={() => handleNavigation(navigationConfig.internal.placement, navigate)}>Learn More</button>
                         </div>
                     </div>
                 </div>

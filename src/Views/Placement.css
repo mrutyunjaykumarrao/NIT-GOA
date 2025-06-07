@@ -1,0 +1,332 @@
+.placement-page {
+    padding: 2rem 0;
+    min-height: 80vh;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    border-radius: 10px;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.page-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.placement-stats {
+    margin-bottom: 3rem;
+    background: #f8f9fa;
+    padding: 3rem 2rem;
+    border-radius: 10px;
+}
+
+.placement-stats h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+    font-size: 2.5rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.stat-card {
+    text-align: center;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card h3 {
+    font-size: 3rem;
+    color: #f5576c;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.stat-card p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.top-recruiters {
+    margin-bottom: 3rem;
+}
+
+.top-recruiters h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+    font-size: 2.5rem;
+}
+
+.recruiters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.recruiter-category {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #f5576c;
+}
+
+.recruiter-category h3 {
+    color: #f5576c;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.companies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.companies span {
+    background: #f8f9fa;
+    color: #333;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.companies span:hover {
+    background: #f5576c;
+    color: white;
+}
+
+.placement-process {
+    margin-bottom: 3rem;
+}
+
+.placement-process h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+    font-size: 2.5rem;
+}
+
+.process-timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.timeline-step {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.timeline-step:hover {
+    transform: translateY(-5px);
+}
+
+.step-number {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 auto 1rem auto;
+}
+
+.timeline-step h3 {
+    color: #f5576c;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.timeline-step p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.training-programs {
+    margin-bottom: 3rem;
+}
+
+.training-programs h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+    font-size: 2.5rem;
+}
+
+.training-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.training-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.training-card:hover {
+    transform: translateY(-5px);
+}
+
+.training-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.training-card p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.training-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.training-card li {
+    padding: 0.5rem 0;
+    opacity: 0.9;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.training-card li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.career-services {
+    margin-bottom: 3rem;
+    background: #f8f9fa;
+    padding: 3rem 2rem;
+    border-radius: 10px;
+}
+
+.career-services h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+    font-size: 2.5rem;
+}
+
+.services-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.service-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-3px);
+}
+
+.service-item h3 {
+    color: #f5576c;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.service-item p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.contact-placement {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 10px;
+}
+
+.contact-placement h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+.contact-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.contact-info h3,
+.office-hours h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.contact-info p,
+.office-hours p {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .stats-grid,
+    .recruiters-grid,
+    .process-timeline,
+    .training-grid,
+    .services-content,
+    .contact-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-card h3 {
+        font-size: 2rem;
+    }
+    
+    .companies {
+        justify-content: center;
+    }
+}
