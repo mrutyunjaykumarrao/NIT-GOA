@@ -1,71 +1,133 @@
-# Getting Started with Create React App
+# NIT Goa Website Redesign
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Overview
+A modern, responsive redesign of the NIT Goa website built with React and MySQL, featuring custom components and an elegant faculty profile system.
 
-## Available Scripts
+## Tech Stack
+- **Frontend:** React.js (custom components)
+- **Backend:** Node.js with Express
+- **Database:** MySQL
+- **Build Tools:** npm/Yarn
 
-In the project directory, you can run:
+## Prerequisites
+- Node.js (v16 or higher)
+- MySQL (v8.0 or higher)
+- Git
 
-### `npm start`
+## Installation & Setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 1. Clone the repository
+```bash
+git clone https://github.com/your-org/nit-goa-redesign.git
+cd nit-goa-redesign
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2. Install dependencies
+```bash
+npm install
+```
 
-### `npm test`
+### 3. Environment configuration
+- Copy `.env.example` to `.env`
+- Configure database credentials:
+    ```
+    DB_HOST=localhost
+    DB_USER=your_username
+    DB_PASS=your_password
+    DB_NAME=nitgoa_db
+    ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 4. Database setup
+```bash
+mysql -u root -p < schema.sql
+```
 
-### `npm run build`
+## Development
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Start the application
+```bash
+# Frontend development server
+npm run dev
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Backend server
+npm run server
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Database migrations
+```bash
+npm run migrate
+```
 
-### `npm run eject`
+## Project Structure
+```
+nit-goa-redesign/
+├── public/
+│   └── assets/           # Images, icons, static files
+├── src/
+│   ├── components/       # Reusable React components
+│   ├── pages/           # Page components
+│   ├── styles/          # CSS modules and global styles
+│   ├── utils/           # Utility functions and API clients
+│   └── hooks/           # Custom React hooks
+├── server/
+│   ├── routes/          # API routes
+│   ├── models/          # Database models
+│   └── middleware/      # Express middleware
+├── schema.sql           # Database schema
+├── .env.example         # Environment template
+└── package.json
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Features
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Faculty Profile System
+- **Card Layout:** Responsive grid with hover effects
+- **Profile Data:** Name, designation, department, photo, contact info
+- **Interactive Elements:** Modal view, contact forms, research interests
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Key Components
+- Navigation header with responsive menu
+- Hero section with dynamic content
+- News and announcements carousel
+- Department showcase
+- Contact and location maps
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## API Endpoints
+```
+GET    /api/faculty           # Fetch all faculty
+GET    /api/faculty/:id       # Fetch specific faculty
+POST   /api/contact          # Submit contact form
+GET    /api/news             # Fetch news articles
+```
 
-## Learn More
+## Contributing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Fork the repository
+2. Create a feature branch
+     ```bash
+     git checkout -b feature/amazing-feature
+     ```
+3. Commit your changes
+     ```bash
+     git commit -m "Add amazing feature"
+     ```
+4. Push to the branch
+     ```bash
+     git push origin feature/amazing-feature
+     ```
+5. Open a Pull Request
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Scripts
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run test         # Run test suite
+npm run lint         # Run ESLint
+npm run format       # Format code with Prettier
+```
 
-### Code Splitting
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# YOURREPO
+## Support
+For support and queries, contact the development team at dev@nitgoa.ac.in
