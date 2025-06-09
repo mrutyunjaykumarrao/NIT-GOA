@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './HomePage.css';
-import heroImage from '../assets/images/Home/HeroImages/HeroImg1.jpg';
+import heroImg1 from '../assets/images/Home/HeroImages/HeroImg1.jpg';
+import heroImg2 from '../assets/images/Home/HeroImages/HeroImg2.jpg';
+import heroImg3 from '../assets/images/Home/HeroImages/HeroImg3.jpg';
+import heroImg4 from '../assets/images/Home/HeroImages/HeroImg4.jpeg';
+import heroImg5 from '../assets/images/Home/HeroImages/HeroImg5.jpeg';
+import heroImg6 from '../assets/images/Home/HeroImages/HeroImg6.jpg';
+import heroImg7 from '../assets/images/Home/HeroImages/HeroImg7.jpg';
+import heroImg8 from '../assets/images/Home/HeroImages/HeroImg8.jpg';
+import heroImg13 from '../assets/images/Home/HeroImages/HeroImg13.jpg';
+import heroImg14 from '../assets/images/Home/HeroImages/HeroImg14.jpg';
+import heroImg15 from '../assets/images/Home/HeroImages/HeroImg15.jpg';
+import heroImg16 from '../assets/images/Home/HeroImages/HeroImg16.png';
+import heroImg17 from '../assets/images/Home/HeroImages/HeroImg17.jpeg';
+import heroImg18 from '../assets/images/Home/HeroImages/HeroImg18.jpg';
+import heroImg19 from '../assets/images/Home/HeroImages/HeroImg19.jpg';
+import heroImg20 from '../assets/images/Home/HeroImages/HeroImg20.jpg';
+import heroImg21 from '../assets/images/Home/HeroImages/HeroImg21.png';
 import placementStats from '../assets/images/Home/placement_statistics.png';
 import synapseNewsletter from '../assets/images/Home/synapse_newsletter.png';
-import heroImg2 from '../assets/images/Home/HeroImages/HeroImg2.jpg';
 import moeImage from '../assets/images/Home/moe.png';
 import diiImage from '../assets/images/Home/dii.png';
 import digilockerImage from '../assets/images/Home/digilocker_nad.png';
@@ -13,14 +28,64 @@ import makeInIndiaImage from '../assets/images/Home/MakeInIndia.png';
 import MainNavigation from '../components/MainNavigation/MainNavigation';
 
 const HomePage = () => {
+    const heroImages = [
+        heroImg1, heroImg2, heroImg3, heroImg4, heroImg5, 
+        heroImg6, heroImg7, heroImg8, heroImg13, heroImg14, 
+        heroImg15, heroImg16, heroImg17, heroImg18, heroImg19, 
+        heroImg20, heroImg21
+    ];
+
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    // Auto-cycle images every 5 seconds
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentImageIndex((prevIndex) => 
+                prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
+            );
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [heroImages.length]);
+
+    const goToPrevious = () => {
+        setCurrentImageIndex(
+            currentImageIndex === 0 ? heroImages.length - 1 : currentImageIndex - 1
+        );
+    };
+
+    const goToNext = () => {
+        setCurrentImageIndex(
+            currentImageIndex === heroImages.length - 1 ? 0 : currentImageIndex + 1
+        );
+    };
     return (
         <div className="homepage">
             {/* Hero Section */}
             <section className="hero-section">
                 <div className="hero-background">
-                    <img src={heroImage} alt="NIT Goa Campus" className="hero-campus-image" />
+                    <img src={heroImages[currentImageIndex]} alt="NIT Goa Campus" className="hero-campus-image" />
                     <div className="hero-overlay"></div>
                     <MainNavigation />
+                    
+                    {/* Navigation Arrows */}
+                    <button className="hero-nav-arrow hero-nav-left" onClick={goToPrevious}>
+                        <span>❮</span>
+                    </button>
+                    <button className="hero-nav-arrow hero-nav-right" onClick={goToNext}>
+                        <span>❯</span>
+                    </button>
+                    
+                    {/* Image Indicators */}
+                    <div className="hero-indicators">
+                        {heroImages.map((_, index) => (
+                            <button
+                                key={index}
+                                className={`hero-indicator ${index === currentImageIndex ? 'active' : ''}`}
+                                onClick={() => setCurrentImageIndex(index)}
+                            />
+                        ))}
+                    </div>
                 </div>
             </section>
 
