@@ -214,8 +214,7 @@
 
 /* Focus styles for accessibility */
 .footer-link-btn:focus, .footer-bottom-btn:focus {
-    outline: 2px solid #3498db;
-    outline-offset: 2px;
+    outline: none;
     color: #3498db;
 }
 

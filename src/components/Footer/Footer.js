@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Footer.css';
-import logo from '../../assets/images/LOGO.png';
+import logo from '../../assets/images/Home/NIT_LOGO.png';
 import { navigationConfig } from '../../utils/navigationConfig';
 
 const Footer = () => {

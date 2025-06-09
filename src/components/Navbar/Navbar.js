@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './Navbar.css';
-import logo from '../../assets/images/LOGO.png';
-import constitutionLogo from '../../assets/images/75YearsOf Constitution.png';
+import logo from '../../assets/images/Home/NIT_LOGO.png';
+import constitutionLogo from '../../assets/images/Home/75YearsOf Constitution.png';
 import { navigationConfig } from '../../utils/navigationConfig';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
     const navigate = useNavigate();
+    const location = useLocation();
+    
+    // Hide main navigation on homepage since we have overlay navigation
+    const showMainNav = location.pathname !== '/';
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -37,10 +41,34 @@ const Navbar = () => {
                 <div className="top-nav-container">
                     <div className="top-nav-left">
                         <button className="top-nav-link" onClick={() => navigateToPage(navigationConfig.internal.home)}>Home</button>
-                        <button className="top-nav-link" onClick={() => navigateToPage(navigationConfig.external.facultyStaff)}>Faculty & Staff</button>
+                        <span className="nav-separator">|</span>
+                        
+                        <div className="top-nav-dropdown">
+                            <button 
+                                className="top-nav-link dropdown-toggle" 
+                                onClick={() => handleDropdown('facultyStaff')}
+                            >
+                                Faculty & Staff
+                                <span className="dropdown-arrow">▼</span>
+                            </button>
+                            <ul className={`top-dropdown-menu ${activeDropdown === 'facultyStaff' ? 'show' : ''}`}>
+                                <li><button className="top-dropdown-link" onClick={() => navigateToPage(navigationConfig.external.facultyStaff)}>All Faculty</button></li>
+                                <li><button className="top-dropdown-link" onClick={() => navigateToPage('/faculty/cse')}>Computer Science</button></li>
+                                <li><button className="top-dropdown-link" onClick={() => navigateToPage('/faculty/ece')}>Electronics</button></li>
+                                <li><button className="top-dropdown-link" onClick={() => navigateToPage('/faculty/me')}>Mechanical</button></li>
+                            </ul>
+                        </div>
+                        <span className="nav-separator">|</span>
+                        
                         <button className="top-nav-link" onClick={() => navigateToPage(navigationConfig.external.alumni)}>Alumni</button>
+                        <span className="nav-separator">|</span>
+                        
                         <button className="top-nav-link" onClick={() => navigateToPage(navigationConfig.external.tenders)}>Tenders</button>
+                        <span className="nav-separator">|</span>
+                        
                         <button className="top-nav-link" onClick={() => navigateToPage(navigationConfig.external.gian)}>GIAN</button>
+                        <span className="nav-separator">|</span>
+                        
                         <button className="top-nav-link" onClick={() => navigateToPage(navigationConfig.external.rajbhasha)}>RAJBHASHA</button>
                     </div>
                     <div className="top-nav-right">
@@ -69,6 +97,7 @@ const Navbar = () => {
             </header>
 
             {/* Main Navigation */}
+            {showMainNav && (
             <nav className="main-nav">
                 <div className="nav-container">
                     <div className="hamburger" onClick={toggleMenu}>
@@ -184,6 +213,7 @@ const Navbar = () => {
                     </ul>
                 </div>
             </nav>
+            )}
         </>
     );
 };

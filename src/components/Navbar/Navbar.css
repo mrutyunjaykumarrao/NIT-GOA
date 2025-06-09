@@ -1,8 +1,8 @@
 /* Top Navigation Bar */
 .top-nav {
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #e9ecef;
-    padding: 8px 0;
+    background-color: white;
+    /* Removed border-bottom */
+    padding: 10px 0;
     font-size: 14px;
 }
 
@@ -17,11 +17,23 @@
 
 .top-nav-left {
     display: flex;
-    gap: 20px;
+    gap: 15px;
+    align-items: center;
+}
+
+.nav-separator {
+    color: #cccccc;
+    font-size: 14px;
+    user-select: none;
+}
+
+.top-nav-dropdown {
+    position: relative;
+    display: inline-block;
 }
 
 .top-nav-link {
-    color: #495057;
+    color: #333333;
     text-decoration: none;
     transition: color 0.3s ease;
     border: none;
@@ -29,33 +41,112 @@
     cursor: pointer;
     font-size: 14px;
     font-family: inherit;
-    padding: 4px 8px;
+    padding: 6px 0;
+    font-weight: 400;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .top-nav-link:hover {
-    color: #007bff;
-    text-decoration: underline;
+    color: #0066cc;
 }
 
 .top-nav-link:focus {
-    outline: 2px solid #007bff;
-    outline-offset: 2px;
+    outline: none;
+}
+
+.dropdown-arrow {
+    font-size: 10px;
+    transition: transform 0.3s ease;
+}
+
+.top-nav-dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.top-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 180px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    border-radius: 4px;
+    list-style: none;
+    margin: 8px 0 0 0;
+    padding: 8px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1001;
+    border: 1px solid #e0e0e0;
+}
+
+.top-dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.top-dropdown-link {
+    display: block;
+    color: #333333;
+    text-decoration: none;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+}
+
+.top-dropdown-link:hover {
+    background-color: #f8f9fa;
+    color: #0066cc;
+}
+
+.top-dropdown-link:focus {
+    outline: none;
+    background-color: #f8f9fa;
+    color: #0066cc;
+}
+
+.top-nav-right {
+    display: flex;
+    align-items: center;
 }
 
 .language-selector {
-    padding: 4px 8px;
-    border: 1px solid #ced4da;
+    padding: 8px 16px;
+    border: 1px solid #d0d0d0;
     border-radius: 4px;
-    background-color: white;
-    color: #495057;
+    background-color: #f8f9fa;
+    color: #333333;
     font-size: 14px;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    transition: box-shadow 0.3s ease;
+}
+
+.language-selector:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.language-selector:focus {
+    outline: none;
 }
 
 /* Main Header */
 .main-header {
     background-color: white;
     padding: 20px 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .header-container {
@@ -74,8 +165,8 @@
 }
 
 .main-logo {
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 75px;
     object-fit: contain;
 }
 
@@ -87,28 +178,34 @@
     font-size: 24px;
     font-weight: 600;
     margin: 0;
-    color: #2c3e50;
+    color: #333333;
     font-family: 'Devanagari Sangam MN', serif;
 }
 
 .institute-name-english {
     font-size: 20px;
     font-weight: 500;
-    margin: 5px 0 0 0;
-    color: #34495e;
+    margin: 4px 0 0 0;
+    color: #666666;
 }
 
 .constitution-logo {
-    width: 120px;
+    width: 140px;
     height: auto;
     object-fit: contain;
 }
 
 /* Main Navigation */
 .main-nav {
-    background-color: #2c3e50;
-    position: relative;
+    background-color: rgba(44, 62, 80, 0.95);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .nav-container {
@@ -167,8 +264,7 @@
 }
 
 .nav-link:focus {
-    outline: 2px solid #3498db;
-    outline-offset: 2px;
+    outline: none;
 }
 
 /* Dropdown Menu */
@@ -217,20 +313,42 @@
 }
 
 .dropdown-link:focus {
-    outline: 2px solid #007bff;
-    outline-offset: 2px;
+    outline: none;
     background-color: #f8f9fa;
 }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .top-nav-left {
-        gap: 10px;
+        gap: 8px;
         flex-wrap: wrap;
+    }
+
+    .nav-separator {
+        display: none;
     }
 
     .top-nav-link {
         font-size: 12px;
+    }
+
+    .top-dropdown-menu {
+        position: static;
+        box-shadow: none;
+        background-color: #f8f9fa;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        margin: 0;
+        border: none;
+        border-radius: 0;
+    }
+
+    .top-dropdown-menu.show {
+        max-height: 200px;
     }
 
     .header-container {

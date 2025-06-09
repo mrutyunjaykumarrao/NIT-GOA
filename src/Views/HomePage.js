@@ -1,118 +1,231 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import './HomePage.css';
-import heroImage from '../assets/images/HeroImage1.png';
-import { navigationConfig, handleNavigation } from '../utils/navigationConfig';
+import heroImage from '../assets/images/Home/HeroImages/HeroImg1.jpg';
+import placementStats from '../assets/images/Home/placement_statistics.png';
+import synapseNewsletter from '../assets/images/Home/synapse_newsletter.png';
+import heroImg2 from '../assets/images/Home/HeroImages/HeroImg2.jpg';
+import moeImage from '../assets/images/Home/moe.png';
+import diiImage from '../assets/images/Home/dii.png';
+import digilockerImage from '../assets/images/Home/digilocker_nad.png';
+import fitIndiaImage from '../assets/images/Home/fit_india.png';
+import swachhBharatImage from '../assets/images/Home/swach_bharath.png';
+import makeInIndiaImage from '../assets/images/Home/MakeInIndia.png';
+import MainNavigation from '../components/MainNavigation/MainNavigation';
 
 const HomePage = () => {
-    const navigate = useNavigate();
     return (
         <div className="homepage">
             {/* Hero Section */}
             <section className="hero-section">
-                <div className="hero-container">
-                    <div className="hero-content">
-                        <h1 className="hero-title">Welcome to NIT Goa</h1>
-                        <p className="hero-subtitle">
-                            Leading Institute of National Importance in Technical Education, Research and Innovation
-                        </p>
-                        <p className="hero-description">
-                            National Institute of Technology Goa is committed to excellence in engineering education, 
-                            cutting-edge research, and fostering innovation for societal development.
-                        </p>
-                        <div className="hero-buttons">
-                            <button className="btn btn-primary" onClick={() => handleNavigation(navigationConfig.internal.academics, navigate)}>Explore Academics</button>
-                            <button className="btn btn-outline" onClick={() => handleNavigation(navigationConfig.internal.campus, navigate)}>Campus Tour</button>
+                <div className="hero-background">
+                    <img src={heroImage} alt="NIT Goa Campus" className="hero-campus-image" />
+                    <div className="hero-overlay"></div>
+                    <MainNavigation />
+                </div>
+            </section>
+
+            {/* Announcements Section */}
+            <section className="announcements-section">
+                <div className="container">
+                    <h2 className="section-title">Announcements</h2>
+                    <div className="announcements-grid">
+                        <div className="announcement-item">
+                            <span className="announcement-bullet">→</span>
+                            <p>Submit your original and unpublished research work to IEEE Conference 2024-25 Session (May-2025)</p>
+                        </div>
+                        <div className="announcement-item">
+                            <span className="announcement-bullet">→</span>
+                            <p>Submit your original and unpublished research work to IEEE Conference 2024-25 Session (May-2025)</p>
+                        </div>
+                        <div className="announcement-item">
+                            <span className="announcement-bullet">→</span>
+                            <p>Submit your original and unpublished research work to IEEE Conference 2024-25 Session (May-2025)</p>
                         </div>
                     </div>
-                    <div className="hero-image">
-                        <img src={heroImage} alt="NIT Goa Campus" />
+                    <div className="more-announcements">
+                        <button className="more-btn">More →</button>
                     </div>
                 </div>
             </section>
 
-            {/* Quick Links Section */}
-            <section className="quick-links-section">
+            {/* Three Column Section */}
+            <section className="three-column-section">
                 <div className="container">
-                    <h2 className="section-title">Quick Links</h2>
-                    <div className="quick-links-grid">
-                        <div className="quick-link-card">
-                            <h3>Admissions</h3>
-                            <p>Apply for undergraduate and postgraduate programs</p>
-                            <button className="link-button" onClick={() => handleNavigation(navigationConfig.internal.admissions, navigate)}>Learn More</button>
+                    <div className="three-column-grid">
+                        {/* News And Events */}
+                        <div className="column-card">
+                            <h3 className="column-title">News And Events</h3>
+                            <div className="column-content">
+                                <div className="news-item">
+                                    <span className="news-bullet">→</span>
+                                    <p>Call for Post Doctoral Fellow (PDF) Positions 2024-25 Session (May-2025)</p>
+                                </div>
+                                <div className="news-item">
+                                    <span className="news-bullet">→</span>
+                                    <p>Call for Paper 1st International Conference of TASS on "Sustainability and Economic Growth and Global Prosperity" Agartala</p>
+                                </div>
+                                <div className="news-item">
+                                    <span className="news-bullet">→</span>
+                                    <p>Ph.D Advertisement for AY-2025-26 (July Session) - Full Time with scholarship/Part Time/Self Finance (without)</p>
+                                </div>
+                                <div className="news-item">
+                                    <span className="news-bullet">→</span>
+                                    <p>Advertisement for Walk-in Interview for Junior Research Fellow (JRF) in PHYSICS Discipline Under ISEA-CSR Project</p>
+                                </div>
+                                <div className="news-item">
+                                    <span className="news-bullet">→</span>
+                                    <p>Advertisement for Junior Solar Researcher Development</p>
+                                </div>
+                            </div>
+                            <button className="more-btn">More →</button>
                         </div>
-                        <div className="quick-link-card">
-                            <h3>Research</h3>
-                            <p>Explore our cutting-edge research initiatives</p>
-                            <button className="link-button" onClick={() => handleNavigation(navigationConfig.internal.research, navigate)}>Learn More</button>
+
+                        {/* Notice Board */}
+                        <div className="column-card">
+                            <h3 className="column-title">Notice Board</h3>
+                            <div className="column-content">
+                                <div className="news-item">
+                                    <span className="news-bullet">→</span>
+                                    <p>Call for Post Doctoral Fellow (PDF) Positions 2024-25 Session (May-2025)</p>
+                                </div>
+                                <div className="news-item">
+                                    <span className="news-bullet">→</span>
+                                    <p>Call for Paper 1st International Conference of TASS on "Sustainability and Economic Growth and Global Prosperity" Agartala</p>
+                                </div>
+                                <div className="news-item">
+                                    <span className="news-bullet">→</span>
+                                    <p>Ph.D Advertisement for AY-2025-26 (July Session) - Full Time with scholarship/Part Time/Self Finance (without)</p>
+                                </div>
+                                <div className="news-item">
+                                    <span className="news-bullet">→</span>
+                                    <p>Advertisement for Walk-in Interview for Junior Research Fellow (JRF) in PHYSICS Discipline Under ISEA-CSR Project</p>
+                                </div>
+                                <div className="news-item">
+                                    <span className="news-bullet">→</span>
+                                    <p>Advertisement for Walk-in Interview for Junior Research Fellow (JRF) in Discipline under ISEA-CSR Project</p>
+                                </div>
+                            </div>
+                            <button className="more-btn">More →</button>
                         </div>
-                        <div className="quick-link-card">
-                            <h3>Campus Life</h3>
-                            <p>Discover student activities and facilities</p>
-                            <button className="link-button" onClick={() => handleNavigation(navigationConfig.internal.campus, navigate)}>Learn More</button>
-                        </div>
-                        <div className="quick-link-card">
-                            <h3>Placements</h3>
-                            <p>Career opportunities and industry partnerships</p>
-                            <button className="link-button" onClick={() => handleNavigation(navigationConfig.internal.placement, navigate)}>Learn More</button>
+
+                        {/* Tenders */}
+                        <div className="column-card">
+                            <h3 className="column-title">Tenders</h3>
+                            <div className="column-content">
+                                <div className="news-item">
+                                    <span className="news-bullet">→</span>
+                                    <p>Call for Post Doctoral Fellow (PDF) Positions 2024-25 Session (May-2025)</p>
+                                </div>
+                                <div className="news-item">
+                                    <span className="news-bullet">→</span>
+                                    <p>Call for Paper 1st International Conference of TASS on "Sustainability and Economic Growth and Global Prosperity" Agartala</p>
+                                </div>
+                                <div className="news-item">
+                                    <span className="news-bullet">→</span>
+                                    <p>Ph.D Advertisement for AY-2025-26 (July Session) - Full Time with scholarship/Part Time/Self Finance (without)</p>
+                                </div>
+                                <div className="news-item">
+                                    <span className="news-bullet">→</span>
+                                    <p>Advertisement for Walk-in Interview for Junior Research Fellow (JRF) in PHYSICS Discipline Under ISEA-CSR Project</p>
+                                </div>
+                                <div className="news-item">
+                                    <span className="news-bullet">→</span>
+                                    <p>Advertisement for Walk-in Interview for Junior Research Fellow (JRF) in Development</p>
+                                </div>
+                            </div>
+                            <button className="more-btn">More →</button>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* News & Events Section */}
-            <section className="news-section">
+            {/* Placement Statistics Section */}
+            <section className="placement-section">
                 <div className="container">
-                    <h2 className="section-title">Latest News & Events</h2>
-                    <div className="news-grid">
-                        <div className="news-card">
-                            <div className="news-date">Dec 15, 2024</div>
-                            <h3>Annual Technical Festival</h3>
-                            <p>NIT Goa's annual tech fest showcasing innovation and creativity...</p>
+                    <h2 className="section-title">Placement Statistics</h2>
+                    <div className="placement-content">
+                        <div className="placement-chart">
+                            <img src={placementStats} alt="Placement Statistics" />
                         </div>
-                        <div className="news-card">
-                            <div className="news-date">Dec 10, 2024</div>
-                            <h3>Research Publication</h3>
-                            <p>Faculty members publish groundbreaking research in renewable energy...</p>
-                        </div>
-                        <div className="news-card">
-                            <div className="news-date">Dec 5, 2024</div>
-                            <h3>Industry Partnership</h3>
-                            <p>New collaboration with leading technology companies announced...</p>
+                        <div className="placement-info">
+                            <div className="synapse-logo">
+                                <img src={synapseNewsletter} alt="Synapse Newsletter" />
+                            </div>
+                            <div className="tweets-section">
+                                <h3>Tweets</h3>
+                                <div className="tweet-content">
+                                    <p>Social media content and updates from NIT Goa</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Departments Section */}
-            <section className="departments-section">
+            {/* Statistics Section */}
+            <section className="statistics-section">
                 <div className="container">
-                    <h2 className="section-title">Academic Departments</h2>
-                    <div className="departments-grid">
-                        <div className="department-card">
-                            <h3>Computer Science & Engineering</h3>
-                            <p>Leading programs in software development, AI, and data science</p>
+                    <div className="stats-grid">
+                        <div className="stat-item">
+                            <div className="stat-number">7</div>
+                            <div className="stat-label">Departments</div>
                         </div>
-                        <div className="department-card">
-                            <h3>Electronics & Communication</h3>
-                            <p>Advanced studies in communication systems and electronics</p>
+                        <div className="stat-item">
+                            <div className="stat-number">913</div>
+                            <div className="stat-label">Students</div>
                         </div>
-                        <div className="department-card">
-                            <h3>Mechanical Engineering</h3>
-                            <p>Innovation in design, manufacturing, and thermal sciences</p>
+                        <div className="stat-item">
+                            <div className="stat-number">55</div>
+                            <div className="stat-label">Faculties</div>
                         </div>
-                        <div className="department-card">
-                            <h3>Civil Engineering</h3>
-                            <p>Sustainable infrastructure and environmental engineering</p>
+                        <div className="stat-item">
+                            <div className="stat-number">1611</div>
+                            <div className="stat-label">Publications</div>
                         </div>
-                        <div className="department-card">
-                            <h3>Electrical Engineering</h3>
-                            <p>Power systems, control systems, and renewable energy</p>
+                        <div className="stat-item">
+                            <div className="stat-number">18</div>
+                            <div className="stat-label">Patents</div>
                         </div>
-                        <div className="department-card">
-                            <h3>Mathematics & Computing</h3>
-                            <p>Mathematical modeling and computational sciences</p>
+                    </div>
+                </div>
+            </section>
+
+            {/* About Section */}
+            <section className="about-section">
+                <div className="container">
+                    <div className="about-content">
+                        <div className="about-image">
+                            <img src={heroImg2} alt="NIT Goa Campus" />
                         </div>
+                        <div className="about-text">
+                            <div className="about-buttons">
+                                <button className="about-btn active">About</button>
+                                <button className="about-btn">Vision</button>
+                                <button className="about-btn">Mission</button>
+                            </div>
+                            <p>
+                                The National Institute of Technology Goa (NIT Goa) is a premier national level technical institute in India 
+                                established in 2010 by an act of parliament (NIT Act, 2007 and NIT (Amendment) Act, 2012). NIT Goa is an 
+                                autonomous institute functioning under the aegis of Ministry of Education (MoE), Government of India, and 
+                                has been declared an "Institute of National Importance".
+                            </p>
+                            <button className="read-more-link">Read more {'>'} {'>'}</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Footer National Portals */}
+            <section className="national-portals">
+                <div className="container">
+                    <h3>National Portals</h3>
+                    <div className="portals-grid">
+                        <img src={moeImage} alt="Ministry of Education" />
+                        <img src={diiImage} alt="Digital India" />
+                        <img src={digilockerImage} alt="DigiLocker NAD" />
+                        <img src={fitIndiaImage} alt="FIT India" />
+                        <img src={swachhBharatImage} alt="Swachh Bharat" />
+                        <img src={makeInIndiaImage} alt="Make in India" />
                     </div>
                 </div>
             </section>
