@@ -1,20 +1,19 @@
 /* Main Navigation Overlay */
 .main-navigation-overlay {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(44, 62, 80, 0.95);
-    backdrop-filter: blur(8px);
+    top: 0;
+    left: 69px;
+    right: 69px;
+    background-color: transparent;
     z-index: 1000;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+    padding: 15px 0;
 }
 
 .nav-overlay-container {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
+    padding: 0 20px;
 }
 
 .nav-overlay-menu {
@@ -36,23 +35,28 @@
     color: white;
     text-decoration: none;
     padding: 15px 12px;
-    font-weight: 500;
+    font-weight: 600;
     transition: all 0.3s ease;
     border: none;
     background: none;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 15px;
     font-family: inherit;
     text-align: center;
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    min-width: 0;
+    box-sizing: border-box;
+    flex-shrink: 1;
 }
 
 .nav-overlay-link:hover {
-    background-color: rgba(52, 73, 94, 0.8);
-    color: #3498db;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
 }
 
 .nav-overlay-link:focus {
@@ -72,22 +76,22 @@
 /* Overlay Dropdown Menu */
 .overlay-dropdown-menu {
     position: absolute;
-    bottom: 100%;
+    top: 100%;
     left: 0;
     right: 0;
     background-color: white;
     min-width: 220px;
-    box-shadow: 0 -8px 16px rgba(0,0,0,0.15);
-    border-radius: 4px 4px 0 0;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    border-radius: 0 0 4px 4px;
     list-style: none;
     margin: 0;
     padding: 10px 0;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(10px);
+    transform: translateY(-10px);
     transition: all 0.3s ease;
     z-index: 1001;
-    border-bottom: 3px solid #2c3e50;
+    border-top: 3px solid #2c3e50;
 }
 
 .overlay-dropdown-menu.show {
@@ -122,9 +126,34 @@
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
+    .main-navigation-overlay {
+        left: 50px;
+        right: 50px;
+    }
+    
+    .nav-overlay-container {
+        padding: 0 15px;
+    }
+    
     .nav-overlay-link {
-        font-size: 11px;
+        font-size: 14px;
+        padding: 12px 8px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .main-navigation-overlay {
+        left: 40px;
+        right: 40px;
+    }
+    
+    .nav-overlay-container {
+        padding: 0 10px;
+    }
+    
+    .nav-overlay-link {
+        font-size: 13px;
         padding: 12px 6px;
     }
     
@@ -133,10 +162,35 @@
     }
 }
 
+@media (max-width: 900px) {
+    .main-navigation-overlay {
+        left: 30px;
+        right: 30px;
+    }
+    
+    .nav-overlay-menu {
+        justify-content: space-around;
+        gap: 5px;
+    }
+    
+    .nav-overlay-link {
+        font-size: 12px;
+        padding: 10px 4px;
+    }
+}
+
 @media (max-width: 768px) {
     .main-navigation-overlay {
         position: static;
         background-color: #2c3e50;
+        padding: 0;
+        left: auto;
+        right: auto;
+    }
+    
+    .nav-overlay-container {
+        padding: 0;
+        max-width: none;
     }
     
     .nav-overlay-menu {
@@ -152,8 +206,9 @@
     .nav-overlay-link {
         text-align: left;
         padding: 15px 20px;
-        font-size: 14px;
+        font-size: 16px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        text-shadow: none;
     }
     
     .overlay-dropdown-menu {
@@ -177,11 +232,66 @@
     .overlay-dropdown-link {
         color: #ecf0f1;
         padding: 12px 40px;
+        font-size: 14px;
     }
     
     .overlay-dropdown-link:hover {
         background-color: #2c3e50;
         color: #3498db;
         padding-left: 45px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-navigation-overlay {
+        left: 0;
+        right: 0;
+    }
+    
+    .nav-overlay-container {
+        padding: 0;
+    }
+    
+    .nav-overlay-menu {
+        justify-content: space-around;
+        gap: 2px;
+    }
+    
+    .nav-overlay-link {
+        font-size: 11px;
+        padding: 8px 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .overlay-dropdown-menu {
+        min-width: 140px;
+        font-size: 12px;
+    }
+    
+    .overlay-dropdown-link {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 320px) {
+    .nav-overlay-menu {
+        gap: 1px;
+    }
+    
+    .nav-overlay-link {
+        font-size: 10px;
+        padding: 6px 1px;
+    }
+    
+    .overlay-dropdown-menu {
+        min-width: 120px;
+    }
+    
+    .overlay-dropdown-link {
+        padding: 6px 10px;
+        font-size: 11px;
     }
 }
