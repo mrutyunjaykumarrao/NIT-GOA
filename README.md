@@ -2,6 +2,7 @@
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/mrutyunjaykumarrao/NIT-GOA)
 [![React](https://img.shields.io/badge/React-19.1.0-blue.svg)](https://reactjs.org/)
+[![React Router](https://img.shields.io/badge/React%20Router-7.6.2-red.svg)](https://reactrouter.com/)
 [![Firebase](https://img.shields.io/badge/Firebase-Ready-orange.svg)](https://firebase.google.com/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
@@ -12,7 +13,7 @@
 ## ✨ Features
 
 ### 🏛️ **Complete Website Pages**
-- **🏠 Home Page** - Hero section, quick links, news updates, departments overview
+- **🏠 Home Page** - Hero carousel with 17 campus images, quick links, news updates, departments overview
 - **📋 About** - Institute information, mission, vision, and history
 - **🎓 Admissions** - Programs, application process, important dates
 - **🔬 Research** - Research areas, facilities, statistics, collaborations
@@ -20,10 +21,17 @@
 - **💼 Placement** - Statistics, recruiters, process, training programs
 
 ### 🧭 **Navigation System**
-- **Responsive Navbar** with dropdown menus
-- **React Router v6** for seamless navigation
+- **Responsive Navbar** with dropdown menus and transparent overlay design
+- **React Router v7** for seamless navigation with React 19 compatibility
 - **Accessibility compliant** - WCAG standards
-- **Mobile-friendly** design with hamburger menu
+- **Mobile-friendly** design with collapsible navigation
+
+### 🎨 **Hero Section Features**
+- **Image Carousel** - Auto-cycling slideshow of 17 NIT Goa campus images
+- **Navigation Controls** - Left/right arrows and bottom indicators
+- **Gradient Overlay** - Professional dark-to-light gradient for better text visibility
+- **Responsive Design** - Optimized for all screen sizes (desktop to mobile)
+- **Auto-timing** - Images change every 5 seconds with smooth transitions
 
 ### 🎨 **Design & UX**
 - **Modern UI/UX** with clean, professional aesthetics
@@ -73,9 +81,9 @@ serve -s build
 
 ### **Frontend**
 - **React 19.1.0** - Latest React with concurrent features
-- **React Router DOM 6.30.1** - Modern routing solution
-- **CSS3** - Custom responsive styling
-- **JavaScript ES6+** - Modern JavaScript features
+- **React Router DOM 7.6.2** - Modern routing solution with React 19 compatibility
+- **CSS3** - Custom responsive styling with advanced features
+- **JavaScript ES6+** - Modern JavaScript features and React Hooks
 
 ### **Build & Development**
 - **Create React App** - Zero-config build tool
@@ -98,17 +106,19 @@ nitgoa/
 │   ├── 📄 App.js                # Main app with routing
 │   ├── 📄 index.js              # React DOM root
 │   ├── 📁 Views/                # Page components
-│   │   ├── HomePage.js          # Landing page
+│   │   ├── HomePage.js          # Landing page with hero carousel
 │   │   ├── About.js             # Institute information
 │   │   ├── Admissions.js        # Admission details
 │   │   ├── Research.js          # Research initiatives
 │   │   ├── Campus.js            # Campus life
 │   │   └── Placement.js         # Placement information
 │   ├── 📁 components/           # Reusable components
-│   │   ├── Navbar/              # Navigation component
+│   │   ├── MainNavigation/      # Responsive navigation with overlay
+│   │   ├── Navbar/              # Header navigation component
 │   │   └── Footer/              # Footer component
 │   ├── 📁 assets/               # Images and media
-│   │   └── images/              # Institute logos and images
+│   │   └── images/              # Institute logos and hero images
+│   │       └── Home/HeroImages/ # 17 campus carousel images
 │   └── 📁 utils/                # Utility functions
 │       └── navigationConfig.js  # Centralized navigation
 ├── 📁 Documentation/            # Project documentation
@@ -126,6 +136,8 @@ nitgoa/
 
 ### **Performance Metrics**
 - ✅ **Bundle Size**: 72.85 kB (gzipped, optimized)
+- ✅ **Hero Carousel**: Smooth auto-cycling with manual navigation
+- ✅ **Responsive Design**: 6 breakpoints (320px to 1200px+)
 - ✅ **Test Coverage**: 100% pass rate
 - ✅ **Build Status**: Production ready
 - ✅ **Accessibility**: Zero violations, WCAG compliant
@@ -133,8 +145,16 @@ nitgoa/
 ### **Code Quality**
 - ✅ **ESLint**: Zero warnings
 - ✅ **React Best Practices**: Hooks, functional components
+- ✅ **React Router v7**: Full compatibility with React 19
 - ✅ **Security**: Environment variables secured
 - ✅ **Maintainability**: Modular, documented code
+
+### **Recent Improvements** (Latest Release)
+- 🎯 **React Router Upgrade**: Migrated from v6.30.1 to v7.6.2 for React 19 compatibility
+- 🖼️ **Hero Image Carousel**: Implemented auto-cycling slideshow with 17 campus images
+- 🎨 **Navigation Overlay**: Added transparent navbar with gradient overlay design
+- 📱 **Enhanced Responsiveness**: 6 breakpoints with optimized mobile navigation
+- ⚡ **Performance Optimized**: Smooth transitions and efficient state management
 
 ## 🛠️ Development Scripts
 
