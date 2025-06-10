@@ -52,10 +52,12 @@ const Navbar = () => {
                                 <span className="dropdown-arrow">▼</span>
                             </button>
                             <ul className={`top-dropdown-menu ${activeDropdown === 'facultyStaff' ? 'show' : ''}`}>
-                                <li><button className="top-dropdown-link" onClick={() => navigateToPage(navigationConfig.external.facultyStaff)}>All Faculty</button></li>
-                                <li><button className="top-dropdown-link" onClick={() => navigateToPage('/faculty/cse')}>Computer Science</button></li>
-                                <li><button className="top-dropdown-link" onClick={() => navigateToPage('/faculty/ece')}>Electronics</button></li>
-                                <li><button className="top-dropdown-link" onClick={() => navigateToPage('/faculty/me')}>Mechanical</button></li>
+                                <li><button className="top-dropdown-link" onClick={() => navigateToPage(navigationConfig.internal.faculty)}>All Faculty</button></li>
+                                <li><button className="top-dropdown-link" onClick={() => navigateToPage('/faculty?dept=cse')}>Computer Science</button></li>
+                                <li><button className="top-dropdown-link" onClick={() => navigateToPage('/faculty?dept=ece')}>Electronics</button></li>
+                                <li><button className="top-dropdown-link" onClick={() => navigateToPage('/faculty?dept=eee')}>Electrical</button></li>
+                                <li><button className="top-dropdown-link" onClick={() => navigateToPage('/faculty?dept=mce')}>Mechanical</button></li>
+                                <li><button className="top-dropdown-link" onClick={() => navigateToPage('/faculty?dept=cve')}>Civil</button></li>
                             </ul>
                         </div>
                         <span className="nav-separator">|</span>

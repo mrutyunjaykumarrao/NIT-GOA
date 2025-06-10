@@ -11,6 +11,7 @@ export const navigationConfig = {
     research: '/research',
     placement: '/placement',
     campus: '/campus',
+    faculty: '/faculty',
     hostel: '/hostel',
     nirf: '/nirf',
     outreach: '/outreach',

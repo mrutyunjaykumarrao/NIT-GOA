@@ -9,6 +9,7 @@ import Admissions from './Views/Admissions';
 import Research from './Views/Research';
 import Campus from './Views/Campus';
 import Placement from './Views/Placement';
+import Faculty from './Views/Faculty';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/research" element={<Research />} />
         <Route path="/campus" element={<Campus />} />
         <Route path="/placement" element={<Placement />} />
+        <Route path="/faculty" element={<Faculty />} />
         {/* Additional routes can be added here */}
         <Route path="*" element={<HomePage />} />
       </Routes>

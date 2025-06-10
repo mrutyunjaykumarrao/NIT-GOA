@@ -19,6 +19,7 @@
 - **🔬 Research** - Research areas, facilities, statistics, collaborations
 - **🏫 Campus Life** - Facilities, activities, events, student services
 - **💼 Placement** - Statistics, recruiters, process, training programs
+- **👨‍🏫 Faculty** - Comprehensive faculty directory with liquid glass interface, department filtering, HOD highlights
 
 ### 🧭 **Navigation System**
 - **Responsive Navbar** with dropdown menus and transparent overlay design
@@ -33,11 +34,22 @@
 - **Responsive Design** - Optimized for all screen sizes (desktop to mobile)
 - **Auto-timing** - Images change every 5 seconds with smooth transitions
 
+### 👨‍🏫 **Faculty Page Features**
+- **Comprehensive Faculty Directory** - 70+ faculty members across 7 departments (CSE, ECE, EEE, MCE, CVE, APS, HSS)
+- **Liquid Glass Interface** - Apple-inspired translucent buttons with backdrop blur effects
+- **Department Filtering** - Interactive buttons with shimmer animations and smooth transitions
+- **HOD Highlighting** - Special horizontal card layouts for Heads of Department with enhanced styling
+- **Smart Card Layouts** - Consistent dimensions with content overflow management and text truncation
+- **Professional Photography** - Square faculty images (200x200px) with proper aspect ratios
+- **URL Parameter Support** - Direct department navigation via query parameters
+- **Advanced CSS Effects** - Backdrop filters, cubic-bezier animations, and micro-interactions
+
 ### 🎨 **Design & UX**
-- **Modern UI/UX** with clean, professional aesthetics
+- **Modern UI/UX** with clean, professional aesthetics and Apple-inspired liquid glass effects
 - **Fully responsive** design for all device sizes
 - **Fast loading** with optimized bundle (72.85 kB gzipped)
 - **Progressive Web App** ready
+- **Advanced CSS Features** - Backdrop filters, shimmer animations, and micro-interactions
 
 ## 🚀 Quick Start
 
@@ -111,6 +123,7 @@ nitgoa/
 │   │   ├── Admissions.js        # Admission details
 │   │   ├── Research.js          # Research initiatives
 │   │   ├── Campus.js            # Campus life
+│   │   ├── Faculty.js           # Faculty directory with liquid glass UI
 │   │   └── Placement.js         # Placement information
 │   ├── 📁 components/           # Reusable components
 │   │   ├── MainNavigation/      # Responsive navigation with overlay
@@ -118,7 +131,8 @@ nitgoa/
 │   │   └── Footer/              # Footer component
 │   ├── 📁 assets/               # Images and media
 │   │   └── images/              # Institute logos and hero images
-│   │       └── Home/HeroImages/ # 17 campus carousel images
+│   │       ├── Home/HeroImages/ # 17 campus carousel images
+│   │       └── Faculty/         # 70+ faculty photos across all departments
 │   └── 📁 utils/                # Utility functions
 │       └── navigationConfig.js  # Centralized navigation
 ├── 📁 Documentation/            # Project documentation
@@ -137,7 +151,9 @@ nitgoa/
 ### **Performance Metrics**
 - ✅ **Bundle Size**: 72.85 kB (gzipped, optimized)
 - ✅ **Hero Carousel**: Smooth auto-cycling with manual navigation
+- ✅ **Faculty Directory**: 70+ faculty members with liquid glass UI
 - ✅ **Responsive Design**: 6 breakpoints (320px to 1200px+)
+- ✅ **CSS Animations**: 60fps backdrop filters and shimmer effects
 - ✅ **Test Coverage**: 100% pass rate
 - ✅ **Build Status**: Production ready
 - ✅ **Accessibility**: Zero violations, WCAG compliant
@@ -150,10 +166,13 @@ nitgoa/
 - ✅ **Maintainability**: Modular, documented code
 
 ### **Recent Improvements** (Latest Release)
+- 🔮 **Faculty Page Enhancement**: Complete faculty directory with Apple-inspired liquid glass effects
+- 🎨 **Liquid Glass UI**: Advanced backdrop filters and shimmer animations for department filters
+- 👨‍🏫 **Faculty Management**: 70+ faculty members across 7 departments with HOD highlighting
+- 📱 **Enhanced Responsive Design**: Improved mobile experience with adaptive layouts
 - 🎯 **React Router Upgrade**: Migrated from v6.30.1 to v7.6.2 for React 19 compatibility
 - 🖼️ **Hero Image Carousel**: Implemented auto-cycling slideshow with 17 campus images
 - 🎨 **Navigation Overlay**: Added transparent navbar with gradient overlay design
-- 📱 **Enhanced Responsiveness**: 6 breakpoints with optimized mobile navigation
 - ⚡ **Performance Optimized**: Smooth transitions and efficient state management
 
 ## 🛠️ Development Scripts

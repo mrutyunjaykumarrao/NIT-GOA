@@ -1,0 +1,479 @@
+/* Faculty Page Styles */
+.faculty-page {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    padding-top: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Hero Section */
+.faculty-hero {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.hero-image {
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Department Section */
+.department-section {
+    margin-bottom: 40px;
+}
+
+.current-department {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: #1976d2;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    border-radius: 10px;
+    border-left: 4px solid #2196f3;
+}
+
+/* Department Filter Buttons */
+.department-filters {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1976d2;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    min-width: 80px;
+    box-shadow: 
+        0 8px 32px rgba(31, 38, 135, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.filter-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 
+        0 12px 40px rgba(31, 38, 135, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.filter-btn:hover::before {
+    left: 100%;
+}
+
+.filter-btn.active {
+    background: rgba(33, 150, 243, 0.4);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 15px 45px rgba(33, 150, 243, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Faculty Grid */
+.faculty-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+/* Faculty Card */
+.faculty-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid #e0e0e0;
+    height: 550px;
+    min-height: 550px;
+    max-height: 550px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HOD Card - Takes full row and is centered */
+.faculty-card.hod-card {
+    grid-column: 1 / -1;
+    max-width: 800px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #f8f9ff, #e8f2ff);
+    border: 1px solid #e0e0e0;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    padding: 30px;
+    height: 350px;
+    min-height: 350px;
+    max-height: 350px;
+}
+
+.faculty-card.hod-card::before {
+    content: "HOD";
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: linear-gradient(135deg, #2196f3, #1976d2);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.faculty-card.hod-card .faculty-image {
+    flex-shrink: 0;
+    margin: 0;
+    width: 200px;
+    height: 200px;
+}
+
+.faculty-card.hod-card .faculty-info {
+    text-align: left;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    overflow: hidden;
+    padding: 5px 0;
+}
+
+.faculty-card.hod-card .faculty-name {
+    font-size: 20px;
+    color: #1976d2;
+    margin-bottom: 6px;
+    line-height: 1.2;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.faculty-card.hod-card .faculty-designation {
+    font-size: 15px;
+    color: #2196f3;
+    font-weight: 700;
+    margin-bottom: 4px;
+    line-height: 1.2;
+}
+
+.faculty-card.hod-card .faculty-department {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 10px;
+    font-style: italic;
+    line-height: 1.2;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.faculty-card.hod-card .faculty-contact {
+    background: #f8f9fa;
+    padding: 8px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 11px;
+}
+
+.faculty-card.hod-card .faculty-contact p {
+    margin: 2px 0;
+    line-height: 1.3;
+}
+
+.faculty-card.hod-card .research-areas {
+    text-align: left;
+    background: #e8f5e8;
+    padding: 8px;
+    border-radius: 6px;
+    border-left: 4px solid #4caf50;
+    font-size: 11px;
+    margin-top: auto;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    line-height: 1.3;
+    max-height: 60px;
+}
+
+.faculty-card.hod-card .research-areas p {
+    margin: 0;
+    line-height: 1.3;
+}
+
+.faculty-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.faculty-card.hod-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(33, 150, 243, 0.25);
+}
+
+.faculty-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 0 auto 20px;
+    border: 3px solid #e0e0e0;
+}
+
+.faculty-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.faculty-info {
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.faculty-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1976d2;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.faculty-designation {
+    font-size: 16px;
+    font-weight: 600;
+    color: #424242;
+    margin-bottom: 6px;
+}
+
+.faculty-department {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.faculty-contact {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.faculty-contact p {
+    margin: 4px 0;
+    font-size: 13px;
+    color: #555;
+}
+
+.faculty-contact strong {
+    color: #1976d2;
+}
+
+.research-areas {
+    text-align: left;
+    background: #e8f5e8;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #4caf50;
+    flex: 1;
+    margin-top: auto;
+}
+
+.research-areas p {
+    margin: 0;
+    font-size: 13px;
+    color: #2e7d32;
+    line-height: 1.4;
+}
+
+.research-areas strong {
+    color: #1b5e20;
+}
+
+/* No Faculty Message */
+.no-faculty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.no-faculty p {
+    font-size: 18px;
+    color: #666;
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .faculty-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .faculty-card {
+        padding: 20px;
+        height: 480px;
+        min-height: 480px;
+        max-height: 480px;
+    }
+    
+    /* HOD cards stack vertically on mobile */
+    .faculty-card.hod-card {
+        grid-column: 1 / -1;
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        padding: 25px;
+        max-width: 100%;
+        height: auto;
+        min-height: 400px;
+        max-height: none;
+    }
+    
+    .faculty-card.hod-card .faculty-info {
+        text-align: center;
+    }
+    
+    .faculty-card.hod-card .faculty-image {
+        width: 180px;
+        height: 180px;
+        margin: 0 auto;
+    }
+    
+    .faculty-name {
+        font-size: 18px;
+    }
+    
+    .faculty-designation {
+        font-size: 15px;
+    }
+    
+    .department-filters {
+        gap: 15px;
+    }
+    
+    .filter-btn {
+        padding: 10px 18px;
+        font-size: 14px;
+        min-width: 60px;
+    }
+    
+    .hero-image {
+        height: 200px;
+        border-radius: 10px;
+    }
+    
+    .current-department {
+        font-size: 20px;
+        margin-bottom: 15px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .faculty-page {
+        padding-top: 10px;
+    }
+    
+    .faculty-card {
+        padding: 15px;
+        height: 450px;
+        min-height: 450px;
+        max-height: 450px;
+    }
+    
+    .faculty-image {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .faculty-name {
+        font-size: 16px;
+    }
+    
+    .faculty-designation {
+        font-size: 14px;
+    }
+    
+    .filter-btn {
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+    
+    .current-department {
+        font-size: 18px;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+}
