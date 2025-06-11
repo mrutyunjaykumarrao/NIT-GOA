@@ -1,8 +1,41 @@
+/* CSS Variables for Color Palette */
+:root {
+    /* Primary Blues - Based on NIT Goa Logo */
+    --primary-blue: #2E86C1;
+    --primary-blue-light: #5DADE2;
+    --primary-blue-dark: #1B4F72;
+    
+    /* Secondary Blues */
+    --secondary-blue-50: #EBF5FB;
+    --secondary-blue-100: #D6EAF8;
+    --secondary-blue-200: #AED6F1;
+    --secondary-blue-800: #0F3460;
+    
+    /* Neutrals */
+    --white: #FFFFFF;
+    --gray-50: #F8F9FA;
+    --gray-100: #F1F3F4;
+    --gray-200: #E9ECEF;
+    --gray-600: #6C757D;
+    --gray-800: #343A40;
+    
+    /* Accents */
+    --accent-orange: #FF6B35;
+    --accent-green: #28A745;
+    --accent-red: #DC3545;
+}
+
 /* Footer Styles */
 .main-footer {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    background: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--secondary-blue-800) 100%);
     color: white;
     margin-top: 60px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .footer-content {
@@ -30,7 +63,7 @@
     left: 0;
     width: 50px;
     height: 3px;
-    background: linear-gradient(135deg, #3498db, #2980b9);
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-light));
     border-radius: 2px;
 }
 
@@ -86,7 +119,7 @@
 }
 
 .footer-links a:hover {
-    color: #3498db;
+    color: var(--primary-blue-light);
     padding-left: 10px;
 }
 
@@ -158,7 +191,7 @@
 }
 
 .footer-bottom-links a:hover {
-    color: #3498db;
+    color: var(--primary-blue-light);
 }
 
 /* Footer link buttons styling */
@@ -181,7 +214,7 @@
 }
 
 .footer-link-btn:hover, .footer-bottom-btn:hover {
-    color: #3498db;
+    color: var(--primary-blue-light);
     padding-left: 10px;
 }
 
@@ -215,7 +248,7 @@
 /* Focus styles for accessibility */
 .footer-link-btn:focus, .footer-bottom-btn:focus {
     outline: none;
-    color: #3498db;
+    color: var(--primary-blue-light);
 }
 
 /* Responsive Design */

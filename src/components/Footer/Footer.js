@@ -19,7 +19,7 @@ const Footer = () => {
     return (
         <footer className="main-footer">
             <div className="footer-content">
-                <div className="container">
+                <div className="footer-container">
                     <div className="footer-sections">
                         {/* About Section */}
                         <div className="footer-section">
@@ -88,7 +88,7 @@ const Footer = () => {
 
             {/* Footer Bottom */}
             <div className="footer-bottom">
-                <div className="container">
+                <div className="footer-container">
                     <div className="footer-bottom-content">
                         <div className="copyright">
                             <p>&copy; 2024 National Institute of Technology Goa. All rights reserved.</p>

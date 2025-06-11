@@ -46,18 +46,16 @@ const Navbar = () => {
                         <div className="top-nav-dropdown">
                             <button 
                                 className="top-nav-link dropdown-toggle" 
-                                onClick={() => handleDropdown('facultyStaff')}
+                                onClick={() => handleDropdown('training')}
                             >
-                                Faculty & Staff
+                                Training & Placement
                                 <span className="dropdown-arrow">▼</span>
                             </button>
-                            <ul className={`top-dropdown-menu ${activeDropdown === 'facultyStaff' ? 'show' : ''}`}>
-                                <li><button className="top-dropdown-link" onClick={() => navigateToPage(navigationConfig.internal.faculty)}>All Faculty</button></li>
-                                <li><button className="top-dropdown-link" onClick={() => navigateToPage('/faculty?dept=cse')}>Computer Science</button></li>
-                                <li><button className="top-dropdown-link" onClick={() => navigateToPage('/faculty?dept=ece')}>Electronics</button></li>
-                                <li><button className="top-dropdown-link" onClick={() => navigateToPage('/faculty?dept=eee')}>Electrical</button></li>
-                                <li><button className="top-dropdown-link" onClick={() => navigateToPage('/faculty?dept=mce')}>Mechanical</button></li>
-                                <li><button className="top-dropdown-link" onClick={() => navigateToPage('/faculty?dept=cve')}>Civil</button></li>
+                            <ul className={`top-dropdown-menu ${activeDropdown === 'training' ? 'show' : ''}`}>
+                                <li><button className="top-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.training.statistics)}>Placement Statistics</button></li>
+                                <li><button className="top-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.training.programs)}>Training Programs</button></li>
+                                <li><button className="top-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.training.industry)}>Industry Relations</button></li>
+                                <li><button className="top-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.training.career)}>Career Services</button></li>
                             </ul>
                         </div>
                         <span className="nav-separator">|</span>
@@ -65,10 +63,10 @@ const Navbar = () => {
                         <button className="top-nav-link" onClick={() => navigateToPage(navigationConfig.external.alumni)}>Alumni</button>
                         <span className="nav-separator">|</span>
                         
-                        <button className="top-nav-link" onClick={() => navigateToPage(navigationConfig.external.tenders)}>Tenders</button>
+                        <button className="top-nav-link" onClick={() => navigateToPage(navigationConfig.internal.tenders)}>Tenders</button>
                         <span className="nav-separator">|</span>
                         
-                        <button className="top-nav-link" onClick={() => navigateToPage(navigationConfig.external.gian)}>GIAN</button>
+                        <button className="top-nav-link" onClick={() => navigateToPage(navigationConfig.internal.gian)}>GIAN</button>
                         <span className="nav-separator">|</span>
                         
                         <button className="top-nav-link" onClick={() => navigateToPage(navigationConfig.external.rajbhasha)}>RAJBHASHA</button>
@@ -167,16 +165,18 @@ const Navbar = () => {
                         <li className="nav-item dropdown">
                             <button 
                                 className="nav-link dropdown-toggle"
-                                onClick={() => handleDropdown('training')}
+                                onClick={() => handleDropdown('facultyStaff')}
                             >
-                                Training&Placement
+                                Faculty & Staff
                                 <span className="dropdown-arrow">▼</span>
                             </button>
-                            <ul className={`dropdown-menu ${activeDropdown === 'training' ? 'show' : ''}`}>
-                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.training.statistics)}>Placement Statistics</button></li>
-                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.training.programs)}>Training Programs</button></li>
-                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.training.industry)}>Industry Relations</button></li>
-                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.training.career)}>Career Services</button></li>
+                            <ul className={`dropdown-menu ${activeDropdown === 'facultyStaff' ? 'show' : ''}`}>
+                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.internal.faculty)}>All Faculty</button></li>
+                                <li><button className="dropdown-link" onClick={() => navigateToPage('/faculty?dept=cse')}>Computer Science</button></li>
+                                <li><button className="dropdown-link" onClick={() => navigateToPage('/faculty?dept=ece')}>Electronics</button></li>
+                                <li><button className="dropdown-link" onClick={() => navigateToPage('/faculty?dept=eee')}>Electrical</button></li>
+                                <li><button className="dropdown-link" onClick={() => navigateToPage('/faculty?dept=mce')}>Mechanical</button></li>
+                                <li><button className="dropdown-link" onClick={() => navigateToPage('/faculty?dept=cve')}>Civil</button></li>
                             </ul>
                         </li>
 
@@ -198,15 +198,29 @@ const Navbar = () => {
                         </li>
 
                         <li className="nav-item">
-                            <button className="nav-link" onClick={() => navigateToPage(navigationConfig.internal.outreach)}>Outreach activities</button>
+                            <button className="nav-link" onClick={() => navigateToPage(navigationConfig.internal.outreachActivities)}>Outreach activities</button>
                         </li>
 
                         <li className="nav-item">
                             <button className="nav-link" onClick={() => navigateToPage(navigationConfig.internal.nirf)}>NIRF</button>
                         </li>
 
-                        <li className="nav-item">
-                            <button className="nav-link" onClick={() => navigateToPage(navigationConfig.internal.feePayment)}>Fee payment</button>
+                        <li className="nav-item dropdown">
+                            <button 
+                                className="nav-link dropdown-toggle"
+                                onClick={() => handleDropdown('resources')}
+                            >
+                                Resources
+                                <span className="dropdown-arrow">▼</span>
+                            </button>
+                            <ul className={`dropdown-menu ${activeDropdown === 'resources' ? 'show' : ''}`}>
+                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.resources.facilities)}>Campus Facilities</button></li>
+                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.resources.academicCalendar)}>Academic Calendar</button></li>
+                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.resources.tenders)}>Tenders</button></li>
+                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.resources.rti)}>RTI</button></li>
+                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.resources.feePayment)}>Fee Payment</button></li>
+                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.resources.contactUs)}>Contact Us</button></li>
+                            </ul>
                         </li>
 
                         <li className="nav-item">

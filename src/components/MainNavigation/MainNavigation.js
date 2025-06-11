@@ -5,10 +5,15 @@ import { navigationConfig } from '../../utils/navigationConfig';
 
 const MainNavigation = () => {
     const [activeDropdown, setActiveDropdown] = useState(null);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const navigate = useNavigate();
 
     const handleDropdown = (dropdown) => {
         setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
+    };
+
+    const toggleMobileMenu = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen);
     };
 
     const navigateToPage = (url) => {
@@ -18,12 +23,16 @@ const MainNavigation = () => {
             navigate(url);
         }
         setActiveDropdown(null);
+        setIsMobileMenuOpen(false); // Close mobile menu after navigation
     };
 
     return (
         <nav className="main-navigation-overlay">
+            <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
+                {isMobileMenuOpen ? '✕' : '☰'}
+            </button>
             <div className="nav-overlay-container">
-                <ul className="nav-overlay-menu">
+                <ul className={`nav-overlay-menu ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
                     <li className="nav-overlay-item">
                         <button className="nav-overlay-link" onClick={() => navigateToPage(navigationConfig.internal.home)}>
                             Home
@@ -84,17 +93,18 @@ const MainNavigation = () => {
                     <li className="nav-overlay-item dropdown">
                         <button 
                             className="nav-overlay-link dropdown-toggle"
-                            onClick={() => handleDropdown('training')}
+                            onClick={() => handleDropdown('facultyStaff')}
                         >
-                            Training&Placement
+                            Faculty & Staff
                             <span className="dropdown-arrow">▼</span>
                         </button>
-                        <ul className={`overlay-dropdown-menu ${activeDropdown === 'training' ? 'show' : ''}`}>
-                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.training.overview)}>Overview</button></li>
-                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.training.statistics)}>Placement Statistics</button></li>
-                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.training.companies)}>Recruiting Companies</button></li>
-                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.training.internships)}>Internships</button></li>
-                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.training.calendar)}>Training Calendar</button></li>
+                        <ul className={`overlay-dropdown-menu ${activeDropdown === 'facultyStaff' ? 'show' : ''}`}>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.internal.faculty)}>All Faculty</button></li>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage('/faculty?dept=cse')}>Computer Science</button></li>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage('/faculty?dept=ece')}>Electronics</button></li>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage('/faculty?dept=eee')}>Electrical</button></li>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage('/faculty?dept=mce')}>Mechanical</button></li>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage('/faculty?dept=cve')}>Civil</button></li>
                         </ul>
                     </li>
 
