@@ -1,0 +1,349 @@
+/* OutreachActivities.css */
+.outreach-container {
+  min-height: 100vh;
+  background: white;
+  padding: 2rem 0;
+}
+
+.outreach-hero {
+  text-align: center;
+  padding: 4rem 2rem 2rem;
+  color: #2c3e50;
+}
+
+.outreach-hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: none;
+}
+
+.outreach-hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  color: #666;
+}
+
+.outreach-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.outreach-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  background: #f8f9fa;
+  border-radius: 20px;
+  padding: 0.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tab-button {
+  background: transparent;
+  border: none;
+  color: #2c3e50;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  border-radius: 15px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  min-width: 140px;
+}
+
+.tab-button:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tab-button.active {
+  background: #007bff;
+  color: white;
+  box-shadow: 0 4px 16px rgba(0, 123, 255, 0.3);
+}
+
+.tab-content {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+  color: #333;
+  min-height: 600px;
+}
+
+.tab-content h2 {
+  color: #2c5aa0;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.tab-content h3 {
+  color: #2c5aa0;
+  font-size: 1.8rem;
+  margin: 2rem 0 1rem;
+  font-weight: 600;
+}
+
+.tab-content h4 {
+  color: #4a5568;
+  font-size: 1.4rem;
+  margin: 1.5rem 0 1rem;
+  font-weight: 500;
+}
+
+.tab-content p {
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: #4a5568;
+}
+
+.tab-content ul {
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+}
+
+.tab-content li {
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+  font-size: 1.05rem;
+  color: #555;
+}
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.activity-card {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 2rem;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.activity-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.activity-card h4 {
+  color: #2c5aa0;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.activity-card p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.outreach-stat-item {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 123, 255, 0.3);
+}
+
+.outreach-stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.outreach-stat-label {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+  margin: 2rem 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #007bff, #0056b3);
+  border-radius: 2px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-left: 2rem;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -1.5rem;
+  top: 0.5rem;
+  width: 12px;
+  height: 12px;
+  background: #667eea;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-date {
+  color: #667eea;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-content h4 {
+  color: #2c5aa0;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-content p {
+  color: #555;
+  line-height: 1.6;
+}
+
+.contact-info {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 2rem;
+  margin-top: 2rem;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info h4 {
+  color: #2c5aa0;
+  margin-bottom: 1rem;
+}
+
+.contact-info p {
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.contact-info strong {
+  color: #2c5aa0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .outreach-hero h1 {
+    font-size: 2rem;
+  }
+
+  .outreach-hero p {
+    font-size: 1rem;
+  }
+
+  .outreach-content {
+    padding: 1rem;
+  }
+
+  .outreach-tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tab-button {
+    width: 100%;
+    max-width: 300px;
+    margin: 0.25rem 0;
+  }
+
+  .tab-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .tab-content h2 {
+    font-size: 2rem;
+  }
+
+  .tab-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .activity-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .outreach-stat-number {
+    font-size: 2rem;
+  }
+
+  .timeline {
+    padding-left: 1.5rem;
+  }
+
+  .timeline-item {
+    padding-left: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .outreach-hero {
+    padding: 2rem 1rem 1rem;
+  }
+
+  .outreach-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .tab-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .tab-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .activity-card {
+    padding: 1.5rem;
+  }
+
+  .outreach-stat-item {
+    padding: 1.5rem;
+  }
+
+  .contact-info {
+    padding: 1.5rem;
+  }
+}
