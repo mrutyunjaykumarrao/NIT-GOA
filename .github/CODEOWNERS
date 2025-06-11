@@ -1,0 +1,30 @@
+# CODEOWNERS file for NIT Goa Website
+# This file defines who must review code changes in specific areas
+
+# Global rule - require review from project owner for all changes
+* @mrutyunjaykumarrao
+
+# Core application files require additional review
+/src/App.js @mrutyunjaykumarrao
+/src/index.js @mrutyunjaykumarrao
+/package.json @mrutyunjaykumarrao
+/package-lock.json @mrutyunjaykumarrao
+
+# Deployment and configuration files
+/firebase.json @mrutyunjaykumarrao
+/.firebaserc @mrutyunjaykumarrao
+/public/index.html @mrutyunjaykumarrao
+
+# Documentation requires review
+/README.md @mrutyunjaykumarrao
+/TEAM_COLLABORATION_GUIDE.md @mrutyunjaykumarrao
+/GITHUB_SETUP_GUIDE.md @mrutyunjaykumarrao
+/DEVELOPMENT_SETUP_GUIDE.md @mrutyunjaykumarrao
+
+# Component directories - any team member can review
+/src/components/
+/src/Views/
+/src/utils/
+
+# Styling files
+/src/**/*.css
