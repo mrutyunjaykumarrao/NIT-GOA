@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './HomePage.css';
 import heroImg1 from '../assets/images/Home/HeroImages/HeroImg1.jpg';
 import heroImg2 from '../assets/images/Home/HeroImages/HeroImg2.jpg';
@@ -36,6 +36,48 @@ const HomePage = () => {
     ];
 
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [countsAnimated, setCountsAnimated] = useState(false);
+    const [counts, setCounts] = useState({
+        departments: 0,
+        students: 0,
+        faculties: 0,
+        publications: 0,
+        patents: 0
+    });
+    const statsRef = useRef(null);
+
+    const animateCounts = useCallback(() => {
+        const finalCounts = {
+            departments: 7,
+            students: 913,
+            faculties: 55,
+            publications: 1611,
+            patents: 18
+        };
+
+        const duration = 2000; // 2 seconds
+        const steps = 60; // 60 FPS
+        const increment = duration / steps;
+
+        Object.keys(finalCounts).forEach((key) => {
+            const finalValue = finalCounts[key];
+            let currentValue = 0;
+            const stepValue = finalValue / steps;
+
+            const counter = setInterval(() => {
+                currentValue += stepValue;
+                if (currentValue >= finalValue) {
+                    currentValue = finalValue;
+                    clearInterval(counter);
+                }
+
+                setCounts(prev => ({
+                    ...prev,
+                    [key]: Math.floor(currentValue)
+                }));
+            }, increment);
+        });
+    }, []);
 
     // Auto-cycle images every 5 seconds
     useEffect(() => {
@@ -59,6 +101,33 @@ const HomePage = () => {
             currentImageIndex === heroImages.length - 1 ? 0 : currentImageIndex + 1
         );
     };
+
+    // Counting animation for statistics
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && !countsAnimated) {
+                        setCountsAnimated(true);
+                        animateCounts();
+                    }
+                });
+            },
+            { threshold: 0.5 }
+        );
+
+        const currentStatsRef = statsRef.current;
+        if (currentStatsRef) {
+            observer.observe(currentStatsRef);
+        }
+
+        return () => {
+            if (currentStatsRef) {
+                observer.unobserve(currentStatsRef);
+            }
+        };
+    }, [countsAnimated, animateCounts]);
+
     return (
         <div className="homepage">
             {/* Hero Section */}
@@ -91,7 +160,7 @@ const HomePage = () => {
 
             {/* Announcements Section */}
             <section className="announcements-section">
-                <div className="container">
+                <div className="homepage-container">
                     <h2 className="section-title">Announcements</h2>
                     <div className="announcements-grid">
                         <div className="announcement-item">
@@ -115,7 +184,7 @@ const HomePage = () => {
 
             {/* Three Column Section */}
             <section className="three-column-section">
-                <div className="container">
+                <div className="homepage-container">
                     <div className="three-column-grid">
                         {/* News And Events */}
                         <div className="column-card">
@@ -204,9 +273,112 @@ const HomePage = () => {
                 </div>
             </section>
 
+            {/* Quick Links Section */}
+            <section className="quick-links-section">
+                <div className="homepage-container">
+                    <h2 className="section-title">Quick Links</h2>
+                    <div className="quick-links-grid">
+                        <a href="/admissions" className="quick-link-card">
+                            <div className="quick-link-icon">🎓</div>
+                            <div className="quick-link-title">Admissions</div>
+                            <div className="quick-link-description">Apply for undergraduate and postgraduate programs</div>
+                            <div className="quick-link-stats">
+                                <div className="quick-stat">
+                                    <span className="quick-stat-number">7</span>
+                                    <span className="quick-stat-label">Programs</span>
+                                </div>
+                                <div className="quick-stat">
+                                    <span className="quick-stat-number">900+</span>
+                                    <span className="quick-stat-label">Students</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="/academics" className="quick-link-card">
+                            <div className="quick-link-icon">📚</div>
+                            <div className="quick-link-title">Academics</div>
+                            <div className="quick-link-description">Explore our academic programs and curriculum</div>
+                            <div className="quick-link-stats">
+                                <div className="quick-stat">
+                                    <span className="quick-stat-number">7</span>
+                                    <span className="quick-stat-label">Departments</span>
+                                </div>
+                                <div className="quick-stat">
+                                    <span className="quick-stat-number">55</span>
+                                    <span className="quick-stat-label">Faculty</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="/placements" className="quick-link-card">
+                            <div className="quick-link-icon">💼</div>
+                            <div className="quick-link-title">Placements</div>
+                            <div className="quick-link-description">Career opportunities and placement statistics</div>
+                            <div className="quick-link-stats">
+                                <div className="quick-stat">
+                                    <span className="quick-stat-number">95%</span>
+                                    <span className="quick-stat-label">Placement</span>
+                                </div>
+                                <div className="quick-stat">
+                                    <span className="quick-stat-number">50+</span>
+                                    <span className="quick-stat-label">Companies</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="/research" className="quick-link-card">
+                            <div className="quick-link-icon">🔬</div>
+                            <div className="quick-link-title">Research</div>
+                            <div className="quick-link-description">Innovation and research initiatives</div>
+                            <div className="quick-link-stats">
+                                <div className="quick-stat">
+                                    <span className="quick-stat-number">1600+</span>
+                                    <span className="quick-stat-label">Publications</span>
+                                </div>
+                                <div className="quick-stat">
+                                    <span className="quick-stat-number">18</span>
+                                    <span className="quick-stat-label">Patents</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="/campus-life" className="quick-link-card">
+                            <div className="quick-link-icon">🏫</div>
+                            <div className="quick-link-title">Campus Life</div>
+                            <div className="quick-link-description">Student activities and campus facilities</div>
+                            <div className="quick-link-stats">
+                                <div className="quick-stat">
+                                    <span className="quick-stat-number">10+</span>
+                                    <span className="quick-stat-label">Clubs</span>
+                                </div>
+                                <div className="quick-stat">
+                                    <span className="quick-stat-number">24/7</span>
+                                    <span className="quick-stat-label">Facilities</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="/contact" className="quick-link-card">
+                            <div className="quick-link-icon">📞</div>
+                            <div className="quick-link-title">Contact Us</div>
+                            <div className="quick-link-description">Get in touch with our administration</div>
+                            <div className="quick-link-stats">
+                                <div className="quick-stat">
+                                    <span className="quick-stat-number">24/7</span>
+                                    <span className="quick-stat-label">Support</span>
+                                </div>
+                                <div className="quick-stat">
+                                    <span className="quick-stat-label">Help Desk</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
             {/* Placement Statistics Section */}
             <section className="placement-section">
-                <div className="container">
+                <div className="homepage-container">
                     <h2 className="section-title">Placement Statistics</h2>
                     <div className="placement-content">
                         <div className="placement-chart">
@@ -228,28 +400,28 @@ const HomePage = () => {
             </section>
 
             {/* Statistics Section */}
-            <section className="statistics-section">
-                <div className="container">
-                    <div className="stats-grid">
-                        <div className="stat-item">
-                            <div className="stat-number">7</div>
-                            <div className="stat-label">Departments</div>
+            <section className="homepage-statistics-section" ref={statsRef}>
+                <div className="homepage-container">
+                    <div className="homepage-stats-grid">
+                        <div className="homepage-stat-item">
+                            <div className="homepage-stat-number">{counts.departments}</div>
+                            <div className="homepage-stat-label">Departments</div>
                         </div>
-                        <div className="stat-item">
-                            <div className="stat-number">913</div>
-                            <div className="stat-label">Students</div>
+                        <div className="homepage-stat-item">
+                            <div className="homepage-stat-number">{counts.students}</div>
+                            <div className="homepage-stat-label">Students</div>
                         </div>
-                        <div className="stat-item">
-                            <div className="stat-number">55</div>
-                            <div className="stat-label">Faculties</div>
+                        <div className="homepage-stat-item">
+                            <div className="homepage-stat-number">{counts.faculties}</div>
+                            <div className="homepage-stat-label">Faculties</div>
                         </div>
-                        <div className="stat-item">
-                            <div className="stat-number">1611</div>
-                            <div className="stat-label">Publications</div>
+                        <div className="homepage-stat-item">
+                            <div className="homepage-stat-number">{counts.publications}</div>
+                            <div className="homepage-stat-label">Publications</div>
                         </div>
-                        <div className="stat-item">
-                            <div className="stat-number">18</div>
-                            <div className="stat-label">Patents</div>
+                        <div className="homepage-stat-item">
+                            <div className="homepage-stat-number">{counts.patents}</div>
+                            <div className="homepage-stat-label">Patents</div>
                         </div>
                     </div>
                 </div>
@@ -257,7 +429,7 @@ const HomePage = () => {
 
             {/* About Section */}
             <section className="about-section">
-                <div className="container">
+                <div className="homepage-container">
                     <div className="about-content">
                         <div className="about-image">
                             <img src={heroImg2} alt="NIT Goa Campus" />
@@ -282,7 +454,7 @@ const HomePage = () => {
 
             {/* Footer National Portals */}
             <section className="national-portals">
-                <div className="container">
+                <div className="homepage-container">
                     <h3>National Portals</h3>
                     <div className="portals-grid">
                         <img src={moeImage} alt="Ministry of Education" />
