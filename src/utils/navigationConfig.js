@@ -15,19 +15,24 @@ export const navigationConfig = {
     hostel: '/hostel',
     nirf: '/nirf',
     outreach: '/outreach',
-    feePayment: '/fee-payment'
+    feePayment: '/fee-payment',
+    rti: '/rti',
+    contactUs: '/contact-us',
+    tenders: '/tenders',
+    gian: '/gian',
+    facilities: '/facilities',
+    academicCalendar: '/academic-calendar',
+    outreachActivities: '/outreach-activities'
   },
   
   // External links
   external: {
     facultyStaff: 'https://www.nitgoa.ac.in/faculty-staff',
     alumni: 'https://www.nitgoa.ac.in/alumni',
-    tenders: 'https://www.nitgoa.ac.in/tenders',
     gian: 'https://www.gian.iitkgp.ac.in/',
     rajbhasha: 'https://www.nitgoa.ac.in/rajbhasha',
     privacyPolicy: 'https://www.nitgoa.ac.in/privacy-policy',
     termsOfUse: 'https://www.nitgoa.ac.in/terms-of-use',
-    rti: 'https://www.nitgoa.ac.in/rti',
     sitemap: 'https://www.nitgoa.ac.in/sitemap'
   },
   
@@ -43,7 +48,7 @@ export const navigationConfig = {
     academics: {
       departments: '/academics/departments',
       programs: '/academics/programs',
-      calendar: '/academics/academic-calendar',
+      calendar: '/academic-calendar',
       syllabus: '/academics/syllabus',
       regulations: '/academics/regulations'
     },
@@ -66,6 +71,14 @@ export const navigationConfig = {
       projects: '/research/projects',
       facilities: '/research/facilities',
       collaborations: '/research/collaborations'
+    },
+    resources: {
+      facilities: '/facilities',
+      tenders: '/tenders',
+      rti: '/rti',
+      feePayment: '/fee-payment',
+      contactUs: '/contact-us',
+      academicCalendar: '/academic-calendar'
     },
     quickLinks: {
       about: '/about',
