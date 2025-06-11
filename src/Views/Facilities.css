@@ -1,0 +1,263 @@
+/* Facilities Page Styles */
+.facilities-page {
+  min-height: 100vh;
+  background: white;
+  padding: 2rem 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.facilities-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header Section */
+.facilities-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 2rem 0;
+}
+
+.facilities-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  text-shadow: none;
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
+}
+
+.facilities-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 0 auto;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* Grid Layout */
+.facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Facility Cards */
+.facility-card {
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.facility-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 123, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.facility-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.facility-card:hover::before {
+  left: 100%;
+}
+
+.facility-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.facility-icon {
+  font-size: 2.5rem;
+  margin-right: 1rem;
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.facility-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.facility-description {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.facility-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.facility-features li {
+  color: #666;
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.facility-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #4facfe;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Sustainability Section */
+.sustainability-section {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin: 3rem 0;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.sustainability-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.sustainability-description {
+  color: #555;
+  line-height: 1.7;
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .facilities-page {
+    padding: 1rem 0;
+  }
+
+  .facilities-container {
+    padding: 0 1rem;
+  }
+
+  .facilities-title {
+    font-size: 2.5rem;
+  }
+
+  .facilities-subtitle {
+    font-size: 1rem;
+  }
+
+  .facilities-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .facility-card {
+    padding: 1.5rem;
+  }
+
+  .facility-icon {
+    font-size: 2rem;
+  }
+
+  .facility-title {
+    font-size: 1.3rem;
+  }
+
+  .sustainability-section {
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+
+  .sustainability-title {
+    font-size: 1.5rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .facilities-title {
+    font-size: 2rem;
+  }
+
+  .facility-card {
+    padding: 1rem;
+  }
+
+  .facility-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .facility-icon {
+    font-size: 1.8rem;
+    margin-right: 0;
+  }
+
+  .sustainability-section {
+    padding: 1.5rem;
+  }
+}
+
+/* Animation for page entrance */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.facility-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.facility-card:nth-child(even) {
+  animation-delay: 0.1s;
+}
+
+.sustainability-section {
+  animation: fadeInUp 0.8s ease-out;
+  animation-delay: 0.3s;
+}

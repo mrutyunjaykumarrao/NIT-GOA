@@ -1,0 +1,536 @@
+.contact-page {
+    min-height: 100vh;
+    padding: 40px 0;
+    background: white;
+    position: relative;
+}
+
+.contact-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.page-header h1 {
+    font-size: 3.5rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.page-subtitle {
+    font-size: 1.3rem;
+    color: #666;
+    margin: 0;
+    font-weight: 500;
+}
+
+.contact-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.contact-section {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    padding: 40px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.8s ease;
+}
+
+.contact-section:hover::before {
+    left: 100%;
+}
+
+.contact-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.main-contact-section {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+}
+
+.contact-section h2 {
+    color: #2c3e50;
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    border-bottom: 3px solid #e0e0e0;
+    padding-bottom: 15px;
+    font-weight: 600;
+}
+
+.contact-section h3 {
+    color: #2c3e50;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.contact-section h4 {
+    color: #2c3e50;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.contact-section p {
+    color: #666;
+    line-height: 1.8;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.contact-section strong {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+/* Main Contact Card */
+.main-contact-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.contact-info h3 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 15px;
+    color: #2c3e50;
+}
+
+.address {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #666;
+}
+
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.map-placeholder {
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.map-content h4 {
+    margin-bottom: 15px;
+    color: #4CAF50;
+}
+
+.coordinates {
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
+
+/* Department Grid */
+.departments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.department-card {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 15px;
+    padding: 25px;
+    transition: all 0.3s ease;
+}
+
+.department-card:hover {
+    background: #ffffff;
+    transform: translateY(-5px);
+    border-color: #dee2e6;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.department-card h3 {
+    text-align: center;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+.department-card p {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+/* Administration Grid */
+.administration-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.admin-card {
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 15px;
+    padding: 25px;
+    transition: all 0.3s ease;
+}
+
+.admin-card:hover {
+    background: rgba(76, 175, 80, 0.15);
+    transform: translateY(-5px);
+    border-color: rgba(76, 175, 80, 0.5);
+}
+
+.admin-card h3 {
+    text-align: center;
+    border-bottom: 2px solid rgba(76, 175, 80, 0.4);
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    color: #4CAF50;
+}
+
+/* Services Grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.service-card {
+    background: rgba(33, 150, 243, 0.1);
+    border: 1px solid rgba(33, 150, 243, 0.3);
+    border-radius: 15px;
+    padding: 25px;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    background: rgba(33, 150, 243, 0.15);
+    transform: translateY(-5px);
+    border-color: rgba(33, 150, 243, 0.5);
+}
+
+.service-card h3 {
+    text-align: center;
+    border-bottom: 2px solid rgba(33, 150, 243, 0.4);
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    color: #2196F3;
+}
+
+/* Transport Grid */
+.transport-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.transport-card {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.transport-card:hover {
+    background: #ffffff;
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.transport-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.transport-card h3 {
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+    color: #2c3e50;
+}
+
+.transport-details {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    text-align: left;
+    border: 1px solid #e9ecef;
+}
+
+.transport-details:last-child {
+    margin-bottom: 0;
+}
+
+/* Emergency Grid */
+.emergency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.emergency-card {
+    background: rgba(244, 67, 54, 0.1);
+    border: 2px solid rgba(244, 67, 54, 0.3);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.emergency-card:hover {
+    background: rgba(244, 67, 54, 0.15);
+    transform: translateY(-5px);
+    border-color: rgba(244, 67, 54, 0.5);
+}
+
+.emergency-card h3 {
+    color: #F44336;
+    border-bottom: 2px solid rgba(244, 67, 54, 0.4);
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+/* Feedback Section */
+.feedback-info {
+    margin-top: 30px;
+}
+
+.feedback-channels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.feedback-channel {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+}
+
+.feedback-channel h4 {
+    color: #4CAF50;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(76, 175, 80, 0.3);
+    padding-bottom: 8px;
+}
+
+/* Social Media */
+.social-media-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.social-platform {
+    display: flex;
+    align-items: center;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.social-platform:hover {
+    background: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.social-icon {
+    font-size: 2rem;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.social-platform h4 {
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.social-platform p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .contact-section {
+        padding: 30px 20px;
+    }
+    
+    .contact-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .main-contact-card {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .departments-grid,
+    .administration-grid,
+    .services-grid,
+    .transport-grid,
+    .emergency-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .feedback-channels {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .social-media-links {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .social-platform {
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .transport-details {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-container {
+        padding: 0 15px;
+    }
+    
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .page-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .contact-section {
+        padding: 25px 15px;
+        margin-bottom: 20px;
+    }
+    
+    .contact-section h2 {
+        font-size: 1.6rem;
+    }
+    
+    .department-card,
+    .admin-card,
+    .service-card,
+    .transport-card,
+    .emergency-card {
+        padding: 20px 15px;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .contact-icon {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .transport-icon {
+        font-size: 2.5rem;
+    }
+    
+    .social-platform {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    .social-icon {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
