@@ -4,7 +4,7 @@ import './Admissions.css';
 const Admissions = () => {
     return (
         <div className="admissions-page">
-            <div className="container">
+            <div className="admissions-container">
                 <div className="page-header">
                     <h1>Admissions</h1>
                     <p className="page-subtitle">Apply for undergraduate and postgraduate programs at NIT Goa</p>

@@ -1,13 +1,28 @@
 .about-page {
     min-height: 100vh;
     padding: 40px 0;
-    background-color: #f8f9fa;
+    background: white;
+    position: relative;
 }
 
-.container {
+.about-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.about-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .page-header {
@@ -16,57 +31,240 @@
 }
 
 .page-header h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     color: #2c3e50;
     margin-bottom: 20px;
     font-weight: 700;
 }
 
 .page-subtitle {
-    font-size: 1.2rem;
-    color: #6c757d;
+    font-size: 1.3rem;
+    color: #666;
     margin: 0;
+    font-weight: 500;
 }
 
 .about-content {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 .about-section {
-    background: white;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
     padding: 40px;
     margin-bottom: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 123, 255, 0.05), transparent);
+    transition: left 0.8s ease;
+}
+
+.about-section:hover::before {
+    left: 100%;
+}
+
+.about-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.featured-section {
+    background: #e3f2fd;
+    border: 2px solid #007bff;
 }
 
 .about-section h2 {
     color: #2c3e50;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    border-bottom: 3px solid #3498db;
-    padding-bottom: 10px;
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    border-bottom: 3px solid #007bff;
+    padding-bottom: 15px;
+    font-weight: 600;
 }
 
 .about-section p {
-    color: #555;
+    color: #495057;
     line-height: 1.8;
     font-size: 1.1rem;
     margin-bottom: 20px;
 }
 
 .about-section ul {
-    color: #555;
+    color: #495057;
     line-height: 1.8;
     font-size: 1.1rem;
     padding-left: 20px;
 }
 
 .about-section li {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    position: relative;
 }
 
+.about-section li::marker {
+    color: #666;
+}
+
+/* Vision and Mission Grid */
+.vision-mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.vision-section, .mission-section {
+    margin-bottom: 0;
+}
+
+.vision-section {
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.mission-section {
+    background: rgba(33, 150, 243, 0.1);
+    border: 1px solid rgba(33, 150, 243, 0.3);
+}
+
+/* Programs Grid */
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.program-card {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 15px;
+    padding: 25px;
+    transition: all 0.3s ease;
+}
+
+.program-card:hover {
+    background: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.program-card h3 {
+    color: #ffffff;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 10px;
+}
+
+.program-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.program-card li {
+    color: rgba(255, 255, 255, 0.85);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    padding-left: 20px;
+}
+
+.program-card li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8rem;
+}
+
+.program-card li:last-child {
+    border-bottom: none;
+}
+
+/* Admission Info Grid */
+.admission-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.admission-card {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 15px;
+    padding: 25px;
+    transition: all 0.3s ease;
+}
+
+.admission-card:hover {
+    background: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.admission-card h3 {
+    color: #ffffff;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 10px;
+}
+
+.admission-card p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.admission-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.admission-card li {
+    color: rgba(255, 255, 255, 0.85);
+    padding: 5px 0;
+    font-size: 0.95rem;
+}
+
+/* Company Highlights */
+.company-highlights {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.company-highlights p {
+    margin: 0;
+    font-style: italic;
+}
+
+.company-highlights strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
     .page-header h1 {
         font-size: 2.5rem;
@@ -77,6 +275,52 @@
     }
     
     .about-section h2 {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
+    }
+    
+    .vision-mission-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .programs-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .admission-info {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .program-card, .admission-card {
+        padding: 20px;
+    }
+    
+    .about-section p, .about-section ul {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-container {
+        padding: 0 15px;
+    }
+    
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .page-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .about-section {
+        padding: 25px 15px;
+        margin-bottom: 20px;
+    }
+    
+    .about-section h2 {
+        font-size: 1.6rem;
     }
 }

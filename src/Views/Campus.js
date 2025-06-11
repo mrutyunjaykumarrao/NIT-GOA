@@ -4,7 +4,7 @@ import './Campus.css';
 const Campus = () => {
     return (
         <div className="campus-page">
-            <div className="container">
+            <div className="campus-container">
                 <div className="page-header">
                     <h1>Campus Life</h1>
                     <p className="page-subtitle">Discover student activities, facilities, and vibrant campus culture at NIT Goa</p>
