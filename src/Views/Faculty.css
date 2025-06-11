@@ -1,11 +1,11 @@
 /* Faculty Page Styles */
 .faculty-page {
     min-height: 100vh;
-    background-color: #f8f9fa;
+    background-color: white;
     padding-top: 20px;
 }
 
-.container {
+.faculty-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -372,7 +372,7 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .container {
+    .faculty-container {
         padding: 0 15px;
     }
     

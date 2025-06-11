@@ -4,7 +4,7 @@ import './Placement.css';
 const Placement = () => {
     return (
         <div className="placement-page">
-            <div className="container">
+            <div className="placement-container">
                 <div className="page-header">
                     <h1>Training & Placement</h1>
                     <p className="page-subtitle">Career opportunities and industry partnerships for bright futures</p>

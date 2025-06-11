@@ -4,7 +4,7 @@ import './Research.css';
 const Research = () => {
     return (
         <div className="research-page">
-            <div className="container">
+            <div className="research-container">
                 <div className="page-header">
                     <h1>Research</h1>
                     <p className="page-subtitle">Cutting-edge research initiatives and innovation at NIT Goa</p>

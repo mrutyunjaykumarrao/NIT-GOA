@@ -1,14 +1,21 @@
 .placement-page {
     padding: 2rem 0;
     min-height: 80vh;
+    background: white;
+}
+
+.placement-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .page-header {
     text-align: center;
     margin-bottom: 3rem;
     padding: 2rem 0;
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    color: white;
+    background: white;
+    color: #2c3e50;
     border-radius: 10px;
 }
 
@@ -43,7 +50,7 @@
     gap: 2rem;
 }
 
-.stat-card {
+.placement-stat-card {
     text-align: center;
     background: white;
     padding: 2rem;
@@ -52,18 +59,18 @@
     transition: transform 0.3s ease;
 }
 
-.stat-card:hover {
+.placement-stat-card:hover {
     transform: translateY(-5px);
 }
 
-.stat-card h3 {
+.placement-stat-card h3 {
     font-size: 3rem;
     color: #f5576c;
     margin-bottom: 0.5rem;
     font-weight: 700;
 }
 
-.stat-card p {
+.placement-stat-card p {
     color: #666;
     font-size: 1.1rem;
 }
@@ -322,7 +329,7 @@
         grid-template-columns: 1fr;
     }
     
-    .stat-card h3 {
+    .placement-stat-card h3 {
         font-size: 2rem;
     }
     

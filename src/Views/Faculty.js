@@ -765,7 +765,7 @@ const Faculty = () => {
 
     return (
         <div className="faculty-page">
-            <div className="container">
+            <div className="faculty-container">
                 {/* Hero Section */}
                 <div className="faculty-hero">
                     <div className="hero-image">
