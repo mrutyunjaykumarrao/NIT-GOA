@@ -85,19 +85,12 @@
 
 ## 📚 Documentation
 
-### **📋 Team Collaboration**
-- **[Team Collaboration Guide](TEAM_COLLABORATION_GUIDE.md)** - Complete workflow and processes
-- **[GitHub Repository Setup](GITHUB_REPOSITORY_SETUP.md)** - Repository configuration guide
-- **[Team Onboarding Checklist](TEAM_ONBOARDING_CHECKLIST.md)** - New member onboarding
+### **🎯 For Team Members (Start Here!)**
+- **[Simple Team Guide](SIMPLE_TEAM_GUIDE.md)** - Everything you need to get started
+- **[Development Setup Guide](DEVELOPMENT_SETUP_GUIDE.md)** - How to set up your development environment
 
-### **🔧 Development**
-- **[Development Setup Guide](DEVELOPMENT_SETUP_GUIDE.md)** - Environment setup instructions
-- **[Deployment Guide](DEPLOYMENT_GUIDE.md)** - Production deployment procedures
-- **[GitHub Setup Guide](GITHUB_SETUP_GUIDE.md)** - Git workflow and commands
-
-### **📊 Project Reports**
-- **[Deployment Verification Report](DEPLOYMENT_VERIFICATION_REPORT.md)** - Production verification
-- **[Final Project Completion Report](FINAL_PROJECT_COMPLETION_REPORT.md)** - Complete project summary
+### **🚀 For Project Owner**
+- **[Deployment Guide](DEPLOYMENT_GUIDE.md)** - How to deploy the website manually
 
 ---
 
