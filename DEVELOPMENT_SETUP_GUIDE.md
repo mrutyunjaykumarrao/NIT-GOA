@@ -209,8 +209,7 @@ Install these extensions for the best development experience:
 {
   "recommendations": [
     "esbenp.prettier-vscode",
-    "dbaeumer.vscode-eslint",
-    "bradlc.vscode-tailwindcss",
+    "dbaeumer.vscode-eslint", 
     "ms-vscode.vscode-typescript-next",
     "formulahendry.auto-rename-tag",
     "christian-kohler.path-intellisense",
@@ -221,6 +220,8 @@ Install these extensions for the best development experience:
   ]
 }
 ```
+
+**Note:** Removed `bradlc.vscode-tailwindcss` as this project uses custom CSS, not Tailwind.
 
 ### **VS Code Settings**
 Create `.vscode/settings.json` in the project root:
