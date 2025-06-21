@@ -21,26 +21,31 @@
 ### **Step 1: One-time Setup (15 minutes)**
 
 ```bash
-# 1. Clone the project
+# 1. Clone the project (make sure you're added as collaborator first!)
 git clone https://github.com/mrutyunjaykumarrao/NIT-GOA.git
 cd NIT-GOA
 
-# 2. Install dependencies
+# 2. IMPORTANT: Switch to develop branch immediately
+git checkout develop
+
+# 3. Install dependencies
 npm install
 
-# 3. Test that everything works
+# 4. Test that everything works
 npm start
 ```
 
 **If `npm start` works and opens http://localhost:3000, you're ready!**
 
-### **Step 2: Create develop branch (if not exists)**
+### **Step 2: Create Your Working Branch**
 
 ```bash
-# Create develop branch from main
-git checkout main
-git checkout -b develop
-git push -u origin develop
+# Create your personal branch from develop
+git checkout -b yourname-setup
+# Example: git checkout -b john-setup
+
+# Push it to GitHub so everyone can see it
+git push -u origin yourname-setup
 ```
 
 ---
@@ -170,6 +175,41 @@ git stash          # Save current work
 git checkout develop
 git pull origin develop
 git stash pop      # Get your work back
+```
+
+---
+
+## 🚨 **Troubleshooting Setup Issues**
+
+### **Problem: "Empty folder after cloning" or "All files show as deleted in VS Code"**
+
+**This means you need to be added as a collaborator first!**
+
+```bash
+# Step 1: Ask @mrutyunjaykumarrao to add you as collaborator with Write permissions
+# Step 2: Accept the email invitation from GitHub
+# Step 3: Delete the broken folder and try again
+
+rm -rf NIT-GOA  # Delete broken folder
+git clone https://github.com/mrutyunjaykumarrao/NIT-GOA.git
+cd NIT-GOA
+git checkout develop  # Switch to develop immediately
+npm install
+npm start
+```
+
+### **Problem: "Permission denied" errors**
+
+```bash
+# You're probably on the protected main branch
+git checkout develop  # Switch to develop branch
+
+# If that doesn't work, start fresh:
+cd ..
+rm -rf NIT-GOA
+git clone https://github.com/mrutyunjaykumarrao/NIT-GOA.git
+cd NIT-GOA
+git checkout develop
 ```
 
 ---

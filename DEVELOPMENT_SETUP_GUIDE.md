@@ -8,6 +8,10 @@ This guide will help new team members set up their development environment for t
 
 ## 📋 **Prerequisites**
 
+> **⚠️ IMPORTANT: Repository Access Required**
+> 
+> Before starting, you must be added as a collaborator to the repository. Contact @mrutyunjaykumarrao to be added with **Write** permissions. Without this, you'll encounter permission errors during setup.
+
 ### **Required Software**
 
 #### **1. Node.js & npm**
@@ -70,8 +74,13 @@ git clone https://github.com/mrutyunjaykumarrao/NIT-GOA.git
 # Navigate to project directory
 cd NIT-GOA
 
-# Verify you're in the right place
-ls -la  # Should see package.json, src/, public/, etc.
+# CRITICAL: Switch to develop branch immediately
+# The main branch is protected and will cause permission issues
+git checkout develop
+
+# Verify you're in the right place and on develop branch
+git branch  # Should show * develop
+ls -la     # Should see package.json, src/, public/, etc.
 ```
 
 ### **Step 2: Install Dependencies**
@@ -85,8 +94,9 @@ npm install
 
 ### **Step 3: Create Your Development Branch**
 ```bash
-# Switch to develop branch
-git checkout develop
+# You should already be on develop branch from Step 1
+# Verify you're on develop
+git branch  # Should show * develop
 
 # Pull latest changes
 git pull origin develop
@@ -332,6 +342,40 @@ npm run build
 ---
 
 ## 🐛 **Common Issues & Solutions**
+
+### **Repository Access Issues**
+```bash
+# If you see "all files deleted" in VS Code after cloning:
+# This means you don't have proper repository access
+
+# Solution 1: Make sure you're added as collaborator
+# Contact @mrutyunjaykumarrao to add you with Write permissions
+
+# Solution 2: Delete broken clone and start fresh
+rm -rf NIT-GOA
+git clone https://github.com/mrutyunjaykumarrao/NIT-GOA.git
+cd NIT-GOA
+git checkout develop
+
+# Solution 3: If still having issues, use develop branch directly
+git clone -b develop https://github.com/mrutyunjaykumarrao/NIT-GOA.git
+```
+
+### **Permission Errors on Main Branch**
+```bash
+# If you get permission errors, you're probably on main branch
+# Main branch is protected - switch to develop immediately
+
+git checkout develop
+git pull origin develop
+
+# If that fails, delete and re-clone:
+cd ..
+rm -rf NIT-GOA
+git clone https://github.com/mrutyunjaykumarrao/NIT-GOA.git
+cd NIT-GOA
+git checkout develop
+```
 
 ### **Node/npm Issues**
 ```bash
