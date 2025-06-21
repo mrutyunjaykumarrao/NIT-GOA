@@ -102,8 +102,10 @@
 ## 📚 Documentation
 
 ### **🎯 For Team Members (Start Here!)**
-- **[Simple Team Guide](SIMPLE_TEAM_GUIDE.md)** - Everything you need to get started
-- **[Development Setup Guide](DEVELOPMENT_SETUP_GUIDE.md)** - How to set up your development environment
+- **[Quick Reference](QUICK_REFERENCE.md)** - ⭐ **Daily cheat sheet** - Bookmark this!
+- **[Simple Team Guide](SIMPLE_TEAM_GUIDE.md)** - Basic workflow for beginners
+- **[Development Setup Guide](DEVELOPMENT_SETUP_GUIDE.md)** - Complete environment setup
+- **[Team Reference Guide](TEAM_REFERENCE_GUIDE.md)** - Comprehensive commands & troubleshooting
 
 ### **🚀 For Project Owner**
 - **[Deployment Guide](DEPLOYMENT_GUIDE.md)** - How to deploy the website manually

@@ -1,5 +1,7 @@
 # 🚀 Daily Quick Reference Card
 
+> **💡 Quick Start**: Use this file for daily commands. For detailed explanations, troubleshooting, and learning, see [`TEAM_REFERENCE_GUIDE.md`](TEAM_REFERENCE_GUIDE.md)
+
 ## For Project Owner (Mrutyunjay)
 
 ### Monitor Team
@@ -88,9 +90,10 @@ refactor: code cleanup
 
 ## 🆘 Emergency Contacts
 
-**Problems with setup**: Check DEVELOPMENT_SETUP_GUIDE.md
-**Team workflow questions**: Check SIMPLE_TEAM_GUIDE.md  
-**Detailed reference**: Check TEAM_REFERENCE_GUIDE.md
+**Daily commands**: This file (bookmark it!)
+**Detailed help & troubleshooting**: Check [`TEAM_REFERENCE_GUIDE.md`](TEAM_REFERENCE_GUIDE.md)
+**Setup problems**: Check [`DEVELOPMENT_SETUP_GUIDE.md`](DEVELOPMENT_SETUP_GUIDE.md)
+**Simple workflow**: Check [`SIMPLE_TEAM_GUIDE.md`](SIMPLE_TEAM_GUIDE.md)
 **Urgent issues**: Tag @mrutyunjaykumarrao on GitHub
 
 ---
