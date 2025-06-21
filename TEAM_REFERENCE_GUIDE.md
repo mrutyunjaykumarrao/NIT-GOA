@@ -4,7 +4,7 @@
 
 ---
 
-## 👑 **For Project Owner (Mrutyunjay) - macOS with GitHub CLI**
+## 👑 **For Project Owner**
 
 ### **📊 Daily Team Monitoring**
 
@@ -86,7 +86,7 @@ npm run build && firebase deploy
 
 ---
 
-## 👥 **For Team Members (Windows Users)**
+## 👥 **For Team Members**
 
 ### **📋 Essential Daily Commands**
 
