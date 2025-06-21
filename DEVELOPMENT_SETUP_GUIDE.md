@@ -15,55 +15,78 @@ This guide will help new team members set up their development environment for t
 ### **Required Software**
 
 #### **1. Node.js & npm**
+
+**Check if installed:**
 ```bash
-# Check if installed
 node --version  # Should be 16+ (recommended: 18 LTS)
 npm --version   # Should be 8+
-
-# Install if needed (visit nodejs.org or use package manager)
-# macOS with Homebrew:
-brew install node
-
-# Windows: Download from nodejs.org
-# Linux (Ubuntu/Debian):
-curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt-get install -y nodejs
 ```
+
+**Install if needed:**
+- **macOS with Homebrew:** `brew install node`
+- **Windows:** Download from [nodejs.org](https://nodejs.org/) (choose LTS version)
+- **Linux (Ubuntu/Debian):**
+  ```bash
+  curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+  sudo apt-get install -y nodejs
+  ```
 
 #### **2. Git**
+
+**Check if installed:**
 ```bash
-# Check if installed
 git --version
-
-# Install if needed
-# macOS: git comes with Xcode Command Line Tools
-xcode-select --install
-
-# Windows: Download from git-scm.com
-# Linux (Ubuntu/Debian):
-sudo apt-get install git
 ```
+
+**Install if needed:**
+- **macOS:** Git comes with Xcode Command Line Tools
+  ```bash
+  xcode-select --install
+  ```
+- **Windows:** Download from [git-scm.com](https://git-scm.com/)
+- **Linux (Ubuntu/Debian):**
+  ```bash
+  sudo apt-get install git
+  ```
 
 #### **3. Code Editor (Recommended: VS Code)**
 - Download from: https://code.visualstudio.com/
 - Alternative: WebStorm, Sublime Text, Atom
 
 #### **4. GitHub CLI (Optional but helpful)**
+
+> **Do I need this?** No, GitHub CLI is completely optional! You can do everything through VS Code and the web browser. It just makes some tasks faster from the command line.
+
+**What it does:**
+- Create pull requests from terminal: `gh pr create`
+- View repository info: `gh repo view`
+- Clone repos faster: `gh repo clone username/repo`
+
+**Check if you have it:**
 ```bash
-# macOS with Homebrew:
-brew install gh
-
-# Windows with Chocolatey:
-choco install gh
-
-# Linux: https://github.com/cli/cli/blob/trunk/docs/install_linux.md
+gh --version
 ```
+
+**Install if you want it (optional):**
+- **macOS with Homebrew:**
+  ```bash
+  brew install gh
+  ```
+- **Windows:** Download from [GitHub CLI releases](https://github.com/cli/cli/releases) or use winget:
+  ```cmd
+  winget install --id GitHub.cli
+  ```
+- **Linux:** See [installation guide](https://github.com/cli/cli/blob/trunk/docs/install_linux.md)
+
+**Skip this if you prefer using VS Code and GitHub website!**
 
 ---
 
 ## 🚀 **Project Setup**
 
 ### **Step 1: Clone the Repository**
+
+#### **For macOS/Linux:**
 ```bash
 # Navigate to your workspace directory
 cd ~/Developer  # or wherever you keep projects
@@ -81,6 +104,27 @@ git checkout develop
 # Verify you're in the right place and on develop branch
 git branch  # Should show * develop
 ls -la     # Should see package.json, src/, public/, etc.
+```
+
+#### **For Windows (Command Prompt or PowerShell):**
+```cmd
+# Navigate to your workspace directory
+cd C:\Users\%USERNAME%\Documents\Projects  # or wherever you keep projects
+# Alternative: cd %USERPROFILE%\Documents\Projects
+
+# Clone the repository
+git clone https://github.com/mrutyunjaykumarrao/NIT-GOA.git
+
+# Navigate to project directory
+cd NIT-GOA
+
+# CRITICAL: Switch to develop branch immediately
+# The main branch is protected and will cause permission issues
+git checkout develop
+
+# Verify you're in the right place and on develop branch
+git branch  # Should show * develop
+dir        # Should see package.json, src/, public/, etc.
 ```
 
 ### **Step 2: Install Dependencies**
@@ -110,12 +154,25 @@ git push -u origin feature/yourname/initial-setup
 ```
 
 ### **Step 4: Environment Configuration**
+
+#### **For macOS/Linux:**
 ```bash
 # Check if .env.example exists
 ls -la | grep env
 
 # If it exists, copy it to create your local environment file
 cp .env.example .env.local
+
+# Edit the file if needed (add any local API keys, etc.)
+```
+
+#### **For Windows:**
+```cmd
+# Check if .env.example exists
+dir | findstr env
+
+# If it exists, copy it to create your local environment file
+copy .env.example .env.local
 
 # Edit the file if needed (add any local API keys, etc.)
 ```
@@ -344,6 +401,8 @@ npm run build
 ## 🐛 **Common Issues & Solutions**
 
 ### **Repository Access Issues**
+
+#### **For macOS/Linux:**
 ```bash
 # If you see "all files deleted" in VS Code after cloning:
 # This means you don't have proper repository access
@@ -361,7 +420,27 @@ git checkout develop
 git clone -b develop https://github.com/mrutyunjaykumarrao/NIT-GOA.git
 ```
 
+#### **For Windows:**
+```cmd
+# If you see "all files deleted" in VS Code after cloning:
+# This means you don't have proper repository access
+
+# Solution 1: Make sure you're added as collaborator
+# Contact @mrutyunjaykumarrao to add you with Write permissions
+
+# Solution 2: Delete broken clone and start fresh
+rmdir /s NIT-GOA
+git clone https://github.com/mrutyunjaykumarrao/NIT-GOA.git
+cd NIT-GOA
+git checkout develop
+
+# Solution 3: If still having issues, use develop branch directly
+git clone -b develop https://github.com/mrutyunjaykumarrao/NIT-GOA.git
+```
+
 ### **Permission Errors on Main Branch**
+
+#### **For macOS/Linux:**
 ```bash
 # If you get permission errors, you're probably on main branch
 # Main branch is protected - switch to develop immediately
@@ -377,13 +456,45 @@ cd NIT-GOA
 git checkout develop
 ```
 
+#### **For Windows:**
+```cmd
+# If you get permission errors, you're probably on main branch
+# Main branch is protected - switch to develop immediately
+
+git checkout develop
+git pull origin develop
+
+# If that fails, delete and re-clone:
+cd ..
+rmdir /s NIT-GOA
+git clone https://github.com/mrutyunjaykumarrao/NIT-GOA.git
+cd NIT-GOA
+git checkout develop
+```
+
 ### **Node/npm Issues**
+
+#### **For macOS/Linux:**
 ```bash
 # Clear npm cache
 npm cache clean --force
 
 # Delete node_modules and reinstall
 rm -rf node_modules package-lock.json
+npm install
+
+# Update npm
+npm install -g npm@latest
+```
+
+#### **For Windows:**
+```cmd
+# Clear npm cache
+npm cache clean --force
+
+# Delete node_modules and reinstall
+rmdir /s node_modules
+del package-lock.json
 npm install
 
 # Update npm
@@ -406,9 +517,22 @@ git merge develop
 ```
 
 ### **Development Server Issues**
+
+#### **For macOS/Linux:**
 ```bash
 # Kill process on port 3000
 lsof -ti:3000 | xargs kill -9
+
+# Start fresh
+npm start
+```
+
+#### **For Windows:**
+```cmd
+# Kill process on port 3000
+netstat -ano | findstr :3000
+# Note the PID from the output, then:
+taskkill /PID <PID_NUMBER> /F
 
 # Start fresh
 npm start

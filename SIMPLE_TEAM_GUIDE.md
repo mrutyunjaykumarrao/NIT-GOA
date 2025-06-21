@@ -20,7 +20,24 @@
 
 ### **Step 1: One-time Setup (15 minutes)**
 
+#### **For macOS/Linux:**
 ```bash
+# 1. Clone the project (make sure you're added as collaborator first!)
+git clone https://github.com/mrutyunjaykumarrao/NIT-GOA.git
+cd NIT-GOA
+
+# 2. IMPORTANT: Switch to develop branch immediately
+git checkout develop
+
+# 3. Install dependencies
+npm install
+
+# 4. Test that everything works
+npm start
+```
+
+#### **For Windows:**
+```cmd
 # 1. Clone the project (make sure you're added as collaborator first!)
 git clone https://github.com/mrutyunjaykumarrao/NIT-GOA.git
 cd NIT-GOA
@@ -185,6 +202,7 @@ git stash pop      # Get your work back
 
 **This means you need to be added as a collaborator first!**
 
+#### **For macOS/Linux:**
 ```bash
 # Step 1: Ask @mrutyunjaykumarrao to add you as collaborator with Write permissions
 # Step 2: Accept the email invitation from GitHub
@@ -198,8 +216,23 @@ npm install
 npm start
 ```
 
+#### **For Windows:**
+```cmd
+# Step 1: Ask @mrutyunjaykumarrao to add you as collaborator with Write permissions
+# Step 2: Accept the email invitation from GitHub
+# Step 3: Delete the broken folder and try again
+
+rmdir /s NIT-GOA  # Delete broken folder
+git clone https://github.com/mrutyunjaykumarrao/NIT-GOA.git
+cd NIT-GOA
+git checkout develop  # Switch to develop immediately
+npm install
+npm start
+```
+
 ### **Problem: "Permission denied" errors**
 
+#### **For macOS/Linux:**
 ```bash
 # You're probably on the protected main branch
 git checkout develop  # Switch to develop branch
@@ -207,6 +240,19 @@ git checkout develop  # Switch to develop branch
 # If that doesn't work, start fresh:
 cd ..
 rm -rf NIT-GOA
+git clone https://github.com/mrutyunjaykumarrao/NIT-GOA.git
+cd NIT-GOA
+git checkout develop
+```
+
+#### **For Windows:**
+```cmd
+# You're probably on the protected main branch
+git checkout develop  # Switch to develop branch
+
+# If that doesn't work, start fresh:
+cd ..
+rmdir /s NIT-GOA
 git clone https://github.com/mrutyunjaykumarrao/NIT-GOA.git
 cd NIT-GOA
 git checkout develop
