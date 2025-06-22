@@ -82,6 +82,109 @@ gh --version
 
 ---
 
+## ⚙️ **Git Configuration & Authentication Setup**
+
+> **🚨 CRITICAL: Complete This Section BEFORE Cloning**
+> 
+> New team members must configure Git identity and GitHub authentication before starting development.
+
+### **Step 0: Configure Git Identity (Required)**
+
+#### **Check Current Configuration:**
+```bash
+git config --global user.name    # Should show your name
+git config --global user.email   # Should show your email
+```
+
+#### **Set Your Identity (if not configured):**
+
+**For all platforms (macOS/Linux/Windows):**
+```bash
+# Replace with your actual information
+git config --global user.name "Your Full Name"
+git config --global user.email "your.email@example.com"
+
+# Verify configuration
+git config --global user.name
+git config --global user.email
+```
+
+> **💡 Important:**
+> - Use the **same email** associated with your GitHub account
+> - Use your **real name** (appears in all commits)
+> - One-time setup per computer
+> - Required to avoid "Please tell me who you are" errors
+
+### **Step 0.5: GitHub Authentication Setup**
+
+Choose **ONE** of these authentication methods:
+
+#### **Option A: Personal Access Token (Recommended)**
+
+1. **Create Token:**
+   - Go to: GitHub.com → Settings → Developer settings → Personal access tokens → Tokens (classic)
+   - Click "Generate new token (classic)"
+   - Name: "NIT-GOA-Development"
+   - Expiration: 90+ days
+   - Scope: Select `repo` (full repository access)
+   - **Copy and save the token securely!**
+
+2. **Usage:**
+   ```bash
+   # When Git prompts for credentials:
+   Username: your-github-username
+   Password: paste-your-personal-access-token
+   ```
+
+#### **Option B: SSH Key (Advanced)**
+
+```bash
+# Generate SSH key
+ssh-keygen -t ed25519 -C "your.email@example.com"
+
+# Test SSH connection
+ssh -T git@github.com
+```
+Add the public key to GitHub → Settings → SSH and GPG keys.
+
+### **Step 0.9: Verify Your Setup**
+
+**Test Git configuration:**
+```bash
+# These should return your name and email
+git config --global user.name
+git config --global user.email
+```
+
+**Test GitHub authentication:**
+```bash
+# Test if you can access GitHub repositories
+git ls-remote https://github.com/mrutyunjaykumarrao/NIT-GOA.git
+
+# If this shows branch information, your authentication works!
+# You should see output like:
+# 96a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9    HEAD
+# 96a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9    refs/heads/develop
+# 45a6b7c8d9e0f1g2h3i4j5k6l7m8n9o0p1q2r3s4    refs/heads/main
+```
+
+**Alternative test (if you have GitHub CLI):**
+```bash
+# Quick authentication check
+gh auth status
+
+# Should show: "✓ Logged in to github.com as your-username"
+```
+
+> **✅ If both tests pass, you're ready to proceed to Step 1!**  
+> **❌ If either fails, fix the issue before continuing.**
+>
+> **Common issue:** If `git ls-remote` asks for credentials, enter:
+> - **Username:** your-github-username  
+> - **Password:** your-personal-access-token (NOT your GitHub password)
+
+---
+
 ## 🚀 **Project Setup**
 
 ### **Step 1: Clone the Repository**
@@ -401,6 +504,47 @@ npm run build
 
 ## 🐛 **Common Issues & Solutions**
 
+### **Git Configuration & Authentication Issues**
+
+#### **"Please tell me who you are" Error**
+```bash
+# Fix: Configure Git identity
+git config --global user.name "Your Full Name"
+git config --global user.email "your.email@example.com"
+```
+
+#### **Authentication/Permission Errors**
+```
+Error: "Authentication failed" or "Permission denied (publickey)"
+```
+
+**Solution for Personal Access Token:**
+```bash
+# When Git asks for credentials:
+Username: your-github-username
+Password: your-personal-access-token (NOT your GitHub password)
+
+# To avoid re-entering credentials:
+git config --global credential.helper store
+```
+
+**Solution for Repository Access:**
+1. Ensure you're added as collaborator by @mrutyunjaykumarrao
+2. Accept the GitHub invitation email
+3. Verify access at: https://github.com/mrutyunjaykumarrao/NIT-GOA
+
+#### **"remote: Permission denied" Error**
+```bash
+# Check repository URL
+git remote -v
+
+# Test authentication
+ssh -T git@github.com  # For SSH users
+# or try cloning a small public repo to test HTTPS
+
+# If using HTTPS, ensure Personal Access Token is correct
+```
+
 ### **Repository Access Issues**
 
 #### **For macOS/Linux:**
@@ -437,40 +581,6 @@ git checkout develop
 
 # Solution 3: If still having issues, use develop branch directly
 git clone -b develop https://github.com/mrutyunjaykumarrao/NIT-GOA.git
-```
-
-### **Permission Errors on Main Branch**
-
-#### **For macOS/Linux:**
-```bash
-# If you get permission errors, you're probably on main branch
-# Main branch is protected - switch to develop immediately
-
-git checkout develop
-git pull origin develop
-
-# If that fails, delete and re-clone:
-cd ..
-rm -rf NIT-GOA
-git clone https://github.com/mrutyunjaykumarrao/NIT-GOA.git
-cd NIT-GOA
-git checkout develop
-```
-
-#### **For Windows:**
-```cmd
-# If you get permission errors, you're probably on main branch
-# Main branch is protected - switch to develop immediately
-
-git checkout develop
-git pull origin develop
-
-# If that fails, delete and re-clone:
-cd ..
-rmdir /s NIT-GOA
-git clone https://github.com/mrutyunjaykumarrao/NIT-GOA.git
-cd NIT-GOA
-git checkout develop
 ```
 
 ### **Node/npm Issues**
