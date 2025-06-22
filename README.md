@@ -101,10 +101,17 @@
 
 ## 📚 Documentation
 
-### **🎯 For Team Members (Start Here!)**
-- **[Quick Reference](QUICK_REFERENCE.md)** - ⭐ **Daily cheat sheet** - Bookmark this!
+### **🎯 For New Team Members (Start Here!)**
+
+> **⚠️ IMPORTANT: Follow This Sequence**
+> 
+> **New to the team?** Follow this exact order:
+> 
+> 1. **[Development Setup Guide](DEVELOPMENT_SETUP_GUIDE.md)** - ⭐ **START HERE!** Complete Git + environment setup
+> 2. **[Quick Reference](QUICK_REFERENCE.md)** - ⭐ **Daily cheat sheet** - Bookmark this!
+
+### **📖 Additional Team Resources**
 - **[Simple Team Guide](SIMPLE_TEAM_GUIDE.md)** - Basic workflow for beginners
-- **[Development Setup Guide](DEVELOPMENT_SETUP_GUIDE.md)** - Complete environment setup
 - **[Team Reference Guide](TEAM_REFERENCE_GUIDE.md)** - Comprehensive commands & troubleshooting
 
 ### **🚀 For Project Owner**
@@ -215,8 +222,10 @@ nitgoa/
 ├── 📁 build/                    # Production build (115.96 kB optimized)
 ├── 📚 Documentation/            # Essential project documentation
 │   ├── README.md               # This file - project overview
+│   ├── DEVELOPMENT_SETUP_GUIDE.md # Complete development environment setup (Git + tools)
 │   ├── SIMPLE_TEAM_GUIDE.md    # Team collaboration guide for beginners
-│   ├── DEVELOPMENT_SETUP_GUIDE.md # Development environment setup
+│   ├── TEAM_REFERENCE_GUIDE.md # Comprehensive team workflow reference
+│   ├── QUICK_REFERENCE.md      # Daily development cheat sheet
 │   └── DEPLOYMENT_GUIDE.md     # Manual deployment instructions
 ├── 🔧 firebase.json            # Firebase hosting configuration
 └── 📦 package.json             # Dependencies and scripts
