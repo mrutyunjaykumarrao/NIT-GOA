@@ -6,6 +6,13 @@ import Footer from './components/Footer/Footer';
 import HomePage from './Views/HomePage';
 import About from './Views/About';
 import Admissions from './Views/Admissions';
+import Academics from './Views/Academics';
+import Departments from './Views/Departments';
+import Programs from './Views/Programs';
+import Regulations from './Views/Regulations';
+import Results from './Views/Results';
+import Library from './Views/Library';
+import DissertationFormats from './Views/DissertationFormats';
 import Research from './Views/Research';
 import Campus from './Views/Campus';
 import Placement from './Views/Placement';
@@ -22,11 +29,17 @@ import OutreachActivities from './Views/OutreachActivities';
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Routes>
+      <Navbar />      <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About />} />
         <Route path="/admissions" element={<Admissions />} />
+        <Route path="/academics" element={<Academics />} />
+        <Route path="/academics/departments" element={<Departments />} />
+        <Route path="/academics/programs" element={<Programs />} />
+        <Route path="/academics/regulations" element={<Regulations />} />
+        <Route path="/academics/results" element={<Results />} />
+        <Route path="/academics/library" element={<Library />} />
+        <Route path="/academics/dissertation-formats" element={<DissertationFormats />} />
         <Route path="/research" element={<Research />} />
         <Route path="/campus" element={<Campus />} />
         <Route path="/placement" element={<Placement />} />

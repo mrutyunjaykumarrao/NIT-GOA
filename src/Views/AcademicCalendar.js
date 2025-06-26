@@ -297,7 +297,7 @@ const AcademicCalendar = () => {
               📄 Download PDF
             </button>
             <button className="download-btn excel-btn">
-              📊 Download Excel
+              � Download Excel
             </button>
             <button className="download-btn ical-btn">
               📅 Add to Calendar
