@@ -154,9 +154,30 @@ const Navbar = () => {
                                 <span className="dropdown-arrow">▼</span>
                             </button>
                             <ul className={`dropdown-menu ${activeDropdown === 'admission' ? 'show' : ''}`}>
-                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.btech)}>B.Tech</button></li>
+                                <li className="dropdown-item-with-submenu">
+                                    <button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.btech)}>
+                                        B.Tech
+                                        <span className="submenu-arrow">▶</span>
+                                    </button>
+                                    <ul className="submenu">
+                                        <li><button className="submenu-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.btechJosaa)}>JoSAA/CSAB</button></li>
+                                        <li><button className="submenu-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.btechDasa)}>DASA</button></li>
+                                        <li><button className="submenu-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.btechFacilities)}>Facilities</button></li>
+                                        <li><button className="submenu-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.btechStrengths)}>Strengths of NIT Goa</button></li>
+                                    </ul>
+                                </li>
                                 <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.mtech)}>M.Tech</button></li>
                                 <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.phd)}>PhD</button></li>
+                                <li className="dropdown-item-with-submenu">
+                                    <button className="dropdown-link">
+                                        Hostels
+                                        <span className="submenu-arrow">▶</span>
+                                    </button>
+                                    <ul className="submenu">
+                                        <li><button className="submenu-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.btechHostel)}>B.Tech Students</button></li>
+                                        <li><button className="submenu-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.mtechHostel)}>M.Tech Students</button></li>
+                                    </ul>
+                                </li>
                                 <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.process)}>Admission Process</button></li>
                                 <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.fees)}>Fee Structure</button></li>
                             </ul>

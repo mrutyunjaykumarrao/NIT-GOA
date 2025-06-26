@@ -1,0 +1,232 @@
+/* PhD Admissions Page Styles */
+.phd-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%);
+}
+
+.phd-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Hero Section */
+.phd-hero {
+    background: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--primary-blue) 100%);
+    border-radius: 0;
+    padding: 5rem 2rem;
+    text-align: center;
+    margin: -2rem -2rem 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.phd-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%), 
+                linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.1) 75%), 
+                linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.1) 75%);
+    background-size: 60px 60px;
+    background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
+    opacity: 0.3;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.phd-hero h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--white);
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    letter-spacing: -1px;
+}
+
+.hero-subtitle {
+    font-size: 1.4rem;
+    color: var(--white);
+    opacity: 0.95;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.session-info {
+    margin-top: 2rem;
+}
+
+.session-label {
+    background: var(--accent-orange);
+    color: var(--white);
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    display: inline-block;
+    box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Section Titles */
+.section-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 4rem;
+    color: var(--primary-blue-dark);
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.section-title::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 6px;
+    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-orange) 100%);
+    border-radius: 3px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--accent-orange);
+    border-radius: 2px;
+}
+
+/* Important Links */
+.links-section {
+    margin-bottom: 5rem;
+}
+
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: none;
+    margin: 0;
+}
+
+.link-card {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 16px;
+    border: 1px solid rgba(46, 134, 193, 0.1);
+    box-shadow: 0 8px 30px rgba(46, 134, 193, 0.1);
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.link-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-orange) 100%);
+    transition: left 0.4s ease;
+}
+
+.link-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 50px rgba(46, 134, 193, 0.2);
+    text-decoration: none;
+}
+
+.link-card:hover::before {
+    left: 0;
+}
+
+.link-card h3 {
+    color: var(--primary-blue-dark);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.link-card p {
+    color: var(--gray-600);
+    line-height: 1.6;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+/* Large screens - better space utilization */
+@media (min-width: 1400px) {
+    .phd-container {
+        max-width: 1600px;
+        padding: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .phd-container {
+        padding: 1rem;
+    }
+    
+    .phd-hero {
+        margin: -1rem -1rem 2rem;
+        padding: 3rem 1rem 2rem;
+    }
+    
+    .phd-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .session-label {
+        font-size: 1rem;
+        padding: 0.8rem 2rem;
+    }
+    
+    .links-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .phd-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .session-label {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.5rem;
+    }
+}

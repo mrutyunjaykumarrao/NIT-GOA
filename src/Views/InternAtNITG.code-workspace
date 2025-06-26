@@ -1,7 +1,12 @@
 {
 	"folders": [
 		{
+			"name": "InternAtNITG",
 			"path": "../../.."
+		},
+		{
+			"name": "Admission",
+			"path": "../../../../Downloads/IN/Admission"
 		}
 	],
 	"settings": {}
