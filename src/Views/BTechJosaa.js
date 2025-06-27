@@ -165,9 +165,6 @@ const BTechJosaa = () => {
                         {josaaData.programs.map((program, index) => (
                             <div key={index} className="program-tile">
                                 <h3>{program.department}</h3>
-                                <div className="seats-info">
-                                    <span>Seats: {program.seats}</span>
-                                </div>
                             </div>
                         ))}
                     </div>

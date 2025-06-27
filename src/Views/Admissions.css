@@ -38,9 +38,9 @@
 }
 
 .admissions-container {
-    max-width: 1400px;
+    max-width: 1800px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1rem;
 }
 
 /* Hero Section */
@@ -92,6 +92,7 @@
     margin: 0 auto;
     font-weight: 400;
     line-height: 1.4;
+    text-align: center;
 }
 
 /* Section Titles */
@@ -949,6 +950,7 @@
     .hero-subtitle {
         font-size: 1.2rem;
         line-height: 1.4;
+        text-align: center;
     }
     
     .section-title {

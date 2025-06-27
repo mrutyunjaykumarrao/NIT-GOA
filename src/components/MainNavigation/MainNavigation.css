@@ -32,7 +32,7 @@
     left: 50%;
     transform: translateX(-50%);
     width: calc(100% - 40px);
-    max-width: 1200px;
+    max-width: 1800px;
     background-color: transparent;
     z-index: 1005;
     padding: 10px 0;
@@ -54,7 +54,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 1100px; /* Increased to prevent text truncation */
+    max-width: 1600px; /* Increased to prevent text truncation */
     gap: 0px; /* Reduced gap by 12px (from 5px to 0px) */
 }
 
