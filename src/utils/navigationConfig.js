@@ -54,10 +54,17 @@ export const navigationConfig = {
     },
     admission: {
       btech: '/admissions/btech',
+      btechJosaa: '/admissions/btech/josaa-csab',
+      btechDasa: '/admissions/btech/dasa',
+      btechFacilities: '/admissions/btech/facilities',
+      btechStrengths: '/admissions/btech/strengths',
       mtech: '/admissions/mtech',
       phd: '/admissions/phd',
+      hostel: '/admissions/hostel',
+      btechHostel: 'https://www.nitgoa.ac.in/static/Rules_of_NIT_Goa_Hostel_18July2022.pdf',
+      mtechHostel: 'https://www.nitgoa.ac.in/static/Rules_mtech_hostel_20june16.pdf',
       process: '/admissions/process',
-      fees: '/admissions/fee-structure'
+      fees: 'https://www.nitgoa.ac.in/static/fee_structure_23-24_25july2023.pdf'
     },
     training: {
       statistics: '/placement/statistics',

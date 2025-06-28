@@ -1,0 +1,162 @@
+/* B.Tech Strengths Page Styles - PhD Style Header */
+:root {
+    --primary-blue: #2E86C1;
+    --primary-blue-dark: #1B4F72;
+    --white: #FFFFFF;
+    --gray-50: #F8F9FA;
+    --gray-700: #495057;
+    --gray-800: #343A40;
+    --shadow-light: rgba(0, 0, 0, 0.08);
+}
+
+.btech-strengths {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--gray-800);
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%);
+}
+
+.btech-strengths-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Hero Section - PhD Style */
+.strengths-hero {
+    background: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--primary-blue) 100%);
+    border-radius: 0;
+    padding: 5rem 1rem;
+    text-align: center;
+    margin: -1rem -1rem 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.strengths-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%), 
+                linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.1) 75%), 
+                linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.1) 75%);
+    background-size: 60px 60px;
+    background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
+    opacity: 0.3;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.strengths-hero h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--white);
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+    font-size: 1.4rem;
+    color: var(--white);
+    opacity: 0.9;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+.content-section {
+    background: var(--white);
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px var(--shadow-light);
+    overflow: hidden;
+}
+
+.main-content {
+    padding: 2.5rem;
+}
+
+.main-content p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--gray-700);
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.main-content p:first-child {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--primary-blue-dark);
+}
+
+.main-content ul {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--gray-700);
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+
+.main-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .btech-strengths-container {
+        padding: 1rem;
+    }
+    
+    .strengths-hero {
+        margin: -1rem -1rem 2rem;
+        padding: 3rem 0.5rem;
+    }
+    
+    .strengths-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .content-container {
+        padding: 1.5rem 1rem;
+    }
+    
+    .main-content {
+        padding: 2rem 1.5rem;
+    }
+    
+    .main-content p {
+        font-size: 1rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .main-content ul {
+        font-size: 1rem;
+        padding-left: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .strengths-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .main-content {
+        padding: 1.5rem 1rem;
+    }
+}
