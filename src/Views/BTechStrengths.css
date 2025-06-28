@@ -18,18 +18,18 @@
 }
 
 .btech-strengths-container {
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 /* Hero Section - PhD Style */
 .strengths-hero {
     background: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--primary-blue) 100%);
     border-radius: 0;
-    padding: 5rem 2rem;
+    padding: 5rem 1rem;
     text-align: center;
-    margin: -2rem -2rem 4rem;
+    margin: -1rem -1rem 4rem;
     position: relative;
     overflow: hidden;
 }
@@ -117,7 +117,7 @@
     
     .strengths-hero {
         margin: -1rem -1rem 2rem;
-        padding: 3rem 1rem;
+        padding: 3rem 0.5rem;
     }
     
     .strengths-hero h1 {
