@@ -174,7 +174,7 @@ const MainNavigation = () => {
                     </li>
 
                     <li className="nav-overlay-item">
-                        <button className="nav-overlay-link" onClick={() => navigateToPage(navigationConfig.internal.feePayment)}>
+                        <button className="nav-overlay-link" onClick={() => navigateToPage(navigationConfig.external.feePayment)}>
                             Fee payment
                         </button>
                     </li>

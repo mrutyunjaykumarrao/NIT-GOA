@@ -15,7 +15,6 @@ export const navigationConfig = {
     hostel: '/hostel',
     nirf: '/nirf',
     outreach: '/outreach',
-    feePayment: '/fee-payment',
     rti: '/rti',
     contactUs: '/contact-us',
     tenders: '/tenders',
@@ -29,6 +28,7 @@ export const navigationConfig = {
   external: {
     facultyStaff: 'https://www.nitgoa.ac.in/faculty-staff',
     alumni: 'https://www.nitgoa.ac.in/alumni',
+    feePayment: 'https://mis.nitgoa.ac.in/misnitgoa/academic/ONLINEFEESCOLLECTION/Payment.aspx',
     gian: 'https://www.gian.iitkgp.ac.in/',
     rajbhasha: 'https://www.nitgoa.ac.in/rajbhasha',
     privacyPolicy: 'https://www.nitgoa.ac.in/privacy-policy',
@@ -82,7 +82,7 @@ export const navigationConfig = {
       facilities: '/facilities',
       tenders: '/tenders',
       rti: '/rti',
-      feePayment: '/fee-payment',
+      feePayment: 'https://mis.nitgoa.ac.in/misnitgoa/academic/ONLINEFEESCOLLECTION/Payment.aspx',
       contactUs: '/contact-us',
       academicCalendar: '/academic-calendar'
     },
