@@ -73,11 +73,10 @@ export const navigationConfig = {
       career: '/placement/career-services'
     },
     research: {
-      areas: '/research/areas',
-      publications: '/research/publications',
-      projects: '/research/projects',
-      facilities: '/research/facilities',
-      collaborations: '/research/collaborations'
+      rdProjects: '/research/rd-projects',
+      researchConsultancy: 'https://www.nitgoa.ac.in/research/Research_Consultancy/research_consultancy.html',
+      mouDetails: '/research/mou-details',
+      iprPolicy: 'https://www.nitgoa.ac.in/static/NIT_Goa_IPR_10Nov2015.pdf'
     },
     resources: {
       facilities: '/facilities',

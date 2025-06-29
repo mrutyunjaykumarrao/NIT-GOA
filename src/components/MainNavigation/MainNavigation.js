@@ -138,11 +138,10 @@ const MainNavigation = () => {
                             <span className="dropdown-arrow">▼</span>
                         </button>
                         <ul className={`overlay-dropdown-menu ${activeDropdown === 'research' ? 'show' : ''}`}>
-                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.centers)}>Research Centers</button></li>
-                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.projects)}>Ongoing Projects</button></li>
-                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.publications)}>Publications</button></li>
-                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.funding)}>Research Funding</button></li>
-                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.collaborations)}>Collaborations</button></li>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.rdProjects)}>R & D Projects</button></li>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.researchConsultancy)}>Research & Consultancy</button></li>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.mouDetails)}>Details Of MoUs</button></li>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.iprPolicy)}>IPR Policy</button></li>
                         </ul>
                     </li>
 

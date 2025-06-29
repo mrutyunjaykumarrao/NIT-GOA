@@ -20,6 +20,8 @@ import Results from './Views/Results';
 import Library from './Views/Library';
 import DissertationFormats from './Views/DissertationFormats';
 import Research from './Views/Research';
+import RDProjects from './Views/RDProjects';
+import MoUDetails from './Views/MoUDetails';
 import Campus from './Views/Campus';
 import Placement from './Views/Placement';
 import Faculty from './Views/Faculty';
@@ -61,6 +63,8 @@ function App() {
         <Route path="/academics/library" element={<Library />} />
         <Route path="/academics/dissertation-formats" element={<DissertationFormats />} />
         <Route path="/research" element={<Research />} />
+        <Route path="/research/rd-projects" element={<RDProjects />} />
+        <Route path="/research/mou-details" element={<MoUDetails />} />
         <Route path="/campus" element={<Campus />} />
         <Route path="/placement" element={<Placement />} />
         <Route path="/faculty" element={<Faculty />} />

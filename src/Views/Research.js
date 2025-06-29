@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Research.css';
 
 const Research = () => {
@@ -9,6 +10,28 @@ const Research = () => {
                     <h1>Research</h1>
                     <p className="page-subtitle">Cutting-edge research initiatives and innovation at NIT Goa</p>
                 </div>
+
+                <section className="research-navigation">
+                    <h2>Research Sections</h2>
+                    <div className="research-nav-grid">
+                        <Link to="/research/rd-projects" className="research-nav-card">
+                            <h3>R & D Projects</h3>
+                            <p>Explore our ongoing research and development projects across various departments</p>
+                        </Link>
+                        <a href="https://www.nitgoa.ac.in/research/Research_Consultancy/research_consultancy.html" target="_blank" rel="noopener noreferrer" className="research-nav-card">
+                            <h3>Research & Consultancy</h3>
+                            <p>Learn about our research initiatives and consultancy services offered to industry</p>
+                        </a>
+                        <Link to="/research/mou-details" className="research-nav-card">
+                            <h3>Details Of MoUs</h3>
+                            <p>View our memorandums of understanding with various institutions and organizations</p>
+                        </Link>
+                        <a href="https://www.nitgoa.ac.in/static/NIT_Goa_IPR_10Nov2015.pdf" target="_blank" rel="noopener noreferrer" className="research-nav-card">
+                            <h3>IPR Policy</h3>
+                            <p>Access our intellectual property rights policy and guidelines</p>
+                        </a>
+                    </div>
+                </section>
 
                 <section className="research-areas">
                     <h2>Research Areas</h2>
