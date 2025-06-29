@@ -162,13 +162,19 @@ const MainNavigation = () => {
                     </li>
 
                     <li className="nav-overlay-item">
-                        <button className="nav-overlay-link" onClick={() => navigateToPage(navigationConfig.external.nirf)}>
+                        <button className="nav-overlay-link" onClick={() => navigateToPage(navigationConfig.internal.nirf)}>
                             NIRF
                         </button>
                     </li>
 
                     <li className="nav-overlay-item">
-                        <button className="nav-overlay-link" onClick={() => navigateToPage(navigationConfig.external.feePayment)}>
+                        <button className="nav-overlay-link" onClick={() => navigateToPage(navigationConfig.external.alumni)}>
+                            Alumni
+                        </button>
+                    </li>
+
+                    <li className="nav-overlay-item">
+                        <button className="nav-overlay-link" onClick={() => navigateToPage(navigationConfig.internal.feePayment)}>
                             Fee payment
                         </button>
                     </li>
