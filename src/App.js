@@ -6,7 +6,6 @@ import Footer from './components/Footer/Footer';
 import HomePage from './Views/HomePage';
 import About from './Views/About';
 import Admissions from './Views/Admissions';
-import BTechOverview from './Views/BTechOverview';
 import BTechJosaa from './Views/BTechJosaa';
 import BTechDasa from './Views/BTechDasa';
 import BTechFacilities from './Views/BTechFacilities';
@@ -44,7 +43,6 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About />} />
         <Route path="/admissions" element={<Admissions />} />
-        <Route path="/admissions/btech" element={<BTechOverview />} />
         <Route path="/admissions/btech/josaa-csab" element={<BTechJosaa />} />
         <Route path="/admissions/btech/dasa" element={<BTechDasa />} />
         <Route path="/admissions/btech/facilities" element={<BTechFacilities />} />

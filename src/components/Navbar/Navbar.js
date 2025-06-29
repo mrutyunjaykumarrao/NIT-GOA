@@ -155,7 +155,7 @@ const Navbar = () => {
                             </button>
                             <ul className={`dropdown-menu ${activeDropdown === 'admission' ? 'show' : ''}`}>
                                 <li className="dropdown-item-with-submenu">
-                                    <button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.btech)}>
+                                    <button className="dropdown-link">
                                         B.Tech
                                         <span className="submenu-arrow">▶</span>
                                     </button>
@@ -178,7 +178,7 @@ const Navbar = () => {
                                         <li><button className="submenu-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.mtechHostel)}>M.Tech Students</button></li>
                                     </ul>
                                 </li>
-                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.process)}>Admission Process</button></li>
+                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.brochure)}>Admission Brochure</button></li>
                                 <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.fees)}>Fee Structure</button></li>
                             </ul>
                         </li>

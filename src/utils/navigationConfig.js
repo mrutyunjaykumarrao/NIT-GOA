@@ -53,7 +53,6 @@ export const navigationConfig = {
       regulations: '/academics/regulations'
     },
     admission: {
-      btech: '/admissions/btech',
       btechJosaa: '/admissions/btech/josaa-csab',
       btechDasa: '/admissions/btech/dasa',
       btechFacilities: '/admissions/btech/facilities',
@@ -63,7 +62,7 @@ export const navigationConfig = {
       hostel: '/admissions/hostel',
       btechHostel: 'https://www.nitgoa.ac.in/static/Rules_of_NIT_Goa_Hostel_18July2022.pdf',
       mtechHostel: 'https://www.nitgoa.ac.in/static/Rules_mtech_hostel_20june16.pdf',
-      process: '/admissions/process',
+      brochure: 'https://www.nitgoa.ac.in/uploads/AdmissionBrochure%202august2024.pdf',
       fees: 'https://www.nitgoa.ac.in/static/fee_structure_23-24_25july2023.pdf'
     },
     training: {

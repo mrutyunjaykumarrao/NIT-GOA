@@ -83,7 +83,7 @@ const MainNavigation = () => {
                         </button>
                         <ul className={`overlay-dropdown-menu ${activeDropdown === 'admission' ? 'show' : ''}`}>
                             <li className="overlay-dropdown-item-with-submenu">
-                                <button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.btech)}>
+                                <button className="overlay-dropdown-link">
                                     B.Tech
                                     <span className="overlay-submenu-arrow">▶</span>
                                 </button>
@@ -106,7 +106,7 @@ const MainNavigation = () => {
                                     <li><button className="overlay-submenu-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.mtechHostel)}>M.Tech Students</button></li>
                                 </ul>
                             </li>
-                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.process)}>Admission Process</button></li>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.brochure)}>Admission Brochure</button></li>
                             <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.fees)}>Fee Structure</button></li>
                         </ul>
                     </li>
