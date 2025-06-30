@@ -83,7 +83,7 @@ const MainNavigation = () => {
                         </button>
                         <ul className={`overlay-dropdown-menu ${activeDropdown === 'admission' ? 'show' : ''}`}>
                             <li className="overlay-dropdown-item-with-submenu">
-                                <button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.btech)}>
+                                <button className="overlay-dropdown-link">
                                     B.Tech
                                     <span className="overlay-submenu-arrow">▶</span>
                                 </button>
@@ -106,7 +106,7 @@ const MainNavigation = () => {
                                     <li><button className="overlay-submenu-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.mtechHostel)}>M.Tech Students</button></li>
                                 </ul>
                             </li>
-                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.process)}>Admission Process</button></li>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.brochure)}>Admission Brochure</button></li>
                             <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.fees)}>Fee Structure</button></li>
                         </ul>
                     </li>
@@ -138,11 +138,10 @@ const MainNavigation = () => {
                             <span className="dropdown-arrow">▼</span>
                         </button>
                         <ul className={`overlay-dropdown-menu ${activeDropdown === 'research' ? 'show' : ''}`}>
-                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.centers)}>Research Centers</button></li>
-                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.projects)}>Ongoing Projects</button></li>
-                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.publications)}>Publications</button></li>
-                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.funding)}>Research Funding</button></li>
-                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.collaborations)}>Collaborations</button></li>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.rdProjects)}>R & D Projects</button></li>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.researchConsultancy)}>Research & Consultancy</button></li>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.mouDetails)}>Details Of MoUs</button></li>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.iprPolicy)}>IPR Policy</button></li>
                         </ul>
                     </li>
 
@@ -163,8 +162,14 @@ const MainNavigation = () => {
                     </li>
 
                     <li className="nav-overlay-item">
-                        <button className="nav-overlay-link" onClick={() => navigateToPage(navigationConfig.external.nirf)}>
+                        <button className="nav-overlay-link" onClick={() => navigateToPage(navigationConfig.internal.nirf)}>
                             NIRF
+                        </button>
+                    </li>
+
+                    <li className="nav-overlay-item">
+                        <button className="nav-overlay-link" onClick={() => navigateToPage(navigationConfig.external.alumni)}>
+                            Alumni
                         </button>
                     </li>
 

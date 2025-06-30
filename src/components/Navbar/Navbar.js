@@ -155,7 +155,7 @@ const Navbar = () => {
                             </button>
                             <ul className={`dropdown-menu ${activeDropdown === 'admission' ? 'show' : ''}`}>
                                 <li className="dropdown-item-with-submenu">
-                                    <button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.btech)}>
+                                    <button className="dropdown-link">
                                         B.Tech
                                         <span className="submenu-arrow">▶</span>
                                     </button>
@@ -178,7 +178,7 @@ const Navbar = () => {
                                         <li><button className="submenu-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.mtechHostel)}>M.Tech Students</button></li>
                                     </ul>
                                 </li>
-                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.process)}>Admission Process</button></li>
+                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.brochure)}>Admission Brochure</button></li>
                                 <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.admission.fees)}>Fee Structure</button></li>
                             </ul>
                         </li>
@@ -210,11 +210,10 @@ const Navbar = () => {
                                 <span className="dropdown-arrow">▼</span>
                             </button>
                             <ul className={`dropdown-menu ${activeDropdown === 'research' ? 'show' : ''}`}>
-                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.areas)}>Research Areas</button></li>
-                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.publications)}>Publications</button></li>
-                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.projects)}>Projects</button></li>
-                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.facilities)}>Research Facilities</button></li>
-                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.collaborations)}>Collaborations</button></li>
+                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.rdProjects)}>R & D Projects</button></li>
+                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.researchConsultancy)}>Research & Consultancy</button></li>
+                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.mouDetails)}>Details Of MoUs</button></li>
+                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.research.iprPolicy)}>IPR Policy</button></li>
                             </ul>
                         </li>
 

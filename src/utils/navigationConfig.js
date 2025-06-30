@@ -15,7 +15,6 @@ export const navigationConfig = {
     hostel: '/hostel',
     nirf: '/nirf',
     outreach: '/outreach',
-    feePayment: '/fee-payment',
     rti: '/rti',
     contactUs: '/contact-us',
     tenders: '/tenders',
@@ -29,6 +28,7 @@ export const navigationConfig = {
   external: {
     facultyStaff: 'https://www.nitgoa.ac.in/faculty-staff',
     alumni: 'https://www.nitgoa.ac.in/alumni',
+    feePayment: 'https://mis.nitgoa.ac.in/misnitgoa/academic/ONLINEFEESCOLLECTION/Payment.aspx',
     gian: 'https://www.gian.iitkgp.ac.in/',
     rajbhasha: 'https://www.nitgoa.ac.in/rajbhasha',
     privacyPolicy: 'https://www.nitgoa.ac.in/privacy-policy',
@@ -53,7 +53,6 @@ export const navigationConfig = {
       regulations: '/academics/regulations'
     },
     admission: {
-      btech: '/admissions/btech',
       btechJosaa: '/admissions/btech/josaa-csab',
       btechDasa: '/admissions/btech/dasa',
       btechFacilities: '/admissions/btech/facilities',
@@ -63,7 +62,7 @@ export const navigationConfig = {
       hostel: '/admissions/hostel',
       btechHostel: 'https://www.nitgoa.ac.in/static/Rules_of_NIT_Goa_Hostel_18July2022.pdf',
       mtechHostel: 'https://www.nitgoa.ac.in/static/Rules_mtech_hostel_20june16.pdf',
-      process: '/admissions/process',
+      brochure: 'https://www.nitgoa.ac.in/uploads/AdmissionBrochure%202august2024.pdf',
       fees: 'https://www.nitgoa.ac.in/static/fee_structure_23-24_25july2023.pdf'
     },
     training: {
@@ -73,17 +72,16 @@ export const navigationConfig = {
       career: '/placement/career-services'
     },
     research: {
-      areas: '/research/areas',
-      publications: '/research/publications',
-      projects: '/research/projects',
-      facilities: '/research/facilities',
-      collaborations: '/research/collaborations'
+      rdProjects: '/research/rd-projects',
+      researchConsultancy: 'https://www.nitgoa.ac.in/research/Research_Consultancy/research_consultancy.html',
+      mouDetails: '/research/mou-details',
+      iprPolicy: 'https://www.nitgoa.ac.in/static/NIT_Goa_IPR_10Nov2015.pdf'
     },
     resources: {
       facilities: '/facilities',
       tenders: '/tenders',
       rti: '/rti',
-      feePayment: '/fee-payment',
+      feePayment: 'https://mis.nitgoa.ac.in/misnitgoa/academic/ONLINEFEESCOLLECTION/Payment.aspx',
       contactUs: '/contact-us',
       academicCalendar: '/academic-calendar'
     },

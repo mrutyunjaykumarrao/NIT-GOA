@@ -6,7 +6,6 @@ import Footer from './components/Footer/Footer';
 import HomePage from './Views/HomePage';
 import About from './Views/About';
 import Admissions from './Views/Admissions';
-import BTechOverview from './Views/BTechOverview';
 import BTechJosaa from './Views/BTechJosaa';
 import BTechDasa from './Views/BTechDasa';
 import BTechFacilities from './Views/BTechFacilities';
@@ -20,6 +19,8 @@ import Results from './Views/Results';
 import Library from './Views/Library';
 import DissertationFormats from './Views/DissertationFormats';
 import Research from './Views/Research';
+import RDProjects from './Views/RDProjects';
+import MoUDetails from './Views/MoUDetails';
 import Campus from './Views/Campus';
 import Placement from './Views/Placement';
 import Faculty from './Views/Faculty';
@@ -42,7 +43,6 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About />} />
         <Route path="/admissions" element={<Admissions />} />
-        <Route path="/admissions/btech" element={<BTechOverview />} />
         <Route path="/admissions/btech/josaa-csab" element={<BTechJosaa />} />
         <Route path="/admissions/btech/dasa" element={<BTechDasa />} />
         <Route path="/admissions/btech/facilities" element={<BTechFacilities />} />
@@ -61,6 +61,8 @@ function App() {
         <Route path="/academics/library" element={<Library />} />
         <Route path="/academics/dissertation-formats" element={<DissertationFormats />} />
         <Route path="/research" element={<Research />} />
+        <Route path="/research/rd-projects" element={<RDProjects />} />
+        <Route path="/research/mou-details" element={<MoUDetails />} />
         <Route path="/campus" element={<Campus />} />
         <Route path="/placement" element={<Placement />} />
         <Route path="/faculty" element={<Faculty />} />
