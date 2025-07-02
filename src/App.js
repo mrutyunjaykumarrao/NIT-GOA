@@ -1,45 +1,48 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
+import { ThemeProvider } from './contexts/ThemeContext';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
-import HomePage from './Views/HomePage';
-import About from './Views/About';
-import Admissions from './Views/Admissions';
-import BTechJosaa from './Views/BTechJosaa';
-import BTechDasa from './Views/BTechDasa';
-import BTechFacilities from './Views/BTechFacilities';
-import BTechStrengths from './Views/BTechStrengths';
-import PhD from './Views/PhD';
-import Academics from './Views/Academics';
-import Departments from './Views/Departments';
-import Programs from './Views/Programs';
-import Regulations from './Views/Regulations';
-import Results from './Views/Results';
-import Library from './Views/Library';
-import DissertationFormats from './Views/DissertationFormats';
-import Research from './Views/Research';
-import RDProjects from './Views/RDProjects';
-import MoUDetails from './Views/MoUDetails';
-import Campus from './Views/Campus';
-import Placement from './Views/Placement';
-import Faculty from './Views/Faculty';
-import RTI from './Views/RTI';
-import NIRF from './Views/NIRF';
-import ContactUs from './Views/ContactUs';
-import Tenders from './Views/Tenders';
-import GIAN from './Views/GIAN';
-import Facilities from './Views/Facilities';
-import AcademicCalendar from './Views/AcademicCalendar';
-import OutreachActivities from './Views/OutreachActivities';
-import Hostel from './Views/Hostel';
-import BTechHostel from './Views/BTechHostel';
-import MTechHostel from './Views/MTechHostel';
+import HomePage from './Views/Home-Section/HomePage';
+import About from './Views/About/About';
+import Admissions from './Views/Admission-Section/Admissions';
+import BTechJosaa from './Views/Admission-Section/BTech/BTechJosaa';
+import BTechDasa from './Views/Admission-Section/BTech/BTechDasa';
+import BTechFacilities from './Views/Admission-Section/BTech/BTechFacilities';
+import BTechStrengths from './Views/Admission-Section/BTech/BTechStrengths';
+import PhD from './Views/Admission-Section/PhD';
+import Academics from './Views/Academics-Section/Academics';
+import Departments from './Views/Academics-Section/Departments';
+import Programs from './Views/Academics-Section/Programs';
+import Regulations from './Views/Academics-Section/Regulations';
+import Results from './Views/Reults/Results';
+import Library from './Views/Academics-Section/Library';
+import DissertationFormats from './Views/Academics-Section/DissertationFormats';
+import Research from './Views/Research-Section/Research';
+import RDProjects from './Views/Research-Section/RDProjects';
+import MoUDetails from './Views/Research-Section/MoUDetails';
+import Campus from './Views/Hostels-Section/Campus';
+import Placement from './Views/Training&Placement-Section/Placement';
+import Faculty from './Views/People-Section/Faculty';
+import RTI from './Views/RTI/RTI';
+import NIRF from './Views/NIRF-Section/NIRF';
+import ContactUs from './Views/ContactUs/ContactUs';
+import Tenders from './Views/Tenders/Tenders';
+import GIAN from './Views/About/GIAN/GIAN';
+import Facilities from './Views/Hostels-Section/Facilities';
+import AcademicCalendar from './Views/Academics-Section/AcademicCalendar';
+import OutreachActivities from './Views/Outreach-Section/OutreachActivities';
+import Hostel from './Views/Hostels-Section/Hostel';
+import BTechHostel from './Views/Admission-Section/Hostels/BTechHostel';
+import MTechHostel from './Views/Admission-Section/Hostels/MTechHostel';
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />      <Routes>
+    <ThemeProvider>
+      <div className="App">
+        <Navbar />
+        <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About />} />
         <Route path="/admissions" element={<Admissions />} />
@@ -79,6 +82,7 @@ function App() {
       </Routes>
       <Footer />
     </div>
+    </ThemeProvider>
   );
 }
 

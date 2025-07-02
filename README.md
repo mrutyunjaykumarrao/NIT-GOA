@@ -12,10 +12,10 @@
 🌐 **Live Demo**: [https://nit-goa-ac-in.web.app](https://nit-goa-ac-in.web.app) *(Incomplete - Development Version)*  
 📱 **Work in Progress** | ⚡ **Frontend Development Phase** | 🔄 **Major Development Required**
 
-## ✨ Current Pages & Planned Features
+## ✨ Current Pages & Recent Enhancements
 
-### 🏛️ **Existing Pages** (18 - Need Review/Modification)
-- **🏠 Home Page** - Hero carousel with 17 campus images, quick links, news updates, departments overview
+### 🏛️ **Existing Pages** (18 - Recently Updated)
+- **🏠 Home Page** - Hero carousel with 17 campus images, **new marquee-style announcement system** with auto-rotation every 5 seconds, interactive indicators, and "Notice" badge styling
 - **📋 About** - Institute information, mission, vision, and history  
 - **🎓 Admissions** - Programs, application process, important dates, fee structure
 - **🔬 Research** - Research areas, facilities, statistics, collaborations, publications
@@ -31,13 +31,28 @@
 - **📜 RTI** - Right to Information portal and procedures
 - **📋 Tenders** - Procurement information, bid announcements, vendor details
 
-### 🧭 **Basic Navigation System** (Needs Enhancement)
-- **React Router v7** - Basic routing implementation working
+### 🎨 **Recent UI/UX Enhancements** (Latest Updates)
+- **📢 Marquee Announcement System** - Single announcement display with auto-rotation, clickable indicators, and professional "Notice" badge
+- **🎛️ Enhanced Navbar** - Reduced gradient height, added 60px margins for better visual balance
+- **🦶 Refactored Footer** - Complete CSS class renaming with footer- prefix for better organization and conflict prevention
+- **📱 Improved Responsive Design** - Better mobile and tablet compatibility across all components
+- **⚡ Performance Optimizations** - Cleaner CSS structure and reduced redundancy
+
+### 🎨 **Recent UI/UX Enhancements** (Latest Updates - July 2025)
+- **📢 Marquee Announcement System** - Single announcement display with auto-rotation every 5 seconds, clickable indicators, and professional "Notice" badge styling that matches modern design standards
+- **🎛️ Enhanced Navbar** - Reduced gradient height from previous implementation and added 60px margins on both sides for better visual balance and professional appearance
+- **🦶 Refactored Footer** - Complete CSS class renaming with footer- prefix (footer-visitor-counter, footer-social-icon, footer-contact-section, etc.) for better organization and conflict prevention
+- **📱 Improved Responsive Design** - Better mobile and tablet compatibility across all enhanced components with proper breakpoints and responsive behavior
+- **⚡ Performance Optimizations** - Cleaner CSS structure, reduced redundancy, and improved class organization for better maintainability
+- **🎨 Modern Styling** - Professional visual improvements with smooth animations, proper spacing, and consistent design language
+
+### 🧭 **Enhanced Navigation System**
+- **React Router v7** - Modern routing implementation with improved performance
 - **Catch-All Routing** - Automatic redirection to homepage for undefined routes
-- **Basic Responsive Design** - Navigation working but needs improvement
-- **Simple Navigation** - Basic menu structure implemented
+- **Enhanced Responsive Design** - Improved navigation with better mobile experience
+- **Advanced Navigation** - Professional menu structure with better visual hierarchy
 - **404 Handling** - Graceful fallback to homepage for broken links
-- **URL Access** - Direct page access via URL working
+- **URL Access** - Direct page access via URL with improved loading
 
 ### 🎨 **Hero Section Features**
 - **Image Carousel** - Auto-cycling slideshow of 17 NIT Goa campus images
@@ -187,48 +202,165 @@ serve -s build
 ```
 nitgoa/
 ├── 📁 public/                    # Static assets and PWA files
-│   ├── favicon.ico
-│   ├── manifest.json            # PWA manifest
-│   └── index.html
-├── 📁 src/
-│   ├── 📄 App.js                # Main app with basic routing (needs enhancement)
-│   ├── 📄 index.js              # React DOM root
-│   ├── 📁 Views/                # Basic page components (18 pages - need review)
-│   │   ├── HomePage.js          # Landing page with hero carousel
-│   │   ├── About.js             # Institute information (needs content review)
-│   │   ├── Admissions.js        # Admission details (needs updates)
-│   │   ├── Research.js          # Research initiatives (needs enhancement)
-│   │   ├── Campus.js            # Campus life (needs content review)
-│   │   ├── Faculty.js           # Faculty directory (needs data verification)
-│   │   ├── Placement.js         # Placement information (needs updates)
-│   │   ├── AcademicCalendar.js  # Academic calendar (needs current data)
-│   │   ├── ContactUs.js         # Contact information (needs verification)
-│   │   ├── Facilities.js        # Campus facilities (needs content review)
-│   │   ├── GIAN.js              # GIAN program details (needs review)
-│   │   ├── NIRF.js              # NIRF information (needs updates)
-│   │   ├── OutreachActivities.js # Community programs (needs content)
-│   │   ├── RTI.js               # RTI portal (needs implementation)
-│   │   └── Tenders.js           # Procurement information (needs backend)
-│   ├── 📁 components/           # Basic navigation components (need enhancement)
-│   │   ├── MainNavigation/      # Basic navigation (needs improvement)
-│   │   ├── Navbar/              # Header navigation (functional)
-│   │   └── Footer/              # Footer component (basic implementation)
+│   ├── favicon.ico              # Website icon
+│   ├── manifest.json            # PWA manifest configuration
+│   ├── index.html               # HTML template
+│   ├── logo192.png              # PWA icons
+│   ├── logo512.png              # PWA icons
+│   └── robots.txt               # SEO crawler instructions
+├── 📁 src/                      # Main source code directory
+│   ├── 📄 App.js                # Main app component with routing
+│   ├── 📄 App.css               # Global app styles
+│   ├── 📄 App.test.js           # App component tests
+│   ├── 📄 index.js              # React DOM root entry point
+│   ├── 📄 index.css             # Global CSS styles
+│   ├── 📄 firebase.js           # Firebase configuration
+│   ├── 📄 setupTests.js         # Test configuration
+│   ├── 📁 Views/                # Page components (Recently Enhanced)
+│   │   ├── 📁 Home-Section/     # Landing page with enhanced features
+│   │   │   ├── HomePage.js      # Hero carousel + marquee announcements
+│   │   │   └── HomePage.css     # Enhanced styles with marquee animations
+│   │   ├── 📁 About/            # Institute information pages
+│   │   │   ├── About.js         # Main about page
+│   │   │   ├── About.css        # About page styles
+│   │   │   └── 📁 GIAN/         # Global Initiative Academic Networks
+│   │   │       ├── GIAN.js      # GIAN program details
+│   │   │       └── GIAN.css     # GIAN page styles
+│   │   ├── 📁 Admission-Section/ # Admission details and forms
+│   │   │   ├── Admissions.js    # Main admissions page
+│   │   │   ├── Admissions.css   # Admissions page styles
+│   │   │   ├── BTechOverview.js # B.Tech program overview
+│   │   │   ├── BTechOverview.css # B.Tech overview styles
+│   │   │   ├── PhD.js           # PhD admission information
+│   │   │   ├── PhD.css          # PhD page styles
+│   │   │   ├── 📁 BTech/        # B.Tech specific pages
+│   │   │   │   ├── BTechDasa.js    # DASA admission details
+│   │   │   │   ├── BTechDasa.css   # DASA page styles
+│   │   │   │   ├── BTechJosaa.js   # JoSAA admission details
+│   │   │   │   ├── BTechJosaa.css  # JoSAA page styles
+│   │   │   │   ├── BTechFacilities.js # B.Tech facilities
+│   │   │   │   ├── BTechFacilities.css # Facilities page styles
+│   │   │   │   ├── BTechStrengths.js # Program strengths
+│   │   │   │   └── BTechStrengths.css # Strengths page styles
+│   │   │   └── 📁 Hostels/      # Hostel information for admissions
+│   │   │       ├── BTechHostel.js  # B.Tech hostel details
+│   │   │       └── MTechHostel.js  # M.Tech hostel details
+│   │   ├── 📁 Academics-Section/ # Academic programs and information
+│   │   │   ├── Academics.js     # Main academics page
+│   │   │   ├── Academics.css    # Academics page styles
+│   │   │   ├── Programs.js      # Academic programs overview
+│   │   │   ├── Programs.css     # Programs page styles
+│   │   │   ├── AcademicCalendar.js # Important academic dates
+│   │   │   ├── AcademicCalendar.css # Calendar page styles
+│   │   │   ├── Departments.js   # Department information
+│   │   │   ├── Departments.css  # Departments page styles
+│   │   │   ├── Library.js       # Library facilities and services
+│   │   │   ├── Library.css      # Library page styles
+│   │   │   ├── Regulations.js   # Academic regulations
+│   │   │   ├── Regulations.css  # Regulations page styles
+│   │   │   ├── DissertationFormats.js # Thesis formatting guidelines
+│   │   │   └── DissertationFormats.css # Dissertation page styles
+│   │   ├── 📁 Research-Section/ # Research initiatives and projects
+│   │   │   ├── Research.js      # Main research page
+│   │   │   ├── Research.css     # Research page styles
+│   │   │   ├── RDProjects.js    # Research & development projects
+│   │   │   ├── RDProjects.css   # R&D projects styles
+│   │   │   ├── MoUDetails.js    # Memorandum of Understanding details
+│   │   │   └── MoUDetails.css   # MoU page styles
+│   │   ├── 📁 People-Section/   # Faculty and staff directory
+│   │   │   ├── Faculty.js       # Enhanced faculty directory with filtering
+│   │   │   └── Faculty.css      # Faculty page styles with liquid glass UI
+│   │   ├── 📁 Training&Placement-Section/ # Career services
+│   │   │   ├── Placement.js     # Placement statistics and information
+│   │   │   └── Placement.css    # Placement page styles
+│   │   ├── 📁 ContactUs/        # Contact information and forms
+│   │   │   ├── ContactUs.js     # Contact page with map and details
+│   │   │   └── ContactUs.css    # Contact page styles
+│   │   ├── 📁 Hostels-Section/  # Campus accommodation details
+│   │   │   ├── Hostel.js        # Main hostel information
+│   │   │   ├── Hostel.css       # Hostel page styles
+│   │   │   ├── Campus.js        # Campus life and facilities
+│   │   │   ├── Campus.css       # Campus page styles
+│   │   │   ├── Facilities.js    # Detailed hostel facilities
+│   │   │   └── Facilities.css   # Facilities page styles
+│   │   ├── 📁 NIRF-Section/     # Ranking and accreditation
+│   │   │   ├── NIRF.js          # NIRF ranking information
+│   │   │   └── NIRF.css         # NIRF page styles
+│   │   ├── 📁 Outreach-Section/ # Community programs
+│   │   │   ├── OutreachActivities.js # Community engagement programs
+│   │   │   └── OutreachActivities.css # Outreach page styles
+│   │   ├── 📁 RTI/              # Right to Information portal
+│   │   │   ├── RTI.js           # RTI procedures and information
+│   │   │   └── RTI.css          # RTI page styles
+│   │   ├── 📁 Tenders/          # Procurement information
+│   │   │   ├── Tenders.js       # Tender announcements and details
+│   │   │   └── Tenders.css      # Tenders page styles
+│   │   ├── 📁 Reults/           # Results and announcements
+│   │   │   ├── Results.js       # Academic results and notifications
+│   │   │   └── Results.css      # Results page styles
+│   │   ├── 📁 ThemeToggle/      # Dark/Light theme component
+│   │   │   ├── ThemeToggle.js   # Theme switching functionality
+│   │   │   └── ThemeToggle.css  # Theme toggle styles
+│   │   ├── 📁 Administration-Section/ # Administrative information (Empty)
+│   │   └── 📁 FeePayment-Section/ # Fee payment portal (Empty)
+│   ├── 📁 components/           # Reusable UI components (Recently Enhanced)
+│   │   ├── 📁 Navbar/           # Enhanced header navigation
+│   │   │   ├── Navbar.js        # Navigation component with improved UX
+│   │   │   └── Navbar.css       # Enhanced styles with better margins and gradients
+│   │   └── 📁 Footer/           # Refactored footer component
+│   │       ├── Footer.js        # Footer with renamed class structure
+│   │       └── Footer.css       # Clean CSS with footer- prefixed classes
+│   ├── 📁 contexts/             # React Context providers
+│   │   └── ThemeContext.js      # Dark/Light theme management
 │   ├── 📁 assets/               # Images and media assets
-│   │   └── images/              # Institute images and hero carousel
-│   │       ├── Home/HeroImages/ # 17 campus carousel images
-│   │       └── Faculty/         # Faculty photos (need verification)
+│   │   ├── 📁 images/           # Image assets organized by category
+│   │   │   ├── 📁 Home/         # Homepage related images
+│   │   │   ├── 📁 Faculty/      # Faculty photos and portraits
+│   │   │   ├── 📁 Administrative Staff/ # Administrative staff photos
+│   │   │   └── 📁 Technical Staff/ # Technical staff photos
+│   │   ├── 📁 Academic Cal/     # Academic calendar related assets
+│   │   ├── 📁 SITEMAP/          # Website sitemap files
+│   │   └── 📁 TelephoneDirectory/ # Contact directory assets
 │   └── 📁 utils/                # Utility functions and configurations
 │       └── navigationConfig.js  # Centralized navigation management
-├── 📁 build/                    # Production build (115.96 kB optimized)
+├── 📁 build/                    # Production build (Generated, optimized for deployment)
+├── 📁 RefrenceMaterial/         # Design references and UI mockups
+│   ├── App.css                 # Reference styling examples
+│   ├── App.js                  # App component reference
+│   ├── Footer.css              # Footer design references
+│   ├── Footer.js               # Footer component reference
+│   ├── Login.css               # Authentication UI references
+│   ├── Login.js                # Login component reference
+│   ├── Navbar.css              # Navigation design examples
+│   ├── Navbar.js               # Navbar component reference
+│   ├── ThemeToggle.css         # Theme switching references
+│   ├── ThemeToggle.js          # Theme toggle reference
+│   ├── index.css               # Global styles reference
+│   ├── index.js                # Index file reference
+│   ├── NoticeSection.png       # Notice section design mockup
+│   ├── Screenshot 2025-07-01 at 2.42.47 PM.png # Design screenshot
+│   ├── Screenshot 2025-07-01 at 2.43.13 PM.png # Design screenshot
+│   └── 📁 contexts/            # Context implementation examples
+│       └── ThemeContext.js     # Theme context reference
 ├── 📚 Documentation/            # Essential project documentation
-│   ├── README.md               # This file - project overview
-│   ├── DEVELOPMENT_SETUP_GUIDE.md # Complete development environment setup (Git + tools)
+│   ├── DEVELOPMENT_SETUP_GUIDE.md # Complete development environment setup
 │   ├── SIMPLE_TEAM_GUIDE.md    # Team collaboration guide for beginners
 │   ├── TEAM_REFERENCE_GUIDE.md # Comprehensive team workflow reference
 │   ├── QUICK_REFERENCE.md      # Daily development cheat sheet
 │   └── DEPLOYMENT_GUIDE.md     # Manual deployment instructions
-├── 🔧 firebase.json            # Firebase hosting configuration
-└── 📦 package.json             # Dependencies and scripts
+├── 🔧 Configuration Files       # Project configuration
+│   ├── package.json            # Dependencies and scripts
+│   ├── package-lock.json       # Locked dependency versions
+│   ├── firebase.json           # Firebase hosting configuration
+│   ├── .firebaserc             # Firebase project configuration
+│   ├── .gitignore              # Git ignore rules
+│   ├── .env                    # Environment variables (local)
+│   └── .env.example            # Environment variables template
+├── 📋 README.md                # This file - project overview
+├── 📁 .git/                    # Git version control (hidden)
+├── 📁 .github/                 # GitHub configuration (hidden)
+├── 📁 .firebase/               # Firebase cache (hidden)
+└── 📁 node_modules/            # Dependencies (generated, not tracked)
 ```
 
 ## 🎯 Current Progress & Development Status
@@ -259,15 +391,19 @@ nitgoa/
 - ❌ **Admin Dashboard**: Not developed
 - ❌ **Database Integration**: MySQL backend not started
 
-### **Recent Development Progress** (June 2025)
-🔄 **CURRENT PHASE**: Frontend development requires completion before backend work
-- 🔍 **Initial Assessment**: Basic 18 pages implemented but need major improvements
-- 🔄 **Page Review Needed**: All pages require content verification and enhancement
-- ✅ **Basic Deployment**: Development version available for testing
-- 📝 **Team Collaboration**: Workflow established for 5-person development team
-- 📦 **Repository Setup**: Git management and branch protection configured
-- ⚠️ **Incomplete Status**: Significant frontend work needed before backend development
-- 🚀 **Development Demo**: https://nit-goa-ac-in.web.app *(Work in Progress)*
+### **Recent Development Progress** (July 2025)
+� **CURRENT PHASE**: Major frontend enhancements completed - announcement system and navigation improvements
+- ✅ **Announcement Enhancement**: Implemented marquee-style slideshow with auto-rotation, indicators, and "Notice" badge styling
+- ✅ **Navbar Optimization**: Reduced gradient height and added proper margins for improved visual balance
+- ✅ **Footer Refactoring**: Complete CSS class reorganization with footer- prefix for better maintainability
+- ✅ **Responsive Improvements**: Enhanced mobile and tablet compatibility across all components
+- ✅ **Code Organization**: Cleaner CSS structure with conflict prevention and better organization
+- � **UI/UX Polish**: Professional styling improvements matching modern design standards
+- ✅ **Performance Optimizations**: Reduced CSS redundancy and improved loading efficiency
+- 📝 **Documentation Updates**: README enhanced to reflect recent changes and improvements
+- 📦 **Repository Management**: Clean git history with descriptive commits for all enhancements
+- 🔄 **Ongoing Development**: Continuous improvements to user experience and code quality
+- 🚀 **Enhanced Demo**: https://nit-goa-ac-in.web.app *(Recently Updated with New Features)*
 
 ## 🛠️ Development Scripts
 

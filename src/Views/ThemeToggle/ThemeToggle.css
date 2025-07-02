@@ -1,0 +1,184 @@
+/* Theme Toggle Component Styles */
+.theme-toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.theme-toggle:focus {
+  outline: none; /* Remove blue outline */
+}
+
+.toggle-track {
+  width: 50px;
+  height: 24px;
+  background: #e0e0e0;
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  padding: 2px; /* Add padding to ensure thumb stays inside */
+}
+
+.theme-toggle.dark .toggle-track {
+  background: #4a4a4a;
+  border-color: #666;
+}
+
+.toggle-thumb {
+  width: 16px;
+  height: 16px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  left: 2px; /* Reduced from 4px to match dark mode spacing */
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle.dark .toggle-thumb {
+  transform: translateX(26px); /* Adjusted to match the gap */
+  background: #ffd700;
+}
+
+.toggle-icon {
+  width: 10px;
+  height: 10px;
+  color: #666;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle.dark .toggle-icon {
+  color: #2c2c2c;
+}
+
+.sun-icon,
+.moon-icon {
+  width: 100%;
+  height: 100%;
+}
+
+/* Removed theme-label styling - no text needed */
+
+/* Hover Effects */
+.theme-toggle:hover .toggle-track {
+  background: #d0d0d0;
+}
+
+.theme-toggle.dark:hover .toggle-track {
+  background: #5a5a5a;
+}
+
+.theme-toggle:hover .toggle-thumb {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.theme-toggle.dark:hover .toggle-thumb {
+  transform: translateX(26px) scale(1.1);
+}
+
+/* Animation for icon changes */
+.toggle-icon svg {
+  animation: iconSpin 0.3s ease-in-out;
+}
+
+@keyframes iconSpin {
+  0% {
+    transform: rotate(-30deg) scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: rotate(0deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Active state */
+.theme-toggle:active .toggle-thumb {
+  transform: scale(0.95);
+}
+
+.theme-toggle.dark:active .toggle-thumb {
+  transform: translateX(26px) scale(0.95);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .theme-toggle-container {
+    gap: 6px;
+  }
+  
+  .toggle-track {
+    width: 44px;
+    height: 22px;
+  }
+  
+  .toggle-thumb {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .theme-toggle.dark .toggle-thumb {
+    transform: translateX(22px);
+  }
+  
+  .theme-toggle.dark:hover .toggle-thumb {
+    transform: translateX(22px) scale(1.1);
+  }
+  
+  .theme-toggle.dark:active .toggle-thumb {
+    transform: translateX(22px) scale(0.95);
+  }
+  
+  .toggle-icon {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .theme-label {
+    font-size: 11px;
+    min-width: 28px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .toggle-track {
+    border: 2px solid currentColor;
+  }
+  
+  .toggle-thumb {
+    border: 1px solid currentColor;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle,
+  .toggle-track,
+  .toggle-thumb,
+  .toggle-icon,
+  .toggle-icon svg {
+    transition: none;
+    animation: none;
+  }
+}
