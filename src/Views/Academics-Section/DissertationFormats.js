@@ -10,27 +10,6 @@ const DissertationFormats = () => {
         { id: 'btech', name: 'B.Tech Project Report', icon: '📝' }
     ];
 
-    const formatDownloads = {
-        phd: {
-            title: 'Ph.D Dissertation Format',
-            description: 'Download the official Ph.D dissertation format template and guidelines',
-            downloadFile: '/src/assets/AcademicsSection/Dissertation Formats/PhDDissertationFormat.rar',
-            fileName: 'PhDDissertationFormat.rar'
-        },
-        mtech: {
-            title: 'M.Tech Thesis Format',
-            description: 'Download the official M.Tech thesis format template and guidelines',
-            downloadFile: '/src/assets/AcademicsSection/Dissertation Formats/MTechDissertationFormat.rar',
-            fileName: 'MTechDissertationFormat.rar'
-        },
-        btech: {
-            title: 'B.Tech Project Report Format',
-            description: 'Download the official B.Tech project report format template and guidelines',
-            downloadFile: '/src/assets/AcademicsSection/Dissertation Formats/BTechReportFormat.rar',
-            fileName: 'BTechReportFormat.rar'
-        }
-    };
-
     const formatGuidelines = {
         phd: {
             title: 'Ph.D Dissertation Guidelines',

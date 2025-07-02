@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import ThemeToggle from '../../Views/ThemeToggle/ThemeToggle';
 import nitLogo from '../../assets/images/Home/NIT_LOGO_192.png';
@@ -14,7 +14,6 @@ const Navbar = ({ user, onLogout }) => {
   const [mobileOpenDropdown, setMobileOpenDropdown] = useState(null);
   const ticking = useRef(false);
   const navigate = useNavigate();
-  const location = useLocation();
 
   const handleMouseEnter = (dropdownName) => {
     setOpenDropdown(dropdownName);
@@ -40,10 +39,6 @@ const Navbar = ({ user, onLogout }) => {
 
   const handleDropdownMouseEnter = (dropdownName) => {
     setOpenDropdown(dropdownName);
-  };
-
-  const handleDropdownMouseLeave = () => {
-    // Keep the dropdown open when moving within the dropdown area
   };
 
   // Throttled scroll handler for smooth progressive scaling and top nav hiding

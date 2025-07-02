@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './Director.css';
 import directorImage from '../../assets/images/administration/director2023.jpeg';
-import directorBanner from '../../assets/images/administration/Director.png';
 
 const Director = () => {
   const [imageError, setImageError] = useState(false);

@@ -3,7 +3,7 @@ import { useTheme } from '../../contexts/ThemeContext';
 import './ThemeToggle.css';
 
 const ThemeToggle = ({ className = '' }) => {
-    const { theme, toggleTheme, isDark } = useTheme();
+    const { toggleTheme, isDark } = useTheme();
 
     return (
         <div className={`theme-toggle-container ${className}`}>
