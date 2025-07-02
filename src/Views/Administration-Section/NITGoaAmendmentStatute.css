@@ -1,0 +1,96 @@
+.statute-page {
+  min-height: 100vh;
+  background: #f8f9fa;
+  padding: 2rem 0;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.statute-content {
+  background: white;
+  border-radius: 12px;
+  padding: 3rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.statute-info {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.statute-info p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.notice {
+  background: #e3f2fd;
+  border-left: 4px solid #2196f3;
+  padding: 2rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.notice h3 {
+  color: #1976d2;
+  margin-bottom: 1rem;
+}
+
+.notice p {
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.contact-info {
+  background: #f5f5f5;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.contact-info h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.contact-info p {
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.contact-info a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .statute-content {
+    padding: 2rem;
+  }
+  
+  .page-header h1 {
+    font-size: 2rem;
+  }
+}

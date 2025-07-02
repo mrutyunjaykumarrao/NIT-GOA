@@ -1,0 +1,270 @@
+/* HeadsOfDepartments.css */
+.heads-of-departments-container {
+  min-height: 100vh;
+  background: white;
+  padding: 2rem 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  margin: 0;
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-header h1 {
+  color: #2c3e50;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.heads-of-departments-content {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  background-color: #f4f6f9;
+}
+
+.table-container {
+  padding: 30px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border-spacing: 0;
+  empty-cells: hide;
+}
+
+th, td {
+  border: 1px solid #dee2e6;
+  padding: 1rem 0.8rem;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 0.95rem;
+}
+
+th {
+  background: #007bff;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border: 1px solid #0056b3;
+}
+
+/* Column widths */
+th:first-child, td:first-child {
+  width: 25%;
+}
+
+th:nth-child(2), td:nth-child(2) {
+  width: 35%;
+}
+
+th:nth-child(3), td:nth-child(3) {
+  width: 25%;
+}
+
+th:nth-child(4), td:nth-child(4) {
+  width: 15%;
+}
+
+/* Head info styling */
+.head-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.head-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.head-name {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* Email link styling */
+.email-link {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 14px;
+}
+
+.email-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Table row styling */
+tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+tbody tr:hover {
+  background-color: #e3f2fd;
+  transition: background-color 0.3s ease;
+}
+
+td {
+  text-align: center;
+  font-weight: 500;
+  color: #2c3e50;
+  line-height: 1.5;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .heads-of-departments-container {
+    padding: 1rem 0;
+  }
+  
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .table-container {
+    padding: 1rem;
+  }
+  
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  
+  tr {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background: white;
+  }
+  
+  td {
+    border: none;
+    position: relative;
+    padding: 10px 10px 10px 35%;
+    text-align: left;
+  }
+  
+  td:before {
+    content: attr(data-label) ": ";
+    position: absolute;
+    left: 6px;
+    width: 30%;
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: 600;
+    color: #007bff;
+  }
+  
+  .head-info {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .head-image {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .head-name {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .head-image {
+    width: 50px;
+    height: 50px;
+  }
+  
+  td {
+    font-size: 0.9rem;
+  }
+}
+
+/* Animation for table load */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.heads-of-departments-content {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Print styles */
+@media print {
+  .heads-of-departments-container {
+    background: white;
+    padding: 0;
+  }
+  
+  .page-header h1 {
+    color: black;
+    text-shadow: none;
+  }
+  
+  .heads-of-departments-content {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+  
+  th {
+    background: #f0f0f0 !important;
+    color: black !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  .head-image {
+    width: 60px;
+    height: 60px;
+  }
+}
