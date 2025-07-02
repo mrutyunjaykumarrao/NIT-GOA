@@ -1,0 +1,281 @@
+/* Senate Page Styles */
+.senate-page {
+  min-height: 100vh;
+  background: #f8f9fa;
+  padding: 2rem 0;
+}
+
+.senate-page .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem 0;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin: 0;
+  font-weight: 700;
+}
+
+.senate-content {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styles */
+.table-container {
+  overflow-x: auto;
+  margin-bottom: 3rem;
+  border: none;
+  padding: 0;
+  position: relative;
+}
+
+.table-container::after {
+  content: none;
+  display: none;
+}
+
+.senate-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border-spacing: 0;
+  empty-cells: hide;
+}
+
+.senate-table th {
+  background: #007bff;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  padding: 1rem 0.8rem;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border: 1px solid #0056b3;
+}
+
+.senate-table th:first-child {
+  width: 8%;
+}
+
+.senate-table th:nth-child(2) {
+  width: 12%;
+}
+
+.senate-table th:nth-child(3) {
+  width: 20%;
+}
+
+.senate-table th:nth-child(4) {
+  width: 40%;
+}
+
+.senate-table th:nth-child(5) {
+  width: 20%;
+}
+
+.senate-table td {
+  padding: 1rem 0.8rem;
+  border: 1px solid #dee2e6;
+  vertical-align: middle;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.senate-table tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.senate-table tbody tr:hover {
+  background-color: #e3f2fd;
+  transition: background-color 0.3s ease;
+}
+
+/* Text alignment - all cells centered */
+.senate-table td {
+  text-align: center;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+/* Rowspan styling */
+.senate-table td[rowspan] {
+  background-color: #f1f3f4;
+  font-weight: 600;
+  border: 1px solid #dee2e6;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Remove any extra spacing after the last row */
+.senate-table tbody tr:last-child td {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.senate-table tbody::after {
+  content: none;
+}
+
+.senate-table::after {
+  content: none;
+}
+.senate-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.senate-table tbody {
+  border-bottom: none;
+}
+
+/* Ensure no extra content or pseudo-elements */
+.senate-table tbody tr:last-child::after {
+  content: none !important;
+}
+
+.senate-table tbody::after,
+.senate-table::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Remove any browser default table spacing */
+.senate-table {
+  border-spacing: 0;
+  empty-cells: hide;
+}
+
+/* Force table to end properly */
+.senate-table tbody {
+  border-collapse: collapse;
+}
+
+.senate-table tbody tr:nth-child(9) {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.senate-table tbody tr:nth-child(n+10) {
+  display: none !important;
+}
+
+/* Minutes Section */
+.minutes-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.minutes-section h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.minutes-links {
+  line-height: 2;
+  text-align: left;
+}
+
+.senate-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  margin: 0 0.3rem;
+  transition: color 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+  padding: 0;
+}
+
+.senate-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .senate-page .container {
+    padding: 0 1rem;
+  }
+  
+  .senate-table {
+    font-size: 0.9rem;
+  }
+  
+  .senate-table th,
+  .senate-table td {
+    padding: 0.8rem 0.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .senate-page {
+    padding: 1rem 0;
+  }
+  
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .senate-content {
+    padding: 1.5rem;
+  }
+  
+  .senate-table {
+    font-size: 0.85rem;
+  }
+  
+  .senate-table th,
+  .senate-table td {
+    padding: 0.6rem 0.4rem;
+  }
+  
+  .minutes-links {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .senate-content {
+    padding: 1rem;
+  }
+  
+  .senate-table {
+    font-size: 0.8rem;
+  }
+  
+  .senate-table th,
+  .senate-table td {
+    padding: 0.5rem 0.3rem;
+  }
+  
+  .minutes-section h3 {
+    font-size: 1.3rem;
+  }
+}

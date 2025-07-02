@@ -39,11 +39,18 @@ export const navigationConfig = {
   // Dropdown menu configurations
   dropdowns: {
     administration: {
+      boardOfGovernors: '/administration/board-of-governors',
       director: '/administration/director',
       registrar: '/administration/registrar',
+      senate: '/administration/senate',
       deans: '/administration/deans',
-      hods: '/administration/heads-of-departments',
-      adminStaff: '/administration/administrative-staff'
+      committees: '/administration/committees',
+      financeCommittee: '/administration/finance-committee',
+      buildingWorksCommittee: '/administration/building-works-committee',
+      headsOfDepartments: '/administration/heads-of-departments',
+      organisationalStructure: '/pdf/Administration/organisationalstructure/Org_Chart.pdf',
+      annualReports: '/administration/annual-reports',
+      
     },
     academics: {
       departments: '/academics/departments',

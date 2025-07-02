@@ -35,6 +35,16 @@ import OutreachActivities from './Views/OutreachActivities';
 import Hostel from './Views/Hostel';
 import BTechHostel from './Views/BTechHostel';
 import MTechHostel from './Views/MTechHostel';
+import Director from './Views/Director';
+import Registrar from './Views/Registrar';
+import Deans from './Views/Deans';
+import Senate from './Views/Senate';
+import BoardOfGovernors from './Views/BoardOfGovernors';
+import Committees from './Views/Committees';
+import FinanceCommittee from './Views/FinanceCommittee';
+import BuildingWorksCommittee from './Views/BuildingWorksCommittee';
+import HeadsOfDepartments from './Views/HeadsOfDepartments';
+import AnnualReports from './Views/AnnualReports';
 
 function App() {
   return (
@@ -74,6 +84,17 @@ function App() {
         <Route path="/facilities" element={<Facilities />} />
         <Route path="/academic-calendar" element={<AcademicCalendar />} />
         <Route path="/outreach-activities" element={<OutreachActivities />} />
+        {/* Administration routes */}
+        <Route path="/administration/director" element={<Director />} />
+        <Route path="/administration/registrar" element={<Registrar />} />
+        <Route path="/administration/deans" element={<Deans />} />
+        <Route path="/administration/senate" element={<Senate />} />
+        <Route path="/administration/board-of-governors" element={<BoardOfGovernors />} />
+        <Route path="/administration/committees" element={<Committees />} />
+        <Route path="/administration/finance-committee" element={<FinanceCommittee />} />
+        <Route path="/administration/building-works-committee" element={<BuildingWorksCommittee />} />
+        <Route path="/administration/heads-of-departments" element={<HeadsOfDepartments />} />
+        <Route path="/administration/annual-reports" element={<AnnualReports />} />
         {/* Additional routes can be added here */}
         <Route path="*" element={<HomePage />} />
       </Routes>

@@ -17,7 +17,7 @@ const MainNavigation = () => {
     };
 
     const navigateToPage = (url) => {
-        if (url.startsWith('http://') || url.startsWith('https://')) {
+        if (url.startsWith('http://') || url.startsWith('https://') || url.endsWith('.pdf')) {
             window.open(url, '_blank', 'noopener,noreferrer');
         } else {
             navigate(url);
@@ -25,6 +25,8 @@ const MainNavigation = () => {
         setActiveDropdown(null);
         setIsMobileMenuOpen(false); // Close mobile menu after navigation
     };
+    
+    
 
     return (
         <nav className="main-navigation-overlay">
@@ -48,11 +50,17 @@ const MainNavigation = () => {
                             <span className="dropdown-arrow">▼</span>
                         </button>
                         <ul className={`overlay-dropdown-menu ${activeDropdown === 'administration' ? 'show' : ''}`}>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.boardOfGovernors)}>Board of Governors</button></li>
                             <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.director)}>Director</button></li>
                             <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.registrar)}>Registrar</button></li>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.senate)}>Senate</button></li>
                             <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.deans)}>Deans</button></li>
-                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.hods)}>Heads of Departments</button></li>
-                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.adminStaff)}>Administrative Staff</button></li>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.committees)}>Committees</button></li>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.financeCommittee)}>Finance Committee</button></li>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.buildingWorksCommittee)}>Building and Works Committee</button></li>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.headsOfDepartments)}>Heads of Departments</button></li>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.organisationalStructure)}>Organizational Structure</button></li>
+                            <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.annualReports)}>Reports</button></li>
                         </ul>
                     </li>
 

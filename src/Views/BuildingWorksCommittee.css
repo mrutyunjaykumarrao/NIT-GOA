@@ -1,0 +1,256 @@
+/* BuildingWorksCommittee.css */
+.building-works-committee-container {
+  min-height: 100vh;
+  background: white;
+  padding: 2rem 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  margin: 0;
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-header h1 {
+  color: #2c3e50;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.building-works-committee-content {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  background-color: #f4f6f9;
+}
+
+.table-container {
+  padding: 30px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border-spacing: 0;
+  empty-cells: hide;
+}
+
+th, td {
+  border: 1px solid #dee2e6;
+  padding: 1rem 0.8rem;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 0.95rem;
+}
+
+th {
+  background: #007bff;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border: 1px solid #0056b3;
+}
+
+/* Column widths */
+th:first-child, td:first-child {
+  width: 8%;
+}
+
+th:nth-child(2), td:nth-child(2) {
+  width: 12%;
+}
+
+th:nth-child(3), td:nth-child(3) {
+  width: 35%;
+}
+
+th:nth-child(4), td:nth-child(4) {
+  width: 45%;
+}
+
+td {
+  text-align: center;
+  font-weight: 500;
+  color: #2c3e50;
+  line-height: 1.5;
+}
+
+/* Rowspan styling */
+td[rowspan] {
+  background-color: #f1f3f4;
+  font-weight: 600;
+  border: 1px solid #dee2e6;
+  text-align: center;
+  vertical-align: middle;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+tbody tr:hover {
+  background-color: #e3f2fd;
+  transition: background-color 0.3s ease;
+}
+
+/* Minutes Section */
+.minutes-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid #e9ecef;
+}
+
+.minutes-section h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.minutes-links {
+  line-height: 2;
+  text-align: left;
+}
+
+.minutes-links a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.minutes-links a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .building-works-committee-container {
+    padding: 1rem 0;
+  }
+  
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .table-container {
+    padding: 1rem;
+  }
+  
+  table, tbody, tr, th, td {
+    display: block;
+    width: 100%;
+  }
+
+  tr {
+    margin-bottom: 25px;
+  }
+
+  th {
+    font-size: 16px;
+    text-align: left;
+  }
+
+  td {
+    text-align: left;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  table {
+    font-size: 0.7rem;
+  }
+  
+  th, td {
+    padding: 0.6rem 0.3rem;
+    font-size: 14px;
+  }
+}
+
+/* Animation for table load */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.building-works-committee-content {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Enhanced row styling */
+tbody tr {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+tbody tr::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  transition: width 0.3s ease;
+}
+
+tbody tr:hover::after {
+  width: 100%;
+}
+
+/* Print styles */
+@media print {
+  .building-works-committee-container {
+    background: white;
+    padding: 0;
+  }
+  
+  .page-header h1 {
+    color: black;
+    text-shadow: none;
+  }
+  
+  .building-works-committee-content {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+  
+  th {
+    background: #f0f0f0 !important;
+    color: black !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

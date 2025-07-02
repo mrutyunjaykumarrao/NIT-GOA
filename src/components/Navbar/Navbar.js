@@ -23,8 +23,8 @@ const Navbar = () => {
     };
 
     const navigateToPage = (url) => {
-        // Handle navigation - external links open in new tab, internal routes use React Router
-        if (url.startsWith('http://') || url.startsWith('https://')) {
+        // Handle navigation - external links and PDFs open in new tab, internal routes use React Router
+        if (url.startsWith('http://') || url.startsWith('https://') || url.endsWith('.pdf')) {
             window.open(url, '_blank', 'noopener,noreferrer');
         } else {
             // Use React Router for internal navigation
@@ -120,11 +120,17 @@ const Navbar = () => {
                                 <span className="dropdown-arrow">▼</span>
                             </button>
                             <ul className={`dropdown-menu ${activeDropdown === 'administration' ? 'show' : ''}`}>
-                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.director)}>Director</button></li>
-                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.registrar)}>Registrar</button></li>
-                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.deans)}>Deans</button></li>
-                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.hods)}>Heads of Departments</button></li>
-                                <li><button className="dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.adminStaff)}>Administrative Staff</button></li>
+                                 <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.boardOfGovernors)}>Board of Governors</button></li>
+                                                           <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.director)}>Director</button></li>
+                                                           <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.registrar)}>Registrar</button></li>
+                                                           <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.senate)}>Senate</button></li>
+                                                           <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.deans)}>Deans</button></li>
+                                                           <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.committees)}>Committees</button></li>
+                                                           <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.financeCommittee)}>Finance Committee</button></li>
+                                                           <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.buildingWorksCommittee)}>Building and Works Committee</button></li>
+                                                           <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.headsOfDepartments)}>Heads of Departments</button></li>
+                                                           <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.organisationalStructure)}>Organizational Structure</button></li>
+                                                           <li><button className="overlay-dropdown-link" onClick={() => navigateToPage(navigationConfig.dropdowns.administration.annualReports)}>Reports</button></li>
                             </ul>
                         </li>
 

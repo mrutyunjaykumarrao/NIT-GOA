@@ -1,0 +1,114 @@
+.annual-reports-container {
+    min-height: 100vh;
+    background: white;
+    padding: 40px 20px;
+}
+
+.annual-reports-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+}
+
+.annual-reports-title {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 20px;
+}
+
+.annual-reports-section {
+    margin-bottom: 50px;
+}
+
+.section-title {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.reports-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-left: 20px;
+}
+
+.report-link {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 12px 15px;
+    border-left: 4px solid #3498db;
+    background: #f8f9fa;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+    display: block;
+}
+
+.report-link:hover {
+    color: #2980b9;
+    background: #e3f2fd;
+    border-left-color: #2980b9;
+    transform: translateX(5px);
+    box-shadow: 0 3px 10px rgba(52, 152, 219, 0.2);
+}
+
+.report-link:before {
+    content: "📄";
+    margin-right: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .annual-reports-container {
+        padding: 20px 10px;
+    }
+    
+    .annual-reports-content {
+        padding: 20px;
+    }
+    
+    .annual-reports-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+        padding: 12px 15px;
+    }
+    
+    .report-link {
+        font-size: 1rem;
+        padding: 10px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .annual-reports-title {
+        font-size: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.3rem;
+    }
+    
+    .reports-list {
+        padding-left: 10px;
+    }
+}
