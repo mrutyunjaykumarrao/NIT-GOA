@@ -218,14 +218,14 @@ const Navbar = ({ user, onLogout }) => {
             <span>Administration</span>
             {openDropdown === 'administration' && (
               <div className="dropdown-menu">
-                <a href="/board-of-governors">Board of Governors</a>
-                <a href="/director">Director</a>
-                <a href="/registrar">Registrar</a>
-                <a href="/senate">Senate</a>
-                <a href="/deans">Deans</a>
-                <a href="/committees">Committees</a>
-                <a href="/finance-committee">Finance Committee</a>
-                <a href="/building-works-committee">Building and Works Committee</a>
+                <a href="/administration/board-of-governors">Board of Governors</a>
+                <a href="/administration/director">Director</a>
+                <a href="/administration/registrar">Registrar</a>
+                <a href="/administration/senate">Senate</a>
+                <a href="/administration/deans">Deans</a>
+                <a href="/administration/committees">Committees</a>
+                <a href="/administration/finance-committee">Finance Committee</a>
+                <a href="/administration/building-works-committee">Building and Works Committee</a>
                 <a href="/heads-of-departments">Heads of Departments</a>
                 <a href="/nit-goa-amendment-statute-2023">NIT Goa(Amendment) Statute 2023</a>
                 <a href="/organizational-structure">Organizational Structure</a>
@@ -247,6 +247,7 @@ const Navbar = ({ user, onLogout }) => {
                 <a href="/academics/departments">Departments</a>
                 <a href="/academic-calendar">Academic Calendar</a>
                 <a href="/academics/regulations">Regulations and Curriculum</a>
+                <a href="/academics/syllabus">Syllabus</a>
                 <a href="/academics/dissertation-formats">Dissertation Formats</a>
                 <a href="/academics/results">Results</a>
                 <a href="/academics/library">Library</a>
@@ -401,14 +402,14 @@ const Navbar = ({ user, onLogout }) => {
                 </button>
                 {mobileOpenDropdown === 'administration' && (
                   <div className="mobile-dropdown-menu">
-                    <button onClick={() => handleMobileNavigation('/board-of-governors')}>Board of Governors</button>
-                    <button onClick={() => handleMobileNavigation('/director')}>Director</button>
-                    <button onClick={() => handleMobileNavigation('/registrar')}>Registrar</button>
-                    <button onClick={() => handleMobileNavigation('/senate')}>Senate</button>
-                    <button onClick={() => handleMobileNavigation('/deans')}>Deans</button>
-                    <button onClick={() => handleMobileNavigation('/committees')}>Committees</button>
-                    <button onClick={() => handleMobileNavigation('/finance-committee')}>Finance Committee</button>
-                    <button onClick={() => handleMobileNavigation('/building-works-committee')}>Building and Works Committee</button>
+                    <button onClick={() => handleMobileNavigation('/administration/board-of-governors')}>Board of Governors</button>
+                    <button onClick={() => handleMobileNavigation('/administration/director')}>Director</button>
+                    <button onClick={() => handleMobileNavigation('/administration/registrar')}>Registrar</button>
+                    <button onClick={() => handleMobileNavigation('/administration/senate')}>Senate</button>
+                    <button onClick={() => handleMobileNavigation('/administration/deans')}>Deans</button>
+                    <button onClick={() => handleMobileNavigation('/administration/committees')}>Committees</button>
+                    <button onClick={() => handleMobileNavigation('/administration/finance-committee')}>Finance Committee</button>
+                    <button onClick={() => handleMobileNavigation('/administration/building-works-committee')}>Building and Works Committee</button>
                     <button onClick={() => handleMobileNavigation('/heads-of-departments')}>Heads of Departments</button>
                     <button onClick={() => handleMobileNavigation('/nit-goa-amendment-statute-2023')}>NIT Goa(Amendment) Statute 2023</button>
                     <button onClick={() => handleMobileNavigation('/organizational-structure')}>Organizational Structure</button>
@@ -434,6 +435,7 @@ const Navbar = ({ user, onLogout }) => {
                     <button onClick={() => handleMobileNavigation('/academics/departments')}>Departments</button>
                     <button onClick={() => handleMobileNavigation('/academic-calendar')}>Academic Calendar</button>
                     <button onClick={() => handleMobileNavigation('/academics/regulations')}>Regulations and Curriculum</button>
+                    <button onClick={() => handleMobileNavigation('/academics/syllabus')}>Syllabus</button>
                     <button onClick={() => handleMobileNavigation('/academics/dissertation-formats')}>Dissertation Formats</button>
                     <button onClick={() => handleMobileNavigation('/academics/results')}>Results</button>
                     <button onClick={() => handleMobileNavigation('/academics/library')}>Library</button>

@@ -1,0 +1,74 @@
+.syllabus-page {
+  min-height: 100vh;
+  background: white;
+  padding: 2rem 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.syllabus-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.event-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px #0001;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.event-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1565c0;
+}
+
+.pretty-download-btn {
+  background: linear-gradient(90deg, #007bff 0%, #1976d2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 16px;
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 240px;
+  min-width: 180px;
+  max-width: 240px;
+  justify-content: center;
+  box-shadow: 0 6px 24px 0 rgba(25, 118, 210, 0.15);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  outline: none;
+  position: relative;
+}
+.pretty-download-btn:hover, .pretty-download-btn:focus {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 32px 0 rgba(25, 118, 210, 0.22);
+  background: linear-gradient(90deg, #1976d2 0%, #007bff 100%);
+}
+.pretty-download-btn svg {
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+}
+@media (max-width: 600px) {
+  .pretty-download-btn {
+    width: 100%;
+    min-width: unset;
+    max-width: unset;
+  }
+}

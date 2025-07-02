@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Registrar.css';
-import registrarImage from '../assets/images/administration/registrar2023.jpeg';
+import registrarImage from '../../assets/images/administration/registrar2023.jpeg';
 
 const Registrar = () => {
   const [imageError, setImageError] = useState(false);

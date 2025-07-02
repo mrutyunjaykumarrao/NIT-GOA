@@ -19,6 +19,7 @@ import Regulations from './Views/Academics-Section/Regulations';
 import Results from './Views/Reults/Results';
 import Library from './Views/Academics-Section/Library';
 import DissertationFormats from './Views/Academics-Section/DissertationFormats';
+import Syllabus from './Views/Academics-Section/Syllabus';
 import Research from './Views/Research-Section/Research';
 import RDProjects from './Views/Research-Section/RDProjects';
 import MoUDetails from './Views/Research-Section/MoUDetails';
@@ -36,6 +37,16 @@ import OutreachActivities from './Views/Outreach-Section/OutreachActivities';
 import Hostel from './Views/Hostels-Section/Hostel';
 import BTechHostel from './Views/Admission-Section/Hostels/BTechHostel';
 import MTechHostel from './Views/Admission-Section/Hostels/MTechHostel';
+
+// Administration Section imports
+import BoardOfGovernors from './Views/Administration-Section/BoardOfGovernors';
+import Director from './Views/Administration-Section/Director';
+import Registrar from './Views/Administration-Section/Registrar';
+import Senate from './Views/Administration-Section/Senate';
+import Deans from './Views/Administration-Section/Deans';
+import Committees from './Views/Administration-Section/Committees';
+import FinanceCommittee from './Views/Administration-Section/FinanceCommittee';
+import BuildingWorksCommittee from './Views/Administration-Section/BuildingWorksCommittee';
 
 function App() {
   return (
@@ -63,6 +74,18 @@ function App() {
         <Route path="/academics/results" element={<Results />} />
         <Route path="/academics/library" element={<Library />} />
         <Route path="/academics/dissertation-formats" element={<DissertationFormats />} />
+        <Route path="/academics/syllabus" element={<Syllabus />} />
+        
+        {/* Administration Section Routes */}
+        <Route path="/administration/board-of-governors" element={<BoardOfGovernors />} />
+        <Route path="/administration/director" element={<Director />} />
+        <Route path="/administration/registrar" element={<Registrar />} />
+        <Route path="/administration/senate" element={<Senate />} />
+        <Route path="/administration/deans" element={<Deans />} />
+        <Route path="/administration/committees" element={<Committees />} />
+        <Route path="/administration/finance-committee" element={<FinanceCommittee />} />
+        <Route path="/administration/building-works-committee" element={<BuildingWorksCommittee />} />
+        
         <Route path="/research" element={<Research />} />
         <Route path="/research/rd-projects" element={<RDProjects />} />
         <Route path="/research/mou-details" element={<MoUDetails />} />
@@ -77,6 +100,15 @@ function App() {
         <Route path="/facilities" element={<Facilities />} />
         <Route path="/academic-calendar" element={<AcademicCalendar />} />
         <Route path="/outreach-activities" element={<OutreachActivities />} />
+        {/* Administration routes */}
+        <Route path="/administration/board-of-governors" element={<BoardOfGovernors />} />
+        <Route path="/administration/director" element={<Director />} />
+        <Route path="/administration/registrar" element={<Registrar />} />
+        <Route path="/administration/senate" element={<Senate />} />
+        <Route path="/administration/deans" element={<Deans />} />
+        <Route path="/administration/committees" element={<Committees />} />
+        <Route path="/administration/finance-committee" element={<FinanceCommittee />} />
+        <Route path="/administration/building-works-committee" element={<BuildingWorksCommittee />} />
         {/* Additional routes can be added here */}
         <Route path="*" element={<HomePage />} />
       </Routes>

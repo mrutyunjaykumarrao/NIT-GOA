@@ -11,7 +11,7 @@ const Departments = () => {
             id: 'cse',
             name: 'Computer Science & Engineering',
             code: 'CSE',
-            icon: '💻',
+            
             color: '#4285f4',
             established: '2010',
             hod: 'Dr. Veena Thenkanidiyoor',
@@ -43,7 +43,7 @@ const Departments = () => {
             id: 'ece',
             name: 'Electronics & Communication Engineering',
             code: 'ECE',
-            icon: '📡',
+            
             color: '#ff9800',
             established: '2010',
             hod: 'Dr. Veerakumar',
@@ -75,7 +75,7 @@ const Departments = () => {
             id: 'eee',
             name: 'Electrical & Electronics Engineering',
             code: 'EEE',
-            icon: '⚡',
+        
             color: '#f44336',
             established: '2010',
             hod: 'Dr. Suresh Mikkili',
@@ -107,7 +107,7 @@ const Departments = () => {
             id: 'mce',
             name: 'Mechanical Engineering',
             code: 'MCE',
-            icon: '⚙️',
+            
             color: '#9c27b0',
             established: '2010',
             hod: 'Dr. Prasenjit Dey',
@@ -139,7 +139,7 @@ const Departments = () => {
             id: 'cve',
             name: 'Civil Engineering',
             code: 'CVE',
-            icon: '🏗️',
+            
             color: '#795548',
             established: '2010',
             hod: 'Dr. Harikumar M',
@@ -171,7 +171,7 @@ const Departments = () => {
             id: 'aps',
             name: 'Applied Sciences',
             code: 'APS',
-            icon: '🔬',
+            
             color: '#607d8b',
             established: '2010',
             hod: 'Dr. L. Shangerganesh',
@@ -203,7 +203,7 @@ const Departments = () => {
             id: 'hss',
             name: 'Humanities & Social Sciences',
             code: 'HSS',
-            icon: '📚',
+            
             color: '#3f51b5',
             established: '2010',
             hod: 'Dr. Sarani Ghosal Mondal',
@@ -288,9 +288,9 @@ const Departments = () => {
                                     <h3>{dept.name}</h3>
                                     <div className="department-code">({dept.code})</div>
                                     <div className="department-stats">
-                                        <span>👨‍🏫 {dept.faculty} Faculty</span>
-                                        <span>🎓 {dept.students} Students</span>
-                                        <span>📅 Est. {dept.established}</span>
+                                        <span> {dept.faculty} Faculty</span>
+                                        <span> {dept.students} Students</span>
+                                        <span> Est. {dept.established}</span>
                                     </div>
                                 </div>
                                 <div className="expand-arrow">
@@ -302,12 +302,12 @@ const Departments = () => {
                                 <div className="department-details">
                                     <div className="details-grid">
                                         <div className="detail-section">
-                                            <h4>👨‍💼 Head of Department</h4>
+                                            <h4> Head of Department</h4>
                                             <p>{dept.hod}</p>
                                         </div>
 
                                         <div className="detail-section">
-                                            <h4>🎓 Programs Offered</h4>
+                                            <h4> Programs Offered</h4>
                                             <div className="program-tags">
                                                 {dept.programs.map((program, idx) => (
                                                     <span key={idx} className="program-tag">{program}</span>
@@ -316,7 +316,7 @@ const Departments = () => {
                                         </div>
 
                                         <div className="detail-section">
-                                            <h4>🔬 Laboratories</h4>
+                                            <h4> Laboratories</h4>
                                             <ul className="labs-list">
                                                 {dept.labs.map((lab, idx) => (
                                                     <li key={idx}>{lab}</li>
@@ -325,7 +325,7 @@ const Departments = () => {
                                         </div>
 
                                         <div className="detail-section">
-                                            <h4>🔍 Research Areas</h4>
+                                            <h4> Research Areas</h4>
                                             <ul className="research-list">
                                                 {dept.researchAreas.map((area, idx) => (
                                                     <li key={idx}>{area}</li>
@@ -334,7 +334,7 @@ const Departments = () => {
                                         </div>
 
                                         <div className="detail-section">
-                                            <h4>🏢 Facilities</h4>
+                                            <h4> Facilities</h4>
                                             <ul className="facilities-list">
                                                 {dept.facilities.map((facility, idx) => (
                                                     <li key={idx}>{facility}</li>
@@ -343,7 +343,7 @@ const Departments = () => {
                                         </div>
 
                                         <div className="detail-section">
-                                            <h4>🏆 Achievements</h4>
+                                            <h4> Achievements</h4>
                                             <ul className="achievements-list">
                                                 {dept.achievements.map((achievement, idx) => (
                                                     <li key={idx}>{achievement}</li>
@@ -357,19 +357,19 @@ const Departments = () => {
                                             className="action-btn primary"
                                             onClick={() => handleViewFaculty(dept.code)}
                                         >
-                                            👨‍🏫 View Faculty
+                                             View Faculty
                                         </button>
                                         <button 
                                             className="action-btn secondary"
                                             onClick={() => navigate('/academics/programs')}
                                         >
-                                            📚 View Programs
+                                             View Programs
                                         </button>
                                         <button 
                                             className="action-btn secondary"
                                             onClick={() => navigate('/research')}
                                         >
-                                            🔬 Research Areas
+                                             Research Areas
                                         </button>
                                     </div>
                                 </div>
@@ -388,13 +388,13 @@ const Departments = () => {
                                 className="cta-btn primary"
                                 onClick={() => navigate('/admissions')}
                             >
-                                🎓 Apply Now
+                                 Apply Now
                             </button>
                             <button 
                                 className="cta-btn secondary"
                                 onClick={() => navigate('/contact-us')}
                             >
-                                📞 Contact Us
+                                 Contact Us
                             </button>
                         </div>
                     </div>

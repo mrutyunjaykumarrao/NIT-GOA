@@ -2,18 +2,18 @@ import React from 'react';
 import './Deans.css';
 
 // Import dean images
-import drSMini from '../assets/images/Faculty/CSE/Dr. S. Mini.png';
-import drShivnarayanPatidar from '../assets/images/Faculty/ECE/Dr. Shivnarayan Patidar.png';
-import drSoumitraDas from '../assets/images/Faculty/EEE/Dr. Soumitra Das.png';
-import drLokeshKumarBramhane from '../assets/images/Faculty/ECE/Dr. Lokesh Kumar Bramhane.png';
-import drAmolRahulkar from '../assets/images/Faculty/EEE/Dr. Amol D. Rahulkar.jpg';
-import drPrasanjitDey from '../assets/images/Faculty/MCE/Dr. PRASENJIT DEY.png';
-import drChiragModi from '../assets/images/Faculty/CSE/Dr. Modi Chirag Navinchandra.png';
-import drSreerajES from '../assets/images/Faculty/EEE/Dr. Sreeraj E S.png';
-import drHarikumar from '../assets/images/Faculty/CVE/Dr. Harikumar M.png';
-import drSureshMikkili from '../assets/images/Faculty/EEE/Dr. Suresh Mikkili.png';
-import drTrilochanPanigrahi from '../assets/images/Faculty/ECE/Dr. Trilochan Panigrahi.jpg';
-import drLalatInduGiri from '../assets/images/Faculty/ECE/Dr. Lalat Indu Giri.png';
+import drSMini from '../../assets/images/Faculty/CSE/Dr. S. Mini.png';
+import drShivnarayanPatidar from '../../assets/images/Faculty/ECE/Dr. Shivnarayan Patidar.png';
+import drSoumitraDas from '../../assets/images/Faculty/EEE/Dr. Soumitra Das.png';
+import drLokeshKumarBramhane from '../../assets/images/Faculty/ECE/Dr. Lokesh Kumar Bramhane.png';
+import drAmolRahulkar from '../../assets/images/Faculty/EEE/Dr. Amol D. Rahulkar.jpg';
+import drPrasanjitDey from '../../assets/images/Faculty/MCE/Dr. PRASENJIT DEY.png';
+import drChiragModi from '../../assets/images/Faculty/CSE/Dr. Modi Chirag Navinchandra.png';
+import drSreerajES from '../../assets/images/Faculty/EEE/Dr. Sreeraj E S.png';
+import drHarikumar from '../../assets/images/Faculty/CVE/Dr. Harikumar M.png';
+import drSureshMikkili from '../../assets/images/Faculty/EEE/Dr. Suresh Mikkili.png';
+import drTrilochanPanigrahi from '../../assets/images/Faculty/ECE/Dr. Trilochan Panigrahi.jpg';
+import drLalatInduGiri from '../../assets/images/Faculty/ECE/Dr. Lalat Indu Giri.png';
 
 const Deans = () => {
   const deansData = [
