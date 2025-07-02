@@ -281,8 +281,8 @@ const Navbar = ({ user, onLogout }) => {
                   </div>
                   <a href="/admissions/mtech">M.Tech</a>
                   <a href="/admissions/phd">Ph.D</a>
-                  <a href="/admission-brochure">Admission Brochure</a>
-                  <a href="/fee-structure">Fee Structure</a>
+                  <a href="https://www.nitgoa.ac.in/uploads/AdmissionBrochure%202august2024.pdf" target="_blank" rel="noopener noreferrer">Admission Brochure</a>
+                  <a href="https://www.nitgoa.ac.in/static/fee_structure_23-24_25july2023.pdf" target="_blank" rel="noopener noreferrer">Fee Structure</a>
                   <div 
                     className="dropdown-item-with-submenu"
                     onMouseEnter={() => handleSubmenuEnter('hostels')}
@@ -452,12 +452,12 @@ const Navbar = ({ user, onLogout }) => {
                     <button onClick={() => handleMobileNavigation('/admissions/btech/strengths')}>Strengths of NIT Goa</button>
                     <button onClick={() => handleMobileNavigation('/admissions/mtech')}>M.Tech</button>
                     <button onClick={() => handleMobileNavigation('/admissions/phd')}>Ph.D</button>
-                    <button onClick={() => handleMobileNavigation('/fee-structure')}>Fee Structure</button>
-                    <button onClick={() => handleMobileNavigation('/admission-notices')}>Admission Notices</button>
+                    <button onClick={() => window.open('https://www.nitgoa.ac.in/static/fee_structure_23-24_25july2023.pdf', '_blank')}>Fee Structure</button>
+                    <button onClick={() => window.open('https://www.nitgoa.ac.in/uploads/AdmissionBrochure%202august2024.pdf', '_blank')}>Admission Brochure</button>
                   </div>
                 )}
               </div>
-
+              
               {/* Training & Placement */}
               <div className="mobile-nav-item">
                 <button 
