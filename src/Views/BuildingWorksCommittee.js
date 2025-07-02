@@ -3,13 +3,15 @@ import './BuildingWorksCommittee.css';
 
 const BuildingWorksCommittee = () => {
   return (
-    <div className="building-works-committee-container">
-      <div className="content-wrapper">
-        <header className="page-header">
+    <div className="building-works-committee-page">
+      <div className="building-works-committee-wrapper">
+        <header className="building-works-committee-page-header">
           <h1>Building and Works Committee</h1>
+          <p className="building-works-committee-subtitle">National Institute of Technology Goa</p>
+          <p className="building-works-committee-description">Infrastructure Development & Management</p>
         </header>
         
-        <div className="building-works-committee-content">
+        <div className="building-works-committee-main-content">
           <div className="table-container">
             <table>
               <tbody>

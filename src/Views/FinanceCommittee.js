@@ -3,13 +3,15 @@ import './FinanceCommittee.css';
 
 const FinanceCommittee = () => {
   return (
-    <div className="finance-committee-container">
-      <div className="content-wrapper">
-        <header className="page-header">
+    <div className="finance-committee-page">
+      <div className="finance-committee-wrapper">
+        <header className="finance-committee-page-header">
           <h1>Finance Committee</h1>
+          <p className="finance-committee-subtitle">National Institute of Technology Goa</p>
+          <p className="finance-committee-description">Financial Governance as per NIT Statute</p>
         </header>
         
-        <div className="finance-committee-content">
+        <div className="finance-committee-main-content">
           <div className="table-container">
             <table>
               <tbody>

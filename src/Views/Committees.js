@@ -3,13 +3,15 @@ import './Committees.css';
 
 const Committees = () => {
   return (
-    <div className="committees-container">
-      <div className="content-wrapper">
-        <header className="page-header">
+    <div className="committees-page">
+      <div className="committees-wrapper">
+        <header className="committees-page-header">
           <h1>Committees</h1>
+          <p className="committees-subtitle">National Institute of Technology Goa</p>
+          <p className="committees-description">Institutional Committees & Contact Information</p>
         </header>
         
-        <div className="committees-content">
+        <div className="committees-main-content">
           <div className="table-container">
             <table>
               <tbody>

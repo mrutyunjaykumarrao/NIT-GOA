@@ -1,5 +1,5 @@
 /* HeadsOfDepartments.css */
-.heads-of-departments-container {
+.heads-of-departments-page {
   min-height: 100vh;
   background: white;
   padding: 2rem 0;
@@ -8,18 +8,18 @@
   margin: 0;
 }
 
-.content-wrapper {
+.heads-of-departments-wrapper {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-.page-header {
+.heads-of-departments-page-header {
   text-align: center;
   margin-bottom: 3rem;
 }
 
-.page-header h1 {
+.heads-of-departments-page-header h1 {
   color: #2c3e50;
   font-size: 28px;
   font-weight: 700;
@@ -27,7 +27,7 @@
   text-align: center;
 }
 
-.heads-of-departments-content {
+.heads-of-departments-main-content {
   background: white;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -39,7 +39,7 @@
   padding: 30px;
 }
 
-table {
+.heads-of-departments-page table {
   width: 100%;
   border-collapse: collapse;
   background-color: #fff;
@@ -52,7 +52,7 @@ table {
   empty-cells: hide;
 }
 
-th, td {
+.heads-of-departments-page th, .heads-of-departments-page td {
   border: 1px solid #dee2e6;
   padding: 1rem 0.8rem;
   text-align: center;
@@ -60,7 +60,7 @@ th, td {
   font-size: 0.95rem;
 }
 
-th {
+.heads-of-departments-page th {
   background: #007bff;
   color: white;
   font-weight: 600;
@@ -72,11 +72,11 @@ th {
 }
 
 /* Column widths */
-th:first-child, td:first-child {
+.heads-of-departments-page th:first-child, .heads-of-departments-page td:first-child {
   width: 25%;
 }
 
-th:nth-child(2), td:nth-child(2) {
+.heads-of-departments-page th:nth-child(2), .heads-of-departments-page td:nth-child(2) {
   width: 35%;
 }
 
@@ -125,16 +125,16 @@ th:nth-child(4), td:nth-child(4) {
 }
 
 /* Table row styling */
-tbody tr:nth-child(even) {
+.heads-of-departments-page tbody tr:nth-child(even) {
   background-color: #f8f9fa;
 }
 
-tbody tr:hover {
+.heads-of-departments-page tbody tr:hover {
   background-color: #e3f2fd;
   transition: background-color 0.3s ease;
 }
 
-td {
+.heads-of-departments-page td {
   text-align: center;
   font-weight: 500;
   color: #2c3e50;

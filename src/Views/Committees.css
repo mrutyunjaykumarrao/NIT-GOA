@@ -1,100 +1,200 @@
 /* Committees.css */
-.committees-container {
+.committees-page {
   min-height: 100vh;
-  background: white;
-  padding: 2rem 0;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 1rem 0;
+  width: 100%;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
   margin: 0;
 }
 
-.content-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
+.committees-wrapper {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
   padding: 0 1rem;
 }
 
-.page-header {
+.committees-page-header {
   text-align: center;
-  margin-bottom: 3rem;
-}
-
-.page-header h1 {
-  color: white;
-  font-size: 3rem;
-  font-weight: 700;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  margin-bottom: 1rem;
-  text-align: center;
-  color: #2c3e50;
-  margin-bottom: 40px;
-  font-size: 28px;
-}
-
-.committees-content {
-  background: white;
+  margin-bottom: 2rem;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  position: relative;
   overflow: hidden;
-  background-color: #f4f6f9;
+}
+
+.committees-page-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.1) 75%);
+  background-size: 30px 30px;
+  animation: moveStripes 20s linear infinite;
+}
+
+@keyframes moveStripes {
+  0% { background-position: 0 0; }
+  100% { background-position: 30px 30px; }
+}
+
+.committees-page-header h1 {
+  font-size: 3rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+  text-transform: uppercase;
+}
+
+.committees-page-header h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: #ffd700;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.committees-subtitle {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin: 1rem 0 0.5rem 0;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
+}
+
+.committees-description {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  font-weight: 400;
+  position: relative;
+  z-index: 1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  font-style: italic;
+}
+
+.committees-main-content {
+  background: linear-gradient(145deg, #ffffff 0%, #f0f7ff 100%);
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.15);
+  width: 100%;
+  border: 1px solid rgba(37, 99, 235, 0.1);
+  overflow: hidden;
 }
 
 .table-container {
+  overflow-x: auto;
+  margin: 1rem 0;
+  border-radius: 12px;
+  border: 2px solid rgba(37, 99, 235, 0.2);
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.1);
   padding: 30px;
 }
 
-table {
+.committees-page table {
   width: 100%;
   border-collapse: collapse;
   background-color: #fff;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  box-shadow: 0 6px 25px rgba(37, 99, 235, 0.15);
+  border-radius: 12px;
   overflow: hidden;
   margin: 0;
   padding: 0;
   border-spacing: 0;
   empty-cells: hide;
-}
-
-th, td {
-  border: 1px solid #dee2e6;
-  padding: 1rem 0.8rem;
-  text-align: center;
-  vertical-align: middle;
   font-size: 0.95rem;
 }
 
-th {
-  background: #007bff;
+.committees-page thead {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
   color: white;
-  font-weight: 600;
+}
+
+.committees-page th {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  color: white;
+  font-weight: 700;
   text-align: center;
+  padding: 1rem 0.8rem;
   font-size: 1rem;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  border: 1px solid #0056b3;
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
-img {
+.committees-page tbody tr {
+  border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+  transition: all 0.3s ease;
+}
+
+.committees-page tbody tr:nth-child(even) {
+  background: linear-gradient(145deg, #f0f7ff 0%, #ffffff 100%);
+}
+
+.committees-page tbody tr:hover {
+  background: linear-gradient(145deg, #e3f2fd 0%, #f0f7ff 100%);
+  transition: background-color 0.3s ease;
+}
+
+.committees-page td {
+  padding: 1rem 0.8rem;
+  vertical-align: middle;
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  line-height: 1.5;
+  font-weight: normal;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.committees-page img {
   width: 120px;
   height: 120px;
   object-fit: cover;
   margin-bottom: 10px;
 }
 
-td p {
+.committees-page td p {
   margin: 5px 0;
   font-size: 15px;
   line-height: 1.4;
 }
 
-td p.name {
-  font-weight: bold;
+.committees-page td p.name {
+  font-weight: normal;
   font-size: 16px;
   color: #004080;
 }
 
-td p.title {
+/* Ensure all table content is normal weight */
+.committees-page td,
+.committees-page td *,
+.committees-page td p {
+  font-weight: normal !important;
+}
+
+.committees-page td p.title {
   color: #555;
   font-style: italic;
   font-size: 14px;
@@ -131,21 +231,21 @@ td a:hover {
     padding: 1rem;
   }
   
-  table, tbody, tr, th, td {
+  .committees-page table, .committees-page tbody, .committees-page tr, .committees-page th, .committees-page td {
     display: block;
     width: 100%;
   }
 
-  tr {
+  .committees-page tr {
     margin-bottom: 25px;
   }
 
-  th {
+  .committees-page th {
     font-size: 16px;
     text-align: left;
   }
 
-  td {
+  .committees-page td {
     text-align: center;
     padding: 20px;
   }
@@ -187,33 +287,33 @@ td a:hover {
 }
 
 /* Enhanced row styling */
-tbody tr {
+.committees-page tbody tr {
   position: relative;
   transition: all 0.3s ease;
 }
 
-tbody tr:nth-child(even) {
+.committees-page tbody tr:nth-child(even) {
   background-color: #f8f9fa;
 }
 
-tbody tr:hover {
+.committees-page tbody tr:hover {
   background-color: #e3f2fd;
   transition: background-color 0.3s ease;
 }
 
-tbody tr::after {
+.committees-page tbody tr::after {
   content: '';
   position: absolute;
   left: 0;
   bottom: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: transparent;
   transition: width 0.3s ease;
 }
 
-tbody tr:hover::after {
-  width: 100%;
+.committees-page tbody tr:hover::after {
+  width: 0;
 }
 
 /* Print styles */

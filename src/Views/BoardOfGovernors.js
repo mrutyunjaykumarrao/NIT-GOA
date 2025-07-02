@@ -70,13 +70,15 @@ const BoardOfGovernors = () => {
   ];
 
   return (
-    <div className="board-of-governors">
-      <div className="container">
-        <div className="page-header">
+    <div className="board-of-governors-page">
+      <div className="board-container">
+        <div className="board-page-header">
           <h1>Board of Governors</h1>
+          <p className="board-subtitle">National Institute of Technology Goa</p>
+          <p className="board-description">Governing Body as per NIT Act 2007</p>
         </div>
 
-        <div className="board-content">
+        <div className="board-of-governors-content">
           <div className="board-table-container">
             <table className="board-table">
               <thead>

@@ -45,6 +45,8 @@ const Senate = () => {
       <div className="container">
         <div className="page-header">
           <h1>Senate</h1>
+          <p className="senate-subtitle">National Institute of Technology Goa</p>
+          <p className="senate-description">Academic Senate Meeting Minutes</p>
         </div>
 
         <div className="senate-content">

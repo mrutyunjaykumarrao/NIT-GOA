@@ -1,76 +1,176 @@
 /* Senate Page Styles */
 .senate-page {
   min-height: 100vh;
-  background: #f8f9fa;
-  padding: 2rem 0;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 1rem 0;
+  width: 100%;
 }
 
 .senate-page .container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 2rem;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 1rem;
 }
 
 .page-header {
   text-align: center;
   margin-bottom: 2rem;
-  padding: 2rem 0;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.1) 75%);
+  background-size: 30px 30px;
+  animation: moveStripes 20s linear infinite;
+}
+
+@keyframes moveStripes {
+  0% { background-position: 0 0; }
+  100% { background-position: 30px 30px; }
 }
 
 .page-header h1 {
-  font-size: 2.5rem;
-  color: #2c3e50;
+  font-size: 3rem;
+  color: #ffffff !important;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+  text-transform: uppercase;
+}
+
+/* Senate page specific - highest priority */
+.senate-page .page-header h1 {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Additional specific selectors to ensure white color */
+.senate-page .page-header h1 {
+  color: #ffffff !important;
+}
+
+.senate-page h1 {
+  color: #ffffff !important;
+}
+
+/* Super specific selectors to override any global styles */
+.senate-page .container .page-header h1 {
+  color: white !important;
+}
+
+div.senate-page div.container div.page-header h1 {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Force white color with multiple methods */
+.senate-page h1,
+.senate-page .page-header h1,
+.senate-page .container .page-header h1 {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.page-header h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: #ffd700;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.senate-subtitle {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin: 1rem 0 0.5rem 0;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
+}
+
+.senate-description {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
   margin: 0;
-  font-weight: 700;
+  font-weight: 400;
+  position: relative;
+  z-index: 1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  font-style: italic;
 }
 
 .senate-content {
-  background: white;
-  border-radius: 10px;
-  padding: 2rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(145deg, #ffffff 0%, #f0f7ff 100%);
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.15);
+  width: 100%;
+  border: 1px solid rgba(37, 99, 235, 0.1);
 }
 
 /* Table Styles */
 .table-container {
   overflow-x: auto;
-  margin-bottom: 3rem;
-  border: none;
-  padding: 0;
-  position: relative;
-}
-
-.table-container::after {
-  content: none;
-  display: none;
+  margin: 1rem 0;
+  border-radius: 12px;
+  border: 2px solid rgba(37, 99, 235, 0.2);
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.1);
 }
 
 .senate-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.95rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 6px 25px rgba(37, 99, 235, 0.15);
+  border-radius: 12px;
   overflow: hidden;
   margin: 0;
   padding: 0;
   border-spacing: 0;
   empty-cells: hide;
+  font-size: 0.95rem;
+}
+
+.senate-table thead {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  color: white;
 }
 
 .senate-table th {
-  background: #007bff;
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
   color: white;
-  font-weight: 600;
+  font-weight: 700;
   text-align: center;
   padding: 1rem 0.8rem;
   font-size: 1rem;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  border: 1px solid #0056b3;
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
 .senate-table th:first-child {
@@ -95,33 +195,48 @@
 
 .senate-table td {
   padding: 1rem 0.8rem;
-  border: 1px solid #dee2e6;
   vertical-align: middle;
+  border: 1px solid rgba(37, 99, 235, 0.15);
   line-height: 1.5;
+  font-weight: normal;
+  color: #2c3e50;
   text-align: center;
 }
 
+.senate-table tbody tr {
+  border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+  transition: all 0.3s ease;
+}
+
 .senate-table tbody tr:nth-child(even) {
-  background-color: #f8f9fa;
+  background: linear-gradient(145deg, #f0f7ff 0%, #ffffff 100%);
 }
 
 .senate-table tbody tr:hover {
-  background-color: #e3f2fd;
+  background: linear-gradient(145deg, rgba(37, 99, 235, 0.1) 0%, rgba(30, 64, 175, 0.1) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
   transition: background-color 0.3s ease;
 }
 
 /* Text alignment - all cells centered */
 .senate-table td {
   text-align: center;
-  font-weight: 500;
-  color: #2c3e50;
+  font-weight: normal;
+  color: #000000;
+}
+
+/* Ensure all table content is normal weight */
+.senate-table td,
+.senate-table td * {
+  font-weight: normal !important;
 }
 
 /* Rowspan styling */
 .senate-table td[rowspan] {
-  background-color: #f1f3f4;
-  font-weight: 600;
-  border: 1px solid #dee2e6;
+  background: linear-gradient(145deg, #f0f7ff 0%, #ffffff 100%);
+  font-weight: normal;
+  border: 1px solid rgba(37, 99, 235, 0.15);
   text-align: center;
   vertical-align: middle;
 }
@@ -235,8 +350,15 @@
     padding: 1rem 0;
   }
   
-  .page-header h1 {
+  .senate-page .page-header h1 {
     font-size: 2rem;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+  
+  .senate-page .page-header h1,
+  .senate-page h1 {
+    color: #ffffff !important;
   }
   
   .senate-content {
@@ -258,8 +380,15 @@
 }
 
 @media (max-width: 480px) {
-  .page-header h1 {
+  .senate-page .page-header h1 {
     font-size: 1.5rem;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+  
+  .senate-page .page-header h1,
+  .senate-page h1 {
+    color: #ffffff !important;
   }
   
   .senate-content {
