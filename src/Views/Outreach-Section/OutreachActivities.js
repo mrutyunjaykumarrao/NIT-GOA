@@ -2,361 +2,417 @@ import React, { useState } from 'react';
 import './OutreachActivities.css';
 
 const OutreachActivities = () => {
-  const [activeTab, setActiveTab] = useState('community');
+  // State for the first card image swapping
+  const [card1MainImage, setCard1MainImage] = useState("https://www.nitgoa.ac.in/static/SPIEdamodarschool.jpg");
+  const [card1Gallery, setCard1Gallery] = useState([
+    "https://www.nitgoa.ac.in/static/SPIEmushtfund.jpg",
+    "https://www.nitgoa.ac.in/static/stem3.jpg"
+  ]);
 
-  const outreachPrograms = {
-    community: {
-      title: 'Community Engagement',
-      icon: '🤝',
-      programs: [
-        {
-          title: 'Digital Literacy Program',
-          description: 'Teaching basic computer skills and digital literacy to rural communities and senior citizens.',
-          impact: '500+ beneficiaries trained',
-          duration: 'Ongoing',
-          image: '💻',
-          details: [
-            'Basic computer operations and internet usage',
-            'Digital payment systems training',
-            'Online government services access',
-            'Email and communication skills'
-          ]
-        },
-        {
-          title: 'Health Awareness Campaigns',
-          description: 'Organizing health checkups, awareness sessions, and hygiene education in local villages.',
-          impact: '1200+ people reached',
-          duration: 'Monthly',
-          image: '🏥',
-          details: [
-            'Free health checkups and consultations',
-            'COVID-19 vaccination awareness',
-            'Maternal and child health education',
-            'Mental health awareness sessions'
-          ]
-        },
-        {
-          title: 'Skill Development Workshops',
-          description: 'Vocational training programs for unemployed youth and women in nearby communities.',
-          impact: '300+ participants trained',
-          duration: 'Quarterly',
-          image: '🛠️',
-          details: [
-            'Technical skills training',
-            'Entrepreneurship development',
-            'Financial literacy programs',
-            'Career guidance and counseling'
-          ]
-        }
-      ]
-    },
-    education: {
-      title: 'Educational Outreach',
-      icon: '📚',
-      programs: [
-        {
-          title: 'School Partnership Program',
-          description: 'Collaborating with local schools to improve STEM education and infrastructure.',
-          impact: '15 schools partnered',
-          duration: 'Ongoing',
-          image: '🏫',
-          details: [
-            'STEM lab setup and equipment donation',
-            'Teacher training workshops',
-            'Student mentorship programs',
-            'Science fair organization'
-          ]
-        },
-        {
-          title: 'Adult Education Initiative',
-          description: 'Providing basic literacy and numeracy education to adults in rural areas.',
-          impact: '200+ adults educated',
-          duration: 'Ongoing',
-          image: '📖',
-          details: [
-            'Basic reading and writing skills',
-            'Numerical literacy training',
-            'Functional English classes',
-            'Life skills education'
-          ]
-        },
-        {
-          title: 'Engineering for Society',
-          description: 'Student-led projects addressing local engineering challenges and solutions.',
-          impact: '25+ projects completed',
-          duration: 'Annual',
-          image: '⚙️',
-          details: [
-            'Water purification systems',
-            'Solar energy solutions',
-            'Waste management projects',
-            'Agricultural technology innovation'
-          ]
-        }
-      ]
-    },
-    environment: {
-      title: 'Environmental Conservation',
-      icon: '🌱',
-      programs: [
-        {
-          title: 'Plantation Drives',
-          description: 'Large-scale tree plantation and maintenance programs in collaboration with local authorities.',
-          impact: '5000+ trees planted',
-          duration: 'Seasonal',
-          image: '🌳',
-          details: [
-            'Native species plantation',
-            'Coastal area afforestation',
-            'Campus greening initiatives',
-            'Community garden development'
-          ]
-        },
-        {
-          title: 'Clean Goa Campaign',
-          description: 'Beach cleaning, waste segregation awareness, and plastic-free initiatives.',
-          impact: '50+ beaches cleaned',
-          duration: 'Monthly',
-          image: '🏖️',
-          details: [
-            'Beach and river cleaning drives',
-            'Plastic waste reduction campaigns',
-            'Waste segregation education',
-            'Eco-friendly alternatives promotion'
-          ]
-        },
-        {
-          title: 'Renewable Energy Awareness',
-          description: 'Promoting solar energy adoption and energy conservation in rural communities.',
-          impact: '100+ households impacted',
-          duration: 'Ongoing',
-          image: '☀️',
-          details: [
-            'Solar panel installation guidance',
-            'Energy conservation workshops',
-            'Renewable energy demonstrations',
-            'Cost-benefit analysis sessions'
-          ]
-        }
-      ]
-    },
-    technology: {
-      title: 'Technology Transfer',
-      icon: '💡',
-      programs: [
-        {
-          title: 'Innovation Hub',
-          description: 'Facilitating technology transfer from research labs to industry and society.',
-          impact: '10+ technologies transferred',
-          duration: 'Ongoing',
-          image: '🔬',
-          details: [
-            'Industry-academia collaboration',
-            'Prototype development support',
-            'Patent filing assistance',
-            'Commercialization guidance'
-          ]
-        },
-        {
-          title: 'Startup Incubation',
-          description: 'Supporting student and alumni startups with mentorship and resources.',
-          impact: '20+ startups incubated',
-          duration: 'Ongoing',
-          image: '🚀',
-          details: [
-            'Business plan development',
-            'Funding assistance and connections',
-            'Mentorship programs',
-            'Market research support'
-          ]
-        },
-        {
-          title: 'Digital Infrastructure Support',
-          description: 'Helping local organizations and governments with digital transformation.',
-          impact: '5+ organizations assisted',
-          duration: 'Project-based',
-          image: '🌐',
-          details: [
-            'Website and application development',
-            'Database management systems',
-            'Digital governance solutions',
-            'IT infrastructure planning'
-          ]
-        }
-      ]
-    }
+  // State for the second card image swapping
+  const [card2MainImage, setCard2MainImage] = useState("https://www.nitgoa.ac.in/static/SCIENCE FAIR.jpg");
+  const [card2Gallery, setCard2Gallery] = useState([
+    "https://www.nitgoa.ac.in/static/RAA.jpg",
+    "https://www.nitgoa.ac.in/static/stem4.jpg"
+  ]);
+
+  // State for remaining cards
+  const [card3MainImage, setCard3MainImage] = useState("https://www.nitgoa.ac.in/static/swachhata 21march2024.jpg");
+  const [card3Gallery, setCard3Gallery] = useState([
+    "https://www.nitgoa.ac.in/static/swachhata.jpg",
+    "https://www.nitgoa.ac.in/static/SHRAMDHAAN1.jpg"
+  ]);
+
+  const [card4MainImage, setCard4MainImage] = useState("https://www.nitgoa.ac.in/static/arduino(1).jpg");
+  const [card4Gallery, setCard4Gallery] = useState([
+    "https://www.nitgoa.ac.in/static/arduino(2).jpg",
+    "https://www.nitgoa.ac.in/static/stem5.jpg"
+  ]);
+
+  const [card5MainImage, setCard5MainImage] = useState("https://www.nitgoa.ac.in/static/UBA1.png");
+  const [card5Gallery, setCard5Gallery] = useState([
+    "https://www.nitgoa.ac.in/static/SURVEY IN KALAY1.jpg",
+    "https://www.nitgoa.ac.in/static/KALAY_GRAMSABHA.jpg"
+  ]);
+
+  const [card6MainImage, setCard6MainImage] = useState("https://www.nitgoa.ac.in/static/School Visit.jpg");
+  const [card6Gallery, setCard6Gallery] = useState([
+    "https://www.nitgoa.ac.in/static/Permanent_Campus.jpeg",
+    "https://www.nitgoa.ac.in/static/Industrial visit(1).jpg"
+  ]);
+
+  const [card7MainImage, setCard7MainImage] = useState("https://www.nitgoa.ac.in/static/img 16march2024.jpeg");
+  const [card7Gallery, setCard7Gallery] = useState([
+    "https://www.nitgoa.ac.in/static/SHRAMDHAAN2.jpg",
+    "https://www.nitgoa.ac.in/static/img12march2024.jpg"
+  ]);
+
+  const [card8MainImage, setCard8MainImage] = useState("https://www.nitgoa.ac.in/static/enggday1.jpg");
+  const [card8Gallery, setCard8Gallery] = useState([
+    "https://www.nitgoa.ac.in/static/enggday2.jpg",
+    "https://www.nitgoa.ac.in/static/enggday3.jpg"
+  ]);
+
+  const [card9MainImage, setCard9MainImage] = useState("https://www.nitgoa.ac.in/static/stem1.jpg");
+  const [card9Gallery, setCard9Gallery] = useState([
+    "https://www.nitgoa.ac.in/static/stem2.jpg",
+    "https://www.nitgoa.ac.in/static/stem3.jpg"
+  ]);
+
+  // Function to handle image swap for card 1
+  const handleCard1ImageSwap = (clickedImage) => {
+    const currentMain = card1MainImage;
+    setCard1MainImage(clickedImage);
+    setCard1Gallery(card1Gallery.map(img => 
+      img === clickedImage ? currentMain : img
+    ));
   };
 
-  const partnerships = [
-    {
-      name: 'Government of Goa',
-      type: 'Government',
-      description: 'Collaborative projects for digital governance and smart city initiatives',
-      logo: '🏛️'
-    },
-    {
-      name: 'Local NGOs',
-      type: 'Non-Profit',
-      description: 'Joint community service and social welfare programs',
-      logo: '🤲'
-    },
-    {
-      name: 'Industry Partners',
-      type: 'Industry',
-      description: 'Technology transfer and skill development initiatives',
-      logo: '🏭'
-    },
-    {
-      name: 'International Organizations',
-      type: 'International',
-      description: 'Global outreach and knowledge exchange programs',
-      logo: '🌍'
-    }
-  ];
+  // Function to handle image swap for card 2
+  const handleCard2ImageSwap = (clickedImage) => {
+    const currentMain = card2MainImage;
+    setCard2MainImage(clickedImage);
+    setCard2Gallery(card2Gallery.map(img => 
+      img === clickedImage ? currentMain : img
+    ));
+  };
 
-  const upcomingEvents = [
-    {
-      date: '2024-12-15',
-      title: 'Digital Literacy Drive',
-      location: 'Margao Community Center',
-      type: 'Workshop'
-    },
-    {
-      date: '2024-12-20',
-      title: 'Beach Cleaning Campaign',
-      location: 'Calangute Beach',
-      type: 'Environmental'
-    },
-    {
-      date: '2025-01-10',
-      title: 'Health Awareness Camp',
-      location: 'Ponda Village',
-      type: 'Health'
-    },
-    {
-      date: '2025-01-25',
-      title: 'Technology Transfer Fair',
-      location: 'NIT Goa Campus',
-      type: 'Innovation'
-    }
-  ];
+  // Handler functions for all remaining cards
+  const handleCard3ImageSwap = (clickedImage) => {
+    const currentMain = card3MainImage;
+    setCard3MainImage(clickedImage);
+    setCard3Gallery(card3Gallery.map(img => img === clickedImage ? currentMain : img));
+  };
+
+  const handleCard4ImageSwap = (clickedImage) => {
+    const currentMain = card4MainImage;
+    setCard4MainImage(clickedImage);
+    setCard4Gallery(card4Gallery.map(img => img === clickedImage ? currentMain : img));
+  };
+
+  const handleCard5ImageSwap = (clickedImage) => {
+    const currentMain = card5MainImage;
+    setCard5MainImage(clickedImage);
+    setCard5Gallery(card5Gallery.map(img => img === clickedImage ? currentMain : img));
+  };
+
+  const handleCard6ImageSwap = (clickedImage) => {
+    const currentMain = card6MainImage;
+    setCard6MainImage(clickedImage);
+    setCard6Gallery(card6Gallery.map(img => img === clickedImage ? currentMain : img));
+  };
+
+  const handleCard7ImageSwap = (clickedImage) => {
+    const currentMain = card7MainImage;
+    setCard7MainImage(clickedImage);
+    setCard7Gallery(card7Gallery.map(img => img === clickedImage ? currentMain : img));
+  };
+
+  const handleCard8ImageSwap = (clickedImage) => {
+    const currentMain = card8MainImage;
+    setCard8MainImage(clickedImage);
+    setCard8Gallery(card8Gallery.map(img => img === clickedImage ? currentMain : img));
+  };
+
+  const handleCard9ImageSwap = (clickedImage) => {
+    const currentMain = card9MainImage;
+    setCard9MainImage(clickedImage);
+    setCard9Gallery(card9Gallery.map(img => img === clickedImage ? currentMain : img));
+  };
 
   return (
-    <div className="outreach-page">
-      <div className="outreach-container">
-        <div className="outreach-header">
-          <h1 className="outreach-title">Outreach Activities</h1>
-          <p className="outreach-subtitle">
-            Connecting with communities through education, technology, and social responsibility
-          </p>
-        </div>
+    <div className="outreach-container">
+      <div className="outreach-hero">
+        <h1>Outreach Activities</h1>
+        <p>Connecting with communities through education, innovation, and social responsibility</p>
+      </div>
 
-        {/* Tab Navigation */}
-        <div className="tab-navigation">
-          {Object.keys(outreachPrograms).map((tab) => (
-            <button
-              key={tab}
-              className={`tab-button ${activeTab === tab ? 'active' : ''}`}
-              onClick={() => setActiveTab(tab)}
-            >
-              <span className="tab-icon">{outreachPrograms[tab].icon}</span>
-              <span className="tab-text">{outreachPrograms[tab].title}</span>
-            </button>
-          ))}
-        </div>
+      <div className="outreach-content">
+        
+        {/* Main Story */}
+        <section className="featured-story">
+          <div className="featured-story-content">
+            <div className="featured-story-text">
+              <div className="story-category">Featured Initiative</div>
+              <h2>Women in STEM Workshop</h2>
+              <p>The SPIE Student Chapter NIT Goa conducted an inspiring workshop at Sharada Mandir School, Panjim, focusing on sparking interest in STEM fields among middle school girls through hands-on experiments in physics, optics, and robotics.</p>
+              <div className="story-date">March 2024</div>
+            </div>
+            <div className="featured-story-image">
+              <img 
+                src="https://www.nitgoa.ac.in/static/img6march2024.jpg" 
+                alt="Women in STEM Initiative by SPIE Student Chapter" 
+                onError={(e) => {e.target.src = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"}}
+              />
+            </div>
+          </div>
+        </section>
 
-        {/* Programs Content */}
-        <div className="programs-section">
-          <h2 className="section-title">
-            {outreachPrograms[activeTab].icon} {outreachPrograms[activeTab].title}
-          </h2>
-          <div className="programs-grid">
-            {outreachPrograms[activeTab].programs.map((program, index) => (
-              <div key={index} className="program-card">
-                <div className="program-header">
-                  <div className="program-image">{program.image}</div>
-                  <div className="program-meta">
-                    <h3 className="program-title">{program.title}</h3>
-                    <div className="program-stats">
-                      <span className="program-impact">{program.impact}</span>
-                      <span className="program-duration">{program.duration}</span>
-                    </div>
-                  </div>
-                </div>
-                <p className="program-description">{program.description}</p>
-                <div className="program-details">
-                  <h4>Key Activities:</h4>
-                  <ul>
-                    {program.details.map((detail, idx) => (
-                      <li key={idx}>{detail}</li>
-                    ))}
-                  </ul>
+        {/* Recent Activities Grid */}
+        <section className="activities-section">
+          <h2 className="section-title">Recent Activities</h2>
+          
+          <div className="activities-grid">
+            <div className="activity-card">
+              <img 
+                src={card1MainImage}
+                alt="Light & Optics Workshop" 
+                className="activity-image"
+                onError={(e) => {e.target.src = "https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"}}
+              />
+              <div className="activity-content">
+                <h3>Light & Optics Workshops</h3>
+                <p>SPIE student chapter organized workshops at Mustifund High School and Damodar Higher Secondary School, introducing students to the fascinating world of light and optics through interactive demonstrations.</p>
+                <div className="activity-gallery">
+                  {card1Gallery.map((imgSrc, index) => (
+                    <img 
+                      key={index}
+                      src={imgSrc} 
+                      alt={index === 0 ? "Mustifund workshop" : "Interactive sessions"} 
+                      className="gallery-img"
+                      onClick={() => handleCard1ImageSwap(imgSrc)}
+                    />
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Two Column Layout for Partnerships and Events */}
-        <div className="bottom-section">
-          {/* Partnerships */}
-          <div className="partnerships-section">
-            <h2 className="section-title">🤝 Our Partners</h2>
-            <div className="partnerships-grid">
-              {partnerships.map((partner, index) => (
-                <div key={index} className="partner-card">
-                  <div className="partner-logo">{partner.logo}</div>
-                  <div className="partner-content">
-                    <h3 className="partner-name">{partner.name}</h3>
-                    <span className="partner-type">{partner.type}</span>
-                    <p className="partner-description">{partner.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Upcoming Events */}
-          <div className="events-section">
-            <h2 className="section-title">📅 Upcoming Events</h2>
-            <div className="events-list">
-              {upcomingEvents.map((event, index) => (
-                <div key={index} className="event-card">
-                  <div className="event-date">
-                    {new Date(event.date).toLocaleDateString('en-US', { 
-                      month: 'short', 
-                      day: 'numeric' 
-                    })}
-                  </div>
-                  <div className="event-content">
-                    <h3 className="event-title">{event.title}</h3>
-                    <p className="event-location">📍 {event.location}</p>
-                    <span className="event-type">{event.type}</span>
-                  </div>
-                </div>
-              ))}
             </div>
 
-            {/* Get Involved Section */}
-            <div className="get-involved">
-              <h3 className="get-involved-title">Get Involved</h3>
-              <p className="get-involved-description">
-                Join our outreach initiatives and make a positive impact in the community
-              </p>
-              <div className="involvement-buttons">
-                <button className="involve-btn volunteer-btn">
-                  🙋‍♀️ Volunteer
-                </button>
-                <button className="involve-btn partner-btn">
-                  🤝 Partner With Us
-                </button>
-                <button className="involve-btn contact-btn">
-                  📧 Contact Outreach Office
-                </button>
+            <div className="activity-card">
+              <img 
+                src={card2MainImage}
+                alt="All Goa Science Fair" 
+                className="activity-image"
+                onError={(e) => {e.target.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"}}
+              />
+              <div className="activity-content">
+                <h3>All Goa Science Fair</h3>
+                <p>The inaugural All Goa Science Fair brought together 42 teams of grades 8-10 students to showcase innovative projects on "Science and technology for a clean and green tomorrow".</p>
+                <div className="activity-gallery">
+                  {card2Gallery.map((imgSrc, index) => (
+                    <img 
+                      key={index}
+                      src={imgSrc} 
+                      alt={index === 0 ? "RAA programs" : "Student projects"} 
+                      className="gallery-img"
+                      onClick={() => handleCard2ImageSwap(imgSrc)}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="activity-card">
+              <img 
+                src={card3MainImage}
+                alt="Swachh Bharat Initiative" 
+                className="activity-image"
+                onError={(e) => {e.target.src = "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"}}
+              />
+              <div className="activity-content">
+                <h3>Swachhata Hi Seva Campaign</h3>
+                <p>NIT Goa conducted comprehensive cleanliness drives in collaboration with Cuncolim Municipality Corporation, cleaning Demani Village adjacent to our campus and promoting environmental awareness.</p>
+                <div className="activity-gallery">
+                  {card3Gallery.map((img, index) => (
+                    <img 
+                      key={index}
+                      src={img} 
+                      alt={`Swachhata activity ${index + 1}`} 
+                      className="gallery-img" 
+                      onClick={() => handleCard3ImageSwap(img)}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="activity-card">
+              <img 
+                src={card4MainImage}
+                alt="Arduino Workshop" 
+                className="activity-image"
+                onError={(e) => {e.target.src = "https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"}}
+              />
+              <div className="activity-content">
+                <h3>Arduino & Electronics Workshops</h3>
+                <p>Hands-on Arduino workshops introduce school students to basic electronics and programming concepts, fostering understanding of microcontroller applications in modern technology.</p>
+                <div className="activity-gallery">
+                  {card4Gallery.map((img, index) => (
+                    <img 
+                      key={index}
+                      src={img} 
+                      alt={`Arduino workshop ${index + 1}`} 
+                      className="gallery-img" 
+                      onClick={() => handleCard4ImageSwap(img)}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="activity-card">
+              <img 
+                src={card5MainImage}
+                alt="Village Development Programs" 
+                className="activity-image"
+                onError={(e) => {e.target.src = "https://images.unsplash.com/photo-1594736797933-d0401ba871ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"}}
+              />
+              <div className="activity-content">
+                <h3>Village Development Program</h3>
+                <p>Through Unnat Bharat Abhiyan, NIT Goa actively engages with adopted villages Kalay and Guirdolim, conducting surveys, participating in Gramsabha meetings, and implementing development initiatives.</p>
+                <div className="activity-gallery">
+                  {card5Gallery.map((img, index) => (
+                    <img 
+                      key={index}
+                      src={img} 
+                      alt={`Village development ${index + 1}`} 
+                      className="gallery-img" 
+                      onClick={() => handleCard5ImageSwap(img)}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="activity-card">
+              <img 
+                src={card6MainImage}
+                alt="Campus Visit Program" 
+                className="activity-image"
+                onError={(e) => {e.target.src = "https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"}}
+              />
+              <div className="activity-content">
+                <h3>School Campus Visit Program</h3>
+                <p>Government High School students from Vidhyanagar, Aquem, Margao visited NIT Goa campus as part of the new Education Policy, attending lectures on Experimental Physics, Chemistry, and Mathematics.</p>
+                <div className="activity-gallery">
+                  {card6Gallery.map((img, index) => (
+                    <img 
+                      key={index}
+                      src={img} 
+                      alt={`Campus visit ${index + 1}`} 
+                      className="gallery-img" 
+                      onClick={() => handleCard6ImageSwap(img)}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="activity-card">
+              <img 
+                src={card7MainImage}
+                alt="Health Awareness Programs" 
+                className="activity-image"
+                onError={(e) => {e.target.src = "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"}}
+              />
+              <div className="activity-content">
+                <h3>Health & Safety Initiatives</h3>
+                <p>NIT Goa organizes blood donation camps, health awareness programs, and Safai Mitra Suraksha Shivirs focusing on worker safety, hygiene, and overall community well-being.</p>
+                <div className="activity-gallery">
+                  {card7Gallery.map((img, index) => (
+                    <img 
+                      key={index}
+                      src={img} 
+                      alt={`Health initiative ${index + 1}`} 
+                      className="gallery-img" 
+                      onClick={() => handleCard7ImageSwap(img)}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="activity-card">
+              <img 
+                src={card8MainImage}
+                alt="Engineering Day Celebrations" 
+                className="activity-image"
+                onError={(e) => {e.target.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"}}
+              />
+              <div className="activity-content">
+                <h3>Engineering Day & Innovation Showcase</h3>
+                <p>Annual Engineering Day celebrations feature technical exhibitions, project demonstrations, and interactive sessions with school students, showcasing the latest research and innovations from all departments.</p>
+                <div className="activity-gallery">
+                  {card8Gallery.map((img, index) => (
+                    <img 
+                      key={index}
+                      src={img} 
+                      alt={`Engineering day ${index + 1}`} 
+                      className="gallery-img" 
+                      onClick={() => handleCard8ImageSwap(img)}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="activity-card">
+              <img 
+                src={card9MainImage}
+                alt="STEM Activities" 
+                className="activity-image"
+                onError={(e) => {e.target.src = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"}}
+              />
+              <div className="activity-content">
+                <h3>STEM Educational Programs</h3>
+                <p>Comprehensive STEM programs introducing students to hands-on learning experiences in science, technology, engineering, and mathematics through interactive workshops and demonstrations.</p>
+                <div className="activity-gallery">
+                  {card9Gallery.map((img, index) => (
+                    <img 
+                      key={index}
+                      src={img} 
+                      alt={`STEM activity ${index + 1}`} 
+                      className="gallery-img" 
+                      onClick={() => handleCard9ImageSwap(img)}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="activity-card text-only-card">
+              <div className="activity-content">
+                <h3>Rural Outreach Programs</h3>
+                <p>Rural outreach initiatives focusing on technology transfer, skill development, and infrastructure improvement to enhance quality of life in local villages through sustained community engagement. These programs include community surveys, skill development workshops, digital literacy training, and sustainable development projects that directly benefit rural communities around NIT Goa.</p>
+              </div>
+            </div>
+
+            <div className="activity-card text-only-card">
+              <div className="activity-content">
+                <h3>Student Excellence & Recognition</h3>
+                <p>NIT Goa students consistently excel in national and international competitions, research projects, and innovation challenges, bringing recognition to the institute through their outstanding achievements. Students have won prestigious awards in robotics competitions, hackathons, research symposiums, and technical festivals across the country, showcasing the quality of education and innovation culture at NIT Goa.</p>
+              </div>
+            </div>
+
+            <div className="activity-card text-only-card">
+              <div className="activity-content">
+                <h3>Special Events & Celebrations</h3>
+                <p>Cultural festivals, awareness campaigns, and special events that bring together the academic community and local residents in celebration of shared values and community spirit. These events include Independence Day celebrations, Republic Day ceremonies, cultural festivals, environmental awareness campaigns, and community gatherings that strengthen the bond between NIT Goa and the local community.</p>
               </div>
             </div>
           </div>
-        </div>
+        </section>
+
+        {/* Impact Section */}
+        <section className="impact-section">
+          <div className="impact-content">
+            <h2>Our Impact</h2>
+            <div className="impact-stats">
+              <div className="stat-item">
+                <div className="stat-number">500+</div>
+                <div className="stat-label">Students Reached</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">15+</div>
+                <div className="stat-label">Schools Visited</div>
+              </div>
+              <div className="stat-item">
+                <div className="stat-number">10+</div>
+                <div className="stat-label">Communities Served</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
       </div>
     </div>
   );

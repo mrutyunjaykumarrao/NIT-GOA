@@ -7,27 +7,27 @@ const regulationsData = [
 		entries: [
 			{
 				title: 'Batches Admitted for B.Tech from 2023 onwards',
-				file: '/src/assets/AcademicsSection/Rules & Regulations/U.G Rules Regulations/Batches Admitted for B.Tech from 2023 onwards.pdf',
+				file: '/pdf/Academics/Rules_Regulations/Batches Admitted for B.Tech from 2023 onwards.pdf',
 			},
 			{
 				title: 'Batches Admitted for B.Tech from 2013 to 2022',
-				file: '/src/assets/AcademicsSection/Rules & Regulations/U.G Rules Regulations/Batches Admitted for B.Tech from 2013 to 2022.pdf',
+				file: '/pdf/Academics/Rules_Regulations/Batches Admitted for B.Tech from 2013 to 2022.pdf',
 			},
 			{
 				title: 'Batches Admitted for B.Tech in 2010, 2011, 2012',
-				file: '/src/assets/AcademicsSection/Rules & Regulations/U.G Rules Regulations/Batches Admitted for B.Tech in 2010, 2011, 2012.pdf',
+				file: '/pdf/Academics/Rules_Regulations/Batches Admitted for B.Tech in 2010, 2011, 2012.pdf',
 			},
 			{
 				title: 'P.G Rules & Regulations',
-				file: '/src/assets/AcademicsSection/Rules & Regulations/U.G Rules Regulations/P.G Rules & Regulations.pdf',
+				file: '/pdf/Academics/Rules_Regulations/P.G Rules & Regulations.pdf',
 			},
 			{
 				title: 'Ph.D. Rules & Regulations',
-				file: '/src/assets/AcademicsSection/Rules & Regulations/U.G Rules Regulations/Ph.D. Rules & Regulations.pdf',
+				file: '/pdf/Academics/Rules_Regulations/Ph.D. Rules & Regulations.pdf',
 			},
 			{
 				title: 'Post-Doc Fellowship Rules & Regulations',
-				file: '/src/assets/AcademicsSection/Rules & Regulations/U.G Rules Regulations/Post-Doc Fellowship Rules & Regulations.pdf',
+				file: '/pdf/Academics/Rules_Regulations/Post-Doc Fellowship Rules & Regulations.pdf',
 			},
 		],
 	},
@@ -36,19 +36,23 @@ const regulationsData = [
 		entries: [
 			{
 				title: 'Academic Handbook for Batches admitted for B.Tech from 2023 onwards',
-				file: '/src/assets/AcademicsSection/Rules & Regulations/U.G Curriculum/Academic Handbook for Batches admitted for B.Tech from 2023 onwards.pdf',
+				file: '/pdf/Academics/Curriculum/Academic Handbook for Batches admitted for B.Tech from 2023 onwards.pdf',
+			},
+			{
+				title: 'Minor Syllabus for Batches Admitted in B.Tech from 2022 onwards',
+				file: '#',
 			},
 			{
 				title: 'Academic Handbook for Batches admitted for B.Tech from 2013 to 2022',
-				file: '/src/assets/AcademicsSection/Rules & Regulations/U.G Curriculum/Academic Handbook for Batches admitted for B.Tech from 2013 to 2022.pdf',
+				file: '/pdf/Academics/Curriculum/Academic Handbook for Batches admitted for B.Tech from 2013 to 2022.pdf',
 			},
 			{
-				title: 'Academic Handbook for Batches admitted for B.Tech in 2010, 2011, 2012',
-				file: '/src/assets/AcademicsSection/Rules & Regulations/U.G Curriculum/Academic Handbook for Batches admitted for B.Tech in 2010, 2011, 2012.pdf',
+				title: 'Academic Handbook for B.Tech in 2010, 2011, 2012',
+				file: '/pdf/Academics/Curriculum/Academic Handbook for Batches admitted for B.Tech in 2010, 2011, 2012.pdf',
 			},
 			{
 				title: 'Academic Handbook of courses for PG',
-				file: '/src/assets/AcademicsSection/Rules & Regulations/U.G Curriculum/Academic Handbook of courses for PG.pdf',
+				file: '/pdf/Academics/Curriculum/Academic Handbook of courses for PG.pdf',
 			},
 		],
 	},

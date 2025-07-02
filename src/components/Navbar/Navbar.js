@@ -125,9 +125,10 @@ const Navbar = ({ user, onLogout }) => {
             
             {/* Login/User Section */}
             <div className="auth-section">
-              {user && user.role !== 'guest' ? (
-                <div className="user-menu">
-                  <span className="user-greeting">
+              {user && user.role !== 'guest' ? (          <div className="user-menu">
+            <a href="https://www.nitgoa.ac.in/alumni/" target="_blank" rel="noopener noreferrer" className="nav-btn nav-btn--link">Alumni</a>
+            <a href="https://www.nitgoa.ac.in/rajbhasha/#/" target="_blank" rel="noopener noreferrer" className="nav-btn nav-btn--link">Rajbhasha</a>
+            <span className="user-greeting">
                     Welcome, {user.username}
                   </span>
                   {user.role === 'admin' && (
@@ -166,10 +167,10 @@ const Navbar = ({ user, onLogout }) => {
           </div>
           
           <nav className="top-nav">
-            <a href="/Alumini">Alumini</a>
+            <a href="https://www.nitgoa.ac.in/alumni/" target="_blank" rel="noopener noreferrer">Alumni</a>
             <a href="/tenders">Tenders</a>
             <a href="/gian">GIAN</a>
-            <a href="/rajbhasha">RAJBHASHA</a>
+            <a href="https://www.nitgoa.ac.in/rajbhasha/#/" target="_blank" rel="noopener noreferrer">RAJBHASHA</a>
           </nav>
         </div>
       </div>
@@ -222,8 +223,9 @@ const Navbar = ({ user, onLogout }) => {
                 <a href="/administration/finance-committee">Finance Committee</a>
                 <a href="/administration/building-works-committee">Building and Works Committee</a>
                 <a href="/heads-of-departments">Heads of Departments</a>
-                <a href="/nit-goa-amendment-statute-2023">NIT Goa(Amendment) Statute 2023</a>
-                <a href="/organizational-structure">Organizational Structure</a>
+                <a href="https://www.nitgoa.ac.in/uploads/NITGoaStatute-2023.pdf" target="_blank" rel="noopener noreferrer">NIT Goa(Amendment) Statute 2023</a>
+                <a href="/pdf/Administration/organisationalstructure/Org_Chart.pdf" target="_blank" rel="noopener noreferrer">Organizational Structure</a>
+                <a href="/reports">Reports</a>
               </div>
             )}
           </div>
@@ -237,15 +239,12 @@ const Navbar = ({ user, onLogout }) => {
             <span>Academics</span>
             {openDropdown === 'academics' && (
               <div className="dropdown-menu">
-                <a href="/academics">Academics Overview</a>
-                <a href="/academics/programs">Programs</a>
-                <a href="/academics/departments">Departments</a>
                 <a href="/academic-calendar">Academic Calendar</a>
                 <a href="/academics/regulations">Regulations and Curriculum</a>
-                <a href="/academics/syllabus">Syllabus</a>
                 <a href="/academics/dissertation-formats">Dissertation Formats</a>
-                <a href="/academics/results">Results</a>
-                <a href="/academics/library">Library</a>
+                <a href="https://mis.nitgoa.ac.in/misnitgoa/result.aspx" target="_blank" rel="noopener noreferrer">Results</a>
+                <a href="/academics/departments">Departments</a>
+                <a href="https://www.nitgoa.ac.in/academics/library.html" target="_blank" rel="noopener noreferrer">Library</a>
               </div>
             )}
           </div>
@@ -295,8 +294,8 @@ const Navbar = ({ user, onLogout }) => {
                     </span>
                     {activeSubmenu === 'hostels' && (
                     <div className="submenu hostels-submenu">
-                      <a href="/admissions/hostel/btech">B.Tech Students</a>
-                      <a href="/admissions/hostel/mtech">M.Tech Students</a>
+                      <a href="https://www.nitgoa.ac.in/static/Rules_of_NIT_Goa_Hostel_18July2022.pdf" target="_blank" rel="noopener noreferrer">B.Tech Students</a>
+                      <a href="https://www.nitgoa.ac.in/static/Rules_mtech_hostel_20june16.pdf" target="_blank" rel="noopener noreferrer">M.Tech Students</a>
                     </div>
                     )}
                   </div>
@@ -313,8 +312,7 @@ const Navbar = ({ user, onLogout }) => {
                 <span>Training & Placement</span>
                 {openDropdown === 'training' && (
                   <div className="dropdown-menu">
-                  <a href="/placement">Training & Placement</a>
-                  <a href="/tnp">T & P</a>
+                  <a href="https://www.nitgoa.ac.in/placementcell/" target="_blank" rel="noopener noreferrer">T & P</a>
                   <a href="/company-login">Company Login</a>
                   <a href="/forms-guidelines">Forms & Guidelines</a>
                   </div>
@@ -347,19 +345,18 @@ const Navbar = ({ user, onLogout }) => {
             <span>Research</span>
             {openDropdown === 'research' && (
               <div className="dropdown-menu">
-                <a href="/research">Research Overview</a>
                 <a href="/research/rd-projects">R & D Projects</a>
+                <a href="https://www.nitgoa.ac.in/research/Research_Consultancy/research_consultancy.html" target="_blank" rel="noopener noreferrer">Research & Consultancy</a>
                 <a href="/research/mou-details">Details Of MoUs</a>
-                <a href="/research-consultancy">Research & Consultancy</a>
-                <a href="/ipr-policy">IPR Policy</a>
+                <a href="https://www.nitgoa.ac.in/static/NIT_Goa_IPR_10Nov2015.pdf" target="_blank" rel="noopener noreferrer">IPR Policy</a>
               </div>
             )}
           </div>
 
           <a href="/outreach-activities" className="nav-item">Outreach Activities</a>
           <a href="/nirf" className="nav-item">NIRF</a>
-          <a href="/fee-payment" className="nav-item">Fee Payment</a>
-          <a href="/hostels" className="nav-item">Hostels</a>
+          <a href="https://mis.nitgoa.ac.in/misnitgoa/academic/ONLINEFEESCOLLECTION/Payment.aspx" target="_blank" rel="noopener noreferrer" className="nav-item">Fee Payment</a>
+          <a href="https://www.nitgoa.ac.in/hostels.html" target="_blank" rel="noopener noreferrer" className="nav-item">Hostels</a>
         </div>
       </nav>
 
@@ -406,8 +403,9 @@ const Navbar = ({ user, onLogout }) => {
                     <button onClick={() => handleMobileNavigation('/administration/finance-committee')}>Finance Committee</button>
                     <button onClick={() => handleMobileNavigation('/administration/building-works-committee')}>Building and Works Committee</button>
                     <button onClick={() => handleMobileNavigation('/heads-of-departments')}>Heads of Departments</button>
-                    <button onClick={() => handleMobileNavigation('/nit-goa-amendment-statute-2023')}>NIT Goa(Amendment) Statute 2023</button>
-                    <button onClick={() => handleMobileNavigation('/organizational-structure')}>Organizational Structure</button>
+                    <button onClick={() => window.open('https://www.nitgoa.ac.in/uploads/NITGoaStatute-2023.pdf', '_blank')}>NIT Goa(Amendment) Statute 2023</button>
+                    <button onClick={() => window.open('/pdf/Administration/organisationalstructure/Org_Chart.pdf', '_blank')}>Organizational Structure</button>
+                    <button onClick={() => handleMobileNavigation('/reports')}>Reports</button>
                   </div>
                 )}
               </div>
@@ -425,15 +423,12 @@ const Navbar = ({ user, onLogout }) => {
                 </button>
                 {mobileOpenDropdown === 'academics' && (
                   <div className="mobile-dropdown-menu">
-                    <button onClick={() => handleMobileNavigation('/academics')}>Academics Overview</button>
-                    <button onClick={() => handleMobileNavigation('/academics/programs')}>Programs</button>
-                    <button onClick={() => handleMobileNavigation('/academics/departments')}>Departments</button>
                     <button onClick={() => handleMobileNavigation('/academic-calendar')}>Academic Calendar</button>
                     <button onClick={() => handleMobileNavigation('/academics/regulations')}>Regulations and Curriculum</button>
-                    <button onClick={() => handleMobileNavigation('/academics/syllabus')}>Syllabus</button>
                     <button onClick={() => handleMobileNavigation('/academics/dissertation-formats')}>Dissertation Formats</button>
-                    <button onClick={() => handleMobileNavigation('/academics/results')}>Results</button>
-                    <button onClick={() => handleMobileNavigation('/academics/library')}>Library</button>
+                    <button onClick={() => window.open('https://mis.nitgoa.ac.in/misnitgoa/result.aspx', '_blank')}>Results</button>
+                    <button onClick={() => handleMobileNavigation('/academics/departments')}>Departments</button>
+                    <button onClick={() => window.open('https://www.nitgoa.ac.in/academics/library.html', '_blank')}>Library</button>
                   </div>
                 )}
               </div>
@@ -476,8 +471,7 @@ const Navbar = ({ user, onLogout }) => {
                 </button>
                 {mobileOpenDropdown === 'training' && (
                   <div className="mobile-dropdown-menu">
-                    <button onClick={() => handleMobileNavigation('/placement')}>Training & Placement</button>
-                    <button onClick={() => handleMobileNavigation('/tnp')}>T & P</button>
+                    <button onClick={() => window.open('https://www.nitgoa.ac.in/placementcell/', '_blank')}>T & P</button>
                     <button onClick={() => handleMobileNavigation('/company-login')}>Company Login</button>
                     <button onClick={() => handleMobileNavigation('/forms-guidelines')}>Forms & Guidelines</button>
                   </div>
@@ -518,11 +512,10 @@ const Navbar = ({ user, onLogout }) => {
                 </button>
                 {mobileOpenDropdown === 'research' && (
                   <div className="mobile-dropdown-menu">
-                    <button onClick={() => handleMobileNavigation('/research')}>Research Overview</button>
                     <button onClick={() => handleMobileNavigation('/research/rd-projects')}>R & D Projects</button>
+                    <button onClick={() => window.open('https://www.nitgoa.ac.in/research/Research_Consultancy/research_consultancy.html', '_blank')}>Research & Consultancy</button>
                     <button onClick={() => handleMobileNavigation('/research/mou-details')}>Details Of MoUs</button>
-                    <button onClick={() => handleMobileNavigation('/research-consultancy')}>Research & Consultancy</button>
-                    <button onClick={() => handleMobileNavigation('/ipr-policy')}>IPR Policy</button>
+                    <button onClick={() => window.open('https://www.nitgoa.ac.in/static/NIT_Goa_IPR_10Nov2015.pdf', '_blank')}>IPR Policy</button>
                   </div>
                 )}
               </div>
@@ -535,10 +528,10 @@ const Navbar = ({ user, onLogout }) => {
                 <button onClick={() => handleMobileNavigation('/nirf')}>NIRF</button>
               </div>
               <div className="mobile-nav-item">
-                <button onClick={() => handleMobileNavigation('/fee-payment')}>Fee Payment</button>
+                <button onClick={() => window.open('https://mis.nitgoa.ac.in/misnitgoa/academic/ONLINEFEESCOLLECTION/Payment.aspx', '_blank')}>Fee Payment</button>
               </div>
               <div className="mobile-nav-item">
-                <button onClick={() => handleMobileNavigation('/hostels')}>Hostel</button>
+                <button onClick={() => window.open('https://www.nitgoa.ac.in/hostels.html', '_blank')}>Hostel</button>
               </div>
             </div>
           </div>

@@ -22,11 +22,7 @@
     font-size: 3rem;
     margin-bottom: 0;
     font-weight: 700;
-    color: black !important;
-    background: none !important;
-    -webkit-background-clip: unset !important;
-    -webkit-text-fill-color: black !important;
-    background-clip: unset !important;
+    color: black;
 }
 
 .rd-projects-table-container {

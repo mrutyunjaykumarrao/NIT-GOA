@@ -4,13 +4,13 @@
     background: white;
 }
 
-.mou-container {
+.mou-details-container {
     max-width: 95%;
     margin: 0 auto;
     padding: 0 1rem;
 }
 
-.page-header {
+.mou-details-header {
     text-align: center;
     margin-bottom: 3rem;
     padding: 2rem 0;
@@ -18,7 +18,7 @@
     color: #2c3e50;
 }
 
-.page-header h1 {
+.mou-details-header h1 {
     font-size: 3rem;
     margin-bottom: 0;
     font-weight: 700;
@@ -136,12 +136,12 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .mou-container {
+    .mou-details-container {
         max-width: 98%;
         padding: 0 0.5rem;
     }
     
-    .page-header h1 {
+    .mou-details-header h1 {
         font-size: 2rem;
     }
     
@@ -181,17 +181,17 @@
 }
 
 @media (max-width: 480px) {
-    .mou-container {
+    .mou-details-container {
         max-width: 100%;
         padding: 0;
     }
     
-    .page-header {
+    .mou-details-header {
         padding: 1rem 0;
         margin-bottom: 2rem;
     }
     
-    .page-header h1 {
+    .mou-details-header h1 {
         font-size: 1.8rem;
     }
     
