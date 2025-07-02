@@ -1,7 +1,7 @@
 import React from 'react';
-import './Admissions.css';
+import './MTech.css';
 
-const Admissions = () => {
+const MTech = () => {
     // M.Tech Program data - clean and professional
     const mtechData = {
         title: "M.Tech Admissions",
@@ -189,4 +189,4 @@ const Admissions = () => {
     );
 };
 
-export default Admissions;
+export default MTech;

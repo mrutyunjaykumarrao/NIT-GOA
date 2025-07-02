@@ -17,6 +17,18 @@ import Tenders from './Views/Tenders/Tenders';
 import AcademicCalendar from './Views/Academics-Section/AcademicCalendar';
 import OutreachActivities from './Views/Outreach-Section/OutreachActivities';
 
+// Additional pages that exist but were missing from imports
+import GIAN from './Views/About/GIAN/GIAN';
+import BTechJosaa from './Views/Admission-Section/BTech/BTechJosaa';
+import BTechDasa from './Views/Admission-Section/BTech/BTechDasa';
+import BTechFacilities from './Views/Admission-Section/BTech/BTechFacilities';
+import BTechStrengths from './Views/Admission-Section/BTech/BTechStrengths';
+import MTech from './Views/Admission-Section/MTech';
+import PhD from './Views/Admission-Section/PhD';
+import Faculty from './Views/People-Section/Faculty';
+import RDProjects from './Views/Research-Section/RDProjects';
+import MoUDetails from './Views/Research-Section/MoUDetails';
+
 // Administration Section imports
 import BoardOfGovernors from './Views/Administration-Section/BoardOfGovernors';
 import Director from './Views/Administration-Section/Director';
@@ -37,11 +49,29 @@ function App() {
         <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About />} />
+        <Route path="/gian" element={<GIAN />} />
+        
+        {/* Academics Section Routes */}
         <Route path="/academics/departments" element={<Departments />} />
         <Route path="/academics/regulations" element={<Regulations />} />
         <Route path="/academics/dissertation-formats" element={<DissertationFormats />} />
         <Route path="/academics/syllabus" element={<Syllabus />} />
         <Route path="/academic-calendar" element={<AcademicCalendar />} />
+        
+        {/* Admissions Section Routes */}
+        <Route path="/admissions/btech/josaa-csab" element={<BTechJosaa />} />
+        <Route path="/admissions/btech/dasa" element={<BTechDasa />} />
+        <Route path="/admissions/btech/facilities" element={<BTechFacilities />} />
+        <Route path="/admissions/btech/strengths" element={<BTechStrengths />} />
+        <Route path="/admissions/mtech" element={<MTech />} />
+        <Route path="/admissions/phd" element={<PhD />} />
+        
+        {/* People Section Routes */}
+        <Route path="/faculty" element={<Faculty />} />
+        
+        {/* Research Section Routes */}
+        <Route path="/research/rd-projects" element={<RDProjects />} />
+        <Route path="/research/mou-details" element={<MoUDetails />} />
         
         {/* Administration Section Routes */}
         <Route path="/administration/board-of-governors" element={<BoardOfGovernors />} />
