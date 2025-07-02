@@ -1,0 +1,255 @@
+/* Deans Page - Table Style Layout */
+.deans-page {
+  min-height: 100vh;
+  background: #ffffff;
+  padding: 2rem 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.deans-page .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Header */
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1a365d;
+  margin-bottom: 0;
+}
+
+/* Deans Table */
+.deans-table {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Header */
+.table-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 300px;
+  background: #4a90e2;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.header-cell {
+  padding: 1rem;
+  text-align: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.header-cell:last-child {
+  border-right: none;
+}
+
+/* Table Body */
+.table-body {
+  background: #ffffff;
+}
+
+/* Table Row */
+.table-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 300px;
+  border-bottom: 1px solid #e2e8f0;
+  min-height: 200px;
+  align-items: center;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+/* Table Cell */
+.table-cell {
+  padding: 1.5rem;
+  border-right: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.table-cell:last-child {
+  border-right: none;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Person Profile in Table */
+.person-profile-table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 200px;
+}
+
+/* Person Image - Circular */
+.person-image-table {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #e2e8f0;
+  margin-bottom: 1rem;
+  background: #f9fafb;
+}
+
+.person-image-table img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-placeholder-table {
+  width: 100%;
+  height: 100%;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  font-size: 1.5rem;
+}
+
+/* Person Info in Table */
+.person-info-table {
+  text-align: center;
+}
+
+.person-category {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a365d;
+  margin-bottom: 0.5rem;
+}
+
+.person-name-table {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 0.25rem;
+}
+
+.person-designation-table {
+  font-size: 0.8rem;
+  color: #718096;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.person-email-table {
+  font-size: 0.75rem;
+  color: #3182ce;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.person-email-table:hover {
+  text-decoration: underline;
+}
+
+/* Office Details */
+.office-details-table {
+  font-size: 0.85rem;
+  color: #374151;
+  line-height: 1.6;
+}
+
+.office-detail-item {
+  margin-bottom: 0.5rem;
+}
+
+.office-detail-item:last-child {
+  margin-bottom: 0;
+}
+
+.office-label {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Multiple Associates */
+.associates-table {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .deans-page .container {
+    padding: 0 1rem;
+  }
+
+  .table-header,
+  .table-row {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .table-cell {
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 1rem;
+  }
+
+  .table-cell:last-child {
+    border-bottom: none;
+  }
+
+  .header-cell {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .header-cell:last-child {
+    border-bottom: none;
+  }
+
+  .person-image-table {
+    width: 60px;
+    height: 60px;
+  }
+
+  .associates-table {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .person-image-table {
+    width: 50px;
+    height: 50px;
+  }
+
+  .table-cell {
+    padding: 0.75rem;
+  }
+
+  .associates-table {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+

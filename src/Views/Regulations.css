@@ -1,0 +1,467 @@
+/* Regulations Page Styles */
+.regulations-page {
+    min-height: 100vh;
+    background-color: white;
+    padding: 2rem 0;
+}
+
+.regulations-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Page Header */
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+}
+
+.page-header h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.page-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Category Navigation */
+.category-navigation {
+    margin-bottom: 3rem;
+}
+
+.category-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.category-tab {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 25px;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #666;
+    font-weight: 500;
+}
+
+.category-tab:hover {
+    background: #e9ecef;
+    transform: translateY(-2px);
+}
+
+.category-tab.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Regulations Content */
+.regulations-content {
+    margin-bottom: 3rem;
+}
+
+.regulations-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    color: white;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.regulations-header h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.regulations-header .category-icon {
+    font-size: 3rem;
+}
+
+.regulations-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.regulation-section {
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.regulation-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-color: #667eea;
+}
+
+.regulation-section h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid #667eea;
+}
+
+.regulation-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.regulation-list li {
+    padding: 1rem 0;
+    color: #555;
+    position: relative;
+    padding-left: 2rem;
+    border-bottom: 1px solid #f0f0f0;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.regulation-list li:before {
+    content: "▶";
+    color: #667eea;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    font-size: 0.8rem;
+    top: 1.2rem;
+}
+
+.regulation-list li:last-child {
+    border-bottom: none;
+}
+
+.regulation-list li:hover {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding-left: 1.8rem;
+}
+
+/* Quick Reference */
+.quick-reference {
+    margin-bottom: 3rem;
+}
+
+.quick-reference h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.reference-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.reference-card {
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.reference-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-color: #667eea;
+}
+
+.reference-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.reference-card h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.reference-card p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.reference-value {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* Downloads Section */
+.downloads-section {
+    margin-bottom: 3rem;
+}
+
+.downloads-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+.downloads-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.downloads-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.download-card {
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.download-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-color: #667eea;
+}
+
+.download-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.download-header h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+    flex: 1;
+    margin-right: 1rem;
+}
+
+.download-format {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.download-description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.download-meta {
+    margin-bottom: 1.5rem;
+}
+
+.download-size {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.download-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Contact Information */
+.contact-info {
+    margin-bottom: 2rem;
+}
+
+.contact-info h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.contact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.contact-card {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-card h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.contact-card p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.contact-card p:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .regulations-container {
+        padding: 0 1rem;
+    }
+
+    .page-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .category-tabs {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .category-tab {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+
+    .regulations-header {
+        padding: 1.5rem;
+    }
+
+    .regulations-header h2 {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .regulation-section {
+        padding: 1.5rem;
+    }
+
+    .regulation-section h3 {
+        font-size: 1.5rem;
+    }
+
+    .reference-grid,
+    .downloads-grid,
+    .contact-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-reference h2,
+    .downloads-section h2,
+    .contact-info h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header h1 {
+        font-size: 2rem;
+    }
+
+    .regulations-header {
+        padding: 1rem;
+    }
+
+    .regulations-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .regulation-section,
+    .reference-card,
+    .download-card,
+    .contact-card {
+        padding: 1.5rem;
+    }
+
+    .regulation-list li {
+        padding: 0.75rem 0;
+        padding-left: 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .download-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .download-header h3 {
+        margin-right: 0;
+    }
+}
