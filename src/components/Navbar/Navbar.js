@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import ThemeToggle from '../../Views/ThemeToggle/ThemeToggle';
-import nitLogo from '../../assets/images/Home/NIT_LOGO_192.png';
+// import nitLogo from '../../assets/images/Home/NIT_LOGO_192.png'; // Now using public logo192.png
 
 const Navbar = ({ user, onLogout }) => {
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -180,7 +180,7 @@ const Navbar = ({ user, onLogout }) => {
         <div className="header-content">
           <div className="logo-section">
             <a href="/" className="logo-link">
-              <img src={nitLogo} alt="NIT Goa Logo" className="nit-logo" />
+              <img src="/logo192.png" alt="NIT Goa Logo" className="nit-logo" />
               <div className="institute-info">
                 <h1 className="institute-name-hindi">राष्ट्रीय प्रौद्योगिकी संस्थान गोवा</h1>
                 <h2 className="institute-name-english">National Institute of Technology Goa</h2>

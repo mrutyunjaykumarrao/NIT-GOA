@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import './HomePage.css';
-import placementStats from '../../assets/images/Home/placement_statistics.png';
-import synapseNewsletter from '../../assets/images/Home/synapse_newsletter.png';
-import moeImage from '../../assets/images/Home/moe.png';
-import diiImage from '../../assets/images/Home/dii.png';
-import digilockerImage from '../../assets/images/Home/digilocker_nad.png';
-import fitIndiaImage from '../../assets/images/Home/fit_india.png';
-import swachhBharatImage from '../../assets/images/Home/swach_bharath.png';
-import makeInIndiaImage from '../../assets/images/Home/MakeInIndia.png';
+// import placementStats from '/images/placement_statistics.png'; // Now in public/images, use direct src
+// import synapseNewsletter from '../../assets/images/Home/synapse_newsletter.png'; // Now in public/images
+// import moeImage from '../../assets/images/Home/moe.png'; // Now in public/images
+// import diiImage from '../../assets/images/Home/dii.png'; // Now in public/images  
+// import digilockerImage from '../../assets/images/Home/digilocker_nad.png'; // Now in public/images
+// import fitIndiaImage from '../../assets/images/Home/fit_india.png'; // Now in public/images
+// import swachhBharatImage from '../../assets/images/Home/swach_bharath.png'; // Now in public/images
+// import makeInIndiaImage from '../../assets/images/Home/MakeInIndia.png'; // Now in public/images
 
 const HomePage = () => {
     // Dynamically import all images from the HeroImages folder
@@ -431,11 +431,11 @@ const HomePage = () => {
                     <h2 className="section-title">Placement Statistics</h2>
                     <div className="placement-content">
                         <div className="placement-chart">
-                            <img src={placementStats} alt="Placement Statistics" />
+                            <img src="/images/placement_statistics.png" alt="Placement Statistics" />
                         </div>
                         <div className="placement-info">
                             <div className="synapse-logo">
-                                <img src={synapseNewsletter} alt="Synapse Newsletter" />
+                                <img src="/images/synapse_newsletter.png" alt="Synapse Newsletter" />
                             </div>
                             <div className="tweets-section">
                                 <h3>Tweets</h3>
@@ -506,12 +506,12 @@ const HomePage = () => {
                 <div className="homepage-container">
                     <h3>National Portals</h3>
                     <div className="portals-grid">
-                        <img src={moeImage} alt="Ministry of Education" />
-                        <img src={diiImage} alt="Digital India" />
-                        <img src={digilockerImage} alt="DigiLocker NAD" />
-                        <img src={fitIndiaImage} alt="FIT India" />
-                        <img src={swachhBharatImage} alt="Swachh Bharat" />
-                        <img src={makeInIndiaImage} alt="Make in India" />
+                        <img src="/images/moe.png" alt="Ministry of Education" />
+                        <img src="/images/dii.png" alt="Digital India" />
+                        <img src="/images/digilocker_nad.png" alt="DigiLocker NAD" />
+                        <img src="/images/fit_india.png" alt="FIT India" />
+                        <img src="/images/swach_bharath.png" alt="Swachh Bharat" />
+                        <img src="/images/MakeInIndia.png" alt="Make in India" />
                     </div>
                 </div>
             </section>
