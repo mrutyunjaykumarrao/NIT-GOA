@@ -1,326 +1,710 @@
-.about-page {
-    min-height: 100vh;
-    padding: 40px 0;
-    background: white;
-    position: relative;
+/* About Page Styles - Based on M.Tech Page Design */
+:root {
+    /* Primary Blues - Based on NIT Goa Theme */
+    --primary-blue: #2E86C1;
+    --primary-blue-light: #5DADE2;
+    --primary-blue-dark: #1B4F72;
+    
+    /* Secondary Blues */
+    --secondary-blue-50: #EBF5FB;
+    --secondary-blue-100: #D6EAF8;
+    --secondary-blue-200: #AED6F1;
+    --secondary-blue-800: #0F3460;
+    
+    /* Neutrals */
+    --white: #FFFFFF;
+    --gray-50: #F8F9FA;
+    --gray-100: #F1F3F4;
+    --gray-200: #E9ECEF;
+    --gray-600: #6C757D;
+    --gray-700: #495057;
+    --gray-800: #343A40;
+    
+    /* Accents */
+    --accent-orange: #FF6B35;
+    --accent-green: #28A745;
+    --success-green: #198754;
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.12);
+    --shadow-strong: rgba(0, 0, 0, 0.16);
 }
 
-.about-page::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-    opacity: 0.3;
-    pointer-events: none;
+.about-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--gray-800);
+    background: linear-gradient(135deg, var(--secondary-blue-50) 0%, var(--white) 100%);
+    min-height: 100vh;
 }
 
 .about-container {
-    max-width: 1200px;
+    max-width: 1800px;
     margin: 0 auto;
-    padding: 0 20px;
-    position: relative;
-    z-index: 1;
+    padding: 0 1rem;
 }
 
-.page-header {
+/* Hero Section */
+.about-hero {
     text-align: center;
-    margin-bottom: 60px;
-}
-
-.page-header h1 {
-    font-size: 3.5rem;
-    color: #2c3e50;
-    margin-bottom: 20px;
-    font-weight: 700;
-}
-
-.page-subtitle {
-    font-size: 1.3rem;
-    color: #666;
-    margin: 0;
-    font-weight: 500;
-}
-
-.about-content {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.about-section {
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    padding: 40px;
-    margin-bottom: 30px;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
+    padding: 4rem 0 3rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+    margin: 0 -2rem 3rem;
+    color: var(--white);
     position: relative;
     overflow: hidden;
 }
 
-.about-section::before {
+.about-hero::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0, 123, 255, 0.05), transparent);
-    transition: left 0.8s ease;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    animation: float 20s ease-in-out infinite;
 }
 
-.about-section:hover::before {
-    left: 100%;
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
 }
 
-.about-section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-}
-
-.featured-section {
-    background: #e3f2fd;
-    border: 2px solid #007bff;
-}
-
-.about-section h2 {
-    color: #2c3e50;
-    font-size: 2.2rem;
-    margin-bottom: 25px;
-    border-bottom: 3px solid #007bff;
-    padding-bottom: 15px;
-    font-weight: 600;
-}
-
-.about-section p {
-    color: #495057;
-    line-height: 1.8;
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-}
-
-.about-section ul {
-    color: #495057;
-    line-height: 1.8;
-    font-size: 1.1rem;
-    padding-left: 20px;
-}
-
-.about-section li {
-    margin-bottom: 12px;
+.hero-content {
     position: relative;
+    z-index: 2;
 }
 
-.about-section li::marker {
-    color: #666;
+.about-hero h1 {
+    font-size: 3.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1.1;
 }
 
-/* Vision and Mission Grid */
+.hero-subtitle {
+    font-size: 1.4rem;
+    color: var(--white);
+    opacity: 0.95;
+    max-width: 600px;
+    margin: 0 auto;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.about-info {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.about-label {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.about-desc {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+/* Section Titles */
+.section-title {
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+    color: var(--primary-blue-dark);
+    position: relative;
+    line-height: 1.2;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-orange) 100%);
+    border-radius: 2px;
+}
+
+/* Institute Section */
+.institute-section {
+    margin-bottom: 4rem;
+}
+
+.institute-content {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.institute-header, .program-header, .admission-header, .placement-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+    color: var(--white);
+    padding: 2rem 2.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 16px 16px 0 0;
+}
+
+.content-title, .program-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--white);
+    line-height: 1.2;
+}
+
+.content-meta, .program-meta {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.content-meta span, .program-meta span {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.content-body, .program-content {
+    padding: 0 2.5rem 2rem;
+    background: var(--white);
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 4px 20px var(--shadow-light);
+}
+
+.content-description h4, .program-description h4 {
+    color: var(--primary-blue-dark);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    border-bottom: 2px solid var(--secondary-blue-200);
+    padding-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.content-description p, .program-description p {
+    color: var(--gray-700);
+    line-height: 1.7;
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+}
+
+/* Vision Mission Grid */
+.vision-mission-section {
+    margin-bottom: 4rem;
+}
+
 .vision-mission-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-bottom: 30px;
+    gap: 2rem;
 }
 
-.vision-section, .mission-section {
-    margin-bottom: 0;
+.vision-content, .mission-content {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px var(--shadow-light);
+    overflow: hidden;
 }
 
-.vision-section {
-    background: rgba(76, 175, 80, 0.1);
-    border: 1px solid rgba(76, 175, 80, 0.3);
+.vision-header {
+    background: linear-gradient(135deg, var(--accent-green) 0%, #1e7e34 100%);
+    color: var(--white);
+    padding: 1.5rem 2rem;
 }
 
-.mission-section {
-    background: rgba(33, 150, 243, 0.1);
-    border: 1px solid rgba(33, 150, 243, 0.3);
+.mission-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+    color: var(--white);
+    padding: 1.5rem 2rem;
 }
 
-/* Programs Grid */
-.programs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
+.vision-header h3, .mission-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0;
 }
 
-.program-card {
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 15px;
-    padding: 25px;
-    transition: all 0.3s ease;
+/* Programs Section */
+.programs-section {
+    margin-bottom: 4rem;
 }
 
-.program-card:hover {
-    background: #ffffff;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+.program-section {
+    margin-bottom: 3rem;
+    border-bottom: 2px solid var(--secondary-blue-200);
+    padding-bottom: 2rem;
 }
 
-.program-card h3 {
-    color: #ffffff;
-    font-size: 1.4rem;
-    margin-bottom: 15px;
-    font-weight: 600;
-    text-align: center;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-    padding-bottom: 10px;
-}
-
-.program-card ul {
-    list-style: none;
-    padding: 0;
-}
-
-.program-card li {
-    color: rgba(255, 255, 255, 0.85);
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
-    padding-left: 20px;
-}
-
-.program-card li::before {
-    content: '▶';
-    position: absolute;
-    left: 0;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.8rem;
-}
-
-.program-card li:last-child {
+.program-section:last-child {
     border-bottom: none;
 }
 
-/* Admission Info Grid */
-.admission-info {
+.departments-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
-.admission-card {
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 15px;
-    padding: 25px;
+.department-card {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 1.5rem;
     transition: all 0.3s ease;
 }
 
-.admission-card:hover {
-    background: #ffffff;
+.department-card:hover {
+    background: var(--white);
     transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px var(--shadow-light);
 }
 
-.admission-card h3 {
-    color: #ffffff;
-    font-size: 1.4rem;
-    margin-bottom: 15px;
+.department-card h4 {
+    color: var(--primary-blue-dark);
+    font-size: 1.3rem;
     font-weight: 600;
+    margin-bottom: 1rem;
     text-align: center;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-    padding-bottom: 10px;
+    border-bottom: 2px solid var(--secondary-blue-200);
+    padding-bottom: 0.5rem;
 }
 
-.admission-card p {
-    margin-bottom: 15px;
-    font-size: 1rem;
-}
-
-.admission-card ul {
+.department-card ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
-.admission-card li {
-    color: rgba(255, 255, 255, 0.85);
-    padding: 5px 0;
-    font-size: 0.95rem;
+.department-card li {
+    color: var(--gray-700);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--gray-200);
+    position: relative;
+    padding-left: 1.5rem;
 }
 
-/* Company Highlights */
-.company-highlights {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+.department-card li:last-child {
+    border-bottom: none;
+}
+
+.department-card li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: var(--primary-blue);
+    font-size: 0.8rem;
+}
+
+/* Admissions Section */
+.admissions-section {
+    margin-bottom: 4rem;
+}
+
+.admission-section {
+    margin-bottom: 2rem;
+}
+
+.admission-content {
+    padding: 0 2.5rem 2rem;
+    background: var(--white);
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 4px 20px var(--shadow-light);
+}
+
+.admission-description {
+    margin-bottom: 2rem;
+}
+
+.admission-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.admission-detail-card {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
     border-radius: 12px;
-    padding: 20px;
-    margin-top: 20px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.admission-detail-card:hover {
+    background: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px var(--shadow-light);
+}
+
+.admission-detail-card h4 {
+    color: var(--primary-blue-dark);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+    border-bottom: 2px solid var(--secondary-blue-200);
+    padding-bottom: 0.5rem;
+}
+
+.admission-detail-card p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: var(--gray-700);
+}
+
+.admission-detail-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.admission-detail-card li {
+    color: var(--gray-700);
+    padding: 0.4rem 0;
+    font-size: 0.95rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.admission-detail-card li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary-blue);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Infrastructure & Research Grid */
+.infrastructure-section {
+    margin-bottom: 4rem;
+}
+
+.infrastructure-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.infrastructure-content, .research-content {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px var(--shadow-light);
+    overflow: hidden;
+}
+
+.infrastructure-header {
+    background: linear-gradient(135deg, var(--accent-orange) 0%, #e67e22 100%);
+    color: var(--white);
+    padding: 1.5rem 2rem;
+}
+
+.research-header {
+    background: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--secondary-blue-800) 100%);
+    color: var(--white);
+    padding: 1.5rem 2rem;
+}
+
+.infrastructure-header h3, .research-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0;
+}
+
+/* Placement Section */
+.placement-section {
+    margin-bottom: 4rem;
+}
+
+.placement-section-content {
+    margin-bottom: 2rem;
+}
+
+.placement-content {
+    padding: 0 2.5rem 2rem;
+    background: var(--white);
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 4px 20px var(--shadow-light);
+}
+
+.placement-description {
+    margin-bottom: 2rem;
+}
+
+.company-highlights {
+    background: var(--secondary-blue-50);
+    border: 1px solid var(--secondary-blue-200);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.company-highlights h4 {
+    color: var(--primary-blue-dark);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
 }
 
 .company-highlights p {
     margin: 0;
     font-style: italic;
+    color: var(--gray-700);
+    line-height: 1.6;
 }
 
-.company-highlights strong {
-    color: #ffffff;
-    font-weight: 600;
+/* Outreach & Student Life Grid */
+.outreach-section {
+    margin-bottom: 4rem;
+}
+
+.outreach-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.outreach-content, .student-life-content {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px var(--shadow-light);
+    overflow: hidden;
+}
+
+.outreach-header {
+    background: linear-gradient(135deg, var(--success-green) 0%, #155724 100%);
+    color: var(--white);
+    padding: 1.5rem 2rem;
+}
+
+.student-life-header {
+    background: linear-gradient(135deg, #6f42c1 0%, #5a2d91 100%);
+    color: var(--white);
+    padding: 1.5rem 2rem;
+}
+
+.outreach-header h3, .student-life-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0;
+}
+
+/* Collaborations & Culture Grid */
+.collaborations-section {
+    margin-bottom: 4rem;
+}
+
+.collaborations-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.mou-content, .culture-content {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px var(--shadow-light);
+    overflow: hidden;
+}
+
+.mou-header {
+    background: linear-gradient(135deg, #17a2b8 0%, #117a8b 100%);
+    color: var(--white);
+    padding: 1.5rem 2rem;
+}
+
+.culture-header {
+    background: linear-gradient(135deg, #fd7e14 0%, #e55a00 100%);
+    color: var(--white);
+    padding: 1.5rem 2rem;
+}
+
+.mou-header h3, .culture-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0;
+}
+.mou-header h3, .culture-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0;
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+    .about-hero {
+        margin: 0 -1rem 2rem;
+        padding: 3rem 0 2rem;
+    }
+    
+    .about-hero h1 {
+        font-size: 3rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .about-info {
+        gap: 1rem;
+    }
+    
+    .vision-mission-grid,
+    .infrastructure-grid,
+    .outreach-grid,
+    .collaborations-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .admission-details-grid,
+    .departments-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
 @media (max-width: 768px) {
-    .page-header h1 {
+    .about-container {
+        padding: 0 0.5rem;
+    }
+    
+    .about-hero {
+        margin: 0 -0.5rem 1.5rem;
+        padding: 2.5rem 0 1.5rem;
+    }
+    
+    .about-hero h1 {
         font-size: 2.5rem;
     }
     
-    .about-section {
-        padding: 30px 20px;
+    .hero-subtitle {
+        font-size: 1.1rem;
     }
     
-    .about-section h2 {
+    .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .institute-header,
+    .program-header,
+    .admission-header,
+    .placement-header {
+        padding: 1.5rem;
+    }
+    
+    .content-title,
+    .program-title {
         font-size: 1.8rem;
     }
     
-    .vision-mission-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    .content-body,
+    .program-content {
+        padding: 0 1.5rem 1.5rem;
     }
     
-    .programs-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    .content-meta,
+    .program-meta {
+        gap: 1rem;
+        flex-direction: column;
     }
     
-    .admission-info {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    .about-info {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
     }
     
-    .program-card, .admission-card {
-        padding: 20px;
+    .vision-header,
+    .mission-header,
+    .infrastructure-header,
+    .research-header,
+    .outreach-header,
+    .student-life-header,
+    .mou-header,
+    .culture-header {
+        padding: 1rem 1.5rem;
     }
     
-    .about-section p, .about-section ul {
-        font-size: 1rem;
+    .vision-header h3,
+    .mission-header h3,
+    .infrastructure-header h3,
+    .research-header h3,
+    .outreach-header h3,
+    .student-life-header h3,
+    .mou-header h3,
+    .culture-header h3 {
+        font-size: 1.3rem;
     }
 }
 
 @media (max-width: 480px) {
-    .about-container {
-        padding: 0 15px;
-    }
-    
-    .page-header h1 {
+    .about-hero h1 {
         font-size: 2rem;
     }
     
-    .page-subtitle {
-        font-size: 1.1rem;
+    .hero-subtitle {
+        font-size: 1rem;
     }
     
-    .about-section {
-        padding: 25px 15px;
-        margin-bottom: 20px;
+    .section-title {
+        font-size: 1.8rem;
     }
     
-    .about-section h2 {
-        font-size: 1.6rem;
+    .institute-header,
+    .program-header,
+    .admission-header,
+    .placement-header {
+        padding: 1rem;
+    }
+    
+    .content-title,
+    .program-title {
+        font-size: 1.5rem;
+    }
+    
+    .content-body,
+    .program-content {
+        padding: 0 1rem 1rem;
+    }
+    
+    .department-card,
+    .admission-detail-card {
+        padding: 1rem;
+    }
+    
+    .company-highlights {
+        padding: 1rem;
+    }
+    
+    .about-label,
+    .about-desc {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
     }
 }

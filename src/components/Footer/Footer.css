@@ -1,17 +1,36 @@
 /* Clean Modern Footer Styles with Dark Mode Support */
 
 .footer {
-  background: linear-gradient(135deg, #e9ecef 0%, #f8f9fa 100%);
-  color: #333333;
-  margin-top: auto;
-  border-top: 1px solid #e9ecef;
+  background: #2c3e50;
+  color: #ffffff;
+  margin-top: 40px;
+  border-top: 4px solid #3498db;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Dark mode gradient */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="footer-pattern" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.08)"/></pattern></defs><rect width="100" height="100" fill="url(%23footer-pattern)"/></svg>');
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Dark mode solid color */
 [data-theme="dark"] .footer {
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  background: #1a1a1a;
+  border-top: 4px solid #444444;
+}
+
+[data-theme="dark"] .footer::before {
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="footer-pattern-dark" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23footer-pattern-dark)"/></svg>');
+  opacity: 0.5;
 }
 
 .footer-container {
@@ -32,15 +51,17 @@
 
 /* ===== VISITOR COUNTER ===== */
 .footer-visitor-counter {
-  background: #ffffff ;
-  border: 2px solid #e9ecef;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 16px;
   padding: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
   max-width: 250px;
   margin-bottom: 20px;
+  color: #2c3e50;
 }
 
 /* ===== SOCIAL MEDIA INLINE SECTION ===== */
@@ -52,11 +73,12 @@
 }
 
 .footer-social-media-inline h4 {
-  color: #333333;
+  color: #ffffff;
   font-size: 16px;
   font-weight: 700;
   margin: 0 0 12px 0;
   position: relative;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* Remove blue bar for inline social heading */
@@ -85,16 +107,22 @@
 
 .footer-visitor-counter:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-  border-color: #1976d2;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 1);
 }
 
 [data-theme="dark"] .footer-visitor-counter {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  color: #ffffff;
 }
 
 [data-theme="dark"] .footer-visitor-counter:hover {
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
 }
 
 .footer-counter-display {
@@ -107,7 +135,7 @@
   justify-content: center;
   gap: 8px;
   font-size: 14px;
-  color: #666666;;
+  color: #2c3e50;
   margin-bottom: 12px;
   text-transform: uppercase;
   letter-spacing: 1.2px;
@@ -117,7 +145,15 @@
 .footer-counter-label svg {
   width: 18px;
   height: 18px;
-  color: #1976d2;
+  color: #2c3e50;
+}
+
+[data-theme="dark"] .footer-counter-label {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .footer-counter-label svg {
+  color: #ffffff;
 }
 
 .footer-counter-digits {
@@ -164,12 +200,13 @@
 
 /* ===== FOOTER SECTIONS ===== */
 .footer-section h4 {
-  color: #333333;
+  color: #ffffff;
   font-size: 18px;
   font-weight: 700;
   margin: 0 0 15px 0;
   position: relative;
   padding-bottom: 10px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .footer-section h4::after {
@@ -179,7 +216,7 @@
   left: 0;
   width: 40px;
   height: 3px;
-  background: linear-gradient(90deg, #1976d2 , #1565c0);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
   border-radius: 2px;
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -204,7 +241,7 @@
 }
 
 .footer-section a {
-  color: #666666;
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
@@ -215,7 +252,7 @@
 }
 
 .footer-section a:hover {
-  color: #1976d2;
+  color: #ffffff;
 }
 
 .footer-section a::before {
@@ -225,7 +262,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #1976d2 , #1565c0);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -262,13 +299,14 @@
 }
 
 .footer-contact-main-title {
-  color: #1976d2;
-  font-size: 18px;
+  color: #ffffff;
+  font-size: 24px;
   font-weight: 700;
   margin: 0 0 15px 0;
   text-align: center;
   position: relative;
   padding-bottom: 10px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .footer-contact-main-title::after {
@@ -279,7 +317,7 @@
   transform: translateX(-50%);
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, #1976d2 , #1565c0);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
   border-radius: 2px;
 }
 
@@ -365,7 +403,7 @@
 }
 
 .footer-contact-item p {
-  color: #666666;
+  color: #555555;
   font-size: 13px;
   line-height: 1.4;
   margin: 0;
@@ -374,15 +412,15 @@
 }
 
 .footer-contact-item div p:first-child {
-  color: #333333;
-  font-weight: 600;
+  color: #2c3e50;
+  font-weight: 700;
 }
 
 /* ===== INSTITUTE NAME (TOP HEADER) ===== */
 .footer-institute-name {
   font-size: 24px;
   font-weight: 700;
-  color: #1976d2;
+  color: #ffffff;
   margin: 20px 0 30px 0;
   line-height: 1.3;
   letter-spacing: -0.02em;
@@ -393,6 +431,7 @@
   margin-right: auto;
   padding: 0 20px;
   position: relative;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .footer-institute-name::after {
@@ -403,7 +442,7 @@
   transform: translateX(-50%);
   width: 80px;
   height: 3px;
-  background: linear-gradient(90deg, #1976d2 , #1565c0);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
   border-radius: 2px;
 }
 
@@ -509,7 +548,7 @@
 }
 
 .footer-links a {
-  color: #666666;
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   font-size: 13px;
   font-weight: 500;
@@ -518,7 +557,7 @@
 }
 
 .footer-links a:hover {
-  color: #1976d2;
+  color: #ffffff;
 }
 
 .footer-links a::after {
@@ -528,7 +567,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: #1976d2;
+  background: rgba(255, 255, 255, 0.8);
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -553,7 +592,7 @@
 .footer-links-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  border-color: #1976d2;
+  border-color: #3498db;
 }
 
 [data-theme="dark"] .footer-links-card {
@@ -573,12 +612,28 @@
   justify-content: space-around;
 }
 
+/* Fix title color inside white cards */
+.footer-links-card .footer-contact-main-title {
+  color: #2c3e50;
+  text-shadow: none;
+}
+
+.footer-contact-main-card .footer-contact-main-title {
+  color: #2c3e50;
+  text-shadow: none;
+}
+
 /* ===== FOOTER BOTTOM ===== */
 .footer-bottom {
-  background: #f8f9fa;
-  border-top: 1px solid #e9ecef;
+  background: rgba(0, 0, 0, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding: 15px 0;
   margin-top: 20px;
+}
+
+[data-theme="dark"] .footer-bottom {
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .footer-copyright {
@@ -586,10 +641,11 @@
 }
 
 .footer-copyright p {
-  color: #666666;
+  color: rgba(255, 255, 255, 0.7);
   font-size: 14px;
   margin: 0;
   font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* ===== RESPONSIVE DESIGN ===== */

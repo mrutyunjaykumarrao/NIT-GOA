@@ -54,9 +54,12 @@
     margin: 0 40px; /* 40px margin from left and right */
     margin-top: -10px; /* Overlap with navbar by 10px */
     z-index: 1; /* Keep behind navbar */
-    aspect-ratio: 1.85 / 1; /* Set 1.85:1 aspect ratio for the container */
+    aspect-ratio: 2.4 / 1; /* Set 2.4:1 aspect ratio to match 1360x566 images */
     max-height: 70vh; /* Maximum height constraint */
     min-height: 400px; /* Minimum height for smaller screens */
+    max-width: 1360px; /* Match your image width */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero-background {
@@ -69,24 +72,46 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Add subtle shadow for card effect */
     /* Ensure proper stacking context */
     isolation: isolate;
-    /* Center the image content */
+}
+
+/* Hero Image Slider Container */
+.hero-slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.hero-images-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    /* Transition will be controlled by JavaScript for infinite loop effect */
+    transition: none;
+}
+
+.hero-image-slide {
+    min-width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .hero-campus-image {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain; /* Show full image without cropping */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Fill the container while maintaining aspect ratio */
     object-position: center;
     display: block;
-    /* Smooth loading transition */
-    transition: opacity 0.3s ease;
-    /* Ensure image maintains aspect ratio */
     border-radius: 8px; /* Slight rounding to match container */
+    transition: transform 0.5s ease;
+    /* Add a subtle animation for smoother visual experience */
+    will-change: transform;
+}
+
+.hero-campus-image:hover {
+    transform: scale(1.02);
 }
 
 /* Hero Loading State */
@@ -787,6 +812,7 @@
     padding: 30px;
     border-radius: 20px;
     text-align: center;
+    height: 392px;
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -933,14 +959,14 @@
 }
 
 /* About Section - Enhanced */
-.about-section {
+.homepage .about-section {
     background: linear-gradient(135deg, var(--secondary-blue-50) 0%, var(--secondary-blue-200) 100%);
     padding: 80px 0;
     position: relative;
     overflow: hidden;
 }
 
-.about-section::before {
+.homepage .about-section::before {
     content: '';
     position: absolute;
     top: 0;
@@ -952,7 +978,7 @@
     pointer-events: none;
 }
 
-.about-content {
+.homepage .about-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
@@ -961,7 +987,7 @@
     z-index: 1;
 }
 
-.about-image {
+.homepage .about-image {
     position: relative;
     overflow: hidden;
     border-radius: 20px;
@@ -969,33 +995,33 @@
     transition: transform 0.3s ease;
 }
 
-.about-image:hover {
+.homepage .about-image:hover {
     transform: translateY(-5px);
 }
 
-.about-image img {
+.homepage .about-image img {
     width: 100%;
     height: auto;
     border-radius: 20px;
     transition: transform 0.3s ease;
 }
 
-.about-image:hover img {
+.homepage .about-image:hover img {
     transform: scale(1.05);
 }
 
-.about-text {
+.homepage .about-text {
     padding: 20px;
 }
 
-.about-buttons {
+.homepage .about-buttons {
     display: flex;
     gap: 15px;
     margin-bottom: 30px;
     flex-wrap: wrap;
 }
 
-.about-btn {
+.homepage .about-btn {
     padding: 12px 24px;
     border: 2px solid var(--primary-blue);
     background: rgba(255, 255, 255, 0.9);
@@ -1011,7 +1037,7 @@
     overflow: hidden;
 }
 
-.about-btn::before {
+.homepage .about-btn::before {
     content: '';
     position: absolute;
     top: 0;
@@ -1022,19 +1048,19 @@
     transition: left 0.5s ease;
 }
 
-.about-btn:hover::before {
+.homepage .about-btn:hover::before {
     left: 100%;
 }
 
-.about-btn.active,
-.about-btn:hover {
+.homepage .about-btn.active,
+.homepage .about-btn:hover {
     background: var(--primary-blue);
     color: white;
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(46, 134, 193, 0.3);
 }
 
-.about-text p {
+.homepage .about-text p {
     font-size: 1.1rem;
     line-height: 1.8;
     color: var(--gray-600);
@@ -1047,12 +1073,13 @@
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
-.read-more-link {
+.homepage .read-more-link {
     background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
     border: none;
-    color: white;
+        color: white;
     cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
@@ -1064,7 +1091,7 @@
     overflow: hidden;
 }
 
-.read-more-link::before {
+.homepage .read-more-link::before {
     content: '';
     position: absolute;
     top: 0;
@@ -1075,21 +1102,25 @@
     transition: left 0.6s ease;
 }
 
-.read-more-link:hover::before {
+.homepage .read-more-link:hover::before {
     left: 100%;
 }
 
-.read-more-link:hover {
+.homepage .read-more-link:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(46, 134, 193, 0.4);
 }
 
 /* National Portals - Enhanced */
 .national-portals {
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+    background: var(--primary-blue-dark);
     padding: 60px 0;
     position: relative;
     overflow: hidden;
+    border-top: 4px solid var(--primary-blue);
+    margin-top: 40px;
+    margin-bottom: 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .national-portals::before {
@@ -1148,33 +1179,41 @@
 /* Responsive Design */
 @media (max-width: 1200px) {
     .hero-section {
-        padding: 0 40px; /* Keep consistent 40px padding */
+        width: calc(100% - 60px);
+        margin: 0 30px;
     }
 }
 
 @media (max-width: 1024px) {
     .hero-section {
-        padding: 0 40px; /* Keep consistent 40px padding */
+        width: calc(100% - 40px);
+        margin: 0 20px;
     }
 }
 
 @media (max-width: 900px) {
     .hero-section {
-        margin: 0 30px; /* Reduce to 30px for smaller screens */
-        width: calc(100% - 60px);
+        margin: 0 20px;
+        width: calc(100% - 40px);
+        aspect-ratio: 2.2 / 1; /* Slightly adjust for smaller screens */
     }
 }
 
 @media (max-width: 768px) {
     .hero-section {
-        margin: 0 20px;
-        width: calc(100% - 40px);
-        min-height: 300px;
-        aspect-ratio: 1.6 / 1; /* Closer to original ratio for better consistency */
+        margin: 0 15px;
+        width: calc(100% - 30px);
+        min-height: 250px;
+        aspect-ratio: 2.0 / 1; /* More compact for mobile */
+        max-width: none; /* Remove max-width constraint on mobile */
+    }
+    
+    .hero-images-wrapper {
+        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
     .hero-campus-image {
-        /* Ensure consistent scaling on mobile */
+        /* Maintain cover fit on mobile */
         object-fit: cover;
         object-position: center;
     }
@@ -1236,16 +1275,16 @@
         gap: 30px;
     }
 
-    .about-content {
+    .homepage .about-content {
         grid-template-columns: 1fr;
         gap: 30px;
     }
 
-    .about-text {
+    .homepage .about-text {
         padding: 10px;
     }
 
-    .about-buttons {
+    .homepage .about-buttons {
         justify-content: center;
     }
 
@@ -1319,7 +1358,7 @@
         padding: 60px 0;
     }
 
-    .about-section {
+    .homepage .about-section {
         padding: 60px 0;
     }
 

@@ -80,11 +80,11 @@ body {
   gap: 25px;
 }
 
-/* Right side controls (Language + Theme Toggle) */
+/* Right side controls (Theme Toggle + Language Selector) */
 .top-nav-controls {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
 }
 
 .top-nav a {
@@ -200,8 +200,11 @@ body {
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   font-size: 14px;
+  min-width: 84px;
+  height: 28px;
+  font-weight: 500;
   transition: background-color 0.3s ease;
 }
 
@@ -215,23 +218,72 @@ body {
   right: 0;
   background: #ffffff;
   border: 1px solid #e5e7eb;
-  border-radius: 4px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  min-width: 100px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 84px;
   z-index: 2100;
   padding: 8px 0;
+  margin-top: 4px;
 }
 
-.language-dropdown a {
-  display: block;
-  padding: 8px 16px;
+.language-dropdown button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 8px;
+  background: none;
+  border: none;
   color: #1f2937;
   text-decoration: none;
   transition: background-color 0.3s ease;
+  cursor: pointer;
+  font-size: 13px;
 }
 
-.language-dropdown a:hover {
+.language-dropdown button:hover {
   background-color: #f8fafc;
+  color: #3b82f6;
+}
+
+/* Mobile Language Selector */
+.mobile-language {
+  margin-left: 12px;
+}
+
+.mobile-language-btn {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+.mobile-language-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: auto;
+  margin-top: 4px;
+}
+
+/* Mobile Menu Theme Section */
+.mobile-menu-theme {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Dark mode support for language dropdown */
+[data-theme="dark"] .language-dropdown {
+  background: #374151;
+  border-color: #4b5563;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .language-dropdown button {
+  color: #f9fafb;
+}
+
+[data-theme="dark"] .language-dropdown button:hover {
+  background-color: #4b5563;
   color: #3b82f6;
 }
 
@@ -348,7 +400,7 @@ body {
   color: white;
   
   /* Progressive min-height - reduced for less wasted space */
-  --nav-height: calc(60px - var(--scroll-progress, 0) * 20px);
+  --nav-height: calc(50px - var(--scroll-progress, 0) * 20px);
   min-height: var(--nav-height);
   
   /* Faster, more responsive navigation transitions */
@@ -1420,7 +1472,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 40px;
+    padding: 0px 40px;
     width: 100%;
   }
   
@@ -1477,5 +1529,132 @@ body {
   
   .mobile-menu-overlay {
     display: none !important;
+  }
+}
+
+/* Responsive Display Classes */
+.desktop-only {
+  display: flex;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+  
+  .mobile-only {
+    display: flex;
+  }
+}
+
+/* Mobile Top Navbar Single Row Layout */
+@media (max-width: 768px) {
+  .top-header-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 0 15px; /* Add more horizontal padding for better spacing */
+  }
+  
+  .top-nav.mobile-only {
+    flex: 1;
+    justify-content: center;
+    gap: 18px; /* Increase gap between mobile nav items */
+  }
+  
+  .mobile-auth {
+    flex-shrink: 0;
+  }
+  
+  .mobile-login, .mobile-logout {
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 4px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .mobile-login:hover, .mobile-logout:hover {
+    background: #2563eb;
+  }
+}
+
+/* Enhanced spacing for desktop top header */
+@media (min-width: 769px) {
+  .top-header-content {
+    padding: 0 30px; /* Increase horizontal padding for better spacing */
+  }
+  
+  .top-nav.desktop-only {
+    gap: 30px; /* Increase gap between desktop nav items */
+  }
+}
+
+/* Enhanced Logo and Hamburger Spacing When Top Nav Hidden */
+@media (max-width: 768px) {
+  .navbar-wrapper.navbar-compact .logo-section {
+    padding-top: 8px;
+  }
+  
+  .navbar-wrapper.navbar-compact .nit-logo {
+    --logo-size: calc(85px - var(--scroll-progress, 0) * 15px);
+  }
+  
+  .navbar-wrapper.navbar-compact .hamburger-btn {
+    margin-top: 8px;
+  }
+}
+
+/* Mobile Menu Header Layout */
+.mobile-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.mobile-menu-theme {
+  display: flex;
+  align-items: center;
+}
+
+.mobile-menu-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu-close:hover {
+  background-color: #f3f4f6;
+}
+
+/* Hamburger Button Alignment Fix */
+@media (max-width: 768px) {
+  .hamburger-btn {
+    position: relative;
+    z-index: 1200;
+    /* Ensure hamburger aligns with close button */
+    margin-right: 8px;
+  }
+  
+  /* Perfect alignment between hamburger and close button */
+  .mobile-menu-close {
+    margin-right: 8px;
+    transform: translateY(40px);
   }
 }

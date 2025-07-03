@@ -4,7 +4,7 @@ import './HomePage.css';
 // import synapseNewsletter from '../../assets/images/Home/synapse_newsletter.png'; // Now in public/images
 // import moeImage from '../../assets/images/Home/moe.png'; // Now in public/images
 // import diiImage from '../../assets/images/Home/dii.png'; // Now in public/images  
-// import digilockerImage from '../../assets/images/Home/digilocker_nad.png'; // Now in public/images
+// import digilockerImage fro                            <img src={heroImages[0]} alt="NIT Goa Campus" /> '../../assets/images/Home/digilocker_nad.png'; // Now in public/images
 // import fitIndiaImage from '../../assets/images/Home/fit_india.png'; // Now in public/images
 // import swachhBharatImage from '../../assets/images/Home/swach_bharath.png'; // Now in public/images
 // import makeInIndiaImage from '../../assets/images/Home/MakeInIndia.png'; // Now in public/images
@@ -47,9 +47,11 @@ const HomePage = () => {
         "Industry-Academia Interface Program 2025 - Applications Invited"
     ];
 
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [currentImageIndex, setCurrentImageIndex] = useState(1); // Start at 1 for infinite loop
     const [currentAnnouncementIndex, setCurrentAnnouncementIndex] = useState(0);
     const [countsAnimated, setCountsAnimated] = useState(false);
+    const [activeAboutTab, setActiveAboutTab] = useState('about');
+    const [isTransitioning, setIsTransitioning] = useState(false);
     const [counts, setCounts] = useState({
         departments: 0,
         students: 0,
@@ -58,6 +60,15 @@ const HomePage = () => {
         patents: 0
     });
     const statsRef = useRef(null);
+    const sliderRef = useRef(null);
+    const autoSlideRef = useRef(null);
+
+    // About section content
+    const aboutContent = {
+        about: "The National Institute of Technology Goa (NIT Goa) is a premier national-level technical institute in India established in 2010 by an act of parliament (NIT Act, 2007 and NIT (Amendment) Act, 2012). NIT Goa is an autonomous institute functioning under the aegis of Ministry of Education (MoE), Government of India, and has been declared an \"Institute of National Importance\".",
+        vision: "National Institute of Technology Goa shall emerge as one of the nation's pre-eminent institutions. Through its excellence, it shall serve the Goan society, India and humanity at large with all the challenges and opportunities.",
+        mission: "NIT Goa strives for quality faculty, good students and excellent infrastructure. Strives for excellence, through dissemination, generation and application of knowledge by laying stress on interdisciplinary approach in all the branches of Science, Engineering, Technology, Humanities and Management with emphasis on human values and ethics."
+    };
 
     const animateCounts = useCallback(() => {
         const finalCounts = {
@@ -92,16 +103,69 @@ const HomePage = () => {
         });
     }, []);
 
-    // Auto-cycle images every 5 seconds
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentImageIndex((prevIndex) => 
-                prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
-            );
-        }, 5000);
+    // Helper function to handle infinite loop transitions
+    const handleTransitionEnd = useCallback(() => {
+        if (!isTransitioning) return;
+        
+        setIsTransitioning(false);
+        
+        // Jump to the corresponding real image without transition
+        if (currentImageIndex === heroImages.length + 1) {
+            // We're at the duplicated first image, jump to the real first image
+            setCurrentImageIndex(1);
+        } else if (currentImageIndex === 0) {
+            // We're at the duplicated last image, jump to the real last image
+            setCurrentImageIndex(heroImages.length);
+        }
+    }, [currentImageIndex, heroImages.length, isTransitioning]);
 
+    // Auto-cycle images every 8 seconds (slowed down)
+    useEffect(() => {
+        if (heroImages.length === 0) return;
+        
+        const interval = setInterval(() => {
+            setIsTransitioning(true);
+            setCurrentImageIndex((prevIndex) => {
+                if (prevIndex === heroImages.length) {
+                    return heroImages.length + 1; // Go to duplicated first image
+                }
+                return prevIndex + 1;
+            });
+        }, 8000);
+
+        autoSlideRef.current = interval;
         return () => clearInterval(interval);
     }, [heroImages.length]);
+
+    // Function to restart auto-cycle after user interaction
+    const restartAutoSlide = useCallback(() => {
+        if (autoSlideRef.current) {
+            clearInterval(autoSlideRef.current);
+        }
+        
+        if (heroImages.length === 0) return;
+        
+        const interval = setInterval(() => {
+            setIsTransitioning(true);
+            setCurrentImageIndex((prevIndex) => {
+                if (prevIndex === heroImages.length) {
+                    return heroImages.length + 1; // Go to duplicated first image
+                }
+                return prevIndex + 1;
+            });
+        }, 8000);
+        
+        autoSlideRef.current = interval;
+    }, [heroImages.length]);
+
+    // Reset slider position when heroImages are loaded
+    useEffect(() => {
+        if (heroImages.length > 0 && currentImageIndex === 1) {
+            // Ensure we start at the first real image (index 1)
+            setCurrentImageIndex(1);
+            setIsTransitioning(false);
+        }
+    }, [heroImages.length, currentImageIndex]);
 
     // Auto-cycle announcements every 5 seconds
     useEffect(() => {
@@ -115,15 +179,25 @@ const HomePage = () => {
     }, [announcements.length]);
 
     const goToPrevious = () => {
-        setCurrentImageIndex(
-            currentImageIndex === 0 ? heroImages.length - 1 : currentImageIndex - 1
-        );
+        setIsTransitioning(true);
+        setCurrentImageIndex((prevIndex) => {
+            if (prevIndex === 1) {
+                return 0; // Go to duplicated last image
+            }
+            return prevIndex - 1;
+        });
+        restartAutoSlide();
     };
 
     const goToNext = () => {
-        setCurrentImageIndex(
-            currentImageIndex === heroImages.length - 1 ? 0 : currentImageIndex + 1
-        );
+        setIsTransitioning(true);
+        setCurrentImageIndex((prevIndex) => {
+            if (prevIndex === heroImages.length) {
+                return heroImages.length + 1; // Go to duplicated first image
+            }
+            return prevIndex + 1;
+        });
+        restartAutoSlide();
     };
 
     // Counting animation for statistics
@@ -157,23 +231,62 @@ const HomePage = () => {
             {/* Hero Section */}
             <section className="hero-section">
                 <div className="hero-background">
-                    {heroImages.length > 0 ? (
-                        <img 
-                            src={heroImages[currentImageIndex]} 
-                            alt="NIT Goa Campus" 
-                            className="hero-campus-image"
-                            loading="eager"
-                            onError={(e) => {
-                                // Handle image loading errors gracefully
-                                e.target.style.display = 'none';
-                                console.warn('Failed to load hero image:', e.target.src);
-                            }}
-                        />
-                    ) : (
-                        <div className="hero-loading">
-                            <p>Loading campus images...</p>
-                        </div>
-                    )}
+                    <div className="hero-slider-container">
+                        {heroImages.length > 0 ? (
+                            <div 
+                                ref={sliderRef}
+                                className="hero-images-wrapper"
+                                style={{
+                                    transform: `translateX(-${currentImageIndex * 100}%)`,
+                                    transition: isTransitioning ? 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none'
+                                }}
+                                onTransitionEnd={handleTransitionEnd}
+                            >
+                                {/* Duplicate last image at the beginning for smooth infinite loop */}
+                                {heroImages.length > 1 && (
+                                    <div className="hero-image-slide">
+                                        <img 
+                                            src={heroImages[heroImages.length - 1]} 
+                                            alt={`NIT Goa Campus ${heroImages.length}`} 
+                                            className="hero-campus-image"
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                )}
+                                
+                                {/* Original images */}
+                                {heroImages.map((image, index) => (
+                                    <div key={`original-${index}`} className="hero-image-slide">
+                                        <img 
+                                            src={image} 
+                                            alt={`NIT Goa Campus ${index + 1}`} 
+                                            className="hero-campus-image"
+                                            loading={index === 0 ? "eager" : "lazy"}
+                                            onError={(e) => {
+                                                console.warn('Failed to load hero image:', e.target.src);
+                                            }}
+                                        />
+                                    </div>
+                                ))}
+                                
+                                {/* Duplicate first image at the end for smooth infinite loop */}
+                                {heroImages.length > 1 && (
+                                    <div className="hero-image-slide">
+                                        <img 
+                                            src={heroImages[0]} 
+                                            alt="NIT Goa Campus 1" 
+                                            className="hero-campus-image"
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                )}
+                            </div>
+                        ) : (
+                            <div className="hero-loading">
+                                <p>Loading campus images...</p>
+                            </div>
+                        )}
+                    </div>
                     
                     {/* Navigation Arrows - Only show if we have multiple images */}
                     {heroImages.length > 1 && (
@@ -190,13 +303,23 @@ const HomePage = () => {
                     {/* Image Indicators - Only show if we have multiple images */}
                     {heroImages.length > 1 && (
                         <div className="hero-indicators">
-                            {heroImages.map((_, index) => (
-                                <button
-                                    key={index}
-                                    className={`hero-indicator ${index === currentImageIndex ? 'active' : ''}`}
-                                    onClick={() => setCurrentImageIndex(index)}
-                                />
-                            ))}
+                            {heroImages.map((_, index) => {
+                                // Map currentImageIndex to actual image for indicator active state
+                                const realIndex = currentImageIndex === 0 ? heroImages.length - 1 : 
+                                                currentImageIndex === heroImages.length + 1 ? 0 : 
+                                                currentImageIndex - 1;
+                                return (
+                                    <button
+                                        key={index}
+                                        className={`hero-indicator ${index === realIndex ? 'active' : ''}`}
+                                        onClick={() => {
+                                            setIsTransitioning(true);
+                                            setCurrentImageIndex(index + 1); // Add 1 because real images start at index 1
+                                            restartAutoSlide();
+                                        }}
+                                    />
+                                );
+                            })}
                         </div>
                     )}
                 </div>
@@ -437,12 +560,6 @@ const HomePage = () => {
                             <div className="synapse-logo">
                                 <img src="/images/synapse_newsletter.png" alt="Synapse Newsletter" />
                             </div>
-                            <div className="tweets-section">
-                                <h3>Tweets</h3>
-                                <div className="tweet-content">
-                                    <p>Social media content and updates from NIT Goa</p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -481,19 +598,31 @@ const HomePage = () => {
                 <div className="homepage-container">
                     <div className="about-content">
                         <div className="about-image">
-                            <img src={heroImages[1] || heroImages[0]} alt="NIT Goa Campus" />
+                            <img src={heroImages[0]} alt="NIT Goa Campus" />
                         </div>
                         <div className="about-text">
                             <div className="about-buttons">
-                                <button className="about-btn active">About</button>
-                                <button className="about-btn">Vision</button>
-                                <button className="about-btn">Mission</button>
+                                <button 
+                                    className={`about-btn ${activeAboutTab === 'about' ? 'active' : ''}`}
+                                    onClick={() => setActiveAboutTab('about')}
+                                >
+                                    About
+                                </button>
+                                <button 
+                                    className={`about-btn ${activeAboutTab === 'vision' ? 'active' : ''}`}
+                                    onClick={() => setActiveAboutTab('vision')}
+                                >
+                                    Vision
+                                </button>
+                                <button 
+                                    className={`about-btn ${activeAboutTab === 'mission' ? 'active' : ''}`}
+                                    onClick={() => setActiveAboutTab('mission')}
+                                >
+                                    Mission
+                                </button>
                             </div>
                             <p>
-                                The National Institute of Technology Goa (NIT Goa) is a premier national level technical institute in India 
-                                established in 2010 by an act of parliament (NIT Act, 2007 and NIT (Amendment) Act, 2012). NIT Goa is an 
-                                autonomous institute functioning under the aegis of Ministry of Education (MoE), Government of India, and 
-                                has been declared an "Institute of National Importance".
+                                {aboutContent[activeAboutTab]}
                             </p>
                             <a href="/about" className="read-more-link">Read more {'>'} {'>'}</a>
                         </div>

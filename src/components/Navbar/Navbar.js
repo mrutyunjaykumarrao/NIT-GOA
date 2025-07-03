@@ -12,6 +12,8 @@ const Navbar = ({ user, onLogout }) => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mobileOpenDropdown, setMobileOpenDropdown] = useState(null);
+  const [currentLanguage, setCurrentLanguage] = useState('english');
+  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
   const ticking = useRef(false);
   const navigate = useNavigate();
 
@@ -109,6 +111,18 @@ const Navbar = ({ user, onLogout }) => {
     closeMobileMenu();
   };
 
+  // Language change handlers
+  const toggleLanguageDropdown = () => {
+    setIsLanguageDropdownOpen(!isLanguageDropdownOpen);
+  };
+
+  const changeLanguage = (language) => {
+    setCurrentLanguage(language);
+    setIsLanguageDropdownOpen(false);
+    // Here you can add actual language change logic
+    // For example, update context, localStorage, or call an API
+  };
+
   return (
     <div 
       className={`navbar-wrapper ${isTopNavHidden ? 'navbar-compact' : ''}`}
@@ -119,16 +133,52 @@ const Navbar = ({ user, onLogout }) => {
       {/* Top Header */}
       <div className={`top-header ${isTopNavHidden ? 'top-header-hidden' : ''}`}>
         <div className="top-header-content">
-          <div className="top-nav-controls">
+          {/* Desktop Controls */}
+          <div className="top-nav-controls desktop-only">
+            {/* Language Selector */}
+            <div className="language-selector">
+              <button 
+                className="language-btn"
+                onClick={toggleLanguageDropdown}
+                aria-label="Change language"
+              >
+                <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                  <path fillRule="evenodd" d="M7 2a1 1 0 011 1v1h3a1 1 0 110 2H9.578a18.87 18.87 0 01-1.724 4.78c.29.354.596.696.914 1.026a1 1 0 11-1.44 1.389c-.188-.196-.373-.396-.554-.6a19.098 19.098 0 01-3.107 3.567 1 1 0 01-1.334-1.49 17.087 17.087 0 003.13-3.733 18.992 18.992 0 01-1.487-2.494 1 1 0 111.79-.89c.234.47.489.928.764 1.372.417-.934.752-1.913.997-2.927H3a1 1 0 110-2h3V3a1 1 0 011-1zm6 6a1 1 0 01.894.553l2.991 5.982a.869.869 0 01.02.037l.99 1.98a1 1 0 11-1.79.895L15.383 16h-4.764l-.724 1.447a1 1 0 11-1.788-.894l.99-1.98.019-.038 2.99-5.982A1 1 0 0113 8zm-1.382 6h2.764L13 11.236 11.618 14z" clipRule="evenodd" />
+                </svg>
+                {currentLanguage === 'english' ? 'EN' : 'हि'}
+                <svg viewBox="0 0 20 20" fill="currentColor" width="12" height="12">
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </button>
+              
+              {isLanguageDropdownOpen && (
+                <div className="language-dropdown">
+                  <button onClick={() => changeLanguage('english')}>
+                    🇺🇸 English
+                  </button>
+                  <button onClick={() => changeLanguage('hindi')}>
+                    🇮🇳 हिंदी
+                  </button>
+                </div>
+              )}
+            </div>
+
             {/* Theme Toggle */}
             <ThemeToggle />
-            
+          </div>
+
+          {/* Desktop Top Nav */}
+          <nav className="top-nav desktop-only">
+            <a href="https://www.nitgoa.ac.in/alumni/" target="_blank" rel="noopener noreferrer">Alumni</a>
+            <a href="/nirf">NIRF</a>
+            <a href="/tenders">Tenders</a>
+            <a href="/gian">GIAN</a>
+            <a href="https://www.nitgoa.ac.in/rajbhasha/#/" target="_blank" rel="noopener noreferrer">RAJBHASHA</a>
             {/* Login/User Section */}
             <div className="auth-section">
-              {user && user.role !== 'guest' ? (          <div className="user-menu">
-            <a href="https://www.nitgoa.ac.in/alumni/" target="_blank" rel="noopener noreferrer" className="nav-btn nav-btn--link">Alumni</a>
-            <a href="https://www.nitgoa.ac.in/rajbhasha/#/" target="_blank" rel="noopener noreferrer" className="nav-btn nav-btn--link">Rajbhasha</a>
-            <span className="user-greeting">
+              {user && user.role !== 'guest' ? (
+                <div className="user-menu">
+                  <span className="user-greeting">
                     Welcome, {user.username}
                   </span>
                   {user.role === 'admin' && (
@@ -164,14 +214,33 @@ const Navbar = ({ user, onLogout }) => {
                 </button>
               )}
             </div>
-          </div>
-          
-          <nav className="top-nav">
-            <a href="https://www.nitgoa.ac.in/alumni/" target="_blank" rel="noopener noreferrer">Alumni</a>
+          </nav>
+
+          {/* Mobile Top Nav */}
+          <nav className="top-nav mobile-only">
             <a href="/tenders">Tenders</a>
             <a href="/gian">GIAN</a>
             <a href="https://www.nitgoa.ac.in/rajbhasha/#/" target="_blank" rel="noopener noreferrer">RAJBHASHA</a>
           </nav>
+
+          {/* Mobile Login Button */}
+          <div className="mobile-auth mobile-only">
+            {user && user.role !== 'guest' ? (
+              <button 
+                className="nav-btn nav-btn--logout mobile-logout"
+                onClick={onLogout}
+              >
+                Logout
+              </button>
+            ) : (
+              <button 
+                className="nav-btn nav-btn--login mobile-login"
+                onClick={() => navigate('/login')}
+              >
+                Login
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
@@ -354,7 +423,6 @@ const Navbar = ({ user, onLogout }) => {
           </div>
 
           <a href="/outreach-activities" className="nav-item">Outreach Activities</a>
-          <a href="/nirf" className="nav-item">NIRF</a>
           <a href="https://mis.nitgoa.ac.in/misnitgoa/academic/ONLINEFEESCOLLECTION/Payment.aspx" target="_blank" rel="noopener noreferrer" className="nav-item">Fee Payment</a>
           <a href="https://www.nitgoa.ac.in/hostels.html" target="_blank" rel="noopener noreferrer" className="nav-item">Hostels</a>
         </div>
@@ -366,6 +434,34 @@ const Navbar = ({ user, onLogout }) => {
           <div className="mobile-menu" onClick={(e) => e.stopPropagation()}>
             {/* Mobile Menu Header */}
             <div className="mobile-menu-header">
+              <div className="mobile-menu-theme">
+                <ThemeToggle />
+                
+                {/* Mobile Language Selector */}
+                <div className="language-selector mobile-language">
+                  <button 
+                    className="language-btn mobile-language-btn"
+                    onClick={toggleLanguageDropdown}
+                    aria-label="Change language"
+                  >
+                    <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                      <path fillRule="evenodd" d="M7 2a1 1 0 011 1v1h3a1 1 0 110 2H9.578a18.87 18.87 0 01-1.724 4.78c.29.354.596.696.914 1.026a1 1 0 11-1.44 1.389c-.188-.196-.373-.396-.554-.6a19.098 19.098 0 01-3.107 3.567 1 1 0 01-1.334-1.49 17.087 17.087 0 003.13-3.733 18.992 18.992 0 01-1.487-2.494 1 1 0 111.79-.89c.234.47.489.928.764 1.372.417-.934.752-1.913.997-2.927H3a1 1 0 110-2h3V3a1 1 0 011-1zm6 6a1 1 0 01.894.553l2.991 5.982a.869.869 0 01.02.037l.99 1.98a1 1 0 11-1.79.895L15.383 16h-4.764l-.724 1.447a1 1 0 11-1.788-.894l.99-1.98.019-.038 2.99-5.982A1 1 0 0113 8zm-1.382 6h2.764L13 11.236 11.618 14z" clipRule="evenodd" />
+                    </svg>
+                    {currentLanguage === 'english' ? 'EN' : 'हि'}
+                  </button>
+                  
+                  {isLanguageDropdownOpen && (
+                    <div className="language-dropdown mobile-language-dropdown">
+                      <button onClick={() => changeLanguage('english')}>
+                        🇺🇸 English
+                      </button>
+                      <button onClick={() => changeLanguage('hindi')}>
+                        🇮🇳 हिंदी
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
               <button className="mobile-menu-close" onClick={closeMobileMenu}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -526,6 +622,9 @@ const Navbar = ({ user, onLogout }) => {
               </div>
               <div className="mobile-nav-item">
                 <button onClick={() => handleMobileNavigation('/nirf')}>NIRF</button>
+              </div>
+              <div className="mobile-nav-item">
+                <button onClick={() => window.open('https://www.nitgoa.ac.in/alumni/', '_blank')}>Alumni</button>
               </div>
               <div className="mobile-nav-item">
                 <button onClick={() => window.open('https://mis.nitgoa.ac.in/misnitgoa/academic/ONLINEFEESCOLLECTION/Payment.aspx', '_blank')}>Fee Payment</button>
