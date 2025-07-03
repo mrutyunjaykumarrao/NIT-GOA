@@ -11,7 +11,7 @@
   padding: 0 2rem;
 }
 
-.page-header {
+.registrar-page-header {
   text-align: center;
   margin-bottom: 3rem;
   padding: 2rem 0;
@@ -20,7 +20,7 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.page-header h1 {
+.registrar-page-header h1 {
   font-size: 2.5rem;
   color: #2c3e50;
   margin-bottom: 0.5rem;
@@ -69,7 +69,7 @@
   object-fit: cover;
 }
 
-.image-placeholder {
+.registrar-image-placeholder {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,7 +82,7 @@
   position: relative;
 }
 
-.image-placeholder::before {
+.registrar-image-placeholder::before {
   content: '';
   position: absolute;
   top: 50%;
@@ -95,7 +95,7 @@
   opacity: 0.1;
 }
 
-.placeholder-avatar {
+.registrar-placeholder-avatar {
   font-size: 4rem;
   margin-bottom: 1rem;
   color: #007bff;
@@ -103,7 +103,7 @@
   z-index: 1;
 }
 
-.image-placeholder p {
+.registrar-image-placeholder p {
   font-weight: 600;
   margin: 0;
   color: #007bff;
@@ -112,7 +112,7 @@
   z-index: 1;
 }
 
-.image-placeholder span {
+.registrar-image-placeholder span {
   font-size: 0.9rem;
   color: #6c757d;
   font-weight: 500;
@@ -130,11 +130,11 @@
   justify-content: space-between;
 }
 
-.name-title-section {
+.registrar-name-title-section {
   margin-bottom: 1rem;
 }
 
-.name-title-section h2 {
+.registrar-name-title-section h2 {
   font-size: 2.2rem;
   color: #2c3e50;
   margin-bottom: 0.5rem;
@@ -142,7 +142,7 @@
   line-height: 1.2;
 }
 
-.designation {
+.registrar-designation {
   font-size: 1.3rem;
   color: #007bff;
   font-weight: 600;
@@ -151,7 +151,7 @@
   letter-spacing: 0.5px;
 }
 
-.institute {
+.registrar-institute {
   font-size: 1rem;
   color: #6c757d;
   font-weight: 500;
@@ -159,7 +159,7 @@
 }
 
 /* Tenure Badge */
-.tenure-badge {
+.registrar-tenure-badge {
   display: inline-flex;
   align-items: center;
   background: linear-gradient(135deg, #007bff, #0056b3);
@@ -171,12 +171,12 @@
   transition: transform 0.2s ease;
 }
 
-.tenure-badge:hover {
+.registrar-tenure-badge:hover {
   transform: translateY(-1px);
   box-shadow: 0 3px 12px rgba(0, 123, 255, 0.3);
 }
 
-.tenure-label {
+.registrar-tenure-label {
   font-weight: 600;
   margin-right: 0.5rem;
   font-size: 0.75rem;
@@ -184,19 +184,19 @@
   letter-spacing: 0.5px;
 }
 
-.tenure-date {
+.registrar-tenure-date {
   font-weight: 500;
   font-size: 1rem;
 }
 
 /* Contact Cards */
-.contact-cards {
+.registrar-contact-cards {
   display: flex;
   gap: 0.8rem;
   flex-grow: 1;
 }
 
-.contact-card {
+.registrar-contact-card {
   display: flex;
   align-items: center;
   padding: 0.8rem 1rem;
@@ -210,7 +210,7 @@
   overflow: hidden;
 }
 
-.contact-card:before {
+.registrar-contact-card:before {
   content: '';
   position: absolute;
   top: 0;
@@ -222,22 +222,22 @@
   transition: transform 0.2s ease;
 }
 
-.contact-card:hover {
+.registrar-contact-card:hover {
   transform: translateY(-1px);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
   border-color: #007bff;
   background: #ffffff;
 }
 
-.contact-card:hover:before {
+.registrar-contact-card:hover:before {
   transform: scaleX(1);
 }
 
-.contact-details {
+.registrar-contact-details {
   flex: 1;
 }
 
-.contact-label {
+.registrar-contact-label {
   font-size: 0.7rem;
   font-weight: 600;
   color: #6c757d;
@@ -246,29 +246,29 @@
   margin-bottom: 0.2rem;
 }
 
-.contact-value {
+.registrar-contact-value {
   font-size: 0.85rem;
   font-weight: 500;
   color: #2c3e50;
   line-height: 1.3;
 }
 
-.contact-value div {
+.registrar-contact-value div {
   margin-bottom: 0.1rem;
 }
 
-.contact-value div:last-child {
+.registrar-contact-value div:last-child {
   margin-bottom: 0;
 }
 
 /* About Section */
-.about-section {
+.registrar-about-section {
   margin-top: 2rem;
   width: 100%;
   clear: both;
 }
 
-.about-section h3 {
+.registrar-about-section h3 {
   font-size: 1.8rem;
   color: #2c3e50;
   margin-bottom: 1.5rem;
@@ -277,14 +277,14 @@
   padding-bottom: 0.5rem;
 }
 
-.about-content {
+.registrar-about-content {
   line-height: 1.7;
   color: #34495e;
   width: 100%;
   margin-top: 2rem;
 }
 
-.about-content p {
+.registrar-about-content p {
   margin-bottom: 2rem;
   text-align: justify;
   font-size: 1rem;
@@ -298,20 +298,20 @@
 }
 
 /* Professional styling for email and office cards */
-.email-card {
+.registrar-email-card {
   border-left: 4px solid #007bff;
 }
 
-.email-card:hover {
+.registrar-email-card:hover {
   border-left-color: #0056b3;
   background: #f8f9fa;
 }
 
-.office-card {
+.registrar-office-card {
   border-left: 4px solid #28a745;
 }
 
-.office-card:hover {
+.registrar-office-card:hover {
   border-left-color: #1e7e34;
   background: #f8f9fa;
 }
@@ -349,12 +349,12 @@
     height: auto;
   }
   
-  .contact-cards {
+  .registrar-contact-cards {
     flex-direction: column;
     align-items: center;
   }
   
-  .contact-card {
+  .registrar-contact-card {
     max-width: 100%;
     width: 100%;
   }
@@ -369,7 +369,7 @@
     padding: 0 1rem;
   }
 
-  .page-header h1 {
+  .registrar-page-header h1 {
     font-size: 2rem;
   }
 
@@ -382,25 +382,25 @@
     height: 300px;
   }
 
-  .name-title-section h2 {
+  .registrar-name-title-section h2 {
     font-size: 1.8rem;
   }
 
-  .designation {
+  .registrar-designation {
     font-size: 1.1rem;
   }
 
-  .about-section h3 {
+  .registrar-about-section h3 {
     font-size: 1.5rem;
   }
 
-  .about-content p {
+  .registrar-about-content p {
     font-size: 0.95rem;
   }
 }
 
 @media (max-width: 480px) {
-  .page-header h1 {
+  .registrar-page-header h1 {
     font-size: 1.5rem;
   }
 
@@ -413,15 +413,15 @@
     height: 270px;
   }
 
-  .name-title-section h2 {
+  .registrar-name-title-section h2 {
     font-size: 1.5rem;
   }
 
-  .contact-card {
+  .registrar-contact-card {
     padding: 1rem;
   }
 
-  .about-content p {
+  .registrar-about-content p {
     font-size: 0.9rem;
   }
 }

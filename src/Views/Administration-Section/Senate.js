@@ -42,13 +42,15 @@ const Senate = () => {
 
   return (
     <div className="senate-page">
-      <div className="container">
-        <div className="page-header">
+      <div className="senate-container">
+        <div className="senate-page-header">
           <h1>Senate</h1>
+          <p className="senate-subtitle">National Institute of Technology Goa</p>
+          <p className="senate-description">Academic Senate Meeting Minutes</p>
         </div>
 
         <div className="senate-content">
-          <div className="table-container">
+          <div className="senate-table-container">
             <table className="senate-table">
               <thead>
                 <tr>

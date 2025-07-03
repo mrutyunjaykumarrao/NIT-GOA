@@ -1,94 +1,197 @@
 /* BuildingWorksCommittee.css */
-.building-works-committee-container {
+.building-works-committee-page {
   min-height: 100vh;
-  background: white;
-  padding: 2rem 0;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 1rem 0;
+  width: 100%;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
   margin: 0;
 }
 
-.content-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
+.building-works-committee-wrapper {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
   padding: 0 1rem;
 }
 
-.page-header {
+.building-works-committee-page-header {
   text-align: center;
-  margin-bottom: 3rem;
-}
-
-.page-header h1 {
-  color: #2c3e50;
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 40px;
-  text-align: center;
-}
-
-.building-works-committee-content {
-  background: white;
+  margin-bottom: 2rem;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #2E86C1 0%, #1B4F72 100%);
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  position: relative;
   overflow: hidden;
-  background-color: #f4f6f9;
 }
 
-.table-container {
+.building-works-committee-page-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.1) 75%);
+  background-size: 30px 30px;
+  animation: moveStripes 20s linear infinite;
+}
+
+@keyframes moveStripes {
+  0% { background-position: 0 0; }
+  100% { background-position: 30px 30px; }
+}
+
+.building-works-committee-page-header h1 {
+  font-size: 3rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+  text-transform: uppercase;
+}
+
+.building-works-committee-page-header h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: #ffd700;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.building-works-committee-subtitle {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin: 1rem 0 0.5rem 0;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
+}
+
+.building-works-committee-description {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  font-weight: 400;
+  position: relative;
+  z-index: 1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  font-style: italic;
+}
+
+.building-works-committee-main-content {
+  background: linear-gradient(145deg, #ffffff 0%, #f0f7ff 100%);
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(46, 134, 193, 0.15);
+  width: 100%;
+  border: 1px solid rgba(46, 134, 193, 0.1);
+  overflow: hidden;
+}
+
+.building-works-committee-table-container {
+  overflow-x: auto;
+  margin: 1rem 0;
+  border-radius: 12px;
+  border: 2px solid rgba(46, 134, 193, 0.2);
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(46, 134, 193, 0.1);
   padding: 30px;
 }
 
-table {
+.building-works-committee-page table {
   width: 100%;
   border-collapse: collapse;
   background-color: #fff;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  box-shadow: 0 6px 25px rgba(46, 134, 193, 0.15);
+  border-radius: 12px;
   overflow: hidden;
   margin: 0;
   padding: 0;
   border-spacing: 0;
   empty-cells: hide;
-}
-
-th, td {
-  border: 1px solid #dee2e6;
-  padding: 1rem 0.8rem;
-  text-align: center;
-  vertical-align: middle;
   font-size: 0.95rem;
 }
 
-th {
-  background: #007bff;
+.building-works-committee-page thead {
+  background: linear-gradient(135deg, #2E86C1 0%, #1B4F72 100%);
   color: white;
-  font-weight: 600;
+}
+
+.building-works-committee-page th {
+  background: linear-gradient(135deg, #2E86C1 0%, #1B4F72 100%);
+  color: white;
+  font-weight: 700;
   text-align: center;
+  padding: 1rem 0.8rem;
   font-size: 1rem;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  border: 1px solid #0056b3;
+  border: 1px solid rgba(46, 134, 193, 0.3);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.building-works-committee-page tbody tr {
+  border-bottom: 1px solid rgba(46, 134, 193, 0.1);
+  transition: all 0.3s ease;
+}
+
+.building-works-committee-page tbody tr:nth-child(even) {
+  background: linear-gradient(145deg, #f0f7ff 0%, #ffffff 100%);
+}
+
+.building-works-committee-page tbody tr:hover {
+  background: linear-gradient(145deg, rgba(46, 134, 193, 0.1) 0%, rgba(27, 79, 114, 0.1) 100%);
+  transition: background-color 0.3s ease;
+}
+
+.building-works-committee-page td {
+  padding: 1rem 0.8rem;
+  vertical-align: middle;
+  border: 1px solid rgba(46, 134, 193, 0.15);
+  line-height: 1.5;
+  font-weight: normal;
+  color: #2c3e50;
+  text-align: center;
+}
+
+/* Ensure all table content is normal weight */
+.building-works-committee-page td,
+.building-works-committee-page td * {
+  font-weight: normal !important;
 }
 
 /* Column widths */
-th:first-child, td:first-child {
+.building-works-committee-page th:first-child, .building-works-committee-page td:first-child {
   width: 8%;
 }
 
-th:nth-child(2), td:nth-child(2) {
+.building-works-committee-page th:nth-child(2), .building-works-committee-page td:nth-child(2) {
   width: 12%;
 }
 
-th:nth-child(3), td:nth-child(3) {
+.building-works-committee-page th:nth-child(3), .building-works-committee-page td:nth-child(3) {
   width: 35%;
 }
 
-th:nth-child(4), td:nth-child(4) {
+.building-works-committee-page th:nth-child(4), .building-works-committee-page td:nth-child(4) {
   width: 45%;
 }
 
-td {
+.building-works-committee-page td {
   text-align: center;
   font-weight: 500;
   color: #2c3e50;
@@ -96,100 +199,314 @@ td {
 }
 
 /* Rowspan styling */
-td[rowspan] {
+.building-works-committee-page td[rowspan] {
   background-color: #f1f3f4;
-  font-weight: 600;
+  font-weight: normal;
   border: 1px solid #dee2e6;
   text-align: center;
   vertical-align: middle;
 }
 
-tbody tr:nth-child(even) {
+.building-works-committee-page tbody tr:nth-child(even) {
   background-color: #f8f9fa;
 }
 
-tbody tr:hover {
+.building-works-committee-page tbody tr:hover {
   background-color: #e3f2fd;
   transition: background-color 0.3s ease;
 }
 
-/* Minutes Section */
-.minutes-section {
+/* Building Works Committee Minutes Section */
+.building-works-committee-minutes-section {
   margin-top: 3rem;
   padding-top: 2rem;
   border-top: 2px solid #e9ecef;
 }
 
-.minutes-section h3 {
+.building-works-committee-minutes-section h3 {
   font-size: 1.5rem;
   color: #2c3e50;
   margin-bottom: 1rem;
   font-weight: 600;
 }
 
-.minutes-links {
+.building-works-committee-minutes-links {
   line-height: 2;
   text-align: left;
 }
 
-.minutes-links a {
+.building-works-committee-minutes-links a {
   color: #007bff;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
-.minutes-links a:hover {
+.building-works-committee-minutes-links a:hover {
   color: #0056b3;
   text-decoration: underline;
 }
 
 /* Responsive design */
+@media (max-width: 1200px) {
+  .building-works-committee-wrapper {
+    padding: 0 1rem;
+  }
+  
+  .building-works-committee-page table {
+    font-size: 0.9rem;
+  }
+  
+  .building-works-committee-page th,
+  .building-works-committee-page td {
+    padding: 0.8rem 0.6rem;
+  }
+}
+
+/* Mobile optimization - following Committees approach */
 @media (max-width: 768px) {
-  .building-works-committee-container {
-    padding: 1rem 0;
+  .building-works-committee-page {
+    padding: 0.5rem 0;
   }
-  
-  .page-header h1 {
-    font-size: 2rem;
+
+  .building-works-committee-wrapper {
+    padding: 0 0.5rem;
   }
-  
-  .table-container {
+
+  .building-works-committee-page-header {
+    padding: 2rem 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 15px;
+  }
+
+  .building-works-committee-page-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .building-works-committee-subtitle {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+  }
+
+  .building-works-committee-description {
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .building-works-committee-main-content {
     padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .building-works-committee-table-container {
+    padding: 0.5rem;
+    border-radius: 8px;
+    margin: 0.5rem 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+  }
+
+  .building-works-committee-table-container::after {
+    content: '← Scroll to see more →';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: rgba(46, 134, 193, 0.8);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.65rem;
+    border-radius: 4px 0 0 0;
+    pointer-events: none;
+    z-index: 10;
+    display: block;
   }
   
-  table, tbody, tr, th, td {
-    display: block;
-    width: 100%;
+  /* Keep normal table layout but make it scrollable */
+  .building-works-committee-page table {
+    font-size: 0.8rem;
+    min-width: 700px; /* Force horizontal scroll on mobile */
+    display: table;
+    width: auto;
+    table-layout: fixed;
   }
 
-  tr {
-    margin-bottom: 25px;
+  .building-works-committee-page thead {
+    display: table-header-group;
   }
 
-  th {
-    font-size: 16px;
-    text-align: left;
+  .building-works-committee-page tbody {
+    display: table-row-group;
   }
 
-  td {
-    text-align: left;
-    padding: 20px;
+  .building-works-committee-page tr {
+    display: table-row;
+    margin-bottom: 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    overflow: visible;
+  }
+
+  .building-works-committee-page th {
+    display: table-cell;
+    padding: 0.7rem 0.5rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
+  .building-works-committee-page td {
+    display: table-cell;
+    padding: 0.7rem 0.5rem;
+    font-size: 0.75rem;
+    text-align: center;
+    border: 1px solid rgba(46, 134, 193, 0.15);
+    border-bottom: 1px solid rgba(46, 134, 193, 0.1);
+    vertical-align: middle;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .building-works-committee-page td:before {
+    display: none;
+  }
+
+  .building-works-committee-page td:last-child {
+    border-bottom: 1px solid rgba(46, 134, 193, 0.1);
+  }
+
+  /* Column widths for mobile */
+  .building-works-committee-page th:first-child,
+  .building-works-committee-page td:first-child {
+    width: 80px;
+    min-width: 80px;
+  }
+
+  .building-works-committee-page th:nth-child(2),
+  .building-works-committee-page td:nth-child(2) {
+    width: 100px;
+    min-width: 100px;
+  }
+
+  .building-works-committee-page th:nth-child(3),
+  .building-works-committee-page td:nth-child(3) {
+    width: 250px;
+    min-width: 250px;
+  }
+
+  .building-works-committee-page th:nth-child(4),
+  .building-works-committee-page td:nth-child(4) {
+    width: 270px;
+    min-width: 270px;
   }
 }
 
 @media (max-width: 480px) {
-  .page-header h1 {
-    font-size: 1.5rem;
+  .building-works-committee-page {
+    padding: 0.25rem 0;
   }
-  
-  table {
+
+  .building-works-committee-wrapper {
+    padding: 0 0.25rem;
+  }
+
+  .building-works-committee-page-header {
+    padding: 1.5rem 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+  }
+
+  .building-works-committee-page-header h1 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .building-works-committee-subtitle {
+    font-size: 1rem;
+    margin: 0.4rem 0;
+  }
+
+  .building-works-committee-description {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .building-works-committee-main-content {
+    padding: 0.8rem;
+    border-radius: 10px;
+  }
+
+  .building-works-committee-table-container {
+    padding: 0.3rem;
+    border-radius: 6px;
+    margin: 0.25rem 0;
+  }
+
+  .building-works-committee-page table {
+    font-size: 0.7rem;
+    min-width: 600px;
+  }
+
+  .building-works-committee-page th,
+  .building-works-committee-page td {
+    padding: 0.6rem 0.4rem;
     font-size: 0.7rem;
   }
-  
-  th, td {
-    padding: 0.6rem 0.3rem;
-    font-size: 14px;
+
+  /* Smaller column widths for very small screens */
+  .building-works-committee-page th:first-child,
+  .building-works-committee-page td:first-child {
+    width: 70px;
+    min-width: 70px;
+  }
+
+  .building-works-committee-page th:nth-child(2),
+  .building-works-committee-page td:nth-child(2) {
+    width: 90px;
+    min-width: 90px;
+  }
+
+  .building-works-committee-page th:nth-child(3),
+  .building-works-committee-page td:nth-child(3) {
+    width: 220px;
+    min-width: 220px;
+  }
+
+  .building-works-committee-page th:nth-child(4),
+  .building-works-committee-page td:nth-child(4) {
+    width: 240px;
+    min-width: 240px;
+  }
+}
+
+/* Landscape mobile optimization */
+@media (max-width: 768px) and (orientation: landscape) {
+  .building-works-committee-page-header {
+    padding: 1.5rem 1rem;
+  }
+
+  .building-works-committee-page-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .building-works-committee-subtitle {
+    font-size: 1rem;
+  }
+
+  .building-works-committee-description {
+    font-size: 0.9rem;
+  }
+
+  .building-works-committee-page table {
+    font-size: 0.75rem;
+  }
+
+  .building-works-committee-page th,
+  .building-works-committee-page td {
+    padding: 0.7rem 0.4rem;
   }
 }
 
@@ -210,24 +527,24 @@ tbody tr:hover {
 }
 
 /* Enhanced row styling */
-tbody tr {
+.building-works-committee-page tbody tr {
   position: relative;
   transition: all 0.3s ease;
 }
 
-tbody tr::after {
+.building-works-committee-page tbody tr::after {
   content: '';
   position: absolute;
   left: 0;
   bottom: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: transparent;
   transition: width 0.3s ease;
 }
 
-tbody tr:hover::after {
-  width: 100%;
+.building-works-committee-page tbody tr:hover::after {
+  width: 0;
 }
 
 /* Print styles */
@@ -237,7 +554,7 @@ tbody tr:hover::after {
     padding: 0;
   }
   
-  .page-header h1 {
+  .building-works-committee-page-header h1 {
     color: black;
     text-shadow: none;
   }
@@ -247,10 +564,112 @@ tbody tr:hover::after {
     border: 1px solid #ccc;
   }
   
-  th {
+  .building-works-committee-page th {
     background: #f0f0f0 !important;
     color: black !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+  }
+}
+
+/* Tablet optimization */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .building-works-committee-page {
+    padding: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    overflow-x: hidden;
+    margin: 0 !important;
+  }
+
+  .building-works-committee-wrapper {
+    padding: 0 !important;
+    max-width: 100vw !important;
+    width: 100vw !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+  }
+
+  .building-works-committee-page-header {
+    padding: 2.5rem 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box;
+  }
+
+  .building-works-committee-page-header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .building-works-committee-subtitle {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+  }
+
+  .building-works-committee-description {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .building-works-committee-main-content {
+    padding: 1.2rem;
+    border-radius: 0;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+  }
+
+  .building-works-committee-table-container {
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 0.5rem 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+  }
+
+  .building-works-committee-page table {
+    font-size: 0.9rem;
+    width: 100%;
+    min-width: 100%;
+    table-layout: auto;
+    box-sizing: border-box;
+  }
+
+  .building-works-committee-page th,
+  .building-works-committee-page td {
+    padding: 0.9rem 0.6rem;
+    font-size: 0.9rem;
+    vertical-align: middle;
+  }
+
+  /* Force proper table display */
+  .building-works-committee-page table {
+    display: table !important;
+  }
+
+  .building-works-committee-page thead {
+    display: table-header-group !important;
+  }
+
+  .building-works-committee-page tbody {
+    display: table-row-group !important;
+  }
+
+  .building-works-committee-page tr {
+    display: table-row !important;
+  }
+
+  .building-works-committee-page th,
+  .building-works-committee-page td {
+    display: table-cell !important;
   }
 }

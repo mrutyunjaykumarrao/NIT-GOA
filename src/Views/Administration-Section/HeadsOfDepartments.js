@@ -56,14 +56,14 @@ const HeadsOfDepartments = () => {
   ];
 
   return (
-    <div className="heads-of-departments-container">
-      <div className="content-wrapper">
-        <header className="page-header">
+    <div className="heads-of-departments-page">
+      <div className="heads-of-departments-wrapper">
+        <header className="heads-of-departments-page-header">
           <h1>Head Of Departments</h1>
         </header>
         
-        <div className="heads-of-departments-content">
-          <div className="table-container">
+        <div className="heads-of-departments-main-content">
+          <div className="heads-of-departments-table-container">
             <table>
               <thead>
                 <tr>

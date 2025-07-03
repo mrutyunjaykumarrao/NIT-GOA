@@ -12,7 +12,7 @@ const Registrar = () => {
   return (
     <div className="registrar-page">
       <div className="container">
-        <div className="page-header">
+        <div className="registrar-page-header">
           <h1>Registrar</h1>
         </div>
 
@@ -28,8 +28,8 @@ const Registrar = () => {
                     onError={handleImageError}
                   />
                 ) : (
-                  <div className="image-placeholder">
-                    <div className="placeholder-avatar">👨‍💼</div>
+                  <div className="registrar-image-placeholder">
+                    <div className="registrar-placeholder-avatar">👨‍💼</div>
                     <p>Dr. Shashidhar K. Kudari</p>
                     <span>Registrar, NIT Goa</span>
                   </div>
@@ -37,29 +37,29 @@ const Registrar = () => {
               </div>
               
               <div className="registrar-info">
-                <div className="name-title-section">
+                <div className="registrar-name-title-section">
                   <h2>Dr. Shashidhar K. Kudari</h2>
-                  <p className="designation">Registrar</p>
-                  <p className="institute">National Institute of Technology Goa</p>
+                  <p className="registrar-designation">Registrar</p>
+                  <p className="registrar-institute">National Institute of Technology Goa</p>
                 </div>
                 
-                <div className="tenure-badge">
-                  <span className="tenure-label">Tenure</span>
-                  <span className="tenure-date">February 2021 - Present</span>
+                <div className="registrar-tenure-badge">
+                  <span className="registrar-tenure-label">Tenure</span>
+                  <span className="registrar-tenure-date">February 2021 - Present</span>
                 </div>
                 
-                <div className="contact-cards">
-                  <div className="contact-card email-card">
-                    <div className="contact-details">
-                      <div className="contact-label">Email</div>
-                      <div className="contact-value">registrar@nitgoa.ac.in</div>
+                <div className="registrar-contact-cards">
+                  <div className="registrar-contact-card registrar-email-card">
+                    <div className="registrar-contact-details">
+                      <div className="registrar-contact-label">Email</div>
+                      <div className="registrar-contact-value">registrar@nitgoa.ac.in</div>
                     </div>
                   </div>
                   
-                  <div className="contact-card office-card">
-                    <div className="contact-details">
-                      <div className="contact-label">Office</div>
-                      <div className="contact-value">
+                  <div className="registrar-contact-card registrar-office-card">
+                    <div className="registrar-contact-details">
+                      <div className="registrar-contact-label">Office</div>
+                      <div className="registrar-contact-value">
                         <div>Sardar Patel Administrative Complex</div>
                       </div>
                     </div>
@@ -68,9 +68,9 @@ const Registrar = () => {
               </div>
             </div>
             
-            <div className="about-section">
+            <div className="registrar-about-section">
               <h3>About Registrar</h3>
-              <div className="about-content">
+              <div className="registrar-about-content">
                 <p>
                   Dr. Shashidhar K. Kudari obtained his B.E (Mechanical Engineering) degree from Karnataka University, Dharwad. He received M. Tech. (Machine Design) and Ph.D. degrees from the Indian Institute of Technology, Kharagpur. He has 34 years of Teaching / Research and Administration experience.
                 </p>

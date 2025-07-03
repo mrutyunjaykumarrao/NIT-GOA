@@ -154,21 +154,21 @@ const Deans = () => {
   ];
 
   const renderPersonProfile = (person, category, isDean = false) => (
-    <div className="person-profile-table">
-      <div className="person-image-table">
+    <div className="deans-person-profile-table">
+      <div className="deans-person-image-table">
         {person.image ? (
           <img src={person.image} alt={person.name} />
         ) : (
-          <div className="image-placeholder-table">
+          <div className="deans-image-placeholder-table">
             👤
           </div>
         )}
       </div>
-      <div className="person-info-table">
-        <div className="person-category">{category}</div>
-        <div className="person-name-table">{person.name}</div>
-        <div className="person-designation-table">{person.designation}</div>
-        <a href={`mailto:${person.email}`} className="person-email-table">
+      <div className="deans-person-info-table">
+        <div className="deans-person-category">{category}</div>
+        <div className="deans-person-name-table">{person.name}</div>
+        <div className="deans-person-designation-table">{person.designation}</div>
+        <a href={`mailto:${person.email}`} className="deans-person-email-table">
           {person.email}
         </a>
       </div>
@@ -176,54 +176,54 @@ const Deans = () => {
   );
 
   const renderOfficeDetails = (officeDetails) => (
-    <div className="office-details-table">
-      <div className="office-detail-item">
-        <span className="office-label">Room No:</span> {officeDetails.roomNo}
+    <div className="deans-office-details-table">
+      <div className="deans-office-detail-item">
+        <span className="deans-office-label">Room No:</span> {officeDetails.roomNo}
       </div>
-      <div className="office-detail-item">
-        <span className="office-label">Floor:</span> {officeDetails.floor}
+      <div className="deans-office-detail-item">
+        <span className="deans-office-label">Floor:</span> {officeDetails.floor}
       </div>
-      <div className="office-detail-item">
-        <span className="office-label">Building:</span> {officeDetails.building}
+      <div className="deans-office-detail-item">
+        <span className="deans-office-label">Building:</span> {officeDetails.building}
       </div>
-      <div className="office-detail-item">
-        <span className="office-label">NIT Goa</span>
+      <div className="deans-office-detail-item">
+        <span className="deans-office-label">NIT Goa</span>
       </div>
-      <div className="office-detail-item">
-        <span className="office-label">Tel No:</span> {officeDetails.contact}
+      <div className="deans-office-detail-item">
+        <span className="deans-office-label">Tel No:</span> {officeDetails.contact}
       </div>
     </div>
   );
 
   return (
     <div className="deans-page">
-      <div className="container">
-        <div className="page-header">
+      <div className="deans-container">
+        <div className="deans-page-header">
           <h1>Deans</h1>
         </div>
 
         <div className="deans-table">
           {/* Table Header */}
-          <div className="table-header">
-            <div className="header-cell">Dean</div>
-            <div className="header-cell">Associate Dean</div>
-            <div className="header-cell">Office details</div>
+          <div className="deans-table-header">
+            <div className="deans-header-cell">Dean</div>
+            <div className="deans-header-cell">Associate Dean</div>
+            <div className="deans-header-cell">Office details</div>
           </div>
 
           {/* Table Body */}
-          <div className="table-body">
+          <div className="deans-table-body">
             {deansData.map((dean, index) => (
-              <div key={index} className="table-row">
+              <div key={index} className="deans-table-row">
                 {/* Dean Column */}
-                <div className="table-cell">
+                <div className="deans-table-cell">
                   {renderPersonProfile(dean.dean, dean.category, true)}
                 </div>
 
                 {/* Associate Dean Column */}
-                <div className="table-cell">
+                <div className="deans-table-cell">
                   {dean.associateDean && (
                     Array.isArray(dean.associateDean) ? (
-                      <div className="associates-table">
+                      <div className="deans-associates-table">
                         {dean.associateDean.map((assocDean, idx) => (
                           <div key={idx}>
                             {renderPersonProfile(assocDean, dean.category, false)}
@@ -237,7 +237,7 @@ const Deans = () => {
                 </div>
 
                 {/* Office Details Column */}
-                <div className="table-cell">
+                <div className="deans-table-cell">
                   {dean.officeDetails && renderOfficeDetails(dean.officeDetails)}
                 </div>
               </div>

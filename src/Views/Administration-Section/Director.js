@@ -12,7 +12,7 @@ const Director = () => {
   return (
     <div className="director-page">
       <div className="container">
-        <div className="page-header">
+        <div className="director-page-header">
           <h1>Director</h1>
         </div>
 
@@ -28,8 +28,8 @@ const Director = () => {
                     onError={handleImageError}
                   />
                 ) : (
-                  <div className="image-placeholder">
-                    <div className="placeholder-avatar">👨‍🎓</div>
+                  <div className="director-image-placeholder">
+                    <div className="director-placeholder-avatar">👨‍🎓</div>
                     <p>Prof. O. R. Jaiswal</p>
                     <span>Director, NIT Goa</span>
                   </div>
@@ -37,29 +37,29 @@ const Director = () => {
               </div>
               
               <div className="director-info">
-                <div className="name-title-section">
+                <div className="director-name-title-section">
                   <h2>Prof. O. R. Jaiswal</h2>
-                  <p className="designation">Director</p>
-                  <p className="institute">National Institute of Technology Goa</p>
+                  <p className="director-designation">Director</p>
+                  <p className="director-institute">National Institute of Technology Goa</p>
                 </div>
                 
-                <div className="tenure-badge">
-                  <span className="tenure-label">Tenure</span>
-                  <span className="tenure-date">June 8, 2023 - Present</span>
+                <div className="director-tenure-badge">
+                  <span className="director-tenure-label">Tenure</span>
+                  <span className="director-tenure-date">June 8, 2023 - Present</span>
                 </div>
                 
-                <div className="contact-cards">
-                  <div className="contact-card email-card">
-                    <div className="contact-details">
-                      <div className="contact-label">Email</div>
-                      <div className="contact-value">director@nitgoa.ac.in</div>
+                <div className="director-contact-cards">
+                  <div className="director-contact-card email-card">
+                    <div className="director-contact-details">
+                      <div className="director-contact-label">Email</div>
+                      <div className="director-contact-value">director@nitgoa.ac.in</div>
                     </div>
                   </div>
                   
-                  <div className="contact-card office-card">
-                    <div className="contact-details">
-                      <div className="contact-label">Office</div>
-                      <div className="contact-value">
+                  <div className="director-contact-card office-card">
+                    <div className="director-contact-details">
+                      <div className="director-contact-label">Office</div>
+                      <div className="director-contact-value">
                         <div>Directorate</div>
                         <div>Sardar Patel Administrative Complex</div>
                       </div>
@@ -69,9 +69,9 @@ const Director = () => {
               </div>
             </div>
             
-            <div className="about-section">
+            <div className="director-about-section">
               <h3>About Director</h3>
-              <div className="about-content">
+              <div className="director-about-content">
                 <p>
                   Prof. O. R. Jaiswal, took over the charge as Director of NIT Goa on 8th June 2023. He is on deputation from the Visvesvaraya National Institute of Technology (VNIT), Nagpur, wherein, he is a Professor at the Department of Applied Mechanics. His basic field is Structural Engineering with research work in the areas related to earthquake analysis of structures, tuned mass dampers for seismic and wind response control, Dynamic response of Railway Tracks etc.
                 </p>

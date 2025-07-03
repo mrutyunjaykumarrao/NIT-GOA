@@ -39,7 +39,7 @@ import Committees from './Views/Administration-Section/Committees';
 import FinanceCommittee from './Views/Administration-Section/FinanceCommittee';
 import BuildingWorksCommittee from './Views/Administration-Section/BuildingWorksCommittee';
 import HeadsOfDepartments from './Views/Administration-Section/HeadsOfDepartments';
-import Reports from './Views/Administration-Section/Reports';
+import AnnualReports from './Views/Administration-Section/AnnualReports';
 
 function App() {
   return (
@@ -83,7 +83,7 @@ function App() {
         <Route path="/administration/finance-committee" element={<FinanceCommittee />} />
         <Route path="/administration/building-works-committee" element={<BuildingWorksCommittee />} />
         <Route path="/heads-of-departments" element={<HeadsOfDepartments />} />
-        <Route path="/reports" element={<Reports />} />
+        <Route path="/reports" element={<AnnualReports />} />
         
         <Route path="/rti" element={<RTI />} />
         <Route path="/nirf" element={<NIRF />} />
