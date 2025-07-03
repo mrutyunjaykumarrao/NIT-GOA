@@ -331,7 +331,7 @@ const Navbar = ({ user, onLogout }) => {
                 <a href="/faculty">Faculty</a>
                 <a href="/technical-staff">Technical Staff</a>
                 <a href="/administrative-staff">Administrative Staff</a>
-                <a href="/telephone-directory">Telephone Directory</a>
+                <a href="https://www.nitgoa.ac.in/static/TelephoneDirectory.pdf" target="_blank" rel="noopener noreferrer">Telephone Directory</a>
               </div>
             )}
           </div>
