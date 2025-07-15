@@ -721,7 +721,7 @@ This project is licensed under the **MIT License** - see [LICENSE](LICENSE) for 
 - **Developer**: [Vicky Prasad] (https://github.com/mrutyunjaykumarrao)
 - **Developer**: [Ankit Singh] (https://github.com/mrutyunjaykumarrao)
 - **Project**: Official NIT Goa Website
-- **Branch**: `backend-mysql-implementation`
+- **Branch**: `main`
 
 ## 🐛 Bug Reports & 💡 Feature Requests
 
