@@ -716,6 +716,10 @@ This project is licensed under the **MIT License** - see [LICENSE](LICENSE) for 
 
 **NIT Goa Development Team**
 - **Lead Developer**: [Mrutyunjay Kumar Rao](https://github.com/mrutyunjaykumarrao)
+- **Developer**: [Suyash Gaude] (https://github.com/mrutyunjaykumarrao)
+- **Developer**: [Jai Yadav] (https://github.com/mrutyunjaykumarrao)
+- **Developer**: [Vicky Prasad] (https://github.com/mrutyunjaykumarrao)
+- **Developer**: [Ankit Singh] (https://github.com/mrutyunjaykumarrao)
 - **Project**: Official NIT Goa Website
 - **Branch**: `backend-mysql-implementation`
 
@@ -723,12 +727,12 @@ This project is licensed under the **MIT License** - see [LICENSE](LICENSE) for 
 
 - **Issues**: [GitHub Issues](https://github.com/mrutyunjaykumarrao/NIT-GOA/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/mrutyunjaykumarrao/NIT-GOA/discussions)
-- **Email**: development@nitgoa.ac.in
+- **Email**: mrutyunjaykumarrao22@gmail.com
 
 ## 📞 Support
 
 For technical support or questions:
-- 📧 **Email**: support@nitgoa.ac.in
+- 📧 **Email**: mrutyunjaykumarrao22@gmail.com
 - 📱 **GitHub**: [Create an Issue](https://github.com/mrutyunjaykumarrao/NIT-GOA/issues)
 - 📖 **Docs**: [Documentation Hub](./docs/README.md)
 
