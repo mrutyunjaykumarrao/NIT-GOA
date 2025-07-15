@@ -1,53 +1,44 @@
 {
-  "name": "nitgoa",
+  "name": "nitgoa-workspace",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.7.2",
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "firebase": "^11.9.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-router-dom": "^7.6.2",
-    "react-scripts": "5.0.1"
-  },
+  "description": "NIT Goa Official Website - Full Stack Application",
+  "workspaces": [
+    "client",
+    "server"
+  ],
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --watchAll=false",
-    "test:watch": "react-scripts test",
-    "test:coverage": "react-scripts test --coverage --watchAll=false",
-    "lint": "eslint src/**/*.{js,jsx} --quiet",
-    "lint:fix": "eslint src/**/*.{js,jsx} --fix",
-    "eject": "react-scripts eject",
+    "install-all": "npm install && npm run install-client && npm run install-server",
+    "install-client": "cd client && npm install",
+    "install-server": "cd server && npm install",
+    "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\"",
+    "dev-client": "cd client && npm start",
+    "dev-server": "cd server && npm run dev",
+    "build": "cd client && npm run build",
+    "test": "npm run test-client && npm run test-server",
+    "test-client": "cd client && npm test",
+    "test-server": "cd server && npm test",
+    "lint": "npm run lint-client && npm run lint-server",
+    "lint-client": "cd client && npm run lint",
+    "lint-server": "cd server && npm run lint",
     "deploy": "npm run build && firebase deploy",
     "deploy:staging": "npm run build && firebase hosting:channel:deploy staging",
     "serve": "firebase serve --only hosting",
-    "analyze": "npm run build && npx serve -s build"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "start-server": "cd server && npm start",
+    "start-client": "cd client && npm start"
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.6"
-  }
+  },
+  "keywords": [
+    "nitgoa",
+    "nit-goa",
+    "education",
+    "website",
+    "fullstack"
+  ],
+  "author": "NIT Goa Development Team",
+  "license": "MIT"
 }
