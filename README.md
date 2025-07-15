@@ -716,10 +716,10 @@ This project is licensed under the **MIT License** - see [LICENSE](LICENSE) for 
 
 **NIT Goa Development Team**
 - **Lead Developer**: [Mrutyunjay Kumar Rao](https://github.com/mrutyunjaykumarrao)
-- **Developer**: [Suyash Gaude] (https://github.com/mrutyunjaykumarrao)
-- **Developer**: [Jai Yadav] (https://github.com/mrutyunjaykumarrao)
-- **Developer**: [Vicky Prasad] (https://github.com/mrutyunjaykumarrao)
-- **Developer**: [Ankit Singh] (https://github.com/mrutyunjaykumarrao)
+- **Developer**: [Suyash Gaude](https://github.com/mrutyunjaykumarrao)
+- **Developer**: [Jai Yadav](https://github.com/mrutyunjaykumarrao)
+- **Developer**: [Vicky Prasad](https://github.com/mrutyunjaykumarrao)
+- **Developer**: [Ankit Singh](https://github.com/mrutyunjaykumarrao)
 - **Project**: Official NIT Goa Website
 - **Branch**: `main`
 
