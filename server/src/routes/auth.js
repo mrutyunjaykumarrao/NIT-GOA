@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const { authenticateToken } = require('../middleware/auth');
-const { login, changePassword, getProfile } = require('../controllers/authController');
+const { login, changePassword, getProfile, forgotPassword } = require('../controllers/authController');
 
 // Public routes
 router.post('/login', login);
+router.post('/forgot-password', forgotPassword);
 
 // Protected routes
 router.use(authenticateToken);

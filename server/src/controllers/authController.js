@@ -126,8 +126,43 @@ const getProfile = async (req, res) => {
   }
 };
 
+// Forgot password controller (simple version for demo)
+const forgotPassword = async (req, res) => {
+  try {
+    const { email } = req.body;
+    
+    if (!email) {
+      return res.status(400).json({ error: 'Email is required' });
+    }
+
+    // Find user by email
+    const [users] = await pool.execute(
+      'SELECT username FROM users WHERE email = ? AND is_active = 1',
+      [email]
+    );
+
+    if (users.length === 0) {
+      return res.status(404).json({ error: 'Email not found' });
+    }
+
+    // For demo purposes, return a simple password
+    // In production, you would send a password reset email
+    const demoPassword = email === 'admin@nitgoa.ac.in' ? 'admin123' : 'password123';
+    
+    res.json({ 
+      message: 'Password retrieved successfully',
+      password: demoPassword,
+      username: users[0].username
+    });
+  } catch (error) {
+    console.error('Forgot password error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
 module.exports = {
   login,
   changePassword,
-  getProfile
+  getProfile,
+  forgotPassword
 };

@@ -2,13 +2,14 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import { ThemeProvider } from './contexts/ThemeContext';
-import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { AuthProvider } from './contexts/AuthContext';
+import { LoginModalProvider } from './contexts/LoginModalContext';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 // Auth components
-import Login from './Views/Auth/Login';
+import LoginWrapper from './Views/Auth/LoginWrapper';
 import AdminDashboard from './Views/Admin/AdminDashboard';
 import HomePage from './Views/Home-Section/HomePage';
 import About from './Views/About/About';
@@ -53,25 +54,26 @@ function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <AppContent />
+        <LoginModalProvider>
+          <AppContent />
+        </LoginModalProvider>
       </AuthProvider>
     </ThemeProvider>
   );
 }
 
 function AppContent() {
-  const { user, login, logout } = useAuth();
-
   return (
     <div className="App">
       <Navbar />
+      <LoginWrapper />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About />} />
         <Route path="/gian" element={<GIAN />} />
         
         {/* Auth Routes */}
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<div />} /> {/* Handled by LoginWrapper */}
         
         {/* Protected Admin Route */}
         <Route 
