@@ -2,8 +2,14 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import { ThemeProvider } from './contexts/ThemeContext';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+
+// Auth components
+import Login from './Views/Auth/Login';
+import AdminDashboard from './Views/Admin/AdminDashboard';
 import HomePage from './Views/Home-Section/HomePage';
 import About from './Views/About/About';
 import Departments from './Views/Academics-Section/Departments';
@@ -46,12 +52,36 @@ import AnnualReports from './Views/Administration-Section/AnnualReports';
 function App() {
   return (
     <ThemeProvider>
-      <div className="App">
-        <Navbar />
-        <Routes>
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
+    </ThemeProvider>
+  );
+}
+
+function AppContent() {
+  const { user, login, logout } = useAuth();
+
+  return (
+    <div className="App">
+      <Navbar />
+      <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About />} />
         <Route path="/gian" element={<GIAN />} />
+        
+        {/* Auth Routes */}
+        <Route path="/login" element={<Login />} />
+        
+        {/* Protected Admin Route */}
+        <Route 
+          path="/admin" 
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <AdminDashboard />
+            </ProtectedRoute>
+          } 
+        />
         
         {/* Academics Section Routes */}
         <Route path="/academics/departments" element={<Departments />} />
@@ -99,7 +129,6 @@ function App() {
       </Routes>
       <Footer />
     </div>
-    </ThemeProvider>
   );
 }
 

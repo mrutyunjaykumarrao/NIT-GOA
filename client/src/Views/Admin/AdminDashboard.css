@@ -1,0 +1,507 @@
+.admin-dashboard {
+  min-height: 100vh;
+  background: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-header {
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  color: white;
+  padding: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.admin-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.admin-title h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-title p {
+  margin: 5px 0 0 0;
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+.admin-user-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.admin-user-info span {
+  font-weight: 500;
+}
+
+.logout-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.admin-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+.loading-spinner {
+  text-align: center;
+}
+
+.loading-spinner i {
+  font-size: 3rem;
+  color: #667eea;
+  margin-bottom: 15px;
+}
+
+.loading-spinner p {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.error-banner {
+  background: #fee;
+  border: 1px solid #fcc;
+  color: #c33;
+  padding: 15px 20px;
+  margin: 20px 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.error-banner button {
+  background: none;
+  border: none;
+  color: #c33;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: auto;
+  padding: 0 5px;
+}
+
+.admin-content {
+  display: flex;
+  flex: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  gap: 0;
+}
+
+.admin-sidebar {
+  width: 280px;
+  background: white;
+  border-right: 1px solid #e1e5e9;
+  padding: 30px 0;
+}
+
+.admin-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0 20px;
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  padding: 15px 20px;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+  color: #555;
+  width: 100%;
+}
+
+.tab-button:hover {
+  background: #f8f9fa;
+  color: #333;
+}
+
+.tab-button.active {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  transform: translateX(5px);
+}
+
+.tab-button i {
+  width: 20px;
+  text-align: center;
+}
+
+.admin-main {
+  flex: 1;
+  padding: 30px;
+  background: #f8f9fa;
+}
+
+/* Overview Tab Styles */
+.overview-tab h2 {
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.stat-content h3 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.stat-content p {
+  color: #666;
+  margin: 5px 0 0 0;
+  font-weight: 500;
+}
+
+.recent-activity {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.recent-activity h3 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Users Tab Styles */
+.tab-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.tab-header h2 {
+  color: #333;
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.create-btn {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.create-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.create-user-form {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+}
+
+.create-user-form h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.form-row input,
+.form-row select {
+  padding: 12px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-row input:focus,
+.form-row select:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.form-actions button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.form-actions button[type="submit"] {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+.form-actions button[type="button"] {
+  background: #f8f9fa;
+  color: #666;
+  border: 1px solid #e1e5e9;
+}
+
+.users-table {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.users-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-table th,
+.users-table td {
+  padding: 15px 20px;
+  text-align: left;
+  border-bottom: 1px solid #f1f3f4;
+}
+
+.users-table th {
+  background: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+}
+
+.role-badge,
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.role-badge.admin {
+  background: #fee;
+  color: #c33;
+}
+
+.role-badge.faculty {
+  background: #e8f5e8;
+  color: #2e7d2e;
+}
+
+.role-badge.user {
+  background: #e8f4f8;
+  color: #2e5d7d;
+}
+
+.status-badge.active {
+  background: #e8f5e8;
+  color: #2e7d2e;
+}
+
+.status-badge.inactive {
+  background: #f8f8f8;
+  color: #666;
+}
+
+.action-btn {
+  background: #f8f9fa;
+  border: 1px solid #e1e5e9;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+  background: #e9ecef;
+}
+
+/* Faculty Tab Styles */
+.faculty-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 25px;
+}
+
+.faculty-card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.faculty-card:hover {
+  transform: translateY(-3px);
+}
+
+.faculty-info h3 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.faculty-info p {
+  margin: 8px 0;
+  color: #666;
+}
+
+/* Settings Tab Styles */
+.settings-tab h2 {
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+}
+
+.settings-section {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.settings-section h3 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .admin-content {
+    flex-direction: column;
+  }
+  
+  .admin-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #e1e5e9;
+  }
+  
+  .admin-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 0 20px;
+  }
+  
+  .tab-button {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-header-content {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .faculty-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .users-table {
+    overflow-x: auto;
+  }
+  
+  .admin-main {
+    padding: 20px;
+  }
+}

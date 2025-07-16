@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
 import './Navbar.css';
 import ThemeToggle from '../../Views/ThemeToggle/ThemeToggle';
 // import nitLogo from '../../assets/images/Home/NIT_LOGO_192.png'; // Now using public logo192.png
 
-const Navbar = ({ user, onLogout }) => {
+const Navbar = () => {
+  const { user, isAuthenticated, logout } = useAuth();
   const [openDropdown, setOpenDropdown] = useState(null);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -176,10 +178,10 @@ const Navbar = ({ user, onLogout }) => {
             <a href="https://www.nitgoa.ac.in/rajbhasha/#/" target="_blank" rel="noopener noreferrer">RAJBHASHA</a>
             {/* Login/User Section */}
             <div className="auth-section">
-              {user && user.role !== 'guest' ? (
+              {isAuthenticated && user ? (
                 <div className="user-menu">
                   <span className="user-greeting">
-                    Welcome, {user.username}
+                    Welcome, {user.name || user.username}
                   </span>
                   {user.role === 'admin' && (
                     <button 
@@ -194,7 +196,7 @@ const Navbar = ({ user, onLogout }) => {
                   )}
                   <button 
                     className="nav-btn nav-btn--logout"
-                    onClick={onLogout}
+                    onClick={logout}
                   >
                     <svg viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clipRule="evenodd" />
@@ -225,10 +227,10 @@ const Navbar = ({ user, onLogout }) => {
 
           {/* Mobile Login Button */}
           <div className="mobile-auth mobile-only">
-            {user && user.role !== 'guest' ? (
+            {isAuthenticated && user ? (
               <button 
                 className="nav-btn nav-btn--logout mobile-logout"
-                onClick={onLogout}
+                onClick={logout}
               >
                 Logout
               </button>

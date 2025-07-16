@@ -1,0 +1,23 @@
+.auth-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+.loading-spinner {
+  text-align: center;
+}
+
+.loading-spinner i {
+  font-size: 3rem;
+  color: #667eea;
+  margin-bottom: 15px;
+}
+
+.loading-spinner p {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 0;
+}
