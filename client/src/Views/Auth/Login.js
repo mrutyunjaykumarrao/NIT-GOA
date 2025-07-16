@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
+import { useTheme } from '../../contexts/ThemeContext';
 import './Login.css';
 
 const Login = ({ isModalOpen, onClose }) => {
@@ -20,13 +21,23 @@ const Login = ({ isModalOpen, onClose }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { login, isAuthenticated } = useAuth();
+  const { theme } = useTheme();
 
-  // Redirect if already authenticated
+  // Redirect if already authenticated and clear form when user logs out
   React.useEffect(() => {
     if (isAuthenticated) {
       const from = location.state?.from?.pathname || '/';
       navigate(from, { replace: true });
       if (onClose) onClose();
+    } else {
+      // User logged out, clear the form
+      setCredentials({ username: '', password: '' });
+      setError('');
+      setShowPassword(false);
+      setFailedAttempts(0);
+      setShowForgotPassword(false);
+      setForgotEmail('');
+      setForgotMessage('');
     }
   }, [isAuthenticated, navigate, location, onClose]);
 
@@ -41,6 +52,15 @@ const Login = ({ isModalOpen, onClose }) => {
     if (isModalOpen) {
       document.addEventListener('keydown', handleEscape);
       document.body.style.overflow = 'hidden'; // Prevent background scroll
+    } else {
+      // Clear form when modal closes
+      setCredentials({ username: '', password: '' });
+      setError('');
+      setShowPassword(false);
+      setFailedAttempts(0);
+      setShowForgotPassword(false);
+      setForgotEmail('');
+      setForgotMessage('');
     }
     
     return () => {
@@ -82,7 +102,11 @@ const Login = ({ isModalOpen, onClose }) => {
         
         if (onClose) onClose();
       } else {
-        setError(result.error);
+        // Show username in error message to help user remember
+        const errorMsg = credentials.username 
+          ? `Invalid credentials for username: ${credentials.username}` 
+          : result.error;
+        setError(errorMsg);
         const newFailedAttempts = failedAttempts + 1;
         setFailedAttempts(newFailedAttempts);
         
@@ -93,7 +117,10 @@ const Login = ({ isModalOpen, onClose }) => {
       }
     } catch (error) {
       console.error('Login error:', error);
-      setError('An unexpected error occurred. Please try again.');
+      const errorMsg = credentials.username 
+        ? `Connection error for username: ${credentials.username}. Please try again.` 
+        : 'An unexpected error occurred. Please try again.';
+      setError(errorMsg);
       const newFailedAttempts = failedAttempts + 1;
       setFailedAttempts(newFailedAttempts);
       
@@ -143,13 +170,28 @@ const Login = ({ isModalOpen, onClose }) => {
     setShowPassword(!showPassword);
   };
 
+  const handleClose = () => {
+    // Clear form data when closing
+    setCredentials({ username: '', password: '' });
+    setError('');
+    setShowPassword(false);
+    setFailedAttempts(0);
+    setShowForgotPassword(false);
+    setForgotEmail('');
+    setForgotMessage('');
+    
+    if (onClose) {
+      onClose();
+    }
+  };
+
   // Don't render if modal is not open
   if (!isModalOpen) return null;
 
   return (
-    <div className="login-modal-overlay" onClick={onClose}>
+    <div className="login-modal-overlay" onClick={handleClose}>
       <div className="login-modal-content" onClick={(e) => e.stopPropagation()}>
-        <button className="login-modal-close" onClick={onClose} aria-label="Close login">
+        <button className="login-modal-close" onClick={handleClose} aria-label="Close login">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>

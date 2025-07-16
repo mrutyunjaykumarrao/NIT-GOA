@@ -1,4 +1,26 @@
-/* Modal Overlay Styles */
+/* Login Modal Specific Styles - Scoped to avoid global conflicts */
+
+/* Login Page Container for direct route access */
+.login-page-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+  padding: 20px;
+}
+
+.login-page-container .login-modal-overlay {
+  position: static;
+  background: none;
+  backdrop-filter: none;
+  animation: none;
+}
+
+.login-page-container .login-modal-content {
+  animation: loginSlideIn 0.5s ease-out;
+}
+
 .login-modal-overlay {
   position: fixed;
   top: 0;
@@ -12,15 +34,15 @@
   justify-content: center;
   z-index: 10000;
   padding: 20px;
-  animation: fadeIn 0.3s ease-out;
+  animation: loginFadeIn 0.3s ease-out;
 }
 
-@keyframes fadeIn {
+@keyframes loginFadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-@keyframes slideIn {
+@keyframes loginSlideIn {
   from { 
     opacity: 0;
     transform: translateY(-20px) scale(0.95);
@@ -31,9 +53,10 @@
   }
 }
 
+/* Light mode - plain white background */
 .login-modal-content {
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(20px);
+  background: #ffffff;
+  backdrop-filter: none;
   border-radius: 20px;
   padding: 40px;
   box-shadow: 
@@ -41,11 +64,18 @@
     0 10px 25px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 450px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   position: relative;
-  animation: slideIn 0.3s ease-out;
+  animation: loginSlideIn 0.3s ease-out;
   max-height: 90vh;
   overflow-y: auto;
+}
+
+/* Dark theme support - glassmorphism background */
+[data-theme="dark"] .login-modal-content {
+  background: rgba(31, 41, 55, 0.95) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(75, 85, 99, 0.3) !important;
 }
 
 .login-modal-close {
@@ -76,12 +106,12 @@
   height: 18px;
 }
 
-.login-header {
+.login-modal-content .login-header {
   text-align: center;
   margin-bottom: 30px;
 }
 
-.login-logo {
+.login-modal-content .login-logo {
   width: 70px;
   height: 70px;
   /* margin-bottom: 15px; */
@@ -89,49 +119,49 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.login-header h1 {
+.login-modal-content .login-header h1 {
   color: #1f2937;
   font-size: 2rem;
   font-weight: 700;
   margin: 15px 0 10px 0;
-  background: white;
+  background: linear-gradient(135deg, #1f2937, #374151);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.login-header p {
+.login-modal-content .login-header p {
   color: #6b7280;
   font-size: 0.95rem;
   font-weight: 500;
   margin: 0;
 }
 
-.login-form {
+.login-modal-content .login-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.form-group {
+.login-modal-content .form-group {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.form-group label {
+.login-modal-content .form-group label {
   font-weight: 600;
   color: #374151;
   font-size: 0.95rem;
 }
 
-.input-wrapper {
+.login-modal-content .input-wrapper {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-.input-wrapper i {
+.login-modal-content .input-wrapper i {
   position: absolute;
   left: 15px;
   color: #2563eb;
@@ -139,7 +169,7 @@
   z-index: 2;
 }
 
-.input-wrapper input {
+.login-modal-content .input-wrapper input {
   width: 100%;
   padding: 15px 15px 15px 45px;
   border: 2px solid #e5e7eb;
@@ -150,28 +180,28 @@
   outline: none;
 }
 
-.input-wrapper input:focus {
+.login-modal-content .input-wrapper input:focus {
   border-color: #2563eb;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
   transform: translateY(-1px);
 }
 
-.input-wrapper input:disabled {
+.login-modal-content .input-wrapper input:disabled {
   background: #f9fafb;
   cursor: not-allowed;
   opacity: 0.7;
 }
 
 /* Password field with eye toggle */
-.password-wrapper {
+.login-modal-content .password-wrapper {
   position: relative;
 }
 
-.password-wrapper input {
+.login-modal-content .password-wrapper input {
   padding-right: 50px;
 }
 
-.password-toggle {
+.login-modal-content .password-toggle {
   position: absolute;
   right: 40px;
   top: 50%;
@@ -184,14 +214,40 @@
   border-radius: 4px;
   transition: all 0.3s ease;
   z-index: 3;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-.password-toggle:hover {
+.login-modal-content .password-toggle:hover {
   color: #2563eb;
-  background: rgba(37, 99, 235, 0.1);
+  background: rgba(37, 99, 235, 0);
 }
 
-.login-button {
+.login-modal-content .password-toggle:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.login-modal-content .password-toggle:active {
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.login-modal-content .password-toggle:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.login-modal-content .login-button {
   background: linear-gradient(135deg, #2563eb, #1d4ed8);
   color: white;
   border: none;
@@ -210,7 +266,7 @@
   overflow: hidden;
 }
 
-.login-button::before {
+.login-modal-content .login-button::before {
   content: '';
   position: absolute;
   top: 0;
@@ -221,31 +277,31 @@
   transition: left 0.5s;
 }
 
-.login-button:hover::before {
+.login-modal-content .login-button:hover::before {
   left: 100%;
 }
 
-.login-button:hover {
+.login-modal-content .login-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
 }
 
-.login-button:active {
+.login-modal-content .login-button:active {
   transform: translateY(0);
 }
 
-.login-button:disabled {
+.login-modal-content .login-button:disabled {
   background: #9ca3af;
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
 }
 
-.login-button:disabled::before {
+.login-modal-content .login-button:disabled::before {
   display: none;
 }
 
-.error-message {
+.login-modal-content .error-message {
   background: rgba(239, 68, 68, 0.1);
   border: 1px solid rgba(239, 68, 68, 0.3);
   color: #dc2626;
@@ -258,19 +314,19 @@
   margin-bottom: 10px;
 }
 
-.error-message i {
+.login-modal-content .error-message i {
   font-size: 1.1rem;
 }
 
 /* Forgot Password Section */
-.forgot-password-section {
+.login-modal-content .forgot-password-section {
   margin-top: 25px;
   padding-top: 25px;
   border-top: 1px solid #e5e7eb;
-  animation: slideDown 0.3s ease-out;
+  animation: loginSlideDown 0.3s ease-out;
 }
 
-@keyframes slideDown {
+@keyframes loginSlideDown {
   from {
     opacity: 0;
     transform: translateY(-10px);
@@ -281,12 +337,12 @@
   }
 }
 
-.forgot-password-divider {
+.login-modal-content .forgot-password-divider {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.forgot-password-divider span {
+.login-modal-content .forgot-password-divider span {
   background: #fff;
   color: #6b7280;
   font-size: 0.9rem;
@@ -295,13 +351,13 @@
   position: relative;
 }
 
-.forgot-password-form {
+.login-modal-content .forgot-password-form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.forgot-password-button {
+.login-modal-content .forgot-password-button {
   background: linear-gradient(135deg, #059669, #047857);
   color: white;
   border: none;
@@ -317,19 +373,19 @@
   gap: 8px;
 }
 
-.forgot-password-button:hover {
+.login-modal-content .forgot-password-button:hover {
   transform: translateY(-1px);
   box-shadow: 0 8px 20px rgba(5, 150, 105, 0.3);
 }
 
-.forgot-password-button:disabled {
+.login-modal-content .forgot-password-button:disabled {
   background: #9ca3af;
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
 }
 
-.forgot-message {
+.login-modal-content .forgot-message {
   background: rgba(34, 197, 94, 0.1);
   border: 1px solid rgba(34, 197, 94, 0.3);
   color: #16a34a;
@@ -342,24 +398,24 @@
   font-weight: 500;
 }
 
-.forgot-message i {
+.login-modal-content .forgot-message i {
   font-size: 1.1rem;
 }
 
-.login-footer {
+.login-modal-content .login-footer {
   text-align: center;
   margin-top: 30px;
   padding-top: 20px;
   border-top: 1px solid #e5e7eb;
 }
 
-.login-footer p {
+.login-modal-content .login-footer p {
   color: #6b7280;
   font-size: 0.85rem;
   margin: 0;
 }
 
-/* Responsive Design */
+/* Responsive Design - Login Modal Specific */
 @media (max-width: 480px) {
   .login-modal-overlay {
     padding: 15px;
@@ -370,72 +426,69 @@
     border-radius: 15px;
   }
   
-  .login-header h1 {
+  .login-modal-content .login-header h1 {
     font-size: 1.7rem;
   }
   
-  .login-logo {
+  .login-modal-content .login-logo {
     width: 60px;
     height: 60px;
   }
   
-  .input-wrapper input {
+  .login-modal-content .input-wrapper input {
     padding: 12px 12px 12px 40px;
   }
   
-  .password-wrapper input {
+  .login-modal-content .password-wrapper input {
     padding-right: 45px;
   }
   
-  .login-button {
+  .login-modal-content .login-button {
     padding: 12px 20px;
   }
 }
 
-/* Dark theme support */
-@media (prefers-color-scheme: dark) {
-  .login-modal-content {
-    background: rgba(31, 41, 55, 0.98);
-    border: 1px solid rgba(75, 85, 99, 0.3);
-  }
-  
-  .login-header h1 {
-    color: #f9fafb;
-  }
-  
-  .login-header p {
-    color: #d1d5db;
-  }
-  
-  .form-group label {
-    color: #f3f4f6;
-  }
-  
-  .input-wrapper input {
-    background: rgba(55, 65, 81, 0.8);
-    border-color: #4b5563;
-    color: #f3f4f6;
-  }
-  
-  .input-wrapper input:focus {
-    border-color: #3b82f6;
-    background: rgba(55, 65, 81, 0.9);
-  }
-  
-  .login-footer {
-    border-top-color: #4b5563;
-  }
-  
-  .login-footer p {
-    color: #d1d5db;
-  }
-  
-  .forgot-password-section {
-    border-top-color: #4b5563;
-  }
-  
-  .forgot-password-divider span {
-    background: rgba(31, 41, 55, 0.98);
-    color: #d1d5db;
-  }
+/* Dark theme support - using data-theme attribute */
+[data-theme="dark"] .login-modal-content .login-header h1 {
+  color: #f9fafb;
+  background: linear-gradient(135deg, #f9fafb, #e5e7eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme="dark"] .login-modal-content .login-header p {
+  color: #d1d5db;
+}
+
+[data-theme="dark"] .login-modal-content .form-group label {
+  color: #f3f4f6;
+}
+
+[data-theme="dark"] .login-modal-content .input-wrapper input {
+  background: rgba(55, 65, 81, 0.8);
+  border-color: #4b5563;
+  color: #f3f4f6;
+}
+
+[data-theme="dark"] .login-modal-content .input-wrapper input:focus {
+  border-color: #3b82f6;
+  background: rgba(55, 65, 81, 0.9);
+}
+
+[data-theme="dark"] .login-modal-content .login-footer {
+  border-top-color: #4b5563;
+}
+
+[data-theme="dark"] .login-modal-content .login-footer p {
+  color: #d1d5db;
+}
+
+[data-theme="dark"] .login-modal-content .forgot-password-section {
+  border-top-color: #4b5563;
+}
+
+[data-theme="dark"] .login-modal-content .forgot-password-divider span {
+  background: rgba(31, 41, 55, 0.98);
+  color: #d1d5db;
 }
