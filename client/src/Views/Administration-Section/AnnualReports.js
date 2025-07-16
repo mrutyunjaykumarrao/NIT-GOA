@@ -8,7 +8,7 @@ const AnnualReports = () => {
                 <h1 className="annual-reports-title">Annual Reports & Annual Accounts</h1>
                 
                 <div className="annual-reports-section">
-                    <h2 className="annual-reports-section-title">Annual Reports & Annual Accounts</h2>
+                    <h2 className="annual-reports-section-title">Annual Reports & Annual Accounts(English Version)</h2>
                     <div className="annual-reports-list">
                         <a href="/pdf/Administration/reports/english/annual_report_2010.pdf" target="_blank" rel="noopener noreferrer" className="annual-reports-link">
                             Annual Report and Annual Accounts of 2010-11
@@ -19,22 +19,22 @@ const AnnualReports = () => {
                         <a href="/pdf/Administration/reports/english/Annual_and_Accounts_2012-2013.pdf" target="_blank" rel="noopener noreferrer" className="annual-reports-link">
                             Annual Report and Annual Accounts of 2012-13
                         </a>
-                        <a href="/pdf/Administration/reports/english/Annual_Report_Book_-2013-2014.pdf" target="_blank" rel="noopener noreferrer" className="report-link">
+                        <a href="/pdf/Administration/reports/english/Annual_Report_Book_-2013-2014.pdf" target="_blank" rel="noopener noreferrer" className="annual-reports-link">
                             Annual Report and Annual Accounts of 2013-14
                         </a>
-                        <a href="/pdf/Administration/reports/english/Annual & Accounts 2014-2015.pdf" target="_blank" rel="noopener noreferrer" className="report-link">
+                        <a href="/pdf/Administration/reports/english/Annual & Accounts 2014-2015.pdf" target="_blank" rel="noopener noreferrer" className="annual-reports-link">
                             Annual Report and Annual Accounts of 2014-15
                         </a>
-                        <a href="/pdf/Administration/reports/english/Annual report - 2015-2016.pdf" target="_blank" rel="noopener noreferrer" className="report-link">
+                        <a href="/pdf/Administration/reports/english/Annual report - 2015-2016.pdf" target="_blank" rel="noopener noreferrer" className="annual-reports-link">
                             Annual Report and Annual Accounts of 2015-16
                         </a>
-                        <a href="/pdf/Administration/reports/english/Annual Report -2016-2017.pdf" target="_blank" rel="noopener noreferrer" className="report-link">
+                        <a href="/pdf/Administration/reports/english/Annual Report -2016-2017.pdf" target="_blank" rel="noopener noreferrer" className="annual-reports-link">
                             Annual Report and Annual Accounts of 2016-17
                         </a>
-                        <a href="/pdf/Administration/reports/english/Annual Report -2019-2020.pdf" target="_blank" rel="noopener noreferrer" className="report-link">
+                        <a href="/pdf/Administration/reports/english/Annual Report -2019-2020.pdf" target="_blank" rel="noopener noreferrer" className="annual-reports-link">
                             Annual Report and Annual Accounts of 2019-20
                         </a>
-                        <a href="/pdf/Administration/reports/english/Annual Report -2020-2021.pdf" target="_blank" rel="noopener noreferrer" className="report-link">
+                        <a href="/pdf/Administration/reports/english/Annual Report -2020-2021.pdf" target="_blank" rel="noopener noreferrer" className="annual-reports-link">
                             Annual Report and Annual Accounts of 2020-21
                         </a>
                         <a href="/pdf/Administration/reports/english/Annual Report -2021-2022.pdf" target="_blank" rel="noopener noreferrer" className="annual-reports-link">

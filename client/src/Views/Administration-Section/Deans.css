@@ -1,13 +1,15 @@
-/* Deans Page - Table Style Layout */
+/* Deans Page - Modern Card Layout */
 .deans-page {
   min-height: 100vh;
-  background: #ffffff;
-  padding: 2rem 0;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 1rem 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  width: 100%;
 }
 
 .deans-page .deans-container {
-  max-width: 1200px;
+  width: 90%;
+  max-width: 90%;
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -16,80 +18,418 @@
 .deans-page-header {
   text-align: center;
   margin-bottom: 2rem;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #2E86C1 0%, #1B4F72 100%);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.deans-page-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.1) 75%);
+  background-size: 30px 30px;
+  animation: moveStripes 20s linear infinite;
+}
+
+@keyframes moveStripes {
+  0% { background-position: 0 0; }
+  100% { background-position: 30px 30px; }
 }
 
 .deans-page-header h1 {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #1a365d;
-  margin-bottom: 0;
+  font-size: 3rem;
+  color: #ffffff !important;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+  text-transform: uppercase;
 }
 
-/* Deans Table */
-.deans-table {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
+.deans-page-header h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: #ffd700;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Cards Grid */
+.deans-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Individual Dean Card */
+.dean-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
-/* Table Header */
-.deans-table-header {
-  display: grid;
-  grid-template-columns: 1fr 1fr 300px;
-  background: #4a90e2;
+.dean-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Card Header */
+.dean-card-header {
+  background: linear-gradient(135deg, #2E86C1 0%, #1B4F72 100%);
   color: white;
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-.deans-header-cell {
-  padding: 1rem;
+  padding: 2rem;
   text-align: center;
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
 }
 
-.deans-header-cell:last-child {
-  border-right: none;
+.dean-card-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  transform: rotate(45deg);
 }
 
-/* Table Body */
-.deans-table-body {
-  background: #ffffff;
+.dean-category-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  color: #ffffff !important;
 }
 
-/* Table Row */
-.deans-table-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 300px;
-  border-bottom: 1px solid #e2e8f0;
-  min-height: 200px;
-  align-items: center;
+/* Card Body */
+.dean-card-body {
+  padding: 2rem;
 }
 
-.deans-table-row:last-child {
-  border-bottom: none;
+/* Dean Section */
+.dean-section {
+  margin-bottom: 2rem;
 }
 
-/* Table Cell */
-.deans-table-cell {
-  padding: 1.5rem;
-  border-right: 1px solid #e2e8f0;
+.dean-section-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e2e8f0;
+  position: relative;
+}
+
+.dean-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.dean-profile {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+  border-left: 4px solid #2E86C1;
+  transition: all 0.2s ease;
+}
+
+.dean-profile:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dean-image {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #e2e8f0;
+  flex-shrink: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dean-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dean-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  color: #a0aec0;
+  font-size: 2rem;
 }
 
-.deans-table-cell:last-child {
-  border-right: none;
-  align-items: flex-start;
-  text-align: left;
+.dean-info {
+  flex: 1;
 }
 
-/* Person Profile in Table */
+.dean-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.dean-designation {
+  font-size: 1rem;
+  color: #718096;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.dean-email {
+  font-size: 0.9rem;
+  color: #3182ce;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  background: rgba(49, 130, 206, 0.1);
+  transition: all 0.2s ease;
+}
+
+.dean-email:hover {
+  background: rgba(49, 130, 206, 0.2);
+  text-decoration: none;
+}
+
+/* Associate Deans Section */
+.associate-deans-section {
+  margin-bottom: 2rem;
+}
+
+.associate-deans-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.associate-dean-profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+  border-left: 4px solid #667eea;
+  transition: all 0.2s ease;
+}
+
+.associate-dean-profile:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.associate-dean-image {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #e2e8f0;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.associate-dean-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.associate-dean-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a0aec0;
+  font-size: 1.5rem;
+}
+
+.associate-dean-info {
+  flex: 1;
+}
+
+.associate-dean-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 0.25rem;
+}
+
+.associate-dean-designation {
+  font-size: 0.9rem;
+  color: #718096;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.associate-dean-email {
+  font-size: 0.85rem;
+  color: #3182ce;
+  text-decoration: none;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  background: rgba(49, 130, 206, 0.1);
+  transition: all 0.2s ease;
+}
+
+.associate-dean-email:hover {
+  background: rgba(49, 130, 206, 0.2);
+  text-decoration: none;
+}
+
+/* Office Details Section */
+.office-details-section {
+  padding: 1rem;
+  margin-top: 0.5rem;
+}
+
+.office-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.25rem;
+}
+
+.office-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.15rem 0;
+}
+
+.office-detail-label {
+  font-weight: 600;
+  color: #2d3748;
+  min-width: 70px;
+  font-size: 0.9rem;
+}
+
+.office-detail-value {
+  color: #4a5568;
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .deans-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .deans-page .deans-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0 1.5rem;
+  }
+
+  .deans-page-header h1 {
+    font-size: 2rem;
+    color: #ffffff !important;
+  }
+
+  .deans-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .dean-card-body {
+    padding: 1.5rem;
+  }
+
+  .dean-profile {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .associate-dean-profile {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .office-details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .deans-page-header h1 {
+    font-size: 1.8rem;
+    color: #ffffff !important;
+  }
+
+  .dean-category-title {
+    font-size: 1.2rem;
+  }
+
+  .dean-card-header {
+    padding: 1.5rem;
+  }
+
+  .dean-card-body {
+    padding: 1rem;
+  }
+
+  .dean-image {
+    width: 70px;
+    height: 70px;
+  }
+
+  .associate-dean-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .office-details-section {
+    padding: 0.75rem;
+  }
+}
+
+/* Legacy classes for backward compatibility */
 .deans-person-profile-table {
   display: flex;
   flex-direction: column;
@@ -97,7 +437,6 @@
   max-width: 200px;
 }
 
-/* Person Image - Circular */
 .deans-person-image-table {
   width: 80px;
   height: 80px;
@@ -125,7 +464,6 @@
   font-size: 1.5rem;
 }
 
-/* Person Info in Table */
 .deans-person-info-table {
   text-align: center;
 }
@@ -162,7 +500,6 @@
   text-decoration: underline;
 }
 
-/* Office Details */
 .deans-office-details-table {
   font-size: 0.85rem;
   color: #374151;
@@ -170,7 +507,7 @@
 }
 
 .deans-office-detail-item {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .deans-office-detail-item:last-child {
@@ -182,74 +519,10 @@
   color: #1f2937;
 }
 
-/* Multiple Associates */
 .deans-associates-table {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   align-items: center;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .deans-page .deans-container {
-    padding: 0 1rem;
-  }
-
-  .deans-table-header,
-  .deans-table-row {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-
-  .deans-table-cell {
-    border-right: none;
-    border-bottom: 1px solid #e2e8f0;
-    padding: 1rem;
-  }
-
-  .deans-table-cell:last-child {
-    border-bottom: none;
-  }
-
-  .deans-header-cell {
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .deans-header-cell:last-child {
-    border-bottom: none;
-  }
-
-  .deans-person-image-table {
-    width: 60px;
-    height: 60px;
-  }
-
-  .deans-associates-table {
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-}
-
-@media (max-width: 480px) {
-  .deans-page-header h1 {
-    font-size: 1.5rem;
-  }
-
-  .deans-person-image-table {
-    width: 50px;
-    height: 50px;
-  }
-
-  .deans-table-cell {
-    padding: 0.75rem;
-  }
-
-  .deans-associates-table {
-    flex-direction: column;
-    gap: 1rem;
-  }
 }
 

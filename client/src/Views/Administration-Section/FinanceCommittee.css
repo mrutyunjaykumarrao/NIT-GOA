@@ -179,56 +179,310 @@
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
-  .finance-committee-container {
-    padding: 1rem 0;
+@media (max-width: 1200px) {
+  .finance-committee-wrapper {
+    padding: 0 1rem;
   }
   
-  .finance-committee-page-header h1 {
-    font-size: 2rem;
+  .finance-committee-page table {
+    font-size: 0.9rem;
   }
   
-  .finance-committee-table-container {
-    padding: 1rem;
-  }
-  
-  .finance-committee-page table, 
-  .finance-committee-page tbody, 
-  .finance-committee-page tr, 
-  .finance-committee-page th, 
+  .finance-committee-page th,
   .finance-committee-page td {
+    padding: 0.8rem 0.6rem;
+  }
+}
+
+/* Mobile optimization - following Committees page approach */
+@media (max-width: 768px) {
+  .finance-committee-page {
+    padding: 0.5rem 0;
+  }
+
+  .finance-committee-wrapper {
+    padding: 0 0.5rem;
+  }
+
+  .finance-committee-page-header {
+    padding: 2rem 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 15px;
+  }
+
+  .finance-committee-page-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .finance-committee-subtitle {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+  }
+
+  .finance-committee-description {
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .finance-committee-main-content {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .finance-committee-table-container {
+    padding: 0.5rem;
+    border-radius: 8px;
+    margin: 0.5rem 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+  }
+
+  .finance-committee-table-container::after {
+    content: '← Scroll to see more →';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: rgba(46, 134, 193, 0.8);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.65rem;
+    border-radius: 4px 0 0 0;
+    pointer-events: none;
+    z-index: 10;
     display: block;
-    width: 100%;
+  }
+  
+  /* Keep normal table layout but make it scrollable */
+  .finance-committee-page table {
+    font-size: 0.8rem;
+    min-width: 800px; /* Force horizontal scroll on mobile */
+    display: table;
+    width: auto;
+    table-layout: fixed;
+  }
+
+  .finance-committee-page thead {
+    display: table-header-group;
+  }
+
+  .finance-committee-page tbody {
+    display: table-row-group;
   }
 
   .finance-committee-page tr {
-    margin-bottom: 25px;
+    display: table-row;
+    margin-bottom: 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    overflow: visible;
   }
 
   .finance-committee-page th {
-    font-size: 16px;
-    text-align: left;
+    display: table-cell;
+    padding: 0.7rem 0.5rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-align: center;
   }
 
   .finance-committee-page td {
-    text-align: left;
-    padding: 20px;
+    display: table-cell;
+    padding: 0.7rem 0.5rem;
+    font-size: 0.75rem;
+    text-align: center;
+    border: 1px solid rgba(37, 99, 235, 0.15);
+    border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+    vertical-align: middle;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .finance-committee-page td:before {
+    display: none;
+  }
+
+  .finance-committee-page td:last-child {
+    border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+  }
+
+  /* Column widths for mobile */
+  .finance-committee-page th:first-child,
+  .finance-committee-page td:first-child {
+    width: 60px;
+    min-width: 60px;
+  }
+
+  .finance-committee-page th:nth-child(2),
+  .finance-committee-page td:nth-child(2) {
+    width: 140px;
+    min-width: 140px;
+  }
+
+  .finance-committee-page th:nth-child(3),
+  .finance-committee-page td:nth-child(3) {
+    width: 200px;
+    min-width: 200px;
+  }
+
+  .finance-committee-page th:nth-child(4),
+  .finance-committee-page td:nth-child(4) {
+    width: 180px;
+    min-width: 180px;
+  }
+
+  .finance-committee-page th:nth-child(5),
+  .finance-committee-page td:nth-child(5) {
+    width: 220px;
+    min-width: 220px;
   }
 }
 
 @media (max-width: 480px) {
+  .finance-committee-page {
+    padding: 0.25rem 0;
+  }
+
+  .finance-committee-wrapper {
+    padding: 0 0.25rem;
+  }
+
+  .finance-committee-page-header {
+    padding: 1.5rem 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+  }
+
   .finance-committee-page-header h1 {
     font-size: 1.5rem;
+    line-height: 1.2;
   }
-  
+
+  .finance-committee-subtitle {
+    font-size: 1rem;
+    margin: 0.4rem 0;
+  }
+
+  .finance-committee-description {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .finance-committee-main-content {
+    padding: 0.8rem;
+    border-radius: 10px;
+  }
+
+  .finance-committee-table-container {
+    padding: 0.3rem;
+    border-radius: 6px;
+    margin: 0.25rem 0;
+  }
+
   .finance-committee-page table {
     font-size: 0.7rem;
+    min-width: 700px;
   }
-  
-  .finance-committee-page th, 
+
+  .finance-committee-page th,
   .finance-committee-page td {
-    padding: 0.6rem 0.3rem;
-    font-size: 14px;
+    padding: 0.6rem 0.4rem;
+    font-size: 0.7rem;
+  }
+
+  /* Smaller column widths for very small screens */
+  .finance-committee-page th:first-child,
+  .finance-committee-page td:first-child {
+    width: 50px;
+    min-width: 50px;
+  }
+
+  .finance-committee-page th:nth-child(2),
+  .finance-committee-page td:nth-child(2) {
+    width: 120px;
+    min-width: 120px;
+  }
+
+  .finance-committee-page th:nth-child(3),
+  .finance-committee-page td:nth-child(3) {
+    width: 180px;
+    min-width: 180px;
+  }
+
+  .finance-committee-page th:nth-child(4),
+  .finance-committee-page td:nth-child(4) {
+    width: 160px;
+    min-width: 160px;
+  }
+
+  .finance-committee-page th:nth-child(5),
+  .finance-committee-page td:nth-child(5) {
+    width: 190px;
+    min-width: 190px;
+  }
+}
+
+/* Landscape mobile optimization */
+@media (max-width: 768px) and (orientation: landscape) {
+  .finance-committee-page-header {
+    padding: 1.5rem 1rem;
+  }
+
+  .finance-committee-page-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .finance-committee-subtitle {
+    font-size: 1rem;
+  }
+
+  .finance-committee-description {
+    font-size: 0.9rem;
+  }
+
+  .finance-committee-page table {
+    font-size: 0.75rem;
+  }
+
+  .finance-committee-page th,
+  .finance-committee-page td {
+    padding: 0.7rem 0.4rem;
+  }
+}
+
+/* Tablet optimization */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .finance-committee-page-header {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .finance-committee-page-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .finance-committee-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .finance-committee-description {
+    font-size: 1rem;
+  }
+
+  .finance-committee-main-content {
+    padding: 1.2rem;
+  }
+
+  .finance-committee-page table {
+    font-size: 0.9rem;
+  }
+
+  .finance-committee-page th,
+  .finance-committee-page td {
+    padding: 0.9rem 0.6rem;
   }
 }
 

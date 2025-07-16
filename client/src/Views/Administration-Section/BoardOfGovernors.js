@@ -14,7 +14,7 @@ const BoardOfGovernors = () => {
       srNo: 2,
       nitActSec: "11(b)",
       position: "Director, Ex-Officio Member",
-      name: "Prof. G. R. Jaiswal",
+      name: "Prof. O. R. Jaiswal",
       designation: "Director, National Institute of Technology Goa"
     },
     {

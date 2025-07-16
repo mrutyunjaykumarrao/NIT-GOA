@@ -11,9 +11,10 @@ import drPrasanjitDey from '../../assets/images/Faculty/MCE/Dr. PRASENJIT DEY.pn
 import drChiragModi from '../../assets/images/Faculty/CSE/Dr. Modi Chirag Navinchandra.png';
 import drSreerajES from '../../assets/images/Faculty/EEE/Dr. Sreeraj E S.png';
 import drHarikumar from '../../assets/images/Faculty/CVE/Dr. Harikumar M.png';
-import drSureshMikkili from '../../assets/images/Faculty/EEE/Dr. Suresh Mikkili.png';
 import drTrilochanPanigrahi from '../../assets/images/Faculty/ECE/Dr. Trilochan Panigrahi.jpg';
 import drLalatInduGiri from '../../assets/images/Faculty/ECE/Dr. Lalat Indu Giri.png';
+import drVelavanKathirvelu from '../../assets/images/Faculty/APS/Dr. Velavan Kathirvelu.png';
+import drSunilkumar from '../../assets/images/Faculty/HSS/Dr. Sunil Kumar.png';
 
 const Deans = () => {
   const deansData = [
@@ -28,11 +29,11 @@ const Deans = () => {
       associateDean: {
         name: "Dr. Shivnarayan Patidar",
         designation: "Assistant Professor of ECE",
-        email: "assdean@nitgoa.ac.in",
+        email: "asd.acad@nitgoa.ac.in",
         image: drShivnarayanPatidar
       },
       officeDetails: {
-        roomNo: "14",
+        roomNo: "16",
         floor: "1st Floor",
         building: "Sardar Patel Building",
         contact: "0832-2404214"
@@ -43,17 +44,17 @@ const Deans = () => {
       dean: {
         name: "Dr. Soumitra Das",
         designation: "Associate Professor of EEE",
-        email: "deansw@nitgoa.ac.in",
+        email: "dean.sw@nitgoa.ac.in",
         image: drSoumitraDas
       },
       associateDean: {
         name: "Dr. Lokesh Kumar Bramhane",
         designation: "Assistant Professor of ECE",
-        email: "asssw@nitgoa.ac.in",
+        email: "asd.sw@nitgoa.ac.in",
         image: drLokeshKumarBramhane
       },
       officeDetails: {
-        roomNo: "14",
+        roomNo: "15",
         floor: "1st Floor",
         building: "Sardar Patel Building",
         contact: "0832-2404213"
@@ -62,19 +63,19 @@ const Deans = () => {
     {
       category: "Faculty Welfare",
       dean: {
-        name: "Dr. Amol D. Rahulkar",
+        name: "Dr. Amol D Rahulkar",
         designation: "Associate Professor of EEE",
-        email: "deanfw@nitgoa.ac.in",
+        email: "dean.fw@nitgoa.ac.in",
         image: drAmolRahulkar
       },
       associateDean: {
-        name: "Dr. Prasanjit Dey",
+        name: "Dr. Prasenjit Dey",
         designation: "Assistant Professor of Mechanical",
-        email: "assfw@nitgoa.ac.in",
+        email: "asd.fw@nitgoa.ac.in",
         image: drPrasanjitDey
       },
       officeDetails: {
-        roomNo: "14",
+        roomNo: "15",
         floor: "1st Floor",
         building: "Sardar Patel Building",
         contact: "0832-2404213"
@@ -85,17 +86,17 @@ const Deans = () => {
       dean: {
         name: "Dr. Chirag Modi",
         designation: "Associate Professor of CSE",
-        email: "deanrc@nitgoa.ac.in",
+        email: "dean.rc@nitgoa.ac.in",
         image: drChiragModi
       },
       associateDean: {
-        name: "Dr. Sreeraj E S",
-        designation: "Assistant Professor of EEE",
-        email: "assrc@nitgoa.ac.in",
+        name: "Dr. Sreeraj E.S",
+        designation: "Associate Professor of EEE",
+        email: "asd.rc@nitgoa.ac.in",
         image: drSreerajES
       },
       officeDetails: {
-        roomNo: "8",
+        roomNo: "18",
         floor: "1st Floor",
         building: "Sardar Patel Building",
         contact: "0832-2404216"
@@ -104,27 +105,28 @@ const Deans = () => {
     {
       category: "Planning & Development",
       dean: {
-        name: "Dr. Harikumar",
-        designation: "Assistant Professor of Civil",
-        email: "deanpd@nitgoa.ac.in",
-        image: drHarikumar
+        name: "Dr. Velavan Kathirvelu",
+        designation: "Associate Professor of Applied Sciences",
+        email: "dean.pd@nitgoa.ac.in",
+        image: drVelavanKathirvelu
       },
       associateDean: [
         {
-          name: "Dr. Prasanjit Dey",
-          designation: "Assistant Professor of Mechanical",
-          email: "asspd@nitgoa.ac.in",
-          image: drPrasanjitDey
+          name: "Dr. Harikumar",
+          designation: "Assistant Professor of Civil",
+          email: "asd.pd@nitgoa.ac.in",
+          image: drHarikumar
         },
         {
-          name: "Dr. Suresh Mikkili",
-          designation: "Assistant Professor of EEE",
-          email: "deanfm@nitgoa.ac.in",
-          image: drSureshMikkili
+          name: "Dr. Sunilkumar",
+          designation: "Assistant Professor of Economics",
+          email: "asd.fm@nitgoa.ac.in",
+          image: drSunilkumar,
+          category: "Facility Management"
         }
       ],
       officeDetails: {
-        roomNo: "8",
+        roomNo: "10",
         floor: "1st Floor",
         building: "Sardar Patel Building",
         contact: "0832-2404211"
@@ -135,13 +137,13 @@ const Deans = () => {
       dean: {
         name: "Dr. Trilochan Panigrahi",
         designation: "Associate Professor of ECE",
-        email: "deaniraa@nitgoa.ac.in",
+        email: "dean.iraa@nitgoa.ac.in",
         image: drTrilochanPanigrahi
       },
       associateDean: {
-        name: "Dr. Lalit Indu Giri",
+        name: "Dr. Lalat Indu Giri",
         designation: "Assistant Professor of ECE",
-        email: "assiraa@nitgoa.ac.in",
+        email: "asd.iraa@nitgoa.ac.in",
         image: drLalatInduGiri
       },
       officeDetails: {
@@ -153,22 +155,42 @@ const Deans = () => {
     }
   ];
 
-  const renderPersonProfile = (person, category, isDean = false) => (
-    <div className="deans-person-profile-table">
-      <div className="deans-person-image-table">
+  const renderDeanProfile = (person) => (
+    <div className="dean-profile">
+      <div className="dean-image">
         {person.image ? (
           <img src={person.image} alt={person.name} />
         ) : (
-          <div className="deans-image-placeholder-table">
+          <div className="dean-image-placeholder">
             👤
           </div>
         )}
       </div>
-      <div className="deans-person-info-table">
-        <div className="deans-person-category">{category}</div>
-        <div className="deans-person-name-table">{person.name}</div>
-        <div className="deans-person-designation-table">{person.designation}</div>
-        <a href={`mailto:${person.email}`} className="deans-person-email-table">
+      <div className="dean-info">
+        <div className="dean-name">{person.name}</div>
+        <div className="dean-designation">{person.designation}</div>
+        <a href={`mailto:${person.email}`} className="dean-email">
+          {person.email}
+        </a>
+      </div>
+    </div>
+  );
+
+  const renderAssociateDeanProfile = (person) => (
+    <div className="associate-dean-profile">
+      <div className="associate-dean-image">
+        {person.image ? (
+          <img src={person.image} alt={person.name} />
+        ) : (
+          <div className="associate-dean-image-placeholder">
+            👤
+          </div>
+        )}
+      </div>
+      <div className="associate-dean-info">
+        <div className="associate-dean-name">{person.name}</div>
+        <div className="associate-dean-designation">{person.designation}</div>
+        <a href={`mailto:${person.email}`} className="associate-dean-email">
           {person.email}
         </a>
       </div>
@@ -176,21 +198,29 @@ const Deans = () => {
   );
 
   const renderOfficeDetails = (officeDetails) => (
-    <div className="deans-office-details-table">
-      <div className="deans-office-detail-item">
-        <span className="deans-office-label">Room No:</span> {officeDetails.roomNo}
-      </div>
-      <div className="deans-office-detail-item">
-        <span className="deans-office-label">Floor:</span> {officeDetails.floor}
-      </div>
-      <div className="deans-office-detail-item">
-        <span className="deans-office-label">Building:</span> {officeDetails.building}
-      </div>
-      <div className="deans-office-detail-item">
-        <span className="deans-office-label">NIT Goa</span>
-      </div>
-      <div className="deans-office-detail-item">
-        <span className="deans-office-label">Tel No:</span> {officeDetails.contact}
+    <div className="office-details-section">
+      <div className="dean-section-title">Office Details</div>
+      <div className="office-details-grid">
+        <div className="office-detail-item">
+          <span className="office-detail-label">Room:</span>
+          <span className="office-detail-value">{officeDetails.roomNo}</span>
+        </div>
+        <div className="office-detail-item">
+          <span className="office-detail-label">Floor:</span>
+          <span className="office-detail-value">{officeDetails.floor}</span>
+        </div>
+        <div className="office-detail-item">
+          <span className="office-detail-label">Building:</span>
+          <span className="office-detail-value">{officeDetails.building}</span>
+        </div>
+        <div className="office-detail-item">
+          <span className="office-detail-label">Location:</span>
+          <span className="office-detail-value">NIT Goa</span>
+        </div>
+        <div className="office-detail-item">
+          <span className="office-detail-label">Phone:</span>
+          <span className="office-detail-value">{officeDetails.contact}</span>
+        </div>
       </div>
     </div>
   );
@@ -202,47 +232,40 @@ const Deans = () => {
           <h1>Deans</h1>
         </div>
 
-        <div className="deans-table">
-          {/* Table Header */}
-          <div className="deans-table-header">
-            <div className="deans-header-cell">Dean</div>
-            <div className="deans-header-cell">Associate Dean</div>
-            <div className="deans-header-cell">Office details</div>
-          </div>
-
-          {/* Table Body */}
-          <div className="deans-table-body">
-            {deansData.map((dean, index) => (
-              <div key={index} className="deans-table-row">
-                {/* Dean Column */}
-                <div className="deans-table-cell">
-                  {renderPersonProfile(dean.dean, dean.category, true)}
-                </div>
-
-                {/* Associate Dean Column */}
-                <div className="deans-table-cell">
-                  {dean.associateDean && (
-                    Array.isArray(dean.associateDean) ? (
-                      <div className="deans-associates-table">
-                        {dean.associateDean.map((assocDean, idx) => (
-                          <div key={idx}>
-                            {renderPersonProfile(assocDean, dean.category, false)}
-                          </div>
-                        ))}
-                      </div>
-                    ) : (
-                      renderPersonProfile(dean.associateDean, dean.category, false)
-                    )
-                  )}
-                </div>
-
-                {/* Office Details Column */}
-                <div className="deans-table-cell">
-                  {dean.officeDetails && renderOfficeDetails(dean.officeDetails)}
-                </div>
+        <div className="deans-cards-grid">
+          {deansData.map((dean, index) => (
+            <div key={index} className="dean-card">
+              <div className="dean-card-header">
+                <h2 className="dean-category-title">{dean.category}</h2>
               </div>
-            ))}
-          </div>
+              
+              <div className="dean-card-body">
+                <div className="dean-section">
+                  <div className="dean-section-title">Dean</div>
+                  {renderDeanProfile(dean.dean)}
+                </div>
+
+                {dean.associateDean && (
+                  <div className="associate-deans-section">
+                    <div className="dean-section-title">Associate Dean{Array.isArray(dean.associateDean) ? 's' : ''}</div>
+                    <div className="associate-deans-grid">
+                      {Array.isArray(dean.associateDean) ? (
+                        dean.associateDean.map((assocDean, idx) => (
+                          <div key={idx}>
+                            {renderAssociateDeanProfile(assocDean)}
+                          </div>
+                        ))
+                      ) : (
+                        renderAssociateDeanProfile(dean.associateDean)
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {dean.officeDetails && renderOfficeDetails(dean.officeDetails)}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

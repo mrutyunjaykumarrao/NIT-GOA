@@ -101,16 +101,17 @@
   overflow-x: auto;
   margin: 1rem 0;
   border-radius: 12px;
-  border: 2px solid rgba(37, 99, 235, 0.2);
+  border: 2px solid rgba(46, 134, 193, 0.2);
   width: 100%;
-  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 4px 20px rgba(46, 134, 193, 0.1);
+  padding: 30px;
 }
 
 .board-table {
   width: 100%;
   border-collapse: collapse;
   background-color: #fff;
-  box-shadow: 0 6px 25px rgba(37, 99, 235, 0.15);
+  box-shadow: 0 6px 25px rgba(46, 134, 193, 0.15);
   border-radius: 12px;
   overflow: hidden;
   margin: 0;
@@ -161,7 +162,7 @@
 }
 
 .board-table tbody tr {
-  border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+  border-bottom: 1px solid rgba(46, 134, 193, 0.1);
   transition: all 0.3s ease;
 }
 
@@ -170,20 +171,25 @@
 }
 
 .board-table tbody tr:hover {
-  background: linear-gradient(145deg, rgba(37, 99, 235, 0.1) 0%, rgba(30, 64, 175, 0.1) 100%);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+  background: linear-gradient(145deg, rgba(46, 134, 193, 0.1) 0%, rgba(27, 79, 114, 0.1) 100%);
   transition: background-color 0.3s ease;
 }
 
 .board-table td {
   padding: 1rem 0.8rem;
   vertical-align: middle;
-  border: 1px solid rgba(37, 99, 235, 0.15);
+  border: 1px solid rgba(46, 134, 193, 0.15);
   line-height: 1.5;
   font-weight: normal;
   color: #2c3e50;
   text-align: center;
+}
+
+/* Ensure all table content is normal weight */
+.board-table td,
+.board-table td *,
+.board-table td p {
+  font-weight: normal !important;
 }
 
 .board-table td:first-child {
@@ -227,8 +233,8 @@
   color: #5d6d7e;
   font-weight: normal !important;
   font-style: normal !important;
-  text-align: left;
-  padding-left: 1rem;
+  text-align: center;
+  padding: 1rem 0.8rem;
 }
 
 .board-table tbody td:nth-child(5) {
