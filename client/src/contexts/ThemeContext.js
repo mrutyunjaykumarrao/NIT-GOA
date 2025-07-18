@@ -12,14 +12,14 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider = ({ children }) => {
-    // Initialize theme from localStorage or system preference
+    // Initialize theme from localStorage or default to light mode
     const [theme, setTheme] = useState(() => {
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
             return savedTheme;
         }
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        return systemPrefersDark ? 'dark' : 'light';
+        // Always default to light mode on first visit
+        return 'light';
     });
 
     // Apply theme to document root and save to localStorage
