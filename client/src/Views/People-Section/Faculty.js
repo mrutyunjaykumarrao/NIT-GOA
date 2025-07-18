@@ -802,8 +802,13 @@ const Faculty = () => {
                                         <p><strong>Email:</strong> {faculty.email}</p>
                                         <p><strong>Phone:</strong> {faculty.phone}</p>
                                     </div>
-                                    <div className="research-areas">
-                                        <p><strong>Research Areas:</strong> {faculty.researchAreas}</p>
+                                    <div className="faculty-actions">
+                                        <button className="view-profile-btn" onClick={() => {
+                                            // TODO: Navigate to detailed profile page
+                                            console.log('View profile for:', faculty.name);
+                                        }}>
+                                            View Profile
+                                        </button>
                                     </div>
                                 </div>
                             </div>
