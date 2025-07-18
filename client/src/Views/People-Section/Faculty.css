@@ -145,9 +145,9 @@
 /* HOD Card - Takes full row and is centered */
 .faculty-card.hod-card {
     grid-column: 1 / -1;
-    width: 800px;
-    max-width: 800px;
-    min-width: 800px;
+    width: 700px;
+    max-width: 700px;
+    min-width: 700px;
     margin: 0 auto;
     background: linear-gradient(135deg, #f8f9ff, #e8f2ff);
     border: 1px solid #e0e0e0;
@@ -192,9 +192,9 @@
     height: 100%;
     overflow: hidden;
     padding: 5px 0;
-    width: 480px;
-    max-width: 480px;
-    min-width: 480px;
+    width: 400px;
+    max-width: 400px;
+    min-width: 400px;
 }
 
 .faculty-card.hod-card .faculty-name {
