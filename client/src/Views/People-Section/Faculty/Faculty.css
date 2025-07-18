@@ -1,14 +1,14 @@
 /* Faculty Page Styles */
 .faculty-page {
-    min-height: 100vh;
     background-color: white;
     padding-top: 20px;
+    padding-bottom: 40px;
 }
 
 .faculty-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 60px;
 }
 
 /* Hero Section */
@@ -123,7 +123,7 @@
 .faculty-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
+    gap: 40px;
     padding: 20px 0;
     justify-items: center;
 }
@@ -136,9 +136,9 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
     border: 1px solid #e0e0e0;
-    height: 480px;
-    min-height: 480px;
-    max-height: 480px;
+    height: 485px;
+    min-height: 540px;
+    max-height: 540px;
     width: 100%;
     max-width: 400px;
     display: flex;
@@ -182,8 +182,8 @@
 .faculty-card.hod-card .faculty-image {
     flex-shrink: 0;
     margin: 0;
-    width: 220px;
-    height: 280px;
+    width: 225px;
+    height: 225px;
 }
 
 .faculty-card.hod-card .faculty-info {
@@ -293,8 +293,8 @@
 }
 
 .faculty-image {
-    width: 220px;
-    height: 280px;
+    width: 225px;
+    height: 225px;
     border-radius: 8px;
     overflow: hidden;
     margin: 0 auto 20px;
@@ -415,6 +415,135 @@
     margin: 0;
 }
 
+/* Large Screen Responsiveness (2K, 4K, TV) */
+@media (min-width: 1920px) {
+    .faculty-container {
+        max-width: 1800px;
+        padding: 0 80px;
+    }
+    
+    .faculty-grid {
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        gap: 40px;
+        padding: 30px 0;
+    }
+    
+    .faculty-card {
+        max-width: 420px;
+        height: 500px;
+        min-height: 500px;
+        max-height: 500px;
+        padding: 30px;
+    }
+    
+    .faculty-card.hod-card {
+        width: 800px;
+        max-width: 800px;
+        min-width: 800px;
+        height: 350px;
+        min-height: 350px;
+        max-height: 350px;
+        padding: 50px;
+        gap: 50px;
+    }
+    
+    .faculty-card.hod-card .faculty-image {
+        width: 240px;
+        height: 240px;
+    }
+    
+    .faculty-image {
+        width: 240px;
+        height: 240px;
+    }
+    
+    .hero-image {
+        height: 400px;
+    }
+    
+    .current-department {
+        font-size: 28px;
+        padding: 20px;
+    }
+    
+    .filter-btn {
+        padding: 15px 60px;
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 2560px) {
+    .faculty-container {
+        max-width: 2400px;
+        padding: 0 120px;
+    }
+    
+    .faculty-grid {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 50px;
+        padding: 40px 0;
+    }
+    
+    .faculty-card {
+        max-width: 450px;
+        height: 520px;
+        min-height: 520px;
+        max-height: 520px;
+        padding: 35px;
+    }
+    
+    .faculty-card.hod-card {
+        width: 900px;
+        max-width: 900px;
+        min-width: 900px;
+        height: 380px;
+        min-height: 380px;
+        max-height: 380px;
+        padding: 60px;
+        gap: 60px;
+    }
+    
+    .faculty-card.hod-card .faculty-image {
+        width: 260px;
+        height: 260px;
+    }
+    
+    .faculty-image {
+        width: 260px;
+        height: 260px;
+    }
+    
+    .hero-image {
+        height: 500px;
+    }
+    
+    .current-department {
+        font-size: 32px;
+        padding: 25px;
+    }
+    
+    .filter-btn {
+        padding: 18px 70px;
+        font-size: 20px;
+    }
+    
+    .faculty-name {
+        font-size: 20px;
+    }
+    
+    .faculty-designation {
+        font-size: 17px;
+    }
+    
+    .faculty-card.hod-card .faculty-name {
+        font-size: 24px;
+    }
+    
+    .faculty-card.hod-card .faculty-designation {
+        font-size: 18px;
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .faculty-container {
@@ -428,9 +557,9 @@
     
     .faculty-card {
         padding: 20px;
-        height: 420px;
-        min-height: 420px;
-        max-height: 420px;
+        height: 400px;
+        min-height: 400px;
+        max-height: 400px;
     }
     
     /* HOD cards stack vertically on mobile */
@@ -460,8 +589,8 @@
     }
     
     .faculty-card.hod-card .faculty-image {
-        width: 200px;
-        height: 250px;
+        width: 160px;
+        height: 200px;
         margin: 0 auto;
     }
     
@@ -508,8 +637,8 @@
     }
     
     .faculty-image {
-        width: 200px;
-        height: 250px;
+        width: 180px;
+        height: 180px;
     }
     
     .faculty-name {

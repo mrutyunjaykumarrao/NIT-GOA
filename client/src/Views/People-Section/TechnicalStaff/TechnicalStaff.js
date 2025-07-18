@@ -3,35 +3,35 @@ import { useSearchParams } from 'react-router-dom';
 import './TechnicalStaff.css';
 
 // Import staff images - CSE Department
-import SantoshCSE from '../../assets/images/Technical Staff/CSE/Santosh.png';
-import SudharsanCSE from '../../assets/images/Technical Staff/CSE/Sudharsan.png';
-import SrinathLib from '../../assets/images/Technical Staff/CSE/srinath_lib.jpeg';
+import SantoshCSE from '../../../assets/images/Technical Staff/CSE/Santosh.png';
+import SudharsanCSE from '../../../assets/images/Technical Staff/CSE/Sudharsan.png';
+import SrinathLib from '../../../assets/images/Technical Staff/CSE/srinath_lib.jpeg';
 
 // Import staff images - ECE Department
-import NikhilECE from '../../assets/images/Technical Staff/ECE/Nikhil.png';
-import RamECE from '../../assets/images/Technical Staff/ECE/Ram.png';
-import PradhanECE from '../../assets/images/Technical Staff/ECE/pradhan.jpg';
+import NikhilECE from '../../../assets/images/Technical Staff/ECE/Nikhil.png';
+import RamECE from '../../../assets/images/Technical Staff/ECE/Ram.png';
+import PradhanECE from '../../../assets/images/Technical Staff/ECE/pradhan.jpg';
 
 // Import staff images - EEE Department
-import DigambarEEE from '../../assets/images/Technical Staff/EEE/Digambar1.png';
-import PinakiEEE from '../../assets/images/Technical Staff/EEE/Pinaki.png';
-import RohitEEE from '../../assets/images/Technical Staff/EEE/Rohit.png';
-import ArjunEEE from '../../assets/images/Technical Staff/EEE/arjun_singh1.jpg';
-import KoushikEEE from '../../assets/images/Technical Staff/EEE/koushik_eee.jpeg';
+import DigambarEEE from '../../../assets/images/Technical Staff/EEE/Digambar1.png';
+import PinakiEEE from '../../../assets/images/Technical Staff/EEE/Pinaki.png';
+import RohitEEE from '../../../assets/images/Technical Staff/EEE/Rohit.png';
+import ArjunEEE from '../../../assets/images/Technical Staff/EEE/arjun_singh1.jpg';
+import KoushikEEE from '../../../assets/images/Technical Staff/EEE/koushik_eee.jpeg';
 
 // Import staff images - MCE Department
-import VijeeshMCE from '../../assets/images/Technical Staff/MCE/vijeesh_mce.jpg';
+import VijeeshMCE from '../../../assets/images/Technical Staff/MCE/vijeesh_mce.jpg';
 
 // Import staff images - CVE Department
-import RajkumarCVE from '../../assets/images/Technical Staff/CVE/rajkumar_aps.jpeg';
+import RajkumarCVE from '../../../assets/images/Technical Staff/CVE/rajkumar_aps.jpeg';
 
 // Import staff images - APS & HSS Department
-import PriyankaAPS from '../../assets/images/Technical Staff/APS & HSS/Priyanka.png';
+import PriyankaAPS from '../../../assets/images/Technical Staff/APS & HSS/Priyanka.png';
 
 // Import staff images - CCC Department
-import NijinCCC from '../../assets/images/Technical Staff/CCC/Nijin.png';
-import RameezCCC from '../../assets/images/Technical Staff/CCC/Rameez.png';
-import VenkatCCC from '../../assets/images/Technical Staff/CCC/Venkat.png';
+import NijinCCC from '../../../assets/images/Technical Staff/CCC/Nijin.png';
+import RameezCCC from '../../../assets/images/Technical Staff/CCC/Rameez.png';
+import VenkatCCC from '../../../assets/images/Technical Staff/CCC/Venkat.png';
 
 const TechnicalStaff = () => {
     const [selectedDepartment, setSelectedDepartment] = useState('CSE');

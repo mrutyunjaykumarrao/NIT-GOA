@@ -1,14 +1,14 @@
 /* Administrative Staff Page Styles */
 .administrative-staff-page {
-    min-height: 100vh;
     background-color: white;
     padding-top: 20px;
+    padding-bottom: 40px;
 }
 
 .staff-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 60px;
 }
 
 /* Department Section */
@@ -198,5 +198,76 @@
         font-size: 18px;
         margin-bottom: 20px;
         padding: 10px;
+    }
+}
+
+/* Large Screen Responsiveness (2K, 4K, TV) */
+@media (min-width: 1920px) {
+    .staff-container {
+        max-width: 1800px;
+        padding: 0 80px;
+    }
+    
+    .staff-grid {
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        gap: 40px;
+        padding: 30px 0;
+    }
+    
+    .staff-card {
+        max-width: 420px;
+        height: 500px;
+        min-height: 500px;
+        max-height: 500px;
+        padding: 30px;
+    }
+    
+    .staff-image {
+        width: 240px;
+        height: 240px;
+    }
+    
+    .current-department {
+        font-size: 28px;
+        padding: 20px;
+    }
+}
+
+@media (min-width: 2560px) {
+    .staff-container {
+        max-width: 2400px;
+        padding: 0 120px;
+    }
+    
+    .staff-grid {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 50px;
+        padding: 40px 0;
+    }
+    
+    .staff-card {
+        max-width: 450px;
+        height: 520px;
+        min-height: 520px;
+        max-height: 520px;
+        padding: 35px;
+    }
+    
+    .staff-image {
+        width: 260px;
+        height: 260px;
+    }
+    
+    .current-department {
+        font-size: 32px;
+        padding: 25px;
+    }
+    
+    .staff-name {
+        font-size: 20px;
+    }
+    
+    .staff-designation {
+        font-size: 17px;
     }
 }

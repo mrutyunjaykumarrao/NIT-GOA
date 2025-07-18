@@ -25,9 +25,9 @@ import BTechFacilities from './Views/Admission-Section/BTech/BTechFacilities';
 import BTechStrengths from './Views/Admission-Section/BTech/BTechStrengths';
 import MTech from './Views/Admission-Section/MTech';
 import PhD from './Views/Admission-Section/PhD';
-import Faculty from './Views/People-Section/Faculty';
-import AdministrativeStaff from './Views/People-Section/AdministrativeStaff';
-import TechnicalStaff from './Views/People-Section/TechnicalStaff';
+import Faculty from './Views/People-Section/Faculty/Faculty';
+import AdministrativeStaff from './Views/People-Section/AdministrativeStaff/AdministrativeStaff';
+import TechnicalStaff from './Views/People-Section/TechnicalStaff/TechnicalStaff';
 import RDProjects from './Views/Research-Section/RDProjects';
 import MoUDetails from './Views/Research-Section/MoUDetails';
 

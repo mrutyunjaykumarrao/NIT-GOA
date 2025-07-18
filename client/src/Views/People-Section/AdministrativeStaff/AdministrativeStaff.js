@@ -2,29 +2,29 @@ import React from 'react';
 import './AdministrativeStaff.css';
 
 // Import staff images - using actual file names
-import AmitKabiraj from '../../assets/images/Administrative Staff/amit_kabiraj.jpg';
-import AmitNaik from '../../assets/images/Administrative Staff/amitnaik_JA.jpg';
-import RashmiAsstLib from '../../assets/images/Administrative Staff/Rashmi asst lib.jpg';
-import SwetaNew from '../../assets/images/Administrative Staff/swetaNEW.jpg';
-import Tallulah from '../../assets/images/Administrative Staff/tal.jpeg';
-import EstateEngg from '../../assets/images/Administrative Staff/estate engg.jpeg';
-import ManmohanAsstReg from '../../assets/images/Administrative Staff/manmohan_asst_reg_2022.jpg';
-import DigambarManekar from '../../assets/images/Administrative Staff/digambar.jpg';
-import AnandGachchinamath from '../../assets/images/Administrative Staff/anand.jpg';
-import AOP from '../../assets/images/Administrative Staff/aop.png';
-import ReshmaNoronha from '../../assets/images/Administrative Staff/reshma.jpeg';
-import StenoPhoto from '../../assets/images/Administrative Staff/steno_photograph.jpg';
-import NamrataG from '../../assets/images/Administrative Staff/Namrata_G.jpg';
-import KarthiPhoto from '../../assets/images/Administrative Staff/recent_karthi_photo.jpg';
-import SandeepJai from '../../assets/images/Administrative Staff/sandeep_jai.jpg';
-import SupriyaTiwe from '../../assets/images/Administrative Staff/supriya.jpg';
-import PritamNageshkar from '../../assets/images/Administrative Staff/pritam_Nageshkar.jpg';
-import DiptiGaude from '../../assets/images/Administrative Staff/Dipti.jpg';
-import Tejubi from '../../assets/images/Administrative Staff/tejubi.jpg';
-import Asmita from '../../assets/images/Administrative Staff/asmita.jpeg';
-import KishorPariyekar from '../../assets/images/Administrative Staff/kishor.jpg';
-import Kumaraguru from '../../assets/images/Administrative Staff/kumaraguru.jpg';
-import ArchanaMisal from '../../assets/images/Administrative Staff/archana.jpg';
+import AmitKabiraj from '../../../assets/images/Administrative Staff/amit_kabiraj.jpg';
+import AmitNaik from '../../../assets/images/Administrative Staff/amitnaik_JA.jpg';
+import RashmiAsstLib from '../../../assets/images/Administrative Staff/Rashmi asst lib.jpg';
+import SwetaNew from '../../../assets/images/Administrative Staff/swetaNEW.jpg';
+import Tallulah from '../../../assets/images/Administrative Staff/tal.jpeg';
+import EstateEngg from '../../../assets/images/Administrative Staff/estate engg.jpeg';
+import ManmohanAsstReg from '../../../assets/images/Administrative Staff/manmohan_asst_reg_2022.jpg';
+import DigambarManekar from '../../../assets/images/Administrative Staff/digambar.jpg';
+import AnandGachchinamath from '../../../assets/images/Administrative Staff/anand.jpg';
+import AOP from '../../../assets/images/Administrative Staff/aop.png';
+import ReshmaNoronha from '../../../assets/images/Administrative Staff/reshma.jpeg';
+import StenoPhoto from '../../../assets/images/Administrative Staff/steno_photograph.jpg';
+import NamrataG from '../../../assets/images/Administrative Staff/Namrata_G.jpg';
+import KarthiPhoto from '../../../assets/images/Administrative Staff/recent_karthi_photo.jpg';
+import SandeepJai from '../../../assets/images/Administrative Staff/sandeep_jai.jpg';
+import SupriyaTiwe from '../../../assets/images/Administrative Staff/supriya.jpg';
+import PritamNageshkar from '../../../assets/images/Administrative Staff/pritam_Nageshkar.jpg';
+import DiptiGaude from '../../../assets/images/Administrative Staff/Dipti.jpg';
+import Tejubi from '../../../assets/images/Administrative Staff/tejubi.jpg';
+import Asmita from '../../../assets/images/Administrative Staff/asmita.jpeg';
+import KishorPariyekar from '../../../assets/images/Administrative Staff/kishor.jpg';
+import Kumaraguru from '../../../assets/images/Administrative Staff/kumaraguru.jpg';
+import ArchanaMisal from '../../../assets/images/Administrative Staff/archana.jpg';
 
 const AdministrativeStaff = () => {
     const staffData = [
