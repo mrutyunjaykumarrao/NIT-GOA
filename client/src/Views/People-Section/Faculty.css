@@ -125,6 +125,7 @@
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
     padding: 20px 0;
+    justify-items: center;
 }
 
 /* Faculty Card */
@@ -138,6 +139,8 @@
     height: 480px;
     min-height: 480px;
     max-height: 480px;
+    width: 100%;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
 }
@@ -179,8 +182,8 @@
 .faculty-card.hod-card .faculty-image {
     flex-shrink: 0;
     margin: 0;
-    width: 200px;
-    height: 240px;
+    width: 220px;
+    height: 280px;
 }
 
 .faculty-card.hod-card .faculty-info {
@@ -290,8 +293,8 @@
 }
 
 .faculty-image {
-    width: 180px;
-    height: 240px;
+    width: 220px;
+    height: 280px;
     border-radius: 8px;
     overflow: hidden;
     margin: 0 auto 20px;
@@ -356,7 +359,7 @@
     padding: 12px;
     border-radius: 8px;
     margin-bottom: 15px;
-    text-align: left;
+    text-align: center;
 }
 
 .faculty-contact p {
@@ -457,8 +460,8 @@
     }
     
     .faculty-card.hod-card .faculty-image {
-        width: 180px;
-        height: 220px;
+        width: 200px;
+        height: 250px;
         margin: 0 auto;
     }
     
@@ -505,8 +508,8 @@
     }
     
     .faculty-image {
-        width: 180px;
-        height: 180px;
+        width: 200px;
+        height: 250px;
     }
     
     .faculty-name {
