@@ -3,6 +3,13 @@
     background-color: white;
     padding-top: 20px;
     padding-bottom: 40px;
+    transition: background-color 0.3s ease;
+}
+
+/* Dark Mode Styles */
+.technical-staff-page.dark {
+    background-color: #121212;
+    color: #e0e0e0;
 }
 
 .staff-container {
@@ -386,4 +393,85 @@
     .staff-designation {
         font-size: 17px;
     }
+}
+
+/* Dark Mode Theme Styles */
+.technical-staff-page.dark .current-department {
+    background: linear-gradient(135deg, #1e3a8a, #1e40af);
+    color: #e0e0e0;
+    border-left: 4px solid #3b82f6;
+}
+
+.technical-staff-page.dark .filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.technical-staff-page.dark .filter-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.technical-staff-page.dark .filter-btn.active {
+    background: rgba(59, 130, 246, 0.4);
+    color: #ffffff;
+    border: 1px solid rgba(59, 130, 246, 0.6);
+    box-shadow: 
+        0 15px 45px rgba(59, 130, 246, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.technical-staff-page.dark .staff-card {
+    background: #1e1e1e;
+    border: 1px solid #333;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.technical-staff-page.dark .staff-card:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.technical-staff-page.dark .staff-name {
+    color: #3b82f6;
+}
+
+.technical-staff-page.dark .staff-designation {
+    color: #d1d5db;
+}
+
+.technical-staff-page.dark .staff-department {
+    color: #9ca3af;
+}
+
+.technical-staff-page.dark .staff-contact {
+    background: #2d2d2d;
+    border: 1px solid #404040;
+}
+
+.technical-staff-page.dark .staff-contact p {
+    color: #d1d5db;
+}
+
+.technical-staff-page.dark .staff-contact strong {
+    color: #3b82f6;
+}
+
+.technical-staff-page.dark .no-staff {
+    background: #1e1e1e;
+    border: 1px solid #333;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.technical-staff-page.dark .no-staff p {
+    color: #9ca3af;
 }

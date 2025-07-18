@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useTheme } from '../../../contexts/ThemeContext';
 import './TechnicalStaff.css';
 
 // Import staff images - CSE Department
@@ -36,6 +37,7 @@ import VenkatCCC from '../../../assets/images/Technical Staff/CCC/Venkat.png';
 const TechnicalStaff = () => {
     const [selectedDepartment, setSelectedDepartment] = useState('CSE');
     const [searchParams] = useSearchParams();
+    const { theme } = useTheme();
 
     // Handle URL parameters for department selection
     useEffect(() => {
@@ -217,7 +219,7 @@ const TechnicalStaff = () => {
     };
 
     return (
-        <div className="technical-staff-page">
+        <div className={`technical-staff-page ${theme}`}>
             <div className="staff-container">
                 {/* Department Filter Buttons */}
                 <div className="department-section">

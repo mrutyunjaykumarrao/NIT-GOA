@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useTheme } from '../../../contexts/ThemeContext';
 import './Faculty.css';
 
 
@@ -91,6 +92,7 @@ import VishanupadBarve from '../../../assets/images/Faculty/HSS/Mr. Vishnupad Ba
 const Faculty = () => {
     const [selectedDepartment, setSelectedDepartment] = useState('CSE');
     const [searchParams] = useSearchParams();
+    const { theme } = useTheme();
 
     // Handle URL parameters for department selection
     useEffect(() => {
@@ -764,7 +766,7 @@ const Faculty = () => {
     };
 
     return (
-        <div className="faculty-page">
+        <div className={`faculty-page ${theme}`}>
             <div className="faculty-container">
                 
 

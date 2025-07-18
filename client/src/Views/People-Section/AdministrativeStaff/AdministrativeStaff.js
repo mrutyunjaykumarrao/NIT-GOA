@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTheme } from '../../../contexts/ThemeContext';
 import './AdministrativeStaff.css';
 
 // Import staff images - using actual file names
@@ -27,6 +28,7 @@ import Kumaraguru from '../../../assets/images/Administrative Staff/kumaraguru.j
 import ArchanaMisal from '../../../assets/images/Administrative Staff/archana.jpg';
 
 const AdministrativeStaff = () => {
+    const { theme } = useTheme();
     const staffData = [
         {
             name: "Mr. Amit Kabiraj",
@@ -215,7 +217,7 @@ const AdministrativeStaff = () => {
     ];
 
     return (
-        <div className="administrative-staff-page">
+        <div className={`administrative-staff-page ${theme}`}>
             <div className="staff-container">
                 <div className="current-department">
                     Administrative Staff
