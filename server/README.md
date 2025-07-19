@@ -1,79 +1,208 @@
-# NIT Goa Website - Backend Server
+# NIT Goa Backend API
 
-This is the Node.js/Express backend API for the NIT Goa official website.
+A comprehensive backend API for the NIT Goa website built with Node.js, Express, and MySQL.
 
-## Getting Started
+## 🚀 Features
 
-### Prerequisites
-- Node.js 16+
-- MySQL 8.0+
+- **Authentication & Authorization**: JWT-based auth with role-based access (Admin/Faculty)
+- **Faculty Management**: Complete CRUD operations for faculty profiles
+- **File Upload**: Image upload functionality for faculty profiles
+- **Database Integration**: MySQL with connection pooling
+- **Security**: Helmet, CORS, rate limiting, input validation
+- **Error Handling**: Comprehensive error handling and logging
+
+## ⚙️ Setup Instructions
+
+### 1. Prerequisites
+
+- Node.js (v14+ recommended)
+- MySQL (v8.0+ recommended)
 - npm or yarn
 
-### Installation
+### 2. Install Dependencies
+
 ```bash
 cd server
 npm install
 ```
 
-### Environment Setup
-1. Copy `.env.example` to `.env`
-2. Configure database credentials
-3. Set JWT secret
-4. Configure email settings (optional)
+### 3. Database Setup
 
-### Database Setup
-```bash
-# Create database
-mysql -u root -p
+1. Create MySQL database:
+```sql
 CREATE DATABASE nitgoa_db;
-
-# Run migrations (once implemented)
-npm run migrate
 ```
 
-### Development
+2. Run the schema setup:
 ```bash
-npm run dev
+mysql -u root -p nitgoa_db < ../database/schemas/schema.sql
 ```
-The API will run on http://localhost:5000
 
-### Production
+3. Run the faculty data migration:
 ```bash
-npm start
+mysql -u root -p nitgoa_db < ../database/seeds/complete_faculty_data_migration.sql
 ```
 
-## API Endpoints
+### 4. Environment Configuration
 
-### Authentication
-- `POST /api/auth/login` - User login
-- `POST /api/auth/logout` - User logout
-- `GET /api/auth/me` - Get current user
+Configure the `.env` file with your database credentials:
 
-### Faculty
-- `GET /api/faculty` - Get all faculty
-- `GET /api/faculty/:id` - Get faculty details
-- `PUT /api/faculty/:id` - Update faculty profile
+```env
+# Database Configuration
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_password
+DB_NAME=nitgoa_db
+DB_PORT=3306
 
-### Admin (Admin only)
-- `GET /api/admin/dashboard` - Dashboard data
-- `POST /api/admin/faculty` - Create faculty
-- `PUT /api/admin/faculty/:id` - Update any faculty
-- `DELETE /api/admin/faculty/:id` - Delete faculty
+# JWT Configuration
+JWT_SECRET=your-super-secret-jwt-key
 
-### Content Management
-- `GET /api/content/hero-images` - Get hero images
-- `POST /api/content/hero-images` - Add hero image
-- `GET /api/content/notices` - Get notices
-- `POST /api/content/notices` - Add notice
+# Server Configuration
+PORT=3001
+NODE_ENV=development
+```
 
-### File Upload
-- `POST /api/upload/image` - Upload image
-- `POST /api/upload/document` - Upload document
-- `DELETE /api/upload/:fileId` - Delete file
+### 5. Test Database Connection
 
-## Security Features
-- JWT authentication
-- Role-based access control
-- Rate limiting
-- Input validation
-- CORS protection
+```bash
+npm run test:db
+```
+
+### 6. Start the Development Environment
+
+Use the main development script from the project root:
+
+```bash
+# From the project root directory (/Users/mrutyunjaykumarrao/nitgoa)
+./scripts/dev.sh
+```
+
+This will automatically:
+- Clean up any processes on ports 3000 and 3001
+- Install dependencies if needed
+- Start both frontend (port 3000) and backend (port 3001) servers
+
+You can also start just the backend:
+```bash
+./scripts/dev.sh server
+```
+
+Or use individual npm scripts if needed:
+```bash
+# Backend only
+cd server && npm run dev
+
+# Frontend only  
+cd client && npm start
+```
+
+## 📚 API Documentation
+
+### Base URL: `http://localhost:3001/api`
+
+### 🔐 Authentication
+
+#### Login
+```http
+POST /api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+```
+
+### 👥 Faculty Management
+
+#### Get All Faculty (Public)
+```http
+GET /api/faculty
+GET /api/faculty?department=CSE
+```
+
+#### Get Faculty by Department
+```http
+GET /api/faculty/department/CSE
+```
+
+#### Get Single Faculty
+```http
+GET /api/faculty/1
+```
+
+### 🛡️ Admin Operations (Requires Admin Token)
+
+#### Get All Faculty (Admin View)
+```http
+GET /api/admin/faculty
+Authorization: Bearer jwt_token_here
+```
+
+#### Create Faculty
+```http
+POST /api/admin/faculty
+Authorization: Bearer jwt_token_here
+```
+
+### 📤 File Upload
+
+#### Upload Faculty Image
+```http
+POST /api/upload/image
+Authorization: Bearer jwt_token_here
+Content-Type: multipart/form-data
+```
+
+### 🔍 Health Check
+
+```http
+GET /api/health
+GET /api/test-db
+```
+
+## 🔧 Available Scripts
+
+**Recommended (from project root):**
+- `./scripts/dev.sh` - Start both frontend and backend servers
+- `./scripts/dev.sh server` - Start only backend server
+- `./scripts/dev.sh client` - Start only frontend server
+- `./scripts/dev.sh stop` - Stop all development servers
+
+**Individual backend scripts:**
+- `npm start` - Start production server
+- `npm run dev` - Start development server with nodemon
+- `npm run test:db` - Test database connection and setup
+- `npm test` - Run tests
+- `npm run lint` - Lint code
+
+## 🛡️ Security Features
+
+- JWT Authentication
+- Role-based Access Control
+- Rate Limiting
+- CORS Protection
+- Helmet Security Headers
+- SQL Injection Protection
+
+## 📊 Database Schema
+
+Main tables:
+- **users**: User accounts and authentication
+- **faculty_profiles**: Faculty information and profiles
+- **faculty_publications**: Faculty publications
+- **faculty_awards**: Faculty awards
+
+## 🚨 Status Codes
+
+- `200` - Success
+- `400` - Bad Request
+- `401` - Unauthorized
+- `403` - Forbidden
+- `404` - Not Found
+- `500` - Internal Server Error
+
+## 👥 Contributors
+
+NIT Goa Development Team

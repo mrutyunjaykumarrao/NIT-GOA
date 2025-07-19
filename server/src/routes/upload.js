@@ -1,22 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const { authenticateToken, requireAdmin } = require('../middleware/auth');
+const { upload, handleUploadError } = require('../middleware/upload');
+const { uploadImage, deleteImage } = require('../controllers/uploadController');
 
-// POST /api/upload/image
-router.post('/image', (req, res) => {
-  // TODO: Implement image upload
-  res.json({ message: 'Image upload - To be implemented' });
-});
+// Image upload route (admin only)
+router.post('/image', authenticateToken, requireAdmin, upload.single('image'), handleUploadError, uploadImage);
 
-// POST /api/upload/document
-router.post('/document', (req, res) => {
-  // TODO: Implement document upload
-  res.json({ message: 'Document upload - To be implemented' });
-});
-
-// DELETE /api/upload/:fileId
-router.delete('/:fileId', (req, res) => {
-  // TODO: Implement file deletion
-  res.json({ message: `Delete file ${req.params.fileId} - To be implemented` });
-});
+// Image delete route (admin only)
+router.delete('/image', authenticateToken, requireAdmin, deleteImage);
 
 module.exports = router;

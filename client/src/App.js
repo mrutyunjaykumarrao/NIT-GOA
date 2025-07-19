@@ -2,8 +2,15 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import { ThemeProvider } from './contexts/ThemeContext';
+import { AuthProvider } from './contexts/AuthContext';
+import { LoginModalProvider } from './contexts/LoginModalContext';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+
+// Auth components
+import LoginWrapper from './Views/Auth/LoginWrapper';
+import AdminDashboard from './Views/Admin/AdminDashboard';
 import HomePage from './Views/Home-Section/HomePage';
 import About from './Views/About/About';
 import Departments from './Views/Academics-Section/Departments';
@@ -47,12 +54,37 @@ import SCSTCell from './Views/SC-ST-Cell/SCSTCell';
 function App() {
   return (
     <ThemeProvider>
-      <div className="App">
-        <Navbar />
-        <Routes>
+      <AuthProvider>
+        <LoginModalProvider>
+          <AppContent />
+        </LoginModalProvider>
+      </AuthProvider>
+    </ThemeProvider>
+  );
+}
+
+function AppContent() {
+  return (
+    <div className="App">
+      <Navbar />
+      <LoginWrapper />
+      <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About />} />
         <Route path="/gian" element={<GIAN />} />
+        
+        {/* Auth Routes */}
+        <Route path="/login" element={<div />} /> {/* Handled by LoginWrapper */}
+        
+        {/* Protected Admin Route */}
+        <Route 
+          path="/admin" 
+          element={
+            <ProtectedRoute requiredRole="admin">
+              <AdminDashboard />
+            </ProtectedRoute>
+          } 
+        />
         
         {/* Academics Section Routes */}
         <Route path="/academics/departments" element={<Departments />} />
@@ -101,7 +133,6 @@ function App() {
       </Routes>
       <Footer />
     </div>
-    </ThemeProvider>
   );
 }
 

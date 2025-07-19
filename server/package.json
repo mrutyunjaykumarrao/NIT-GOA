@@ -8,6 +8,7 @@
     "dev": "nodemon server.js",
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:db": "node test-db.js",
     "lint": "eslint src/**/*.js --quiet",
     "lint:fix": "eslint src/**/*.js --fix"
   },
