@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useTheme } from '../../../contexts/ThemeContext';
 import './Faculty.css';
 
@@ -92,6 +92,7 @@ import VishanupadBarve from '../../../assets/images/Faculty/HSS/Mr. Vishnupad Ba
 const Faculty = () => {
     const [selectedDepartment, setSelectedDepartment] = useState('CSE');
     const [searchParams] = useSearchParams();
+    const navigate = useNavigate();
     const { theme } = useTheme();
 
     // Handle URL parameters for department selection
@@ -119,6 +120,7 @@ const Faculty = () => {
     const facultyData = {
         CSE: [
             {
+                id: 'veena-thenkanidiyoor',
                 name: 'Dr. Veena Thenkanidiyoor',
                 designation: 'Associate Professor & HOD',
                 department: 'Computer Science and Engineering',
@@ -129,6 +131,7 @@ const Faculty = () => {
                 isHOD: true
             },
             {
+                id: 'damodar-reddy-edla',
                 name: 'Dr. Damodar Reddy Edla',
                 designation: 'Associate Professor',
                 department: 'Computer Science and Engineering',
@@ -806,8 +809,7 @@ const Faculty = () => {
                                     </div>
                                     <div className="faculty-actions">
                                         <button className="view-profile-btn" onClick={() => {
-                                            // TODO: Navigate to detailed profile page
-                                            console.log('View profile for:', faculty.name);
+                                            navigate(`/faculty/${faculty.id}`);
                                         }}>
                                             View Profile
                                         </button>
