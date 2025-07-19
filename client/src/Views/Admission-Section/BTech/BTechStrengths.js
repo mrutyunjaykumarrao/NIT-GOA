@@ -6,15 +6,15 @@ const BTechStrengths = () => {
         <div className="btech-strengths">
             <div className="btech-strengths-container">
                 {/* Hero Section */}
-                <div className="strengths-hero">
-                    <div className="hero-content">
+                <div className="btech-strengths-hero">
+                    <div className="btech-strengths-hero-content">
                         <h1>Strengths of NIT Goa</h1>
-                        <p className="hero-subtitle">Excellence in Technical Education and Research</p>
+                        <p className="btech-strengths-hero-subtitle">Excellence in Technical Education and Research</p>
                     </div>
                 </div>
 
-                <div className="content-section">
-                    <div className="main-content">
+                <div className="btech-strengths-content-section">
+                    <div className="btech-strengths-main-content">
                         <p>
                             NIT Goa has devoted and dynamic faculty members holding Ph.D. degrees from IISc, 
                             IITs, NITs and reputed universities. The faculty members are committed to 

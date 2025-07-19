@@ -111,46 +111,46 @@ const BTechJosaa = () => {
     };
 
     return (
-        <div className="admissions-page">
-            <div className="admissions-container">
+        <div className="btech-josaa-admissions-page">
+            <div className="btech-josaa-admissions-container">
                 {/* Header Section */}
-                <div className="admissions-hero">
-                    <div className="hero-content">
+                <div className="btech-josaa-admissions-hero">
+                    <div className="btech-josaa-hero-content">
                         <h1>{josaaData.title}</h1>
-                        <p className="hero-subtitle">{josaaData.subtitle}</p>
-                        <div className="ccmt-info">
-                            <span className="ccmt-label">Through {josaaData.examInfo.title}</span>
-                            <span className="ccmt-desc">{josaaData.examInfo.description}</span>
+                        <p className="btech-josaa-hero-subtitle">{josaaData.subtitle}</p>
+                        <div className="btech-josaa-ccmt-info">
+                            <span className="btech-josaa-ccmt-label">Through {josaaData.examInfo.title}</span>
+                            <span className="btech-josaa-ccmt-desc">{josaaData.examInfo.description}</span>
                         </div>
                     </div>
                 </div>
 
                 {/* Admission Process Overview */}
-                <section className="programs-section">
-                    <h2 className="section-title">Admission Process</h2>
-                    <div className="admission-overview">
-                        <div className="process-card">
+                <section className="btech-josaa-programs-section">
+                    <h2 className="btech-josaa-section-title">Admission Process</h2>
+                    <div className="btech-josaa-admission-overview">
+                        <div className="btech-josaa-process-card">
                             <h3>Eligibility & Examination</h3>
                             <p>
                                 Admission to Undergraduate Engineering Programs for candidates from India at NITs, IIITs, 
                                 and other centrally funded Technical Institutions is based on performance in Class 12/other 
                                 Qualifying Examination and Joint Entrance Examination (JEE Main).
                             </p>
-                            <div className="key-points">
-                                <div className="point-item">
-                                    <span className="point-icon">✓</span>
+                            <div className="btech-josaa-key-points">
+                                <div className="btech-josaa-point-item">
+                                    <span className="btech-josaa-point-icon">✓</span>
                                     <span>Qualify JEE Main examination</span>
                                 </div>
-                                <div className="point-item">
-                                    <span className="point-icon">✓</span>
+                                <div className="btech-josaa-point-item">
+                                    <span className="btech-josaa-point-icon">✓</span>
                                     <span>Register for JoSAA counselling</span>
                                 </div>
-                                <div className="point-item">
-                                    <span className="point-icon">✓</span>
+                                <div className="btech-josaa-point-item">
+                                    <span className="btech-josaa-point-icon">✓</span>
                                     <span>Fill choice preferences</span>
                                 </div>
-                                <div className="point-item">
-                                    <span className="point-icon">✓</span>
+                                <div className="btech-josaa-point-item">
+                                    <span className="btech-josaa-point-icon">✓</span>
                                     <span>Participate in seat allotment rounds</span>
                                 </div>
                             </div>
@@ -159,11 +159,11 @@ const BTechJosaa = () => {
                 </section>
 
                 {/* Programs Section */}
-                <section className="programs-section">
-                    <h2 className="section-title">B.Tech Programs Offered</h2>
-                    <div className="programs-tiles">
+                <section className="btech-josaa-programs-section">
+                    <h2 className="btech-josaa-section-title">B.Tech Programs Offered</h2>
+                    <div className="btech-josaa-programs-tiles">
                         {josaaData.programs.map((program, index) => (
-                            <div key={index} className="program-tile">
+                            <div key={index} className="btech-josaa-program-tile">
                                 <h3>{program.department}</h3>
                             </div>
                         ))}
@@ -171,11 +171,11 @@ const BTechJosaa = () => {
                 </section>
 
                 {/* Important Resources */}
-                <section className="quick-access-section">
-                    <h2 className="section-title">Important Resources</h2>
-                    <div className="quick-links-grid">
+                <section className="btech-josaa-quick-access-section">
+                    <h2 className="btech-josaa-section-title">Important Resources</h2>
+                    <div className="btech-josaa-quick-links-grid">
                         {josaaData.resources.map((resource, index) => (
-                            <a key={index} href={resource.link} target="_blank" rel="noopener noreferrer" className="quick-link-card">
+                            <a key={index} href={resource.link} target="_blank" rel="noopener noreferrer" className="btech-josaa-quick-link-card">
                                 <h3>{resource.title}</h3>
                             </a>
                         ))}
@@ -183,17 +183,17 @@ const BTechJosaa = () => {
                 </section>
 
                 {/* Contact Information */}
-                <section className="info-section">
-                    <h2 className="section-title">Contact Information</h2>
-                    <div className="info-grid">
-                        <div className="info-card">
+                <section className="btech-josaa-info-section">
+                    <h2 className="btech-josaa-section-title">Contact Information</h2>
+                    <div className="btech-josaa-info-grid">
+                        <div className="btech-josaa-info-card">
                             <h3>{josaaData.contact.name}</h3>
                             <p>{josaaData.contact.designation}</p>
                             <p>{josaaData.contact.institute}</p>
                             <p>{josaaData.contact.address}</p>
-                            <div className="contact-details">
-                                <div className="contact-item">
-                                    <span className="contact-label">E-Mail:</span>
+                            <div className="btech-josaa-contact-details">
+                                <div className="btech-josaa-contact-item">
+                                    <span className="btech-josaa-contact-label">E-Mail:</span>
                                     <span>
                                         <a href={`mailto:${josaaData.contact.email}`}>{josaaData.contact.email}</a>
                                         {josaaData.contact.additionalEmail && (
@@ -201,8 +201,8 @@ const BTechJosaa = () => {
                                         )}
                                     </span>
                                 </div>
-                                <div className="contact-item">
-                                    <span className="contact-label">Ph. No.:</span>
+                                <div className="btech-josaa-contact-item">
+                                    <span className="btech-josaa-contact-label">Ph. No.:</span>
                                     <span>{josaaData.contact.phone}</span>
                                 </div>
                             </div>
@@ -211,10 +211,10 @@ const BTechJosaa = () => {
                 </section>
 
                 {/* Important Note */}
-                <section className="info-section">
-                    <div className="info-grid">
-                        <div className="info-card">
-                            <div className="note">
+                <section className="btech-josaa-info-section">
+                    <div className="btech-josaa-info-grid">
+                        <div className="btech-josaa-info-card">
+                            <div className="btech-josaa-note">{/*  */}
                                 <p><strong>Note:</strong> For the latest updates and detailed information about the admission process, 
                                 regularly visit the <a href="http://josaa.nic.in" target="_blank" rel="noopener noreferrer">JoSAA official website</a> 
                                 and <a href="http://csab.nic.in" target="_blank" rel="noopener noreferrer">CSAB official website</a>.</p>

@@ -2,11 +2,36 @@
 :root {
     --primary-blue: #2E86C1;
     --primary-blue-dark: #1B4F72;
+    --primary-blue-light: #5DADE2;
     --white: #FFFFFF;
     --gray-50: #F8F9FA;
+    --gray-100: #F1F3F4;
+    --gray-200: #E9ECEF;
+    --gray-600: #6C757D;
     --gray-700: #495057;
     --gray-800: #343A40;
+    --accent-orange: #FF6B35;
     --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.12);
+    --shadow-strong: rgba(0, 0, 0, 0.16);
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+    --primary-blue: #4A9EE7;
+    --primary-blue-light: #6BB6FF;
+    --primary-blue-dark: #2E86C1;
+    --white: #FFFFFF;
+    --gray-50: #0f1726;
+    --gray-100: #1a2332;
+    --gray-200: #253041;
+    --gray-600: #94a3b8;
+    --gray-700: #cbd5e1;
+    --gray-800: #e2e8f0;
+    --accent-orange: #FF8C42;
+    --shadow-light: rgba(30, 41, 59, 0.4);
+    --shadow-medium: rgba(30, 41, 59, 0.6);
+    --shadow-strong: rgba(30, 41, 59, 0.8);
 }
 
 .btech-facilities {
@@ -18,13 +43,13 @@
 }
 
 .btech-facilities-container {
-    max-width: 1600px;
+    max-width: 97%;
     margin: 0 auto;
     padding: 1rem;
 }
 
 /* Hero Section - PhD Style */
-.facilities-hero {
+.btech-facilities-hero {
     background: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--primary-blue) 100%);
     border-radius: 0;
     padding: 5rem 1rem;
@@ -34,7 +59,7 @@
     overflow: hidden;
 }
 
-.facilities-hero::before {
+.btech-facilities-hero::before {
     content: '';
     position: absolute;
     top: 0;
@@ -50,12 +75,12 @@
     opacity: 0.3;
 }
 
-.hero-content {
+.btech-facilities-hero-content {
     position: relative;
     z-index: 2;
 }
 
-.facilities-hero h1 {
+.btech-facilities-hero h1 {
     font-size: 4rem;
     font-weight: 800;
     margin-bottom: 1rem;
@@ -63,7 +88,7 @@
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.hero-subtitle {
+.btech-facilities-hero-subtitle {
     font-size: 1.4rem;
     color: var(--white);
     opacity: 0.9;
@@ -71,7 +96,7 @@
     font-weight: 400;
 }
 
-.content-section {
+.btech-facilities-content-section {
     background: var(--white);
     border-radius: 12px;
     margin-bottom: 2rem;
@@ -79,23 +104,23 @@
     overflow: hidden;
 }
 
-.facility-image {
+.btech-facilities-image {
     width: 100%;
     height: 300px;
     overflow: hidden;
 }
 
-.facility-image img {
+.btech-facilities-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.main-content {
+.btech-facilities-main-content {
     padding: 2.5rem;
 }
 
-.main-content p {
+.btech-facilities-main-content p {
     font-size: 1.05rem;
     line-height: 1.7;
     color: var(--gray-700);
@@ -103,10 +128,35 @@
     text-align: justify;
 }
 
-.main-content p:first-child {
+.btech-facilities-main-content p:first-child {
     font-size: 1.1rem;
     font-weight: 500;
     color: var(--primary-blue-dark);
+}
+
+/* Dark Theme Styles */
+[data-theme="dark"] .btech-facilities {
+    background: linear-gradient(135deg, #0a1220 0%, #1a2332 50%, #253041 100%);
+    color: var(--gray-800);
+}
+
+[data-theme="dark"] .btech-facilities-hero {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
+    box-shadow: 0 4px 20px rgba(30, 58, 138, 0.3);
+}
+
+[data-theme="dark"] .btech-facilities-content-section {
+    background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+    border: 1px solid var(--gray-200);
+    box-shadow: 0 4px 20px var(--shadow-light);
+}
+
+[data-theme="dark"] .btech-facilities-main-content p {
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .btech-facilities-main-content p:first-child {
+    color: #ffffff !important;
 }
 
 /* Responsive Design */
@@ -115,51 +165,51 @@
         padding: 1rem;
     }
     
-    .facilities-hero {
+    .btech-facilities-hero {
         margin: -1rem -1rem 2rem;
         padding: 3rem 0.5rem;
     }
     
-    .facilities-hero h1 {
+    .btech-facilities-hero h1 {
         font-size: 2.5rem;
     }
     
-    .hero-subtitle {
+    .btech-facilities-hero-subtitle {
         font-size: 1.1rem;
     }
     
-    .content-container {
+    .btech-facilities-content-container {
         padding: 1.5rem 1rem;
     }
     
-    .main-content {
+    .btech-facilities-main-content {
         padding: 2rem 1.5rem;
     }
     
-    .main-content p {
+    .btech-facilities-main-content p {
         font-size: 1rem;
         margin-bottom: 1.2rem;
     }
     
-    .facility-image {
+    .btech-facilities-image {
         height: 250px;
     }
 }
 
 @media (max-width: 480px) {
-    .facilities-hero h1 {
+    .btech-facilities-hero h1 {
         font-size: 2rem;
     }
     
-    .hero-subtitle {
+    .btech-facilities-hero-subtitle {
         font-size: 1rem;
     }
     
-    .main-content {
+    .btech-facilities-main-content {
         padding: 1.5rem 1rem;
     }
     
-    .facility-image {
+    .btech-facilities-image {
         height: 200px;
     }
 }

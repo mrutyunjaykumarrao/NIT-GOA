@@ -28,13 +28,20 @@
     -webkit-text-fill-color: black !important;
     background-clip: unset !important;
 }
-
+.mou-header-h1{
+    color:#0f172a;
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+}
 .mou-table-container {
     width: 100%;
     overflow-x: auto;
     margin-bottom: 2rem;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .mou-table {
@@ -209,4 +216,88 @@
     .mou-table td {
         padding: 0.5rem 0.25rem;
     }
+}
+
+/* Dark Theme Styles */
+[data-theme="dark"] .mou-details-page {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: #f1f5f9;
+}
+
+[data-theme="dark"] .mou-details-header {
+    background: #1e293b;
+    color: #f1f5f9;
+}
+
+[data-theme="dark"] .mou-details-header h1 {
+    color: #60a5fa !important;
+    -webkit-text-fill-color: #60a5fa !important;
+}
+
+[data-theme="dark"] .mou-header-h1 {
+    color: #ffffff !important;
+    
+}
+
+[data-theme="dark"] .mou-table-container {
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.3);
+}
+
+[data-theme="dark"] .mou-table {
+    background: #1e293b;
+    border: 1px solid #334155;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .mou-table thead {
+    background: linear-gradient(135deg, #1e40af, #2563eb);
+    color: #f1f5f9;
+    box-shadow: 0 2px 8px rgba(30, 64, 175, 0.4);
+}
+
+[data-theme="dark"] .mou-table th {
+    border-bottom: 2px solid #3b82f6;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+[data-theme="dark"] .mou-table tbody tr {
+    border-bottom: 1px solid #334155;
+}
+
+[data-theme="dark"] .mou-table tbody tr:hover {
+    background-color: #334155;
+}
+
+[data-theme="dark"] .mou-table tbody tr:nth-child(even) {
+    background-color: #2d3748;
+}
+
+[data-theme="dark"] .mou-table tbody tr:nth-child(even):hover {
+    background-color: #475569;
+}
+
+[data-theme="dark"] .mou-table td {
+    color: #cbd5e1;
+    border-right: 1px solid #334155;
+}
+
+[data-theme="dark"] .mou-table td:first-child {
+    color: #60a5fa;
+}
+
+[data-theme="dark"] .mou-table td:nth-child(2) {
+    color: #e2e8f0;
+}
+
+[data-theme="dark"] .mou-table td:nth-child(3) {
+    color: #4ade80;
+}
+
+[data-theme="dark"] .mou-table td:nth-child(4) {
+    color: #f1f5f9;
+}
+
+[data-theme="dark"] .mou-table td:nth-child(5) {
+    color: #cbd5e1;
 }

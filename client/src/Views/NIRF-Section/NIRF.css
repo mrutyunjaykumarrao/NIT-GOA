@@ -67,7 +67,7 @@
 }
 
 .nirf-container {
-    max-width: 1200px;
+    max-width: 90%;
     margin: 0 auto;
     padding: 0;
 }
@@ -78,8 +78,9 @@
     padding: 4rem 0 3rem;
     background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
     color: white;
+    margin-top: 2rem;
     margin-bottom: 3rem;
-    border-radius: 0 0 2rem 2rem;
+    border-radius: 2rem;
     position: relative;
     overflow: hidden;
 }
@@ -175,7 +176,7 @@
     color: white;
 }
 
-.dropdown-arrow {
+.nirf-dropdown-arrow {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -186,17 +187,17 @@
     transition: all 0.3s ease;
 }
 
-.nirf-year-header:hover .dropdown-arrow {
+.nirf-year-header:hover .nirf-dropdown-arrow {
     background: rgba(255, 255, 255, 0.3);
     transform: scale(1.1);
 }
 
-.arrow-icon {
+.nirf-arrow-icon {
     transition: transform 0.3s ease;
     color: white;
 }
 
-.arrow-icon.rotated {
+.nirf-arrow-icon.rotated {
     transform: rotate(180deg);
 }
 
@@ -239,7 +240,7 @@
     background: var(--primary-blue-dark);
 }
 
-.forms-list {
+.nirf-forms-list {
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -247,27 +248,27 @@
 }
 
 /* Form Links */
-.form-link {
+.nirf-form-link {
     text-decoration: none;
     color: inherit;
     display: block;
     transition: all 0.3s ease;
 }
 
-.form-item {
+.nirf-form-item {
     display: flex;
     align-items: center;
     gap: 1rem;
     padding: 1.5rem;
     background: var(--background-primary);
-    border-radius: 0.75rem;
+    border-radius: 1rem;
     border: 1px solid var(--border-color);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
 }
 
-.form-item::before {
+.nirf-form-item::before {
     content: '';
     position: absolute;
     top: 0;
@@ -279,18 +280,30 @@
     transition: transform 0.3s ease;
 }
 
-.form-link:hover .form-item {
+.nirf-form-link:hover .nirf-form-item {
     background: var(--secondary-blue-50);
     border-color: var(--primary-blue-light);
     transform: translateX(5px);
     box-shadow: var(--shadow-medium);
 }
 
-.form-link:hover .form-item::before {
+.nirf-form-link:hover .nirf-form-item::before {
     transform: scaleY(1);
 }
 
-.pdf-icon {
+.nirf-file-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    color: white;
+    border-radius: 1rem;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.nirf-pdf-icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -298,12 +311,12 @@
     height: 2.5rem;
     background: var(--primary-blue);
     color: white;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     flex-shrink: 0;
     transition: all 0.3s ease;
 }
 
-.excel-icon {
+.nirf-excel-icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -311,29 +324,29 @@
     height: 2.5rem;
     background: var(--success-green);
     color: white;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     flex-shrink: 0;
     transition: all 0.3s ease;
 }
 
-.form-link:hover .pdf-icon {
+.nirf-form-link:hover .nirf-pdf-icon {
     background: var(--primary-blue-dark);
     transform: scale(1.1);
 }
 
-.form-link:hover .excel-icon {
+.nirf-form-link:hover .nirf-excel-icon {
     background: #1e7a32;
     transform: scale(1.1);
 }
 
-.form-name {
+.nirf-form-name {
     color: var(--text-primary);
     font-weight: 500;
     line-height: 1.4;
     transition: color 0.3s ease;
 }
 
-.form-link:hover .form-name {
+.nirf-form-link:hover .nirf-form-name {
     color: var(--primary-blue);
 }
 
@@ -371,12 +384,12 @@
     border-color: var(--border-color) !important;
 }
 
-[data-theme="dark"] .nirf-page .form-item {
+[data-theme="dark"] .nirf-page .nirf-form-item {
     background: var(--background-secondary) !important;
     border-color: var(--border-color) !important;
 }
 
-[data-theme="dark"] .nirf-page .form-name {
+[data-theme="dark"] .nirf-page .nirf-form-name {
     color: var(--text-primary) !important;
 }
 
@@ -393,6 +406,7 @@
 
     .nirf-hero {
         padding: 3rem 0 2rem;
+        margin-top: 1.5rem;
         margin-bottom: 2rem;
         border-radius: 0 0 1rem 1rem;
     }
@@ -409,19 +423,19 @@
         font-size: 1.3rem;
     }
 
-    .forms-list {
+    .nirf-forms-list {
         padding: 1.5rem;
         gap: 0.75rem;
     }
 
-    .form-item {
+    .nirf-form-item {
         padding: 1.25rem;
         flex-direction: column;
         text-align: center;
         gap: 0.75rem;
     }
 
-    .pdf-icon {
+    .nirf-pdf-icon {
         width: 2rem;
         height: 2rem;
     }
@@ -435,6 +449,7 @@
 @media (max-width: 480px) {
     .nirf-hero {
         padding: 2rem 0 1.5rem;
+        margin-top: 1rem;
     }
 
     .nirf-title {
@@ -449,15 +464,15 @@
         font-size: 1.1rem;
     }
 
-    .forms-list {
+    .nirf-forms-list {
         padding: 1rem;
     }
 
-    .form-item {
+    .nirf-form-item {
         padding: 1rem;
     }
 
-    .form-name {
+    .nirf-form-name {
         font-size: 0.9rem;
     }
 
@@ -477,7 +492,7 @@
 
 /* Focus states for accessibility */
 .nirf-year-header:focus,
-.form-link:focus {
+.nirf-form-link:focus {
     outline: 2px solid var(--primary-blue);
     outline-offset: 2px;
 }

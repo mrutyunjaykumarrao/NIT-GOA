@@ -104,9 +104,9 @@ const NIRF = () => {
                                     onClick={() => toggleDropdown(item.year)}
                                 >
                                     <h2>NIRF FORMS-{item.year}</h2>
-                                    <div className="dropdown-arrow">
+                                    <div className="nirf-dropdown-arrow">
                                         <svg 
-                                            className={`arrow-icon ${openDropdowns[item.year] ? 'rotated' : ''}`}
+                                            className={`nirf-arrow-icon ${openDropdowns[item.year] ? 'rotated' : ''}`}
                                             width="20" 
                                             height="20" 
                                             viewBox="0 0 24 24" 
@@ -120,7 +120,7 @@ const NIRF = () => {
                                 </div>
                                 
                                 <div className={`nirf-forms-dropdown ${openDropdowns[item.year] ? 'open' : ''} ${item.year === '2017' ? 'scrollable' : ''}`}>
-                                    <div className="forms-list">
+                                    <div className="nirf-forms-list">
                                         {item.forms.map((form, index) => {
                                             const isExcel = form.url.endsWith('.xlsx') || form.url.endsWith('.xls');
                                             return (
@@ -129,10 +129,10 @@ const NIRF = () => {
                                                     href={form.url} 
                                                     target="_blank" 
                                                     rel="noopener noreferrer"
-                                                    className="form-link"
+                                                    className="nirf-form-link"
                                                 >
-                                                    <div className="form-item">
-                                                        <div className={`file-icon ${isExcel ? 'excel-icon' : 'pdf-icon'}`}>
+                                                    <div className="nirf-form-item">
+                                                        <div className={`nirf-file-icon ${isExcel ? 'nirf-excel-icon' : 'nirf-pdf-icon'}`}>
                                                             {isExcel ? (
                                                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                                                     <path d="M14,2 L6,2 C4.9,2 4,2.9 4,4 L4,20 C4,21.1 4.9,22 6,22 L18,22 C19.1,22 20,21.1 20,20 L20,8 L14,2 Z"/>
@@ -151,7 +151,7 @@ const NIRF = () => {
                                                                 </svg>
                                                             )}
                                                         </div>
-                                                        <span className="form-name">{form.name}</span>
+                                                        <span className="nirf-form-name">{form.name}</span>
                                                     </div>
                                                 </a>
                                             );
