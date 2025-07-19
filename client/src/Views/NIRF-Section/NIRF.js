@@ -1,268 +1,170 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './NIRF.css';
 
 const NIRF = () => {
+    const [openDropdowns, setOpenDropdowns] = useState({});
+
+    const toggleDropdown = (year) => {
+        setOpenDropdowns(prev => ({
+            ...prev,
+            [year]: !prev[year]
+        }));
+    };
+
+    const nirfData = [
+        {
+            year: '2025',
+            forms: [
+                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - ENGG', url: 'https://www.nitgoa.ac.in/static/National%20Institute%20of%20Technology%20Goa2025_Engg.pdf' },
+                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - OVERALL', url: 'https://www.nitgoa.ac.in/static/National%20Institute%20of%20Technology%20Goa2025_Overall.pdf' }
+            ]
+        },
+        {
+            year: '2024',
+            forms: [
+                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - ENGG', url: 'https://www.nitgoa.ac.in/uploads/NITGoa_Engineering%2028feb2024.pdf' },
+                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - OVERALL', url: 'https://www.nitgoa.ac.in/uploads/NITGoa_Overall%2028feb2024.pdf' }
+            ]
+        },
+        {
+            year: '2023',
+            forms: [
+                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - ENGG', url: 'https://www.nitgoa.ac.in/static/NITGoa-Engg_13jan2023.pdf' },
+                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - OVERALL', url: 'https://www.nitgoa.ac.in/static/NITGoa-Overall_13jan2023.pdf' }
+            ]
+        },
+        {
+            year: '2022',
+            forms: [
+                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - ENGG', url: 'https://www.nitgoa.ac.in/static/NIRF-Engg_2022.pdf' },
+                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - OVERALL', url: 'https://www.nitgoa.ac.in/static/NIRF-Overall_2022.pdf' }
+            ]
+        },
+        {
+            year: '2021',
+            forms: [
+                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - ENGG', url: 'https://www.nitgoa.ac.in/static/NIRF_2021-NIT_Goa_Engineering.pdf' },
+                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - OVERALL', url: 'https://www.nitgoa.ac.in/static/NIRF_2021-NIT_Goa_Overall.pdf' }
+            ]
+        },
+        {
+            year: '2020',
+            forms: [
+                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - ENGG', url: 'https://www.nitgoa.ac.in/static/National_Institute_of_Technology_Goa-2020-Engineering.pdf' },
+                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - OVERALL', url: 'https://www.nitgoa.ac.in/static/National_Institute_of_Technology_Goa-2020-Overall.pdf' }
+            ]
+        },
+        {
+            year: '2019',
+            forms: [
+                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - ENGG', url: 'https://www.nitgoa.ac.in/static/NIRF-ENGG_Category_(LOCKED).pdf' },
+                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - OVERALL', url: 'https://www.nitgoa.ac.in/static/NIRF-OVERALL_Category_(LOCKED).pdf' }
+            ]
+        },
+        {
+            year: '2018',
+            forms: [
+                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - ENGG', url: 'https://www.nitgoa.ac.in/static/ENGINEERING-All_Report-MHRD,_National_Institutional_Ranking_Framework_(NIRF)_8jan2018.pdf' },
+                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - OVERALL', url: 'https://www.nitgoa.ac.in/static/OVERALL_-_All_Report-MHRD,_National_Institutional_Ranking_Framework_(NIRF)_8jan2018.pdf' }
+            ]
+        },
+        {
+            year: '2017',
+            forms: [
+                { name: 'Consultancy Project Details', url: 'https://www.nitgoa.ac.in/static/Consultancy_Project_Detail.xlsx' },
+                { name: 'Enterpreneurship', url: 'https://www.nitgoa.ac.in/static/Enterpreneurship.xlsx' },
+                { name: 'Program Details', url: 'https://www.nitgoa.ac.in/static/edp.xlsx' },
+                { name: 'PG - Higher Studies', url: 'https://www.nitgoa.ac.in/static/PG_-_HigherStudies.xlsx' },
+                { name: 'UG - Higher Studies', url: 'https://www.nitgoa.ac.in/static/UG_-_HigherStudies.xlsx' },
+                { name: 'Sponsored Research Details', url: 'https://www.nitgoa.ac.in/static/Sponsored_Research_Detail.xlsx' },
+                { name: 'Top University Details_5D', url: 'https://www.nitgoa.ac.in/static/TopUniversityDetails_5D.xlsx' },
+                { name: 'Top University Details_3D', url: 'https://www.nitgoa.ac.in/static/Top_UniversityDetails_3D.xlsx' },
+                { name: 'Placements', url: 'https://www.nitgoa.ac.in/static/Placement_20feb2017.xlsx' },
+                { name: 'Full Report-MHRD, National Institutional Ranking Framework (NIRF) - ENGG', url: 'https://www.nitgoa.ac.in/static/Full_Report_MHRD_National_Institutional_Ranking_Framework_(NIRF)_-_ENGG_20feb2017.pdf' },
+                { name: 'Full Report-MHRD, National Institutional Ranking Framework (NIRF)-OVERALL', url: 'https://www.nitgoa.ac.in/static/Full_Report_MHRD__National_Institutional_Ranking_Framework_(NIRF)_-_OVERALL_20feb2017.pdf' }
+            ]
+        }
+    ];
+
     return (
         <div className="nirf-page">
             <div className="nirf-container">
-                <div className="page-header">
-                    <h1>NIRF Rankings</h1>
-                    <p className="page-subtitle">National Institutional Ranking Framework</p>
+                <div className="nirf-hero">
+                    <div className="nirf-hero-content">
+                        <h1 className="nirf-title">NIRF FORMS</h1>
+                    </div>
                 </div>
 
                 <div className="nirf-content">
-                    <section className="nirf-section overview-section">
-                        <h2>About NIRF</h2>
-                        <p>
-                            The National Institutional Ranking Framework (NIRF) was approved by the MHRD and launched by 
-                            Honourable Minister of Human Resource Development on 29th September 2015. This framework outlines 
-                            a methodology to rank institutions across the country.
-                        </p>
-                        <p>
-                            NIRF ranks institutions based on five broad parameters: Teaching, Learning and Resources (TLR), 
-                            Research and Professional Practice (RPC), Graduation Outcomes (GO), Outreach and Inclusivity (OI), 
-                            and Perception (PR).
-                        </p>
-                    </section>
+                    <div className="nirf-forms-section">
+                        {nirfData.map((item) => (
+                            <div key={item.year} className="nirf-year-section">
+                                <div 
+                                    className={`nirf-year-header ${openDropdowns[item.year] ? 'active' : ''}`}
+                                    onClick={() => toggleDropdown(item.year)}
+                                >
+                                    <h2>NIRF FORMS-{item.year}</h2>
+                                    <div className="dropdown-arrow">
+                                        <svg 
+                                            className={`arrow-icon ${openDropdowns[item.year] ? 'rotated' : ''}`}
+                                            width="20" 
+                                            height="20" 
+                                            viewBox="0 0 24 24" 
+                                            fill="none" 
+                                            stroke="currentColor" 
+                                            strokeWidth="2"
+                                        >
+                                            <polyline points="6,9 12,15 18,9"></polyline>
+                                        </svg>
+                                    </div>
+                                </div>
+                                
+                                <div className={`nirf-forms-dropdown ${openDropdowns[item.year] ? 'open' : ''} ${item.year === '2017' ? 'scrollable' : ''}`}>
+                                    <div className="forms-list">
+                                        {item.forms.map((form, index) => {
+                                            const isExcel = form.url.endsWith('.xlsx') || form.url.endsWith('.xls');
+                                            return (
+                                                <a 
+                                                    key={index}
+                                                    href={form.url} 
+                                                    target="_blank" 
+                                                    rel="noopener noreferrer"
+                                                    className="form-link"
+                                                >
+                                                    <div className="form-item">
+                                                        <div className={`file-icon ${isExcel ? 'excel-icon' : 'pdf-icon'}`}>
+                                                            {isExcel ? (
+                                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                                    <path d="M14,2 L6,2 C4.9,2 4,2.9 4,4 L4,20 C4,21.1 4.9,22 6,22 L18,22 C19.1,22 20,21.1 20,20 L20,8 L14,2 Z"/>
+                                                                    <polyline points="14,2 14,8 20,8"/>
+                                                                    <line x1="8" y1="13" x2="16" y2="13"/>
+                                                                    <line x1="8" y1="17" x2="16" y2="17"/>
+                                                                    <line x1="10" y1="9" x2="14" y2="9"/>
+                                                                </svg>
+                                                            ) : (
+                                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                                    <path d="M14,2 L6,2 C4.9,2 4,2.9 4,4 L4,20 C4,21.1 4.9,22 6,22 L18,22 C19.1,22 20,21.1 20,20 L20,8 L14,2 Z"/>
+                                                                    <polyline points="14,2 14,8 20,8"/>
+                                                                    <line x1="16" y1="13" x2="8" y2="13"/>
+                                                                    <line x1="16" y1="17" x2="8" y2="17"/>
+                                                                    <polyline points="10,9 9,9 8,9"/>
+                                                                </svg>
+                                                            )}
+                                                        </div>
+                                                        <span className="form-name">{form.name}</span>
+                                                    </div>
+                                                </a>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
 
-                    <section className="nirf-section rankings-section">
-                        <h2>NIT Goa NIRF Rankings</h2>
-                        <div className="rankings-grid">
-                            <div className="ranking-card">
-                                <div className="rank-number">82</div>
-                                <h3>Overall Rankings 2024</h3>
-                                <p>NIT Goa secured 82nd position in the overall category in NIRF Rankings 2024</p>
-                            </div>
-                            <div className="ranking-card">
-                                <div className="rank-number">66</div>
-                                <h3>Engineering Rankings 2024</h3>
-                                <p>NIT Goa achieved 66th rank in the Engineering category in NIRF Rankings 2024</p>
-                            </div>
-                        </div>
-                        <div className="ranking-trend">
-                            <h3>Ranking Trend</h3>
-                            <div className="trend-table">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Year</th>
-                                            <th>Overall Rank</th>
-                                            <th>Engineering Rank</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>2024</td>
-                                            <td>82</td>
-                                            <td>66</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2023</td>
-                                            <td>89</td>
-                                            <td>72</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2022</td>
-                                            <td>95</td>
-                                            <td>78</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2021</td>
-                                            <td>101-150</td>
-                                            <td>85</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2020</td>
-                                            <td>101-150</td>
-                                            <td>89</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section className="nirf-section parameters-section">
-                        <h2>NIRF Parameters</h2>
-                        <div className="parameters-grid">
-                            <div className="parameter-card">
-                                <div className="parameter-icon">📚</div>
-                                <h3>Teaching, Learning & Resources (TLR)</h3>
-                                <p>Faculty-student ratio, faculty qualifications, research publications, 
-                                financial resources, and physical infrastructure</p>
-                                <div className="parameter-weight">Weight: 30%</div>
-                            </div>
-                            <div className="parameter-card">
-                                <div className="parameter-icon">🔬</div>
-                                <h3>Research & Professional Practice (RPC)</h3>
-                                <p>Publications, patents, research projects, consultancy revenue, 
-                                and research productivity</p>
-                                <div className="parameter-weight">Weight: 30%</div>
-                            </div>
-                            <div className="parameter-card">
-                                <div className="parameter-icon">🎓</div>
-                                <h3>Graduation Outcomes (GO)</h3>
-                                <p>Placement statistics, higher studies, entrepreneurship, 
-                                and median salary</p>
-                                <div className="parameter-weight">Weight: 20%</div>
-                            </div>
-                            <div className="parameter-card">
-                                <div className="parameter-icon">🤝</div>
-                                <h3>Outreach & Inclusivity (OI)</h3>
-                                <p>Diversity, social inclusion, regional diversity, 
-                                and outreach programs</p>
-                                <div className="parameter-weight">Weight: 10%</div>
-                            </div>
-                            <div className="parameter-card">
-                                <div className="parameter-icon">👥</div>
-                                <h3>Perception (PR)</h3>
-                                <p>Academic peer review, employer feedback, 
-                                and public perception</p>
-                                <div className="parameter-weight">Weight: 10%</div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section className="nirf-section achievements-section">
-                        <h2>Key Achievements</h2>
-                        <div className="achievements-grid">
-                            <div className="achievement-card">
-                                <h3>Research Excellence</h3>
-                                <ul>
-                                    <li>Significant improvement in research publications</li>
-                                    <li>Enhanced faculty research productivity</li>
-                                    <li>Increased funding for research projects</li>
-                                    <li>Growing number of patents filed</li>
-                                </ul>
-                            </div>
-                            <div className="achievement-card">
-                                <h3>Academic Infrastructure</h3>
-                                <ul>
-                                    <li>State-of-the-art laboratories and equipment</li>
-                                    <li>Modern library with extensive digital resources</li>
-                                    <li>Enhanced IT infrastructure</li>
-                                    <li>Improved faculty-student ratio</li>
-                                </ul>
-                            </div>
-                            <div className="achievement-card">
-                                <h3>Placement Success</h3>
-                                <ul>
-                                    <li>Consistent improvement in placement statistics</li>
-                                    <li>Growing number of recruiters</li>
-                                    <li>Enhanced industry partnerships</li>
-                                    <li>Better graduate outcomes</li>
-                                </ul>
-                            </div>
-                            <div className="achievement-card">
-                                <h3>Inclusivity & Outreach</h3>
-                                <ul>
-                                    <li>Diverse student population</li>
-                                    <li>Active community engagement programs</li>
-                                    <li>Social outreach initiatives</li>
-                                    <li>Regional diversity in admissions</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section className="nirf-section improvement-section">
-                        <h2>Continuous Improvement Initiatives</h2>
-                        <div className="improvement-areas">
-                            <div className="improvement-card">
-                                <h3>Research Enhancement</h3>
-                                <p>
-                                    NIT Goa is continuously working to enhance its research output through 
-                                    faculty development programs, research collaborations, and improved 
-                                    research infrastructure.
-                                </p>
-                            </div>
-                            <div className="improvement-card">
-                                <h3>Industry Connect</h3>
-                                <p>
-                                    Strengthening industry partnerships, increasing consultancy projects, 
-                                    and enhancing industry-academia collaboration for better practical exposure.
-                                </p>
-                            </div>
-                            <div className="improvement-card">
-                                <h3>International Exposure</h3>
-                                <p>
-                                    Promoting international collaborations, student exchange programs, 
-                                    and international research partnerships to enhance global visibility.
-                                </p>
-                            </div>
-                            <div className="improvement-card">
-                                <h3>Innovation & Entrepreneurship</h3>
-                                <p>
-                                    Fostering innovation culture, supporting startup initiatives, 
-                                    and encouraging entrepreneurship among students and faculty.
-                                </p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section className="nirf-section data-section">
-                        <h2>NIRF Data Submission</h2>
-                        <div className="data-info">
-                            <div className="data-card">
-                                <h3>Data Collection Process</h3>
-                                <p>
-                                    NIT Goa follows a systematic approach for collecting and verifying NIRF data. 
-                                    A dedicated committee ensures accuracy and completeness of submitted information.
-                                </p>
-                            </div>
-                            <div className="data-card">
-                                <h3>Transparency & Accountability</h3>
-                                <p>
-                                    All NIRF data submitted by NIT Goa is publicly available on the NIRF website. 
-                                    The institute maintains transparency in all its ranking-related information.
-                                </p>
-                            </div>
-                            <div className="data-card">
-                                <h3>Continuous Monitoring</h3>
-                                <p>
-                                    The institute continuously monitors its performance across all NIRF parameters 
-                                    and implements strategic improvements to enhance its ranking position.
-                                </p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section className="nirf-section documents-section">
-                        <h2>NIRF Documents</h2>
-                        <div className="documents-grid">
-                            <div className="document-card">
-                                <div className="document-icon">📄</div>
-                                <h3>NIRF Data 2024</h3>
-                                <p>Complete data submission for NIRF Rankings 2024</p>
-                                <button className="download-btn">Download PDF</button>
-                            </div>
-                            <div className="document-card">
-                                <div className="document-icon">📊</div>
-                                <h3>Ranking Report 2024</h3>
-                                <p>Detailed analysis of NIT Goa's NIRF Rankings 2024</p>
-                                <button className="download-btn">Download PDF</button>
-                            </div>
-                            <div className="document-card">
-                                <div className="document-icon">📈</div>
-                                <h3>Improvement Strategy</h3>
-                                <p>Strategic plan for improving NIRF rankings</p>
-                                <button className="download-btn">Download PDF</button>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section className="nirf-section contact-section">
-                        <h2>NIRF Coordinator</h2>
-                        <div className="coordinator-info">
-                            <div className="coordinator-card">
-                                <h3>NIRF Nodal Officer</h3>
-                                <p><strong>Dr. [Name]</strong></p>
-                                <p>Professor & NIRF Coordinator</p>
-                                <p>Email: nirf@nitgoa.ac.in</p>
-                                <p>Phone: +91-832-2404XXX</p>
-                            </div>
-                        </div>
-                    </section>
+                    <div className="nirf-contact-info">
+                        <p>FOR ANY COMMENTS AND FEEDBACK PLEASE E-MAIL TO <a href="mailto:nirf@nitgoa.ac.in">nirf@nitgoa.ac.in</a></p>
+                    </div>
                 </div>
             </div>
         </div>

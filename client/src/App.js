@@ -42,6 +42,7 @@ import FinanceCommittee from './Views/Administration-Section/FinanceCommittee';
 import BuildingWorksCommittee from './Views/Administration-Section/BuildingWorksCommittee';
 import HeadsOfDepartments from './Views/Administration-Section/HeadsOfDepartments';
 import AnnualReports from './Views/Administration-Section/AnnualReports';
+import SCSTCell from './Views/SC-ST-Cell/SCSTCell';
 
 function App() {
   return (
@@ -90,6 +91,7 @@ function App() {
         <Route path="/reports" element={<AnnualReports />} />
         
         <Route path="/rti" element={<RTI />} />
+        <Route path="/sc-st-cell" element={<SCSTCell />} />
         <Route path="/nirf" element={<NIRF />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/tenders" element={<Tenders />} />
