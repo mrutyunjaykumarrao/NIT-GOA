@@ -1,0 +1,244 @@
+{
+  "faculty_name": "Dr. Vasantha M.H.",
+  "profile": {
+    "name": "Dr. Vasantha M.H.",
+    "designation": "Associate Professor",
+    "department": "Department of Electronics and Communication Engineering",
+    "imageUrl": "Dr. Vasantha M.H",
+    "email": "vasanthmh@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Low voltage",
+      "Low power analog mixed signal circuits",
+      "Continuous-time filter Circuits",
+      "System on Chip",
+      "FPGA based algorithm Implementation."
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Vasantha M.H.",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Associate Professor",
+    "department": "Department of Electronics and Communication Engineering",
+    "url": "https://scholar.google.com/citations?user=zDOmEBUAAAAJ&hl=en&oi=ao",
+    "dateOfJoining": "30/08/2013",
+    "experience": "25 years of Teaching/Research Experience"
+  },
+  "contactInformation": {
+    "address": "Department of ECE, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "vasanthmh@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Low Voltage;",
+    "Low power analog mixed signal circuits;",
+    "Continous-Time Filter Circuits;",
+    "System on Chip;",
+    "FGPA Based Algorithm implementation;"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Analog Electronic Circuits",
+      "Linear Integrated circuits",
+      "Digital system design",
+      "VLSI Design",
+      "HDI"
+    ],
+    "pg": [
+      "Digital IC Design",
+      "VLSI Testing and Testability",
+      "VLSI Technology",
+      "Active Filter Design",
+      "HDI",
+      "Low Power VLSI Circuits"
+    ]
+  },
+  "academicInformation": [
+    {
+      "degree": "M.Tech.",
+      "institute": "IIT Madras, Chennai",
+      "year": "2003",
+      "subject": "Microelectronics and VLSI Design"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "NITK, Surathkal",
+      "year": "2014",
+      "subject": "Low Power, Low Voltage Integrated Continous-time Gm-C filter Circuits"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "Quantization Aware Approximate Multiplier and Hard- ware Accelerator for Edge Computing of Deep Learning Applications,\" in Integration (Elsevier), vol. 81, pp. 268-279, Nov. 2021.",
+      "A Novel Complex Filter Design with Dual Feedback for High Frequency Wireless Receiver Applications in IEEE Transactions on Circuits and Systems II: Express Briefs JUN, 2021",
+      "A 1.2 V, highly reliable RHBD 10T SRAM cell for aerospace application, IEEE Transactions on Electron Devices,68, No.5, pages 2265--2270, year-2021, IEEE APRIL,2021",
+      "Design of Approximate Booth Squarer for Error-Tolerant Computing,\" in IEEE Transactions on Very Large Scale Integration (VLSI) Systems, vol. 28, no. 5, pp. 1230-1241, May 2020.",
+      "A 6.25 GHz, 1 mV Input Resolution Auxiliary Circuit Assisted Comparator Low-Power Auxiliary Circuit in 65-nm CMOS Process” IET Circuits, Devices & Systems, vol. 14, no. 3, pp. 340-346, 5 2020.",
+      "A 1-V, 3-GHz Strong-Arm Latch Voltage Comparator for High Speed Applications” IEEE Transactions on Circuits and Systems II, 2020",
+      "A 67 dB SNDR 20 kHz BW SC 3rd order Modulator With Single Op-Amp and 20 µW Power Consumption for Bio-Medical Applications” IET Circuits, Devices & Systems, vol. 14, no. 6, pp. 881-891, 9 2020.",
+      "Design and analysis of multiplier using approximate 4-2 compressor,\" in International Journal of Electronics and Communications (Elsevier), vol. 107, pp. 89-97, July 2019",
+      "Ultra-low voltage, power efficient continuous time filters in 180 nm CMOS technology, IET Circuits, Devices & Systems, ISSN 1751-858X, doi: 10.1049/iet-cds.2018.5485 www.ietdl.org MAY 2019",
+      "36 µW 4th Order Sigma-Delta Modulator Using Single Operational Amplifier” International Journal of Electronics Letters 2019",
+      "B. Naresh Kumar Reddy, Vasantha.M.H. and Nithin Kumar Y.B., “Hardware Implementation of Fault Tolerance NoC Core Mapping,” Telecommunication Systems (TELS), 2017.",
+      "B. Naresh Kumar Reddy, Vasantha.M.H., and Nithin Kumar Y.B., “System Level Fault-Tolerance Core Mapping and FPGA-based Verification of NoC,\" Microelectronics Journal, 2017.",
+      "S. Ahish, D. Sharma, M. H. Vasantha, and Y. B. N. Kumar “Performance analysis of InGaAs/GaAsP heterojunction double gate tunnel field effect transistor” in Superlattices and Microstructures Volume 103, March 2017, Pages 93-101",
+      "S. Ahish, M. H. Vasantha, Y. B. N. Kumar and Dheeraj Sharma “Effect of Drain Doping and Temperature Variation on the Performance of Heterojunction Double Gate Tunnel Field Effect Transistor from a 2D ATLAS Simulation” in Journal of Nanoelectronics and Optoelectronics",
+      "DC and Analog/RF performance analysis of Hetero Junction Double Gate Tunnel Field Effect Transistor, IEEE IET Micro and Nano Letters.(Impact Factor:0.89)",
+      "Performance Enhancement of Novel InAs/Si Hetero Double Gate Tunnel Field Effect Transistor Using Gaussian Doping, \"IEEE Transactions on Electron Devices",
+      "Device and Circuit level performance analysis Hetero Junction Double Gate Tunnel Field Transistor,Journal of Superlattices and Microstructures, Elsevier.(Impact Factor: 2.1)",
+      "Fixed Transconductance Bias Circuit for Low-Voltage Gate/Bulk Driven Transconductors, World scientific Journal of Circuits, Systems and Computers",
+      "\"Two-Port Transmission Line Parameters Approach for AccurateModeling and Design Centering of Integrated Continuous- Time Filters”, International Journal of Advanced Computer Research (ISSN (print): 2249-7277, ISSN (online): 2277-7970) Volume-2, Number-4, Issue-6, pp:156- 162.",
+      "20 µW, 500 kHz Continuous-Time Low-Pass Filter in 0.18 µm CMOS Process, International Journal of Industrial Electronics, Control and Robotics, ISSN 2231-4903, Volume 05, No. 01."
+    ],
+    "proceedings": [
+      "Jagadeesh Pujar, Sithara Raveendran, Trilochan Panigrahi, Vasantha M.H., Nithin Kumar Y.B. “Design and Analysis of Energy Efficient Reversible Logic based Full Adder” accepted at 62nd IEEE International Midwest Symposium on Circuits and Systems, Dallas, Texas USA from August 4-7, Aug, 2019.",
+      "Sunil R, Siddharth Kala, Nithin Kumar Y B and Vasantha M H, “An Asynchronous Analog to Digital Converter for Video Camera Applications” IEEE Computer Society Annual Symposium on VLSI, July 2019, Miami, Florida, USA - JULY 2019",
+      "Prasad Vernekar, Nithin Kumar Y B and Vasantha M H, “Self-Timed SRAM Array with Enhanced Low-Voltage Read and Write Capability” IEEE Computer Society Annual Symposium on VLSI, July 2019, Miami, Florida, USA. - JULY 2019",
+      "Current Conveyor based Novel Gyrator filter for Biomedical Sensor Application,” in TENCON 2019 - 2019 IEEE Region 11 Conference, Kochi, Kerala (South), doi: 10.1109/TENCON.2019.8929308. - MAR 2019",
+      "Pradeep R., R. K. Siddharth, N. Kumar Y B and V. M.H., “Process Corner Calibration for Standard Cell Based Flash ADC,\" 2019 IEEE International Symposium on Smart Electronic Systems (iSES) (Formerly iNiS), Rourkela, Orissa, India, 2019",
+      "Rahul E., R. K. Siddharth, Vivek Sharma, M. H. Vasantha, Y. B. Nithin Kumar, “Two-Step Flash ADC Using Standard Cell Based Flash ADCs,\" 2019 IEEE International Symposium on Smart Electronic Systems (iSES) (Formerly iNiS), Rourkela, Orissa, India, 2019.",
+      "Design of Approximate Dividers for Error Tolerant Applications,\" in IEEE 61st International Midwest Symposium on Circuits and Systems (MWS- CAS), Canada, 2018, pp. 496-499. - JULY 2018",
+      "Sumit Khalapure ; Siddharth R. K. ; Nithin Kumar Y. B. ; Vasantha M. H. “Design of 5-Bit Flash ADC Using Multiple Input Standard Cell Gates for Large Input Swing” ISVLSI 2017, Page(s):585 - 588 - JULY 2017",
+      "Rakhi R. ; Abhijeet D. Taralkar ; Vasantha M. H. ; Nithin Kumar Y. B. “A 0.5 V Low Power OTA-C Low Pass Filter for ECG Detection” ISVLSI july 2017, Page(s):589 - 593 - JULY 2017",
+      "Mayur S. M. ; Siddharth R. K. ; Nithin Kumar Y. B. ; Vasantha M. H “Design of Low Power 4-Bit 400MS/s Standard Cell Based Flash ADC” ISVLSI: 2017, Page(s):600 - 603 - JULY 2017",
+      "“A Gracefully Degrading and Energy-Efficient Fault Tolerant NoC Using Spare Core” ISVLSI, University of Pittsburgh, USA. - JULY 2016",
+      "“Design of Low Power 5-bit Hybrid Flash ADC” ISVLSI, University of Pittsburgh, USA. - JULY 2016",
+      "Design and Analysis of Novel InSb/Si Heterojunction Double Gate Tunnel Field Effect Transistor, ISVLSI, university of Pittsburgh, USA. - JULY 2016",
+      "“A Fine grained Modular core position on NoC”, IEEE International Conference on Computer Communication and Control (IC4-2015), Medi-Caps Group of Institutions, Indore, M.P.INDIA. - AUG 2015",
+      "“Communication Energy constrained spare core on NoC” The Sixth International Conference on Computing, Communications and Networking Technologies (ICCCNT), held from July 13-15, 2015 Dallas, Fort-worth, Texas USA. - JULY 2015",
+      "\"0.5V, 225nW, 100 Hz Low pass filter in 0.18µm CMOS process\" IEEE Advance Computing conference (IACC-15), Bangalore, PP 590-593. - JUN 2015",
+      "“Design of High Performance Multiply-Accumulate Computation Unit” IEEE International Advance Computing Conference (IACC-2015), Bangalore, India, June 12-13, 2015. - JUN 2015",
+      "“Low Power, High Speed Error Tolerant Multiplier Using Approximate Adders” Accepted in 19th International Symposium on VLSI Design and Test (VDAT) June 26-29, 2015 - JUN 2015",
+      "DC and Analog/RF performance analysis of Hetero Junction Double Gate Tunnel Field Effect Transistor, accepted at IWPSD-2015, IISc.",
+      "“Fixed Transconductance Bias Circuit for Low Voltage Bulk-Driven Transconductor“,in proceedings of International Conference on Communication, VLSI and Signal Processing (ICCVSP–2013), Feb.20–22 2013, 271-274. - FEB 2013",
+      "\"Low Power, 1MHz Low Pass Filter in 0.18 µm CMOS Process”, in proceedings of IEEE Third International Symposium on Electronic System Design, Dec 18–21, 2012, pp.33–37. - DEC 2012",
+      "“0.5 V, 36 µWGm-C Butterworth Low Pass Filter in 0.18µm CMOS process”, in proceedings of The Fourth IEEE Asia Symposium on Quality Electronic Design (ASQED– 2012), July 11–12, 2012, pp. 82–85. - JULY 2012",
+      "“A 0.5V, 20 µW Pseudo-differential 500 kHz Gm-C Low-Pass Filter in 0.18 µm CMOS Technology”, in proceedings of IEEE International Conference on Devices, Circuits and Systems (ICDCS– 2012), March 15-16, 2012, pp. 76–79. MAR 2012",
+      "“20 µW, 500 kHz Continuous-Time Low- Pass Filter in 0.18 µm CMOS Process”,in proceedings of Second International Engineering Symposium -IES 2012 (KU-MIT-NITK Joint Symposium), March 5– 7, 2012, pp. E1-3-1–E1-3-6. - MAR 2012",
+      "\"Comparison of RESURF and Superjunction techniques of improving breakdown voltage of power diode using 2 –dimensional simulation” , ICMAT-2003, Singapore."
+    ],
+    "bookChapters": [
+      "A New Paradigm towards Performance Centric Computation beyond CMOS: DNA Computing, Nano-CMOS and Post-CMOS Electronics: Circuits and Design, Chapter: 12, Publisher: The Institute of Engineering and Technology (IET) APRIL, 2016"
+    ]
+  },
+  "researchGuidance": [
+    "1. Dr. NareshKumar Reddy ;",
+    "2. Dr. Manikanta Reddy;",
+    "3. Dr. P. S. Veerendranath;"
+  ],
+  "fundedProjects": [
+    "1. SMDP-C2SD DEITY, Govt. of India a) Design and Implementation of Filter with ADCs for Remote Detection of Humans Trapped Under Debris b. Design and Implementation of Standard cell based Flash ADC” Approx.: Rs 1,00,00,000, 2014-2019, completed, Co-PI",
+    "2. Meity and Media lab Asia Visveswaraya Ph.D scheme 8 ph.D students are approved for the year 2014-15 a) Embedded NoC b) Approximate computation 228.0 lakh 2014-2019 completed Supervisor",
+    "3. DST, SERB under ECR STRATEGIES FOR FAULT-TOLERANT NETWORK-ON-CHIP DESIGN 23 lakh 3 years Completed Co-PI",
+    "4. DST, SERB under EMR Design of Compact Shaped Beam Antenna Array for Dedicated Short Range Communication Service 45 lakh 3 years Completed Co-PI",
+    "5. Interference rejection using built-in filter based Band-pass Sigma Delta Modulators under v Core research grant scheme of Science and Engineering Research Board (SERB) 2020-2023 Rs. 43,01,264 on going Co-PI",
+    "6. A Novel Power on Pilot IC for Ultra-Low Power Wireless IoT devices” under Chips to Startup Programme MEITY-SMDP, India 18-May-2023 Rs 411.44 L, Ongoing PI",
+    "7. Construction of permanent Campus for NIT Goa at Cuncolim, Goa, Ministry of Education (MoE), 2017-2023 ( 60 months), as Registrar (I/C) and Dean PD along with Director NIT Goa. 496.63 Crore, Ongoing"
+  ],
+  "awardsAndHonors": [],
+  "memberships": [
+    "Senior Member - IEEE",
+    "ISTE Life Member"
+  ],
+  "professionalServices": [
+    "Head of Department, ECE, NIT Goa (2015-2018)",
+    "Registrar (I/C), NIT Goa (2017-2021)",
+    "Dean (Planning & Development) (2021-2023)",
+    "Project IN charge -Construction of permanent Campus for NIT Goa (2021-2023)",
+    "Department placement Coordinator (2015-2018)",
+    "Department Student Activity Spectra Incharge 2013-2015",
+    "JOSAA /CSAB admission Center Incharge 2017, 2018,2019",
+    "Disciplinary Committee member 2015-2022",
+    "Faculty at NMAMIT, NITTE 1998-2006",
+    "Faculty at MCIS, Manipal 2009"
+  ],
+  "coursesAttended": [
+    {
+      "month": "DEC",
+      "year": "2018",
+      "info": "4th IEEE International Symposium on Smart Electronic Systems iSES (Formerly IEEE International Symposium on Nanoelectronic and Information Systems (iNIS)) (DEC 17-19, 2018 @ HYDERABAD, INDIA)"
+    },
+    {
+      "month": "JULY",
+      "year": "2016",
+      "info": "IEEE Computer Society Annual Symposium on VLSI (ISVLSI) 2016 Pittsburgh, Pennsylvania, USA July 11-13, 2016"
+    },
+    {
+      "month": "DEC",
+      "year": "2015",
+      "info": "IEP on \" System level design on platform FPGA's\" at IIT Delhi."
+    },
+    {
+      "month": "AUG",
+      "year": "2014",
+      "info": "IEEE Authorship workshop held at Bangalore"
+    },
+    {
+      "month": "JAN",
+      "year": "2014",
+      "info": "“Workshop on Next Generation Internet Protocol IPv6” with the Department of Telecommunications, Government of India, in January 2014"
+    },
+    {
+      "month": "MAR",
+      "year": "2013",
+      "info": "IEEE International Conference on Devices, Circuits and Systems (ICDCS– 2012) held at Coimbatore, March 15-16, 2012,"
+    },
+    {
+      "month": "FEB",
+      "year": "2013",
+      "info": "International Conference on Communication, VLSI and Signal Processing (ICCVSP–2013) held at SIT Tumkur, Feb.20–22 2013"
+    },
+    {
+      "month": "DEC",
+      "year": "2012",
+      "info": "IEEE Third International Symposium on Electronic System Design held at BESU, Kolkata, Dec 18–21, 2012"
+    }
+  ],
+  "coursesConducted": [
+    {
+      "month": "JAN",
+      "year": "2021",
+      "info": "Springer INTERNATIONAL CONFERENCE On Artificial Intelligence and Sustainable Engineering (AISE-2020) JAN 18-21,2021"
+    },
+    {
+      "month": "AUG",
+      "year": "2020",
+      "info": "ISTE approved FDP on Recent Advances in RF & Microelectronics 31st August to 4th September 2020"
+    },
+    {
+      "month": "MAR",
+      "year": "2019",
+      "info": "Talk on Signal and systems by Prof Subbanna Bhat, Sankalp Semiconductor Pvt. Ltd."
+    },
+    {
+      "month": "OCT",
+      "year": "2018",
+      "info": "Fourth ZOPP Workshop : SMDP-C2SD"
+    },
+    {
+      "month": "MAR",
+      "year": "2017",
+      "info": "GIAN program “Low Power Nyquist-rate Data Converters” March 6-10, 2017 6 days GIAN International"
+    },
+    {
+      "month": "MAR",
+      "year": "2017",
+      "info": "Talk on semiconductor devices by Prof Merlyne De Souza, UK"
+    },
+    {
+      "month": "DEC",
+      "year": "2016",
+      "info": "SMDP-C2SD : Xilinx Tools Training from Corel technologies 9 days"
+    },
+    {
+      "month": "NOV",
+      "year": "2014",
+      "info": "Two days expert Lecture by Dr. Devesh Dwivedi (Manager, SRAM development system and technology group, IBM India Pvt. Ltd Bangalore, India.) on recent trends & research activity in VLSI design and R&D collaboration with IBM"
+    },
+    {
+      "month": "JULY",
+      "year": "2014",
+      "info": "3 Days National Workshop on \"ARM 7 with embedded C programming\" at National Institute of Technology Goa for faculties of various technical institutes, July 30-August 1, 2014."
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "faculty_name": "Dr. Gundlapally Shiva Kumar Reddy",
+  "profile": {
+    "name": "Dr. Gundlapally Shiva Kummar Reddy",
+    "designation": "Faculty on contract",
+    "department": "Department of Applied Sciences",
+    "imageUrl": "Dr. Gundlapally Shiva Kumar Reddy.png",
+    "email": "gshivakumarreddy913@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Applied Mathematics",
+      "Fluid Dynamics",
+      "Hydrodynamic Stability",
+      "Linear and Non-linear instability analysis"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Gundlapally Shiva Kumar Reddy",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Faculty on Contract",
+    "department": "Department of Applied Sciences",
+    "url": "https://scholar.google.ca/citations?hl=en&user=QSQejtUAAAAJ",
+    "dateOfJoining": null,
+    "experience": "2 years"
+  },
+  "contactInformation": {
+    "address": null,
+    "email": "gshivakumarreddy913@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Applied Mathematics",
+    "Fluid Dynamics",
+    "Hydrodynamic Stability",
+    "Linear and Non-linear instability analysis"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Mathematics-I",
+      "II",
+      "III",
+      "IV"
+    ],
+    "pg": []
+  },
+  "academicInformation": [
+    {
+      "degree": "M.Sc",
+      "institute": "Osmania University",
+      "year": "2014",
+      "subject": "Mathematics"
+    },
+    {
+      "degree": "P.Hd.",
+      "institute": "National Institute of Technology, Warangal",
+      "year": "2020",
+      "subject": "Mathematics"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "G. Shiva Kumar Reddy, Ravi Ragoju,and Suman Shekhar, Thermohaline convection of a Casson fluid in a porous layer: Linear and non-linear stability analyses, Phys. Fluids 35, 094101 (2023); doi: 10.1063/5.0163731 SEPT 2023",
+      "G. Shiva Kumar Reddy, Ravi Ragoju, N. Keerthi Reddy, Damodar Reddy Edla, Dissolution-driven convection of a power-law fluid in a porous medium in the presence of chemical reaction, Heat Transfer. 2023;1–13. AUG 2023",
+      "Singh, M., Ragoju, R., Shiva Kumar Reddy, G., & Subramani, C. (2023). Predicting the effect of inertia, rotation, and magnetic eld on the onset of convection in a bidispersive porous medium using machine learning techniques. Physics of Fluids, 35(3), 034103. MAR 2023",
+      "Reddy, G. S. K., Ravi, R., & Matta, A. (2022). Onset of triply diffusive convection in a power-law fluid saturated porous layer. Meccanica, 57(9), 2269-2280. SEPT 2022",
+      "Singh, M., Ragoju, R., Reddy, G., Matta, A., Paidipati, K. K., & Chesneau, C. (2022). Non-linear magnetoconvection in a bidispersive porous layer: a brinkman model. Earth Science Informatics, 1-10. SEPT 2022",
+      "Rafeek, K. V. M., Reddy, G. J., Ragoju, R., Reddy, G. S. K., & Sheremet, M. A. (2022). Impact of Throughflow and Coriolis Force on the Onset of Double-Diffusive Convection with Internal Heat Source. Coatings, 12(8), 1096. AUG 2022",
+      "Reddy, G. S. K., Koteswararao, N. V., Ravi, R., Paidipati, K. K., & Chesneau, C. (2022). Dissolution-Driven Convection in a Porous Medium Due to Vertical Axis of Rotation and Magnetic Field. Mathematical and Computational Applications, 27(3), 53. JUN 2022",
+      "Ramchandraiah, C., Kishan, N., Reddy, G. S. K., Paidipati, K. K., & Chesneau, C. (2022). Double-Diffusive Convection in Bidispersive Porous Medium with Coriolis Effect. Mathematical and Computational Applications, 27(4), 56. JUN 2022",
+      "Reddy, G. S. K., Ragoju, R., Dey, P., & Matta, A. (2022). Nonlinear magneto convection in an inclined porous layer with artificial neural network prediction. Mathematical Methods in the Applied Sciences. 2022",
+      "Reddy, G. S. K., & Ragoju, R. (2022). Thermal instability of a power-law fluid-saturated porous layer with an internal heat source and vertical throughflow. Heat Transfer, 51(2), 2181-2200. NOV 2021",
+      "Nonlinear Magneto Convection in a Rotating Fluid Due to Vertical Magnetic Field and Vertical Axis of Rotation, International Journal of Heat and Technology, 39(775-786). 2021. JUN 2021",
+      "Benerji Babu, Avula, G. Shiva Kumar Reddy, and Suhas G. Tagare. \"Nonlinear magnetoconvection in a rotating fluid due to thermal and compositional buoyancy with anisotropic diffusivities.\" Heat Transfer—Asian Research 49.1 (2020): 335-355. 2020",
+      "Babu, A. Benerji, G. Shiva Kumar Reddy, and S. G. Tagare. \"Nonlinear magneto convection due to horizontal magnetic field and vertical axis of rotation due to thermal and compositional buoyancy.\" Results in Physics 12 (2019): 2078-2090. 2019",
+      "G. Shiva Kumar Reddy and Ravi Ragoju; THERMAL INSTABILITY OF A MAXWELL FLUID SATURATED POROUS LAYER WITH CHEMICAL REACTION; Special Topics and Reviews in Porous Media; 13; 1; 33-47; 2022."
+    ],
+    "bookChapters": [
+        "Babu, A. Benerji, N. Venkata Koteswararao, and G. Shivakumar Reddy. \"Instability conditions in a porous medium due to horizontal magnetic field.\" Numerical Heat Transfer and Fluid Flow. Springer, Singapore, 2019. 621-628."
+    ]
+  },
+  "awardsAndHonors": [
+    "Qualified CSIR-NET(Lecturer ship) with all India 40th Rank in 2015",
+    "Qualified Telangana state level eligibility test,TS-SET in 2017"
+  ]
+}

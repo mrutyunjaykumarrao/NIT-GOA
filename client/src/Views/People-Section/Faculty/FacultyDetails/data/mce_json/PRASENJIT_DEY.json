@@ -1,0 +1,108 @@
+{
+  "faculty_name": "Dr. PRASENJIT DEY",
+  "profile": {
+    "name": "Dr. PRASENJIT DEY",
+    "designation": "Assistant Professor",
+    "department": "Department of Mechanical Engineering",
+    "imageUrl": "Dr. PRASENJIT DEY.png",
+    "email": "prasenjit.dey@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Experimental and Numerical Fluid Flow",
+      "CFD",
+      "Multi-Phase Flow",
+      "Micro and Nano Heat Transfer."
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Prasenjit Dey",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Assistant Professor",
+    "department": "Department of Mechanical Engineering",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": "Research - 3 Years, Teaching - 4 Years"
+  },
+  "contactInformation": {
+    "address": "Assistant Professor, Department of Mechanical Engineering, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "prasenjit.dey@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Experimental and Numerical Fluid Flow",
+    "CFD",
+    "Multi-Phase Flow",
+    "Micro and Nano Heat Transfer"
+  ],
+  "coursesTaught": null,
+  "academicInformation": [
+    {
+      "degree": "Ph.D.",
+      "institute": "National Institute of Technology Agartala",
+      "year": "2016",
+      "subject": null
+    },
+    {
+      "degree": "Postdoc",
+      "institute": "Indian Institute of Technology Bombay",
+      "year": "2019",
+      "subject": null
+    }
+  ],
+  "publications": {
+    "journal": [
+      "Prasenjit dey, Sandip K. Saha, Fluid flow and heat transfer in microchannel with porous bio-inspired roughness, International Journal of Thermal Sciences 161 (2021) 106729 DEC 2020",
+      "Prasenjit Dey, Sandip Kumar Saha, Suman Chakraborty, Surface nano-structure-wettability coupling leads to unique topological evolution dictating water transport over nanometer scales, Langmuir (2020), Accepted for Publication JUN 2020",
+      "Gaurav Hedau, Prasenjit Dey, Rishi Raj, Sandip K. Saha, Experimental and Numerical Investigation of the Effect of Number of Parallel Microchannels on Flow Boiling Heat Transfer, International Journal of Heat and Mass Transfer 158 (2020) 119973 MAY 2020",
+      "Gaurav Hedau, Prasenjit Dey, Rishi Raj, and Sandip K. Saha, \"Combined effect of inlet restrictor and nanostructure on two-phase flow performance of parallel microchannel heat sinks\",International Journal of Thermal Sciences 153, (2020): 106339 MAR 2020",
+      "Prasenjit Dey, Sandip K. Saha, and Suman Chakraborty, Confluence of channel dimensions and groove width dictates slippery hydrodynamics in grooved hydrophobic confinements. Microfluid Nanofluid 24, 23 (2020) 2020",
+      "Prasenjit Dey, Sandip K. Saha, and Suman Chakraborty, Air-water meniscus shape in superhydrophobic triangular microgroove is dictated by a critical pressure under dynamic conditions, Physics of Fluids 31, 102004 (2019); doi: 10.1063/1.5119412",
+      "Prasenjit Dey, Sandip K. Saha, and Suman Chakraborty, Microgroove geometry dictates slippery hydrodynamics on superhydrophobic substrates, Physics of Fluids 30, 122007 (2018)",
+      "Prasenjit Dey, Gaurav Hedau, and Sandip K. Saha. \"Experimental and numerical investigations of fluid flow and heat transfer in a bioinspired surface enriched microchannel.\" International Journal of Thermal Sciences 135 (2019): 44-60. JAN 2017",
+      "Prasenjit Dey, and Ajoy Kr. Das. \"A utilization of GEP (gene expression programming) metamodel and PSO (particle swarm optimization) tool to predict and optimize the forced convection around a cylinder.\" Energy 95 (2016): 447-458.",
+      "Prasenjit Dey, Soumik Bose, and Ajoy Kr Das. \"Multi-objective optimization of the heat transmission and fluid forces around a rounded cornered square cylinder.\" Neural Comput & Applic (2019) 31(Suppl 2): 1195.",
+      "Prasenjit Dey, Abhijit Sarkar, and Ajoy Kr. Das. \"Capability to predict the steady and unsteady reduced aerodynamic forces on a square cylinder by ANN and GEP.\" Neural Computing and Applications 28, no. 8 (2017): 1933-1945.",
+      "Aparesh Datta, Ajoy Kr. Das, Prasenjit Dey, and Dipankar Sanyal. \"Multi-Objective Optimization of Laminar Heat Transfer and Friction Factor in Rectangular Microchannel With Rectangular Vortex Generators: An Application of NSGA-II With Gene Expression Programing Metamodel.\" Journal of Heat Transfer 139, no. 7 (2017): 072401.",
+      "Prasenjit Dey, Abhijit Sarkar, and Ajoy Kr. Das. \"Development of GEP and ANN model to predict the unsteady forced convection over a cylinder.\" Neural Computing and Applications 27, no. 8 (2016): 2537-2549.",
+      "Prasenjit Dey, and Ajoy Kr. Das. \"Application of Multivariate Adaptive Regression Spline- Assisted Objective Function on Optimization of Heat Transfer Rate Around a Cylinder.\" Nuclear Engineering and Technology 48, no. 6 (2016): 1315-1320.",
+      "Prasenjit Dey, and Ajoy Kr. Das. \"Prediction and optimization of unsteady forced convection around a rounded cornered square cylinder in the range of Re.\" Neural Computing and Applications 28, no. 6 (2017): 1503-1513",
+      "Prasenjit Dey, and Ajoy Kr. Das. \"A numerical study on effect of corner radius and Reynolds number on fluid flow over a square cylinder.\" Sadhana 42, no. 7 (2017): 1155- 1165.",
+      "Prasenjit Dey, and Ajoy. Kr. Das. \"Numerical Analysis and Prediction of Unsteady Forced Convection over a Sharp and Rounded Edged Square Cylinder.\" Journal of Applied Fluid Mechanics 9, no. 3 (2016).",
+      "Prasenjit Dey, and Ajoy Kr. Das. \"Heat Transfer Enhancement Around a Cylinder–A CFD Study of Effect of Corner Radius and Prandtl Number.\" International Journal of Chemical Reactor Engineering 14, no. 2 (2016): 587-597.",
+      "Prasenjit Dey, and Ajoy Kr. Das. \"Optimization of Unsteady Forced Convection over a Rounded Corner Edged Square Cylinder Using GA and PSO.\" Iranian Journal of Science and Technology, Transactions of Mechanical Engineering 41, no. 1 (2017): 49-60.",
+      "Abhijit Sarkar, Prasenjit Dey, R. N. Rai, and Subhas Chandra Saha. \"A comparative study of multiple regression analysis and back propagation neural network approaches on plain carbon steel in submerged-arc welding.\" Sadhana, 41, no. 5 (2016): 549-559.",
+      "Prasenjit Dey, and Ajoy Kr. Das. \"Analysis of Fluid Flow and Heat Transfer Characteristics Over a Square Cylinder: Effect of Corner Radius and Nanofluid Volume Fraction.\" Arabian Journal for Science and Engineering 42, no. 5 (2017): 1687-1698.",
+      "Prasenjit Dey, and Ajoy Kr Das. \"Numerical analysis of drag and lift reduction of square cylinder.\" Engineering Science and Technology, an International Journal 18, no. 4 (2015): 758- 768.",
+      "Prasenjit Dey, Abhijit Sarkar, and Ajoy Kr. Das. \"Prediction of the aerodynamic behavior of a rounded corner square cylinder at zero incidence using ANN.\" Ain Shams Engineering Journal 7, no. 2 (2016): 767-775.",
+      "Prasenjit Dey, and Ajoy Kr Das. \"Steady flow over triangular extended solid attached to square cylinder–A method to reduce drag.\" Ain Shams Engineering Journal 6, no. 3 (2015): 929-938.",
+      "Prasenjit Dey, Abhijit Sarkar, and Ajoy Kr. Das. \"Prediction of unsteady mixed convection over circular cylinder in the presence of nanofluid-A comparative study of ANN and GEP.\" Journal of Naval Architecture and Marine Engineering 12, no. 1 (2015): 57-71."
+    ],
+    "proceedings": [
+      "Sandipan Deb, and Prasenjit Dey. \"Prediction of Pool Boiling Heat Transfer Coefficients of Refrigerant R-141b on Nanocoated Surfaces Using Artificial Neural Network\" In Proceedings of the 24 th National and 2 nd International ISHMT-ASTFE Heat and Mass Transfer Conference (IHMTC-2017). Begel House Inc., 1673-1677, 2017. DOI: 10.1615/IHMTC-2017.2320 2017",
+      "Prasenjit Dey, Sandip Kumar Saha, Suman Chakraborty, “Interfacial Viscous Force: A Significant Aspect of Air-Water Meniscus Shape in Superhydrophobic Microchannel”, Proceedings of the 25th National and 3rd International ISHMT-ASTFE Heat and Mass Transfer Conference (IHMTC-2019)",
+      "Prasenjit Dey, Sandip Kr. Saha, “Entropy Generation Analysis in a Bioinspired Microchannel” 5th International Conference On Heat Transfer And Fluid Flow (HTFF'18), 16 – 18 Aug, 2018, Madrid, Spain. DOI: 10.11159/htff18.155",
+      "Prasenjit Dey, Sandip Kr. Saha, “Numerical analysis of heat transfer enhancement in microchannel with Bio-inspired surface” Fifth International Conference on Computational Methods for Thermal Problems, THERMACOMP2018, July 9-11, 2018, Indian Institute of Science, Bangalore, INDIA",
+      "Ajoy Kr. Das, Prasenjit Dey. \"Prediction of unsteady forced convection over square cylinder in the presence of nanofluid by using ANN.\" Int. J. Mech. Aerosp. Ind. Mechatron. Manuf. Eng 102 (2015): 899-904. Venice, Italy",
+      "Prasenjit Dey, and Ajoy Kr. Das. \"Numerical analysis of characteristic of flow and heat transfer due to natural convection in a enclosure (square) using nano-fluid.\" In Advances in Energy Conversion Technologies (ICAECT), 2014 International Conference on, pp. 92-98. IEEE, 2014. Manipal, INDIA 2017"
+    ]
+  },
+  "researchGuidance": [
+    "Ph.D. Scholar : Mr. Achintya Hanuman Kambli (Ongoing) Research Topic: Micro and Nano Heat Transfer of Multi-Phase Flow"
+  ],
+  "fundedProjects": [
+    "Start-up Research Grant by DST-SERB, INDIA - Ongoing"
+  ],
+  "awardsAndHonors": [],
+  "memberships": [
+    "Indian Society For Heat and Mass Transfer (ISHMT)- Life Member"
+  ],
+  "professionalServices": [],
+  "coursesAttended": [
+    {
+      "month": "JULY",
+      "year": "2020",
+      "info": "Attended as a guest speaker (Online mode) in the Faculty Development Program On RESEARCH TRENDS IN SCIENCE AND TECHNOLOGY Organized by Institute of Engineering and Management"
+    }
+  ],
+  "coursesConducted": []
+}

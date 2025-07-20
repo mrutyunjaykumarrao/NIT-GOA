@@ -1,0 +1,151 @@
+{
+  "faculty_name": "Dr. Anudevi Samuel",
+  "profile": {
+    "name": "Dr. Anudevi Samuel",
+    "designation": "Faculty on contract",
+    "department": "Department of Electrical and Electronics Engineering",
+    "imageUrl": "Dr. Anudevi Samuel.png",
+    "email": "ad.dksamuel@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Power System",
+      "Distributed Generation",
+      "Fuzzy controllers",
+      "Fuzzy Clustering"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Anudevi Samuel",
+    "gender": "Female",
+    "birthDate": "02/10/1983",
+    "designation": "Faculty on contract",
+    "department": "Department of Electrical and Electronics Engineering",
+    "url": null,
+    "dateOfJoining": "28/12/2017",
+    "experience": "17 years"
+  },
+  "contactInformation": {
+    "address": "Dept. of Electrical and Electronics Engineering, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "ad.dksamuel@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Power System",
+    "Distributed Generation",
+    "Fuzzy controllers",
+    "Fuzzy Clustering"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Electrical Machines",
+      "Electric Circuit Theory",
+      "Electrical Power Generation",
+      "Electrical Power Transmission and Distribution",
+      "Power System Analysis",
+      "Power System Protection",
+      "Power System Operation and Control",
+      "Utilization of Electrical Energy",
+      "Distribution automation and Smart Grid",
+      "Optimization Techniques",
+      "Fuzzy set theory and Neural Networks",
+      "Control System",
+      "Embedded System"
+    ],
+    "pg": [
+      "Renewable Energy"
+    ]
+  },
+  "academicInformation": [
+    {
+      "degree": "B.E.",
+      "institute": "Government College of Engineering,Tirunelveli MS University,Tamil Nadu",
+      "year": "1998",
+      "subject": "Electrical and Electronics Engineering"
+    },
+    {
+      "degree": "M.Tech",
+      "institute": "Thiagarajar College of Engineering Madurai MK University,Tamil Nadu",
+      "year": "2000",
+      "subject": "Power System Engineering"
+    },
+    {
+      "degree": "P.Hd.",
+      "institute": "Goa College of Engineering,Goa University",
+      "year": "2022",
+      "subject": "Power System"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "Samuel, Anudevi and Shet, Vinayak N. “Adaptive relay settings for distribution network with distributed generation (DG) using Sugeno fuzzy inference” International Journal of Emerging Electric Power Systems, vol. 22, no. 1, 2021, pp. 43-59. https://doi.org/10.1515/ijeeps-2020-0152 JAN 2021",
+      "Anudevi Samuel., V.N.Shet, “A Hybrid Methodology for Relay Settings in Distributed Generation Penetrated Networks”, International Journal of Information Technology and Electrical Engineering, Vol 9,Issue-1,February 2020,ISSN:2306-708X FEB 2020",
+      "Anudevi. S.,Dr.V.N.Shet,\"Distribution Network with Optimal DG Placement and Protection Impacts:Review Analysis\",International Journal of Electrical and Electronics Engineering,Vol 4,Issue 2-February 2017 FEB 2017",
+      "Muhammad Muhsin,Abhishek Mishra,Shreyansh Vishwakarma,K.Dasaratha Babu,Anudevi Samuel,\"Performance Evaluation of Intelligent Controllers for AGC in Thermal systems\".WASET,International Journal of Electrical,Robotics,Electronics and Communication Engineering,Vol-8 no:4,2014 APRIL 2014",
+      "P.Venkatesh,PS Kannan,Anudevi.S,\"Application of Microgeneitic Algorithm to Economic Load dispatch\",Journal of the Institution of Engineers(India),Vol 82,pg 155-160 2001. SEPT 2001"
+    ],
+    "proceedings": [
+      "Anudevi Samuel., V.N.Shet, “Fuzzy Adaptive Relay Settings for Distribution Network with DG” - Proceedings of the National Power Electronics Conference (NPEC)-2019, December 13-15, NIT Tiruchirappalli, India, IEEE Digital Xplore, 978-1-7281-4428-3/19, https://doi.org/10.1109/NPEC47332.2019.9034762 DEC 2019",
+      "A.Sathya,Anudevi Samuel,MS Sheeba,\"Robust Fuzzy C-Means based Minimal Spinning tree method For Segmentation of Breast MRI\",International Conference on Mathematical Science,2014 MAR 2014",
+      "Matam Manjunath,Anudevi Samuel,Vighnesh Birodkar,\"A Novel proposal for Electrical Load Online Census(ELOC)\",Annual IEEE India Conference(INDICON),2013 NOV 2013",
+      "A.Sathya,S.Senthil,Anudevi Samuel,\"Segmentation of Breast MRI Using Effective Fuzzy C-means Method based Support Vector Machine\",World Congress on Information and Communication Technologies,2012 NOV 2012",
+      "Anudevi.S, \"Application of Hybrid GA-PS method to solve Economic Load Dispatch\",National Conference on Electronic Technologies,2011 APRIL 2011"
+    ]
+  },
+  "researchGuidance": [],
+  "fundedProjects": [],
+  "awardsAndHonors": [
+    "University Rank Holder"
+  ],
+  "memberships": [
+    "Life member of Indian Society of Technical Education(ISTE)"
+  ],
+  "professionalServices": [],
+  "coursesAttended": [
+    {
+      "month": "SEPT",
+      "year": "2015",
+      "info": "Research Methodology by NITTTR,Bhopal"
+    },
+    {
+      "month": "AUG",
+      "year": "2015",
+      "info": "LaTeX for Technical documentation-National Workshop at NITG"
+    },
+    {
+      "month": "APRIL",
+      "year": "2013",
+      "info": "Industrial Automation Workshop- PLC and SCADA"
+    },
+    {
+      "month": "MARCH",
+      "year": "2013",
+      "info": "Optics and Photonics for Engineering Applications-National Workshop at NITG"
+    },
+    {
+      "month": "JAN",
+      "year": "2011",
+      "info": "Basics of Linux by NITTTR,Bhopal"
+    },
+    {
+      "month": "NOV",
+      "year": "2010",
+      "info": "Neural Networks by NITTTR,Bhopal"
+    },
+    {
+      "month": "MAY",
+      "year": "2006",
+      "info": "Power System Operation and Control by NITTTR,Bhopal"
+    }
+  ],
+  "coursesConducted": [
+    {
+      "month": "APRIL",
+      "year": "2013",
+      "info": "ROBO-O-MANIA 1.0 – DTMF Controlled Robots"
+    },
+    {
+      "month": "SEPT",
+      "year": "2012",
+      "info": "Image Processing Workshop using MATLAB"
+    }
+  ]
+}

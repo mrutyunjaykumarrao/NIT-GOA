@@ -1,0 +1,212 @@
+{
+  "faculty_name": "Dr. S. Mini",
+  "profile": {
+    "name": "Dr .S. Mini",
+    "designation": "Associate Professor",
+    "department": "Department of Computer Science and Engineering",
+    "imageUrl": "Dr. S. Mini.png",
+    "email": "mini@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Wireless Sensor Networks",
+      "Swarm Intelligence",
+      "Combinatorial Optimization",
+      "Internet of Things"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. S. Mini",
+    "gender": "Female",
+    "birthDate": null,
+    "designation": "Associate Professor",
+    "department": "Department of Computer Science and Engineering",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": "9 years"
+  },
+  "contactInformation": {
+    "address": "Dept. of CSE, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "mini@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Wireless Sensor Networks;",
+    "Swarm Intelligence;",
+    "Combinatorial Optimization;",
+    "Internet of Things;"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Data Structures",
+      "Object Oriented Programming",
+      "Data Structures and Algorithms",
+      "Graph Theory",
+      "Principles of Data Communication"
+    ],
+    "pg": [
+      "Advanced Computer Networks",
+      "Advanced Computer Architecture",
+      "Graph Theory"
+    ]
+  },
+  "academicInformation": [
+    {
+      "degree": "M.E.",
+      "institute": "PSNA CET (Anna University)",
+      "year": "2007",
+      "subject": "Computer and Communication"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "University of Hyderabad",
+      "year": "2012",
+      "subject": "Computer Science"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "Sireejaa Uppal, Bindiya Kansekar, S. Mini, Deepak Tosh: HealthDote: A blockchain-based model for continuous health monitoring using interplanetary file system, Healthcare Analytics (Elsevier). 2023",
+      "Sabale, K., Mini, S.: Path Planning Mechanism for Mobile Anchor-Assisted Localization in Wireless Sensor Networks, Journal of Parallel and Distributed Computing (Elsevier), vol. 165, pp. 52-65. 2022",
+      "PR Desai, S Mini, DK Tosh: Edge-based Optimal Routing in SDN-enabled Industrial Internet of Things, IEEE Internet of Things Journal. 2022",
+      "Sabale, K., Sapre, S., Mini, S.: Obstacle Handling Mechanism for Mobile Anchor Assisted Localization in Wireless Sensor Networks, IEEE Sensors Journal. 2021",
+      "Sabale, K., Mini, S.: Localization in Wireless Sensor Networks with Mobile Anchor Node Path Planning Mechanism, Information Sciences (Elsevier). 2021",
+      "Sabale, K., Mini, S.: Transmission Power Control for Anchor-Assisted Localization in Wireless Sensor Networks, IEEE Sensors Journal, 21 (8), pp. 10102-10111. 2021",
+      "Sapre, S., Mini, S.: Emulous mechanism based multi-objective moth–flame optimization algorithm, Journal of Parallel and Distributed Computing (Elsevier), 150, pp. 15-33. 2021",
+      "Sapre, S., Mini, S.: A differential moth flame optimization algorithm for mobile sink trajectory, Peer-to-Peer Networking and Applications (Springer), 14 (1), pp. 44-57. 2021",
+      "Sapre, S., Mini, S.: Moth flame optimization algorithm based on decomposition for placement of relay nodes in WSNs. Wireless Networks (Springer). 2020",
+      "Sapre, S., Mini, S.: Opposition-based moth flame optimization with Cauchy mutation and evolutionary boundary constraint handling for global optimization. Soft Computing (Springer). 2019",
+      "Sapre, S., Mini, S.: Optimized relay nodes positioning to achieve full connectivity in wireless sensor networks. Wireless Personal Communications (Springer). 2018",
+      "Sabale, K., Mini, S.: Anchor Node Path Planning for Localization in Wireless Sensor Networks. Wireless Networks (Springer). 2017",
+      "Mini, S., Udgata, S.K., Sabat, S.L.: Sensor Deployment and Scheduling for Target Coverage Problem in Wireless Sensor Networks. IEEE Sensors Journal, vol. 14, number 3, pp. 636-644. 2014",
+      "Mini, S., Pujari, A.K.: Phase Transition Analysis of Target Coverage Problem in Wireless Sensor Networks. IEEE Sensors Journal, vol. 13, number 7, pp. 2742-2749. 2013",
+      "Mini, S., Udgata, S.K., Sabat, S.L.: M-Connected Coverage Problem in Wireless Sensor Networks. ISRN Sensor Networks, vol. 2012, article id 858021. 2012",
+      "Mini, S., Udgata, S.K., Sabat, S.L.: A Heuristic to Maximize Network Lifetime for Target Coverage Problem in Wireless Sensor Networks. Ad hoc & Sensor Wireless Networks, vol. 13, number 3-4, pp. 251-269. 2011"
+    ],
+    "proceedings": [
+      "Jose, Basil and Mini, S.: Efficient Device Management for Enhanced Energy Utilization and Operational Performance in Internet of Things, 8th International Conference for Convergence in Technology (I2CT), IEEE, pp. 1-5. 2023",
+      "Paul, Haritha and Mini, S.: Swarm Intelligence Algorithms for Profit Maximization and Delay Minimization in Internet Data Centers, 10th International Conference on Signal Processing and Integrated Networks (SPIN), IEEE, pp. 317-322. 2023",
+      "V.G. Bhat, H.P. Pranaav, S. Mini, D.K. Tosh: Blockchain-centric Resource Management System for Disaster Response and Relief. 11th International Conference on Cloud Computing, Data Science & Engineering (Confluence), pp. 540-545. 2021",
+      "V. Dhaimodker, R. Desai, S. Mini, D.K. Tosh: Quality-driven Energy Optimization in Internet of Things. 29th International Conference on Computer Communications and Networks (ICCCN), IEEE, USA, pp.1-8. 2020",
+      "Perkin, T.M., S. Mini: Assignment of IoT Nodes to Edge Computing Devices in Internet of Things. In: 2019 European Conference on Networks and Communications (EuCNC), Valencia, Spain. 2019",
+      "Sabale, K., Mini, S.: An Analysis of Path Planning Mechanisms in Wireless Sensor Networks. 9th International Conference on Computing, Communication and Networking Technologies (ICCCNT), Bangalore. 2018",
+      "Sapre, S., Mini, S.: Moth Flame based Optimized Placement of Relay Nodes for Fault Tolerant Wireless Sensor Networks. 9th International Conference on Computing, Communication and Networking Technologies (ICCCNT), Bangalore. 2018",
+      "Sapre, S., Mini, S.: Optimized positioning of relay nodes using bat algorithm in heterogeneous wireless sensor networks. IEEE International Conference on Communication and Signal Processing (ICCSP). 2018",
+      "Kamble, S., Mini, S., Panigrahi, T.: Monitoring Air Pollution: An IoT Application. International Conference on Wireless Communications, Signal Processing and Networking (WiSPNET), 22-24 March, Chennai. 2018",
+      "Sapre, S., Mini, S.: Optimized path for traversal of mobile sink in heterogeneous wireless sensor networks: International Conference on Wireless Communications, Signal Processing and Networking (WiSPNET), 22-24 March, Chennai. 2018",
+      "Kumar, M., Sabale, K., Mini, S., Panigrahi, T.: Priority based deployment of IoT devices. 32nd International Conference on Information Networking (ICOIN 2018), IEEE, Chiang Mai, Thailand. 2018",
+      "Mayur, S., Mini, S.: Path Planning of Mobile Sink in Wireless Sensor Networks. 9th International Conference on Advanced Computing (ICoAC-2017), IEEE, Chennai. 2017",
+      "Mohan, A., Johar, S., Mini, S.: An IoT System for Waste Collection. 14th IEEE India Council International Conference (INDICON 2017), IEEE, Roorkee. 2017",
+      "Khade, G., Mini, S.: Identification of data aggregators in Wireless Sensor Network. International Conference on Wireless Communications, Signal Processing and Networking (WiSPNET), Chennai. 2017",
+      "Sapre, S., Mini, S.: Relay node placement to establish full connectivity in Directional Sensor Networks, Fourteenth International Conference on Wireless and Optical Communications Networks (WOCN2017), Mumbai. 2017",
+      "Singh, P., Mini, S.: A heuristic to deploy directional sensor nodes in wireless sensor networks. 8th International Conference on Computational Intelligence and Communication Networks, Dehradun. 2016",
+      "Mini, S., Pujari, A.K.: On the Phase Transition Analysis of k/Q-coverage Problem in Wireless Sensor Networks. International Conference on Information Technology (ICIT), Bhubaneswar, IEEE, pp. 54-59. 2015",
+      "Singh, P., Mini, S., Sabale, K.: Particle Swarm Optimization for the Deployment of Directional Sensors. 6th International Conference on Swarm, Evolutionary and Memetic Computing, LNCS, Springer, Hyderabad. 2015",
+      "Pujari, A.K., Mini, S., T. Padhi, P. Sahoo: Polyhedral Approach for Lifetime Maximization of Target Coverage Problem. International Conference on Distributed Computing and Networking ICDCN' 2015, ACM, pp. 14:1 -14:8. 2015",
+      "Mini, S., Udgata, S.K., Sabat, S.L.: Artificial Bee Colony Algorithm for Probabilistic Target Q-Coverage Problem in Wireless Sensor Networks In: International Conference on Swarm, Evolutionary and Memetic Computing 2013. LNCS, vol. 8297, pp. 446-456 2013",
+      "Mini, S., Udgata, S.K., Sabat, S.L.: Sensor Deployment for Probabilistic Target k-Coverage using Artificial Bee Colony Algorithm. In: International Conference on Swarm, Evolutionary and Memetic Computing 2011. LNCS, vol. 7076, pp. 654-661. 2011",
+      "Mini, S., Udgata, S.K., Sabat, S.L.: Artificial Bee Colony based Sensor Deployment Algorithm for Target Coverage Problem in 3-D Terrain. In: International Conference on Distributed Computing and Internet Technology 2011. LNCS, vol. 6536, pp. 313-324. 2011",
+      "Mini, S., Udgata, S.K., Sabat, S.L.: Sensor Deployment in 3-D Terrain using Artificial Bee Colony Algorithm. In: International Conference on Swarm, Evolutionary and Memetic Computing 2010. LNCS, vol. 6466, pp. 424-431. 2010",
+      "Udgata, S.K., Sabat, S.L., Mini, S.: Sensor Deployment in Irregular Terrain using Artificial Bee Colony Algorithm. In: Proc. of IEEE BICA’09, pp. 296-300. 2009"
+    ]
+  },
+  "researchGuidance": [
+    "Saunhita Sapre (Ph.D. Degree Awarded)",
+    "Ketan Sabale (Ph.D. Degree Awarded)",
+    "Basil Jose Romi (Ongoing)",
+    "Vijaykumar Naik Pawar(Ongoing)"
+  ],
+  "fundedProjects": [
+    "MonitAir: An IoT based Air Pollution Monitoring System (under Early Career Research Award Scheme of SERB, DST). Role: Principal Investigator. (Status: Completed)"
+  ],
+  "awardsAndHonors": [],
+  "memberships": [],
+  "professionalServices": [],
+  "coursesAttended": [
+    {
+      "month": "MAY",
+      "year": "2017",
+      "info": "10 day Faculty Development Programme on “Fundamentals of Computer Networks and Security”, MNIT Jaipur"
+    },
+    {
+      "month": "JUN",
+      "year": "2016",
+      "info": "10 day GIAN course on “Wireless Sensor Networks: Network Architectures, Protocols and Applications”, NIT Warangal"
+    },
+    {
+      "month": "MAR",
+      "year": "2016",
+      "info": "Two Day National Workshop on Patents and Intellectual Property Rights"
+    },
+    {
+      "month": "JAN",
+      "year": "2016",
+      "info": "Faculty Development Programme on “Promoting Quality in Higher Technical Education” ABV-IIITM, Gwalior"
+    },
+    {
+      "month": "DEC",
+      "year": "2015",
+      "info": "International Conference on Computing and Network Communications, IIITM-K"
+    },
+    {
+      "month": "OCT",
+      "year": "2015",
+      "info": "National Workshop on \"Cryptography, Applications and Foundations of Data Science\""
+    },
+    {
+      "month": "MAR",
+      "year": "2015",
+      "info": "National Workshop on Application of Wireless Sensor Networks and Robotics in Agriculture and Rural Development, Trivandrum"
+    },
+    {
+      "month": "FEB",
+      "year": "2015",
+      "info": "SIGCSE, ACM, BITS Pilani Goa Campus"
+    },
+    {
+      "month": "MAR",
+      "year": "2014",
+      "info": "Second International Conference on Security in Computer Networks and Distributed Systems (SNDS-2014), Trivandrum"
+    },
+    {
+      "month": "OCT",
+      "year": "2013",
+      "info": "One Day workshop on Best Practices in Teaching, Rajasthan"
+    },
+    {
+      "month": "APRIL",
+      "year": "2013",
+      "info": "Indo-Italian Training Workshop on EEG & MEG Data Processing, Hyderabad"
+    },
+    {
+      "month": "DEC",
+      "year": "2011",
+      "info": "Multi-Disciplinary International Workshop on Artificial Intelligence (MIWAI), Hyderabad"
+    },
+    {
+      "month": "FEB",
+      "year": "2011",
+      "info": "Research Symposium held in conjunction with ICDCIT 2011, Bhubaneswar"
+    },
+    {
+      "month": "DEC",
+      "year": "2010",
+      "info": "International Workshop on Differential Evolution and its Engineering Applications, Chennai"
+    }
+  ],
+  "coursesConducted": [
+    {
+      "month": "JUN",
+      "year": "2020",
+      "info": "Webinar on \"Skill Development using Virtual Labs\" (5 June 2020)"
+    },
+    {
+      "month": "JAN",
+      "year": "2020",
+      "info": "National Workshop on “Virtual Labs” (23 January, 2020)"
+    },
+    {
+      "month": "MAY",
+      "year": "2016",
+      "info": "Recent Advancements in Privacy Preserving Mining (RAPPM), 23-28 May, 2016"
+    }
+  ]
+}

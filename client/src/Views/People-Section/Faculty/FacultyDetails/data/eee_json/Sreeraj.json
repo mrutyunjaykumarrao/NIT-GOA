@@ -1,0 +1,95 @@
+{
+  "faculty_name": "Dr. Sreeraj E S",
+  "profile": {
+    "name": "Dr. Sreeraj E S",
+    "designation": "Associate Professor",
+    "department": "Department of Electrical and Electronics Engineering",
+    "imageUrl": "Dr. Sreeraj E S.png",
+    "email": "sreeraj@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Power electronics",
+      "Renewable energy"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Sreeraj E S",
+    "gender": "Male",
+    "birthDate": "24/07/1978",
+    "designation": "Associate Professor",
+    "department": "Department of Electrical and Electronics Engineering",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": "9 years"
+  },
+  "contactInformation": {
+    "address": "Associate Professor, Dept. of Electrical and Electronics Engineering, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "sreeraj@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Power electronics",
+    "Renewable energy"
+  ],
+  "coursesTaught": null,
+  "academicInformation": [
+    {
+      "degree": "B.Tech.",
+      "institute": "REC Calicut",
+      "year": "2001",
+      "subject": "Electrical and Electronics"
+    },
+    {
+      "degree": "M.Tech.",
+      "institute": "IIT Bombay",
+      "year": "2006",
+      "subject": "Energy Systems Engineering"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "IIT Bombay",
+      "year": "2013",
+      "subject": "Electrical Engineering"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "Jayesh Priolkar & E. S. Sreeraj (2023): Analysis of Price Based Demand Response Program Using Load Clustering Approach, IETE Journal of Research, DOI:10.1080/03772063.2022.2161956 2023",
+      "Jayesh Priolkar & Sreeraj E S (2022) Consumer Baseline Estimation Analysis for Implementation of Demand Response Programs, IETE Journal of Research, DOI: 10.1080/03772063.2022.2130452 2022",
+      "VR Reddy, ES Sreeraj, \"Grid Voltage Sensor-less Protection scheme for One Cycle-Controlled Single-Phase Photovoltaic Inverter Systems,\" CSEE Journal of Power and Energy Systems, Early Access DEC 2021",
+      "Venkata R Reddy and ES Sreeraj, \"A Hybrid Islanding Detection Method for One Cycle Controlled PV Inverter System,\" IEEE Journal of Emerging and Selected Topics in Industrial Electronics, Early Access JULY 2021",
+      "V.R. Reddy and Sreeraj E.S.,\"A Feedback based Passive Islanding Detection Technique for One Cycle Controlled Single Phase Inverter used in Photovoltaic Systems,\" IEEE Trans. Ind. Electron., 67 (8), 6541-6549, 2019 AUG 2019",
+      "Ch LS Srinivas, and E S Sreeraj, \"A Maximum Power Point Tracking Technique Based on Ripple Correlation Control for Single Phase Photovoltaic System with Fuzzy Logic Controller,\" Energy Procedia, vol. 90, pp. 69-77. DEC 2016",
+      "Sreeraj, E.S., Prejith, E.K., K. Chatterjee, and S. Bandyopadhyay, \"An Active Harmonic Filter Based on One-Cycle Control,\" IEEE Trans. Ind. Electron., vol.61, no.8, pp.3799-3809. AUG 2014",
+      "Sreeraj E.S., K. Chatterjee, and S. Bandyopadhyay, “One cycle controlled single-stage, single phase voltage sensor-less grid connected PV system,” IEEE Trans. Ind. Electron., vol.60, no.3, pp.1216-1224. MAR 2013",
+      "Sreeraj E.S., K. Chatterjee, and S. Bandyopadhyay, “Design of isolated renewable hybrid power systems,’’ Solar Energy, vol. 84, no. 7, pp. 1124-1136. JULY 2010",
+      "D.V. Ghodke, Sreeraj E.S., K. Chatterjee, and B.G. Fernandes, “ One cycle controlled bi-directional AC to DC Converter having constant power factor operation,” IEEE Trans. Ind. Electron., vol. 56, no. 5, pp. 1499-1510. MAY 2009"
+    ],
+    "proceedings": [
+      "L. Sreekumar, A. Shivanand Shirodkar and Sreeraj E.S., \"Improved modulation methods for single-phase common-ground type transformerless inverter,\" 2022 IEEE International Conference on Power Electronics, Drives and Energy Systems (PEDES), Jaipur, India, 2022, pp. 1-6, doi: 10.1109/PEDES56012.2022.10080866. DEC 2022",
+      "J. Priolkar, P. P. A. Gracias and E. S. Sreeraj, \"Implementation of Load Scheduling and Demand Response for Residential Consumers,\" 2021 National Power Electronics Conference (NPEC), 2021, pp. 01-06, doi: 10.1109/NPEC52100.2021.9672467. DEC 2021",
+      "J. Priolkar, A. Shirodkar and E. S. Sreeraj, \"Forecasting of Load and Solar PV Power to Assess Demand Response Potential,\" 2021 IEEE 18th India Council International Conference (INDICON), 2021, pp. 1-6, doi: 10.1109/INDICON52576.2021.9691655. DEC 2021",
+      "Jayesh Priolkar, E.S. Sreeraj, and Govind Kunkolienkar \"Clustering based Consumer Baseline Estimation for Demand Response Implementation,\" Proc. of 21st National Power Systems Conference, Gandhinagar, Dec. 17-19, 2020. DEC 2020",
+      "V. R. Reddy and Sreeraj E. S, \"Unipolar Modulated Voltage Sensor-less One-Cycle Controlled Inverter for Grid Connected PV System,\" 2020 IEEE First International Conference on Smart Technologies for Power, Energy and Control (STPEC), Nagpur, 2020, pp. 1-6, doi: 10.1109/STPEC49749.2020.9297742. SEPT 2020",
+      "J. Priolkar, E. S. Sreeraj and A. Thakur, \"Analysis of Consumer Baseline for Demand Response Implementation: A Case Study,\" 2020 7th International Conference on Signal Processing and Integrated Networks (SPIN), Noida, India, 2020, pp. 89-94, doi: 10.1109/SPIN48934.2020.9070878. FEB 2020",
+      "B Parate, RS Kumar, K Thakur, Sreeraj ES, R Krishnan, “Design and Modelling of SRC Based Capacitor Charging Power Supply for High Power Klystron Modulator Using MULTISIM”, National Power Electronics Conference (NPEC), 2019 doi: 10.1109/NPEC47332.2019.9034847 DEC 2019",
+      "L Sreekumar, Sreeraj ES, “Double Frequency Pulse Width Modulation for Type-1 Common-ground Transformerless Inverter”, National Power Electronics Conference (NPEC), 2019 10.1109/NPEC47332.2019.9034707 DEC 2019",
+      "VR Reddy, ES Sreeraj, “A Feedback Based Hybrid Islanding Detection Method and Voltage Ride-Through of One Cycle Controlled PV Inverter’, National Power Electronics Conference (NPEC), 2019. 10.1109/NPEC47332.2019.9034544 DEC 2019",
+      "Priolkar J., Sreeraj E.S. Impact of Demand Response Implementation in India with Focus on Analysis of Consumer Baseline Load. In: Bose M., Modi A. (eds) Proceedings of the 7th International Conference on Advances in Energy Research. Springer Proceedings in Energy. Springer, Singapore. https://doi.org/10.1007/978-981-15-5955-6_11 DEC 2019",
+      "Priyanka Yussuf, and Sreeraj E. S., \"An ZVS DC-DC Synchronous Buck Regulator With Mode Changing Control Strategy For Low Voltage Applications,\" in Proc. of IEEE Int. Conf. Power Electronics, Drives, Energy Systems, Chennai, India. DEC 2018",
+      "VR Reddy, ES Sreeraj, \"Integration of ripple correlation MPPT technique with one-cycle-controlled transformerless inverter for single-phase single-stage photovoltaic systems,\" in Proc. 43rd Annu. Conf. IEEE Ind. Electron. Soc., Beijing, China, Oct. 25-28, pp. 2552-2557. OCT 2017",
+      "R Satish, Ch LS Srinivas, and E S Sreeraj, \"A maximum power point tracking technique based on ripple correlation control for single-phase single-stage grid connected photovoltaic system,\"in Proc. 7th Nat. Power Electron. Conf., Mumbai, India. DEC 2015",
+      "Sreeraj E.S., Prejith E.K., and K. Chatterjee, “One Cycle Controlled Active Harmonic Filter,” in Proc. 38th Annu. Conf. IEEE Ind. Electron. Soc., Montreal, Canada, pp.621-626. OCT 2012",
+      "Sreeraj E.S. and K. Chatterjee, “One Cycle Controlled Single Stage Inverters for grid connected Photovoltaic systems,” in Proc. 5th Nat. Power Electron. Conf., Howrah, India, pp. 135-140. DEC 2011",
+      "Sreeraj E.S., K. Chatterjee, and S. Bandyopadhyay, “Sizing of Isolated Renewable Hybrid Systems”, in Proc. 2nd Int. Conf. Nuclear Renewable Energy Resources, Ankara, Turkiye, pp. 465-471. 2010",
+      "D.V. Ghodke, Sreeraj E. S., K. Chatterjee, and B. G. Fernandes, “ One cycle controlled bi-directional AC to DC Converter having constant power factor operation,” in Proc. Power Electron. Specialists Conf. pp. 685 – 691. 2008",
+      "Sreeraj E.S. and K. Chatterjee, “Power Factor Improvement in One Cycle Controlled Converter”, in Proc. IEEE Int. Symp. Ind. Electron., July 2006, Montreal, Canada, pp. 1454-1460. 2006"
+    ]
+  },
+  "researchGuidance": [],
+  "fundedProjects": [],
+  "awardsAndHonors": [],
+  "memberships": [],
+  "professionalServices": [],
+  "coursesAttended": [],
+  "coursesConducted": []
+}

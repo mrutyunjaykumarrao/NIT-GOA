@@ -1,0 +1,88 @@
+{
+  "faculty_name": "Dr. Prashanth G.R",
+  "profile": {
+    "name": "Dr. Prashanth G.R",
+    "designation": "Associate Professor",
+    "department": "Department of Electronics and Communication Engineering",
+    "imageUrl": "../../static/Dr. Prashanth G.R.JPG",
+    "email": "grprashanth@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Bio-photonics",
+      "Bio-Sensors"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Prashanth G.R",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Associate Professor & Head",
+    "department": "Department of Electronics and Communication Engineering",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": null
+  },
+  "contactInformation": {
+    "address": "Associate Professor, Department of ECE, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "grprashanth@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Bio-photonics",
+    "Bio-Sensors"
+  ],
+  "coursesTaught": {
+    "ug": [],
+    "pg": []
+  },
+  "academicInformation": [
+    {
+      "degree": "B.E.",
+      "institute": "Bangalore University",
+      "year": "1999",
+      "subject": "Instrumentation and Electronics"
+    },
+    {
+      "degree": "M.Tech.",
+      "institute": "VTU, Belgaum",
+      "year": "2004",
+      "subject": "Biomedical Instrumentation"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "Indian Institute of Science, Bangalore",
+      "year": "2014",
+      "subject": "Nano sensors, Bio sensors,Point-of-Care diagnostics"
+    },
+    {
+      "degree": "Postdoc",
+      "institute": "Indian Institute of Science Bangalore",
+      "year": "2015",
+      "subject": "protein polymer interactions"
+    }
+  ],
+  "publications": {
+    "journal": [
+        "G. R. Prashanth, V. S. Goudar, S. Suran, A. M. Raichur, M. M. Varma, “Non-covalent functionalization using lithographically patterned polyelectrolyte multilayers for high-density microarrays”, Sensors and Actuators B: Chemical, 171-172, p315-322, 2012",
+        "G. R. Prashanth, V. S. Goudar, A. M. Raichur, M. M. Varma, Enhancing fluorescence signals from aluminium thin films and foils using polyelectrolyte multilayers, Sensors and Actuators B: Chemical, 183, p 496–503, 2013",
+        "Goudar, V.S., Suran, S., G. R. Prashanth, Varma, M.M., \"Detection of Hepatitis B DNA Sequences on Polyelectrolyte Based Non-Covalently Functionalized Flexible Plastic Substrates,\" Sensors Journal, IEEE , vol.13, no.12, pp.4817,4823, Dec. 2013",
+        "B. N. Shivananju, M. Renilkumar, G. R. Prashanth, S. Asokan, M. M. Varma, \"Detection Limit of Etched Fiber Bragg Grating Sensors\", IEEE/OSA Journal of Lightwave Technology, 31, 2441-2447, 2013",
+        "M. Renilkumar, B. N. Shivananju, G. R. Prashanth, S. Asokan, M. M. Varma, \"Calibration of Etched Fiber Bragg Grating Sensor Arrays for Measurement of Molecular Surface Adsorption\", IEEE/OSA Journal of Lightwave Technology, 31, 2400-2406, 2013",
+        "B. N. Shivananju, G. R. Prashanth, S. Asokan, M. M. Varma Reversible and irreversible pH induced conformational changes in self-assembled weak polyelectrolyte multilayers probed using etched fiber Bragg grating sensors. Sensors and Actuators B: Chemical , May 2014."
+    ],
+    "proceedings": [
+        "Prashanth G.R, Ashok M Raichur and Manoj M Varma, “Label Free Polymer Microarrays Using Layer-By-Layer Self Assembly Of Polyelectrolytes”, ICOP 2009-International Conference on Optics and Photonics, Chandigarh, India, Oct 2009.",
+        "Prashanth G.R, Nanjunda, SB, Asokan, S, Varma, MM, “Real-time Bio(Chemical) sensing with Etched Clad Fiber Bragg Grating Sensors”, Optical Fibers And Sensors For Medical Diagnostics And Treatment Applications XII, Proceedings of SPIE, 8218, 82180K, 2012",
+        "Kumawat, N, Prashanth G.R, Varma, MM, “Differential Diffractive Reflectance Modulation Sensing”, Frontiers In Biological Detection: From Nanosensors To Systems IV Book Series: Proceedings of SPIE, 8212, 82120M, 2012",
+        "Prashanth G.R, P. Murali, M. M. Varma and N. Bhat, \"In-Situ Impedance Spectroscopy of Layer-by-Layer Self-Assembly of Polyelectrolytes\", International Conference on Emerging Electronics, IIT Bombay, Dec 15-17, 2012",
+        "Prashanth G.R, A. M. Raichur, M. M. Varma, \"Low cost thin film interferometric reflectance selfassembly of polelectrolytes\", Biosensors 2010, Glasgow, Scotland, May 2010.",
+        "Prashanth G.R , S. B. Nanjunda, M. Renilkumar, S. Asokan, M. M. Varma, “Real-time label-free sensing with clad etched fibers”, Label-Free Technologies: Advances and Applications, Amsterdam, The Netherlands, 1-3 November 2012"
+    ]
+  },
+  "researchGuidance": [],
+  "fundedProjects": [],
+  "awardsAndHonors": [],
+  "memberships": [],
+  "professionalServices": [],
+  "coursesAttended": [],
+  "coursesConducted": []
+}

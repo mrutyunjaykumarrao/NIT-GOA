@@ -1,0 +1,74 @@
+{
+  "faculty_name": "Dr. Nithin Kumar Y.B",
+  "profile": {
+    "name": "Dr. Nithin Kumar Y.B",
+    "designation": "Associate Professor",
+    "department": "Department of Electronics and Communication Engineering",
+    "imageUrl": "Dr. Nithin Kumar Y.B..png",
+    "email": "nithin.shastri@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Analog and Mixed Signal Design",
+      "Data Converter"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Nithin Kumar Y.B.",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Associate Professor",
+    "department": "Department of Electronics and Communication Engineering",
+    "url": "https://scholar.google.co.in/citations?user=aLH6kzgAAAAJ&hl=en",
+    "dateOfJoining": "13/12/2013",
+    "experience": "9 years of Teaching and Research Experience at NIT Goa"
+  },
+  "contactInformation": {
+    "address": "Associate Professor, Department of ECE, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "nithin.shastri@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Analog and Mixed Signal Design,",
+    "Data Converter"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Digital System Design",
+      "VLSI Circuit Design"
+    ],
+    "pg": [
+      "Analog IC Design",
+      "Mixed signal Design"
+    ]
+  },
+  "academicInformation": [
+    {
+      "degree": "Ph.D.",
+      "institute": "Indian Institute of Technology Kharagapur",
+      "year": "2013",
+      "subject": "Sigma Delta Modulator"
+    }
+  ],
+  "publications": {
+    "journal": [
+        "Suraj D., Siddharth R. K, Nithin Kumar Y.B, Vasantha.M.H., “A 1.2 V, Highly Reliable RHBD 10T SRAM Cell for Aerospace Application” IEEE Transactions on Electron Devices-Vol. 68, pp. 2265-2270, April 2021",
+        "P.S.Veerendranath, Vivek Sharma, Vasantha.M.H., Nithin Kumar Y.B, A Novel Complex Filter Design With Dual Feedback For High Frequency Wireless Receiver Applications” IEEE Transactions on Circuits and Systems II, 2020.",
+        "S. Raveendran, P. J. Edavoor, Nithin Kumar Y.B., and Vasantha M.H \"An Approximate Low-Power Lifting Scheme Using Reversible Logic,\" accepted in IEEE Access, October 2020.",
+        "Siddharth R. K, Jaya Satyanarayana, Nithin Kumar Y.B, Vasantha.M.H., and Edoardo Bonizzoni, “A 1-V, 3-GHz Strong-Arm Latch Voltage Comparator for High Speed Applications” IEEE Transactions on Circuits and Systems II, 2020",
+        "Manikantta Reddy Karri, Vasantha M.H, Nithin Kumar Y.B, Devesh Dwivedi, “Design of Approximate Booth Squarer for Error-Tolerant Computing” IEEE Transactions on Very Large Scale Integration (VLSI) Systems, vol. 28, no. 5, pp. 1230-1241, May 2020"
+    ],
+    "proceedings": [
+        "Guru Prakash, Siddharth R. K, Nithin Kumar Y.B, Vasantha.M.H., and Edoardo Bonizzoni, “A 1-V, 5-bit, 180-uW, Differential Pulse Position Modulation ADC in 65-nm CMOS Process” accepted at IEEE International Symposium on Circuits and Systems, Daegu, Korea from May 22-28, 2021.",
+        "Sanmitra Bharat Naik, Siddharth R. K., Anirban Chatterjee, Nithin Kumar Y. B., Vasantha M. H., and Ramnath Kini, “A 1 V Double-Balanced Mixer for 2.4-2.5 GHz ISM Band Applications,\" IEEE-34th International Conference on VLSI Design, February 20-24, 2021, Guwahati, India.",
+        "Sanmitra Bharat Naik, Siddharth R. K., Anirban Chatterjee, Nithin Kumar Y. B., Vasantha M. H., and Ramnath Kini, “A Wideband 12 Phase Ring Oscillator for 5G Applications,\" in 63rd IEEE International Midwest Symposium on Circuits and Systems (MWSCAS), Springfield, MA, USA, 2020.",
+        "Sithara Raveendran, P. J. Edavoor, Nithin Kumar Y.B, and M. H. Vasantha, \"Reversible Logic Implementation of Image Denoising for Grayscale Images,\" 2020 IEEE 63rd International Midwest Symposium on Circuits and Systems (MWSCAS), Springfield, MA, USA, 2020, pp. 138-141.",
+        "Suraj D., Siddharth R. K, Nithin Kumar Y.B, Vasantha.M.H., “A Novel Single Event Upset Tolerant 12T Memory Cell for Aerospace Applications” 2020 IEEE Computer Society Annual Symposium on VLSI (ISVLSI), Limassol, Cyprus, 2020, pp. 48-53."
+    ]
+  },
+  "researchGuidance": [],
+  "fundedProjects": [],
+  "awardsAndHonors": [],
+  "memberships": [],
+  "professionalServices": [],
+  "coursesAttended": [],
+  "coursesConducted": []
+}

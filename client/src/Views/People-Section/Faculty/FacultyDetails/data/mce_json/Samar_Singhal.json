@@ -1,0 +1,69 @@
+{
+  "faculty_name": "Dr. Samar Singhal",
+  "profile": {
+    "name": "Dr. Samar Singhal",
+    "designation": "Faculty On Contract",
+    "department": "Department of Mechanical Engineering",
+    "imageUrl": "Samar Singhal.jpg",
+    "email": "samarsinghal@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Numerical Heat transfer",
+      "Experimental Heat transfer and its applications",
+      "Computational fluid dynamics."
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Samar Singhal",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Faculty On Contract",
+    "department": "Department of Mechanical Engineering",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": null
+  },
+  "contactInformation": {
+    "address": "Dept. of Mechanical Engineering, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "samarsinghal@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Numerical Heat transfer, Experimental Heat transfer and its applications, Computational fluid dynamics."
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Fluid Mechanics",
+      "Basics of Mechanical and Civil Engineering",
+      "Mechanical Lab 1",
+      "Applied Thermodynamics",
+      "Renewable Energy Systems",
+      "Thermal Lab 1"
+    ],
+    "pg": []
+  },
+  "academicInformation": [
+    {
+      "degree": "Ph.D.",
+      "institute": "Motilal Nehru National Institute of Technology, Prayagraj",
+      "year": "2024",
+      "subject": "Mechanical Engineering"
+    },
+    {
+      "degree": "M.Tech",
+      "institute": "Motilal Nehru National Institute of Technology, Prayagraj",
+      "year": "2020",
+      "subject": "Thermal Engineering"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "Singhal, S., Yadav, A. K., & Prakash, R. (2023). An Investigation of the Thermal Performance of a Tropical Greenhouse Constructed With an Earth Air Heat Exchanger. Journal of Thermal Science and Engineering Applications, 15(11), 111013.",
+      "Singhal, S., Yadav, A. K., & Prakash, R. (2023). Numerical modelling of an earthair-tunnel assisted single span saw-tooth greenhouse for tropical climate. International Journal of Thermal Sciences, 187, 108138.",
+      "Singhal, S., Yadav, A. K., & Prakash, R. (2024). Thermal performance and Economic analysis of Saw-tooth and Photo-voltaic roof type greenhouse integrated with Earth air heat exchanger. Solar Energy. 283(1–3)."
+    ],
+    "proceedings": [
+      "Singhal, S., Yadav, A. K., & Prakash, R. (2022). CFD analysis of different Greenhouse ventilation designs using OpenFOAM. FMFP-2022 Proceedings, IIT Roorkee, Paper no 4898.",
+      "Singhal, S., Yadav, A. K., & Prakash, R. (2023). Thermal Performance of Sawtooth and Photovoltaic Roof Greenhouse in natural circulation mode for Tropical Climatic conditions. ISHMT-ASTFE Proceedings, IIT Patna, Paper no. 439."
+    ]
+  }
+}

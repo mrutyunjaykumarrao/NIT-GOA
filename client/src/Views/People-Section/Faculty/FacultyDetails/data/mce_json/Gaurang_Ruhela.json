@@ -1,0 +1,84 @@
+{
+  "faculty_name": "Dr. Gaurang Ruhela",
+  "profile": {
+    "name": "Dr. Gaurang Ruhela",
+    "designation": "Faculty on contract",
+    "department": "Department of Mechanical Engineering",
+    "imageUrl": "Dr. Gaurang Ruhela.png",
+    "email": "gaurang@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Nonlinear Dynamics",
+      "Waves and Mechanical Vibrations",
+      "Vibrations Induced Particle Motion"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Gaurang Ruhela",
+    "gender": "Male",
+    "birthDate": "19/10/1984",
+    "designation": "Faculty on contract",
+    "department": "Department of Mechanical Engineering",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": "Teaching Exp: 3 Years, Industrial Exp: 4.5 Years"
+  },
+  "contactInformation": {
+    "address": "Department of Mechanical Engineering, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "gaurang@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Nonlinear Dynamics",
+    "Waves and Mechanical Vibrations",
+    "Vibrations Induced Particle Motion"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Engineering and Machine Drawing with Solid Edge and AutoCAD",
+      "Mechanical Vibrations",
+      "Dynamics of Machines",
+      "Elements of Mechanical Engineering",
+      "Numerical Methods and Computational Techniques"
+    ],
+    "pg": []
+  },
+  "academicInformation": [
+    {
+      "degree": "B.Tech.",
+      "institute": "UP Technical University",
+      "year": "2005",
+      "subject": "Mechanical Engineering"
+    },
+    {
+      "degree": "M.Tech.",
+      "institute": "IIT Kharagpur",
+      "year": "2015",
+      "subject": "Mechanical Systems Design"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "IIT Kharagpur",
+      "year": "2021",
+      "subject": "Nonlinear Dynamics, Applied Mechanics"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "Ruhela, G., DasGupta, A. 2021 Planar dynamics of a dimer on a wave. Nonlinear Dynamics, 106, 1711-1737, DOI: 10.1007/s11071-021-06849-7 [IF (Thomson Reuters): 5.741]. 2021",
+      "Ruhela, G., DasGupta, A. 2019 Motion periodicity and bifurcation of a wave excited hopping ball. Proceedings of the Royal Society A: Mathematical, Physical and Engineering Sciences 475, 20190137, DOI: 10.1098/rspa.2019.0137 [IF (Thomson Reuters): 3.213] 2019",
+      "Ruhela, G., DasGupta, A. 2016 Hopping on a wave: from periodic to chaotic transport. Nonlinear Dynamics 86, 1663-1672, DOI: 10.1007/s11071-016-2984-x [IF (Thomson Reuters): 5.741] 2016"
+    ]
+  },
+  "researchGuidance": [],
+  "fundedProjects": [],
+  "awardsAndHonors": [
+    "Secured 1st Position in SSC - batch.",
+    "Secured 2nd position in B.Tech. batch. Also, secured a rank in the top 10 students in the state in the third, and fifth semesters.",
+    "Secured 2nd rank in the M.Tech. batch.",
+    "Earned MHRD fellowship for M.Tech. and Ph.D."
+  ],
+  "memberships": [],
+  "professionalServices": [],
+  "coursesAttended": [],
+  "coursesConducted": []
+}

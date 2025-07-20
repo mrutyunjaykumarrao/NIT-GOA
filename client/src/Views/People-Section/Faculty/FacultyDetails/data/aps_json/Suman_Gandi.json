@@ -1,0 +1,296 @@
+{
+  "faculty_name": "Dr. Suman Gandi",
+  "profile": {
+    "name": "Dr. Suman Gandi",
+    "designation": "Faculty on contract",
+    "department": "Department of Applied Sciences",
+    "imageUrl": "Dr. Suman Gandi.png",
+    "email": "gandisuman@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Sodium/Lithium-Ion batteries",
+      "glass and glass-ceramic materials for energy storage systems",
+      "mass transport in ceramics (particularly at grain boundaries)",
+      "high-temperature corrosion",
+      "sol-gel processing of ceramics",
+      "self-cleaning/antibacterial coatings of glasses",
+      "bulk metallic glasses",
+      "high entropy alloys",
+      "catalysts and adsorbents for environmental pollution abatement",
+      "and the mechanical properties of glasses"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Suman Gandi",
+    "gender": "Male",
+    "birthDate": "10/11/1988",
+    "designation": "Faculty on Contract",
+    "department": "Department of Applied Sciences",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": "5 years"
+  },
+  "contactInformation": {
+    "address": "Department of Applied Sciences, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "gandisuman@nitgoa.ac.in",
+    "phoneMobile": "9704216900"
+  },
+  "researchAreas": [
+    "Sodium/Lithium-Ion batteries",
+    "Glass and glass-ceramic materials for energy storage systems",
+    "Mass transport in ceramics (particularly at grain boundaries)",
+    "High-temperature corrosion",
+    "Sol-gel processing of ceramics",
+    "Self-cleaning/antibacterial coatings of glasses",
+    "Bulk metallic glasses",
+    "High entropy alloys",
+    "Catalysts and adsorbents for environmental pollution abatement",
+    "Mechanical properties of glasses."
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Material Science"
+    ],
+    "pg": []
+  },
+  "academicInformation": [
+    {
+      "degree": "M.Sc.",
+      "institute": "National Institute of Technology, Warangal",
+      "year": "2012",
+      "subject": "Engineering Physics"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "GITAM (Deemed to be) University",
+      "year": "2019",
+      "subject": "Physics"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "Vaddadi, Venkata Satya Chidambara Swamy, Saidi Reddy Parne, Vijeesh Vadakke Parambil, Saran Srihari Sripada Panda, and Suman Gandi. \"Design of Fiber Bragg Grating (FBG) Sensor for Eccentricity Measurements in Ball Bearings.\" IEEE Transactions on Instrumentation and Measurement (2022). NOV 2022",
+      "Vaddadi, Venkata Satya Chidambara Swamy, Saidi Reddy Parne, V. P. Vijeesh, Suman Gandi, Saran Srihari Sripada Panda, and Linga Reddy Cenkeramaddi. \"Design and Fabrication of Liquid Pressure Sensor Using FBG Sensor Through Seesaw Hinge Mechanism.\" IEEE Photonics Journal 14, no. 5 (2022): 1-7. https://doi.org/10.1109/JPHOT.2022.3210146. SEPT 2022",
+      "Gandi, Shyam Sundar, Suman Gandi, Saidi Reddy Parne, Motilal Lakavat, Nageswara Rao Lakkimsetty, and Gangaraju Gedda. \"Bio-Inspired C/N/TiO 2 Hybrid Composite Heterostructure: Enhanced Photocatalytic Activity under Visible Light.\" Journal of Nanotechnology 2022 (2022). https://doi.org/10.1155/2022/5816063 SEPT 2022",
+      "Krishna, Kurugundla Gopi, Saidireddy Parne, Nagaraju Pothukanuri, Velavan Kathirvelu, Suman Gandi, and Dhananjay Joshi. \"Nanostructured metal oxide semiconductor-based gas sensors: A comprehensive review.\" Sensors and Actuators A: Physical (2022): 113578. https://doi.org/10.1016/j.sna.2022.113578 JULY 2022",
+      "Lakkimsetty, Nageswara Rao, S. Feroz, S. Karunya, L. Motilal, P. Saidireddy, and G. Suman. \"Synthesis, characterization and application of polymer composite materials in wastewater treatment.\" Materials Today: Proceedings (2022). https://doi.org/10.1016/j.matpr.2022.04.050 MAY 2022",
+      "Lakavat, Motilal, Amiya Bhaumik, Suman Gandi, and Sadi Reddy Parne. \"Electroless Ni–P–B coatings on magnesium alloy AZ91D: influence of nano Al2O3 on corrosion, wear, and hardness behaviour.\" Surface Topography: Metrology and Properties 10, no. 2 (2022): 025021. https://doi.org/10.1088/2051-672X/ac68fd MAY 2022",
+      "Lakkimsetty, Nageswara Rao, Motilal Lakavat, Santosh Walke, Suman Gandi, G. Kavitha, and Feroz Shaik. \"Comprehensive process design of biodiesel from waste cooking oil (WCO) using magnetic nano-catalyst.\" In AIP Conference Proceedings, vol. 2463, no. 1, p. 030007. AIP Publishing LLC, 2022. https://doi.org/10.1063/5.0080210 MAY 2022",
+      "Gandi, Suman, Saran Srihari Sripada Panda, Saidi Reddy Parne, Motilal Lakavat, Nageswara Rao Lakkimsetty, and Shyam Sundar Gandi. \"Amorphous SnO–Sb2O3–SiO2 glassy anode: high-performance electrode materials for Na-ion batteries.\" Journal of Materials Science: Materials in Electronics (2021): 1-7. https://doi.org/10.1007/s10854-021-07048-1 SEPT 2021",
+      "Lakkimsetty NR, Lakavat M, Varghese MJ, Gandi Suman. Solar photo catalytic treatment of oil produced water using zinc oxide. AIP Conference Proceedings, 2021, Sep 28 (Vol. 2396, No. 1, p. 020010). https://doi.org/10.1063/5.0066309 SEPT 2021",
+      "Sana Mohammed Ali Al kamzari, Lakkimsetty Nageswara Rao, Motilal Lakavat, Suman Gandi, Saidi Reddy P, G. Kavitha Sri. \"Extraction and characterization of cellulose from agricultural waste materials.\" Materials Today: Proceedings (2021). https://doi.org/10.1016/j.matpr.2021.07.030. JULY 2021",
+      "Al-Balushi, Majan, Nageswara Rao Lakkimsetty, M. J. Varghese, Motilal Lakavat, Parne Saidi Reddy, and Suman Gandi. \"Evaluating the solar Photo-Fenton as photocatalyst process by Response surface methodology to treat the saline water.\" Materials Today: Proceedings (2021). https://doi.org/10.1016/j.matpr.2021.07.024. JULY 2021",
+      "Guddla, G. T., V. K. Katta, S. Gandi, S. Ambadipudi, and B. R. Ravuri. \"The role of titanium content in (Ni75Cr15Si10) 100- x Ti x bulk metallic glass systems to elevate mechanical and corrosion properties.\" Phase Transitions (2021): 1-12. https://doi.org/10.1080/01411594.2021.1957103. JULY 2021",
+      "V. S. C. S. Vaddadi, S. R. Parne, V. V. P., S. Gandi and L. R. Cenkeramaddi, \"Design and Implementation of Density Sensor for Liquids Using Fiber Bragg Grating Sensor,\" in IEEE Photonics Journal, vol. 14, no. 1, pp. 1-6, Feb. 2022, Art no. 6804106, doi: 10.1109/JPHOT.2021.3129587. FEB 2021",
+      "Suman Gandi, Venkata Satya Chidambara Swamy Vaddadi, Saran Srihari Sripada Panda, Nithin Kumar Goona, Saidi Reddy Parne, Motilal Lakavat, Amiya Bhaumik, Recent progress in the development of glass and glass-ceramic cathode/solid electrolyte materials for next-generation high capacity all-solid-state sodium-ion batteries: A review, Journal of Power Sources,Volume 521, 2022, 230930, ISSN 0378-7753, https://doi.org/10.1016/j.jpowsour.2021.230930. FEB 2021",
+      "Katta, V. K., Gandi, S., Katari, N. K., Mekprasart, W., Pecharapa, W., Dutta, D. P., & Ravuri, B. R. (2020). Mixed Polyanion Na-Mn-V-P Glass-Ceramic Cathode Network: Improved Electrochemical Performance and Stability. Energy Technology. https://doi.org/10.1002/ente.202000845. NOV 2020",
+      "Guddla, G. T., Gandi, S., Ambadipudi, S., & Ravuri, B. R. (2020). Design of Ni-based Bulk Metallic Glasses with Improved Mechanical and Corrosion Properties. Current Applied Science and Technology, 112-128. https://li01.tci-thaijo.org/index.php/cast/article/view/246372. AUG 2020",
+      "Gandi, S. S., Gandi, Suman., Katari, N. K., Mekprasart, W., Pecharapa, W., Dutta, D. P., & Ravuri, B. R. (2020). Improvement in fast Na-ion conduction in Na3+ xCrxTi2-x (PO4)(3) glass-ceramic electrolyte material for Na-ion batteries. Journal of the Iranian Chemical Society, 17(10), 2637-2649. https://doi.org/10.1007/s13738-020-01960-9. JUN 2020",
+      "Gandi, S., Mekprasart, W., Pecharapa, W., Dutta, D. P., Jayasankar, C. K., & Ravuri, B. R. (2020). Na–Ge glass anode network mixed with bismuth oxide nanocrystallites: A high capacity anode material for use in advanced sodium-ion battery design. Materials Chemistry and Physics, 242, 122568. https://doi.org/10.1016/j.matchemphys.2019.122568. FEB 2020",
+      "Gandi, S., Katta, V. K., Dutta, D. P., & Ravuri, B. R. (2020). A mixed polyanion NaFe 1- x (VO) x PO 4 glass-ceramic cathode system for safe and large-scale economic Na-ion battery applications. New Journal of Chemistry, 44(7), 2897-2906. https://doi.org/10.1039/C9NJ05684J. JAN 2020",
+      "Gandi, S. S., Gandi, S., Madduluri, V. R., Katari, N. K., Dutta, D. P., & Ravuri, B. R. (2019). Na 3+ x [Cr x Ti 2-x (PO 4) 3] glass-ceramic electrolyte: ionic conductivity and structural correlations for different heat treating temperatures and time schedules. Ionics, 25(9), 4179-4188. https://doi.org/10.1007/s11581-019-02979-6. APRIL 2019",
+      "Sundar, G. S., Suman, G., Kumar, K. N., Dutta, D. P., & Rao, R. B. (2019). Investigation on the applicability of high Na-ion conducting Na3+x [ZrxSc2-x (PO4) 3] glass-ceramic electrolyte for use in safer Na-ion batteries. Journal of Physics and Chemistry of Solids, 126, 209-218. https://doi.org/10.1016/j.jpcs.2018.11.016. MAR 2019",
+      "Gandi, S., Chinta, S. R., Ghoshal, P., & Ravuri, B. R. (2019). SnO-GeO2-Sb2O3 glass anode network mixed with different Ba2+ fractions: Investigations on Na-ion storage capacity and stability. Journal of Non-Crystalline Solids, 506, 80-87. https://doi.org/10.1016/j.jnoncrysol.2018.11.028. FEB 2019",
+      "Gandi, S.S., Gandi, Suman., Katari, N.K. et al. Electrical properties and scaling studies of Na3+x ZrxSc2-x(PO4)3 glass ceramic electrolyte for use in Na-ion batteries. Appl. Phys. A 125, 92 (2019). https://doi.org/10.1007/s00339-019-2392-4. JAN 2019",
+      "Gandi, S. S., Gandi, Suman., Katari, N. K., Babu, M. S., & Ravuri, B. R. (2018). Electrical conductivity of lithium phosphate glass-ceramics precipitated with nanocrystalline BaTiO3. Physics and Chemistry of Glasses-European Journal of Glass Science and Technology Part B, 59(3), 135-139. https://doi.org/10.13036/17533562.59.3.003. NOV 2018",
+      "Gandi, Suman., Chinta, S. R., Ojha, P. K., & Ravuri, B. R. (2018). Electrical conductivity and charge/discharge profiles of mixed polyanion glass-ceramic cathodes for use in Na-ion batteries. Journal of Non-Crystalline Solids, 493, 41-47. https://doi.org/10.1016/j.jnoncrysol.2018.04.034. AUG 2018",
+      "Gandi, S., Chinta, S. R., Katari, N. K., & Ravuri, B. R. (2018). Electrochemical performance of SnO–V 2 O 5–SiO 2 glass anode for Na-ion batteries. Materials for Renewable and Sustainable Energy, 7(4), 22. https://doi.org/10.1007/s40243-018-0129-5. AUG 2018",
+      "Gandi, Suman., Chinta, S. R., Ojha, P. K., Surendra Babu, M. S., & Ravuri, B. R. (2018). High Na-ion conducting Na1+ x [SnxGe2- x (PO 4) 3] glass-ceramic electrolytes: Structural and electrochemical impedance studies. Journal of the American Ceramic Society, 101(1), 167-177. https://doi.org/10.1111/jace.15103. JULY 2018",
+      "Ravuri, B. R., Gandi, S., & Chinta, S. R. (2018). Zn–Ge–Sb glass composite mixed with Ba 2+ ions: a high capacity anode material for Na-ion batteries. Applied Nanoscience, 8(6), 1569-1577. https://doi.org/10.1007/s13204-018-0822-9. MAY 2018",
+      "Suman, Gandi., Rao, C. S., Ojha, P. K., Babu, M. S., & Rao, R. B. (2017). Mixed polyanion NaCo1- x (VO) x PO 4 glass–ceramic cathode: role of ‘Co’on structural behaviour and electrochemical performance. Journal of Materials Science, 52(9), 5038-5047. https://doi.org/10.1007/s10853-016-0741-7. JAN 2017",
+      "Reddy, C. K. K., Suman, Gandi., Rao, R. B., Katari, N. K., & Reddy, M. R. P. (2016). Lithium–germanium–phosphate glassceramic electrolytes: correlation between the nanocrystallization and electrical studies. Applied Nanoscience, 6(7), 1043-1052. https://doi.org/10.1007/s13204-016-0519-x. JAN 2016"
+    ],
+    "proceedings": [
+        "Suman Gandi, Saran Srihari Sripada Panda, Saidi Reddy Parne, Nagaraju Pothukanuri, Gangaraju Gedda. \"Advanced Electrochemical Bionanomaterials for Energy Conversion and Storage\", in Sustainable Nanomaterials for Biosystems Engineering Trends in Renewable Energy, Environment, and Agriculture, CRC Press. OCT 2022",
+        "Gandi, Suman, Venkata Satya Chidambara Swamy Vaddadi, Saran Srihari Sripada Panda, Saidi Reddy Parne, Motilal Lakavat, and Amiya Bhaumik. \"Tribological Studies of Bulk Metallic Glasses: Structure, Preparation, Surface Treatment, and Coating.\" In Handbook of Research on Tribology in Coatings and Surface Treatment, pp. 330-358. IGI Global, 2022. DOI: 10.4018/978-1-7998-9683-8.ch014. MAR 2022"
+    ],
+    "booksAuthored": [
+        "Electrochemical energy storage systems and devices, Gandi Suman, Parne Saidi Reddy, Edla Damodar Reddy, First Edition (2021), Pages:1-137. https://www.google.co.in/books/edition/Electrochemical_energy_storage_systems_a/duBBEAAAQBAJ?hl=en&gbpv=0. JUN 2021"
+    ]
+  },
+  "researchGuidance": [],
+  "fundedProjects": [],
+  "awardsAndHonors": [
+    "Research Excellence Award 2021",
+    "Reviewer for the LE STUDIUM Loire Valley Institute for Advanced Studies' Visiting Researcher programme 2022, France.",
+    "Australian patent: A Deep Transportation Model to Predict the Human Mobility for Autonomous Vehicle, Publication date: 2021/3/3, Patent office, AU, Patent number, 2021100003; Saad Bin Abul Kashem, S. Arularasu, M. Gurusamy, Gandi Suman, Sita Rani, S.Mohamed Abbas, Tulika Chakrabarti, Ananda Shankar Hati, Reddappa H.N, S. Nagarajan, S. Selvakanmani, Prasun Chakrabarti",
+    "Australian patent: Self-Tuning Controller and Tracking Method for Autonomous Aerial Drone, Publication date: 2021/5/19, Patent office: AU, Patent number: 2021101989, Application number: 2021101989; S. Arularasu, Tulika Chakrabarti, Ananda Shankar Hati, Pradeep Chhawchharia, Sasanko Sekhar Gantayat, Suman Gandi, Saidi Reddy Parne, Motilal Lakavat, Shyamsundar Gandi, Ajay Kumar Singh, Prasun Chakrabarti, Sudharsan Jayabalan",
+    "Australian patent: A method and system for fabricating a novel pressure sensor using fbg sensor; Australian patent number: 2021106713, Chidambara Swamy Vaddadi Venkata Satya; Parne, Saidi Reddy; V. P Vijeesh; Gandi Suman; Edla Damodar Reddy; Cenkeramaddi, Linga Reddy",
+    "Australian patent: A process for producing biodiesel from waste cooking oil by using transesterification; Australian patent number: 2021103220, Mukhaini, Ahoud AL ; Lakavat, Motilal ; Gandi Suman ; Parne Saidi Reddy ; Edla Damodar Reddy ; Lakkimsetty, Nageswara Rao",
+    "Invited Speaker: Delivered Keynote talk on “Micro structural characterization of Nanomaterials for electrochemical energy Conversion and storage technologies” in Five-day International Faculty Development Programme (Online) on “Emerging Trends in Nano Technology” 9th-13th November, 2021, Organized by Department Of Basic Science (Chemistry & Physics), Vishnu Institute Of Technology, Bhimavaram",
+    "Best Paper Award: Experimental investigation on solar photo-fenton as photocatalyst to treat the saline water by response surface methodology, presented by Saidi Reddy Parne, has been selected as best paper in the International Virtual Conference on “Recent Innovations in Science & Technology (RIST 2021)” conducted on 19th & 20th June 2021, organized by ERANAD Knowledge City Technical Campus, Malappuram, Kerala, India in association with ISET Research & HEXAIND Technologies and Services",
+    "Best Oral presentation: “Role of Polyanion insertion on structural behaviour and electrochemical performance: Mixed Polyanion NaM1-x(VO)xPO4 glass-ceramic cathode” ICRACM-2017 (5th International Conference on Recent Advances in Composite Materials), KL University, 6-8, Feb 2017, Vijayawada, Andhra Pradesh, India.",
+    "Best Oral presentation: Mixed polyanion NaMn1-x(VO)xPO4 glass-ceramic cathodes: structural and electrochemical correlations” International Conference on Nano Science & Engineering Applications- ICONSEA-2018. 4th to 6th October 2018 held at JNTU Hyderabad, India",
+    "Best Oral presentation: “A comparative study on fast Na-ion conduction in Na3+x[(Zr/Cr)x(Sc/Ti)2-x(PO4)3] glass and glass-ceramic electrolyte materials for Na-ion batteries”. National Seminar on Emerging Trends in Nanomaterials and Engineering Applications (NSENMEA-2019), GVP College of Engineering (Autonomous), Sep 18-19, 2019, Visakhapatnam, Andhra Pradesh, India.",
+    "Best poster presentation: “High Na-ion Conducting Na3.5[M'0.5M\"1.5(PO4)3] (M'= Zr/Cr and M\"=Sc/Ti) Glass-Ceramic Electrolyte for Use in Na-ion Batteries” National Conference on Physics and Chemistry of Functional Materials 2019 (PCFM 2019) Feburary 21-22, 2019, Department of Physics, GITAM deemed to be University, Hyderabad, India"
+  ],
+  "memberships": [],
+  "professionalServices": [],
+  "coursesAttended": [
+    {
+      "month": "MAR",
+      "year": "2022",
+      "info": "International Conference on Current Trends in Advanced Materials and their Applications for Societal Development” (ICTAMASD-2022) March 8th-10th, 2022 (Online) organized by the Department of Physics, Dr. Harisingh Gour Vishwavidyalaya Sagar [MP]"
+    },
+    {
+      "month": "JUN",
+      "year": "2021",
+      "info": "“Experimental investigation on solar photo-fenton as photocatalyst to treat the saline water by response surface methodology” International Virtual Conference “Recent Innovations in Science & Technology (RIST 2021)” conducted on 19th & 20th June 2021, organized by ERANAD Knowledge City Technical Campus, Malappuram, Kerala, India in association with ISET Research & HEXAIND Technologies and Services. (Best Paper Award)"
+    },
+    {
+      "month": "JUN",
+      "year": "2021",
+      "info": "“Green synthesis of carbon quantum dots embedded onto titanium dioxide nanorods for enhancing photocatalytic activity\" (PAPER-ID: RIST-CH-111) in the International Virtual Conference, Recent Innovations in Science & Technology (RIST 2021) conducted on 19th & 20th June 2021."
+    },
+    {
+      "month": "JUN",
+      "year": "2021",
+      "info": "\"Synthesis, characterization of biodiesel production from restaurant waste cooking oil\" (PAPER-ID: RIST-CH-110) in the International Virtual Conference, Recent Innovations in Science & Technology (RIST 2021) conducted on 19th & 20th June 2021."
+    },
+    {
+      "month": "APRIL",
+      "year": "2021",
+      "info": "“Comparative Analysis on Production of Biodiesel from Waste Cooking Oil by using Transesterification and Microwave Methods” International Conference on Environment and Environment (ICEE 2021), April 09-10, Jyothi Engineering College, Cheruthuruthy, Thrissur, Kerala 679531, India."
+    },
+    {
+      "month": "APRIL",
+      "year": "2021",
+      "info": "“Solar Photocatalytic Treatment of Oil Produced Water Using Zinc Oxide Photocatalyst” International Conference on Environment and Environment (ICEE 2021), April 09-10, Jyothi Engineering College, Cheruthuruthy, Thrissur, Kerala 679531, India."
+    },
+    {
+      "month": "SEPT",
+      "year": "2019",
+      "info": "“A comparative study on fast Na-ion conduction in Na3+x[(Zr/Cr)x(Sc/Ti)2-x(PO4)3] glass and glass-ceramic electrolyte materials for Na-ion batteries”. National Seminar on Emerging Trends in Nanomaterials and Engineering Applications (NSENMEA-2019), GVP College of Engineering (Autonomous), Sep 18-19, 2019, Visakhapatnam, Andhra Pradesh, India. (Best Oral presentation)"
+    },
+    {
+      "month": "SEPT",
+      "year": "2019",
+      "info": "“A comparative study on fast Na-ion conduction in Na3+x[(Zr/Cr)x(Sc/Ti)2-x(PO4)3] glass and glass-ceramic electrolyte materials for Na-ion batteries”. National Seminar on Emerging Trends in Nanomaterials and Engineering Applications (NSENMEA-2019), GVP College of Engineering (Autonomous), Sep 18-19, 2019, Visakhapatnam, Andhra Pradesh, India. (Best Oral presentation)."
+    },
+    {
+      "month": "FEB",
+      "year": "2019",
+      "info": "“Structural and electrical properties of high conducting Na1+x[SnxTi2-x(PO4)3] glass and glass-ceramic electrolyte for use in Na-ion secondary batteries” National Conference on Physics and Chemistry of Functional Materials 2019 (PCFM 2019) February 21-22, 2019, Department of Physics, GITAM deemed to be University, Hyderabad, India."
+    },
+    {
+      "month": "FEB",
+      "year": "2019",
+      "info": "“High Na-ion Conducting Na3.5[M'0.5M\"1.5(PO4)3] (M'= Zr/Cr and M\"=Sc/Ti) Glass-Ceramic Electrolyte for Use in Na-ion Batteries” National Conference on Physics and Chemistry of Functional Materials 2019 (PCFM 2019) February 21-22, 2019, Department of Physics, GITAM deemed to be University, Hyderabad, India. (Best poster presentation)."
+    },
+    {
+      "month": "FEB",
+      "year": "2019",
+      "info": "“Structural and Electrochemical Properties of Vanadium Doped Sodium Nickel Phosphate Glass and Glass-ceramic Cathodes for Use in Na-ion Secondary Batteries” National Conference on Physics and Chemistry of Functional Materials 2019 (PCFM 2019) February 21-22, 2019, Department of Physics, GITAM deemed to be University, Hyderabad, India."
+    },
+    {
+      "month": "FEB",
+      "year": "2019",
+      "info": "“Improved Photocatalytic Activity and Performance of Novel h-BN-TiO2” National Conference on Physics and Chemistry of Functional Materials 2019 (PCFM 2019) February 21-22, 2019, Department of Physics, GITAM deemed to be University, Hyderabad, India."
+    },
+    {
+      "month": "FEB",
+      "year": "2019",
+      "info": "“Crystallization behaviour of Na9V3(P2O7)3(PO4)2 glass cathode for use in Na-ion batteries” National Conference on Physics and Chemistry of Functional Materials 2019 (PCFM 2019) February 21-22, 2019, Department of Physics, GITAM deemed to be University, Hyderabad, India."
+    },
+    {
+      "month": "FEB",
+      "year": "2019",
+      "info": "“Mixed polyanion NaMn1-x(VO)xPO4 glass-ceramic cathodes: structural and electrochemical correlations” National Conference on Physics and Chemistry of Functional Materials 2019 (PCFM 2019) February 21-22, 2019, Department of Physics, GITAM deemed to be University, Hyderabad, India."
+    },
+    {
+      "month": "OCT",
+      "year": "2018",
+      "info": "“Mixed polyanion NaMn1-x(VO)xPO4 glass-ceramic cathodes: structural and electrochemical correlations” International Conference on Nano Science & Engineering Applications- ICONSEA-2018. 4th to 6th October 2018 held at JNTU Hyderabad, India (Best Oral presentation)."
+    },
+    {
+      "month": "SEPT",
+      "year": "2018",
+      "info": "“Tin-Vanadium oxide nanoparticles as a Na-ion battery anode: Correlations between metastable amorphous nature and rate capability” International Conference on Advanced nano materials for Suitable Development (ACeND-2018), Sep, 19-21,2018 held at CHIRST University, Banglore, India."
+    },
+    {
+      "month": "DEC",
+      "year": "2017",
+      "info": "“Tin-Vanadium oxide nanoparticles as a Na-ion battery anode: Correlations between metastable amorphous nature and rate capability” PCNCM-2017 (National Seminar on Physics and Chemistry of Non-Crystalline Materials) 1-2, Dec 2017 held at Kakani Venkata Ratnam College, Nandigama, Andhra Pradesh"
+    },
+    {
+      "month": "NOV",
+      "year": "2017",
+      "info": "Participated in the NCPRE Familiarization workshop on “Photovoltaics”, on November 30, 2017, at IIT Bombay, Mumbai, India"
+    },
+    {
+      "month": "FEB",
+      "year": "2017",
+      "info": "“Role of Polyanion insertion on structural behaviour and electrochemical performance: Mixed Polyanion NaM1-x(VO)xPO4 glass-ceramic cathode” ICRACM-2017 (5th International Conference on Recent Advances in Composite Materials), KL University, 6-8, Feb 2017, Vijayawada, Andhra Pradesh, India (Best Oral presentation)"
+    },
+    {
+      "month": "DEC",
+      "year": "2016",
+      "info": "“Structural studies of mixed polyanion (NaMnBO4+NaFeVO4) glass ceramic systems” National Seminar on Innovations and developments in emerging research trends chemical science and technology, 29-30, Dec 2016 Tara Degree College Sangareddy, Telangana"
+    },
+    {
+      "month": "DEC",
+      "year": "2016",
+      "info": "Participated in one day workshop on “Advanced Ceramic processing and fabrication” on 12th December 2016 at ARCI, Hyderabad, India"
+    },
+    {
+      "month": "OCT",
+      "year": "2016",
+      "info": "“Na-ion batteries for Greener and Sustainable Future” National Seminar on Energy and Ecology, 4-5, Oct 2016, Sir. C. R. Reddy Autonomous College, Eluru, Andhra Pradesh, India"
+    },
+    {
+      "month": "OCT",
+      "year": "2016",
+      "info": "“High Voltage amorphous cathode materials: Design and characterization” TSCST-NICE 2016 (International Conference on Trend Setting Innovation in Chemicals Science & Technology Nature Inspired Chemistry & Engineering) 4-6, Oct 2016, JNTU Hyderabad"
+    },
+    {
+      "month": "MAY",
+      "year": "2016",
+      "info": "Participated in the TEQIP workshop on “Energy Conversion and Storage (ECS-2016)” on 9-14 May 2016 at IIT Hyderabad, Hyderabad, Telangana, India"
+    },
+    {
+      "month": "DEC",
+      "year": "2015",
+      "info": "“Structural Properties of NaMnBO3+NaMnVO4 mixed polyanion cathodes for Na ion batteries” ICAMPE 15 (First International Conference on Advanced Materials for Power Engineering) 11-13, Dec 2015, Mahatma Gandhi University, Kottayam, Kerala, India"
+    },
+    {
+      "month": "DEC",
+      "year": "2015",
+      "info": "Participated in the Two-Week ISTE short Term Training Programme on “Engineering Physics” on December 8-18, 2015 at GITAM University Hyderabad, Telangana, India"
+    },
+    {
+      "month": "OCT",
+      "year": "2015",
+      "info": "Participated in one day FDP on “Light-Harvesting Materials” on 10th Oct 2015 at GRIET, Hyderabad, Telangana, India"
+    },
+    {
+      "month": "MAY",
+      "year": "2015",
+      "info": "Participated in Two days National level workshop on “Recent Trends in X-Ray Diffraction Techniques (NWRTXRD-2015) on 29-30 May-2015 at Osmania University Hyderabad, India"
+    },
+    {
+      "month": "MAR",
+      "year": "2015",
+      "info": "Participated in National level workshop on “Recent Developments in Nano Materials and applications (RDNA-2015)” 0n 30, March 2015 at NIT Warangal, Telangana, India"
+    },
+    {
+      "month": "DEC",
+      "year": "2014",
+      "info": "“Microstructural and electrical studies on sulfide based glassceramic electrolytes for high energy density batteries” ICEE- 2014 (International Conference on Environment and energy) 15-17, Dec 2014 IST, JNTU Hyderabad"
+    },
+    {
+      "month": "DEC",
+      "year": "2014",
+      "info": "“Electrochemical performance of sodium boron oxide glass-coated NaFePO4 cathode materials for large scale energy storage devices” ISGFM 2014 (International Seminar on Glass and Other Functional Materials) Dec 11-13, 2014, Acharya Nagarjuna University, Guntur, A.P"
+    },
+    {
+      "month": "JUN",
+      "year": "2014",
+      "info": "“Comparison studies to obtain the highly efficient nano-structured glass-ceramic electrolyte” International Conference on Nano Science and Engineering Applications (INONSEA-2014) 26-28, June 2014, JNTU, Hyderabad."
+    },
+    {
+      "month": "MAR",
+      "year": "2010",
+      "info": "Participated in Two days National level workshop on “Photonics for engineering applications” on 13-14, March 2010 at NIT Warangal, Telangana, India"
+    }
+  ],
+  "coursesConducted": []
+}

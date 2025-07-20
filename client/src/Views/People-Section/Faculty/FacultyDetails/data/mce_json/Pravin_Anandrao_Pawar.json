@@ -1,0 +1,116 @@
+{
+  "faculty_name": "Dr. Pravin Anandrao Pawar",
+  "profile": {
+    "name": "Dr. Pravin Anandrao Pawar",
+    "designation": "Faculty on contract",
+    "department": "Department of Mechanical Engineering",
+    "imageUrl": "Dr. Pravin Anandrao Pawar.png",
+    "email": "pravinpawar@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Traditional and Non-Traditional Machining Processes",
+      "Manufacturing Engineering",
+      "Materials Science"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Pravin Anandrao Pawar",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Faculty on contract",
+    "department": "Department of Mechanical Engineering",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": "4.5 Years"
+  },
+  "contactInformation": {
+    "address": "Department of Mechanical Engineering, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "pravinpawar@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Traditional and Non-Traditional Machining Processes",
+    "Manufacturing Engineering",
+    "Materials Science"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Manufacturing Technology",
+      "Automatic Control",
+      "Automation Technologies",
+      "Mechanical Workshop"
+    ],
+    "pg": []
+  },
+  "academicInformation": [
+    {
+      "degree": "B.E.",
+      "institute": "Shivaji University, Kolhapur",
+      "year": "2010",
+      "subject": "Production Engineering"
+    },
+    {
+      "degree": "M.Tech.",
+      "institute": "College of Engineering Pune (COEP)",
+      "year": "2012",
+      "subject": "Manufacturing Engineering and Automation"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "National Institute of Technology Jamshedpur",
+      "year": "2020",
+      "subject": "Manufacturing Engineering"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "Pravin Pawar, Amaresh Kumar and Raj Ballav, “Experimental Study on The MRR, Machined Depth And Hole Diameter For Soda-Lime Glass by Electrochemical Discharge Machining Process with Copper Tool”, International Journal of Modern Manufacturing Technologies, Vol 12, No. 1, pp. 131-143. 2020",
+      "Pravin Pawar, Amaresh Kumar and Raj Ballav, “Grey Relational Analysis Optimization of Input Parameters for Electrochemical Discharge Drilling of Silicon Carbide by Gunmetal Tool Electrode”, Annales de Chimie - Science des Matériaux, Vol. 44, No. 4, pp. 239-249. 2020",
+      "Pravin Pawar, Amaresh Kumar and Raj Ballav, “Parametric Analysis of Electrochemical Discharge Drilling on Soda-Lime Glass Material Using Taguchi L27 Orthogonal Array Method”, Strojnícky casopis-Journal of Mechanical Engineering, Vol. 69, No. 4, pp. 115-132. 2019",
+      "Pravin Pawar, Amaresh Kumar and Raj Ballav, “Analysis of Machining For Silicon Carbide on Electrochemical Discharge Machining With Brass Tool”, International Journal of Modern Manufacturing Technologies, Vol. 11, No. 1, pp. 86-94. 2019",
+      "Pravin Pawar, Amaresh Kumar and Raj Ballav, “Development and Manufacturing of Arduino Based Electrochemical Discharge Machine”, Journal of Machine Engineering, Vol. 18, No. 1, pp. 45-60. 2018",
+      "Pawar Pravin, Raj Ballav and Amaresh Kumar, “Machining Processes of Sapphire: An Overview”, International Journal of Modern Manufacturing Technologies, Vol. 9, No. 1, pp. 47-72. 2017",
+      "Pravin Pawar, Raj Ballav and Amaresh Kumar, “Machining Processes of Silicon Carbide: A Review”, Reviews on Advanced Materials Science, Vol. 51, No. 1, pp. 62-76. 2017",
+      "Pravin Pawar, Raj Ballav and Amaresh Kumar, “Finite Element Method Broach Tool Drilling Analysis Using Explicit Dynamics Ansys”, International Journal of Modern Manufacturing Technologies, Vol. 8, No. 2, 54-60. 2016"
+    ],
+    "proceedings": [
+      "Pravin Pawar, Raj Ballav and Amaresh Kumar, “Micromachining of Borosilicate Glass: A State of Art Review”, ICMPC 2016, Materials Today: Proceedings (Elsevier), Vol. 4, pp. 2813–2821. 2017",
+      "Pravin Pawar, Raj Ballav and Amaresh Kumar, “Micro Nano Machining Processes of Glass Ceramic Zerodur: A Short Communication”, 13th International Conference on Fiber Optics and Photonics, IIT Kanpur, OSA Technical Digest (Optical Society of America), W3A.67, 4 to 8 December, 2016, 2016",
+      "Pravin Pawar, Raj Ballav and Amaresh Kumar,(2016). “Finite Element Method Analysis of Electrochemical Discharge Machine Using Explicit Dynamics ANSYS”, 6th International & 27th All India Manufacturing Technology, Design and Research Conference (AIMTDR-2016), December 16-18, 2016 at College of Engineering., Pune, Maharashtra, India. ISBN: 978-93-86256-27-0. 2016",
+      "Pravin Pawar, Raj Ballav and Amaresh Kumar, “Machining Processes of Pyrex Glass: A Technological Review”, 6th International & 27th All India Manufacturing Technology, Design and Research Conference (AIMTDR-2016), December 16-18, 2016 at College of Engineering, Pune, Maharashtra, India. ISBN: 978-93-86256-27-0. 2016",
+      "Pravin Pawar, Raj Ballav and Amaresh Kumar (2015). “The effect of Magnetic Field Assisted electro discharge machining process: An overview”, International Conference on Precision, Meso, Micro and Nano Engineering (COPEN-9), 10th -12th December at IIT Bombay, Powai, Mumbai. 2015",
+      "Pravin Pawar, Raj Ballav and Amaresh Kumar, (2015). “Measurement Analysis in Electrochemical Discharge Machining (ECDM) Process”, 4th National Conference on Advances in Metrology (ADMET) 25th to 27th February 2015, CSIR-CMERI, Durgapur, India. 2015",
+      "Pravin Pawar, Sourabh Sinha, Amaresh Kumar and Raj Ballav (2014). “Review on research trends in Electrochemical Discharge Machining”, 4th National Conference on Recent Advancess in Manufacturing (RAM-2014). 26-28 (2014) at Department of Mechanical Engineering, S.V.N.I.T. Surat, Gujrat, pp 132-136 ISBN No. 978-93-5156-755-4. 2014",
+      "Pravin Pawar, Sourabh Sinha, Raj Ballav, Amaresh Kumar (2014). “A review on Machining Process of Alumina and Alumina Composite Ceramics”, International Conference on Industrial, Mechanical and Production Engineering: Advancements and Current Trends (ICIMPCT), 27th to 29th Nov. (2014), Department of Mechanical Engineering, MANIT, Bhopal, M.P., ISBN No. 978-93-84935-03-0. 2014",
+      "Pravin Pawar, Sandip Anasane, “Experimental Investigation of Electroless Cu coated Electrode Fabricated with FDM Rapid Prototyping Technique for Electro Discharge Machining”, International Conference on Precision, Micro And Nano Engineering (COPEN-2013), 13th–15th December 2013, NIT Calicut, Vol. II, pp. 639-645. ISBN: 978-93-82880-91-2 2013",
+      "Pravin Pawar, Sandip Anasane, “Feasibility study of Fabrication of Electro Discharge Machining electrodes by FDM Rapid Prototyping Process”. 4th International Conference and All India Manufacturing Technology, Design & Research (AIMTDR) 2012, Jadavpur University, Kolkata, Vol. I, pp. 636-642, ISBN: 978-93-82062-75-2 2012"
+    ],
+    "bookChapters": [
+      "Pawar Pravin, Raj Ballav and Amaresh Kumar, A Review on Experimental Studies in Electrochemical Discharge Machining, Innovations in Materials and Manufacturing, Scrivener Publishing, WILEY, pp. 17-87, 2023, ISBN: 9781394174478. 2023",
+      "Pawar, Pravin, Amaresh Kumar, and Raj Ballav, Study of Soda-Lime Glass machinability by Gunmetal Tool in Electrochemical Discharge Machining and Process Parameters Optimization Using Grey Relational Analysis, Innovations in Materials and Manufacturing, Scrivener Publishing, WILEY, pp. 219-238, 2023, ISBN: 9781394174478. 2023",
+      "Pawar, Pravin, Raj Ballav and Amaresh Kumar, “FEM Analysis of Different Materials Based on Explicit Dynamics ANSYS in Electrochemical Discharge Machine”, In: Dixit U., Kant R. (eds) Simulations for Design and Manufacturing, Lecture Notes on Multidisciplinary Industrial Engineering, pp. 231-258. Springer-nature, Singapore. 2018"
+    ]
+  },
+  "researchGuidance": [],
+  "fundedProjects": [],
+  "awardsAndHonors": [
+    "M.Tech (GATE) Fellowship [2010-2012]",
+    "MHRD PhD Fellowship [2014-2018]"
+  ],
+  "memberships": [],
+  "professionalServices": [],
+  "coursesConducted": [
+    { "month": "MAR", "year": "2021", "info": "FDP on Materials Characterization Techniques, Indian Institute of Technology, Indore, QIP, 22th – 27th March 2021." },
+    { "month": "NOV", "year": "2020", "info": "FDP on Inter-Disciplinary Aspects in Modeling of Manufacturing Processes, Indian Institute of Technology, Bombay, QIP, 21st-29th Nov 2020." },
+    { "month": "OCT", "year": "2020", "info": "International Seminar In Advanced Joining & Welding Techniques, Liverpool John Moores University, United Kingdom and Centre of Advanced Manufacturing & Material Processing, University of Malaya, Malaysia, 15th Oct. 2020." },
+    { "month": "SEPT", "year": "2020", "info": "FDP on Industry 4.0- Industrial Automation Solutions & Applications (IASA-2020), National Institute of Technology, Kurukshetra, 21st-25th Sept. 2020." },
+    { "month": "AUG", "year": "2020", "info": "Workshop on Current Trends in Chemical Process technology and Materials Development, Indian Institute of Technology, Guwahati, Assam, India and University of Aberdeen, Scotland, UK, 19th-20th Aug. 2020." },
+    { "month": "JULY", "year": "2020", "info": "One Week Online Short Term Course on “Hybrid Manufacturing Processes: Opportunities And Challenges”, Dr. B. R. Ambedkar National Institute of Technology, Jalandhar, 06 - 10 July, 2020." },
+    { "month": "MAY", "year": "2020", "info": "One Day Workshop on “Effective And Efficient Online Teaching In The Age Of Corona, A Hands On Workshop”, Teaching Learning Centre (ICT) At IIT Bombay, (PMMMNMTT), MHRD, 17 May 2020." },
+    { "month": "MARCH", "year": "2017", "info": "Green Chemistry and Sustainable Development, National Institute of Technology, Jamshedpur, 17-18 march 2017." },
+    { "month": "MARCH", "year": "2017", "info": "Workshop on Mechanics over Micro and Nano Scales, Indian Institute of Technology, Kharagpur, 29-31 March 2017." },
+    { "month": "JAN", "year": "2015", "info": "Two Days Workshop on “Aesthetics of Technical Writing Latex “ Organized by Department of Computer Science, National Institute of Technology, Jamshedpur, Under (TEQIP)-II, January 10-11 2015." },
+    { "month": "OCT", "year": "2014", "info": "Two Days Workshop on “Product Development : Concepts, Methods & Applications” Organized by Department of Mechanical Engineering, Indian Institute of Engineering Science and Technology, Shibpur Under (TEQIP)-II, October 16-17, 2014." },
+    { "month": "MARCH", "year": "2014", "info": "Three days National Workshop on Manufacturing, Jadavpur University, kolkata, 27th -29th March 2014." }
+  ],
+  "coursesAttended": []
+}

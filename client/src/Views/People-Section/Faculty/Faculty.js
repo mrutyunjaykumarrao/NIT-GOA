@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useTheme } from '../../../contexts/ThemeContext';
 import './Faculty.css';
 
@@ -92,6 +92,7 @@ import VishanupadBarve from '../../../assets/images/Faculty/HSS/Mr. Vishnupad Ba
 const Faculty = () => {
     const [selectedDepartment, setSelectedDepartment] = useState('CSE');
     const [searchParams] = useSearchParams();
+    const navigate = useNavigate();
     const { theme } = useTheme();
 
     // Handle URL parameters for department selection
@@ -119,6 +120,7 @@ const Faculty = () => {
     const facultyData = {
         CSE: [
             {
+                id: 'veena-thenkanidiyoor',
                 name: 'Dr. Veena Thenkanidiyoor',
                 designation: 'Associate Professor & HOD',
                 department: 'Computer Science and Engineering',
@@ -129,6 +131,7 @@ const Faculty = () => {
                 isHOD: true
             },
             {
+                id: 'damodar-reddy-edla',
                 name: 'Dr. Damodar Reddy Edla',
                 designation: 'Associate Professor',
                 department: 'Computer Science and Engineering',
@@ -138,6 +141,7 @@ const Faculty = () => {
                 image: DamodarReddyEdla
             },
             {
+                id: 'purushothama-br',
                 name: 'Dr. Purushothama B.R',
                 designation: 'Associate Professor',
                 department: 'Computer Science and Engineering',
@@ -147,6 +151,7 @@ const Faculty = () => {
                 image: Purushothama
             },
             {
+                id: 'keshavamurthy-bn',
                 name: 'Dr. Keshavamurthy B.N.',
                 designation: 'Associate Professor',
                 department: 'Computer Science and Engineering',
@@ -156,6 +161,7 @@ const Faculty = () => {
                 image: KeshavamurthyBN
             },
             {
+                id: 's-mini',
                 name: 'Dr. S. Mini',
                 designation: 'Associate Professor',
                 department: 'Computer Science and Engineering',
@@ -165,6 +171,7 @@ const Faculty = () => {
                 image: SMini
             },
             {
+                id: 'venkatanareshbabu-kuppili',
                 name: 'Dr. Venkatanareshbabu Kuppili',
                 designation: 'Associate Professor',
                 department: 'Computer Science and Engineering',
@@ -174,6 +181,7 @@ const Faculty = () => {
                 image: VenkatanareshbabuKuppili
             },
             {
+                id: 'modi-chirag-navinchandra',
                 name: 'Dr. Modi Chirag Navinchandra',
                 designation: 'Associate Professor',
                 department: 'Computer Science and Engineering',
@@ -183,6 +191,7 @@ const Faculty = () => {
                 image: ModiChiragNavinchandra
             },
             {
+                id: 'suniliya-s',
                 name: 'Ms. Suniliya S.',
                 designation: 'Faculty (on Contract)',
                 department: 'Computer Science and Engineering',
@@ -192,6 +201,7 @@ const Faculty = () => {
                 image: Srividya
             },
             {
+                id: 'meenakshi-panda',
                 name: 'Dr. Meenakshi Panda',
                 designation: 'Faculty (on Contract)',
                 department: 'Computer Science and Engineering',
@@ -201,6 +211,7 @@ const Faculty = () => {
                 image: MeenakshiPanda
             },
             {
+                id: 'antara',
                 name: 'Ms. Antara',
                 designation: 'Assistant Professor',
                 department: 'Computer Science and Engineering',
@@ -210,6 +221,7 @@ const Faculty = () => {
                 image: Antara
             },
             {
+                id: 'kashinath',
                 name: 'Mr. Kashinath',
                 designation: 'Assistant Professor',
                 department: 'Computer Science and Engineering',
@@ -219,6 +231,7 @@ const Faculty = () => {
                 image: Kashinath
             },
             {
+                id: 'paravati',
                 name: 'Ms. Paravati',
                 designation: 'Assistant Professor',
                 department: 'Computer Science and Engineering',
@@ -228,6 +241,7 @@ const Faculty = () => {
                 image: ParavatiCSE
             },
             {
+                id: 'pasha',
                 name: 'Mr. Pasha',
                 designation: 'Assistant Professor',
                 department: 'Computer Science and Engineering',
@@ -806,8 +820,7 @@ const Faculty = () => {
                                     </div>
                                     <div className="faculty-actions">
                                         <button className="view-profile-btn" onClick={() => {
-                                            // TODO: Navigate to detailed profile page
-                                            console.log('View profile for:', faculty.name);
+                                            navigate(`/faculty/${faculty.id}`);
                                         }}>
                                             View Profile
                                         </button>

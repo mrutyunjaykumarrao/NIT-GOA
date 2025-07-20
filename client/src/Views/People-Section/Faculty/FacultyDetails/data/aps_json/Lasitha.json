@@ -1,0 +1,107 @@
+{
+  "faculty_name": "Dr. Lasitha P.",
+  "profile": {
+    "name": "Dr. Lasitha P.",
+    "designation": "Faculty on contract",
+    "department": "Department of Applied Sciences",
+    "imageUrl": "Dr. Lasitha P..png",
+    "email": "lasitha@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Self-assembly",
+      "Sensing",
+      "Luminescent materials"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Lasitha P.",
+    "gender": "Female",
+    "birthDate": null,
+    "designation": "Faculty on Contract",
+    "department": "Department of Applied Sciences",
+    "url": "https://scholar.google.ca/citations?hl=en&user=QSQejtUAAAAJ",
+    "dateOfJoining": null,
+    "experience": "4 years"
+  },
+  "contactInformation": {
+    "address": null,
+    "email": "lasitha@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Self-assembly",
+    "Sensing",
+    "Luminescent materials"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "CY150",
+      "CY151"
+    ],
+    "pg": []
+  },
+  "academicInformation": [
+    {
+      "degree": "Ph.D.",
+      "institute": "IIT Madras",
+      "year": "2017",
+      "subject": "Chemistry"
+    },
+    {
+      "degree": "PostDoc",
+      "institute": "Institute Postdoctoral Fellow, IIT Bombay (2018-2021)",
+      "year": null,
+      "subject": null
+    }
+  ],
+  "publications": {
+    "journal": [
+      "P. Lasitha, Nature of the N-Substituted Alkyl Chain Influencing Emission Properties of Naphthalene Diimide (NDI) Via Excimer, and Exciplex Formation, ChemistrySelect, 2021, 31, 7936-7943. 2021",
+      "P. Lasitha, Radical Anion Formation Exhibiting “Turn-on” Fluorescence Sensing of Hydrazine Using a Naphthalene Diimide (NDI) Derivative of Donor-Acceptor-Donor (D-A-D) Molecular Structure, Photochem. Photobiol. Sci., 2020, 19, 1603-1612. 2020",
+      "P Lasitha, S Dasgupta, G Naresh Patwari, Unraveling the Origin of Differentiable ‘Turn-On’Fluorescence Sensing of Zn2+ and Cd2+ Ions with Squaramides, ChemPhysChem, 2020, 14, 1564-1570. 2020",
+      "P. Lasitha and Edamana Prasad Host-Guest Chemistry between PeryleneDiimide (PDI) Derivatives and 18-Crown-6: Enhancement in Luminescence Quantum Yield and Electrical Conductivity. Chem. Eur. J., 2016, 22, 10558-10564. 2016",
+      "P. Lasitha and Edamana Prasad, Orange red-emitting naphthalene diimide derivative containing dendritic wedges: aggregation-induced emission (AIE) and detection of picric acid (PA). RSC Adv., 2015, 5, 41420-41427. 2015"
+    ]
+  },
+  "coursesAttended": [
+    {
+      "month": "AUG",
+      "year": "2022",
+      "info": "Invited Talk. International Online Conference on Nano Materials (ICN 2022) at Mahatma Gandhi University, Kottayam."
+    },
+    {
+      "month": "DEC",
+      "year": "2020",
+      "info": "FCS 2020, A National Workshop on Fluorescence and Raman Spectroscopy. IIT Bombay"
+    },
+    {
+      "month": "FEB",
+      "year": "2020",
+      "info": "Spectroscopy and Dynamics of Molecular Clusters (SDMC), 2020, Udaipur"
+    },
+    {
+      "month": "NOV",
+      "year": "2019",
+      "info": "Theme Meeting on Ultrafast Science (UFS), 2019, IIT Bombay"
+    },
+    {
+      "month": "NOV",
+      "year": "2019",
+      "info": "Grant Writing & Management workshop (DWIH Workshop), IIT Bombay"
+    },
+    {
+      "month": "SEPT",
+      "year": "2017",
+      "info": "Women in Science (WIS). A workshop for women in science and administration, IISER Pune."
+    },
+    {
+      "month": "AUG",
+      "year": "2015",
+      "info": "48th IUPAC-General Assembly 2015, Bexco, Busan, Korea."
+    },
+    {
+      "month": "JUN",
+      "year": "2014",
+      "info": "Theme meeting on recent trend in spectroscopy (RTS),2014, IIT Madras"
+    }
+  ]
+}

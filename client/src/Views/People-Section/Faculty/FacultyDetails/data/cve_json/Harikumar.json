@@ -1,0 +1,221 @@
+{
+  "faculty_name": "Dr. Harikumar M",
+  "profile": {
+    "name": "Dr. Harikumar M",
+    "designation": "Assistant Professor & Head",
+    "department": "Department of Civil Engineering",
+    "imageUrl": "Dr. Harikumar M.png",
+    "email": "harikumar@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Experimental Soil Mechanics",
+      "Hybrid Geosynthetics for soil slopes",
+      "Sustainability in Geotechnical Engineering",
+      "Model Foundation studies",
+      "Unconventional Earth Reinforcement Techniques",
+      "Expert Systems in Geotechnical Engineering",
+      "Artificial Neural Networks"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Harikumar M",
+    "gender": "Male",
+    "birthDate": "09/07/1987",
+    "designation": "Assistant Professor & Head",
+    "department": "Department of Civil Engineering",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": "Teaching Experience-8.5 years"
+  },
+  "contactInformation": {
+    "address": "Dept. of Civil Engineering, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "harikumar@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Experimental Soil Mechanics, Hybrid Geosynthetics for soil slopes, Sustainability in Geotechnical Engineering, Model Foundation studies, Unconventional Earth Reinforcement Techniques, Expert Systems in Geotechnical Engineering, Artificial Neural Networks"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Geotechnical Engineering-I, II",
+      "Fluid Mechanics",
+      "Environmental Engineering-II",
+      "Ground Improvement Techniques",
+      "Remote Sensing and GIS",
+      "Advanced Irrigation Engineering",
+      "Surveying",
+      "Repair and Rehabilitation of Structures"
+    ],
+    "pg": [
+      "Fundamentals of Soil Behaviour (Ph.D)",
+      "Ground Improvement (Ph.D)",
+      "Reinforced Earth and Geotextiles (Ph.D)",
+      "Design of Engineered Landfills (Ph.D)"
+    ]
+  },
+  "academicInformation": [
+    {
+      "degree": "Ph.D.",
+      "institute": "National Institute of Technology Calicut",
+      "year": "2017",
+      "subject": "Geotechnical Engineering"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "Saurabh Shivhare, Harikumar Mohanan, A review on subgrade soil stabilization using bio enzymes, Arabian Journal of Geosciences, Vol.16, pp.1-9. FEB 2023",
+      "Dipty Sarin Isaac, Vinish V Nair, Harikumar Mohanan, 2022, Background review and development of a coir-based hybrid geosynthetic, Arabian Journal of Geosciences,15:1308, doi.org/10.1007/s12517-022-10584-7 JULY 2022",
+      "M Harikumar, N Sankar, S Chandrakaran, Behaviour of model footing resting on sand bed reinforced with multi-directional reinforcing elements, Geotextiles and Geomembranes 44 (4), 568-578 2016",
+      "M Harikumar, N Sankar, S Chandrakaran, Behaviour of Cohesionless Soil Reinforced with Three Dimensional Inclusions Under Plane Strain Conditions, Journal of Institute of Engineers India, Series A, Vol. 96(3), pp.223-228. 2015",
+      "M Harikumar, N Sankar, S Chandrakaran, Influence of Multi Directional Reinforcements on the Pore Pressure Dissipation and Volume Change Behaviour of Saturated Cohesionless Soils, International Journal of Geotechnical Engineering, Vol. 10(3), pp 304-310. 2015",
+      "M Harikumar, N Sankar, S Chandrakaran, Prediction of strength parameters of sand combined with three dimensional components using artificial neural networks, Australian Geomechanics Journal, Vol.51(1), pp 97-108. 2015",
+      "M Harikumar, N Sankar, S Chandrakaran, A Regression Model for Predicting the Response of Sand Reinforced With Random Multi-oriented Reinforcements, Electronic Journal of Geotechnical Engineering, Vol. 19, Bundle Q, pp 4477-4490. 2014",
+      "M Harikumar, N Sankar, S Chandrakaran, Response Of Sand Reinforced with Multi-Oriented Plastic Hexa-Pods, Journal of Soil Mechanics and Foundation Engineering,Vol. 52, pp 211–217. 2014"
+    ],
+    "proceedings": [
+      "M Harikumar, Saurabh Shivhare, Krishna Priya, Hariom Sarswat, Sudeepta S, K Harish, Bio-Enzyme Amended Building Blocks by Partial Replacement of Clay with Native Soil, International Conference on Sustainable Infrastructure: innovations, Opportunities and Challenges, NITK Surathkal, 21-21 April 2023. APRIL 2023",
+      "Tanvesh UD, M Harikumar, Comparison of Flexural Performance by FEM evaluation of Reinforced Concrete Beam Strengthened by Natural-Synthetic hybrid FRP, International Conference on Sustainable Infrastructure: innovations, Opportunities and Challenges, NITK Surathkal, 21-21 April 2023. APRIL 2023",
+      "M Harikumar, A D Singh, B Ferrao, D Saiteja, L D Deepak, A S Sandra, S Shivhare,2022, Predicting the compressive strength of concrete mixes using shallow artificial neural networks, International Symposium on Sustainable Urban Environment, UPES, Dehradun NOV 2022",
+      "D. S. Isaac, V. V. Nair and H. Mohanan, \"Development of a Monitoring System for Laboratory Investigation of Slope Failure,\" 2022 Second International Conference on Next Generation Intelligent Systems (ICNGIS), Kottayam, India, 2022, pp. 1-5, doi: 10.1109/ICNGIS54955.2022.10079838. JULY 2022",
+      "Harikumar M, Fersana Mohamed, Ashique Muhammed, Irshad Ashraf, Shahansha M, Anand A G,2021, Clay Bricks Using Building Debris, Proceedings of the International conference on Sustainable Materials and Practices for Built Environment, Manipal University Jaipur, Nov. 25-26 NOV 2021",
+      "Divyasree SL, Harikumar M, N Sankar, S Chandrakaran, Numerical Modelling of Sand Bed Reinforced with Multi-Directional Plastic Components, NCRAG, GCT Coimbatore APRIL 2018",
+      "Noushad K, Chandrakaran S, Harikumar M, Settlement Behaviour of Square Footing on Geogrid Reinforced Sand Bed, National Conference on Technological Innovations in Sustainable Infrastructure, 2015, NIT Calicut MAR 2015",
+      "M Harikumar, N Sankar, S Chandrakaran, Prediction of shear strength of cohesionless soils reinforced with 3d inclusions using ANN, International Conference on Soft Ground Engineering (ICSGE 2015), Singapore. 2015",
+      "M Harikumar, N Sankar, S Chandrakaran, Behaviour of sand reinforced with multioriented reinforcements, International Conference on Sustainable Civil Infrastructure, 2014,ASCE India /IIT Hyderabad 2014"
+    ],
+    "bookChapters": [
+      "M Harikumar, Fersana Mohamed, Ashique Mohammed, Irshad Ashraf, M Shahansha, AG Anand, Clay bricks using building debris, Materials Today Proceedings, Elsevier, Volume 60, Part 1, 2022, Pages 746-752 MAR 2022",
+      "Mohamed F., Moosa C.K.J., Megha M., Salahudheen M.K., Harikumar M. (2021) Treatment of Gray Water in College of Engineering Vadakara. In: Biswas S., Metya S., Kumar S., Samui P. (eds) Advances in Sustainable Construction Materials. Lecture Notes in Civil Engineering, vol 124. Springer, Singapore. https://doi.org/10.1007/978-981-33-4590-4_2 APRIL 2021",
+      "Harikumar M., Sikha P., Amrutha M.P., Jamshiya F., Arathi T. (2021) Treatment of Well Water Contaminated with Septic Tank Effluent Using a Modified Compacted Sand Filter. In: Thomas J., Jayalekshmi B., Nagarajan P. (eds) Current Trends in Civil Engineering. Lecture Notes in Civil Engineering, vol 104. Springer, Singapore. https://doi.org/10.1007/978-981-15-8151-9_1 JAN 2021",
+      "Dipty Sarin Isaac, Vinish V Nair, Harikumar Mohanan, 2019, Coir Based Hybrid Geosynthetics- A Sustainable Approach, Proceedings of the International Seminar on Coir and Natural Fibre Products, Coir Kerala 2019, pp 160-163 DEC 2019"
+    ],
+    "booksAuthored": [
+      "Harikumar M, Sankar N, Chandrakaran S, Multi-Directional Inclusions: A Novel Mechanism of Earth Reinforcement, Lambert Academic Publishing APRIL 2022"
+    ]
+  },
+  "researchGuidance": [
+    "Mr. Saurabh Shivhare (FT-Ongoing); Research Topic: Effect of Bio-Enzymatic Formulations on Clay Minerals Amended with Fibres",
+    "Mr. Tanvesh Dabholkar (FT-Ongoing); Research Topic: Engineered Cementitious Composite using Hybrid Natural Fibres in Various Forms"
+  ],
+  "fundedProjects": [],
+  "awardsAndHonors": [
+    "Ministry of Human Resources Development (MHRD), Govt. of India scholarship during M.Tech (2010-2012).",
+    "Ministry of Human Resources Development (MHRD), Govt. of India scholarship during Ph.D (2013-2017)"
+  ],
+  "memberships": [
+    "Associate Member of the Institution of Engineers India",
+    "Life Member of ISTE",
+    "Life Member of Indian Geotechnical Society"
+  ],
+  "professionalServices": [
+    "Involved in Consultancy Services-Concrete quality testing for CPWD, Goa"
+  ],
+  "coursesAttended": [
+    {
+      "month": "FEB",
+      "year": "2023",
+      "info": "Online International workshop on Landslide Hazard: Forecasting, Monitoring, and Early Warning, Feb 9 and 10, IIT Indore, University of Florence, Italy"
+    },
+    {
+      "month": "FEB",
+      "year": "2022",
+      "info": "International Virtual Short-term course on Application of Unsaturated Soil Mechanics on the Analysis of Slopes, IIT Mandi, Durham University and Universiti Kebangsaan Malaysia"
+    },
+    {
+      "month": "DEC",
+      "year": "2021",
+      "info": "National Webinar on Foundations for Infrastructure Facilities: Principles and Sustainable Practices,Don Bosco College of Engineering, Goa"
+    },
+    {
+      "month": "MAR",
+      "year": "2021",
+      "info": "International Virtual Short-term course on Futuristic Prospects of Geo- environmental and Geotechnical Issue of Coal Mine Overburden and Mine Tailings,SPARC (GoI), IIT (ISM) Dhanbad and University of Illinois"
+    },
+    {
+      "month": "DEC",
+      "year": "2020",
+      "info": "8 days Indo-Canadian Workshop on Interactive Design in Geotechnical Engineering: Theory to Practice, NITK Suratkal, IIT Kanpur, University of Ottawa"
+    },
+    {
+      "month": "AUG",
+      "year": "2020",
+      "info": "Resource person and participant for a 3 day online Faculty development program on Mathematical Modelling in Civil Engineering, SCMS School of Science and Technology, Kerala-"
+    },
+    {
+      "month": "JULY",
+      "year": "2020",
+      "info": "5 day online Faculty development program on Forensics in Civil Engineering, Sree Buddha College of Engineering, Kerala"
+    },
+    {
+      "month": "JULY",
+      "year": "2020",
+      "info": "10 days International webinar on Recent Advances in Geotechnical Engineering Research and Practice (RAGeo-RP), IIT Patna"
+    },
+    {
+      "month": "JUN",
+      "year": "2020",
+      "info": "Resource person and participant for a 3 day online Faculty development program on Research Methodology and Scientific Writing, Sree Buddha College of Engineering, Kerala"
+    },
+    {
+      "month": "JUN",
+      "year": "2020",
+      "info": "iGrip Webinar series lecture on Geostructures on Development of Geosynthetics Reinforced-soil Structure for Japanese high-speed bullet train Shinkansen, IIT Gandhinagar"
+    },
+    {
+      "month": "NOV",
+      "year": "2016",
+      "info": "FDP on Pedagogy, Accreditation, Research and Entrepreneurship, ESCI, Port Blair"
+    },
+    {
+      "month": "JUL",
+      "year": "2016",
+      "info": "Management Development Programme at IIM Kozhikode"
+    },
+    {
+      "month": "JUN",
+      "year": "2016",
+      "info": "FDP on Sustainability in Construction: Materials and management, IIT Guwahati"
+    },
+    {
+      "month": "FEB",
+      "year": "2016",
+      "info": "Short Term Course on Structural Dynamics and Earthquake Analysis of Structures” 17-21 April 2000. Organized at Department of Applied Mechanics, V R C E Nagpur."
+    },
+    {
+      "month": "MAY",
+      "year": "2014",
+      "info": "FDP on Dynamics of Soils and Foundations, NIT Calicut"
+    },
+    {
+      "month": "FEB",
+      "year": "2012",
+      "info": "FDP on Coir Geotextiles and their Use in Rural Roads, NIT Calicut"
+    }
+  ],
+  "coursesConducted": [
+    {
+      "month": "APR",
+      "year": "2022",
+      "info": "2 days students training program on Midas GEN software 31st March-1st April 2022"
+    },
+    {
+      "month": "MAR",
+      "year": "2022",
+      "info": "Expert Session on Water Management for a Sustainable Future, organized in connection with World Water Day"
+    },
+    {
+      "month": "JAN",
+      "year": "2022",
+      "info": "Expert session on Best Management Practices for Urban Storm water Management"
+    },
+    {
+      "month": "JUL",
+      "year": "2021",
+      "info": "Lecture Series on Advancements and Trends in Civil Engineering, spread over July 2021"
+    },
+    {
+      "month": "JUN",
+      "year": "2021",
+      "info": "AICTE ATAL Faculty Development Program on Environmental Geotechnology from 21st-25th June 2021"
+    }
+  ]
+}
