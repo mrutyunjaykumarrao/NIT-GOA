@@ -1,0 +1,93 @@
+{
+  "faculty_name": "Dr. Lalat Indu Giri",
+  "profile": {
+    "name": "Dr. Lalat Indu Giri",
+    "designation": "Assistant Professor",
+    "department": "Department of Electronics and Communication Engineering",
+    "imageUrl": "Dr. Lalat Indu Giri.png",
+    "email": "lig@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Infrared Thermography",
+      "One dimensional nanostructures",
+      "Clean energy sources and systems"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Lalat Indu Giri",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Assistant Professor",
+    "department": "Department of Electronics and Communication Engineering",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": null
+  },
+  "contactInformation": {
+    "address": "Assistant Professor, Department of ECE, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "lig@nitgoa.ac.in",
+    "phoneMobile": "9673408877"
+  },
+  "researchAreas": [
+    "Infrared Thermography;",
+    "One dimensional nanostructures;",
+    "Clean energy sources and systems;"
+  ],
+  "coursesTaught": {
+    "ug": [],
+    "pg": []
+  },
+  "academicInformation": [
+    {
+      "degree": "M.Tech.",
+      "institute": "IIT Kanpur, Uttar Pradesh",
+      "year": "2009",
+      "subject": "Materials Science"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "IIT Delhi",
+      "year": "2015",
+      "subject": "Microelectronics"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "Lalat Indu Giri, Suneet Tuli, Manish Sharma, Philippe Bugnon, Helmuth Berger, and Arnaud Magrez,” Thermal diffusivity measurements of templated nanocomposite using infrared thermography,” Materials Letters 115, 106, 2014",
+      "Lalat Indu Giri and Suneet Tuli, “ Frequency modulated infrared imaging for thermal characterization of nanomaterials”, Infrared Physics & Technology 67, 526, 2014",
+      "Lalat Indu Giri, Sachin Pathak, and Suneet Tuli, “Thermal Diffusivity of Electrodeposited Ni And Co Nanowires Using Infrared Thermography,” Journal of Physics and Chemistry of Solids 75, 921, 2014",
+      "Khalid Muzaffar, Lalat Indu Giri, Suneet Tuli, and Shiban Koul, \" Fault Detection of Antenna Arrays using Infrared Thermography \", Infrared Physics & Technology 71, 464, 2015",
+      "Priyanka Tyagi, Lalat Indu Giri, Suneet Tuli and Ritu Srivastava, \"Elucidation on Joule heating and its consequences on the performance of organic light emitting diodes “, J. Appl. Phys. 115 , 034518, 2014",
+      "Priyanka Tyagi, Arunandan Kumar, Lalat Indu Giri, Suneet Tuli, and Ritu Srivastava, \"Conductive cooling in white organic light emitting diode for enhanced efficiency and life time\", Appl. Phys. Lett. 106, 013301, 2015",
+      "Priyanka Tyagi, Arunandan Kumar, Lalat Indu Giri, Manas Kumar Dalai, Suneet Tuli, M. N. Kamalasanan, and Ritu Srivastava, “Effect of diffusion of 2, 3, 5, 6-Tetrafluoro-7, 7’, 8, 8’-tetra cyano quino dimethane on joule heating and lifetime of organic light emitting diode,” Optics Letters Vol. 38, No. 19, 3854, 2013"
+    ],
+    "proceedings": [
+      "Lalat Indu Giri and Suneet Tuli, ”Thermal diffusivity of templated nanocomposite using frequency modulated infrared imaging”, SPIE Smart Structures/NDE 2014, San Diego, California, United States, 9 - 13 March 2014, Published in Proceedings Volume 9062",
+      "Lalat Indu Giri, Manish Sharma, and Suneet Tuli, ”Temperature Dependent Powerfactor of Thermoelectric Nanocomposite”, 7th International Conference on Materials for Advanced Technologies ICMAT-2013, Suntec Singapore, 30 June – 05 July 2013",
+      "Priyanka Tyagi, Arunandan Kumar, Lalat Indu Giri, Suneet Tuli, M.N. Kamalasanan, Ritu Srivastava, “Study of diffusion of 2,3,5,6-Tetrafluoro-7,7’,8,8’-tetra cyano quino dimethane by photoluminescence spectroscopy”, 9th International Conference on Organic Electronics (ICOE-2013), MINATEC, Grenoble, France, 17-20 June 2013",
+      "Lalat Indu Giri, Manish Sharma, and Suneet Tuli, ” Thermal Diffusivity Measurements of Thermoelectric Nanocomposite Using Infrared Thermography”, Materials Research Society (MRS) 2013 Spring Meeting, San Francisco, California, USA, 1-5 April 2013"
+    ]
+  },
+  "researchGuidance": [],
+  "fundedProjects": [],
+  "awardsAndHonors": [],
+  "memberships": [],
+  "professionalServices": [],
+  "coursesAttended": [],
+  "coursesConducted": [
+    {
+      "month": "DEC",
+      "year": "2015",
+      "info": "Short Term Course on \"Clean Energy System and Technology\" 7-11 December, 2015"
+    },
+    {
+      "month": "MAR",
+      "year": "2015",
+      "info": "One Day Interdisciplinary Workshop on Nanomaterials Characterization, March 18, 2015"
+    },
+    {
+      "month": "JUN",
+      "year": "2014",
+      "info": "Short-term Faculty Development Programme on Mobile Computing and Communication (MCC2014) (30 June – 04 July, 2014)"
+    }
+  ]
+}

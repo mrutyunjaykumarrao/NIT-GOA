@@ -1,0 +1,179 @@
+{
+  "faculty_name": "Dr. Shivnarayan Patidar",
+  "profile": {
+    "name": "Dr. Shivnarayan Patidar",
+    "designation": "Assistant Professor",
+    "department": "Department of Electronics and Communication Engineering",
+    "imageUrl": "Dr. Shivnarayan Patidar.png",
+    "email": "shivnarayan.patidar@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Biomedical Signal Analysis and Processing",
+      "Machine Learning",
+      "Multi-resolution Analysis",
+      "Time-frequency Analysis",
+      "Wavelet Transforms",
+      "Tensor Analysis."
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Shivnarayan Patidar",
+    "gender": "Male",
+    "birthDate": "02/10/1983",
+    "designation": "Assistant Professor",
+    "department": "Department of Electronics and Communication Engineering",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": "12 Years 5 Months"
+  },
+  "contactInformation": {
+    "address": "929, Ambikanagar, Bidwal, Badnawar, District: Dhar, 454665",
+    "email": "shivnarayan.patidar@nitgoa.ac.in",
+    "phoneMobile": "8329138521"
+  },
+  "researchAreas": [
+    "Biomedical Signal Analysis and Processing",
+    "Machine Learning",
+    "Multi-resolution Analysis",
+    "Time-frequency Analysis",
+    "Wavelet Transforms",
+    "Tensor Analysis."
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Analog Electronics",
+      "Digital Electronics",
+      "Digital Signal Processing",
+      "Biomedical Signal Processing",
+      "Biomedical Instrumentation",
+      "Digital Image Processing",
+      "Clinical Laboratory Equipments",
+      "Control Systems",
+      "Biomedical Sytem Modeling and Simulations",
+      "Microprocessors and Microcontrollers",
+      "Therapeutic Equipments",
+      "Medical Imaging Systems",
+      "Wireless Comunications",
+      "Principles of Data Communications"
+    ],
+    "pg": [
+      "Advanced Biomedical Signal Proceesing",
+      "Random Processes"
+    ]
+  },
+  "academicInformation": [
+    {
+      "degree": "B.E.",
+      "institute": "Shri Govindram Seksaria Institute of Technology and Science (SGSITS), Indore",
+      "year": "2006",
+      "subject": "Biomedical Engineering"
+    },
+    {
+      "degree": "M.Tech",
+      "institute": "IIT BHU",
+      "year": "2008",
+      "subject": "Biomedical Engineering"
+    },
+    {
+      "degree": "P.Hd.",
+      "institute": "IIT Indore",
+      "year": "2015",
+      "subject": "Electrical Engineering(Signal Processing)"
+    }
+  ],
+  "publications": {
+    "journal": [
+        "NK Sawant, S Patidar, Application of Fourier-Bessel expansion and LSTM on multi-lead ECG for cardiac abnormalities identification, Physiological Measurement 43 (12), 124002 DEC 2022",
+        "N Nesaragi, A Sharma, S Patidar, UR Acharya, Automated diagnosis of coronary artery disease using scalogram-based tensor decomposition with heart rate signals, Medical Engineering & Physics 110, 103811 DEC 2022",
+        "N. Nesaragi, S. Patidar, T. Veerakumar, A Correlation Matrix-based Tensor Decomposition Method for Early Prediction of Sepsis from Clinical Data, Biocybernetics and Biomedical Engineering, 2021 vol. 41, no. 3, pp. 1013-1024, 2021. MAY 2021",
+        "N. Nesaragi, S. Patidar, V. Aggarwal, Tensor learning of pointwise mutual information from EHR data for early prediction of sepsis, Computers in Biology and Medicine, vol. 134, pp.104430, 2021. MAY 2021",
+        "Nidhi K Sawant, S. Patidar, N. Nesaragi, and U.R. Acharya, Automated detection of abnormal heart sound signals using Fano -factor constrained tunable quality wavelet transform, Biocybernetics and Biomedical Engineering, vol. 41(1), pp. 111 -126, 2021. 2021",
+        "N. Nesaragi and S. Patidar, Early Prediction of Sepsis From Clinical Data Using Ratio and Power -Based Features, Critical Care Medicine, vol. 48, (12), pp. 33048903, 2020. 2020",
+        "Ashish Sharma, N. Garg, S. Patidar, R.S. Tan, and U.R. Acharya, Automated pre-screening of arrhythmia using hybrid combination of Fourier- Bessel expansion and LSTM, Computers in Biology and Medicine, vol. 120, pp. 103753, 2020. 2020",
+        "A. Sharma, S. Patidar, A. Upadhyay, and U. Acharya, Accurate tunable -Q wavelet transform based method for QRS complex detection. Computers in Electrical Engineering, 75, 101 -111, 2019. 2019",
+        "S. Patidar, R. B. Pachori , A. Upadyay, U.R. Acharya, An Integrated Alcoholic Index using Tunable-Q Wavelet Transform based Features Extracted from EEG Signals for Diagnosis of Alcoholism, Applied Soft Computing Journal, vol. 50, pp. 71-78, 2017. JAN 2017",
+        "S. Patidar and T. Panigrahi, Detection of epileptic seizure using Kraskov entropy applied on tunableQ wavelet transform of EEG signals, Biomedical Signal Processing and Control, vol. 34, pp. 74 -80, 2017. 2017",
+        "S. Patidar, R. B. Pachori, and U. R. Acharya, Automated diagnosis of coronary artery disease using tunable-Q wavelet transform applied on heart rate signals, Knowledge Based Systems, vol. 82, pp. 1-10, July, 2015. JULY 2015",
+        "S. Patidar, R. B. Pachori and N. Garg, Automatic diagnosis of septal defects based on tunable-Q wavelet transform of cardiac sound signals, Expert Systems with Applications, vol. 42(7), pp. 3315-3326, May, 2015. MAY 2015",
+        "S. Patidar and R. B. Pachori, Classification of cardiac sound signals by constrained tunable-Q wavelet transform, Expert Systems with Applications, vol. 41 (16), 7161-7170, November, 2014. NOV 2014",
+        "R. B. Pachori and S. Patidar, Epileptic seizure classification in EEG signals using second-order difference plot of intrinsic mode functions, Computer Methods and Programs in Biomedicine, vol. 113 (2), 494-502, February, 2014. FEB 2014",
+        "S. Patidar and R. B. Pachori, Segmentation of cardiac sound signals by removing murmurs using constrained tunable-Q wavelet transform, Biomedical Signal Processing and Control, vol. 8 (6), 559-567, November, 2013. NOV 2013",
+        "S. Patidar and R. B. Pachori, Constrained tunable-Q wavelet transform based analysis of cardiac sound signals, AASRI Procedia, vol. 4, pp. 57-63, 2013. 2013"
+    ],
+    "proceedings": [
+        "Nidhi K Sawant, S. Patidar, “Diagnosis of Cardiac Abnormalities Applying Scattering Transform and Fourier-Bessel Expansion on ECG Signals”, In 48th IEEE Proceedings of International Conference on Computing in Cardiology (CinC), Brno, Czech Republic, pp. Page 1-Page 4, 2021 2021",
+        "S. Patidar, “Diagnosis of Sepsis Using Ratio Based Features”, In 46th IEEE Proceedings of International Conference on Computing in Cardiology (CinC), Singapore, pp. Page 1- Page 4, 2019 2019",
+        "N. Nesaragi, A. Sharma, S. Patidar, S. Majumder and K. Tavakolian, “Application of Recurrent Neural Network for the Prediction of Target Non-Apneic Arousal Regions in Physiological Signals”, In 45th IEEE Proceedings of International Conference on Computing in Cardiology (CinC), pp. 1-4, 2018. 2018",
+        "C. Kamble, R. K. Siddharth, S. Patidar, M. H. Vasantha, and K. Y. B. Nithin, “Design of Area-Power-Delay Efficient Square Root Carry Select Adder”, In IEEE International Symposium on Smart Electronic Systems (iSES) (Formerly iNiS), 2018, pp. 80-85, 2018. 2018",
+        "S. Patidar and Ashish Sharma, Automated detection of atrial fibrillation using Fourier-Bessel expansion and Teager energy operator from electrocardiogram signals, In: 44th IEEE Proceedings of International Conference on Computing in Cardiology, Rennes, France, 2017. SEPT 2017",
+        "B. S. Chandra, C. S. Sastry, S. Jana, S. Patidar Atrial Fibrillation Detection Using Convolutional Neur- al Networks, In: 44th IEEE Proceedings of International Conference on Computing in Cardiology, Rennes, France, 2017. SEPT 2017",
+        "S. Patidar and R. B. Pachori, Tunable-Q wavelet transform based optimal compression of cardiac sound signals, IEEE Tencon 2016, Singapore, 2016, pp. 2193 – 2197. NOV 2016",
+        "B. K. Saurabh, Y. B. Nithin Kumar, S. Patidar, M. H. Vasantha, Design and Implementation of Tun- able Bandpass Filter for Biomedical Applications, iNIS 2016, Gwalior, Madhya Pradesh, India, 2016, pp. 43 – 46. JULY 2016",
+        "S. Patidar, R.B. Pachori, and N. Garg, Detection of septal defects from cardiac sound signals using tunable-Q wavelet transform, In: 19th Proceedings of International Conference on Digital Signal Processing, Hong Kong, 2014, pp. 580-585. AUG 2014",
+        "S. Patidar and R. B. Pachori, A continuous wavelet transform based method for detecting heart valve disorders using phonocardiograph signals, In: G. Lee et al. (eds.) ICHIT 2012, CCIS, 310, pp. 513-520, Springer-Verlag Berlin Heidelberg, 2012. AUG 2012"
+    ],
+    "bookChapters": [
+        "N. Nesaragi and S. Patidar, An explainable machine learning model for early prediction of sepsis using ICU data, Infectious Diseases and Sepsis, 2021 2021",
+        "A. Sharma and S Patidar, A Fourier-Bessel expansion-based method for automated detection of atrial fibrillation from electrocardiogram signals. Pre-Screening Systems for Early Disease Prediction, Detection, and Prevention, 2019 2019",
+        "R. B. Pachori, R. Sharma, and S. Patidar, Classification of normal and epileptic seizure EEG signals based on empirical mode decomposition, Complex System Modeling and Control through Intelligent Soft Computations, Springer International Publishing Switzerland, Chapter 13, ISBN: 978-3-319-12882-5. 2014",
+        "S. Patidar and R. B. Pachori, Classification of heart disorders based on tunable-Q wavelet transform of cardiac sound signals, Computational Intelligence applications in Modeling and Control, Springer International Publishing Switzerland, Chapter 10,ISBN:978-3-319-11016-5. 2014"
+    ]
+  },
+  "researchGuidance": [
+    "Naimahmed Nesaragi (PhD Scholar,16ECE3004, Thesis Defended on 16-12-2021): Title of the Thesis: Modeling and Mining Schemes for Early Prediction of Sepsis using Higher-order and Multi-aspect Representations from Structured EHR Data",
+    "Ashish Sharma (PhD Scholar, 16ECE3002,Thesis Defended on 21-09-2022): Title of the Thesis: Methods for Segmentation and Classification of Electrocardiogram Signals to Detect and Identify Common Cardiac Arrhythmia"
+  ],
+  "fundedProjects": [
+    "EMR Project:Design and Development of Robust Distributed Nonlinear Channel Equalization and Identification. PI: Dr. Trilochan Panigrahi Co-PI: Dr. Ankit Dubey. Dr. Shivnarayan Patidar Dr. Amol Rahulkar",
+    "ECR Project:Analysis of cardiovascular disorders using heart sound signals. PI: Dr. Shivnarayan Patidar",
+    "NIT Goa Seedmoney Project:Primary level screening of common heart disorders using non-invasively measured heart sound signals.PI:Dr.Shivnarayan Patidar"
+  ],
+  "awardsAndHonors": [],
+  "memberships": [
+    "IEEE Engineering in Medicine and Biology Society Membership",
+    "IEEE Signal Processing Society Membership",
+    "IEEE Sensors Council",
+    "IEEE Biometrics Council",
+    "IEEE Council on RFID",
+    "IEEE Nanotechnology Council"
+  ],
+  "professionalServices": [],
+  "coursesAttended": [
+      {
+          "month": "SEPT",
+          "year": "2019",
+          "info": "The 46th IEEE International Conference on Computing in Cardiology (CinC), Singapore, 2019"
+      },
+      {
+          "month": "APRIL",
+          "year": "2018",
+          "info": "Workshop on Internet of Things (IOT)"
+      },
+      {
+          "month": "SEPT",
+          "year": "2017",
+          "info": "44th IEEE Conference on Computing and Cardiology, Rennes, France."
+      },
+      {
+          "month": "APRIL",
+          "year": "2017",
+          "info": "Awareness workshop on Internet of Things (IOT)"
+      },
+      {
+          "month": "AUG",
+          "year": "2014",
+          "info": "19th IEEE International Conference on Digital Signal Processing, Hong Kong"
+      },
+      {
+          "month": "JULY",
+          "year": "2012",
+          "info": "IEEE workshop on Medical Imaging and Image Processing held under the department Electrical Engineering at Indian Institute of Technology, Kharagpur from July 4-7, 2012."
+      }
+  ],
+  "coursesConducted": [
+    {
+      "month": "JAN",
+      "year": "2018",
+      "info": "Embedded Systems with IOT (A Talk)"
+    }
+  ]
+}

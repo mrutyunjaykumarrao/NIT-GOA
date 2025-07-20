@@ -1,0 +1,147 @@
+{
+  "faculty_name": "Dr. Pravati Swain",
+  "profile": {
+    "name": "Dr. Pravati Swain",
+    "designation": "Assistant Professor",
+    "department": "Department of Computer Science and Engineering",
+    "imageUrl": "paravati_cse.png",
+    "email": "pravati@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Quantum Machine learning",
+      "AI/ML for communication network: Federated learning",
+      "Advanced Mobile Communication (B5G/6G)",
+      "IoT-Edge- Cloud Continuum Systems",
+      "Game theory and Markov Model."
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Pravati Swain",
+    "gender": "Female",
+    "birthDate": null,
+    "designation": "Assistant Professor",
+    "department": "Department of Computer Science and Engineering",
+    "url": "https://scholar.google.co.in/citations?user=7kYjaN4AAAAJ&hl=en",
+    "dateOfJoining": "14/12/2014",
+    "experience": "12 Years"
+  },
+  "contactInformation": {
+    "address": "Assistant Professor, Department of Computer Science and Engineering, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "pravati@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Quantum Machine learning, AI/ML for communication network: Federated learning, Advanced Mobile Communication (B5G/6G), IoT-Edge- Cloud Continuum Systems. Game theory and Markov Model."
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Artificial Intelligence",
+      "Computer Network",
+      "Cloud Computing and Virtualization",
+      "Wireless Networks",
+      "Distributed Computing",
+      "Operating System",
+      "Relational Database Management System (RDBMS)",
+      "Design of Algorithm and Analysis",
+      "Theory of Computation",
+      "Game Theory",
+      "Optimization Techniques."
+    ],
+    "pg": [
+      "Artificial Neural Network",
+      "Mathematics Foundation for Computer Science",
+      "Advance Computer Network",
+      "Linear Algebra"
+    ]
+  },
+  "academicInformation": [
+    {
+      "degree": "Ph.D.",
+      "institute": "Indian Institute of Technology Guwahati (IITG), India",
+      "year": "2014",
+      "subject": "Computer Science and Engineering"
+    },
+    {
+      "degree": "Postdoc",
+      "institute": "University of Missouri Kansas City (UMKC), USA",
+      "year": "2014",
+      "subject": "Computer Science"
+    }
+  ],
+  "publications": {
+    "google_scholar_link": "https://scholar.google.com/citations?user=7kYjaN4AAAAJ&hl=en"
+  },
+  "researchGuidance": [
+    "Rakshavi Dessai, Thesis title: “Quantum machine learning”, PhD, Joined in Jan 2025 (Ongoing)",
+    "Deepa A., Thesis title: “Traffic prediction and deployment of UAV as base station”, PhD Joined Dec 2022 (Ongoing)",
+    "Vivek Sharma, Thesis title: “Crowdsourced Spectrum sensing”, PhD, Joined August 2021 (Ongoing)",
+    "Tejas Modi: \"Intelligent Routing in SDN\", PhD, Completed (Dec 2017- Dec 2022).",
+    "Venkateswararao Kuna: \"Dynamic Virtual Small cell deployment and backhauling in Utra-Dense network\", PhD, Completed (July 2018 – Sep 2022).",
+    "Shubham H. Darshane: “Federated Learning on Non-IID data”, Mtech, 2024",
+    "Sourav Suresh: “Deployment of UAV base station using hybrid prediction model”, MTech, 2023",
+    "Manish Vatsal: “The graph attention mechanism with graph convolutional LSTM for cellular network prediction”, MTech, 2023.",
+    "Khatsuria Yash Vijaybhai: A” Novel Optimization strategy for computation Offloading in an UAV-assisted Edge Computing” Mtech 2022.",
+    "Ankita Joshi: \"Energy Efficient Backhaul routing and switching off strategy\", MTech, 2021.",
+    "Mahantesh Hedge: \"Sleeping Strategy for Small Base Stations by Using Blockchain Technology.\", MTech, 2021.",
+    "Romil Kumar: \"Switch-Based Rule Verification in Software-Defined Network\", MTech, 2020.",
+    "S Raghupathi: \"Blockchain Enabled Energy Efficient Small Cell as-a-Service in 5G\", MTech, 2020.",
+    "Vishwas Kumar: \"Load balancing Algorithm in Software Defined Network\", MTech, 2019",
+    "Upasana Bhattacharjee: \"User Equipment based Virtual Base Station in 5G\" MTech, 2018",
+    "Anshika Rawal: \"Prediction of Human Mobility Using Mobile Traffic Dataset with HMM\" MTech, 2017."
+  ],
+  "fundedProjects": [
+    "\"Enhanced Automation of 3-Axis CNC Milling Machine using Computer Vision and Artificial Intelligence\", Science and Engineering Research Board (SERB), Department of Science and Technology, Government of India (PI)",
+    "\"Smart City Surveillance using Decentralized Multi-camera Networks\", Science and Engineering Research Board (SERB), Department of Science and Technology, Government of India. (Co-PI)"
+  ],
+  "awardsAndHonors": [],
+  "memberships": [],
+  "professionalServices": [],
+  "coursesAttended": [
+    {
+      "month": "MAY",
+      "year": "2015",
+      "info": "Summer course on \"Enabling Internet of Things with Cloud and Big Data Networking\", IIT Kharagpur, India"
+    },
+    {
+      "month": "JUN",
+      "year": "2014",
+      "info": "20th GENI Engineering Conference in University of California Davis, USA."
+    },
+    {
+      "month": "MAY",
+      "year": "2013",
+      "info": "Workshop on Android Application Development in IIT Guwahati, India."
+    },
+    {
+      "month": "MAR",
+      "year": "2013",
+      "info": "Workshop on Cyber-Physical Systems: Applications and open challenges in IIT Hyderabad, India."
+    },
+    {
+      "month": "MAR",
+      "year": "2012",
+      "info": "SAC 2012- 27th Symposium On Applied Computing in Riva del Garda (Trento), Italy."
+    },
+    {
+      "month": "OCT",
+      "year": "2011",
+      "info": "Workshop on Introduction to Introduction to Graph and Geometric Algorithms in IIT Guwahati, India."
+    },
+    {
+      "month": "JULY",
+      "year": "2011",
+      "info": "ICWN'11- The 2011 International Conference on Wireless Network in Las Vegas, Nevada, USA."
+    },
+    {
+      "month": "AUG",
+      "year": "2010",
+      "info": "SIGCOMM, 2010 in Delhi, India."
+    }
+  ],
+  "coursesConducted": [
+    {
+      "month": "MAY",
+      "year": "2016",
+      "info": "DST Sponsored Workshop on EMERGING TECHNOLOGIES IN MOBILE COMMUNICATIONS"
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "faculty_name": "Dr. C.Vyjayanthi",
+  "profile": {
+    "name": "Dr. C.Vyjayanthi",
+    "designation": "Associate Professor",
+    "department": "Department of Electrical and Electronics Engineering",
+    "imageUrl": "Dr. C.Vyjayanthi.png",
+    "email": "c.vyjayanthi@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Restructured Power Systems",
+      "Planning, Operation and Control of Power Systems",
+      "Electric Arc Furnace Operations",
+      "Smart Electric Grids",
+      "FACTS",
+      "AC/DC Microgrids",
+      "Electric Vehicles."
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. C.Vyjayanthi",
+    "gender": "Female",
+    "birthDate": null,
+    "designation": "Associate Professor",
+    "department": "Department of Electrical and Electronics Engineering",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": "Research: 12 Years, Industry: 4 Years."
+  },
+  "contactInformation": {
+    "address": "Associate Professor, Dept. of Electrical and Electronics Engineering, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "c.vyjayanthi@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Restructured Power Systems; Planning, Operation and Control of Power Systems; Electric Arc Furnace Operations; Smart Electric Grids; FACTS; AC/DC Microgrids, Electric Vehicles."
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Basic Electrical Sciences",
+      "Power System Analysis",
+      "Power Electronic Applications to Power Systems",
+      "FACTS",
+      "Distribution Automation and Smart Grids",
+      "Energy Auditing",
+      "High Voltage DC Transmission",
+      "AC Machines."
+    ],
+    "pg": [
+      "HVDC and FACTS",
+      "Smart Electric Grids",
+      "Advanced Power System Analysis"
+    ]
+  },
+  "academicInformation": [
+    {
+      "degree": "B.TECH",
+      "institute": "JNTU Hyderabad",
+      "year": "2001",
+      "subject": "Electrical and Electronics Engineering"
+    },
+    {
+      "degree": "M.Tech",
+      "institute": "Anna University",
+      "year": "2005",
+      "subject": "Power Systems"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "Indian Institute of Science, Bangalore",
+      "year": "2011",
+      "subject": "Power Systems"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "G. M. Madhu, C. Vyjayanthi and Chirag N Modi, “A Real-Time Hybrid Battery State of Charge and State of Health Estimation Technique in Renewable Energy Integrated Microgrid Applications”, International Journal of Emerging Electric Power Systems (IJEEPS), De Gruyter, May 2022.",
+      "Vinay Kumar Kolakaluri, C. Vyjayanthi and Suresh Mikkili, “PV-Battery Hybrid System with Less AH Capacity for Standalone DC Loads”, International Journal of Emerging Electric Power Systems, DE GRUYTER, July 2019; 2019001",
+      "Ajit Muzumdar, Chirag N Modi and C. Vyjayanthi, “A Permissioned Blockchain Enabled Trustworthy and Incentivized Emission Trading System”, Journal of Cleaner Production, Elsevier, March 2022.",
+      "R. V. S. E. Shravan and C. Vyjayanthi, “Design and analysis of closed loop control of power-converters for forming droop-controlled AC-DC subgrids of an islanded hybrid AC-DC microgrid\", International Journal of Emerging Electric Power Systems, De Gruyter, February 2022.",
+      "Ajit Muzumdar, Chirag N Modi and C. Vyjayanthi, “Designing a Blockchain-Enabled Privacy-Preserving Energy Theft Detection System for Smart Grid Neighborhood Area Network”, Electrical Power Systems Research, Elsevier, February 2022.",
+      "Madhu G M, C. Vyjayanthi, Chirag N Modi, “Investigation on Effect of Irradiance Change in Maximum Power Extraction from PV Array Interconnection Schemes during Partial Shading Conditions”, IEEE Access, June 2021, IMPRINT 2C.1 Grant No: IMP/2019/000251.",
+      "Ajit Muzumdar, Chirag N Modi, Madhu G M and C. Vyjayanthi, “Designing a Robust and Accurate Model for Consumer Centric Short Term Load Forecasting in Microgrid Environment”, IEEE Systems Journal, April 2021.",
+      "Ajit Muzumdar, Chirag N Modi, Madhu G M and C. Vyjayanthi, “A Trustworthy and Incentivized Smart Grid Energy Trading Framework using Distributed Ledger and Smart Contracts”, Journal of Network and Computer Applications, March 2021.",
+      "Madhu G M, C. Vyjayanthi, Chirag N Modi, “Adaptive Step-Size based Drift-Free P&O Algorithm with Power Optimizer and Load Protection for Maximum Power Extraction from PV Panels in Standalone Applications”, IET Renewable Power Generation, January 2021, Under Grant No. 24/29/2016-SWES (R&D), MNRE, India.",
+      "Shravan R, Vyjayanthi C, “Coordinated power control without AC voltage sensing and active power filtering using interlinking converter with reduced interlinking power flow in a droop controlled islanded hybrid AC-DC microgrid”, International Transactions on Electrical Energy Systems, WILEY, December 2020.",
+      "Shravan R, Vyjayanthi C, “Active power filtering using interlinking converter in droop controlled islanded hybrid AC-DC microgrid”, International Transactions on Electrical Energy Systems, WILEY, January 2020.",
+      "C. Vyjayanthi and D. Thukaram, Evaluation and Improvement of Generators Reactive Power Margins in Interconnected Power Systems, IET Gener., Trans., and Distb., UK, April 2011, Vol.5, Issue 4, pp. 504-518.",
+      "D. Thukaram and C. Vyjayanthi, Estimation of a Least Loss Power Contract in a Deregulated Environment, International Journal of Emerging Electric Power Systems, Berkeley Electronic Press, USA, August 2010, Vol. 11, Issue 4, Article 1, pp. 1-31.",
+      "D. Thukaram and C. Vyjayanthi, Evaluation and Improvement of Total Transfer Capability in an Interconnected Power System, International Journal of Emerging Electric Power Systems, Vol. 11, Issue 3, Article 3, pp. 1-28 , July 2010.",
+      "D. Thukaram and C. Vyjayanthi, Relative Electrical Distance Concept for Evaluation of Network Reactive Power and Loss Contributions in a Deregulated System, IET Gener., Trans., and Distb., UK, November 2009, Vol.3, Issue 11, pp. 1000-1019.",
+      "D. Thukaram and C. Vyjayanthi, Identification of Generation and Network Expansion Locations to Meet Growing Loads using Relative Electrical Distance Approach, International Journal of Emerging Electric Power Systems, Volume 10, Issue 5, Article 3, pp. 1-29, October 2009.",
+      "D. Thukaram and C. Vyjayanthi, Evaluation of Suitable Locations for Generation Expansion in Restructured Power Systems: A Novel Concept of T-index, International Journal of Emerging Electric Power Systems, Volume 10, Issue 1, Article 4, March 2009."
+    ],
+    "proceedings": [
+      "Madhu G M, C. Vyjayanthi and C N Modi, “Change in Power based P&O Algorithm for Maximum Power Extraction in Solar Energy Conversion System,” 2021 International Conference on Power Systems (ICPS), Kharagpur, India, 16-18 December, 2021.",
+      "Nivedita N Naik and C.Vyjayanthi, “Research on Electric Vehicle Charging System: Key Technologies, Communication Techniques, Control Strategies and Standards”, IEEE International Conference on Electrical Power and Energy Systems (ICEPES-2021), 10-11 December 2021, MNIT Jaipur.",
+      "Mayank Arora and C Vyjayanthi, “Optimized Solar PV grid connection for EV charging application”, IEEE Bombay Section Signature Conference IBSSC-2021, themed - Frontiers of Technologies: Fuelling Prosperity of the Planet and People, 18-20 November 2021, IIIT Gwalior.",
+      "Nivedita N Naik and C.Vyjayanthi, “Optimization of Vehicle-to-Grid (V2G) Services for Development of Smart Electric Grid: A Review”, International Conference on Smart Generation Computing, Communication and Networking - A Hybrid Conference (SMARTGENCON 2021), 29-30 October 2021.",
+      "Mayank Arora and C. Vyjayanthi, “K Factor-based MPPT Technique for Reducing Steady-State power oscillations”, The IEEE International Conference on Intelligent Technologies (CONIT 2021)” Hubballi, Karnataka, India, 25-27, June 2021.",
+      "Mayank Arora and C.Vyjayanthi, “Modified Hysteresis Current Control Implementation for Three Phase Grid Connected Inverter”, 2nd Electric Power And Renewable Energy Conference (EPREC-2021), 28th - 30th May 2021, NIT Jamshedpur, Springer.",
+      "Ajit Muzumdar, Chirag Modi, Madhu G M, C Vyjayanthi, An Efficient Regional Short-Term Load Forecasting Model for Smart Grid Energy Management, IEEE, IECON 2020, Singapore, October 2020.",
+      "Nitin Singh, C. Vyjayanthi, Multi-step Short-term Electric Load Forecasting Using 2D Convolutional Neural Networks, IEEE - Hydcon, September 2020.",
+      "M J Jeffin, Madhu G M, Akshayata Rao, Gurpreet Singh and C. Vyjayanthi, “Internet of Things Enabled Power Theft Detection and Smart Meter Monitoring System” 9th International Conference on Communication and Signal Processing (ICCSP), Chennai, India, April 2020.",
+      "Abhilash R Sakhare, C. Vyjayanthi, \"Cost Based Analysis Considering Power Trading in a Hybrid Power System\", 16th IEEE India Council International Conference (INDICON 2019), IEEE Gujarat Section, 13 – 15 December 2019, Marwadi University, Rajkot, Gujarat.",
+      "Madhu G M, C. Vyjayanthi, \"Design and Development of a Novel IoT based Smart Meter for Power Quality Monitoring in Smart Grid Infrastructure\", TENCON, 17-20 October 2019, IEEE Kerala Section, Cochin.",
+      "R. V. S. E. Shravan, C. Vyjayanthi, \"Emulation of AC and DC subgrids using Power Converters for Islanded Hybrid Microgrid Applications\", TENCON, 17-20 October 2019, IEEE Kerala Section, Cochin.",
+      "Madhu G M, C Vyjayanthi, Kolakaluri Vinay Kumar, \"A Hybrid PV-Battery Topology to Extract Maximum Power at Partial Shading Conditions for Rural Remote Area Applications\", International Conference on Computing, Power and Communication Technologies, GUCON 2019, Galgotias University, September 27-29 2019, New Delhi.",
+      "Sandip Jangir, Alok Jaiswal, Sheetal Chandel, Ajit Muzumdar, Chirag Modi and C Vyjayanthi, \"A Novel Framework for Pharmaceutical Supply Chain Management using Distributed Ledger and Smart Contracts\", 10th International Conference On Computing, Communication And Networking Technologies (ICCCNT), 6-8 July 2019, IIT Kanpur, India.",
+      "Ajit Muzumdar, Chirag Modi, Madhu G M, C Vyjayanthi, \"Analyzing the Feasibility of Different Machine Learning Techniques for Energy Imbalance Classification in Smart Grid\", 10th International Conference On Computing, Communication And Networking Technologies (ICCCNT), 6-8 July 2019, IIT Kanpur, India.",
+      "Madhu G M, C Vyjayanthi, Chirag Modi, \" A Novel Framework for Monitoring Solar PV based Electric Vehicle Community Charging Station and Grid Frequency Regulation using Blockchain\", 10th International Conference On Computing, Communication And Networking Technologies (ICCCNT), 6-8 July 2019, IIT Kanpur, India.",
+      "A. Muzumdar, C. N. Modi, G. M. Madhu and C. Vyjayanthi, Analyzing the Feasibility of Different Machine Learning Techniques for Energy Imbalance Classification in Smart Grid, 2019 10th International Conference on Computing, Communication and Networking Technologies (ICCCNT), Kanpur, India, July 2019, pp. 1-6.",
+      "S. Jangir, A. Muzumdar, A. Jaiswal, C. N. Modi, S. Chandel and C. Vyjayanthi, A Novel Framework for Pharmaceutical Supply Chain Management using Distributed Ledger and Smart Contracts, 2019 10th International Conference on Computing, Communication and Networking Technologies (ICCCNT), Kanpur, India, July 2019, pp. 1-7.",
+      "Rupesh Thombre, C.Vyjayanthi, \"Implementation of a Resistive Superconducting Fault Current Limiter in a VSC-HVDC System\", International Conference on Recent Developments in Electrical and Power Engineering (ICRDEPE),19th June 2019, Nagpur, India.",
+      "Kandukuri Surendra and C. Vyjayanthi, \"Short Circuit Studies on a Distribution System Integrated with Various Distributed Generations\", IEEE sponsored 8th Power India International Conference PIICON-2018, December 10-12, 2018, NIT Kurukshetra.",
+      "Madhu G M and C. Vyjayanthi, \"Implementation of Cost Effective Smart Home Controller with Android Application using Node MCU and Internet of Things (IOT)\", IEEE sponsored 2nd International Conference on Energy, Power & Environment (ICEPE 2018), Shillong, Meghalaya, India, June 1-2, 2018.",
+      "Kandukuri Surendra and C. Vyjayanthi, \"Fault Level Analysis in Modern Electrical Distribution System Considering Various Distributed Generations\", IEEE sponsored International Conference on Power, Energy, Control and Transmission Systems, 22-23 February 2018, Chennai.",
+      "K. Vinay Kumar and C. Vyjayanthi, \"Direct Energy Transfer Technique based DC-DC Converter with Distributed MPPT for PV Charging Applications\", IEEE sponsored International Conference on Power, Energy, Control and Transmission Systems, 22-23 February 2018, Chennai.",
+      "Shiham and C. Vyjayanthi, \"Droop Control of A Single Phase AC-DC Hybrid Microgrids With Energy Storage\", 2018 IEEE sponsored Biennial International Conference on Power and Energy systems: Towards Sustainable Energy (PESTSE), 18th-20th January 2018, Bangalore.",
+      "R.V.S.E. Sravan and C. Vyjayanthi, \"Vector control of the interlinking converter for Droop controlled power flow in AC/DC hybrid microgrids\", 1st International Conference on Large -Scale Grid Integration of Renewable Energy in India, 6-8 September 2017, New Delhi, Under Ministry of New and Renewable Energy, Ministry of Power.",
+      "Rushikesh Babu and C.Vyjayanthi, “Implementation of Net Zero Energy Building (NZEB) Prototype with Renewable Energy Integration”, IEEE TENSYMP 2017, Spring Conference, July 14-16, 2017, Cochin. IEEE Publication.",
+      "P.V. Subrahmanyam and C. Vyjayanthi, “Integration of PV and Battery System to the Grid with Power Quality Improvement Features using Bidirectional AC-DC Converter”, International Conference on Electrical Power and Energy Systems (ICPES), MNIT Bhopal, 14-16 Dec, 2016.",
+      "Baluguri Ravi Teja and C. Vyjayanthi, “The PMU-Based System Observability for Fault Detection and Isolation for a Distribution Network”, International Conference and Exhibition on Smart Grids and Smart cities, March 2016.",
+      "Swathi.R, Arpitha Raju.B and C Vyjayanthi, “Optimal Placement of FACTS Devices for Voltage Stability Enhancement in a Typical Power System”, International conference on Electrical, Electronics and Computer science (ICEECS), Nagpur, June 2014.",
+      "Swathi.R, C Vyjayanthi and Arpitha Raju.B, “Optimal Placement of Thyristor-Controlled Series Capacitor in a Typical Power System”, Wireless Control and Communication Technologies (NCWCT – 2014), April 2014.",
+      "D. Thukaram and C. Vyjayanthi, Identification of Power System Expansion Locations to Meet Growing Loads, Sixteenth National Power Systems Conference (NPSC-2010), December 15-17, 2010, Osmania University, Hyderabad, India.",
+      "D. Thukaram and C. Vyjayanthi, Evaluation and Improvement of Total Transfer Capacity – A Case study, IEEE International Conference on Power Electronics, Drives and Energy Systems for Industrial Growth-2010, during December 21-23, 2010, New Delhi, INDIA",
+      "D. Thukaram and C. Vyjayanthi, Optimal Placement of Distributed Generation for a Projected Load Increase Using Relative Electrical Distance Approach, International Conference on Power Systems (ICPS-2009), December 27-29, 2009, IIT Kharagpur, India.",
+      "D. Thukaram and C. Vyjayanthi, Estimation of Most Economic Bilateral Contract using Relative Electrical Distance Concept in a Deregulated Environment, Fifteenth National Power Systems Conference (NPSC-2008), December 2008.",
+      "D. Thukaram and C. Vyjayanthi, Evaluation of Charges for Power Transmission and Losses in Bilateral Power Contracts, TENCON 2008, November 20th – 23rd, 2008, Hyderabad, India.",
+      "D. Thukaram and C. Vyjayanthi, Evaluation of Charges for Bilateral Power Contracts based on Relative Electrical Distance Concept in a Deregulated Power System, Managing Complexity in a Distributed World (MCDES-2008), 27th May - 31st May 2008, Indian Institute of Science, Bangalore, India.",
+      "D. Thukaram and C. Vyjayanthi, Evaluation and Improvement of Reactive Power Dispatch in Deregulated Transmission Networks, International Conference on Power Systems, 12th -14th Dec. 2007, Central Power Research Institute, Bangalore, INDIA.",
+      "D. Thukaram, G. Yesuratnam and C. Vyjayanthi, Optimal Reactive Power Dispatch based on Voltage Stability Criteria in a Large Power System with AC/DC and FACTS Devices, IEEE International Conference on Power Electronics, Drives and Energy Systems for Industrial Growth-2006, during December 13th - 15th , 2006, New Delhi, INDIA.",
+      "D. Thukaram and C. Vyjayanthi, Evaluation and Improvement of Real and Reactive power Flows in Deregulated Transmission Networks, Fourteenth National Power Systems Conference (NPSC-2006), December 26th - 29th, IIT Roorkee, India.",
+      "D. Thukaram and C. Vyjayanthi, Improved Allocation of Reactive Power Dispatch Incorporating FACTS Devices in Deregulated Power Systems, IEEE Bangalore section 15th Annual Symposium -2006, 24th - 25th November 2006, Central Power Research Institute (CPRI), Bangalore.",
+      "D. Thukaram and C. Vyjayanthi, Evaluation of Reactive Power Sharing in a deregulated Environment-a case study, pp-219-230 has been published at an international conference proceeding held at Bananas Hindu University, March 2006."
+    ]
+  },
+  "researchGuidance": [
+    "Shravan RVSE, \"Droop Controlled Power Flow and Power Quality Improvement Using Interlinking Converter in Islanded Hybrid Microgrid with AC-DC subgrids\"-Completed",
+    "Madhu G M, \"Home Automation with Hybrid Energy Systems\", Full-time Ph.D.- Under progress",
+    "Naik Nivedita Navanat, \"Electric Vehicles integration\", Part-time Ph.D.- Under progress",
+    "Siva Prasad N, \"Generator Protection\", Part-time Ph.D.- Under progress."
+  ],
+  "fundedProjects": [
+    "\"Development of a Multipurpose Intelligent Controller for a Nano Grid Operation\", Ministry of New and Renewable Energy, PI - 35 Lakhs.",
+    "\"Development of coordination control schemes for hybrid AC/DC micro grids for a stable and reliable system operation\", ECR, Science and Engineering Research Board (SERB), DST. PI - 42 Lakhs.",
+    "Developing Smart Controller for Optimum Utilization of Energy and Trustworthy Management in a Micro Grid Environment, IMPRINT-2C1, SERB, DST, GOI. Co-PI, 1 Crore."
+  ],
+  "awardsAndHonors": [],
+  "memberships": [
+    "IEEE Power & Energy Society Membership",
+    "IEEE Industry Applications Society"
+  ],
+  "professionalServices": [
+    "Auroras Engineering College, Lecturer, Hyderabad, India, July 2001- November 2002",
+    "Power Research and Development Consultants, Core (R&D) Team, October 2010 - December 2014",
+    "National Institute of Technology Goa, December 2014- Till Date"
+  ],
+  "coursesAttended": [
+    {
+      "month": "APR",
+      "year": "2017",
+      "info": "Cloud Computing, One day workshop conducted by TEKINAR, Bangalore, 29th April, 2017."
+    },
+    {
+      "month": "DEC",
+      "year": "2016",
+      "info": "Mobile Application Development, Five day training program, IIT Guwahati, 7th-11th December, 2016."
+    },
+    {
+      "month": "SEP",
+      "year": "2016",
+      "info": "Smart Micro Grids, Three day workshop, IIT Kanpur, 8th - 10th April, 2016."
+    },
+    {
+      "month": "SEP",
+      "year": "2014",
+      "info": "Half-day Tutorial on Sustainable Energy Generation at MSRIT, Bangalore, September 2014."
+    },
+    {
+      "month": "SEP",
+      "year": "2014",
+      "info": "Distinguished lecture program (DLP), Dr. Jay Giri, Alstom, USA at SRLDC, 10th September, 2014."
+    },
+    {
+      "month": "SEP",
+      "year": "2014",
+      "info": "Smart Initiatives in Energy Systems, IEEE PES Bangalore Annual workshop at JFWTC, Bangalore, 11th-12th September, 2014."
+    }
+  ],
+  "coursesConducted": [
+    {
+      "month": "MAR",
+      "year": "2017",
+      "info": "Internet of Things (IoT) for Home Automation, Two Days National Workshop, March 24-25, 2017"
+    }
+  ]
+}

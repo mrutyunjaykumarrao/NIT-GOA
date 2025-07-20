@@ -1,0 +1,193 @@
+{
+  "faculty_name": "Dr. Anirban Chatterjee",
+  "profile": {
+    "name": "Dr. Anirban Chatterjee",
+    "designation": "Associate Professor",
+    "department": "Department of Electronics and Communication Engineering",
+    "imageUrl": "Dr. Anirban Chatterjee.png",
+    "email": "snanirban@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Antennas Modeling",
+      "Antenna Array",
+      "Microstrip Antenna Design",
+      "Fractal Antennas",
+      "Antenna Measurements",
+      "Beam Steerable Antennas",
+      "Wearable Antennas",
+      "Microstrip Reflectarray",
+      "DRA's",
+      "Slow-wave Structures",
+      "Leaky Wave Antennas"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Anirban Chatterjee",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Associate Professor",
+    "department": "Department of Electronics and Communication Engineering",
+    "url": "https://scholar.google.co.in/citations?user=bUqXTUYAAAAJ&hl=en",
+    "dateOfJoining": "11/12/2013",
+    "experience": "8 years and 11 months"
+  },
+  "contactInformation": {
+    "address": "Department of ECE, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "snanirban@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Antennas Modeling",
+    "Antenna Array",
+    "Microstrip Antenna Design",
+    "Fractal Antennas",
+    "Antenna Measurements",
+    "Beam Steerable Antennas",
+    "Wearable Antennas",
+    "Microstrip Reflectarray",
+    "DRA's",
+    "Slow-wave Structures",
+    "Leaky Wave Antennas",
+    "Terahertz Antenna Design",
+    "Antenna Synthesis using Optimization Algorithm",
+    "Microwave Components & Devices"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Electromagnetic Theory",
+      "Digital Systems Design",
+      "Microwave Engg. & Optical Communication",
+      "Antennas & Propagation",
+      "Communication Engineering",
+      "Digital Computer Organisation & Architecture"
+    ],
+    "pg": [
+      "CMOS RFIC Design",
+      "Solid State Device"
+    ]
+  },
+  "academicInformation": [
+    {
+      "degree": "M.Tech.",
+      "institute": "National Institute of Technology, Durgapur",
+      "year": "2009",
+      "subject": "Telecommunication Engineering"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "National Institute of Technology, Durgapur",
+      "year": "2013",
+      "subject": "Electronics and Communication Engineering"
+    }
+  ],
+  "publications": {
+    "journal": [
+        "Patanvariya, D., Chatterjee, \"Planar nested square fractal patch antenna for multi-band wireless applications,\" Microsyst Technol, vol.xx, no.xx, pp-xx-xx, Feb. 2023.",
+        "Kalyan Sundar Kola, Anirban Chatterjee, \"Highly-directive Array of Nature-inspired based Patch Antennas,\" Int J RF Microw. Comput. Aided Eng., vol. 32, no. 8, pp. 1-20, May 2022.",
+        "K.S.Kola, A. Chatterjee, R.P.K. Jagannath, \"2x2 planar array of Clover-leaf shaped printed antennas for weather-monitoring based applications,\" Int J RF Microw. Comput. Aided Eng., vol. 32, no. 4, pp. 1-22, April 2022.",
+        "Kalyan Sundar Kola, Anirban Chatterjee, \"Highly-directive hybrid-fractal radiator-based printed array for X-band amateur radio applications,\" International Journal of Electromagnetic Waves and Applications, vol. 36, no. 14, pp. 1935-1956, March 2022.",
+        "K.S.Kola, A. Chatterjee, R.P.K. Jagannath, \"Design of highly-directive Night-flowering Jasmine-shaped printed radiator based array for Ku-band applications,\" Int J Commun Syst., vol. 35, no. 6, pp. 1-23, Dec. 2021.",
+        "Deven G. Patanvariya, Anirban Chatterjee, \"High gain and low cross-polarized printed array of Baravelle’s spiral antennas for ku-band application,\" AEU - International Journal of Electronics and Communications, vol 132, 2021.",
+        "Patanvariya DG, Chatterjee A., \"High-directive monopulse microstrip antenna array for DSRC-band application,\" Int J Commun Syst., Wiley, 2021.",
+        "Kalyan Sundar Kola, R Kousalya, BNS Mahalakshmi, Anirban Chatterjee \"High-gain and low cross-polarized wave-fractal shaped printed antenna for DBS application,\" International Journal of Electromagnetic Waves and Applications, 2021.",
+        "Kola, KS., Chatterjee, A., \"Design of a Right-Handed Circularly Polarized Printed Antenna for Vehicular Communication,\" Wireless Personal Communications, 2021.",
+        "Kola, KS., Chatterjee, A, \"A high-gain and low cross-polarized printed fractal antenna for X-band wireless application,\" International Journal of Communication Systems, vol. 34, issue 10, 2021.",
+        "D. G. Patanvariya, A. Chatterjee, \"A Compact Bow-tie Shaped Wide-band Microstrip Patch Antenna for Futur 5G Communication Networks,\" Radioengineering, vol. 30, no. 1, pp. 40-47, Apr., 2021.",
+        "Kola, K. S, Chatterjee, A, Patanvariya, DG, \"Design of a wideband right-handed circularly polarized array of miniaturized mushroom-shaped antennas for direct broadcast satellite application,\" Microw Opt Technol Lett., Wiley, 2020, vol.62, issue: 11, pp. 3542– 3555.",
+        "D. G. Patanvariya, A. Chatterjee, and K. S. Kola, \"High-Gain and Circularly Polarized Fractal Antenna Array for Dedicated Short Range Communication Systems,” Progress In Electromagnetics Research C, Vol. 101, pp. 133-146, 2020",
+        "Kola, K., Chatterjee, A., \"Design of a compact high gain printed octagonal array of spiral-based fractal antennas for DBS application,\" International Journal of Microwave and Wireless Technologies, vol. 12, no.8, pp. 769-781, 2020.",
+        "Patanvariya D. G, Chatterjee A, Kola K, Naik S., \"Design of a linear array of fractal antennas with high directivity and low cross-polarization for dedicated short range communication application,” Int J RF Microw Comput Aided Eng.,Wiley, Vol: 30, No.:3, 2020.",
+        "Patanvariya, DG, Chatterjee, A., \"Generation of difference pattern from a linear microstrip patch array for the monopulse radar application,\" Int J RF Microw Comput Aided Eng., Wiley, vol 30, issue 12, 2020.",
+        "A. Chatterjee, T. Mondal, Deven G. Patanvariya, Ravi Prasad K. Jagannath, \"Fractal-based design and abrication of low-sidelobe antenna array,\" AEU - International Journal of Electronics and Communications, Elsevier, Volume 83, Pages 549-557, 2018",
+        "Anirban Chatterjee, Gautam Kumar Mahanti and Narendra Nath Pathak, “Gravitational search algorithm for synthesis of selectively thinned concentric ring array antenna with minimum sidelobe level and with fixed and variable first null beamwidth,” International Journal of Microwave and Wireless Technologies, Cambridge University Press, vol. 7, issue. 2, pages 151-160, April 2015",
+        "A. Chatterjee, G. K. Mahanti, and A. Mahanti, “Synthesis of thinned concentric ring array antenna in predefined phi-planes using binary firefly and binary particle swarm optimization algorithm,” International Journal of Numerical Modelling: Electronic Networks, Devices and Fields, Wiley, Volume 28, Issue 2, pages 164–174, March/April 2015",
+        "S.K. Mandal, G.K. Mahanti, Rowdra Ghatak, and A. Chatterjee “Design of digitally controlled multiple-pattern time-modulated antenna arrays with phase-only difference,” Annals of telecommunications -annales des t´el´ecommunications, Springer, Volume 70, Issue 1-2, pages 29-35, February 2015",
+        "D. Mandal, A. Chatterjee, T. Mondal, A.K. Bhattacharjee, Shaped beam synthesis of concentric ring array antenna using Differential Evolution Algorithm, AEU - International Journal of Electronics and Communications, Elsevier, Volume 69, Issue 7, pages 1025-1031, July 2015",
+        "Anirban Chatterjee and G.K. Mahanti. “Combination of fast Fourier transform and self-adaptive differential evolution algorithm for synthesis of phase-only reconfigurable rectangular array antenna,” Annals of telecommunications -annales des t´el´ecommunications, Springer, Volume 69, Issue 9-10, pages 515-527, October 2014",
+        "Anirban Chatterjee and Debasis Mandal, “Synthesis of hexagonal planar array using swarm-based optimization algorithms,” International Journal of Microwave and Wireless Technologies, Cambridge University Press, vol. 7, issue 2. pages 151-160, April 2014.",
+        "Anirban Chatterjee, Gautam Kumar Mahanti, and Gourab Ghatak, “Synthesis of satellite footprint patterns from rectangular planar array antenna by using swarm-based optimization algorithms”. International Journal of Satellite Communications and Networking, Wiley, vol. 32, no. 1, pp. 25-47, Sep, 2013",
+        "Anirban Chatterjee, G. K. Mahanti, and Gaurav Das Choudhury, “Combination of differential evolution algorithm and fast Fourier transform for synthesis of footprint patterns from rectangular planar array,” International Journal of Numerical Modelling: Electronic Networks, Devices and Fields, Wiley, vol. 26, no. 6, pp. 592–601, Jun, 2013",
+        "A. Chatterjee and G. Mahanti. “Minimization in variations of different parameters in differentjplanes of a small-size concentric ring array antenna using firefly algorithm,” Annals of telecommunications- annales des t´el´ecommunications, Springer, Vol. 68, Issue 5-6, page 299–306, August 2012",
+        "A. Chatterjee, G. K. Mahanti, and B.C. Mahato, “Sidelobe reduction of a scanned and broadside central element fed concentric ring array antenna with fixed first null beamwidth using novel particle swarm optimization,” International Journal of Signal and Imaging Systems Engineering, Inderscience Publishers, vol. 5 no. 4, pp. 290–294, Nov, 2012.",
+        "A. Chatterjee, G. K. Mahanti, “Differential Evolution and Genetic Algorithm for Sidelobe Reduction of A Concentric Ring Array Antenna by Radial Variation of Amplitudes With Fixed and Variable First Null Beamwidth,” International Journal on Electrical Engineering and Informatics, vol. 4, no. 1, pp. 1–14, Mar,2012",
+        "A. Chatterjee, G. K. Mahanti, and Arindam Chatterjee, \"Design of a fully digital controlled reconfigurable switched beam concentric ring array antenna using firefly and particle swarm optimization algorithm,\" Progress In Electromagnetics Research B , vol. 36, pp. 113-131, 2012",
+        "A. Chatterjee, G. K. Mahanti, and P. R. S. Mahapatra, \"Design of fully digital controlled reconfigurable dual-beam concentric ring array antenna using gravitational search algorithm,\" Progress In Electromagnetics Research C , vol. 18, pp. 59-72, 2011.",
+        "A. Chatterjee, G. K. Mahanti, A. Chakraborty, and P. R. S. Mahapatra, “Phase-only Sidelobe Reduction of a Uniformly Excited Concentric Ring Array Antenna using Modified Particle Swarm Optimization,” International Journal of Microwave and Optical Technology, vol. 6, no. 1, pp. 57–62, 2011.",
+        "A. Chatterjee, and G. K. Mahanti, “Side Lobe Reduction of A Uniformly Excited Concentric Ring Array Antenna using Evolutionary Algorithms,” ICTACT Journal On Communication Technology , vol. 1, no. 4, pp. 230-234, Dec, 2010",
+        "A. Chatterjee, G. K. Mahanti, and N. N. Pathak, \"Comparative performance of gravitational search algorithm and modified particle swarm optimization algorithm for synthesis of thinned scanned concentric ring array antenna,\" Progress In Electromagnetics Research B , vol. 25, pp. 331-348, 2010."
+    ],
+    "proceedings": [
+        "K. S. Kola and A. Chatterjee, “An Array of Tulip-flower shaped Printed Radiators for Direct Broadcast Satellite (DBS) Applications,” Advanced Communication Technologies and Signal Processing (ACTS), Dec. 2021, pp. 1-6,2021.",
+        "K. S. Kola and A. Chatterjee, “A 1x2 Array of High-gain Radiators for Direct Broadcast Satellite (DBS) Services under Ku-band,” 8th International Conference on Signal Processing and Integrated Networks (SPIN), Aug. 2021, pp. 297-302.",
+        "Patanvariya, Deven G., and Anirban Chatterjee, “A Low Profile Four Element Dual-band Monopole Antenna for Pattern Diversity MIMO Applications,”2nd International Conference on Range Technology (ICORT), pp. 1-4, IEEE, 2021.",
+        "S Bandyopadhyay, A.Chatterjee, A Datta, “Genetic Algorithm Driven Linear Antenna Array Sidelobe Level Reduction,” Indian Conference on Antennas and Propagation (InCAP), 2021, pp. 52-55.",
+        "D. G. Patanvariya and A. Chatterjee, “A Novel Compact Monopulse Patch Antenna Array,” Indian Conference on Antennas and Propagation (InCAP), 2021, pp. 80-82.",
+        "S. B. Naik, R. K. Siddharth, A. Chatterjee, K. Y. B. Nithin, M. H. Vasantha and R. Kini, \"A 1 V Double-Balanced Mixer for 2.4-2.5 GHz ISM Band Applications,\" 2021 34th International Conference on VLSI Design and 2021 20th International Conference on Embedded Systems (VLSID), 2021, pp. 252-257.",
+        "K. S. Kola and A. Chatterjee, \"A Two-element Array with Clover-leaf Shaped Antennas for X-band Applications,\" 2020 7th International Conference on Signal Processing and Integrated Networks (SPIN), Noida, India, 2020, pp. 349-354.",
+        "Patanvariya, Deven G., and Anirban Chatterjee. \"Modified-T Shaped Wideband Antenna for Ka-band Applications.\" International Conference on Communication and Signal Processing (ICCSP), pp. 1654-1658. IEEE, 2020.",
+        "Patanvariya, Deven G., and Anirban Chatterjee. \"A Compact Triple-Band Circularly Polarized Slot Antenna for MIMO System.\" International Symposium on Antennas & Propagation (APSYM), pp. 54-57. IEEE, 2020.",
+        "K. S. Kola and A. Chatterjee, \"A Linear Array of Christmas-tree Shaped Antennas for DBS Applications,\" 2020 International Conference on Computer, Electrical & Communication Engineering (ICCECE), Kolkata, India, 2020, pp. 1-6.",
+        "K. S. Kola and A. Chatterjee, \"A Printed Array of High-gain Fractal Antennas for X-band Applications,\" 2020 International Conference on Communication, Computing and Industry 4.0 (C2I4), Bangalore, India, 2020, pp. 1-6.",
+        "S. B. Naik, R. K. Siddharth, A. Chatterjee, Y. B. Nithin, M. H. Vasantha and R. Kini, \"A 1.8 V Quadrature Phase LC Oscillator for 5G Applications,\" 2020 IEEE International Symposium on Smart Electronic Systems (iSES) (Formerly iNiS), 2020, pp. 277-280.",
+        "S. Bharat Naik, R. K. Siddharth, A. Chatterjee, N. Kumar Y.B., M. H. Vasantha and R. Kini, \"A Wideband 12 Phase Ring Oscillator for 5G Applications,\" 2020 IEEE 63rd International Midwest Symposium on Circuits and Systems (MWSCAS), 2020, pp. 885-888.",
+        "D. G. Patanvariya, K. S. Kola and A. Chatterjee, “Left-Handed Circularly polarized two-element antenna array for Vehicular Communication,” in 2019 International Conference on Communication and Signal Processing (ICCSP), pp. 27-32, Apr. 2019.",
+        "D. G. Patanvariya, K. S. Kola and A. Chatterjee, \"A Circularly-polarized Linear Array of Maple-leaf shaped Antennas for C-band Applications,\"10th International Conference on Computing, Communication and Networking Technologies (ICCCNT), Kanpur, India, 2019, pp. 1-5.",
+        "D. G. Patanvariya and A. Chatterjee, \"Design of two-element Circularly Polarized Bubbled Antenna for Vehicular Communication,\" 2019 IEEE 16th India Council International Conference (INDICON), Rajkot, India, 2019, pp. 1-4.",
+        "Patanvariya, Deven G., Kalyan Sundar Kola, and Anirban Chatterjee. \"Circularly polarized two-element array for DSRC Application.\" 2019 International Conference on Computer, Electrical & Communication Engineering (ICCECE), pp. 1-6. IEEE, 2019.",
+        "K. S. Kola, D. G. Patanvariya, S. B. Naik, M. V. Reddy and A. Chatterjee, \"A Novel Two-Element Linear Array for DSRC Band,\" 2018 9th International Conference on Computing, Communication and Networking Technologies (ICCCNT), Bangalore, 2018, pp. 1-5",
+        "A. Chatterjee and G.K. Mahanti, “Combination of FFT and firefly algorithm for synthesis of reconfigurable rectangular array with circular boundary,” In Communications, Devices and Intelligent Systems (CODIS) IEEE International Conference on , pp. 198–201, 2012",
+        "A. Chatterjee, G. K. Mahanti, and P. R. S. Mahapatra, “Design of phase-differentiated dual-beam concentric ring array antenna using differential evolution algorithm,” In Proc. Int. Conf. on Communications and Signal Processing (ICCSP) 2011, pp. 280–283, 2011",
+        "A. Chatterjee, G. K. Mahanti, and P. R. S. Mahapatra, “Generation of phase-only pencil-beam-pair from concentric ring array antenna using Gravitational Search Algorithm ,” In Proc. Int. Conf. on Communications and Signal Processing (ICCSP) 2011, pp. 384–388, 2011",
+        "A. Chatterjee, G. K. Mahanti, and B.C. Mahato, “A Novel Particle Swarm Optimization for Sidelobe Reduction of A Scanned Central Element Fed Concentric Ring Array Antenna with Fixed First Null beamwidth,” In Proc. Int. Conf. on Electronic Systems (ICES) 2011, pp. 231–234, 2011.",
+        "A. Chatterjee, G.K.Mahanti and N.Pathak, “Synthesis of Thinned Concentric Circular Ring Array Antenna using Modified Particle Swarm Optimization Algorithm,” Proc. 25th International Technical Conference on Circuits/Systems, Computer and Communications (ITC-CSCC 2010), Ambassador Pattaya, Thailand, pp.504-507, 2010.",
+        "A. Chatterjee, G.K. Mahanti and P.R.S. Mahapatra, “Optimum ring spacing and interelement distance for sidelobe reduction of a uniform concentric ring array antenna using differential evolution algorithm,” In IEEE Int. Conf. on Communication Systems (ICCS), 2010, pp. 254–258, Nov., 2010."
+    ]
+  },
+  "researchGuidance": [
+    "Deven Patanvriya was awarded the Ph.D. degree in 2021;",
+    "Kalyan Sundar Kola was awarded the Ph.D. degree in 2022;"
+  ],
+  "fundedProjects": [
+    "SERB Extra Mural Research Fund. Project entitled \"Design of Compact-Shaped Beam Antenna Array for Dedicated Short-Range Communication'' (File No.: SB/S3/EECE/226/2016). Status: Successfully completed. Outcomes: 10 SCI Journals and10 IEEE Conferences papers, Filed an Indian Patent, and received a national award (GYTI)."
+  ],
+  "awardsAndHonors": [
+    "Received Gandhian Young Technological Innovation (GYTI) appreciation award-2019.",
+    "Special Mentioned Paper Award received from the IEEE International Conference 'AdvancedCommunication Technologies and Signal Processing (ACTS)', jointly organized by NIT Rourkela and NIT Silchar, December 2021.",
+    "Received ‘Best Paper Award’ in International Conference on Electronic Systems (ICES-2011)"
+  ],
+  "memberships": [],
+  "professionalServices": [
+    "Convener Training & placement",
+    "Member of Library Committee",
+    "Faculty In charge Admission",
+    "Convener of Swachhata Ambassador Committee"
+  ],
+  "coursesAttended": [
+    {
+      "month": "MAR",
+      "year": "2017",
+      "info": "GIAN Course, Title: \"Low power Nyquist-rate data converter\""
+    },
+    {
+      "month": "FEB",
+      "year": "2012",
+      "info": "A. Chatterjee and G.K. Mahanti, “Combination of FFT and firefly algorithm for synthesis of reconfigurable rectangular array with circular boundary,” In Communications, Devices and Intelligent Systems (CODIS), 2012 IEEE International Conference on , pp. 198–201,2012"
+    },
+    {
+      "month": "SEPT",
+      "year": "2011",
+      "info": "A. Chatterjee, G. K. Mahanti, and P. R. S. Mahapatra, “Design of phase-differentiated dual-beam concentric ring array antenna using differential evolution algorithm,” In Proc. Int. Conf. on Communications and Signal Processing (ICCSP) ,2011, pp. 280–283, 2011"
+    },
+    {
+      "month": "SEPT",
+      "year": "2011",
+      "info": "A. Chatterjee, G. K. Mahanti, and P. R. S. Mahapatra, “Generation of phase-only pencil-beam-pair from concentric ring array antenna using Gravitational Search Algorithm ,” In Proc. Int. Conf. on Communications and Signal Processing (ICCSP) 2011, pp. 384–388, 2011"
+    }
+  ],
+  "coursesConducted": [
+    {
+      "month": "MAR",
+      "year": "2018",
+      "info": "Title: \"Emerging Antennas for Future Communication Systems: Theory, Challenges and Physical Implementation\" External Expert: Prof. Yahia M.M.Antar, Royal Military College of Canada Date: 5th to 10th March 2018 Place: National Institute of Technology Goa"
+    }
+  ]
+}

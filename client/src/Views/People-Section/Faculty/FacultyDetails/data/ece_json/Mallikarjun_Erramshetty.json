@@ -1,0 +1,95 @@
+{
+  "faculty_name": "Dr. Mallikarjun Erramshetty",
+  "profile": {
+    "name": "Dr. Mallikarjun Erramshetty",
+    "designation": "Assistant Professor",
+    "department": "Department of Electronics and Communication Engineering",
+    "imageUrl": "Dr. Mallikarjun Erramshetty.png",
+    "email": "emallikarjuna@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Microwave Imaging",
+      "Terahertz Imaging",
+      "Inverse Problems"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Mallikarjun Erramshetty",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Assistant Professor",
+    "department": "Department of Electronics and Communication Engineering",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": "5 years"
+  },
+  "contactInformation": {
+    "address": "Assistant Professor, Department of ECE, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "emallikarjuna@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Microwave Imaging;",
+    "Terahertz Imaging;",
+    "Inverse Problems;"
+  ],
+  "coursesTaught": {
+    "ug": [],
+    "pg": []
+  },
+  "academicInformation": [
+    {
+      "degree": "B.Tech.",
+      "institute": "Kakatiya Institute of Technology and Science, Warangal",
+      "year": "2007",
+      "subject": "Electronics and Instrumentation"
+    },
+    {
+      "degree": "M.Tech.",
+      "institute": "IIT Kharagpur",
+      "year": "2009",
+      "subject": "Instrumentation"
+    },
+    {
+      "degree": "P.Hd.",
+      "institute": "IIT Kharagpur",
+      "year": "2016",
+      "subject": "Microwave Imaging"
+    }
+  ],
+  "publications": {
+    "journal": [
+        "Amit Magdum, E. Mallikarjun,\"Distorted Born iterative method with back-propagation improves permittivity reconstruction\", International Journal of Microwave and Wireless Technologies, 2022 - APRIL, 2022",
+        "Amit Magdum, M. Erramshetty, R.P. K. Jagannath, \" Fractional regularized Distorted Born Iterative Method for Permittivity Reconstruction\" Journal of Radioengineering, 2022 - JAN, 2022",
+        "A. Magdum, E. Mallikarjun, RPK Jagannath, \"An Exponential Filtering Based Inversion Method for Microwave Imaging\", Journal of Radioengineering. 2021. - MAY, 2021",
+        "Magdum A, Erramshetty M, Jagannath RPK. \"Regularized minimal residual method for permittivity reconstruction in microwave imaging\". Microw Opt Technol Lett. pp. 1-13, 2020 - JUN, 2020",
+        "E. Mallikarjun, \"Shape Reconstruction of Unknown Targets Using Multifrequency Linear Sampling Method,\" Progress In Electromagnetics Research Letters, Vol. 81, 77-83, 2019. - JAN, 2019",
+        "E. Mallikarjun and A. Bhattacharya, \"Shape reconstruction of mixed boundary objects by linear sampling method,\" IEEE Trans. Antennas Propagat., vol. 63, no. 7, pp. 3077-3086, 2015.",
+        "E. Mallikarjun and A. Bhattacharya, \"Method to calculate the incident fields in the investigation domain in the perspective of permittivity reconstruction,\" IET Microw. Antennas Propag., vol. 9, no. 3, pp. 252-263, 2015."
+    ],
+    "proceedings": [
+        "E. Mallikarjun and A. Bhattacharya, \"Shape reconstruction of dielectric and conducting objects using linear sampling method and limitations,\" Proceedings of URSI Asia pacific radio science conference, Mar 9- Mar 15, Delhi, India, 2019. - MAR, 2019",
+        "E. Mallikarjun and Pragati Patel, \"Shape Reconstruction of Conducting Objects Using Linear Sampling Method in a Limited Aperture Measurements\", Proceedings of IEEE-INAE Workshop on Electromagnetics, Dec 6- Dec 8, Kerala, India, 2018. - DEC, 2018",
+        "Eeshan, Pragati and Mallikarjun, “ Perforated Rectangular Dielectric Resonator Antenna for Wideband, Dual band and Single band application,” European Microwave week , Spain, 2018",
+        "K. J. Ravi Prasad and Mallikarjun Erramshetty, “Regularized inexact newton method for microwave reconstruction of strong scatterers,” Proceedings of Mediterranean microwave symposium, Nov. 28-30, Marseille. France, 2017. - NOV, 2017",
+        "Pragati Patel, Mallikarjun Erramshetty, \"New Wideband T-Shaped Perforated Dielectric Resonator Antenna\", IEEE Mediterranean Microwave Symposium, Marseille, France, 28-30 November 2017. - NOV, 2017",
+        "E. Mallikarjun and A. Bhattacharya, \"Performance evaluation of linear sampling method for mixed boundary objects in the half-space scenario ,\" Proceedings of Advanced Electromagnetics Conference ,pp. 63-66, July 26-28, Spain, 2016. - JULY, 2016",
+        "E. Mallikarjun, Abhishek roy and A. Bhattacharya, \"Effect of multipoles in resolution with linear sampling method,\" Proceedings of National Conference on Communications, Paper ID. 1569851553, Feb. 28-Mar 2, I. I. T Kanpur, India, 2014.",
+        "E. Mallikarjun and A. Bhattacharya, \"Permittivity reconstruction of dielectric objects on experimental data in microwave imaging,\" Proceedings of Antenna Test and Measurement Society , pp. 51-54, Feb. 12-13, Kolkata, India, 2013.",
+        "E. Mallikarjun and A. Bhattacharya, \"Effective reconstruction of small dielectric objects in microwave imaging,\" Proceedings of IEEE Int. Symp. On Antennas and Propagation. USNC/URSI National Radio Sci. Meeting, paper ID: 1767, July 8-14, Illinois, USA, 2012.",
+        "E. Mallikarjun and A. Bhattacharya, \"Study of resolution in microwave imaging using linear sampling method,\" Proceedings of IEEE Applied Electromagnetics conference, Paper ID: CEM-52-7077. Dec. 18-22, Kolkata, India, 2011.",
+        "E. Mallikarjun, K.N.G.B. Yaswanth, and A. Bhattacharya, \"Shape reconstruction of two-dimensional dielectric cylinder by using linear sampling method,\" Proceeding of International symposium on Devices, MEMS, Intelligent Systems, Communications, pp. 234-236, April. 12-14, Sikkim Manipal University, Sikkim, India, 2011."
+    ]
+  },
+  "researchGuidance": [
+    "Mr. Amit Magdum (full-time), Research Area: \"Regularization Techniques in Microwave Imaging for the Detection of Object Properties\"",
+    "Mr. Harisha S. B (Part-time), Research Area: \"Deep-learning Assisted Microwave Imaging\";"
+  ],
+  "fundedProjects": [
+    "SERB, Core-research grant, \"Deep-Learning Assisted Tomographic Ground Penetrating Radar for the Detection of Electrical and Morphological Features of Buried Objects\", 2021-24. PI. Dr. Mallikarjun"
+  ],
+  "awardsAndHonors": [],
+  "memberships": [],
+  "professionalServices": [],
+  "coursesAttended": [],
+  "coursesConducted": []
+}

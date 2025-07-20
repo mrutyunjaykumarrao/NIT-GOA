@@ -1,0 +1,78 @@
+{
+  "faculty_name": "Dr. Abhijit Sarkar",
+  "profile": {
+    "name": "Dr. Abhijit Sarkar",
+    "designation": "Faculty on contract",
+    "department": "Department of Mechanical Engineering",
+    "imageUrl": "Dr. Abhijit Sarkar.png",
+    "email": "sarkarabhijit@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Manufacturing Technology",
+      "Welding"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Abhijit Sarkar",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Faculty on contract",
+    "department": "Department of Mechanical Engineering",
+    "url": null,
+    "dateOfJoining": "30/08/2013",
+    "experience": "4.2 years"
+  },
+  "contactInformation": {
+    "address": "Department of Mechanical Engineering, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "sarkarabhijit@nitgoa.ac.in",
+    "phoneMobile": "8837471092"
+  },
+  "researchAreas": [
+    "Manufacturing Technology",
+    "Welding"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Material science",
+      "Welding technology",
+      "operation research"
+    ],
+    "pg": []
+  },
+  "academicInformation": [
+    {
+      "degree": "Ph.D.",
+      "institute": "NIT AGARTALA",
+      "year": null,
+      "subject": "Manufacturing Technology"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "Abhijit Sarkar, Prasenjit Dey, R.N.Rai, Subhas Chandra Saha “A comparative study of multiple regression analysis and back propagation neural network approaches on plain carbon Steel in Submerged-arc welding” Sadhana - Academy Proceedings in Engineering Science, DOI 10.1007/s12046-016-0494-7(SCI). JAN 2016",
+      "Abhijit Sarkar, Aparesh Datta, Prasenjit Dey, R.N.Rai and S. C Saha “A Numerical Approach for Modelling Thermal Profiles and Effects of Process Parameters on it in Submerged Arc Welding of AISI 1518 Grade Steel” Journal of Thermal Engineering, Yildiz Technical University Press, Istanbul, Turkey Manuscript Received March 20, 2015; Accepted May 20, 2015, Vol. 1, Special Issue 3, No. 6, pp. 505-516, May, 2015. (Scopus) MAY 2015",
+      "A Sarkar, P Dey, P Kar, R.N. Rai, S.C. Saha, \"A Study on the Effects of Heat Input on Size of Heat-Affected Zone (HAZ) and Mechanical Properties of AISI 1518 Grade Steel in Submerged Arc-Welding Process.”January 2015,RIET-IJSET International Journal of Science Engineering and Technology 2(2):158., DOI:10.5958/2395-3381.2015.00017.9 JAN 2015",
+      "Dey P, Sarkar A, Das A. K, Development of GEP & ANN model to predict the unsteady forced convection over a cylinder”, Neural Computing and Application (2015),http://dx.doi.org/10.1007/s00521-015-2023-8.(SCI). 2015",
+      "Dey P, Sarkar A, Das A. K “Capability to predict the steady and unsteady reduced aerodynamic forces on a square cylinder by ANN and GEP” Neural Computing and Applications. Doi: http://dx.doi.org/10.1007/s500521-061-2186-y. (SCI). 2015",
+      "Dey P, Sarkar A, Das AK, Prediction of the aerodynamic behavior of a rounded corner square cylinder at zero incidence using ANN, Ain Shams Eng J (2016), http://dx.doi.org/10.1016/ j.asej.2015.12.014.(Elsevier) 2015",
+      "Dey P, Sarkar A, Das A. K, “Prediction of unsteady mixed convection over circular cylinder in the presence of nano fluid - A comparative study of ANN and GEP”, Journal of Naval Architecture and Marine Engineering (2015), 12(1): 57-71 (ESCI). 2015",
+      "Abhijit Sarkar, R.N.Rai, S.C.Saha “A Study of Parametric Effects on Thermal Profile of Submerged Arc Welding Process” Journal of Naval Architecture and Marine Engineering, 12(2015), 43-56.(ESCI) 2015",
+      "A. Sarkar, J. Roy, A. Majumder, S. C. Saha “Optimization of Welding Parameters of Submerged Arc Welding Using Analytic Hierarchy Process (AHP) Based on Taguchi Technique” J. Inst. Eng. India Ser. C (April–June 2014) 95(2):159–168, DOI 10.1007/s40032- 014-0114-4. (Springer). JUN 2014",
+      "Abhijit Sarkar, Arindam Majumder, Martand Pawar, S C Saha and R N Rai “Optimization of process parameters of submerged arc welding by using grey– fuzzy-based Taguchi method for AISI 1518 grade steel” ProcIMechE Part B: J Engineering Manufacture, 1–10, IMechE 2014 ,DOI: 10.1177/0954405414521064.(SCI) MAY 2014",
+      "S. Debbarma, A. Sarkar, S.C.Saha “A comparative study on the Hardness behaviour of friction stir welding AA60663 alloy”, Journal for technology of Plasticity, Vol. 37 (2), pp 33- 38.(Scopus). 2012"
+    ],
+    "proceedings": [
+      "Shantanu Debnath, Abhijit Sarkar, Dheeraj Kumar “An AHP-MOORA based performance improvement of EDM process” international conference on Sustainable Development (ICSD)” 14th -15th feb, 2019, sinhgad college of engineering, pune. 2019",
+      "A Sarkar, Garvit Singh “Study on thermal profile of Submerged Arc Welding process” AICON’16, 22-23 April’16, CSIT, Durg. 2016"
+    ]
+  },
+  "researchGuidance": [],
+  "fundedProjects": [],
+  "awardsAndHonors": [
+    "MHRD FELLOWSHIP 2009-2011 (GATE 2009)",
+    "MHRD FELLOWSHIP 2011-2015"
+  ],
+  "memberships": [],
+  "professionalServices": [],
+  "coursesAttended": [],
+  "coursesConducted": []
+}

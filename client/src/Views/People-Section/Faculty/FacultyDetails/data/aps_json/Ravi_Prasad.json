@@ -1,0 +1,83 @@
+{
+  "faculty_name": "Dr. Ravi Prasad K. J.",
+  "profile": {
+    "name": "Dr. Ravi Prasad K. J.",
+    "designation": "Associate Professor of Mathematics",
+    "department": "Department of Applied Sciences",
+    "imageUrl": "Dr. Ravi Prasad K. J..png",
+    "email": "k.j.raviprasad@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Bio-medical Imaging",
+      "Inverse problems and Numerical Optimization"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Ravi Prasad K. J.",
+    "gender": "Male",
+    "birthDate": "22/01/1981",
+    "designation": "Associate Professor",
+    "department": "Department of Applied Sciences",
+    "url": null,
+    "dateOfJoining": "11/12/2013",
+    "experience": null
+  },
+  "contactInformation": {
+    "address": "Department of Applied Sciences, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "k.j.raviprasad@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Bio-medical Imaging",
+    "Inverse problems and Numerical Optimization"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Mathematics-I,II,III,IV",
+      "Discrete Mathematics"
+    ],
+    "pg": [
+      "Optimization Techniques",
+      "Probability and Statistics"
+    ]
+  },
+  "academicInformation": [
+    {
+      "degree": "M.Sc.",
+      "institute": "IIT Delhi",
+      "year": "2008",
+      "subject": "Mathematics"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "IISc Bangalore",
+      "year": "2014",
+      "subject": "MATHEMATICAL SCIENCE"
+    }
+  ],
+  "publications": {
+    "journal": [
+        "Fractional Regularized Distorted Born Iterative Method for Permittivity Reconstruction- A Magdum, M Erramshetty, RPK Jagannath - Radioengineering APRIL 2022",
+        "K Sundar Kola, A Chatterjee, RPK Jagannath - International Journal of Communication Systems, Design of highly-directive Night-flowering Jasmine-shaped printed radiator based array for Ku-band applications. APRIL 2022",
+        "R Boranna, CT Nataraj, S Bannur Nanjunda, S Pahal… Fluorescence Signal Enhancement by a Spray-Assisted Layer-by-Layer Technique on Aluminum Tape Devices for Biosensing Applications Langmuir MAR 2022",
+        "Ravi P. K. Jagannath and Phaneendra K. Yalavarthy, “Non-Quadratic Penalization Improves Near Infrared Diffuse Optical Tomography,\" Journal of the Optical Society of America A: Optics, Imaging Science, and Vision 30(8), 1516–1523 (2013). AUG 2013",
+        "Ravi P. K. Jagannath and Phaneendra K. Yalavarthy, “An Efficient Gradient-Free Simplex Method for Estimation of Optical Properties in Image-Guided Diffuse Optical Tomography,\" Journal of Biomedical Optics 18(3), 030503 (2013). MAR 2013",
+        "Ravi P. K. Jagannath and Phaneendra K. Yalavarthy, “Minimal Residual Method Provides Optimal Regularization Parameter for Diffuse Optical Tomography,\" Journal of Biomedical Optics 17(10), 106015:1-7 (2012). OCT 2012",
+        "Ravi P. K. Jagannath and Phaneendra K. Yalavarthy, “Approximation of Internal Refractive Index Variation Improves Image Guided Diffuse Optical Tomography of Breast,” IEEE Transactions on Biomedical Engineering 57(10), 2560-2563 (2010). OCT 2010"
+    ]
+  },
+  "fundedProjects": [
+    "Fund from Science & Engineering Research Board(SERB) - under Start Up Research Grant (Young Scientist)-(Engineering Sciences) with the title, “Development of Efficient Algorithms for Photo-acoustic Tomography (PAT)”"
+  ],
+  "coursesAttended": [
+    {
+      "month": "MAY",
+      "year": "2013",
+      "info": "R. P. K. Jagannath and P. K. Yalavarthy, \"Automated Choice of Regularization Parameter for Spatially Variant Regularization in Diffuse Optical Tomography,\" SPIE/OSA European Conference on Biomedical Optics (ECBO-2013), May 12-16, 2013, Munich, Germany"
+    },
+    {
+      "month": "MAY",
+      "year": "2011",
+      "info": "R. P. K. Jagannath, P. K. Yalavarthy, \"A semi-analytic method for continuous-wave diffuse optical tomography,\" SPIE/OSA European Conference on Biomedical Optics, May 22-26, 2011, Munich, Germany."
+    }
+  ]
+}

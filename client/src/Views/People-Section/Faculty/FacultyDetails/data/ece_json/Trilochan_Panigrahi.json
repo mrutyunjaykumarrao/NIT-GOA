@@ -1,0 +1,387 @@
+{
+  "faculty_name": "Dr. Trilochan Panigrahi",
+  "profile": {
+    "name": "Dr. Trilochan Panigrahi",
+    "designation": "Associate Professor",
+    "department": "Department of Electronics and Communication Engineering",
+    "imageUrl": "Dr. Trilochan Panigrahi.png",
+    "email": "tpanigrahi@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Distributed Signal Processing",
+      "Array Signal Processing",
+      "IoT and Nano WSN."
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Trilochan Panigrahi",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Associate Professor",
+    "department": "Department of Electronics and Communication Engineering",
+    "url": "https://scholar.google.com/citations?user=lcfH8W4AAAAJ&hl=en",
+    "dateOfJoining": null,
+    "experience": null
+  },
+  "contactInformation": {
+    "address": "Associate Professor, Department of ECE, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "tpanigrahi@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Distributed Signal Processing",
+    "Array Signal Processing",
+    "IoT and Nano WSN"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Information Theory and Coding",
+      "Soft Computing",
+      "Network Theory and Synthesis",
+      "Digital Communication",
+      "Digital Signal Processing",
+      "Wireless Communication",
+      "Satellite Communication"
+    ],
+    "pg": [
+      "Digital Signal Processing",
+      "Estimation and Detection Theory",
+      "Advanced Radar System",
+      "Random Process"
+    ]
+  },
+  "academicInformation": [
+    {
+      "degree": "M.Tech.",
+      "institute": "National Institute of Science and Technology, Berhampur",
+      "year": "2005",
+      "subject": "Electronics and Communication Engineering"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "National Institute of Technology Rourkela",
+      "year": "2012",
+      "subject": null
+    }
+  ],
+  "publications": {
+    "journal": [
+      "Bhabani Sankar Guda, Meenakhi Panda, T. Panigrahi, S. Das, B. Appasani, O. Acharya, Hossam M. Zawbaa and Salah Kamel, “Distributed Intermittent Fault Diagnosis in Wireless Sensor Network using Likelihood Ratio Test,” IEEE Access, Dec 2022, accepted. DEC 2022",
+      "Bishnu Prasad Mishra, T. Panigrahi, Annet M. Wilson and Samrat L. Sabat, “Nonlinear channel estimation based on robust distributed Hammerstein spline adaptive technique in wireless sensor network,” in Digital Signal Processing, Elsevier, Vol. 132, Dec. 2022. DEC 2022",
+      "Harikrishna Gantayat, T. Panigrahi, and P. Patra, “An efficient direction-of-arrival estimation of multipath signals with impulsive noise using satin bowerbird optimization-based deep learning neural network,” in Expert Systems, Wiley, July 2022. JULY 2022",
+      "Harikrishna Gantayat, T. Panigrahi, and P. Patra, “An Efficient RBF-DCNN Based DOA Estimation in Multipath and Impulse Noise Wireless Environment,” in Transactions on Emerging Telecommunications Technologies, Wiley, Accepted, June 2022. JUN 2022",
+      "Bishnu Prasad Mishra, Annet M. Wilson and T. Panigrahi, “Estimation of Nonlinear Wireless Channel based on Incremental Spline Adaptive Filtering,” in Wireless Personal Communication, Springer, April 2022. APRIL 2022",
+      "Bishnu Prasad Mishra, T. Panigrahi, Annet M. Wilson and Samrat L Sabat, “A Robust Diffusion Algorithm using Logarithmic Hyperbolic Cosine Cost Function for Channel Estimation in Wireless Sensor Network under Impulsive Noise Environment,” in Digital Signal Processing, Elsevier, Vol. 123, April 2022 APRIL 2022",
+      "Saran Shrihari Sripad Panda, Trilochan Panigrahi, Saidi Reddy Parne, Samrat L. Sabat and Linga Reddy Cenkeramaddi, \"Recent Advances and Future Directions of Microwave Photonic Radars: A Review,\" in IEEE Sensors, vol. 21, no. 19, pp. 21144-21158, 1 Oct.1, 2021. OCT 2021",
+      "Bandaru Bhavana, Shwetha Namburu, Trilochan Panigrahi, and Samrat L Sabat, “Robust Methods for Wideband Compressive Spectrum Sensing under Non-Gaussian Noise,” in IEEE Communications Letters, vol. 25, no. 10, pp. 3398-3402, Oct. 2021. OCT 2021",
+      "Annet M. Wilson, T. Panigrahi, Bishnu Prasad Mishra, and Samrat L Sabat, “Adaptive Geman-McClure Estimator for Robust Distributed Channel Estimation,” in IEEE Access, vol. 9, pp. 93691-93702, 2021, doi: 10.1109/ACCESS.2021.3093001. JULY 2021",
+      "Y. S. Reddy, A. Dubey, A. Kumar, and T. Panigrahi, \" A Probabilistic Approach to Model SIC based RACH mechanism for Machine Type Communications in Cellular Networks,\" in IEEE Transactions on Vehicular Technology, vol. 70, no. 2, pp. 1878-1893, Feb. 2021, doi: 10.1109/TVT.2021.3055286. FEB 2021",
+      "Y. S. Reddy, A. Dubey, A. Kumar, and T. Panigrahi, \"A Successive Interference Cancellation based Random Access Channel Mechanism for Machine-to-Machine Communications in Cellular Internet-of-Things,\" in IEEE ACCESS, IEEE Access, vol. 9, pp. 8367-8380, 2021, doi: 10.1109/ACCESS.2021.3049439. JAN 2021",
+      "Shree Prasad M, T. Panigrahi, and Ravi Prasad JK, “Distributed Version of Hybrid Swarm Intelligence-Nelder Mead Algorithm for DOA estimation in WSN,” in Expert Systems With Applications, Elsevier, Vol. 144, April 2020. APRIL 2020",
+      "Shree Prasad M, and T. Panigrahi, “Robust Mixed Source Localization in WSN using Swarm Intelligence Algorithms,” in Digital Signal Processing, Vol. 98, March 2020, Elsevier. MAR 2020",
+      "Annet Mary Wilson, T. Panigrahi, and Ankit Dubey, “Robust Distributed Lorentzian Adaptive Filter with Di?usion Strategy in Impulsive Noise Environment,” in Digital Signal Processing, Elsevier, Vol. 96, Jan 2020. 2020",
+      "Y. S. Reddy, Meenakshi Panda, Ankit Dubey, Abhinav Kumar, T. Panigrahi and K. M. Rabie, “Optimization of Indoor Hybrid PLC/VLC/RF Communication Systems,” IET Communication, Oct 2019, Accepted OCT 2019",
+      "Meera Dash, T. Panigrahi, R. Sharma, “Robust Estimation of IIR System's Parameter using Modified Particle Swarm Optimization Algorithm,” International Journal of Computational Intelligence Studies, Inderscience, Vol. 8, Nos. 1/2, 2019. 2019",
+      "Shree Prasad M, and T. Panigrahi, “Distributed Maximum Likelihood DOA Estimation Algorithm for Correlated Signals in Wireless Sensor Network,” in Wireless Personal Communications, Springer, April 2019, Volume 105, Issue 4, pp 1527–1544, https://doi.org/10.1007/s11277-019-06158-8. 2019",
+      "S. Patidar and T. Panigrahi, Detection of epileptic seizure using Kraskov entropy applied on tunable-Q wavelet transform of EEG signals, Biomedical Signal Processing and Control, vol. 34, pg. 74-80, 2017. 2017",
+      "Meera Dash, T. Panigrahi, R. Sharma, “Distributed Parameter Estimation of IIR System using Diffusion Particle Swarm Optimization Algorithm,” Journal of King Saud university - Engineering Sciences (2017), Elsevier, In Press. 2017",
+      "T. Panigrahi, M. Panda and G. Panda, `` Fault Tolerant Distributed Estimation in Wireless Sensor Networks,'' Journal of Network and Computer applications, Elsevier, Vol. 69, pp. 27-39, July, 2016. JULY 2016",
+      "T. Panigrahi, S. Roula, and H. Gantayat, “Application of Comprehensive Learning Particle Swarm Optimization Algorithm for Maximum Likelihood DOA Estimation in Wireless Sensor Networks,” International Journal of Swarm Intelligence, 2016 Vol.2, No.2/3/4, pp.208 - 228. 2016",
+      "T. Panigrahi, G. Panda and B Mulgrew, \"Error Saturation Nonlinearities for Robust Incremental LMS over Wireless Sensor Networks,'' ACM Transation on Sensor Network, Accepted, 2014. MAY 2014",
+      "T. Panigrahi, G. Panda, B Mulgrew and B. Majhi, \"Distributed DOA estimation using clustering of sensor nodes and diffusion PSO algorithm,'' Swarm and Evolutionary Computation, Elsevier, vol. 9 , pp-47–57, 2013. SEPT 2013",
+      "T. Panigrahi, G. Panda, and B. Majhi, “Maximum Likelihood Source Localization in Wireless Sensor Network Using Particle Swarm Optimization,” International Journal of Signal and Imaging Systems Engineering, Indersciecne, Vol. 6, No. 2, 2013, pp. 83-90. JUN 2013",
+      "T. Panigrahi, G. Panda and B Mulgrew, \"Distributed bearing estimation techniques using diffusion particle swarm optimization algorithm,'' IET Wireless Sensor Systems, Volume 2, issue 4, December 2012, pp. 385 – 393. DEC 2012",
+      "T. Panigrahi, G. Panda, P M Pradhan, and B. Majhi, ``Block least-mean square algorithm over distributed wireless sensor network,'' Journal of Computer Networks and Communication, vol. 2012, Article ID 601287, 13 pages, 2012. NOV 2012",
+      "S. K. Tripathy, M. Hota and T. Panigrahi, “A Model for Optical Bistability in a Hybrid Semiconductor Photonic Crystal Structure”, Photonics Technology Letters, IEEE, Vol.21, No.12, pp. 772-774, June 2009. JUN 2009"
+    ],
+    "proceedings": [
+      "Harikrushna Gantayat, Shree Prasad M, T. Panigrahi and Pradyumna Patra, “Estimation of direction-of-arrival with limited snapshots in wireless sensor network,” in IEEE International Conference on Smart Generation Computing, Communication and Networking (SMART GENCON), Dec 2022. DEC 2022",
+      "Harikrushna Gantayat, T. Panigrahi, Pradyumna Patra” UDM-RBM-based DOA Estimation in Alpha Unstable Impulse Noise and Multipath Signals”, in IEEE 6th International Conference on Electronics, Communication and Aerospace Technology [ICECA 2022], Nov., 2022 NOV 2022",
+      "Bandaru Bhavana, Samrat L. Sabat, Swetha Namburu and T. Panigrahi, “Wavelet based non-reconstructive Compressed Spectrum Sensing against non-Gaussian noise,” in 14th IEEE International Conference on COMmunication Systems & NETworkS (COMSNET 2022), January 3 – 9, 2022, Bengaluru, India. JAN 2022",
+      "Yeduri Sreenivasa Reddy, Garima Chopra, Ankit Dubey, Abhinav Kumar, T. Panigrahi and Linga Reddy Cenkeramaddi, “Splitting Random Access Mechanism for Massive Machine Type Communications in 5G Cellular Internet-Of-Things,\" in IEEE 32nd Annual International Symposium on Personal, Indoor and Mobile Radio Communications (PIMRC): IEEE PIMRC 2021, 13-16 September 2021, Virtual Conference. SEPT 2021",
+      "Kaksha Posnaik, T. Panigrahi, Samrat L Sabat and Meera Dash, “A Simplified Deep Learning model for Acoustic Feedback Cancellation in Digital Hearing Aid,\" in IEEE International Symposium of Asian Control Association on Intelligent Robotics and Industrial Automation (IRIA), 20-22nd September 2021, Virtual Conference, IIT Goa, India. SEPT 2021",
+      "Bishnu P Mishra, Annet Merry Wilson, T. Panigrahi, and Samrat L Sabat, “A Robust Adaptive Algorithm using Inverse Square Root Cost Function for Underwater Channel Estimation,\" Accepted in IEEE ANTS 2021, India. SEPT 2021",
+      "Shree Prasad M, T. Panigrahi, and M Hassan, “Improving the Reliability of Pulse-based Terahertz Communication using Intelligent Reflective Surface,” in IEEE ICC 2020 Workshop on Terahertz Communications which was the virtual conference held from 7-11 June 2020. JUN 2020",
+      "Rashmi Rai, M. Gaglani, Soumitra Das and T. Panigrahi, \"Multi-Level Constant Current Based Fast Li-Ion Battery Charging Scheme With LMS Based Online State of Charge Estimation,\" 2020 IEEE Kansas Power and Energy Conference (KPEC), Manhattan, KS, USA, 2020, pp. 1-6, doi: 10.1109/KPEC47870.2020.9167541. APRIL 2020",
+      "Bishnu Prasad Mishra, Annet Mary Wilson and T. Panigrahi, “Robust and Distributed Estimation of Wireless Channel Using Maximum Correntropy Criteria,” in IEEE International Conference on Information Technology (ICIT 2019), held on 19 - 21 December 2019 at IIIT Bhubaneswar, Odisha, India. DEC 2019",
+      "Bishnu Prasad Mishra, Annet Mary Wilson and T. Panigrahi, “Robust Incremental Nonlinear Channel Estimation based on Spline Adaptive Filtering,” in TENCON 2019, held on 17 - 20 October 2019 at Hotel Grand Hyatt, Bolgatty, Kochi, Kerala, India. OCT 2019",
+      "Jagdish Pujara, Sithara Raveendran, Trilochan Panigrahi, Vasantha M.H., Nithin Kumar Y.B., “Design and Analysis of Energy Efficient Reversible Logic based Full Adder,” in 62nd IEEE International Midwest Symposium on Circuits and Systems, Dallas, TX, USA | Aug. 4-7, 2019 AUG 2019",
+      "Shree Prasad M, T. Panigrahi, M Hassan, and Ming Ding, “Sampling Free TDOA Localization in Millimeter Wave Networks,” in the Track 1 – Phy & Fundamentals of the IEEE Wireless Communications and Networking Conference (WCNC 2019) conference held in Marrakech, Morocco, from 15-18 April 2019. APRIL 2019",
+      "Dharma Rane, Puskar Shirodkar, T. Panigrahi and S Mini, “Detection of Ambulance Siren in Traffic,” presented in International Conference on Wireless Communications Signal Processing and Networking (WiSPNET2019), at Kalavakkam, Tamilinadu, India, March 21-23, 2019. MAR 2019",
+      "Annet Mary Wilson, Bishnu Prasad Mishra, and T. Panigrahi, “Robust Distributed Geman-McClure Based Channel Estimation,” in International Conference on Wireless Communications Signal Processing and Networking (WiSPNET2019), at Kalavakkam, Tamilinadu, India, March 21-23, 2019. MAR 2019",
+      "Sumesh KP, Ankit Dubey, and T. Panigrahi, “Hardware Implementation of Filtered OFDM for BB-PLC Using Software Defined Radio,” in the 25th IEEE National Conference on Communication 2019 NCC-2019, at IISc. Bangalore, India from 23-25 Feb 2019. FEB 2019",
+      "Shree Prasad M., T. Panigrahi, and M. Hassan, “Classifying the Order of Higher Derivative Gaussian Pulses in Terahertz Wireless Communications” in the IEEE GLOBECOM 2018 Workshops: Emerging Technologies for 5G and Beyond Wireless and Mobile Networks, December 5–7, 2018, at Abu Dhabi, UAE. DEC 2018",
+      "Shree Prasad M., T. Panigrahi, and M. Hassan, “Energy Efficient Event Localization and Classification for Nano IoT” in the IEEE Globecom2018 SAC IoT and for publication in its proceedings, December 5–7, 2018, at Abu Dhabi, UAE. DEC 2018",
+      "Shree Prasad M., T. Panigrahi and M. Hassan, “Direction of Arrival and Center Frequency Estimation for Impulse Radio Millimeter Wave Communications,” In 2nd ACM Workshop on Millimeter Wave Networks and Sensing Systems (mmNets ’18), October 29, 2018, New Delhi, India. ACM, NewYork, NY, USA, https://doi.org/10.1145/3264492.3264503 OCT 2018",
+      "Asha Anil, Manjunath M, T. Panigrahi, and Ankit Dubey, “Determining ``OFF'' Time Duration of FPGA based GPS Tracking System”, has been presented at the IEEE technically co-sponsored Conference on Information and Communication Technology 2018 (CICT 2018), which will be held from October 26-28, 2018 at PDPM-Indian Institute of Information Technology, Design and Manufacturing, Jabalpur, Madhya Pradesh, India. OCT 2018",
+      "Sampada Barve, Sithara Raveendran, Charudatta Korde, T. Panigrahi, Nithin Kumar Y. B. and Vasantha M. H., “FPGA Implementation of Optimized Algorithm for Square and Cube Architecture using Vedic Mathematics”, in the IEEE International Symposium on Smart Electronic Systems (iSES), December 17-19 2018, Hyderabad, India. OCT 2018",
+      "Bishnu Prasad Mishra, T. Panigrahi and Ankit Dubey, “Robust Distributed Estimation of Wireless Channel,” in the IEEE 2018 International Conference on Applied Electromagnetics, Signal Processing and Communication (AESPC), held at KIIT, Bhubaneswar, Odisha, India from 22-24 Oct 2018. OCT 2018",
+      "Sneha Kamble, S Mini and T. Panigrahi, “Monitoring Air Pollution: An IoT Application” in International Conference on Wireless Communications Signal Processing and Networking (WiSPNET2018), at Kalavakkam, Tamilinadu, India, March 22-24, 2018 MAR 2018",
+      "Rajprakash Bale, Sai Seetharamaiah, Yeduri Sreenivasa Reddy, Ankit Dubey and Trilochan Panigrahi, “OFDM vs FBMC: A Comparative Analysis for Broadband-PLC,” in 2018 10th IEEE International Conference on Communication Systems & Networks (COMSNETS) at Bangalore, India, Jan 2018. JAN 2018",
+      "Mandeep Kumar, Ketan Sabale, S Mini, and T Panigrahi, “Priority Based Deployment of IoT Devices”, 32nd IEEE International Conference on Information Networking (ICOIN) 2018, held on January 10-12, 2018, Chiang Mai, Thailand. JAN 2018",
+      "Shree Prasad M, Trilochan Panigrahi, and Mahbub Hassan. 2018. Direction of Arrival Estimation for Nanoscale Sensor Networks. In NANOCOM ’18: ACM The Fifth Annual International Conference on Nanoscale Computing and Communication, September 5–7, 2018, Reykjavik, Iceland. ACM, New York, NY, USA, 6 pages. https://doi.org/10.1145/3233188.3233210 2018",
+      "A Patnaik, M. Panda, M. Dash, T. Panigrahi, and R Sharma, “Robust Estimation of IIR System’s Parameter using Craziness Based Particle Swarm Optimization,” presented in 2nd IEEE International Conference on Man and Machine Interfacing (MAMI2017) held during 21-23 December 2017 at C V Raman Engineering College Bhubaneswar. DEC 2017",
+      "Shree Prasad M, T. Panigrahi and A. Dubey, “Computationally Efficient Near-Field Source Localization Using Single Snapshot” IEEE India Council International Conference INDICON-2017 held during 15 – 17 December, 2017 at the IIT Roorkee. DEC 2017",
+      "Meera Dash, T. Panigrahi and R Sharma, “Robust Estimation of IIR System’s Parameter using Adaptive Particle Swarm Optimization Algorithm” in the ICCDIM 2017 at VSSUT, Burla held on November 18-20, 2017. NOV 2017",
+      "Jagadeesh Pujara, Vasantha M.H., and T. Panigrahi, “Design of Reversible Multiplier Using Vedic Algorithm,” in 10th Annual National Symposium on VLSI and Embedded Systems, GEC, Farmagudi, Goa, 27-28 April 2017. APRIL 2017",
+      "R. R. Panda, P. Shukla, T. Panigrahi and B. S. Gouda, “Statistical Based Fault Node Detection Algorithms For Wireless Sensor Networks,” in IEEE ICTPACT 2017, at Chennai, TN, India, April 6-8, 2017. APRIL 2017",
+      "Shree Prasad M, T. Panigrahi, “'DOA Estimation of Coherent Sources Using QPSO in WSN,” in International Conference on Optical & Wireless Technologies (OWT2017) at MNIT Jaipur, 18-19th March 2017. MAR 2017",
+      "Meera Nayak, T. Panigrahi and R Sharma, “Distributed Estimation using Multi-hop Adaptive Diffusion in Sparse Wireless Sensor Networks” in the ICMOCE 2015 at IIT Bhubaneswar, December 18-20, 2015 DEC 2015",
+      "R. R. Panda, B. S. Gouda, D Patro, and T. Panigrahi, “Optimal path finding algorithm using neighbor position in a Wireless Ad Hoc Network,” in IEEE International Conference on Computer, Communication and Control (IC4), at Indore, MP, India, September 10-12, 2015. SEPT 2015",
+      "S. Roula and T. Panigrahi, “Direction of Arrival Estimation Using Robust MUSIC Algorithm in Wireless Sensor Networks,” in International Conference on Advances in Applied Engineering and Technology - 2015 (ICAAET'15), held at Syed Ammal Engineering College during May 14-16, 2015 in Ramanathapuram, Tamilnadu, India MAY 2015",
+      "S. Roula, H. Gantayat, T. Panigrahi and G. Panda, “Maximum Likelihood DOA Estimation in Wireless Sensor Networks Using Comprehensive Learning Particle Swarm Optimization Algorithm,” in 2014 International Conference on Computational Intelligence in Data Mining (ICCIDM-2014) on December 20-21, 2014 Veer Surendra Sai University of Technology (VSSUT), Burla, India. DEC 2014",
+      "R. R. Panda, B. S. Gouda and T. Panigrahi, “Efficient Fault Node Detection Algorithm for Wireless Sensor Networks,” 2014 International Conference on High Prformance Computing and Applications (ICHPCA) held on December 22-24, 2014 at C.V. Raman College of Engineering, Bhubaneswar, India. DEC 2014",
+      "A. Panda, M. Hota, T. Panigrahi, S. Dash and S. Tripathy, “Realization of a Photonic Switch in a Photonic Crystal Fiber using Kerr Nonlinearity,” in International Conference on Advances in Science and Technology (ICAST 2014) will be held in Saraswati College of Engineering, Navi Mumbai during November 11-12 ,2014. NOV 2014",
+      "T. Panigrahi, “Maximum Likelihood Bearing Estimation in Wireless Sensor Networks Using Particle Swarm Optimization Algorithm,” in 4th National Conference on \"Future Trends in Communication and Computing[FTCC-2013]\" at NMIET, Bhubaneswar on 4th March 2013. MAR 2013",
+      "T. Panigrahi and G. Panda, “Robust Distributed Learning in Wireless Sensor Network using Efficient Step Size,” in 2nd International Conference on Communication, Computing and Security at NIT Rourkela, India, 06-08 October 2012. OCT 2012",
+      "T. Panigrahi, G. Panda, and B. Mulgrew, “Robust distributed Block LMS over Wireless Sensor Network in Impulsive Noise”, in 8th International Conference on Distributed Computing and Internet Technology ICDCIT – 2012, LNCS Springer, KIIT University, Bhubaneswar. FEB 2012",
+      "T. Panigrahi, G. Panda, B. Mulgrew and B. Majhi, “Robust Distributed Linear Parameter Estimation in Wireless Sensor Network”, in the IEEE International Conference on Energy, Automation and Signal - ICEAS – 2011 at SOA University, ITER Bhubaneswar. DEC 2011",
+      "T. Panigrahi, G. Panda, B. Mulgrew and B. Majhi, ``Robust Diffusion LMS over Wireless Sensor Network in Impulsive Noise'', in International Conference on Emerging Technologies (ICET 2011), at NIT Durgapur. MAR 2011",
+      "T. Panigrahi and G. Panda, “Integration of RFID with Wireless Sensor Network for Tracking and Monitoring'', in National Seminar On Next Generation Communication and Computing NGCC - 2010, NMIT, Bhubaneswar, Orissa, INDIA. DEC 2010",
+      "T. Panigrahi, G. Panda, B. Mulgrew and B. Majhi, ``Robust Incremental LMS over Wireless Sensor Network in Impulsive Noise'', in IEEE International Conference on Computational Intelligence and Communication Network, CICN2010, at Bhopal. NOV 2010",
+      "Meenakshi Panda, T. Panigrahi, P. M. Khilar, and G. Panda, ``Learning With Distributed Data in Wireless Sensor Network'', in IEEE 1st International Conference on Parallel, Distributed and Grid Computing (PDGC-2010), at Jaypee University of Information Technology, Solan. OCT 2010",
+      "T. Panigrahi, P. M. Pradhan, and G. Panda, ``An energy efficient query processing protocol in wireless sensor network'', in the proceedings of International Conference on Information Technology, ICIT 2009, Bhubaneswar,Orissa, INDIA, Best Paper Award Winning Paper. DEC 2009",
+      "T. Panigrahi, P. M. Pradhan, G. Panda, B. Majhi, and B. Mulgrew, ``Robust distributed optimization in wireless sensor network'', in IEEE International Conference on Advances in Recent Technologies in Communication and Computing, ARTCom 2009, The Windsor Castle, Kottayam, INDIA. OCT 2009",
+      "T. Panigrahi, A. Patnaik, S. N. Sinha, C. G. Christodoulou \"Amplitude Only Compensation for Failed Antenna Array Using Particle Swarm Optimization, in the Proc. 2008 IEEE AP-S International Symposium on Antennas and Propagation and 2008 USNC/URSI National Radio Science Meeting at San Diego, California, USA. JULY 2008"
+    ],
+    "bookChapters": [
+      "Utkarsh Umarye, Vishal Rathod, T. Panigrahi and Samrat L. Sabat, “Designing Low-Cost and Easy-to-Access Skin Cancer Detector Using Neural Network Followed by Deep Learning,” in book entitled “Deep Learning, Machine Learning and IoT in Biomedical and Health Informatics – Techniques and Applications” Edited by Sujata Dash, Subhendu Kumar Pani, Joel J. P. C. Rodrigues, Babita Majhi in the book series CRC Press, 2022. APRIL 2022",
+      "Dharma Rane, Puskar Singh, T. Panigrahi and S. Mini, “Environmental Sound Classification using Neural Network and Deep Learning,” in book entitled “Nature-inspired Computing for Smart Application Design” in the book series Springer Tracts in Nature-Inspired Computing SEPT 2020",
+      "Meenakshi Panda, Bhabani Gouda and T. Panigrahi, “Fault Diagnosis in Wireless Sensor Networks Using a Neural Network Constructed by Deep Learning Technique,” in book titled: De D., Mukherjee A., Kumar Das S., Dey N. (eds) Nature Inspired Computing for Wireless Sensor Networks published in Springer Tracts in Nature-Inspired Computing, pp. 77-101,10.1007/978-981-15-2125-6_5. APRIL 2020",
+      "Harikrishna Gantayat and T. Panigrahi, “On the Development of Energy-Efficient Distributed Source Localization Algorithm in Wireless Sensor Networks Using Modified Swarm Intelligence,” in book titled: De D., Mukherjee A., Kumar Das S., Dey N. (eds) Nature Inspired Computing for Wireless Sensor Networks, published in Springer Tracts in Nature-Inspired Computing, pp. 143-143, https://doi.org/10.1007/978-981-15-2125-6_8 APRIL 2020",
+      "Meenakshi Panda, Bhabani Gouda and T. Panigrahi, “Distributed Online Fault Diagnosis in Wireless Sensor Networks,” in book titled: \"Design Frameworks for Wireless Networks\" published in Lecture Notes in Networks and Systems Series, Springer Nature, pg. 197-221, 2020. 2019"
+    ]
+  },
+  "researchGuidance": [
+    "PhD Guidance: Shree Prasad M., \"Development of Efficient Source Localization Algorithms for Wireless Sensor Networks,\" awarded on 14-12-2020",
+    "PhD Guidance: Performance Analysis of SIC-based Slotted ALOHA Mechanism for Internet-of-Things by Yedury Sreenivasa Reddy. Awarded on 28-06-2021."
+  ],
+  "fundedProjects": [
+    "Design and Development of Robust Distributed Nonlinear Channel Equalization, and Identification, SERB, DST, GOI (25.63 lac), 2017-20, PI",
+    "MonitNoise: An IoT Based Noise Level Assessment System in Urban Cities of India, SERB, DST, GOI (21.78 lac) 2017-19, PI",
+    "MonitAir: An IoT based Air Pollution Monitoring System, SERB, DST, GOI (22.19 lac), 2016-18, Co-PI",
+    "Energy Efficient Lighting with Visible Light based Communication and Power Line Communication (59.5 lac), 2016-19 (Collaboration with IIT Hyderabad), DST, GoI, PI",
+    "Design of Compact Shaped Beam Antenna Array for Dedicated Short Range Communication Service, SERB, DST, GOI (42.7 lac) 2017-20, Co-PI"
+  ],
+  "awardsAndHonors": [
+    "Best paper award at ICIT Conference, Dec. 2009.",
+    "Project Associate in UKIERI Project (2008 to 2012)",
+    "Visiting Research Scholar, University of Edinburgh, UK (3 months in summer for 3 year (2008-2010))",
+    "Institute fellowship during PhD program at NIT Rourkela (June 2008- Feb. 2012)",
+    "MHRD Scholarship during M.Tech. (2003-2005)"
+  ],
+  "memberships": [
+    "Senior Member IEEE, IEEE Signal Processing Society, IEEE Communication Society",
+    "Institute of Engineer (India), Associate Member",
+    "Indian Society for Technical Education (ISTE), Life Member"
+  ],
+  "professionalServices": [
+    "IEEE student councilor of IEEE student chapter in the year of 2007-2008 at NIST, Berhampur, Odisha",
+    "Course Coordinator, MTech from July 2013 to Nov 2014, at NIST, Berhampur, Odisha",
+    "Member of Rasthriya Bharat Abhiyan (RAA) at NIT Goa",
+    "Members of Unnat Bharat Abhiyan (UBA) at NIT Goa",
+    "BTech Project coordinator, Department of ECE, NIT Goa from January 2015 to June 2019",
+    "Faculty Advisor, Department of ECE, NIT Goa since July 2015 to June 2018",
+    "Time Table coordinator, Department of ECE, NIT Goa since July 2019",
+    "Chief Warden, NIT Goa Hostels, May 2019 to Jan 2021",
+    "Dear Institutional Relation and Alumni Affairs (IRAA) From Feb 2021 April 2023"
+  ],
+  "coursesAttended": [
+    {
+      "month": "SEPT",
+      "year": "2021",
+      "info": "International Symposium of Asian Control Association on Intelligent Robotics and Industrial Automation (IRIA) at IIT Goa"
+    },
+    {
+      "month": "DEC",
+      "year": "2019",
+      "info": "IEEE International Conference on Information Technology (ICIT 2019), held on 19 - 21 December 2019 at IIIT Bhubaneswar, Odisha, India."
+    },
+    {
+      "month": "FEB",
+      "year": "2019",
+      "info": "25th IEEE National Conference on Communication 2019 NCC-2019, at IISc. Bangalore, India from 23-25 Feb 2019."
+    },
+    {
+      "month": "OCT",
+      "year": "2018",
+      "info": "IEEE technically co-sponsored Conference on Information and Communication Technology 2018 (CICT 2018), which will be held from October 26-28, 2018 at PDPM-Indian Institute of Information Technology, Design and Manufacturing, Jabalpur, Madhya Pradesh, India."
+    },
+    {
+      "month": "OCT",
+      "year": "2018",
+      "info": "2nd ACM Workshop on Millimeter Wave Networks and Sensing Systems (mmNets ’18), and MOBICOM 2018, October 29, 2018, New Delhi, India."
+    },
+    {
+      "month": "APRIL",
+      "year": "2018",
+      "info": "One day workshop on the “Curriculum Development” on 21st April, 2018 at the Department of ECE, NIT Karnataka, Surthkal."
+    },
+    {
+      "month": "DEC",
+      "year": "2017",
+      "info": "One week Global Initiative of Academic Networks (GIAN) Course on “Redox based Resistive Non-volatile Memory Technology,” organized by the Department of ECE, NIT Goa, Goa, during 4-9, December, 2017."
+    },
+    {
+      "month": "DEC",
+      "year": "2017",
+      "info": "Attended and presented a paper in ” IEEE India Council International Conference INDICON-2017 held during 15 – 17 December, 2017 at the IIT Roorkee."
+    },
+    {
+      "month": "SEPT",
+      "year": "2017",
+      "info": "EU-India Air Quality Initiative – Training on Development of Local Air Quality Action Plans held in Goa on 16th September 2017. Two days seminar from 14-15th September 2017 on the same topic."
+    },
+    {
+      "month": "JULY",
+      "year": "2017",
+      "info": "Global Initiative of Academic Networks (GIAN) Course on “The Field Theory of Classical and Quantum Phase Transition,” at NIT Goa, Goa, during 3rd July– 13th July, 2017."
+    },
+    {
+      "month": "APRIL",
+      "year": "2017",
+      "info": "Two days awareness workshop on “Internet of Things (IoT)” during 8-9, April 2017 organized by Pralhad P. Chhabria Research Center (PPCRC), Pune at Shree Rayeshwar Institute of Engineering and Information Technology, Shiroda, Goa."
+    },
+    {
+      "month": "APRIL",
+      "year": "2017",
+      "info": "Two days workshop on “Internet of Things (IoT)” during 22-23, April 2017 organized by Elementz R & D at Shree Rayeshwar Institute of Engineering and Information Technology, Shiroda, Goa."
+    },
+    {
+      "month": "MAR",
+      "year": "2017",
+      "info": "One week Global Initiative of Academic Networks (GIAN) Course on “Advanced Digital Signal Processing,” organized by the Department of ECE, NIT Rourkela, Odisha, during 6th March– 10th March, 2017."
+    },
+    {
+      "month": "MAR",
+      "year": "2017",
+      "info": "One week Global Initiative of Academic Networks (GIAN) Course on “Nonlinear Adaptive Signal Processing,” organized by the Department of ECE, NIT Goa, Goa, during 13th March– 17th March, 2017."
+    },
+    {
+      "month": "MAR",
+      "year": "2017",
+      "info": "Attended and presented a paper in International Conference on Optical and Wireless Technologies (OWT 2017) at MNIT Jaipur, Rajastan, from 18-19 March 2017."
+    },
+    {
+      "month": "FEB",
+      "year": "2017",
+      "info": "IEEE ComSoc Training Course on “Wireless for the Internet of Thing (IoT)”, on 14th Feb 2017."
+    },
+    {
+      "month": "DEC",
+      "year": "2016",
+      "info": "DST and MNRE, Govt. of India sponsored one week short term course on “Recent Advances in Alternative Energy Sources (RAAEST 2016)” organized by Department of ECE, NIT Goa, India from 5-10th December 2016."
+    },
+    {
+      "month": "JULY",
+      "year": "2016",
+      "info": "Second national conference cum workshop on “Enhancing Information Technology in Education” under Pandit Madan Mohan Malaviya National Mission on Teachers and Teaching at NIT Goa from July 25-30 2016."
+    },
+    {
+      "month": "JUN",
+      "year": "2016",
+      "info": "Nine Days Global Initiative of Academic Networks (GIAN) Couse on “Advanced in Wireless Communication and Antennas,” Course No. 151036D02, organized by the Department of ECE, NIT Warangal, Telengana State, during 6th June – 14th June, 2016."
+    },
+    {
+      "month": "DEC",
+      "year": "2015",
+      "info": "IEEE Circuits and Systems Society Outreach: Workshop on “High Performance Digital Signal Processing System Design and Implementation” at IIT Bhubaneswar, 16-17 Dec 2015."
+    },
+    {
+      "month": "JULY",
+      "year": "2015",
+      "info": "National Workshop on “How to Write Research Projects,” at National Institute of Technology Goa, 8th July 2015."
+    },
+    {
+      "month": "FEB",
+      "year": "2015",
+      "info": "Workshop on “Atomic Energy: Architect of future,” at National Institute of Technology Goa, 9th Feb 2015."
+    },
+    {
+      "month": "OCT",
+      "year": "2012",
+      "info": "2nd International Conference on Communication, Computing and Security at NIT Rourkela, India."
+    },
+    {
+      "month": "JUN",
+      "year": "2012",
+      "info": "Short term course on “Modern Communication- from Analog to 4G Beyond,” at Department of ECE, NIT Rourkela, Rourkela, Odisha."
+    },
+    {
+      "month": "MAY",
+      "year": "2012",
+      "info": "National Workshop on “Swarm Intelligence: Theory and Application,” at IIT Bhubaneswar, Bhubaneswar."
+    },
+    {
+      "month": "MAR",
+      "year": "2012",
+      "info": "AICTE sponsored staff development programme on “Recent and Future Trends in Industrial Mathematics for Engineers” National Institute of Science and Technology, Berhampur, Odisha."
+    },
+    {
+      "month": "FEB",
+      "year": "2012",
+      "info": "8th International Conference on Distributed Computing and Internet Technology ICDCIT – 2012, KIIT University, Bhubaneswar."
+    },
+    {
+      "month": "JUN",
+      "year": "2011",
+      "info": "Short term course on “VLSI Design and CAD Tools” 20th June 2011 to 9th July 2011 at Department of ECE, NIT Rourkela."
+    },
+    {
+      "month": "MAR",
+      "year": "2011",
+      "info": "International Conference on Emerging Technologies (ICET 2011), at NIT Durgapur."
+    },
+    {
+      "month": "NOV",
+      "year": "2010",
+      "info": "IEEE International Conference on Computational Intelligence and Communication Network, CICN2010, Bhopal."
+    },
+    {
+      "month": "OCT",
+      "year": "2010",
+      "info": "IEEE 1st International Conference on Parallel, Distributed and Grid Computing (PDGC-2010), Jaypee University of Information Technology, Solan, HP."
+    },
+    {
+      "month": "MAR",
+      "year": "2010",
+      "info": "Two days National Workshop on “Swarm Intelligence: Theory and Application,” ITER, SOA University, Bhubaneswar, 20-21st March, 2010."
+    },
+    {
+      "month": "DEC",
+      "year": "2009",
+      "info": "International Conference on Information Technology, ICIT 2009, Bhubaneswar, Orissa, INDIA."
+    },
+    {
+      "month": "OCT",
+      "year": "2009",
+      "info": "Silver Jubilee Conference on Communication Technology and VLSI Design, CommV 2009, VIT University, Tamil Nadu, INDIA."
+    },
+    {
+      "month": "JULY",
+      "year": "2008",
+      "info": "International Symposium on Antennas and Propagation and 2008 USNC/URSI National Radio Science Meeting at San Diego, California, USA"
+    },
+    {
+      "month": "OCT",
+      "year": "2007",
+      "info": "A ten days DST sponsored National Workshop on “Sensors for mining and Mineral Industry”, at National Institute of Science and Technology, Berhampur, Orissa"
+    },
+    {
+      "month": "JUN",
+      "year": "2007",
+      "info": "A short Term course on “DSP Tools and Practice” Conducted by G. S. Sanyal School of Telecommunication, IIT, Kharagpur"
+    }
+  ],
+  "coursesConducted": [
+    {
+      "month": "DEC",
+      "year": "2016",
+      "info": "One week Global Initiative of Academic Networks (GIAN) Couse on “Nanoscale Wireless Networking: Opportunities, Challenges and Recent Advances” Course No. 161038002, at the Department of ECE, NIT Goa, during 19-24, December 2016."
+    },
+    {
+      "month": "MAY",
+      "year": "2016",
+      "info": "DST sponsored workshop on “Recent Advances in Mobile Communications” May 2-7, 2016 at NIT Goa, Farmagudi, Ponda, Goa."
+    }
+  ]
+}

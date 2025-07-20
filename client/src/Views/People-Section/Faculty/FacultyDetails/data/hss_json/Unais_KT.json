@@ -1,0 +1,66 @@
+{
+  "faculty_name": "Dr. Unais KT",
+  "profile": {
+    "name": "Dr. Unais KT",
+    "designation": "Faculty on contract",
+    "department": "Department of Humanities and Social Sciences",
+    "imageUrl": "Dr. Unais KT.png",
+    "email": "unaiskt@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Postcolonial Literature",
+      "Gothic Writing",
+      "Indian Writing in English"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Unais KT",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Faculty on contract",
+    "department": "Department of Humanities and Social Sciences",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": "3 years"
+  },
+  "contactInformation": {
+    "address": "Department of Humanities and Social Sciences, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "unaiskt@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Postcolonial Literature",
+    "Gothic Writing",
+    "Indian Writing in English"
+  ],
+  "coursesTaught": null,
+  "academicInformation": [
+    {
+      "degree": "M.Phil.",
+      "institute": "Central University of Gujarat",
+      "year": "2015",
+      "subject": "English Literature (Comparative Literature)"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "Central University of Gujarat",
+      "year": "2021",
+      "subject": "English Literature (Comparative Literature)"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "KT, Unais.“Resistance for identity: Upheaval of Indian Women Writing in English”. Ed. Gajjar, Nita. Mehsana: IJRSML. 2018",
+      "KT, Unais. “Portrayal of Women Sufferings in Manju Kapur’s Novels”. Literature: a Reflection of the Society. Ed. Dr. S. Balakrishnan. Tamil Nadu: Roots International Journal of Multidisciplinary Researches, 2016"
+    ],
+    "proceedings": [
+      "KT, Unais.“Indian Female Gothic Narratives and Resistance: A Studyof Anita Desai’s Crythe Peacock”. Ed. Dr. T. Deivasigamani. Tamilnadu: Language in India. 2018"
+    ]
+  },
+  "researchGuidance": [],
+  "fundedProjects": [],
+  "awardsAndHonors": [],
+  "memberships": [],
+  "professionalServices": [],
+  "coursesAttended": [],
+  "coursesConducted": []
+}

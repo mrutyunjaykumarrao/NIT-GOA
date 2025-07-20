@@ -1,0 +1,345 @@
+{
+  "faculty_name": "Prof. O. R. Jaiswal",
+  "profile": {
+    "name": "Prof. O. R. Jaiswal",
+    "designation": "Professor",
+    "department": "Department of Civil Engineering",
+    "imageUrl": "Prof. O. R. Jaiswal.png",
+    "email": "orjaiswal@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Structural Engineering",
+      "Structural Dynamics",
+      "Earthquake Engineering",
+      "Vibration Control"
+    ]
+  },
+  "personalInformation": {
+    "name": "Prof. O. R. Jaiswal",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Professor",
+    "department": "Department of Civil Engineering",
+    "url": null,
+    "dateOfJoining": "08/06/2023",
+    "experience": "Structural Engineering, Structural Dynamics, Earthquake Engineering, Vibration Control"
+  },
+  "contactInformation": {
+    "address": "Professor, Dept. of Civil Engineering, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "orjaiswal@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [],
+  "coursesTaught": null,
+  "academicInformation": [
+    {
+      "degree": "B.E.",
+      "institute": "VRCE, Nagpur",
+      "year": "1987",
+      "subject": "Civil Engg."
+    },
+    {
+      "degree": "M.Sc.",
+      "institute": "IISc",
+      "year": "1991",
+      "subject": null
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "IISc Bangalore",
+      "year": "1995",
+      "subject": null
+    }
+  ],
+  "publications": {
+    "journal": [
+      "Phadke, H. D., and Jaiswal, O.R. (2022). \"Dynamic analysis of railway track on variable foundation under harmonic moving load.\" Proceedings of the Institution of Mechanical Engineers, Part F: Journal of Rail and Rapid Transit. Vol. 236 (3), 302-316.",
+      "H D Phadke, and O R Jaiswal, 2020, Dynamic Response of Railway Track Resting on Variable Foundation Using Finite Element Method. Arab J Sci Eng. Vol. 45, 4823-4841.",
+      "V M Thakur and O R Jaiswal, 2019, Än alternative formulation for optimum TMD parameters based on equal Eigen value criteria\", Journal of Earthquake Engineering",
+      "S. O. Lakhade, Ratnesh Kumar, O R Jaiswal, 2018, \" Damage states of yielding and collapse for elevated water tanks supported on RC frame staging\", Journal of Structural Engineering and Mechanics, Vol. 67, No. 6, 587-601.",
+      "S. O. Lakhade, Ratnesh Kumar, O R Jaiswal, 2017, \" Estimation of response reduction factor of RC frame staging in elevated water tanks using nonlinear static procedure\", Journal of Structural Engineering and Mechanics, Vol. 62, No. 2, 209-224.",
+      "N U Mate, S V Bakre, O R Jaiswal, 2017, “Seismic pounding response of Single-degree-of-freedom elastic and inelastic structures using passive tuned mass damper,”, International Journal of Civil Engineering, Springer, DoI 10.1007/s40999-017-0178-7. April 2017.",
+      "V. G. Kondekar, O. R. Jaiswal, L. M. Gupta, P R Gandhi, 2017, “Characteristics of Gadhi Soil”, Proceedings of the Institution of Civil Engineers – Construction Materials, Vol. 170 (1), pp 29-39",
+      "V. G. Kondekar, O. R. Jaiswal, L. M. Gupta, 2015, “Optimization of Gadhi Soil Mix for Adobe Brick\", Electronic Journal of Geotechnical Engineering, Stillwater, USA, Vol. 20 [2015], Bund. 9 (Indexed by SCOPUS) ISSN 1089-3032, pp 3965-3972",
+      "N U Mate, S V Bakre, O R Jaiswal, 2015, “Seismic pounding of adjacent linear elastic buildings with various contact mechanism for impact simulation”, Asian Journal of Civil Engineering (BHRC), Iran, Vol 16, No. 3, 383-415.",
+      "V. G. Kondekar, O. R. Jaiswal, L. M. Gupta, 2013, “Geotechnical Properties of Stabilized Ancient Gadhi Soil in Maharashtra State of India”, Electronic Journal of Geotechnical Engineering, Vol. 18, V, pp 5289-5302 (Scopus indexed)",
+      "O R Jaiswal, 2008, “Effect of prestressing force on flexural natural frequency of prestressed beam”, Journal of Structural Engineering and Mechanics, Vol. 28, No. 5, 515-524.",
+      "O R Jaiswal, D C Rai, S K Jain, 2007, “Review of seismic codes on liquid containing tanks”, Earthquake Spectra., Vol. 23, No. 1, 239-260.",
+      "J Blachut and O R Jaiswal, 2000, “On buckling of toroidal shells under external pressure”, Computers and Structures, Vol. 77, pp 233-251",
+      "J Blachut and O R Jaiswal, 1999, \"Instabilities in torispheres and closed toroids under suddenly applied step pressure\", International Journal of Impact Engineering, Vol. 22(5), pp 511-530.",
+      "J Blachut and O R Jaiswal, 1998, \"On the choice of initial geometric imperfections in externally pressurised shells\", Journal of Pressure Vessel Technology, ASME, Vol. 120, No.1 pp 71-76",
+      "O R Jaiswal and R N Iyengar, 1997, \"Dynamic response of railway track to oscillatory moving masses\", Journal of Engineering Mechanics, ASCE, Vol 123, 753-757.",
+      "R N Iyengar and O R Jaiswal, 1995, \"Random field modelling of railway track irregularities\", Journal of Transportation Engineering, ASCE, Vol 121, 303-308.",
+      "R N Iyengar, C S Manohar and O R Jaiswal, 1994, \"Field investigation of the 30th September1993 earthquake in Maharashtra\", Current Science, Vol 67, 368-379.",
+      "R N Iyengar and O R Jaiswal, 1993, \"A new model for non-Gaussian random excitations\", Journal of Probabilistic Engineering Mechanics, Vol 8, 281-287.",
+      "O R Jaiswal and R N Iyengar, 1993, \"Dynamic analysis of a beam on elastic foundation of finite depth under a moving force\", Acta Mechanica, Vol 96, 67- 83.",
+      "O. R. Jaiswal, V. M. Thakur and A. P. Ghushe 2018 , “Tuned Mass Dampers to control oscillations of Wind-Sensitive Flexible Structures” The Bridge and Structural Engineer, 47(4):17-27.",
+      "N U Mate, S V Bakre, O R Jaiswal, 2014, “Pounding influence on adjacent linear elastic structures considering various impact simulation techniques”, Journal of Structural Engineering, 41(5), 441-461, SERC, Chennai, India.",
+      "O R Jaiswal, Sachin Narsude, Nilesh Mate, 2012, “Effect on Structural Design due to Loss of Sign in Response Spectrum Analysis”, Indian concrete Journal, August 2012, Vol. 86, No.8, pp 33-38",
+      "K R C Reddy, O R Jaiswal, P N Godbole, 2011, “Wind Response Control of Tall RC Chimneys”, Journal of Wind & Structures, Vol. 8, No.1, pp 1-9",
+      "O R Jaiswal and V Srinivas, 2006, “Effect of pendulum type tuned mass damper on across wind response of tall RC chimneys”, Wind and Structures, Vol. 2, No. 1, pp 9-21.",
+      "O R Jaiswal and S K Jain, 2005, “Modified Guidelines for seismic analysis of liquid storage tanks- Part II: Commentary and Examples”, Journal of Structural Engineering, Vol. 32, No. 4, pp 297-310.",
+      "S K Jain and O R Jaiswal, 2005, “Modified Guidelines for seismic analysis of liquid storage tanks- Part I: Provisions”, Journal of Structural Engineering, Vol. 32, No. 2, pp 195-206",
+      "O R Jaiswal, 2001, “Importance of 3-Dimensional analysis in evaluating seismic response of elevated water tanks”, Journal of Indian Water Works Association, Vol. XXXIII No. 1, pp 81-88.",
+      "V. M. Thakur, O. R. Jaiswal, 2023, Optimum Parameters of Variant Tuned Mass Damper using equal eigenvalue Criterion. Earthquake Engineering and Structural Dynamics. 2023; 52 (9), 2852-2860."
+    ],
+    "proceedings": [
+      "O R Jaiswal and P Deepak, 2020, “Effectiveness of bracing system in improving the seismic behavior of building on sloping ground” Paper No. 3b – 0093, 17th World Conference on Earthquake Engineering, Sendai, Japan, 13th to 18th Sept. 2020.",
+      "O R Jaiswal and P Deepak, 2020, “Vibration control of bridges using TMD based on equal Eigen value criteria” Paper No. 11a – 0018, 17th World Conference on Earthquake Engineering, Sendai, Japan, 13th to 18th Sept. 2020.",
+      "V M Thakur and O R Jaiswal, 2018, “Optimum TMD parameters for MDoF system from equal eigenvalue criteria”, Paper No. 86, 16th Symposium on Earthquake Engineering (16SEE), IIT Roorkee, 20-22 December 2018",
+      "O S Lakahde, Ratnesh Kumar and O R Jaiswal, 2018, “Comparison of Seismic Performance of Frame Staging in Elevated Water Tank and Building Frame”, Paper no. 213, 16th Symposium on Earthquake Engineering (16SEE), IIT Roorkee, 20-22 December 2018",
+      "Payal Gwalani and O. R. Jaiswal, 2018,“Seismic response control using Elastoplastic Tuned mass damper16 European”, 16th European Conference on Earthquake Engineering, Thessaloniki, ID:10345, 18-21june 2018",
+      "O. R. Jaiswal, Kaushal Patel and A. P. Ghushe, 2018 “Wind response control of tall RC chimney by using maintenance platform as TMD”, International conference on Advances in construction materials and structures (ACMS-18), IIT Roorkee, Uttarakhand, India, 7th – 8th March 2018",
+      "Mansi Vyawahare and O. R. Jaiswal, 2018, “Wind analysis of transmission line tower”, International conference on Advances in construction materials and structures (ACMS-18), IIT Roorkee, Uttarakhand, India, 7th – 8th March 2018",
+      "V. G. Kondekar and O. R. Jaiswal. 2018, “Ultrasonic Pulse Velocity Testing of Gadhi Soil Adobe Bricks”, IRICE-2018 by KDKCE & Institute for research and publication (IFERP), 24-25 January 2018",
+      "O. R. Jaiswal, V. M. Thakur and A. P. Ghushe. 2018, “Use of existing components of structures as Tuned Mass Damper”, IRICE-2018 by KDKCE & Institute for research and publication (IFERP), 24-25 January 2018",
+      "H.D. Phadke and O.R. Jaiswal, 2016, \"Finite Element Modeling of an Infinite Beam on Elastic Foundation subjected to a Moving Load\", The Third International Conference on Railway Technology: Research, Development and Maintenance, Cagliari, Sardinia, Italy, 5-8 April 2016, Paper No. 187.",
+      "H.D. Phadke and O.R. Jaiswal, 2016, “Dynamics of Railway Track Subjected To Moving Load Using FEM”, International Conference on Advances in Civil Infrastructure and development of smart Cities, ICACIDS2k16, RIT, Islampur, India, 26-28 February 2016.",
+      "O.Hafsath, O.R Jaiswal(2015): \"Effect of Re-entrant Corner in Building On Seismic Response\", Proceedings of International Conference on Sustainable Energy and Built Environment, Visvesvaraya Institute of Technology, Vellore, India, 12-13 March 2015, ISBN:978-81-923320-6-2",
+      "V. G. Kondekar, O. R. Jaiswal, L. M. Gupta, P. R. Gandhi, 2014, “Experimental study of thermal behavior of Gadhi soil used in Maharashtra for rural housing”, International Conference on Sustainable Civil Engineering, ASCE, Indian Section, Dept. of Civil Engineering, IIT Hyderabad, Oct. 17-18, 2014.",
+      "T Naga Manikanta and O R Jaiswal, 2012, “Effect of diagonal modes on response spectrum analysis”, 15th World Conference on Earthquake Engineering, 15WCEE, Lisbon, Portugal, 24-28 September 2012. Paper No. 2688.",
+      "Pradnya Thakre and O R Jaiswal, 2012, “Comparative study of fixed base and base isolated buildings using seismic analysis”, Proc. of International Conference Structural Stability and Dynamics, 4-6 January, MNIT, Jaipur, India.",
+      "Reddy, K. R. C., Jaiswal, O. R., Godbole, P. N., 2011, ‘Wind and earthquake analysis of tall RC chimneys’, Proc. of International Conference on Advances in Civil Engineering (ACE-2011), KL University, Vaddeswaram, Guntur, October 2011, 508-511.",
+      "A N Gajre, S V Dhage. O R Jaiswal, 2010, “ A New Approach to Obtain Optimum Parameters of TMD Using Equal Modal Mass Criteria”, Proceedings of 14th Symposium on Earthquake Engineering, 17-19 December 2010, Indian Institute of Technology Roorkee.",
+      "V. G. Kondekar, O. R. Jaiswal, L. M. Gupta, 2009, “Gadhi Soil” in Maharashtra – Traditional Practices and Future Use of Compacted Gadhi Soil Blocks in Rural Housing”, Proc. of the Int. Conf. on “Protection of Historical Buildings PROHITECH-2009”, org. by Dept of Structural Engineering, Uni. of Naples ‘Federico II’, June 21-24, 2009 at Rome, Italy.",
+      "O R Jaiswal Jayashri Chaudhari and Nilesh Madankar, 2008, Elasto-plastic Tuned Mass Damper for Controlling Seismic Response of Structures, Proceedings of 14th World Conference on Earthquake Engineering, Beijing, China, October 12-17, 2008.",
+      "O R Jaiswal, Shraddha Kulkarni and Pavan Pathak, 2008, A Study on Sloshing frequencies of Fluid-tank system, Proceedings of 14th World Conference on Earthquake Engineering, Beijing, China, October 12-17, 2008",
+      "O R Jaiswal, 2008, “24×7 water supply and seismic safety of water tanks”, Proceedings of 10th International Conference on achieving 24×7 continuous water supply, organized by IWWA Mumbai Center, 11- 12 January 2008.",
+      "O R Jaiswal and V Srinivas, 2007, “Pendulum type tuned mass damper to control along and across wind response of tall chimneys”, 12th International Conference on Wind Engineering ICWE 12, Cairns, Australia, 1-6 July 2007.",
+      "Abhay Gajre, Arvind Vyavahare and O R Jaiswal, 2004, “Seismic risk reduction for urban housings using simple tuned mass damper”, International Conference on World of Innovations – Structural Engineering, Hyderabad, 1st – 3rd December 2004",
+      "O R Jaiswal, 2004, “Simple tuned mass damper to control seismic response of elevated tanks”, 13th World Conference on Earthquake Engineering, Vancouver, Canada, 1st to 6th August 2004.",
+      "J Blachut and O R Jaiswal, 1999, “Buckling and collapse of perfect and imperfect toroids subjected to hydrostatic pressure”, Proceedings of EECM-99, September 1999, Munich. Ed. Wunderlich, W, paper no. 670.",
+      "J Blachut and O R Jaiswal, 1998, \"Buckling under external pressure of closed toroids with circular and elliptical cross-sections.\", Proc. of International Conference on Computational Structures Technology, Edinburgh, UK, (Ed.) B H V Topping, Civil-Comp press, pp 323-334.",
+      "J Blachut and O R Jaiswal, 1998, \"Buckling of imperfect ellipsoidal and closed toroids subjected to external pressure\", Proc. of ASME/JSME Joint Pressure Vessels & Piping Conference, California, USA, (Ed.) D K Williams, PVP-368, 121-128.",
+      "J Blachut and O R Jaiswal, \"Instabilities in torispherical domes under suddenly applied external pressure\", Second European LS-DYNA3D conference, Oxford, UK, July 1998.",
+      "O R Jaiswal, B Sreehari Kumar, G V Rao, 1996, \"Moving load problems – A new facility in NISA\", Proc. of European NISA Users' conference, EMRC Ltd., Manchester, UK.",
+      "R N Iyengar and O R Jaiswal, 1995, \"Stochastic response of irregular tracks under moving vehicles\", Proc. of IUTAM symposium on advances in nonlinear stochastic mechanics, (Eds.) ANaese and S Krenk, Kluwer Academic Publishers, Dordrecht, pp 213-224.",
+      "R N Iyengar and O R Jaiswal, 1994, \"Stochastic Analysis of Railway Tracks\", Proc. of Second International Conference on Computational and Stochastic Mechanics, Athens, Greece, (Ed.) P D Spanos, Balkema Rotterdam, pp 569-575.",
+      "Vyawahare M. M. and Jaiswal O. R. “Wind Analysis of Transmission Line Tower”, International Conference on Advances in Construction Materials and Structures, IIT Roorkee, Roorkee, Uttarakhand, India, March 7-8, 2018.",
+      "Jaiswal O. R., Patel Kaushal, and Ghushe Aditya. “Wind Response Control of Tall RC Chimney by Using Maintenance Platform as TMD”, International Conference on Advances in Construction Materials and Structures, IIT Roorkee, Roorkee, Uttarakhand, India, March 7-8, 2018.",
+      "Jaiswal O. R., Thakur V.M., and Ghushe A. P. 2018, “Use of existing components of structures as Tuned Mass Damper”, IRICE-2018 by KDKCE & Institute for research and publication (IFERP).",
+      "Deepak Verma and O R Jaiswal, 2017, “optimization of tuned mass damper”, 3rd Indian Conference on Applied Mechanics (INCAM), 5-7 July 2017, MNIT, Allahabad, India.",
+      "P. Gwalani and O.R. Jaiswal, 2017, “Vibration Control using Tuned Mass Damper”, In Proceeding of International Conference on Emerging Technology in Structural Engineering, ETSE-2017, KDKCE, Nagpur, India, 17-18 March 2017.",
+      "M.Z.Kangda, O.R. Jaiswal and S.S.Sawant, 2016, “Sloshing In Liquid Storage Tanks with Internal Obstructions”, In Proceeding of the Tenth Structural Engineering Convention, SEC-2016, CSIR-SERC, IIT Madras and Anna University, Chennai 21-23 December, 2016.",
+      "O.R. Jaiswal, Nandhini R. and K.P.Patel, 2016, “Assessment of New Indian Codal Provisions for AlongWind Analysis of Tall Structures”, In Proceeding of The Eighth National Conference on Wind Engineering, IIT (BHU), Varansi, India, 16-17 December, 2016.",
+      "V. Fulzele, KRC Reddy, O R Jaiswal, 2009, “Use of maintenance platforms as tuned mas dampers in tall RC chimneys”, 5th National Conference on Wind Engineering, SVNIT, Surat, India, 4-6 November 2009.",
+      "O R Jaiswal and Abhay Gajre and Yogesh Waingankar, 2005, “ Issues in seismic analysis of elevated tanks”, National Symposium on Structural Dynamics, Random Vibration and Earthquake Engineering, NSSD-2005, Indian Institute of Science, Bangalore, 21-22 July 2005.",
+      "O R Jaiswal and S Wadje, 2004, “Tuned mass damper for controlling wind response of reinforced concrete chimney”, Proc. of Second National Conference on Wind Engineering (NCWE-04), Feb. 12- 14, 2004, VNIT, Nagpur, pp 408 – 416.",
+      "O R Jaiswal and A G Bhaiswar, 2004, “Wind analysis of elevated water tanks”, Proc. of Second National Conference on Wind Engineering (NCWE-04), Feb. 12- 14, 2004, VNIT, Nagpur, pp 145-153.",
+      "O R Jaiswal, 2003, “A simple tuned mass damper for elevated water tanks”, Proceedings of Structural Engineering Convention (SEC), Indian Institute of Technology, Kharagpur, 12 –14, December 2003.",
+      "O R Jaiswal, Deepak Bhambani, Ashwini Mahisbadwe and Abhay Gajre, 2003, “A simple approach to control seismic response of elevated water tanks”, National Seminar on Innovative Technologies in Construction of Concrete Structures, KITS, Ramtek, 7-8 February 2003",
+      "O R Jaiswal and Sachin Bakre, 2002, “Use of weak storey at top as tuned mass damper for controlling seismic response of multistoried buildings”, Proceedings of 12th Symp. on Earthquake Engineering, IIT, Roorkee, 16-18, Dec. 2002. pp 1476-1485",
+      "O R Jaiswal and Sachin Bakre, 2002, “A simple tuned mass damper for controlling seismic response of multistoried buildings”, National Seminar on Structural Dynamics in Civil Engineering (SDCE-2002), 18-19th July 2002, I I Sc Bangalore.",
+      "O R Jaiswal and P S Sukhija, 2001, “Dynamic Characteristics of ellipsoidal domes and toroids”, National Symposium on Advances in Structural Dynamics and Design, SERC, Madras, January 9-11, 2001",
+      "O R Jaiswal, 1999, “Passive devices to control seismic response of buildings”, 15th National convention of Civil engineers, 2-3 December, Cochin, India.",
+      "B Sreehari Kumar, G V Rao and O R Jaiswal, 1996, \"Earthquake response of a flexible rectangular tank containing fluid\", Proc. of Symposium of Earthquake Effects on Structures, Plant & Machinery, Indian Society of Earthquake Technology, New Delhi, India, pp IV-2.1-IV-2.8.",
+      "O R Jaiswal, G V Rao and B Sreehari Kumar, 1996, \"Fatigue analysis of railway track sleepers under moving loads\", Proc. of 6th NASAS, National Aeronautical Laboratory, Bangalore, India, (Ed.) B R Somashekar et al, pp 65-72.",
+      "O R Jaiswal, G V Rao and Sreehari Kumar, 1995, \"Developments in DYSPAN module of NISA\", Proc. of NISA Users' Conference, EMRC Ltd., Bangalore, India.",
+      "R N Iyengar, C S Manohar and O R Jaiswal, 1994, \"Field study of the Maharashtra earthquake of 30th September 1993\", Proc. of the Tenth Symposium on Earthquake Engineering, University of Roorkee, India, (Eds.) D K Pal et al, pp 361-368."
+    ]
+  },
+  "researchGuidance": [],
+  "fundedProjects": [
+    "Handbook for IS 1893 and IS 13920 - 2018-2019 - IIT Gandhinagar – World Bank finances - 6.06 Lakhs - O R Jaiswal and R K Ingle (Investigator(s))",
+    "Seismic behavior of underground structures - 2014 -2018 - DST - 53.70 Lakhs - AnirabMandal ,Y B Katpatal, O R Jaiswal (Investigator(s))",
+    "Control of wind response of chimneys using tuned mass dampers - 2006 -2009 - UGC - 10.34 Lakhs - O R Jaiswal and P N Godbole (Investigator(s))",
+    "Development of explanatory handbook on seismic design of liquid storage tanks - 2003 -2004 - IIT Kanpur – GSDMA - 2 Lakhs - O R Jaiswal and R K Investigator(s)",
+    "A study to explore effectiveness of tuned mass damper to reduce seismic response of multistoried buildings - 2000 -2003 - MHRD - 6 Lakhs - O R Jaiswal"
+  ],
+  "awardsAndHonors": [
+    "Member, Bureau of Indian Standards (BIS committee CED39) on seismic design of structures",
+    "Awarded, INAE fellowship for mentoring program in 2008-2009. Under this scheme I have been provided full financial assistance to spend two months at IIT Kanpur. During this stay I initiated the work on seismic design of railway bridges.",
+    "Executive Committee member of the Indian Society for Wind Engineering (ISWE), 2009-2011"
+  ],
+  "memberships": [
+    "Institution of Engineers, India, Associate Member",
+    "Indian Society for Earthquake Technology, Member",
+    "Indian Society for Technical Education, Member",
+    "Indian Association for Computational Mechanics, Member",
+    "Indian Association for Structural Engineering, Member"
+  ],
+  "professionalServices": [
+    "June 2023 – Till Date - National Institute of Technology, Goa- Director",
+    "July 2019 – June 2023 - Visvesvaraya National Institute of Technology, Nagpur - Professor (HAG)",
+    "Dec 2014 – June 2019 - Visvesvaraya National Institute of Technology, Nagpur - Professor (AGP 10500)",
+    "July 2008 – Nov 2014 - Visvesvaraya National Institute of Technology, Nagpur - Professor (AGP 10000)",
+    "Nov 2000 – June 2008 - Visvesvaraya National Institute of Technology, Nagpur - Assistant Professor",
+    "Dec 1998 – Nov 2000 - Visvesvaraya Regional College of Engineering, Nagpur - Lecturer",
+    "Mar 1997 – Nov 1998 - The University of Liverpool, UK - Research Associate (Post doctoral)",
+    "July 1995 – Feb 1997 - Engineering Mechanics Research Centre, Bangalore - Senior Research Analyst",
+    "Oct 1994 – June 1995 - Central Building Research Institute, Roorkee - Research Fellow"
+  ],
+  "coursesAttended": [
+    {
+      "month": "JUN",
+      "year": "2018",
+      "info": "16th European Conference on Earthquake Engineering, Thessaloniki, Greece"
+    },
+    {
+      "month": "DEC",
+      "year": "2016",
+      "info": "The Eighth National Conference on Wind Engineering, IIT(BHU), Varanasi, India"
+    },
+    {
+      "month": "SEP",
+      "year": "2012",
+      "info": "15th World conference on Earthquake Engineering, Lisbon, Portugal"
+    },
+    {
+      "month": "DEC",
+      "year": "2010",
+      "info": "14th Symposium on Earthquake Engineering, IIT Roorkee"
+    },
+    {
+      "month": "NOV",
+      "year": "2009",
+      "info": "5th National Conference on Wind Engineering, SVNIT, Surat, India"
+    },
+    {
+      "month": "OCT",
+      "year": "2008",
+      "info": "14th World conference on Earthquake Engineering, Beijing, china"
+    },
+    {
+      "month": "AUG",
+      "year": "2008",
+      "info": "4th International Conf. on Computational Structures Technology, Edinburgh, UK"
+    },
+    {
+      "month": "JAN",
+      "year": "2008",
+      "info": "10th International conference on Achieving 24×7 continuous water supply. Organised by IWWA Mumbai Center."
+    },
+    {
+      "month": "JUL",
+      "year": "2007",
+      "info": "12th International Conference on wind Engineering (ICWE 12), Cairns, Australia"
+    },
+    {
+      "month": "JULY",
+      "year": "2005",
+      "info": "National Symposium on Structural Dynamics (NSSD), Indian Institute of Science, Bangalore"
+    },
+    {
+      "month": "OCT",
+      "year": "2006",
+      "info": "International training program for seismic design of structures, organized by National Center for Research on Earthquake Engineering, Taiwan."
+    },
+    {
+      "month": "AUG",
+      "year": "2004",
+      "info": "13th World Conference on Earthquake Engineering, 13WCEE, Vancouver, Canada"
+    },
+    {
+      "month": "FEB",
+      "year": "2004",
+      "info": "Second National conference on Wind Engineering (NCWE04), Visvesvaraya National Institute of Technology, Nagpur"
+    },
+    {
+      "month": "DEC",
+      "year": "2004",
+      "info": "Structural Engineering Convention (SEC), Indian Institute of Technology, Kharagpur"
+    },
+    {
+      "month": "FEB",
+      "year": "2003",
+      "info": "National Symposium on Innovative Technologies in Construction of Concrete Structures, KITS Ramtek"
+    },
+    {
+      "month": "DEC",
+      "year": "2002",
+      "info": "12th Symposium on Earthquake Engineering, IIT Roorkee"
+    },
+    {
+      "month": "JULY",
+      "year": "2002",
+      "info": "National Seminar on Structural Dynamics in Civil Engineering , I I Sc Bangalore"
+    },
+    {
+      "month": "JAN",
+      "year": "2001",
+      "info": "National Symp on Advances in Structural Dynamics and Design, SERC, Madr"
+    },
+    {
+      "month": "JULY",
+      "year": "1998",
+      "info": "Second European LSDYNA3D Conference, Oxford, UK"
+    },
+    {
+      "month": "NOV",
+      "year": "1996",
+      "info": "Symp. on Earthquake Effects on Structures, Plant Machinery, I S E T, New Delhi, India"
+    },
+    {
+      "month": "NOV",
+      "year": "1996",
+      "info": "The 6th NASAS, National Aerospace Laboratories, Bangalore, India"
+    },
+    {
+      "month": "DEC",
+      "year": "1995",
+      "info": "NISA Users' Conference, EMRC Ltd., Bangalore, India"
+    },
+    {
+      "month": "NOV",
+      "year": "1994",
+      "info": "Tenth Symp. on Earthquake Engineering, University of Roorkee, India"
+    }
+  ],
+  "coursesConducted": [
+    {
+      "month": "DEC",
+      "year": "2014",
+      "info": "Earthquake Quiz for School kids on behalf of NICEE, for six schools on December 22, 2014."
+    },
+    {
+      "month": "NOV",
+      "year": "2011",
+      "info": "Earthquake Quiz for School kids on behalf of NICEE, for six schools on November 22, 2011."
+    },
+    {
+      "month": "MAY",
+      "year": "2011",
+      "info": "Seismic Design of Railway Bridges, with Dr Durgesh Rai, IIT Kanpur, 3-7 May 2011, for Railway engineers"
+    },
+    {
+      "month": "FEB",
+      "year": "2011",
+      "info": "Training Program on Earthquake analysis and Design of Multistoried Buildings, with Prof. R K Ingle, 24-26, February 2011"
+    },
+    {
+      "month": "FEB",
+      "year": "2007",
+      "info": "One day sensitization program for bar benders and masons on Earthquake Resistant constructions, with Dr. S V Bakre 27th February 2007, VNIT, Nagpur."
+    },
+    {
+      "month": "JAN",
+      "year": "2006",
+      "info": "IE-course on Seismic Design of Liquid Containing Tanks, in association with Prof Sudhir K Jain of IIT Kanpur; January 2006."
+    },
+    {
+      "month": "SEP",
+      "year": "2003",
+      "info": "Half-day workshop on “Introducing Earthquake Engineering Subject in Undergraduate Civil Engineering Syllabus”, Oragnised at V N I T, Nagpur, on 23rd September 2003."
+    },
+    {
+      "month": "APR",
+      "year": "2003",
+      "info": "One Day workshop on IS 1893 (Part I):2002, oragnised at The Institution of Engineers, Nagpur, April 5, 2003."
+    },
+    {
+      "month": "OCT",
+      "year": "2002",
+      "info": "AICTE-ISTE Short Term Training Program on “Finite Element Analysis of Structures”, organised from October 21 –31st 2002."
+    },
+    {
+      "month": "DEC",
+      "year": "2001",
+      "info": "AICTE-ISTE Short Term Training Program on “Seismic Analysis of Structures”, organised from November 27th to December 7th, 2001."
+    },
+    {
+      "month": "APR",
+      "year": "2000",
+      "info": "Short Term Course on Structural Dynamics and Earthquake Analysis of Structures” 17-21 April 2000. Organized at Department of Applied Mechanics, V R C E Nagpur."
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "faculty_name": "Dr. Lokesh Kumar Bramhane",
+  "profile": {
+    "name": "Dr. Lokesh Kumar Bramhane",
+    "designation": "Assistant Professor",
+    "department": "Department of Electronics and Communication Engineering",
+    "imageUrl": "Dr. Lokesh Kumar Bramhane.png",
+    "email": "lokesh.bramhane@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "VLSI Circuit Design",
+      "Semiconductor Devices",
+      "Biosensors",
+      "Memristors",
+      "IC design",
+      "Antenna Design & Fabrication"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Lokesh Kumar Bramhane",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Assistant Professor",
+    "department": "Department of Electronics and Communication Engineering",
+    "url": null,
+    "dateOfJoining": "09/09/2021",
+    "experience": "9.37 Years (till 04.10.2023)"
+  },
+  "contactInformation": {
+    "address": "Assistant Professor, Department of ECE, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "lokesh.bramhane@nitgoa.ac.in",
+    "phoneMobile": "7000972760"
+  },
+  "researchAreas": [
+    "VLSI Circuit Design",
+    "Semiconductor Devices",
+    "Biosensors",
+    "Memristors",
+    "IC design",
+    "Antenna Design & Fabrication"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Network Analysis & Synthesis",
+      "Communication Engineering",
+      "Communication Network"
+    ],
+    "pg": [
+      "Memory Design & Testing",
+      "Digital IC Design",
+      "VLSI Testing & Testability"
+    ]
+  },
+  "academicInformation": [
+    {
+      "degree": "B.E.",
+      "institute": "Shri Govindram Seksaria Institute of Technology and Science Indore",
+      "year": "2007",
+      "subject": "Electronics & Telecommunication Engineering"
+    },
+    {
+      "degree": "M.Tech",
+      "institute": "Maulana Azad National Institute of Technology Bhopal",
+      "year": "2012",
+      "subject": "VLSI & Embedded System Design"
+    },
+    {
+      "degree": "P.Hd.",
+      "institute": "Indian Institute of Information Technology, Design and Manufacturing, Jabalpur",
+      "year": "2018",
+      "subject": "Performance Projection and Analysis of Dopingless Configurable Bipolar Junction Transistor"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "Golait, M., Gaikwad, M., Patil, B., Varun Yadav, M., Baudha, S., & Kumar Bramhane, L. (2022). Design of a flower shaped compact printed antenna for ultra-wideband communication. International Journal of Microwave and Wireless Technologies, 1-7. doi:10.1017/S1759078722001106 OCT 2022",
+      "Sumit Kale, N. K. Hem Latha, Lokesh Bramhane, \"Design and Development of Reconfigurable Silicon Nanowire Schottky Barrier Transistors for Biosensor Applications\", Silicon, March 2022. DOI: 10.1007/s12633-022-01840-2 MAR 2022",
+      "L.K. Bramhane and J. Singh, “Symmetric bipolar charge-plasma transistor with extruded base for enhanced performance, Electronics Letters, Volume 51, Issue 13, 25 June 2015, p. 1027-1029.",
+      "A. Sahu, L. K. Bramhane and J. Singh, \"Symmetric Lateral DopingFree BJT: A Novel Design for Mixed Signal Applications,\" in IEEE Transactions on Electron Devices, vol. 63, no. 7, pp. 2684-2690, July 2016.",
+      "Lokesh Kumar Bramhane, Jawar Singh, “Two-zone SiGe base heterojunction bipolar charge plasma transistor for next generation analog and RF applications,\" Superlattices and Microstructures, Volume 101, Pages 200-208, January 2017.",
+      "Lokesh Kumar Bramhane, Jawar Singh, “Improved performance of bipolar charge plasma transistor by reducing the horizontal electric field,\" Superlattices and Microstructures, Volume 104, Pages 215-221, April 2017.",
+      "Panchore, M., Bramhane, L. & Singh, J. Channel-hot-carrier degradation in the channel of junctionless transistors: a device- and circuit-level perspective. J Comput Electron 20, 1196-1201 (2021). https://doi.org/10.1007/s10825-021-01688-6",
+      "Bramhane, L., Salankar, S., Gaikwad, M. et al. Impact of Work Function Engineering in Charge Plasma Based Bipolar Devices. Silicon (2021). https://doi.org/10.1007/s12633-021-01146-9",
+      "Kumar, R., Panchore, M., Bramhane, L. et al. Comparative Performance and Reliability Analysis of Doping and Junction Free Devices with High-?/Vacuum Gate Dielectric. Silicon (2021). https://doi.org/10.1007/s12633-021-01291-1",
+      "Golait, M., Varun Yadav, M., Patil, B., Baudha, S., & Bramhane, L. (2021). A compact ultra-wideband square and circular slot ground plane planar antenna with a modified circular patch. International Journal of Microwave and Wireless Technologies, 1-6. doi:10.1017/S175907872100129X"
+    ],
+    "proceedings": [
+      "S. S. Karapurkar, L. K. Bramhane, A. D. Rahulkar and T. Veerakumar, \"Energy Efficient Implementation of Processing Elements for CNN Hardware Accelerator,\" 2023 11th International Conference on Emerging Trends in Engineering & Technology - Signal and Information Processing (ICETET - SIP), Nagpur, India, 2023, pp. 1-5, doi: 10.1109/ICETET-SIP58143.2023.10151639. APRIL 2023",
+      "Khekare, G., Turukmane, A.V., Dhule, C., Sharma, P., Kumar Bramhane, L. (2022). Experimental Performance Analysis of Machine Learning Algorithms. In: Qian, Z., Jabbar, M., Li, X. (eds) Proceeding of 2021 International Conference on Wireless Communications, Networking and Applications. WCNA 2021. Lecture Notes in Electrical Engineering. Springer, Singapore. https://doi.org/10.1007/978-981-19-2456-9_104 JULY 2022",
+      "M Golait, M Gaikwad, LK Bramhane, \"Recent trends in design and fabrication of the miniaturized microstrip antenna for different application\", AIP Conference Proceedings 2424 (1), 080005 MAR 2022",
+      "L. K. Bramhane and J. Singh, \"Extended Base Schottky-Collector Bipolar Charge Plasma Transistor,\" 2015 IEEE International Symposium on Nanoelectronic and Information Systems, 2015, pp. 137-140, doi: 10.1109/iNIS.2015.67 DEC 2015"
+    ],
+    "bookChapters": [
+      "Khekare, G., Bramhane, L.K., Dhule, C., Agrawal, R., Turukmane, A.V. (2022). Testing and Analysis of Predictive Capabilities of Machine Learning Algorithms. In: Houssein, E.H., Abd Elaziz, M., Oliva, D., Abualigah, L. (eds) Integrating Meta-Heuristics and Machine Learning for Real-World Optimization Problems. Studies in Computational Intelligence, vol 1038. Springer, Cham. https://doi.org/10.1007/978-3-030-99079-4_16 JUN 2022"
+    ]
+  },
+  "researchGuidance": [
+    "Manohar Golait (G H Raisoni University Saikhera) - Antenna Design & Fabrication (Ongoing)",
+    "Muttu Yeshudas Anthonydas (NIT Goa) - VLSI Design based on FPGA (Ongoing)",
+    "Rohan Rohidas Naik (NIT Goa)- Performance Projection and Analysis of Semiconductor Devices (Ongoing)"
+  ],
+  "fundedProjects": [
+    "Design and Development of FPGA Accelerator IP for Deep Neural Network (FAipDNet)-Chips to Startup (C2S) Programme by MeitY as a Co-PI (On-going)"
+  ],
+  "awardsAndHonors": [],
+  "memberships": [
+    "IEEE Young Professionals"
+  ],
+  "professionalServices": [],
+  "coursesAttended": [],
+  "coursesConducted": []
+}

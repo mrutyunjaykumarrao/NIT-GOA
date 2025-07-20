@@ -1,0 +1,118 @@
+{
+  "faculty_name": "Dr. Meenakshi Panda",
+  "profile": {
+    "name": "Dr. Meenakshi Panda",
+    "designation": "Faculty on Contract",
+    "department": "Department of Computer Science and Engineering",
+    "imageUrl": "meenakshipanda.JPG",
+    "email": "meenakshi.panda@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Wireless Sensor Networks (WSNs)",
+      "Internet of Things (IoT)",
+      "Machine Learning",
+      "Data Analytics",
+      "Fault Tolerance in WSN"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Meenakshi Panda",
+    "gender": "Female",
+    "birthDate": null,
+    "designation": "Faculty on Contract",
+    "department": "Department of Computer Science and Engineering",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": "10 Years of Teaching Experience and 6 years of Research Experience"
+  },
+  "contactInformation": {
+    "address": "Department of CSE, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "meenakshi.panda@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Wireless Sensor network, Fault Diagnosis, Machine Learning, Internet of Things, Data Analytics"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Data Structure and Algorithms",
+      "Fundamental of Cryptography",
+      "Artificial Intelligence",
+      "Natural Language Processing",
+      "Mathematical foundation for Artificial Intelligence",
+      "Internet of Things",
+      "Computer Graphics",
+      "Data communication and Computer Networks",
+      "Real Time Systems",
+      "Programming in C",
+      "Database Management System",
+      "System Software",
+      "Object Oriented Programming",
+      "Design and Analysis of Algorithms",
+      "Parallel and distributed Systems"
+    ],
+    "pg": []
+  },
+  "academicInformation": [
+    {
+      "degree": "M.Tech.",
+      "institute": "Utkal University, Bhubaneswar, Odisha, India.",
+      "year": "2006",
+      "subject": "Computer Science"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "National Institute of Technology Rourkela",
+      "year": "2015",
+      "subject": null
+    }
+  ],
+  "publications": {
+    "journal": [
+      "B. S. Gouda, Meenakshi Panda, Trilochan Panigrahi, Sudhakar Das, Bhargav Appasani, Omprakash Acharya, Hossam M. Zawbaa, Salah Kamel, \"Distributed Intermittent Fault Diagnosis in Wireless Sensor Network Using Likelihood Ratio Test,\" IEEE Access, vol. 11, pp. 6958-6972, 2023, doi: 10.1109/ACCESS.2023.3236880.",
+      "Y. S. Reddy, Meenakshi Panda, Ankit Dubey, Abhinav Kumar, T. Panigrahi and K. M. Rabie, “Optimization of Indoor Hybrid PLC/VLC/RF Communication Systems,” IET Communication, pp. 117 – 126, Vol 14, Issue 1, Jan 2020.",
+      "T. Panigrahi, Meenakshi Panda and G. Panda, “Distributed Estimation in Wireless Sensor Networks,” Journal of Network and Computer applications, Elsevier, 69(2016), pp. 27-39, 2016.",
+      "Meenakshi Panda, P. M. Khilar, “Distributed Byzantine fault detection technique in Wireless Sensor Networks Based on Hypothesis Testing”, Computers and Electrical Engineering, Elsevier Publisher, 48(2015), 270-285, 2015.",
+      "Meenakshi Panda, P. M. Khilar, “Distributed Self Fault Diagnosis Algorithm for Large Scale Wireless Sensor Networks using Modified Three Sigma Edit Test,” Ad Hoc Networks, Elsevier Publisher, 2015",
+      "Meenakshi Panda, P. M. Khilar, “Energy Efficient Distributed Fault Identification Algorithm in Wireless Sensor Networks,” Journal of Computer Networks and Communications, Hindawi Publisher, 2014."
+    ],
+    "proceedings": [
+      "Meenakshi Panda, P. M. Khilar,” Distributed Fault Tolerant Estimation in Wireless Sensor Network Using Robust Diffusion Adaptation” in International Conference on Distributed Computing and Internet Technology (ICDCIT 2012), LNCS 7154, pp. 259–260, 2012",
+      "Meenakshi Panda, P. M. Khilar,” Distributed Soft Fault Detection Algorithm in Wireless Sensor Networks using Statistical Test” ”, in IEEE International Conference on Parallel, Distributed and Grid Computing (PDGC,2012), at Waknaghat, Solan (HP), on 6-8 Dec. 2012,PP- pp.195-198.",
+      "Meenakshi Panda, P. M. Khilar,” Energy Efficient Soft Fault Detection Algorithm in Wireless Sensor Networks”, in IEEE International Conference on Parallel, Distributed and Grid Computing (PDGC,2012), at Waknaghat, Solan (HP), on 6-8 Dec. 2012,PP- 801-805.",
+      "Meenakshi Panda, P. M. Khilar, “An Efficient Fault Detection Algorithm in Wireless Sensor Network”, International Conference on Contemporary Computing (IC3 2011), CCIS 168, pp. 279–288, 2011",
+      "Meenakshi Panda, T. Panigrahi, P. M. Khilar, and G. Panda, ``Learning With Distributed Data in Wireless Sensor Network”, in IEEE International Conference on Parallel, Distributed and Grid Computing(PDGC,2010), at Waknaghat, Solan (HP), on 28-30th Oct 2010, PP- 256 259.",
+      "Meenakshi Panda, T. Panigrahi, P. M. Khilar, and G. Panda, ``An energy efficient search in dense wireless sensor network'', in IEEE International Conference on Computational Intelligence and Communication Network, CICN2010, at Bhopal, on 26-28th Nov 2010, PP. 234-238."
+    ],
+    "bookChapters": [
+      "Meenakshi Panda, Bhabani Gouda and T. Panigrahi, “Fault Diagnosis in Wireless Sensor Networks Using a Neural Network Constructed by Deep Learning Technique,” in book titled: De D., Mukherjee A., Kumar Das S., Dey N. (eds) Nature Inspired Computing for Wireless Sensor Networks published in Springer Tracts in Nature-Inspired Computing, pp. 77-101,10.1007/978 981-15-2125-6_5, 2020.",
+      "Meenakshi Panda, Bhabani Gouda and T. Panigrahi, “Distributed Online Fault Diagnosis in Wireless Sensor Networks,” in book titled: \"Design Frameworks for Wireless Networks\" published in Lecture Notes in Networks and Systems Series, Springer Nature, pg. 197-221, 2020."
+    ]
+  },
+  "researchGuidance": [],
+  "fundedProjects": [],
+  "awardsAndHonors": [],
+  "memberships": [],
+  "professionalServices": [],
+  "coursesAttended": [],
+  "coursesConducted": [
+    "Participated in \"GIAN Course on Nanoscale wireless networking: opportunities, Challenges, and Recent Advances” at NIT Goa during 19-24 Dec 2016.",
+    "Participated in \"AICTE recognized short term course on Open-source technologies through ICT” at NITTTR during 29.8.2016 to 02.9. 2016.",
+    "Participated in \"Second National Workshop on free and open-source software tools for software engineering (FOSSTSE2016) at CVRCE, BBSR on 20.8.2016.",
+    "Participated in \"International seminar on “New Innovations in cloud computing for big data and IOT at CVRCE, BBSR on 4.8.2016.",
+    "Participated in \"Second National conference cum workshop on enhancing information technology education” at NIT, Goa, during 25-30 July 2016.",
+    "Participated in \"Faculty Development Programme on Deep learning and applications” at CVRCE, BBSR during 11-16 July 2016.",
+    "Participated in “2nd International Conference on Communication, Computing and Security” at NIT Rourkela, India, during 06-08 October 2012.",
+    "Participated in \"International Conference on Distributed Computing and Internet Technology (ICDCIT 2012) at KIIT University Bhubaneswar during 2-4th February, 2012.",
+    "Participated in \"IEEE International Conference on Parallel, Distributed and Grid Computing(PDGC,2010), at Waknaghat, Solan (HP), during 28-30th Oct 2010.",
+    "Participated in “IEEE International Conference on Computational Intelligence and Communication Network”, CICN2010, at Bhopal, during 26-28th Nov 2010.",
+    "Participated in \"AICTE Sponsored staff development programme in Discrete Mathematics and its applications to computer science\" at NIT Rourkela during December 7-20, 2009.",
+    "Participated in \"IBM Academic Initiative Sponsored Information Technology Infrastructure Library\" at SIT Bhubaneswar during June 2-4, 2008.",
+    "Attended the National Workshop on “Computer Security” organized by SIT, Bhubaneswar during March 14-16, 2008.",
+    "Attended the Workshop on “Creative thinking and Collaborative Learning\" organized by SIT, Bhubaneswar during December 10-14, 2007.",
+    "Participated in \" U.G.C. sponsored Instructional Conference on Mathematical Techniques in Computer Science” at Post Graduate Department of Mathematics, Utkal University, VaniVihar, Bhubaneswar during March 25-30, 2007.",
+    "Participated in \"International Symposium on Computational Biology and Bioinformatics at SIT Bhubaneswar during December 15-17, 2006.",
+    "Attended the Workshop on “Advanced Computer Architecture” organized by SIT, Bhubaneswar during November 11-13,2006.",
+    "Participated in \"Eight International conference on Information Technology” at Institute of Physics, Bhubaneswar during December 21-23, 2005.",
+    "Attended the Workshop on “Bioinformatics” organized by SIT, Bhubaneswar during December 9-11, 2005."
+  ]
+}

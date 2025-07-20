@@ -1,0 +1,190 @@
+{
+  "faculty_name": "Dr. T. Veerakumar",
+  "profile": {
+    "name": "Dr. T. Veerakumar",
+    "designation": "Associate Professor & Head",
+    "department": "Department of Electronics and Communication Engineering",
+    "imageUrl": "drveerakumar.jpeg",
+    "email": "tveerakumar@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Image Compression",
+      "Image Denoising",
+      "Object detection and tracking",
+      "Medical Image Analysis"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. T. Veerakumar",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Associate Professor",
+    "department": "Department of Electronics and Communication Engineering",
+    "url": "https://sites.google.com/view/tveerakumar/home",
+    "dateOfJoining": "05/12/2013",
+    "experience": "15 Years Teaching Experience as on 01/11/2021"
+  },
+  "contactInformation": {
+    "address": "Department of ECE, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "tveerakumar@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Image Compression;",
+    "Image Denoising;",
+    "Object detection and tracking;",
+    "Medical Image Analysis;"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Digital Electronics",
+      "Signals and Systems",
+      "Linear Integrated Circuits",
+      "Digital Signal Processing",
+      "Digital Image Processing"
+    ],
+    "pg": [
+      "Advanced DSP",
+      "Wavelets and Subband Coding"
+    ]
+  },
+  "academicInformation": [
+    {
+      "degree": "B.E.",
+      "institute": "RVS College of Engineering and Technology, Dindigul, Tamil Nadu, Madurai Kamaraj University.",
+      "year": "2004",
+      "subject": "ECE"
+    },
+    {
+      "degree": "M.E.",
+      "institute": "PSG College of Technology, Coimbatore.",
+      "year": "2006",
+      "subject": "Applied Electronics"
+    },
+    {
+      "degree": "P.Hd.",
+      "institute": "Anna University, Chennai",
+      "year": "2013",
+      "subject": "Information and Communication Engineering"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "M. K. Panda, A. Sharma, V. Bajpai, B. N. Subudhi, T. Veerakumar, and V. Jakhetiya,\"Encoder and Decoder Network with ResNet-50 and Global Average Feature Pooling for Local Change Detection\", Computer Vision and Image Understanding (accepted), 2022 (IF: 4.886) - JUN, 2022",
+      "D. K. Rout, B. N Subudhi, T. Veerakumar, S. Chaudhury, and J. Soraghan, \"Multiresolution Visual Enhancement of Hazy Underwater Scene\", Multimedia Tools and Applications, (accepted), 2022. (IF: 2.757) - JAN, 2022",
+      "T. Rasal, T. Veerakumar, B. N. Subudhi, and S. Esakkirajan, \"Fluorescence Microscopy Image Noise Reduction using IEMD based Adaptive Thresholding Approach\", Signal, Image and Video Processing (accepted), 2022. (IF: 2.380) - JAN, 2022",
+      "T. Rasal, T. Veerakumar, B. N. Subudhi, and S. Esakkirajan, \"A New Approach for Reduction of the Noise from Microscopy Images using Fourier Decomposition\", Biocybernetics and Biomedical Engineering (accepted), 2022 (IF: 4.314) - JAN, 2022",
+      "A. Hatua, B. N Subudhi, T. Veerakumar, and A. Ghosh, \"Early Detection of Diabetic Retinopathy from Big Data in Hadoop Framework”, Displays, Elsevier, Vol.70, 2021. (IF: 2.167) - DEC, 2021",
+      "B. N. Subudhi, M. K. Panda, T. Veerakumar, V. Jakhetiya, and S. Esakkirajan, \"Kernel Induced Possibilistic Fuzzy Associative Background Subtraction for Video Scene\", IEEE Transactions on Computational Social Systems, (accepted), 2021. (IF: 5.357) - DEC, 2021",
+      "P. Bhat, B. N Subudhi, T. Veerakumar, and S. Esakkirajan, \"A fully Automatic Feature-based Real-Time Traffic Surveillance System using Data Association in the Probabilistic Framework”, IEEE Transactions on Intelligent Transportation Systems, (accepted), 2021. (IF: 6.492) - AUG, 2021",
+      "N. Naimahmed, S. Patidar, and T. Veerakumar, \"A correlation matrix-based tensor decomposition method for early prediction of sepsis from clinical data\", Biocybernetics and Biomedical Engineering, Elsevier, (accepted), 2021. (IF: 4.314) - JULY, 2021",
+      "P. G. Bhat, B. N. Subudhi, T. Veerakumar, G. D. Caterina, and J. J. Soraghan, \"Target Tracking using a Mean-Shift Occlusion Aware Particle Filter”, IEEE Sensors, (accepted). (IF: 3.073) - JAN, 2021",
+      "N. Deepa, S. Esakkirajan, B. Keerthiveena, and T. Veerakumar, \"Automated segmentation algorithm with deep learning framework for early detection of glaucoma\", Concurrency and Computation: Practice and Experience, John Wiley, (Accepted), 2021. (IF:1.447) - JAN, 2021",
+      "T. Rasal, T. Veerakumar, B. N. Subudhi, and S. Esakkirajan,\"'Mixed Poisson Gaussian Noise Reduction in Fluorescence Microscopy Images using Modified Structure of Wavelet Transform”, IET Image Processing, (accepted). (IF: 2.004) - SEPT, 2020",
+      "B. Keerthiveena, S. Esakkirajan, B. N. Subudhi, T .Veerakumar, \"Classification of Ocular health using hybrid BPSO-SVM for feature selection and parameter optimization”, IET Image Processing, (accepted). (IF: 2.004) - AUG, 2020",
+      "B. N Subudhi, T. Veerakumar, S. Esakkirajan and S. Chaudhury, “Automatic Lecture Video Skimming using Shot Categorization and Contrast based Features,” Expert Systems with Applications, accepted, 2020. (IF: 4.292) - FEB, 2020",
+      "P. Bhat, B. N Subudhi, T. Veerakumar, V. Laxmi, and M. S. Gaur , \"Multi-Feature Fusion in Particle Filter Framework for Visual Tracking,” IEEE Sensors, vol. 20, no. 5, PP. 2405-2415, 2020. (IF: 3.076) - NOV, 2019",
+      "B. N. Subudhi, T. Veerakumar, S. Esakkirajan and A. Ghosh, \"Kernelized Fuzzy Modal Variation for Local Change Detection from Video Scenes”, IEEE Transactions on Multimedia, accepted, 2019. (IF: 5.452) - AUG, 2019",
+      "D. K. Rout, B. N Subudhi, T. Veerakumar, and S. Chaudhury, \"Walsh-Hadamard Kernel based Features in Particle Filter Framework for Underwater Object Tracking”, IEEE Transactions on Industrial Informatics, accepted, 2019. (IF: 7.377) - AUG, 2019",
+      "T. Veerakumar, B. N Subudhi, S. Esakkirajan and P. K. Pradhan, “Iterative Adaptive Unsymmetric Trimmed Shock Filter for High-Density Salt-and-Pepper Noise Removal” Circuits, Systems & Signal Processing, vol. 38, no. 6, pp. pp 2630–2652, 2019. (IF: 1.998) - JUN, 2019",
+      "T. Veerakumar, B. N Subudhi, and S. Esakkirajan, “Empirical mode decomposition and adaptive bilateral filter approach for impulse noise removal,” Expert Systems with Applications, vol. 121, pp. 18-27, 2019. (IF: 3.928) - MAY, 2019",
+      "B. N. Subudhi, T. Veerakumar, S. Esakkirajan and A. Ghosh, \"Context Dependent Fuzzy Associated Statistical Model for Intensity Inhomogeneity Correction from Magnetic Resonance Images”, IEEE Journal of Translational Engineering in Health and Medicine, vol. 7, pp. 1-9, 2019. (IF: 1.754) - APRIL, 2019",
+      "C. Vimalraj, S. Esakkirajan, T. Veerakumar, P. Sreevidya, “Despeckling of Ultrasound Images using Directionally Decimated Wavelet Packets with Adaptive Clustering”, IET Image Processing, Vol. 13, pp. 206-215, 2018. (IF:2.004) - NOV, 2018",
+      "Deepak Kumar Rout, BN Subudhi, T.Veerakumar, and Santanu Chaudhury, \"Spatio-contextual Gaussian mixture model for local change detection in underwater video\", Expert Systems with Applications, Vol. 97, pp.117-136, 2018. SCI:3.928 - MAY, 2018",
+      "T.Veerakumar, BN Subudhi, S. Esakkirajan, and PK Pradhan, \"Context Model based Edge Preservation Filter for Impulse Noise Removal\", Expert Systems with Applications, Vol. 88, pp. 29-44, 2017. SCI:3.928 - DEC, 2017",
+      "T. Veerakumar, Ravi Prasad KJ, BN Subudhi, S. Esakkirajan, \"Impulse Noise Removal Using Adaptive Radial Basis Function Interpolation\", Circuits, Systems, and Signal Processing, Vol.36, No.3, pp.1192-1223, 2017. SCI:1.694 - MAR, 2017",
+      "BN Subudhi, T. Veerakumar, S. Esakkirajan, and Ashish Ghosh, \"Tumor or abnormality identification from magnetic resonance images using statistical region fusion based segmentation\" Magnetic Resonance Imaging, Vol. 34, N0.9, pp. 1292-1304, 2016. (IF: 2.669) - NOV, 2016",
+      "C. Vimalraj, S. Esakkirajan, T. Veerakumar, and P. Sreevidya, \"Direction Sensitive Wavelet Packet for Despeckling of Ultrasound Images\", IET Computer Vision, Vol. 10, No. 7, pp. 746-757, 2016. SCI: 1.173 - APRIL, 2016",
+      "T. Veerakumar, S. Esakkirajan, and Ila Vennila, “Edge Preserving Adaptive Anisotropic Diffusion Filter Approach for the Suppression of Impulse Noise in Images”, AEU - International Journal of Electronics and Communications (Elsevier), Vol.68, No.5, pp.442-452, 2014, (IF: 1.147) - MAY, 2014",
+      "T. Veerakumar, S. Esakkirajan, and Ila Vennila, “Recursive Cubic Spline Interpolation Filter Approach for the Removal of High Density Salt and Pepper Noise”, Signal, Image and Video Processing (Springer), Vol. 7, No. 4, 2014. (IF: 1.430) - JAN, 2014",
+      "T. Veerakumar, S. Esakkirajan, and Ila Vennila, “Salt and Pepper Noise Removal Using Adaptive Decision based Improved Bilateral Filter”, National Journal of Technology, PSG College of Technology, Coimbatore. 2013. - JULY, 2013",
+      "T. Veerakumar, S. Esakkirajan, and Ila Vennila, “High Density Impulse Noise Removal Using Modified Switching Bilateral Filter”, International Journal of Circuits, Systems and Signal Processing, Vol. 6, No. 3, pp.189-196, 2012. - JUN, 2012",
+      "T. Veerakumar, S. Esakkirajan, and Ila Vennila, “Combined fuzzy logic and unsymmetric trimmed median filter approach for the removal of high density impulse noise”, WSEAS Transactions on Signal Processing, Vol. 8, No. 1, pp. 32-42, 2012. SNIP : 0.15 - MAR, 2012",
+      "S. Esakkirajan, T. Veerakumar, A. N. Subramanyam, and C. H. PremChand, “Removal of high density salt and pepper noise through modified decision based unsymmetric trimmed median filter”, IEEE Signal Processing Letters, Vol. 18, No. 5, pp. 287-290, 2011. (IF: 1.388) - MAY, 2011",
+      "S. Esakkirajan, T. Veerakumar, V. Senthil Murugan, and P. Navaneethan, “Video compression using multiwavelet and multistage vector quantization”, The International Arab Journal of Information Technology, Vol. 6, No. 4, pp.385-393. 2009. (IF: 0.127) - SEPT, 2009",
+      "S. Esakkirajan, T. Veerakumar, V. Senthil Murugan, and P. Navaneethan, “Image Compression Using Hybrid Vector Quantization”, International Journal of Signal Processing, Vol. 4, No. 1, pp. 59-66, 2008. - AUG, 2008",
+      "S. Esakkirajan, T. Veerakumar, V. Senthil Murugan, and P. Navaneethan, “Image compression using multiwavelet and multi-stage vector quantization”, WASET International Journal of Signal Processing, Vol. 4, No. 4, pp. 524-531, 2008. - APRIL, 2008",
+      "S. Esakkirajan, T. Veerakumar, P. Navaneethan, and V. Senthil Murugan, “Medical Image Compression using Residual Vector Quantization”, National Journal of Technology, PSG College of Technology, Coimbatore, Vol. 4, No. 1, pp. 52-60, 2008. - APRIL, 2008",
+      "T. Veerakumar, S. Esakkirajan, R. Sudhakar, and V. Senthil Murugan, “Fingerprint compression using contourlet transform and self organizing feature map” Iranian Journal of Electrical and Computer Engineering, Vol. 6, No. 2, pp. 133-140, 2007. SNIP:0.105 - OCT, 2007",
+      "S. Esakkirajan, T. Veerakumar, V. Senthil Murugan, and P. Navaneethan, “Fingerprint Compression Using Non-linear Approximation of Multiwavelet Coefficients”, Iranian Journal of Electrical and Computer Engineering, Vol. 7, No. 2, pp. 127- 133, 2007. SNIP:0.105 - JUN, 2007",
+      "S. Esakkirajan, T. Veerakumar, V. Senthil Murugan, and R. Sudhakar, “Image compression using contourlet transform and multistage vector quantization”, International Journal of Biological and Medical Sciences, Vol.1, No. 2, pp. 140-147, 2006. - NOV, 2006",
+      "S. Esakkirajan, T. Veerakumar, V. Senthil Murugan, and R. Sudhakar, “Image Compression Using Contourlet Transform and Multistage Vector Quantization”, International Journal of Graphics Vision and Image Processing, Vol.6, No.1, pp. 19-28, 2006. - MAY, 2006"
+    ],
+    "proceedings": [
+      "M. K. Panda, B. N Subudhi, T. Veerakumar, and M. S. Gaur, \"Pixel-level Visual and Thermal Images Fusion Using Maximum and Minimum Value Selection Strategy”, IEEE International Symposium on Sustainable Energy, Signal Processing & Cyber Security, accepted, Gunupur, India, 2020. - DEC, 2020",
+      "A. Mahindrakar, M. P. Chodankar, R. Kumar, T. Veerakumar, B. N. Subudhi, \"Gaussian Mixture Model and Color Separation Models for the Arc-Flashover Detection”, IEEE International Symposium on Sustainable Energy, Signal Processing & Cyber Security, accepted, Gunupur, India, 2020. DEC 2020",
+      "M. K. Panda, B. N Subudhi, T. Veerakumar, and M. S. Gaur, \"Edge Preserving Image Fusion using Intensity Variation Approach”, 16th IEEE TENCON, accepted, Osaka, Japan, 2020. - NOV, 2020",
+      "D. K. Rout, B. N Subudhi, T. Veerakumar, and S. Chaudhury, \"Prominent Object Detection in Underwater Environment using a Dual-feature Framework”, 31st IEEE OCEANS, accepted, Singapore, 2020. - OCT, 2020",
+      "B. Keerthiveena, T. Veerakumar, S. Esakkirajan and B. N. Subudhi, \"Computer-aided diagnosis for Diabetic Retinopathy based on Firefly algorithm,\" in Proceedings of 11th International Conference on Advanced Computing (ICoAC), Chennai, India, 2019, pp. 310-315. - OCT, 2019",
+      "Pranab G Bhat, Deepak Kumar Rout, Badri Narayan Subudhi, T Veerakumar, \"Vision sensory substitution to aid the blind in reading and object recognition\", Fourth International Conference on Image Information Processing (ICIIP), 2017, JUIT, Shimla, india. (IEEE Xplore) - DEC, 2017",
+      "Deepak Kumar Rout, Pranab G B, T Veerakumar, Badri Narayan Subudhi, Santanu Chaudhury, \"A novel five-frame difference scheme for local change detection in underwater video\", Fourth International Conference on Image Information Processing (ICIIP), 2017, JUIT, Shimla, india. (IEEE Xplore) - DEC, 2017",
+      "Badri Narayan Subudhi, T Veerakumar, Deepak Yadav, Amol P Suryavanshi, SN Disha, \"Video Skimming for Lecture Video Sequences Using Histogram Based Low Level Features\", IEEE 7th International Advance Computing Conference (IACC), VNR Vignana Jyothi Institute of Engineering and Technology Hyderabad, Telangana, India, 2017. - JAN, 2017",
+      "Damodar Reddy Edla, V.S. Samy, B.N. Subudhi, and T. Veerakumar, “Antarctica Glacier/Sea Ice Motion Tracking using Soft Computing Techniques”, National Workshop on Evaluation of Research Projects for Planning XXXVI Indian Scientific Expedition to Antarctica, NCAOR Goa, June 9-10, 2016. - JUN, 2016",
+      "T. Veerakumar, “Impulse Noise Removal using Fuzzy Logic with Variant Median Filter”, National Conference on VLSI, Communication and Wireless Technologies (NCVCW’13), PSG College of Technology, Coimbatore. - MAR, 2013",
+      "T. Veerakumar, “Fingerprint based Attendance System”, National Conference on VLSI, Communication and Wireless Technologies (NCVCW’13), PSG College of Technology, Coimbatore. - MAR, 2013",
+      "T. Veerakumar, “Adaptive Wavelet Packet Thresholding Function for Image Denoising”, National Conference on VLSI, Communication and Wireless Technologies (NCVCW’13), PSG College of Technology, Coimbatore. - MAR, 2013",
+      "T. Veerakumar, “Video Denoising Based on a Spatio-temporal Gaussian Scale Mixture Model”, Second National Conference on Research Challenges in Communication Systems and VLSI Design (NCRCV’12), PSG College of Technology, Coimbatore. - APRIL, 2012",
+      "T. Veerakumar, S. Esakkirajan, and Ila Vennila, “An efficient approach to remove random valued impulse noise in images”, International Conference on Recent Trends In Information Technology (ICRTIT), MIT, Chennai, pp. 49-53, 2012. (Paper published in IEEE Explore)",
+      "T. Veerakumar, S. Esakkirajan, and Ila Vennila, “Salt and pepper noise removal in video using adaptive decision based median filter”, International Conference on Multimedia, Signal Processing and Communication Technologies (IMPACT’11), Aligarh Muslim University, Aligarh, pp. 87-90, 2011. (Paper published in IEEE Explore)",
+      "S. Esakkirajan, T. Veerakumar, and P Navaneethan, “Adaptive vector quantization based video compression scheme”, International Conference on Multimedia, Signal Processing and Communication Technologies (IMPACT’09), Aligarh Muslim University, Aligarh, pp. 40-43, 2009. (Paper published in IEEE Explore)",
+      "S. Esakkirajan, T. Veerakumar, and P Navaneethan, “Best basis selection using singular value decomposition”, Seventh International Conference on Advances in Pattern Recognition (ICAPR'09), 2009, ISI Kolkata, pp. 65-68, 2009. (Paper published in IEEE Explore)",
+      "S Esakkirajan, T. Veerakumar, N. Malmurugan, and P. Navaneethan, “Image Compression using Adaptive Wavelet Packet and Multistage Vector Quantization”, IEEE Region 10 and the Third international Conference on Industrial and Information Systems(ICIIS 2008), IIT Kharagpur, pp.1-4, 2008. (Paper published in IEEE Explore)",
+      "S. Esakkirajan, T. Veerakumar, and P. Navaneethan, “Adaptive vector quantization technique for retinal image compression”, International Conference on Computing, Communication and Networking (ICCCn2008), Chettinad College of Engineering and Technology, Karur, pp.1-4, 2008. (Paper published in IEEE Explore)",
+      "T. Veerakumar, and S. Esakkirajan, “Image Compression Using Wavelet Packet Transform and Vector Quantization”, Second National Conference on Signals, Systems and Security (NCSSS’06), Bannari Amman Institute of Technology, Sathyamangalam, Tamilnadu, 2006. (Received Best Paper Award). - JAN, 2006"
+    ],
+    "bookChapters": [
+      "T. Veerakumar, B. N. Subudhi, Sandeep Kumar K., Nikhil O. F. Da Rocha, S. Esakkirajan, \"Shot Boundary Detection from Lecture Video Sequences using Histogram of Oriented Gradients and Radiometric Correlation\", Smart Computer Vision: Mimicking Human Intelligence, Springer (Accepted). - DEC, 2021",
+      "B. N. Subudhi, T. Veerakumar, Sai Rakshit Harathas, Rohan Prabhudesai, Venkatanareshbabu Kuppili, Vinit Jaketiya, \"Deep Learning in Auto Encoder Framework and Shape Prior for Hand Gesture Recognition\", Smart Computer Vision: Mimicking Human Intelligence, Springer (Accepted). - DEC, 2021"
+    ],
+    "booksAuthored": [
+      "S. Esakkirajan, T. Veerakumar, and B. N. Subudhi, \"Digital Signal Processing\", 1st Edition, Published by Tata McGraw Hill, New Delhi, 2021. - JUN, 2021",
+      "S. Jayaraman, S. Esakkirajan, and T. Veerakumar, “Digital Image Processing”, 2nd Edition, Published by Tata McGraw Hill, New Delhi, 2020. - MAY, 2020",
+      "S. Jayaraman, S. Esakkirajan and T. Veerakumar, \"Digital Image Processing\", Published by Tata McGraw Hill Education PVT. Ltd., New Delhi - MAY, 2009"
+    ]
+  },
+  "researchGuidance": [
+    "1. Dr. Deepak Kumar Rout: On Design of a Visual Surveillance System for Complex Underwater Scenarios (Awarded 2020);",
+    "2. Dr. Pranab G. Bhat: Moving Object Tracking in Complex Video Scenes using Probabilistic Framework (Awarded 2021);",
+    "3. Dr. Naimahmed Nesaragi: Modeling and Mining Schemes for Early Prediction of Sepsis using Higher-order and Multi-aspect Representations from Structured EHR Data (Awarded 2021)-Co-Supervisor;",
+    "4. Mr. Tushar T Rasal: Fluorescence Microscopic Image Analysis using Machine Learning Techniques (Thesis Defended 2023);",
+    "5. Mr. Nagaraj Neela: (Hyper Spectral Image Analysis) (Ongoing);",
+    "6. Mrs. Veena Vithal Gaonkar: (Biomedical signal processing) (Ongoing);"
+  ],
+  "fundedProjects": [
+    "1. Smart City Surveillance using Decentralized Multi-camera Networks, DST-SERB EMR, (Co-PI) (~42 Lakh) Status: Completed",
+    "2. Design and development of acoustic methods for early detection of stem and root borer Plocaederus spp infestation in cashew, DST-SERB, (Co-PI) (~41 Lakh), Status: Completed",
+    "3.Design and Development of FPGA Accelerator IP for Deep Neural Network (FAipDNet), Meity, (Co-PI), (86 Lakh), Status: Ongoing"
+  ],
+  "awardsAndHonors": [
+    "1. The Conference paper titled \" Vision Sensory Substitution to Aid the Blind in Reading and Object Recognition \" Received (Best Thematic Paper Award) during ICIIP 2017 @ JUIT Solan, India.",
+    "2. The Conference paper titled \"A Novel Five-Frame Difference Scheme for Local Change Detection in Underwater Video\" Received Best Algorithmica Award during ICIIP 2017 @ JUIT Solan, India.",
+    "3. The International Symposium paper titled \"Gaussian Mixture Model and Color Separation Models for the Arc-Flashover Detection”, Received (Best Paper Award) during IEEE International Symposium on Sustainable Energy, Signal Processing & Cyber Security (IEEE-iSSSC 2020), Gunupur, India, 2020."
+  ],
+  "memberships": [
+    "ISSS Life Member",
+    "IAENG Life Member",
+    "ACM Membership"
+  ],
+  "professionalServices": [],
+  "coursesConducted": [
+    {
+      "month": "MAY",
+      "year": "2016",
+      "info": "DST Sponsored One Week STTP on \"Video and Image Analysis: Fundamentals and Advances\" during May 30th – June 4th 2016, Number of participants is 32."
+    },
+    {
+      "month": "OCT",
+      "year": "2013",
+      "info": "TEQIP – II Sponsored One Week Faculty Development Programme on Emerging Research Avenues in Signal and Image Processing during Oct. 22-28, 2013, Number of participants is 40."
+    },
+    {
+      "month": "APR",
+      "year": "2013",
+      "info": "National Conference organized (National Conference on Communication, VLSI and Wireless Technologies-2013). Number of participants is 150."
+    },
+    {
+      "month": "NOV",
+      "year": "2012",
+      "info": "Two day Workshop on Implementation of DSP Algorithms in DSP Processors, Number of participants is 35."
+    }
+  ]
+}

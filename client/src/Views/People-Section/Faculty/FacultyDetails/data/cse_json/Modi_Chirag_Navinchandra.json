@@ -1,0 +1,391 @@
+{
+  "faculty_name": "Dr. Modi Chirag Navinchandra",
+  "profile": {
+    "name": "Dr. Modi Chirag Navinchandra",
+    "designation": "Associate Professor",
+    "department": "Department of Computer Science and Engineering",
+    "imageUrl": "Dr. Modi Chirag Navinchandra.png",
+    "email": "cnmodi@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Blockchain",
+      "Cryptography and Network Security",
+      "Information Security and Privacy",
+      "Cloud Computing",
+      "Visual Computing"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Modi Chirag Navinchandra",
+    "gender": "Male",
+    "birthDate": "03/02/1987",
+    "designation": "Associate Professor",
+    "department": "Department of Computer Science and Engineering",
+    "url": "https://sites.google.com/site/drcnmodi/",
+    "dateOfJoining": null,
+    "experience": "8 Years and 01 Month of Teaching and Research Experience at NIT Goa"
+  },
+  "contactInformation": {
+    "address": "Associate Professor, Department of Computer Science and Engineering, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "cnmodi@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Blockchain",
+    "Cryptography and Network Security",
+    "Information Security and Privacy",
+    "Cloud Computing",
+    "Visual Computing"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Network Security",
+      "Foundations of Cryptography",
+      "Number Theory and Cryptography",
+      "Fundamental of Programming Language",
+      "Object Oriented Programming",
+      "Software Engineering"
+    ],
+    "pg": [
+      "Security and Privacy",
+      "Biometric and Cyber Security",
+      "Data Warehousing and Data Mining",
+      "Object Oriented Software Engineering",
+      "Advance Database Systems (Lab)"
+    ]
+  },
+  "academicInformation": [
+    {
+      "degree": "B.E.",
+      "institute": "BVM Engg. College, V.V.Nagar, Gujarat",
+      "year": "2008",
+      "subject": "Computer Engineering"
+    },
+    {
+      "degree": "M.Tech.",
+      "institute": "NIT Surat",
+      "year": "2010",
+      "subject": "Computer Engineering"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "NIT Surat",
+      "year": "2014",
+      "subject": "Computer Engineering"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "A. Muzumdar, C. Modi, C. Vyajayanthi, \"Designing a Blockchain Enabled Privacy Preserving Energy Theft Detection System for Smart Grid Neighborhood Area Network,\" Electric Power systems Research, Elsevier, vol. 207, pp. 107884-107896, 2022. JUN 2022",
+      "A. Muzumdar, C. Modi, C. Vyajayanthi, \"A Permissioned Blockchain Enabled Trustworthy and Incentivized Emission Trading System,\" Journal of Cleaner Production, Elsevier, vol. 349, pp. 131274, 2022. MAY 2022",
+      "Gopahanal Manjunath, Madhu, Chintamani, Vyjayanthi and Modi, Chirag, \"A real-time hybrid battery state of charge and state of health estimation technique in renewable energy integrated microgrid applications,\" International Journal of Emerging Electric Power Systems, vol. , no. , 2022. https://doi.org/10.1515/ijeeps-2021-0434. MAY 2022",
+      "A trustworthy and incentivized smart grid energy trading framework using distributed ledger and smart contracts, JNCA, Elsevier 2021",
+      "Investigation on Effect of Irradiance Change in Maximum Power Extraction from PV Array Interconnection Schemes during Partial Shading Conditions, IEEE Access 2021",
+      "Designing a Robust and Accurate Model for Consumer Centric Short Term Load Forecasting in Microgrid Environment, IEEE Systems Journal 2021",
+      "Adaptive step size based drift-free P&O algorithm with power optimiser and load protection for maximum power extraction from PV panels in stand-alone applications, IET Renewable Power Generation 2021",
+      "Designing in-VM-assisted lightweight agent-based malware detection framework for securing virtual machines in cloud computing, Journal of Information Security, Springer 2020",
+      "Designing an efficient security framework for detecting intrusions in virtual network of cloud computing, Computers & Security, Elsevier 2019",
+      "Designing an efficient framework for vulnerability assessment and patching (VAP) in virtual environment of cloud computing, Journal of Supercomputing, Springer 2019",
+      "An Exhaustive Survey on Security Concerns and Solutions at Different Components of Virtualization, ACM Computing Surveys 2019",
+      "A feasible approach to intrusion detection in virtual network layer of Cloud computing, Sadhana, Springer JULY 2018",
+      "Privacy-preserving distributed mining of association rules using Elliptic-curve cryptosystem and Shamir’s secret sharing scheme, Sadhana, Springer DEC 2017",
+      "Virtualization layer security challenges and intrusion detection/prevention systems in cloud computing: a comprehensive review, The Journal of Supercomputing, Springer JULY 2016",
+      "Collaborative IDS Framework for Cloud, International Journal of Network Security 2015",
+      "A Survey of Intrusion Detection Techniques in Cloud, A Journal of Network and Computer Applications, Elsevier 2013",
+      "A Survey on Security Issues and Solutions at Different Layers of Cloud Computing, The Journal of Super Computing, Springer 2013",
+      "A Novel Approach for e-Payment Using Virtual Password System, International Journal on Cryptography and Information Security (IJCIS) 2011",
+      "An Efficient Solution for Privacy Preserving Association Rule Mining, International Journal of Computer and Network Security (IJCNS) 2010"
+    ],
+    "proceedings": [
+      "A. B. Uday, N. Naik, M. G. M, C. Vyjayanthi and C. Modi, \"Implementation and Validation of NSGA-II Algorithm for Constrained and Unconstrained Multi-Objective Optimization Problem,\" 2022 IEEE IAS Global Conference on Emerging Technologies (GlobConET), 2022, pp. 539-544, doi: 10.1109/GlobConET53749.2022.9872465. MAY 2022",
+      "M. B. Janjanam, C. Modi and C. Vyjayanthi, \"Secured Monitoring of Smart Grid Assets using Attribute based Encryption and Blockchain,\" 2022 IEEE IAS Global Conference on Emerging Technologies (GlobConET), 2022, pp. 912-917, doi: 10.1109/GlobConET53749.2022.9872368. MAY 2022",
+      "M. G M, C. Vyjayanthi and C. Modi, \"Change in Power based P&O Algorithm for Maximum Power Extraction in Solar Energy Conversion System,\" 2021 9th IEEE International Conference on Power Systems (ICPS), 2021, pp. 1-6, doi: 10.1109/ICPS52420.2021.9670210. DEC 2021",
+      "Dudeja, H., Modi, C. (2021). Runtime Program Semantics Based Malware Detection in Virtual Machines of Cloud Computing. In: Venugopal, K.R., Shenoy, P.D., Buyya, R., Patnaik, L.M., Iyengar, S.S. (eds) Data Science and Computational Intelligence. ICInPro 2021. Communications in Computer and Information Science, vol 1483. Springer, Cham. OCT 2021",
+      "Jaiswal, A., Chandel, S., Muzumdar, A., Modi, C., G. M., M., Vyjayanthi, C. (2022). NITG Chain: A Scalable, Private and Permissioned Blockchain with Proof of Reputation Consensus Method. In: Rao, U.P., Patel, S.J., Raj, P., Visconti, A. (eds) Security, Privacy and Data Analytics. Lecture Notes in Electrical Engineering, vol 848. Springer, Singapore. APRIL 2021",
+      "An Efficient Regional Short-Term Load Forecasting Model for Smart Grid Energy Management, IECON 2020 The 46th Annual Conference of the IEEE Industrial Electronics Society, Singapore 2020",
+      "Multi-step Short-term Electric Load Forecasting using 2D Convolutional Neural Networks, 2020 IEEE-HYDCON, IEEE, Hydrabad 2020",
+      "A Conceptual Framework for Trustworthy and Incentivized Trading of Food Grains using Distributed Ledger and Smart Contracts, 2019 IEEE 16th India Council International Conference (INDICON), IEEE, Gujarat 2019",
+      "Optimizing e-KYC Process Using Distributed Ledger Technology and Smart Contracts, ICCISIoT 2019, NIT Agartala 2019",
+      "An Open-Hardware Approach for IoT Enabled Smart Meter Monitoring and Controlling System Using MQTT Protocol, ICCISIoT 2019, NIT Agartala 2019",
+      "Design and Development of a Novel IoT based Smart Meter for Power Quality Monitoring in Smart Grid Infrastructure, TENCON 2019, IEEE, Kerala 2019",
+      "Preventing Sybil Attack in Blockchain using Distributed Behavior Monitoring of Miners, 10th International Conference on Computing, Communication and Networking Technologies (ICCCNT), IEEE, IIT Kanpur 2019",
+      "A Novel Framework for Monitoring Solar PV based Electric Vehicle Community Charging Station and Grid Frequency Regulation using Blockchain, 10th International Conference on Computing, Communication and Networking Technologies (ICCCNT), IEEE, IIT Kanpur 2019",
+      "Designing an Efficient Fingerprint Recognition System for Infants and Toddlers, 10th International Conference on Computing, Communication and Networking Technologies (ICCCNT), IEEE, IIT Kanpur 2019",
+      "Analyzing the Feasibility of Different Machine Learning Techniques for Energy Imbalance Classification in Smart Grid, 10th International Conference on Computing, Communication and Networking Technologies (ICCCNT), IIT Kanpur 2019",
+      "A Novel Framework for Pharmaceutical Supply Chain Management using Distributed Ledger and Smart Contracts, 10th International Conference on Computing, Communication and Networking Technologies, IEEE, IIT Kanpur 2019",
+      "An Enhanced Approach for Detecting Helmet on Motorcyclists Using Image Processing and Machine Learning Techniques, Advanced Computing and Communication Technologies. Advances in Intelligent Systems and Computing, Springer, Haryana 2019",
+      "Protocol Specific Multi-Threaded Network Intrusion Detection System (PM-NIDS) for DoS/DDoS Attack Detection in Cloud, 2018 9th International Conference on Computing, Communication and Networking Technologies (ICCCNT), IEEE OCT 2018",
+      "An Enhanced Approach for Detecting Helmet on Motorcyclists Using Image Processing and Machine Learning Techniques, Advanced Computing and Communication Technologies, pp 109-119, Springer JULY 2018",
+      "An Enhanced Approach for Intrusion Detection in Virtual Network of Cloud Computing, 10th International Conference on Advanced Computing (ICoAC), Springer, MIT Chennai 2018",
+      "Designing an Efficient Framework for Violence Detection in Sensitive Areas using Computer Vision and Machine Learning Techniques, 10th International Conference on Advanced Computing (ICoAC), Springer, MIT Chennai 2018",
+      "An Enhanced Intrusion Detection Framework for Securing Network Layer of Cloud Computing, ISEA IEEE Asia Security and Privacy Conference 2017 JAN 2017",
+      "An Efficient Security Framework to Detect Intrusions At Virtual Network Layer of Cloud Computing, 19th ICIN, Paris 2016",
+      "A Novel Approach to Detect Extraneous Network Traffic from the Compromised Router, International Conference on Recent Advances in Information Technology (RAIT-2016), IEEE, ISM Dhanbad 2016",
+      "Privacy Preserving Association Rule Mining in Horizontally Partitioned Databases without involving Trusted Third Party (TTP), ICACNI: Springer JULY 2015",
+      "Network Intrusion Detection in Cloud Computing, ERCICA: Springer JULY 2015",
+      "An Efficient Approach for Privacy Preserving Distributed Mining of Association Rules in Unsecured Environment, ICACCI: IEEE 2015",
+      "A Novel Hybrid-Network Intrusion Detection System (H-NIDS) in Cloud Computing, IEEE Symposium on Computational Intelligence for Communication Systems and Networks, Singapore 2013",
+      "A Novel Framework for Intrusion Detection in Cloud, Fifth ACM International Conference on Security of Information and Networks, Jaipur 2012",
+      "Integrating Signature Apriori based Network Intrusion Detection System (NIDS) in Cloud Computing, International Conference on Communication, Computing and Security, Elsevier Procedia Technology, NIT Rourkela 2012",
+      "Bayesian Classifier and Snort based Network Intrusion Detection System in Cloud Computing, International Conference on Computing, Communication and Networking Technologies, IEEE, Coimbatore 2012",
+      "Signature Apriori based Network Intrusion Detection System in Cloud, CSI - 46th Annual National Convention @ Ahmedabad Dec -2011 - Ph. D Colloquium DEC 2011",
+      "Maintaining Privacy and Data Quality in Privacy Preserving Association Rule Mining, International Conference on Computing, Communication and Networking Technologies, IEEE, Tamilnadu 2010",
+      "A Survey on Preserving Privacy for Sensitive Association Rules in Databases, International Conference on Recent Trebds in Business Administration and Information Processing, Springer, Kerala 2010",
+      "An Efficient Approach for Preventing Disclosure of Sensitive Association Rules in Databases, International Conference on Information and Knowledge Engineering, USA 2010",
+      "Elliptic Curve Cryptography based Mining of Privacy Preserving Association Rules in Unsecured Environment, International Conference on Advances in Communication, Networking and Computing, IEEE, Calicut 2010"
+    ],
+    "bookChapters": [
+      "Vulnerability Assessment for Virtual Machines in Virtual Environment of Cloud Computing, Recent Findings in Intelligent Computing Techniques, Springer NOV 2018",
+      "An Efficient Approach for Privacy Preserving Distributed K-Means Clustering in Unsecured Environment, Recent Findings in Intelligent Computing Techniques, Springer NOV 2018",
+      "Designing a Virtual Environment Monitoring System to Prevent Intrusions in Future Internet of Things, Recent Findings in Intelligent Computing Techniques, Springer NOV 2018",
+      "An Enhanced Approach for Detecting Helmet on Motorcyclists Using Image Processing and Machine Learning Techniques, Advanced Computing and Communication Technologies, Springer NOV 2018",
+      "Designing a Virtual Environment Monitoring System to Prevent Intrusions in Future Internet of Things, Recent Findings in Intelligent Computing Techniques, Springer NOV 2018"
+    ]
+  },
+  "researchGuidance": [],
+  "fundedProjects": [
+    "Designing out-of-VM Monitoring based Virtual Machine Introspection Framework for Securing Virtual Environment of Cloud computing- ECR/2017/001221, ECR, SERB, DST, JUNE 2017-JUNE 2020. Total cost: RS. 24.02 Lakhs. (Completed)",
+    "Developing Smart Controller for Optimum Utilization of Energy and Trustworthy Management in a Micro Grid Environment- IMP/2019/000251, IMPRINT2C.1, SERB, DST, DEC 2019-DEC-2022. Total cost: RS. 93.92 lakhs. (On-going)"
+  ],
+  "awardsAndHonors": [
+    "Young Scientist Award: in the specialization of Cloud Computing, by Venus International Foundation, Chennai, India. 2015",
+    "Best Review Paper Award: Title: \"A survey of intrusion detection techniques in Cloud”, Journal of Network and Computer Application (Elsevier), 2015, San Diego, USA.",
+    "First Position in the “National level workshop and competition on Ethical Hacking”, conducted by Wegillent Inc. in association with IIT Roorkee, at NIT Surat, 2013.",
+    "Best Paper Award: Title: \"Runtime Program Semantics based Malware Detection in Virtual Machines of Cloud Computing\" by ICINPro 2021"
+  ],
+  "memberships": [],
+  "professionalServices": [],
+  "coursesAttended": [
+    {
+      "month": "DEC",
+      "year": "2022",
+      "info": "International Conference on Security, Privacy and Data Analytics (ISPDA-2022)"
+    },
+    {
+      "month": "NOV",
+      "year": "2022",
+      "info": "INDICON 2022, IEEE 19th India Council International Conference"
+    },
+    {
+      "month": "MAY",
+      "year": "2022",
+      "info": "2022 IEEE IAS Global Conference on Emerging Technologies (GlobConET)"
+    },
+    {
+      "month": "DEC",
+      "year": "2021",
+      "info": "International Conference on Security, Privacy and Data Analytics (ISPDA-2021)"
+    },
+    {
+      "month": "OCT",
+      "year": "2021",
+      "info": "International Conference on Information Processing"
+    },
+    {
+      "month": "OCT",
+      "year": "2020",
+      "info": "IECON 2020- 46th Annual Conference of the IEEE IES, Singapore"
+    },
+    {
+      "month": "JAN",
+      "year": "2020",
+      "info": "Workshop on virtual labs, NIT Goa"
+    },
+    {
+      "month": "DEC",
+      "year": "2019",
+      "info": "3rd International Conference on Computational Intelligence, Security and Internet of Things, NIT Agartala"
+    },
+    {
+      "month": "JULY",
+      "year": "2019",
+      "info": "10th International Conference on Computing, Communication and Networking Technologies, IIT Kanpur"
+    },
+    {
+      "month": "MAR",
+      "year": "2019",
+      "info": "International Workshop on Blockchain for Global Good, VJTI Mumbai"
+    },
+    {
+      "month": "DEC",
+      "year": "2018",
+      "info": "10th International Conference on Advanced Computing (ICoAC), MIT Chennai"
+    },
+    {
+      "month": "JULY",
+      "year": "2018",
+      "info": "9th International Conference on Computing, Communication and Networking Technologies, IISc Bangalore"
+    },
+    {
+      "month": "JAN",
+      "year": "2017",
+      "info": "ISEA IEEE Asia Security and Privacy Conference 2017, 29 Jan-1 Feb 2017, NIT Surat"
+    },
+    {
+      "month": "JUN",
+      "year": "2016",
+      "info": "Five days STTP on Big Data Analytics, NIT Surat"
+    },
+    {
+      "month": "MAR",
+      "year": "2016",
+      "info": "19th Innovations in Clouds, Internet and Networks (ICIN), Paris"
+    },
+    {
+      "month": "AUG",
+      "year": "2015",
+      "info": "4th International Conference on Advances in Computing, Communications & Informatics, Kochi, India"
+    },
+    {
+      "month": "JULY",
+      "year": "2015",
+      "info": "National Workshop on How to Write Research Project Proposal, NIT Goa"
+    },
+    {
+      "month": "MAY",
+      "year": "2015",
+      "info": "STTP on Privacy Preserving Data Mining, NIT Surat"
+    },
+    {
+      "month": "FEB",
+      "year": "2015",
+      "info": "ACM India Annual Event-2015"
+    },
+    {
+      "month": "JAN",
+      "year": "2015",
+      "info": "FICCI India Innovation Growth Programme"
+    },
+    {
+      "month": "MAR",
+      "year": "2014",
+      "info": "STTP on Cloud Computing, NIT Surat"
+    },
+    {
+      "month": "DEC",
+      "year": "2013",
+      "info": "Indocrypt-2013, HBNI, Mumbai"
+    },
+    {
+      "month": "NOV",
+      "year": "2013",
+      "info": "IEEE Sponsored National Workshop on Cyber Security, DAIICT, Gandhinagar"
+    },
+    {
+      "month": "JULY",
+      "year": "2013",
+      "info": "STTP on Wireless Sensor Networks: Secure Data Aggregation and Related Issues, NIT Surat"
+    },
+    {
+      "month": "JUN",
+      "year": "2013",
+      "info": "STTP on Machine Learning, NIT Surat"
+    },
+    {
+      "month": "JUN",
+      "year": "2013",
+      "info": "STTP on Hardening Cyber Security, NIT Surat"
+    },
+    {
+      "month": "OCT",
+      "year": "2012",
+      "info": "ACM International Conference on Security of Information and Networks, MNIT Jaipur"
+    },
+    {
+      "month": "OCT",
+      "year": "2012",
+      "info": "International Conference on Communication, Computing and Security, NIT Rourkela"
+    },
+    {
+      "month": "JULY",
+      "year": "2012",
+      "info": "International Conference on Computing, Communication and Networking Technologies, Coimbatore"
+    },
+    {
+      "month": "MAY",
+      "year": "2012",
+      "info": "6th International Conference on Trust Management, NIT Surat"
+    },
+    {
+      "month": "MAY",
+      "year": "2012",
+      "info": "National Level Workshop and Competition on Ethical Hacking, NIT Surat"
+    },
+    {
+      "month": "FEB",
+      "year": "2012",
+      "info": "International Winter School on Trust Management in ICT, NIT Surat"
+    },
+    {
+      "month": "FEB",
+      "year": "2012",
+      "info": "Garuda Boot Camp, PRL, Ahmedabad"
+    },
+    {
+      "month": "DEC",
+      "year": "2011",
+      "info": "46th Annual National Convention of CSI, Ahmedabad"
+    },
+    {
+      "month": "OCT",
+      "year": "2010",
+      "info": "International Conference on Advances in Communication, Network and Computing, Calicut"
+    },
+    {
+      "month": "JULY",
+      "year": "2010",
+      "info": "International Conference on Computing, Communication and Networking Technologies, Tamilnadu"
+    }
+  ],
+  "coursesConducted": [
+    {
+      "month": "MAR",
+      "year": "2019",
+      "info": "IETE sponsored International Conference on Blockchain Technology (IC-BCT) 2019, Mumbai, Springer, as an organizing committee member and editor of the proceedings"
+    },
+    {
+      "month": "JUN",
+      "year": "2017",
+      "info": "5th International Conference on Advanced Computing, Networking and Informaics (ICACNI 2017), 1-3 June 2017"
+    },
+    {
+      "month": "DEC",
+      "year": "2016",
+      "info": "One week Course on Cyber Crime Investigation and Digital Forensics, under MHRD GIAN Initiative. 30 Nov - 6 Dec, 2016"
+    },
+    {
+      "month": "DEC",
+      "year": "2016",
+      "info": "10 Days Course on Advancements in Privacy Preserving Data Mining, under MHRD GIAN Initiative. 19 - 29 Dec, 2016"
+    },
+    {
+      "month": "NOV",
+      "year": "2016",
+      "info": "10 Days Course on Public Key Infrastructure (PKI) and Trust Management, under MHRD GIAN Initiative. 5-14 Nov 2016"
+    },
+    {
+      "month": "AUG",
+      "year": "2016",
+      "info": "One Day Workshop on High Performance Computing, 12 August, 2016. Sponsored by Wipro/Intel."
+    },
+    {
+      "month": "MAY",
+      "year": "2016",
+      "info": "First National Workshop on Security and Privacy: Theory and Practice (SAP:TAP 2016)"
+    },
+    {
+      "month": "MAY",
+      "year": "2016",
+      "info": "Recent Advancements in Privacy Preserving Mining (RAPPM), 23-28 May, 2016"
+    },
+    {
+      "month": "JULY",
+      "year": "2015",
+      "info": "STTP on Data Mining: Research Challenges and Innovations"
+    },
+    {
+      "month": "JAN",
+      "year": "2015",
+      "info": "Workshop on Cyber Security"
+    }
+  ]
+}
