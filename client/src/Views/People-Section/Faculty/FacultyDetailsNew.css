@@ -1,17 +1,47 @@
-/* FacultyDetails.css - Styles for the Faculty Details page */
+/* Enhanced Faculty Details CSS - Modern Design Based on Personal & Contact Information Layout */
+
+/* CSS Variables for consistent theming */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #e9ecef;
+    --brand-primary: #1976d2;
+    --brand-accent: #e3f2fd;
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --border-color: #dee2e6;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+    --info-section-bg: #c8e6ff;
+    --info-header-color: #333;
+}
+
+[data-theme="dark"] {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-tertiary: #404040;
+    --brand-primary: #64b5f6;
+    --brand-accent: #1e3a5f;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --border-color: #404040;
+    --shadow-light: rgba(0, 0, 0, 0.3);
+    --shadow-medium: rgba(0, 0, 0, 0.5);
+    --info-section-bg: #1e3a5f;
+    --info-header-color: #ffffff;
+}
 
 /* Faculty Details Page Styles */
 .faculty-details-page {
     min-height: calc(100vh - 200px);
-    background: linear-gradient(to bottom, var(--bg-primary), var(--bg-secondary), var(--bg-tertiary));
-    background-attachment: fixed;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
     padding-top: 20px;
     padding-bottom: 40px;
     color: var(--text-primary);
 }
 
 .faculty-details-container {
-    max-width: 1320px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -49,27 +79,27 @@
 .faculty-main-content {
     display: grid;
     grid-template-columns: 350px 1fr;
-    gap: 30px;
-    margin-bottom: 0px;
+    gap: 40px;
+    margin-bottom: 30px;
 }
 
 /* Left Column - Faculty Image and Basic Info */
 .faculty-left-column {
     background: var(--bg-secondary);
-    border-radius: 8px;
+    border-radius: 15px;
     padding: 30px 20px;
     text-align: center;
     box-shadow: 0 4px 15px var(--shadow-light);
-    height: 550px;
+    height: fit-content;
     border: 1px solid var(--border-color);
 }
 
 .faculty-detail-image {
     width: 100%;
     max-width: 280px;
-    height: 320px;
+    height: 300px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 15px;
     margin-bottom: 20px;
     box-shadow: 0 4px 15px var(--shadow-medium);
     display: block;
@@ -79,22 +109,23 @@
 
 .faculty-title-section {
     text-align: center;
-    padding-top: 10px;
+    padding-top: 20px;
 }
 
 .faculty-designation {
     color: var(--text-primary);
     font-size: 18px;
     font-weight: 600;
-    margin: 0 0 0px 0;
+    margin: 0 0 15px 0;
     text-align: center;
 }
 
 .title-divider {
     width: 80%;
     height: 2px;
-    background-color: var(--text-primary);
+    background-color: var(--brand-primary);
     margin: 0 auto 15px auto;
+    border-radius: 1px;
 }
 
 .faculty-name {
@@ -119,68 +150,86 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    height: 550px
 }
 
-/* Info Cards */
-.info-card {
-    background: var(--brand-accent);
-    border-radius: 8px;
-    padding: 10px;
+/* Personal and Contact Information Sections */
+.personal-information-section,
+.contact-information-section {
+    background: var(--info-section-bg);
+    border-radius: 15px;
+    padding: 0;
     box-shadow: 0 4px 15px var(--shadow-light);
     border: 1px solid var(--border-color);
+    overflow: hidden;
 }
 
-[data-theme="dark"] .info-card {
-    background: var(--brand-accent);
-    color: var(--text-primary);
-}
-
-.info-card h3 {
-    color: var(--brand-primary);
-    font-size: 16px;
-    font-weight: 600;
-    margin: 0 0 0px 0;
-    text-align: center;
-    padding-bottom: 8px;
+.section-header-main {
+    background: var(--info-section-bg);
+    padding: 20px 25px;
     border-bottom: 1px solid var(--border-color);
 }
-.info-card .contact-info{
-    margin-top: 0px;
-    margin-bottom: 0px;
+
+.section-header-main h2 {
+    color: var(--info-header-color);
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    text-align: center;
 }
 
-.info-row {
+.personal-info-grid,
+.contact-info-grid {
+    padding: 25px;
+    background: var(--bg-primary);
+}
+
+.info-item,
+.contact-item {
     display: flex;
-    margin-bottom: 0px;
+    justify-content: space-between;
     align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
 }
 
-.info-row:last-child {
-    margin-bottom: 0;
+.info-item:last-child,
+.contact-item:last-child {
+    border-bottom: none;
 }
 
-.info-row .label {
+.info-label,
+.contact-label {
     font-weight: 600;
     color: var(--text-primary);
-    min-width: 200px;
-    flex-shrink: 0;
-    font-size: 13px;
+    min-width: 180px;
+    font-size: 14px;
 }
 
-.info-row .value {
+.info-value,
+.contact-value {
     color: var(--text-secondary);
+    text-align: right;
     flex: 1;
-    line-height: 1.5;
-    font-size: 13px;
+    font-size: 14px;
+    line-height: 1.4;
 }
 
-.info-row .value a {
+.contact-item.full-width {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.contact-item.full-width .contact-value {
+    text-align: left;
+}
+
+.contact-value a {
     color: var(--brand-primary);
     text-decoration: none;
 }
 
-.info-row .value a:hover {
+.contact-value a:hover {
     text-decoration: underline;
 }
 
@@ -221,7 +270,6 @@
     justify-content: space-between;
     transition: all 0.3s ease;
     text-align: left;
-    margin-bottom: 0px;
 }
 
 [data-theme="dark"] .section-header {
@@ -391,6 +439,61 @@
     border-bottom: none;
 }
 
+/* Publications */
+.publications-section .pub-category {
+    margin-bottom: 25px;
+}
+
+.publications-section .pub-category:last-child {
+    margin-bottom: 0;
+}
+
+.publications-section .pub-category h4 {
+    color: var(--brand-primary);
+    margin: 0 0 15px 0;
+    font-size: 16px;
+    font-weight: 600;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--brand-accent);
+}
+
+.publications-section .pub-category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.publications-section .pub-category li {
+    background: var(--bg-secondary);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-left: 3px solid var(--brand-primary);
+    color: var(--text-primary);
+    font-size: 14px;
+    line-height: 1.6;
+    transition: all 0.2s ease;
+}
+
+.publications-section .pub-category li:hover {
+    background: var(--brand-accent);
+    transform: translateX(3px);
+}
+
+.publications-section .pub-category li:last-child {
+    margin-bottom: 0;
+}
+
+.publications-section .pub-category li strong {
+    color: var(--brand-primary);
+    font-weight: 600;
+}
+
+.publications-section .pub-category li em {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
 /* Loading and Error States */
 .loading-container, .error-container {
     text-align: center;
@@ -425,7 +528,7 @@
 }
 
 .error-container h2 {
-    color: var(--error-color);
+    color: var(--brand-primary);
     margin: 0 0 15px 0;
     font-size: 24px;
 }
@@ -483,11 +586,17 @@
         height: 180px;
     }
     
-    .faculty-basic-info h1 {
+    .faculty-name {
         font-size: 18px;
     }
     
-    .info-card {
+    .personal-information-section,
+    .contact-information-section {
+        margin: 15px 0;
+    }
+    
+    .personal-info-grid,
+    .contact-info-grid {
         padding: 15px;
     }
     
@@ -513,19 +622,24 @@
         min-width: 600px;
     }
     
-    .info-row {
+    .info-item,
+    .contact-item {
         flex-direction: column;
         gap: 4px;
+        align-items: flex-start;
     }
     
-    .info-row .label {
+    .info-label,
+    .contact-label {
         min-width: auto;
         font-size: 12px;
         font-weight: 700;
     }
     
-    .info-row .value {
+    .info-value,
+    .contact-value {
         font-size: 12px;
+        text-align: left;
     }
 }
 
@@ -539,15 +653,16 @@
         height: 144px;
     }
     
-    .faculty-basic-info h1 {
+    .faculty-name {
         font-size: 16px;
     }
     
-    .faculty-basic-info h3 {
+    .faculty-designation {
         font-size: 14px;
     }
     
-    .info-card {
+    .personal-info-grid,
+    .contact-info-grid {
         padding: 12px;
     }
     
@@ -564,4 +679,102 @@
     .section-content {
         padding: 15px;
     }
+}
+
+/* Research Guidance Styles */
+.research-guidance-section {
+    color: var(--text-primary);
+}
+
+.guidance-category h4 {
+    color: var(--brand-primary);
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.guidance-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.guidance-category li {
+    background: var(--bg-secondary);
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border-left: 3px solid var(--brand-primary);
+    transition: all 0.3s ease;
+}
+
+.guidance-category li:hover {
+    background: var(--brand-accent);
+    transform: translateX(5px);
+}
+
+/* Training Section Styles */
+.training-section {
+    color: var(--text-primary);
+}
+
+.training-section .academic-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.training-section .academic-table th {
+    background: var(--brand-primary);
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.training-section .academic-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: top;
+}
+
+.training-section .academic-table tr:hover {
+    background: var(--brand-accent);
+}
+
+/* Publications Enhanced Styles */
+.publications-section .pub-category h4 {
+    color: var(--brand-primary);
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 2px solid var(--brand-primary);
+    padding-bottom: 8px;
+}
+
+.publications-section .pub-category li {
+    background: var(--bg-secondary);
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border-left: 3px solid var(--brand-primary);
+    line-height: 1.6;
+    transition: all 0.3s ease;
+}
+
+.publications-section .pub-category li:hover {
+    background: var(--brand-accent);
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.publications-section .pub-category li strong {
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+.publications-section .pub-category li em {
+    color: var(--brand-primary);
+    font-weight: 500;
 }
