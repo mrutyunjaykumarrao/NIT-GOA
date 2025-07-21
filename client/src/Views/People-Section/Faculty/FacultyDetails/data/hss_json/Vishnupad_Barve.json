@@ -1,0 +1,41 @@
+{
+  "faculty_name": "Mr. Vishnupad Barve",
+  "profile": {
+    "name": "Mr. Vishnupad Barve",
+    "designation": "Guest Faculty",
+    "department": "Department of Humanities and Social Sciences",
+    "imageUrl": "Mr. Vishnupad Barve.jpg",
+    "email": null,
+    "researchAreaSummary": []
+  },
+  "personalInformation": {
+    "name": "Mr. Vishnupad Barve",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Guest Faculty",
+    "department": "Department of Humanities and Social Sciences",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": null
+  },
+  "contactInformation": {
+    "address": null,
+    "city": null,
+    "state": null,
+    "country": null,
+    "email": null,
+    "phoneMobile": null,
+    "officeExtension": null
+  },
+  "researchAreas": [],
+  "coursesTaught": null,
+  "academicInformation": [],
+  "publications": {},
+  "researchGuidance": [],
+  "fundedProjects": [],
+  "awardsAndHonors": [],
+  "memberships": [],
+  "professionalServices": [],
+  "coursesAttended": [],
+  "coursesConducted": []
+}

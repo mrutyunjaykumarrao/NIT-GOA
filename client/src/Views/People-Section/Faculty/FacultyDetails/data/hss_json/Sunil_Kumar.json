@@ -1,0 +1,177 @@
+{
+  "faculty_name": "Dr. Sunil Kumar",
+  "profile": {
+    "name": "Dr. Sunil Kumar",
+    "designation": "Assistant Professor of Economics",
+    "department": "Department of Humanities and Social Sciences",
+    "imageUrl": "Dr. Sunil Kumar.png",
+    "email": "sunilkumar@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "R&D, Patents, and Productivity.",
+      "IPR, Firms innovation, and growth.",
+      "Innovation and Sustainable Development"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Sunil Kumar",
+    "gender": "Male",
+    "birthDate": "27/01/1983",
+    "designation": "Assistant Professor of Economics",
+    "department": "Department of Humanities and Social Sciences",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": "8 Years"
+  },
+  "contactInformation": {
+    "address": "Department of Humanities and Social Sciences, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "sunilkumar@nitgoa.ac.in",
+    "phoneMobile": "9895631011",
+    "phoneResidence": "7558682330"
+  },
+  "researchAreas": [
+    "R&D, Patents, and Productivity.",
+    "IPR, Firms innovation, and growth.",
+    "Innovation and Sustainable Development"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Economics",
+      "Management"
+    ],
+    "pg": [
+      "Intellectual property rights and Economic development",
+      "Research Methodology",
+      "Basic Econometrics"
+    ]
+  },
+  "academicInformation": [
+    {
+      "degree": "M.A.",
+      "institute": "University of Calicut",
+      "year": "2005",
+      "subject": "Economics"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "IIT Indore",
+      "year": "2015",
+      "subject": "Economics"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "In-house R&D, Importing Technology, and R&D tax credit on the productivity of manufacturing industry: Evidence from India. in \"Studies in Microeconomics.\" MAR 2023",
+      "Size and Performance of Indian Manufacturing firms: New evidence from dynamic panel system GMM Approach. SN Business ANd Economics,2(12),1-22 DEC 2022",
+      "\"Whether the role of Technological Innovation and Intellectual Property Rights on Sustainable Development is different in Developing and Developed countries? A Panel Data Analysis.\" Int. J. of Innovation and Sustainable Development, In Presss NOV 2022",
+      "The healthcare system: Policies and performance in India and ASEAN countries JULY 2022",
+      "\"Impact of patent policy changes on R&D expenditure by industries in India\" The Journal of World Intellectual Property DEC 2018",
+      "“Impact of patenting on firms’ performance: An empirical investigation based on manufacturing firms in India.” Economics of Innovation and New Technology, 25(1), pp14-32, [Taylor & Francis. ISSN: [1043-8599 (Print), 1476-8364 (Online)]. 2016",
+      "“International Technology Transfer and Domestic Patent Policy: An Empirical Analysis of Indian Industry” summer 2015, Journal of Developing Area 49(3): pp 165-181, [Project Muse. ISSN: 0022-037X (Print), 1548-2278(online)]. 2015",
+      "“Climatic effects on sugarcane productivity in India: A stochastic production function application” 2015, International Journal of Economics and Business Research 10(2): pp 179-203, [INDERSCIENCE. ISSN: 1756-9850 (Print), 1756-9869 (Online)]. 2015",
+      "“Climatic Effects on Food Grain Productivity in India: A Crop Wise Analysis” 2014, Journal of Studies in Dynamic and Change, 1(1): pp 38-48. 2014",
+      "“R&D and Patenting by Firms in India in High and Medium-high Technology Industries” 2014, Journal of Chinese Economic and Business Studies 12 (2): pp181-207, [Taylor & Francis. ISSN: 476-5284 (Print), 1476-5292 (Online)]. 2014"
+    ],
+    "bookChapters": [
+      "Ambrammal, S.K., & Baiju P (2021). Impact of FDI and TRIPS on the Absorptive Capacity of Manufacturing firms in India, In Advances in Innovation, Trade and Business in Emerging Economies:EDS A K Mishra pp 47-56 APRIL 2021",
+      "Implications of International Harmonization of IPR on Growth and Competitiveness Among the Developing Nations, In FDI, Technology and Innovation,75-94 APRIL 2020",
+      "Patenting and Technical Efficiency of Manufacturing Firm in India: Evidence from Medium and High Technology Firms, In Technology: Corporate and Social Dimension, Eds N S Siddharthan & K Narayanan , pp 27-42 SEPT 2016"
+    ]
+  },
+  "researchGuidance": [
+    "Mr Baiju P,( joined on January 2018) \" Absorptive capacity, knowledge spillover and technological transfer in relation to the innovative efforts of manufacturing firms\" -Ongoing.",
+    "Ms. Melba J Fernandez (Joined on January 2020) \"Economics of innovation, spillovers, and development\"",
+    "Mr Ali Alshik Hasan (Joined on Septem 2021) \" Healthcare system and its efficient management\" ICCR Fellowship student. On Going",
+    "Mr. Sudarshan Vinayak Thakur (Joined on 23-01-2023) \" Technology and labour demand\"",
+    "Mrs Lijna Johnson (Joined on 23-01-2023) \" Startups and its various dimensions\"- On Going",
+    "Mrs. Shilpa K (Joined on 23-01-2023) \" Technological capability and firms' performance\"- On Going",
+    "Mr. Nrusingha Charan Dhal (joined on 28-01-2023) \"Employees happiness and industrial performance\" On Going"
+  ],
+  "fundedProjects": [
+    "Harnessing Technological Innovation for Sustainable Development: The Role of Intellectual Property Rights: ICSSR IMPRESS Scheme"
+  ],
+  "awardsAndHonors": [
+    "Junior Research Fellowship, University Grant Commission, December 2009"
+  ],
+  "memberships": [
+    "Member: American Economic Association"
+  ],
+  "professionalServices": [],
+  "coursesAttended": [
+    {
+      "month": "MAY",
+      "year": "2023",
+      "info": "Insight into the Multifaceted causal association between IPRs, FDIs, Entrepreneurship, Economic Growth Among the states of India"
+    },
+    {
+      "month": "MAY",
+      "year": "2023",
+      "info": "Startup and Access to Finance: Evidence from India: G-20 and India's policy priorities: building Resilience and Inclusiveness"
+    },
+    {
+      "month": "DEC",
+      "year": "2022",
+      "info": "Absorptive capacity, importing technology, and productive growth: Evidence from India. India’s Innovation System @ 75: Achievements, Limits, and Way Forward (IndiaLics International Conference 2022)"
+    },
+    {
+      "month": "FEB",
+      "year": "2022",
+      "info": "\"Stock Volatility Effects of Covid-19: Insights from Indian Banking Sector \" in IRTM International Conference on Interdisciplinary Research in Technology & Management in collaboration with IEEE Kolkata Section and supported by SMART Society, USA during Feb 24-26,2022 (online)"
+    },
+    {
+      "month": "JAN",
+      "year": "2022",
+      "info": "\" Innovation, Entrepreneurship, and Economic growth: A literature survey\" in 2nd PAN NIT HSS international conference on Resilience and transformation for Global restructuring being held at MNIT Jairpur during Jan 7-9 , 2022"
+    },
+    {
+      "month": "JAN",
+      "year": "2022",
+      "info": "\" Impact of firm size on firm performance: evidence from Indian Manufacuring sector\" in 2nd PAN NIT HSS international conference on Resilience and transformation for Global restructuring being held at MNIT Jaipur during Jan 7-9, 2022"
+    },
+    {
+      "month": "JAN",
+      "year": "2020",
+      "info": "\"Impact of FDI and TRIPS on the Technological Activities in the Manufacturing firms in India\" : Second International conference on Economics and Finance held at BITS Piilani Goa Campus during January 23-25,2020"
+    },
+    {
+      "month": "NOV",
+      "year": "2017",
+      "info": "\"Implications of international harmonization of IPR on growth, TFP and welfare\"12 th Annual conference of Forum for Global Knowledge Sharing (FGKS) held at Nabakrushna Choudhury Centre for Development Studies (NCDS), Bhubaneswar, Odissa, Nov-10-12."
+    },
+    {
+      "month": "DEC",
+      "year": "2014",
+      "info": "“Impact of patenting on the performance of firms: An empirical investigation” 51st Annual conference conducted by The Indian Econometric Society during December 12-14, 2014 held at Panjabi University, Patiala."
+    },
+    {
+      "month": "OCT",
+      "year": "2014",
+      "info": "“Does patenting influence firms efficiency and productivity?: Evidence from Indian high and medium tech firms” Ninth Annual conference of Forum for Global Knowledge Sharing (FGKS) held at National Institute of Advanced Studies, Bangalore, October 27-29,2014."
+    },
+    {
+      "month": "FEB",
+      "year": "2014",
+      "info": "‘In-house R&D, technology import and policy environment: What does it matters for patenting?’ Second International conference of Management of Intellectual Property System, 2013 held at Indian Institute of Technology, Bombay, January 30-February 02, 2014."
+    },
+    {
+      "month": "OCT",
+      "year": "2013",
+      "info": "‘Innovation by firms in high and medium high-technology industries; An Indian experience’. Eighth Annual conference of Forum for Global Knowledge Sharing (FGKS) held at IIT Bombay, October 25-27, 2013."
+    },
+    {
+      "month": "AUG",
+      "year": "2013",
+      "info": "‘A firm level R&D analysis of Indian High-tech Manufacturing: An empirical investigation through Heckman's Two-step Method using stata’ at the STATA user’s conference in Mumbai (Hotel Meluha Fern) organized by SYSTECH on 01-August 2013."
+    },
+    {
+      "month": "AUG",
+      "year": "2013",
+      "info": "‘Innovation by firms in High and Medium-High technology industries: An Indian experience’. Sixth annual conference of the Academy of Innovation and entrepreneurship (AIE 2013) being held at Oxford, United Kingdom, 29-30 August,2013."
+    },
+    {
+      "month": "JAN",
+      "year": "2013",
+      "info": "‘Foreign licensing by Indian Industry: The role of patent policy’ in 49th Annual conference conducted by The Indian Econometric Society during January 9-11, 2013 held at Patna University, Patna."
+    }
+  ],
+  "coursesConducted": []
+}

@@ -1,0 +1,157 @@
+{
+  "faculty_name": "Dr. Keshavamurthy B.N",
+  "profile": {
+    "name": "Dr. Keshavamurthy B.N",
+    "designation": "Associate Professor",
+    "department": "Department of Computer Science and Engineering",
+    "imageUrl": "Dr. Keshavamurthy B.N..png",
+    "email": "bnkehsav.cse@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Data Mining",
+      "Privacy Preserving Data Mining",
+      "Stream Data Mining",
+      "Social Media Mining."
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Keshavamurthy B.N.",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Associate Professor",
+    "department": "Department of Computer Science and Engineering",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": "Nineteen Years Teaching Experience"
+  },
+  "contactInformation": {
+    "address": "Dept. of CSE, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "bnkeshav.fcse@nitgoa.ac.in",
+    "phoneMobile": "8975014032"
+  },
+  "researchAreas": [
+    "Data Mining;",
+    "Privacy Preserving Data Mining;",
+    "Stream Data Mining;",
+    "Social Media Mining;"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Database Systems",
+      "Soft Computing",
+      "Data Warehousing & Data Mining",
+      "Compiler Design"
+    ],
+    "pg": [
+      "Advanced Database Systems",
+      "Advanced Computer Networks",
+      "Data Warehousing and Data Mining"
+    ]
+  },
+  "academicInformation": [
+    {
+      "degree": "B.E",
+      "institute": "P.E.S College of Engg. Mandya, Mysore University",
+      "year": null,
+      "subject": "Computer Science & Engineering"
+    },
+    {
+      "degree": "M.Tech",
+      "institute": "B.M.S College of Engg. Bangalore, Visvesvaraya Technological University Belgaum",
+      "year": null,
+      "subject": "Computer Science & Engineering"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "Indian Institute of Technology, Roorkee",
+      "year": "2013",
+      "subject": "Privacy Preserving Data Mining Techniques for Data Streams"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "AR Naik, Bettahally N. Keshavamurthy \"Next level peer-to-peer overlay networks under high churns: a survey,\" Peer-to-Peer Networking and Applications 13 (3), 905-931 2020",
+      "S Wazarkar, Bettahally N. Keshavamurthy, \"Social image mining for fashion analysis and forecasting,\" Applied Soft Computing, 95, 106517 2020",
+      "Ahsan Hussain, Bettahally N Keshavamurthy, \"A multi-dimensional routing based approach for efficient communication inside partitioned social networks\", Peer-to-Peer Networking and Applications, Published by Springer, 12 (4), 830-849. (SCIE Indexed) 2019",
+      "Ahsan Hussain, Bettahally N Keshavamurthy, Ramalingaswamy Cheruku, \"Dynamic Multi-layer Ensemble Classification Framework for Social Venues Using Binary Particle Swarm Optimization\", Wireless Personal Communications, Published by Springer,105 (4), 1491-1511. (SCIE Indexed) 2019",
+      "Ahsan Hussain, Bettahally N Keshavamurthy, Seema Wazarkar, \"A Novel Multi-Layer Classification Ensemble Approach for Location Prediction of Social Users\", International Journal of Web Services Research (IJWSR), Published by IGI Global, 16 (2), 47-64 (SCIE Indexed) 2019",
+      "Seema Wazarkar, Bettahally N Keshavamurthy, \"A soft clustering technique with layered feature extraction for social image mining\", Multimedia Tools and Applications, Published by Springer, 1-28. (SCIE Indexed) 2019",
+      "Seema Wazarkar, Bettahally N. Keshavamurthy, ”Fashion Image Classification using Matching Points with Linear Convolution,” Multimedia Tools and Applications, Published by Springer, PP. 1-18. (SCIE Indexed) 2018",
+      "Seema Wazarkar, Bettahally N. Keshavamurthy, “A Survey on Image Data Handling through Clustering Techniques,” Journal of Visual Communication and Image Representation, Published by Elsevier, 55, PP. 596-626. (SCIE Indexed) 2018",
+      "Ahsan Hussain, Bettahally N. Keshavamurthy, “An Enhanced Communication Mechanism for Partitioned Social Overlay Networks using Modified Multi-Dimensional Routing ,” Cluster Computing, Published by Springer, pp. 1-12, (SCI Indexed). 2018",
+      "Seema Wazarkar, Bettahally N. Keshavamurthy, Ahsan Hussain. “Probabilistic Classifier for Fashion Image Grouping using Multi-layer Feature Extraction Model,” International Journal of Web Services Research, Published by IGI Global, 5 (2), pp. 1-14. (SCIE Indexed) 2017",
+      "Harendra Chahar, Keshavamurthy B.N., Chirag Modi, “Privacy Preserving Distributed Mining of Association Rules Using Elliptic-Curve Cryptosystem and Shamir’s Secret Sharing Scheme,” Sadhana Academy Processing in Engineering Sciences, Published by Springer, vol. 42, Issue 12, pp. 1997–2007. ( SCI Indexed) 2017",
+      "Ahsan Hussain, Bettahally N. Keshavamurthy, Ravi Prasad K. Jagannath. “Accurate Location Prediction of Social-users using mHMM,” Intelligent Automation and Soft Computing, Published by Taylor and Francis, vol. 25, no. 3, PP. 473–48. (SCI Indexed) 2017",
+      "Bettahally N. Keshavamurthy, Asad Mohammed Khan, Durga Toshniwal, “Privacy Preserving Association Rule Mining over Distributed Databases Using Genetic Algorithm,” Neural Computing and Applications, Published by Springer, vol. 22, Issue 1, pp 351-364. (SCI Indexed) 2013",
+      "Bettahally N. Keshavamurthy, Durga Toshniwal, Bhavani Kumar Eshwar, “Hiding Co-Occurring Prioritized Sensitive Patterns over Distributed Progressive Sequential Data Streams,” Journal of Network and Computer Applications (JNCA), Published by Elsevier, vol. 35, pp. 1116–1129. (SCIE Indexed) 2012",
+      "Keshavamurthy B. N., Asad Mohammed Khan and Durga Toshniwal, “Improved Genetic Algorithm Based Classification,” Int. J. Computer Science and Informatics, Published by Interscience, vol.1, no. 3, ISSN (Print) 2231-529, pp. 1-7. 2012",
+      "Keshavamurthy B. N., Mitesh Sharma and Durga Toshniwal, “Efficient Support Coupled Frequent Pattern Mining over Progressive Databases,” Int. J. Database Management Systems (IJDBMS), vol.2, no. 2, Published by Academy and Industry Research Collaboration Center, India, pp.73-82. 2010"
+    ],
+    "proceedings": [
+      "Richa, Bettahally N. Keshavamurthy, \"Improved PSO for task scheduling in cloud computing,\" In:8th International Conference on Frontiers in Intelligent Computing: Theory and Applications (FICTA), pp 467–477 JAN 2020",
+      "Bettahally N. Keshavamurthy, Shashank Prakash Srivastava, Jaseel Haris, Ankush Kumar, and Seema Wazarkar, \"Sentiment Analysis of Sub-Events extracted out of an Event using Word2vec,” 18th IEEE International Conference on Advanced Learning Technologies (ICALT), at IIT Bombay, India JULY 2018",
+      "Seema Wazarkar, Bettahally N. Keshavamurthy, Amrita Manjrekar, “A Review of Hierarchical Fuzzy Text Clustering,” 9th IEEE International Conference on Advanced Computing at Chennai,India, pp. 516-519. DEC 2017",
+      "Ahsan Hussain, Bettahally N. Keshavamurthy, Seema Wazarkar. “An Efficient Approach for Classifying Social Network Events using Convolution Neural Networks,” 1st International Conference on Data And Information Sciences, pp. 177-184, IGNTU, MP, India. NOV 2017",
+      "Wazarkar Seema, Bettahally N. Keshavamurthy, and Shitala Prasad, “Semi-supervised Model for Feature Extraction and Classification of Fashion Images,\" 26th International Conference on Artificial Neural Networks (ICANN), Alghero, Sardinia, Italy, LNCS, Springer, vol. 10614, pp. 786-787. SEPT 2017",
+      "Amit Shewale, Keshavamurthy B. N. and Chirag N. Modi, “An Efficient Approach for Privacy Preserving Distributed K-Means Clustering in Unsecured Environment,” 5th International Conference on Advanced Computing, Networking, and Informatics, Proc. of AISC Series Springer, Goa, India. JUN 2017",
+      "Ahsan Hussain and Bettahally N. Keshavamurthy, “Analyzing Online Location Based Social Networks for Malicious User Detection,” 5th International Conference on Advanced Computing, Networking, and Informatics, Proc. of AISC Series Springer, Goa, India, pp 425-431. JUN 2017",
+      "Seema Wazarkar, Bettahally N. Keshavamurthy, Ahsan Hussain. “Region-based Segmentation of Social Images Using Soft KNN Algorithm,” Procedia Computer Science, 125 (1), pp. 93-98. (Elsevier, Scopus Indexed). 2017",
+      "ChennaKesava Reddy Kamireddy, Bingi Sateesh, Keshavamurthy B.N. “Efficient Routing of 108 Ambulances using Clustering Techniques, ”Proc. of 6th IEEE International Conference on Computational Intelligence and Computing Research (ICCIC), Chennai, India, pp. 1-6. DEC 2016",
+      "Shitala Prasad and Keshavamurthy B.N., “An efficient artistic image-video Transfer Approach,” Proc. of 23rd IEEE International Conference on Mechatronics and Machine Vision in Practice (M2VIP), Nanjing, China, pp. 1-4. NOV 2016",
+      "Keshavamurthy B. N., Asad Mohammed Khan and Durga Toshniwal, “Improved Genetic Algorithm Based Classification,” Int. Conf. on Computer Science and Information Technology (CSIT-2011), Proc. of Computer Science and Information Technology, Bangalore, Karnataka, India, pp. 489-495. JULY 2011",
+      "Durga Toshnoiwal, Amrutha Mhatre and Keshavamurthy B. N., “Privacy Preserving Scheme for Sequential Pattern Mining over Fragmented Progressive Databases,” Proc. of 3rd Annual American Business Research Conference, New York, USA. JUN 2011",
+      "Keshavamurthy B. N. and Durga Toshniwal, “Privacy Preservation in Naïve Bayes Classification using Trusted Third Party Computation over Distributed Progressive Database,” 1st Int. Conf. on Computer Science and Information Technology (COSIT-2011), Proc. of LNCS Springer, Bangalore, Karnataka, India, pp. 24-32 JAN 2011",
+      "Keshavamurthy B. N. and Durga Toshniwal, “Privacy Preservation of Stream Data Patterns using Offset and Trusted Third Party Computation in Retail-Shop Market Basket Analysis,” 2nd Int. Workshop on Ad Hoc & Ubiquitous Computing (AUC-2011), Proc. of LNCS Springer, Bangalore, Karnataka, India, pp.358-366. JAN 2011",
+      "Keshavamurthy B. N., Mitesh Sharma and Durga Toshniwal, “Privacy Preservation Naïve Bayes Classification for a Vertically Distribution Scenario using Trusted Third Party,” 2nd Int. Conf. on Advances in Recent Technologies in Communication and Computing (ARTCom-2010), Proc. of IEEE xplore, Kottayam, Kerala, India, pp.404-407. OCT 2010",
+      "Keshavamurthy B. N., Mitesh Sharma and Durga Toshniwal “Privacy-Preservation Naïve Bayes Classification using Trusted Third Party and Different Offset Computation over Distributed Databases,” Int. Conf. on Parallel, Distributed and Grid Computing (PDGC-2010), Proc. of IEEE and IEEE xplore, Solani, H.P., India, pp. 362-365 OCT 2010",
+      "Keshavamurthy B. N., Mitesh Sharma and Durga Toshniwal, “Efficient Mining of Frequent Items Coupled with Weight and /or Support over Progressive Databases,” 2nd Int. Conf. on Data Engineering and Management (ICDEM-2010), Proc. of LNCS Springer, Tiruchirapalli, Tamil Nadu, India, pp. 309-316. JULY 2010",
+      "Keshavamurthy B. N., Mitesh Sharma and Durga Toshniwal, “Privacy Preservation Using Naïve Bayes Classification and Secure Third Party Computation,” Proc. of 4th Int. Conf. on Computer Applications in Electrical Engineering Recent Advance (CERA-09), Indian Institute of Technology Roorkee, India. FEB 2009"
+    ]
+  },
+  "researchGuidance": [
+    "Dr. Ahsan Hussain (Awarded)",
+    "Dr. Seema Wazarkar (Awarded)",
+    "Mr. Shaba Vikram Gauns Dessai (Ongoing)",
+    "Mr. Sunil Kumar (Ongoing)"
+  ],
+  "fundedProjects": [
+    "Title of the Project : SECURE AND EFFICIENT COMMUNICATIONS INSIDE PARTITIONED SOCIAL OVERLAY NETWORKS” Funding Agency: DST, SERB; Duration: 3 Years (Strat: 2017- End 2020), Amount Sanctioned (In Rupees): 19.64 Lakhs. Role-PI"
+  ],
+  "awardsAndHonors": [],
+  "memberships": [
+    "Senior Member - IEEE",
+    "Senior Member of the International Association of Computer Science and Information Technology (IACSIT)",
+    "Member - The Institution of Engineers (India)",
+    "Member of the ‘Editorial Board’ for International Journal of Engineering and Advanced Technology (IJEAT); Member of the ‘Editorial Board’ for International Journal of Soft Computing and Engineering (IJSCE); Member of the ‘Editorial Board’ for Intl. Journal of Emerging Technology and Advanced Engineering (IJETAE); Board Member of the International Journal of Computer & Organization Trends (IJCOT)",
+    "Senior Member - ACM"
+  ],
+  "professionalServices": [],
+  "coursesAttended": [
+    {
+      "month": "JULY",
+      "year": "2015",
+      "info": "One-Day National Workshop on “How to Write Research Projects” Organized by NITG, Goa"
+    },
+    {
+      "month": "MAY",
+      "year": "2015",
+      "info": "TEQIP - II Sponsored Five-Days STTP on Privacy Preserving Data Mining (PPDM), held at Department of Computer Engineering, SVNIT, Surat"
+    },
+    {
+      "month": "FEB",
+      "year": "2015",
+      "info": "One Day National Workshop on \"ATOMIC ENERGY: ARCHITEC FUTURE” conducted by NIT Goa in association with Bhabha Atomic Research Centre (BARC), Mumbai"
+    }
+  ],
+  "coursesConducted": [
+    {
+      "month": "JULY",
+      "year": "2015",
+      "info": "Short Term Training Program on “Data Mining: Research Challenges & Innovations”"
+    },
+    {
+      "month": "JULY",
+      "year": "2015",
+      "info": "Five Days National Workshop on Cryptography, Applications and Foundations of Data Science"
+    }
+  ]
+}

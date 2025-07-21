@@ -1,0 +1,97 @@
+{
+  "faculty_name": "Prof. Animesh Chatterjee",
+  "profile": {
+    "name": "Prof. Animesh Chatterjee",
+    "designation": "Adjunct Faculty",
+    "department": "Department of Mechanical Engineering",
+    "imageUrl": "animesh.jpeg",
+    "email": "achatterjee@mec.vnit.ac.in",
+    "researchAreaSummary": [
+      "Machine Dynamics",
+      "Fracture Mechanics",
+      "Power Plant Engineering",
+      "Control Systems"
+    ]
+  },
+  "personalInformation": {
+    "name": "Prof. Animesh Chatterjee",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Adjunct Faculty",
+    "department": "Department of Mechanical Engineering",
+    "url": null,
+    "dateOfJoining": "21/02/2024",
+    "experience": "38 Years"
+  },
+  "contactInformation": {
+    "address": "Department of Applied Sciences, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "achatterjee@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Machine Dynamics, Fracture Mechanics, Power Plant Engineering, Control Systems"
+  ],
+  "coursesTaught": null,
+  "academicInformation": [
+    {
+      "degree": "Ph.D.",
+      "institute": "IIT, Kanpur",
+      "year": "2002",
+      "subject": null
+    },
+    {
+      "degree": "M.Tech.",
+      "institute": "IIT, Karaghpur",
+      "year": "1989",
+      "subject": null
+    },
+    {
+      "degree": "B.Tech.",
+      "institute": "IIT, Karaghpur",
+      "year": "1980",
+      "subject": null
+    }
+  ],
+  "publications": {
+    "journal": [
+      "Animesh Chatterjee and Nalinaksh S Vyas, 2000, “Convergence Analysis Of Volterra Series Response Of Nonlinear Systems Subjected To Harmonic Excitation” Journal of Sound and Vibration, Vol. 236, Issue 2, Pages 339-358",
+      "Animesh Chatterjee, N.S. Vyas, 2001, “Stiffness Non-Linearity Classification Through Structured Response Component Analysis Using Volterra Series”Mechanical Systems and Signal Processing, Vol.15, Issue 2, Pages 323-336",
+      "Nalinaksh S Vyas and Animesh Chatterjee, 2002, “Parametric and Non-Parametric Identification of Nonlinear Systems: A Survey”, Journal of Advances in Engineering, Vol. 1(4), 356-377",
+      "Animesh Chatterjee, Nalinaksh S. Vyas, 2003, “Non-Linear Parameter Estimation With Volterra Series Using The Method Of Recursive Iteration Through Harmonic Probing”Journal of Sound and Vibration,Vol.268, Issue 4, Pages 657-678",
+      "Animesh Chatterjee, Nalinaksh S. Vyas, 2004, “Non-Linear Parameter Estimation In Multi-Degree-Of-Freedom Systems Using Multi-Input Volterra Series”, Mechanical Systems and Signal Processing, Vol.18, Issue 3, pages 457-489.",
+      "Animesh Chatterjee, Nalinaksh S. Vyas, 2004, “Nonlinear Parameter Estimation in Rotor-Bearing System Using Volterra Series and Method of Harmonic Probing” ASME Journal of Vibration and Acoustics. 125(3)",
+      "Nalinaksh S. Vyas and Animesh Chatterjee, Non-Parametric Identification of Rotor-Bearing System through Volterra-Wiener Theories, Proceedings of the IUTAM symposium Emerging Trends in Rotor Dynamics, IIT Delhi, March 26-29, 2009",
+      "Animesh Chatterjee, 2010, “Parameter Estimation of Duffing Oscillator using Volterra Series and Multi-Tone Excitation” International Journal of Mechanical Sciences, Volume 52, Issue 12, Pages 1716-1722",
+      "Animesh Chatterjee, 2010, “Structural Damage Assessment In A Cantilever Beam With A Breathing Crack Using Higher Order Frequency Response Functions”, Journal of Sound and Vibration, Volume 329, Issue 16, Pages 3325-3334",
+      "Animesh Chatterjee, 2010, Nonlinear System Analysis and Identification Using Volterra Series with Harmonic Excitation, Journal of Advances in Vibration Engineering, Vol. 9(4), 329-344",
+      "Animesh Chatterjee, 2010, “Identification and parameter estimation of a bilinear oscillator using Volterra series with harmonic probing” Inter-national Journal of Non-Linear Mechanics, Volume 45, Issue 1, Pages 12-20",
+      "Animesh Chatterjee, 2011, “Nonlinear Dynamics and Damage Assessment of a Cantilever Beam With Breathing Edge Crack”, ASME Journal of Vibration and Acoustics. 133(5)",
+      "Sanjay B Ingole and Animesh Chatterjee, 2011, “Vibration Analysis of Single lap Joint: Experimental and Analytical Investigation”, Journal of Vibration and Control, Vol. 17 (10), page 1547-1556",
+      "Sanjay B. Ingole and Animesh Chatterjee , 2013,, “Joint parameter identification of a cantilever beam using sub-structure synthesis and multi-linear regression” Structural Engineering and Mechanics, Vol. 45 No. 4, 2013",
+      "I. Angello and A. Chatterjee, “Development of Rolling Element Bearing Test Bench Facility and Application of Wavelet Transform for Fault Diagnosis”, Journal of Aerospace Sciences and Technologies, Vol.63, No.2, May 2011",
+      "Animesh Chatterjee and M.S.Kotambkar, “Modal characteristics of turbine blade packets under lacing wire damage induced mistuning”, J. Of Sound and Vibration, Vol. 343, pp. 49-70, 2015.",
+      "Animesh Chatterjee and M.S.Kotambkar, “Analytical and Numerical Investigation of Lacing Wire Damage Induced Mistuning in Turbine Blade Packet”, Advances in acoustics and Vibration, Volume 2014 (2014), Article ID 164638.",
+      "Animesh Chatterjee and Tanuja Vaidy, Experimental Investigations: Dynamic Analysis of a Beam Under the Moving Mass to Characterize the Crack Presence, Journal of Vibration Engineering and Technologies, Vol. 7(3) 2019 pp. 217-226."
+    ]
+  },
+  "researchGuidance": [
+    "Guided 04 PhD scholars"
+  ],
+  "fundedProjects": [
+    "DST Project: Setting up of Vibration lab in VNIT, Mechanical Department (2004-2006)",
+    "Aeronautics Research & Development Board, DRDO, Gov. of India: Crack detection in structural elements using nonlinear frequency response function (2009-2012)"
+  ],
+  "consultancyProjects": [
+    "Turbine blade natural frequency monitoring for damage identification in MSEB power plants at Koradi, Chandrapur, Parli, Bhusawal, Nashik and Uran (1994 to 2011)",
+    "Turbine blade natural frequency monitoring for damage identification in TNEB, Salem; Bokaro Steel Plant, Durgapur Steel plant , MPEB at sarni and Balco, Korba",
+    "Rolling Mill stand drive motor vibration analysis, FACOR, NAGPUR",
+    "Cement Mill crusher foundation vibration analysis, Manikgarh Cement Plant, Awarpur"
+  ],
+  "awardsAndHonors": [],
+  "memberships": [],
+  "professionalServices": [],
+  "coursesAttended": [],
+  "coursesConducted": [
+      "Trained MSEB, NPTI, WCL engineers for vibration analysis and condition monitoring"
+  ]
+}

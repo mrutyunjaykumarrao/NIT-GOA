@@ -1,0 +1,452 @@
+{
+  "faculty_name": "Dr. Saidi Reddy Parne",
+  "profile": {
+    "name": "Dr. Saidi Reddy Parne",
+    "designation": "Associate Professor of Physics",
+    "department": "Department of Applied Sciences",
+    "imageUrl": "Dr. Saidi Reddy Parne.png",
+    "email": "psreddy@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Photonics",
+      "Fiber Bragg Grating Sensors",
+      "Fiber Optic Sensors",
+      "Superconducting Motor",
+      "Material Characterization",
+      "Nanoscale Matter",
+      "Radar Absorption Materials"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Saidi Reddy Parne",
+    "gender": "Male",
+    "birthDate": "03/01/1981",
+    "designation": "Associate Professor of Physics",
+    "department": "Department of Applied Sciences",
+    "url": [
+      "https://orcid.org/0000-0003-2817-4240",
+      "https://sites.google.com/d/1IFROaB0o-xnryuAb1H1aPA4Vcx75KqLd/p/1blH39vCBN-9gK9-oLXuW2ZXfu4we0mxo/edit?pli=1"
+    ],
+    "dateOfJoining": "06/01/2012",
+    "experience": "Total Teaching and Research Experience at NIT Goa: 13 years 3 Months"
+  },
+  "contactInformation": {
+    "address": "Department of Applied Sciences, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "psreddy@nitgoa.ac.in",
+    "phoneMobile": "9049108036"
+  },
+  "researchAreas": [
+    "Photonics",
+    "Fiber Bragg Grating Sensors",
+    "Fiber Optic Sensors",
+    "Superconducting Motor",
+    "Material Characterization",
+    "Radar Absorption Materials"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Engineering Physics",
+      "Wave Mechanics",
+      "Fiber Optic Communication",
+      "Materials Science",
+      "Optoelectronics"
+    ],
+    "pg": [
+      "Introduction to Photonics",
+      "Fiber Optic Sensors",
+      "Advanced Photonics",
+      "Quantum Mechanics"
+    ]
+  },
+  "academicInformation": [
+    {
+      "degree": "B.Sc.",
+      "institute": "Osmania University, Hyderabad, Telangana",
+      "year": "2002",
+      "subject": null
+    },
+    {
+      "degree": "M.Sc.",
+      "institute": "Kakatiya University Warangal",
+      "year": "2005",
+      "subject": "Engineering Physics and Instrumentation"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "National Institute of Technology, Warangal",
+      "year": "2012",
+      "subject": "Physics"
+    }
+  ],
+  "patents": [
+    {
+      "title": "Superconducting Permanent Magnetic Motor",
+      "inventors": "Mr. Nithin Kumar, Dr. P S Reddy, Dr. G R C Reddy, Dr. R Singh",
+      "details": "Indian Patent 4583/MUM/2015 Granting Number:468162",
+      "status_year": "Granted 10th November 2023"
+    },
+    {
+      "title": "Photonic Inverter",
+      "inventors": "Mr. Anudeep Kumar Reddy, Ms. Chinmayee Prabhu, Dr. P S Reddy, Dr. G R C Reddy",
+      "details": "Indian Patent 4584/MUM/2015",
+      "status_year": "Published"
+    },
+    {
+      "title": "A Method and System for Sensing Pressure using FBG Sensor and Liquid Pressure Sensor",
+      "inventors": "V V S Ch Swamy, Dr. P S Reddy, Vijeesh V P, Suman Gandi, Damodar Reddy Edla, Linga Reddy C",
+      "details": "Indian Patent Application no,: 202121037735",
+      "status_year": "Published Date: 24 February 2023"
+    },
+    {
+      "title": "A Method and System for Fabricating a Novel Pressure Sensor Using FBG Sensor",
+      "inventors": "V V S Ch Swamy, Dr. P S Reddy, Vijeesh V P, Suman Gandi, Damodar Reddy Edla, Linga Reddy C",
+      "details": "Australian Patent number: 2021106713",
+      "status_year": "Granted December 2021"
+    },
+    {
+      "title": "A Reduced Scale Impact Test Device and it’s Method",
+      "inventors": "Dr. P S Reddy, Pankaj Kumar, Damodar Reddy Edla, Manvendra Tiwari",
+      "details": "Australian Patent number: 2021103221",
+      "status_year": "Granted March 2022"
+    },
+    {
+      "title": "A Process for Manufacturing Metal Oxide-based Formaldehyde Gas Sensor",
+      "inventors": "Dr. P. NAGARAJU, Mr. T. Sreekanth, Dr. Y. Vijayakumar, Dr. P S Reddy, Prof. M.V. Ramanareddy, Mr. D. Sunil Gavaskar",
+      "details": "Australian Patent No.: 2021101790",
+      "status_year": "Granted May 2021"
+    },
+    {
+      "title": "Self-Tuning Controller and Tracking Method for Autonomous Aerial Drone",
+      "inventors": "Dr. Tulika Chakrabarti, Dr. Suman Gandi, Dr. P S Reddy, Mr. Motilal Lakavat, Prof. Prasun Chakrabarti, Dr. Sudharsan Jayabalan",
+      "details": "Australian Patent No.: 2021101989",
+      "status_year": "Granted May 2021"
+    },
+    {
+      "title": "A Process for Producing Biodiesel from Waste Cooking Oil by using Transesterification",
+      "inventors": "Mukhaini Ahoud AL, Lakavat Motilal, Gandi Suman, Dr. P S Reddy, Edla Damodar Reddy, Lakkimsetty Nageswara Rao",
+      "details": "Australian Patent number: 2021103220",
+      "status_year": "Granted March 2022"
+    }
+  ],
+  "publications": {
+    "journal": [],
+    "proceedings": [],
+    "bookChapters": [
+        "Suman Gandi, Saidi Reddy Parne, Shyam Sundar Gandi and Nagaraju Pothukanuri, \"Functionalized nanofibers for fuel cell applications\", Handbook of Functionalized Nanofibers: Synthesis and Industrial Applications, Elsevier, April 2022",
+        "Suman Gandi, Venkata Satya Chidambara Swamy Vaddadi, Saran Srihari Sripada Panda, Saidi Reddy Parne, Motilal Lakavat, Amiya Bhaumik, Handbook of Research on Tribology in Coatings and Surface Treatment, Pages: 330-358, IGI Global, 2022",
+        "Nonlinear Optical Responsive Molecular Switches, Nonlinear Optics - From Solitons to Similaritons, Mahadevappa Y. Kariduraganavar, Radha V. Doddamani, Balachandar Waddar and Saidi Reddy Parne, ISBN 978-1-83962-652-4. Intechopen Publishers, 2021"
+    ],
+    "booksAuthored": [
+      "Electrochemical Energy Storage Systems and Devices, ISBN 978-81-951729-8-6. Multi Spectrum Publications, Authors: Suman Gandi, Saidi Reddy Parne and Damodar Reddy Edla, 2021",
+      "Designed a Graduate Physics Laboratory Manual as part of curriculum for conducting regular laboratory experiments at National Institute of Technology Goa."
+    ]
+  },
+  "researchGuidance": {
+    "completed": [
+      "Dr. Vaddadi V S Chidambara Swamy (Reg. No: 16HS3004) \"Development of Fiber Bragg Grating (FBG) Sensors for Water Column Applications\" (February 2022)",
+      "Dr. Nithin Kumar Goona (Reg. No. 17HS3003) \"Distributed Source Scheme for Poisson Equation for Improved Numerical Accuracy Around Sources\" (March 2023)",
+      "Dr. Sriram Srinivasa Rao (Reg. No. 19HS3007) \"Investigations on WO3-based Nanostructured Thin Films Deposited by Spray Pyrolysis Technique for Toxic Gas Sensors Applications\" (March 2023)",
+      "Dr. Saran Srihari Sripada Panda (Reg. No. 18HS3003) \"Preparation, Characterization, and Analysis of Microwave Radar Absorbing Materials\"(April 2024)",
+      "Dr. Kurugundla Gopi Krishna (Reg. No. 21APS3004) \"Synthesis and Characterization of ZnO based Nanocomposites for Gas Sensor Applications\" (December 2024)",
+      "Dr. Praveen Kumar Chenna (Reg. No. 21APS3006) \"The Role of Transition Metal Doping in Spinel and Hexagonal Structured Nanocomposites: Influence of Dielectric and Microwave Absorption Properties \" (December 2024)",
+      "Dr. Sujith P (Reg. No. 21APS3007) \"Advancements in Lead and Lead-free Caesium Halide Perovskites for Optoelectronic and Photovoltaic Applications\" (December 2024)",
+      "Dr. Balachandar Waddar (Reg. No. 17HS3002) \"Second Order Nonlinear Optical Properties of Some Organic Materials: A DFT Approach\" (March 2025)"
+    ],
+    "ongoing": [
+      "Mrs. Preetha R Rao (Thesis Submitted)",
+      "Mr. Bharath D (Full-Time Scholar, January 2023)",
+      "Mr. Sahil Sharma (Full-Time DST-INSPIRE Scholar January-2023)",
+      "Ms. Ruchika Thayil (Full-Time Scholar, January 2023)",
+      "Mr. Jagadeeshwar Reddy (Part-Time Scholar from Hind High Vacuum Technology, January 2023)",
+      "Ms. Richa Sharma (Full-Time Scholar, August 2023)",
+      "Mr. Sumit Patel (Full-Time Scholar from SERB-CRG- Project Fellowship, August 2024)",
+      "Mr. Seshagiri (Part-Time Scholar from BEL (Bharat Electronics Limited), Machilipatnam, August 2024)"
+    ]
+  },
+  "fundedProjects": [
+    "Development of Room-Temperature Transparent/Semi-Transparent All-Solid State Sodium-ion Batteries. Ongoing Project, 3 years Duration, Sanctioned Amount: Rs. 26 Lakhs. Date of Sanctioned: 27th March, 2025.",
+    "Core Research Grant, SERB-DST, \"Development of Nature and Bio-inspired Metamaterials for Stealth Technology Applications\", File Number: CRG/2023/005563, (As PI), Ongoing Project, 3 years Duration, Sanctioned Amount: Rs. 35,52,692/-.",
+    "SERB-DST, \"Design and Development of a Dynamic Photovoltaic Array fed Signal-stage PV pumping system using an Open-End winding induction motor\", (As Co-PI), Ongoing Project, 3 years Duration, Sanctioned Amount: Rs. 30,56,000/-",
+    "\"Indo-Norwegian collaboration in Intelligent Offshore Mechatronic Systems (INMOST)\" Approved by Norwegian research organizations, December 2020 to December 2025, 5 years Duration, (PI from NIT Goa), Sanctioned Amount: 56,20,000 NOK , (Around 3.5 crores) . International collaborative Research Project.",
+    "DST (Nano Mission), \"Atomically thin Photonic Devices as Hosts of Single-Photons and Entangled Photon Pair Emitters and Single Spins for Quantum Sciences and Technologies\" (As a PI from NIT Goa), Ongoing Project, 5 Years Duration, Sanctioned Amount: Rs. 214.5 Lakhs, IIT Goa is the Grantee organisation (Dr. Santosh Kumar is PI from IIT Goa)"
+  ],
+  "awardsAndHonors": [
+    "IEEE Senior Member (ID-95448393)",
+    "One of the Editors of Frontiers in Sensors Journal",
+    "Best Paper Award: Experimental investigation on solar photo-fenton as photocatalyst to treat the saline water by response surface methodology, presented by Saidi Reddy Parne, has been selected as best paper in the International Virtual Conference on “Recent Innovations in Science & Technology (RIST 2021)” conducted on 19th & 20th June 2021, organized by ERANAD Knowledge City Technical Campus, Malappuram, Kerala, India in association with ISET Research & HEXAIND Technologies and Services",
+    "My research students Mr. I V Anudeep kumar Reddy and Ms. Chinmayee Won the First prize at SAVISKAR-IFAST, National level project expo, NIT Bhopal, Project Title: Design and Development of Photonic Devices",
+    "My research student Mr. Nithin Kumar Goona, won the First prize at Technical Fest, Institute level project expo at NIT Goa, Project title: Design and Development of Superconductor Motor",
+    "SPIE (International Society for Optics and Photonics) Senior Member ( ID#: 3510007)"
+  ],
+  "memberships": [
+    "Member, SPIE, The International Society for Optics and Photonics SPIE ID#: 3510007",
+    "IEEE- Member, Member ID#:95448393",
+    "IEEE Photonics Society"
+  ],
+  "professionalServices": [
+    "Reviewer of Journals: Currently serve as a reviewer for the following journals: • Optics and Lasers in Engineering (Elsevier) • Optical Engineering • Optoelectronics and Advanced Materials-Rapid Communication • Sadhana - Academy Proceedings in Engineering Science • IEEE-Photonics Journal"
+  ],
+  "coursesAttended": [
+    {
+      "month": "OCT",
+      "year": "2017",
+      "info": "National Workshop on “Technical Education in National Context: Challenges and Strategies” organised by NIT Tiruchirappalli during 5-7 October 2017"
+    },
+    {
+      "month": "AUG",
+      "year": "2017",
+      "info": "Training Program on “Swachh Bharat Abhiyan” Organised by Institute of Secretariat Training and Management (ISTM), New Delhi, 7th August 2017"
+    },
+    {
+      "month": "MAY",
+      "year": "2017",
+      "info": "Training Program on “Right to Information Public Information Officers” Organised by Institute of Secretariat Training and Management (ISTM), New Delhi, during 8-9 May 2017"
+    },
+    {
+      "month": "NOV",
+      "year": "2015",
+      "info": "Two days National workshop on “Orientation of Nodal officers on Rastriya Avishkar Abhiyan ” Organised by MHRD, New Delhi, India, November 2017"
+    },
+    {
+      "month": "SEPT",
+      "year": "2015",
+      "info": "SPIE International Conference, LASER Damage-2015, Organised by SPIE, Boulder, Colorado, USA, During 27-30 September 2015"
+    },
+    {
+      "month": "JAN",
+      "year": "2015",
+      "info": "National Symposium on Cryogenics, NSC-2015, Organised by University of Hyderabad, January 2015"
+    },
+    {
+      "month": "AUG",
+      "year": "2014",
+      "info": "Workshop on “Learn how to publish a Technical paper with IEEE” Organised by University of Hyderabad, Aug-2014"
+    },
+    {
+      "month": "DEC",
+      "year": "2013",
+      "info": "Workshop on \"The Leadership Clinic\", IIM Kozhikode"
+    },
+    {
+      "month": "MAY",
+      "year": "2013",
+      "info": "Workshop on Microprocessor challenges and Applications, NIT Warangal"
+    },
+    {
+      "month": "AUG",
+      "year": "2012",
+      "info": "Workshop on Teaching learning methodology, IIT Madras"
+    },
+    {
+      "month": "JAN",
+      "year": "2012",
+      "info": "Indo-French workshop on Research & Development, CII New Delhi"
+    },
+    {
+      "month": "MAY",
+      "year": "2011",
+      "info": "International Conference on OPTICS-11, NIT Calicut"
+    },
+    {
+      "month": "FEB",
+      "year": "2011",
+      "info": "Three weeks SERC School on Guided wave Optics and Devices, CGCRI Kolkata"
+    },
+    {
+      "month": "DEC",
+      "year": "2010",
+      "info": "International Conference on PHOTONICS-2010, IIT Guwahati"
+    },
+    {
+      "month": "DEC",
+      "year": "2010",
+      "info": "Workshop on ANSYS Simulation, NIT Warangal"
+    },
+    {
+      "month": "FEB",
+      "year": "2010",
+      "info": "Photonics for Engineering Applications, NIT Warangal"
+    },
+    {
+      "month": "NOV",
+      "year": "2009",
+      "info": "National Conference on Current Trends in Physics, Kakatiya University"
+    },
+    {
+      "month": "NOV",
+      "year": "2009",
+      "info": "International Conference on Optics and Photonics (ICOP-2009), CSIO Chandigarh"
+    },
+    {
+      "month": "MAY",
+      "year": "2009",
+      "info": "National Conference on Trends in Physics, Kakatiya University"
+    },
+    {
+      "month": "MAY",
+      "year": "2009",
+      "info": "Nuclear Energy & its Applications , NIT Warangal"
+    },
+    {
+      "month": "MAR",
+      "year": "2009",
+      "info": "International Conference on Trends in Optics and Photonics (IConTOP-2009), University of Calcutta"
+    },
+    {
+      "month": "DEC",
+      "year": "2008",
+      "info": "International Conference on PHOTONICS-2008, IIT Delhi"
+    },
+    {
+      "month": "DEC",
+      "year": "2008",
+      "info": "National Conference on Sixth Structural Engineering Convention, SEC-2008, IIT Madras"
+    },
+    {
+      "month": "JUN",
+      "year": "2008",
+      "info": "Two weeks Workshop on Digital signal processor applications, NIT Warangal"
+    },
+    {
+      "month": "MAY",
+      "year": "2008",
+      "info": "Two weeks Workshop on Current trends in nano-technology, NIT Warangal"
+    },
+    {
+      "month": "APRIL",
+      "year": "2008",
+      "info": "Two weeks Workshop on Fundamentals of DSP, NIT Warangal"
+    }
+  ],
+  "coursesConducted": [
+    {
+      "month": "JULY",
+      "year": "2021",
+      "info": "2nd Version of Five-Days Faculty Development Programme on “Productivity Enhancement” during 20th -24th July 2021. Organized in collaboration with Art of Living under AICTE Training And Learning (ATAL) Academy, New Delhi"
+    },
+    {
+      "month": "MAR",
+      "year": "2021",
+      "info": "Five-Days Faculty Development Programme on “Productivity Enhancement” during 15th -19th March 2021. Organized in collaboration with Art of Living under AICTE Training And Learning (ATAL) Academy, New Delhi"
+    },
+    {
+      "month": "JAN",
+      "year": "2021",
+      "info": "International Conference on \"Artificial Intelligence and Sustainable Engineering\" (AISE-2020) During 18-20 January 2021. Organized in collaboration with G L Bajaj Institute of Technology and Management, Gr. Noida, India. I am One of the Convener and Organizing Secretary."
+    },
+    {
+      "month": "JULY",
+      "year": "2019",
+      "info": "Five-Days workshop entitled: \"High School Teachers Training & E-Inauguration of IC1T Labs\" during 23rd -27th July 2019 for Secondary School Teachers and Principals of the State of Goa. This Programme was inaugurated by Hon'ble Governor of Goa Smt. Mridula Sinha Ji. Organized in collaboration with UNISED, MHRD, Govt. of India and Goa Samagra Shiksha, Govt. of Goa under Rashtriya Aviskar Abhiyan (RAA)"
+    },
+    {
+      "month": "MAR",
+      "year": "2018",
+      "info": "Five-Days workshop entitled: \"Training in Basie Sciences\" during 26th February-02 March 2018 for Secondary School Teachers of the State of Goa. Organized in collaboration with The State Council of Education and Training (S.C.E.R.T.) under Rashtriya Aviskar Abhiyan (RAA)"
+    },
+    {
+      "month": "FEB",
+      "year": "2018",
+      "info": "Five-Days workshop entitled: “Advanced Training in Mathematics (ATM)” during 5th -9th February 2018 for Secondary School Teachers of the State of Goa. Organized in collaboration with The State Council of Education and Training (S.C.E.R.T.) under Rashtriya Aviskar Abhiyan (RAA)"
+    },
+    {
+      "month": "FEB",
+      "year": "2018",
+      "info": "Five-Days workshop entitled: \"Training in Basie Sciences\" during 19th -23d February 2018 for Secondary School Teachers of the State of Goa. Organized in collaboration with The State Council of Education and Training (S.C.E.R.T.) under Rashtriya Aviskar Abhiyan (RAA)"
+    },
+    {
+      "month": "JAN",
+      "year": "2018",
+      "info": "Two weeks GIAN Programme: Principle and Applications of Electron Paramagnetic Resonance Spectroscopy, 29-01-2018 to 09-02-2018"
+    },
+    {
+      "month": "JAN",
+      "year": "2018",
+      "info": "Five-Days workshop entitled: \"Training in Basie Sciences\" during 15th -19h January 2018 for Secondary School Teachers of the State of Goa. Organized in collaboration with The State Council of Education and Training (S.C.E.R.T.) under Rashtriya Aviskar Abhiyan (RAA)"
+    },
+    {
+      "month": "DEC",
+      "year": "2017",
+      "info": "Five-Days workshop entitled: “Advanced Training in Mathematics (ATM)” during 11th -15th December 2017 for Secondary School Teachers of the State of Goa. Organized in collaboration with The State Council of Education and Training (S.C.E.R.T.) under Rashtriya Aviskar Abhiyan (RAA)"
+    },
+    {
+      "month": "DEC",
+      "year": "2017",
+      "info": "Five-Days workshop entitled: “Advanced Training in Mathematics (ATM)” during 18th -23rd December 2017 for Secondary School Teachers of the State of Goa. Organized in collaboration with The State Council of Education and Training (S.C.E.R.T.) under Rashtriya Aviskar Abhiyan (RAA)"
+    },
+    {
+      "month": "JULY",
+      "year": "2017",
+      "info": "Two week GIAN Programme: The Field Theory of Classical and Quantum Phase Transitions, 3-13th July, 2017"
+    },
+    {
+      "month": "DEC",
+      "year": "2016",
+      "info": "Asia Students Photonics Conference 2016 in collaboration with Manipal University, 12-14 December 2016"
+    },
+    {
+      "month": "DEC",
+      "year": "2016",
+      "info": "Two weeks GIAN Programme: Applied Continuum Mechanics, 15-25th December 2016"
+    },
+    {
+      "month": "NOV",
+      "year": "2016",
+      "info": "Two week GIAN Programme: Computational Nonlinear Optics, 7-18th November, 2016"
+    },
+    {
+      "month": "JULY",
+      "year": "2016",
+      "info": "Two weeks GIAN Programme: Computational mathematics and Finite element method, 01-11 July 2016"
+    },
+    {
+      "month": "APRIL",
+      "year": "2016",
+      "info": "Understanding Science through Experiments , 15-16 April 2016"
+    },
+    {
+      "month": "MAR",
+      "year": "2016",
+      "info": "Patents and Intellectual Property Right, 4-5 March 2016"
+    },
+    {
+      "month": "JAN",
+      "year": "2016",
+      "info": "Young Sparks-2016, 26 January 2016"
+    },
+    {
+      "month": "DEC",
+      "year": "2015",
+      "info": "International conference on “Current Trends in Non-Classical Continuum Mechanics” As a local organizer, 14-15 December 2015"
+    },
+    {
+      "month": "SEPT",
+      "year": "2015",
+      "info": "Celebration of International Year of Light-2015 Technical events, 5-6th September 2015"
+    },
+    {
+      "month": "FEB",
+      "year": "2015",
+      "info": "BARC Outreach Programme on \"Atomic Energy: Architect of Future\" 9th February 2015"
+    },
+    {
+      "month": "JAN",
+      "year": "2015",
+      "info": "Workshop on \"Micro Nano Photonics\", 28th January 2015"
+    },
+    {
+      "month": "AUG",
+      "year": "2014",
+      "info": "Two days SPIE Technical Fest, 9-10th August 2014"
+    },
+    {
+      "month": "MAR",
+      "year": "2013",
+      "info": "National Workshop on \"Optics and Photonics for Engineering Application\", 16-17th March 2013"
+    },
+    {
+      "month": "OCT",
+      "year": "2012",
+      "info": "SPIE Guest lecture Series"
+    }
+  ]
+}

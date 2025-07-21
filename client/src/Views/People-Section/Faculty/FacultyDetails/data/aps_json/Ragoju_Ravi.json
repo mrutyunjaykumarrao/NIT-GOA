@@ -1,0 +1,183 @@
+{
+  "faculty_name": "Dr. Ragoju Ravi",
+  "profile": {
+    "name": "Dr. Ragoju Ravi",
+    "designation": "Associate Professor of Mathematics",
+    "department": "Department of Applied Sciences",
+    "imageUrl": "Dr. Ragoju Ravi.png",
+    "email": "ravi@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Applied Mathematics",
+      "Fluid Mechanics",
+      "Convective Instability problems",
+      "Heat and Mass Transfer"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Ragoju Ravi",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Associate Professor of Mathematics",
+    "department": "Department of Applied Sciences",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": "12 years 09 months of Teaching and Research Experiences"
+  },
+  "contactInformation": {
+    "address": "Department of Applied Sciences, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "ravi@nitgoa.ac.in",
+    "phoneMobile": "9404715466"
+  },
+  "researchAreas": [
+    "Applied Mathematics",
+    "Fluid Mechanics",
+    "Convective Instability problems",
+    "Heat and Mass Transfer"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Mathematics-I (MA 100)",
+      "Mathematics for Electronics & Communication Engineering (EC 204)",
+      "Mathematics for Electrical & Electronics Engineering (EE 201)",
+      "Mathematics-II (MA150)",
+      "Mathematics-III (MA200)",
+      "Numerical Methods (MA250)",
+      "Optimization Techniques (EE522)"
+    ],
+    "pg": []
+  },
+  "academicInformation": [
+    {
+      "degree": "M.Sc.",
+      "institute": "NIT Warangal",
+      "year": "2009",
+      "subject": "Applied Mathematics"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "NIT Warangal",
+      "year": "2012",
+      "subject": "Applied Mathematics"
+    }
+  ],
+  "publications": {
+    "journal": [
+        "Reddy, L.V., Ragoju, R., Shekhar, S. et al. Weakly nonlinear analyses on double-diffusive convection of Casson fluid in a porous medium with an internal heat and gravity modulation. Eur. Phys. J. B 98, 97 (2025). SCIE(Q3)",
+        "Reddy, Gundlapally Shiva Kumar; Ragoju, Ravi; Dey, Prasenjit; Matta, Anjanna; Nonlinear magneto convection in an inclined porous layer with artificial neural network prediction, Mathematical Methods in the Applied Sciences, 48, 7, 7025-7036, 2025. SCIE(Q1)",
+        "Yadav, Dhananjay; Awasthi, Mukesh Kumar; Ragoju, Ravi; Bhattacharyya, Krishnendu; Mahajan, Amit; Wang, Junye; Impact of viscous dissipation, throughflow and rotation on the thermal convective instability of Jeffrey fluid in a porous medium layer, European Journal of Mechanics-B/Fluids, 109, 55-65, 2025, Elsevier Masson. SCIE(Q2)",
+        "Bhavyashree, SM; Ragoju, Ravi; Reddy, G Shivakumar; Siddheshwar, PG; Soret-driven thermosolutal convection in bidispersive porous medium with vertical throughflow, Physics of Fluids, 37, 2, 2025. SCIE(Q1)",
+        "Mathapati, Bhagya; Ragoju, Ravi; Reddy, G Shiva Kumar; Onset of magneto convection of Casson fluid in an inclined porous layer using local thermal non-equilibrium model: A linear and nonlinear analyses Chinese Journal of Physics, 95, 306-319, 2025, Elsevier. SCIE(Q1)",
+        "Singh, Mahesh; Ragoju, Ravi; Reddy, G Shiva Kumar; Singh, Dharmvir; Yadav, Dhananjay; Dissolution‐Driven Convection in a Bidispersive Porous Medium With Chemical Reaction: Brinkman Model, Heat Transfer, 2025. ESCI(Q2)",
+        "Reddy, G Shiva Kumar; Bhavyashree, SM; Ragoju, Ravi; Yadav, Dhananjay; Viscous dissipation effects in thermosolutal convection of Casson fluid in porous layer with vertical throughflow: Global stability analysis, Chinese Journal of Physics, 2025, Elsevier. SCIE(Q1)",
+        "Shekhar, Suman; Syamala, Lakshmi Sangeeta; Ragoju, Ravi; The impact of internal heat and gravity modulation on convection of Jeffrey fluid in a porous media: A weakly non-linear analysis, Chinese Journal of Physics, 2025, Elsevier. SCIE(Q1)",
+        "Melina Maria Afonso, Damodar Reddy Edla, Sridhar Chintala, Ragoju Ravi; Enhanced feature vector reduction of S-transformed electroencephalography signal for optimal Parkinson’s disease detection, Biomedical Signal Processing and Control, 108, 2025, Elsevier. SCIE(Q1)",
+        "Shekhar, Suman; Ragoju, Ravi; Yadav, Dhananjay; Artificial neural network approach to study the impact of gravity modulation on magneto-convection of Jeffrey fluid in a porous media, Chinese Journal of Physics 2025, Elsevier. SCIE(Q1)",
+        "Ragoju, Ravi; Shekhar, Suman; Reddy, Gundlapally Shiva Kumar; Reddy, Gali Janardhana; The study of internal heat and variable gravity field on the onset of convection in a sparsely packed porous medium, Proceedings of the Institution of Mechanical Engineers, Part E: Journal of Process Mechanical Engineering 238, 1, 240-250, 2024, SAGE Publications Sage UK: London, England. SCIE(Q2)",
+        "Suraiah Palaiah, Suresha; Reddy, Gudala Janardhana; Basha, Hussain; Ravi, Ragoju; Transient magnetized Soret effect on dissipative couple stress convection flow past a cylinder, Numerical Heat Transfer, Part B: Fundamentals, 85, 10, 1344-1364, 2024, Taylor & Francis. SCIE(Q3)",
+        "Yadav, Dhananjay; Nair, Sanjith Bharatharajan; Awasthi, Mukesh Kumar; Ragoju, Ravi; Bhattacharyya, Krishnendu; Linear and nonlinear investigations of the impact of chemical reaction on the thermohaline convection in a permeable layer saturated with Casson fluid, Physics of Fluids, 36, 1, 2024, AIP Publishing, SCIE(Q1)",
+        "Mohamad, AM; Yadav, Dhananjay; Bharatharajan Nair, Sanjith; Awasthi, Mukesh Kumar; Ravi, Ragoju; Bhattacharyya, Krishnendu; The effect of Péclet number on the onset of Casson fluid convective motion in a porous layer: analytical and numerical investigations, Numerical Heat Transfer, Part B: Fundamentals, 2024, Taylor & Francis, SCIE(Q3)",
+        "Ragoju, Ravi; Influence of a magnetic field on double‐diffusive convection in an inclined porous layer, Heat Transfer, 53, 2, 2024, WILEY, ESCI(Q2)",
+        "Reddy, J Sharathkumar; Kishan, N; Reddy, G Shiva Kumar; Ragoju, Ravi; Thermal convection of a Ferrofluid with the effect of helical force: Weakly non-linear theory, Special Topics & Reviews in Porous Media: An International Journal, 2024. ESCI",
+        "Yadav, Dhananjay; Awasthi, Mukesh Kumar; Mohamad, AM; Ragoju, Ravi; Bhattacharyya, Krishnendu; Hassan, Mohammad; The onset of Casson fluid convection in a permeable medium layer produced by purely inner heating with magnetic field, Journal of Computational Applied Mechanics, 55, 3, 340-354, 2024, University of Tehran Press. ESCI(Q3)",
+        "Reddy, G Shiva Kumar; Ragoju, Ravi; Matta, Anjanna; Reddy, N Keerthi; Yadav, Dhananjay; Dissolution-driven convection in an inclined porous medium with first order chemical reaction, Journal of Porous Media, 2024, Begel House Inc. SCIE(Q2)",
+        "Shekhar, Suman; Ragoju, Ravi; Yadav, Dhananjay; Ontela, Surender; Effects of throughflow and gravity modulation on triple-diffusive convection in a sparsely packed porous medium, Numerical Heat Transfer, Part B: Fundamentals, 2024, Taylor & Francis. SCIE(Q3)",
+        "Didyala, Saibaba; Ragoju, Ravi; Reddy, G Shiva Kumar; Yadav, Dhananjay; Effect of throughflow on the study of linear and weakly nonlinear stability analysis of Jeffrey fluids in an anisotropic porous layer, Numerical Heat Transfer, Part A: Applications, 2024, Taylor & Francis. SCIE(Q2)",
+        "Shekhar, Suman; Ragoju, Ravi; Yadav, Dhananjay; The influence of gravity modulation on double-diffusive convection of Jeffrey fluids in an isotropic porous media, Numerical Heat Transfer, Part A: Applications, 2024, Taylor & Francis. SCIE(Q2)",
+        "Mohamad, AM; Yadav, Dhananjay; Awasthi, Mukesh Kumar; Ragoju, Ravi; Bhattacharyya, Krishnendu; Mahajan, Amit; Analytical and numerical examinations on the stability investigation of Casson nanofluid flow in a permeable layer controlled by vertical throughflow, World Journal of Engineering, 2024, Emerald Publishing Limited. ESCI(Q2)",
+        "Yadav, Dhananjay; Awasthi, Mukesh Kumar; Singh, Abhishek Kumar; Ravi, Ragoju; Bhattacharyya, Krishnendu; Mahabaleshwar, US; Thermal boundary conditions and rotation effects on the onset of casson fluid convection in a permeable layer produced by purely interior heating, Numerical Heat Transfer, Part B: Fundamental, 2024, Taylor & Francis. SCIE(Q3)",
+        "Ramchandraiah, Chirnam; Kishan, Naikoti; Reddy, J SharathKumar; Ravi, Ragoju; Linear and weakly nonlinear analyses of double‐diffusive convection in porous media with chemical reaction using LTNE model, Heat Transfer, 2024. ESCI(Q2)",
+        "Challa, Lakshmi Sireesha; Ragoju, Ravi; Veerappampalayam Easwaramoorthy, Sathishkumar; Cho, Jaehyuk; Linear instability of the vertical throughflow in a porous layer saturated by a power-law fluid with variable gravity effect, Open Physics, 22, 20240049, 2024, De Gruyter. SCIE(Q2)",
+        "Yadav, Dhananjay; Awasthi, Mukesh Kumar; Ragoju, Ravi; Bhattacharyya, Krishnendu; Kodi, Raghunath; Hassan, Mohammad; Wang, Junye; Impact of temperature-reliant thermal conductivity and viscosity variations on the convection of Jeffrey fluid in a rotating cellular porous layer, Proceedings A, 480, 2301, 20240206, 2024, The Royal Society. SCIE(Q1)",
+        "SM, Bhavyashree; Ragoju, Ravi; Reddy, G; Effect of viscous dissipation on thermal convection in bidispersive porous media with vertical throughflow: Global stability analysis, Physics of Fluids, 36, 2024, AIP Publishing. SCIE(Q1)",
+        "Yadav, Dhananjay; Awasthi, Mukesh Kumar; Ragoju, Ravi; Bhattacharyya, Krishnendu; Kodi, Raghunath; Wang, Junye; Impact of temperature-reliant thermal conductivity and viscosity variations on the convection of Jeffrey fluid in a rotating cellular porous layer, Proceedings A, 480, 2301, 20240206, 2024, The Royal Society. SCIE(Q1)",
+        "Nagaraju, Jangalla; Babu, Kasba Ramesh; Reddy, Gundlapally Shiva Kumar; Ragoju, Ravi; On oscillatory rotating convection of a couple‐stress fluid with helical force Heat Transfer, 2023, ESCI(Q2)",
+        "Yadav, Dhananjay; Al‐Balushi, Sara; Awasthi, Mukesh Kumar; Al‐Hadi, Taif; Al‐Abri, Raya; Al‐Wahaibi, Jawhara; Al‐Nasseri, Fatan; Al‐Siyabi, Sara; Ragoju, Ravi; Bhattacharyya, Krishnendu; Convective flow of ethylene glycol‐silver Jeffery nanofluid in a Hele‐Shaw cell with an influence of external magnetic field, Asia‐Pacific Journal of Chemical Engineering, 2884,2023. SCIE(Q3)",
+        "Singh, Mahesh; Ragoju, Ravi; Shiva Kumar Reddy, G; Subramani, Chinnamuthu; Predicting the effect of inertia, rotation, and magnetic field on the onset of convection in a bidispersive porous medium using machine learning techniques, Physics of Fluids, 35, 3, 2023, AIP Publishing, SCIE(Q1)",
+        "Ragoju, Ravi; Venkateshwar Rao, Madharam; Pavani, Loka; Nonlinear instability analysis of internally heated convection in a porous layer with the impact of magnetic field and variable gravity, Heat Transfer, 2023. ESCI(Q2)",
+        "Singh, Mahesh; Ragoju, Ravi; Reddy, Shiva Kumar; Yadav, Dhananjay; Onset of Darcy-Brinkman Convection in a Rotating Bidispersive Porous Medium Journal of Porous Media, 2023, Begel House Inc. SCIE(Q2)",
+        "Reddy, G Shiva Kumar; Ragoju, Ravi; Reddy, N Keerthi; Edla, Damodar Reddy; Dissolution‐driven convection of a power‐law fluid in a porous medium in the presence of chemical reaction, Heat Transfer, 2023. ESCI(Q2)",
+        "Reddy, G; Ragoju, Ravi; Shekhar, Suman; Thermohaline convection of a Casson fluid in a porous layer: Linear and non-linear stability analyses, Physics of Fluids, 35, 9, 2023, AIP Publishing. SCIE(Q1)",
+        "Bheemudu, C; Goud, T Ramakrishna; Ragoju, Ravi; Paidipati, Kiran Kumar; Chesneau, Christophe; Nonlinear magnetoconvection of a Maxwell fluid in a porous layer with chemical reaction, International Journal of Modelling and Simulation, 2023, Taylor & Francis. ESCI(Q1)",
+        "Reddy, Gundlapally Shiva Kumar; Ragoju, Ravi; Thermal instability of a power‐law fluid‐saturated porous layer with an internal heat source and vertical throughflow, Heat Transfer, 51, 2, 2181-2200, 2022, Wiley ESCI(Q2)",
+        "Yadav, Dhananjay; Kumar Awasthi, Mukesh; Al-Siyabi, M; Al-Nadhairi, S; Al-Rahbi, A; Al-Subhi, M; Ragoju, Ravi; Bhattacharyya, Krishnendu; Double diffusive convective motion in a reactive porous medium layer saturated by a non-Newtonian Kuvshiniski fluid, Physics of Fluids, 34, 2, 2022, AIP Publishing. SCIE(Q1)",
+        "Shekhar, Suman; Ragoju, Ravi; Yadav, Dhananjay; The effect of variable gravity on rotating Rayleigh–Bénard convection in a sparsely packed porous layer, Heat Transfer, 51, 5, 4187-4204, 2022 ESCI(Q2)",
+        "Yadav, Dhananjay; Al-Siyabi, Maimouna; Awasthi, Mukesh Kumar; Al-Nadhairi, Salma; Al-Rahbi, Amna; Al-Subhi, Maryam; Ragoju, Ravi; Bhattacharyya, Krishnendu; Chemical reaction and internal heating effects on the double diffusive convection in porous membrane enclosures soaked with Maxwell fluid, Membranes, 12, 3, 338, 2022, MDPI. SCIE(Q2)",
+        "Ragoju, Ravi; Singh, Mahesh; Secondary instabilities on double‐diffusive convection in an anisotropic porous layer with Soret effect, Heat Transfer, 51, 5, 4799-4818, 2022. ESCI(Q2)",
+        "Reddy, Gundlapally Shiva Kumar; Koteswararao, Nilam Venkata; Ravi, Ragoju; Paidipati, Kiran Kumar; Chesneau, Christophe; Dissolution-Driven Convection in a Porous Medium Due to Vertical Axis of Rotation and Magnetic Field, Mathematical and Computational Applications, 27, 3, 53, 2022 MDPI. ESCI (Q2)",
+        "Rafeek, Kallu Vetty Muhammed; Reddy, Gudala Janardhana; Ragoju, Ravi; Reddy, Gundlapally Shiva Kumar; Sheremet, Mikhail A; Impact of throughflow and coriolis force on the onset of double-diffusive convection with internal heat source, Coatings, 12, 8, 1096, 2022, MDPI. SCIE(Q2)",
+        "Shekhar, Suman; Ragoju, Ravi; Kanchana, C; Effects of three types of gravity modulation on rotating Rayleigh-Bénard convection in a sparsely packed porous layer in the presence of throughflow, Journal of Porous Media, 25, 12, 2022, Begel House Inc. SCIE(Q2)",
+        "Reddy, Gundlapally Shiva Kumar; Ravi, Ragoju; Matta, Anjanna; Onset of triply diffusive convection in a power-law fluid saturated porous layer, Meccanica, 57, 9, 2269-2280, 2022, Springer Netherlands SCIE(Q3)",
+        "Singh, Mahesh; Ragoju, Ravi; Reddy, G Shiva Kumar; Matta, Anjanna; Paidipati, Kiran Kumar; Chesneau, Christophe; Non-linear magnetoconvection in a bidispersive porous layer: a brinkman model, Earth Science Informatics, 15, 4, 2171-2180, 2022, Springer Berlin Heidelberg Berlin/Heidelberg SCIE(Q2)",
+        "Shekhar, S; Ragoju, R; Yadav, D; The effect of variable gravity and chemical reaction on double diffusive convection in a sparsely packed porous layer, Fluid Dynamics, 57, 9, 1065-1079,2022,PleiadesPublishing,SCIE(Q3)",
+        "Rafeek, KVM; Reddy, GJ; Ragoju, R; Reddy, GSK; Sheremet, MA; Impact of Throughflow and Coriolis Force on the Onset of Double-Diffusive Convection with Internal Heat Source. Coatings 2022, 12, 1096, 2022. SCIE(Q2)",
+        "Shekhar, Suman; Ragoju, Ravi; Reddy, Gudala Janardhana; Sheremet, Mikhail A; The Coriolis effect on thermal convection in a rotating sparsely packed porous layer in presence of cross-diffusion, Coatings, 12, 23, 2021, SCIE(Q2)",
+        "Kumar, Mahesh; Reddy, G Janardhana; Ragoju, Ravi; Transient analysis of viscoelastic fluid past a semi-infinite vertical cylinder with respect to the Deborah and Hartmann numbers, Journal of Thermal Analysis and Calorimetry, 139, 507-517, 2020, Springer International Publishing Cham. SCIE (Q2)",
+        "Shekhar, Ravi Ragoju and Suman; Linear and Weakly Nonlinear Analyses of Magneto Convection in a Sparsely Packed Porous Medium under Gravity Modulation Journal of Applied Fluid Mechanics, 13, 6, 1937-1947, 2020m SCIE(Q4)",
+        "Ravi, Ragoju; Kanchana, C; Janardhana Reddy, G; Basha, Hussain; Study of Soret and Dufour effects and secondary instabilities on Rayleigh-Benard convection in a couple stress fluid The European Physical Journal Plus, 133, 12, 513, 2018, Springer Berlin Heidelberg Berlin/Heidelberg SCIE(Q2)",
+        "Ravi, R; Kanchana, C; Siddheshwar, PG; Effects of second diffusing component and cross diffusion on primary and secondary thermoconvective instabilities in couple stress liquids, Applied Mathematics and Mechanics, 38, 1579-1600, 2017, Shanghai University SCIE(Q1)",
+        "Panda, Ajaya Kumar; Nanda, Swagatika; Ravi, Ragoju; A Mathematicalexplanation of Panzar-Rosse Model and Its Implication in Indian Banking Industry, Indian Journal of Economics & Business,15, 75-98, 2016. ESCI(Q4)",
+        "Babu, A Benerji; Ravi, Ragoju; Tagare, SG; Nonlinear thermohaline magnetoconvection in a sparsely packed porous medium, Journal of Porous Media, 17, 2014. SCIE(Q2)",
+        "Babu, A Benerji; Ravi, Ragoju; Tagare, SG; Nonlinear rotating convection in a sparsely packed porous medium Communications in Nonlinear Science and Numerical Simulation, 17, 12, 5042-5063, 2012, Elsevier. SCIE(Q1)",
+        "AB Babu, R Ravi, SG Tagare, D Anilkumar; Linear and weakly nonlinear thermohaline convection in a sparsely packed porous medium between stress-free boundaries, International Review on Modelling & Simulations, 5, 6, 2484-2500, 2012. SCIE(Q2)",
+        "Babu, A Benerji; Ravi, Ragoju; Tagare, SG; Nonlinear magnetoconvection in a sparsely packed porous medium International Journal of Geophysics, 2011, 207123, 2011, Hindawi Publishing Corporation ESCI(Q3)",
+        "Babu, A Benerji; Ravi, Ragoju; Stability of finite amplitude Rayleigh Benard Convection in Porous Medium Int. J. of Mathematical Sciences and Applications, 3, 2011.",
+        "Shekhar, Suman; Ragoju, Ravi; Yadav, Dhananjay; Danumjaya, P; The Effect of First-Order Chemical Reaction on Rotating Rayleigh-B'enard Convection in a Sparsely Packed Porous Layer, Discontinuity, Nonlinearity, and Complexity, 13, 3, 555-565, 2024 L&HScientific Publishing, Scopus",
+        "Saibaba, D; Ragoju, Ravi; Reddy, G Shiva Kumar; Chesneau, Christophe; Non-linear thermohaline instability of a Jeffrey fluid in a porous layer with chemical reaction, International Journal of Ambient Energy, 45, 1, 2345834, 2024, Taylor & Francis. Scopus",
+        "Reddy, G Shiva Kumar; Ravi, Ragoju; Onset of Oscillatory Convection of a Chemically Reacting Fluid with Rigid Horizontal Boundaries, Discontinuity, Nonlinearity, and Complexity, 13, 2, 217-227, 2024, L&H Scientific Publishing. Scopus",
+        "Rao, M Venkateshwar; Ragoju, Ravi; Paidipati, Kiran Kumar; Chesneau, Christophe; Impact of variable gravity on rotating convection in a porous layer with an internal heat source. Mathematics in Engineering, Science & Aerospace (MESA), 14, 2 , 2023. Scopus",
+        "Reddy, G Shiva Kumar; Ravi, Ragoju; Thermal instability of a Maxwell fluid saturated porous layer with chemical reaction, Special Topics & Reviews in Porous Media — An International Journal 13, 33–47, 2021 ,Scopus",
+        "Jagat Chaitanya Prabhala, Dr. Venkatnareshbabu K and Dr. Ragoju Ravi; Optimizing similarity threshold for abstract similarity metric in speech diarization systems: A mathematical formulation, Applied Mathematics and Sciences: An International Journal, 10, 2023.",
+        "Babu, A Benerji; Ravi, Ragoju; Tagare, SG; Weakly Nonlinear Rotating Convection in a Sparsely Packet Porous Medium Contributions in Mathematics and Applications IV, 110, 2012.",
+        "AB Babu, R Ravi, SG Tagare; Double diffusive Rotating convection In a sparsely packed Porous Medium. International Proceedings of Computer Science & Information Technology 33, 110, 2012."
+    ]
+  },
+  "researchGuidance": [
+    "Mr. SUMAN SHEKHAR (ONGOING)",
+    "Mr. MAHESH SINGH (ONGOING)"
+  ],
+  "fundedProjects": [
+    "Convective Instabilities in double diffusive systems-SERB-DST, June 2018 - June 2021."
+  ],
+  "coursesAttended": [
+    {
+      "month": "MAR",
+      "year": "2015",
+      "info": "Ragoju Ravi, Closed-form linear stability conditions for Magnetoconvection in a sparsely packed porous medium”, 5th International Conference on Mathematics and its Application (ICMA'15) , March 16-17, Abu Dhabi (UAE)"
+    },
+    {
+      "month": "JAN",
+      "year": "2012",
+      "info": "A. Benerji Babu, Ragoju Ravi and S.G.Tagare, Weakly nonlinear magnetoconvection in a sparsely packed porous medium. National Conference on New Vistas Computational Fluid dynamics and Engineering, NITW, January 17- 29, 2012."
+    },
+    {
+      "month": "DEC",
+      "year": "2011",
+      "info": "A. Benerji Babu, Ragoju Ravi, Rayleigh-Benard convection in a sparsely packed porous medium, XX Congress and National Conference on Mathematical Modeling and Simulation (APSMS) SBIST, Khammam Dec. 9-11, 2011, India."
+    },
+    {
+      "month": "DEC",
+      "year": "2011",
+      "info": "A. Benerji Babu, Ragoju Ravi and S.G. Tagare, Nonlinear rotating convection in a sparsely packed porous medium, 56th Congress of the Indian society of theoretical and applied mechanics (ISTAM), National Institute of Technology, Surat , Dec. 19-21, 2011, India."
+    },
+    {
+      "month": "JAN",
+      "year": "2011",
+      "info": "STTP on Mathematical Modeling and Numerical Techniques, 17-21 Jan 2011 organized by Department of Mathematics, NIT Warangal."
+    },
+    {
+      "month": "DEC",
+      "year": "2010",
+      "info": "A. Benerji Babu, Ragoju Ravi and S.G. Tagare, Nonlinear magnetoconvection in a sparsely packed porous medium, 55th Congress of the Indian society of theoretical and applied mechanics (ISTAM), National Institute of Technology, Hamirpur , Dec. 18-21, 2010, India."
+    },
+    {
+      "month": "NOV",
+      "year": "2010",
+      "info": "Attended conference at XIX Congress of Andhra Pradesh Society for Mathematical Sciences (APSMS) organized by the department of Mathematics, J.I.T.S., Karimnagar during November 12-14, 2010."
+    },
+    {
+      "month": "OCT",
+      "year": "2010",
+      "info": "Prof. S. Minakshi Sundaram Memorial Society and One day seminar on Challenges in Current Mathematics Research conducted at NIT Warangal on Oct. 22, 2010."
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+{
+  "faculty_name": "Dr. Velavan Kathirvelu",
+  "profile": {
+    "name": "Dr. Velavan Kathirvelu",
+    "designation": "Associate Professor of Chemistry",
+    "department": "Department of Applied Sciences",
+    "imageUrl": "Dr. Velavan Kathirvelu.png",
+    "email": "velavan@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Electron Paramagnetic Resonance (EPR) of Transition Metal Ions and Organic Free Radicals",
+      "Application of EPR towards Biology",
+      "Chemistry of Lanthanides and Actinides"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Velavan Kathirvelu",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Associate Professor of Chemistry",
+    "department": "Department of Applied Sciences",
+    "url": "https://scholar.google.co.in/citations?user=mc4g3FgAAAAJ&hl=en",
+    "dateOfJoining": "20/05/2013",
+    "experience": "16.5 Years"
+  },
+  "contactInformation": {
+    "address": "Associate Professor of Chemistry, Department of Applied Sciences, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "velavan@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Electron Paramagnetic Resonance (EPR) of Transition Metal Ions and Organic Free Radicals",
+    "Application of EPR towards Biology",
+    "Chemistry of Lanthanides and Actinides"
+  ],
+  "coursesTaught": null,
+  "academicInformation": [
+    {
+      "degree": "M.Phil.",
+      "institute": "Pondicherry University",
+      "year": "2001",
+      "subject": null
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "Pondicherry University",
+      "year": "2005",
+      "subject": null
+    },
+    {
+      "degree": "Postdoc",
+      "institute": "University of Denver, CO, USA",
+      "year": "2005",
+      "subject": null
+    },
+    {
+      "degree": "Postdoc",
+      "institute": "Pondicherry University, Puducherry, India",
+      "year": "2010",
+      "subject": null
+    },
+    {
+      "degree": "Postdoc",
+      "institute": "CEA Grenoble, France",
+      "year": "2012",
+      "subject": null
+    }
+  ],
+  "publications": {
+    "journal": [
+      "Interpretation of EPR and optical spectra of Ni(II) ions in crystalline lattices at ambient temperature. Amrutha K, Velavan Kathirvelu, Magn. Reson. Chem. 60, 3 (2022) 414-421 DOI: 10.1002/mrc.5237 2022",
+      "Nanostructured metal oxide semiconductor-based gas sensors: A comprehensive review., K. Gopi Krishna, S. Parne, N. Pothukanuri, Velavan Kathirvelu, S. Gandi, D. Joshi, Sens. Actuators A. Phys. 341 (2022) 113578-113595, DOI:10.1016/j.sna.2022.113578 2022",
+      "Exploring novel functionality for efficient extraction of UO22+ and Th4+in ionic liquid: Mechanism, speciation, selectivity, stability and stripping. A Pandey, G Salunkhe, Velavan Kathirvelu, Keisham S.Singh, A Sengupta, J Mol Liqu, 324 (2021) 114716- DOI: 10.1016/j.molliq.2020.114716 2021",
+      "EPR spectral studies of manganese(I) based molecular squares. S. Karthikeyan, B. Manimaran, Velavan Kathirvelu, Appl Magn Reson, (2021) DOI:10.1007/s00723-020-01300-3 2021",
+      "Effect of alkyl chain length on the extraction properties of U and Th using novel CnmimNTf2/isophthalamide systems, A Pandey, S Hashmi, Velavan Kathirvelu, K S.Singh, A Sengupta, J Mol Liqu, 323 (2021) 114944- DOI: 10.1016/j.molliq.2020.114944 2021",
+      "Tuning the extraction mechanism of uranyl ion in Bicyclooctanium, Propylpyridinium, Piperidinium and Imidazolium based ionic liquids: First ever evidence of 'Cation exchange', 'Anion exchange' and 'Solvation' mechanism. A Pandey, S. Hashmib, G. Salunkheb , Velavan Kathirvelu, K S Singh , R S Chauhanb , A Sengupta, J Mol Liq, 337 (2021) 116435 DOI: 10.1016/j.molliq.2021.116435 2021",
+      "EPR and optical studies of Ni (II) ions in Zn (4-chloropyrazole)6(ClO4)2 at 300 K: Probing the structure, bonding, and electron spin relaxation. Amrutha K, Velavan Kathirvelu, J Phys Chem Solids, 157 (2021) 110224. DOI: 10.1016/j.jpcs.2021.110224 2021",
+      "Electron spin relaxation time of Ni(II) ion in hexapyrazole zinc(II) dinitrate at 300 K. Amrutha K, Velavan Kathirvelu, Magn Reson Chem, 58 (2020) 329–333. DOI: 10.1002/mrc.5007 2020",
+      "Spectroscopic evidence for cofactor-substrate interaction in the radical-SAM enzyme TYW1. Velavan Kathirvelu, P. P. Letuvée, J-M. Latour, M. Atta, F. Forouhar, S. Gambarelli, R. G. Serres., Dalton Trans., 46 (2017) 13211-13219. DOI:10.1039/C7DT00736A 2017",
+      "Unanticipated coordination of tris buffer to the Radical SAM cluster of the RimO methylthiotransferase, T. Molle, M. Clémancey, J-M. Latour, Velavan Kathirvelu, G. Sicoli, F. Forouhar, E. Mulliez, S. Gambarelli, M. Atta, J Biol Inorg Chem, 12 (2016) 549-557. DOI 10.1007/s00775-016-1365-8 2016",
+      "Rapid-Scan EPR of Immobilized Nitroxides. Z. Yu, R. W. Quine, G. A. Rinard, M. Tseitlin, H. Elajaili, Velavan Kathirvelu, L. J. Clouston, P. J. B. A. Rajca, R. Stein, H. Mchaourab, S. S. Eaton, G. R. Eaton. J Magan Reson, 247 (2014) 67-71. DOI:10.1016/j.jmr.2014.08.008 2014",
+      "4-Demethylwyosine synthase from Pyrococcus abyssi is a Radical-SAM enzyme with an additional [4Fe-4S]+2 cluster which binds pyruvate co-substrate. P. P. Letuvée, Velavan Kathirvelu, G. Berggren, M. Clemancey, J.M. Latour, V. Maurel, T. Douki, J. Armengaud, E. Mulliez, M. Fontecave, R. G. Serres, S. Gambarelli, M. Atta J. Biol. Chem, 287 (2012) 41174-41185. DOI:10.1074/jbc.M112.405019 2012",
+      "EPR and Optical studies of Nickel (II) at 300 K M. Pandi, R. Somasundaram, Velavan Kathirvelu Spectrochim Acta A, 99 (2012) 361-364. DOI: 10.1016/j.saa.2012.08.062 2012",
+      "Self-assembly of manganese(I)-based molecular squares: synthesis and spectroscopic and structural characterization S. Karthikeyan, K. Velavan, R. Sathishkumar, B. Varghese, B. Manimaran Organometalics, 31 (2012) 1953-1957. DOI: 10.1021/om201244a 2012",
+      "Calix[4]arene nitroxide tetraradical and octaradical A.Olankitwanit, Velavan Kathirvelu, S. Rajca, G. R. Eaton, S. S. Eaton, A. Rajca Chem Commun, 47 (2011) 6443-6445. DOI: 10.1039/c1cc11172H 2011",
+      "Electron transfer flavoprotein domain II orientation monitored using Double Electron- Electron Resonance between an enzymatically reduced, native FAD cofactor and spin labels M. A. Swanson, Velavan Kathirvelu, T. Majtan, F. E. Frerman, G. R. Eaton, S. S. Eaton Protein Science, 20 (2011) 610-620. DOI: 10.1002/pro.595. 2011",
+      "A signal-to-noise standard for pulsed EPR G. R. Eaton, S. S Eaton, R. W. Quine, D. Mitchell, Velavan Kathirvelu, R. T. Weber, J Magan Reson, 205 (2010) 109-113., DOI: 10.1016/j.jmr.2010.04.006. 2010",
+      "A spirocyclohexyl nitroxide amino acid spin label for pulsed EPR distance measurements. A. Rajca, Velavan Kathirvelu, S. K. Roy, M. Pink, S. Rajca, S. Sarkar, S. S. Eaton, G. R. Eaton, Chem-Eur J., 16 (2010) 5778-5782., DOI: 10.1002/chem.200903102. 2010",
+      "Impact of chlorine substitution on spin lattice relaxation of triarylmethyl and 1,4- benzosemiquinone radicals in glass-forming solvents between 25 and 295 K. Velavan Kathirvelu, S. S. Eaton, G. R. Eaton, Appl Magn Reson., 37, (2010) 649-656, DOI: 10.1007/s00723-009-0086-3. 2010",
+      "DEER distance measurement between a spin label and native FAD semiquinone in Electron Transfer Flavoprotein. M. A. Swanson, Velavan Kathirvelu, T. Majtan, F. E. Frerman, G. R. Eaton, S. S. Eaton J Am Chem Soc., 131, (2009) 15978-15979, DOI: 10.1021/ja9059816 2009",
+      "Interaction of radical pairs through-bond and through-space: scope and limitations of the point-dipole approximation in Electron Paramagnetic Resonance spectroscopy. C. Riplinger, J. P. Y. Kao, G. M. Rosen, Velavan Kathirvelu, G. R. Eaton, S. S. Eaton, A. Kutateladze, F. Neese J Am Chem Soc.,131, (2009) 10092-10106, DOI: 10.1021/ja901150j. 2009",
+      "Electron Spin Relaxation Rates for Semiquinones between 25 and 295 K in Glass-Forming Solvents Velavan Kathirvelu, H. Sato, S. S. Eaton, and G. R. Eaton. J Magan Reson., 198, (2009) 111-120, DOI: 10.1016/j.jmr.2009.01.026. 2009",
+      "Relaxation rates for spirocyclohexyl nitroxyl radicals are suitable for interspin distance measurements at temperatures up to about 125 K Velavan Kathirvelu, C. Smith, C. Parks, M. A. Mannan, Y. Miura, K. Takeshita, S. S. Eaton, and G. R. Eaton. Chem Commun., (2009) 454-456, DOI: 10.1039/b817758a. 2009",
+      "Impact of electron-electron spin intraction on electron spin relaxation of nitroxyl diradicals and tertaradicals in glassy solvents between 10k and 300k. H. Sato, Velavan Kathirvelu, G. Spagnol, S. Rajca, A. Rajca, S. S. Eaton, and G. R. Eaton. J Phys Chem., B, 112, (2008) 2818-2828, DOI: 10.1021/jp073600u. 2008",
+      "Impact of molecular size on electron spin relaxation rate of nitroxyl radicals in glassy solvents between100 to 300k. H. Sato, Velavan Kathirvelu, A. J. Fielding, J. P. Blinco, A. S. Micallef, S. E. Bottle, S. S. Eaton, and G. R. Eaton. Mol Phys., 105, (2007) 2137-2151, DOI: 10.1080/00268970701724966. 2007",
+      "EPR free induction decay coherence observed after a single-pulse for samples with resolved multi-line spectra. V. Kathirvelu, H. Sato, R. W. Quine, G. A. Rinard, S. S. Eaton and G. R. Eaton. Appl Magn Reson., 32, (2007) 269-281, DOI: 10.1007/s00723-007-0026-z. 2007",
+      "Single crystal EPR studies of perchlorate–bridged dimeric copper(II) complex with 2-[(4- methyl-pyridin-2-ylimino)-methyl]-phenol R. Srinivasan, I. Sougandi, K. Velavan, R. Venkatesan, and P. Sambasiva Rao. Phys Status Solidi B, 244, (2007) 3789–3800, DOI: 10.1002/pssb.200642380. 2007",
+      "Single-crystal EPR investigation of Mn(II)-doped biomineral cobalt ammonium phosphate hexahydrate: a case of multiple substitutions. S. Deepa, B. Natarajan, S. Mithira, K. Velavan, and P. Sambasiva Rao. Radiat Eff Defect S., 160, (2005) 357-367, DOI: 10.1080/10420150500432759. 2005",
+      "Identification of Static JT in Copper(II) doped Hexaimidazole M(II) lattices: M = Co and Ni: An EPR Study. K. Velavan, R. Venkatesan and P. Sambasiva Rao Spectrochim Acta A, 62, (2005) 494-499, DOI: 10.1016/j.saa.2005.02.002. 2005",
+      "EPR study of vanadyl impurity in zinc ammonium trihydrogen bis(orthophosphate) monohydrate single crystal. K. Velavan, R. Venkatesan and P. Sambasiva Rao. Spectrochim Acta A, 62, (2005) 153-156, DOI: 10.1016/j.saa.2004.12.019. 2005",
+      "Single crystal EPR study of VO(II) in Magnesium Potassium Phosphate hexahydrate: A case of two substitutional vanadyl ions. S. Deepa, K. Velavan, I. Sougandi, R. Venkatesan and P. Sambasiva Rao. Spectrochim Acta A, 61, (2005) 2482-2487, DOI: 10.1016/j.saa.2004.09.013. 2005",
+      "Single crystal EPR investigation on Mn(II) doped biomineral: Cobalt potassium phosphate hexahydrate. K. Velavan, R.Venkatesan and P. Sambasiva Rao. J Phys Chem Solids., 66, (2005) 876-881, DOI: 10.1016/j.jpcs.2004.10.011. 2005",
+      "Observation of three sites for Vanadyl in a biomineral, Zinc Sodium Phosphate Hexahydrate: An EPR investigation. K.Velavan, I. Sougandi, R.Venkatesan and P. Sambasiva Rao. J Phys Chem Solids, 66, (2005) 15-21, DOI: 10.1016/j.jpcs.2004.07.007. 2005",
+      "Interstitial substitution of vanadyl ion doped in single crystal of hexaimidazole cobalt sulfate: an EPR study. I. Sougandi, K. Velavan, R. Venkatesan and P. Sambasiva Rao. Phys status solidi B, 241, (2004) 3014-3021, DOI: 10.1002/pssb.200402066. 2004",
+      "Electron Transfer Reaction of Oxo(salen)chromium(V) Ion with Anilines. S. Premsingh, N. S. Venkataramanan, S. Rajagopal, S. P. Mirza, M. Vairamani, P. Sambasiva Rao and K. Velavan. Inorg Chem., 43, (2004) 5744-5753, DOI: 10.1021/ic049482w. 2004",
+      "Synthesis and characterization of [Cu2(L)2(OCOCH3) (OCH3)]ClO4 {L = 2-[(4-Methyl- pyridin-2-ylimino)-methyl]-phenol}: EPR and X-ray studies. R. Srinivasan, I. Sougandi, K. Velavan, R. Venkatesan, Babu Verghese and P. Sambasiva Rao. Polyhedron, 23, (2004) 1115-1123, DOI: 10.1016/j.poly.2004.01.016. 2004",
+      "Single crystal EPR studies of paramagnetic ions doped zinc potassium phosphate hexahydrate - Part III: Mn(II) - A case of rhombic distortion. H. Anandalakshmi, I. Sougandi, K. Velavan, R. Venkatesan and P. Sambasiva Rao. Spectrochim Acta A, 60, (2004) 2661-2668, DOI: 10.1016/j.saa.2004.01.007. 2004",
+      "Identification of crystal symmetry in Kramers and non-Kramers ions by Optical absorption: Divalent copper and nickel ions doped in diamagnetic lattices. K. Velavan, R.V.S.S.N. Ravikumar, R. Venkatesan and P. Sambasiva Rao. Cryst ResTechnol., 39, (2004) 448-453, DOI: 10.1002/crat.200310209. 2004",
+      "Single crystal EPR studies of Mn(II) doped into Zinc Ammonium Phosphate Hexahydrate (ZnNH4PO4.6H2O):A case of interstitial site for bio-mineral analogue. H. Anandalakshmi, K. Velavan, I. Sougandi, R. Venkatesan and P. Sambasiva Rao. Pramana J Phys., 62, (2004) 77-86, PACS Nos 61.72.Hh; 76.30.Fc. 2004",
+      "Dynamic Jahn-Teller Distortion in Single crystals of Cu(II) doped Magnesium Potassium Phosphate Hexahydrate: An variable temperature EPR study. A. Prabhukantan, K. Velavan, R. Venkatesan and P. Sambasiva Rao. Solid State Commun., 126, (2003) 285-289, DOI: 10.1016/S0038-1098(02)00876-1. 2003",
+      "Single Crystal EPR studies of Ni(II) in hexaimidazole zinc(II)dichloride tetrahydrate: A case of Rhombic distortion K. Velavan, T. M. Rajendiran, R. Venkatesan and P. Sambasiva Rao. Solid State Commun., 122, (2002) 15-19, DOI: 10.1016/S0038-1098(02)00095-9. 2002"
+    ]
+  },
+  "researchGuidance": [],
+  "fundedProjects": [
+    "EPR Studies of some NI(II) complexes in Crystalline Environment: Probing Structure, Bonding and Electron Spin Relaxation Rates, Funding Agency: SERB, Budget: Rs.28,49,600/-, Period: 22 Sep 2015-22 Sep 2018, Status: Completed",
+    "Next-generation spirocyclic nitroxide spin labels for distance measurement at higher temperature by Electron Paramagnetic Resonance Spectroscopy, Funding Agency: CEFIPRA, Budget: ~Rs 157,37,002/-, Period: May 2023-2026, Status: Ongoing"
+  ],
+  "awardsAndHonors": [
+    "Startup Research Grant (Young Scientist) by SERB India (2014)",
+    "Senior Research Associateship (Pool Scientist Schem) by CSIR India (2010)",
+    "Young Investigator Award by Asia Pacific EPR/ESR Society and ISEPRSFRR (2004)"
+  ],
+  "memberships": [
+    "International EPR/ESR Society",
+    "Asia Pacific EPR/ESR Society"
+  ],
+  "professionalServices": [],
+  "coursesAttended": [
+    {
+      "month": "SEPT",
+      "year": "2021",
+      "info": "Amit Pandey , Gauri Salunkhe, Velavan Kathirvelu, Keisham S Singh, Arijit Sengupta. A, Exploring novel functionality for efficient extraction of UO 2 2+ and Th 4+ in ionic liquid: Mechanism, Speciation, Selectivity, Stability and Stripping, National Conference on Sustainable Environment: Challenges and Opportunities September 8-9, 2021 by Center for Continuing Education and Department of Chemistry, NIT Jalandhar. SECO 2021, PP-2, page 47"
+    },
+    {
+      "month": "AUG",
+      "year": "2021",
+      "info": "Amrutha. K, Velavan Kathirvelu, Determination of electron spin relaxation and symmetry of ni(ii) in the diamagnetic lattice at ambient temperature, The 22nd International Society of Magnetic Resonance Conference ISMAR-APNMR-NMRSJ-SEST 2021 held from August 22 to 27, 2021"
+    },
+    {
+      "month": "AUG",
+      "year": "2021",
+      "info": "Amit Pandey, Gauri Salunkhe, Velavan Kathirvelu, Keisham S Singh, Arijit Sengupta , Synthesis of Isophthalamide ligand and its application for efficient extraction of UO 2 2+ and Th 4+ in ionic liquid: Mechanism and Speciation, 2nd International Conference on Chemical, Bio & Environmental Engineering (CHEMBIOEN-2021), August 20-22, 2021 by Department of Chemical Engineering, NIT Jalandhar, CHEMBIOEN-2021 A-149."
+    },
+    {
+      "month": "JULY",
+      "year": "2021",
+      "info": "Amit Pandey, Sabiha Hashmi, Velavan Kathirvelu, Keisham S Singh, Arijit Sengupta, Effect of alkyl chain length on the extraction properties of U and Th using novel CnmimNTf2/isophthalamide systems, Online international conference on Chemistry for sustainable development, 2-4 July 2021 by Central University of Jharkhand, ICCSD-P17."
+    },
+    {
+      "month": "AUG",
+      "year": "2020",
+      "info": "Amit Pandey, Sabiha Hashmi, Velavan Kathirvelu, Keisham S Singh, Arijit Sengupta, Effect of isophthalamide ligand and imidazolium based ionic liquids on the extraction properties of U and Th, International Web Conference on Emerging Fields in Chemistry: Advances and Applications 10-11 August, 2021 by Govt. Kamla Devi Rathi Girls P. G. College, Rajnandgaon, C.G, INDIA, IWC KDRGPGC CHEM’21, page 25"
+    },
+    {
+      "month": "DEC",
+      "year": "2018",
+      "info": "CW EPR power saturation studies on Ni(II) ion diluted in Zn(4-Chloropyrazole)6(ClO4)2 lattice. Amrutha K, Velavan Kathirvelu, ICMAGMA-2018 conference, 9-13 December 2018 at NISER, Bhubaneswar, LP17, page-54"
+    },
+    {
+      "month": "SEPT",
+      "year": "2011",
+      "info": "Orientation of electron transfer flavoprotein domain II monitored using Q-band double electron-electron resonance P. Aggarwal, M. A. Swanson, V. Kathirvelu, T. Majtan, F. E. Ferman, G. R. Eaton, S. S. Eaton 242nd National Meeting of the American-Chemical-Society (ACS), Aug 28-Sep 01, 2011, Denver, Colorado, USA, 120-BIOL"
+    },
+    {
+      "month": "OCT",
+      "year": "2010",
+      "info": "DEER distance measurement between a spin label and native FAD semiquinone in Electron Transfer Flavoprotein. M. A. Swanson, V. Kathirvelu, T. Majtan, F. E. Ferman, G. R. Eaton, S. S. Eaton 52th Rocky Mountain Conference on Analytical Chemistry, August 1-5, 2010, Snowmass, Colorado, USA, page-24, A-106"
+    },
+    {
+      "month": "AUG",
+      "year": "2010",
+      "info": "Conformational flexibility of electron transfer flavoprotein probed using DEER measurement of distance between spin labels and a native FAD semiquinone M. A. Swanson, V. Kathirvelu, F. E. Ferman, G. R. Eaton, S. S. Eaton 52th Rocky Mountain Conference on Analytical Chemistry, August 1-5, 2010, Snowmass, Colorado, USA, page-61, A-197"
+    },
+    {
+      "month": "JULY",
+      "year": "2009",
+      "info": "Spin echo dephasing rates for organic free radicals in a rigid matrix between 25 and 375K. V. Kathirvelu, S, S, Eaton, G. R. Eaton. 51th Rocky Mountain Conference on Analytical Chemistry, July 19-23, 2009, Snowmass, Colorado, USA, page-58"
+    },
+    {
+      "month": "JULY",
+      "year": "2009",
+      "info": "DEER distance measurement between a spin label and native FAD semiquinone in electron-transfer flavoprotein. M. A. Swanson, V. Kathirvelu, G. R. Eaton, S, S, Eaton, F. E, Frerman. 51th Rocky Mountain Conference on Analytical Chemistry, July 19-23, 2009, Snowmass, Colorado, USA, page-69"
+    },
+    {
+      "month": "JULY",
+      "year": "2008",
+      "info": "New spin label designed for DEER distance measurements in the liquid nitrogen temperature range. A. Rajca, S. K. Roy, S. Rajca, S. Xiao, V. Kathirvelu, G. R. Eaton, S. S. Eaton, M. Pink. 50th Rocky Mountain Conference on Analytical Chemistry, July 27-31, 2008, Breckenridge, Colorado, USA, page-78"
+    },
+    {
+      "month": "JULY",
+      "year": "2008",
+      "info": "Electron spin relaxation of semiquinones between 25 and 295K in glass-forming solvents. V. Kathirvelu, H. Sato, S. S. Eaton and G. R. Eaton 50th Rocky Mountain Conference on Analytical Chemistry, July 27-31, 2008, Breckenridge, Colorado, USA, page-71"
+    },
+    {
+      "month": "MAY",
+      "year": "2007",
+      "info": "Electron spin relaxation rates and the use of relaxation enhancement to measure interspin distance S. S Eaton, H. Sato, A. J. Fielding, V. Kathirvelu, G. R. Eaton. EPR2007, Chicago, IL, April 29-May 3, 2007, Abstract O-3"
+    },
+    {
+      "month": "JULY",
+      "year": "2007",
+      "info": "Electron spin relaxation rates of semiquinone: From glassy solvent to rapid tumbling. V. Kathirvelu, H. Sato, S. S. Eaton and G. R. Eaton 49th Rocky Mountain Conference on Analytical Chemistry, July 23-26, 2007, Breckenridge, Colorado, USA, page-55"
+    },
+    {
+      "month": "MAY",
+      "year": "2007",
+      "info": "Electron spin relaxation rates and their applications. G. R. Eaton, S. S. Eaton, V. Kathirvelu, H. Sato 40th Annual International Meeting of the Electron Spin Resonance group of Royal Society of Chemistry, Oxford, England, March 25-27, 2007, Tuse. 11.55."
+    },
+    {
+      "month": "JULY",
+      "year": "2006",
+      "info": "EPR free induction decay coherence observed after a single pulse for samples with resolved multi-line CW spectra V. Kathirvelu, H. Sato, R. W. Quine, G. A. Rinard, S. S. Eaton and G. R. Eaton 48th Rocky Mountain Conference on Analytical Chemistry, July 23-26, 2006, Breckenridge, Colorado, USA, page-54"
+    }
+  ],
+  "coursesConducted": [
+    {
+      "month": "JAN",
+      "year": "2018",
+      "info": "A 10 Day GIAN Course on \"The Principle and Applications of Electron Paramagnetic Resonance Spectroscopy\", (29 Jan 2018 - 9 Feb 2018)."
+    }
+  ]
+}

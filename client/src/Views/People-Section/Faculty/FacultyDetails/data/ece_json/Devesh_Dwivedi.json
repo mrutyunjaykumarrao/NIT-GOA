@@ -1,0 +1,54 @@
+{
+  "faculty_name": "Dr. Devesh Dwivedi",
+  "profile": {
+    "name": "Dr. Devesh Dwivedi",
+    "designation": "Visiting Faculty",
+    "department": "Department of Electronics and Communication Engineering",
+    "imageUrl": "Dr. Devesh Dwivedi.png",
+    "email": null,
+    "researchAreaSummary": [
+      "Memory",
+      "Analog and Mixed Signal",
+      "High Speed Serial Links",
+      "Cores",
+      "Test Chip",
+      "Custom Layout"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Devesh Dwivedi",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Visiting Faculty",
+    "department": "Department of Electronics and Communication Engineering",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": null
+  },
+  "contactInformation": {
+    "address": "Functional Manager, Globalfoundries BANGALORE.",
+    "email": null,
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Memory;",
+    "Analog and Mixed Signal;",
+    "High Speed Serial Links;",
+    "Cores;",
+    "Test Chip;",
+    "Custom Layout;"
+  ],
+  "coursesTaught": {
+    "ug": [],
+    "pg": []
+  },
+  "academicInformation": [],
+  "publications": {},
+  "researchGuidance": [],
+  "fundedProjects": [],
+  "awardsAndHonors": [],
+  "memberships": [],
+  "professionalServices": [],
+  "coursesAttended": [],
+  "coursesConducted": []
+}

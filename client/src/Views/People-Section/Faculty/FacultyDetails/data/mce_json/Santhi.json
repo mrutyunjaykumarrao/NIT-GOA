@@ -1,0 +1,114 @@
+{
+  "faculty_name": "Dr. B. Santhi",
+  "profile": {
+    "name": "Dr. B. Santhi",
+    "designation": "Assistant Professor & Head",
+    "department": "Department of Mechanical Engineering",
+    "imageUrl": "Dr. B. Santhi.png",
+    "email": "santhi@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Design for Assembly",
+      "Ergonomics, Virtual Reality",
+      "Reverse Engineering",
+      "Product Design for Elderly and Kids",
+      "Creative Engineering Design"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. B. Santhi",
+    "gender": "Female",
+    "birthDate": null,
+    "designation": "Assistant Professor & Head",
+    "department": "Department of Mechanical Engineering",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": null
+  },
+  "contactInformation": {
+    "address": "Assistant Professor, Department of Mechanical Engineering, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "santhi@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Design for Assembly",
+    "Ergonomics, Virtual Reality",
+    "Reverse Engineering",
+    "Product Design for Elderly and Kids",
+    "Creative Engineering Design"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Engineering mechanics",
+      "Engineering Drawing",
+      "Elements of Mechanical Engineering",
+      "Workshop Practices",
+      "Materials and metallurgical engineering",
+      "Manufacturing Technology I & II",
+      "machine Drawing",
+      "Power Plant Engineering",
+      "Measurements and Metrology",
+      "Computer Integrated Manufacturing",
+      "Industrial Engineering and Operation research",
+      "Production and Operation Management"
+    ],
+    "pg": []
+  },
+  "academicInformation": [
+    {
+      "degree": "B.E.",
+      "institute": "Govt College of Engineering,Salem",
+      "year": "2001",
+      "subject": "Mechanical Engineering"
+    },
+    {
+      "degree": "M.Tech.",
+      "institute": "The National Institute of Engg.,Mysore",
+      "year": "2005",
+      "subject": "Production Engg. & Systems Technology"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "Indian Institute of Science, Bangalore",
+      "year": "2018",
+      "subject": "Product Design and Manufacturing"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "S Bathrinath, J. Devaganesh, B. Santhi and S. Saravanasankar, “The adverse human health effects due to ammonia, hydrogen sulphide and chlorine in process industry: A Review”, International Journal of Mechanical and Production Engineering Research and Development, Vol. 8, Special Issue 8 AUG 2018",
+      "Santhi, B., Chakrabarti, A., Gurumoorthy, B., and Sen, D, \"Automated identification of distinct events in an assembly process using tracking of body posture\", Int Journal of Concurrent Engineering with Research Application (CERA), sage Publication. DEC 2017"
+    ],
+    "proceedings": [
+      "B. Santhi, Amey Tukaram Gaude, Sonu Maruti Harijan, Harsh Kailas Gaikwad and Aachal Laxmikant Naik, \"Modelling Analysis and application of Biomimicry of fish\", Conference on Future Technologies in Manufacturing, Automation, Design and Energy (ICoFT MADE 2022) held at National Institute of Technology Puducherry DEC 2022",
+      "S. Bathrinath, S. Mohan, K. Koppiahraj, R.K.A. Bhalaji, B. Santhi,\"Analysis of factors affecting sustainable performance in construction sites using fuzzy AHP-WASPAS methods\",Materials Today: Proceedings MAR 2022",
+      "S. Bathrinath, M. Dhanasekar, B. Dhanorvignesh, Z. Kamaldeen, B. Santhi, R.K.A. Bhalaji and K. Koppiahraj, “Modelling sustainability risks in sugar industry using AHP-BWM”, Materials Today: Proceedings SEPT 2021",
+      "B Santhi, Abhishek Prasad, Yashvendra Kumar Sengar, “Motion capture through Kinect Sensor with its application- A short review”, National conference on Futuristic Trends in Materials, Manufacturing, and Mechanical Engineering, 28-29 February 2020, NIT Raipur. FEB 2020",
+      "S. Bathrinath, J. Devaganesh, B. Santhi and S. Saravanasankar, “ The Adverse Human Health Effects Due to Ammonia, Hydrogen Sulphide and Chlorine in Process Industries:A Survey” , International Conference on Automobile, Marine and Mechanical Engineering, Chennai MAY 2018",
+      "Santhi, B., Chakrabarti, A., Gurumoorthy, B., and Sen, D,A Real Time Automatic Method of Assessing Reach Difficulty using Body Tracking Method, ICoRD, Guwahathi JAN 2017",
+      "Santhi, B., Chakrabarti, A., Gurumoorthy, B., and Sen, D., “Identification of distinct events in an assembly by automatically tracking body postures”, 5th Intl. Conf. on Res. into Design (ICoRD’15), Bangalore, India,(Awarded one of the most distinguish paper among 118 papers) JAN 2015",
+      "Santhi, B., Chakrabarti, A., Gurumoorthy, B., and Sen, D., “Assessment of cause of difficulty in assembly tasks”, 5th Intl. Conf. on Res. into Design (ICoRD’15), Bangalore, India JAN 2015",
+      "Santhi, B., Chakrabarti, A., Gurumoorthy, B., and Sen, D., “Towards Automating Ergonomic Assessment of Manual Assembly Processes”, International Ergonomics Conference HWWE, Guwahathi DEC 2014",
+      "Avinash Dawari, Santhi B., Chandana V., Amaresh Chakrabarti, Dibakar Sen, B. Gurumoorthy and Howard Appelman, “Developing a virtual environment for aiding assessment and improvement of assemblability of aerospace structures”, Int. conference on Research into Design JAN 2011",
+      "B. Santhi, Amaresh Chakrabarti and B. Gurumoorthy, “A new approach for assemblability assessment using Time and Postural analysis–A Case Study”, Int. conference on Research into Design JAN 2009"
+    ],
+    "bookChapters": [
+        "Vardhini Rajagopal, Dinesh Kumar Rajendran, B Santhi and Arjun R Jagadish, “Selective laser melting based additive manufacturing: Materials, Properties and defects analysis”, Chapter 4, Book Titled Advances in Additive Manufacturing Processes, Bentham Books, Pg71-79. NOV 2021"
+    ]
+  },
+  "researchGuidance": [],
+  "fundedProjects": [
+    "The project proposal entitled “Biomimicry of fish to rescue people during disasters” submitted for “Student Innovation Grant Program” of ARTPARK (a joint initiative of IISc and AI foundry, SEED-funded by DST and Government of Karnataka) has got selected for funding . B.Tech students batch 2018-2022 of Mr. Amey Gaude, Mr. Harsh Kailas Gaikwad, Mr. Sonu Maruthi Harijan and Ms. Aachal L Naik are involved in doing the project and each are receiving Innovation Grant (Monthly for the period of one year) for the same"
+  ],
+  "awardsAndHonors": [
+    "Won Mahindra All India talent Scholarship during 1995-98 Won Best paper award in ICoRD2015 conference held at IISc, Bangalore",
+    "The project proposal entitled “Biomimicry of fish to rescue people during disasters” submitted by Dr. B Santhi for “Student Innovation Grant Program” of ARTPARK (a joint initiative of IISc and AI foundry, SEED-funded by DST and Government of Karnataka) has got selected for funding . B.Tech students 2018-2022 batch of Mr. Amey Gaude, Mr. Harsh Kailas Gaikwad, Mr. Sonu Maruthi Harijan and Ms. Aachal L Naik are involved in doing the project and each are receiving Innovation Grant (Monthly for the period of one year) for the same.The project won runner up prize as the most innovative project."
+  ],
+  "memberships": [],
+  "professionalServices": [
+    "Delivered webinar on ' Ergonomics and Virtual Reality' in International Webinar on Benefits and Challenges in Industry 4.0 on 29th May 2020",
+    "Organised Two-day National Symposium on Advances in Manufacturing Engineering on 28Feb2020",
+    "Reviewer of Journal of Concurrent Engineering - Research and Applications"
+  ],
+  "coursesAttended": [],
+  "coursesConducted": []
+}

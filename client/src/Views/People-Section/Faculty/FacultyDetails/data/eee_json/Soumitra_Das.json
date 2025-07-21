@@ -1,0 +1,95 @@
+{
+  "faculty_name": "Dr. Soumitra Das",
+  "profile": {
+    "name": "Dr. Soumitra Das",
+    "designation": "Associate Professor",
+    "department": "Department of Electrical and Electronics Engineering",
+    "imageUrl": "Dr. Soumitra Das.png",
+    "email": "sdas@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Power Electronics",
+      "Multilevel Converter",
+      "Pulsewidth Modulation",
+      "Switched Reluctance Motor and Drives",
+      "Renewable Energy Sources"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Soumitra Das",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Associate Professor & Head",
+    "department": "Department of Electrical and Electronics Engineering",
+    "url": "https://scholar.google.co.in/citations?user=aLH6kzgAAAAJ&hl=en",
+    "dateOfJoining": "13/12/2013",
+    "experience": "9 years of Teaching and Research Experience at NIT Goa"
+  },
+  "contactInformation": {
+    "address": "Associate Professor, Dept. of Electrical and Electronics Engineering, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "sdas@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Power Electronics, Multilevel Converter, Pulsewidth Modulation",
+    "Switched Reluctance Motor and Drives, Renewable Energy Sources",
+    "Data Converter"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Electrical Machine-I",
+      "Electric Drives",
+      "Power Electronics",
+      "Advanced Power Electronics"
+    ],
+    "pg": [
+      "Advanced Power Electronics",
+      "Power Electronic Converters & Drives",
+      "Renewable Energy Systems"
+    ]
+  },
+  "academicInformation": [
+    {
+      "degree": "B.E.",
+      "institute": "Bengal Engineering & Science University, Shibpur, WB",
+      "year": "2003",
+      "subject": "Electrical Engineering"
+    },
+    {
+      "degree": "M.E.",
+      "institute": "Bengal Engineering & Science University, Shibpur, WB",
+      "year": "2006",
+      "subject": "Control System"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "Indian Institute of Science, Bangalore",
+      "year": "2013",
+      "subject": "Power Electronics"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "Soumitra Das, Binoj Kumar A. C. and G. Narayanan, “Analytical evaluation of harmonic distortion factor corresponding to generalised advanced bus-clamping pulse width modulation,” IET Power Electron., vol. 7, no. 12, pp. 3072-3082. DEC 2014",
+      "Soumitra Das and G. Narayanan, “Analytical Closed-Form Expressions for Harmonic Distortion Corresponding to Novel Switching Sequences for Neutral-Point-Clamped Inverters,” IEEE Trans. Ind. Electron., vol. 61, no. 9, pp. 4485-4497. SEPT 2014",
+      "Soumitra Das, G. Narayanan and M. Pandey, “Space-Vector-Based Hybrid Pulsewidth Modulation Techniques for a Three-Level Inverter” IEEE Trans. Power Electron., vol. 29, no. 9, pp. 4580-4591. SEPT 2014",
+      "Soumitra Das and G. Narayanan, “Novel Switching Sequences for a Space-Vector-Modulated Three-Level Inverter,” IEEE Trans. Ind. Electron, vol. 59, no. 3, pp. 1477-1487. MAR 2012"
+    ],
+    "proceedings": [
+      "Soumitra Das and G. Narayanan, “Space vector based analysis and comparison of sinusoidal pulsewidth modulation schemes for a three-level inverter,” in proc. of the 5th National Power Electronic Conference, BESUS, West Bengal, India. DEC 2011",
+      "K. S. Gopalakrishanan, Soumitra Das and G. Narayanan, “Analytical Expression for RMS DC Link Capacitor Current in a Three-Level Inverter” in proc. of the Centenary Conference of Electrical Sciences, 2011, IISc, Bangalore. DEC 2011",
+      "Soumitra Das and G. Narayanan, “Novel switching sequences for a space-vector-modulated three-level inverter,” in proc. of the 4th National Power Electronic Conference, IIT Roorkee, Delhi, India. JUN 2010",
+      "Soumitra Das, Susen Bala and Mainak Sengupta,“Design, Performance and Finite Element Analysis of a 1 kW Switched Reluctance Motor for Electric Vehicle” in proc. of the 2nd National Power Electronic Conference, IIT Kharagpur, India. DEC 2005",
+      "Bijoy K. Mukherjee, Mainak Sengupta, Soumitra Das and Aparajita Sengupta “Design, Fabrication, Testing and Finite Element Analysis of a Lab-scale LIM,” in proc. of the IEEE India Conference, Indicon 2004, IIT Kharagpur, India, pp. 586-589. DEC 2004"
+    ],
+    "booksAuthored": [
+      "Mainak Sengupta, Soumitra Das and Aparajita Sengupta, “Elements of Design, Fabrication and Analysis for a light SR Motor,” VDM Verlag Dr. Mullar. 2010. ISBN: 978-3-639-28685-4 2010"
+    ]
+  },
+  "researchGuidance": [],
+  "fundedProjects": [],
+  "awardsAndHonors": [],
+  "memberships": [],
+  "professionalServices": [],
+  "coursesAttended": [],
+  "coursesConducted": []
+}

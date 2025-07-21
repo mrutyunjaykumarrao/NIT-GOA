@@ -1,0 +1,270 @@
+{
+  "faculty_name": "Dr. Venkatanareshbabu Kuppili",
+  "profile": {
+    "name": "Dr. Venkatanareshbabu Kuppili",
+    "designation": "Assistant Professor",
+    "department": "Department of Computer Science and Engineering",
+    "imageUrl": "Dr. Venkatanareshbabu Kuppili.png",
+    "email": "venkatanaresh@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Big Data Analytics",
+      "Artificial Intelligence",
+      "Deep Learning",
+      "Soft Computing"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Venkatanareshbabu Kuppili",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Assistant Professor",
+    "department": "Department of Computer Science and Engineering",
+    "url": "https://scholar.google.com/citations?user=aIm3CMUAAAAJ&hl=en",
+    "dateOfJoining": null,
+    "experience": null
+  },
+  "contactInformation": {
+    "address": "Mandala street, OPP: Community Hall, Door no - 11-9-1/1, Srikakulam-532001",
+    "city": null,
+    "state": "ANDHRA PRADESH",
+    "country": "INDIA",
+    "email": "venkatanaresh@nitgoa.ac.in",
+    "phoneMobile": "09049436708"
+  },
+  "researchAreas": [
+    "Big Data Analytics",
+    "Artificial Intelligence",
+    "Deep Learning",
+    "Soft Computing"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "CS100: Computer programming and Problem Solving",
+      "CS522: Artificial Intelligence",
+      "CS350: Compiler Design",
+      "CS301: Database Systems",
+      "CS305: Database Systems Laboratory",
+      "CS512: Soft Computing",
+      "CS534: Big Data Analysis",
+      "CS352: Software Engineering",
+      "CS201: Data Structures"
+    ],
+    "pg": [
+      "CS810: Big Data Analytics",
+      "CS812: Artificial Neural Networks",
+      "CS602: Mathematical Foundation of Computer Science",
+      "CS808: Soft Computing",
+      "CS823: Linear Algebra",
+      "CS600: Advanced Algorithms and Analysis"
+    ]
+  },
+  "academicInformation": [
+    {
+      "degree": "M.Tech.",
+      "institute": "Indian Institute of Technology Delhi",
+      "year": "2008",
+      "subject": "Digital Image Processing"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "Indian Institute of Technology Delhi",
+      "year": "2014",
+      "subject": "Machine Learning"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "Naik, Akshata K., and Venkatanareshbabu Kuppili. \"Dynamic relevance and interdependent feature selection for continuous data.\" Expert Systems with Applications 191 (2022): 116302. (Impact Factor 8.665) 2022",
+      "\"Lung Nodule Classification on Computed Tomography Images Using Fractalnet\". Wireless Personal Communications, pp.1-21. 2021",
+      "\"Enhanced Clustering and Intelligent Mobile Sink Path Construction for an Efficient Data Gathering in Wireless Sensor Networks\". Arabian Journal for Science and Engineering, pp.1-16. 2021",
+      "\"Energy-Efficient Load Balancing Strategy for Wireless Sensor Networks using Quasi-oppositional based Jaya Optimization\". Wireless Personal Communications, 118(4), pp.2319-2343. 2021",
+      "\"An Efficient Deep Learning Paradigm for Deceit Identification Test on EEG Signals\". ACM Transactions on Management Information Systems (TMIS), 12(3), pp.1-20. 2021",
+      "\"Lie detection using fuzzy ensemble approach with novel defuzzification method for classification of EEG signals\". IEEE Transactions on Instrumentation and Measurement. 2021",
+      "Effects of meteorological factors on the prediction of malaria incidences: AI-based approaches. Frontiers in Bioscience (Landmark Edition), 25, 1202-1229. 2020",
+      "Multilevel Automated Security System for Prevention of Accidents at Unmanned Railway Level Crossings. Wireless Personal Communications, 111(3), 1707-1721. 2020",
+      "\"An automatic estimation of the ridge parameter for extreme learning machine.\" Chaos: An Interdisciplinary Journal of Nonlinear Science 30, no. 1 (2020): 013106. 2020",
+      "\"Fractional Tikhonov regularization to improve the performance of extreme learning machines.\" Physica A: Statistical Mechanics and its Applications 551: 124034. 2020",
+      "\"A new hybrid stability measure for feature selection.\" Applied Intelligence 50, no. 10 : 3471-3486. 2020",
+      "\"Parameter-free fuzzy histogram equalisation with illumination preserving characteristics dedicated for contrast enhancement of magnetic resonance images\". Applied Soft Computing, 93, p.106364. 2020",
+      "\"Analysis of high dimensional brain data using prototype based fuzzy clustering\". Clinical Epidemiology and Global Health, 8(4), pp.1110-1118. 2020",
+      "\"Evolutionary extreme learning machine with novel activation function for credit scoring\". Engineering Applications of Artificial Intelligence, 96, p.103980. 2020",
+      "\"A Hybrid Approach for Extracting EMG signals by Filtering EEG Data for IoT Applications for Immobile Persons\". Wireless Personal Communications, 114(4), pp.3081-3101. 2020",
+      "\"Binary BAT algorithm and RBFN based hybrid credit scoring model\". Multimedia Tools and Applications, 79(43), pp.31889-31912. 2020",
+      "The present and future of deep learning in radiology. European journal of radiology.Elsevier. 2019",
+      "EIQ: EEG based IQ test using Wavelet Packet Transform and Hierarchical Extreme Learning Machine, Journal of Neuroscience Methods, Elsevier 2019",
+      "Texture Image Classification using Deep Neural Network and Binary Dragon Fly Optimization with a Novel Fitness Function, Wireless Personal Communications, Springer 2019",
+      "M-Curves path planning model for mobile anchor node and localization of sensor nodes using Dolphin Swarm Algorithm. Wireless Networks, pp.1-15, Springer 2019",
+      "Efficient feature selection using one-pass generalised classifier neural network and binary bat algorithm with a novel fitness function, Soft Computing 2019",
+      "\"A New Backpropagation Neural Network Classification Model for Prediction of Incidence of Malaria\"Frontiers in Bioscience 2019",
+      "\"Analysis of Controversies in the Formulation and Evaluation of Restoration Algorithms for MR Images\"Expert Systems with Applications 2019",
+      "\"Energy efficient load balancing approach for avoiding energy hole problem in WSN using Grey Wolf Optimizer with novel fitness function\" Applied Soft Computing 2019",
+      "\"Bat algorithm-based weighted Laplacian probabilistic neural network\". Neural Computing and Applications 2019",
+      "“Credit Score Classification using Spiking Extreme Learning Machine” Computational Intelligence, Wiley 2019",
+      "Estimation of the Smoothing Parameter in Probabilistic Neural Network Using Evolutionary Algorithms. Arabian Journal for Science and Engineering 2019",
+      "\"Lesion Analysis towards Melanoma Detection using Soft Computing Techniques\" Clinical Epidemiology and Global Health, Elsevier 2019",
+      "\"Cancer Data Classification using Binary Bat Optimization and Extreme Learning Machine with a Novel Fitness Function\"Medical & Biological Engineering & Computing, Springer 2019",
+      "ALDL: a novel method for label distribution learning. Sadhana, 44(3), p.53. Springer 2019",
+      "An efficient EEG based deceit identification test using wavelet packet transform and linear discriminant analysis. 314, pp.31-40. Journal of neuroscience methods, Elsevier 2019",
+      "Iterative Minimal Residual Method Provides Optimal Regularization Parameter for Extreme Learning Machines, Results in Physics.Elsevier 2019",
+      "“A Novel Hybrid Credit Scoring Model based on Ensemble Feature Selection and Multi-layer Ensemble Classification” Computational Intelligence, Wiley(Accepted) 2019",
+      "Brain-Computer Interface for wheelchair control operations: An approach based on Fast Fourier Transform and On-Line Sequential Extreme Learning Machine. Clinical Epidemiology and Global Health, 7(3), pp.274-278. 2019",
+      "Type 2 diabetes data classification using stacked autoencoders in deep neural networks.Clinical Epidemiology and Global Health, Elsevier 2018",
+      "\"An efficient Concealed Information Test: EEG feature extraction and ensemble classification for lie identification.\" Machine Vision and Applications, Springer, pp. 1-20 2018",
+      "\"A Mechanics-Based Similarity Measure for Text Classification in Machine Learning Paradigm\". IEEE Transactions on Emerging Topics in Computational Intelligence, Vol. 99, pp.1-21, 2018 2018",
+      ". \"Novel elegant fuzzy genetic algorithms in classification problems.\" Soft Computing : 1-21. 2018",
+      "\"State-of-the-Art Review on Deep Learning in Medical Imaging\", Frontiers in Bioscience 2018",
+      "PLDL: A Novel Method for Label Distribution Learning. Status: Accepted. The International Arab Journal of Information Technology 2018",
+      "“Symtosis: Liver Ultrasound Tissue Characterization and Risk Stratification in Optimized Deep Learning Paradigm”. Elsevier, Computer Methods and Programs in Biomedicine: 155: 165-177 2018",
+      "Deep learning strategy for accurate carotid intima-media thickness measurement: an ultrasound study on Japanese diabetic cohort. Computers in biology and medicine, 98, pp.100-117. 2018",
+      "\"Prediction of cardiac arrest recurrence using ensemble classifiers\", Springer, Sadhana JAN 2017",
+      "“SM-RuleMiner: Spider monkey based rule miner using novel fitness function for diabetes classification”. Computers in Biology and Medicine, 81, pp.79-92. 2017",
+      "“Extreme Learning Machine Framework for Risk Stratification of Fatty Liver Disease using Ultrasound Tissue Characterization”, Journal of Medical Systems, Springer. 2017",
+      "\"RST-BatMiner: A Fuzzy Rule Miner Integrating Rough Set Feature Selection and Bat Optimization for Detection of Diabetes Disease\", Applied Soft Computing Journal, Elsevier. 2017",
+      "\"Automatic disease diagnosis using optimised weightless neural networks for low-power wearable devices.\" IET - Healthcare Technology Letters. 2017",
+      "\"An Efficient Load Balancing of Gateways using Improved Shuffled Frog Leaping Algorithm and Novel Fitness Function for WSNs\", IEEE Sensors Journal 2017",
+      "\" An Efficient Ensemble Framework with BPSOGA-based Fearure Selection: A Casestudy on Credit Scoring Datasets \", Arabian Journal of Science and Engineering, Springer 2017",
+      "\"Dissipative analysis for network-based singular systems with non-fragile controller and event-triggered sampling scheme.\" no. 12 (2017): 4739-4761.Journal of The Franklin Institute, Elsevier 2017",
+      "\"Diabetes Classification using Radial Basis Function Network by Combining Cluster Validity Index and BAT Optimization with Novel Fitness Function”, Taylor &Francis, IJCIS, Volume 10, Issue 1, Pages 247-265 2016",
+      "Synchronization and anti-synchronization of chaotic systems with application to DC-DC boost converter, IEEE, IET Generation, Transmission & Distribution 2016",
+      "New Algebraic Activation Function for Multilayered Feed forward Neural Networks, Taylor &Francis, IETE Journal of Research, Pages 1-8 2016",
+      "\"Classification of gene expression data using Spiking Wavelet Radial Basis Neural Network.\" Elsevier, Expert Systems with Applications, Volume 41, Issue 4, Pages 1326–1330 2014",
+      "\"An Optimized and Efficient Radial Basis Neural Network using Cluster Validity Index for Diabetes Classification\", The International Arab Journal of Information Technology, IAJIT, 19(5)."
+    ],
+    "proceedings": [
+      "\"Prospect of Stein's Unbiased Risk Estimate as Objective Function for Parameter Optimization in Image Denoising Algorithms–A Case Study on Gaussian Smoothing Kernel\". In 2019 International Conference on Data Science and Engineering (ICDSE) (pp. 149-153). IEEE. SEPT 2019",
+      "\"Dependency of Optimum Value of Regularization Parameter in Total Variation Filter on Noise Statistics-A MR Phantom Study\". In 2019 10th International Conference on Computing, Communication and Networking Technologies (ICCCNT) (pp. 1-4). IEEE. JULY 2019",
+      "\"Dynamic Cluster Formation Mechanism in Wireless Sensor Networks Using Fuzzy Logic\". In 2019 International Conference on Applied Machine Learning (ICAML) (pp. 291-295). IEEE. MAY 2019",
+      "\"Binary dragonfly algorithm and Fisher score based hybrid feature selection adopting a novel fitness function applied to microarray data\". In 2019 International Conference on Applied Machine Learning (ICAML) (pp. 40-43). IEEE. MAY 2019",
+      "\"Generalized Compensative Intuitionistic Fuzzy Information with Choquet Integrals\". In 2019 10th International Conference on Computing, Communication and Networking Technologies (ICCCNT) (pp. 1-7). IEEE. 2019",
+      "\"Data-oriented neural time series with long short-term memories (LSTM) for malaria incidence prediction in Goa, India\". In 2019 10th International Conference on Computing, Communication and Networking Technologies (ICCCNT) (pp. 1-6). IEEE. 2019",
+      "Survey on Clustering Approaches” has been accepted at ICICCT – 2018, Ranganathan Engineering College, Coimbatore 2018",
+      "Feature Selection using Binary PSOGSA and Radial Basis Neural Network with a Novel Fitness function” (Accepted), 9th ICCCNT, IISC Bangalore 2018",
+      "Optimized Laplacian Generalized Classifier Neural Network” (Accepted), ICCCNT, IISC Bangalore 2018",
+      "Deceit Identification Test on EEG Data using Deep Belief Network” (Accepted), ICCCNT, IISC Bangalore 2018",
+      "\"Novel fitness function for 3D image reconstruction using bat algorithm based autoencoder\" In Proceedings of the 23rd International ACM Conference on 3D Web Technology (p. 28). ACM.Poznan, Poland — June 20 - 22, 2018 2018",
+      "Subject based Deceit Identification using Empirical Mode Decomposition. Procedia Computer Science, 132, pp.32-39. Part of special issue, International Conference on Computational Intelligence and Data Science 2018",
+      "\"Credit Scoring Model based on Weighted Voting and Cluster based Feature Selection.\" Procedia Computer Science 132 (2018): 22-31. 2018",
+      "“Energy Efficient Design of Wireless Sensor Network: Clustering” ICRTES-2018 (Accepted) 2018",
+      "\"Intelli-DRM: An Intelligent Computational Model for Forecasting Severity of Diabetes Mellitus\" in 8th International Conference on Computing Communication and Networking Technologies (ICCCNT), IEEE, IIT Delhi, 2017 2017",
+      "\"PSO-RBFNN: A PSO-based Clustering Approach for RBFNN Design to Classify Disease Data\", in 26th International Conference on Artificial Neural Networks (ICANN), LNCS, Italy 2017",
+      "Load balancing in Wireless Sensor Networks by Optimal Placement of Base Stations using kd-Tree”, 2016 Annual International Conference on Innovative Technologies and Advanced Computing (ICIAC-16), London 2016",
+      "\"Variance based product recommendation using clustering and sentiment analysis.\" In 2015 IEEE Workshop on Computational Intelligence: Theories, Applications and Future Directions (WCI), IIT Kanpur, pp. 1-5. IEEE, 2015. DEC 2015",
+      "\"Online Signature Verification Using Single Spiking Neuron Model.\" Emerging Research in Computing, Information, Communication and Applications. Springer India, 2016. 227-236. MAY 2015",
+      "“New Spiking Neuron Model”, IEEE proceedings of International Joint Conference on Neural Networks, Dallas, U.S.A. 2013",
+      "“A Single Neuron model for pattern classification” Neural Information Processing, Lecture Notes in Computer Science, Volume 7666, pp- 619-625. 2012",
+      "”An Improved architecture for probabilistic neural network” IEEE proceedings of International Joint Conference on Neural Networks, .California, USA, pp-919-924 2011",
+      "“Heterogeneous Node Split Measure for Decision Tree Construction” IEEE proceedings of International Conference on Systems, Man, and Cybernetics, Anchorage, UK, pp-872-877. 2011"
+    ]
+  },
+  "researchGuidance": [
+    "Supervisor for Mr. Mainak Biswas (PhD Awarded)",
+    "Co-Supervisor for Ms. Shraddha Naik(PhD Awarded)",
+    "Supervisor for Mr. Mahesh Chowdary (PhD Awarded )",
+    "Supervisor for Ms. Akshata Naik (PhD Awarded)",
+    "Co-Supervisor for Mr. Jagat Chaitanya P(PhD Ongoing)",
+    "Supervisor for Ms. Silika Kole (PhD Ongoing)",
+    "Supervisor for Ms. Manjusha (PhD Ongoing)",
+    "Supervisor for Ms. Manisha Dessai (PhD Ongoing)"
+  ],
+  "fundedProjects": [
+    "\"Development of Efficient Algorithms for Predicting the Incidence of Malaria Cases in India using Spiking Neuron Models\" DST SERB Project. Role: Principle investigator.(2017 to 2020)",
+    "\"Enhancing Information Technology Education\" MHRD under PMMMNMTT Role: Principle investigator(2015 to 2018)",
+    "\"Indo-Norwegian Collaboration in \"Intelligent Offshore Mechatronics Systems (INMOST)\" funded by Research Council's INTPART program(Budget 3.5 Crores) Role: Co-Principle investigator(2020-2023)",
+    "\"Deep-Learning Assisted Tomographic Ground Penetrating Radar for the Detection of Electrical and Morphological features of Buried Objects\" (SERB, CRG) Role: Co-Principle investigator(2021-2024)"
+  ],
+  "awardsAndHonors": [
+    "All India GATE Rank 64",
+    "Early Career Research Award, DST",
+    "Visiting Scientist at Global Medical Technologies, California",
+    "Elected as IEEE Senior Member (ID-94855746) in March 2019",
+    "Outstanding reviewer for Journal of Renewable Energy, Elsevier",
+    "Outstanding reviewer for Journal of Computer Networks, Elsevier",
+    "All India ISI Kolkata M.Tech(Computer Science) Entrance Rank 140",
+    "Andhra University Post Graduation Rank 6",
+    "Qualified All India National Board of Higher Mathematics"
+  ],
+  "memberships": [
+    "IEEE Member",
+    "Editorial Board Member for Systems and Soft Computing Journal, Elsevier"
+  ],
+  "professionalServices": [
+    "Associate Dean (Planning and Development)",
+    "Warden(Boys Hostel)",
+    "Verification officer at MTech Admission (CCMT 2022)",
+    "Nodal officer for Vidyanjali Higher Education",
+    "Nodal officer for Spoken Tutorial by IIT Bombay",
+    "Nodal officer for PMMMNMTT",
+    "In-charge for M. Tech Laboratory",
+    "Member in Unnat Bharat Abhiyan.",
+    "GIAN representative from Computer Science and Engineering Department.",
+    "Remedial classes coordinator",
+    "Member in Savyas, 2020",
+    "Member in Savyas 2019",
+    "Member in 5th convocation.",
+    "Convener for 8th Convocation Dress committee"
+  ],
+  "coursesAttended": [
+    {
+      "month": "MAY",
+      "year": "2015",
+      "info": "Attended a ISTE STTP ON INTRODUCTION TO DESIGN OF ALGORITHMS, National Mission on Education through ICT (MHRD, Govt. of India)(initiative from IIT Kgp) at Goa Engineering College."
+    },
+    {
+      "month": "APRIL",
+      "year": "2015",
+      "info": "Keynote speaker and Session Chair for \"The Third National Conference on Modern Trends-2015\" Department of computer science and engineering, Goa college of Engineering, Goa."
+    },
+    {
+      "month": "APRIL",
+      "year": "2015",
+      "info": "Delivered a keynote speech on \"Big data analytics\" at The Third National Conference on Modern Trends-2015, Department of computer science and engineering, Goa college of Engineering, Goa."
+    },
+    {
+      "month": "FEB",
+      "year": "2015",
+      "info": "SIGCSE-Special Interest Group on Computer Science Education at Bits Pilani Goa Campus"
+    },
+    {
+      "month": "FEB",
+      "year": "2015",
+      "info": "Attended a workshop on “ATOMIC ENERGY: ARCHITEC FUTURE” conducted by NIT Goa in association with Bhabha Atomic Research Centre (BARC), Mumbai"
+    },
+    {
+      "month": "JAN",
+      "year": "2015",
+      "info": "FICCI India Innovation Growth Programme"
+    },
+    {
+      "month": "JULY",
+      "year": "2014",
+      "info": "Attended a workshop on Big Data Analytics at IIT Kharagpur from 30th June to 11th July."
+    }
+  ],
+  "coursesConducted": [
+    {
+      "month": "DEC",
+      "year": "2017",
+      "info": "Third workshop on \"Enhancing Information Technology Education\""
+    },
+    {
+      "month": "JULY",
+      "year": "2016",
+      "info": "Second workshop on \"Enhancing Information Technology Education\""
+    },
+    {
+      "month": "JAN",
+      "year": "2016",
+      "info": "First Conference cum workshop on \"Enhancing Information Technology Education\""
+    },
+    {
+      "month": "AUG",
+      "year": "2015",
+      "info": "STTP on \"Recent Trends in Artificial Intelligence for Big Data\""
+    },
+    {
+      "month": "JAN",
+      "year": "2015",
+      "info": "workshop on Cyber Security with initiation from Asian School of Cyber Laws"
+    }
+  ]
+}

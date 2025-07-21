@@ -1,0 +1,130 @@
+{
+  "faculty_name": "Dr. Pragati Patel",
+  "profile": {
+    "name": "Dr. Pragati Patel",
+    "designation": "Assistant Professor",
+    "department": "Department of Electronics and Communication Engineering",
+    "imageUrl": "Dr. Pragati Patel.png",
+    "email": "pragati@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Dielectric Resonator Antennas",
+      "RF and Microwave Engineering",
+      "Wireless Power Transmission"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Pragati Patel",
+    "gender": "Female",
+    "birthDate": null,
+    "designation": "Assistant Professor",
+    "department": "Department of Electronics and Communication Engineering",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": "7 Years"
+  },
+  "contactInformation": {
+    "address": "Assistant Professor, Department of ECE, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "pragati@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Dielectric Resonator Antennas",
+    "RF and Microwave Engineering",
+    "Wireless Power Transmission"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Communication Engineering",
+      "Electromagnetic Theory",
+      "Principles of Data Communication",
+      "Control Systems",
+      "Antennas and Propagation",
+      "Computer Network",
+      "Ad-hoc and Sensor Network"
+    ],
+    "pg": []
+  },
+  "academicInformation": [
+    {
+      "degree": "B.Tech.",
+      "institute": "Dr. K. N. Modi Institute of Engineering and Technology Modinagar",
+      "year": "2008",
+      "subject": "ECE"
+    },
+    {
+      "degree": "M.Tech",
+      "institute": "Ambedkar Institute of Technology Delhi",
+      "year": "2011",
+      "subject": "RF and Microwave Engineering"
+    },
+    {
+      "degree": "P.Hd.",
+      "institute": "Indian Institute of Technology Bombay",
+      "year": "2016",
+      "subject": "Design of wideband and compact rectangular dielectric resonator antennas"
+    }
+  ],
+  "publications": {
+    "journal": [
+        "P. Patel, B. Mukherjee, J. Mukherjee, “Wideband Circularly Polarized Rectangular Dielectric Resonator Antennas using Square Shaped Slots”, IEEE Antennas and Wireless Propagation Letters, Vol. 15, pp. 1309-1312, April 2016.",
+        "P. Patel, B. Mukherjee, J. Mukherjee, “A Compact Wideband Rectangular Dielectric Resonator Antenna using Perforations and Edge Grounding”, IEEE Antennas and Wireless Propagation Letters, Vol. 14, pp. 490-493, 2015.",
+        "B. Mukherjee, P. Patel, J. Mukherjee, \"A Novel Hemipsherical Dielectric Resonator Antenna with Complementary Split Ring Aperture for Wideband and Low Cross Polar Applications\", IEEE Antennas and Propagation Magazine,Vol. 57, No. 1, Feb 2015.",
+        "B. Mukherjee, P. Patel, J. Mukherjee, “Hemispherical Dielectric Resonator Antenna based on Apollonian Gasket of circles - A Fractal approach”, IEEE Transactions on Antennas and Propagation, Vol. 62, No.1, January 2014, pp. 40-47.",
+        "B. Mukherjee, P. Patel, J. Mukherjee, “A Novel Cup-shaped Inverted Hemispherical Dielectric Resonator Antenna for Wideband Applications”, IEEE Antennas and Wireless Propagation Letters, Vol. 12, pp.-1240-1243, 2013.",
+        "Biswajeet Mukherjee, Pragati Patel, G. Shrikanth Reddy, Jayanta Mukherjee, “A Novel half Hemispherical Dielectric resonator Antenna with array of slots for wideband applications”, Progress in Electromagnetic Research C (PIER C), Vol. 36, pp. - 207-221, 2013.",
+        "Biswajeet Mukherjee, Pragati Patel, Jayanta Mukherjee, \"A review of the recent advances in dielectric resonator antennas\" Journal of Electromagnetic Waves and Applications, vol. 34, issue 9, pp 1095-1158, June 2020.",
+        "Abhijeet Gaonkar, Pragati Patel, \"Compact half H-shaped dielectric resonator antenna for wideband applications\", Microwave and Optical Technology Letters, vol.64, pp. 1847-1857, 2022",
+        "Abhijeet Gaonkar, Pragati Patel, “Novel Compact and Wideband Tuning Fork Shaped DRA”, AEU-International Journal of Electronics and Communications, vol. 151, pp. 62-68, 2022.",
+        "Abhijeet Gaonkar, Ayyappan M., Pragati Patel, “Novel low-profile stacked edge grounded rectangular dielectric resonator antenna with compact size for UWB applications”, Microwave and Optical Technology Letters, vol. 65, no. 7, pp. 2011-2020, 2023.",
+        "M. Ayyappan and P. Patel, \"On Design of a Triple Elliptical Super Wideband Antenna for 5G Applications,\" in IEEE Access, vol. 10, pp. 76031-76043, 2022, doi: 10.1109/ACCESS.2022.3185241",
+        "Ayyappan Madhusudhanan Nair, Abhijeet Gaonkar, and Pragati Patel. \"A Novel Low Profile Turbinella Shaped Antenna for 5G Millimeter Wave Applications.\" Progress In Electromagnetics Research C 132 (2023): 129-144"
+    ],
+    "proceedings": [
+        "P. Patel, B. Mukherjee, G. Shrikanth Reddy, J. Mukherjee, “New Wideband Quadrature Rectangular Dielectric Resonator Antenna”, IEEE European Microwave Week 2015 (EuMW 2015), Paris, France, 6-11 September 2015.",
+        "G. Shrikanth Reddy, K. Chhabilwad, S. Kharche, P. Patel, J. Mukherjee, “Dual Orthogonal CPW Feed Single Element UWB Antenna with Polarization Diversity”, IEEE European Microwave Week 2015 (EuMW 2015), Paris, France, 6-11 September 2015.",
+        "P. Patel, B. Mukherjee, J. Mukherjee, “Compact Wideband Perforated Rectangular Dielectric Resonator Antenna”, 2015 IEEE International Symposium on Antennas and Propagation and North American Radio Science Meeting (APS/URSI), Vancouver, Canada, 19-25 July 2015.",
+        "P. Patel, B. Mukherjee, J. Mukherjee, “Novel S Shaped Dielectric Resonator Antenna for Wireless Communication”, IEEE URSI Atlantic Radio Science Conference (URSI AT-RASC 2015), Gran Canaria, Spain, 18-22 May 2015.",
+        "B. Mukherjee, P. Patel, J. Mukherjee, “A Novel Hemispherical Dielectric Resonator Antenna with Swastika Shaped DGS for High Gain Applications”, IEEE URSI Atlantic Radio Science Conference (URSI AT-RASC 2015), Gran Canaria, Spain, 18-22 May 2015",
+        "P. Patel, B. Mukherjee, J. Mukherjee, “Rectangular Dielectric Resonator Antenna for Wideband and High Gain Applications”, 26th IEEE Asia Pacific Microwave Conference (APMC), Sendai, Japan, 2014.",
+        "B. Mukherjee, P. Patel, J. Mukherjee, “Hemispherical Dielectric Resonator Antenna loaded with a novel Sierpinski Carpet Fractal based Photonic Band Gap Structure for wireless applications”, 26th IEEE Asia Pacific Microwave Conference (APMC), Sendai, Japan, 2014.",
+        "B. Mukherjee, P. Patel, J. Mukherjee, \"Hemispherical Dielectric Resonator Antenna Embedded in a Novel Sierpinski Carpet Fractal Based Photonic Band Gap Structure for Wideband Systems\", 3rd IEEE Asia Pacific Conference on Antennas and Propagation (APCAP), Harbin, China, 2014.",
+        "B. Mukherjee, P. Patel, J. Mukherjee, \"Hemispherical Dielectric Resonator Antenna Loaded with a Photonic Band Gap Structure for Wideband and High Gain Applications\", 31st URSI Genreral Assembly and Scientific Symposium (URSI-GASS), Beijing, China, 2014.",
+        "P. Patel, B. Mukherjee, J. Mukherjee, “A Novel pierced rectangular dielectric resonator antenna for wideband applications”, IEEE International Conference on Electronics, Computing and Communication Technologies (CONECCT), IISc Bangalore, pp. 1 - 5, January 6 - 7, 2014.",
+        "P. Patel, B. Mukherjee, J. Mukherjee, “Wideband Rectangular Dielectric Resonator Antenna with novel array of square shaped slots”, 25th IEEE Asia Pacific Microwave Conference, Seoul, Korea, pp. - 224 - 226, November 5 - 8, 2013.",
+        "B. Mukherjee, P. Patel, J. Mukherjee, “A Novel Cheeseholes type Hemispherical Dielectric Resonator Antenna for wireless applications”, Proceedings of 43rd IEEE European Microwave Conference (EuMC), Nuremberg, Germany, pp. - 1711 - 1714, 2013.",
+        "Pragati Patel, S. Vinoth Kumar, Sanjeev K Mishra, Asok De, “Rectenna Design for ISM Band (IEEE 802.11b/g) Wireless Power Transmission”, International Conference on Microwave, Antenna and Remote Sensing (ICMARS 2011), Jodhpur, India, 7th -10th Dec 2011.",
+        "New Wideband T-Shaped Perforated Dielectric Resonator Antenna, 17th IEEE Mediterranean Microwave Symposium, Marseille, France, 28-30 November 2017.",
+        "Pragati Patel, Abhijeet Gaonkar, Ayyappan M., \" Novel Wideband Bow Tie shaped Hemispherical Dielectric Resonator Antenna\", IEEE 2022 National Conference on Communications (NCC), pp. 217-220, 2022.",
+        "Abhijeet Gaonkar, Pragati Patel, Ayyappan M., \" Fractal based Rectangular DRA for Multi-band Applications \", IEEE 2022 National Conference on Communications (NCC), pp. 212-216, 2022.",
+        "Abhijeet Gaonkar, Pragati Patel, “Compact and Wideband Circularly Polarized Quadrature Rectangular Dielectric Resonator Antenna \", IEEE 2021 National Conference on Communications (NCC), pp. 1-5, 2021.",
+        "Abhijeet C Gaonkar, Pragati Patel, “Wideband H-shaped dielectric resonator antenna” 2019 IEEE International Conference on Advanced Networks and Telecommunications Systems (ANTS), pp. 1-4, 2019.",
+        "M. Ayyappan and P. Patel, \"A Compact CP Star-Shaped Rectenna for WLAN,\" 2020 IEEE 17th India Council International Conference (INDICON), 2020, pp. 1-6.",
+        "A M. Nair and P. Patel, \"Minkowski Fractal Parasitic Slot Antenna for Wideband Applications,\" 2020 URSI Regional Conference on Radio Science (URSI-RCRS), 2020, pp. 1-4, doi: 10.23919/URSIRCRS49211.2020.9113614"
+    ]
+  },
+  "researchGuidance": [
+    "Ayyappan (Ongoing)",
+    "Dr. Abhijeet C Gaonkar"
+  ],
+  "fundedProjects": [
+    "Early Career Research Award of SERB-DST for design and development of compact and wideband dielectric resonator antennas (ECR/2017/003341) from 2018-2021"
+  ],
+  "awardsAndHonors": [
+    "Early Career Research Award of SERB-DST (Duration 2018-2021)",
+    "IEEE Senior Member since 2020",
+    "Young Scientist Award at URSI AT-RASC 2015",
+    "ITS support of DST for attending IEEE APS/URSI 2015"
+  ],
+  "memberships": [
+    "IEEE Senior Member"
+  ],
+  "professionalServices": [],
+  "coursesAttended": [],
+  "coursesConducted": [
+    {
+      "month": "MARCH",
+      "year": "2018",
+      "info": "GIAN course on Emerging Antennas for Future Communications Systems: Theory, Challenges and Physical Implementation (5-9 March 2018)"
+    }
+  ]
+}

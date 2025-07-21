@@ -1,0 +1,85 @@
+{
+  "faculty_name": "Dr. Chandelkar K K",
+  "profile": {
+    "name": "Dr. Chandelkar K K",
+    "designation": "Faculty on Contract",
+    "department": "Department of Computer Science and Engineering",
+    "imageUrl": "kashinath.jpg",
+    "email": "kashinath@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Data Mining & Warehousing",
+      "cloud computing",
+      "Information retrieval",
+      "Cyber security",
+      "Digital Forensics",
+      "Content based Information Retrieval"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Chandelkar K K",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Faculty on Contract",
+    "department": "Department of Computer Science and Engineering",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": "8 Years of Teaching Experience and 5 years of Research Experience"
+  },
+  "contactInformation": {
+    "address": "Department of CSE, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "kashinath@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Data Mining & Warehousing, cloud computing, Information retrieval, Cyber security, Digital Forensics, Content based Information Retrieval"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Fundamentals in computer programming with C",
+      "Fundamentals in computer programming with C Lab",
+      "Object Oriented Programming with C++",
+      "Digital Logic Design",
+      "Database Management System",
+      "Basics of Computer & Biometrics",
+      "Information Security Audit and Compliance",
+      "Vulnerability Assessment and Penetration Testing (Spl. Cyber Forensics)",
+      "Incident Response and Digital Forensics (Spl. Cyber Forensics)"
+    ],
+    "pg": [
+      "Essentials of Cyber Security and Cyber Warfare",
+      "Cyber Security Audit and Compliance",
+      "Incident Response and Digital Forensics",
+      "Computer Forensics",
+      "Incident Response Management",
+      "Incident Response and audit compliances Laboratory",
+      "Relational database management system"
+    ]
+  },
+  "academicInformation": [
+    {
+      "degree": "Ph.D.",
+      "institute": "BITS Mesra, Ranchi",
+      "year": null,
+      "subject": null
+    }
+  ],
+  "publications": {
+    "journal": [
+      "Raino, Rinkey, Neelam Kumari, Kashinath Chandelkar, Kanchan Chetiwal. (2023). Role of Artificial Intelligence in Psychological and Mental Well Being: A Quantitative Investigation. Journal for ReAttach Therapy and Developmental Diversities, 6(9s(2), 149–156.",
+      "Srinivasa Rao Gundu, Panem Charanarur, Kashinath Chandelkar, Debabrata Samanta, Ramesh Chandra Poonia, and Partha Chakraborty (2022) “Sixth-Generation (6G) Mobile Cloud Security and Privacy Risks for AI System Using High-Performance Computing Implementation” SCI Publication, Wireless Communications and Mobile Computing Volume 2022, Article ID 4397610, 14 pages",
+      "Kashinath Chandelkar and Dr Piyush Gupta. “An India towards Global Ranking standards: A move towards data Curation” International Journal of Innovative Technology and Exploring Engineering (IJITEE) , Scopus Indexed Journal, Vol. 9, Issue.3, PP. 504-509, Jan. 2020",
+      "Kashinath Chandelkar, “Prototyping Algorithm for performance Enhancement for CBIR using nvidia Cuda 7.5” International Journal of Computer Science & Engineering (IJCSE), Vol. 5, Issue.3, PP.37-43, 2016.",
+      "Kashinath Chandelkar and Dr. Piyush Gupta, “Innovative Information Retrieval framework on dedicated cloud using MapReduce & Hummingbird primitives” International Journal of Scientific and Engineering Research (IJSER), Vol. 5, Issue 9, PP. 668-671, 2014.",
+      "Kashinath Chandelkar and Dr. Piyush Gupta., “Query Processing and Optimization in the Distributed Architecture using NoSql: a Banking System” International Journal of Advanced Computer Engineering and Communication Technology (IJACECT) , Vol.3, Issue.4, PP.25-28, 2014.",
+      "Kashinath Chandelkar and Dr. Piyush Gupta, “Analyzing high Performance cloud Computing: A perspective Approach”, International journal of advance Research in Computer Science & Software Engineering, Vol.3, Issue. 4, PP. 986-990, 2013.",
+      "Kashinath Chandelkar and Dr. Piyush Gupta, “Intelligent Network Practices and Innovative Networking Solution for Enterprises”, International Journal of Emerging Research in Management and Technology, Vol.1, issue.2, PP. 41-45, 2012."
+    ]
+  },
+  "researchGuidance": [],
+  "fundedProjects": [],
+  "awardsAndHonors": [],
+  "memberships": [],
+  "professionalServices": [],
+  "coursesAttended": [],
+  "coursesConducted": []
+}

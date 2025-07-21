@@ -1,0 +1,265 @@
+{
+  "faculty_name": "Dr. Suresh Mikkili",
+  "profile": {
+    "name": "Dr. Suresh Mikkili",
+    "designation": "Associate Professor & Head",
+    "department": "Department of Electrical and Electronics Engineering",
+    "imageUrl": "Dr. Suresh Mikkili.png",
+    "email": "mikkili.suresh@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Smart Electric Grid",
+      "Electric vehicles",
+      "Grid connected/Stand-Alone PV Systems",
+      "Wireless Power Transfer",
+      "Renewable Energy Systems",
+      "Power Quality Issues and Applications of Soft Computing Techniques."
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Suresh Mikkili",
+    "gender": "Male",
+    "birthDate": "05/08/1985",
+    "designation": "Associate Professor",
+    "department": "Department of Electrical and Electronics Engineering",
+    "url": "https://scholar.google.co.in/citations?hl=en&user=keXUBFkAAAAJ&view_op=list_works&authuser=2&sortby=pubdate",
+    "dateOfJoining": "15/01/2013",
+    "experience": "12 Years 09 Months - as on dt. 12-10-2023"
+  },
+  "contactInformation": {
+    "address": "Associate Professor, Dept. of Electrical and Electronics Engineering, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "city": "CuncolimA",
+    "state": "GOA",
+    "country": "INDIA",
+    "email": "mikkili.suresh@nitgoa.ac.in",
+    "phoneMobile": "7588133009",
+    "officeExtension": "645"
+  },
+  "researchAreas": [
+    "Smart Electric Grid, Electric vehicles, Grid connected/Stand-Alone PV Systems, Wireless Power Transfer,",
+    "Renewable Energy Systems, Power Quality Issues and Applications of Soft Computing Techniques."
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Power Systems Transmission and distribution",
+      "Switch Gear and Protection",
+      "Linear System Analysis",
+      "LDIC Applications",
+      "Control Systems",
+      "Linear and Non-linear Systems",
+      "Soft Computing",
+      "Neural Networks and Fuzzy Logic",
+      "Basic Electrical Sciences",
+      "Circuit Theory",
+      "Power Electronics Applications to power systems",
+      "HVDC Transmission",
+      "Flexible AC Transmission",
+      "Power System Analysis"
+    ],
+    "pg": [
+      "HVDC and FACTS",
+      "Advanced Power System Analysis",
+      "Smart Electric Grid",
+      "Power Quality",
+      "Soft Computing."
+    ]
+  },
+  "academicInformation": [
+    {
+      "degree": "B.Tech.",
+      "institute": "S.I.T.E / JNTU Hyderabad (2002 - 2006)",
+      "year": "2006",
+      "subject": "Electrical & Electronics Engineering"
+    },
+    {
+      "degree": "M.Tech.",
+      "institute": "National Institute of Technology, Rourkela. (2006 - 2008)",
+      "year": "2008",
+      "subject": "Electrical Engineering"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "National Institute of Technology, Rourkela. (2010-2013)",
+      "year": "2013",
+      "subject": "Electrical Engineering"
+    }
+  ],
+  "publications": {
+    "journal": [
+        "Chavan Vinaya C, Suresh Mikkili and Gaurav Kumar, “Enhancement of PV Array Performance Through Reconfiguration with P&O MPPT for Shading Resilience”, International Journal of Ambient Energy- Taylor & Francis – Accepted, 2024.",
+        "Pritesh Anil Metha and Suresh Mikkili “A Low-Cost, Real-Time Current Sensing Full-Bridge MOSFET Topology for Efficient Operation with Resistive/Inductive Loads”. IEEE Journal of Emerging and Selected Topics in Industrial Electronics, (Digital Object Identifier or DOI: 10.1109/JESTIE.2024.3447744) Accepted, Aug. – 2024.",
+        "Santhosh Y, Suresh Mikkili, and Praveen Kumar B, “A novel reduced cross link-based PV array interconnection schemes for enhancing maximum power under dynamically varying irradiance conditions”, Transactions of the Indian National Academy of Engineering– Springer, Accepted, May – 2024.",
+        "Aditi Atul Desai, Suresh Mikkili and Kavitha N, “Hardware Implementation of Improved Transformer-less Grid-Connected PV Inverter Topologies with Constant Common Mode Voltage and Enhanced Efficiency”, Electrical Engineering – Springer, Accepted, May – 2024.",
+        "Gaurav Kumar and Suresh Mikkili, “Advancements in EV international standards: Charging, safety and grid integration with challenges and impacts”, International Journal of Green Energy- Taylor & Francis – Accepted – (SCI-E Journal), March 2024.",
+        "Srinivasan V, Sridhar R., Suresh Mikkili, et al. \"Hybrid Social Grouping Algorithm-Perturb and Observe Power Tracking Scheme for Partially Shaded Photovoltaic Array\", International Journal of Energy Research - WILEY, vol. 2023, Article ID 9905979, 18 pages, Sept. 2023.",
+        "Gaurav Kumar and Suresh Mikkili, “Critical Review of Vehicle-to-Everything (V2X) Topologies: Communication, Power Flow Characteristics, Challenges, and Opportunities”, IEEE CPSS Transactions on Power Electronics and Applications, Accepted, Sept. 2023",
+        "Chavan Vinaya C and Suresh Mikkili, “Hardware Implementation of Sensor-less Matrix Shifting Reconfiguration Method to Extract Maximum Power Under Various Shading Conditions”, IEEE CPSS Transactions on Power Electronics and Applications, Accepted, June 2023",
+        "Praveen Kumar B and Suresh Mikkili, “Hardware Implementation of a Novel Hybrid Slime Mould MPPT Technique for BL-HC configured Solar PV System under PSCs”, Circuit World, Accepted – April 2023.",
+        "Chavan Vinaya C and Suresh Mikkili, “Hardware Implementation of Proposed and Conventional PV Array Reconfiguration Techniques (SK, OSK, MS, ZZ, SS, NSD, and MMS) to Extract Maximum Power under Various Shading",
+        "Praveen Kumar B and Suresh Mikkili, “A Novel Hybrid Slime Mould MPPT Technique for BL-HC Configured Solar PV System under PSCs”, Journal of Control, Automation and Electrical Systems –Springer, Accepted – March 2023",
+        "Raghu Vamsi Krishna C., Suresh Mikkili, and Praveen Kumar B, “A Critical Review on Hybrid-Topologies, Modulation Techniques, and Controlling Approaches of Modular Multilevel Converter for Grid Integration”, IETE Journal of Research - Taylor & Francis, Accepted – Dec 2022, https://doi.org/10.1080/03772063.2022.2143438",
+        "Chavan Vinaya C., Suresh Mikkili, and Tomonobu Senjyu, “Experimental Validation of Novel Shade Dispersion PV Reconfiguration Technique to Enhance Maximum Power under PSCs”, IEEE CPSS Transactions on Power Electronics and Applications, Accepted, Sept. 2022",
+        "Raghu Vamsi Krishna C, Suresh Mikkili, and Praveen Kumar B, “Modelling, Controlling Approaches, Modulation Schemes, and Applications of Modular Multilevel Converter: Review”, Journal of Control, Automation and Electrical Systems –Springer, Accepted – Aug 2022",
+        "Chavan Vinaya Chandrakant, Suresh Mikkili, and Tomonobu Senjyu. \" Hardware Implementation of Novel Shade Dispersion PV Reconfiguration Technique to Enhance Maximum Power under Partial Shading Conditions \" Energies - MDPI Journal, MAY 2022 , 15, no. 10: 3515. https://doi.org/10.3390/en15103515 (SCI-E Journal)",
+        "Aditi Atual Desai, Suresh Mikkili, and Tomonobu Senjyu, “Novel H6 Transformerless Inverter for Grid Connected Photovoltaic System to reduce the Conduction Loss and Enhance Efficiency”, Energies - MDPI Journal, MAY 2022 , 15(10), 3789; https://doi.org/10.3390/en15103789 (SCI-E Journal)",
+        "Suresh Mikkili, Akshay Kanjune and Praveen Kumar B, “Sudoku and Optimal Sudoku Reconfiguration Techniques for Power Enhancement of Partial Shaded Solar PV system”, Journal of The Institution of Engineers (India): Series B (IEIB)- Springer, MAY 2022 , Accepted (SCI-E Journal)",
+        "Suresh Mikkili, Akshay Kanjune, Praveen K. Bonthagorla, and Tomonobu Senjyu. \"Non-Symmetrical (NS) Reconfiguration Techniques to Enhance Power Generation Capability of Solar PV System\" Energies 15, no. 6: 2124, 2022. https://doi.org/10.3390/en15062124",
+        "Gul Ahmad Ludin, Akito Nakadomari, Atsushi Yona, Suresh Mikkili, Shriram S. Rangarajan, E. Randolph Collins, Tomonobu Senjyu, “Technical and Economic Analysis of an HVDC Transmission System for Renewable Energy Connection in Afghanistan”, Sustainability Journal -MDPI, Jan 2022. Accepted - (SCI-E Journal)",
+        "Suresh Mikkili, Raghu Vamsi Krishna, Praveen Kumar Bonthagorla, and Tomonobu Senjyu, “Performance Analysis of Modular Multilevel Converter with NPC Sub-Modules in Photovoltaic Grid-Integration”, Applied Sciences Journal-MDPI, 2022; 12(3): 1219. Jan 2022. https://doi.org/10.3390/app12031219 - (SCI-E Journal)",
+        "Dharani Kolantla, Suresh Mikkili, and Suneel Raju Pendem, “Mitigation of Cross-coupling Effects in PV String-Integrated-Converters with SEPIC Converter using P&O MPPT Technique”, IETE Journal of Research - Taylor & Francis - Accepted - (SCI-E Journal) Jan 2022",
+        "S R Pendem, Suresh Mikkili, Shriram S. Rangarajan, Sudhakar Avv, Randolph E. Collins, and Tomonobu Senjyu, “Optimal Hybrid PV Array Topologies to Maximize the Power Output by Reducing the Effect of Non-Uniform Operating Conditions”, Electronics Journal -MDPI, 10(23), 3014; http://dx.doi.org/https://doi.org/10.3390/electronics10233014 Accepted - (SCI-E Journal) Dec 2021",
+        "Aditi Atul Desai and Suresh Mikkili, \"Comprehensive Analysis of Conventional and Hybrid PV Configurations Under Partial Shading Conditions to Mitigate Mismatching Loss and Optimize the Output Power\", Journal of Control, Automation and Electrical Systems Vol. 33, pp.483–504, Sept. 2022. https://doi.org/10.1007/s40313-021-00800-2",
+        "Ratnakar Babu B., Suresh Mikkili, Praveen Kumar B., “Application of Radial Basis Neural Network in MPPT Technique for stand-alone PV system under partial shading conditions”, IETE Journal of Research - Taylor & Francis - Accepted - (SCI-E Journal) SEPT 2021",
+        "Chavan Vinaya Chandrakant and Suresh Mikkili, “Repositioning of Series-Parallel, Total-Cross-Tide, Bridge-Link and Honey-Comb PV array configurations for maximum power extraction”, IETE Journal of Research - Taylor & Francis - Accepted - (SCI-E Journal) SEPT 2021",
+        "Kanjune Akshay B, Suresh Mikkili and Praveen Kumar B, \"A Review on Static Reconfiguration Techniques of Solar PV to Mitigate Mismatch Loss and Minimize Partial shading effect”, IETE Journal of Research - Taylor & Francis - Accepted - (SCI-E Journal) SEPT 2021",
+        "Aditi Atul Desai and Suresh Mikkili, “Novel Hybrid PV configurations to enhance the output power and efficiency by minimizing number of peaks and mismatching loss”, IETE Journal of Research - Taylor & Francis - Accepted - (SCI-E Journal) JUN 2021",
+        "Chavan Vinaya Chandrakant and Suresh Mikkili, “Effect of PV array positioning on mismatch and wiring losses in Static Array Reconfiguration”, IETE Journal of Research - Taylor & Francis - Accepted - (SCI-E Journal) JUN 2021",
+        "Chavan Vinaya Chandrakant and Suresh Mikkili, \"A Typical Review on Static Reconfiguration Strategies in Photovoltaic Array Under Non-uniform shading Conditions,\" IEEE CSEE Journal of Power and Energy Systems - Accepted - (SCI-E Journal) OCT 2020",
+        "Praveen Kumar Bonthagorla, Suresh Mikkili, \"Performance Investigation of Hybrid and Conventional PV Array Configurations for Grid-Connected/Standalone PV Systems,\" IEEE CSEE Journal of Power and Energy Systems - Accepted - (SCI-E Journal) SEPT 2020",
+        "Aditi Atul Desai and Suresh Mikkili, \"Modelling and Analysis of PV configurations (Alternate TCT-BL, Total Cross Tied, Series, Series Parallel, Bridge Linked and Honey Comb) to extract Maximum Power under Partial Shading Conditions\", IEEE CSEE Journal of Power and Energy Systems - Accepted - (SCI-E Journal) JUN 2020",
+        "Suneel Raju Pendem and Suresh Mikkili, \"Assessment of Cross-coupling Effects in PV String-Integrated-Converters with P&O MPPT Algorithm under various Partial Shading Patterns\", IEEE CSEE Journal of Power and Energy Systems - Accepted - (SCI-E Journal) JUN 2020",
+        "Praveen Kumar B and Suresh Mikkili, \"Performance Analysis of PV Array Configurations (SP, BL, HC and TT) to Enhance Maximum Power under Non-Uniform Shading conditions\", Accepted - Engineering Reports - Wiley MAY 2020",
+        "Ratnakar Babu Bollipo, Suresh Mikkili, Praveen Kumar Bonthagorla, \"Hybrid, Optimization, Intelligent and Classical PV MPPT Techniques : Review\", IEEE CSEE Journal of Power and Energy Systems - Accepted - (SCI-E Journal) MAY 2020",
+        "Dharani Kolantla, Suresh Mikkili, Suneel Raju Pendem, and Aditi Atul Desai, \"A Critical Review on various Inverter Topologies for PV system Architectures,\" IET Renewable Power Generation, - Provisionally Accepted - (SCI-E Journal) April. 2020. APRIL 2020",
+        "Praveen Kumar B and Suresh Mikkili, \"A Novel Fixed PV Array Configuration for Harvesting Maximum Power from Shaded Modules by Reducing the Number of Cross-Ties\", IEEE- Journal of Emerging and Selected Topics in Power Electronics- Accepted - (SCI-E Journal) MAR 2020",
+        "Ratnakar Babu Bollipo, Suresh Mikkili, Praveen Kumar Bonthagorla, \" Critical Review on PV MPPT Techniques: Classical, Intelligent and Optimization\", IET Renewable Power Generation - Accepted - (SCI-E Journal) FEB 2020",
+        "Praveen Kumar B and Suresh Mikkili, \"Optimal PV Array Configuration for Extracting Maximum Power by Mitigating Mismatching Power Losses under Nine Shading Conditions \", IEEE CSEE Journal of Power and Energy Systems - Accepted - (SCI-E Journal) FEB 2020",
+        "Gomathi Ramalingam, Ajay Kumar Choudhary, Suresh Mikkili, \"Modelling and Analysis of PV-Based Shunt Active Filter with BESS and Conservative Power Theory for Enhancing Power Quality\", International Journal of Emerging Electric Power Systems, Volume 20, Issue 6, 2019 DEC 2019",
+        "Vinay Kumar Kolakaluri, Suresh Mikkili, \"Integration of Battery Energy Storage Systems to Solar PV to Reduce the AH Capacity by Extracting Maximum Power from PV Array under Varying Irradiance and Load Conditions for Rural/Remote Area Applications\", International Journal of Emerging Electric Power Systems, Volume 20, Issue 5, 2019 OCT 2019",
+        "Vinay Kumar Kolakaluri, C Vyjayanthi, Suresh Mikkili, “PV-Battery Hybrid System with Less AH Capacity for Standalone DC Loads”, International Journal of Emerging Electric Power Systems, Volume 20, Issue 4, 2019 AUG 2019",
+        "Suneel Raju Pendem, Suresh Mikkili, and Praveen Kumar B, “PV Distributed-MPP Tracking: Total-Cross-Tied configuration of String-Integrated-Converters to extract the maximum Power under various PSCs with P&O MPPT Technique”, IEEE Systems Journal- Accepted - (SCI-E Journal) MAY 2019",
+        "Suneel Raju Pendem and Suresh Mikkili, “Modelling, Simulation and Performance Analysis of Solar PV Array Configurations (Series, Series-Parallel and Honey-Comb) to Extract Maximum Power under Partial Shading Conditions”, Energy Reports - Elsevier, Volume 04, Pages 274-287, 2018 (SCI-E Journal) NOV 2018",
+        "Suneel Raju Pendem and Suresh Mikkili, “Modeling, simulation, and performance analysis of PV array configurations (Series, Series-Parallel, Bridge-Linked, and Honey-Comb) to harvest maximum power under various PSCs” International Journal of Green Energy - Taylor and Francis, Volume 15, No. 13, pp.795-812, 2018. -(SCI - Journal) OCT 2018",
+        "Suresh Mikkili and Besta Umamaheswaraiah, “A Zig-zag Transformer based Hybrid Power Filter with Cascaded Three level Multilevel Inverter to Enhance Power Quality in Three-Phase Four-wire Distribution Power System”, Journal of Electrical Engineering, Vol. 18, No.1, pp. 264-275, 2018. APRIL 2018",
+        "Suresh Mikkili, Adinarayana, “PHC, Id-Iq and pq Control Strategies for Mitigation of Current Harmonics in Three-Phase Three-Wire Shunt Active Filter with PI Controller”, International Journal of Emerging Electric Power Systems: be press (Berkeley Electronics press), Vol. 18, Issue 2, April 2017. APRIL 2017",
+        "Elavala Satish, Suresh Mikkili, Lav Kumar Gupta, “Synchronous Reference Frame method for Mitigation of Current Harmonics with PI and FLC based Shunt Active Filter under Load Variation”, International Journal of Innovations in Engineering and Technology, Vol. 7, Issue 3, pp. 433-450, 2016. OCT 2016",
+        "Suresh Mikkili, and A. K. Panda, “Power Quality Issues and Solutions – Review,\" International Journal of Emerging Electric Power Systems: be press (Berkeley Electronics press), Vol. 16, Issue 4, Pages 357–384, Aug 2015. AUG 2015",
+        "Suresh Mikkili, Anup Kumar Panda and Jayanthi Prattipati “Review of RT-LAB and steps involved for implementation of a Simulink Model from MATLAB to REAL-TIME” Journal of the Institution of Engineers (India): Series B _ (Springer), Volume 96, Issue 2, pp 179-196, June 2015. JUN 2015",
+        "Suresh Mikkili, and A. K. Panda, “Review and Analysis of Type-1 and Type-2 Fuzzy Logic Controllers\", Journal of Automation & Systems Engineering, Volume 8, Issue 3, Pages 151-174, Sept. 2014. SEPT 2014",
+        "Suresh Mikkili, and A. K. Panda, “Real-Time Implementation of Type-2 FLC–Based Shunt Active Filter Control Strategies (p–q and Id–Iq) with Different Fuzzy MFs for Power Quality Improvement,” International Journal of Emerging Electric Power Systems : be press (Berkeley Electronics press), Vol. 15, Issue 3, Pages 217–236, June 2014. JUN 2014",
+        "Suresh Mikkili, and A. K. Panda, “Performance analysis and real-time implementation of shunt active filter current control strategy with type-1 and type-2 FLC triangular M.F,” International Transactions on Electrical Energy Systems - John Wiley & Sons Volume 24, Issue 3, pages 347–362, March 2014-(SCI-E Journal) MAR 2014",
+        "Suresh Mikkili, A.K. Panda, “FLC based shunt active filter (p–q and Id–Iq) control strategies for mitigation of harmonics with different fuzzy MFs using MATLAB and real-time digital simulator,” International Journal of Electrical Power and Energy Systems – Elsevier, vol. 47, pp. 313-336, May, 2013. -(SCI - Journal) MAY 2013",
+        "Suresh Mikkili, A.K. Panda, “Types-1 and -2 fuzzy logic controllers-based shunt active filter Id–Iq control strategy with different fuzzy membership functions for power quality improvement using RTDS hardware,” IET Power Electronics, Vol. 6, Issue 4, pp. 818-833, April 2013. -(SCI - Journal) APRIL 2013",
+        "Suresh Mikkili, A.K. Panda, “Real-time implementation of PI and fuzzy logic controllers based shunt active filter control strategies for power quality improvement,” International Journal of Electrical Power and Energy Systems – Elsevier, vol. 43, pp. 1114-1126, Dec. 2012. -(SCI - Journal) DEC 2012",
+        "Suresh Mikkili and A. K. Panda, “RTDS hardware implementation and simulation of SHAF for mitigation of harmonics using p-q control strategy with PI and fuzzy logic controllers,” Frontiers of Electrical and Electronic Engineering– Springer, Vol. 7, No.4, pp. 427–437, Dec. 2012. -(SCI - Journal) DEC 2012",
+        "Suresh Mikkili and A. K. Panda, “Simulation and real-time implementation of shunt active filter id-iq control strategy for mitigation of harmonics with different fuzzy membership functions,” IET Power Electronics, Vol. 5, No. 9, pp.1856 – 1872, Nov. 2012. -(SCI - Journal) NOV 2012",
+        "A. K. Panda and Suresh Mikkili \"Fuzzy logic controller based Shunt Active Filter control strategies for Power quality improvement Using Different Fuzzy M.F.s,\" International Journal of Emerging Electric Power Systems: be press (Berkeley Electronics press), Vol. 13: Iss. 5, Article 2.DOI: 10.1515/1553-779X.2942, Nov. 2012. NOV 2012",
+        "Suresh Mikkili and Anup Kumar Panda, “Real-Time Implementation of Shunt Active Filter P-Q Control Strategy for Mitigation of Harmonics with Different Fuzzy M.F.s,” Journal of power Electronics (JPE) (KIPE- South Korea), Vol. 12, No. 5, , pp.821-829, Sept. 2012. -(SCI - Journal) SEPT 2012",
+        "Suresh. Y, A.K. Panda, M Suresh, “Real-time implementation of adaptive fuzzy hysteresis-band current control technique for shunt active power filter,” IET Power Electronics, 2012, Vol. 5, No. 7, pp. 1188–1195, August 2012. -(SCI - Journal) AUG 2012",
+        "Suresh Mikkili and Prof.A.K. Panda “RTDS Hardware implementation and Simulation of 3ph 4wire SHAF for mitigation of Current harmonics with p-q Control strategy using PI controller,” Journal of Electrical Engineering (JEE), Vol. 12, No.1, pp. 76-86, Jan. 2012. JAN 2012",
+        "Suresh Mikkili and A.K. Panda “Simulation and RTDS Hardware implementation of 3ph 4wire SHAF for mitigation of Current harmonics Using id-iq Control strategy with PI Controller,” Journal of Electrical Engineering (JEE), Vol. 12, No.1, pp. 128-137, Jan. 2012. JAN 2012",
+        "Suresh Mikkili and Anup Kumar Panda, “PI and Fuzzy Logic Controller Based 3-Phase 4-Wire Shunt Active Filters for the Mitigation of Current Harmonics with the Id-Iq Control Strategy,” Journal of power Electronics (JPE) (KIPE- South Korea), Vol. 11, No. 6, pp. 914-921, Nov. 2011. -(SCI-E Journal) NOV 2011",
+        "Suresh Mikkili and Anup Kumar Panda, “Id-Iq Control Strategy for Mitigation of Current Harmonics with Fuzzy Logic Controller Using Matlab/Simulation and RTDS Hardware”, Intelligent Control and Automation, Vol. 2, No.4, pp.371-382, Nov. 2011. NOV 2011",
+        "Suresh Mikkili and Anup Kumar Panda, \"Fuzzy and PI Controller Based SHAF for Mitigation of Current Harmonics with P-Q Method Using Matlab and RTDS Hardware,\" Energy and Power Engineering (EPE), Vol. 3 No. 4, pp. 407-421, Sept. 2011. SEPT 2011",
+        "Suresh Mikkili and A.K. Panda, \"RTDS Hardware implementation and Simulation of 3-ph 4-wire SHAF for Mitigation of Current Harmonics with p-q and Id-Iq Control strategies using Fuzzy Logic Controller,\" International Journal of Emerging Electric Power Systems: be press (Berkeley Electronics press), Vol. 12: No. 5, Article 5, Aug. 2011. AUG 2011",
+        "Suresh. Mikkili, A.K. Panda, “SHAF for Mitigation of Current harmonics using p-q method with PI and Fuzzy Controllers”, Eng. Technol. Appl. Sci. Res., ISSN: 1792-8036, Vol. 1, No. 4, pp. 98-104, Aug. 2011. AUG 2011",
+        "Suresh Mikkili and Anup Kumar Panda, “Instantaneous Active and Reactive Power and Current Strategies for Current Harmonics Cancellation in 3-ph 4-Wire SHAF with Both PI and Fuzzy Controllers”, Energy and Power Engineering (EPE), Vol. 3 No. 3, pp. 285-298, July 2011. JULY 2011",
+        "Suresh Mikkili and Anup Kumar Panda, “Simulation and RTDS Hardware implementation of SHAF for Mitigation of Current Harmonics with p-q and Id-Iq Control strategies using PI controller”, Eng. Technol. Appl. Sci. Res., ISSN: 1792-8036, Vol. 1, No. 3, pp. 54-62, May. 2011. MAY 2011"
+    ],
+    "proceedings": [
+        "Gaurav Kumar, Suresh Mikkili, “Performance Analysis of Grid-Integrated: V2G, G2V, EV and PV Systems for Power Flow Optimization”, IEEE 3rd International Conference on Smart Technologies for Power, Energy and Control (STPEC), 10-13 December 2023, DoI: 10.1109/STPEC59253.2023.10430734",
+        "Praveen Kumar B, Suresh Mikkili, “Grey Wolf Optimization Assisted MPPT Technique for Total-Cross-Tied PV Array Configuration to Track GMPP under Shading conditions”, IEEE 3rd International Conference on Smart Technologies for Power, Energy and Control (STPEC), 10-13 December 2023, DoI: 10.1109/STPEC59253.2023.10430660",
+        "Aditi Atul Desai, Suresh Mikkili, “Hardware Implementation of H5 and Novel H6 Transformer-Less Inverter Topologies for Grid Connected Photovoltaic System to Eliminate Leakage Current using OPAL-RT”, IEEE 3rd International Conference on Smart Technologies for Power, Energy and Control (STPEC), 10-13 December 2023, DoI: 10.1109/STPEC59253.2023.10430825",
+        "Santhosh Yedla; Suresh Mikkili; Praveen Kumar B, “PV Array Interconnection Schemes for Extracting Maximum Power under Dynamically Varying Irradiance Conditions”, IEEE 3rd International Conference on Smart Technologies for Power, Energy and Control (STPEC), 10-13 December 2023, DoI: 10.1109/STPEC59253.2023.10430785",
+        "Abhilash Sakhare, Suresh Mikkili, “A Novel Non-Isolated High Gain Bidirectional DC-DC Converter for Photovoltaics to Extract the Maximum Power”, IEEE 3rd International Conference on Smart Technologies for Power, Energy and Control (STPEC), 10-13 December 2023, DoI: 10.1109/STPEC59253.2023.10431076",
+        "Shivalika Sharma and Suresh Mikkili, \"Design of Solar Powered Charging Station for Electric Vehicle Applications with MPPT Optimization,\" 2023 11th National Power Electronics Conference (NPEC), IIT Guwahati, India, 14-16 December 2023, pp. 1-6, doi: 10.1109/NPEC57805.2023.10384993.",
+        "K. Dileep and Suresh Mikkili, \"A Noval One Time Diagonal Sudoku PV Reconfiguration Technique To Soothen The Effect Of Partial Shading Conditions,\" 2023 11th National Power Electronics Conference (NPEC), IIT Guwahati, India, 14-16 December 2023, pp. 1-6, doi: 10.1109/NPEC57805.2023.10384981.",
+        "P. K. Bonthagorla and Suresh Mikkili, \"A Triple-Tied PV Array scheme with Grey Wolf Optimization based MPPT Approach for Maximum Power Harvesting Under Partial Shading,\" IECON 2023- 49th Annual Conference of the IEEE Industrial Electronics Society, Singapore, 16-19 October 2023, pp. 1-6, doi: 10.1109/IECON51785.2023.10311850.",
+        "Emily Grace Gummadi, Suresh Mikkili, Santhosh Yedla, “SuDoKU based Reconfiguration Techniques to TCT PV Array for Enhancing the Maximum Power under Partial Shading Patterns”, in proceedings of IEEE International Conference on Power Electronics and Energy (ICPEE), 03rd to 05th January 2023, Bhubaneswar, India.",
+        "Vinaya C. Chavan and Suresh Mikkili, “Optimal Sudoku, skyscraper, and Proposed Reconfiguration Techniques for Extraction of Maximum Power under Partial Shading Conditions”, in proceedings of IEEE 19th Annual India Council International Conference (INDICON), 24th to 26th November 2022, Kochi, India. NOV 2022",
+        "V C Chavan, Suresh Mikkili, and Praveen Kumar B, 'Novel Shade Dispersion Method to Extract Maximum Power under partial shading condition', in proceedings of 47th Annual Conference of the IEEE Industrial Electronics Society IEEE IECON 2021, 13th to 16th October 2021, Toronto, Canada OCT 2021",
+        "Aditi Desai, Suresh Mikkili “Novel Hybrid PV Array Configurations for extracting maximum Power by reducing number of peaks and mitigating mismatching power loss under partial shading conditions,” IECON 2020 (paper accepted), October 18-21, 2020, Singapore AUG 2020",
+        "Suneel Raju Pendem, Vikash Varma Katru, and Suresh Mikkili, \"Hybrid PV Array Configurations for Reducing the Multiple-Peak Power Points in I-V and P-V characteristics under Partial Shading Conditions\", in Proceedings of 39th Annual International IEEE Region- 10 conference (TENCON-2019), 17th to 20th October 2019, Kochi, Kerala OCT 2019",
+        "Suneel Raju Pendem, Vikash Varma Katru, and Suresh Mikkili, \"Hybrid PV Array Con?gurations for Mitigating the Mismatching Power loss and Number of Peaks in the Output Characteristics under various PSCs\", in proceedings of 45th Annual Conference of the IEEE Industrial Electronics Society (IECON - 2019), 14th to 17th October 2019, Lisbon, Portugal. OCT 2019",
+        "Suneel Raju Pendem and Suresh Mikkili, “Mitigation of Cross-coupling effects in PV D-MPPT systems with T-C-T configuration of String-Integrated-Converters using INC Algorithm”, in Proceedings of IEEE International Conference on Energy, Systems and Information Processing (IEEE ICESIP 2019), 4th to 6th July 2019. JULY 2019",
+        "Praveen Kumar B and Suresh Mikkili, “Performance analysis of Closed loop controlled Single-Phase Unipolar Inverter with Fixed Switching Frequency Sliding Mode Control”, in Proceedings of IEEE International Conference on Energy, Systems and Information Processing (IEEE ICESIP 2019), 4th to 6th July 2019 JULY 2019",
+        "Suneel Raju Pendem, Suresh Mikkili, and Praveen Kumar B, “ PV Distributed-MPP Tracking: Total-Cross-Tied configuration of MICs to extract the Maximum Power under Partial Shading conditions”, 8th biennial IEEE International Conference on Power Electronics, Drives and Energy Systems, 18th – 21st Dec. 2018 (PEDES-2018). DEC 2018",
+        "Suneel Raju Pendem, Suresh Mikkili, and Vikash Varma K, “ Total-Cross-Tied Configuration of MICs for Enhancing the Performance of PV D-MPPT systems under various PSCs using P&O Algorithm”, 15th Annual IEEE India Council International Conference, 16th – 18th Dec. 2018 (INDICON-2018). DEC 2018",
+        "Gomathi Ramalingam, Ajay K Choudhary and Suresh Mikkili, “Modeling and Analysis of PV-based Shunt Active Filter with BESS and Conservative Power Theory for Enhancing Power Quality”, 15th Annual IEEE India Council International Conference (INDICON-2018), 16th to 18th December, 2018. DEC 2018",
+        "G. Krishna Reddy and Suresh Mikkili, “Grid Integration of Solar Photovoltaic system with Storage under Partial Shading Conditions using Distributed MPPT Technique”, in proc. of International Conference on Computing of Power, Energy, Information & Communication, 28th to 29th Feb, 2018. FEB 2018",
+        "Suneel Raju Pendem and Suresh Mikkili, “Performance Evaluation of Series, Series-Parallel and Honey Comb PV Array Configurations under Partial Shading Conditions”, in Proceedings of 7th Biennial International Conference on Power Systems (ICPS), 21st- 23rd Dec. 2017. DEC 2017",
+        "Suneel Raju Pendem and Suresh Mikkili, “Analysis of Series, Series-Parallel and Total-Cross-Tied PV Array Configurations to Grid-connected and Stand-alone PV systems under Illumination Transition Conditions”, in Proceedings of 6th Biennial International Conference on Advances in Energy Research (ICAER), 12th – 14th Dec. 2017, IIT-Bombay. DEC 2017",
+        "E Satish, L K Gupta and Suresh Mikkili, “PI and FLC (Triangular and Gaussian MF) based SHAF under Load Variation Using SRF Method”, in proc. of EEE 7th Bi-Annual India International Conference on Power Electronics – (IICPE), Nov. 17-19, 2016, Thapar University, Patiala (Punjab). NOV 2016",
+        "B. Ravi Teja, Suresh Mikkili, “Deployment of Fuzzy based MRAS and IRFOC strategy with fast tracking for the sensorless speed control of SPIM”, in proc. of 6th IEEE Annual International Conference on Power Systems (ICPS), March 2016, IIT Delhi. MAR 2016",
+        "R. Patel, A.K.Panda and Suresh. Mikkili “PI and fuzzy logic controller based 3-phase 4-wire interleaved buck active power filter for mitigation of harmonics with the Id-Iq control strategy” IECON 2013 - 39th Annual Conference on IEEE Industrial Electronics Society , pp. 2145 – 2150, 10-13 Nov. 2013, Vienna, Austria. NOV 2013",
+        "Suresh. Mikkili and A.K.Panda, “Type-1 and Type-2 FLC based Shunt active filter Id-Iq control strategy for mitigation of harmonics with Triangular MF,\" IEEE PEDES Dec. 16-19, 2012, CPRI/IISC-Bangalore. DEC 2012",
+        "Suresh Mikkili and Anup Kumar Panda, “Real-time implementation of power theory using FLC based shunt active filter with different fuzzy M.F.s ,” IECON 2012 - 38th Annual Conference on IEEE Industrial Electronics Society , pp. 702 – 707, DOI : 10.1109/IECON.2012.6388666., 25-28 Oct. 2012, Montreal, QC, Canada. OCT 2012",
+        "Suresh. Mikkili, A.K. Panda, “Mitigation of Harmonics using Fuzzy Logic Controlled Shunt Active Power Filter with Different Membership Functions By Instantaneous Power Theory,” IEEE SCES, DOI: 10.1109/SCES.2012.619910316-18 March 2012, MNNIT-ALLAHABAD. MAR 2012",
+        "Suresh. Mikkili, A.K. Panda, “Simulation and RTDS Hardware implementation of SHAF for current harmonics cancellation using Id-Iq control strategy with PI and fuzzy controllers,” IEEE ICPS, pp. 1-6, DOI: 10.1109/ICPES.2011.6156669, 22-24, Dec. 2011, IIT MADRAS. DEC 2011",
+        "Suresh. Mikkili, A.K. Panda, “Id-Iq control strategy for mitigation of current harmonics with PI and fuzzy controllers,” IEEE ICPS, pp. 1-6, DOI:10.1109/ICPES. 2011.6156668, 22-24, Dec. 2011, IIT MADRAS. DEC 2011",
+        "Suresh. Mikkili, A.K. Panda, PI controller based shunt active filter for mitigation of current harmonics with p-q control strategy using simulation and RTDS hardware,” IEEE INDICON, pp. 1-6, DOI: 10.1109/INDCON.2011.6139547, 16-18, Dec. 2011, BITS-PILANI HYD . DEC 2011",
+        "Suresh. Mikkili, A.K. Panda, Fuzzy logic controller based SHAF for current harmonics compensation with p-q control strategy using simulation and RTDS hardware,\" IEEE INDICON- 2011, pp. 1-6, DOI: 10.1109/INDCON.2011.6139546, 16-18, Dec. 2011, BITS-PILANI HYD . DEC 2011",
+        "Suresh. Mikkili and A.K.Panda, “Fuzzy logic controller based 3-ph 4-wire SHAF for current harmonics compensation with id-iq control strategy using simulation and RTDS hardware,\" IEEE PEDS, pp. 430-435, DOI: 10.1109/PEDS.2011.6147284, Dec 2011, Singapore. DEC 2011",
+        "Suresh. Mikkili, A.K. Panda, “PI and fuzzy controller based 3-ph 4-wire SHAF for current harmonics compensation using p-q control strategy,” IET-SEISCON 2011, pp. 299 – 303, DOI : 10.1049/cp.2011.0378, 20-22 July 2011, MADRAS. JULY 2011",
+        "Suresh. Mikkili, A.K. Panda, “SHAF for mitigation of Current harmonics with p-q and Id-Iq control strategies using both PI and Fuzzy Controllers,” IET-SEISCON 2011, pp. 358-362, DOI:10.1049/cp.2011.0389, 22 July 2011, MADRAS. JULY 2011",
+        "Mikkili Suresh, A. K. Panda, S. S. Patnaik, S. Yellasiri, “ Comparison of two compensation control strategies for shunt active power filter in three-phase four-wire system,” IEEE PES Innovative Smart Grid Technologies (ISGT), pp.1-6, DOI:10.1109/ISGT.2011.5759126., Jan. 2011, Hilton Anaheim, CA, USA. JAN 2011"
+    ],
+    "bookChapters": [
+        "Praveen Kumar Bonthagorla and Suresh Mikkili, “Power Enhancement of Total-Cross-Tied (TCT) configured PV Array during Dynamic Irradiance change using Meta-heuristic Algorithm based MPPT controllers,” Springer Book Series “Lecture Notes in Networks and Systems” -Accepted. FEB 2022",
+        "Praveen Kumar Bonthagorla, Suresh Mikkili and A. K. Bapurao “Optimal Sudoku Static Reconfiguration Technique for Power Enhancement of PV Array under Partial shading Conditions,” Springer Book Series “Lecture Notes in Networks and Systems” -Accepted. FEB 2022",
+        "Vinaya C Chavan, and Suresh Mikkili, “Matrix Magic Shifting to Extract Maximum Power under Partial shading Conditions”, Springer Book Series “Lecture Notes in Networks and Systems” -Accepted. FEB 2022"
+    ],
+    "booksAuthored": [
+      "Suresh Mikkili and Anup kumar Panda, “Power Quality Issues : Current Harmonics”, CRC Press, Taylor & Francis Group, August , 2015, ISBN 9781498729628. AUG 2015"
+    ]
+  },
+  "researchGuidance": [
+    "Dr. Suneel Raju Pendem : 16EEE3003 (January 2017 - May 2021) : Full Time Ph.D. Scholar - (Ph.D. Awarded)",
+    "Dr. Praveen Kumar Bonthagorla : 17EEE3001 (January 2018 - May 2022) : Full Time Ph.D. Scholar - (Ph.D. Awarded)",
+    "Dr. Aditi Atul Desai : 18EEE3002 (August 2018 - June 2023) : Part Time Ph.D. Scholar - (Ph.D. Awarded)",
+    "Dr. Chavan Vinaya Chandrakant: 19EEE3001 (January 2020 -February 2024 ) : Part-Time Ph.D. Scholar - (Ph.D. Awarded)",
+    "Mr. Santhosh Yedla : 21EEE3005 (Joined in November 2021) : Part Time Ph.D. Scholar - Ongoing",
+    "Mrs. Emily Grace Gummadi : 21EEE3006 (Joined in November 2021) : Part Time Ph.D. Scholar - Ongoing",
+    "Mr. Abhilash Sakhare : 22EEE3001 (Joined in August 2022) : Full Time Ph.D. Scholar - Ongoing",
+    "Mr. Gaurav Kumar : 22EEE3003 (Joined in January 2023) : Full Time Ph.D. Scholar - Ongoing",
+    "Mr. Kurella Pavan Kumar : 22EEE3005 (Joined in January 2023) : Part-Time Ph.D. Scholar - Ongoing",
+    "Mr. Bhattacharjee Abhinav Joydeep : 23EEE3001 (Joined in August 2023) : Full-Time Ph.D. Scholar – Sponsored (DTE, Govt. of Goa)",
+    "Mr. Metha Pritesh Anil : 23EEE3003 (Joined in August 2023) : Part-Time Ph.D. Scholar – Ongoing",
+    "Mr. Pukale Rahul Sukhadeo : 23EEE3005 (Joined in August 2023) : Part-Time Ph.D. Scholar – Ongoing"
+  ],
+  "fundedProjects": [
+    "SERB - DST, \"Design and Development of an Efficient Grid-Integrated Distributed Maximum Power Point Tracking to Photovoltaic system for Enhancing Power Quality under Partial Shading Conditions\", July 2017 - June 2020. Scheme : Early Career Research Award (ECRA); Sanctioned Amount : 39,99,600 INR",
+    "SERB-DST, \"Development of Metaheuristic Algorithms based Maximum Power Point Tracking Controllers for various Grid-Connected/Stand-Alone PV System to Enhance the Maximum Power Generation Capability\", Feb 2022 - Jan 2025, Scheme: Empowerment And Equity Opportunities For Excellence In Science; Sanctioned Amount : 36,21,332 INR."
+  ],
+  "awardsAndHonors": [
+    "Senior Member - IEEE"
+  ],
+  "memberships": [
+    "IEEE - Senior Member",
+    "ISTE - Life Member",
+    "IET - Member"
+  ],
+  "professionalServices": [],
+  "coursesAttended": [],
+  "coursesConducted": [
+    {
+      "month": "AUG",
+      "year": "2021",
+      "info": "Five Days Online AICTE Sponsored ATAL FDP on “Challenges and Opportunities in Integration of Electric Vehicles with Smart Electric Grids”, 16th to 20th August 2021- Coordinator"
+    },
+    {
+      "month": "MAY",
+      "year": "2017",
+      "info": "MHRD-GIAN Course (one week : 1 credit) on “Advance Adjustable Speed AC Motor Drive Systems: Application Problems & Solutions”, under the Aegis of MHRD-GIAN, 15-19 May, 2017 – (Convener)"
+    },
+    {
+      "month": "DEC",
+      "year": "2016",
+      "info": "Short-term Course on “Application of Power Electronics to Energy Systems”, under NaMPET Phase-II (National Mission on Power Electronics Technology, CDAC Trivandrum (12 - 14 May 2016) – (Convener)"
+    },
+    {
+      "month": "MAY",
+      "year": "2016",
+      "info": "Workshop on \"Industrial Automation - PLC and SCADA\" @ NIT GOA"
+    },
+    {
+      "month": "APRIL",
+      "year": "2013",
+      "info": "Workshop on “Mobile controlled Home Automation” organized by Dr. Suresh Mikkili in association with I3 Indya and TESLA at NIT GOA in 13-14 APRIL 2013."
+    },
+    {
+        "month": "DEC",
+        "year": "2016",
+        "info": "MHRD-GIAN Course (two weeks : 2 credits) on “Power Electronics for Renewable Energy Systems,” under the Aegis of MHRD-GIAN, 8-17 December, 2016 – (Convener)"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "faculty_name": "Dr. Saurabh Upadhyay",
+  "profile": {
+    "name": "Dr. Saurabh Upadhyay",
+    "designation": "Faculty On Contract",
+    "department": "Department of Civil Engineering",
+    "imageUrl": "Dr. Saurabh Upadhyay.jpg",
+    "email": "supadhyay@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Traffic Noise Modelling",
+      "Traffic Noise Barrier",
+      "Sustainable Transportation Systems",
+      "Public Transportation Systems(Bus Rapid Transit System)"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Saurabh Upadhyay",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Faculty On Contract",
+    "department": "Department of Civil Engineering",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": "4.2 years of teaching experience & 3 years of research experience"
+  },
+  "contactInformation": {
+    "address": "Dept. of Civil Engineering, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "supadhyay@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Traffic Noise Modelling, Traffic Noise Barrier, Sustainable Transportation Systems, Public Transportation Systems(Bus Rapid Transit System)"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Theory Subject: Transportation Engineering-I & II, Rapid Transit System and Smart City, Surveying.",
+      "Practical Lab: Transportation Engineering Lab"
+    ],
+    "pg": []
+  },
+  "academicInformation": [
+    {
+      "degree": "Ph.D.",
+      "institute": "IIT Roorkee",
+      "year": "2024",
+      "subject": "Transportation Engineering"
+    },
+    {
+      "degree": "M.Tech",
+      "institute": "IIT Roorkee",
+      "year": "2017",
+      "subject": "Transportation Engineering"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "Upadhyay, S., Parida, M., and Kumar, B. (2023). Community Response to Road Traffic Noise: A Case Study of Kanpur. Environmental Engineering and Management Journal, 22(4), 651-662.",
+      "Upadhyay, S., Parida, M., Kumar, B. and Kumar, P. (2023). Development of Urban Traffic Noise Model for a Mid-Sized City: A Case Study of Kanpur. MAPAN, pp.1-14.",
+      "Upadhyay, S., Parida, M., Kumar, P. and Kumar, B. (2023). Development of Reference Energy Mean Emission Level Models for Traffic Noise from Cement Concrete Pavement in Mid-Sized Cities in India. In INTER-NOISE and NOISE-CON Congress and Conference Proceedings (Vol. 268, No. 3, pp. 5749-5756). Institute of Noise Control Engineering.",
+      "Upadhyay, S., Parida, M. and Kumar, B. (2023). Development of a Reference Energy Mean Emission Level Traffic Noise Models for Bituminous Pavement for Mid-Sized Cities in India. In INTER-NOISE and NOISE-CON Congress and Conference Proceedings (Vol. 265, No. 5, pp. 2899-2906). Institute of Noise Control Engineering."
+    ],
+    "proceedings": [
+      "Upadhyay, S., Parida, M., Kumar, P., and Kumar, B., (2023), Development of Reference Energy Mean Emission Level Models for Traffic Noise from Cement Concrete Pavement in Mid-Sized Cities in India. INTER-NOISE 2023, from 20-23 August 2023 in Greater Tokyo, Japan.",
+      "Upadhyay, S., Parida, M. and Kumar, B., (2022), Development of a Reference Energy Mean Emission Level Traffic Noise Models for Bituminous Pavement for Mid-Sized Cities in India. INTER-Noise 2022, from 21-24 August 2022 in Glasgow, Scotland, United Kingdom.",
+      "Upadhyay, S., Parida, M., Kumar, P., and Kumar, B., (2023), Development of a novel mid-block urban traffic noise prediction model using the Improved Artificial Neural Network-based African Vulture Optimization Algorithm. International Conference on Environmental Sustainability (ICES-2023) from 16-17 March 2023 in Mumbai, India.",
+      "Upadhyay, S., Kumar, P., Parida, M., and Kumar, B., (2023), Heterogeneous Traffic based Noise Assessment in Mid-Sized City: Kanpur. 7th Conference of the Transportation Research Group of India (CTRG-2023) from 17th to 20th December 2023 in Surat, Gujrat."
+    ]
+  },
+  "researchGuidance": [],
+  "fundedProjects": [],
+  "awardsAndHonors": [
+    "Received MHRD scholarship for pursuing Ph.D. at IIT Roorkee.",
+    "Best Popular Science Stories Award under Ph.D. Category: Augmenting Writing Skills for Articulating Research (AWSAR), by Department of Science and Technology (DST), Ministry of Science and Technology, Government of India, (2022).",
+    "Membership in Institute of Noise Control Engineering (INCE) and ISTE (Indian Society for Technical Education).",
+    "Received Class Representative Award from Indus Institute of Technology and Management (2011)"
+  ],
+  "memberships": [],
+  "professionalServices": [],
+  "coursesAttended": [
+    "Participated in Course “Transport Modelling and Simulation” by UNSW, Sydney, Australia, August, 2020.",
+    "Attended workshop on Environmental Challenges-Role of Civil Engineers by Sam Higginbottom Institute of Agriculture, Technology & Sciences, Allahabad, 2013.",
+    "Attended Two-week ISTE workshop on Fluid Mechanics conducted by Indian Institute of Technology, Kharagpur, 20-30 May, 2014.",
+    "Participated in Regional Workshop from 7-8 February, 2020 on “Quality Control, New Materials and Techniques in Road Sector” organized by TEG IIT Roorkee and Indian Road Congress (IRC).",
+    "Participated in one week FDP from 27-31 May, 2019 on “Deep Learning and Applications” conducted by Electronics and ICT Academy.",
+    "Participated in one week FDP from 18-22 June, 2019 on “Data Analytics with Python” conducted by Electronics and ICT Academy.",
+    "Attended workshop on “Publishing in Academic Journals: An Author’s Workshop” organized by IIT Roorkee and Taylor & Francis Group on 4th May 2019.",
+    "Took two days’ workshop from 13-14 October,2018 on “Research Fundamentals: Innovations and Entrepreneurship” organized by SRIC, IIT Roorkee.",
+    "Participated in a training session on “Web of science, EndNote & InCites” organized by MGCL, IIT Roorkee on 7th September2019."
+  ],
+  "coursesConducted": [
+    "Worked as Coordinator in Organizing “G20 Impact Summit: Unleashing the Potentials”, 2-3 August 2023 at IIT Roorkee.",
+    "Worked as Core team Member in Organizing 1st International Conference on Transportation Infrastructure Projects: Conception to Execution, 7-10 January,2019 at IIT Roorkee.",
+    "Worked as student Volunteer in Organizing 2nd International Conference on Transportation Infrastructure Projects: Conception to Execution, 14 – 17 September, 2022 at IIT Roorkee."
+  ]
+}

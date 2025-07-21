@@ -1,0 +1,54 @@
+{
+  "faculty_name": "Dr. Darius Diogo Barreto",
+  "profile": {
+    "name": "Dr. Darius Diogo Barreto",
+    "designation": "Faculty on contract",
+    "department": "Department of Mechanical Engineering",
+    "imageUrl": "Dr. Darius Diogo Barreto.png",
+    "email": null,
+    "researchAreaSummary": [
+      "Computational Mechanics",
+      "Non linear Finite Element Methods",
+      "Magneto-electro-elastic effects in Cosserat rods"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Darius Diogo Barreto",
+    "gender": "Male",
+    "birthDate": "22/04/1991",
+    "designation": "Faculty on contract",
+    "department": "Department of Mechanical Engineering",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": null
+  },
+  "contactInformation": {
+    "address": null,
+    "city": null,
+    "state": null,
+    "country": null,
+    "email": null,
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Computational Mechanics",
+    "Non linear Finite Element Methods",
+    "Magneto-electro-elastic effects in Cosserat rods"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Engineering Mechanics(ME 100)",
+      "Elements of Mechanical Engineering Engineering (ME 150)"
+    ],
+    "pg": []
+  },
+  "academicInformation": [],
+  "publications": {},
+  "researchGuidance": [],
+  "fundedProjects": [],
+  "awardsAndHonors": [],
+  "memberships": [],
+  "professionalServices": [],
+  "coursesAttended": [],
+  "coursesConducted": []
+}

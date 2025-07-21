@@ -1,0 +1,277 @@
+{
+  "faculty_name": "Dr. Veena Thenkanidiyoor",
+  "profile": {
+    "name": "Dr. Veena Thenkanidiyoor",
+    "designation": "Associate Professor & Head",
+    "department": "Department of Computer Science and Engineering",
+    "imageUrl": "Dr. Veena Thenkanidiyoor.png",
+    "email": "veenat@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Deep Learning",
+      "Kernel Methods",
+      "Pattern Recognition",
+      "Applied Machine Learning",
+      "Computer Vision",
+      "Speech Processing",
+      "Weather Data Analysis",
+      "Content based Information Retrieval"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Veena Thenkanidiyoor",
+    "gender": "Female",
+    "birthDate": null,
+    "designation": "Associate Professor & Head",
+    "department": "Department of Computer Science and Engineering",
+    "url": null,
+    "dateOfJoining": "14/06/2013",
+    "experience": "14 Years and 3 months of Teaching Experience and 3 years and 10 months of Research Experience"
+  },
+  "contactInformation": {
+    "address": "Associate Professor, Department of Computer Science and Engineering, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "veenat@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Deep Learning",
+    "Kernel Methods",
+    "Pattern Recognition",
+    "Applied Machine Learning",
+    "Computer Vision",
+    "Speech Processing",
+    "Weather Data Analysis",
+    "Content-based Information Retrieval"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Introduction to Machine Learning",
+      "Computer Organization and Architecture",
+      "Systems Programming",
+      "Computer Vision",
+      "Object Oriented Programming",
+      "Computer Networks",
+      "Soft Computing",
+      "Advanced Java Programming",
+      "Programming in C",
+      "Data Structures",
+      "Introduction to Algorithms"
+    ],
+    "pg": [
+      "Machine Learning",
+      "Advanced Computer Architecture",
+      "Pattern Recognition",
+      "Artificial Neural Networks",
+      "Image Processing",
+      "Advanced Java Programming",
+      "Relational Database Management Systems",
+      "Web Application Development-I",
+      "Web Application Development-II"
+    ]
+  },
+  "academicInformation": [
+    {
+      "degree": "B.E.",
+      "institute": "Manipal Institute of Technology, Manipal Affiliated to Mangalore University",
+      "year": "1998",
+      "subject": "Biomedical Engineering"
+    },
+    {
+      "degree": "M.E.",
+      "institute": "MS from Manipal Academy of Higher Education, Manipal",
+      "year": "2000",
+      "subject": "Medical Software"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "IIT Madras",
+      "year": "2014",
+      "subject": "Computer Science and Engineering"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "Shikha Gupta, Krishan Sharma, A. D. Dileep, Veena Thenkanidiyoor, “Visual Semantic-Based Representation Learning Using Deep CNNs for Scene Recognition”, ACM Transactions on Multimedia Computing, Communications, and Applications, 17(2), June 2021 JUN 2021",
+      "Shikha Gupta, A. D. Dileep, Veena Thenkanidiyoor, “Recognition of varying size scene images using semantic analysis of deep activation maps”, Machine Vision and Applications, 32(2), pp. 1-19, March 2021 MAR 2021",
+      "V. Sakthivel Samy, Koyel Pramanick, Veena Thenkanidiyoor, Jeni Victor, “Data Analysis and Visualization in Python for Polar Meteorological Data”. International Journal of Electrical, Electronics and Computer Engineering” (IJEECE). 2(1). 2021 2021",
+      "Shikha Gupta, A. Karanath, K. Mahrifa, A. D. Dileep, Veena Thenkanidiyoor, “Segment-level probabilistic sequence kernel and segment-level pyramid match kernel based extreme learning machine for classification of varying length patterns of speech”, in International Journal of Speech Technology, 22(1), pp. 231-249, March 2019 MAR 2019"
+    ],
+    "proceedings": [
+      "Samy, V.S, Veena Thenkanidiyoor, \"Application of machine learning techniques to weather forecasting”, International Symposium “Global Collaboration on Data beyond Disciplines”, 23-25 September 2020. SEPT 2020",
+      "Prajyot Naik, Manisha Naik Gaonkar, Veena Thenkanidiyoor, Dileep A.D., “Kernel based Matching and a Novel Training approach for CNN-based QbE-STD”, selected for publications in International Conference on Signal Processing and Communications 2020 (SPCOM 2020), Bengalore, India. JULY 2020",
+      "Shikha Gupta, Kishalaya De, A.D. Dileep, Veena Thenkanidiyoor, “Emotion recognition from varying length patterns of speech using CNN-based segment-level pyramid match kernel based SVMs”, in Proceedings of National Conference on Communications 2019 (NCC 2019), Bangalore, India, 2019, pp. 1-6 FEB 2019",
+      "Spoorthy V, Veena Thenkanidiyoor and Dileep A.D. “SVM-based Language Diarization for Code-Switched Bilingual Indian Speech using Bottleneck Features.” Selected for presentation in 6th Workshop on Spoken Language Technologies for Under-resourced Languages, 29-31 August, 2018, Gurugram, India AUG 2018",
+      "Sourab Magrulkar, Suhani Shrivatsava, Veena Thenkanidiyoor, Dileep Aroor Dinesh, “A Context-aware Convolutional Natural Language Generation model for Dialogue Systems”, in Proceedings of the SIGDIAL 2018, 12-14 July 2018, Melbourne, Australia. JULY 2018",
+      "Ankit Sharma, Apurv Kumar, Sony Allappa, Veena Thenkanidiyoor, Dileep Aroor Dinesh, and Shikha Gupta, “Modified Time Flexible Kernel for Video Activity Recognition using Support Vector Machines”, Accepted for publication at 7th International Conference on Pattern Recognition Applications and Methods (ICPRAM 2018), Funchal, Madeira –Portugal JAN 2018",
+      "Shikha Gupta, Deepak Kumar Pradhan, Dileep Aroor Dinesh, and Veena Thenkanidiyoor, “Deep Spatial Pyramid Match Kernel for Scene Image Classification”, Accepted for publication at 7th International Conference on Pattern Recognition Applications and Methods (ICPRAM 2018), Funchal, Madeira –Portugal JAN 2018",
+      "Ankit Sharma, Apurv Kumar, Sony Allappa, Veena Thenkanidiyoor, Dileep Aroor Dinesh, and Shikha Gupta, “Modified Time Flexible Kernel for Video Activity Recognition using Support Vector Machines”, Accepted for publication at 7th International Conference on Pattern Recognition Applications and Methods (ICPRAM 2018), Funchal, Madeira –Portugal JAN 2018",
+      "Neeraj Sharma, Dileep Aroor Dinesh, and Veena Thenkanidiyoor, “Text Classification using Hierarchical Sparse Representation Classifiers”, Accepted for publication at 16th International Conference on Machine Learning and Applications (ICMLA 2017), Cancun, Mexico DEC 2017",
+      "Deepak Kumar Pradhan, Shikha Gupta, Veena Thenkanidiyoor, and Dileep Aroor Dinesh, “Sematic Multinomial Representations for Scene Images using CNN-based Pseudo-concepts and Concept Neural Networks”, Accepted for publication at The Sixth National Conference on Computer Vision, Pattern Recognition, Image Processing and Graphics (NCVPRIPG 2017) DEC 2017",
+      "Shikha Gupta, A. D. Dileep, Veena Thenaknidiyoor \"The Semantic Multinomial Representation of Images Obtained Using Dynamic Kernel Based Pseudo-concept SVMs”, in Proceedings of 23rd National Conference on Communications 2017 (NCC 2017), IIT Madras, Chennai MAR 2017",
+      "Shikha Gupta, Veena Thenaknidiyoor, A. D. Dileep, \"Segment-level Probabilistic Sequence Kernel based Support Vector Machines for Classification of Varying Length Patterns of Speech\", Accepted for Presentation in The 23rd International Conference on Neural Information Processing (ICONIP 2016), Kyoto, Japan OCT 2016",
+      "Neeraj Sharma, Anshu Sharma, Veena Thenkanidiyoor, Dileep Aroor Dinesh, \"Text Classification using Combined Sparse Representation Classifiers and Support Vector Machines\", Accepted for Presentation in 4th International Symposium on Computational and Business Intelligence (ISCBI 2016), Olten, Switzerland. SEPT 2016",
+      "Shikha Gupta, A.D.Dileep, Veena Thenkanidiyoor, \"Segment-Level Pyramid Match Kernels For The Classification of Varying Length Patterns of Speech Using SVMs\", Accepted for Presentation in 24th European Signal Processing Conference (EUSIPCO 2016), Hilton, Budapest, Hungry AUG 2016",
+      "Shikha Gupta, Veena Thenkanidiyoor, Dileep A. D., \"Spatial Probabilistic Sequence Kernel for Scene Classification using Support Vector Machines\", CVPR 2016 (29th IEEE Conference on Computer Vision and Patter Recognition, 2016) workshop on Women in Computer Vision 2016 (WiCV 2016), Las Vegas, NV, USA. JUN 2016",
+      "Shikha Gupta, Samriddhi Jain, Veena Thenkanidiyoor, A. D. Dileep , \"Semantic Multinomial Representation for Scene Images using Dynamic Kernel based SVMs\", Scene Understanding Workshop (SUNw 2016), 29th IEEE Conference on Computer Vision and Patter Recognition, 2016, (CVPR 2016) Las Vegas, NV, USA. JUN 2016",
+      "Abhijeet Sachdev, Veena Thenkanidiyoor, Dileep A. D. and C. Chandra Sekhar \"Example-Specific Density based Matching Kernels for Scene Classification using Support Vector Machines\", in Proceedings of 14th IEEE International Conference on Machine Learning and Applications (ICMLA 2015), December 09-11, Miami, Florida, USA DEC 2015",
+      "Abhijeet Sachdev, A. D. Dileep, and Veena Thenkanidiyoor, \"A Family of Example-Specific Density based Matching Kernels for Classification of Varying Length Patterns of Speech using SVMs\", in Proceedings of 2nd International Conference on Soft Computing and Machine Intelligence (ISCMI 2015), November 23-24, Hong Kong [WON THE BEST PAPER AWARD] NOV 2015",
+      "Abhijeet Sachdev, A. D. Dileep, and Veena Thenkanidiyoor, \"Example-Specific Density based Matching Kernel for Classification of Varying Length Patterns of Speech using SVMs\", in Proceedings of 22nd International Conference on Neural Information Processing (ICONIP 2015), November 09-12, Instanbul, Turkey NOV 2015",
+      "T. Veena, and C. C. Sekhar, “Matching of images using Gaussian mixture model based intermediate matching kernel for retrieval of scene images”, in Proceedings of Centenary Conference 2011, Electrical Engineering, Indian Institute of Science, (Bangalore,India), December 2011 pp. 501-506 DEC 2011",
+      "T. Veena, A. D. Dileep. and C. Chandra Sekhar, “Scene Categorization Using Large Margin Gaussian Mixture Models,” in Proceedings of 2010 International Conference on Image Processing, Computer Vision, & Pattern Recognition (IPCV-2010), Las Vegas, Navada, USA, July 2010, pp. 395-401 JULY 2010",
+      "S. Chandrakala, T. Veena and C. Chandra Sekhar, “Gaussian Mixture Model based Posterior Probability Support Vector Machines for Speech Emotion Recognition and Image Classification,” In Proceedings of Second International Conference on Intelligent Human Computer Interaction, Allahabad, India, January 2010, pp 85-99. JAN 2010",
+      "Veena T. and C. Chandra Sekhar, “Concept Saliency Score Estimation for Content Based Image Retrieval,” International Conference on Cognitive and Neural Systems (ICCNS-2009), Boston, MA, USA, May 2009. MAY 2009"
+    ]
+  },
+  "researchGuidance": [
+    "Ms. Diana Terezinha Miranda, working on \"Medical Image Captioning\" [Ongoing]",
+    "Ms. Naik Gaonkar Manisha babuso, working on \"Spoken term Detection\" [Ongoing]",
+    "Mr. V. Sakthivelsamy. working on \"Polar Weather Data Analysis\" [Ongoing]"
+  ],
+  "fundedProjects": [],
+  "awardsAndHonors": [],
+  "memberships": [],
+  "professionalServices": [],
+  "coursesAttended": [
+    {
+      "month": "JUN",
+      "year": "2017",
+      "info": "Workshop on Machine Learning for Medical Image analysis Focus On: Microscopy Image Processing"
+    },
+    {
+      "month": "JAN",
+      "year": "2017",
+      "info": "Winter School on Speech and Audio Processing Theme: Spatial Audio Processing"
+    },
+    {
+      "month": "OCT",
+      "year": "2016",
+      "info": "Regional Training and Workshop National Academic Depository"
+    },
+    {
+      "month": "JULY",
+      "year": "2016",
+      "info": "Summer School on Deep Learning for Computer Vision, IIIT Hyderabad"
+    },
+    {
+      "month": "JUN",
+      "year": "2016",
+      "info": "Workshop on Machine Learning for Medical Image Analysis, Focussed on Magnetic Resonance Imaging (MRI), IIT Mandi, Mandi, Himachal Pradesh"
+    },
+    {
+      "month": "JAN",
+      "year": "2016",
+      "info": "Winter School on Speech and Audio Processing (WiSSAP-2016): Speech Prosody, SSN College of Engineering, Chennai"
+    },
+    {
+      "month": "JUN",
+      "year": "2015",
+      "info": "Workshop on Machine Learning for Medical Image Analysis (WMLMIA 2015) held at IIT Mandi, Mandi, Himachalpradesh"
+    },
+    {
+      "month": "JAN",
+      "year": "2015",
+      "info": "Winter School on Speech and Audio Processing (WiSSAP-2015): Production-Perception based New Models of Speech Analysis at Dhirubhai Ambani Institute of Information and Communication Technology(DA-IICT), Gandhinagar, India"
+    },
+    {
+      "month": "JAN",
+      "year": "2014",
+      "info": "Winter School on Speech and Audio Processing (WiSSAP-2014): Deep Learning for Multilingual Speech Processing at International Institute of Information Technology (IIIT) Hyderabad, India, January 17-20, 2014"
+    },
+    {
+      "month": "JUN",
+      "year": "2013",
+      "info": "Resonance 2013 Summer School on Neuroscience, A Joint Initiative of IIT Delhi, MIT and Harward, at IIT Delhi, June 24-July 6, 2013"
+    },
+    {
+      "month": "FEB",
+      "year": "2013",
+      "info": "Winter School on Speech and Audio Processing (WiSSAP-2013): Statistical Parametric Speech Synthesis at Indian Institute of Technology Madras (IITM), Chennai, India, February 22-25, 2013."
+    },
+    {
+      "month": "JAN",
+      "year": "2012",
+      "info": "Winter School on Speech and Audio Processing (WiSSAP-2012): Computational Auditory Scene Analysis at Indian Institute of Science (IISc), Bangalore, India, January 6-9, 2012"
+    },
+    {
+      "month": "DEC",
+      "year": "2011",
+      "info": "Centenary Conference 2011, Electrical Engineering, Indian Institute of Science, (Bangalore,India), December 2011"
+    },
+    {
+      "month": "JAN",
+      "year": "2011",
+      "info": "Winter School on Speech and Audio Processing (WiSSAP-2011): Speech Enhancement at Indian Institute of Technology Gauhati (IITG), Gauhati, India, January 08-11, 2011."
+    },
+    {
+      "month": "NOV",
+      "year": "2010",
+      "info": "Indo-US Symposium on New Directions in Machine Learning, Game Theory and Optimization at Indian Institute of Science (IISc), Bangalore, India, November 12-13, 2010."
+    },
+    {
+      "month": "JUN",
+      "year": "2010",
+      "info": "Machine Learning Summer School (MLSS 2010) conducted by Yahoo Labs Bangalore at Indian Institute of Science (IISc), Bangalore, India, June 14-19, 2010."
+    },
+    {
+      "month": "JAN",
+      "year": "2010",
+      "info": "The 2010 Winter School on Machine Learning and Computer Vision conducted jointly by Canadian Institute for Advanced Research (CIFAR) and Microsoft Research India (MSR India) at Indian Institute of Science (IISc), Bangalore, India, January 9-17, 2010. National Conference on Communications (NCC-2010) at Indian Institute of Technology Madras (IITM), Chennai, India, January 29-31, 2010"
+    },
+    {
+      "month": "MAY",
+      "year": "2009",
+      "info": "International Conference on Cognitive and Neural Systems (ICCNS-2009) at Boston University, Boston, MA, US, May 27-30, 2009"
+    },
+    {
+      "month": "JAN",
+      "year": "2009",
+      "info": "Winter School on Speech and Audio Processing (WiSSAP-2009): Speaker and Language Recognition at Indian Institute of Technology Kanpur (IITK), Kanpur, India, January 09-12, 2009"
+    },
+    {
+      "month": "JULY",
+      "year": "2008",
+      "info": "Workshop on Ontology, NLP, IE, and IR at Indian Institute of Technology Bombay (IITB), Mumbai, India, July 16-18, 2008"
+    },
+    {
+      "month": "APRIL",
+      "year": "2008",
+      "info": "Workshop on Machine Learning conducted by International School of Information Management, University of Mysore at Bangalore, India, April 21-25, 2008"
+    },
+    {
+      "month": "JAN",
+      "year": "2008",
+      "info": "Winter School on Speech and Audio Processing (WiSSAP-2008): Speech Synthesis at Indian Institute of Technology Madras (IITM), Chennai, India, January 02-05, 2008"
+    },
+    {
+      "month": "NOV",
+      "year": "2005",
+      "info": "Faculty Development Programme on “Signals and Systems”, at Sri Sivasubramaniya Nadar College of Engineering, Chennai, November 21-26, 2005"
+    },
+    {
+      "month": "MAR",
+      "year": "2005",
+      "info": "National Conference on Bio-Signal Communication and Networking (NCBCN-2005), at Sri Sivasubramaniya Nadar College of Engineering, Chennai, March 18-20, 2005"
+    },
+    {
+      "month": "NOV",
+      "year": "2003",
+      "info": "Faculty Development Programme on “Real Time Systems”, at Sri Sivasubramaniya Nadar College of Engineering, Chennai, November 24-29, 2003"
+    },
+    {
+      "month": "DEC",
+      "year": "2001",
+      "info": "International Conference on Biomedical Engineering (BioVision 2001), J.N. Tata Auditorium, Indian Institute of Sciences, Bangalore, December 22-24, 2001"
+    }
+  ],
+  "coursesConducted": [
+    {
+      "month": "AUG",
+      "year": "2015",
+      "info": "Two day National Workshop on \"LaTeX for Technical Documentation\" from Aug 21-Aug 22, 2015"
+    },
+    {
+      "month": "JULY",
+      "year": "2014",
+      "info": "Short-term Course on Pattern Analysis and Information Security (PAIS), 30 June - 4 July, 2014"
+    }
+  ]
+}

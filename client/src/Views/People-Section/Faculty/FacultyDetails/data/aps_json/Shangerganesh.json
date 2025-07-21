@@ -1,0 +1,109 @@
+{
+  "faculty_name": "Dr. L. Shangerganesh",
+  "profile": {
+    "name": "Dr. L. Shangerganesh",
+    "designation": "Assistant Professor & Head",
+    "department": "Department of Applied Sciences",
+    "imageUrl": "Dr. L. Shangerganesh.png",
+    "email": "shangerganesh@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Mathematical Biology",
+      "Finite Element Methods",
+      "Partial Differential Equations"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. L. Shangerganesh",
+    "gender": "Male",
+    "birthDate": null,
+    "designation": "Assistant Professor & Head(APS & HS)",
+    "department": "Department of Applied Sciences",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": null
+  },
+  "contactInformation": {
+    "address": "Department of Applied Sciences, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "shangerganesh@nitgoa.ac.in",
+    "phoneMobile": null
+  },
+  "researchAreas": [
+    "Mathematical Biology, Finite Element Methods & Partial Differential Equations"
+  ],
+  "coursesTaught": null,
+  "academicInformation": [],
+  "publications": {
+    "journal": [
+      "S Hariharan, L Shangerganesh, A Debbouche and V Antonov, Stability analysis of spatiotemporal reaction–diffusion mathematical model incorporating the varicella virus transmission, The European Physical Journal Plus 138(12), (2023) 1123.",
+      "P.T. Sowndarrajan, L. Shangerganesh, N. Nyamoradi and S. Hariharan, Optimal control for a nonlinear tuberculosis model, Iranian Journal of Science, (2023), 1-12.",
+      "A. Arivazhagan, N Barani Balan, L. Shangerganesh and K. Dravid, Blow-up phenomena for a sixth-order partial differential equation with a general non-linearity, Journal of Dynamical and Control Systems, (2023), 1-15.",
+      "V.N. Deiva Mani, S. Karthikeyan, L. Shangerganesh and S Marshal Anthoni, Solvability of the acid-mediated tumor growth model with nonlinear acid production term, Journal of Elliptic and Parabolic Equations, (2023), 1-14.",
+      "M.N. Krishnan, N Barani Balan, L. Shangerganesh, J Manimaran, An optimal control problem for acid-mediated cancer invasion model, Journal of Applied Nonlinear Dynamics 12(2023), 339-351.",
+      "J. Manimaran, V. Bhuvaneswari, L. Shangerganesh, Weak solution for time-fractional strongly coupled three species cooperating model, Partial Differential Equations in Applied Mathematics, (2023), 100504.",
+      "P.T Sowndarrajan, L. Shangerganesh, A. Debbouche, D.F.M. Torres, Optimal control of a heroin epidemic mathematical model, Optimization, 71(2022), 3107-3131.",
+      "N. Lakshmipriya, S. Gnanavel, L. Shangerganesh and N. Nyamoradi, Existence and nonexistence of solutions of thin–film equations with variable exponent spaces, Differential Equations & Applications 14(2022), 579-595.",
+      "J. Manimaran, L. Shangerganesh, A. Debbouche and J.-C. Cortés, A time-fractional HIV infection model with nonlinear diffusion, Results in Physics 25 (2021) 104293.",
+      "G. Sathishkumar , L. Shangerganesh and S. Karthikeyan, Lower bounds of finite-time blow-up of solutions to a two-species Keller-Segel chemotaxis model, Journal of Applied Nonlinear Dynamics 10(1) (2021) 81-93.",
+      "L. Shangerganesh, G. Sathishkumar, N. Nyamoradi and S. Karthikeyan,Blow-up phenomena of a cancer invasion model with nonlinear diffusion and haptotaxis term, Bulletin of the Malaysian Mathematical Sciences Society, 44 (2021) 1215-231.",
+      "J. Manimaran and L. Shangerganesh, Error estimates for the Galerkin finite element approximations of time-fractional nonlocal diffusion equation, International Journal of Computer Mathematics, 98(7) (2021) 1365-1384.",
+      "J. Manimaran, L. Shangerganesh and A. Debbouche, Finite element error analysis of a time-fractional nonlocal diffusion equation with the Dirichlet energy, Journal of Computational and Applied Mathematics, 382(2021) 113066.",
+      "J. Manimaran and L. Shangerganesh Existence and uniqueness of time-fractional nonlocal diffusion systems modelling an epidemic disease, Indian Society of Industrial and Applied Mathematics 11(2) (2020) 193-207.",
+      "K Navaneetha Krishnan, S Hemalatha, N Barani Balan and L. Shangerganesh, Analyzing lotka-volterra reaction-diffusion model using optimization technique, Indian Society of Industrial and Applied Mathematics 11(2) (2020), 174-192.",
+      "P.T. Sowndarrajan and L. Shangerganesh, An optimal control problem of nonlocal Pyragas feedback controllers for convective FitzHugh-Nagumo equations with time-delay, SIAM Journal on Control and Optimization, 58(2020), 3613-3631.",
+      "J Manimaran and L Shangerganesh, Mathematical and numerical analysis of acid mediated cancer invasion model with nonlinear diffusion, Electronic Transactions on Numerical Analysis, 52(2020) 576-598.",
+      "L. Shangerganesh, V.N. Deiva Mani and S. Karthikeyan, Existence of solutions of cancer invasion parabolic system with integrable data, Afrika Matematika, 31(2020) 1359-1378.",
+      "J. Manimaran, L. Shangerganesh and A. Debbouche, A time-fractional competition ecological model with cross-diffusion, Mathematical Methods in the Applied Sciences, 43(2020), 5197-5211.",
+      "P.T. Sowndarrajan, N. Nyamoradi, L Shangerganesh and J Manimaran, Mathematical analysis of an optimal control problem for the predator-prey model with disease in prey, Optimal Control Applications and Methods, 41(2020) 1495-1509.",
+      "J Manimaran and L Shangerganesh, Solvability and numerical simulations for tumor invasion model with nonlinear diffusion, Computational and Mathematical Methods, 2(2020) e1068.",
+      "P.T. Sowndarrajan, J Manimaran, A Debbouche and L Shangerganesh, Distributed optimal control of a tumor growth treatment model with cross-diffusion effect, The European Physical Journal Plus, 134 (2019) 463.",
+      "L. Shangerganesh, N. Nyamoradi, G. Sathishkumar and S. Karthikeyan, Finite-time blow-up of solutions to a cancer invasion mathematical model with haptotaxis effects, Computers & Mathematics with Applications, 77(2019) 2242-2254.",
+      "J Manimaran and L Shangerganesh, Blow-up solutions of a time-fractional diffusion equation with variable exponents, Tbilisi Mathematical Journal, 12(2019) 149-157.",
+      "J Manimaran, L Shangerganesh, A Debbouche and V Antonov, Numerical solutions for time-fractional cancer invasion system with nonlocal diffusion, Frontiers in Physics, 7(2019) 93.",
+      "L. Shangerganesh, G. Sathishkumar and S. Karthikeyan, Lower bounds for the finite-time blow-up of solutions of a cancer invasion model, Electronic Journal of Qualitative Theory of Differential Equations, 12(2019) 1-13.",
+      "L. Shangerganesh and P.T. Sowndarrajan, Optimal control problem for cancer invasion reaction-diffusion system, Numerical Functional Analysis and Optimization, 39(2018) 1574-1593.",
+      "Y. Zhou, J. Manimaran, L. Shangerganesh and A. Debbouche, Weakness and Mittag-Leffler stability of solutions for time-fractional Keller-Segel models, International Journal of Nonlinear Sciences and Numerical Simulation, 19(2018) 753-761.",
+      "P.T. Sowndarrajan and L. Shangerganesh, Optimal control problem for cancer invasion mathematical model with nonlinear diffusion, Optimization, 67(2018) 1819-1836.",
+      "Y. Zhou, L. Shangerganesh, J. Manimaran and A. Debbouche, A class of time fractional reaction-diffusion equation with nonlocal boundary condition, Mathematical Methods in the Applied Sciences, 41(2018) 2987-2999.",
+      "L. Shangerganesh, N. Nyamoradi, V.N. Deiva Mani and S. Karthikeyan, On the existence of weak solutions of nonlinear degenerate parabolic system with variable exponents, Computers and Mathematics with Applications, 75(2018) 322–334.",
+      "L. Shangerganesh, V.N. Deiva Mani and S. Karthikeyan, Renormalized and entropy solutions of tumor growth model with nonlinear acid production, Mathematical Modelling and Analysis, 22(2017) 695-716.",
+      "L. Shangerganesh, V.N. Deiva Mani and S. Karthikeyan, Existence of global weak solutions for cancer invasion parabolic system with nonlinear diffusion, Communications in Applied Analysis, 21(2017) 607-629.",
+      "S. Ganesan and L. Shangerganesh, Galerkin finite element method for cancer invasion mathematical model, Computers and Mathematics with Applications, 73(2017) 2603-2617.",
+      "L. Shangerganesh, A. Gurusamy and K. Balachandran, Weak solutions for nonlinear parabolic equations with variable exponents, Communications in Mathematics, 25(2017) 55-70.",
+      "S. Ganesan and L. Shangerganesh, A biophysical tumor invasion model, Communications in Nonlinear Science and Numerical Simulation, 46(2017) 135-152.",
+      "A. Gurusamy, L. Shangerganesh and K. Balachandran, Blow-up of solutions of Nonlinear parabolic system with variable exponents, Nonlinear Functional Analysis and Applications, 21(2016) 449-461.",
+      "V. Bhuvaneswari, L. Shangerganesh and K. Balachandran, Global existence and blow up of solutions of quasilinear chemotaxis system, Mathematical Methods in the Applied Sciences, 38(2015) 3738-3746.",
+      "L. Shangerganesh, N. Baranibalan and K. Balachandran, Weak-renormalized solutions for three species competition model in ecology, International Journal of Biomathematis 7(2014) 1450062.",
+      "L. Shangerganesh, N. Baranibalan and K. Balachandran, Existence and uniqueness of solutions of degenerate chemotaxis system, Taiwanse Journal of Mathematics 18(2014) 1605-1622.",
+      "L. Shangerganesh and K. Balachandran, Solvability of reaction-diffusion model with variable exponents, Mathematical Methods in the Applied Sciences 37(2014) 1436-1448.",
+      "V. Bhuvaneswari, L. Shangerganesh, K. Balachandran and J. K. Kim, Weak solutions for p-Laplacian equation, Advances in Nonlinear Analysis 1(2012) 319-334.",
+      "L. Shangerganesh and K. Balachandran, Renormalized and entropy solutions of nonlinear parabolic systems, Electronic Journal of Differential Equations 268(2013) 1-24.",
+      "L. Shangerganesh, N. Baranibalan and K. Balachandran, Weak-renormalized solutions for predator-prey system, Applicable Analysis 92(2013) 441-459.",
+      "V. Bhuvaneswari, L. Shangerganesh and K. Balachandran, Weak solutions for p-Laplacian equation, Advances in Nonlinear Analysis 1(2012) 319-334.",
+      "L. Shangerganesh and K. Balachandran, Existence and uniqueness of solutions of predator-prey type model with mixed boundary conditions, Acta Applicandae Mathematicae 116(2011) 71-86."
+    ]
+  },
+  "phdStudents": [
+    "Mr. K. Yadhavan - Partial Differential Equations - Joined on August, 2022.",
+    "Mr. Halet Ismail - Fractional Differential Equations - Joined on September, 2021.",
+    "Mr. S. Hariharan - Partial Differential Equations - Joined on September, 2021.",
+    "Dr. J. Manimaran - Studies on Solutions of Certain Nonlinear Time-Fractional Partial Differential Equations - Degree Awarded on September, 2021.",
+    "Dr. P.T. Sowndarrajan - Studies on the Optimal Control of System of Parabolic Partial Differential Equations - Degree Awarded on August, 2021."
+  ],
+  "fundedProjects": [
+    "Computational and Theoretical Studies on Parabolic Partial Differential Equations in Cancer Modelling, DST-SERB, 2016-2018."
+  ],
+  "awardsAndHonors": [
+    "NBHM Travel Grant - ICIAM -2015, Beijing, P.R China. (Awarded on Jun. 2015)",
+    "NBHM Travel Grant - ICM -2014, Seoul, South Korea. (Awarded on Apr. 2014)",
+    "Dr. K. S. Kothari Post Doctoral Fellowship, UGC. (Awarded on Dec. 2013)",
+    "NBHM - DAE - Post Doctoral Fellow. (Awarded on Dec. 2013)",
+    "Reviewer, Mathematical Reviews, USA. (From Sep. 2013)",
+    "UGC-BSR-RFSMS - Junior Research Fellow. (From Mar. 2012 to Mar. 2013)",
+    "DST-PURSE - Project Fellow. (From Dec. 2011 to Feb. 2012)",
+    "Reviewer, zbMath Open, Europe (From August. 2021)"
+  ],
+  "memberships": [],
+  "professionalServices": [],
+  "coursesAttended": [],
+  "coursesConducted": []
+}

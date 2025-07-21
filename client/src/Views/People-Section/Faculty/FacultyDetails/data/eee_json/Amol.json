@@ -1,0 +1,201 @@
+{
+  "faculty_name": "Dr. Amol D. Rahulkar",
+  "profile": {
+    "name": "Dr. Amol D. Rahulkar",
+    "designation": "Associate Professor",
+    "department": "Department of Electrical and Electronics Engineering",
+    "imageUrl": "Dr. Amol D. Rahulkar.jpg",
+    "email": "amol.rahulkar@nitgoa.ac.in",
+    "researchAreaSummary": [
+      "Digital Signal/Image Processing",
+      "Design of Wavelets",
+      "FPGA based Hardware Accelerators",
+      "Design of Neural Networks",
+      "Biometrics",
+      "Control Systems"
+    ]
+  },
+  "personalInformation": {
+    "name": "Dr. Amol D. Rahulkar",
+    "gender": "Male",
+    "birthDate": "10/12/1978",
+    "designation": "Associate Professor",
+    "department": "Department of Electrical and Electronics Engineering",
+    "url": null,
+    "dateOfJoining": null,
+    "experience": "19 Years"
+  },
+  "contactInformation": {
+    "address": "Associate Professor, Dept. of Electrical and Electronics Engineering, NIT Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "amol.rahulkar@nitgoa.ac.in",
+    "phoneMobile": "9545986271"
+  },
+  "researchAreas": [
+    "Digital Signal/Image Processing, Design of Wavelets, FPGA based Hardware Accelerators,Design of Neural Networks, Biometrics, Control Systems"
+  ],
+  "coursesTaught": {
+    "ug": [
+      "Digital Signal Processing",
+      "Signals and Systems",
+      "Data Structure and Algorithm",
+      "Linear and Non-Linear Systems",
+      "Control Systems",
+      "Advanced Control Systems",
+      "Soft Computing Techniques",
+      "Circuit Theory"
+    ],
+    "pg": [
+      "Systems and Control Theory",
+      "Digital Control Theory",
+      "Soft Computing"
+    ]
+  },
+  "academicInformation": [
+    {
+      "degree": "B.E",
+      "institute": "Shri Guru Gobind Singhji Institute of Engineering and Technology, Nanded, Maharashtra",
+      "year": "2000",
+      "subject": "Instrumentation Engineering"
+    },
+    {
+      "degree": "M.Tech",
+      "institute": "IIT Kharagpur",
+      "year": "2002",
+      "subject": "Reliability Engineering"
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "Swami Ramanand Teerth Marathwada University, Nanded, Maharashtra, India",
+      "year": "2013",
+      "subject": "Instrumentation Engineering"
+    }
+  ],
+  "publications": {
+    "journal": [
+      "Aswini K Samantaray, Amol D. Rahulkar, Pranose J Edavoor, \"A Novel Design of Dyadic db3 Orthogonal Wavelet Filter Bank for Feature Extraction\", Circuits, Systems, and Signal Processing, Springer, 2021 [Published Online] APRIL 2021",
+      "Aswini Kumar Samantaray, Pranose J. Edavoor and Amol D. Rahulkar,\"Power-Efficient VLSI Architecture of A New Class of Dyadic Gabor Wavelets for Medical Image Retrieval \", IEEE Transactions on Very Large Scale Integration (VLSI) Systems, 2022,doi: 10.1109/TVLSI.2022.3213186 OCT 2022",
+      "Aswini Kumar Samantaray, Pranose J. Edavoor and Amol D. Rahulkar, \"A Novel Design of Symmetric Daub-4 Wavelet Filter Bank for Image Analysis,\" in IEEE Transactions on Circuits and Systems II: Express Briefs, vol. 69, no. 9, pp. 3949-3953, Sept. 2022, doi: 10.1109/TCSII.2022.3174183. SEPT 2022",
+      "Aswini K. Samantaray, Pranose J Edavoor and Amol D. Rahulkar, \"A New Approach to the Design and Implementation of a Family of Multiplier Free Orthogonal Wavelet Filter Banks\", in IEEE Transactions on Circuits and Systems for Video Technology, Vol.32, No.4, pp. 1942-1954, April 2022 . APRIL 2022",
+      "Pranose J. Edavoor, Sithara Raveendran and Amol Rahulkar, \"Novel 4:2 Approximate Compressor Designs for Multimedia and Neural Network Applications\", Journals of Circuits, Systems and Computers, doi 10.1142/S0218126621501383, 2020 [Available Online] NOV 2020",
+      "Pranose J. Edavoor, Sithara Raveendran, Amol D. Rahulkar, \"Approximate Multiplier Design Using Novel Dual-stage 4:2 Compressors\", IEEE Access,Vol. 8,pp.48337-48351,2020 FEB 2020",
+      "Aswini Kumar Samantaray and Amol D. Rahulkar, \"A New Design of Adaptive Gabor Wavelet Filter Bank for Medical Image Retrieval\", IET Image Processing, Vol. 14, Issue 4, pp.679-687, 2020 NOV 2019",
+      "Jayanand Gawande, Amol Rahulkar and Raghunath Holambe, \"Efficient Rationalization of Triplet Halfband Filter Banks and Its Application to Image Compression\", IEEE Transactions on Circuits and Systems for Video Technology, Vol.30, Issue 10,pp. 4020-4033,2020 OCT 2019",
+      "Amita Shinde, Amol Rahulkar, Chetankumar Patil,\"Content based medical image retrieval based on new efficient local neighborhood wavelet feature descriptor\",Biomedical Engineering Letters, pp 1-8, 2019 2019",
+      "Santosh Nagnath Randive, Ranjan K Senapati, Amol D Rahulkar,\"A review on computer-aided recent developments for automatic detection of diabetic retinopathy\",Journal of Medical Engineering & Technology, Taylor & Francis, pp 1-13,2019 2019",
+      "Pranose J. Edavoor and Amol D. Rahulkar, \"Design and Implementation of A Novel Low Complexity Symmetric Orthogonal Wavelet Filter-Bank\", IET Image Processing, Vol.13, Issue 5,pp 785-793, April 2019 2019",
+      "Amita Shinde, Amol D. Rahulkar and C. Y. Patil, “Biomedical Image Indexing and Retrieval based on New Efficient Hybrid Approach using Directional Decomposition and a Novel Local Directional Frequency Encoded Pattern: A Post Feature Descriptor”, (Accepted for publication), Multimedia Tools and Applications, Springer, April 2019. 2019",
+      "Santosh Nagnath Randive, Amol D Rahulkar, Ranjan K Senapati,\"LVP extraction and triplet-based segmentation for diabetic retinopathy recognition\",Evolutionary Intelligence, Springer, vol.11,pp 117-129, 2018 OCT 2018",
+      "Amita Shinde, Amol Rahulkar and C. Y Patil, \"Fast discrete curvelet transform-based anisotropic feature extraction for biomedical image indexing and retrieval\", International Journal of Multimedia Information Retrieval,6(4),2017 DEC 2017",
+      "Pravin B Chopade, Amol D Rahulkar, Pradeep M Patil,\"Hybrid-Thresholding based Image Super-Resolution Technique by the use of Triplet Half-Band Wavelets\", vol.97, issue 4,pp.517-523, 2016 DEC 2016",
+      "Jayanand P. Gawande, Amol D. Rahulkar, and Raghunath S. Holambe, “A New Approach to Design Triplet Half-band Filter-banks Based on Balanced-uncertainty Optimization”, Elsevier, Digital Signal Processing, Vol. 56, pp.123-131, 2016",
+      "Jayanand P. Gawande, Amol D. Rahulkar, and Raghunath S. Holambe, \"Design of New Class of Regular Biorthogonal Wavelet Filter Banks Using Generalized and Hybrid Lifting Structures\", Springer, Signal, Image and Video Processing, Vol. 9, Issue 1, pp.265-273 , 2015",
+      "Amol D. Rahulkar, Laxman M. Waghmare, and Raghunath S. Holambe, “A New Approach to the Design of Hybrid Finer Directional Wavelet Filter Bank for Iris Feature Extraction and Classification using k-out-of-n:A post-classifier”, Springer, Pattern Analysis and Application, vol.17,no.3,pp.517-528, 2014",
+      "Amol D. Rahulkar, Bhushan D. Patil and Raghunath S. Holambe,“A New Approach to the Design of Biorthogonal Triplet Halfband Filter Banks Using Generalized Halfband Polynomials”, Springer, Signal Image and Video Processing, Vol.8, Issue 8, pp 1451-1457, 2014",
+      "Amol D. Rahulkar and Raghunath S. Holambe, “Half-Iris Feature Extraction and Recognition Using A New Class of Triplet Half Band Filter Bank and flexible k-out-of-n: A post-classifier,” IEEE Transactions on Information Forensic and Security, vol. 7. no.1, pp.230-240, 2012",
+      "Amol D. Rahulkar and Raghunath S. Holambe, “Partial Iris Feature Extraction and Recognition Based on A New combined Directional and Rotated Directional Wavelet Filter Banks,” Elsevier, Neurocomputing, vol. 81, pp. 12-23, 2012",
+      "Amol D. Rahulkar, Dattatraya V. Jadhav and Raghunath S. Holambe,”Fast Discrete Curvelet Transform Based Anisotropic Iris Coding and Recognition Using k-out-of-n:A fused post-classifier,” Springer, Machine Vision and Application, Vol.23, issue 6, 1115-1127, 2012"
+    ],
+    "proceedings": [
+      "Priyanka K. Padiyar and Amol D. Rahulkar, \"Design of Adaptive Gabor Filter Bank for Feature Extraction of MRI Images and Classification using Support Vector Machine,\" 2023 IEEE International Conference on Electronics, Computing and Communication Technologies (CONECCT), Bangalore, India, 2023, pp. 1-5, doi: 10.1109/CONECCT57959.2023.10234741. SEPT 2023",
+      "Ashish K Gupta and Amol D. Rahulkar, \"Artificial Neural Network based SoC Estimation for Electric Vehicle\", Proc. in IEEE 8th International Conference for Convergence in Technology (I2CT), Lonavla, India, pp. 1-7, Aprial 7-9,2023 doi: 10.1109/I2CT57861.2023.10126329. MAY 2023",
+      "Aswini K. Samantaray and Amol D. Rahulkar, \"Lifting Scheme Based Image Retrieval in Medical CT and MRI Databases\", 2020 IEEE International Symposium on Sustainable Energy, Signal Processing and Cyber Security (iSSSC), 2020, pp. 1-6, doi: 10.1109/iSSSC50941.2020.9358908. SEPT 2020",
+      "Ashwini R Patil, Amol D. Rahulkar and Chirag N Modi, \"Designing an Efficient Fingerprint Recognition System for Infants and Toddlers,\" 2019 10th International Conference on Computing, Communication and Networking Technologies (ICCCNT), 2019, pp. 1-7, doi: 10.1109/ICCCNT45670.2019.8944342 DEC 2019",
+      "Aswini K. Samantaray and Amol D. Rahulkar, \"Comparison of Similarity Measurement Metrics on Medical Image Data\", 0th International Conference on Computing, Communication and Networking Technologies (ICCCNT), 2019, pp. 1-5, doi: 10.1109/ICCCNT45670.2019.8944781. DEC 2019",
+      "Priyanandini Das, Pranose Edavoor, Sithara R., Sunil Rathore and Amol Rahulkar, \"Design and Implementation of PID Controller based on Orthogonal wavelet filter-banks in FPGA\", Proc. of IEEE Seventh International Symposium on Embedded Computing and System Design (ISED), 18-20 Dec, 2017, NIT Durgapur, India DEC 2017",
+      "Pranose Edavoor, Sithara R. and Amol Rahulkar, \"Implementation of adaptive image compression algorithm using varying bit-length Daubechies wavelet coefficient with three-level encryption on Zynq 7000\", Proc. of IEEE Seventh International Symposium on Embedded Computing and System Design (ISED), 18-20 Dec, 2017, NIT Durgapur, India DEC 2017",
+      "Priyanandini Das, Pranose Edavoor, Sithara Raveendran, Amol Rahulkar, “Design and Implementation of computationally efficient architecture of PID based speed controller for Robotic land navigation system in FPGA”, Accepted in conference on Information and Communication Technology, at Indian Institute of Technology and Management, Gwalior, during Nov 3-5, 2017. NOV 2017",
+      "Amita Shinde, Amol Rahulkar and C. Y Patil, “Local Neighbouring Binary Pattern: A New Feature Descriptor for Biomedial Image Indexing and Retrievel”, Proc. in 2nd International conference on Signal and Image Processing (ICSIP 2017), pp. 154-159, August 4-6, 2017, Singapore (Received Best Presentation Award) 2017",
+      "Pradeep Vejju, Arun George, Amol Rahulkar, \"Comparative Study on the Computation of State Transition Matrix Using Lagrange Interpolation Technique and Cayley-Hamilton Theorem\", Proc. of 10th International Conference on Intelligent Systems and Control (ISCO-2016), pp.235-239. JAN 2016"
+    ],
+    "bookChapters": [
+      "Aswini K. Samantaray, Amol D. Rahulkar, \"Wavelet Transform for Cardiac Image Retrieval\" . Book chapter in: Image Processing Methods for Automatic Diagnosis of Cardiac Diseases (chapter-8), Elsevier, December 2020 DEC 2020",
+      "Amita Shinde, Amol Rahulkar, C Y Patil (2020) Directional Multiscale Feature Extraction for Biomedical Image Indexing and Retrieval Using Contourlet Transform. Book chapter in: A. Abraham, A. Cherukuri, P. Melin, N. Gandhi (eds), “ Intelligent Systems Design and Applications”, Advances in Intelligent Systems and Computing, vol 940. Springer, Cham, 2019. 2019"
+    ],
+    "booksAuthored": [
+      "Jayanand Gawande, Amol Rahulkar and Raghunath Holambe, \"Design of Wavelets and Filter Banks:New Methods and Application to Chromosome Image Compression\",LAP-Lambert Academic Publisher, ISBN-978-613-8-38779-4, March 22, 2018 . MAR 2018",
+      "Amol D. Rahulkar, “Advanced Control System: Analysis and Design ” [Available online] http://idr.nitgoa.ac.in:8080/jspui/handle/123456789/26, 2017. SEPT 2017",
+      "Amol D. Rahulkar and Raghunath S. Holambe,\"Iris Image Recognition: New Wavelet Filter-banks Based Iris Feature Extraction Schemes\", Springer, Series- SpringerBriefs in Electrical and Computer Engineering, New York, ISBN 978-3-319-06767-4. 2014"
+    ]
+  },
+  "researchGuidance": [
+    "Dr. Pranose J. Edavoor-Defended his PhD Thesis entitled \"Approaches to the Design of VLSI Computational Architectures for Wavelets and Neural Networks in Multimedia Applications\" on 29/10/2021",
+    "Dr. Aswini Kumar Samantaray-Defended his PhD Thesis entitled \"Design of Low-complex Wavelet Filter-banks for Feature Extraction in Medical Image Retrieval\" on 22/09/2022",
+    "Mr. Vallabh Bhatlavande (Ongoing)",
+    "Ms. Priyanka Padiyar (Ongoing)",
+    "Ms. Priyanandini Das (Ongoing)"
+  ],
+  "fundedProjects": [
+    "\"Design and Development of Fingerprint and Face Recognition System for Infants and Toddlers\", Science and Engineering Research Board (SERB), DST, 2017-2020 (PI)",
+    "\"Design and Development of Robust Distributed Nonlinear Channel Equalization and Identification\", SERB, DST, 2016-2019. (Co-PI)",
+    "\"Design and Development of FPGA Accelerator IP for Deep Neural Network (FAipDNet)\", MeiTY, Govt. of India, (PI) : Status: Ongoing"
+  ],
+  "awardsAndHonors": [
+    "Received \"Gunwant Adhyapak Puraskar\" from University of Pune in February-2014",
+    "Received Best Presentation Award for the paper entitled, \"Local Neighboring Binary Pattern: A New Feature Descriptor for Biomedical Image Indexing and Retrieval\", in ICSIP-2017 held during August 4-6, 2017, Singapore.",
+    "IEEE Senior Member"
+  ],
+  "memberships": [
+    "IEEE Senior Member",
+    "LMISTE"
+  ],
+  "professionalServices": [],
+  "coursesAttended": [
+    {
+      "month": "DEC",
+      "year": "2017",
+      "info": "Six days GIAN course on , \"Current trends in Power electronics and Drives Technology\" at VNIT Nagpur during Dec. 11-Dec. 17, 2017."
+    },
+    {
+      "month": "SEP",
+      "year": "2014",
+      "info": "One-week workshop on \"An Embedded Generation Interface With Real World: A Practical Approach\" at Trinity College of Engineering, Pune during Sept16-Sept 20, 2014"
+    },
+    {
+      "month": "JUN",
+      "year": "2012",
+      "info": "Two-week STTP on \"Linear Algebra and Its Applications\" at Shri Guru Gobind Singhji Institute of Engineering and Technology, Nanded during May 21-June 02, 2012."
+    },
+    {
+      "month": "DEC",
+      "year": "2010",
+      "info": "Two-week STTP on \"Image and Video Processing Using MATLAB\" at SKNCOE, Pune during Dec 30-Jan. 3, 2010"
+    },
+    {
+      "month": "JULY",
+      "year": "2010",
+      "info": "One-week STTP on \"Recent Trends in Digital Image Processing\" at Army Institute of Technology, Pune during June 28-July 2, 2010."
+    },
+    {
+      "month": "JUN",
+      "year": "2009",
+      "info": "3 Days workshop on \"Wavelets and Applications\" at Shri Guru Gobind Singhji Institute of Engineering and Technology, Nanded during June 8-10, 2009"
+    },
+    {
+      "month": "MAY",
+      "year": "2008",
+      "info": "One-week SDP on \"Image Processing and Neural Network\" at NIT, Bhopal during May 12-16, 2008"
+    },
+    {
+      "month": "DEC",
+      "year": "2007",
+      "info": "Two-week STTP on \"Advanced Digital Signal Processing\" at Sinhgad College of Engineering during Dec. 3-13, 2007"
+    },
+    {
+      "month": "NOV",
+      "year": "2007",
+      "info": "One-week STTP on \"Real Time Signal Processing\" at Y. C. C. E, Nagpur during Nov. 26-30, 2007"
+    },
+    {
+      "month": "JUN",
+      "year": "2006",
+      "info": "Two-week STTP on \"MATLAB and Its Applications in Electrical and Electronics Engineering\"at Anjuman COE, Nagpur during June 4-15, 2006."
+    }
+  ],
+  "coursesConducted": [
+    {
+      "month": "MAY",
+      "year": "2016",
+      "info": "DST Sponsored One Week STTP on \"Video and Image Analysis:Fundamental and Advances\" at NIT Goa during May 30-June 4, 2016. Number of Participants=32"
+    }
+  ]
+}
