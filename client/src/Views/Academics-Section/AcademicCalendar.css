@@ -5,6 +5,10 @@
   padding: 2rem 0;
 }
 
+[data-theme="dark"] .academic-calendar-page {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+}
+
 .academic-calendar-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -22,9 +26,19 @@
   cursor: pointer;
 }
 
+/* Dark theme support for event cards if they inherit base styles */
+[data-theme="dark"] .event-card {
+  background: #2c2c2c !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
 .event-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="dark"] .event-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4) !important;
 }
 
 .pretty-download-btn {

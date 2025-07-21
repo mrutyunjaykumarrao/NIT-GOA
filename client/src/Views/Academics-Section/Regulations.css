@@ -5,6 +5,10 @@
     padding: 2rem 0;
 }
 
+[data-theme="dark"] .regulations-page {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+}
+
 .regulations-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -29,12 +33,24 @@
     background-clip: text;
 }
 
+[data-theme="dark"] .page-header h1 {
+    color: #ffffff;
+    background: linear-gradient(135deg, #4285f4 0%, #6fa6ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
 .page-subtitle {
     font-size: 1.2rem;
     color: #666;
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
+}
+
+[data-theme="dark"] .page-subtitle {
+    color: #adb5bd;
 }
 
 /* Category Navigation */
@@ -61,9 +77,19 @@
     font-weight: 500;
 }
 
+[data-theme="dark"] .category-tab {
+    background: #2c2c2c;
+    border-color: #444;
+    color: #adb5bd;
+}
+
 .category-tab:hover {
     background: #e9ecef;
     transform: translateY(-2px);
+}
+
+[data-theme="dark"] .category-tab:hover {
+    background: #3c3c3c;
 }
 
 .category-tab.active {
@@ -117,10 +143,20 @@
     transition: all 0.3s ease;
 }
 
+[data-theme="dark"] .regulation-section {
+    background: #2c2c2c;
+    border-color: #444;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
 .regulation-section:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     border-color: #667eea;
+}
+
+[data-theme="dark"] .regulation-section:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 .regulation-section h3 {
@@ -130,6 +166,11 @@
     margin-bottom: 1.5rem;
     padding-bottom: 0.5rem;
     border-bottom: 3px solid #667eea;
+}
+
+[data-theme="dark"] .regulation-section h3 {
+    color: #ffffff;
+    border-bottom-color: #4285f4;
 }
 
 .regulation-list {
@@ -148,6 +189,11 @@
     font-size: 1rem;
 }
 
+[data-theme="dark"] .regulation-list li {
+    color: #adb5bd;
+    border-bottom-color: #444;
+}
+
 .regulation-list li:before {
     content: "▶";
     color: #667eea;
@@ -158,6 +204,10 @@
     top: 1.2rem;
 }
 
+[data-theme="dark"] .regulation-list li:before {
+    color: #4285f4;
+}
+
 .regulation-list li:last-child {
     border-bottom: none;
 }
@@ -166,6 +216,10 @@
     background: #f8f9fa;
     border-radius: 8px;
     padding-left: 1.8rem;
+}
+
+[data-theme="dark"] .regulation-list li:hover {
+    background: #3c3c3c;
 }
 
 /* Quick Reference */
@@ -179,6 +233,10 @@
     color: #2c3e50;
     text-align: center;
     margin-bottom: 2rem;
+}
+
+[data-theme="dark"] .quick-reference h2 {
+    color: #ffffff;
 }
 
 .reference-grid {
@@ -197,10 +255,21 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
+[data-theme="dark"] .reference-card {
+    background: #2c2c2c;
+    border-color: #444;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
 .reference-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     border-color: #667eea;
+}
+
+[data-theme="dark"] .reference-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border-color: #4285f4;
 }
 
 .reference-icon {
@@ -215,10 +284,18 @@
     margin-bottom: 1rem;
 }
 
+[data-theme="dark"] .reference-card h3 {
+    color: #ffffff;
+}
+
 .reference-card p {
     color: #666;
     line-height: 1.6;
     margin-bottom: 1.5rem;
+}
+
+[data-theme="dark"] .reference-card p {
+    color: #adb5bd;
 }
 
 .reference-value {

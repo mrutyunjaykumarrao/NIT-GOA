@@ -1,0 +1,266 @@
+/* Computer Science Department Styles */
+.computer-science-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 2rem 0;
+}
+
+.computer-science-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.page-header h1 {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+    color: #7f8c8d;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.main-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+/* Sidebar Styles */
+.department-sidebar {
+    position: sticky;
+    top: 2rem;
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.department-nav .nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    margin-bottom: 0.5rem;
+}
+
+.nav-link {
+    display: block;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #34495e;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    background: #3498db;
+    color: white;
+    transform: translateX(5px);
+}
+
+.nav-link.nav-active {
+    background: #2980b9;
+    color: white;
+    font-weight: 600;
+}
+
+/* Content Styles */
+.department-content {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-height: 600px;
+}
+
+.content-section h2 {
+    color: #2c3e50;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid #3498db;
+}
+
+.content-text {
+    color: #34495e;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.content-text p {
+    margin-bottom: 1.5rem;
+}
+
+/* Achievements Styles */
+.achievements-list {
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 1rem;
+}
+
+.achievement-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.achievement-items li {
+    background: #f8f9fa;
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid #3498db;
+    position: relative;
+    transition: all 0.3s ease;
+    line-height: 1.6;
+}
+
+.achievement-items li:hover {
+    background: #e3f2fd;
+    transform: translateX(5px);
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.2);
+}
+
+.achievement-items li::before {
+    content: "🏆";
+    position: absolute;
+    left: -10px;
+    top: 1.5rem;
+    background: white;
+    padding: 0.3rem;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Handbook Styles */
+.handbook-link {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.handbook-download-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.handbook-download-btn:hover {
+    background: linear-gradient(135deg, #2980b9 0%, #3498db 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    color: white;
+    text-decoration: none;
+}
+
+/* Custom Scrollbar for Achievements */
+.achievements-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.achievements-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.achievements-list::-webkit-scrollbar-thumb {
+    background: #3498db;
+    border-radius: 10px;
+}
+
+.achievements-list::-webkit-scrollbar-thumb:hover {
+    background: #2980b9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .department-sidebar {
+        position: static;
+    }
+    
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .department-content {
+        padding: 1.5rem;
+    }
+    
+    .achievement-items li {
+        padding: 1rem;
+    }
+}
+
+/* Computer Science Page Specific Header Styles */
+.computer-science-page .page-header h1 {
+    background: #3b8abf !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background-clip: padding-box !important;
+    -webkit-background-clip: padding-box !important;
+}
+
+/* Computer Science Page Dark Mode */
+[data-theme="dark"] .computer-science-page {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+}
+
+[data-theme="dark"] .computer-science-page .department-sidebar,
+[data-theme="dark"] .computer-science-page .department-content,
+[data-theme="dark"] .computer-science-page .page-header {
+    background: #2c2c2c !important;
+    color: #ffffff !important;
+    border-color: #444 !important;
+}
+
+[data-theme="dark"] .computer-science-page .nav-link {
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .computer-science-page .nav-link:hover {
+    background: #3498db !important;
+    color: white !important;
+}
+
+[data-theme="dark"] .computer-science-page .content-section h2,
+[data-theme="dark"] .computer-science-page .content-text,
+[data-theme="dark"] .computer-science-page .achievement-items li {
+    color: #ffffff !important;
+}

@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Departments.css';
 
 const Departments = () => {
     const navigate = useNavigate();
-    const [selectedDepartment, setSelectedDepartment] = useState(null);
 
     const departments = [
         {
@@ -237,8 +236,33 @@ const Departments = () => {
         navigate(`/faculty?dept=${deptCode.toLowerCase()}`);
     };
 
-    const handleDepartmentClick = (dept) => {
-        setSelectedDepartment(selectedDepartment?.id === dept.id ? null : dept);
+    const handleDepartmentClick = (deptId) => {
+        switch (deptId) {
+            case 'cse':
+                navigate('/academics/computer-science');
+                break;
+            case 'ece':
+                navigate('/academics/electronics-communication');
+                break;
+            case 'eee':
+                navigate('/academics/electrical-electronics');
+                break;
+            case 'mce':
+                navigate('/academics/mechanical-engineering');
+                break;
+            case 'cve':
+                navigate('/academics/civil-engineering');
+                break;
+            case 'aps':
+                navigate('/academics/applied-sciences');
+                break;
+            case 'hss':
+                navigate('/academics/humanities-social-sciences');
+                break;
+            default:
+                // For any future departments
+                break;
+        }
     };
 
     return (
@@ -250,154 +274,36 @@ const Departments = () => {
                     <p className="page-subtitle">Explore our world-class engineering and science departments</p>
                 </div>
 
-                {/* Departments Overview */}
-                <section className="departments-overview">
-                    <div className="overview-stats">
-                        <div className="overview-stat">
-                            <div className="stat-number">7</div>
-                            <div className="stat-label">Departments</div>
-                        </div>
-                        <div className="overview-stat">
-                            <div className="stat-number">55+</div>
-                            <div className="stat-label">Faculty Members</div>
-                        </div>
-                        <div className="overview-stat">
-                            <div className="stat-number">900+</div>
-                            <div className="stat-label">Students</div>
-                        </div>
-                        <div className="overview-stat">
-                            <div className="stat-number">15+</div>
-                            <div className="stat-label">Programs</div>
-                        </div>
-                    </div>
-                </section>
-
                 {/* Departments Grid */}
                 <section className="departments-grid">
                     {departments.map((dept) => (
-                        <div key={dept.id} className="department-card">
+                        <div 
+                            key={dept.id} 
+                            className="department-card"
+                            onClick={() => handleDepartmentClick(dept.id)}
+                            style={{ cursor: 'pointer' }}
+                        >
                             <div 
                                 className="department-header"
                                 style={{ borderLeftColor: dept.color }}
-                                onClick={() => handleDepartmentClick(dept)}
                             >
-                                <div className="department-icon" style={{ color: dept.color }}>
-                                    {dept.icon}
-                                </div>
-                                <div className="department-info">
-                                    <h3>{dept.name}</h3>
-                                    <div className="department-code">({dept.code})</div>
-                                    <div className="department-stats">
-                                        <span> {dept.faculty} Faculty</span>
-                                        <span> {dept.students} Students</span>
-                                        <span> Est. {dept.established}</span>
+                                <div className="department-main-content">
+                                    <div className="department-icon" style={{ color: dept.color }}>
+                                        {dept.icon}
+                                    </div>
+                                    <div className="department-info">
+                                        <h3>{dept.name}</h3>
+                                        <div className="department-code">({dept.code})</div>
                                     </div>
                                 </div>
-                                <div className="expand-arrow">
-                                    {selectedDepartment?.id === dept.id ? '▼' : '▶'}
+                                <div className="department-stats">
+                                    <span> {dept.faculty} Faculty</span>
+                                    <span> {dept.students} Students</span>
+                                    <span> Est. {dept.established}</span>
                                 </div>
                             </div>
-
-                            {selectedDepartment?.id === dept.id && (
-                                <div className="department-details">
-                                    <div className="details-grid">
-                                        <div className="detail-section">
-                                            <h4> Head of Department</h4>
-                                            <p>{dept.hod}</p>
-                                        </div>
-
-                                        <div className="detail-section">
-                                            <h4> Programs Offered</h4>
-                                            <div className="program-tags">
-                                                {dept.programs.map((program, idx) => (
-                                                    <span key={idx} className="program-tag">{program}</span>
-                                                ))}
-                                            </div>
-                                        </div>
-
-                                        <div className="detail-section">
-                                            <h4> Laboratories</h4>
-                                            <ul className="labs-list">
-                                                {dept.labs.map((lab, idx) => (
-                                                    <li key={idx}>{lab}</li>
-                                                ))}
-                                            </ul>
-                                        </div>
-
-                                        <div className="detail-section">
-                                            <h4> Research Areas</h4>
-                                            <ul className="research-list">
-                                                {dept.researchAreas.map((area, idx) => (
-                                                    <li key={idx}>{area}</li>
-                                                ))}
-                                            </ul>
-                                        </div>
-
-                                        <div className="detail-section">
-                                            <h4> Facilities</h4>
-                                            <ul className="facilities-list">
-                                                {dept.facilities.map((facility, idx) => (
-                                                    <li key={idx}>{facility}</li>
-                                                ))}
-                                            </ul>
-                                        </div>
-
-                                        <div className="detail-section">
-                                            <h4> Achievements</h4>
-                                            <ul className="achievements-list">
-                                                {dept.achievements.map((achievement, idx) => (
-                                                    <li key={idx}>{achievement}</li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div className="department-actions">
-                                        <button 
-                                            className="action-btn primary"
-                                            onClick={() => handleViewFaculty(dept.code)}
-                                        >
-                                             View Faculty
-                                        </button>
-                                        <button 
-                                            className="action-btn secondary"
-                                            onClick={() => navigate('/academics/programs')}
-                                        >
-                                             View Programs
-                                        </button>
-                                        <button 
-                                            className="action-btn secondary"
-                                            onClick={() => navigate('/research')}
-                                        >
-                                             Research Areas
-                                        </button>
-                                    </div>
-                                </div>
-                            )}
                         </div>
                     ))}
-                </section>
-
-                {/* Call to Action */}
-                <section className="departments-cta">
-                    <div className="cta-content">
-                        <h2>Interested in Joining Us?</h2>
-                        <p>Explore our admission process and start your journey at NIT Goa</p>
-                        <div className="cta-buttons">
-                            <button 
-                                className="cta-btn primary"
-                                onClick={() => navigate('/admissions')}
-                            >
-                                 Apply Now
-                            </button>
-                            <button 
-                                className="cta-btn secondary"
-                                onClick={() => navigate('/contact-us')}
-                            >
-                                 Contact Us
-                            </button>
-                        </div>
-                    </div>
                 </section>
             </div>
         </div>

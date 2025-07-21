@@ -5,6 +5,10 @@
   padding: 2rem 0;
 }
 
+[data-theme="dark"] .dissertation-formats-page {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+}
+
 .dissertation-formats-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -22,9 +26,19 @@
   cursor: pointer;
 }
 
+/* Dark theme support for event cards */
+[data-theme="dark"] .event-card {
+  background: #2c2c2c !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
 .event-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="dark"] .event-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4) !important;
 }
 
 .pretty-download-btn {
@@ -98,12 +112,24 @@
     background-clip: text;
 }
 
+[data-theme="dark"] .page-header h1 {
+    color: #ffffff;
+    background: linear-gradient(135deg, #4285f4 0%, #6fa6ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
 .page-subtitle {
     font-size: 1.2rem;
     color: #666;
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
+}
+
+[data-theme="dark"] .page-subtitle {
+    color: #adb5bd;
 }
 
 /* Program Selection */

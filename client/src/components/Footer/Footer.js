@@ -89,7 +89,7 @@ const Footer = () => {
               <h5 className="footer-contact-main-title">Important Links</h5>
               <ul>
                 <li><a href="/syllabus">Syllabus</a></li>
-                <li><a href="/e-Downloads">e-Downloads</a></li>
+                <li><a href="/e-downloads">e-Downloads</a></li>
                 <li><a href="Results">Results</a></li>
                 <li><a href="/rti">RTI</a></li>
                 <li><a href="/sc-st-cell">SC/ST Cell</a></li>

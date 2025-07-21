@@ -13,7 +13,7 @@ import LoginWrapper from './Views/Auth/LoginWrapper';
 import AdminDashboard from './Views/Admin/AdminDashboard';
 import HomePage from './Views/Home-Section/HomePage';
 import About from './Views/About/About';
-import Departments from './Views/Academics-Section/Departments';
+import Departments from './Views/Academics-Section/Departments/Departments';
 import Regulations from './Views/Academics-Section/Regulations';
 import DissertationFormats from './Views/Academics-Section/DissertationFormats';
 import Syllabus from './Views/Academics-Section/Syllabus';
@@ -50,6 +50,18 @@ import BuildingWorksCommittee from './Views/Administration-Section/BuildingWorks
 import HeadsOfDepartments from './Views/Administration-Section/HeadsOfDepartments';
 import AnnualReports from './Views/Administration-Section/AnnualReports';
 import SCSTCell from './Views/SC-ST-Cell/SCSTCell';
+
+// Department Pages
+import ComputerScience from './Views/Academics-Section/Departments/ComputerScience/ComputerScience';
+import ElectronicsAndCommunication from './Views/Academics-Section/Departments/ElectronicsAndCommunication/ElectronicsAndCommunication';
+import ElectricalAndElectronics from './Views/Academics-Section/Departments/ElectricalAndElectronics/ElectricalAndElectronics';
+import MechanicalEngineering from './Views/Academics-Section/Departments/MechanicalEngineering/MechanicalEngineering';
+import CivilEngineering from './Views/Academics-Section/Departments/CivilEngineering/CivilEngineering';
+import AppliedSciences from './Views/Academics-Section/Departments/AppliedSciences/AppliedSciences';
+import HumanitiesSocialSciences from './Views/Academics-Section/Departments/HumanitiesSocialSciences/HumanitiesSocialSciences';
+
+// e-Downloads Page
+import EDownloads from './Views/e-Downloads/EDownloads';
 
 function App() {
   return (
@@ -88,10 +100,20 @@ function AppContent() {
         
         {/* Academics Section Routes */}
         <Route path="/academics/departments" element={<Departments />} />
+        <Route path="/academics/computer-science" element={<ComputerScience />} />
+        <Route path="/academics/electronics-communication" element={<ElectronicsAndCommunication />} />
+        <Route path="/academics/electrical-electronics" element={<ElectricalAndElectronics />} />
+        <Route path="/academics/mechanical-engineering" element={<MechanicalEngineering />} />
+        <Route path="/academics/civil-engineering" element={<CivilEngineering />} />
+        <Route path="/academics/applied-sciences" element={<AppliedSciences />} />
+        <Route path="/academics/humanities-social-sciences" element={<HumanitiesSocialSciences />} />
         <Route path="/academics/regulations" element={<Regulations />} />
         <Route path="/academics/dissertation-formats" element={<DissertationFormats />} />
         <Route path="/academics/syllabus" element={<Syllabus />} />
         <Route path="/academic-calendar" element={<AcademicCalendar />} />
+        
+        {/* e-Downloads Route */}
+        <Route path="/e-downloads" element={<EDownloads />} />
         
         {/* Admissions Section Routes */}
         <Route path="/admissions/btech/josaa-csab" element={<BTechJosaa />} />

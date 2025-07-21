@@ -1,0 +1,240 @@
+/* Humanities and Social Sciences Department Page Styles */
+.humanities-social-sciences-page {
+    min-height: 100vh;
+    background: var(--background, #ffffff);
+    color: var(--text-color, #333333);
+    overflow-x: hidden;
+}
+
+.humanities-social-sciences-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Page Header */
+.page-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px 0;
+    border-bottom: 2px solid var(--primary-blue, #0056b3);
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-blue, #0056b3);
+    margin: 0 0 10px 0;
+}
+
+.page-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-color-secondary, #666);
+    margin: 0;
+}
+
+/* Main Layout - CSS Grid */
+.main-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* Sidebar Navigation */
+.department-sidebar {
+    position: sticky;
+    top: 20px;
+    background: var(--card-background, #ffffff);
+    border: 1px solid var(--border-color, #e0e0e0);
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.department-nav {
+    padding: 0;
+}
+
+.nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    border-bottom: 1px solid var(--border-color, #e0e0e0);
+}
+
+.nav-item:last-child {
+    border-bottom: none;
+}
+
+.nav-link {
+    display: block;
+    width: 100%;
+    padding: 16px 20px;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-color, #333333);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 0;
+}
+
+.nav-link:hover {
+    background: var(--hover-background, #f8f9fa);
+    color: var(--primary-blue, #0056b3);
+    transform: translateX(5px);
+}
+
+.nav-link.nav-active {
+    background: var(--primary-blue, #0056b3);
+    color: white;
+    font-weight: 600;
+}
+
+.nav-link.nav-active:hover {
+    background: var(--primary-blue-dark, #004085);
+    transform: none;
+}
+
+/* Content Area */
+.department-content {
+    background: var(--card-background, #ffffff);
+    border: 1px solid var(--border-color, #e0e0e0);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-height: 400px;
+}
+
+.content-section {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.content-section h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-blue, #0056b3);
+    margin: 0 0 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-blue, #0056b3);
+}
+
+.content-text {
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+.content-text p {
+    margin: 0 0 16px 0;
+    color: var(--text-color, #333333);
+}
+
+.content-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .humanities-social-sciences-container {
+        padding: 15px;
+    }
+    
+    .main-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .department-sidebar {
+        position: static;
+        order: -1;
+    }
+    
+    .nav-link {
+        padding: 12px 16px;
+        font-size: 0.95rem;
+    }
+    
+    .department-content {
+        padding: 20px;
+    }
+    
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .content-section h2 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .page-subtitle {
+        font-size: 1rem;
+    }
+    
+    .department-content {
+        padding: 15px;
+    }
+    
+    .content-section h2 {
+        font-size: 1.4rem;
+    }
+}
+
+/* Dark Theme Support */
+[data-theme="dark"] .humanities-social-sciences-page {
+    --background: #1a1a1a;
+    --text-color: #ffffff;
+    --text-color-secondary: #cccccc;
+    --card-background: #2d2d2d;
+    --border-color: #404040;
+    --hover-background: #3a3a3a;
+    --primary-blue: #4da6ff;
+    --primary-blue-dark: #3399ff;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .department-sidebar {
+        border-width: 2px;
+    }
+    
+    .nav-link {
+        border-bottom-width: 2px;
+    }
+    
+    .content-section h2 {
+        border-bottom-width: 3px;
+    }
+}
+
+/* Humanities and Social Sciences Page Specific Header Styles */
+.humanities-social-sciences-page .page-header h1 {
+    background: #3b8abf !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background-clip: padding-box !important;
+    -webkit-background-clip: padding-box !important;
+}

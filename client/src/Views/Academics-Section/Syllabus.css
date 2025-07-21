@@ -6,6 +6,10 @@
   overflow-x: hidden;
 }
 
+[data-theme="dark"] .syllabus-page {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+}
+
 .syllabus-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -29,10 +33,19 @@
   margin-bottom: 20px;
 }
 
+[data-theme="dark"] .event-card {
+  background: #2c2c2c;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
 .event-title {
   font-size: 1.1rem;
   font-weight: 600;
   color: #1565c0;
+}
+
+[data-theme="dark"] .event-title {
+  color: #4285f4;
 }
 
 .pretty-download-btn {
