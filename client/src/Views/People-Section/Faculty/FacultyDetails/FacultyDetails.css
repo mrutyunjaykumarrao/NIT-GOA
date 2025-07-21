@@ -47,7 +47,7 @@
 }
 
 .faculty-details-container {
-    max-width: 1400px;
+    max-width: 95%;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -757,6 +757,12 @@
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
+
+/* Publications table column widths for better readability */
+.publications-table th:nth-child(1) { width: 8%; }   /* Sr. No. */
+.publications-table th:nth-child(2) { width: 60%; }  /* Title - wider for long titles */
+.publications-table th:nth-child(3) { width: 22%; }  /* Journal/Conference */
+.publications-table th:nth-child(4) { width: 10%; }  /* Year */
 
 .publications-table td {
     padding: 15px 12px;
@@ -1652,9 +1658,124 @@
         padding: 15px;
     }
     
-    .publications-table-container {
-        overflow-x: auto;
+    /* Enhanced mobile table handling */
+    .academic-info-table,
+    .funded-projects-table,
+    .courses-attended-table,
+    .courses-conducted-table,
+    .publications-table {
+        font-size: 11px;
     }
+    
+    .academic-info-table th,
+    .academic-info-table td,
+    .funded-projects-table th,
+    .funded-projects-table td,
+    .courses-attended-table th,
+    .courses-attended-table td,
+    .courses-conducted-table th,
+    .courses-conducted-table td,
+    .publications-table th,
+    .publications-table td {
+        padding: 8px 6px;
+        word-break: break-word;
+        hyphens: auto;
+    }
+    
+    /* Tighter table widths for very small screens */
+    .funded-projects-table {
+        min-width: 650px;
+    }
+    
+    .courses-conducted-table {
+        min-width: 550px;
+    }
+    
+    .courses-attended-table {
+        min-width: 750px;
+    }
+    
+    .academic-info-table {
+        min-width: 550px;
+    }
+    
+    .publications-table {
+        min-width: 750px;
+    }
+    
+    /* Adjust specific columns for very small screens - Publications */
+    .publications-table th:nth-child(2),
+    .publications-table td:nth-child(2) { min-width: 250px; }  /* Title - reduce minimum */
+    .publications-table th:nth-child(3),
+    .publications-table td:nth-child(3) { min-width: 120px; }  /* Journal - reduce minimum */
+    
+    /* Add scrollbar styling for mobile */
+    .publications-table-container::-webkit-scrollbar,
+    .academic-info-table-container::-webkit-scrollbar,
+    .funded-projects-table-container::-webkit-scrollbar,
+    .courses-conducted-table-container::-webkit-scrollbar,
+    .courses-attended-table-container::-webkit-scrollbar {
+        height: 6px;
+    }
+    
+    .publications-table-container::-webkit-scrollbar-track,
+    .academic-info-table-container::-webkit-scrollbar-track,
+    .funded-projects-table-container::-webkit-scrollbar-track,
+    .courses-conducted-table-container::-webkit-scrollbar-track,
+    .courses-attended-table-container::-webkit-scrollbar-track {
+        background: var(--bg-secondary);
+        border-radius: 3px;
+    }
+    
+    .publications-table-container::-webkit-scrollbar-thumb,
+    .academic-info-table-container::-webkit-scrollbar-thumb,
+    .funded-projects-table-container::-webkit-scrollbar-thumb,
+    .courses-conducted-table-container::-webkit-scrollbar-thumb,
+    .courses-attended-table-container::-webkit-scrollbar-thumb {
+        background: var(--brand-primary);
+        border-radius: 3px;
+    }
+    
+    .publications-table-container,
+    .academic-info-table-container,
+    .funded-projects-table-container,
+    .courses-conducted-table-container,
+    .courses-attended-table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Set minimum widths for table readability */
+    .funded-projects-table {
+        min-width: 700px;
+    }
+    
+    .courses-conducted-table {
+        min-width: 600px;
+    }
+    
+    .courses-attended-table {
+        min-width: 800px;
+    }
+    
+    .academic-info-table {
+        min-width: 600px;
+    }
+    
+    /* Publications table responsive improvements */
+    .publications-table {
+        min-width: 800px;
+    }
+    
+    /* Better column sizing for mobile tables - Publications */
+    .publications-table th:nth-child(1),
+    .publications-table td:nth-child(1) { width: 50px; min-width: 50px; }    /* Sr. No. */
+    .publications-table th:nth-child(2),
+    .publications-table td:nth-child(2) { width: 400px; min-width: 300px; }   /* Title - wider */
+    .publications-table th:nth-child(3),
+    .publications-table td:nth-child(3) { width: 200px; min-width: 150px; }   /* Journal */
+    .publications-table th:nth-child(4),
+    .publications-table td:nth-child(4) { width: 100px; min-width: 80px; }    /* Year */
 }
 
 /* Enhanced Dark Mode Styles */
