@@ -10,7 +10,6 @@ import './Faculty.css';
 // CSE Department
 import VeenaThenkanidiyoor from '../../../assets/images/Faculty/CSE/Dr. Veena Thenkanidiyoor.png';
 import DamodarReddyEdla from '../../../assets/images/Faculty/CSE/Dr. Damodar Reddy Edla.png';
-import Purushothama from '../../../assets/images/Faculty/CSE/Dr. Purushothama.jpg';
 import KeshavamurthyBN from '../../../assets/images/Faculty/CSE/Dr. Keshavamurthy B.N..png';
 import SMini from '../../../assets/images/Faculty/CSE/Dr. S. Mini.png';
 import VenkatanareshbabuKuppili from '../../../assets/images/Faculty/CSE/Dr. Venkatanareshbabu Kuppili.jpg';
@@ -47,6 +46,7 @@ import SoumitraDas from '../../../assets/images/Faculty/EEE/Dr. Soumitra Das.png
 import SreerajES from '../../../assets/images/Faculty/EEE/Dr. Sreeraj E S.png';
 import SureshMikkili from '../../../assets/images/Faculty/EEE/Dr. Suresh Mikkili.png';
 import SenthamizSelvan from '../../../assets/images/Faculty/EEE/SENTHAMIZH SELVAN S.jpeg';
+import DrVijayaBhaskarSomu from '../../../assets/images/Faculty/EEE/somu.jpeg';
 
 // MCE Department
 import ChaitanyaVundru from '../../../assets/images/Faculty/MCE/Chaitanya Vundru.jpeg';
@@ -108,13 +108,13 @@ const Faculty = () => {
     }, [searchParams]);
 
     const departments = [
-        { code: 'CSE', name: 'Computer Science & Engineering' },
-        { code: 'ECE', name: 'Electronics & Communication Engineering' },
-        { code: 'EEE', name: 'Electrical & Electronics Engineering' },
-        { code: 'MCE', name: 'Mechanical Engineering' },
-        { code: 'CVE', name: 'Civil Engineering' },
-        { code: 'APS', name: 'Applied Sciences' },
-        { code: 'HSS', name: 'Humanities & Social Sciences' }
+        { code: 'CSE', name: 'Department of Computer Science & Engineering' },
+        { code: 'ECE', name: 'Department of Electronics & Communication Engineering' },
+        { code: 'EEE', name: 'Department of Electrical & Electronics Engineering' },
+        { code: 'MCE', name: 'Department of Department of Mechanical Engineering' },
+        { code: 'CVE', name: 'Department of Department of Civil Engineering'},
+        { code: 'APS', name: 'Department of Department of Applied Sciences' },
+        { code: 'HSS', name: 'Department of Humanities and Social Sciences' }
     ];
 
     const facultyData = {
@@ -123,10 +123,10 @@ const Faculty = () => {
                 id: 'veena-thenkanidiyoor',
                 name: 'Dr. Veena Thenkanidiyoor',
                 designation: 'Associate Professor & HOD',
-                department: 'Computer Science and Engineering',
-                email: 'veena@nitgoa.ac.in',
-                phone: 'Extension No.: 6854 (Internal)',
-                researchAreas: 'Artificial Intelligence, Cognitive Neuroscience, Brain Computer Interface, Medical Imaging, Wireless Sensor Networks, Machine Learning/Deep Learning',
+                department: 'Computer Science & Engineering',
+                email: 'veenat@nitgoa.ac.in',
+                phone: '0832-2404432',
+                researchAreas: 'Deep Learning, Kernel Methods, Pattern Recognition, Applied Machine Learning, Computer Vision, Speech Processing, Weather Data Analysis, Content based Information Retrieval',
                 image: VeenaThenkanidiyoor,
                 isHOD: true
             },
@@ -134,633 +134,634 @@ const Faculty = () => {
                 id: 'damodar-reddy-edla',
                 name: 'Dr. Damodar Reddy Edla',
                 designation: 'Associate Professor',
-                department: 'Computer Science and Engineering',
-                email: 'dr.damodar@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Machine Learning, Data Mining, Big Data Analytics, IoT',
+                department: 'Computer Science & Engineering',
+                email: 'dr.reddy@nitgoa.ac.in',
+                phone: '0832-2404433',
+                researchAreas: 'Artificial Intelligence; Cognitive Neuroscience; Brain Computer Interface; Medical Imaging; Wireless Sensor Networks; Machine Learning/Deep Learning; Internet of Medical Things (IoMT);',
                 image: DamodarReddyEdla
-            },
-            {
-                id: 'purushothama-br',
-                name: 'Dr. Purushothama B.R',
-                designation: 'Associate Professor',
-                department: 'Computer Science and Engineering',
-                email: 'purushothama@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Information Security, Cryptography, Cyber Security, IoT Management, Security Analytics',
-                image: Purushothama
             },
             {
                 id: 'keshavamurthy-bn',
                 name: 'Dr. Keshavamurthy B.N.',
                 designation: 'Associate Professor',
-                department: 'Computer Science and Engineering',
-                email: 'keshavamurthy@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Data Mining, Privacy Preserving Data Mining, Information Security',
+                department: 'Computer Science & Engineering',
+                email: 'bnkeshav.fcse@nitgoa.ac.in',
+                phone: '0832-2404403',
+                researchAreas: ' Data Mining, Privacy Preserving Data Mining, Stream Data Mining, Social Media Mining',
                 image: KeshavamurthyBN
             },
             {
                 id: 's-mini',
                 name: 'Dr. S. Mini',
                 designation: 'Associate Professor',
-                department: 'Computer Science and Engineering',
-                email: 's.mini@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Wireless Sensor Networks, Supply Chain Management, Optimization Techniques',
+                department: 'Computer Science & Engineering',
+                email: 'mini@nitgoa.ac.in',
+                phone: '0832-2404419',
+                researchAreas: 'Wireless Sensor Networks, Swarm Intelligence, Combinatorial Optimization, Internet of Things',
                 image: SMini
+            },
+            {
+                id: 'paravati',
+                name: 'Dr. Pravati Swain',
+                designation: 'Assistant Professor',
+                department: 'Computer Science & Engineering',
+                email: 'pravati@nitgoa.ac.in',
+                phone: '0832-2404420',
+                researchAreas: 'Quantum Machine learning, AI/ML for communication network: Federated learning, Advanced Mobile Communication (B5G/6G), IoT-Edge- Cloud Continuum Systems. Game theory and Markov Model',
+                image: ParavatiCSE
             },
             {
                 id: 'venkatanareshbabu-kuppili',
                 name: 'Dr. Venkatanareshbabu Kuppili',
-                designation: 'Associate Professor',
-                department: 'Computer Science and Engineering',
-                email: 'venkatanareshbabu@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Big Data Analytics, Machine Learning, IoT, Intelligent, Deep Learning, Soft Computing',
+                designation: 'Assistant Professor',
+                department: 'Computer Science & Engineering',
+                email: 'venkatanaresh@nitgoa.ac.in',
+                phone: '0832-2404402',
+                researchAreas: 'Big Data Analytics, Artificial Intelligence, Deep Learning, Soft Computing',
                 image: VenkatanareshbabuKuppili
             },
             {
                 id: 'modi-chirag-navinchandra',
                 name: 'Dr. Modi Chirag Navinchandra',
                 designation: 'Associate Professor',
-                department: 'Computer Science and Engineering',
-                email: 'cmodhi@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Network Security, Information System and Privacy Management, Computational Intelligence',
+                department: 'Computer Science & Engineering',
+                email: 'cnmodi@nitgoa.ac.in',
+                phone: '0832-2404431',
+                researchAreas: 'Blockchain, Cryptography and Network Security, Information Security and Privacy, Cloud Computing, Visual Computing',
                 image: ModiChiragNavinchandra
             },
             {
                 id: 'suniliya-s',
-                name: 'Ms. Suniliya S.',
-                designation: 'Faculty (on Contract)',
-                department: 'Computer Science and Engineering',
-                email: 'suniliya@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Computer Networks, Information System Analysis, Fluid Substance in WSN',
+                name: 'Mrs. Sreedivya I.',
+                designation: 'Faculty on Contract',
+                department: 'Computer Science & Engineering',
+                email: 'sreedivya@nitgoa.ac.in',
+                phone: '0832-2404413',
+                researchAreas: 'Machine Learning, Data Mining',
                 image: Srividya
             },
+            
             {
                 id: 'meenakshi-panda',
                 name: 'Dr. Meenakshi Panda',
-                designation: 'Faculty (on Contract)',
-                department: 'Computer Science and Engineering',
-                email: 'meenakshi@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Data Analytics, Process Mining, Data Mining, Web Mining',
+                designation: 'Faculty on Contract',
+                department: 'Computer Science & Engineering',
+                email: 'meenakshi.panda@nitgoa.ac.in',
+                phone: '0832-2404418',
+                researchAreas: 'Wireless Sensor Networks (WSNs), Internet of Things (IoT), Machine Learning, Data Analytics, Fault Tolerance in WSN',
                 image: MeenakshiPanda
             },
             {
-                id: 'antara',
-                name: 'Ms. Antara',
-                designation: 'Assistant Professor',
-                department: 'Computer Science and Engineering',
-                email: 'antara@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Software Engineering, Programming Languages, Algorithms',
-                image: Antara
-            },
-            {
                 id: 'kashinath',
-                name: 'Mr. Kashinath',
-                designation: 'Assistant Professor',
-                department: 'Computer Science and Engineering',
+                name: 'Dr. Chandelkar K K',
+                designation: 'Faculty on Contract',
+                department: 'Computer Science & Engineering',
                 email: 'kashinath@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Database Systems, Information Systems, Data Analytics',
+                phone: '0832-2404401',
+                researchAreas: 'Data Mining & Warehousing, cloud computing, Information retrieval, Cyber security, Digital Forensics, Content based Information Retrieval',
                 image: Kashinath
             },
             {
-                id: 'paravati',
-                name: 'Ms. Paravati',
-                designation: 'Assistant Professor',
-                department: 'Computer Science and Engineering',
-                email: 'paravati@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Computer Networks, Distributed Systems, IoT',
-                image: ParavatiCSE
+                id: 'antara',
+                name: 'Ms. Antara Dessai',
+                designation: 'Faculty on Contract',
+                department: 'Computer Science & Engineering',
+                email: 'antaradessai@nitgoa.ac.in',
+                phone: '0832-2404401',
+                researchAreas: 'Software Engineering, Programming Languages, Algorithms',
+                image: Antara
             },
+            
+            
             {
                 id: 'pasha',
-                name: 'Mr. Pasha',
-                designation: 'Assistant Professor',
-                department: 'Computer Science and Engineering',
-                email: 'pasha@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Machine Learning, Artificial Intelligence, Data Science',
+                name: 'Mr. MOHD. JAHANGEER PASHA',
+                designation: 'Faculty on Contract',
+                department: 'Computer Science & Engineering',
+                email: 'jahangeer@nitgoa.ac.in',
+                phone: '0832-2404401',
+                researchAreas: '',
                 image: Pasha
             }
         ],
         ECE: [
             {
-                name: 'Dr. Anirban Chatterjee',
-                designation: 'Professor',
+                name: 'Dr. T. Veerakumar',
+                designation: 'Associate Professor & HOD',
                 department: 'Electronics & Communication Engineering',
-                email: 'anirban@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Signal Processing, Image Processing, Pattern Recognition',
+                email: 'tveerakumar@nitgoa.ac.in',
+                phone: '0832-2404520',
+                researchAreas: 'Image Compression, Image Denoising, Object detection and tracking,and Medical Image Analysis',
+                image: DrVeerakumar,
+                isHOD: true
+            },
+            {
+                name: 'Dr. Vasantha M.H',
+                designation: 'Associate Professor',
+                department: 'Electronics & Communication Engineering',
+                email: 'vasanthmh@nitgoa.ac.in',
+                phone: '0832-2404546',
+                researchAreas: 'Low voltage, Low power analog mixed signal circuits, Continuous-time filter Circuits, System on Chip, FPGA based algorithm Implementation',
+                image: Vasantha
+            },
+            {
+                name: 'Dr. Anirban Chatterjee',
+                designation: 'Associate Professor',
+                department: 'Electronics & Communication Engineering',
+                email: 'snanirban@nitgoa.ac.in',
+                phone: '0832-2404519',
+                researchAreas: "Antennas Modeling, Antenna Array, Microstrip Antenna Design, Fractal Antennas, Antenna Measurements, Beam Steerable Antennas, Wearable Antennas, Microstrip Reflectarray, DRA's",
                 image: AnirbanChatterjee
             },
-            {
-                name: 'Dr. Devesh Dwivedi',
-                designation: 'Associate Professor',
-                department: 'Electronics & Communication Engineering',
-                email: 'devesh@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'VLSI Design, Digital Signal Processing',
-                image: DeveshDwivedi
-            },
-            {
-                name: 'Dr. Lalat Indu Giri',
-                designation: 'Associate Professor',
-                department: 'Electronics & Communication Engineering',
-                email: 'lalat@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Wireless Communication, Digital Signal Processing',
-                image: LalatInduGiri
-            },
-            {
-                name: 'Dr. Lokesh Kumar Bramhane',
-                designation: 'Associate Professor',
-                department: 'Electronics & Communication Engineering',
-                email: 'lokesh@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Microwave Engineering, Antenna Design',
-                image: LokeshKumarBramhane
-            },
-            {
-                name: 'Dr. Mallikarjun Erramshetty',
-                designation: 'Associate Professor',
-                department: 'Electronics & Communication Engineering',
-                email: 'mallikarjun@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Digital Communications, Signal Processing',
-                image: MallikarjunErramshetty
-            },
-            {
+             {
                 name: 'Dr. Nithin Kumar Y.B.',
                 designation: 'Associate Professor',
                 department: 'Electronics & Communication Engineering',
-                email: 'nithin@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'VLSI Design, Embedded Systems',
+                email: 'nithin.shastri@nitgoa.ac.in',
+                phone: '0832-2404547',
+                researchAreas: 'Analog and Mixed Signal Design, Data Converter',
                 image: NithinKumarYB
-            },
-            {
-                name: 'Dr. Pragati Patel',
-                designation: 'Associate Professor',
-                department: 'Electronics & Communication Engineering',
-                email: 'pragati@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Digital Signal Processing, Image Processing',
-                image: PragatiPatel
-            },
-            {
-                name: 'Dr. Prashanth G.R.',
-                designation: 'Associate Professor',
-                department: 'Electronics & Communication Engineering',
-                email: 'prashanth@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'RF & Microwave Engineering, Antenna Design',
-                image: PrashanthGR
-            },
-            {
-                name: 'Dr. Shivnarayan Patidar',
-                designation: 'Associate Professor',
-                department: 'Electronics & Communication Engineering',
-                email: 'shivnarayan@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Digital Communications, Signal Processing',
-                image: ShivnarayanPatidar
             },
             {
                 name: 'Dr. Trilochan Panigrahi',
                 designation: 'Associate Professor',
                 department: 'Electronics & Communication Engineering',
-                email: 'trilochan@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Power Electronics, Control Systems',
+                email: 'tpanigrahi@nitgoa.ac.in',
+                phone: '0832-2404502',
+                researchAreas: 'Distributed Signal Processing, Array Signal Processing, IoT and Nano WSN',
                 image: TrilochanPanigrahi
             },
             {
-                name: 'Dr. Vasantha',
-                designation: 'Associate Professor',
+                name: 'Dr. Shivnarayan Patidar',
+                designation: 'Assistant Professor',
                 department: 'Electronics & Communication Engineering',
-                email: 'vasantha@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Wireless Communications, Mobile Computing',
-                image: Vasantha
+                email: 'shivnarayan.patidar@nitgoa.ac.in',
+                phone: '0832-2404532',
+                researchAreas: 'Biomedical Signal Analysis and Processing, Machine Learning, Multi-resolution Analysis, Time-frequency Analysis, Wavelet Transforms, and Tensor Analysis',
+                image: ShivnarayanPatidar
             },
             {
-                name: 'Dr. Veerakumar',
-                designation: 'Associate Professor & HOD',
+                name: 'Dr. Prashanth G.R',
+                designation: 'Associate Professor',
                 department: 'Electronics & Communication Engineering',
-                email: 'veerakumar@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'VLSI Design, Digital Electronics',
-                image: DrVeerakumar,
-                isHOD: true
-            }
+                email: 'grprashanth@nitgoa.ac.in',
+                phone: '0832-2404533',
+                researchAreas: 'Bio-photonics, Bio-Sensors',
+                image: PrashanthGR
+            },
+            {
+                name: 'Dr. Lalat Indu Giri',
+                designation: 'Assistant Professor',
+                department: 'Electronics & Communication Engineering',
+                email: 'lig@nitgoa.ac.in',
+                phone: '0832-2404531',
+                researchAreas: 'Infrared Thermography, One dimensional nanostructures, Clean energy sources and systems',
+                image: LalatInduGiri
+            },
+            {
+                name: 'Dr. Pragati Patel',
+                designation: 'Assistant Professor',
+                department: 'Electronics & Communication Engineering',
+                email: 'pragati@nitgoa.ac.in',
+                phone: '0832-2404534',
+                researchAreas: 'Dielectric Resonator Antennas, RF and Microwave Engineering, Wireless Power Transmission',
+                image: PragatiPatel
+            },
+            {
+                name: 'Dr. Mallikarjun Erramshetty',
+                designation: 'Assistant Professor',
+                department: 'Electronics & Communication Engineering',
+                email: 'emallikarjuna@nitgoa.ac.in',
+                phone: '0832-2404521',
+                researchAreas: 'Microwave Imaging, Terahertz Imaging, Inverse Problems',
+                image: MallikarjunErramshetty
+            },
+            {
+                name: 'Dr. Lokesh Kumar Bramhane',
+                designation: 'Assistant Professor',
+                department: 'Electronics & Communication Engineering',
+                email: 'lokesh.bramhane@nitgoa.ac.in',
+                phone: '0832-2404518',
+                researchAreas: 'VLSI Circuit Design, Semiconductor Devices, Biosensors, Memristors, IC design, Antenna Design & Fabrication',
+                image: LokeshKumarBramhane
+            },
+            {
+                name: 'Dr. Devesh Dwivedi',
+                designation: 'Visiting Faculty',
+                department: 'Electronics & Communication Engineering',
+                email: '',
+                phone: '- (Internal)',
+                researchAreas: 'Memory, Analog and Mixed Signal, High Speed Serial Links, Cores, Test Chip, Custom Layout',
+                image: DeveshDwivedi
+            }   
         ],
         EEE: [
             {
-                name: 'Dr. Anudevi Samuel',
-                designation: 'Associate Professor',
+                name: 'Dr. Suresh Mikkili',
+                designation: 'Associate Professor & HOD',
                 department: 'Electrical & Electronics Engineering',
-                email: 'anudevi@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Power Systems, Renewable Energy, Smart Grid',
-                image: AnudeviSamuel
-            },
-            {
-                name: 'Dr. B. Venugopal Reddy',
-                designation: 'Associate Professor',
-                department: 'Electrical & Electronics Engineering',
-                email: 'venugopal@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Power Electronics, Electric Drives, Control Systems',
-                image: VenugopalReddy
-            },
-            {
-                name: 'Dr. C. Vyjayanthi',
-                designation: 'Associate Professor',
-                department: 'Electrical & Electronics Engineering',
-                email: 'vyjayanthi@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Power Systems, Power Quality, FACTS Devices',
-                image: Vyjayanthi
-            },
-            {
-                name: 'Dr. Soumitra Das',
-                designation: 'Associate Professor',
-                department: 'Electrical & Electronics Engineering',
-                email: 'soumitra@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Power Electronics, Electric Machines, Motor Drives',
-                image: SoumitraDas
+                email: 'mikkili.suresh@nitgoa.ac.in',
+                phone: '0832-2404645 | HoD Office : 252',
+                researchAreas: 'Smart Electric Grid, Electric vehicles, Grid connected/Stand-Alone PV Systems, Wireless Power Transfer, Renewable Energy Systems, Power Quality Issues and Applications of Soft Computing Techniques',
+                image: SureshMikkili,
+                isHOD: true
             },
             {
                 name: 'Dr. Sreeraj E S',
                 designation: 'Associate Professor',
                 department: 'Electrical & Electronics Engineering',
                 email: 'sreeraj@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Power Systems, Protection, Smart Grid',
+                phone: '0832-2404617',
+                researchAreas: 'Power electronics, Renewable energy',
                 image: SreerajES
             },
-            {
-                name: 'Dr. Suresh Mikkili',
-                designation: 'Associate Professor & HOD',
-                department: 'Electrical & Electronics Engineering',
-                email: 'suresh@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Power Electronics, Renewable Energy Systems',
-                image: SureshMikkili,
-                isHOD: true
-            },
-            {
+             {
                 name: 'Dr. Amol D. Rahulkar',
                 designation: 'Associate Professor',
                 department: 'Electrical & Electronics Engineering',
-                email: 'amol@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Power Systems, Smart Grid Technology',
+                email: 'amol.rahulkar@nitgoa.ac.in',
+                phone: '0832-2404630',
+                researchAreas: 'Digital Signal/Image Processing, Design of Wavelets, FPGA based Hardware Accelerators,Design of Neural Networks, Biometrics, Control Systems',
                 image: AmolRahulkar
             },
             {
-                name: 'Dr. K. Raghavendra Reddy',
+                name: 'Dr. C.Vyjayanthi',
                 designation: 'Associate Professor',
                 department: 'Electrical & Electronics Engineering',
-                email: 'raghavendra@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Electric Machines, Power Electronics',
-                image: Raghavendra
+                email: 'c.vyjayanthi@nitgoa.ac.in',
+                phone: '0832-2404632',
+                researchAreas: 'Restructured Power Systems; Planning, Operation and Control of Power Systems; Electric Arc Furnace Operations; Smart Electric Grids; FACTS; AC/DC Microgrids, Electric Vehicles.',
+                image: Vyjayanthi
             },
             {
-                name: 'Ankeshwarapu Sunil',
-                designation: 'Assistant Professor',
+                name: 'Dr. Soumitra Das',
+                designation: 'Associate Professor',
                 department: 'Electrical & Electronics Engineering',
-                email: 'sunil@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Control Systems, Automation',
+                email: 'sdas@nitgoa.ac.in',
+                phone: '0832-2404643',
+                researchAreas: 'Power Electronics, Multilevel Converter, Pulsewidth Modulation, Switched Reluctance Motor and Drives, Renewable Energy Sources',
+                image: SoumitraDas
+            },
+            {
+                name: 'Dr. Anudevi Samuel',
+                designation: 'Faculty on contract',
+                department: 'Electrical & Electronics Engineering',
+                email: 'ad.dksamuel@nitgoa.ac.in',
+                phone: '0832-2404618',
+                researchAreas: 'Power System, Distributed Generation, Fuzzy controllers and Fuzzy Clustering',
+                image: AnudeviSamuel
+            },
+            {
+                name: 'Dr. Senthamizh Selvan S',
+                designation: 'Faculty on contract',
+                department: 'Electrical & Electronics Engineering',
+                email: 'senthamizh@nitgoa.ac.in',
+                phone: '0832-2404644',
+                researchAreas: 'Maximum power point tracking of partial shaded solar photovoltaic array system. Fault analysis in solar PV system, its detection and location identification',
+                image: SenthamizSelvan
+            },
+            {
+                name: 'Dr. Ankeshwarapu Sunil',
+                designation: 'Faculty on contract',
+                department: 'Electrical & Electronics Engineering',
+                email: 'ankeshwarapu.sunil@nitgoa.ac.in',
+                phone: '0832-2404635',
+                researchAreas: 'Active Distribution Systems, AI applications to Power and Energy Systems, Soft Computing Techniques for Optimization Problems',
                 image: AnkeshwarapuSunil
             },
             {
-                name: 'Senthamizh Selvan S',
-                designation: 'Assistant Professor',
+                name: 'Dr. K. Raghavendra Reddy',
+                designation: 'Faculty on contract',
                 department: 'Electrical & Electronics Engineering',
-                email: 'senthamizh@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Power Systems, Electrical Machines',
-                image: SenthamizSelvan
-            }
+                email: 'raghavendrareddy@nitgoa.ac.in',
+                phone: '0832-2404634',
+                researchAreas: 'Power converters, Multilevel Inverters, Electric and Hybrid Vehicles, Renewable Energy Systems',
+                image: Raghavendra
+            },
+            
+            {
+                name: 'Dr. Vijaya Bhaskar Somu',
+                designation: 'Faculty on contract',
+                department: 'Electrical and Electronics Engineering',
+                email: 'somu@nitgoa.ac.in',
+                phone: '0832-2404633',
+                researchAreas: 'Lightning Electromagnetics, Pulsed power technology, High voltage engineering and High power electromagnetics',
+                image: DrVijayaBhaskarSomu
+            },
+            
+            
+            
+           
+            
+            
         ],
         MCE: [
             {
-                name: 'Dr. Abhijit Sarkar',
-                designation: 'Associate Professor',
-                department: 'Mechanical Engineering',
-                email: 'abhijit@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Heat Transfer, Thermal Engineering, CFD',
-                image: AbhijitSarkar
-            },
-            {
-                name: 'Dr. B. Santhi',
-                designation: 'Associate Professor',
-                department: 'Mechanical Engineering',
-                email: 'santhi@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Manufacturing Technology, Materials Science',
-                image: SanthiB
-            },
-            {
-                name: 'Dr. Darius Diogo Barreto',
-                designation: 'Associate Professor',
-                department: 'Mechanical Engineering',
-                email: 'darius@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Fluid Mechanics, Turbo Machinery, Energy Systems',
-                image: DariusBarreto
-            },
-            {
-                name: 'Dr. Gaurang Ruhela',
-                designation: 'Associate Professor',
-                department: 'Mechanical Engineering',
-                email: 'gaurang@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Machine Design, Vibrations, Finite Element Analysis',
-                image: GaurangRuhela
-            },
-            {
                 name: 'Dr. Prasenjit Dey',
                 designation: 'Associate Professor & HOD',
-                department: 'Mechanical Engineering',
-                email: 'prasenjit@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Robotics, Automation, Control Systems',
+                department: 'Department of Mechanical Engineering',
+                email: 'prasenjit.dey@nitgoa.ac.in',
+                phone: '0832-2404834',
+                researchAreas: 'Experimental and Numerical Fluid Flow, CFD, Multi-Phase Flow, Micro and Nano Heat Transfer.',
                 image: PrasenjitDey,
                 isHOD: true
             },
             {
-                name: 'Dr. Pravin Anandrao Pawar',
+                name: 'Dr. B. Santhi',
                 designation: 'Associate Professor',
-                department: 'Mechanical Engineering',
-                email: 'pravin@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Manufacturing, Materials, Industrial Engineering',
+                department: 'Department of Mechanical Engineering',
+                email: 'santhi@nitgoa.ac.in',
+                phone: '0832-2404829',
+                researchAreas: 'Design for Assembly,Ergonomics, Virtual Reality, Reverse Engineering,Product Design for Elderly and Kids, Creative Engineering Design',
+                image: SanthiB
+            },
+            {
+                name: 'Dr. Abhijit Sarkar',
+                designation: 'Faculty on Contract',
+                department: 'Department of Mechanical Engineering',
+                email: 'sarkarabhijit@nitgoa.ac.in',
+                phone: '0832-2404835',
+                researchAreas: 'Manufacturing Technology, Welding',
+                image: AbhijitSarkar
+            },
+            {
+                name: 'Dr. Gaurang Ruhela',
+                designation: 'Faculty on Contract',
+                department: 'Department of Mechanical Engineering',
+                email: 'gaurang@nitgoa.ac.in',
+                phone: '0832-2404836',
+                researchAreas: 'Nonlinear Dynamics, Waves and Mechanical Vibrations, Vibrations Induced Particle Motion',
+                image: GaurangRuhela
+            },
+            {
+                name: 'Dr. Darius Diogo Barreto',
+                designation: 'Faculty on Contract',
+                department: 'Department of Mechanical Engineering',
+                email: '',
+                phone: '0832-2404820',
+                researchAreas: 'Computational Mechanics, Non linear Finite Element Methods, Magneto-electro-elastic effects in Cosserat rods',
+                image: DariusBarreto
+            },
+            {
+                name: 'Dr. Pravin Anandrao Pawar',
+                designation: 'Faculty on Contract',
+                department: 'Department of Mechanical Engineering',
+                email: 'pravinpawar@nitgoa.ac.in',
+                phone: '0832-2404836',
+                researchAreas: 'Traditional and Non-Traditional Machining Processes, Manufacturing Engineering, Materials Science',
                 image: PravinPawar
             },
             {
-                name: 'Chaitanya Vundru',
-                designation: 'Assistant Professor',
-                department: 'Mechanical Engineering',
-                email: 'chaitanya@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Thermal Engineering, Heat Transfer',
-                image: ChaitanyaVundru
-            },
-            {
-                name: 'Samar Singhal',
-                designation: 'Assistant Professor',
-                department: 'Mechanical Engineering',
-                email: 'samar@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Manufacturing Technology, CAD/CAM',
-                image: SamarSinghal
-            },
-            {
-                name: 'Mr. Animesh',
-                designation: 'Assistant Professor',
-                department: 'Mechanical Engineering',
-                email: 'animesh@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Fluid Mechanics, Thermodynamics',
+                name: 'Prof. Animesh Chatterjee',
+                designation: 'Adjunct Faculty',
+                department: 'Department of Mechanical Engineering',
+                email: 'achatterjee@mec.vnit.ac.in',
+                phone: '0832-2404802',
+                researchAreas: 'Machine Dynamics, Fracture Mechanics, Power Plant Engineering',
                 image: AnimeshMCE
             },
             {
-                name: 'Mr. Hiru',
-                designation: 'Assistant Professor',
-                department: 'Mechanical Engineering',
-                email: 'hiru@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Machine Design, Mechanics',
+                name: 'Dr. Nadimetla Thirupathi',
+                designation: 'Faculty on Contract',
+                department: 'Department of Mechanical Engineering',
+                email: 'thirupathi@nitgoa.ac.in',
+                phone: '0832-2404821',
+                researchAreas: 'Electromagnetic Impulse Forming Process, Electromagnetic Powder Compaction and Electromagnetic Forming Process FEM Modelling, Electromagnetic Welding, Powder Metallurgy, Electro Hydro Forming Process, Vaporized Foil Actuator Forming, WAM (Wire Arc Additive Manufacturing Process), and Friction Stir Welding',
+                image: ThirupathiMCE
+            },
+            {
+                name: 'Dr. Hiru Purushothaman Hirudayanathan',
+                designation: 'Faculty on Contract',
+                department: 'Department of Mechanical Engineering',
+                email: 'hirupurushothaman@nitgoa.ac.in',
+                phone: '0832-2404835',
+                researchAreas: 'Manufacturing, Minimum Quantity Lubrication, Automation, Mechatronics',
                 image: HiruMCE
             },
             {
-                name: 'Mr. Thirupathi',
-                designation: 'Assistant Professor',
-                department: 'Mechanical Engineering',
-                email: 'thirupathi@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Manufacturing, Production Engineering',
-                image: ThirupathiMCE
-            }
+                name: 'Dr. Samar Singhal',
+                designation: 'Faculty on Contract',
+                department: 'Department of Mechanical Engineering',
+                email: 'samarsinghal@nitgoa.ac.in',
+                phone: '0832-2404820',
+                researchAreas: 'Numerical Heat transfer, Experimental Heat transfer and its applications, Computational fluid dynamics',
+                image: SamarSinghal
+            },
+            {
+                name: 'Dr. Chaitanya Vundru',
+                designation: 'Faculty on Contract',
+                department: 'Department of Department of Mechanical Engineering',
+                email: 'chaitanya.vundru@nitgoa.ac.in',
+                phone: '0832-2404820',
+                researchAreas: 'Additive manufacturing, Cold spray process, Directed energy deposition, Computational mechanics, Sintering',
+                image: ChaitanyaVundru
+            }  
         ],
         CVE: [
             {
-                name: 'Prof. O. R. Jaiswal',
-                designation: 'Professor',
-                department: 'Civil Engineering',
-                email: 'orjaiswal@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Structural Engineering, Earthquake Engineering, Concrete Technology',
-                image: ORJaiswal
-            },
-            {
                 name: 'Dr. Harikumar M',
                 designation: 'Associate Professor & HOD',
-                department: 'Civil Engineering',
+                department: 'Department of Civil Engineering',
                 email: 'harikumar@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Geotechnical Engineering, Foundation Engineering, Soil Mechanics',
+                phone: '0832-2404846',
+                researchAreas: 'Experimental Soil Mechanics, Hybrid Geosynthetics for soil slopes, Sustainability in Geotechnical Engineering, Model Foundation studies, Unconventional Earth Reinforcement Techniques, Expert Systems in Geotechnical',
                 image: HarikumarM,
                 isHOD: true
             },
             {
+                name: 'Prof. O. R. Jaiswal',
+                designation: 'Professor',
+                department: 'Department of Civil Engineering',
+                email: 'orjaiswal@nitgoa.ac.in',
+                phone: '',
+                researchAreas: '',
+                image: ORJaiswal
+            },
+            {
                 name: 'Dr. Saurabh Upadhyay',
-                designation: 'Associate Professor',
-                department: 'Civil Engineering',
-                email: 'saurabh@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Environmental Engineering, Water Resources, Hydrology',
+                designation: 'Faculty on Contract',
+                department: 'Department of Civil Engineering',
+                email: 'supadhyay@nitgoa.ac.in',
+                phone: '0832-2404833',
+                researchAreas: 'Traffic Noise Modelling, Traffic Noise Barrier, Sustainable Transportation Systems, Public Transportation Systems(Bus Rapid Transit System)',
                 image: SaurabhUpadhyay
             },
             {
-                name: 'Ranendra Nath Bhowmik',
-                designation: 'Assistant Professor',
-                department: 'Civil Engineering',
-                email: 'ranendra@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Transportation Engineering, Traffic Engineering, Highway Design',
+                name: 'Dr. Ranendra Nath Bhowmik',
+                designation: 'Faculty on Contract',
+                department: 'Department of Civil Engineering',
+                email: 'rbhowmik@nitgoa.ac.in',
+                phone: '0832-2404816',
+                researchAreas: 'Concrete Technology, Low-cost housing, Non-destructive testing of concrete, Durability study of concrete.',
                 image: RanendraBhowmik
             },
             {
-                name: 'Bapi Mondal',
-                designation: 'Assistant Professor',
-                department: 'Civil Engineering',
-                email: 'bapi@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Structural Engineering, Concrete Technology',
+                name: 'Dr. Bapi Mondal',
+                designation: 'Faculty on Contract',
+                department: 'Department of Civil Engineering',
+                email: 'bapimondal@nitgoa.ac.in',
+                phone: '0832-2404848',
+                researchAreas: 'Material characterization, Structural Analysis, Design of RC and Steel structures, Reliability Analysis, Bamboo based structures',
                 image: BapiMondal
             },
             {
-                name: 'Mr. Chandra',
-                designation: 'Assistant Professor',
-                department: 'Civil Engineering',
-                email: 'chandra@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Geotechnical Engineering, Soil Mechanics',
-                image: ChandraCVE
+                name: 'Dr. Vinamra Mishra',
+                designation: 'Faculty on Contract',
+                department: 'Department of Civil Engineering',
+                email: 'vinamramishra@nitgoa.ac.in',
+                phone: '0832-2404832',
+                researchAreas: 'Material Characterization: Aggregate, Bitumen, Soil Asphalt mix design: Marshall method and Superpave mix design specifications.',
+                image: VNMCVE
             },
+            
             {
-                name: 'Mr. Mani',
-                designation: 'Assistant Professor',
-                department: 'Civil Engineering',
-                email: 'mani@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Environmental Engineering, Water Resources',
+                name: 'Dr. Sathishraj Mani',
+                designation: 'Faculty on Contract',
+                department: 'Department of Civil Engineering',
+                email: 'sathishraj@nitgoa.ac.in',
+                phone: '0832-2404832',
+                researchAreas: 'Geopolymer Concrete, Microstructure and Durability Studies in Concrete, Construction Management',
                 image: ManiCVE
             },
             {
-                name: 'Mr. Saidulu',
-                designation: 'Assistant Professor',
-                department: 'Civil Engineering',
-                email: 'saidulu@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Structural Analysis, Design',
+                name: 'Dr. Duduku Saidulu',
+                designation: 'Faculty on Contract',
+                department: 'Department of Civil Engineering',
+                email: 'dudukusaidulu@nitgoa.ac.in',
+                phone: '0832-2404832',
+                researchAreas: 'Emerging Contaminants Removal; Biofilm-based Treatment Techniques, Nutrient Recovery; 3D printing Applications in Water and Wastewater; Photocatalysis; PFAS Detection and Remediation.',
                 image: SaiduluCVE
             },
             {
-                name: 'Mr. Suryateja',
-                designation: 'Assistant Professor',
-                department: 'Civil Engineering',
-                email: 'suryateja@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Construction Management, Project Planning',
-                image: SuryatejaCVE
-            },
-            {
-                name: 'Mr. VNM',
-                designation: 'Assistant Professor',
-                department: 'Civil Engineering',
-                email: 'vnm@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Hydraulics, Water Engineering',
-                image: VNMCVE
+                name: 'Mr. Guntakala Venkatanaga Chandra',
+                designation: 'Faculty on Contract',
+                department: 'Department of Civil Engineering',
+                email: 'gvnchandra@nitgoa.ac.in',
+                phone: '0832-2404832',
+                researchAreas: 'Contamination level, Risk Assessment, Ecological risk Assessment, Source Apportionment Groundwater Quality, Soil contamination, Anaerobic Treatment',
+                image: ChandraCVE
             }
+            // {
+            //     name: 'Mr. Suryateja',
+            //     designation: 'Assistant Professor',
+            //     department: 'Department of Civil Engineering',',
+            //     email: 'suryateja@nitgoa.ac.in',
+            //     phone: '- (Internal)',
+            //     researchAreas: 'Construction Management, Project Planning',
+            //     image: SuryatejaCVE
+            // }
+            
         ],
         APS: [
             {
-                name: 'Dr. Gundlapally Shiva Kumar Reddy',
-                designation: 'Associate Professor',
-                department: 'Applied Sciences',
-                email: 'shivakumar@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Mathematical Analysis, Differential Equations, Numerical Methods',
-                image: ShivaKumarReddy
-            },
-            {
                 name: 'Dr. L. Shangerganesh',
-                designation: 'Associate Professor & HOD',
-                department: 'Applied Sciences',
+                designation: 'Associate Professor & HOD (APS & HSS)',
+                department: 'Department of Applied Sciences',
                 email: 'shangerganesh@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Partial Differential Equations, Mathematical Modeling, Fluid Dynamics',
+                phone: '0832-2404728',
+                researchAreas: 'Mathematical Biology, Finite Element Methods & Partial Differential Equations',
                 image: Shangerganesh,
                 isHOD: true
             },
             {
-                name: 'Dr. Lasitha P',
-                designation: 'Associate Professor',
-                department: 'Applied Sciences',
-                email: 'lasitha@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Solid State Physics, Materials Science, Nanotechnology',
-                image: LasithaP
-            },
-            {
-                name: 'Dr. Ragoju Ravi',
-                designation: 'Associate Professor',
-                department: 'Applied Sciences',
-                email: 'ragoju@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Condensed Matter Physics, Computational Physics',
-                image: RagojuRavi
-            },
-            {
-                name: 'Dr. Suman Gandi',
-                designation: 'Associate Professor',
-                department: 'Applied Sciences',
-                email: 'suman@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Organic Chemistry, Medicinal Chemistry, Drug Design',
-                image: SumanGandi
-            },
-            {
-                name: 'Dr. Ravi Prasad K. J.',
-                designation: 'Associate Professor',
-                department: 'Applied Sciences',
-                email: 'raviprasad@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Theoretical Physics, Quantum Mechanics',
-                image: RaviPrasad
-            },
-            {
                 name: 'Dr. Saidi Reddy Parne',
-                designation: 'Associate Professor',
-                department: 'Applied Sciences',
-                email: 'saidi@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Applied Mathematics, Numerical Analysis',
+                designation: 'Associate Professor of Physics',
+                department: 'Department of Applied Sciences',
+                email: 'psreddy@nitgoa.ac.in',
+                phone: '0832-2404729',
+                researchAreas: '• Photonics • Fiber Bragg Grating Sensors • Fiber Optic Sensors • Superconducting Motor • Material Characterization • Nanoscale Matter Radar Absorption Materials',
                 image: SaidiReddy
             },
             {
                 name: 'Dr. Velavan Kathirvelu',
-                designation: 'Associate Professor',
-                department: 'Applied Sciences',
+                designation: 'Associate Professor of Chemistry',
+                department: 'Department of Applied Sciences',
                 email: 'velavan@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Physical Chemistry, Materials Chemistry',
+                phone: '0832-2404726',
+                researchAreas: '(i) Electron Paramagnetic Resonance (EPR) of Transition Metal Ions and Organic Free Radicals (ii) Application of EPR towards Biology (ii) Chemistry of Lanthanides and Actinides',
                 image: VelavanKathirvelu
-            }
+            },
+            {
+                name: 'Dr. Ragoju Ravi',
+                designation: 'Associate Professor of Mathematics',
+                department: 'Department of Applied Sciences',
+                email: 'ravi@nitgoa.ac.in',
+                phone: '0832-2404743',
+                researchAreas: 'Applied Mathematics; Fluid Mechanics; Convective Instability problems; Heat and Mass Transfer',
+                image: RagojuRavi
+            },
+            {
+                name: 'Dr. Ravi Prasad K. J.',
+                designation: 'Associate Professor of Mathematics',
+                department: 'Department of Applied Sciences',
+                email: 'k.j.raviprasad@nitgoa.ac.in',
+                phone: '0832-2404727',
+                researchAreas: 'Bio-medical Imaging, Inverse problems and Numerical Optimization',
+                image: RaviPrasad
+            },
+             {
+                name: 'Dr. Suman Gandi',
+                designation: 'Faculty on contract',
+                department: 'Department of Applied Sciences',
+                email: 'gandisuman@nitgoa.ac.in',
+                phone: '0832-2404730',
+                researchAreas: 'Sodium/Lithium-Ion batteries, glass and glass-ceramic materials for energy storage systems.',
+                image: SumanGandi
+            },
+            {
+                name: 'Dr. Gundlapally Shiva Kumar Reddy',
+                designation: 'Faculty on contract',
+                department: 'Department of Applied Sciences',
+                email: 'gshivakumarreddy913@nitgoa.ac.in',
+                phone: '0832-2404742',
+                researchAreas: 'Applied Mathematics, Fluid Dynamics, Hydrodynamic Stability, Linear and Non-linear instability analysis',
+                image: ShivaKumarReddy
+            },
+            {
+                name: 'Dr. Lasitha P',
+                designation: 'Faculty on contract',
+                department: 'Department of Applied Sciences',
+                email: 'lasitha@nitgoa.ac.in',
+                phone: '0832-2404716',
+                researchAreas: 'Self-assembly, Sensing, and Luminescent materials',
+                image: LasithaP
+            }   
         ],
         HSS: [
             {
                 name: 'Dr. Sarani Ghosal Mondal',
-                designation: 'Associate Professor & HOD',
-                department: 'Humanities & Social Sciences',
+                designation: 'Associate Professor of English',
+                department: 'Department of Humanities and Social Sciences',
                 email: 'sarani@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Applied Linguistics, English Language Teaching, Literature',
-                image: SaraniMondal,
-                isHOD: true
+                phone: '0832-2404741',
+                researchAreas: 'Culture Studies, Applied Linguistics and Comparative Mysticism',
+                image: SaraniMondal
             },
             {
                 name: 'Dr. Sunil Kumar',
-                designation: 'Associate Professor',
-                department: 'Humanities & Social Sciences',
+                designation: 'Assistant Professor of Economics',
+                department: 'Department of Humanities and Social Sciences',
                 email: 'sunilkumar@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Economics, Development Economics, Industrial Economics',
+                phone: '0832-2404715',
+                researchAreas: 'R&D, Patents, and Productivity. IPR, Firms innovation, and growth. Innovation and Sustainable Development',
                 image: SunilKumar
             },
             {
                 name: 'Dr. Unais KT',
-                designation: 'Associate Professor',
-                department: 'Humanities & Social Sciences',
-                email: 'unais@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Philosophy, Ethics, Social Philosophy',
+                designation: 'Faculty on contract',
+                department: 'Department of Humanities and Social Sciences',
+                email: 'unaiskt@nitgoa.ac.in',
+                phone: '0832-2404705',
+                researchAreas: 'Postcolonial Literature, Gothic Writing, Indian Writing in English',
                 image: UnaisKT
             },
             {
                 name: 'Mr. Vishnupad Barve',
-                designation: 'Assistant Professor',
-                department: 'Humanities & Social Sciences',
-                email: 'vishnupad@nitgoa.ac.in',
-                phone: 'Extension No.: - (Internal)',
-                researchAreas: 'Management Studies, Organizational Behavior, Human Resources',
+                designation: 'Guest Faculty',
+                department: 'Department of Humanities and Social Sciences',
+                email: '',
+                phone: '0832-2404705',
+                researchAreas: '',
                 image: VishanupadBarve
             }
         ]
@@ -785,15 +786,15 @@ const Faculty = () => {
                 
 
                 {/* Department Filter Buttons */}
-                <div className="department-section">
-                    <h2 className="current-department">
+                <div className="faculty-department-section">
+                    <h2 className="faculty-current-department">
                         {departments.find(dept => dept.code === selectedDepartment)?.name || 'Department'}
                     </h2>
-                    <div className="department-filters">
+                    <div className="faculty-department-filters">
                         {departments.map((dept) => (
                             <button
                                 key={dept.code}
-                                className={`filter-btn ${selectedDepartment === dept.code ? 'active' : ''}`}
+                                className={`faculty-filter-btn ${selectedDepartment === dept.code ? 'active' : ''}`}
                                 onClick={() => handleDepartmentFilter(dept.code)}
                             >
                                 {dept.code}
@@ -816,7 +817,7 @@ const Faculty = () => {
                                     <p className="faculty-department">{faculty.department}</p>
                                     <div className="faculty-contact">
                                         <p><strong>Email:</strong> {faculty.email}</p>
-                                        <p><strong>Phone:</strong> {faculty.phone}</p>
+                                        <p><strong>Extension No.:</strong> {faculty.phone}</p>
                                     </div>
                                     <div className="faculty-actions">
                                         <button className="view-profile-btn" onClick={() => {
