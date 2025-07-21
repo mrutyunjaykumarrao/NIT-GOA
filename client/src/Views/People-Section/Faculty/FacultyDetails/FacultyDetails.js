@@ -18,7 +18,7 @@ const FacultyDetails = () => {
     const [expandedSections, setExpandedSections] = useState({
         personalInfo: true,
         contactInfo: true,
-        researchAreas: true,
+        researchAreas: false,
         coursesTaught: false,
         academicInfo: false,
         publications: false,
@@ -64,11 +64,9 @@ const FacultyDetails = () => {
                 <h3>{title}</h3>
                 <i className={`fas fa-chevron-${expandedSections[key] ? 'up' : 'down'}`}></i>
             </div>
-            {expandedSections[key] && (
-                <div className="section-content">
-                    {content}
-                </div>
-            )}
+            <div className={`section-content ${expandedSections[key] ? 'expanded' : 'collapsed'}`}>
+                {content}
+            </div>
         </div>
     );
 

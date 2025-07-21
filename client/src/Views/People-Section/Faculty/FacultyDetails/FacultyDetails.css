@@ -20,21 +20,21 @@
 }
 
 [data-theme="dark"] {
-    --bg-primary: #1a1a1a;
-    --bg-secondary: #2d2d2d;
-    --bg-tertiary: #404040;
-    --brand-primary: #64b5f6;
-    --brand-accent: #1e3a5f;
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --bg-tertiary: #2d2d2d;
+    --brand-primary: #4fc3f7;
+    --brand-accent: #263238;
     --text-primary: #ffffff;
-    --text-secondary: #b0b0b0;
-    --border-color: #404040;
-    --shadow-light: rgba(0, 0, 0, 0.3);
-    --shadow-medium: rgba(0, 0, 0, 0.5);
-    --info-section-bg: #1e3a5f;
+    --text-secondary: #b0bec5;
+    --border-color: #37474f;
+    --shadow-light: rgba(0, 0, 0, 0.4);
+    --shadow-medium: rgba(0, 0, 0, 0.6);
+    --info-section-bg: #263238;
     --info-header-color: #ffffff;
-    --section-bg: #2d2d2d;
-    --card-gradient: linear-gradient(135deg, #2d2d2d 0%, rgba(45, 45, 45, 0.9) 100%);
-    --header-gradient: linear-gradient(135deg, #1e3a5f 0%, rgba(30, 58, 95, 0.8) 100%);
+    --section-bg: #1e1e1e;
+    --card-gradient: linear-gradient(135deg, #1e1e1e 0%, rgba(30, 30, 30, 0.95) 100%);
+    --header-gradient: linear-gradient(135deg, #263238 0%, rgba(38, 50, 56, 0.9) 100%);
 }
 
 /* Faculty Details Page Styles */
@@ -421,12 +421,28 @@
 .section-header i {
     color: var(--text-secondary);
     font-size: 14px;
-    transition: transform 0.2s ease;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .section-content {
-    padding: 20px;
     background: var(--bg-primary);
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: 0;
+    opacity: 0;
+    padding: 0 20px;
+}
+
+.section-content.expanded {
+    max-height: 2000px;
+    opacity: 1;
+    padding: 20px;
+}
+
+.section-content.collapsed {
+    max-height: 0;
+    opacity: 0;
+    padding: 0 20px;
 }
 
 /* Research Areas - Enhanced */
@@ -849,6 +865,19 @@
         flex-shrink: 0;
     }
     
+    .section-header {
+        padding: 12px 15px;
+    }
+    
+    .section-header h3 {
+        font-size: 16px;
+        line-height: 1.3;
+        word-wrap: break-word;
+        hyphens: auto;
+        text-align: center;
+        flex: 1;
+    }
+    
     .info-grid {
         grid-template-columns: 1fr;
     }
@@ -884,19 +913,112 @@
     }
     
     .section-header {
-        
-        padding: 15px 18px;
+        padding: 10px 12px;
+    }
+    
+    .section-header h3 {
+        font-size: 14px;
+        line-height: 1.4;
+        text-align: center;
     }
     
     .section-content {
-        padding: 20px;
+        padding: 15px;
     }
     
     .info-grid {
-        padding: 20px;
+        padding: 15px;
     }
     
     .publications-table-container {
         overflow-x: auto;
     }
+}
+
+/* Enhanced Dark Mode Styles */
+[data-theme="dark"] .faculty-details-page {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .info-row {
+    background: rgba(55, 71, 79, 0.3);
+    border-left-color: var(--brand-primary);
+}
+
+[data-theme="dark"] .info-row:hover {
+    background: var(--brand-accent);
+}
+
+[data-theme="dark"] .section-header {
+    background: var(--brand-accent);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .section-header:hover {
+    background: #37474f;
+}
+
+[data-theme="dark"] .research-tag {
+    background: var(--brand-accent);
+    color: var(--brand-primary);
+    border-color: var(--brand-primary);
+}
+
+[data-theme="dark"] .research-tag:hover {
+    background: var(--brand-primary);
+    color: var(--bg-primary);
+}
+
+[data-theme="dark"] .research-list li,
+[data-theme="dark"] .course-category li {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border-left-color: var(--brand-primary);
+}
+
+[data-theme="dark"] .research-list li:hover,
+[data-theme="dark"] .course-category li:hover {
+    background: var(--brand-accent);
+}
+
+[data-theme="dark"] .education-item,
+[data-theme="dark"] .project-item {
+    background: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .education-item:hover,
+[data-theme="dark"] .project-item:hover {
+    background: var(--brand-accent);
+}
+
+[data-theme="dark"] .research-guidance li,
+[data-theme="dark"] .awards-section li,
+[data-theme="dark"] .memberships-section li,
+[data-theme="dark"] .professional-services li,
+[data-theme="dark"] .courses-attended li,
+[data-theme="dark"] .courses-conducted li {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .research-guidance li:hover,
+[data-theme="dark"] .awards-section li:hover,
+[data-theme="dark"] .memberships-section li:hover,
+[data-theme="dark"] .professional-services li:hover,
+[data-theme="dark"] .courses-attended li:hover,
+[data-theme="dark"] .courses-conducted li:hover {
+    background: var(--brand-accent);
+}
+
+[data-theme="dark"] .research-category,
+[data-theme="dark"] .course-category {
+    background: rgba(55, 71, 79, 0.3);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .publications-table tr:hover {
+    background: var(--brand-accent);
 }

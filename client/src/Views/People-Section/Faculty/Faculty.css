@@ -700,96 +700,103 @@
 }
 
 /* Dark Mode Theme Styles */
+.faculty-page.dark {
+    background-color: #121212;
+    color: #ffffff;
+}
+
 .faculty-page.dark .faculty-current-department {
-    background: linear-gradient(135deg, #1e3a8a, #1e40af);
-    color: #e0e0e0;
-    border-left: 4px solid #3b82f6;
+    background: linear-gradient(135deg, #263238, #37474f);
+    color: #ffffff;
+    border-left: 4px solid #4fc3f7;
 }
 
 .faculty-page.dark .faculty-filter-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #e0e0e0;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #b0bec5;
     box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.4);
 }
 
 .faculty-page.dark .faculty-filter-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
     box-shadow: 
-        0 12px 40px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+        0 12px 40px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.4);
 }
 
 .faculty-page.dark .faculty-filter-btn.active {
-    background: rgba(59, 130, 246, 0.4);
-    color: #ffffff;
-    border: 1px solid rgba(59, 130, 246, 0.6);
+    background: rgba(79, 195, 247, 0.2);
+    color: #4fc3f7;
+    border: 1px solid rgba(79, 195, 247, 0.4);
     box-shadow: 
-        0 15px 45px rgba(59, 130, 246, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+        0 15px 45px rgba(79, 195, 247, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.4);
 }
 
 .faculty-page.dark .faculty-card {
     background: #1e1e1e;
-    border: 1px solid #333;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid #37474f;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .faculty-page.dark .faculty-card:hover {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 30px rgba(79, 195, 247, 0.2);
+    border-color: #4fc3f7;
 }
 
 .faculty-page.dark .faculty-card.hod-card {
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
-    border: 1px solid #333;
+    background: linear-gradient(135deg, #1e1e1e, #263238);
+    border: 1px solid #37474f;
 }
 
 .faculty-page.dark .faculty-card.hod-card:hover {
-    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.2);
+    box-shadow: 0 12px 40px rgba(79, 195, 247, 0.2);
 }
 
 .faculty-page.dark .faculty-name {
-    color: #3b82f6;
+    color: #4fc3f7;
 }
 
 .faculty-page.dark .faculty-designation {
-    color: #d1d5db;
+    color: #b0bec5;
 }
 
 .faculty-page.dark .faculty-department {
-    color: #9ca3af;
+    color: #78909c;
 }
 
 .faculty-page.dark .faculty-contact {
-    background: #2d2d2d;
-    border: 1px solid #404040;
+    background: #263238;
+    border: 1px solid #37474f;
 }
 
 .faculty-page.dark .faculty-contact p {
-    color: #d1d5db;
+    color: #b0bec5;
 }
 
 .faculty-page.dark .faculty-contact strong {
-    color: #3b82f6;
+    color: #4fc3f7;
 }
 
 .faculty-page.dark .faculty-card.hod-card .faculty-contact {
-    background: #2a2a3e;
-    border: 1px solid #404040;
+    background: #1e1e1e;
+    border: 1px solid #37474f;
 }
 
 .faculty-page.dark .no-faculty {
     background: #1e1e1e;
-    border: 1px solid #333;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid #37474f;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .faculty-page.dark .no-faculty p {
-    color: #9ca3af;
+    color: #78909c;
 }
