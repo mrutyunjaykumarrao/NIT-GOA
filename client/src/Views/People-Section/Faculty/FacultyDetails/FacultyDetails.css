@@ -427,11 +427,11 @@
 .section-content {
     background: var(--bg-primary);
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     max-height: 0;
     opacity: 0;
     padding: 0 20px;
-    transform: translateY(-10px);
+    transform: translateY(-8px);
 }
 
 .section-content.expanded {
@@ -445,7 +445,7 @@
     max-height: 0;
     opacity: 0;
     padding: 0 20px;
-    transform: translateY(-10px);
+    transform: translateY(-8px);
 }
 
 /* Research Areas - Enhanced */
@@ -677,7 +677,7 @@
 
 .publication-sub-content {
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     max-height: 0;
     opacity: 0;
 }
@@ -849,7 +849,7 @@
     color: var(--text-secondary);
 }
 
-/* Funded Projects Table Styling */
+/* Funded Projects Table Styling - 4 columns */
 .funded-projects-table-container {
     border: 1px solid var(--border-color);
     border-radius: 12px;
@@ -876,6 +876,11 @@
     letter-spacing: 0.5px;
 }
 
+.funded-projects-table th:nth-child(1) { width: 8%; }   /* Sr. No. */
+.funded-projects-table th:nth-child(2) { width: 50%; }  /* Project Details - wider */
+.funded-projects-table th:nth-child(3) { width: 25%; }  /* Funding Agency */
+.funded-projects-table th:nth-child(4) { width: 17%; }  /* Amount */
+
 .funded-projects-table td {
     padding: 15px 12px;
     border-bottom: 1px solid var(--border-color);
@@ -896,8 +901,18 @@
     font-weight: 500;
 }
 
-/* Courses Attended/Conducted Table Styling */
-.courses-attended-table-container,
+.agency-cell {
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.amount-cell {
+    font-weight: 700;
+    color: var(--brand-primary);
+    white-space: nowrap;
+}
+
+/* Courses Conducted Table Styling - 4 columns, no venue */
 .courses-conducted-table-container {
     border: 1px solid var(--border-color);
     border-radius: 12px;
@@ -906,14 +921,12 @@
     box-shadow: 0 4px 15px var(--shadow-light);
 }
 
-.courses-attended-table,
 .courses-conducted-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 14px;
 }
 
-.courses-attended-table th,
 .courses-conducted-table th {
     background: var(--header-gradient);
     color: var(--info-header-color);
@@ -926,7 +939,11 @@
     letter-spacing: 0.5px;
 }
 
-.courses-attended-table td,
+.courses-conducted-table th:nth-child(1) { width: 8%; }   /* Sr. No. */
+.courses-conducted-table th:nth-child(2) { width: 60%; }  /* Course Details - wider */
+.courses-conducted-table th:nth-child(3) { width: 16%; }  /* Year - increased */
+.courses-conducted-table th:nth-child(4) { width: 16%; }  /* Duration - increased */
+
 .courses-conducted-table td {
     padding: 15px 12px;
     border-bottom: 1px solid var(--border-color);
@@ -935,18 +952,427 @@
     color: var(--text-primary);
 }
 
-.courses-attended-table tr:hover,
 .courses-conducted-table tr:hover {
     background: var(--brand-accent);
 }
 
-.courses-attended-table tr:last-child td,
 .courses-conducted-table tr:last-child td {
     border-bottom: none;
 }
 
 .course-details-cell {
     font-weight: 500;
+}
+
+.year-cell {
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.duration-cell {
+    font-weight: 600;
+    color: var(--brand-primary);
+    white-space: nowrap;
+}
+
+/* Courses Attended Table Styling - 5 columns with venue */
+.courses-attended-table-container {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--bg-primary);
+    box-shadow: 0 4px 15px var(--shadow-light);
+}
+
+.courses-attended-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.courses-attended-table th {
+    background: var(--header-gradient);
+    color: var(--info-header-color);
+    font-weight: 700;
+    padding: 15px 12px;
+    text-align: left;
+    border-bottom: 2px solid var(--border-color);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.courses-attended-table td {
+    padding: 15px 12px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: top;
+    line-height: 1.5;
+    color: var(--text-primary);
+}
+
+.courses-attended-table tr:hover {
+    background: var(--brand-accent);
+}
+
+.courses-attended-table tr:last-child td {
+    border-bottom: none;
+}
+
+.course-details-cell {
+    font-weight: 500;
+}
+
+.venue-cell {
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+/* Research Guidance Cards Styling */
+.research-guidance-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.guidance-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.guidance-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px var(--shadow-medium);
+    border-color: var(--brand-primary);
+}
+
+.guidance-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.guidance-degree-badge {
+    background: var(--brand-primary);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.guidance-status-badge {
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.guidance-status-badge.completed {
+    background: #e8f5e8;
+    color: #2e7d32;
+}
+
+.guidance-status-badge.ongoing {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.guidance-status-badge.submitted {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.guidance-text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.guidance-year {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+/* Awards Timeline Styling */
+.awards-timeline {
+    position: relative;
+    padding-left: 40px;
+}
+
+.awards-timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--brand-primary), var(--brand-accent));
+}
+
+.award-item {
+    position: relative;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.award-timeline-marker {
+    position: absolute;
+    left: -32px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+    background: var(--brand-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 4px var(--bg-primary);
+}
+
+.award-timeline-marker i {
+    color: white;
+    font-size: 14px;
+}
+
+.award-content {
+    flex: 1;
+    background: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.award-content:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--shadow-medium);
+}
+
+.award-year {
+    font-size: 12px;
+    color: var(--brand-primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.award-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 10px 0;
+    line-height: 1.4;
+}
+
+.award-category {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.award-category.excellence {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.award-category.recognition {
+    background: #e8f5e8;
+    color: #2e7d32;
+}
+
+.award-category.honor {
+    background: #fce4ec;
+    color: #c2185b;
+}
+
+.award-category.achievement {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+/* Memberships Grid Styling */
+.memberships-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.membership-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px var(--shadow-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.membership-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--brand-primary);
+}
+
+.membership-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px var(--shadow-medium);
+    border-color: var(--brand-primary);
+}
+
+.membership-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--brand-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    transition: all 0.3s ease;
+}
+
+.membership-card:hover .membership-icon {
+    background: var(--brand-primary);
+    transform: scale(1.1);
+}
+
+.membership-icon i {
+    font-size: 24px;
+    color: var(--brand-primary);
+    transition: color 0.3s ease;
+}
+
+.membership-card:hover .membership-icon i {
+    color: white;
+}
+
+.membership-level {
+    font-size: 12px;
+    color: var(--brand-primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.membership-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+}
+
+.membership-org-type {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.membership-org-type.ieee {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.membership-org-type.acm {
+    background: #f3e5f5;
+    color: #7b1fa2;
+}
+
+.membership-org-type.society {
+    background: #e8f5e8;
+    color: #2e7d32;
+}
+
+.membership-org-type.association {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.membership-org-type.professional {
+    background: #fce4ec;
+    color: #c2185b;
+}
+
+/* Professional Services - Simple List Styling */
+.professional-services-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.professional-services-section li {
+    background: var(--bg-secondary);
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    border-left: 5px solid var(--brand-primary);
+    font-size: 15px;
+    line-height: 1.6;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px var(--shadow-light);
+    position: relative;
+    color: var(--text-primary);
+}
+
+.professional-services-section li:hover {
+    background: var(--brand-accent);
+    transform: translateX(5px);
+    box-shadow: 0 3px 10px var(--shadow-medium);
+    border-left-width: 6px;
+}
+
+/* Memberships - Simple List Styling */
+.memberships-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.memberships-section li {
+    background: var(--bg-secondary);
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    border-left: 5px solid var(--brand-primary);
+    font-size: 15px;
+    line-height: 1.6;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px var(--shadow-light);
+    position: relative;
+    color: var(--text-primary);
+}
+
+.memberships-section li:hover {
+    background: var(--brand-accent);
+    transform: translateX(8px);
+    box-shadow: 0 6px 20px var(--shadow-medium);
+    border-left-width: 7px;
 }
 
 /* Enhanced Other Sections */
@@ -1162,6 +1588,30 @@
     .publications-scrollable-container {
         max-height: 300px;
     }
+    
+    .research-guidance-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .memberships-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .awards-timeline {
+        padding-left: 30px;
+    }
+    
+    .award-timeline-marker {
+        left: -27px;
+        width: 25px;
+        height: 25px;
+    }
+    
+    .service-item {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1269,7 +1719,7 @@
 [data-theme="dark"] .research-guidance li,
 [data-theme="dark"] .awards-section li,
 [data-theme="dark"] .memberships-section li,
-[data-theme="dark"] .professional-services li,
+[data-theme="dark"] .professional-services-section li,
 [data-theme="dark"] .courses-attended li,
 [data-theme="dark"] .courses-conducted li {
     background: var(--bg-secondary);
@@ -1279,7 +1729,7 @@
 [data-theme="dark"] .research-guidance li:hover,
 [data-theme="dark"] .awards-section li:hover,
 [data-theme="dark"] .memberships-section li:hover,
-[data-theme="dark"] .professional-services li:hover,
+[data-theme="dark"] .professional-services-section li:hover,
 [data-theme="dark"] .courses-attended li:hover,
 [data-theme="dark"] .courses-conducted li:hover {
     background: var(--brand-accent);
@@ -1353,4 +1803,76 @@
 
 [data-theme="dark"] .year-cell {
     color: var(--text-secondary);
+}
+
+[data-theme="dark"] .duration-cell,
+[data-theme="dark"] .amount-cell {
+    color: var(--brand-primary);
+}
+
+[data-theme="dark"] .agency-cell,
+[data-theme="dark"] .venue-cell {
+    color: var(--text-secondary);
+}
+
+/* Dark mode for new card-based components */
+[data-theme="dark"] .guidance-card,
+[data-theme="dark"] .award-content {
+    background: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .guidance-card:hover,
+[data-theme="dark"] .award-content:hover {
+    background: var(--brand-accent);
+    border-color: var(--brand-primary);
+}
+
+[data-theme="dark"] .guidance-text,
+[data-theme="dark"] .award-title {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .guidance-year {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .award-year {
+    color: var(--brand-primary);
+}
+
+[data-theme="dark"] .guidance-status-badge.completed {
+    background: #1b4332;
+    color: #4caf50;
+}
+
+[data-theme="dark"] .guidance-status-badge.ongoing {
+    background: #3e2723;
+    color: #ff9800;
+}
+
+[data-theme="dark"] .guidance-status-badge.submitted {
+    background: #1a237e;
+    color: var(--brand-primary);
+}
+
+[data-theme="dark"] .award-category.excellence {
+    background: #3e2723;
+    color: #ff9800;
+}
+
+[data-theme="dark"] .award-category.recognition {
+    background: #1b4332;
+    color: #4caf50;
+}
+
+[data-theme="dark"] .award-category.honor {
+    background: #4a148c;
+    color: #e91e63;
+}
+
+[data-theme="dark"] .award-category.achievement {
+    background: #1a237e;
+    color: var(--brand-primary);
 }

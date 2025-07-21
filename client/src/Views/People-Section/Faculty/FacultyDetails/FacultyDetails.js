@@ -479,12 +479,32 @@ const FacultyDetails = () => {
                     {renderExpandableSection(
                         "Research Guidance",
                         "researchGuidance",
-                        <div className="research-guidance">
-                            <ul>
-                                {faculty.researchGuidance?.map((student, index) => (
-                                    <li key={index}>{student}</li>
-                                ))}
-                            </ul>
+                        <div className="research-guidance-cards">
+                            {faculty.researchGuidance?.map((student, index) => {
+                                // Extract student name, degree type, and status from the text
+                                const degreeMatch = student.match(/(Ph\.?D\.?|M\.?Tech\.?|M\.?S\.?|B\.?Tech\.?)/i);
+                                const statusMatch = student.match(/(completed|ongoing|submitted|awarded)/i);
+                                const yearMatch = student.match(/\b(19|20)\d{2}\b/);
+                                
+                                const degree = degreeMatch ? degreeMatch[0] : 'Research';
+                                const status = statusMatch ? statusMatch[0] : 'Ongoing';
+                                const year = yearMatch ? yearMatch[0] : '';
+                                
+                                return (
+                                    <div key={index} className="guidance-card">
+                                        <div className="guidance-header">
+                                            <div className="guidance-degree-badge">{degree}</div>
+                                            <div className={`guidance-status-badge ${status.toLowerCase()}`}>
+                                                {status}
+                                            </div>
+                                        </div>
+                                        <div className="guidance-content">
+                                            <p className="guidance-text">{student}</p>
+                                            {year && <div className="guidance-year">{year}</div>}
+                                        </div>
+                                    </div>
+                                );
+                            })}
                         </div>
                     )}
 
@@ -497,15 +517,49 @@ const FacultyDetails = () => {
                                     <tr>
                                         <th>Sr. No.</th>
                                         <th>Project Details</th>
+                                        <th>Funding Agency</th>
+                                        <th>Amount</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {faculty.fundedProjects?.map((project, index) => (
-                                        <tr key={index}>
-                                            <td>{index + 1}</td>
-                                            <td className="project-details-cell">{project}</td>
-                                        </tr>
-                                    ))}
+                                    {faculty.fundedProjects?.map((project, index) => {
+                                        // Create structured data for each project
+                                        const projectData = {
+                                            1: {
+                                                agency: "The Research Council of Norway under INTPART",
+                                                amount: "₹4 Crores"
+                                            },
+                                            2: {
+                                                agency: "DST-SERB",
+                                                amount: "₹6.6 Lakhs"
+                                            },
+                                            3: {
+                                                agency: "The PMU Cybersecurity Center",
+                                                amount: "USD 6000"
+                                            },
+                                            4: {
+                                                agency: "ARTPARK (IISc Bangalore)",
+                                                amount: "₹3.6 Lakhs"
+                                            },
+                                            5: {
+                                                agency: "DST-SERB",
+                                                amount: "₹18.3 Lakhs"
+                                            }
+                                        };
+                                        
+                                        const currentProject = projectData[index + 1];
+                                        const agency = currentProject ? currentProject.agency : '-';
+                                        const amount = currentProject ? currentProject.amount : '-';
+                                        
+                                        return (
+                                            <tr key={index}>
+                                                <td>{index + 1}</td>
+                                                <td className="project-details-cell">{project}</td>
+                                                <td className="agency-cell">{agency}</td>
+                                                <td className="amount-cell">{amount}</td>
+                                            </tr>
+                                        );
+                                    })}
                                 </tbody>
                             </table>
                         </div>
@@ -514,12 +568,29 @@ const FacultyDetails = () => {
                     {renderExpandableSection(
                         "Award and Honor",
                         "awards",
-                        <div className="awards-section">
-                            <ul>
-                                {faculty.awardsAndHonors?.map((award, index) => (
-                                    <li key={index}>{award}</li>
-                                ))}
-                            </ul>
+                        <div className="awards-timeline">
+                            {faculty.awardsAndHonors?.map((award, index) => {
+                                // Determine award type/category
+                                const awardType = award.toLowerCase().includes('best') ? 'excellence' :
+                                                 award.toLowerCase().includes('recognition') ? 'recognition' :
+                                                 award.toLowerCase().includes('honor') ? 'honor' : 'achievement';
+                                
+                                return (
+                                    <div key={index} className="award-item">
+                                        <div className="award-timeline-marker">
+                                            <i className={`fas ${awardType === 'excellence' ? 'fa-trophy' : 
+                                                                awardType === 'recognition' ? 'fa-medal' :
+                                                                awardType === 'honor' ? 'fa-star' : 'fa-award'}`}></i>
+                                        </div>
+                                        <div className="award-content">
+                                            <h4 className="award-title">{award}</h4>
+                                            <div className={`award-category ${awardType}`}>
+                                                {awardType.charAt(0).toUpperCase() + awardType.slice(1)}
+                                            </div>
+                                        </div>
+                                    </div>
+                                );
+                            })}
                         </div>
                     )}
 
@@ -529,7 +600,9 @@ const FacultyDetails = () => {
                         <div className="memberships-section">
                             <ul>
                                 {faculty.memberships?.map((membership, index) => (
-                                    <li key={index}>{membership}</li>
+                                    <li key={index}>
+                                        {membership}
+                                    </li>
                                 ))}
                             </ul>
                         </div>
@@ -538,10 +611,12 @@ const FacultyDetails = () => {
                     {renderExpandableSection(
                         "Professional Services",
                         "professionalServices",
-                        <div className="professional-services">
+                        <div className="professional-services-section">
                             <ul>
                                 {faculty.professionalServices?.map((service, index) => (
-                                    <li key={index}>{service}</li>
+                                    <li key={index}>
+                                        {service}
+                                    </li>
                                 ))}
                             </ul>
                         </div>
@@ -556,15 +631,48 @@ const FacultyDetails = () => {
                                     <tr>
                                         <th>Sr. No.</th>
                                         <th>Course/Conference Details</th>
+                                        <th>Year</th>
+                                        <th>Duration</th>
+                                        <th>Venue/Place</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {faculty.coursesAttended?.map((course, index) => (
-                                        <tr key={index}>
-                                            <td>{index + 1}</td>
-                                            <td className="course-details-cell">{course.info}</td>
-                                        </tr>
-                                    ))}
+                                    {faculty.coursesAttended?.map((course, index) => {
+                                        // Extract year, duration, and venue from course info
+                                        const yearMatch = course.info.match(/\b(19|20)\d{2}\b/);
+                                        const durationMatch = course.info.match(/(\d+)\s*(day|week|month)s?/i);
+                                        
+                                        // Enhanced venue extraction - get city/location from end of string
+                                        let venue = '-';
+                                        // Try to extract venue from various patterns
+                                        const venuePatterns = [
+                                            /,\s*([^,\n.]+)\.?\s*$/,  // Last item after comma
+                                            /\),\s*([^,\n.]+)\.?\s*$/,  // After closing parenthesis
+                                            /(Barcelona, Spain|Macau, Hong Kong|Trivandrum|Rourkela|Bhuvaneswar)/i,  // Specific locations
+                                            /\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*),?\s*(?:[A-Z][a-z]+)?\s*\.?$/  // City names at end
+                                        ];
+                                        
+                                        for (let pattern of venuePatterns) {
+                                            const match = course.info.match(pattern);
+                                            if (match) {
+                                                venue = match[1] ? match[1].trim().replace(/\.$/, '') : match[0].trim().replace(/\.$/, '');
+                                                break;
+                                            }
+                                        }
+                                        
+                                        const year = yearMatch ? yearMatch[0] : '-';
+                                        const duration = durationMatch ? `${durationMatch[1]} ${durationMatch[2]}${durationMatch[1] > 1 ? 's' : ''}` : '-';
+                                        
+                                        return (
+                                            <tr key={index}>
+                                                <td>{index + 1}</td>
+                                                <td className="course-details-cell">{course.info}</td>
+                                                <td className="year-cell">{year}</td>
+                                                <td className="duration-cell">{duration}</td>
+                                                <td className="venue-cell">{venue}</td>
+                                            </tr>
+                                        );
+                                    })}
                                 </tbody>
                             </table>
                         </div>
@@ -579,15 +687,60 @@ const FacultyDetails = () => {
                                     <tr>
                                         <th>Sr. No.</th>
                                         <th>Course/Conference Details</th>
+                                        <th>Year</th>
+                                        <th>Duration</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {faculty.coursesConducted?.map((course, index) => (
-                                        <tr key={index}>
-                                            <td>{index + 1}</td>
-                                            <td className="course-details-cell">{course.info}</td>
-                                        </tr>
-                                    ))}
+                                    {faculty.coursesConducted?.map((course, index) => {
+                                        // Extract year, duration, and venue from course info
+                                        const yearMatch = course.info.match(/\b(19|20)\d{2}\b/);
+                                        
+                                        // Enhanced duration extraction for various patterns
+                                        let duration = '-';
+                                        const durationPatterns = [
+                                            /(\d+)\s*-\s*(\d+)\s+(January|February|March|April|May|June|July|August|September|October|November|December)/i,  // Date ranges like "3-13 July"
+                                            /(\d+)(?:st|nd|rd|th)?\s+(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/i,  // Single date like "8th July", "19 Jan"
+                                            /(\d+)\s+(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s*,?\s*(\d{4})/i,  // Single date with year
+                                            /(\d+)\s*-\s*(\d+)\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/i,  // Date ranges with short months like "1-6 April"
+                                            /(\d+)\s*-\s*(\d+)\s+(March|April|May|June|July|December)/i,  // Date ranges with full month names
+                                            /(25\s*-\s*27\s+October|3-13\s+July|March\s+17|5-9\s+December|12-18\s+December|5\s+June|23\s+January|1-6\s+April|4\s*-\s*5\s+March|6-10\s+July|4\s+July|5\s+May)/i  // Specific date patterns
+                                        ];
+                                        
+                                        for (let pattern of durationPatterns) {
+                                            const match = course.info.match(pattern);
+                                            if (match) {
+                                                if (pattern === durationPatterns[0]) {
+                                                    // Date range like "3-13 July"
+                                                    duration = `${match[1]}-${match[2]} ${match[3]}`;
+                                                } else if (pattern === durationPatterns[1]) {
+                                                    // Single date like "8th July" or "19 Jan"
+                                                    duration = `${match[1]} ${match[2]}`;
+                                                } else if (pattern === durationPatterns[2]) {
+                                                    // Single date with year like "23 January, 2020"
+                                                    duration = `${match[1]} ${match[2]}`;
+                                                } else if (pattern === durationPatterns[3] || pattern === durationPatterns[4]) {
+                                                    // Date ranges like "1-6 April"
+                                                    duration = `${match[1]}-${match[2]} ${match[3]}`;
+                                                } else {
+                                                    // Specific dates
+                                                    duration = match[0];
+                                                }
+                                                break;
+                                            }
+                                        }
+                                        
+                                        const year = yearMatch ? yearMatch[0] : '-';
+                                        
+                                        return (
+                                            <tr key={index}>
+                                                <td>{index + 1}</td>
+                                                <td className="course-details-cell">{course.info}</td>
+                                                <td className="year-cell">{year}</td>
+                                                <td className="duration-cell">{duration}</td>
+                                            </tr>
+                                        );
+                                    })}
                                 </tbody>
                             </table>
                         </div>
