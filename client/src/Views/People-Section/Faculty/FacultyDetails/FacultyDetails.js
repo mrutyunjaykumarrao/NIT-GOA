@@ -31,6 +31,13 @@ const FacultyDetails = () => {
         coursesConducted: false
     });
 
+    const [expandedPublications, setExpandedPublications] = useState({
+        journal: false,
+        proceedings: false,
+        bookChapters: false,
+        booksAuthored: false
+    });
+
     useEffect(() => {
         // For now, we'll use the hardcoded Damodar Reddy Edla data for all faculty
         // Later this can be replaced with dynamic data fetching
@@ -45,6 +52,13 @@ const FacultyDetails = () => {
         setExpandedSections(prev => ({
             ...prev,
             [section]: !prev[section]
+        }));
+    };
+
+    const togglePublicationSubSection = (subSection) => {
+        setExpandedPublications(prev => ({
+            ...prev,
+            [subSection]: !prev[subSection]
         }));
     };
 
@@ -65,6 +79,21 @@ const FacultyDetails = () => {
                 <i className={`fas fa-chevron-${expandedSections[key] ? 'up' : 'down'}`}></i>
             </div>
             <div className={`section-content ${expandedSections[key] ? 'expanded' : 'collapsed'}`}>
+                {content}
+            </div>
+        </div>
+    );
+
+    const renderPublicationSubSection = (title, key, content) => (
+        <div className="publication-sub-section">
+            <div 
+                className="publication-sub-header" 
+                onClick={() => togglePublicationSubSection(key)}
+            >
+                <h4>{title}</h4>
+                <i className={`fas fa-chevron-${expandedPublications[key] ? 'up' : 'down'}`}></i>
+            </div>
+            <div className={`publication-sub-content ${expandedPublications[key] ? 'expanded' : 'collapsed'}`}>
                 {content}
             </div>
         </div>
@@ -269,15 +298,27 @@ const FacultyDetails = () => {
                     {renderExpandableSection(
                         "Academic Information",
                         "academicInfo",
-                        <div className="academic-info">
-                            {faculty.academicInformation?.map((edu, index) => (
-                                <div key={index} className="education-item">
-                                    <h4>{edu.degree}</h4>
-                                    <p><strong>Institute:</strong> {edu.institute}</p>
-                                    <p><strong>Year:</strong> {edu.year}</p>
-                                    <p><strong>Subject:</strong> {edu.subject}</p>
-                                </div>
-                            ))}
+                        <div className="academic-info-table-container">
+                            <table className="academic-info-table">
+                                <thead>
+                                    <tr>
+                                        <th>Degree</th>
+                                        <th>Institute</th>
+                                        <th>Subject</th>
+                                        <th>Year</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {faculty.academicInformation?.map((edu, index) => (
+                                        <tr key={index}>
+                                            <td className="degree-cell">{edu.degree}</td>
+                                            <td className="institute-cell">{edu.institute}</td>
+                                            <td className="subject-cell">{edu.subject}</td>
+                                            <td className="year-cell">{edu.year}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
                         </div>
                     )}
 
@@ -285,11 +326,12 @@ const FacultyDetails = () => {
                         "Paper Published",
                         "publications",
                         <div className="publications-section">
-                            {/* Journal Publications Table */}
-                            {faculty.publications?.journal && faculty.publications.journal.length > 0 && (
-                                <div className="publication-category">
-                                    <h4>Journal Publications ({faculty.publications.journal.length})</h4>
-                                    <div className="publications-table-container">
+                            {/* Journal Publications Sub-dropdown */}
+                            {faculty.publications?.journal && faculty.publications.journal.length > 0 && 
+                                renderPublicationSubSection(
+                                    `Publications Table (${faculty.publications.journal.length})`,
+                                    "journal",
+                                    <div className="publications-scrollable-container">
                                         <table className="publications-table">
                                             <thead>
                                                 <tr>
@@ -301,7 +343,6 @@ const FacultyDetails = () => {
                                             </thead>
                                             <tbody>
                                                 {faculty.publications.journal.map((pub, index) => {
-                                                    // Extract year and month from the publication string
                                                     const yearMatch = pub.match(/\b(19|20)\d{2}\b/);
                                                     const monthMatch = pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i);
                                                     const year = yearMatch ? yearMatch[0] : '-';
@@ -319,14 +360,15 @@ const FacultyDetails = () => {
                                             </tbody>
                                         </table>
                                     </div>
-                                </div>
-                            )}
+                                )
+                            }
                             
-                            {/* Conference Proceedings Table */}
-                            {faculty.publications?.proceedings && faculty.publications.proceedings.length > 0 && (
-                                <div className="publication-category">
-                                    <h4>Conference Proceedings ({faculty.publications.proceedings.length})</h4>
-                                    <div className="publications-table-container">
+                            {/* Conference Proceedings Sub-dropdown */}
+                            {faculty.publications?.proceedings && faculty.publications.proceedings.length > 0 && 
+                                renderPublicationSubSection(
+                                    `Conference Proceedings Table (${faculty.publications.proceedings.length})`,
+                                    "proceedings",
+                                    <div className="publications-scrollable-container">
                                         <table className="publications-table">
                                             <thead>
                                                 <tr>
@@ -338,7 +380,6 @@ const FacultyDetails = () => {
                                             </thead>
                                             <tbody>
                                                 {faculty.publications.proceedings.map((pub, index) => {
-                                                    // Extract year and month from the publication string
                                                     const yearMatch = pub.match(/\b(19|20)\d{2}\b/);
                                                     const monthMatch = pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i);
                                                     const year = yearMatch ? yearMatch[0] : '-';
@@ -356,14 +397,15 @@ const FacultyDetails = () => {
                                             </tbody>
                                         </table>
                                     </div>
-                                </div>
-                            )}
+                                )
+                            }
 
-                            {/* Book Chapters Table */}
-                            {faculty.publications?.bookChapters && faculty.publications.bookChapters.length > 0 && (
-                                <div className="publication-category">
-                                    <h4>Book Chapters ({faculty.publications.bookChapters.length})</h4>
-                                    <div className="publications-table-container">
+                            {/* Book Chapters Sub-dropdown */}
+                            {faculty.publications?.bookChapters && faculty.publications.bookChapters.length > 0 && 
+                                renderPublicationSubSection(
+                                    `Book Chapters Table (${faculty.publications.bookChapters.length})`,
+                                    "bookChapters",
+                                    <div className="publications-scrollable-container">
                                         <table className="publications-table">
                                             <thead>
                                                 <tr>
@@ -375,7 +417,6 @@ const FacultyDetails = () => {
                                             </thead>
                                             <tbody>
                                                 {faculty.publications.bookChapters.map((pub, index) => {
-                                                    // Extract year and month from the publication string
                                                     const yearMatch = pub.match(/\b(19|20)\d{2}\b/);
                                                     const monthMatch = pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i);
                                                     const year = yearMatch ? yearMatch[0] : '-';
@@ -393,14 +434,15 @@ const FacultyDetails = () => {
                                             </tbody>
                                         </table>
                                     </div>
-                                </div>
-                            )}
+                                )
+                            }
 
-                            {/* Books Authored Table */}
-                            {faculty.publications?.booksAuthored && faculty.publications.booksAuthored.length > 0 && (
-                                <div className="publication-category">
-                                    <h4>Books Authored ({faculty.publications.booksAuthored.length})</h4>
-                                    <div className="publications-table-container">
+                            {/* Books Authored Sub-dropdown */}
+                            {faculty.publications?.booksAuthored && faculty.publications.booksAuthored.length > 0 && 
+                                renderPublicationSubSection(
+                                    `Books Authored Table (${faculty.publications.booksAuthored.length})`,
+                                    "booksAuthored",
+                                    <div className="publications-scrollable-container">
                                         <table className="publications-table">
                                             <thead>
                                                 <tr>
@@ -412,7 +454,6 @@ const FacultyDetails = () => {
                                             </thead>
                                             <tbody>
                                                 {faculty.publications.booksAuthored.map((pub, index) => {
-                                                    // Extract year and month from the publication string
                                                     const yearMatch = pub.match(/\b(19|20)\d{2}\b/);
                                                     const monthMatch = pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i);
                                                     const year = yearMatch ? yearMatch[0] : '-';
@@ -430,8 +471,8 @@ const FacultyDetails = () => {
                                             </tbody>
                                         </table>
                                     </div>
-                                </div>
-                            )}
+                                )
+                            }
                         </div>
                     )}
 
@@ -450,12 +491,23 @@ const FacultyDetails = () => {
                     {renderExpandableSection(
                         "Funded Research Project",
                         "fundedProjects",
-                        <div className="funded-projects">
-                            {faculty.fundedProjects?.map((project, index) => (
-                                <div key={index} className="project-item">
-                                    <p>{project}</p>
-                                </div>
-                            ))}
+                        <div className="funded-projects-table-container">
+                            <table className="funded-projects-table">
+                                <thead>
+                                    <tr>
+                                        <th>Sr. No.</th>
+                                        <th>Project Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {faculty.fundedProjects?.map((project, index) => (
+                                        <tr key={index}>
+                                            <td>{index + 1}</td>
+                                            <td className="project-details-cell">{project}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
                         </div>
                     )}
 
@@ -498,24 +550,46 @@ const FacultyDetails = () => {
                     {renderExpandableSection(
                         "Training/Conferences/Short Term Courses Attended",
                         "coursesAttended",
-                        <div className="courses-attended">
-                            <ul>
-                                {faculty.coursesAttended?.map((course, index) => (
-                                    <li key={index}>{course.info}</li>
-                                ))}
-                            </ul>
+                        <div className="courses-attended-table-container">
+                            <table className="courses-attended-table">
+                                <thead>
+                                    <tr>
+                                        <th>Sr. No.</th>
+                                        <th>Course/Conference Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {faculty.coursesAttended?.map((course, index) => (
+                                        <tr key={index}>
+                                            <td>{index + 1}</td>
+                                            <td className="course-details-cell">{course.info}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
                         </div>
                     )}
 
                     {renderExpandableSection(
                         "Training/Conferences/Short Term Courses Conducted",
                         "coursesConducted",
-                        <div className="courses-conducted">
-                            <ul>
-                                {faculty.coursesConducted?.map((course, index) => (
-                                    <li key={index}>{course.info}</li>
-                                ))}
-                            </ul>
+                        <div className="courses-conducted-table-container">
+                            <table className="courses-conducted-table">
+                                <thead>
+                                    <tr>
+                                        <th>Sr. No.</th>
+                                        <th>Course/Conference Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {faculty.coursesConducted?.map((course, index) => (
+                                        <tr key={index}>
+                                            <td>{index + 1}</td>
+                                            <td className="course-details-cell">{course.info}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
                         </div>
                     )}
                 </div>

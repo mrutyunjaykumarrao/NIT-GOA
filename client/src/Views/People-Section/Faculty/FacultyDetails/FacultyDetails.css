@@ -427,22 +427,25 @@
 .section-content {
     background: var(--bg-primary);
     overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
     max-height: 0;
     opacity: 0;
     padding: 0 20px;
+    transform: translateY(-10px);
 }
 
 .section-content.expanded {
-    max-height: 2000px;
+    max-height: 3000px;
     opacity: 1;
     padding: 20px;
+    transform: translateY(0);
 }
 
 .section-content.collapsed {
     max-height: 0;
     opacity: 0;
     padding: 0 20px;
+    transform: translateY(-10px);
 }
 
 /* Research Areas - Enhanced */
@@ -632,7 +635,85 @@
 .publications-section {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
+}
+
+/* Publication Sub-sections Styling */
+.publication-sub-section {
+    background: var(--bg-secondary);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.publication-sub-header {
+    background: var(--brand-accent);
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.publication-sub-header:hover {
+    background: var(--header-gradient);
+}
+
+.publication-sub-header h4 {
+    color: var(--brand-primary);
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.publication-sub-header i {
+    color: var(--brand-primary);
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+.publication-sub-content {
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    max-height: 0;
+    opacity: 0;
+}
+
+.publication-sub-content.expanded {
+    max-height: 400px;
+    opacity: 1;
+}
+
+.publication-sub-content.collapsed {
+    max-height: 0;
+    opacity: 0;
+}
+
+.publications-scrollable-container {
+    max-height: 350px;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.publications-scrollable-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.publications-scrollable-container::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 4px;
+}
+
+.publications-scrollable-container::-webkit-scrollbar-thumb {
+    background: var(--brand-primary);
+    border-radius: 4px;
+}
+
+.publications-scrollable-container::-webkit-scrollbar-thumb:hover {
+    background: var(--brand-accent);
 }
 
 .publication-category h4 {
@@ -705,6 +786,167 @@
 .publication-year {
     font-weight: 600;
     color: var(--text-secondary);
+}
+
+/* Academic Information Table Styling */
+.academic-info-table-container {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--bg-primary);
+    box-shadow: 0 4px 15px var(--shadow-light);
+}
+
+.academic-info-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.academic-info-table th {
+    background: var(--header-gradient);
+    color: var(--info-header-color);
+    font-weight: 700;
+    padding: 15px 12px;
+    text-align: left;
+    border-bottom: 2px solid var(--border-color);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.academic-info-table td {
+    padding: 15px 12px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: top;
+    line-height: 1.5;
+    color: var(--text-primary);
+}
+
+.academic-info-table tr:hover {
+    background: var(--brand-accent);
+}
+
+.academic-info-table tr:last-child td {
+    border-bottom: none;
+}
+
+.degree-cell {
+    font-weight: 600;
+    color: var(--brand-primary);
+}
+
+.institute-cell {
+    font-weight: 500;
+}
+
+.subject-cell {
+    font-style: italic;
+}
+
+.year-cell {
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+/* Funded Projects Table Styling */
+.funded-projects-table-container {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--bg-primary);
+    box-shadow: 0 4px 15px var(--shadow-light);
+}
+
+.funded-projects-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.funded-projects-table th {
+    background: var(--header-gradient);
+    color: var(--info-header-color);
+    font-weight: 700;
+    padding: 15px 12px;
+    text-align: left;
+    border-bottom: 2px solid var(--border-color);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.funded-projects-table td {
+    padding: 15px 12px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: top;
+    line-height: 1.5;
+    color: var(--text-primary);
+}
+
+.funded-projects-table tr:hover {
+    background: var(--brand-accent);
+}
+
+.funded-projects-table tr:last-child td {
+    border-bottom: none;
+}
+
+.project-details-cell {
+    font-weight: 500;
+}
+
+/* Courses Attended/Conducted Table Styling */
+.courses-attended-table-container,
+.courses-conducted-table-container {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--bg-primary);
+    box-shadow: 0 4px 15px var(--shadow-light);
+}
+
+.courses-attended-table,
+.courses-conducted-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.courses-attended-table th,
+.courses-conducted-table th {
+    background: var(--header-gradient);
+    color: var(--info-header-color);
+    font-weight: 700;
+    padding: 15px 12px;
+    text-align: left;
+    border-bottom: 2px solid var(--border-color);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.courses-attended-table td,
+.courses-conducted-table td {
+    padding: 15px 12px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: top;
+    line-height: 1.5;
+    color: var(--text-primary);
+}
+
+.courses-attended-table tr:hover,
+.courses-conducted-table tr:hover {
+    background: var(--brand-accent);
+}
+
+.courses-attended-table tr:last-child td,
+.courses-conducted-table tr:last-child td {
+    border-bottom: none;
+}
+
+.course-details-cell {
+    font-weight: 500;
 }
 
 /* Enhanced Other Sections */
@@ -890,6 +1132,36 @@
     .publications-table td {
         padding: 10px 8px;
     }
+    
+    .academic-info-table,
+    .funded-projects-table,
+    .courses-attended-table,
+    .courses-conducted-table {
+        font-size: 12px;
+    }
+    
+    .academic-info-table th,
+    .academic-info-table td,
+    .funded-projects-table th,
+    .funded-projects-table td,
+    .courses-attended-table th,
+    .courses-attended-table td,
+    .courses-conducted-table th,
+    .courses-conducted-table td {
+        padding: 10px 8px;
+    }
+    
+    .publication-sub-header {
+        padding: 12px 15px;
+    }
+    
+    .publication-sub-header h4 {
+        font-size: 14px;
+    }
+    
+    .publications-scrollable-container {
+        max-height: 300px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1021,4 +1293,64 @@
 
 [data-theme="dark"] .publications-table tr:hover {
     background: var(--brand-accent);
+}
+
+[data-theme="dark"] .publication-sub-section {
+    background: var(--bg-secondary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .publication-sub-header {
+    background: var(--brand-accent);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .publication-sub-header:hover {
+    background: #37474f;
+}
+
+[data-theme="dark"] .publication-sub-header h4 {
+    color: var(--brand-primary);
+}
+
+[data-theme="dark"] .publication-sub-header i {
+    color: var(--brand-primary);
+}
+
+[data-theme="dark"] .publications-scrollable-container::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+}
+
+[data-theme="dark"] .publications-scrollable-container::-webkit-scrollbar-thumb {
+    background: var(--brand-primary);
+}
+
+[data-theme="dark"] .academic-info-table tr:hover,
+[data-theme="dark"] .funded-projects-table tr:hover,
+[data-theme="dark"] .courses-attended-table tr:hover,
+[data-theme="dark"] .courses-conducted-table tr:hover {
+    background: var(--brand-accent);
+}
+
+[data-theme="dark"] .academic-info-table-container,
+[data-theme="dark"] .funded-projects-table-container,
+[data-theme="dark"] .courses-attended-table-container,
+[data-theme="dark"] .courses-conducted-table-container {
+    background: var(--bg-primary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .degree-cell {
+    color: var(--brand-primary);
+}
+
+[data-theme="dark"] .institute-cell,
+[data-theme="dark"] .subject-cell,
+[data-theme="dark"] .project-details-cell,
+[data-theme="dark"] .course-details-cell {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .year-cell {
+    color: var(--text-secondary);
 }
