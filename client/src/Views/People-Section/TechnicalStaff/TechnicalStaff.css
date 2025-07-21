@@ -12,7 +12,7 @@
     color: #e0e0e0;
 }
 
-.staff-container {
+.technical-staff-container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 60px;
@@ -106,8 +106,8 @@
         inset 0 -1px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* Staff Grid */
-.staff-grid {
+/* Technical Staff Grid */
+.technical-staff-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
@@ -115,8 +115,8 @@
     justify-items: center;
 }
 
-/* Staff Card */
-.staff-card {
+/* Technical Staff Card */
+.technical-staff-card {
     background: white;
     border-radius: 15px;
     padding: 25px;
@@ -132,12 +132,12 @@
     flex-direction: column;
 }
 
-.staff-card:hover {
+.technical-staff-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
-.staff-image {
+.technical-staff-image {
     width: 220px;
     height: 280px;
     border-radius: 8px;
@@ -146,20 +146,20 @@
     border: 3px solid #e0e0e0;
 }
 
-.staff-image img {
+.technical-staff-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.staff-info {
+.technical-staff-info {
     text-align: center;
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
-.staff-name {
+.technical-staff-name {
     font-size: 18px;
     font-weight: 700;
     color: #1976d2;
@@ -173,7 +173,7 @@
     text-overflow: ellipsis;
 }
 
-.staff-designation {
+.technical-staff-designation {
     font-size: 15px;
     font-weight: 600;
     color: #424242;
@@ -186,7 +186,7 @@
     text-overflow: ellipsis;
 }
 
-.staff-department {
+.technical-staff-department {
     font-size: 13px;
     color: #666;
     margin-bottom: 15px;
@@ -199,7 +199,7 @@
     text-overflow: ellipsis;
 }
 
-.staff-contact {
+.technical-staff-contact {
     background: #f8f9fa;
     padding: 12px;
     border-radius: 8px;
@@ -208,18 +208,18 @@
     margin-top: auto;
 }
 
-.staff-contact p {
+.technical-staff-contact p {
     margin: 4px 0;
     font-size: 13px;
     color: #555;
 }
 
-.staff-contact strong {
+.technical-staff-contact strong {
     color: #1976d2;
 }
 
-/* No Staff Message */
-.no-staff {
+/* No Technical Staff Message */
+.no-technical-staff {
     grid-column: 1 / -1;
     text-align: center;
     padding: 60px 20px;
@@ -228,7 +228,7 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-.no-staff p {
+.no-technical-staff p {
     font-size: 18px;
     color: #666;
     margin: 0;
@@ -236,27 +236,27 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .staff-container {
+    .technical-staff-container {
         padding: 0 15px;
     }
     
-    .staff-grid {
+    .technical-staff-grid {
         grid-template-columns: 1fr;
         gap: 20px;
     }
     
-    .staff-card {
+    .technical-staff-card {
         padding: 20px;
         height: 420px;
         min-height: 420px;
         max-height: 420px;
     }
     
-    .staff-name {
+    .technical-staff-name {
         font-size: 18px;
     }
     
-    .staff-designation {
+    .technical-staff-designation {
         font-size: 15px;
     }
     
@@ -282,23 +282,23 @@
         padding-top: 10px;
     }
     
-    .staff-card {
+    .technical-staff-card {
         padding: 15px;
         height: 400px;
         min-height: 400px;
         max-height: 400px;
     }
     
-    .staff-image {
+    .technical-staff-image {
         width: 200px;
         height: 250px;
     }
     
-    .staff-name {
+    .technical-staff-name {
         font-size: 16px;
     }
     
-    .staff-designation {
+    .technical-staff-designation {
         font-size: 14px;
     }
     
@@ -316,18 +316,18 @@
 
 /* Large Screen Responsiveness (2K, 4K, TV) */
 @media (min-width: 1920px) {
-    .staff-container {
+    .technical-staff-container {
         max-width: 1800px;
         padding: 0 80px;
     }
     
-    .staff-grid {
+    .technical-staff-grid {
         grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
         gap: 40px;
         padding: 30px 0;
     }
     
-    .staff-card {
+    .technical-staff-card {
         max-width: 420px;
         height: 500px;
         min-height: 500px;
@@ -335,7 +335,7 @@
         padding: 30px;
     }
     
-    .staff-image {
+    .technical-staff-image {
         width: 240px;
         height: 240px;
     }
@@ -352,18 +352,18 @@
 }
 
 @media (min-width: 2560px) {
-    .staff-container {
+    .technical-staff-container {
         max-width: 2400px;
         padding: 0 120px;
     }
     
-    .staff-grid {
+    .technical-staff-grid {
         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         gap: 50px;
         padding: 40px 0;
     }
     
-    .staff-card {
+    .technical-staff-card {
         max-width: 450px;
         height: 520px;
         min-height: 520px;
@@ -371,7 +371,7 @@
         padding: 35px;
     }
     
-    .staff-image {
+    .technical-staff-image {
         width: 260px;
         height: 260px;
     }
@@ -386,11 +386,11 @@
         font-size: 20px;
     }
     
-    .staff-name {
+    .technical-staff-name {
         font-size: 20px;
     }
     
-    .staff-designation {
+    .technical-staff-designation {
         font-size: 17px;
     }
 }
@@ -431,47 +431,47 @@
         inset 0 -1px 0 rgba(0, 0, 0, 0.3);
 }
 
-.technical-staff-page.dark .staff-card {
+.technical-staff-page.dark .technical-staff-card {
     background: #1e1e1e;
     border: 1px solid #333;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-.technical-staff-page.dark .staff-card:hover {
+.technical-staff-page.dark .technical-staff-card:hover {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
 }
 
-.technical-staff-page.dark .staff-name {
+.technical-staff-page.dark .technical-staff-name {
     color: #3b82f6;
 }
 
-.technical-staff-page.dark .staff-designation {
+.technical-staff-page.dark .technical-staff-designation {
     color: #d1d5db;
 }
 
-.technical-staff-page.dark .staff-department {
+.technical-staff-page.dark .technical-staff-department {
     color: #9ca3af;
 }
 
-.technical-staff-page.dark .staff-contact {
+.technical-staff-page.dark .technical-staff-contact {
     background: #2d2d2d;
     border: 1px solid #404040;
 }
 
-.technical-staff-page.dark .staff-contact p {
+.technical-staff-page.dark .technical-staff-contact p {
     color: #d1d5db;
 }
 
-.technical-staff-page.dark .staff-contact strong {
+.technical-staff-page.dark .technical-staff-contact strong {
     color: #3b82f6;
 }
 
-.technical-staff-page.dark .no-staff {
+.technical-staff-page.dark .no-technical-staff {
     background: #1e1e1e;
     border: 1px solid #333;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-.technical-staff-page.dark .no-staff p {
+.technical-staff-page.dark .no-technical-staff p {
     color: #9ca3af;
 }
