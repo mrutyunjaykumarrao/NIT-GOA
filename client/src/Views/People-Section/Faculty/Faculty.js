@@ -786,15 +786,15 @@ const Faculty = () => {
                 
 
                 {/* Department Filter Buttons */}
-                <div className="department-section">
-                    <h2 className="current-department">
+                <div className="faculty-department-section">
+                    <h2 className="faculty-current-department">
                         {departments.find(dept => dept.code === selectedDepartment)?.name || 'Department'}
                     </h2>
-                    <div className="department-filters">
+                    <div className="faculty-department-filters">
                         {departments.map((dept) => (
                             <button
                                 key={dept.code}
-                                className={`filter-btn ${selectedDepartment === dept.code ? 'active' : ''}`}
+                                className={`faculty-filter-btn ${selectedDepartment === dept.code ? 'active' : ''}`}
                                 onClick={() => handleDepartmentFilter(dept.code)}
                             >
                                 {dept.code}

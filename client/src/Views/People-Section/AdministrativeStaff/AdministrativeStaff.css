@@ -36,7 +36,7 @@
 }
 
 /* Department Section */
-.current-department {
+.administrative-staff-current-department {
     text-align: center;
     font-size: 24px;
     font-weight: 600;
@@ -186,7 +186,7 @@
         font-size: 15px;
     }
     
-    .current-department {
+    .administrative-staff-current-department {
         font-size: 20px;
         margin-bottom: 30px;
         padding: 12px;
@@ -218,7 +218,7 @@
         font-size: 14px;
     }
     
-    .current-department {
+    .administrative-staff-current-department {
         font-size: 18px;
         margin-bottom: 20px;
         padding: 10px;
@@ -282,7 +282,7 @@
         height: 260px;
     }
     
-    .current-department {
+    .administrative-staff-current-department {
         font-size: 32px;
         padding: 25px;
     }
@@ -297,7 +297,7 @@
 }
 
 /* Dark Mode Theme Styles */
-.administrative-staff-page.dark .current-department {
+.administrative-staff-page.dark .administrative-staff-current-department {
     background: linear-gradient(135deg, #1e3a8a, #1e40af);
     color: #e0e0e0;
     border-left: 4px solid #3b82f6;

@@ -229,7 +229,7 @@ const AdministrativeStaff = () => {
     return (
         <div className={`administrative-staff-page ${theme}`}>
             <div className="administrative-staff-container">
-                <div className="current-department">
+                <div className="administrative-staff-current-department">
                     Administrative Staff
                 </div>
 

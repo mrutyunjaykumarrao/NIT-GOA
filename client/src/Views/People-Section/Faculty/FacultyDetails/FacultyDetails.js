@@ -109,11 +109,11 @@ const FacultyDetails = () => {
                 <div className="faculty-main-content">
                     {/* Left Column - Profile Image and Basic Info */}
                     <div className="faculty-profile-card">
-                        <div className="faculty-image-container">
+                        <div className="faculty-details-image-container">
                             <img 
                                 src={faculty.image} 
                                 alt={faculty.profile?.name}
-                                className="faculty-image"
+                                className="faculty-details-image"
                                 onError={(e) => {
                                     e.target.src = '/api/placeholder/300/350';
                                 }}
@@ -123,15 +123,15 @@ const FacultyDetails = () => {
                         <div className="faculty-basic-info">
                             <p className="facultydetails-designation">{faculty.profile?.designation}</p>
                             <div className="title-divider"></div>
-                            <h1 className="faculty-name">{faculty.profile?.name}</h1>
-                            <p className="faculty-department">{faculty.profile?.department}</p>
+                            <h1 className="faculty-details-name">{faculty.profile?.name}</h1>
+                            <p className="faculty-details-department">{faculty.profile?.department}</p>
                             
                             {/* Social/Contact Links */}
                             <div className="faculty-links">
-                                <div className="social-link">
+                                <div className="faculty-details-social-link">
                                     <i className="fas fa-envelope"></i>
                                 </div>
-                                <div className="social-link">
+                                <div className="faculty-details-social-link">
                                     <i className="fab fa-linkedin"></i>
                                 </div>
                             </div>

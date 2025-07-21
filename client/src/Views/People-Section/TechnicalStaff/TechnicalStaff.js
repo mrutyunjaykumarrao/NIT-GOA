@@ -226,15 +226,15 @@ const TechnicalStaff = () => {
         <div className={`technical-staff-page ${theme}`}>
             <div className="technical-staff-container">
                 {/* Department Filter Buttons */}
-                <div className="department-section">
-                    <h2 className="current-department">
+                <div className="technical-staff-department-section">
+                    <h2 className="technical-staff-current-department">
                         {departments.find(dept => dept.code === selectedDepartment)?.name || 'Department'} - Technical Staff
                     </h2>
-                    <div className="department-filters">
+                    <div className="technical-staff-department-filters">
                         {departments.map((dept) => (
                             <button
                                 key={dept.code}
-                                className={`filter-btn ${selectedDepartment === dept.code ? 'active' : ''}`}
+                                className={`technical-staff-filter-btn ${selectedDepartment === dept.code ? 'active' : ''}`}
                                 onClick={() => handleDepartmentFilter(dept.code)}
                             >
                                 {dept.code}

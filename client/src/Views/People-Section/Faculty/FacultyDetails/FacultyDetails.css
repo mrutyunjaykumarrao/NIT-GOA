@@ -135,12 +135,12 @@
     background: linear-gradient(90deg, var(--brand-primary) 0%, var(--brand-accent) 100%);
 }
 
-.faculty-image-container {
+.faculty-details-image-container {
     margin-bottom: 0px;
     position: relative;
 }
 
-.faculty-image {
+.faculty-details-image {
     width: 100%;
     max-width: 280px;
     height: 320px;
@@ -149,9 +149,10 @@
     box-shadow: 0 8px 25px var(--shadow-medium);
     border: 3px solid var(--brand-accent);
     transition: all 0.3s ease;
+    margin-bottom: 24px;
 }
 
-.faculty-image:hover {
+.faculty-details-image:hover {
     transform: scale(1.02);
     box-shadow: 0 12px 35px var(--shadow-medium);
 }
@@ -182,7 +183,7 @@
     border-radius: 2px;
 }
 
-.faculty-name {
+.faculty-details-name {
     font-size: 26px;
     font-weight: 800;
     color: var(--text-primary);
@@ -191,7 +192,7 @@
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.faculty-department {
+.faculty-details-department {
     color: var(--text-secondary);
     font-size: 15px;
     margin-bottom: 30px;
@@ -205,7 +206,7 @@
     gap: 15px;
 }
 
-.social-link {
+.faculty-details-social-link {
     width: 45px;
     height: 45px;
     background: var(--brand-accent);
@@ -218,7 +219,7 @@
     border: 2px solid transparent;
 }
 
-.social-link:hover {
+.faculty-details-social-link:hover {
     background: var(--brand-primary);
     color: white;
     transform: translateY(-3px) scale(1.1);
@@ -226,12 +227,12 @@
     box-shadow: 0 6px 15px rgba(25, 118, 210, 0.3);
 }
 
-.social-link i {
+.faculty-details-social-link i {
     font-size: 18px;
     color: var(--brand-primary);
 }
 
-.social-link:hover i {
+.faculty-details-social-link:hover i {
     color: white;
 }
 
@@ -833,6 +834,21 @@
         justify-content: center;
     }
     
+    .faculty-details-image-container {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .faculty-details-image {
+        width: 100%;
+        max-width: 280px;
+        height: 320px;
+        object-fit: cover;
+        margin: 0 auto;
+        flex-shrink: 0;
+    }
+    
     .info-grid {
         grid-template-columns: 1fr;
     }
@@ -848,15 +864,27 @@
 }
 
 @media (max-width: 480px) {
-    .faculty-name {
+    .faculty-details-name {
         font-size: 22px;
     }
     
-    .faculty-image {
+    .faculty-details-image-container {
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .faculty-details-image {
+        width: 100%;
+        max-width: 250px;
         height: 280px;
+        object-fit: cover;
+        margin: 0 auto;
+        flex-shrink: 0;
     }
     
     .section-header {
+        
         padding: 15px 18px;
     }
     
