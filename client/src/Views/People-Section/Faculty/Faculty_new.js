@@ -17,9 +17,7 @@ const Faculty = () => {
 
     // Function to get the correct image path
     const getImagePath = (imageName, department) => {
-        if (!imageName || imageName === 'NULL') {
-            return 'https://via.placeholder.com/200x250/E5E7EB/6B7280?text=Faculty';
-        }
+        if (!imageName) return null;
         
         // If it's already a full path, return as is
         if (imageName.startsWith('http') || imageName.startsWith('/')) {
@@ -41,7 +39,7 @@ const Faculty = () => {
         try {
             return require(`../../../assets/images/Faculty/${deptFolder}/${imageName}`);
         } catch (error) {
-            console.warn(`Could not load image: ${imageName} for department: ${department}`);
+            console.warn(`Could not load image: ${imageName}`);
             return 'https://via.placeholder.com/200x250/E5E7EB/6B7280?text=Faculty';
         }
     };
@@ -166,6 +164,16 @@ const Faculty = () => {
     return (
         <div className={`faculty-page ${theme === 'dark' ? 'dark' : ''}`}>
             <div className="faculty-container">
+                {/* Hero Section */}
+                <div className="faculty-hero">
+                    <div className="hero-image">
+                        <img 
+                            src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                            alt="Faculty" 
+                        />
+                    </div>
+                </div>
+
                 {/* Department Filter Buttons */}
                 <div className="department-section">
                     <h2 className="current-department">

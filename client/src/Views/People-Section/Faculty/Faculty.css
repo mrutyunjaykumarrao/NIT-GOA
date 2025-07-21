@@ -767,3 +767,56 @@
 .faculty-page.dark .no-faculty p {
     color: #9ca3af;
 }
+
+/* Loading and Error States */
+.loading-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    font-size: 18px;
+    color: #666;
+}
+
+.error-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: #d32f2f;
+}
+
+.error-state p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.retry-btn {
+    background: #1976d2;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.retry-btn:hover {
+    background: #1565c0;
+}
+
+/* Dark mode for loading and error states */
+.faculty-page.dark .loading-state {
+    color: #9ca3af;
+}
+
+.faculty-page.dark .error-state {
+    color: #ef5350;
+}
+
+.faculty-page.dark .retry-btn {
+    background: #2196f3;
+}
+
+.faculty-page.dark .retry-btn:hover {
+    background: #1976d2;
+}

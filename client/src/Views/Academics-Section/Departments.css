@@ -240,11 +240,11 @@
     left: 0;
 }
 
-.research-list li:before {
+/* .research-list li:before {
     content: "🔍";
     position: absolute;
     left: 0;
-}
+} */
 
 .facilities-list li:before {
     content: "🏢";
