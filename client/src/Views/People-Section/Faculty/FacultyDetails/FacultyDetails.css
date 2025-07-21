@@ -1744,7 +1744,6 @@
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
     }
-    
     /* Set minimum widths for table readability */
     .funded-projects-table {
         min-width: 700px;
