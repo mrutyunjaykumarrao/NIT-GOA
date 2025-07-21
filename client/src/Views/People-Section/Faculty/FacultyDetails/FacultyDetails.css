@@ -95,11 +95,11 @@
     border: 3px solid var(--border-color);
     border-top: 3px solid var(--brand-primary);
     border-radius: 50%;
-    animation: spin 1s linear infinite;
+    animation: faculty-details-spin 1s linear infinite;
     margin-bottom: 20px;
 }
 
-@keyframes spin {
+@keyframes faculty-details-spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
@@ -244,7 +244,7 @@
 }
 
 /* Enhanced Info Sections - Card Design */
-.info-section {
+.faculty-details-page .info-section {
     background: var(--card-gradient);
     border-radius: 16px;
     border: 1px solid var(--border-color);
@@ -255,7 +255,7 @@
     margin-bottom: 0px;
 }
 
-.info-section:hover {
+.faculty-details-page .info-section:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 30px var(--shadow-medium);
 }
@@ -315,7 +315,7 @@
     transform: scale(1.05);
 }
 
-.info-grid {
+.faculty-details-page .info-grid {
     padding: 25px;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -323,7 +323,7 @@
     background: var(--bg-primary);
 }
 
-.info-row {
+.faculty-details-page .info-row {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -335,19 +335,19 @@
     margin-bottom: 0px;
 }
 
-.info-row:hover {
+.faculty-details-page .info-row:hover {
     background: var(--brand-accent);
     border-left-width: 4px;
 }
 
-.info-row.full-width {
+.faculty-details-page .info-row.full-width {
     grid-column: 1 / -1;
     flex-direction: column;
     align-items: stretch;
 }
 
-.info-row.full-width .info-label,
-.info-row.full-width .info-value {
+.faculty-details-page .info-row.full-width .info-label,
+.faculty-details-page .info-row.full-width .info-value {
     text-align: left;
 }
 
@@ -390,7 +390,7 @@
     box-shadow: 0 6px 18px var(--shadow-medium);
 }
 
-.section-header {
+.faculty-details-page .section-header {
     background: #d0eafe;
     padding: 15px 20px;
     cursor: pointer;
@@ -404,11 +404,11 @@
     margin-bottom: 0px;;
 }
 
-.section-header:hover {
+.faculty-details-page .section-header:hover {
     background: var(--brand-accent);
 }
 
-.section-header h3 {
+.faculty-details-page .section-header h3 {
     font-size: 20px;
     font-weight: 700;
     color: var(--info-header-color);
@@ -418,13 +418,13 @@
     gap: 12px;
 }
 
-.section-header i {
+.faculty-details-page .section-header i {
     color: var(--text-secondary);
     font-size: 14px;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.section-content {
+.faculty-details-page .section-content {
     background: var(--bg-primary);
     overflow: hidden;
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -434,14 +434,14 @@
     transform: translateY(-8px);
 }
 
-.section-content.expanded {
+.faculty-details-page .section-content.expanded {
     max-height: 3000px;
     opacity: 1;
     padding: 20px;
     transform: translateY(0);
 }
 
-.section-content.collapsed {
+.faculty-details-page .section-content.collapsed {
     max-height: 0;
     opacity: 0;
     padding: 0 20px;
@@ -1539,11 +1539,11 @@
         flex-shrink: 0;
     }
     
-    .section-header {
+    .faculty-details-page .section-header {
         padding: 12px 15px;
     }
     
-    .section-header h3 {
+    .faculty-details-page .section-header h3 {
         font-size: 16px;
         line-height: 1.3;
         word-wrap: break-word;
@@ -1552,7 +1552,7 @@
         flex: 1;
     }
     
-    .info-grid {
+    .faculty-details-page .info-grid {
         grid-template-columns: 1fr;
     }
     
@@ -1640,21 +1640,21 @@
         flex-shrink: 0;
     }
     
-    .section-header {
+    .faculty-details-page .section-header {
         padding: 10px 12px;
     }
     
-    .section-header h3 {
+    .faculty-details-page .section-header h3 {
         font-size: 14px;
         line-height: 1.4;
         text-align: center;
     }
     
-    .section-content {
+    .faculty-details-page .section-content {
         padding: 15px;
     }
     
-    .info-grid {
+    .faculty-details-page .info-grid {
         padding: 15px;
     }
     
@@ -1784,21 +1784,21 @@
     color: var(--text-primary);
 }
 
-[data-theme="dark"] .info-row {
+[data-theme="dark"] .faculty-details-page .info-row {
     background: rgba(55, 71, 79, 0.3);
     border-left-color: var(--brand-primary);
 }
 
-[data-theme="dark"] .info-row:hover {
+[data-theme="dark"] .faculty-details-page .info-row:hover {
     background: var(--brand-accent);
 }
 
-[data-theme="dark"] .section-header {
+[data-theme="dark"] .faculty-details-page .section-header {
     background: var(--brand-accent);
     color: var(--text-primary);
 }
 
-[data-theme="dark"] .section-header:hover {
+[data-theme="dark"] .faculty-details-page .section-header:hover {
     background: #37474f;
 }
 

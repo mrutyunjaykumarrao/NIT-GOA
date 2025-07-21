@@ -39,6 +39,9 @@ const FacultyDetails = () => {
     });
 
     useEffect(() => {
+        // Scroll to top when component mounts
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        
         // For now, we'll use the hardcoded Damodar Reddy Edla data for all faculty
         // Later this can be replaced with dynamic data fetching
         setFaculty({
