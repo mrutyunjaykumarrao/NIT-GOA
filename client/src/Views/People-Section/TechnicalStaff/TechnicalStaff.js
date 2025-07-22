@@ -3,41 +3,13 @@ import { useSearchParams } from 'react-router-dom';
 import { useTheme } from '../../../contexts/ThemeContext';
 import './TechnicalStaff.css';
 
-// Import staff images - CSE Department
-import SantoshCSE from '../../../assets/images/Technical Staff/CSE/Santosh.png';
-import SudharsanCSE from '../../../assets/images/Technical Staff/CSE/Sudharsan.png';
-import SrinathLib from '../../../assets/images/Technical Staff/CSE/srinath_lib.jpeg';
-
-// Import staff images - ECE Department
-import NikhilECE from '../../../assets/images/Technical Staff/ECE/Nikhil.png';
-import RamECE from '../../../assets/images/Technical Staff/ECE/Ram.png';
-import PradhanECE from '../../../assets/images/Technical Staff/ECE/pradhan.jpg';
-
-// Import staff images - EEE Department
-import DigambarEEE from '../../../assets/images/Technical Staff/EEE/Digambar1.png';
-import PinakiEEE from '../../../assets/images/Technical Staff/EEE/Pinaki.png';
-import RohitEEE from '../../../assets/images/Technical Staff/EEE/Rohit.png';
-import ArjunEEE from '../../../assets/images/Technical Staff/EEE/arjun_singh1.jpg';
-import KoushikEEE from '../../../assets/images/Technical Staff/EEE/koushik_eee.jpeg';
-
-// Import staff images - MCE Department
-import VijeeshMCE from '../../../assets/images/Technical Staff/MCE/vijeesh_mce.jpg';
-
-// Import staff images - CVE Department
-import RajkumarCVE from '../../../assets/images/Technical Staff/CVE/rajkumar_aps.jpeg';
-
-// Import staff images - APS & HSS Department
-import PriyankaAPS from '../../../assets/images/Technical Staff/APS & HSS/Priyanka.png';
-
-// Import staff images - CCC Department
-import NijinCCC from '../../../assets/images/Technical Staff/CCC/Nijin.png';
-import RameezCCC from '../../../assets/images/Technical Staff/CCC/Rameez.png';
-import VenkatCCC from '../../../assets/images/Technical Staff/CCC/Venkat.png';
-
 const TechnicalStaff = () => {
     const [selectedDepartment, setSelectedDepartment] = useState('CSE');
     const [searchParams] = useSearchParams();
     const { theme } = useTheme();
+    const [allStaffData, setAllStaffData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     // Handle URL parameters for department selection
     useEffect(() => {
@@ -51,6 +23,30 @@ const TechnicalStaff = () => {
         }
     }, [searchParams]);
 
+    // Fetch technical staff data
+    useEffect(() => {
+        const fetchTechnicalStaff = async () => {
+            try {
+                setLoading(true);
+                const response = await fetch('/api/staff/technical');
+                const result = await response.json();
+                
+                if (result.success) {
+                    setAllStaffData(result.data);
+                } else {
+                    setError('Failed to fetch technical staff data');
+                }
+            } catch (err) {
+                console.error('Error fetching technical staff:', err);
+                setError('Failed to load technical staff data');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchTechnicalStaff();
+    }, []);
+
     const departments = [
         { code: 'CSE', name: 'Department of Computer Science and Engineering' },
         { code: 'ECE', name: 'Department of Electronics & Communication Engineering' },
@@ -61,162 +57,27 @@ const TechnicalStaff = () => {
         { code: 'CCC', name: 'Campus Control Centre' }
     ];
 
-    const staffData = {
-        CSE: [
-            {
-                name: "Mr. S SUDHARSAN",
-                designation: "Senior Technical Assistant",
-                department: "Department of Computer Science and Engineering",
-                email: "sudharsan@nitgoa.ac.in",
-                phone: "0832-2404422",
-                image: SudharsanCSE
-            },
-            {
-                name: "Mr. Srinath",
-                designation: "Senior Techniciant",
-                department: "Department of Computer Science and Engineering",
-                email: "revoorisrinath@nitgoa.ac.in",
-                phone: "0832-2404208",
-                image: SrinathLib
-            },
-            {
-                name: "Mr. Kokate Santosh Parvatrao",
-                designation: "Technician",
-                department: "Department of Computer Science and Engineering",
-                email: "ksantosh@nitgoa.ac.in",
-                phone: "0832-2404430",
-                image: SantoshCSE
-            }
-        ],
-        ECE: [
-            {
-                name: "Mr. Patitapaban Pradhan",
-                designation: "Senior Technical Assistan",
-                department: "Department of Electronics and Communication Engineering",
-                email: "pradhanp@nitgoa.ac.in",
-                phone: "0832-2404503",
-                image: PradhanECE
-            },
-            {
-                name: "Mr. Shri Ram Kumawat",
-                designation: "Technical Assistant",
-                department: "Department of Electronics and Communication Engineering",
-                email: "shriram@nitgoa.ac.in",
-                phone: "0832-2404545",
-                image: RamECE
-            },
-            {
-                name: "Mr. Nikhil Uday Naik",
-                designation: "Technician",
-                department: "Department of Electronics and Communication Engineering",
-                email: "nikhilnaik@nitgoa.ac.in",
-                phone: "0832-2404537",
-                image: NikhilECE
-            }
-        ],
-        EEE: [
-            {
-                name: "Mr. Pinaki Chatterjee",
-                designation: "Technical Assistant",
-                department: "Department of Electrical and Electronics Engineering",
-                email: "pinaki@nitgoa.ac.in",
-                phone: "0832-2404616",
-                image: PinakiEEE
-            },
-            {
-                name: "Mr. Digambar R. D.",
-                designation: "Senior Technician",
-                department: "Department of Electrical and Electronics Engineering",
-                email: "digambar@nitgoa.ac.in",
-                phone: "0832-2404219",
-                image: DigambarEEE
-            },
-            {
-                name: "Mr. Rohit Madhu Gawas",
-                designation: "Senior Technician",
-                department: "Department of Electrical and Electronics Engineering",
-                email: "rohit@nitgoa.ac.in",
-                phone: "0832-2404636",
-                image: RohitEEE
-            },
-            {
-                name: "Mr. Arjun Singh",
-                designation: "Technician",
-                department: "Department of Electrical and Electronics Engineering",
-                email: "arjunsingh@nitgoa.ac.in",
-                phone: "0832-2404629",
-                image: ArjunEEE
-            },
-            {
-                name: "Mr. Koushik",
-                designation: "Technician",
-                department: "Department of Electrical and Electronics Engineering",
-                email: "koushik@nitgoa.ac.in",
-                phone: "0832-2404610",
-                image: KoushikEEE
-            }
-        ],
-        MCE: [
-            {
-                name: "Mr. Vijeesh V.P",
-                designation: "Senior Technical Assistant",
-                department: "Department of Mechanical Engineering",
-                email: "vijeesh@nitgoa.ac.in",
-                phone: "0832-2404812",
-                image: VijeeshMCE
-            }
-        ],
-        CVE: [
-            {
-                name: "Mr. K Rajkumar",
-                designation: "Multi-Tasking Staff",
-                department: "Department of Civil",
-                email: "rajkumar@nitgoa.ac.in",
-                phone: "0832-2404805",
-                image: RajkumarCVE
-            }
-        ],
-        APS: [
-            {
-                name: "Ms. Priyanka Parab",
-                designation: "Technician",
-                department: "Department of Applied Sciences",
-                email: "priyankaparab@nitgoa.ac.in",
-                phone: "0832-2404722",
-                image: PriyankaAPS
-            }
-        ],
-        CCC: [
-            {
-                name: "Mr. Venkat R Grandhi",
-                designation: "Senior Technical Assistant",
-                speciality: "(System Administrator)",
-                department: "Campus Control Centre",
-                email: "sysadmin@nitgoa.ac.in",
-                phone: "0832-2404851",
-                image: VenkatCCC
-            },
-            {
-                name: "Mr. Rameez Rahman",
-                designation: "Senior Technical Assistant",
-                speciality: "(Network Administrator)",
-                department: "Campus Control Centre",
-                email: "netadmin@nitgoa.ac.in",
-                phone: "0832-2404852",
-                image: RameezCCC
-            },
-            {
-                name: "Mr. Nijin Mambrol",
-                designation: "Technical Assistant",
-                speciality:  "(MIS Administrator)",
-                department: "Campus Control Centre",
-                email: "misadmin@nitgoa.ac.in",
-                phone: "0832-2404853",
-                image: NijinCCC
-            }
-            
-        ]
-    };
+    // Group staff data by department
+    const groupedStaffData = allStaffData.reduce((acc, staff) => {
+        // Map database department names to department codes
+        let deptCode = '';
+        if (staff.department.includes('Computer Science')) deptCode = 'CSE';
+        else if (staff.department.includes('Electronics') && staff.department.includes('Communication')) deptCode = 'ECE';
+        else if (staff.department.includes('Electrical') && staff.department.includes('Electronics')) deptCode = 'EEE';
+        else if (staff.department.includes('Mechanical')) deptCode = 'MCE';
+        else if (staff.department.includes('Civil')) deptCode = 'CVE';
+        else if (staff.department.includes('Applied Sciences') || staff.department.includes('HSS')) deptCode = 'APS';
+        else if (staff.department.includes('Campus Control')) deptCode = 'CCC';
+        
+        if (deptCode && !acc[deptCode]) {
+            acc[deptCode] = [];
+        }
+        if (deptCode) {
+            acc[deptCode].push(staff);
+        }
+        
+        return acc;
+    }, {});
 
     const handleDepartmentFilter = (dept) => {
         setSelectedDepartment(dept);
@@ -244,31 +105,75 @@ const TechnicalStaff = () => {
                 </div>
 
                 {/* Staff Grid */}
-                <div className="technical-staff-grid">
-                    {staffData[selectedDepartment] && staffData[selectedDepartment].length > 0 ? (
-                        staffData[selectedDepartment].map((staff, index) => (
-                            <div key={index} className="technical-staff-card">
-                                <div className="technical-staff-image">
-                                    <img src={staff.image} alt={staff.name} />
-                                </div>
-                                <div className="technical-staff-info">
-                                    <h3 className="technical-staff-name">{staff.name}</h3>
-                                    <p className="technical-staff-designation">{staff.designation}</p>
-                                    <p className="technical-staff-designation">{staff.speciality}</p>
-                                    <p className="technical-staff-department">{staff.department}</p>
-                                    <div className="technical-staff-contact">
-                                        <p><strong>Email:</strong> {staff.email}</p>
-                                        <p><strong>Extension No.:</strong> {staff.phone}</p>
+                {loading ? (
+                    <div className="loading-container">
+                        <div className="loading-grid technical-staff-grid">
+                            {[...Array(4)].map((_, index) => (
+                                <div key={index} className="technical-staff-card loading">
+                                    <div className="technical-staff-image">
+                                        <img 
+                                            src="/images/fallback-profile.svg"
+                                            alt="Loading..."
+                                            style={{ 
+                                                minHeight: '200px', 
+                                                backgroundColor: '#f3f4f6',
+                                                objectFit: 'cover',
+                                                opacity: 0.6
+                                            }}
+                                        />
+                                    </div>
+                                    <div className="technical-staff-info">
+                                        <div style={{ height: '20px', backgroundColor: '#e5e7eb', borderRadius: '4px', marginBottom: '8px' }}></div>
+                                        <div style={{ height: '16px', backgroundColor: '#e5e7eb', borderRadius: '4px', marginBottom: '8px', width: '80%' }}></div>
+                                        <div style={{ height: '14px', backgroundColor: '#e5e7eb', borderRadius: '4px', marginBottom: '8px', width: '60%' }}></div>
                                     </div>
                                 </div>
-                            </div>
-                        ))
-                    ) : (
-                        <div className="no-technical-staff">
-                            <p>Technical staff information for {selectedDepartment} department will be updated soon.</p>
+                            ))}
                         </div>
-                    )}
-                </div>
+                        <p style={{ textAlign: 'center', marginTop: '20px' }}>Loading technical staff...</p>
+                    </div>
+                ) : error ? (
+                    <div className="error-container">
+                        <p>Error: {error}</p>
+                    </div>
+                ) : (
+                    <div className="technical-staff-grid">
+                        {groupedStaffData[selectedDepartment] && groupedStaffData[selectedDepartment].length > 0 ? (
+                            groupedStaffData[selectedDepartment].map((staff, index) => (
+                                <div key={index} className="technical-staff-card">
+                                    <div className="technical-staff-image">
+                                        <img 
+                                            src={staff.profile_image ? `/images/${staff.profile_image.replace('client/src/assets/images/', '')}` : '/images/fallback-profile.svg'}
+                                            alt={staff.name}
+                                            onError={(e) => {
+                                                e.target.src = '/images/fallback-profile.svg';
+                                            }}
+                                            style={{ 
+                                                minHeight: '200px', 
+                                                backgroundColor: '#f3f4f6',
+                                                objectFit: 'cover'
+                                            }}
+                                        />
+                                    </div>
+                                    <div className="technical-staff-info">
+                                        <h3 className="technical-staff-name">{staff.name}</h3>
+                                        <p className="technical-staff-designation">{staff.designation}</p>
+                                        {staff.speciality && <p className="technical-staff-designation">{staff.speciality}</p>}
+                                        <p className="technical-staff-department">{staff.department}</p>
+                                        <div className="technical-staff-contact">
+                                            <p><strong>Email:</strong> {staff.email}</p>
+                                            <p><strong>Extension No.:</strong> {staff.phone}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
+                            <div className="no-technical-staff">
+                                <p>Technical staff information for {selectedDepartment} department will be updated soon.</p>
+                            </div>
+                        )}
+                    </div>
+                )}
             </div>
         </div>
     );

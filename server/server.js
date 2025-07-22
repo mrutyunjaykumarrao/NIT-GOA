@@ -41,9 +41,13 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 // Serve static files from uploads directory
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Serve static files from client's public directory (for images)
+app.use('/images', express.static(path.join(__dirname, '../client/public/images')));
+
 // API Routes
 app.use('/api/auth', require('./src/routes/auth'));
 app.use('/api/faculty', require('./src/routes/faculty'));
+app.use('/api/staff', require('./src/routes/staff'));
 app.use('/api/admin', require('./src/routes/admin'));
 app.use('/api/content', require('./src/routes/content'));
 app.use('/api/upload', require('./src/routes/upload'));
