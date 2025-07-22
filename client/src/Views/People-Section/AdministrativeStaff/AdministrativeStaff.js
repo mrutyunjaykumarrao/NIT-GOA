@@ -31,6 +31,12 @@ const AdministrativeStaff = () => {
         fetchAdministrativeStaff();
     }, []);
 
+    // Function to get the image path for administrative staff
+    const getImagePath = (staff) => {
+        if (!staff.profile_image) return '/images/fallback-profile.svg';
+        return `/images/Administrative Staff/${staff.profile_image}`;
+    };
+
     return (
         <div className={`administrative-staff-page ${theme}`}>
             <div className="administrative-staff-container">
@@ -75,7 +81,7 @@ const AdministrativeStaff = () => {
                             <div key={index} className="administrative-staff-card">
                                 <div className="administrative-staff-image">
                                     <img 
-                                        src={staff.profile_image ? `/images/${staff.profile_image.replace('client/src/assets/images/', '')}` : '/images/fallback-profile.svg'}
+                                        src={getImagePath(staff)}
                                         alt={staff.name}
                                         onError={(e) => {
                                             e.target.src = '/images/fallback-profile.svg';
@@ -90,6 +96,7 @@ const AdministrativeStaff = () => {
                                 <div className="administrative-staff-info">
                                     <h3 className="administrative-staff-name">{staff.name}</h3>
                                     <p className="administrative-staff-designation">{staff.designation}</p>
+                                    {staff.employment_status && <p className="administrative-staff-employment">{staff.employment_status}</p>}
                                     <p className="administrative-staff-department">{staff.department}</p>
                                     <div className="administrative-staff-contact">
                                         <p><strong>Email:</strong> {staff.email}</p>

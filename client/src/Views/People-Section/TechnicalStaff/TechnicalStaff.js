@@ -47,6 +47,22 @@ const TechnicalStaff = () => {
         fetchTechnicalStaff();
     }, []);
 
+    // Function to get the image path based on department
+    const getImagePath = (staff) => {
+        if (!staff.profile_image) return '/images/fallback-profile.svg';
+        
+        let deptFolder = '';
+        if (staff.department.includes('Computer Science')) deptFolder = 'CSE';
+        else if (staff.department.includes('Electronics') && staff.department.includes('Communication')) deptFolder = 'ECE';
+        else if (staff.department.includes('Electrical')) deptFolder = 'EEE';
+        else if (staff.department.includes('Mechanical')) deptFolder = 'MCE';
+        else if (staff.department.includes('Civil')) deptFolder = 'CVE';
+        else if (staff.department.includes('Applied Physics') || staff.department.includes('Applied Sciences') || staff.department.includes('Humanities')) deptFolder = 'APS & HSS';
+        else if (staff.department.includes('Campus Control')) deptFolder = 'CCC';
+        
+        return `/images/Technical Staff/${deptFolder}/${staff.profile_image}`;
+    };
+
     const departments = [
         { code: 'CSE', name: 'Department of Computer Science and Engineering' },
         { code: 'ECE', name: 'Department of Electronics & Communication Engineering' },
@@ -143,7 +159,7 @@ const TechnicalStaff = () => {
                                 <div key={index} className="technical-staff-card">
                                     <div className="technical-staff-image">
                                         <img 
-                                            src={staff.profile_image ? `/images/${staff.profile_image.replace('client/src/assets/images/', '')}` : '/images/fallback-profile.svg'}
+                                            src={getImagePath(staff)}
                                             alt={staff.name}
                                             onError={(e) => {
                                                 e.target.src = '/images/fallback-profile.svg';

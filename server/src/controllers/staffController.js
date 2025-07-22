@@ -12,6 +12,7 @@ const getAllAdministrativeStaff = async (req, res) => {
         email,
         phone,
         profile_image,
+        employment_status,
         is_active,
         display_order
       FROM administrative_staff 

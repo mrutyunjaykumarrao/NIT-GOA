@@ -6,17 +6,17 @@ const getAllFaculty = async (req, res) => {
     const { department } = req.query;
     
     let query = `
-      SELECT id, employee_id, full_name, email, phone, department, designation, 
-             research_areas, profile_image, is_hod, display_order, is_active
-      FROM faculty_profiles 
+      SELECT id, faculty_id, first_name, last_name, full_name, email, phone, 
+             department, designation, profile_image, is_hod, display_order, is_active
+      FROM faculty_profiles_short 
       WHERE is_active = 1
     `;
     
     const params = [];
     
     if (department) {
-      query += ' AND department = ?';
-      params.push(department);
+      query += ' AND department LIKE ?';
+      params.push(`%${department}%`);
     }
     
     query += ' ORDER BY department, display_order, full_name';
@@ -33,7 +33,7 @@ const getAllFaculty = async (req, res) => {
 const getFacultyById = async (req, res) => {
   try {
     const [faculty] = await pool.execute(
-      'SELECT * FROM faculty_profiles WHERE id = ? AND is_active = 1',
+      'SELECT * FROM faculty_profiles_short WHERE id = ? AND is_active = 1',
       [req.params.id]
     );
     
