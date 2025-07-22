@@ -105,6 +105,7 @@ function AppContent() {
         {/* People Section Routes */}
         <Route path="/faculty" element={<Faculty />} />
         <Route path="/faculty/:id" element={<FacultyDetails/>} />
+        <Route path="/people/faculty/:id" element={<FacultyDetails/>} />
         <Route path="/administrative-staff" element={<AdministrativeStaff />} />
         <Route path="/technical-staff" element={<TechnicalStaff />} />
         

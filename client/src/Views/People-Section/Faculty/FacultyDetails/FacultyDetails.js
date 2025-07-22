@@ -3,18 +3,13 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useTheme } from '../../../../contexts/ThemeContext';
 import './FacultyDetails.css';
 
-// Import the Damodar Reddy Edla JSON data
-import damodarData from './data/cse_json/Damodar_Reddy_Edla.json';
-
-// Import faculty images
-import DamodarReddyEdla from '../../../../assets/images/Faculty/CSE/Dr. Damodar Reddy Edla.png';
-
 const FacultyDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const { theme } = useTheme();
     const [faculty, setFaculty] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const [expandedSections, setExpandedSections] = useState({
         personalInfo: true,
         contactInfo: true,
@@ -39,17 +34,56 @@ const FacultyDetails = () => {
     });
 
     useEffect(() => {
-        // Scroll to top when component mounts
-        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-        
-        // For now, we'll use the hardcoded Damodar Reddy Edla data for all faculty
-        // Later this can be replaced with dynamic data fetching
-        setFaculty({
-            ...damodarData,
-            image: DamodarReddyEdla
-        });
-        setLoading(false);
+        const fetchFacultyDetails = async () => {
+            try {
+                setLoading(true);
+                setError(null);
+                
+                // Scroll to top when component mounts
+                window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+                
+                const response = await fetch(`/api/faculty/${id}/details`);
+                const result = await response.json();
+                
+                if (response.ok) {
+                    // Add image path to the faculty data
+                    const facultyWithImage = {
+                        ...result,
+                        image: result.profile?.profile_image ? 
+                            `/images/Faculty/${getDepartmentCode(result.profile.department)}/${result.profile.profile_image}` : 
+                            '/images/fallback-profile.svg'
+                    };
+                    setFaculty(facultyWithImage);
+                } else {
+                    setError(result.error || 'Faculty not found');
+                }
+            } catch (err) {
+                console.error('Error fetching faculty details:', err);
+                setError('Failed to load faculty details');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        if (id) {
+            fetchFacultyDetails();
+        }
     }, [id]);
+
+    // Function to get department code for image path
+    const getDepartmentCode = (department) => {
+        if (!department) return '';
+        
+        if (department.includes('Computer Science')) return 'CSE';
+        if (department.includes('Electronics') && department.includes('Communication')) return 'ECE';
+        if (department.includes('Electrical')) return 'EEE';
+        if (department.includes('Mechanical')) return 'MCE';
+        if (department.includes('Civil')) return 'CVE';
+        if (department.includes('Applied') || department.includes('Physics') || department.includes('Sciences')) return 'APS';
+        if (department.includes('Humanities')) return 'HSS';
+        
+        return 'CSE'; // default fallback
+    };
 
     const toggleSection = (section) => {
         setExpandedSections(prev => ({
@@ -113,6 +147,20 @@ const FacultyDetails = () => {
         );
     }
 
+    if (error) {
+        return (
+            <div className="faculty-details-page">
+                <div className="error-container">
+                    <h2>Error Loading Faculty Details</h2>
+                    <p>{error}</p>
+                    <button onClick={handleBackToFaculty} className="back-button">
+                        ← Back to Faculty
+                    </button>
+                </div>
+            </div>
+        );
+    }
+
     if (!faculty) {
         return (
             <div className="faculty-details-page">
@@ -145,7 +193,7 @@ const FacultyDetails = () => {
                                 alt={faculty.profile?.name}
                                 className="faculty-details-image"
                                 onError={(e) => {
-                                    e.target.src = '/api/placeholder/300/350';
+                                    e.target.src = '/images/fallback-profile.svg';
                                 }}
                             />
                         </div>
@@ -330,78 +378,82 @@ const FacultyDetails = () => {
                         "publications",
                         <div className="publications-section">
                             {/* Journal Publications Sub-dropdown */}
-                            {faculty.publications?.journal && faculty.publications.journal.length > 0 && 
-                                renderPublicationSubSection(
-                                    `Publications Table (${faculty.publications.journal.length})`,
-                                    "journal",
-                                    <div className="publications-scrollable-container">
-                                        <table className="publications-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Sr. No.</th>
-                                                    <th>Publication Details</th>
-                                                    <th>Year</th>
-                                                    <th>Month</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {faculty.publications.journal.map((pub, index) => {
-                                                    const yearMatch = pub.match(/\b(19|20)\d{2}\b/);
-                                                    const monthMatch = pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i);
-                                                    const year = yearMatch ? yearMatch[0] : '-';
-                                                    const month = monthMatch ? monthMatch[1] : '-';
-                                                    
-                                                    return (
-                                                        <tr key={index}>
-                                                            <td>{index + 1}</td>
-                                                            <td className="publication-title">{pub}</td>
-                                                            <td className="publication-year">{year}</td>
-                                                            <td className="publication-month">{month}</td>
-                                                        </tr>
-                                                    );
-                                                })}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                )
-                            }
+                                            {faculty.publications?.journal && faculty.publications.journal.length > 0 && 
+                                                renderPublicationSubSection(
+                                                    `Publications Table (${faculty.publications.journal.length})`,
+                                                    "journal",
+                                                    <div className="publications-scrollable-container">
+                                                        <table className="publications-table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Sr. No.</th>
+                                                                    <th>Publication Details</th>
+                                                                    <th>Year</th>
+                                                                    <th>Month</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {faculty.publications.journal.map((pub, index) => {
+                                                                    if (!pub) return null; // Skip null/undefined publications
+                                                                    
+                                                                    const yearMatch = pub.match ? pub.match(/\b(19|20)\d{2}\b/) : null;
+                                                                    const monthMatch = pub.match ? pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i) : null;
+                                                                    const year = yearMatch ? yearMatch[0] : '-';
+                                                                    const month = monthMatch ? monthMatch[1] : '-';
+                                                                    
+                                                                    return (
+                                                                        <tr key={index}>
+                                                                            <td>{index + 1}</td>
+                                                                            <td className="publication-title">{pub}</td>
+                                                                            <td className="publication-year">{year}</td>
+                                                                            <td className="publication-month">{month}</td>
+                                                                        </tr>
+                                                                    );
+                                                                })}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                )
+                                            }
                             
                             {/* Conference Proceedings Sub-dropdown */}
-                            {faculty.publications?.proceedings && faculty.publications.proceedings.length > 0 && 
-                                renderPublicationSubSection(
-                                    `Conference Proceedings Table (${faculty.publications.proceedings.length})`,
-                                    "proceedings",
-                                    <div className="publications-scrollable-container">
-                                        <table className="publications-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Sr. No.</th>
-                                                    <th>Publication Details</th>
-                                                    <th>Year</th>
-                                                    <th>Month</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {faculty.publications.proceedings.map((pub, index) => {
-                                                    const yearMatch = pub.match(/\b(19|20)\d{2}\b/);
-                                                    const monthMatch = pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i);
-                                                    const year = yearMatch ? yearMatch[0] : '-';
-                                                    const month = monthMatch ? monthMatch[1] : '-';
-                                                    
-                                                    return (
-                                                        <tr key={index}>
-                                                            <td>{index + 1}</td>
-                                                            <td className="publication-title">{pub}</td>
-                                                            <td className="publication-year">{year}</td>
-                                                            <td className="publication-month">{month}</td>
-                                                        </tr>
-                                                    );
-                                                })}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                )
-                            }
+                                            {faculty.publications?.proceedings && faculty.publications.proceedings.length > 0 && 
+                                                renderPublicationSubSection(
+                                                    `Conference Proceedings Table (${faculty.publications.proceedings.length})`,
+                                                    "proceedings",
+                                                    <div className="publications-scrollable-container">
+                                                        <table className="publications-table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Sr. No.</th>
+                                                                    <th>Publication Details</th>
+                                                                    <th>Year</th>
+                                                                    <th>Month</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {faculty.publications.proceedings.map((pub, index) => {
+                                                                    if (!pub) return null;
+                                                                    
+                                                                    const yearMatch = pub.match ? pub.match(/\b(19|20)\d{2}\b/) : null;
+                                                                    const monthMatch = pub.match ? pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i) : null;
+                                                                    const year = yearMatch ? yearMatch[0] : '-';
+                                                                    const month = monthMatch ? monthMatch[1] : '-';
+                                                                    
+                                                                    return (
+                                                                        <tr key={index}>
+                                                                            <td>{index + 1}</td>
+                                                                            <td className="publication-title">{pub}</td>
+                                                                            <td className="publication-year">{year}</td>
+                                                                            <td className="publication-month">{month}</td>
+                                                                        </tr>
+                                                                    );
+                                                                })}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                )
+                                            }
 
                             {/* Book Chapters Sub-dropdown */}
                             {faculty.publications?.bookChapters && faculty.publications.bookChapters.length > 0 && 
@@ -484,10 +536,12 @@ const FacultyDetails = () => {
                         "researchGuidance",
                         <div className="research-guidance-cards">
                             {faculty.researchGuidance?.map((student, index) => {
+                                if (!student) return null; // Skip null/undefined entries
+                                
                                 // Extract student name, degree type, and status from the text
-                                const degreeMatch = student.match(/(Ph\.?D\.?|M\.?Tech\.?|M\.?S\.?|B\.?Tech\.?)/i);
-                                const statusMatch = student.match(/(completed|ongoing|submitted|awarded)/i);
-                                const yearMatch = student.match(/\b(19|20)\d{2}\b/);
+                                const degreeMatch = student.match ? student.match(/(Ph\.?D\.?|M\.?Tech\.?|M\.?S\.?|B\.?Tech\.?)/i) : null;
+                                const statusMatch = student.match ? student.match(/(completed|ongoing|submitted|awarded)/i) : null;
+                                const yearMatch = student.match ? student.match(/\b(19|20)\d{2}\b/) : null;
                                 
                                 const degree = degreeMatch ? degreeMatch[0] : 'Research';
                                 const status = statusMatch ? statusMatch[0] : 'Ongoing';
@@ -641,9 +695,11 @@ const FacultyDetails = () => {
                                 </thead>
                                 <tbody>
                                     {faculty.coursesAttended?.map((course, index) => {
+                                        if (!course || !course.info) return null; // Skip null/undefined entries
+                                        
                                         // Extract year, duration, and venue from course info
-                                        const yearMatch = course.info.match(/\b(19|20)\d{2}\b/);
-                                        const durationMatch = course.info.match(/(\d+)\s*(day|week|month)s?/i);
+                                        const yearMatch = course.info.match ? course.info.match(/\b(19|20)\d{2}\b/) : null;
+                                        const durationMatch = course.info.match ? course.info.match(/(\d+)\s*(day|week|month)s?/i) : null;
                                         
                                         // Enhanced venue extraction - get city/location from end of string
                                         let venue = '-';
@@ -656,7 +712,7 @@ const FacultyDetails = () => {
                                         ];
                                         
                                         for (let pattern of venuePatterns) {
-                                            const match = course.info.match(pattern);
+                                            const match = course.info.match ? course.info.match(pattern) : null;
                                             if (match) {
                                                 venue = match[1] ? match[1].trim().replace(/\.$/, '') : match[0].trim().replace(/\.$/, '');
                                                 break;
@@ -696,8 +752,10 @@ const FacultyDetails = () => {
                                 </thead>
                                 <tbody>
                                     {faculty.coursesConducted?.map((course, index) => {
+                                        if (!course || !course.info) return null; // Skip null/undefined entries
+                                        
                                         // Extract year, duration, and venue from course info
-                                        const yearMatch = course.info.match(/\b(19|20)\d{2}\b/);
+                                        const yearMatch = course.info.match ? course.info.match(/\b(19|20)\d{2}\b/) : null;
                                         
                                         // Enhanced duration extraction for various patterns
                                         let duration = '-';
@@ -711,7 +769,7 @@ const FacultyDetails = () => {
                                         ];
                                         
                                         for (let pattern of durationPatterns) {
-                                            const match = course.info.match(pattern);
+                                            const match = course.info.match ? course.info.match(pattern) : null;
                                             if (match) {
                                                 if (pattern === durationPatterns[0]) {
                                                     // Date range like "3-13 July"

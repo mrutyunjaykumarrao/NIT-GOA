@@ -4,6 +4,7 @@ const { authenticateToken, requireFacultyOrAdmin } = require('../middleware/auth
 const { 
   getAllFaculty, 
   getFacultyById, 
+  getDetailedFacultyById,
   getFacultyByDepartment, 
   updateFacultyProfile,
   getMyProfile 
@@ -12,6 +13,7 @@ const {
 // Public routes
 router.get('/', getAllFaculty);
 router.get('/department/:department', getFacultyByDepartment);
+router.get('/:id/details', getDetailedFacultyById);
 router.get('/:id', getFacultyById);
 
 // Protected routes

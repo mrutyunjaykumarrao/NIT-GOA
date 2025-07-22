@@ -70,6 +70,17 @@ const Faculty = () => {
         return 'OTHER'; // fallback
     }
 
+    // Function to generate slug from faculty name
+    const generateSlug = (name) => {
+        if (!name) return 'unknown-faculty'; // Safety check for undefined/null names
+        return name.toLowerCase()
+            .replace(/^dr\.?\s*/i, '') // Remove "Dr." prefix
+            .replace(/\s+/g, '-') // Replace spaces with hyphens
+            .replace(/[^\w-]/g, '') // Remove special characters except hyphens
+            .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+            .trim();
+    };
+
     // Helper function to get full department name from code (for display purposes)
     function getDepartmentName(deptCode) {
         const deptMap = {
@@ -214,7 +225,8 @@ const Faculty = () => {
                                             </div>
                                             <div className="faculty-actions">
                                                 <button className="view-profile-btn" onClick={() => {
-                                                    navigate(`/faculty/${faculty.id}`);
+                                                    const slug = generateSlug(faculty.name);
+                                                    navigate(`/people/faculty/${slug}`);
                                                 }}>
                                                     View Profile
                                                 </button>
