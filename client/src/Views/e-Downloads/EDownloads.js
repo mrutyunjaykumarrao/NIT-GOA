@@ -606,18 +606,6 @@ const EDownloads = () => {
             <div className={`edownloads-section-content ${openSection === 'students' ? 'expanded' : ''}`}>
               <div className="edownloads-items">
                 <div className="edownloads-card">
-                  <h3 className="edownloads-card-title">Student Admission Form</h3>
-                  <button className="edownloads-download-btn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                      <polyline points="7,10 12,15 17,10"/>
-                      <line x1="12" y1="15" x2="12" y2="3"/>
-                    </svg>
-                    Download PDF
-                  </button>
-                </div>
-                
-                <div className="edownloads-card">
                   <h3 className="edownloads-card-title">Form for documents from Academic Section</h3>
                   <button 
                     className="edownloads-download-btn"
@@ -634,43 +622,55 @@ const EDownloads = () => {
                 
                 <div className="edownloads-card">
                   <h3 className="edownloads-card-title">Forms for B.Tech Students</h3>
-                  <button className="edownloads-download-btn">
+                  <button 
+                    className="edownloads-download-btn"
+                    onClick={() => handleDownload('https://www.nitgoa.ac.in/btechforms.html')}
+                  >
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                       <polyline points="7,10 12,15 17,10"/>
                       <line x1="12" y1="15" x2="12" y2="3"/>
                     </svg>
-                    Download PDF
+                    View Forms
                   </button>
                 </div>
                 
                 <div className="edownloads-card">
                   <h3 className="edownloads-card-title">Forms for M.Tech Students</h3>
-                  <button className="edownloads-download-btn">
+                  <button 
+                    className="edownloads-download-btn"
+                    onClick={() => handleDownload('https://www.nitgoa.ac.in/mtechforms.html')}
+                  >
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                       <polyline points="7,10 12,15 17,10"/>
                       <line x1="12" y1="15" x2="12" y2="3"/>
                     </svg>
-                    Download PDF
+                    View Forms
                   </button>
                 </div>
                 
                 <div className="edownloads-card">
                   <h3 className="edownloads-card-title">Forms for Ph.D Students</h3>
-                  <button className="edownloads-download-btn">
+                  <button 
+                    className="edownloads-download-btn"
+                    onClick={() => handleDownload('https://www.nitgoa.ac.in/phdforms.html')}
+                  >
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                       <polyline points="7,10 12,15 17,10"/>
                       <line x1="12" y1="15" x2="12" y2="3"/>
                     </svg>
-                    Download PDF
+                    View Forms
                   </button>
                 </div>
                 
                 <div className="edownloads-card">
                   <h3 className="edownloads-card-title">No Dues Proforma for students</h3>
-                  <button className="edownloads-download-btn">
+                  <button 
+                    className="edownloads-download-btn"
+                    onClick={() => handleDownload('https://www.nitgoa.ac.in/static/No%20Dues%20Form%20Student%205%20June2024.pdf')}
+                  >
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                       <polyline points="7,10 12,15 17,10"/>
@@ -682,7 +682,10 @@ const EDownloads = () => {
                 
                 <div className="edownloads-card">
                   <h3 className="edownloads-card-title">Leave Rules for Ph.D. (Full-time) and M.Tech. (Full-time) Students</h3>
-                  <button className="edownloads-download-btn">
+                  <button 
+                    className="edownloads-download-btn"
+                    onClick={() => handleDownload('https://www.nitgoa.ac.in/static/Leave_Rules_30march2023.pdf')}
+                  >
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                       <polyline points="7,10 12,15 17,10"/>
@@ -694,7 +697,10 @@ const EDownloads = () => {
                 
                 <div className="edownloads-card">
                   <h3 className="edownloads-card-title">Rules for withdrawal of Admission (B.Tech./M.Tech./Ph.D.)</h3>
-                  <button className="edownloads-download-btn">
+                  <button 
+                    className="edownloads-download-btn"
+                    onClick={() => handleDownload('https://www.nitgoa.ac.in/static/Rules_for_withdrawal_of_Admission_30march2023.pdf')}
+                  >
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                       <polyline points="7,10 12,15 17,10"/>
@@ -706,7 +712,10 @@ const EDownloads = () => {
                 
                 <div className="edownloads-card">
                   <h3 className="edownloads-card-title">Travel Allowance Form</h3>
-                  <button className="edownloads-download-btn">
+                  <button 
+                    className="edownloads-download-btn"
+                    onClick={() => handleDownload('https://www.nitgoa.ac.in/static/Travel_Allowance_Form.pdf')}
+                  >
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                       <polyline points="7,10 12,15 17,10"/>
@@ -718,7 +727,10 @@ const EDownloads = () => {
                 
                 <div className="edownloads-card">
                   <h3 className="edownloads-card-title">Ph. D Contingency Reimbursement Form</h3>
-                  <button className="edownloads-download-btn">
+                  <button 
+                    className="edownloads-download-btn"
+                    onClick={() => handleDownload('https://www.nitgoa.ac.in/static/Ph.D_Contignecy_Claim_Form_24June2017.pdf')}
+                  >
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                       <polyline points="7,10 12,15 17,10"/>
@@ -730,7 +742,10 @@ const EDownloads = () => {
                 
                 <div className="edownloads-card">
                   <h3 className="edownloads-card-title">Hospitalization and Domiciliary Benefit Policy Claim Form</h3>
-                  <button className="edownloads-download-btn">
+                  <button 
+                    className="edownloads-download-btn"
+                    onClick={() => handleDownload('https://www.nitgoa.ac.in/static/Hospitalization_and_Domiciliary_Benefit_Policy_Claim_Form_23feb2018.PDF')}
+                  >
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                       <polyline points="7,10 12,15 17,10"/>
@@ -742,7 +757,10 @@ const EDownloads = () => {
                 
                 <div className="edownloads-card">
                   <h3 className="edownloads-card-title">TA/DA Form</h3>
-                  <button className="edownloads-download-btn">
+                  <button 
+                    className="edownloads-download-btn"
+                    onClick={() => handleDownload('https://www.nitgoa.ac.in/static/TADA_form.pdf')}
+                  >
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                       <polyline points="7,10 12,15 17,10"/>

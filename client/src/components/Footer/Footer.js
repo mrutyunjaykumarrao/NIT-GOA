@@ -4,12 +4,19 @@ import './Footer.css';
 const Footer = () => {
   const [visitorCount, setVisitorCount] = useState(1247892);
   const [animateCounter, setAnimateCounter] = useState(false);
+  const [lastUpdated, setLastUpdated] = useState(new Date());
+
+  // Update last updated date when component mounts or changes
+  useEffect(() => {
+    setLastUpdated(new Date());
+  }, []);
 
   // Simulate visitor counter updates
   useEffect(() => {
     const interval = setInterval(() => {
       setVisitorCount(prev => prev + Math.floor(Math.random() * 2) + 1);
       setAnimateCounter(true);
+      setLastUpdated(new Date()); // Update last updated date when visitor count changes
       setTimeout(() => setAnimateCounter(false), 500);
     }, 45000); // Update every 45 seconds
 
@@ -19,6 +26,15 @@ const Footer = () => {
   // Format visitor count with leading zeros
   const formatVisitorCount = (count) => {
     return count.toString().padStart(7, '0').split('');
+  };
+
+  // Format last updated date
+  const formatLastUpdated = (date) => {
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
   };
 
   return (
@@ -88,13 +104,13 @@ const Footer = () => {
             <div className="footer-links-card">
               <h5 className="footer-contact-main-title">Important Links</h5>
               <ul>
-                <li><a href="/syllabus">Syllabus</a></li>
+                <li><a href="/academics/regulations#ug-curriculum">Syllabus</a></li>
                 <li><a href="/e-downloads">e-Downloads</a></li>
-                <li><a href="Results">Results</a></li>
+                <li><a href="https://mis.nitgoa.ac.in/misnitgoa/result.aspx" target="_blank" rel="noopener noreferrer">Results</a></li>
                 <li><a href="/rti">RTI</a></li>
                 <li><a href="/sc-st-cell">SC/ST Cell</a></li>
-                <li><a href="/anti-ragging">Anti-Ragging</a></li>
-                <li><a href="/grievance">Grievance Portal</a></li>
+                <li><a href="/administration/committees#anti-ragging-committee">Anti-Ragging</a></li>
+                <li><a href="/administration/committees#grievance-redressal-committee">Grievance Portal</a></li>
               </ul>
             </div>
           </div> 
@@ -159,6 +175,16 @@ const Footer = () => {
 
         {/* Footer Bottom - Copyright */}
         <div className="footer-bottom">
+          <div className="footer-right-section">
+            <div className="footer-last-updated">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{width: '16px', height: '16px', marginRight: '6px', verticalAlign: 'middle'}}>
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12,6 12,12 16,14"/>
+              </svg>
+              Last Updated: {formatLastUpdated(lastUpdated)}
+            </div>
+          </div>
+
           <div className="footer-copyright">
             <p>&copy; 2025 National Institute of Technology Goa</p>
           </div>

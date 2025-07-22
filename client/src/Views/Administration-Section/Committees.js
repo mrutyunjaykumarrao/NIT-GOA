@@ -1,7 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Committees.css';
 
 const Committees = () => {
+  // Handle hash navigation for direct linking to sections
+  useEffect(() => {
+    const handleHashNavigation = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const element = document.getElementById(hash.substring(1));
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }, 100);
+        }
+      }
+    };
+
+    // Handle initial load
+    handleHashNavigation();
+
+    // Handle hash changes
+    window.addEventListener('hashchange', handleHashNavigation);
+    
+    return () => {
+      window.removeEventListener('hashchange', handleHashNavigation);
+    };
+  }, []);
+
   return (
     <div className="committees-page">
       <div className="committees-wrapper">
@@ -294,7 +322,7 @@ const Committees = () => {
                   <td>0832-2404729</td>
                 </tr>
 
-                <tr>
+                <tr id="grievance-redressal-committee">
                   <td>Grievance Redressal Committee</td>
                   <td colSpan="3">
                     <p>Institute Level Committee</p>
@@ -338,7 +366,7 @@ const Committees = () => {
                   </td>
                 </tr>
 
-                <tr>
+                <tr id="anti-ragging-committee">
                   <td rowSpan="6">Institute Anti-Ragging Committee (IARC)</td>
                   <td>Dean SW (Chairman)</td>
                   <td>dean.sw@nitgoa.ac.in</td>
