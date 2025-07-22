@@ -3,7 +3,7 @@
 .footer {
   background: #2c3e50;
   color: #ffffff;
-  margin-top: 0px;
+  margin-top: 40px;
   border-top: 4px solid #3498db;
   position: relative;
   overflow: hidden;
@@ -619,18 +619,48 @@
   text-shadow: none;
 }
 
-/* Fix link colors inside white cards */
-.footer-links-card a {
-  color: #2c3e50 !important;
-}
-
-.footer-links-card a:hover {
-  color: #3498db !important;
-}
-
 .footer-contact-main-card .footer-contact-main-title {
   color: #2c3e50;
   text-shadow: none;
+}
+
+/* Fix text color inside footer links card */
+.footer-links-card ul {
+  color: #2c3e50;
+}
+
+.footer-links-card li {
+  color: #2c3e50;
+}
+
+.footer-links-card a {
+  color: #2c3e50 !important;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
+}
+
+.footer-links-card a:hover {
+  color: #1976d2 !important;
+  transform: translateX(4px);
+}
+
+.footer-links-card a::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #1976d2;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-links-card a:hover::before {
+  width: 100%;
 }
 
 /* ===== FOOTER BOTTOM ===== */

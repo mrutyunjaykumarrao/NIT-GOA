@@ -72,52 +72,47 @@ const ContactUs = () => {
                         <div className="contactus-departments-grid">
                             <div className="contactus-department-card">
                                 <h3>Computer Science & Engineering</h3>
-                                <p><strong>HOD:</strong> Dr. Damodar Reddy Edla</p>
-                                <p><strong>Email:</strong> hod.cse@nitgoa.ac.in</p>
-                                <p><strong>Phone:</strong> +91-832-2404280</p>
+                                <p><strong>HOD:</strong> Dr. Veena Thenkanidiyoor</p>
+                                <p><strong>Email:</strong> veenat@nitgoa.ac.in</p>
+                                <p><strong>Phone:</strong> 0832-2404432</p>
                             </div>
                             
                             <div className="contactus-department-card">
                                 <h3>Electronics & Communication Engineering</h3>
-                                <p><strong>HOD:</strong> Dr. B. Venugopal Reddy</p>
-                                <p><strong>Email:</strong> hod.ece@nitgoa.ac.in</p>
-                                <p><strong>Phone:</strong> +91-832-2404290</p>
+                                <p><strong>HOD:</strong> Dr. T. Veerakumar</p>
+                                <p><strong>Email:</strong> tveerakumar@nitgoa.ac.in</p>
+                                <p><strong>Phone:</strong>  0832-2404520</p>
                             </div>
                             
                             <div className="contactus-department-card">
                                 <h3>Electrical & Electronics Engineering</h3>
-                                <p><strong>HOD:</strong> Dr. B. Santhi</p>
-                                <p><strong>Email:</strong> hod.eee@nitgoa.ac.in</p>
-                                <p><strong>Phone:</strong> +91-832-2404270</p>
+                                <p><strong>HOD:</strong> Dr. Suresh Mikkili</p>
+                                <p><strong>Email:</strong> mikkili.suresh@nitgoa.ac.in</p>
+                                <p><strong>Phone:</strong> 0832-2404645</p>
                             </div>
                             
                             <div className="contactus-department-card">
                                 <h3>Mechanical Engineering</h3>
-                                <p><strong>HOD:</strong> Dr. Prashant P. Date</p>
-                                <p><strong>Email:</strong> hod.mce@nitgoa.ac.in</p>
-                                <p><strong>Phone:</strong> +91-832-2404260</p>
+                                <p><strong>HOD:</strong> Dr. Prasenjit Dey</p>
+                                <p><strong>Email:</strong>  prasenjit.dey@nitgoa.ac.in</p>
+                                <p><strong>Phone:</strong> 0832-2404834</p>
                             </div>
                             
                             <div className="contactus-department-card">
                                 <h3>Civil Engineering</h3>
-                                <p><strong>HOD:</strong> Dr. Sreedeep Sekharan</p>
-                                <p><strong>Email:</strong> hod.cve@nitgoa.ac.in</p>
-                                <p><strong>Phone:</strong> +91-832-2404250</p>
+                                <p><strong>HOD:</strong> Dr. Harikumar M</p>
+                                <p><strong>Email:</strong> harikumar@nitgoa.ac.in</p>
+                                <p><strong>Phone:</strong> 0832-2404846</p>
                             </div>
                             
                             <div className="contactus-department-card">
-                                <h3>Applied Sciences</h3>
-                                <p><strong>HOD:</strong> Dr. Gaurang Ruhela</p>
-                                <p><strong>Email:</strong> hod.aps@nitgoa.ac.in</p>
-                                <p><strong>Phone:</strong> +91-832-2404240</p>
+                                <h3> Humanities & Social Sciences & Applied Sciences</h3>
+                                <p><strong>HOD:</strong> Dr. L. Shangerganesh</p>
+                                <p><strong>Email:</strong> shangerganesh@nitgoa.ac.in</p>
+                                <p><strong>Phone:</strong>0832-2404728</p>
                             </div>
                             
-                            <div className="contactus-department-card">
-                                <h3>Humanities & Social Sciences</h3>
-                                <p><strong>HOD:</strong> Dr. Amol D. Rahulkar</p>
-                                <p><strong>Email:</strong> hod.hss@nitgoa.ac.in</p>
-                                <p><strong>Phone:</strong> +91-832-2404230</p>
-                            </div>
+                            
                         </div>
                     </section>
 
@@ -251,61 +246,9 @@ const ContactUs = () => {
                         </div>
                     </section>
 
-                    <section className="contactus-section contactus-emergency-section">
-                        <h2>Emergency Contacts</h2>
-                        <div className="contactus-emergency-grid">
-                            <div className="contactus-emergency-card">
-                                <h3>Campus Security</h3>
-                                <p><strong>24/7 Security:</strong> +91-832-2404400</p>
-                                <p>For campus safety and security issues</p>
-                            </div>
-                            
-                            <div className="contactus-emergency-card">
-                                <h3>Medical Emergency</h3>
-                                <p><strong>Medical Centre:</strong> +91-832-2404350</p>
-                                <p><strong>Ambulance:</strong> 108</p>
-                                <p>For health emergencies and medical assistance</p>
-                            </div>
-                            
-                            <div className="contactus-emergency-card">
-                                <h3>Fire Emergency</h3>
-                                <p><strong>Fire Station:</strong> 101</p>
-                                <p><strong>Campus Fire Safety:</strong> +91-832-2404450</p>
-                                <p>For fire-related emergencies</p>
-                            </div>
-                            
-                            <div className="contactus-emergency-card">
-                                <h3>Police Emergency</h3>
-                                <p><strong>Police Control Room:</strong> 100</p>
-                                <p><strong>Local Police Station:</strong> +91-832-2648xxx</p>
-                                <p>For law and order issues</p>
-                            </div>
-                        </div>
-                    </section>
+                    
 
-                    <section className="contactus-section contactus-feedback-section">
-                        <h2>Feedback & Suggestions</h2>
-                        <div className="contactus-feedback-info">
-                            <p>
-                                We value your feedback and suggestions to improve our services. 
-                                Please feel free to reach out to us through any of the following channels:
-                            </p>
-                            <div className="contactus-feedback-channels">
-                                <div className="contactus-feedback-channel">
-                                    <h4>General Feedback</h4>
-                                    <p><strong>Email:</strong> feedback@nitgoa.ac.in</p>
-                                </div>
-                                <div className="contactus-feedback-channel">
-                                    <h4>Academic Feedback</h4>
-                                    <p><strong>Email:</strong> academic.feedback@nitgoa.ac.in</p>
-                                </div>
-                                <div className="contactus-feedback-channel">
-                                    <h4>Website Feedback</h4>
-                                    <p><strong>Email:</strong> webmaster@nitgoa.ac.in</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                    
 
                     <section className="contactus-section contactus-social-media-section">
                         <h2>Connect With Us</h2>

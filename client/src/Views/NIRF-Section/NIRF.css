@@ -64,6 +64,7 @@
     background: var(--background-secondary);
     min-height: 100vh;
     transition: all 0.3s ease;
+    padding-top: 1rem; /* Added padding for better spacing */
 }
 
 .nirf-container {
