@@ -309,75 +309,102 @@ const FacultyDetails = () => {
                                         <span key={index} className="research-tag">{area}</span>
                                     ))}
                                 </div>
-                            </div>
-                            {/* {faculty.researchAreas && faculty.researchAreas.length > 0 && (
-                                // <div className="research-category">
-                                //     <h4>Detailed Research Areas</h4>
-                                //     <ul className="research-list">
-                                //         {faculty.researchAreas.map((area, index) => (
-                                //             <li key={index}>{area}</li>
-                                //         ))}
-                                //     </ul>
-                                // </div>
-                            )} */}
-                        </div>
-                    )}
+                                    </div>
+                                </div>
+                            )}
 
-                    {renderExpandableSection(
-                        "Courses Taught",
-                        "coursesTaught",
-                        <div className="courses-section">
-                            <div className="course-category">
-                                <h4>Undergraduate Courses</h4>
-                                <ul>
-                                    {faculty.coursesTaught?.ug?.map((course, index) => (
-                                        <li key={index}>{course}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className="course-category">
-                                <h4>Postgraduate Courses</h4>
-                                <ul>
-                                    {faculty.coursesTaught?.pg?.map((course, index) => (
-                                        <li key={index}>{course}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                    )}
+                                                {renderExpandableSection(
+                                                    "Courses Taught",
+                                                    "coursesTaught",
+                                                    <div className="courses-section">
+                                                        {/* Check if courses taught data exists and handle different data structures */}
+                                                        {faculty.coursesTaught && (
+                                                            <>
+                                                                {/* Handle array format */}
+                                                                {Array.isArray(faculty.coursesTaught) && faculty.coursesTaught.length > 0 && (
+                                                                    <div className="course-category">
+                                                                        <h4>Courses Taught</h4>
+                                                                        <ul>
+                                                                            {faculty.coursesTaught.map((course, index) => (
+                                                                                <li key={index}>{course}</li>
+                                                                            ))}
+                                                                        </ul>
+                                                                    </div>
+                                                                )}
+                                                                
+                                                                {/* Handle object format with ug/pg separation */}
+                                                                {!Array.isArray(faculty.coursesTaught) && (
+                                                                    <>
+                                                                        {faculty.coursesTaught.ug && faculty.coursesTaught.ug.length > 0 && (
+                                                                            <div className="course-category">
+                                                                                <h4>Undergraduate Courses</h4>
+                                                                                <ul>
+                                                                                    {faculty.coursesTaught.ug.map((course, index) => (
+                                                                                        <li key={index}>{course}</li>
+                                                                                    ))}
+                                                                                </ul>
+                                                                            </div>
+                                                                        )}
+                                                                        {faculty.coursesTaught.pg && faculty.coursesTaught.pg.length > 0 && (
+                                                                            <div className="course-category">
+                                                                                <h4>Postgraduate Courses</h4>
+                                                                                <ul>
+                                                                                    {faculty.coursesTaught.pg.map((course, index) => (
+                                                                                        <li key={index}>{course}</li>
+                                                                                    ))}
+                                                                                </ul>
+                                                                            </div>
+                                                                        )}
+                                                                    </>
+                                                                )}
+                                                            </>
+                                                        )}
+                                                        
+                                                        {/* Show message if no courses data */}
+                                                        {(!faculty.coursesTaught || 
+                                                          (Array.isArray(faculty.coursesTaught) && faculty.coursesTaught.length === 0) ||
+                                                          (!Array.isArray(faculty.coursesTaught) && 
+                                                           (!faculty.coursesTaught.ug || faculty.coursesTaught.ug.length === 0) &&
+                                                           (!faculty.coursesTaught.pg || faculty.coursesTaught.pg.length === 0))) && (
+                                                            <div className="no-data-message">
+                                                                <p>No courses information available</p>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                )}
 
-                    {renderExpandableSection(
-                        "Academic Information",
-                        "academicInfo",
-                        <div className="academic-info-table-container">
-                            <table className="academic-info-table">
-                                <thead>
-                                    <tr>
-                                        <th>Degree</th>
-                                        <th>Institute</th>
-                                        <th>Subject</th>
-                                        <th>Year</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {faculty.academicInformation?.map((edu, index) => (
-                                        <tr key={index}>
-                                            <td className="degree-cell">{edu.degree}</td>
-                                            <td className="institute-cell">{edu.institute}</td>
-                                            <td className="subject-cell">{edu.subject}</td>
-                                            <td className="year-cell">{edu.year}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    )}
+                                                {renderExpandableSection(
+                                                    "Academic Information",
+                                                    "academicInfo",
+                                                    <div className="academic-info-table-container">
+                                                        <table className="academic-info-table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Degree</th>
+                                                                    <th>Institute</th>
+                                                                    <th>Subject</th>
+                                                                    <th>Year</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {faculty.academicInformation?.map((edu, index) => (
+                                                                    <tr key={index}>
+                                                                        <td className="degree-cell">{edu.degree}</td>
+                                                                        <td className="institute-cell">{edu.institute}</td>
+                                                                        <td className="subject-cell">{edu.subject}</td>
+                                                                        <td className="year-cell">{edu.year}</td>
+                                                                    </tr>
+                                                                ))}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                )}
 
-                    {renderExpandableSection(
-                        "Paper Published",
-                        "publications",
-                        <div className="publications-section">
-                            {/* Journal Publications Sub-dropdown */}
+                                                {renderExpandableSection(
+                                                    "Paper Published",
+                                                    "publications",
+                                                    <div className="publications-section">
+                                                        {/* Journal Publications Sub-dropdown */}
                                             {faculty.publications?.journal && faculty.publications.journal.length > 0 && 
                                                 renderPublicationSubSection(
                                                     `Publications Table (${faculty.publications.journal.length})`,
@@ -580,33 +607,50 @@ const FacultyDetails = () => {
                                 </thead>
                                 <tbody>
                                     {faculty.fundedProjects?.map((project, index) => {
-                                        // Create structured data for each project
-                                        const projectData = {
-                                            1: {
-                                                agency: "The Research Council of Norway under INTPART",
-                                                amount: "₹4 Crores"
-                                            },
-                                            2: {
-                                                agency: "DST-SERB",
-                                                amount: "₹6.6 Lakhs"
-                                            },
-                                            3: {
-                                                agency: "The PMU Cybersecurity Center",
-                                                amount: "USD 6000"
-                                            },
-                                            4: {
-                                                agency: "ARTPARK (IISc Bangalore)",
-                                                amount: "₹3.6 Lakhs"
-                                            },
-                                            5: {
-                                                agency: "DST-SERB",
-                                                amount: "₹18.3 Lakhs"
+                                        // Extract funding agency and amount from project text
+                                        const extractAgency = (text) => {
+                                            if (!text) return '-';
+                                            
+                                            const agencyPatterns = [
+                                                /(The Research Council of Norway[^,]*)/i,
+                                                /(DST-SERB|SERB[^,]*)/i,
+                                                /(The PMU Cybersecurity Center[^,]*)/i,
+                                                /(ARTPARK[^,]*)/i,
+                                                /(funded by|funding agency|sponsored by)\s*([^,\n\.]+)/i,
+                                                /\b([A-Z]{2,}[^,\n\.]*(?:Council|Agency|Ministry|Department|Foundation|Fund)[^,\n\.]*)/i
+                                            ];
+                                            
+                                            for (let pattern of agencyPatterns) {
+                                                const match = text.match(pattern);
+                                                if (match) {
+                                                    return match[1] || match[2] || match[0];
+                                                }
                                             }
+                                            return '-';
                                         };
                                         
-                                        const currentProject = projectData[index + 1];
-                                        const agency = currentProject ? currentProject.agency : '-';
-                                        const amount = currentProject ? currentProject.amount : '-';
+                                        const extractAmount = (text) => {
+                                            if (!text) return '-';
+                                            
+                                            const amountPatterns = [
+                                                /(₹\s*[\d,]+(?:\.\d+)?\s*(?:Crores?|Lakhs?|K)?)/i,
+                                                /(USD\s*[\d,]+(?:\.\d+)?)/i,
+                                                /(Rs\.?\s*[\d,]+(?:\.\d+)?\s*(?:Crores?|Lakhs?)?)/i,
+                                                /(\$\s*[\d,]+(?:\.\d+)?)/i,
+                                                /([\d,]+(?:\.\d+)?\s*(?:Crores?|Lakhs?|USD|Rs\.?))/i
+                                            ];
+                                            
+                                            for (let pattern of amountPatterns) {
+                                                const match = text.match(pattern);
+                                                if (match) {
+                                                    return match[1];
+                                                }
+                                            }
+                                            return '-';
+                                        };
+                                        
+                                        const agency = extractAgency(project);
+                                        const amount = extractAmount(project);
                                         
                                         return (
                                             <tr key={index}>
@@ -656,11 +700,14 @@ const FacultyDetails = () => {
                         "memberships",
                         <div className="memberships-section">
                             <ul>
-                                {faculty.memberships?.map((membership, index) => (
-                                    <li key={index}>
-                                        {membership}
-                                    </li>
-                                ))}
+                                {faculty.membershipAndProfessionalSociety && faculty.membershipAndProfessionalSociety.length > 0 
+                                    ? faculty.membershipAndProfessionalSociety.map((membership, index) => (
+                                        <li key={index}>
+                                            {membership}
+                                        </li>
+                                    ))
+                                    : <li>No memberships available</li>
+                                }
                             </ul>
                         </div>
                     )}
@@ -670,11 +717,11 @@ const FacultyDetails = () => {
                         "professionalServices",
                         <div className="professional-services-section">
                             <ul>
-                                {faculty.professionalServices?.map((service, index) => (
+                                {faculty.professionalService?.map((service, index) => (
                                     <li key={index}>
                                         {service}
                                     </li>
-                                ))}
+                                )) || <li>No professional services available</li>}
                             </ul>
                         </div>
                     )}
@@ -694,7 +741,7 @@ const FacultyDetails = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {faculty.coursesAttended?.map((course, index) => {
+                                    {faculty.trainingConferencesAndShortTermCoursesAttended?.map((course, index) => {
                                         if (!course || !course.info) return null; // Skip null/undefined entries
                                         
                                         // Extract year, duration, and venue from course info
