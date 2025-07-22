@@ -73,7 +73,7 @@
 }
 
 .footer-social-media-inline h4 {
-  color: #ffffff;
+  color: #000000;
   font-size: 16px;
   font-weight: 700;
   margin: 0 0 12px 0;
@@ -269,7 +269,6 @@
 .footer-section a:hover::before {
   width: 100%;
 }
-
 /* ===== CONTACT SECTION WITH MAP CARDS ===== */
 .footer-contact-section {
   display: flex;
@@ -299,7 +298,7 @@
 }
 
 .footer-contact-main-title {
-  color: #ffffff;
+  color: #2c3e50;
   font-size: 24px;
   font-weight: 700;
   margin: 0 0 15px 0;
@@ -465,7 +464,8 @@
   justify-content: center;
   width: 44px;
   height: 44px;
-  background: #ffffff;
+  background: #000000;
+  
   border: 2px solid #e9ecef;
   border-radius: 12px;
   color: #666666;
@@ -494,13 +494,14 @@
 .footer-social-icon svg {
   width: 20px;
   height: 20px;
+  transform: translateY(5px);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   z-index: 1;
 }
 
 .footer-social-icon:hover {
-  transform: translateY(-3px) scale(1.05);
+  transform: translateY(2px) scale(1);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 

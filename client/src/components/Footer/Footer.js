@@ -97,14 +97,14 @@ const Footer = () => {
                 <li><a href="/grievance">Grievance Portal</a></li>
               </ul>
             </div>
-          </div>
+          </div> 
 
           {/* Contact & Location with Map */}
           <div className="footer-section footer-contact-section">
             
             <div className="footer-contact-main-card">
               <h5 className="footer-contact-main-title">
-                <a href="/contact-us" style={{color: 'inherit', textDecoration: 'none'}}>Contact Us</a>
+                <a href="/contact-us" style={{color: 'inherit', textDecoration: 'none', fontSize: '24px', fontWeight: '700'}}>Contact Us</a>
               </h5>
               <div className="footer-contact-cards-container">
                 {/* Contact Details Card - Now First */}
