@@ -1790,4 +1790,102 @@ html {
     }
 }
 
+/* Mobile L and below - Convert sidebar to horizontal navbar */
+@media (max-width: 768px) {
+    .gian-main-layout {
+        display: block;
+        grid-template-columns: none;
+        gap: 0;
+    }
+    
+    .gian-sidebar {
+        position: static;
+        top: auto;
+        height: auto;
+        max-height: none;
+        overflow-y: visible;
+        width: 100%;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px var(--gian-shadow);
+    }
+    
+    .gian-nav-list {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 0.3rem;
+        justify-content: flex-start;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding: 0.5rem 0;
+    }
+    
+    .gian-nav-list::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .gian-nav-item {
+        margin-bottom: 0;
+        flex: 0 0 auto;
+    }
+    
+    .gian-nav-link {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.75rem;
+        border-radius: 6px;
+        white-space: nowrap;
+        min-width: auto;
+        text-align: center;
+        font-weight: 500;
+    }
+    
+    /* Make active nav item more prominent on mobile */
+    .gian-nav-active {
+        background: var(--primary-blue) !important;
+        color: var(--white) !important;
+        font-weight: 600;
+    }
+    
+    .gian-content {
+        padding: 0;
+        width: 100%;
+    }
+    
+    /* Adjust page header for mobile */
+    .gian-page-header {
+        margin: 0 -1rem 1.5rem;
+        padding: 2.5rem 0 2rem;
+    }
+    
+    .gian-page-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .gian-page-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Mobile L and below - Smaller buttons for better fit */
+@media (max-width: 425px) {
+    .gian-nav-list {
+        gap: 0.2rem;
+    }
+    
+    .gian-nav-link {
+        padding: 0.5rem 0.6rem;
+        font-size: 0.7rem;
+        min-width: auto;
+        border-radius: 4px;
+    }
+    
+    .gian-sidebar {
+        padding: 0.8rem;
+    }
+}
+
 
