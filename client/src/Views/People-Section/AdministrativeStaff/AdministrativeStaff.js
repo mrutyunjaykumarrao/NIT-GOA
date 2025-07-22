@@ -17,6 +17,13 @@ const AdministrativeStaff = () => {
                 
                 if (result.success) {
                     setStaffData(result.data);
+                    // Debug: Check if employment_status is being received
+                    console.log('Administrative staff data with employment_status:', 
+                        result.data.filter(staff => staff.employment_status).map(staff => ({
+                            name: staff.name,
+                            employment_status: staff.employment_status
+                        }))
+                    );
                 } else {
                     setError('Failed to fetch administrative staff data');
                 }
