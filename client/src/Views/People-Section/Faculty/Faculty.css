@@ -18,32 +18,13 @@
     padding: 0 60px;
 }
 
-/* Hero Section */
-.faculty-hero {
-    margin-bottom: 40px;
-    text-align: center;
-}
-
-.hero-image {
-    width: 100%;
-    height: 300px;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
 
 /* Department Section */
-.department-section {
+.faculty-department-section {
     margin-bottom: 40px;
 }
 
-.current-department {
+.faculty-current-department {
     text-align: center;
     font-size: 24px;
     font-weight: 600;
@@ -56,7 +37,7 @@
 }
 
 /* Department Filter Buttons */
-.department-filters {
+.faculty-department-filters {
     display: flex;
     justify-content: center;
     gap: 25px;
@@ -64,7 +45,7 @@
     flex-wrap: wrap;
 }
 
-.filter-btn {
+.faculty-filter-btn {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -85,7 +66,7 @@
     overflow: hidden;
 }
 
-.filter-btn::before {
+.faculty-filter-btn::before {
     content: '';
     position: absolute;
     top: 0;
@@ -96,7 +77,7 @@
     transition: left 0.6s ease;
 }
 
-.filter-btn:hover {
+.faculty-filter-btn:hover {
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
@@ -108,11 +89,11 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.filter-btn:hover::before {
+.faculty-filter-btn:hover::before {
     left: 100%;
 }
 
-.filter-btn.active {
+.faculty-filter-btn.active {
     background: rgba(33, 150, 243, 0.4);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
@@ -144,8 +125,8 @@
     transition: all 0.3s ease;
     border: 1px solid #e0e0e0;
     height: 485px;
-    min-height: 540px;
-    max-height: 540px;
+    min-height: 550px;
+    max-height: 550px;
     width: 100%;
     max-width: 400px;
     display: flex;
@@ -464,16 +445,16 @@
         height: 240px;
     }
     
-    .hero-image {
+    .faculty-hero-image {
         height: 400px;
     }
     
-    .current-department {
+    .faculty-current-department {
         font-size: 28px;
         padding: 20px;
     }
     
-    .filter-btn {
+    .faculty-filter-btn {
         padding: 15px 60px;
         font-size: 18px;
     }
@@ -520,16 +501,16 @@
         height: 260px;
     }
     
-    .hero-image {
+    .faculty-hero-image {
         height: 500px;
     }
     
-    .current-department {
+    .faculty-current-department {
         font-size: 32px;
         padding: 25px;
     }
     
-    .filter-btn {
+    .faculty-filter-btn {
         padding: 18px 70px;
         font-size: 20px;
     }
@@ -564,9 +545,9 @@
     
     .faculty-card {
         padding: 20px;
-        height: 400px;
-        min-height: 400px;
-        max-height: 400px;
+        height: 475px;
+        min-height: 475px;
+        max-height: 475px;
     }
     
     /* HOD cards stack vertically on mobile */
@@ -601,6 +582,19 @@
         margin: 0 auto;
     }
     
+    .faculty-image {
+        width: 180px;
+        height: 180px;
+        margin: 0 auto 12px;
+        flex-shrink: 0;
+    }
+    
+    .faculty-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
     .faculty-name {
         font-size: 18px;
     }
@@ -609,26 +603,40 @@
         font-size: 15px;
     }
     
-    .department-filters {
+    .faculty-contact {
+        padding: 8px;
+        margin-bottom: 10px;
+    }
+    
+    .faculty-contact p {
+        margin: 2px 0;
+        font-size: 12px;
+    }
+    
+    .faculty-department-filters {
         gap: 15px;
     }
     
-    .filter-btn {
+    .faculty-filter-btn {
         padding: 10px 18px;
         font-size: 14px;
         min-width: 60px;
     }
     
-    .hero-image {
+    .faculty-hero-image {
         height: 200px;
         border-radius: 10px;
     }
     
-    .current-department {
+    .faculty-current-department {
         font-size: 20px;
         margin-bottom: 15px;
         padding: 12px;
     }
+    .faculty-actions {
+        margin-top: 0px;
+    }
+
 }
 
 @media (max-width: 480px) {
@@ -638,14 +646,22 @@
     
     .faculty-card {
         padding: 15px;
-        height: 400px;
-        min-height: 400px;
-        max-height: 400px;
+        height: 450px;
+        min-height: 450px;
+        max-height: 450px;
     }
     
     .faculty-image {
         width: 180px;
         height: 180px;
+        margin: 0 auto 10px;
+        flex-shrink: 0;
+    }
+    
+    .faculty-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
     
     .faculty-name {
@@ -656,12 +672,22 @@
         font-size: 14px;
     }
     
-    .filter-btn {
+    .faculty-contact {
+        padding: 8px;
+        margin-bottom: 8px;
+    }
+    
+    .faculty-contact p {
+        margin: 2px 0;
+        font-size: 12px;
+    }
+    
+    .faculty-filter-btn {
         padding: 8px 15px;
         font-size: 13px;
     }
     
-    .current-department {
+    .faculty-current-department {
         font-size: 18px;
         margin-bottom: 10px;
         padding: 10px;
@@ -674,149 +700,103 @@
 }
 
 /* Dark Mode Theme Styles */
-.faculty-page.dark .current-department {
-    background: linear-gradient(135deg, #1e3a8a, #1e40af);
-    color: #e0e0e0;
-    border-left: 4px solid #3b82f6;
-}
-
-.faculty-page.dark .filter-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #e0e0e0;
-    box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.3);
-}
-
-.faculty-page.dark .filter-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 
-        0 12px 40px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.3);
-}
-
-.faculty-page.dark .filter-btn.active {
-    background: rgba(59, 130, 246, 0.4);
+.faculty-page.dark {
+    background-color: #121212;
     color: #ffffff;
-    border: 1px solid rgba(59, 130, 246, 0.6);
+}
+
+.faculty-page.dark .faculty-current-department {
+    background: linear-gradient(135deg, #263238, #37474f);
+    color: #ffffff;
+    border-left: 4px solid #4fc3f7;
+}
+
+.faculty-page.dark .faculty-filter-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #b0bec5;
     box-shadow: 
-        0 15px 45px rgba(59, 130, 246, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.faculty-page.dark .faculty-filter-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.faculty-page.dark .faculty-filter-btn.active {
+    background: rgba(79, 195, 247, 0.2);
+    color: #4fc3f7;
+    border: 1px solid rgba(79, 195, 247, 0.4);
+    box-shadow: 
+        0 15px 45px rgba(79, 195, 247, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.4);
 }
 
 .faculty-page.dark .faculty-card {
     background: #1e1e1e;
-    border: 1px solid #333;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid #37474f;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .faculty-page.dark .faculty-card:hover {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 30px rgba(79, 195, 247, 0.2);
+    border-color: #4fc3f7;
 }
 
 .faculty-page.dark .faculty-card.hod-card {
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
-    border: 1px solid #333;
+    background: linear-gradient(135deg, #1e1e1e, #263238);
+    border: 1px solid #37474f;
 }
 
 .faculty-page.dark .faculty-card.hod-card:hover {
-    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.2);
+    box-shadow: 0 12px 40px rgba(79, 195, 247, 0.2);
 }
 
 .faculty-page.dark .faculty-name {
-    color: #3b82f6;
+    color: #4fc3f7;
 }
 
 .faculty-page.dark .faculty-designation {
-    color: #d1d5db;
+    color: #b0bec5;
 }
 
 .faculty-page.dark .faculty-department {
-    color: #9ca3af;
+    color: #78909c;
 }
 
 .faculty-page.dark .faculty-contact {
-    background: #2d2d2d;
-    border: 1px solid #404040;
+    background: #263238;
+    border: 1px solid #37474f;
 }
 
 .faculty-page.dark .faculty-contact p {
-    color: #d1d5db;
+    color: #b0bec5;
 }
 
 .faculty-page.dark .faculty-contact strong {
-    color: #3b82f6;
+    color: #4fc3f7;
 }
 
 .faculty-page.dark .faculty-card.hod-card .faculty-contact {
-    background: #2a2a3e;
-    border: 1px solid #404040;
+    background: #1e1e1e;
+    border: 1px solid #37474f;
 }
 
 .faculty-page.dark .no-faculty {
     background: #1e1e1e;
-    border: 1px solid #333;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid #37474f;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .faculty-page.dark .no-faculty p {
-    color: #9ca3af;
-}
-
-/* Loading and Error States */
-.loading-state {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 60px 20px;
-    font-size: 18px;
-    color: #666;
-}
-
-.error-state {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 60px 20px;
-    color: #d32f2f;
-}
-
-.error-state p {
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-
-.retry-btn {
-    background: #1976d2;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.retry-btn:hover {
-    background: #1565c0;
-}
-
-/* Dark mode for loading and error states */
-.faculty-page.dark .loading-state {
-    color: #9ca3af;
-}
-
-.faculty-page.dark .error-state {
-    color: #ef5350;
-}
-
-.faculty-page.dark .retry-btn {
-    background: #2196f3;
-}
-
-.faculty-page.dark .retry-btn:hover {
-    background: #1976d2;
+    color: #78909c;
 }

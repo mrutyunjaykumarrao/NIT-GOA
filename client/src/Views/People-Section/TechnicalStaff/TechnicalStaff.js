@@ -52,165 +52,169 @@ const TechnicalStaff = () => {
     }, [searchParams]);
 
     const departments = [
-        { code: 'CSE', name: 'Computer Science & Engineering' },
-        { code: 'ECE', name: 'Electronics & Communication Engineering' },
-        { code: 'EEE', name: 'Electrical & Electronics Engineering' },
-        { code: 'MCE', name: 'Mechanical Engineering' },
-        { code: 'CVE', name: 'Civil Engineering' },
-        { code: 'APS', name: 'Applied Sciences & HSS' },
-        { code: 'CCC', name: 'Computer Center' }
+        { code: 'CSE', name: 'Department of Computer Science and Engineering' },
+        { code: 'ECE', name: 'Department of Electronics & Communication Engineering' },
+        { code: 'EEE', name: 'Department of Electrical & Electronics Engineering' },
+        { code: 'MCE', name: 'Department of Mechanical Engineering' },
+        { code: 'CVE', name: 'Department of Civil Engineering' },
+        { code: 'APS', name: 'Department of Applied Sciences & HSS' },
+        { code: 'CCC', name: 'Campus Control Centre' }
     ];
 
     const staffData = {
         CSE: [
             {
-                name: "Mr. Santosh",
-                designation: "Technical Assistant",
-                department: "Computer Science and Engineering",
-                email: "santosh@nitgoa.ac.in",
-                phone: "Extension No.: - (Internal)",
-                image: SantoshCSE
-            },
-            {
-                name: "Mr. S Sudharsan",
+                name: "Mr. S SUDHARSAN",
                 designation: "Senior Technical Assistant",
-                department: "Computer Science and Engineering",
+                department: "Department of Computer Science and Engineering",
                 email: "sudharsan@nitgoa.ac.in",
-                phone: "Extension No.: - (Internal)",
+                phone: "0832-2404422",
                 image: SudharsanCSE
             },
             {
                 name: "Mr. Srinath",
-                designation: "Library Technical Assistant",
-                department: "Library",
-                email: "srinath@nitgoa.ac.in",
-                phone: "Extension No.: - (Internal)",
+                designation: "Senior Techniciant",
+                department: "Department of Computer Science and Engineering",
+                email: "revoorisrinath@nitgoa.ac.in",
+                phone: "0832-2404208",
                 image: SrinathLib
+            },
+            {
+                name: "Mr. Kokate Santosh Parvatrao",
+                designation: "Technician",
+                department: "Department of Computer Science and Engineering",
+                email: "ksantosh@nitgoa.ac.in",
+                phone: "0832-2404430",
+                image: SantoshCSE
             }
         ],
         ECE: [
             {
-                name: "Mr. Nikhil",
-                designation: "Technical Assistant",
-                department: "Electronics & Communication Engineering",
-                email: "nikhil@nitgoa.ac.in",
-                phone: "Extension No.: - (Internal)",
-                image: NikhilECE
+                name: "Mr. Patitapaban Pradhan",
+                designation: "Senior Technical Assistan",
+                department: "Department of Electronics and Communication Engineering",
+                email: "pradhanp@nitgoa.ac.in",
+                phone: "0832-2404503",
+                image: PradhanECE
             },
             {
-                name: "Mr. Ram",
+                name: "Mr. Shri Ram Kumawat",
                 designation: "Technical Assistant",
-                department: "Electronics & Communication Engineering",
-                email: "ram@nitgoa.ac.in",
-                phone: "Extension No.: - (Internal)",
+                department: "Department of Electronics and Communication Engineering",
+                email: "shriram@nitgoa.ac.in",
+                phone: "0832-2404545",
                 image: RamECE
             },
             {
-                name: "Mr. Pradhan",
-                designation: "Technical Assistant",
-                department: "Electronics & Communication Engineering",
-                email: "pradhan@nitgoa.ac.in",
-                phone: "Extension No.: - (Internal)",
-                image: PradhanECE
+                name: "Mr. Nikhil Uday Naik",
+                designation: "Technician",
+                department: "Department of Electronics and Communication Engineering",
+                email: "nikhilnaik@nitgoa.ac.in",
+                phone: "0832-2404537",
+                image: NikhilECE
             }
         ],
         EEE: [
             {
-                name: "Mr. Digambar",
+                name: "Mr. Pinaki Chatterjee",
                 designation: "Technical Assistant",
-                department: "Electrical & Electronics Engineering",
-                email: "digambar@nitgoa.ac.in",
-                phone: "Extension No.: - (Internal)",
-                image: DigambarEEE
-            },
-            {
-                name: "Mr. Pinaki",
-                designation: "Technical Assistant",
-                department: "Electrical & Electronics Engineering",
+                department: "Department of Electrical and Electronics Engineering",
                 email: "pinaki@nitgoa.ac.in",
-                phone: "Extension No.: - (Internal)",
+                phone: "0832-2404616",
                 image: PinakiEEE
             },
             {
-                name: "Mr. Rohit",
-                designation: "Technical Assistant",
-                department: "Electrical & Electronics Engineering",
+                name: "Mr. Digambar R. D.",
+                designation: "Senior Technician",
+                department: "Department of Electrical and Electronics Engineering",
+                email: "digambar@nitgoa.ac.in",
+                phone: "0832-2404219",
+                image: DigambarEEE
+            },
+            {
+                name: "Mr. Rohit Madhu Gawas",
+                designation: "Senior Technician",
+                department: "Department of Electrical and Electronics Engineering",
                 email: "rohit@nitgoa.ac.in",
-                phone: "Extension No.: - (Internal)",
+                phone: "0832-2404636",
                 image: RohitEEE
             },
             {
                 name: "Mr. Arjun Singh",
-                designation: "Technical Assistant",
-                department: "Electrical & Electronics Engineering",
-                email: "arjun@nitgoa.ac.in",
-                phone: "Extension No.: - (Internal)",
+                designation: "Technician",
+                department: "Department of Electrical and Electronics Engineering",
+                email: "arjunsingh@nitgoa.ac.in",
+                phone: "0832-2404629",
                 image: ArjunEEE
             },
             {
                 name: "Mr. Koushik",
-                designation: "Technical Assistant",
-                department: "Electrical & Electronics Engineering",
+                designation: "Technician",
+                department: "Department of Electrical and Electronics Engineering",
                 email: "koushik@nitgoa.ac.in",
-                phone: "Extension No.: - (Internal)",
+                phone: "0832-2404610",
                 image: KoushikEEE
             }
         ],
         MCE: [
             {
-                name: "Mr. Vijeesh",
-                designation: "Technical Assistant",
-                department: "Mechanical Engineering",
+                name: "Mr. Vijeesh V.P",
+                designation: "Senior Technical Assistant",
+                department: "Department of Mechanical Engineering",
                 email: "vijeesh@nitgoa.ac.in",
-                phone: "Extension No.: - (Internal)",
+                phone: "0832-2404812",
                 image: VijeeshMCE
             }
         ],
         CVE: [
             {
-                name: "Mr. Rajkumar",
-                designation: "Technical Assistant",
-                department: "Civil Engineering",
+                name: "Mr. K Rajkumar",
+                designation: "Multi-Tasking Staff",
+                department: "Department of Civil",
                 email: "rajkumar@nitgoa.ac.in",
-                phone: "Extension No.: - (Internal)",
+                phone: "0832-2404805",
                 image: RajkumarCVE
             }
         ],
         APS: [
             {
-                name: "Ms. Priyanka",
-                designation: "Technical Assistant",
-                department: "Applied Sciences & HSS",
-                email: "priyanka@nitgoa.ac.in",
-                phone: "Extension No.: - (Internal)",
+                name: "Ms. Priyanka Parab",
+                designation: "Technician",
+                department: "Department of Applied Sciences",
+                email: "priyankaparab@nitgoa.ac.in",
+                phone: "0832-2404722",
                 image: PriyankaAPS
             }
         ],
         CCC: [
             {
-                name: "Mr. Nijin",
-                designation: "Technical Assistant",
-                department: "Computer Center",
-                email: "nijin@nitgoa.ac.in",
-                phone: "Extension No.: - (Internal)",
-                image: NijinCCC
+                name: "Mr. Venkat R Grandhi",
+                designation: "Senior Technical Assistant",
+                speciality: "(System Administrator)",
+                department: "Campus Control Centre",
+                email: "sysadmin@nitgoa.ac.in",
+                phone: "0832-2404851",
+                image: VenkatCCC
             },
             {
-                name: "Mr. Rameez",
-                designation: "Technical Assistant",
-                department: "Computer Center",
-                email: "rameez@nitgoa.ac.in",
-                phone: "Extension No.: - (Internal)",
+                name: "Mr. Rameez Rahman",
+                designation: "Senior Technical Assistant",
+                speciality: "(Network Administrator)",
+                department: "Campus Control Centre",
+                email: "netadmin@nitgoa.ac.in",
+                phone: "0832-2404852",
                 image: RameezCCC
             },
             {
-                name: "Mr. Venkat",
+                name: "Mr. Nijin Mambrol",
                 designation: "Technical Assistant",
-                department: "Computer Center",
-                email: "venkat@nitgoa.ac.in",
-                phone: "Extension No.: - (Internal)",
-                image: VenkatCCC
+                speciality:  "(MIS Administrator)",
+                department: "Campus Control Centre",
+                email: "misadmin@nitgoa.ac.in",
+                phone: "0832-2404853",
+                image: NijinCCC
             }
+            
         ]
     };
 
@@ -220,17 +224,17 @@ const TechnicalStaff = () => {
 
     return (
         <div className={`technical-staff-page ${theme}`}>
-            <div className="staff-container">
+            <div className="technical-staff-container">
                 {/* Department Filter Buttons */}
-                <div className="department-section">
-                    <h2 className="current-department">
+                <div className="technical-staff-department-section">
+                    <h2 className="technical-staff-current-department">
                         {departments.find(dept => dept.code === selectedDepartment)?.name || 'Department'} - Technical Staff
                     </h2>
-                    <div className="department-filters">
+                    <div className="technical-staff-department-filters">
                         {departments.map((dept) => (
                             <button
                                 key={dept.code}
-                                className={`filter-btn ${selectedDepartment === dept.code ? 'active' : ''}`}
+                                className={`technical-staff-filter-btn ${selectedDepartment === dept.code ? 'active' : ''}`}
                                 onClick={() => handleDepartmentFilter(dept.code)}
                             >
                                 {dept.code}
@@ -240,26 +244,27 @@ const TechnicalStaff = () => {
                 </div>
 
                 {/* Staff Grid */}
-                <div className="staff-grid">
+                <div className="technical-staff-grid">
                     {staffData[selectedDepartment] && staffData[selectedDepartment].length > 0 ? (
                         staffData[selectedDepartment].map((staff, index) => (
-                            <div key={index} className="staff-card">
-                                <div className="staff-image">
+                            <div key={index} className="technical-staff-card">
+                                <div className="technical-staff-image">
                                     <img src={staff.image} alt={staff.name} />
                                 </div>
-                                <div className="staff-info">
-                                    <h3 className="staff-name">{staff.name}</h3>
-                                    <p className="staff-designation">{staff.designation}</p>
-                                    <p className="staff-department">{staff.department}</p>
-                                    <div className="staff-contact">
+                                <div className="technical-staff-info">
+                                    <h3 className="technical-staff-name">{staff.name}</h3>
+                                    <p className="technical-staff-designation">{staff.designation}</p>
+                                    <p className="technical-staff-designation">{staff.speciality}</p>
+                                    <p className="technical-staff-department">{staff.department}</p>
+                                    <div className="technical-staff-contact">
                                         <p><strong>Email:</strong> {staff.email}</p>
-                                        <p><strong>Phone:</strong> {staff.phone}</p>
+                                        <p><strong>Extension No.:</strong> {staff.phone}</p>
                                     </div>
                                 </div>
                             </div>
                         ))
                     ) : (
-                        <div className="no-staff">
+                        <div className="no-technical-staff">
                             <p>Technical staff information for {selectedDepartment} department will be updated soon.</p>
                         </div>
                     )}

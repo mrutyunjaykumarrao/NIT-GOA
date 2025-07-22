@@ -26,216 +26,226 @@ import Asmita from '../../../assets/images/Administrative Staff/asmita.jpeg';
 import KishorPariyekar from '../../../assets/images/Administrative Staff/kishor.jpg';
 import Kumaraguru from '../../../assets/images/Administrative Staff/kumaraguru.jpg';
 import ArchanaMisal from '../../../assets/images/Administrative Staff/archana.jpg';
+import suneel_Mudhole from '../../../assets/images/Administrative Staff/Suneel_Mudhole.jpg';
 
 const AdministrativeStaff = () => {
     const { theme } = useTheme();
     const staffData = [
         {
             name: "Mr. Amit Kabiraj",
-            designation: "Assistant Registrar",
+            designation: "Deputy Registrar",
             department: "Administration",
-            email: "akabiraj@nitgoa.ac.in",
-            phone: "Extension No.: 0832-2404422 (Internal)",
+            email: "dy.reg@nitgoa.ac.in",
+            phone: "0832-2404209",
             image: AmitKabiraj
-        },
-        {
-            name: "Mr. Amit Naik",
-            designation: "Junior Assistant",
-            department: "Administration",
-            email: "amit.naik@nitgoa.ac.in",
-            phone: "Extension No.: 0832-2404218 (Internal)",
-            image: AmitNaik
-        },
-        {
-            name: "Ms. Rashmi",
-            designation: "Assistant Librarian",
-            department: "Library",
-            email: "rashmi@nitgoa.ac.in",
-            phone: "Extension No.: 0832-2404399 (Internal)",
-            image: RashmiAsstLib
-        },
-        {
-            name: "Ms. Sweta",
-            designation: "Technical Assistant",
-            department: "Administration",
-            email: "sweta@nitgoa.ac.in",
-            phone: "Extension No.: 0832-2404533 (Internal)",
-            image: SwetaNew
-        },
-        {
-            name: "Ms. Tallulah Rodrigues",
-            designation: "Assistant Registrar",
-            department: "Administration",
-            email: "tallulah@nitgoa.ac.in",
-            phone: "Extension No.: 0832-2404826 (Internal)",
-            image: Tallulah
-        },
-        {
-            name: "Estate Engineer",
-            designation: "Estate Engineer",
-            department: "Estate Management",
-            email: "estate@nitgoa.ac.in",
-            phone: "Extension No.: 0832-2404237 (Internal)",
-            image: EstateEngg
         },
         {
             name: "Mr. Manmohan Sakhuja",
             designation: "Assistant Registrar",
             department: "Accounts | Establishment | General Administration | Student Cell",
-            email: "msakhuja@nitgoa.ac.in",
-            phone: "Extension No.: 0832-2404218 (Internal)",
+            email: "ar_af@nitgoa.ac.in",
+            phone: "0832-2404210",
             image: ManmohanAsstReg
         },
         {
-            name: "Mr. Digamber D. Manekar",
+            name: "Mr. Digamber D. Mayekar",
             designation: "Accountant",
-            department: "Administration",
-            email: "digamber.manekar@nitgoa.ac.in",
-            phone: "Extension No.: 0832-2404422 (Internal)",
+            // department: "Administration",
+            email: "digamber.mayekar@nitgoa.ac.in",
+            phone: "0832-2404221",
             image: DigambarManekar
+        },
+        {
+            name: "Mr. Amit Ajit Naik",
+            designation: "Superintendent",
+            // department: "Administration",
+            email: "amitnaik@nitgoa.ac.in",
+            phone: "0832-2404311",
+            image: AmitNaik
         },
         {
             name: "Mr. Anand Gachchinamath",
             designation: "Superintendent",
-            department: "Administration",
-            email: "a.anand@nitgoa.ac.in",
-            phone: "Extension No.: 0832-2404721 (Internal)",
+            // department: "Administration",
+            email: "anandg@nitgoa.ac.in",
+            phone: "0832-2404221",
             image: AnandGachchinamath
         },
         {
-            name: "AOP",
-            designation: "Administrative Officer",
-            department: "Administration",
-            email: "aop@nitgoa.ac.in",
-            phone: "Extension No.: - (Internal)",
-            image: AOP
+            name: "Dr. S. Kumaraguru",
+            designation: "Student Activity and Sports Officer",
+            department: "(On Contract)",
+            email: "sports_officer@nitgoa.ac.in",
+            phone: "0832-2404237",
+            image: Kumaraguru
         },
+
         {
-            name: "Ms. Reshma Noronha",
-            designation: "Assistant Section Officer",
-            department: "Administration",
-            email: "reshma.noronha@nitgoa.ac.in",
-            phone: "Extension No.: 0832-2404422 (Internal)",
+            name: "Ms. Shewale Rashmi Madhukar",
+            designation: "Assistant Librarian",
+            department: "(On Temporary Basis)",
+            email: "smadhukar@nitgoa.ac.in",
+            phone: "0832-2404208",
+            image: RashmiAsstLib
+        }, 
+        {
+            name: "Mrs. Reshma R. Castelino",
+            designation: "Technical Assistant",
+            department: "(Medical Unit)",
+            email: "reshma.castelino@nitgoa.ac.in",
+            phone: "0832-2404267",
             image: ReshmaNoronha
         },
         {
-            name: "Stenographer",
+            name: "Mrs. Lotliker Swara Sarvesh",
             designation: "Stenographer",
-            department: "Administration",
-            email: "steno@nitgoa.ac.in",
-            phone: "Extension No.: - (Internal)",
+            // department: "Administration",
+            email: "stenographer@nitgoa.ac.in",
+            phone: "0832-2404200",
             image: StenoPhoto
         },
         {
-            name: "Ms. Namrata G",
-            designation: "Junior Assistant",
-            department: "Administration",
+            name: "Mrs. Sweta Jadhav",
+            designation: "Senior Assistant",
+            // department: "Administration",
+            email: "sweta.jadhav@nitgoa.ac.in",
+            phone: "0832-2404318",
+            image: SwetaNew
+        },
+        {
+            name: "Mrs. Namrata Prajesh Sawant",
+            designation: "Senior Assistant",
+            // department: "Administration",
             email: "namrata@nitgoa.ac.in",
-            phone: "Extension No.: - (Internal)",
+            phone: "0832-2404206",
             image: NamrataG
         },
         {
-            name: "Mr. Karthi",
-            designation: "Administrative Staff",
-            department: "Administration",
-            email: "karthi@nitgoa.ac.in",
-            phone: "Extension No.: - (Internal)",
+            name: "Mr. Karthikeyan M.",
+            designation: "Junior Assistant",
+            department: "(Relieved on Deputation)",
+            email: "karthikeyan@nitgoa.ac.in",
+            phone: "0832-2404221",
             image: KarthiPhoto
         },
         {
-            name: "Mr. Sandeep Jai",
-            designation: "Administrative Staff",
-            department: "Administration",
-            email: "sandeep.jai@nitgoa.ac.in",
-            phone: "Extension No.: - (Internal)",
+            name: "Mrs. Tallulah Rodrigues",
+            designation: "Junior Assistant",
+            // department: "Administration",
+            email: "tallulah@nitgoa.ac.in",
+            phone: "0832-2404322",
+            image: Tallulah
+        },
+        {
+            name: "Mr. Sandeep Jaishwar",
+            designation: "Junior Assistant",
+            // department: "Administration",
+            email: "sandeep8025@nitgoa.ac.in",
+            phone: "0832-2404200",
             image: SandeepJai
         },
         {
-            name: "Ms. Supriya Tiwe",
-            designation: "Multi Tasking Staff",
-            department: "Administration",
-            email: "supriya.tiwe@nitgoa.ac.in",
-            phone: "Extension No.: 0832-2404422 (Internal)",
+            name: "Mrs. Supriya S Shet Tilve",
+            designation: "Junior Assistant",
+            department: "Department of Electrical & Electronics Engineering",
+            email: "supriya.tilve@nitgoa.ac.in",
+            phone: "0832-2404605",
             image: SupriyaTiwe
         },
         {
-            name: "Mr. Pritam Nageshkar",
-            designation: "Multi Tasking Staff",
-            department: "Administration",
-            email: "pritam.nageshkar@nitgoa.ac.in",
-            phone: "Extension No.: 0832-2404422 (Internal)",
-            image: PritamNageshkar
-        },
-        {
-            name: "Ms. Dipti Gaude",
-            designation: "Multi Tasking Staff",
-            department: "Administration",
-            email: "dipti.gaude@nitgoa.ac.in",
-            phone: "Extension No.: 0832-2404422 (Internal)",
-            image: DiptiGaude
-        },
-        {
-            name: "Ms. Tejubi",
-            designation: "Multi Tasking Staff",
-            department: "Administration",
+            name: "Mrs.Teju Vasim Shaikh",
+            designation: "Junior Assistant",
+            // department: "Administration",
             email: "tejubi@nitgoa.ac.in",
-            phone: "Extension No.: - (Internal)",
+            phone: "0832-2404221",
             image: Tejubi
         },
         {
-            name: "Ms. Asmita",
-            designation: "Multi Tasking Staff",
-            department: "Administration",
-            email: "asmita@nitgoa.ac.in",
-            phone: "Extension No.: - (Internal)",
+            name: "Mr. Pritam Nageshkar",
+            designation: "Multi-Tasking Staff",
+            // department: "Administration",
+            email: "pritamnageshkar@nitgoa.ac.in",
+            phone: "0832-2404221",
+            image: PritamNageshkar
+        },
+        {
+            name: "Mrs. Dipti Devidas Gaude",
+            designation: "Multi-Tasking Staff",
+            // department: "Administration",
+            email: "dipti@nitgoa.ac.in",
+            phone: "0832-2404200",
+            image: DiptiGaude
+        },
+        {
+            name: "Mrs. Asmita Ashok Naik",
+            designation: "Multi-Tasking Staff",
+            // department: "Administration",
+            email: "asmitnaik03@nitgoa.ac.in",
+            phone: "0832-2404221",
             image: Asmita
         },
         {
-            name: "Mr. Kishor Pariyekar",
-            designation: "Multi Tasking Staff",
-            department: "Administration",
-            email: "kishor.pariyekar@nitgoa.ac.in",
-            phone: "Extension No.: 0832-2404695 (Internal)",
+            name: "Mr. Vinay Acharya",
+            designation: "Estate Engineer",
+            department: "(On Contract Basis)",
+            email: "ee.civil@nitgoa.ac.in",
+            phone: "- (Internal)",
+            image: EstateEngg
+        },
+        {
+            name: "Mr. Kishor Paryekar",
+            designation: "Junior Assistant-Purchase",
+            department: "(On Contract Basis)",
+            email: "paryekarkishor@nitgoa.ac.in",
+            phone: "0832-2404206",
             image: KishorPariyekar
         },
         {
-            name: "Mr. Aju Milind",
-            designation: "Administrative Officer (HR Contract)",
-            department: "Administration",
-            email: "aju.milind@nitgoa.ac.in",
-            phone: "Extension No.: - (Internal)",
-            image: Kumaraguru
+            name: "Mr. Atul Milind",
+            designation: "Administrative Officer (T&P Cell)",
+            department: "(On Contract)",
+            email: "aop@nitgoa.ac.in",
+            phone: "- (Internal)",
+            image: AOP
+        },
+        {
+            name: "Mr. Suneel Mudhole",
+            designation: "Field Technician ",
+            department: "(On Contract Basis)",
+            email: "suneelmudhole@nitgoa.ac.in",
+            phone: "- (Internal)",
+            image: suneel_Mudhole
         },
         {
             name: "Mrs. Archana Darshan Misal",
-            designation: "Multi Tasking Staff",
-            department: "Administration",
-            email: "archana.misal@nitgoa.ac.in",
-            phone: "Extension No.: 0832-2404999 (Internal)",
+            designation: "Student Counselor",
+            department: "(On Contract Basis)" ,
+            email: "studentcounselor@nitgoa.ac.in",
+            phone: "- (Internal)",
             image: ArchanaMisal
         }
     ];
 
     return (
         <div className={`administrative-staff-page ${theme}`}>
-            <div className="staff-container">
-                <div className="current-department">
+            <div className="administrative-staff-container">
+                <div className="administrative-staff-current-department">
                     Administrative Staff
                 </div>
 
-                <div className="staff-grid">
+                <div className="administrative-staff-grid">
                     {staffData.map((staff, index) => (
-                        <div key={index} className="staff-card">
-                            <div className="staff-image">
+                        <div key={index} className="administrative-staff-card">
+                            <div className="administrative-staff-image">
                                 <img src={staff.image} alt={staff.name} />
                             </div>
-                            <div className="staff-info">
-                                <h3 className="staff-name">{staff.name}</h3>
-                                <p className="staff-designation">{staff.designation}</p>
-                                <p className="staff-department">{staff.department}</p>
-                                <div className="staff-contact">
+                            <div className="administrative-staff-info">
+                                <h3 className="administrative-staff-name">{staff.name}</h3>
+                                <p className="administrative-staff-designation">{staff.designation}</p>
+                                <p className="administrative-staff-department">{staff.department}</p>
+                                <div className="administrative-staff-contact">
                                     <p><strong>Email:</strong> {staff.email}</p>
-                                    <p><strong>Phone:</strong> {staff.phone}</p>
+                                    <p><strong>Extenson No.:</strong> {staff.phone}</p>
                                 </div>
                             </div>
                         </div>

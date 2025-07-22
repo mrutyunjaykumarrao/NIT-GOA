@@ -2,7 +2,24 @@
 .administrative-staff-page {
     background-color: white;
     padding-top: 20px;
-    padding-bottom: 40px;
+    pa.administrative-staff-contact {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: left;
+    margin-top: auto;
+}
+
+.administrative-staff-contact p {
+    margin: 4px 0;
+    font-size: 13px;
+    color: #555;
+}
+
+.administrative-staff-contact strong {
+    color: #1976d2;
+};
     transition: background-color 0.3s ease;
 }
 
@@ -12,14 +29,14 @@
     color: #e0e0e0;
 }
 
-.staff-container {
+.administrative-staff-container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 60px;
 }
 
 /* Department Section */
-.current-department {
+.administrative-staff-current-department {
     text-align: center;
     font-size: 24px;
     font-weight: 600;
@@ -31,8 +48,8 @@
     border-left: 4px solid #2196f3;
 }
 
-/* Staff Grid */
-.staff-grid {
+/* Administrative Staff Grid */
+.administrative-staff-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
@@ -40,8 +57,8 @@
     justify-items: center;
 }
 
-/* Staff Card */
-.staff-card {
+/* Administrative Staff Card */
+.administrative-staff-card {
     background: white;
     border-radius: 15px;
     padding: 25px;
@@ -57,12 +74,12 @@
     flex-direction: column;
 }
 
-.staff-card:hover {
+.administrative-staff-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
-.staff-image {
+.administrative-staff-image {
     width: 220px;
     height: 280px;
     border-radius: 8px;
@@ -71,20 +88,20 @@
     border: 3px solid #e0e0e0;
 }
 
-.staff-image img {
+.administrative-staff-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.staff-info {
+.administrative-staff-info {
     text-align: center;
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
-.staff-name {
+.administrative-staff-name {
     font-size: 18px;
     font-weight: 700;
     color: #1976d2;
@@ -98,7 +115,7 @@
     text-overflow: ellipsis;
 }
 
-.staff-designation {
+.administrative-staff-designation {
     font-size: 15px;
     font-weight: 600;
     color: #424242;
@@ -111,7 +128,7 @@
     text-overflow: ellipsis;
 }
 
-.staff-department {
+.administrative-staff-department {
     font-size: 13px;
     color: #666;
     margin-bottom: 15px;
@@ -124,7 +141,7 @@
     text-overflow: ellipsis;
 }
 
-.staff-contact {
+.administrative-staff-contact {
     background: #f8f9fa;
     padding: 12px;
     border-radius: 8px;
@@ -145,31 +162,44 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .staff-container {
+    .administrative-staff-container {
         padding: 0 15px;
     }
     
-    .staff-grid {
+    .administrative-staff-grid {
         grid-template-columns: 1fr;
         gap: 20px;
     }
     
-    .staff-card {
+    .administrative-staff-card {
         padding: 20px;
         height: 420px;
         min-height: 420px;
         max-height: 420px;
     }
     
-    .staff-name {
+    .administrative-staff-image {
+        width: 180px;
+        height: 180px;
+        margin: 0 auto 12px;
+        flex-shrink: 0;
+    }
+    
+    .administrative-staff-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .administrative-staff-name {
         font-size: 18px;
     }
     
-    .staff-designation {
+    .administrative-staff-designation {
         font-size: 15px;
     }
     
-    .current-department {
+    .administrative-staff-current-department {
         font-size: 20px;
         margin-bottom: 30px;
         padding: 12px;
@@ -181,27 +211,35 @@
         padding-top: 10px;
     }
     
-    .staff-card {
+    .administrative-staff-card {
         padding: 15px;
         height: 400px;
         min-height: 400px;
         max-height: 400px;
     }
     
-    .staff-image {
-        width: 200px;
-        height: 250px;
+    .administrative-staff-image {
+        width: 180px;
+        height: 180px;
+        margin: 0 auto 10px;
+        flex-shrink: 0;
     }
     
-    .staff-name {
+    .administrative-staff-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .administrative-staff-name {
         font-size: 16px;
     }
     
-    .staff-designation {
+    .administrative-staff-designation {
         font-size: 14px;
     }
     
-    .current-department {
+    .administrative-staff-current-department {
         font-size: 18px;
         margin-bottom: 20px;
         padding: 10px;
@@ -210,18 +248,18 @@
 
 /* Large Screen Responsiveness (2K, 4K, TV) */
 @media (min-width: 1920px) {
-    .staff-container {
+    .administrative-staff-container {
         max-width: 1800px;
         padding: 0 80px;
     }
     
-    .staff-grid {
+    .administrative-staff-grid {
         grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
         gap: 40px;
         padding: 30px 0;
     }
     
-    .staff-card {
+    .administrative-staff-card {
         max-width: 420px;
         height: 500px;
         min-height: 500px;
@@ -229,7 +267,7 @@
         padding: 30px;
     }
     
-    .staff-image {
+    .administrative-staff-image {
         width: 240px;
         height: 240px;
     }
@@ -241,18 +279,18 @@
 }
 
 @media (min-width: 2560px) {
-    .staff-container {
+    .administrative-staff-container {
         max-width: 2400px;
         padding: 0 120px;
     }
     
-    .staff-grid {
+    .administrative-staff-grid {
         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         gap: 50px;
         padding: 40px 0;
     }
     
-    .staff-card {
+    .administrative-staff-card {
         max-width: 450px;
         height: 520px;
         min-height: 520px;
@@ -260,73 +298,74 @@
         padding: 35px;
     }
     
-    .staff-image {
+    .administrative-staff-image {
         width: 260px;
         height: 260px;
     }
     
-    .current-department {
+    .administrative-staff-current-department {
         font-size: 32px;
         padding: 25px;
     }
     
-    .staff-name {
+    .administrative-staff-name {
         font-size: 20px;
     }
     
-    .staff-designation {
+    .administrative-staff-designation {
         font-size: 17px;
     }
 }
 
 /* Dark Mode Theme Styles */
-.administrative-staff-page.dark .current-department {
-    background: linear-gradient(135deg, #1e3a8a, #1e40af);
-    color: #e0e0e0;
-    border-left: 4px solid #3b82f6;
+.administrative-staff-page.dark .administrative-staff-current-department {
+    background: linear-gradient(135deg, #1e1e1e, #37474f);
+    color: #4fc3f7;
+    border-left: 4px solid #4fc3f7;
 }
 
-.administrative-staff-page.dark .staff-card {
+.administrative-staff-page.dark .administrative-staff-card {
     background: #1e1e1e;
-    border: 1px solid #333;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid #37474f;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
-.administrative-staff-page.dark .staff-card:hover {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+.administrative-staff-page.dark .administrative-staff-card:hover {
+    box-shadow: 0 8px 30px rgba(79, 195, 247, 0.2);
+    border-color: #4fc3f7;
 }
 
-.administrative-staff-page.dark .staff-name {
-    color: #3b82f6;
+.administrative-staff-page.dark .administrative-staff-name {
+    color: #4fc3f7;
 }
 
-.administrative-staff-page.dark .staff-designation {
-    color: #d1d5db;
+.administrative-staff-page.dark .administrative-staff-designation {
+    color: #b0bec5;
 }
 
-.administrative-staff-page.dark .staff-department {
-    color: #9ca3af;
+.administrative-staff-page.dark .administrative-staff-department {
+    color: #78909c;
 }
 
-.administrative-staff-page.dark .staff-contact {
-    background: #2d2d2d;
-    border: 1px solid #404040;
+.administrative-staff-page.dark .administrative-staff-contact {
+    background: #121212;
+    border: 1px solid #37474f;
 }
 
-.administrative-staff-page.dark .staff-contact p {
-    color: #d1d5db;
+.administrative-staff-page.dark .administrative-staff-contact p {
+    color: #b0bec5;
 }
 
-.administrative-staff-page.dark .staff-contact strong {
-    color: #3b82f6;
+.administrative-staff-page.dark .administrative-staff-contact strong {
+    color: #4fc3f7;
 }
 
 .administrative-staff-page.dark .no-staff {
     background: #1e1e1e;
-    border: 1px solid #333;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid #37474f;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .administrative-staff-page.dark .no-staff p {
-    color: #9ca3af;
+    color: #b0bec5;
 }

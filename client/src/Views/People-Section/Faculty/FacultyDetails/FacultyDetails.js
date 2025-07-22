@@ -1,0 +1,757 @@
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useTheme } from '../../../../contexts/ThemeContext';
+import './FacultyDetails.css';
+
+// Import the Damodar Reddy Edla JSON data
+import damodarData from './data/cse_json/Damodar_Reddy_Edla.json';
+
+// Import faculty images
+import DamodarReddyEdla from '../../../../assets/images/Faculty/CSE/Dr. Damodar Reddy Edla.png';
+
+const FacultyDetails = () => {
+    const { id } = useParams();
+    const navigate = useNavigate();
+    const { theme } = useTheme();
+    const [faculty, setFaculty] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [expandedSections, setExpandedSections] = useState({
+        personalInfo: true,
+        contactInfo: true,
+        researchAreas: false,
+        coursesTaught: false,
+        academicInfo: false,
+        publications: false,
+        researchGuidance: false,
+        fundedProjects: false,
+        awards: false,
+        memberships: false,
+        professionalServices: false,
+        coursesAttended: false,
+        coursesConducted: false
+    });
+
+    const [expandedPublications, setExpandedPublications] = useState({
+        journal: false,
+        proceedings: false,
+        bookChapters: false,
+        booksAuthored: false
+    });
+
+    useEffect(() => {
+        // Scroll to top when component mounts
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+        
+        // For now, we'll use the hardcoded Damodar Reddy Edla data for all faculty
+        // Later this can be replaced with dynamic data fetching
+        setFaculty({
+            ...damodarData,
+            image: DamodarReddyEdla
+        });
+        setLoading(false);
+    }, [id]);
+
+    const toggleSection = (section) => {
+        setExpandedSections(prev => ({
+            ...prev,
+            [section]: !prev[section]
+        }));
+    };
+
+    const togglePublicationSubSection = (subSection) => {
+        setExpandedPublications(prev => ({
+            ...prev,
+            [subSection]: !prev[subSection]
+        }));
+    };
+
+    const handleBackToFaculty = () => {
+        navigate('/faculty');
+    };
+
+    const renderExpandableSection = (title, key, content, isExpanded = false) => (
+        <div className="expandable-section">
+            <div 
+                className="section-header" 
+                onClick={() => toggleSection(key)}
+            >
+                <div className="section-icon">
+                    <i className={`fas fa-${expandedSections[key] ? 'minus' : 'plus'}`}></i>
+                </div>
+                <h3>{title}</h3>
+                <i className={`fas fa-chevron-${expandedSections[key] ? 'up' : 'down'}`}></i>
+            </div>
+            <div className={`section-content ${expandedSections[key] ? 'expanded' : 'collapsed'}`}>
+                {content}
+            </div>
+        </div>
+    );
+
+    const renderPublicationSubSection = (title, key, content) => (
+        <div className="publication-sub-section">
+            <div 
+                className="publication-sub-header" 
+                onClick={() => togglePublicationSubSection(key)}
+            >
+                <h4>{title}</h4>
+                <i className={`fas fa-chevron-${expandedPublications[key] ? 'up' : 'down'}`}></i>
+            </div>
+            <div className={`publication-sub-content ${expandedPublications[key] ? 'expanded' : 'collapsed'}`}>
+                {content}
+            </div>
+        </div>
+    );
+
+    if (loading) {
+        return (
+            <div className="faculty-details-page">
+                <div className="loading-container">
+                    <div className="loading-spinner"></div>
+                    <p>Loading faculty details...</p>
+                </div>
+            </div>
+        );
+    }
+
+    if (!faculty) {
+        return (
+            <div className="faculty-details-page">
+                <div className="error-container">
+                    <h2>Faculty member not found</h2>
+                    <button onClick={handleBackToFaculty} className="back-button">
+                        ← Back to Faculty
+                    </button>
+                </div>
+            </div>
+        );
+    }
+
+    return (
+        <div className={`faculty-details-page ${theme}`} data-theme={theme}>
+            <div className="faculty-details-container">
+                {/* Back Button */}
+                <button onClick={handleBackToFaculty} className="back-button">
+                    <i className="fas fa-arrow-left"></i>
+                    Back To Faculty
+                </button>
+
+                {/* Main Content */}
+                <div className="faculty-main-content">
+                    {/* Left Column - Profile Image and Basic Info */}
+                    <div className="faculty-profile-card">
+                        <div className="faculty-details-image-container">
+                            <img 
+                                src={faculty.image} 
+                                alt={faculty.profile?.name}
+                                className="faculty-details-image"
+                                onError={(e) => {
+                                    e.target.src = '/api/placeholder/300/350';
+                                }}
+                            />
+                        </div>
+                        
+                        <div className="faculty-basic-info">
+                            <p className="facultydetails-designation">{faculty.profile?.designation}</p>
+                            <div className="title-divider"></div>
+                            <h1 className="faculty-details-name">{faculty.profile?.name}</h1>
+                            <p className="faculty-details-department">{faculty.profile?.department}</p>
+                            
+                            {/* Social/Contact Links */}
+                            <div className="faculty-links">
+                                <div className="faculty-details-social-link">
+                                    <i className="fas fa-envelope"></i>
+                                </div>
+                                <div className="faculty-details-social-link">
+                                    <i className="fab fa-linkedin"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right Column - Details */}
+                    <div className="faculty-details-content">
+                        {/* Personal Information Section */}
+                        <div className="info-section personal-info-section">
+                            <div className="section-header-main">
+                                <h2>Personal Information</h2>
+                                <button 
+                                    className="edit-button"
+                                    onClick={() => toggleSection('personalInfo')}
+                                >
+                                    <i className="fas fa-edit"></i>
+                                </button>
+                            </div>
+                            
+                            {expandedSections.personalInfo && (
+                                <div className="info-grid">
+                                    <div className="info-row">
+                                        <span className="info-label">Name :</span>
+                                        <span className="info-value">{faculty.personalInformation?.name}</span>
+                                    </div>
+                                    <div className="info-row">
+                                        <span className="info-label">Gender :</span>
+                                        <span className="info-value">{faculty.personalInformation?.gender}</span>
+                                    </div>
+                                    <div className="info-row">
+                                        <span className="info-label">Birth Date :</span>
+                                        <span className="info-value">{faculty.personalInformation?.birthDate || '-'}</span>
+                                    </div>
+                                    <div className="info-row">
+                                        <span className="info-label">Date of Joining :</span>
+                                        <span className="info-value">{faculty.personalInformation?.dateOfJoining}</span>
+                                    </div>
+                                    <div className="info-row full-width">
+                                        <span className="info-label">Research/Teaching Experience :</span>
+                                        <span className="info-value">{faculty.personalInformation?.experience}</span>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Contact Information Section */}
+                        <div className="info-section contact-info-section">
+                            <div className="section-header-main">
+                                <h2>Contact Information</h2>
+                                <button 
+                                    className="edit-button"
+                                    onClick={() => toggleSection('contactInfo')}
+                                >
+                                    <i className="fas fa-edit"></i>
+                                </button>
+                            </div>
+                            
+                            {expandedSections.contactInfo && (
+                                <div className="info-grid">
+                                    <div className="info-row">
+                                        <span className="info-label">Email Address :</span>
+                                        <span className="info-value">{faculty.contactInformation?.email}</span>
+                                    </div>
+                                    <div className="info-row">
+                                        <span className="info-label">Phone [Residence] :</span>
+                                        <span className="info-value">-</span>
+                                    </div>
+                                    <div className="info-row">
+                                        <span className="info-label">Phone [Mobile] :</span>
+                                        <span className="info-value">{faculty.contactInformation?.phoneMobile}</span>
+                                    </div>
+                                    <div className="info-row">
+                                        <span className="info-label">Office Extension :</span>
+                                        <span className="info-value">-</span>
+                                    </div>
+                                     <div className="info-row full-width">
+                                        <span className="info-label">Address :</span>
+                                        <span className="info-value">{faculty.contactInformation?.address}</span>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+
+                {/* Expandable Sections */}
+                <div className="expandable-sections">
+                    {renderExpandableSection(
+                        "Research Area",
+                        "researchAreas",
+                        <div className="research-areas-enhanced">
+                            <div className="research-category">
+                                {/* <h4>Primary Research Areas</h4> */}
+                                <div className="research-areas">
+                                    {faculty.profile?.researchAreaSummary?.map((area, index) => (
+                                        <span key={index} className="research-tag">{area}</span>
+                                    ))}
+                                </div>
+                            </div>
+                            {/* {faculty.researchAreas && faculty.researchAreas.length > 0 && (
+                                // <div className="research-category">
+                                //     <h4>Detailed Research Areas</h4>
+                                //     <ul className="research-list">
+                                //         {faculty.researchAreas.map((area, index) => (
+                                //             <li key={index}>{area}</li>
+                                //         ))}
+                                //     </ul>
+                                // </div>
+                            )} */}
+                        </div>
+                    )}
+
+                    {renderExpandableSection(
+                        "Courses Taught",
+                        "coursesTaught",
+                        <div className="courses-section">
+                            <div className="course-category">
+                                <h4>Undergraduate Courses</h4>
+                                <ul>
+                                    {faculty.coursesTaught?.ug?.map((course, index) => (
+                                        <li key={index}>{course}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="course-category">
+                                <h4>Postgraduate Courses</h4>
+                                <ul>
+                                    {faculty.coursesTaught?.pg?.map((course, index) => (
+                                        <li key={index}>{course}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    )}
+
+                    {renderExpandableSection(
+                        "Academic Information",
+                        "academicInfo",
+                        <div className="academic-info-table-container">
+                            <table className="academic-info-table">
+                                <thead>
+                                    <tr>
+                                        <th>Degree</th>
+                                        <th>Institute</th>
+                                        <th>Subject</th>
+                                        <th>Year</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {faculty.academicInformation?.map((edu, index) => (
+                                        <tr key={index}>
+                                            <td className="degree-cell">{edu.degree}</td>
+                                            <td className="institute-cell">{edu.institute}</td>
+                                            <td className="subject-cell">{edu.subject}</td>
+                                            <td className="year-cell">{edu.year}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    )}
+
+                    {renderExpandableSection(
+                        "Paper Published",
+                        "publications",
+                        <div className="publications-section">
+                            {/* Journal Publications Sub-dropdown */}
+                            {faculty.publications?.journal && faculty.publications.journal.length > 0 && 
+                                renderPublicationSubSection(
+                                    `Publications Table (${faculty.publications.journal.length})`,
+                                    "journal",
+                                    <div className="publications-scrollable-container">
+                                        <table className="publications-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Sr. No.</th>
+                                                    <th>Publication Details</th>
+                                                    <th>Year</th>
+                                                    <th>Month</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {faculty.publications.journal.map((pub, index) => {
+                                                    const yearMatch = pub.match(/\b(19|20)\d{2}\b/);
+                                                    const monthMatch = pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i);
+                                                    const year = yearMatch ? yearMatch[0] : '-';
+                                                    const month = monthMatch ? monthMatch[1] : '-';
+                                                    
+                                                    return (
+                                                        <tr key={index}>
+                                                            <td>{index + 1}</td>
+                                                            <td className="publication-title">{pub}</td>
+                                                            <td className="publication-year">{year}</td>
+                                                            <td className="publication-month">{month}</td>
+                                                        </tr>
+                                                    );
+                                                })}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                )
+                            }
+                            
+                            {/* Conference Proceedings Sub-dropdown */}
+                            {faculty.publications?.proceedings && faculty.publications.proceedings.length > 0 && 
+                                renderPublicationSubSection(
+                                    `Conference Proceedings Table (${faculty.publications.proceedings.length})`,
+                                    "proceedings",
+                                    <div className="publications-scrollable-container">
+                                        <table className="publications-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Sr. No.</th>
+                                                    <th>Publication Details</th>
+                                                    <th>Year</th>
+                                                    <th>Month</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {faculty.publications.proceedings.map((pub, index) => {
+                                                    const yearMatch = pub.match(/\b(19|20)\d{2}\b/);
+                                                    const monthMatch = pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i);
+                                                    const year = yearMatch ? yearMatch[0] : '-';
+                                                    const month = monthMatch ? monthMatch[1] : '-';
+                                                    
+                                                    return (
+                                                        <tr key={index}>
+                                                            <td>{index + 1}</td>
+                                                            <td className="publication-title">{pub}</td>
+                                                            <td className="publication-year">{year}</td>
+                                                            <td className="publication-month">{month}</td>
+                                                        </tr>
+                                                    );
+                                                })}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                )
+                            }
+
+                            {/* Book Chapters Sub-dropdown */}
+                            {faculty.publications?.bookChapters && faculty.publications.bookChapters.length > 0 && 
+                                renderPublicationSubSection(
+                                    `Book Chapters Table (${faculty.publications.bookChapters.length})`,
+                                    "bookChapters",
+                                    <div className="publications-scrollable-container">
+                                        <table className="publications-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Sr. No.</th>
+                                                    <th>Publication Details</th>
+                                                    <th>Year</th>
+                                                    <th>Month</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {faculty.publications.bookChapters.map((pub, index) => {
+                                                    const yearMatch = pub.match(/\b(19|20)\d{2}\b/);
+                                                    const monthMatch = pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i);
+                                                    const year = yearMatch ? yearMatch[0] : '-';
+                                                    const month = monthMatch ? monthMatch[1] : '-';
+                                                    
+                                                    return (
+                                                        <tr key={index}>
+                                                            <td>{index + 1}</td>
+                                                            <td className="publication-title">{pub}</td>
+                                                            <td className="publication-year">{year}</td>
+                                                            <td className="publication-month">{month}</td>
+                                                        </tr>
+                                                    );
+                                                })}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                )
+                            }
+
+                            {/* Books Authored Sub-dropdown */}
+                            {faculty.publications?.booksAuthored && faculty.publications.booksAuthored.length > 0 && 
+                                renderPublicationSubSection(
+                                    `Books Authored Table (${faculty.publications.booksAuthored.length})`,
+                                    "booksAuthored",
+                                    <div className="publications-scrollable-container">
+                                        <table className="publications-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Sr. No.</th>
+                                                    <th>Publication Details</th>
+                                                    <th>Year</th>
+                                                    <th>Month</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {faculty.publications.booksAuthored.map((pub, index) => {
+                                                    const yearMatch = pub.match(/\b(19|20)\d{2}\b/);
+                                                    const monthMatch = pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i);
+                                                    const year = yearMatch ? yearMatch[0] : '-';
+                                                    const month = monthMatch ? monthMatch[1] : '-';
+                                                    
+                                                    return (
+                                                        <tr key={index}>
+                                                            <td>{index + 1}</td>
+                                                            <td className="publication-title">{pub}</td>
+                                                            <td className="publication-year">{year}</td>
+                                                            <td className="publication-month">{month}</td>
+                                                        </tr>
+                                                    );
+                                                })}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                )
+                            }
+                        </div>
+                    )}
+
+                    {renderExpandableSection(
+                        "Research Guidance",
+                        "researchGuidance",
+                        <div className="research-guidance-cards">
+                            {faculty.researchGuidance?.map((student, index) => {
+                                // Extract student name, degree type, and status from the text
+                                const degreeMatch = student.match(/(Ph\.?D\.?|M\.?Tech\.?|M\.?S\.?|B\.?Tech\.?)/i);
+                                const statusMatch = student.match(/(completed|ongoing|submitted|awarded)/i);
+                                const yearMatch = student.match(/\b(19|20)\d{2}\b/);
+                                
+                                const degree = degreeMatch ? degreeMatch[0] : 'Research';
+                                const status = statusMatch ? statusMatch[0] : 'Ongoing';
+                                const year = yearMatch ? yearMatch[0] : '';
+                                
+                                return (
+                                    <div key={index} className="guidance-card">
+                                        <div className="guidance-header">
+                                            <div className="guidance-degree-badge">{degree}</div>
+                                            <div className={`guidance-status-badge ${status.toLowerCase()}`}>
+                                                {status}
+                                            </div>
+                                        </div>
+                                        <div className="guidance-content">
+                                            <p className="guidance-text">{student}</p>
+                                            {year && <div className="guidance-year">{year}</div>}
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    )}
+
+                    {renderExpandableSection(
+                        "Funded Research Project",
+                        "fundedProjects",
+                        <div className="funded-projects-table-container">
+                            <table className="funded-projects-table">
+                                <thead>
+                                    <tr>
+                                        <th>Sr. No.</th>
+                                        <th>Project Details</th>
+                                        <th>Funding Agency</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {faculty.fundedProjects?.map((project, index) => {
+                                        // Create structured data for each project
+                                        const projectData = {
+                                            1: {
+                                                agency: "The Research Council of Norway under INTPART",
+                                                amount: "₹4 Crores"
+                                            },
+                                            2: {
+                                                agency: "DST-SERB",
+                                                amount: "₹6.6 Lakhs"
+                                            },
+                                            3: {
+                                                agency: "The PMU Cybersecurity Center",
+                                                amount: "USD 6000"
+                                            },
+                                            4: {
+                                                agency: "ARTPARK (IISc Bangalore)",
+                                                amount: "₹3.6 Lakhs"
+                                            },
+                                            5: {
+                                                agency: "DST-SERB",
+                                                amount: "₹18.3 Lakhs"
+                                            }
+                                        };
+                                        
+                                        const currentProject = projectData[index + 1];
+                                        const agency = currentProject ? currentProject.agency : '-';
+                                        const amount = currentProject ? currentProject.amount : '-';
+                                        
+                                        return (
+                                            <tr key={index}>
+                                                <td>{index + 1}</td>
+                                                <td className="project-details-cell">{project}</td>
+                                                <td className="agency-cell">{agency}</td>
+                                                <td className="amount-cell">{amount}</td>
+                                            </tr>
+                                        );
+                                    })}
+                                </tbody>
+                            </table>
+                        </div>
+                    )}
+
+                    {renderExpandableSection(
+                        "Award and Honor",
+                        "awards",
+                        <div className="awards-timeline">
+                            {faculty.awardsAndHonors?.map((award, index) => {
+                                // Determine award type/category
+                                const awardType = award.toLowerCase().includes('best') ? 'excellence' :
+                                                 award.toLowerCase().includes('recognition') ? 'recognition' :
+                                                 award.toLowerCase().includes('honor') ? 'honor' : 'achievement';
+                                
+                                return (
+                                    <div key={index} className="award-item">
+                                        <div className="award-timeline-marker">
+                                            <i className={`fas ${awardType === 'excellence' ? 'fa-trophy' : 
+                                                                awardType === 'recognition' ? 'fa-medal' :
+                                                                awardType === 'honor' ? 'fa-star' : 'fa-award'}`}></i>
+                                        </div>
+                                        <div className="award-content">
+                                            <h4 className="award-title">{award}</h4>
+                                            <div className={`award-category ${awardType}`}>
+                                                {awardType.charAt(0).toUpperCase() + awardType.slice(1)}
+                                            </div>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    )}
+
+                    {renderExpandableSection(
+                        "Membership and Professional Society",
+                        "memberships",
+                        <div className="memberships-section">
+                            <ul>
+                                {faculty.memberships?.map((membership, index) => (
+                                    <li key={index}>
+                                        {membership}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+
+                    {renderExpandableSection(
+                        "Professional Services",
+                        "professionalServices",
+                        <div className="professional-services-section">
+                            <ul>
+                                {faculty.professionalServices?.map((service, index) => (
+                                    <li key={index}>
+                                        {service}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+
+                    {renderExpandableSection(
+                        "Training/Conferences/Short Term Courses Attended",
+                        "coursesAttended",
+                        <div className="courses-attended-table-container">
+                            <table className="courses-attended-table">
+                                <thead>
+                                    <tr>
+                                        <th>Sr. No.</th>
+                                        <th>Course/Conference Details</th>
+                                        <th>Year</th>
+                                        <th>Duration</th>
+                                        <th>Venue/Place</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {faculty.coursesAttended?.map((course, index) => {
+                                        // Extract year, duration, and venue from course info
+                                        const yearMatch = course.info.match(/\b(19|20)\d{2}\b/);
+                                        const durationMatch = course.info.match(/(\d+)\s*(day|week|month)s?/i);
+                                        
+                                        // Enhanced venue extraction - get city/location from end of string
+                                        let venue = '-';
+                                        // Try to extract venue from various patterns
+                                        const venuePatterns = [
+                                            /,\s*([^,\n.]+)\.?\s*$/,  // Last item after comma
+                                            /\),\s*([^,\n.]+)\.?\s*$/,  // After closing parenthesis
+                                            /(Barcelona, Spain|Macau, Hong Kong|Trivandrum|Rourkela|Bhuvaneswar)/i,  // Specific locations
+                                            /\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*),?\s*(?:[A-Z][a-z]+)?\s*\.?$/  // City names at end
+                                        ];
+                                        
+                                        for (let pattern of venuePatterns) {
+                                            const match = course.info.match(pattern);
+                                            if (match) {
+                                                venue = match[1] ? match[1].trim().replace(/\.$/, '') : match[0].trim().replace(/\.$/, '');
+                                                break;
+                                            }
+                                        }
+                                        
+                                        const year = yearMatch ? yearMatch[0] : '-';
+                                        const duration = durationMatch ? `${durationMatch[1]} ${durationMatch[2]}${durationMatch[1] > 1 ? 's' : ''}` : '-';
+                                        
+                                        return (
+                                            <tr key={index}>
+                                                <td>{index + 1}</td>
+                                                <td className="course-details-cell">{course.info}</td>
+                                                <td className="year-cell">{year}</td>
+                                                <td className="duration-cell">{duration}</td>
+                                                <td className="venue-cell">{venue}</td>
+                                            </tr>
+                                        );
+                                    })}
+                                </tbody>
+                            </table>
+                        </div>
+                    )}
+
+                    {renderExpandableSection(
+                        "Training/Conferences/Short Term Courses Conducted",
+                        "coursesConducted",
+                        <div className="courses-conducted-table-container">
+                            <table className="courses-conducted-table">
+                                <thead>
+                                    <tr>
+                                        <th>Sr. No.</th>
+                                        <th>Course/Conference Details</th>
+                                        <th>Year</th>
+                                        <th>Duration</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {faculty.coursesConducted?.map((course, index) => {
+                                        // Extract year, duration, and venue from course info
+                                        const yearMatch = course.info.match(/\b(19|20)\d{2}\b/);
+                                        
+                                        // Enhanced duration extraction for various patterns
+                                        let duration = '-';
+                                        const durationPatterns = [
+                                            /(\d+)\s*-\s*(\d+)\s+(January|February|March|April|May|June|July|August|September|October|November|December)/i,  // Date ranges like "3-13 July"
+                                            /(\d+)(?:st|nd|rd|th)?\s+(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/i,  // Single date like "8th July", "19 Jan"
+                                            /(\d+)\s+(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s*,?\s*(\d{4})/i,  // Single date with year
+                                            /(\d+)\s*-\s*(\d+)\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/i,  // Date ranges with short months like "1-6 April"
+                                            /(\d+)\s*-\s*(\d+)\s+(March|April|May|June|July|December)/i,  // Date ranges with full month names
+                                            /(25\s*-\s*27\s+October|3-13\s+July|March\s+17|5-9\s+December|12-18\s+December|5\s+June|23\s+January|1-6\s+April|4\s*-\s*5\s+March|6-10\s+July|4\s+July|5\s+May)/i  // Specific date patterns
+                                        ];
+                                        
+                                        for (let pattern of durationPatterns) {
+                                            const match = course.info.match(pattern);
+                                            if (match) {
+                                                if (pattern === durationPatterns[0]) {
+                                                    // Date range like "3-13 July"
+                                                    duration = `${match[1]}-${match[2]} ${match[3]}`;
+                                                } else if (pattern === durationPatterns[1]) {
+                                                    // Single date like "8th July" or "19 Jan"
+                                                    duration = `${match[1]} ${match[2]}`;
+                                                } else if (pattern === durationPatterns[2]) {
+                                                    // Single date with year like "23 January, 2020"
+                                                    duration = `${match[1]} ${match[2]}`;
+                                                } else if (pattern === durationPatterns[3] || pattern === durationPatterns[4]) {
+                                                    // Date ranges like "1-6 April"
+                                                    duration = `${match[1]}-${match[2]} ${match[3]}`;
+                                                } else {
+                                                    // Specific dates
+                                                    duration = match[0];
+                                                }
+                                                break;
+                                            }
+                                        }
+                                        
+                                        const year = yearMatch ? yearMatch[0] : '-';
+                                        
+                                        return (
+                                            <tr key={index}>
+                                                <td>{index + 1}</td>
+                                                <td className="course-details-cell">{course.info}</td>
+                                                <td className="year-cell">{year}</td>
+                                                <td className="duration-cell">{duration}</td>
+                                            </tr>
+                                        );
+                                    })}
+                                </tbody>
+                            </table>
+                        </div>
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default FacultyDetails;
