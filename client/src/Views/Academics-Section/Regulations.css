@@ -41,6 +41,32 @@
     background-clip: text;
 }
 
+/* Additional heading styles for dark mode */
+.regulations-page h1 {
+  color: #2c3e50;
+}
+
+[data-theme="dark"] .regulations-page h1 {
+  color: #ffffff !important;
+}
+
+.regulations-page h2 {
+  color: #222;
+}
+
+[data-theme="dark"] .regulations-page h2 {
+  color: #ffffff !important;
+}
+
+/* Event title styling for dark mode */
+.regulations-page .event-title {
+  color: #1565c0;
+}
+
+[data-theme="dark"] .regulations-page .event-title {
+  color: #6fa6ff !important;
+}
+
 .page-subtitle {
     font-size: 1.2rem;
     color: #666;

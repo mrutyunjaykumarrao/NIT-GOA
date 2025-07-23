@@ -9,6 +9,32 @@
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
 }
 
+/* Heading styles for dark mode */
+.academic-calendar-page h1 {
+  color: #2c3e50;
+}
+
+[data-theme="dark"] .academic-calendar-page h1 {
+  color: #ffffff !important;
+}
+
+.academic-calendar-page h2 {
+  color: #222;
+}
+
+[data-theme="dark"] .academic-calendar-page h2 {
+  color: #ffffff !important;
+}
+
+/* Event title styling for dark mode */
+.event-title {
+  color: #1565c0;
+}
+
+[data-theme="dark"] .event-title {
+  color: #6fa6ff !important;
+}
+
 .academic-calendar-container {
   max-width: 1200px;
   margin: 0 auto;

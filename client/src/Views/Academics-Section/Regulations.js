@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Regulations.css';
 
 const regulationsData = [
@@ -59,6 +59,22 @@ const regulationsData = [
 ];
 
 const Regulations = () => {
+	useEffect(() => {
+		// Check if there's a hash in the URL and scroll to it
+		if (window.location.hash) {
+			const targetId = window.location.hash.substring(1); // Remove the # symbol
+			const targetElement = document.getElementById(targetId);
+			if (targetElement) {
+				setTimeout(() => {
+					targetElement.scrollIntoView({ 
+						behavior: 'smooth', 
+						block: 'start' 
+					});
+				}, 100); // Small delay to ensure the component is fully rendered
+			}
+		}
+	}, []);
+
 	return (
 		<div className="regulations-page">
 			<div className="regulations-container">
@@ -73,7 +89,7 @@ const Regulations = () => {
 					Rules and Regulations
 				</h1>
 				{regulationsData.map((block, i) => (
-					<div key={i} style={{ marginBottom: '2.5rem' }}>
+					<div key={i} style={{ marginBottom: '2.5rem' }} id={block.section === 'U.G Curriculum:' ? 'ug-curriculum' : undefined}>
 						<h2
 							style={{
 								fontWeight: 700,
