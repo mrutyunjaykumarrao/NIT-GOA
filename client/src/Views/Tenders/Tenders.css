@@ -1,14 +1,18 @@
-/* Tenders Page Styles - Based on Annual Reports Design */
+/* Tenders Page Styles */
 .tender-page-container {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     min-height: 100vh;
-    background: white;
-    padding: 40px 20px;
+    padding: 2rem 0;
     transition: background-color 0.3s ease, color 0.3s ease;
     overflow-x: hidden;
     overflow-y: auto;
     will-change: transform;
     contain: layout style paint;
     scroll-behavior: smooth;
+}
+
+[data-theme="dark"] .tender-page-container {
+    background: linear-gradient(135deg, #0a1220 0%, #1a2332 50%, #253041 100%);
 }
 
 .tender-page-container::-webkit-scrollbar {
@@ -22,7 +26,7 @@
 
 .tender-page-content {
     width: 100%;
-    max-width: 90%;
+    max-width: 1200px;
     margin: 0 auto;
     background: white;
     border-radius: 15px;
@@ -33,26 +37,42 @@
     contain: layout style paint;
 }
 
+[data-theme="dark"] .tender-page-content {
+    background: #1e293b;
+    box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3);
+}
+
 @media (min-width: 1200px) {
     .tender-page-content {
-        max-width: 90%;
+        max-width: 1200px;
     }
 }
 
-.tender-page-title {
-    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-    font-size: 2.8rem;
-    font-weight: 800;
+/* Page Header */
+.tender-page-header {
     text-align: center;
-    margin-bottom: 0;
-    letter-spacing: 1px;
-    background: linear-gradient(90deg, #1565c0 0%, #42a5f5 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-    position: relative;
-    padding-bottom: 18px;
+    margin-bottom: 3rem;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+    border-radius: 20px;
+    color: white;
+    box-shadow: 0 10px 30px rgba(74, 144, 226, 0.3);
+}
+
+[data-theme="dark"] .tender-page-header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+    box-shadow: 0 10px 30px rgba(30, 58, 138, 0.4);
+}
+
+.tender-page-title {
+    font-weight: 700;
+    font-size: 2.2rem;
+    margin: 0;
+    color: white;
+}
+
+[data-theme="dark"] .tender-page-title {
+    color: white;
 }
 
 .tender-page-title-divider {
@@ -83,31 +103,45 @@
 .tender-page-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    padding-left: 20px;
+    gap: 1rem;
 }
 
 .tender-page-link {
-    color: #3498db;
+    color: #1565c0;
     text-decoration: none;
     font-size: 1.1rem;
     font-weight: 500;
-    padding: 12px 15px;
-    border-left: 4px solid #3498db;
-    background: #f8f9fa;
-    border-radius: 5px;
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
     transition: all 0.3s ease;
     position: relative;
     display: block;
     line-height: 1.5;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .tender-page-link {
+    color: #6fa6ff;
+    background: #1e293b;
+    border-color: rgba(100, 116, 139, 0.2);
+    box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3);
 }
 
 .tender-page-link:hover {
-    color: #2980b9;
-    background: #e3f2fd;
-    border-left-color: #2980b9;
-    transform: translateX(5px);
-    box-shadow: 0 3px 10px rgba(52, 152, 219, 0.2);
+    color: #1565c0;
+    background: #f1f5fb;
+    border-color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .tender-page-link:hover {
+    color: #6fa6ff;
+    background: #253041;
+    border-color: #4A9EE7;
+    box-shadow: 0 8px 25px rgba(15, 23, 38, 0.5);
 }
 
 .tender-page-link:before {
@@ -275,60 +309,4 @@
     .tender-page-title {
         font-size: 3.6rem;
     }
-}
-
-/* Dark Theme Support */
-[data-theme="dark"] .tender-page-container {
-    background: linear-gradient(135deg, #1e1e1e 0%, #2c2c2c 100%);
-    color: #ffffff;
-}
-
-[data-theme="dark"] .tender-page-content {
-    background: rgba(44, 44, 44, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-}
-
-[data-theme="dark"] .tender-page-title {
-    background: linear-gradient(90deg, #64B5F6 0%, #90CAF9 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-}
-
-[data-theme="dark"] .tender-page-title-divider {
-    background: linear-gradient(90deg, #64B5F6 0%, #90CAF9 100%);
-}
-
-[data-theme="dark"] .tender-page-section-title {
-    background: linear-gradient(135deg, #1e40af 0%, #1e293b 100%);
-    color: #64B5F6;
-    box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
-}
-
-[data-theme="dark"] .tender-page-link {
-    color: #64B5F6;
-    background: rgba(55, 65, 81, 0.7);
-    border-left-color: #64B5F6;
-}
-
-[data-theme="dark"] .tender-page-link:hover {
-    color: #90CAF9;
-    background: rgba(100, 181, 246, 0.1);
-    border-left-color: #90CAF9;
-    box-shadow: 0 3px 10px rgba(100, 181, 246, 0.2);
-}
-
-[data-theme="dark"] .tender-page-section p,
-[data-theme="dark"] .tender-page-section li {
-    color: #CCCCCC;
-}
-
-[data-theme="dark"] .tender-page-section a {
-    color: #64B5F6;
-}
-
-[data-theme="dark"] .tender-page-section a:hover {
-    color: #90CAF9;
 }

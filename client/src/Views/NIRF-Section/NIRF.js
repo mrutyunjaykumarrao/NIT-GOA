@@ -89,10 +89,8 @@ const NIRF = () => {
     return (
         <div className="nirf-page">
             <div className="nirf-container">
-                <div className="nirf-hero">
-                    <div className="nirf-hero-content">
-                        <h1 className="nirf-title">NIRF FORMS</h1>
-                    </div>
+                <div className="page-header">
+                    <h1>NIRF Forms</h1>
                 </div>
 
                 <div className="nirf-content">

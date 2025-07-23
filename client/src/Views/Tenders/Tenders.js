@@ -447,11 +447,10 @@ const Tenders = () => {
 
     return (
         <div className="tender-page-container">
+            <div className="tender-page-header">
+                    <h1 className="tender-page-title">Tenders</h1>
+            </div>
             <div className="tender-page-content">
-                <h1 className="tender-page-title">Tenders</h1>
-                <br />
-                <br />
-                
                 <div className="tender-page-section">
                     <div className="tender-page-list">
                         {tenders.map(tender => (
