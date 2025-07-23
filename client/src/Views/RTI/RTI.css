@@ -1,482 +1,488 @@
-.rti-page {
+/* Make minutes links inline and only as wide as their content */
+.rti-minutes-list {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 0 !important;
+  width: auto !important;
+  padding-left: 0 !important;
+  margin: 0 !important;
+}
+
+.rti-minutes-link {
+  display: block !important;
+  width: auto !important;
+  min-width: 110px;
+  white-space: nowrap !important;
+  margin: 0 12px 12px 0 !important;
+  padding: 10px 18px !important;
+  color: #1565c0 !important;
+  font-size: 1.08rem !important;
+  font-weight: 600 !important;
+  background: #f8f9fa !important;
+  border-left: 5px solid #3498db !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(21, 101, 192, 0.08) !important;
+  text-decoration: none !important;
+  transition: color 0.2s, box-shadow 0.2s !important;
+  position: static !important;
+  line-height: 1.5 !important;
+ 
+}
+.rti-minutes-link:hover {
+  color: #0d47a1 !important;
+  background: #e3f2fd !important;
+  border-left-color: #0d47a1 !important;
+  box-shadow: 0 4px 16px rgba(21, 101, 192, 0.13) !important;
+}
+.rti-minutes-link:before {
+  content: none !important;
+  display: none !important;
+}
+/* RTI Page Styles - Based on Tenders Page */
+.rti-page-container {
     min-height: 100vh;
-    padding: 40px 0;
     background: white;
-    position: relative;
+    padding: 40px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+    will-change: transform;
+    contain: layout style paint;
 }
 
-.rti-page::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-    opacity: 0.3;
-    pointer-events: none;
-}
-
-.rti-container {
+.rti-page-content {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
-    position: relative;
-    z-index: 1;
-}
-
-.page-header {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.page-header h1 {
-    font-size: 3.5rem;
-    color: #2c3e50;
-    margin-bottom: 20px;
-    font-weight: 700;
-}
-
-.page-subtitle {
-    font-size: 1.3rem;
-    color: #666;
-    margin: 0;
-    font-weight: 500;
-}
-
-.rti-content {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.rti-section {
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     padding: 40px;
-    margin-bottom: 30px;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform;
+    contain: layout style paint;
 }
 
-.rti-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transition: left 0.8s ease;
+@media (min-width: 1200px) {
+    .rti-page-content {
+        max-width: 80%;
+    }
 }
 
-.rti-section:hover::before {
-    left: 100%;
-}
-
-.rti-section:hover {
-    transform: translateY(-5px);
-    box-shadow: 
-        0 12px 40px rgba(0, 0, 0, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
-}
-
-.overview-section {
-    background: #f8f9fa;
-    border: 2px solid #e9ecef;
-}
-
-.rti-section h2 {
-    color: #2c3e50;
-    font-size: 2.2rem;
-    margin-bottom: 25px;
-    border-bottom: 3px solid #e0e0e0;
-    padding-bottom: 15px;
-    font-weight: 600;
-}
-
-.rti-section h3 {
-    color: #2c3e50;
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    font-weight: 600;
-}
-
-.rti-section h4 {
-    color: #2c3e50;
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-.rti-section p {
-    color: #666;
-    line-height: 1.8;
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-}
-
-.rti-section ul {
-    color: #495057;
-    line-height: 1.8;
-    font-size: 1rem;
-    padding-left: 20px;
-}
-
-.rti-section li {
-    margin-bottom: 8px;
-    position: relative;
-}
-
-/* Officers Grid */
-.officers-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-top: 30px;
-}
-
-.officer-card {
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 15px;
-    padding: 25px;
-    transition: all 0.3s ease;
-}
-
-.officer-card:hover {
-    background: #ffffff;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.officer-card h3 {
+.rti-page-title {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 2.8rem;
+    font-weight: 800;
     text-align: center;
-    border-bottom: 2px solid #e0e0e0;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    color: #2c3e50;
-}
-
-.officer-details p {
-    margin-bottom: 10px;
-    font-size: 1rem;
-}
-
-.officer-details strong {
-    color: #2c3e50;
-    font-weight: 600;
-}
-
-/* Application Steps */
-.application-steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
-}
-
-.step-card {
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 15px;
-    padding: 25px;
-    text-align: center;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.step-card:hover {
-    background: #ffffff;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.step-number {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(45deg, #4CAF50, #45a049);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 0 auto 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.step-card h3 {
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.step-card p {
-    font-size: 0.95rem;
-    margin: 0;
-}
-
-/* Fee Table */
-.fee-table {
-    margin-top: 30px;
-    overflow-x: auto;
-}
-
-.fee-table table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #f8f9fa;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid #e9ecef;
-}
-
-.fee-table th,
-.fee-table td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid #e9ecef;
-    color: #2c3e50;
-}
-
-.fee-table th {
-    background: #e9ecef;
-    color: #2c3e50;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.9rem;
+    margin-bottom: 0;
     letter-spacing: 1px;
-}
-
-.fee-table tr:hover {
-    background: #ffffff;
-}
-
-.fee-exemption {
-    margin-top: 25px;
-    background: rgba(76, 175, 80, 0.1);
-    border: 1px solid rgba(76, 175, 80, 0.3);
-    border-radius: 12px;
-    padding: 20px;
-}
-
-.fee-exemption h3 {
-    color: #4CAF50;
-    margin-bottom: 10px;
-}
-
-/* Guidelines Grid */
-.guidelines-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
-}
-
-.guideline-card {
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 15px;
-    padding: 25px;
-    transition: all 0.3s ease;
-}
-
-.guideline-card:hover {
-    background: #ffffff;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.guideline-card h3 {
-    text-align: center;
-    border-bottom: 2px solid #e0e0e0;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-    color: #2c3e50;
-}
-
-.guideline-card ul {
-    list-style: none;
-    padding: 0;
-}
-
-.guideline-card li {
-    padding: 8px 0;
-    border-bottom: 1px solid #e9ecef;
+    background: linear-gradient(90deg, #1565c0 0%, #42a5f5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
     position: relative;
+    padding-bottom: 18px;
+}
+
+.rti-page-title-divider {
+    width: 80px;
+    height: 4px;
+    margin: 0 auto 40px auto;
+    background: linear-gradient(90deg, #1565c0 0%, #42a5f5 100%);
+    border: none;
+    border-radius: 3px;
+    opacity: 0.85;
+}
+
+.rti-page-section {
+    margin-bottom: 50px;
+}
+
+.rti-page-section-title {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.rti-officers-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 30px;
+}
+
+.rti-officer-card {
+    background: #f8f9fa;
+    border-left: 5px solid #1565c0;
+    border-radius: 8px;
+    padding: 18px 28px;
+    min-width: 260px;
+    flex: 1 1 260px;
+    box-shadow: 0 2px 8px rgba(21, 101, 192, 0.08);
+    transition: background-color 0.3s ease, border-left-color 0.3s ease, box-shadow 0.3s ease;
+    will-change: background-color, border-left-color;
+}
+.rti-officer-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1565c0;
+    margin-bottom: 6px;
+}
+.rti-officer-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+}
+.rti-officer-contact, .rti-officer-email {
+    font-size: 0.97rem;
+    color: #555;
+    margin-top: 2px;
+}
+.rti-officer-email a {
+    color: #1565c0;
+    text-decoration: underline;
+}
+
+.rti-page-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     padding-left: 20px;
 }
 
-.guideline-card li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: #4CAF50;
-    font-weight: bold;
-}
-
-.guideline-card li:last-child {
-    border-bottom: none;
-}
-
-/* Disclosure Grid */
-.disclosure-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
-}
-
-.disclosure-item {
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 12px;
-    padding: 20px;
-    transition: all 0.3s ease;
-}
-
-.disclosure-item:hover {
-    background: #ffffff;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.disclosure-item h4 {
-    color: #2c3e50;
-    margin-bottom: 10px;
+.rti-page-link {
+    color: #3498db;
+    text-decoration: none;
     font-size: 1.1rem;
-}
-
-.disclosure-item p {
-    margin: 0;
-    font-size: 0.95rem;
-    color: #666;
-}
-
-/* Contact Info */
-.contact-info {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
-}
-
-.contact-card {
+    font-weight: 500;
+    padding: 12px 15px;
+    border-left: 4px solid #3498db;
     background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 15px;
-    padding: 25px;
-    text-align: center;
-    transition: all 0.3s ease;
+    border-radius: 5px;
+    transition: color 0.2s ease, background-color 0.2s ease, border-left-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    display: block;
+    line-height: 1.5;
+    will-change: transform;
+}
+.rti-page-link:hover {
+    color: #2980b9;
+    background: #e3f2fd;
+    border-left-color: #2980b9;
+    transform: translateX(5px);
+    box-shadow: 0 3px 10px rgba(52, 152, 219, 0.2);
+}
+.rti-page-link:before {
+    content: "📄";
+    margin-right: 10px;
 }
 
-.contact-card:hover {
-    background: #ffffff;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.contact-card h3 {
-    border-bottom: 2px solid #e0e0e0;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-    color: #2c3e50;
-}
-
-.contact-card p {
-    margin-bottom: 8px;
-    font-size: 1rem;
-}
-
-.contact-card strong {
-    color: #2c3e50;
-    font-weight: 600;
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
-    .page-header h1 {
-        font-size: 2.5rem;
+    .rti-page-container {
+        padding: 20px 10px;
     }
-    
-    .rti-section {
-        padding: 30px 20px;
+    .rti-page-content {
+        padding: 20px;
     }
-    
-    .rti-section h2 {
-        font-size: 1.8rem;
+    .rti-page-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
     }
-    
-    .officers-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    .rti-page-section-title {
+        font-size: 1.5rem;
+        padding: 12px 15px;
     }
-    
-    .application-steps {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    .rti-page-link {
+        font-size: 1rem;
+        padding: 10px 12px;
     }
-    
-    .guidelines-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    .rti-officers-list {
+        flex-direction: column;
+        gap: 16px;
     }
-    
-    .disclosure-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    .rti-officer-card {
+        min-width: 0;
+        padding: 14px 16px;
     }
-    
-    .contact-info {
-        grid-template-columns: 1fr;
-        gap: 20px;
+}
+@media (max-width: 480px) {
+    .rti-page-title {
+        font-size: 1.5rem;
     }
-    
-    .fee-table {
-        font-size: 0.9rem;
+    .rti-page-section-title {
+        font-size: 1.3rem;
     }
-    
-    .fee-table th,
-    .fee-table td {
-        padding: 10px;
+    .rti-page-list {
+        padding-left: 10px;
+    }
+}
+@media print {
+    .rti-page-link {
+        color: #000 !important;
+        text-decoration: underline;
+        background: none;
+        border: none;
+        box-shadow: none;
+    }
+    .rti-page-content {
+        box-shadow: none;
+    }
+    .rti-page-section-title {
+        background: none;
+        color: #000;
+        border-bottom: 2px solid #000;
     }
 }
 
-@media (max-width: 480px) {
-    .rti-container {
-        padding: 0 15px;
+/* Large Screen Scaling - For screens larger than 1440px */
+@media (min-width: 1441px) {
+    .rti-page-container {
+        padding: 60px 40px;
     }
     
-    .page-header h1 {
-        font-size: 2rem;
+    .rti-page-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        transform: scale(1.02);
+        transform-origin: center;
+        margin-top: 40px;
+        margin-bottom: 40px;
     }
     
-    .page-subtitle {
-        font-size: 1.1rem;
+    .rti-page-title {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 1600px) {
+    .rti-page-container {
+        padding: 80px 50px;
     }
     
-    .rti-section {
-        padding: 25px 15px;
-        margin-bottom: 20px;
+    .rti-page-content {
+        max-width: 1500px;
+        transform: scale(1.04);
+        margin-top: 50px;
+        margin-bottom: 50px;
     }
     
-    .rti-section h2 {
-        font-size: 1.6rem;
+    .rti-page-title {
+        font-size: 3.2rem;
+    }
+}
+
+@media (min-width: 1920px) {
+    .rti-page-container {
+        padding: 100px 60px;
     }
     
-    .officer-card,
-    .step-card,
-    .guideline-card,
-    .contact-card {
-        padding: 20px 15px;
+    .rti-page-content {
+        max-width: 1600px;
+        transform: scale(1.06);
+        margin-top: 60px;
+        margin-bottom: 60px;
     }
     
-    .step-number {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
+    .rti-page-title {
+        font-size: 3.4rem;
     }
+}
+
+@media (min-width: 2560px) {
+    .rti-page-container {
+        padding: 120px 80px;
+    }
+    
+    .rti-page-content {
+        max-width: 1800px;
+        transform: scale(1.08);
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
+    
+    .rti-page-title {
+        font-size: 3.6rem;
+    }
+}
+
+/* Dark Theme Support */
+[data-theme="dark"] .rti-page-container {
+    background: linear-gradient(135deg, #1e1e1e 0%, #2c2c2c 100%);
+    color: #ffffff;
+}
+
+[data-theme="dark"] .rti-page-content {
+    background: rgba(44, 44, 44, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .rti-page-title {
+    background: linear-gradient(90deg, #64B5F6 0%, #90CAF9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+[data-theme="dark"] .rti-page-title-divider {
+    background: linear-gradient(90deg, #64B5F6 0%, #90CAF9 100%);
+}
+
+[data-theme="dark"] .rti-page-section-title {
+    background: linear-gradient(135deg, #1e40af 0%, #1e293b 100%);
+    color: #64B5F6;
+    box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+}
+
+/* RTI Officer Cards Dark Theme */
+[data-theme="dark"] .rti-officer-card {
+    background: rgba(55, 65, 81, 0.7);
+    border-left-color: #64B5F6;
+    box-shadow: 0 2px 8px rgba(100, 181, 246, 0.1);
+}
+
+[data-theme="dark"] .rti-officer-title {
+    color: #64B5F6;
+}
+
+[data-theme="dark"] .rti-officer-name {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .rti-officer-contact,
+[data-theme="dark"] .rti-officer-email {
+    color: #d1d5db;
+}
+
+[data-theme="dark"] .rti-officer-email a {
+    color: #64B5F6;
+}
+
+[data-theme="dark"] .rti-officer-email a:hover {
+    color: #90CAF9;
+}
+
+/* RTI Page Lists Dark Theme */
+[data-theme="dark"] .rti-page-list {
+    color: #d1d5db;
+}
+
+[data-theme="dark"] .rti-page-section p,
+[data-theme="dark"] .rti-page-section li {
+    color: #CCCCCC;
+}
+
+[data-theme="dark"] .rti-page-section a {
+    color: #64B5F6;
+}
+
+[data-theme="dark"] .rti-page-section a:hover {
+    color: #90CAF9;
+}
+
+/* RTI Minutes Links Dark Theme */
+[data-theme="dark"] .rti-minutes-link {
+    color: #64B5F6 !important;
+    background: rgba(55, 65, 81, 0.7) !important;
+    border-left-color: #64B5F6 !important;
+    box-shadow: 0 2px 8px rgba(100, 181, 246, 0.1) !important;
+}
+
+[data-theme="dark"] .rti-minutes-link:hover {
+    color: #90CAF9 !important;
+    background: rgba(100, 181, 246, 0.1) !important;
+    border-left-color: #90CAF9 !important;
+    box-shadow: 0 4px 16px rgba(100, 181, 246, 0.2) !important;
+}
+
+/* RTI Page Links Dark Theme */
+[data-theme="dark"] .rti-page-link {
+    color: #64B5F6;
+    background: rgba(55, 65, 81, 0.7);
+    border-left-color: #64B5F6;
+    box-shadow: 0 2px 8px rgba(100, 181, 246, 0.1);
+}
+
+[data-theme="dark"] .rti-page-link:hover {
+    color: #90CAF9;
+    background: rgba(100, 181, 246, 0.1);
+    border-left-color: #90CAF9;
+    box-shadow: 0 3px 10px rgba(100, 181, 246, 0.2);
+}
+
+/* Comprehensive Dark Theme for All Content Containers */
+[data-theme="dark"] .rti-page-section div,
+[data-theme="dark"] .rti-page-section ul,
+[data-theme="dark"] .rti-page-section ol,
+[data-theme="dark"] .rti-page-section table,
+[data-theme="dark"] .rti-content-box,
+[data-theme="dark"] .rti-document-section,
+[data-theme="dark"] .rti-rules-section,
+[data-theme="dark"] .rti-manual-section,
+[data-theme="dark"] .rti-audit-section,
+[data-theme="dark"] .rti-acts-section,
+[data-theme="dark"] .rti-statutes-section {
+    background: rgba(55, 65, 81, 0.7) !important;
+    color: #d1d5db !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Specific content areas that might have white backgrounds */
+[data-theme="dark"] .rti-page-section .content-wrapper,
+[data-theme="dark"] .rti-page-section .document-list,
+[data-theme="dark"] .rti-page-section .rules-container,
+[data-theme="dark"] .rti-page-section .manual-container,
+[data-theme="dark"] .rti-page-section .audit-container,
+[data-theme="dark"] .rti-page-section .acts-container {
+    background: rgba(55, 65, 81, 0.7) !important;
+    color: #d1d5db !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+/* Table elements in dark theme */
+[data-theme="dark"] .rti-page-section table {
+    background: rgba(55, 65, 81, 0.7) !important;
+    color: #d1d5db !important;
+    border-collapse: collapse;
+}
+
+[data-theme="dark"] .rti-page-section table th {
+    background: rgba(30, 64, 175, 0.8) !important;
+    color: #64B5F6 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme="dark"] .rti-page-section table td {
+    background: rgba(55, 65, 81, 0.5) !important;
+    color: #d1d5db !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Any nested content boxes */
+[data-theme="dark"] .rti-page-section .box,
+[data-theme="dark"] .rti-page-section .card,
+[data-theme="dark"] .rti-page-section .panel,
+[data-theme="dark"] .rti-page-section .container {
+    background: rgba(55, 65, 81, 0.7) !important;
+    color: #d1d5db !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Force dark background for any remaining white elements */
+[data-theme="dark"] .rti-page-section *[style*="background: white"],
+[data-theme="dark"] .rti-page-section *[style*="background-color: white"],
+[data-theme="dark"] .rti-page-section *[style*="background: #fff"],
+[data-theme="dark"] .rti-page-section *[style*="background-color: #fff"] {
+    background: rgba(55, 65, 81, 0.7) !important;
+    color: #d1d5db !important;
 }
