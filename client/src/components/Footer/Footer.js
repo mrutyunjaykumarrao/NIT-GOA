@@ -13,25 +13,32 @@ const Footer = () => {
     const initializeVisitorCounter = () => {
       const storedCount = localStorage.getItem('nitgoa_visitor_count');
       const storedDate = localStorage.getItem('nitgoa_last_visit');
+      const sessionId = sessionStorage.getItem('nitgoa_session_id');
       const today = new Date().toDateString();
 
-      if (storedCount && storedDate === today) {
-        // Same day visit - just use stored count
-        setVisitorCount(parseInt(storedCount));
-      } else {
-        // New day or first visit - increment counter
-        const baseCount = storedCount ? parseInt(storedCount) : 1247892;
-        const newCount = baseCount + Math.floor(Math.random() * 15) + 1;
+      // Check if this is a new session
+      if (!sessionId) {
+        // Generate unique session ID
+        const newSessionId = Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+        sessionStorage.setItem('nitgoa_session_id', newSessionId);
+        
+        // Increment visitor count for new session
+        const baseCount = storedCount ? parseInt(storedCount) : 1248157;
+        const newCount = baseCount + 1;
         
         setVisitorCount(newCount);
         localStorage.setItem('nitgoa_visitor_count', newCount.toString());
         localStorage.setItem('nitgoa_last_visit', today);
         
-        // Animate the counter on first load
+        // Animate the counter on new session
         setTimeout(() => {
           setAnimateCounter(true);
           setTimeout(() => setAnimateCounter(false), 1000);
-        }, 500);
+        }, 800);
+      } else {
+        // Existing session - just display current count
+        const currentCount = storedCount ? parseInt(storedCount) : 1248157;
+        setVisitorCount(currentCount);
       }
     };
 
@@ -39,19 +46,24 @@ const Footer = () => {
     setLastUpdated(new Date());
   }, []);
 
-  // Simulate realistic visitor counter updates
+  // Simulate realistic visitor counter updates (other visitors)
   useEffect(() => {
     const interval = setInterval(() => {
-      const increment = Math.floor(Math.random() * 3) + 1; // 1-3 visitors
-      setVisitorCount(prev => {
-        const newCount = prev + increment;
-        localStorage.setItem('nitgoa_visitor_count', newCount.toString());
-        return newCount;
-      });
-      setAnimateCounter(true);
-      setLastUpdated(new Date());
-      setTimeout(() => setAnimateCounter(false), 800);
-    }, Math.random() * 30000 + 15000); // Random interval between 15-45 seconds
+      // Only increment if there are likely other visitors (more conservative)
+      const shouldIncrement = Math.random() < 0.3; // 30% chance every interval
+      
+      if (shouldIncrement) {
+        const increment = Math.floor(Math.random() * 2) + 1; // 1-2 visitors
+        setVisitorCount(prev => {
+          const newCount = prev + increment;
+          localStorage.setItem('nitgoa_visitor_count', newCount.toString());
+          return newCount;
+        });
+        setAnimateCounter(true);
+        setLastUpdated(new Date());
+        setTimeout(() => setAnimateCounter(false), 600);
+      }
+    }, Math.random() * 45000 + 30000); // Random interval between 30-75 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -66,17 +78,85 @@ const Footer = () => {
     // Navigate to page
     navigate(path + hash);
     
-    // Smooth scroll to top or specific section
+    // Enhanced scroll to target element
     setTimeout(() => {
       if (hash) {
-        const element = document.getElementById(hash.substring(1));
+        const targetId = hash.substring(1);
+        let element = document.getElementById(targetId);
+        
+        // If exact ID not found, try to find by text content or alternative selectors
+        if (!element) {
+            // For UG Curriculum - look for heading containing this text
+            if (targetId === 'ug-curriculum') {
+              // First try to find the exact heading
+              const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+              element = Array.from(headings).find(h => 
+              h.textContent.includes('U.G Curriculum:') || 
+              h.textContent.toLowerCase().includes('u.g curriculum:') ||
+              h.textContent.toLowerCase().includes('ug curriculum:') ||
+              h.textContent.includes('U.G Curriculum') ||
+              h.textContent.toLowerCase().includes('undergraduate curriculum') ||
+              h.textContent.toLowerCase().includes('ug curriculum')
+              );
+              
+              // If heading not found, try to find any element containing the text
+              if (!element) {
+              const allElements = document.querySelectorAll('*');
+              element = Array.from(allElements).find(el => 
+              el.textContent && (
+              el.textContent.includes('U.G Curriculum:') ||
+              el.textContent.toLowerCase().includes('u.g curriculum:')
+              )
+              );
+              }
+              
+              // If still not found, try looking for elements with class or id containing curriculum
+              if (!element) {
+              element = document.querySelector('[class*="curriculum"], [id*="curriculum"]') ||
+                 document.querySelector('[class*="ug"], [id*="ug"]');
+              }
+              
+              // Add extra offset to scroll above the title for better visibility
+              if (element) {
+              const yOffset = -400; // Increased offset to scroll further up to clear navbar
+              const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+              return; // Exit early to prevent the general scroll code from running
+              }
+            }
+          
+          // For committee tables - look for table cells containing the committee name
+          if (targetId === 'institute-anti-ragging-committee') {
+            const cells = document.querySelectorAll('td, th');
+            const targetCell = Array.from(cells).find(cell => 
+              cell.textContent.toLowerCase().includes('institute anti-ragging committee') ||
+              cell.textContent.toLowerCase().includes('iarc')
+            );
+            element = targetCell?.closest('tr') || targetCell;
+          }
+          
+          if (targetId === 'grievance-redressal-committee') {
+            const cells = document.querySelectorAll('td, th');
+            const targetCell = Array.from(cells).find(cell => 
+              cell.textContent.toLowerCase().includes('grievance redressal committee')
+            );
+            element = targetCell?.closest('tr') || targetCell;
+          }
+        }
+        
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Scroll with larger offset from top to ensure title is visible
+          const yOffset = -150; 
+          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        } else {
+          // Fallback - scroll to top if target not found
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       } else {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
-    }, 100);
+    }, 300); // Increased timeout to ensure page is fully loaded
   };
 
   // Handle back navigation - scroll to footer
@@ -129,7 +209,7 @@ const Footer = () => {
                 <li><a href="https://mis.nitgoa.ac.in/misnitgoa/result.aspx" target="_blank" rel="noopener noreferrer">Results</a></li>
                 <li><a href="/rti" onClick={(e) => handleLinkClick(e, '/rti')}>RTI</a></li>
                 <li><a href="/sc-st-cell" onClick={(e) => handleLinkClick(e, '/sc-st-cell')}>SC/ST Cell</a></li>
-                <li><a href="/administration/committees#anti-ragging-committee" onClick={(e) => handleLinkClick(e, '/administration/committees', '#anti-ragging-committee')}>Anti-Ragging</a></li>
+                <li><a href="/administration/committees#institute-anti-ragging-committee" onClick={(e) => handleLinkClick(e, '/administration/committees', '#institute-anti-ragging-committee')}>Anti-Ragging</a></li>
                 <li><a href="/administration/committees#grievance-redressal-committee" onClick={(e) => handleLinkClick(e, '/administration/committees', '#grievance-redressal-committee')}>Grievance Portal</a></li>
               </ul>
             </div>

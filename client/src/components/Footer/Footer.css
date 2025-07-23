@@ -1440,13 +1440,12 @@
 .footer a:focus,
 .footer-social-icon:focus {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(74, 158, 231, 0.5);
-  border-radius: 4px;
+  box-shadow: none;
 }
 
 [data-theme="dark"] .footer a:focus,
 [data-theme="dark"] .footer-social-icon:focus {
-  box-shadow: 0 0 0 2px rgba(107, 182, 255, 0.5);
+  box-shadow: none;
 }
 
 /* High contrast mode support */
