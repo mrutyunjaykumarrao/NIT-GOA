@@ -195,14 +195,8 @@ const Footer = () => {
           <div className="footer-section footer-institute-info">
             {/* Visitor Counter */}
             <div className="footer-visitor-counter">
+              <h4>Total Visitors</h4>
               <div className="footer-counter-display">
-                <span className="footer-counter-label">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                    <circle cx="12" cy="12" r="3"/>
-                  </svg>
-                  Total Visitors
-                </span>
                 <div className={`footer-counter-digits ${animateCounter ? 'footer-counter-animate' : ''}`}>
                   {formatVisitorCount(visitorCount).map((digit, index) => (
                     <span key={index} className="footer-digit">{digit}</span>
