@@ -1,0 +1,66 @@
+{
+  "Training and Placement Cell": [
+    {
+        "Title" :  "Training and Placement Cell",
+        "Home": [
+                {
+                
+                "Description": "Welcome to the web interface of Training and Placement (T&P) cell of National Institute of Technology Goa (NIT Goa). It is an institute of national importance established by Ministry of Human Resources Development (MHRD), Government of India in 2010. The training and placement cell is endowed with the responsibility to cater to the needs of training and placement of its elite students. It helps the institute in inviting companies for campus recruitment, organising pre-placement talks, interviews and corporate interaction. This interface serves as a guide for the companies to make them familiar with the facts and process, pertaining to recruitment.",
+                "Downloads" : [
+                    {
+                        "file_name": "Placement Brochure",
+                        "link": "https://www.nitgoa.ac.in/uploads/DCRG%20form.pdf"
+                    },
+                    {
+                        "file_name": "Job Announcement Form",
+                        "link": "https://www.nitgoa.ac.in/placementcell/JAF%20-%20NIT%20Goa.docx"
+                    }
+                ],
+                "News" : [
+                    {
+                        "title": "Working Internships at DAAD",
+                        "link": "http://nitgoa.ac.in/uploaded_files/DAAD.pdf"
+                    },
+                    {
+                        "title": "Lecture by Representative of EDHEC B School",
+                        "link": "https://www.nitgoa.ac.in/placementcell/Poster10.pdf"
+                    },
+                    {
+                        "title": "Campus Recruitment Record (2013-14)",
+                        "link": "https://www.nitgoa.ac.in/placementcell/campus_placement_record_2013_-14.pdf"
+                    }     
+                ],
+                "Image_url" : "https://www.nitgoa.ac.in/placementcell/images/NITG.jpg"
+                } 
+            ],
+        "Directors Message" : [
+            {
+                "Title": "Director's Message",
+                "Description": [ 
+                    {"Paragraph_1": "It is my privilege being the director of the institute, which is graduating this year. NIT Goa aims at providing quality education and producing people equipped with necessary skills to work in this fast changing world. The world is changing too fast in terms of technology, skills and working environment. Therefore, it is necessary that the upcoming skill force have adequate preparation in their forming years."},
+
+                {"Paragraph_2": "The institute has taken adequate care in terms of building strong foundation of the students. The students have been exposed to strong foundation courses in terms of analytical and computing skills. With emphasis on problem solving and laboratory projects in small teams, they are prepared to work deeply in the real working environment. The students have worked with faculty members on a number of innovative projects. It is a matter of pride for this new institute that some of their works have been published in international conferences."},
+
+                {"Paragraph_3": "On behalf of NIT Goa, it is my privilege to invite companies for the campus recruitment that are looking for talented pool of people. I am sure that you will be greeted with young, bright and aspiring minds."}
+                
+            ],
+                "Image_url": "https://www.nitgoa.ac.in/placementcell/images/director2023.jpeg"
+            }
+        ],
+        "Announcements" : [
+                {
+                "file_name": "Companies",
+                 "link": "https://www.nitgoa.ac.in/placementcell/companies.html"
+                },
+                {
+                "file_name": "Speakers",
+                 "link": "https://www.nitgoa.ac.in/uploads/LEAVE%20ENCASHMENT%20NOMINATION%20FORM.pdf"
+                },
+                {
+                "file_name": "GITIC Student Connect Program",
+                "link": "https://www.nitgoa.ac.in/placementcell/Greetings%20from%20GITIC.pdf"
+                }
+        ]
+        }
+    ]
+}
