@@ -64,6 +64,9 @@ import HumanitiesSocialSciences from './Views/Academics-Section/Departments/Huma
 // e-Downloads Page
 import EDownloads from './Views/e-Downloads/EDownloads';
 
+// Training & Placement Section
+import FormsGuidelines from './Views/TnP-Section/FormsGuidelines';
+
 function App() {
   return (
     <ThemeProvider>
@@ -122,6 +125,9 @@ function AppContent() {
         
         {/* e-Downloads Route */}
         <Route path="/e-downloads" element={<EDownloads />} />
+        
+        {/* Training & Placement Routes */}
+        <Route path="/forms-guidelines" element={<FormsGuidelines />} />
         
         {/* Admissions Section Routes */}
         <Route path="/admissions/btech/josaa-csab" element={<BTechJosaa />} />

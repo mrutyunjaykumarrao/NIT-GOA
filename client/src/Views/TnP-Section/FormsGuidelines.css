@@ -1,0 +1,592 @@
+/* Forms & Guidelines Page Styles */
+
+.forms-guidelines-page {
+  min-height: auto;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 1rem 0rem 1rem 0rem;
+}
+
+[data-theme="dark"] .forms-guidelines-page {
+  background: linear-gradient(135deg, #0a1220 0%, #1a2332 50%, #253041 100%);
+}
+
+.forms-guidelines-container {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.forms-guidelines-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(25, 118, 210, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  color: white;
+}
+
+[data-theme="dark"] .forms-guidelines-header {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
+  box-shadow: 0 8px 30px rgba(30, 58, 138, 0.3);
+}
+
+.forms-guidelines-header:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(25, 118, 210, 0.4);
+}
+
+[data-theme="dark"] .forms-guidelines-header:hover {
+  box-shadow: 0 12px 40px rgba(30, 58, 138, 0.5);
+}
+
+.forms-guidelines-title {
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .forms-guidelines-title {
+  color: #ffffff;
+}
+
+.forms-guidelines-subtitle {
+  font-size: 1.2rem;
+  color: #ffffff;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+[data-theme="dark"] .forms-guidelines-subtitle {
+  color: #ffffff;
+}
+
+.forms-guidelines-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.forms-guidelines-section {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  margin-bottom: 0.5rem;
+}
+
+[data-theme="dark"] .forms-guidelines-section {
+  background: #1e293b;
+  box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3);
+}
+
+.forms-guidelines-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .forms-guidelines-section:hover {
+  box-shadow: 0 8px 25px rgba(15, 23, 38, 0.5);
+}
+
+.forms-guidelines-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+  color: white;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .forms-guidelines-section-header {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
+}
+
+.forms-guidelines-section-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.forms-guidelines-section-header:hover::before {
+  left: 100%;
+}
+
+.forms-guidelines-section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .forms-guidelines-section-title {
+  color: #e2e8f0;
+}
+
+.forms-guidelines-section-title::before {
+  content: "◆";
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+.forms-guidelines-arrow {
+  width: 2rem;
+  height: 2rem;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.forms-guidelines-arrow.rotated {
+  transform: rotate(180deg);
+}
+
+.forms-guidelines-arrow svg {
+  width: 100%;
+  height: 100%;
+}
+
+.forms-guidelines-section-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  background: #f8f9fa;
+}
+
+[data-theme="dark"] .forms-guidelines-section-content {
+  background: #0a1220;
+}
+
+.forms-guidelines-section-content.expanded {
+  max-height: 450px;
+  padding: 1.5rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Custom Scrollbar Styling */
+.forms-guidelines-section-content.expanded::-webkit-scrollbar {
+  width: 8px;
+}
+
+.forms-guidelines-section-content.expanded::-webkit-scrollbar-track {
+  background: #e9ecef;
+  border-radius: 4px;
+}
+
+[data-theme="dark"] .forms-guidelines-section-content.expanded::-webkit-scrollbar-track {
+  background: #1a2332;
+}
+
+.forms-guidelines-section-content.expanded::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #1976d2, #1565c0);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.forms-guidelines-section-content.expanded::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #1565c0, #0d47a1);
+}
+
+[data-theme="dark"] .forms-guidelines-section-content.expanded::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #4A9EE7, #2563eb);
+}
+
+[data-theme="dark"] .forms-guidelines-section-content.expanded::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #6fa6ff, #4A9EE7);
+}
+
+.forms-guidelines-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.forms-guidelines-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 4px solid #1976d2;
+  margin-bottom: 0.75rem;
+}
+
+[data-theme="dark"] .forms-guidelines-card {
+  background: #1e293b;
+  box-shadow: 0 4px 15px rgba(15, 23, 38, 0.3);
+  border-left-color: #4A9EE7;
+}
+
+.forms-guidelines-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-left-color: #1565c0;
+}
+
+[data-theme="dark"] .forms-guidelines-card:hover {
+  box-shadow: 0 8px 25px rgba(15, 23, 38, 0.5);
+  border-left-color: #6fa6ff;
+}
+
+.forms-guidelines-card-title {
+  color: #2c3e50;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  flex: 1;
+  line-height: 1.4;
+}
+
+[data-theme="dark"] .forms-guidelines-card-title {
+  color: #e2e8f0;
+}
+
+.forms-guidelines-download-btn {
+  background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 140px;
+  justify-content: center;
+}
+
+.forms-guidelines-download-btn:hover {
+  background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.4);
+}
+
+.forms-guidelines-download-btn:active {
+  transform: translateY(0);
+}
+
+.forms-guidelines-download-btn svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Responsive Design - Ultra-wide and Large Desktop Screens (1920px+) */
+@media (min-width: 1920px) {
+  .forms-guidelines-container {
+    max-width: 85%;
+    padding: 0 3rem;
+  }
+  
+  .forms-guidelines-title {
+    font-size: 3rem;
+  }
+  
+  .forms-guidelines-subtitle {
+    font-size: 1.4rem;
+  }
+  
+  .forms-guidelines-section-title {
+    font-size: 1.6rem;
+  }
+  
+  .forms-guidelines-card-title {
+    font-size: 1.1rem;
+  }
+  
+  .forms-guidelines-section-content.expanded {
+    max-height: 500px;
+  }
+}
+
+/* Large Desktop Screens (1440px - 1919px) */
+@media (max-width: 1919px) and (min-width: 1440px) {
+  .forms-guidelines-container {
+    max-width: 88%;
+  }
+  
+  .forms-guidelines-title {
+    font-size: 2.8rem;
+  }
+  
+  .forms-guidelines-section-content.expanded {
+    max-height: 480px;
+  }
+}
+
+/* Standard Desktop Screens (1200px - 1439px) */
+@media (max-width: 1439px) and (min-width: 1200px) {
+  .forms-guidelines-container {
+    max-width: 90%;
+  }
+  
+  .forms-guidelines-title {
+    font-size: 2.6rem;
+  }
+}
+
+/* Small Desktop and Large Tablet Screens (992px - 1199px) */
+@media (max-width: 1199px) and (min-width: 992px) {
+  .forms-guidelines-container {
+    max-width: 92%;
+    padding: 0 1.5rem;
+  }
+  
+  .forms-guidelines-title {
+    font-size: 2.4rem;
+  }
+  
+  .forms-guidelines-section-header {
+    padding: 1.25rem 1.5rem;
+  }
+  
+  .forms-guidelines-section-content.expanded {
+    max-height: 400px;
+  }
+}
+
+/* Tablet Screens (768px - 991px) */
+@media (max-width: 991px) and (min-width: 768px) {
+  .forms-guidelines-container {
+    max-width: 95%;
+    padding: 0 1rem;
+  }
+  
+  .forms-guidelines-title {
+    font-size: 2.2rem;
+  }
+  
+  .forms-guidelines-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .forms-guidelines-section-header {
+    padding: 1.2rem 1.5rem;
+  }
+  
+  .forms-guidelines-section-title {
+    font-size: 1.3rem;
+  }
+  
+  .forms-guidelines-card {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+    padding: 1.5rem;
+  }
+  
+  .forms-guidelines-card-title {
+    text-align: center;
+    font-size: 1rem;
+  }
+  
+  .forms-guidelines-download-btn {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .forms-guidelines-section-content.expanded {
+    max-height: 350px;
+    padding: 1.25rem;
+  }
+}
+
+/* Mobile Landscape and Small Tablet (576px - 767px) */
+@media (max-width: 767px) and (min-width: 576px) {
+  .forms-guidelines-container {
+    padding: 0 0.75rem;
+    max-width: 98%;
+  }
+  
+  .forms-guidelines-header {
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .forms-guidelines-title {
+    font-size: 2rem;
+  }
+  
+  .forms-guidelines-subtitle {
+    font-size: 1rem;
+  }
+  
+  .forms-guidelines-section-header {
+    padding: 1rem 1.25rem;
+  }
+  
+  .forms-guidelines-section-title {
+    font-size: 1.2rem;
+  }
+  
+  .forms-guidelines-card {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+    padding: 1.25rem;
+  }
+  
+  .forms-guidelines-card-title {
+    text-align: center;
+    font-size: 0.95rem;
+  }
+  
+  .forms-guidelines-download-btn {
+    min-width: auto;
+    width: 100%;
+    padding: 0.65rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .forms-guidelines-section-content.expanded {
+    max-height: 320px;
+    padding: 1rem;
+  }
+}
+
+/* Mobile Portrait (320px - 575px) */
+@media (max-width: 575px) {
+  .forms-guidelines-container {
+    padding: 0 0.5rem;
+    max-width: 100%;
+  }
+  
+  .forms-guidelines-header {
+    padding: 2rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .forms-guidelines-title {
+    font-size: 1.8rem;
+  }
+  
+  .forms-guidelines-subtitle {
+    font-size: 0.95rem;
+  }
+  
+  .forms-guidelines-content {
+    gap: 0.75rem;
+  }
+  
+  .forms-guidelines-section {
+    margin-bottom: 0.25rem;
+  }
+  
+  .forms-guidelines-section-header {
+    padding: 0.875rem 1rem;
+  }
+  
+  .forms-guidelines-section-title {
+    font-size: 1.1rem;
+    gap: 0.5rem;
+  }
+  
+  .forms-guidelines-section-title::before {
+    font-size: 1rem;
+  }
+  
+  .forms-guidelines-arrow {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  .forms-guidelines-card {
+    flex-direction: column;
+    gap: 0.875rem;
+    align-items: stretch;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .forms-guidelines-card-title {
+    text-align: center;
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+  
+  .forms-guidelines-download-btn {
+    min-width: auto;
+    width: 100%;
+    padding: 0.6rem 0.875rem;
+    font-size: 0.75rem;
+  }
+  
+  .forms-guidelines-section-content.expanded {
+    max-height: 300px;
+    padding: 0.875rem;
+  }
+  
+  .forms-guidelines-items {
+    gap: 0.375rem;
+  }
+}
+
+/* Extra Small Mobile (below 320px) */
+@media (max-width: 319px) {
+  .forms-guidelines-container {
+    padding: 0 0.25rem;
+  }
+  
+  .forms-guidelines-header {
+    padding: 1.5rem 0.75rem;
+  }
+  
+  .forms-guidelines-title {
+    font-size: 1.6rem;
+  }
+  
+  .forms-guidelines-subtitle {
+    font-size: 0.85rem;
+  }
+  
+  .forms-guidelines-section-header {
+    padding: 0.75rem 0.875rem;
+  }
+  
+  .forms-guidelines-section-title {
+    font-size: 1rem;
+  }
+  
+  .forms-guidelines-card {
+    padding: 0.875rem;
+  }
+  
+  .forms-guidelines-card-title {
+    font-size: 0.85rem;
+  }
+  
+  .forms-guidelines-download-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.7rem;
+  }
+  
+  .forms-guidelines-section-content.expanded {
+    max-height: 280px;
+    padding: 0.75rem;
+  }
+}
