@@ -123,6 +123,9 @@
     display: block;
     line-height: 1.5;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 [data-theme="dark"] .tender-page-link {
@@ -138,6 +141,7 @@
     border-color: #667eea;
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    outline: none;
 }
 
 [data-theme="dark"] .tender-page-link:hover {
@@ -145,11 +149,23 @@
     background: #253041;
     border-color: #4A9EE7;
     box-shadow: 0 8px 25px rgba(15, 23, 38, 0.5);
+    outline: none;
 }
 
 .tender-page-link:before {
     content: "📄";
     margin-right: 10px;
+}
+
+.tender-page-link:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+[data-theme="dark"] .tender-page-link:focus {
+    border-color: #4A9EE7;
+    box-shadow: 0 0 0 3px rgba(74, 158, 231, 0.2);
 }
 
 .tender-page-new-badge {
@@ -198,6 +214,8 @@
     .tender-page-link {
         font-size: 1rem;
         padding: 10px 12px;
+        word-break: break-word;
+        line-height: 1.4;
     }
 }
 
