@@ -6,7 +6,7 @@
 }
 
 [data-theme="dark"] .regulations-page {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    background: linear-gradient(135deg, #0a1220 0%, #1a2332 50%, #253041 100%);
 }
 
 .regulations-container {
@@ -16,58 +16,124 @@
 }
 
 /* Page Header */
-.page-header {
+.regulations-page .page-header {
     text-align: center;
     margin-bottom: 3rem;
     padding: 2rem 0;
+    height: 100px
 }
 
-.page-header h1 {
-    font-size: 3.5rem;
+.regulations-page .page-header h1 {
     font-weight: 700;
+    font-size: 2.2rem;
+    /* margin-bottom: 2.5rem; */
     color: #2c3e50;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
-[data-theme="dark"] .page-header h1 {
-    color: #ffffff;
-    background: linear-gradient(135deg, #4285f4 0%, #6fa6ff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+[data-theme="dark"] .regulations-page .page-header h1 {
+    color: #e2e8f0;
 }
 
-/* Additional heading styles for dark mode */
-.regulations-page h1 {
-  color: #2c3e50;
+/* Regulation Block */
+.regulations-page .regulation-block {
+    margin-bottom: 2.5rem;
 }
 
-[data-theme="dark"] .regulations-page h1 {
-  color: #ffffff !important;
+.regulations-page .section-title {
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+    color: #222;
+    border-bottom: 3px solid #1976d2;
+    display: inline-block;
+    padding-bottom: 4px;
 }
 
-.regulations-page h2 {
-  color: #222;
+[data-theme="dark"] .regulations-page .section-title {
+    color: #e2e8f0;
+    border-bottom-color: #4A9EE7;
 }
 
-[data-theme="dark"] .regulations-page h2 {
-  color: #ffffff !important;
+/* Events List */
+.regulations-page .events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-/* Event title styling for dark mode */
+/* Event Card */
+.regulations-page .event-card {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .regulations-page .event-card {
+    background: #1e293b;
+    box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3);
+}
+
+.regulations-page .event-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .regulations-page .event-card:hover {
+    box-shadow: 0 8px 25px rgba(15, 23, 38, 0.5);
+}
+
 .regulations-page .event-title {
-  color: #1565c0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1565c0;
+    flex: 1;
+    margin-right: 1rem;
 }
 
 [data-theme="dark"] .regulations-page .event-title {
-  color: #6fa6ff !important;
+    color: #6fa6ff;
 }
 
-.page-subtitle {
+/* Download Button */
+.pretty-download-btn {
+  background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3);
+}
+
+.regulations-page .pretty-download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+[data-theme="dark"] .regulations-page .pretty-download-btn {
+    background: linear-gradient(135deg, #4A9EE7 0%, #6BB6FF 100%);
+    box-shadow: 0 4px 15px rgba(74, 158, 231, 0.3);
+}
+
+[data-theme="dark"] .regulations-page .pretty-download-btn:hover {
+    box-shadow: 0 6px 20px rgba(74, 158, 231, 0.4);
+}
+
+.regulations-page .download-icon {
+    margin-right: 8px;
+}
+
+.regulations-page .page-subtitle {
     font-size: 1.2rem;
     color: #666;
     max-width: 600px;
@@ -75,8 +141,8 @@
     line-height: 1.6;
 }
 
-[data-theme="dark"] .page-subtitle {
-    color: #adb5bd;
+[data-theme="dark"] .regulations-page .page-subtitle {
+    color: #cbd5e1;
 }
 
 /* Category Navigation */
@@ -103,10 +169,10 @@
     font-weight: 500;
 }
 
-[data-theme="dark"] .category-tab {
-    background: #2c2c2c;
-    border-color: #444;
-    color: #adb5bd;
+[data-theme="dark"] .regulations-page .category-tab {
+    background: #1e293b;
+    border-color: rgba(100, 116, 139, 0.2);
+    color: #cbd5e1;
 }
 
 .category-tab:hover {
@@ -114,8 +180,8 @@
     transform: translateY(-2px);
 }
 
-[data-theme="dark"] .category-tab:hover {
-    background: #3c3c3c;
+[data-theme="dark"] .regulations-page .category-tab:hover {
+    background: #334155;
 }
 
 .category-tab.active {
@@ -169,10 +235,10 @@
     transition: all 0.3s ease;
 }
 
-[data-theme="dark"] .regulation-section {
-    background: #2c2c2c;
-    border-color: #444;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+[data-theme="dark"] .regulations-page .regulation-section {
+    background: #1e293b;
+    border-color: rgba(100, 116, 139, 0.2);
+    box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3);
 }
 
 .regulation-section:hover {
@@ -181,8 +247,8 @@
     border-color: #667eea;
 }
 
-[data-theme="dark"] .regulation-section:hover {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+[data-theme="dark"] .regulations-page .regulation-section:hover {
+    box-shadow: 0 10px 30px rgba(15, 23, 38, 0.5);
 }
 
 .regulation-section h3 {
@@ -194,9 +260,9 @@
     border-bottom: 3px solid #667eea;
 }
 
-[data-theme="dark"] .regulation-section h3 {
-    color: #ffffff;
-    border-bottom-color: #4285f4;
+[data-theme="dark"] .regulations-page .regulation-section h3 {
+    color: #e2e8f0;
+    border-bottom-color: #4A9EE7;
 }
 
 .regulation-list {

@@ -6,7 +6,7 @@
 }
 
 [data-theme="dark"] .dissertation-formats-page {
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  background: linear-gradient(135deg, #0a1220 0%, #1a2332 50%, #253041 100%);
 }
 
 .dissertation-formats-container {
@@ -15,33 +15,93 @@
   padding: 0 2rem;
 }
 
-.events-list {
+/* Page Header */
+.dissertation-formats-page .page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+  height: 100px
+}
+
+.dissertation-formats-page .page-header h1 {
+  font-weight: 700;
+  font-size: 2.2rem;
+  /* margin-bottom: 2.5rem; */
+  color: #2c3e50;
+}
+
+[data-theme="dark"] .dissertation-formats-page .page-header h1 {
+  color: #e2e8f0;
+}
+
+/* Format Section */
+.dissertation-formats-page .format-section {
+  margin-bottom: 2.5rem;
+}
+
+.dissertation-formats-page .section-title {
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+  color: #222;
+  border-bottom: 3px solid #1976d2;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+[data-theme="dark"] .dissertation-formats-page .section-title {
+  color: #e2e8f0;
+  border-bottom-color: #4A9EE7;
+}
+
+.dissertation-formats-page .events-list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.event-card {
+.dissertation-formats-page .event-card {
   transition: all 0.3s ease;
   cursor: pointer;
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 /* Dark theme support for event cards */
-[data-theme="dark"] .event-card {
-  background: #2c2c2c !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+[data-theme="dark"] .dissertation-formats-page .event-card {
+  background: #1e293b !important;
+  border-color: rgba(100, 116, 139, 0.2) !important;
+  box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3) !important;
 }
 
-.event-card:hover {
+.dissertation-formats-page .event-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
 }
 
-[data-theme="dark"] .event-card:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4) !important;
+[data-theme="dark"] .dissertation-formats-page .event-card:hover {
+  box-shadow: 0 8px 25px rgba(15, 23, 38, 0.5) !important;
 }
 
-.pretty-download-btn {
+/* Event title styling */
+.dissertation-formats-page .event-title {
+  color: #1565c0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .dissertation-formats-page .event-title {
+  color: #6fa6ff !important;
+}
+
+.dissertation-formats-page .pretty-download-btn {
   background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
   color: white;
   border: none;
@@ -56,13 +116,13 @@
   box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3);
 }
 
-.pretty-download-btn:hover {
+.dissertation-formats-page .pretty-download-btn:hover {
   background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(25, 118, 210, 0.4);
 }
 
-.pretty-download-btn:active {
+.dissertation-formats-page .pretty-download-btn:active {
   transform: translateY(0);
 }
 
@@ -72,13 +132,13 @@
     padding: 0 1rem;
   }
   
-  .event-card {
+  .dissertation-formats-page .event-card {
     flex-direction: column !important;
     align-items: flex-start !important;
     gap: 1rem;
   }
   
-  .pretty-download-btn {
+  .dissertation-formats-page .pretty-download-btn {
     align-self: flex-end;
   }
 }
@@ -88,537 +148,15 @@
     padding: 1rem 0;
   }
   
-  h1 {
+  .dissertation-formats-page .page-header h1 {
     font-size: 1.8rem !important;
   }
   
-  .event-card {
+  .dissertation-formats-page .event-card {
     padding: 1rem !important;
   }
   
-  .event-title {
+  .dissertation-formats-page .event-title {
     font-size: 1rem !important;
   }
-}
-
-.page-header h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    color: #2c3e50;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-[data-theme="dark"] .page-header h1 {
-    color: #ffffff;
-    background: linear-gradient(135deg, #4285f4 0%, #6fa6ff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.page-subtitle {
-    font-size: 1.2rem;
-    color: #666;
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.6;
-}
-
-[data-theme="dark"] .page-subtitle {
-    color: #adb5bd;
-}
-
-/* Program Selection */
-.program-selection {
-    margin-bottom: 3rem;
-}
-
-.program-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.program-tab {
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 25px;
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    color: #666;
-    font-weight: 500;
-}
-
-.program-tab:hover {
-    background: #e9ecef;
-    transform: translateY(-2px);
-}
-
-.program-tab.active {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border-color: transparent;
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-}
-
-/* Format Guidelines */
-.format-guidelines {
-    margin-bottom: 3rem;
-}
-
-.guidelines-content {
-    background: white;
-    border: 1px solid #e9ecef;
-    border-radius: 20px;
-    padding: 3rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
-
-.guidelines-content h2 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-.guidelines-description {
-    font-size: 1.1rem;
-    color: #666;
-    text-align: center;
-    margin-bottom: 2rem;
-    line-height: 1.6;
-}
-
-.guidelines-sections {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-}
-
-.guideline-section {
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 15px;
-    padding: 2rem;
-    transition: all 0.3s ease;
-}
-
-.guideline-section:hover {
-    background: white;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.guideline-section h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #667eea;
-}
-
-.guideline-list {
-    list-style: none;
-    padding: 0;
-}
-
-.guideline-list li {
-    padding: 0.75rem 0;
-    color: #555;
-    position: relative;
-    padding-left: 2rem;
-    border-bottom: 1px solid #f0f0f0;
-    line-height: 1.6;
-}
-
-.guideline-list li:before {
-    content: "►";
-    color: #667eea;
-    position: absolute;
-    left: 0;
-    font-weight: bold;
-    font-size: 0.8rem;
-}
-
-.guideline-list li:last-child {
-    border-bottom: none;
-}
-
-/* Templates Section */
-.templates-section {
-    margin-bottom: 3rem;
-}
-
-.templates-section h2 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.templates-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.template-card {
-    background: white;
-    border: 1px solid #e9ecef;
-    border-radius: 20px;
-    padding: 2rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
-
-.template-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    border-color: #667eea;
-}
-
-.template-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-}
-
-.template-header h3 {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #2c3e50;
-    margin: 0;
-    flex: 1;
-    margin-right: 1rem;
-}
-
-.template-format {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 0.25rem 0.75rem;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    font-weight: 500;
-}
-
-.template-description {
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-}
-
-.template-meta {
-    margin-bottom: 1.5rem;
-}
-
-.template-size {
-    color: #888;
-    font-size: 0.9rem;
-}
-
-.template-actions {
-    display: flex;
-    gap: 1rem;
-}
-
-.download-btn,
-.preview-btn {
-    flex: 1;
-    padding: 0.75rem 1rem;
-    border: none;
-    border-radius: 10px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.download-btn {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-}
-
-.download-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-}
-
-.preview-btn {
-    background: #f8f9fa;
-    color: #666;
-    border: 1px solid #e9ecef;
-}
-
-.preview-btn:hover {
-    background: #e9ecef;
-    color: #333;
-}
-
-/* Important Notes */
-.important-notes {
-    margin-bottom: 3rem;
-}
-
-.important-notes h2 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.notes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
-.note-card {
-    background: white;
-    border: 1px solid #e9ecef;
-    border-radius: 20px;
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
-
-.note-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    border-color: #ff6b6b;
-}
-
-.note-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.note-card h3 {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 1rem;
-}
-
-.note-card p {
-    color: #666;
-    line-height: 1.6;
-    margin: 0;
-}
-
-/* Submission Checklist */
-.submission-checklist {
-    margin-bottom: 3rem;
-}
-
-.submission-checklist h2 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.checklist-container {
-    background: white;
-    border: 1px solid #e9ecef;
-    border-radius: 20px;
-    padding: 3rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
-
-.checklist-intro {
-    font-size: 1.1rem;
-    color: #666;
-    text-align: center;
-    margin-bottom: 2rem;
-    line-height: 1.6;
-}
-
-.checklist {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1rem;
-}
-
-.checklist-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    background: #f8f9fa;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-}
-
-.checklist-item:hover {
-    background: #e9ecef;
-}
-
-.checklist-item input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    accent-color: #667eea;
-    cursor: pointer;
-}
-
-.checklist-item label {
-    color: #555;
-    line-height: 1.5;
-    cursor: pointer;
-    font-size: 0.95rem;
-}
-
-.checklist-item input[type="checkbox"]:checked + label {
-    color: #11998e;
-    text-decoration: line-through;
-}
-
-/* Contact Section */
-.contact-section {
-    margin-bottom: 2rem;
-}
-
-.contact-section h2 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.contact-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
-.contact-card {
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 15px;
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.contact-card:hover {
-    background: white;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.contact-card h3 {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 1rem;
-}
-
-.contact-card p {
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 0.5rem;
-}
-
-.contact-card p:last-child {
-    margin-bottom: 0;
-    font-style: italic;
-    color: #888;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .dissertation-container {
-        padding: 0 1rem;
-    }
-
-    .page-header h1 {
-        font-size: 2.5rem;
-    }
-
-    .program-tabs {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .program-tab {
-        width: 100%;
-        max-width: 300px;
-        text-align: center;
-    }
-
-    .guidelines-content {
-        padding: 2rem;
-    }
-
-    .guidelines-content h2 {
-        font-size: 2rem;
-    }
-
-    .templates-grid,
-    .notes-grid,
-    .contact-cards {
-        grid-template-columns: 1fr;
-    }
-
-    .checklist {
-        grid-template-columns: 1fr;
-    }
-
-    .template-actions {
-        flex-direction: column;
-    }
-
-    .templates-section h2,
-    .important-notes h2,
-    .submission-checklist h2,
-    .contact-section h2 {
-        font-size: 2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .page-header h1 {
-        font-size: 2rem;
-    }
-
-    .guidelines-content,
-    .checklist-container {
-        padding: 1.5rem;
-    }
-
-    .template-card,
-    .note-card,
-    .contact-card {
-        padding: 1.5rem;
-    }
-
-    .guideline-section {
-        padding: 1.5rem;
-    }
-
-    .template-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-
-    .template-header h3 {
-        margin-right: 0;
-    }
-
-    .checklist-item {
-        padding: 0.75rem;
-    }
 }

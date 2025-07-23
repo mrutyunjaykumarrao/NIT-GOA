@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { AuthProvider } from './contexts/AuthContext';
@@ -16,7 +16,7 @@ import About from './Views/About/About';
 import Departments from './Views/Academics-Section/Departments/Departments';
 import Regulations from './Views/Academics-Section/Regulations';
 import DissertationFormats from './Views/Academics-Section/DissertationFormats';
-import Syllabus from './Views/Academics-Section/Syllabus';
+// import Syllabus from './Views/Academics-Section/Syllabus';
 import RTI from './Views/RTI/RTI';
 import NIRF from './Views/NIRF-Section/NIRF';
 import ContactUs from './Views/ContactUs/ContactUs';
@@ -77,6 +77,13 @@ function App() {
 }
 
 function AppContent() {
+  const location = useLocation();
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   return (
     <div className="App">
       <Navbar />
@@ -110,7 +117,7 @@ function AppContent() {
         <Route path="/academics/humanities-social-sciences" element={<HumanitiesSocialSciences />} />
         <Route path="/academics/regulations" element={<Regulations />} />
         <Route path="/academics/dissertation-formats" element={<DissertationFormats />} />
-        <Route path="/academics/syllabus" element={<Syllabus />} />
+        {/* <Route path="/academics/syllabus" element={<Syllabus />} /> */}
         <Route path="/academic-calendar" element={<AcademicCalendar />} />
         
         {/* e-Downloads Route */}

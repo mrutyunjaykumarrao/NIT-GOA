@@ -255,25 +255,51 @@ const ContactUs = () => {
                         <div className="contactus-social-media-links">
                             <div className="contactus-social-platform">
                                 <div>
-                                    <h4>Twitter</h4>
+                                    <h4>
+                                        <a href="https://x.com/NITGoa_Official" target="_blank" rel="noopener noreferrer" style={{color: 'inherit', textDecoration: 'none'}}>
+                                            Twitter/X
+                                        </a>
+                                    </h4>
                                     <p>@NITGoa_Official</p>
                                 </div>
                             </div>
                             <div className="contactus-social-platform">
                                 <div>
-                                    <h4>LinkedIn</h4>
+                                    <h4>
+                                        <a href="https://www.linkedin.com/school/nitgoa/" target="_blank" rel="noopener noreferrer" style={{color: 'inherit', textDecoration: 'none'}}>
+                                            LinkedIn
+                                        </a>
+                                    </h4>
                                     <p>National Institute of Technology Goa</p>
                                 </div>
                             </div>
                             <div className="contactus-social-platform">
                                 <div>
-                                    <h4>YouTube</h4>
+                                    <h4>
+                                        <a href="https://www.youtube.com/c/NationalInstituteofTechnologyGoa" target="_blank" rel="noopener noreferrer" style={{color: 'inherit', textDecoration: 'none'}}>
+                                            YouTube
+                                        </a>
+                                    </h4>
                                     <p>National Institute of Technology Goa</p>
                                 </div>
                             </div>
                             <div className="contactus-social-platform">
                                 <div>
-                                    <h4>Instagram</h4>
+                                    <h4>
+                                        <a href="https://www.instagram.com/nitgoa/?hl=en" target="_blank" rel="noopener noreferrer" style={{color: 'inherit', textDecoration: 'none'}}>
+                                            Instagram
+                                        </a>
+                                    </h4>
+                                    <p>@nitgoa</p>
+                                </div>
+                            </div>
+                            <div className="contactus-social-platform">
+                                <div>
+                                    <h4>
+                                        <a href="https://www.facebook.com/nitgoa/" target="_blank" rel="noopener noreferrer" style={{color: 'inherit', textDecoration: 'none'}}>
+                                            Facebook
+                                        </a>
+                                    </h4>
                                     <p>@nitgoa</p>
                                 </div>
                             </div>
