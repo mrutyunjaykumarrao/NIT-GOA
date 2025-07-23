@@ -503,8 +503,8 @@
     font-size: 2rem;
     color: var(--tnp-primary-blue);
     position: absolute;
-    left: -2rem;
-    top: -1rem;
+    left: -1.2rem;
+    top: -0.6rem;
     font-family: Georgia, serif;
     opacity: 0.7;
     font-weight: bold;
@@ -516,6 +516,8 @@
     color: var(--tnp-primary-blue);
     font-family: Georgia, serif;
     opacity: 0.7;
+    /* left:22.6rem; */
+    /* top: 3.3rem; */
     font-weight: bold;
     position: absolute;
     margin-left: 0.5rem;

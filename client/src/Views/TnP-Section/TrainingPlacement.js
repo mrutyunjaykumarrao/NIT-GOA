@@ -79,7 +79,7 @@ const TrainingPlacement = () => {
                                         className={`tnp-nav-link ${activeSection === 'why-recruit' ? 'tnp-nav-active' : ''}`}
                                         onClick={() => handleSectionChange('why-recruit')}
                                     >
-                                        Why Recruit
+                                        Why Recruit ?
                                     </button>
                                 </li>
                                 <li className="tnp-nav-item">
