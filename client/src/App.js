@@ -66,6 +66,7 @@ import EDownloads from './Views/e-Downloads/EDownloads';
 
 // Training & Placement Section
 import FormsGuidelines from './Views/TnP-Section/FormsGuidelines';
+import TrainingPlacement from './Views/TnP-Section/TrainingPlacement';
 
 function App() {
   return (
@@ -128,6 +129,7 @@ function AppContent() {
         
         {/* Training & Placement Routes */}
         <Route path="/forms-guidelines" element={<FormsGuidelines />} />
+        <Route path="/training-placement" element={<TrainingPlacement />} />
         
         {/* Admissions Section Routes */}
         <Route path="/admissions/btech/josaa-csab" element={<BTechJosaa />} />

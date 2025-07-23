@@ -385,7 +385,7 @@ const Navbar = () => {
                 <span>Training & Placement</span>
                 {openDropdown === 'training' && (
                   <div className="dropdown-menu">
-                  <a href="https://www.nitgoa.ac.in/placementcell/" target="_blank" rel="noopener noreferrer">T & P</a>
+                  <a href="/training-placement">T & P</a>
                   <a href="/company-login">Company Login</a>
                   <a href="/forms-guidelines">Forms & Guidelines</a>
                   </div>

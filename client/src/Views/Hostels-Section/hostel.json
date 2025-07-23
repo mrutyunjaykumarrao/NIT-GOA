@@ -1,0 +1,228 @@
+{
+  "navbar_menu": [
+    "Facilities",
+    "People",
+    "Fee Structure",
+    "Forms & Formats",
+    "Guest Accommodation",
+    "Gallery",
+    "Contact Us"
+  ],
+  "about": {
+    "title": "About the Hostels",
+    "description": "NIT Goa hostels provide accommodation for undergraduate (UG) and postgraduate (PG) students, catering to both girls and boys. We offer two separate hostels supervised by dedicated hostel caretakers and administered by experienced hostel wardens. For the safety and security of our residents, NIT Goa hostels are equipped with CCTV cameras and manned by security personnel round the clock. Internet facilities are provided through WiFi, ensuring seamless connectivity for academic and personal needs. Throughout the year, NIT Goa hostels host a variety of activities such as hostel day celebrations, welcome parties, and festive events, fostering a vibrant community spirit. We believe that hostel life at NIT Goa plays a crucial role in the personal and academic growth of our students, providing a supportive environment akin to a home away from home."
+  },
+  "facilities": [
+    {
+      "title": "Hostel Facilities",
+      "description": "NIT Goa hostels provide accommodation for undergraduate (UG) and postgraduate (PG) students, catering to both girls and boys. We offer two separate hostels supervised by dedicated hostel caretakers and administered by experienced hostel wardens. For the safety and security of our residents, NIT Goa hostels are equipped with CCTV cameras and manned by security personnel round the clock. Internet facilities are provided through WiFi, ensuring seamless connectivity for academic and personal needs. Throughout the year, NIT Goa hostels host a variety of activities such as hostel day celebrations, welcome parties, and festive events, fostering a vibrant community spirit. We believe that hostel life at NIT Goa plays a crucial role in the personal and academic growth of our students, providing a supportive environment akin to a home away from home."
+    },
+    {
+      "title": "Talpona Hostel (Boys Hostel)",
+      "description": "Welcome to Hostel Talpona, a premier boys' hostel offering a comfortable and secure living environment for students. With a total of 825 single occupancy rooms, our hostel is designed to provide privacy and a conducive atmosphere for academic excellence. The hostel spans five floors, with 161 rooms on the ground floor and 166 rooms on each of the remaining four floors. Each room is equipped with a cot, chair, table, cupboard, calling bell, one fan, and one tube light, ensuring that every resident has a well-furnished and comfortable personal space.\nOur hostel boasts a range of facilities to cater to the needs of our residents. The mess facility, spread over two floors, can accommodate 200 students in a single sitting, ensuring timely and hygienic meals. Hostel Talpona features ten spacious common halls for socializing, studying, and recreational activities, along with four sick rooms equipped for basic healthcare and emergencies. Additionally, there are 20 store rooms, one conference hall, a security room, a visitor room, and one office room on each floor, ensuring all administrative and safety needs are met efficiently. The warden office will oversee all administration of the hostel.\nHostel Talpona is conveniently located near the NIT Goa ground, facilitating easy access for students to engage in various sports activities, including cricket, football, and volleyball. Inside the hostel, there are two badminton courts available for use. The hostel is governed by rules that promote cleanliness, respect, and a harmonious living environment.",
+      "image_url": "https://www.nitgoa.ac.in/uploads/boys%20hostel.png"
+    },
+    {
+      "title": "Terekhol Hostel (Girls Hostel)",
+      "description": "Welcome to Hostel Terekhol, a dedicated girls' hostel offering a secure and nurturing environment for students. With a capacity of 280 single occupancy rooms spread across three floors, our hostel is strategically designed to promote academic excellence and personal growth. The ground floor features essential facilities including a common hall for gatherings, a conference hall for events, a visitor room for guest accommodations, two store rooms for storage needs, and a warden room for administrative oversight. A separate mess facility is provided.\nMoving to the first floor, residents will find additional spaces to enhance their living experience. Two common halls provide areas for social interaction and group activities, complemented by three store rooms for convenience. A dedicated sick room ensures that residents receive prompt care and attention when needed. On the second floor, similar amenities are mirrored with two common halls, three store rooms, and another sick room, providing comprehensive support for our residents' well-being.\nHostel Terekhol is situated near the academic complex Mandovi, offering easy access to educational resources and cultural activities. Our commitment to safety is reflected in the presence of CCTV surveillance and round-the-clock security personnel. With amenities like WiFi connectivity and well-maintained facilities including a mess serving nutritious meals, residents enjoy a balanced lifestyle conducive to both academic success and personal development.\nFor more details on our facilities, guidelines, or fee structure, please reach out to our administrative office. We are dedicated to fostering a supportive community where every"
+    },
+    {
+      "documents": [
+        {
+          "title": "Hostel Rules & Regulations",
+          "url": "https://www.nitgoa.ac.in/hostels/uploads/rules.pdf"
+        },
+        {
+          "title": "Hostel Code of Conduct",
+          "url": "https://www.nitgoa.ac.in/hostels/uploads/codeofconduct.pdf"
+        },
+        {
+          "title": "Hostel Fee Structure",
+          "url": "https://www.nitgoa.ac.in/hostels/uploads/hostelfeestructure.pdf"
+        }
+      ]
+    }
+  ],
+  "people": {
+    "faculty": [
+      {
+        "name": "Dr. Mallikarjun Erramshetty",
+        "designation": "Chief Warden, II Year B.Tech. Warden (Boys Hostel)",
+        "location": "Room No: 21, Sarabhai complex",
+        "email": "chiefwarden@nitgoa.ac.in",
+        "phone": "9404763245",
+        "availability": "Wednesday 5:20PM – 6:20PM"
+      },
+      {
+        "name": "Dr. Venkatanareshbabu Kupulli",
+        "designation": "III Year B.Tech. Warden (Boys' Hostel)",
+        "location": "Room No. 02, Ramanujan Complex",
+        "email": "bh.warden1@nitgoa.ac.in",
+        "phone": "9049436708",
+        "availability": "Thursday 5PM - 6PM"
+      },
+      {
+        "name": "Dr. Lokesh Kumar Bramhane",
+        "designation": "IV Year B.Tech. Warden (Boys Hostel)",
+        "location": "Room no: 18, Sarabhai complex",
+        "email": "bh.warden2@nitgoa.ac.in",
+        "phone": "7000972760",
+        "availability": "Friday 5PM – 6PM"
+      },
+      {
+        "name": "Dr. Sunil Kumar",
+        "designation": "I Year B.Tech. M.Tech./ Ph.D./Guests Warden (Boys Hostel)",
+        "location": "Room No: 15, C V Raman Complex",
+        "email": "bh.warden3@nitgoa.ac.in",
+        "phone": "9895631011",
+        "availability": "Monday 5PM – 6PM"
+      },
+      {
+        "name": "Dr. Pravati Swain",
+        "designation": "III & IV Year B.Tech. II Year M.Tech., Ph.D. & Guests Warden (Girls' Hostel)",
+        "location": "Room No: 20, Ramanujan Complex",
+        "email": "gh.warden1@nitgoa.ac.in",
+        "phone": "7338164777",
+        "availability": "Monday and Tuesday 5PM – 6PM"
+      },
+      {
+        "name": "Dr. B.Santhi",
+        "designation": "I & II Year B.Tech. I Year M.Tech. Warden (Girls' Hostel)",
+        "location": "Room No: 19, Visvesvaraya Complex",
+        "email": "gh.warden2@nitgoa.ac.in",
+        "phone": "9902480050",
+        "availability": "Wednesday 1.30PM-2:00PM, Thursday & Friday 5PM-5.30PM"
+      }
+    ]
+  },
+  "fee_structure": {
+    "title": "Hostel Fee Structure",
+    "url": "https://www.nitgoa.ac.in/hostels/uploads/hostelfeestructure.pdf"
+  },
+  "forms_and_formats": [
+    {
+      "title": "MESS REFUND POLICY",
+      "link": "../hostels/uploads/MessRefundPolicy 8april2025.pdf"
+    },
+    {
+      "title": "TEMPORARY VACACATION OF ROOM & LIABILITY REPORT REGARDING THE PERMANENT VACATION OF ROOM & LIABILITY",
+      "link": "../hostels/uploads/7) TEMPORARY VACACATION OF ROOM & LIABILITY.pdf"
+    },
+    {
+      "title": "UNDERTAKING TO BE SUBMIITED FOR ROOM ALLOTMENT – (year) (By Student and Parent)",
+      "link": "../hostels/uploads/8) UNDERTAKING TO BE SUBMIITED FOR ROOM ALLOTMENT.pdf"
+    },
+    {
+      "title": "APPLICATION FOR ACCOMMODATION IN THE NITGOA HOSTEL DURING SEMESTER BREAKS (FOR ALL UG STUDENTS STAYING IN HOSTEL BEYOND (Date))",
+      "link": "../hostels/uploads/1) APPLICATION FOR ACCOMMODATION IN THE HOSTEL DURING SEMESTER BREAKS.pdf"
+    },
+    {
+      "title": "FORM-1 :APPLICATION FOR ACCOMMODATION IN THE NITGOA HOSTELS FOR REMEDIAL CLASSES / SUPPLEMENTARY EXAMINATION",
+      "link": "../hostels/uploads/3) APPLICATION FOR ACCOMMODATION IN THE NIT GOA HOSTELS FOR  REMEDIAL  CLASSES  SUPPLEMENTARY EXAMINATION.pdf"
+    },
+    {
+      "title": "APPLICATION FOR ACCOMMODATION IN THE NITGOA HOSTELS FOR TECHNICAL ACTIVITIES DURING VACATION",
+      "link": "../hostels/uploads/2) APPLICATION FOR ACCOMMODATION IN THE NIT GOA  HOSTELS FOR TECHNICAL ACTIVITIES DURING VACATION.pdf"
+    },
+    {
+      "title": "HOSTEL ACCOMMODATION FORM",
+      "link": "../hostels/uploads/4) HOSTEL ACCOMMODATION FORM.pdf"
+    },
+    {
+      "title": "HOSTEL STUDENT LEAVE APPLICATION",
+      "link": "../hostels/uploads/5) HOSTEL STUDENT LEAVE APPLICATION.pdf"
+    },
+    {
+      "title": "REPORT REGARDING THE PERMANENT VACATION OF ROOM & LIABILITY",
+      "link": "../hostels/uploads/6) REPORT REGARDING THE PERMANENT VACATION OF ROOM & LIABILITY.pdf"
+    }
+  ],
+  "guest_accommodation": {
+    "description": "Guest accommodation is available in the hostel guest rooms. Men will be accommodated in Talpona Boys' Hostel, and women will be accommodated in Terekhol Girls' Hostel. Guests are requested to comply with the hostel's rules and regulations.",
+    "charges": [
+      {
+        "category": "Students",
+        "rate": "Rs. 200 per day"
+      },
+      {
+        "category": "Non-students",
+        "rate": "Rs. 250 per day"
+      }
+    ],
+    "form": {
+      "text": "To book accommodation, please fill out the following form.",
+      "url": "https://www.nitgoa.ac.in/hostels/uploads/guest_accommodation_form.pdf"
+    },
+    "contact": {
+      "text": "For further details, please contact:",
+      "name": "Ms. Lata Patkar (Staff)",
+      "email": "latapatkar@nitgoa.ac.in"
+    }
+  },
+  "gallery": [
+    {
+      "name": "Holi Celebrations-2025",
+      "images": [
+        {
+          "link": "./gallery/Holi1.jpg"
+        },
+        {
+          "link": "./gallery/Holi3.jpg"
+        },
+        {
+          "link": "./gallery/Holi5.jpg"
+        },
+        {
+          "link": "./gallery/Holi6.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Diwali Celebrations-2024",
+      "images": [
+        {
+          "link": "./diwali celebrations2024/DSC_7000.jpg"
+        },
+        {
+          "link": "./diwali celebrations2024/DSC_7010.jpg"
+        },
+        {
+          "link": "./diwali celebrations2024/DSC_7060.jpg"
+        },
+        {
+          "link": "./diwali celebrations2024/DSC_7140.jpg"
+        },
+        {
+          "link": "./diwali celebrations2024/DSC_7142.jpg"
+        },
+        {
+          "link": "./diwali celebrations2024/DSC_7266.jpg"
+        },
+        {
+          "link": "./diwali celebrations2024/DSC_7273.jpg"
+        },
+        {
+          "link": "./diwali celebrations2024/DSC_7274.jpg"
+        },
+        {
+          "link": "./diwali celebrations2024/DSC_7295.jpg"
+        }
+      ]
+    }
+  ],
+  "contact_us": {
+    "contacts": [
+      {
+        "name": "Mr. Harshad Ramnathker",
+        "title": "Hostel Caretaker",
+        "phone": "7507388452"
+      },
+      {
+        "name": "Ms. Lata Patkar",
+        "title": "Hostel Office",
+        "email": "office.hostel@nitgoa.ac.in"
+      }
+    ],
+    "address": "National Institute of Technology Goa, Cuncolim, Goa - 403 703"
+  }
+}
