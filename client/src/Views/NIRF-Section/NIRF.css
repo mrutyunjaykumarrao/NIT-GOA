@@ -169,11 +169,11 @@
     max-height: 400px;
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: #667eea #e9ecef;
+    scrollbar-color: #4a9ee7 #e9ecef;
 }
 
 [data-theme="dark"] .nirf-page .nirf-forms-dropdown.open.scrollable {
-    scrollbar-color: #4A9EE7 #334155;
+    scrollbar-color: #4a9ee7 #334155;
 }
 
 /* Custom scrollbar for webkit browsers */
@@ -191,7 +191,7 @@
 }
 
 .nirf-forms-dropdown.scrollable::-webkit-scrollbar-thumb {
-    background: #667eea;
+    background: #4a9ee7;
     border-radius: 3px;
 }
 
@@ -247,7 +247,7 @@
     left: 0;
     width: 4px;
     height: 100%;
-    background: #667eea;
+    background: #4a9ee7;
     transform: scaleY(0);
     transition: transform 0.3s ease;
 }
@@ -258,7 +258,7 @@
 
 .nirf-form-link:hover .nirf-form-item {
     background: #f1f5fb;
-    border-color: #667eea;
+    border-color: #4a9ee7;
     transform: translateX(8px);
 }
 
@@ -289,7 +289,7 @@
     justify-content: center;
     width: 2.5rem;
     height: 2.5rem;
-    background: #667eea;
+    background: #4a9ee7;
     color: white;
     border-radius: 1rem;
     flex-shrink: 0;
@@ -347,7 +347,7 @@
 }
 
 .nirf-form-link:hover .nirf-form-name {
-    color: #667eea;
+    color: #4a9ee7;
 }
 
 [data-theme="dark"] .nirf-page .nirf-form-link:hover .nirf-form-name {
@@ -380,7 +380,7 @@
 }
 
 .nirf-contact-info a {
-    color: #667eea;
+    color: #4a9ee7;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
