@@ -428,7 +428,7 @@ const Navbar = () => {
 
           <a href="/outreach-activities" className="nav-item">Outreach Activities</a>
           <a href="https://mis.nitgoa.ac.in/misnitgoa/academic/ONLINEFEESCOLLECTION/Payment.aspx" target="_blank" rel="noopener noreferrer" className="nav-item">Fee Payment</a>
-          <a href="https://www.nitgoa.ac.in/hostels.html" target="_blank" rel="noopener noreferrer" className="nav-item">Hostels</a>
+          <a href="/hostels" className="nav-item">Hostels</a>
         </div>
       </nav>
 
@@ -571,7 +571,7 @@ const Navbar = () => {
                 </button>
                 {mobileOpenDropdown === 'training' && (
                   <div className="mobile-dropdown-menu">
-                    <button onClick={() => window.open('https://www.nitgoa.ac.in/placementcell/', '_blank')}>T & P</button>
+                    <button onClick={() => handleMobileNavigation('/training-placement')}>T & P</button>
                     <button onClick={() => handleMobileNavigation('/company-login')}>Company Login</button>
                     <button onClick={() => handleMobileNavigation('/forms-guidelines')}>Forms & Guidelines</button>
                   </div>
@@ -634,7 +634,7 @@ const Navbar = () => {
                 <button onClick={() => window.open('https://mis.nitgoa.ac.in/misnitgoa/academic/ONLINEFEESCOLLECTION/Payment.aspx', '_blank')}>Fee Payment</button>
               </div>
               <div className="mobile-nav-item">
-                <button onClick={() => window.open('https://www.nitgoa.ac.in/hostels.html', '_blank')}>Hostel</button>
+                <button onClick={() => handleMobileNavigation('/hostels')}>Hostel</button>
               </div>
             </div>
           </div>

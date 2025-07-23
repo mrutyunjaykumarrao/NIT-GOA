@@ -68,6 +68,9 @@ import EDownloads from './Views/e-Downloads/EDownloads';
 import FormsGuidelines from './Views/TnP-Section/FormsGuidelines';
 import TrainingPlacement from './Views/TnP-Section/TrainingPlacement';
 
+// Hostels Section
+import Hostels from './Views/Hostels-Section/Hostels';
+
 function App() {
   return (
     <ThemeProvider>
@@ -130,6 +133,9 @@ function AppContent() {
         {/* Training & Placement Routes */}
         <Route path="/forms-guidelines" element={<FormsGuidelines />} />
         <Route path="/training-placement" element={<TrainingPlacement />} />
+        
+        {/* Hostels Route */}
+        <Route path="/hostels" element={<Hostels />} />
         
         {/* Admissions Section Routes */}
         <Route path="/admissions/btech/josaa-csab" element={<BTechJosaa />} />
