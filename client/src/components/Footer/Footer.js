@@ -3,10 +3,58 @@ import { useNavigate } from 'react-router-dom';
 import './Footer.css';
 
 const Footer = () => {
-  const [visitorCount, setVisitorCount] = useState(1247892);
+  const [visitorCount, setVisitorCount] = useState(0);
   const [animateCounter, setAnimateCounter] = useState(false);
   const [lastUpdated, setLastUpdated] = useState(new Date());
   const navigate = useNavigate();
+
+  // Initialize visitor counter from localStorage or set default
+  useEffect(() => {
+    const initializeVisitorCounter = () => {
+      const storedCount = localStorage.getItem('nitgoa_visitor_count');
+      const storedDate = localStorage.getItem('nitgoa_last_visit');
+      const today = new Date().toDateString();
+
+      if (storedCount && storedDate === today) {
+        // Same day visit - just use stored count
+        setVisitorCount(parseInt(storedCount));
+      } else {
+        // New day or first visit - increment counter
+        const baseCount = storedCount ? parseInt(storedCount) : 1247892;
+        const newCount = baseCount + Math.floor(Math.random() * 15) + 1;
+        
+        setVisitorCount(newCount);
+        localStorage.setItem('nitgoa_visitor_count', newCount.toString());
+        localStorage.setItem('nitgoa_last_visit', today);
+        
+        // Animate the counter on first load
+        setTimeout(() => {
+          setAnimateCounter(true);
+          setTimeout(() => setAnimateCounter(false), 1000);
+        }, 500);
+      }
+    };
+
+    initializeVisitorCounter();
+    setLastUpdated(new Date());
+  }, []);
+
+  // Simulate realistic visitor counter updates
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const increment = Math.floor(Math.random() * 3) + 1; // 1-3 visitors
+      setVisitorCount(prev => {
+        const newCount = prev + increment;
+        localStorage.setItem('nitgoa_visitor_count', newCount.toString());
+        return newCount;
+      });
+      setAnimateCounter(true);
+      setLastUpdated(new Date());
+      setTimeout(() => setAnimateCounter(false), 800);
+    }, Math.random() * 30000 + 15000); // Random interval between 15-45 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   // Handle navigation with smooth scroll
   const handleLinkClick = (e, path, hash = '') => {
@@ -47,34 +95,20 @@ const Footer = () => {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  // Update last updated date when component mounts or changes
-  useEffect(() => {
-    setLastUpdated(new Date());
-  }, []);
-
-  // Simulate visitor counter updates
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setVisitorCount(prev => prev + Math.floor(Math.random() * 2) + 1);
-      setAnimateCounter(true);
-      setLastUpdated(new Date()); // Update last updated date when visitor count changes
-      setTimeout(() => setAnimateCounter(false), 500);
-    }, 45000); // Update every 45 seconds
-
-    return () => clearInterval(interval);
-  }, []);
-
   // Format visitor count with leading zeros
   const formatVisitorCount = (count) => {
     return count.toString().padStart(7, '0').split('');
   };
 
-  // Format last updated date
+  // Format last updated date with time
   const formatLastUpdated = (date) => {
-    return date.toLocaleDateString('en-US', {
+    return date.toLocaleString('en-US', {
       year: 'numeric',
       month: 'long',
-      day: 'numeric'
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true
     });
   };
 
