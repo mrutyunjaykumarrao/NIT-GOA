@@ -148,13 +148,13 @@ const Footer = () => {
           // Scroll with larger offset from top to ensure title is visible
           const yOffset = -150; 
           const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-          window.scrollTo({ top: y, behavior: 'smooth' });
+          window.scrollTo({ top: y, behavior: 'auto' });
         } else {
           // Fallback - scroll to top if target not found
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          window.scrollTo({ top: 0, behavior: 'auto' });
         }
       } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'auto' });
       }
     }, 300); // Increased timeout to ensure page is fully loaded
   };
