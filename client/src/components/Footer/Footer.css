@@ -40,12 +40,12 @@
 }
 
 .footer-content {
-  max-width: 1200px;
+  max-width: 90%;
   margin: 0 auto;
   padding: 0px 20px 20px;
   display: grid;
-  grid-template-columns: 1.5fr 1fr 2fr;
-  gap: 25px;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  gap: 30px;
   align-items: stretch;
 }
 
@@ -485,6 +485,126 @@
   font-weight: 700;
 }
 
+/* ===== INSTITUTE INFO (THIRD SECTION) ===== */
+.footer-institute-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  justify-content: center;
+  height: 100%;
+  min-height: 400px;
+}
+
+/* ===== VISITOR COUNTER ===== */
+.footer-visitor-counter {
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(52, 152, 219, 0.3);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2c3e50;
+}
+
+.footer-visitor-counter:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+  border-color: rgba(52, 152, 219, 0.6);
+  background: rgba(255, 255, 255, 1);
+}
+
+[data-theme="dark"] .footer-visitor-counter {
+  background: rgba(30, 41, 59, 0.95);
+  border: 2px solid rgba(74, 158, 231, 0.3);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .footer-visitor-counter:hover {
+  background: rgba(30, 41, 59, 1);
+  border-color: rgba(74, 158, 231, 0.6);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== SOCIAL MEDIA INLINE SECTION ===== */
+.footer-social-media-inline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  width: 100%;
+  min-height: 180px;
+  justify-content: center;
+}
+
+[data-theme="dark"] .footer-social-media-inline {
+  background: rgba(30, 41, 59, 0.95);
+  border: 1px solid #374151;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.footer-social-media-inline h4 {
+  color: #2c3e50;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  position: relative;
+  text-shadow: none;
+}
+
+[data-theme="dark"] .footer-social-media-inline h4 {
+  color: #e2e8f0;
+}
+
+/* Remove blue bar for inline social heading */
+.footer-social-media-inline h4::after {
+  display: none;
+}
+
+.footer-social-media-inline .footer-social-icons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.footer-social-media-inline .footer-social-icon {
+  width: 44px;
+  height: 44px;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .footer-social-media-inline .footer-social-icon {
+  background: #374151;
+  border: 1px solid #4b5563;
+  color: #e2e8f0;
+}
+
+.footer-social-media-inline .footer-social-icon svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+  margin: 11px auto;
+  transform: none;
+}
+
 /* ===== INSTITUTE NAME (TOP HEADER) ===== */
 .footer-institute-name {
   font-size: 24px;
@@ -495,7 +615,7 @@
   letter-spacing: -0.02em;
   text-align: center;
   text-justify: inter-word;
-  max-width: 1200px;
+  max-width: 90%;
   margin-left: auto;
   margin-right: auto;
   padding: 0 20px;
@@ -513,18 +633,6 @@
   height: 3px;
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
   border-radius: 2px;
-}
-
-/* ===== FOOTER INSTITUTE INFO SECTION (FIRST SECTION) ===== */
-.footer-institute-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 0;
-  justify-content: center;
-  height: 100%;
-  min-height: 350px;
 }
 
 /* ===== SOCIAL ICONS (UNIFIED STYLES) ===== */
@@ -775,6 +883,12 @@
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding: 15px 0;
   margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 [data-theme="dark"] .footer-bottom {
@@ -783,6 +897,7 @@
 }
 
 .footer-copyright {
+  flex: 1;
   text-align: center;
 }
 
@@ -794,27 +909,50 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
+/* Footer Last Updated Bottom */
+.footer-last-updated-bottom {
+  text-align: right;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .footer-last-updated-bottom {
+  color: rgba(255, 255, 255, 0.6);
+}
+
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 1024px) {
   .footer-content {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 25px;
+    max-width: 95%;
   }
   
-  /* Reorder sections for tablet and below */
-  .footer-institute-info {
-    order: 1;
-    grid-column: span 1;
-    min-height: 250px;
+  /* Order: Important Links -> Contact Us -> Visitor Counter & Social Media side by side */
+  .footer-section:nth-child(1) {
+    order: 1; /* Important Links first */
   }
   
   .footer-contact-section {
-    order: 2;
-    grid-column: span 1;
+    order: 2; /* Contact Us second */
   }
   
+  .footer-institute-info {
+    order: 3; /* Visitor Counter & Social Media third */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    min-height: auto;
+  }
+  
+  .footer-visitor-counter,
   .footer-social-media-inline {
-    order: 4;
+    min-height: 200px;
   }
 }
 
@@ -824,23 +962,40 @@
     gap: 25px;
     padding: 25px 15px 20px;
     text-align: center;
+    max-width: 95%;
   }
   
-  /* Ensure proper order: Important Links, Contact Us, Visitor Counter + Connect with Us */
-  .footer-institute-info {
-    order: 1;
-    grid-column: span 1;
-    min-height: 200px;
+  /* Keep same order but stack visitor counter and social media */
+  .footer-section:nth-child(1) {
+    order: 1; /* Important Links first */
   }
   
   .footer-contact-section {
-    order: 2;
-    grid-column: span 1;
+    order: 2; /* Contact Us second */
   }
   
+  .footer-institute-info {
+    order: 3; /* Visitor Counter & Social Media third */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: auto;
+  }
+  
+  .footer-visitor-counter,
   .footer-social-media-inline {
-    order: 4;
-    margin-top: 20px;
+    min-height: 160px;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+  
+  .footer-last-updated-bottom {
+    justify-content: center;
+    font-size: 10px;
   }
   
   .footer-contact-main-card {
