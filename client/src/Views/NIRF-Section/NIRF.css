@@ -15,7 +15,7 @@
 }
 
 .nirf-container {
-    max-width: 1200px;
+    max-width: 90%;
     margin: 0 auto;
     padding: 0 2rem;
 }
@@ -494,13 +494,13 @@
 /* Focus states for accessibility */
 .nirf-year-header:focus,
 .nirf-form-link:focus {
-    outline: 2px solid #667eea;
+    outline: none;
     outline-offset: 2px;
 }
 
 [data-theme="dark"] .nirf-page .nirf-year-header:focus,
 [data-theme="dark"] .nirf-page .nirf-form-link:focus {
-    outline-color: #4A9EE7;
+    outline: none;
 }
 
 /* Print styles */

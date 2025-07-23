@@ -25,7 +25,7 @@
 }
 
 .tender-page-content {
-    width: 100%;
+    width: 90%;
     max-width: 90%;
     margin: 0 auto;
     background: white;
@@ -44,7 +44,7 @@
 
 @media (min-width: 1200px) {
     .tender-page-content {
-        max-width: 1200px;
+        max-width: 90%;
     }
 }
 
@@ -52,11 +52,14 @@
 .tender-page-header {
     text-align: center;
     margin-bottom: 3rem;
-    padding: 3rem 2rem;
+    /* padding: 3rem 2rem; */
+    padding: 2%;
     background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
     border-radius: 20px;
     color: white;
     box-shadow: 0 10px 30px rgba(74, 144, 226, 0.3);
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 [data-theme="dark"] .tender-page-header {
@@ -181,14 +184,17 @@
     
     .tender-page-title {
         font-size: 2rem;
-        margin-bottom: 30px;
+        margin-bottom: 0px;
     }
     
     .tender-page-section-title {
         font-size: 1.5rem;
         padding: 12px 15px;
     }
-    
+    .tender-page-header{
+        padding: 5%;
+        margin-bottom: 5%;
+    }
     .tender-page-link {
         font-size: 1rem;
         padding: 10px 12px;
@@ -207,7 +213,10 @@
     .tender-page-list {
         padding-left: 10px;
     }
-    
+    .tender-page-header{
+        padding: 5%;
+        margin-bottom: 5%;
+    }
     .tender-page-new-badge {
         font-size: 0.6rem;
         padding: 3px 6px;
