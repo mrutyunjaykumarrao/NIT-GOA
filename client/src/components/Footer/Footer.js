@@ -119,9 +119,80 @@ const Footer = () => {
         <h3 className="footer-institute-name">National Institute of Technology Goa</h3>
         
         <div className="footer-content">
-          {/* Institute Info & Visitor Counter */}
+          {/* Important Links (not in navbar) */}
+          <div className="footer-section">
+            <div className="footer-links-card">
+              <h5 className="footer-contact-main-title">Important Links</h5>
+              <ul>
+                <li><a href="/academics/regulations#ug-curriculum" onClick={(e) => handleLinkClick(e, '/academics/regulations', '#ug-curriculum')}>Syllabus</a></li>
+                <li><a href="/e-downloads" onClick={(e) => handleLinkClick(e, '/e-downloads')}>e-Downloads</a></li>
+                <li><a href="https://mis.nitgoa.ac.in/misnitgoa/result.aspx" target="_blank" rel="noopener noreferrer">Results</a></li>
+                <li><a href="/rti" onClick={(e) => handleLinkClick(e, '/rti')}>RTI</a></li>
+                <li><a href="/sc-st-cell" onClick={(e) => handleLinkClick(e, '/sc-st-cell')}>SC/ST Cell</a></li>
+                <li><a href="/administration/committees#anti-ragging-committee" onClick={(e) => handleLinkClick(e, '/administration/committees', '#anti-ragging-committee')}>Anti-Ragging</a></li>
+                <li><a href="/administration/committees#grievance-redressal-committee" onClick={(e) => handleLinkClick(e, '/administration/committees', '#grievance-redressal-committee')}>Grievance Portal</a></li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Contact & Location with Map */}
+          <div className="footer-section footer-contact-section">
+            <div className="footer-contact-main-card">
+              <h5 className="footer-contact-main-title">
+                <a href="/contact-us" style={{color: 'inherit', textDecoration: 'none', fontSize: '24px', fontWeight: '700'}}>Contact Us</a>
+              </h5>
+              <div className="footer-contact-cards-container">
+                {/* Contact Details Card - Now First */}
+                <div className="footer-contact-card footer-details-card">
+                  <div className="footer-contact-details">
+                    <div className="footer-contact-item">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                      </svg>
+                      <div>
+                        <p>National Institute of Technology Goa</p>
+                        <p>Kottamoll Plateau, Cuncolim Municipal Area
+                           Salcete Taluka, South Goa District,
+                           Goa - 403703</p>
+                        <p>Website: www.nitgoa.ac.in</p>
+                      </div>
+                    </div>
+                    
+                    <div className="footer-contact-item">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                      </svg>
+                      <p>+91 832 2404 200</p>
+                    </div>
+                    
+                    <div className="footer-contact-item">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                      </svg>
+                      <p>registrar@nitgoa.ac.in</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Map Card - Now Second */}
+                <div className="footer-contact-card footer-map-card">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46349.55478460737!2d74.01610674087917!3d15.195724063648544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbe4dade7a19b97%3A0x9db46cb6ea1d0d3f!2sNational%20Institute%20of%20Technology%20Goa!5e1!3m2!1sen!2sin!4v1751339725832!5m2!1sen!2sin"
+                    style={{ border: 0, borderRadius: '6px' }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="NIT Goa Location"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Institute Info & Visitor Counter - Right Side */}
           <div className="footer-section footer-institute-info">
-            
             {/* Visitor Counter */}
             <div className="footer-visitor-counter">
               <div className="footer-counter-display">
@@ -172,95 +243,20 @@ const Footer = () => {
               </div>
             </div>
           </div>
-
-          {/* Important Links (not in navbar) */}
-          <div className="footer-section">
-            
-            <div className="footer-links-card">
-              <h5 className="footer-contact-main-title">Important Links</h5>
-              <ul>
-                <li><a href="/academics/regulations#ug-curriculum" onClick={(e) => handleLinkClick(e, '/academics/regulations', '#ug-curriculum')}>Syllabus</a></li>
-                <li><a href="/e-downloads" onClick={(e) => handleLinkClick(e, '/e-downloads')}>e-Downloads</a></li>
-                <li><a href="https://mis.nitgoa.ac.in/misnitgoa/result.aspx" target="_blank" rel="noopener noreferrer">Results</a></li>
-                <li><a href="/rti" onClick={(e) => handleLinkClick(e, '/rti')}>RTI</a></li>
-                <li><a href="/sc-st-cell" onClick={(e) => handleLinkClick(e, '/sc-st-cell')}>SC/ST Cell</a></li>
-                <li><a href="/administration/committees#anti-ragging-committee" onClick={(e) => handleLinkClick(e, '/administration/committees', '#anti-ragging-committee')}>Anti-Ragging</a></li>
-                <li><a href="/administration/committees#grievance-redressal-committee" onClick={(e) => handleLinkClick(e, '/administration/committees', '#grievance-redressal-committee')}>Grievance Portal</a></li>
-              </ul>
-            </div>
-          </div> 
-
-          {/* Contact & Location with Map */}
-          <div className="footer-section footer-contact-section">
-            
-            <div className="footer-contact-main-card">
-              <h5 className="footer-contact-main-title">
-                <a href="/contact-us" style={{color: 'inherit', textDecoration: 'none', fontSize: '24px', fontWeight: '700'}}>Contact Us</a>
-              </h5>
-              <div className="footer-contact-cards-container">
-                {/* Contact Details Card - Now First */}
-                <div className="footer-contact-card footer-details-card">
-                  <div className="footer-contact-details">
-                    <div className="footer-contact-item">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                        <circle cx="12" cy="10" r="3"/>
-                      </svg>
-                      <div>
-                        <p>National Institute of Technology Goa</p>
-                        <p>Kottamoll Plateau, Cuncolim Municipal Area,</p>
-                        <p>Salcete Taluka, South Goa District,</p>
-                        <p>Goa - 403703</p>
-                        <p>Website: www.nitgoa.ac.in</p>
-                      </div>
-                    </div>
-                    
-                    <div className="footer-contact-item">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                      </svg>
-                      <p>+91 832 2404 200</p>
-                    </div>
-                    
-                    <div className="footer-contact-item">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                        <polyline points="22,6 12,13 2,6"/>
-                      </svg>
-                      <p>registrar@nitgoa.ac.in</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Map Card - Now Second */}
-                <div className="footer-contact-card footer-map-card">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46349.55478460737!2d74.01610674087917!3d15.195724063648544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbe4dade7a19b97%3A0x9db46cb6ea1d0d3f!2sNational%20Institute%20of%20Technology%20Goa!5e1!3m2!1sen!2sin!4v1751339725832!5m2!1sen!2sin"
-                    style={{ border: 0, borderRadius: '6px' }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="NIT Goa Location"
-                  ></iframe>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
-        {/* Footer Bottom - Copyright */}
+        {/* Footer Bottom - Copyright and Last Updated */}
         <div className="footer-bottom">
           <div className="footer-copyright">
             <p>&copy; 2025 National Institute of Technology Goa</p>
           </div>
-          {/* Footer Last Updated - Bottom Most */}
-        <div className="footer-last-updated-bottom">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{width: '12px', height: '12px', marginRight: '0px', verticalAlign: 'middle'}}>
-            <circle cx="12" cy="12" r="10"/>
-            <polyline points="12,6 12,12 16,14"/>
-          </svg>
-          Last Updated: {formatLastUpdated(lastUpdated)}
-        </div>
+          <div className="footer-last-updated-bottom">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{width: '12px', height: '12px', marginRight: '4px', verticalAlign: 'middle'}}>
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12,6 12,12 16,14"/>
+            </svg>
+            Last Updated: {formatLastUpdated(lastUpdated)}
+          </div>
         </div>
 
         
