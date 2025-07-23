@@ -1,5 +1,41 @@
 /* Hostels Section - CSS Variables */
 :root {
+    /* Light Mode Colors */
+    --hostels-primary-blue: #1e40af;
+    --hostels-primary-blue-light: #3b82f6;
+    --hostels-secondary-blue: #1e3a8a;
+    --hostels-secondary-blue-50: rgba(59, 130, 246, 0.05);
+    --hostels-secondary-blue-100: rgba(59, 130, 246, 0.1);
+    --hostels-accent-orange: #f59e0b;
+    --hostels-accent-orange-light: #fbbf24;
+    --hostels-accent-green: #10b981;
+    --hostels-accent-purple: #8b5cf6;
+    
+    /* Light Mode Backgrounds */
+    --hostels-bg-primary: #ffffff;
+    --hostels-bg-secondary: #f8fafc;
+    --hostels-card-bg: #ffffff;
+    --hostels-card-bg-secondary: rgba(248, 250, 252, 0.8);
+    
+    /* Light Mode Text */
+    --hostels-text-primary: #1f2937;
+    --hostels-text-secondary: #4b5563;
+    --hostels-text-muted: #6b7280;
+    
+    /* Light Mode Borders & Shadows */
+    --hostels-border: rgba(107, 114, 128, 0.2);
+    --hostels-shadow: rgba(0, 0, 0, 0.1);
+    --hostels-shadow-medium: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --hostels-shadow-large: 0 8px 32px rgba(0, 0, 0, 0.15);
+    
+    /* Gradients */
+    --hostels-gradient-primary: linear-gradient(135deg, var(--hostels-primary-blue) 0%, var(--hostels-primary-blue-light) 100%);
+    --hostels-gradient-secondary: linear-gradient(135deg, var(--hostels-accent-orange) 0%, var(--hostels-accent-orange-light) 100%);
+}
+
+/* Dark Mode Colors */
+[data-theme="dark"] {
+    /* Dark Mode Colors */
     --hostels-primary-blue: #3b82f6;
     --hostels-primary-blue-light: #60a5fa;
     --hostels-secondary-blue: #1e40af;
@@ -7,16 +43,25 @@
     --hostels-secondary-blue-100: rgba(59, 130, 246, 0.1);
     --hostels-accent-orange: #f59e0b;
     --hostels-accent-orange-light: #fbbf24;
+    --hostels-accent-green: #34d399;
+    --hostels-accent-purple: #a78bfa;
+    
+    /* Dark Mode Backgrounds */
     --hostels-bg-primary: #0f172a;
     --hostels-bg-secondary: #1e293b;
     --hostels-card-bg: rgba(30, 41, 59, 0.8);
+    --hostels-card-bg-secondary: rgba(15, 23, 42, 0.9);
+    
+    /* Dark Mode Text */
     --hostels-text-primary: #f8fafc;
     --hostels-text-secondary: #cbd5e1;
     --hostels-text-muted: #94a3b8;
+    
+    /* Dark Mode Borders & Shadows */
     --hostels-border: rgba(148, 163, 184, 0.2);
     --hostels-shadow: rgba(0, 0, 0, 0.3);
     --hostels-shadow-medium: 0 8px 32px rgba(0, 0, 0, 0.3);
-    --hostels-gradient-primary: linear-gradient(135deg, var(--hostels-primary-blue) 0%, var(--hostels-primary-blue-light) 100%);
+    --hostels-shadow-large: 0 12px 40px rgba(0, 0, 0, 0.4);
 }
 
 /* Main Page Layout */
@@ -25,6 +70,7 @@
     background: var(--hostels-bg-primary);
     color: var(--hostels-text-primary);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    transition: all 0.3s ease;
 }
 
 .hostels-page-header {
@@ -64,7 +110,7 @@
 .hostels-page-subtitle {
     font-size: 1.2rem;
     color: rgba(255, 255, 255, 0.9);
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
 }
@@ -80,6 +126,33 @@
     grid-template-columns: 300px 1fr;
     gap: 2rem;
     align-items: start;
+}
+
+/* About Section Styles */
+.hostels-about-card {
+    background: var(--hostels-card-bg);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: var(--hostels-shadow-medium);
+    border: 1px solid var(--hostels-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.hostels-about-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--hostels-primary-blue);
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+}
+
+.hostels-about-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--hostels-text-secondary);
+    text-align: justify;
+    margin: 0;
 }
 
 /* Sidebar Navigation */
@@ -293,28 +366,49 @@
 /* Faculty Grid */
 .hostels-faculty-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
     gap: 2rem;
 }
 
 .hostels-faculty-card {
-    background: rgba(30, 41, 59, 0.5);
+    background: var(--hostels-card-bg);
     border: 1px solid var(--hostels-border);
-    border-radius: 12px;
+    border-radius: 16px;
     padding: 2rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+}
+
+.hostels-faculty-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--hostels-gradient-primary);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
 }
 
 .hostels-faculty-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    box-shadow: var(--hostels-shadow-large);
+}
+
+.hostels-faculty-card:hover::before {
+    transform: scaleY(1);
 }
 
 .hostels-faculty-name {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--hostels-primary-blue-light);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--hostels-primary-blue);
     margin: 0 0 0.5rem 0;
+    line-height: 1.3;
 }
 
 .hostels-faculty-designation {
@@ -322,107 +416,258 @@
     color: var(--hostels-text-secondary);
     margin: 0 0 1.5rem 0;
     font-weight: 500;
+    line-height: 1.4;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--hostels-border);
 }
 
 .hostels-faculty-detail {
-    margin-bottom: 0.75rem;
-    font-size: 0.9rem;
-    color: var(--hostels-text-secondary);
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.hostels-faculty-detail:last-child {
+    margin-bottom: 0;
 }
 
 .hostels-faculty-detail strong {
     color: var(--hostels-text-primary);
-    margin-right: 0.5rem;
+    font-weight: 600;
+    min-width: 90px;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+}
+
+.hostels-faculty-detail span,
+.hostels-faculty-detail a {
+    color: var(--hostels-text-secondary);
+    flex: 1;
 }
 
 .hostels-faculty-detail a {
-    color: var(--hostels-primary-blue-light);
+    color: var(--hostels-primary-blue);
     text-decoration: none;
-    margin-left: 0.5rem;
+    transition: color 0.2s ease;
 }
 
 .hostels-faculty-detail a:hover {
+    color: var(--hostels-primary-blue-light);
     text-decoration: underline;
 }
 
-/* Fee Structure */
+/* Fee Structure - Enhanced */
+.hostels-fee-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
 .hostels-fee-card {
-    background: rgba(30, 41, 59, 0.5);
+    background: var(--hostels-card-bg);
     border: 1px solid var(--hostels-border);
-    border-radius: 12px;
-    padding: 2.5rem;
+    border-radius: 20px;
+    padding: 3rem;
     text-align: center;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: var(--hostels-shadow-large);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+}
+
+.hostels-fee-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--hostels-gradient-primary);
+}
+
+.hostels-fee-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
 }
 
 .hostels-fee-card h3 {
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: var(--hostels-primary-blue-light);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--hostels-primary-blue);
     margin: 0 0 1rem 0;
 }
 
 .hostels-fee-card p {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: var(--hostels-text-secondary);
     margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.hostels-fee-features {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.hostels-fee-feature {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 8px;
+    font-weight: 500;
+    color: var(--hostels-text-secondary);
+}
+
+.hostels-feature-icon {
+    font-size: 1.2rem;
 }
 
 .hostels-fee-download-btn {
     display: inline-flex;
     align-items: center;
     gap: 1rem;
-    padding: 1rem 2rem;
+    padding: 1.25rem 2.5rem;
     background: var(--hostels-gradient-primary);
     color: white;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 12px;
     font-weight: 600;
+    font-size: 1.1rem;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
 }
 
 .hostels-fee-download-btn:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
 }
 
-/* Forms Grid */
+/* Forms & Formats - Redesigned */
+.hostels-forms-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.hostels-forms-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: var(--hostels-card-bg-secondary);
+    border-radius: 16px;
+    border: 1px solid var(--hostels-border);
+}
+
+.hostels-forms-intro h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--hostels-primary-blue);
+    margin: 0 0 1rem 0;
+}
+
+.hostels-forms-intro p {
+    font-size: 1.1rem;
+    color: var(--hostels-text-secondary);
+    margin: 0;
+}
+
 .hostels-forms-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 1.5rem;
 }
 
 .hostels-form-card {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.5rem;
-    background: rgba(30, 41, 59, 0.5);
+    background: var(--hostels-card-bg);
     border: 1px solid var(--hostels-border);
-    border-radius: 8px;
+    border-radius: 12px;
+    padding: 1.5rem;
     text-decoration: none;
     color: var(--hostels-text-primary);
     transition: all 0.3s ease;
-    min-height: 100px;
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.hostels-form-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--hostels-gradient-secondary);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
 }
 
 .hostels-form-card:hover {
-    background: rgba(59, 130, 246, 0.1);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.2);
+    transform: translateY(-4px);
+    box-shadow: var(--hostels-shadow-medium);
+}
+
+.hostels-form-card:hover::before {
+    transform: scaleX(1);
+}
+
+.hostels-form-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
 }
 
 .hostels-form-icon {
     font-size: 2rem;
-    flex-shrink: 0;
-    color: var(--hostels-primary-blue-light);
+    color: var(--hostels-accent-orange);
+}
+
+.hostels-form-number {
+    background: var(--hostels-gradient-primary);
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.hostels-form-content {
+    flex: 1;
 }
 
 .hostels-form-title {
-    flex: 1;
-    font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--hostels-text-primary);
+    margin: 0 0 1rem 0;
     line-height: 1.4;
+}
+
+.hostels-form-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 8px;
+    font-weight: 500;
+    color: var(--hostels-primary-blue);
+}
+
+.hostels-download-icon {
+    font-size: 1.2rem;
 }
 
 /* Guest Accommodation */
@@ -515,9 +760,9 @@
     text-decoration: underline;
 }
 
-/* Gallery */
+/* Gallery Slider */
 .hostels-gallery-section {
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
 }
 
 .hostels-gallery-section:last-child {
@@ -525,33 +770,259 @@
 }
 
 .hostels-gallery-title {
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: var(--hostels-primary-blue-light);
-    margin: 0 0 1.5rem 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--hostels-primary-blue);
+    margin: 0 0 2rem 0;
+    text-align: center;
 }
 
-.hostels-gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+.hostels-gallery-slider {
+    background: var(--hostels-card-bg);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--hostels-shadow-medium);
+    border: 1px solid var(--hostels-border);
+}
+
+.hostels-slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
     gap: 1rem;
+    margin-bottom: 1.5rem;
 }
 
-.hostels-gallery-item {
-    border-radius: 8px;
+.hostels-slider-main {
+    flex: 1;
+    position: relative;
+    border-radius: 12px;
     overflow: hidden;
-    aspect-ratio: 4/3;
+    aspect-ratio: 16/10;
 }
 
-.hostels-gallery-item img {
+.hostels-slider-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
 
-.hostels-gallery-item:hover img {
-    transform: scale(1.05);
+.hostels-slider-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    padding: 1rem;
+    color: white;
+}
+
+.hostels-image-counter {
+    font-weight: 600;
+    font-size: 0.9rem;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.hostels-slider-btn {
+    background: var(--hostels-card-bg);
+    border: 1px solid var(--hostels-border);
+    color: var(--hostels-text-primary);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.hostels-slider-btn:hover {
+    background: var(--hostels-primary-blue);
+    color: white;
+    transform: scale(1.1);
+}
+
+.hostels-slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.hostels-slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: var(--hostels-border);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hostels-slider-dot.active {
+    background: var(--hostels-primary-blue);
+    transform: scale(1.2);
+}
+
+.hostels-slider-dot:hover {
+    background: var(--hostels-primary-blue-light);
+}
+
+/* Guest Accommodation - Centered Layout */
+.hostels-guest-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hostels-guest-info {
+    background: var(--hostels-card-bg);
+    border: 1px solid var(--hostels-border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.hostels-guest-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--hostels-text-secondary);
+    margin-bottom: 2.5rem;
+}
+
+.hostels-charges-section {
+    margin-bottom: 0;
+}
+
+.hostels-charges-section h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--hostels-primary-blue);
+    margin: 0 0 1.5rem 0;
+}
+
+.hostels-charges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.hostels-charge-card {
+    background: rgba(59, 130, 246, 0.1);
+    border: 2px solid rgba(59, 130, 246, 0.2);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.hostels-charge-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2);
+}
+
+.hostels-charge-card h5 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--hostels-text-primary);
+    margin: 0 0 1rem 0;
+}
+
+.hostels-charge-rate {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--hostels-primary-blue);
+    margin: 0;
+}
+
+.hostels-guest-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.hostels-booking-section,
+.hostels-contact-section {
+    background: var(--hostels-card-bg);
+    border: 1px solid var(--hostels-border);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.hostels-booking-section h4,
+.hostels-contact-section h4 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--hostels-primary-blue);
+    margin: 0 0 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.hostels-booking-section p,
+.hostels-contact-section p {
+    color: var(--hostels-text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.hostels-booking-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background: var(--hostels-gradient-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+}
+
+.hostels-booking-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+}
+
+.hostels-contact-details {
+    text-align: center;
+}
+
+.hostels-contact-details p {
+    margin: 0.5rem 0;
+    color: var(--hostels-text-secondary);
+}
+
+.hostels-contact-details strong {
+    color: var(--hostels-text-primary);
+    font-size: 1.1rem;
+}
+
+.hostels-contact-details a {
+    color: var(--hostels-primary-blue);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.hostels-contact-details a:hover {
+    text-decoration: underline;
 }
 
 /* Contact Us */
@@ -791,6 +1262,115 @@
     .hostels-charges-grid {
         grid-template-columns: 1fr;
     }
+    
+    .hostels-guest-actions {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .hostels-slider-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .hostels-slider-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+
+/* Contact Us */
+.hostels-contact-info {
+    background: var(--hostels-card-bg);
+    border: 1px solid var(--hostels-border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.hostels-contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.hostels-contact-card {
+    background: rgba(59, 130, 246, 0.1);
+    border: 2px solid rgba(59, 130, 246, 0.2);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.hostels-contact-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2);
+}
+
+.hostels-contact-card h4 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--hostels-primary-blue);
+    margin: 0 0 0.5rem 0;
+}
+
+.hostels-contact-title {
+    font-size: 1rem;
+    color: var(--hostels-text-secondary);
+    margin: 0 0 1.5rem 0;
+    font-weight: 500;
+}
+
+.hostels-contact-detail {
+    margin: 0.75rem 0;
+    font-size: 1rem;
+    color: var(--hostels-text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.hostels-contact-detail strong {
+    color: var(--hostels-text-primary);
+    font-weight: 600;
+}
+
+.hostels-contact-detail a {
+    color: var(--hostels-primary-blue);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.hostels-contact-detail a:hover {
+    text-decoration: underline;
+}
+
+.hostels-address-section {
+    padding-top: 2rem;
+    border-top: 2px solid var(--hostels-border);
+    text-align: center;
+}
+
+.hostels-address-section h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--hostels-primary-blue);
+    margin: 0 0 1rem 0;
+}
+
+.hostels-address {
+    font-size: 1.1rem;
+    color: var(--hostels-text-secondary);
+    line-height: 1.6;
+    background: rgba(59, 130, 246, 0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 0;
 }
 
 /* Mobile Portrait (480px) */
@@ -831,7 +1411,54 @@
         padding: 1rem;
     }
     
-    .hostels-gallery-grid {
+    .hostels-fee-card {
+        padding: 2rem 1rem;
+    }
+    
+    .hostels-fee-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .hostels-forms-intro {
+        padding: 1.5rem;
+    }
+    
+    .hostels-forms-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .hostels-form-card {
+        padding: 1rem;
+    }
+    
+    .hostels-guest-info {
+        padding: 1.5rem;
+    }
+    
+    .hostels-booking-section,
+    .hostels-contact-section {
+        padding: 1.5rem;
+    }
+    
+    .hostels-gallery-slider {
+        padding: 1rem;
+    }
+    
+    .hostels-slider-container {
+        gap: 0.5rem;
+    }
+    
+    .hostels-slider-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+    
+    .hostels-contact-info {
+        padding: 1.5rem;
+    }
+    
+    .hostels-contact-card {
+        padding: 1.5rem;
     }
 }

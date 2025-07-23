@@ -2,8 +2,66 @@ import React, { useState, useEffect } from 'react';
 import './Hostels.css';
 import hostelData from './hostel.json';
 
+// Gallery Slider Component
+const GallerySlider = ({ event }) => {
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    const nextImage = () => {
+        setCurrentImageIndex((prev) => 
+            prev === event.images.length - 1 ? 0 : prev + 1
+        );
+    };
+
+    const prevImage = () => {
+        setCurrentImageIndex((prev) => 
+            prev === 0 ? event.images.length - 1 : prev - 1
+        );
+    };
+
+    const goToImage = (index) => {
+        setCurrentImageIndex(index);
+    };
+
+    return (
+        <div className="hostels-gallery-section">
+            <h3 className="hostels-gallery-title">{event.name}</h3>
+            <div className="hostels-gallery-slider">
+                <div className="hostels-slider-container">
+                    <button className="hostels-slider-btn hostels-slider-prev" onClick={prevImage}>
+                        ❮
+                    </button>
+                    <div className="hostels-slider-main">
+                        <img 
+                            src={event.images[currentImageIndex].link} 
+                            alt={`${event.name} ${currentImageIndex + 1}`}
+                            className="hostels-slider-image"
+                        />
+                        <div className="hostels-slider-overlay">
+                            <span className="hostels-image-counter">
+                                {currentImageIndex + 1} / {event.images.length}
+                            </span>
+                        </div>
+                    </div>
+                    <button className="hostels-slider-btn hostels-slider-next" onClick={nextImage}>
+                        ❯
+                    </button>
+                </div>
+                <div className="hostels-slider-dots">
+                    {event.images.map((_, index) => (
+                        <button
+                            key={index}
+                            className={`hostels-slider-dot ${index === currentImageIndex ? 'active' : ''}`}
+                            onClick={() => goToImage(index)}
+                        />
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
+
 const Hostels = () => {
-    const [activeSection, setActiveSection] = useState('Facilities');
+    const [activeSection, setActiveSection] = useState('About');
 
     // Scroll to top when component mounts
     useEffect(() => {
@@ -16,6 +74,22 @@ const Hostels = () => {
 
     const renderContent = () => {
         switch (activeSection) {
+            case 'About':
+                return (
+                    <div className="hostels-section">
+                        <div className="hostels-section-header">
+                            <h2>About the Hostels</h2>
+                            <p>Comprehensive information about hostel facilities and living at NIT Goa</p>
+                        </div>
+                        <div className="hostels-content-wrapper">
+                            <div className="hostels-about-card">
+                                <h3 className="hostels-about-title">{hostelData.about.title}</h3>
+                                <p className="hostels-about-description">{hostelData.about.description}</p>
+                            </div>
+                        </div>
+                    </div>
+                );
+
             case 'Facilities':
                 return (
                     <div className="hostels-section">
@@ -78,17 +152,20 @@ const Hostels = () => {
                                         <p className="hostels-faculty-designation">{person.designation}</p>
                                         <div className="hostels-faculty-details">
                                             <div className="hostels-faculty-detail">
-                                                <strong>Location:</strong> {person.location}
+                                                <strong>Location:</strong>
+                                                <span>{person.location}</span>
                                             </div>
                                             <div className="hostels-faculty-detail">
-                                                <strong>Email:</strong> 
+                                                <strong>Email:</strong>
                                                 <a href={`mailto:${person.email}`}>{person.email}</a>
                                             </div>
                                             <div className="hostels-faculty-detail">
-                                                <strong>Phone:</strong> {person.phone}
+                                                <strong>Phone:</strong>
+                                                <span>{person.phone}</span>
                                             </div>
                                             <div className="hostels-faculty-detail">
-                                                <strong>Availability:</strong> {person.availability}
+                                                <strong>Available:</strong>
+                                                <span>{person.availability}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -106,19 +183,36 @@ const Hostels = () => {
                             <p>Hostel accommodation fee details and payment information</p>
                         </div>
                         <div className="hostels-content-wrapper">
-                            <div className="hostels-fee-card">
-                                <h3>Hostel Fee Information</h3>
-                                <p>For detailed fee structure and payment schedules, please refer to the official document.</p>
-                                <a 
-                                    href={hostelData.fee_structure.url} 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    className="hostels-fee-download-btn"
-                                >
-                                    <span>📄</span>
-                                    Download Fee Structure
-                                    <span>⬇️</span>
-                                </a>
+                            <div className="hostels-fee-container">
+                                <div className="hostels-fee-card">
+                                    <div className="hostels-fee-icon">💰</div>
+                                    <h3>Hostel Fee Information</h3>
+                                    <p>Access comprehensive details about hostel fees, payment schedules, refund policies, and financial procedures for both boys' and girls' hostels.</p>
+                                    <div className="hostels-fee-features">
+                                        <div className="hostels-fee-feature">
+                                            <span className="hostels-feature-icon">📊</span>
+                                            <span>Detailed Fee Breakdown</span>
+                                        </div>
+                                        <div className="hostels-fee-feature">
+                                            <span className="hostels-feature-icon">📅</span>
+                                            <span>Payment Schedules</span>
+                                        </div>
+                                        <div className="hostels-fee-feature">
+                                            <span className="hostels-feature-icon">💳</span>
+                                            <span>Refund Policies</span>
+                                        </div>
+                                    </div>
+                                    <a 
+                                        href={hostelData.fee_structure.url} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="hostels-fee-download-btn"
+                                    >
+                                        <span>📄</span>
+                                        Download Fee Structure
+                                        <span>⬇️</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -132,20 +226,34 @@ const Hostels = () => {
                             <p>Essential forms and documents for hostel admission and administration</p>
                         </div>
                         <div className="hostels-content-wrapper">
-                            <div className="hostels-forms-grid">
-                                {hostelData.forms_and_formats.map((form, index) => (
-                                    <a 
-                                        key={index} 
-                                        href={form.link} 
-                                        target="_blank" 
-                                        rel="noopener noreferrer"
-                                        className="hostels-form-card"
-                                    >
-                                        <div className="hostels-form-icon">📋</div>
-                                        <span className="hostels-form-title">{form.title}</span>
-                                        <div className="hostels-download-icon">⬇️</div>
-                                    </a>
-                                ))}
+                            <div className="hostels-forms-container">
+                                <div className="hostels-forms-intro">
+                                    <h3>📋 Download Required Forms</h3>
+                                    <p>Click on any form below to download the PDF document directly</p>
+                                </div>
+                                <div className="hostels-forms-grid">
+                                    {hostelData.forms_and_formats.map((form, index) => (
+                                        <a 
+                                            key={index} 
+                                            href={form.link} 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className="hostels-form-card"
+                                        >
+                                            <div className="hostels-form-header">
+                                                <div className="hostels-form-icon">�</div>
+                                                <div className="hostels-form-number">{String(index + 1).padStart(2, '0')}</div>
+                                            </div>
+                                            <div className="hostels-form-content">
+                                                <h4 className="hostels-form-title">{form.title}</h4>
+                                                <div className="hostels-form-action">
+                                                    <span>Download PDF</span>
+                                                    <div className="hostels-download-icon">⬇️</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -159,42 +267,48 @@ const Hostels = () => {
                             <p>Accommodation facilities for visitors and guests</p>
                         </div>
                         <div className="hostels-content-wrapper">
-                            <div className="hostels-guest-info">
-                                <p className="hostels-guest-description">{hostelData.guest_accommodation.description}</p>
-                                
-                                <div className="hostels-charges-section">
-                                    <h4>Accommodation Charges</h4>
-                                    <div className="hostels-charges-grid">
-                                        {hostelData.guest_accommodation.charges.map((charge, index) => (
-                                            <div key={index} className="hostels-charge-card">
-                                                <h5>{charge.category}</h5>
-                                                <p className="hostels-charge-rate">{charge.rate}</p>
-                                            </div>
-                                        ))}
+                            <div className="hostels-guest-container">
+                                <div className="hostels-guest-info">
+                                    <p className="hostels-guest-description">{hostelData.guest_accommodation.description}</p>
+                                    
+                                    <div className="hostels-charges-section">
+                                        <h4>Accommodation Charges</h4>
+                                        <div className="hostels-charges-grid">
+                                            {hostelData.guest_accommodation.charges.map((charge, index) => (
+                                                <div key={index} className="hostels-charge-card">
+                                                    <h5>{charge.category}</h5>
+                                                    <p className="hostels-charge-rate">{charge.rate}</p>
+                                                </div>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div className="hostels-booking-section">
-                                    <h4>Booking Information</h4>
-                                    <p>{hostelData.guest_accommodation.form.text}</p>
-                                    <a 
-                                        href={hostelData.guest_accommodation.form.url} 
-                                        target="_blank" 
-                                        rel="noopener noreferrer"
-                                        className="hostels-booking-btn"
-                                    >
-                                        Download Booking Form
-                                    </a>
-                                </div>
-
-                                <div className="hostels-contact-section">
-                                    <h4>Contact Information</h4>
-                                    <p>{hostelData.guest_accommodation.contact.text}</p>
-                                    <div className="hostels-contact-details">
-                                        <p><strong>{hostelData.guest_accommodation.contact.name}</strong></p>
-                                        <a href={`mailto:${hostelData.guest_accommodation.contact.email}`}>
-                                            {hostelData.guest_accommodation.contact.email}
+                                <div className="hostels-guest-actions">
+                                    <div className="hostels-booking-section">
+                                        <h4>📋 Booking Information</h4>
+                                        <p>{hostelData.guest_accommodation.form.text}</p>
+                                        <a 
+                                            href={hostelData.guest_accommodation.form.url} 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className="hostels-booking-btn"
+                                        >
+                                            <span>📄</span>
+                                            Book Accommodation
+                                            <span>🔗</span>
                                         </a>
+                                    </div>
+
+                                    <div className="hostels-contact-section">
+                                        <h4>📞 Contact Information</h4>
+                                        <p>{hostelData.guest_accommodation.contact.text}</p>
+                                        <div className="hostels-contact-details">
+                                            <p><strong>{hostelData.guest_accommodation.contact.name}</strong></p>
+                                            <a href={`mailto:${hostelData.guest_accommodation.contact.email}`}>
+                                                {hostelData.guest_accommodation.contact.email}
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -211,16 +325,7 @@ const Hostels = () => {
                         </div>
                         <div className="hostels-content-wrapper">
                             {hostelData.gallery.map((event, index) => (
-                                <div key={index} className="hostels-gallery-section">
-                                    <h3 className="hostels-gallery-title">{event.name}</h3>
-                                    <div className="hostels-gallery-grid">
-                                        {event.images.map((image, imgIndex) => (
-                                            <div key={imgIndex} className="hostels-gallery-item">
-                                                <img src={image.link} alt={`${event.name} ${imgIndex + 1}`} />
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
+                                <GallerySlider key={index} event={event} />
                             ))}
                         </div>
                     </div>
@@ -269,11 +374,11 @@ const Hostels = () => {
     };
 
     return (
-        <div className="hostels-page" data-theme="dark">
+        <div className="hostels-page">
             <div className="hostels-page-header">
                 <div className="hostels-header-content">
                     <h1>Hostels</h1>
-                    <p className="hostels-page-subtitle">{hostelData.about.description}</p>
+                    <p className="hostels-page-subtitle">Home Away From Home - Quality accommodation and vibrant community life at NIT Goa</p>
                 </div>
             </div>
 
@@ -281,7 +386,7 @@ const Hostels = () => {
                 <div className="hostels-main-layout">
                     <nav className="hostels-sidebar">
                         <ul className="hostels-nav-list">
-                            {hostelData.navbar_menu.map((item, index) => (
+                            {['About', ...hostelData.navbar_menu].map((item, index) => (
                                 <li key={index} className="hostels-nav-item">
                                     <button
                                         className={`hostels-nav-link ${activeSection === item ? 'hostels-nav-active' : ''}`}

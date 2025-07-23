@@ -24,7 +24,9 @@
     },
     {
       "title": "Terekhol Hostel (Girls Hostel)",
-      "description": "Welcome to Hostel Terekhol, a dedicated girls' hostel offering a secure and nurturing environment for students. With a capacity of 280 single occupancy rooms spread across three floors, our hostel is strategically designed to promote academic excellence and personal growth. The ground floor features essential facilities including a common hall for gatherings, a conference hall for events, a visitor room for guest accommodations, two store rooms for storage needs, and a warden room for administrative oversight. A separate mess facility is provided.\nMoving to the first floor, residents will find additional spaces to enhance their living experience. Two common halls provide areas for social interaction and group activities, complemented by three store rooms for convenience. A dedicated sick room ensures that residents receive prompt care and attention when needed. On the second floor, similar amenities are mirrored with two common halls, three store rooms, and another sick room, providing comprehensive support for our residents' well-being.\nHostel Terekhol is situated near the academic complex Mandovi, offering easy access to educational resources and cultural activities. Our commitment to safety is reflected in the presence of CCTV surveillance and round-the-clock security personnel. With amenities like WiFi connectivity and well-maintained facilities including a mess serving nutritious meals, residents enjoy a balanced lifestyle conducive to both academic success and personal development.\nFor more details on our facilities, guidelines, or fee structure, please reach out to our administrative office. We are dedicated to fostering a supportive community where every"
+       "image_url": "https://www.nitgoa.ac.in/uploads/girls%20hostel.png",
+      "description": "Welcome to Hostel Terekhol, a dedicated girls' hostel offering a secure and nurturing environment for students. With a capacity of 280 single occupancy rooms spread across three floors, our hostel is strategically designed to promote academic excellence and personal growth. The ground floor features essential facilities including a common hall for gatherings, a conference hall for events, a visitor room for guest accommodations, two store rooms for storage needs, and a warden room for administrative oversight. A separate mess facility is provided.\nMoving to the first floor, residents will find additional spaces to enhance their living experience. Two common halls provide areas for social interaction and group activities, complemented by three store rooms for convenience. A dedicated sick room ensures that residents receive prompt care and attention when needed. On the second floor, similar amenities are mirrored with two common halls, three store rooms, and another sick room, providing comprehensive support for our residents' well-being.\nHostel Terekhol is situated near the academic complex Mandovi, offering easy access to educational resources and cultural activities. Our commitment to safety is reflected in the presence of CCTV surveillance and round-the-clock security personnel. With amenities like WiFi connectivity and well-maintained facilities including a mess serving nutritious meals, residents enjoy a balanced lifestyle conducive to both academic success and personal development.\nFor more details on our facilities, guidelines, or fee structure, please reach out to our administrative office. We are dedicated to fostering a supportive community where every resident feels at home and empowered to excel in their academic journey."
+    
     },
     {
       "documents": [
@@ -51,7 +53,7 @@
         "location": "Room No: 21, Sarabhai complex",
         "email": "chiefwarden@nitgoa.ac.in",
         "phone": "9404763245",
-        "availability": "Wednesday 5:20PM – 6:20PM"
+        "availability": "Wednesday 5:20 PM – 6:20 PM"
       },
       {
         "name": "Dr. Venkatanareshbabu Kupulli",
@@ -59,7 +61,7 @@
         "location": "Room No. 02, Ramanujan Complex",
         "email": "bh.warden1@nitgoa.ac.in",
         "phone": "9049436708",
-        "availability": "Thursday 5PM - 6PM"
+        "availability": "Thursday 5:00 PM - 6:00 PM"
       },
       {
         "name": "Dr. Lokesh Kumar Bramhane",
@@ -67,7 +69,7 @@
         "location": "Room no: 18, Sarabhai complex",
         "email": "bh.warden2@nitgoa.ac.in",
         "phone": "7000972760",
-        "availability": "Friday 5PM – 6PM"
+        "availability": "Friday 5:00 PM – 6:00 PM"
       },
       {
         "name": "Dr. Sunil Kumar",
@@ -75,7 +77,7 @@
         "location": "Room No: 15, C V Raman Complex",
         "email": "bh.warden3@nitgoa.ac.in",
         "phone": "9895631011",
-        "availability": "Monday 5PM – 6PM"
+        "availability": "Monday 5:00 PM – 6:00 PM"
       },
       {
         "name": "Dr. Pravati Swain",
@@ -83,7 +85,7 @@
         "location": "Room No: 20, Ramanujan Complex",
         "email": "gh.warden1@nitgoa.ac.in",
         "phone": "7338164777",
-        "availability": "Monday and Tuesday 5PM – 6PM"
+        "availability": "Monday and Tuesday 5:00 PM – 6:00 PM"
       },
       {
         "name": "Dr. B.Santhi",
@@ -91,7 +93,7 @@
         "location": "Room No: 19, Visvesvaraya Complex",
         "email": "gh.warden2@nitgoa.ac.in",
         "phone": "9902480050",
-        "availability": "Wednesday 1.30PM-2:00PM, Thursday & Friday 5PM-5.30PM"
+        "availability": "Wednesday 1:30 PM - 2:00 PM, Thursday & Friday 5:00 PM - 5:30 PM"
       }
     ]
   },
@@ -102,39 +104,39 @@
   "forms_and_formats": [
     {
       "title": "MESS REFUND POLICY",
-      "link": "../hostels/uploads/MessRefundPolicy 8april2025.pdf"
+      "link": "https://www.nitgoa.ac.in/hostels/uploads/MessRefundPolicy%208april2025.pdf"
     },
     {
       "title": "TEMPORARY VACACATION OF ROOM & LIABILITY REPORT REGARDING THE PERMANENT VACATION OF ROOM & LIABILITY",
-      "link": "../hostels/uploads/7) TEMPORARY VACACATION OF ROOM & LIABILITY.pdf"
+      "link": "https://www.nitgoa.ac.in/hostels/uploads/7)%20TEMPORARY%20VACACATION%20OF%20ROOM%20&%20LIABILITY.pdf"
     },
     {
       "title": "UNDERTAKING TO BE SUBMIITED FOR ROOM ALLOTMENT – (year) (By Student and Parent)",
-      "link": "../hostels/uploads/8) UNDERTAKING TO BE SUBMIITED FOR ROOM ALLOTMENT.pdf"
+      "link": "https://www.nitgoa.ac.in/hostels/uploads/8)%20UNDERTAKING%20TO%20BE%20SUBMIITED%20FOR%20ROOM%20ALLOTMENT.pdf"
     },
     {
       "title": "APPLICATION FOR ACCOMMODATION IN THE NITGOA HOSTEL DURING SEMESTER BREAKS (FOR ALL UG STUDENTS STAYING IN HOSTEL BEYOND (Date))",
-      "link": "../hostels/uploads/1) APPLICATION FOR ACCOMMODATION IN THE HOSTEL DURING SEMESTER BREAKS.pdf"
+      "link": "https://www.nitgoa.ac.in/hostels/uploads/3)%20APPLICATION%20FOR%20ACCOMMODATION%20IN%20THE%20NIT%20GOA%20HOSTELS%20FOR%20%20REMEDIAL%20%20CLASSES%20%20SUPPLEMENTARY%20EXAMINATION.pdf"
     },
     {
       "title": "FORM-1 :APPLICATION FOR ACCOMMODATION IN THE NITGOA HOSTELS FOR REMEDIAL CLASSES / SUPPLEMENTARY EXAMINATION",
-      "link": "../hostels/uploads/3) APPLICATION FOR ACCOMMODATION IN THE NIT GOA HOSTELS FOR  REMEDIAL  CLASSES  SUPPLEMENTARY EXAMINATION.pdf"
+      "link": "https://www.nitgoa.ac.in/hostels/uploads/2)%20APPLICATION%20FOR%20ACCOMMODATION%20IN%20THE%20NIT%20GOA%20%20HOSTELS%20FOR%20TECHNICAL%20ACTIVITIES%20DURING%20VACATION.pdf"
     },
     {
       "title": "APPLICATION FOR ACCOMMODATION IN THE NITGOA HOSTELS FOR TECHNICAL ACTIVITIES DURING VACATION",
-      "link": "../hostels/uploads/2) APPLICATION FOR ACCOMMODATION IN THE NIT GOA  HOSTELS FOR TECHNICAL ACTIVITIES DURING VACATION.pdf"
+      "link": "https://www.nitgoa.ac.in/hostels/uploads/2)%20APPLICATION%20FOR%20ACCOMMODATION%20IN%20THE%20NIT%20GOA%20%20HOSTELS%20FOR%20TECHNICAL%20ACTIVITIES%20DURING%20VACATION.pdf"
     },
     {
       "title": "HOSTEL ACCOMMODATION FORM",
-      "link": "../hostels/uploads/4) HOSTEL ACCOMMODATION FORM.pdf"
+      "link": "https://www.nitgoa.ac.in/hostels/uploads/4)%20HOSTEL%20ACCOMMODATION%20FORM.pdf"
     },
     {
       "title": "HOSTEL STUDENT LEAVE APPLICATION",
-      "link": "../hostels/uploads/5) HOSTEL STUDENT LEAVE APPLICATION.pdf"
+      "link": "https://www.nitgoa.ac.in/hostels/uploads/5)%20HOSTEL%20STUDENT%20LEAVE%20APPLICATION.pdf"
     },
     {
       "title": "REPORT REGARDING THE PERMANENT VACATION OF ROOM & LIABILITY",
-      "link": "../hostels/uploads/6) REPORT REGARDING THE PERMANENT VACATION OF ROOM & LIABILITY.pdf"
+      "link": "https://www.nitgoa.ac.in/hostels/uploads/6)%20REPORT%20REGARDING%20THE%20PERMANENT%20VACATION%20OF%20ROOM%20&%20LIABILITY.pdf"
     }
   ],
   "guest_accommodation": {
@@ -151,7 +153,7 @@
     ],
     "form": {
       "text": "To book accommodation, please fill out the following form.",
-      "url": "https://www.nitgoa.ac.in/hostels/uploads/guest_accommodation_form.pdf"
+      "url": "https://docs.google.com/forms/d/1lkIjos1iZrGd6zYQc49V0j93LuO-ck1oCTYFg47Vpco/edit"
     },
     "contact": {
       "text": "For further details, please contact:",
@@ -164,16 +166,16 @@
       "name": "Holi Celebrations-2025",
       "images": [
         {
-          "link": "./gallery/Holi1.jpg"
+          "link": "https://www.nitgoa.ac.in/hostels/gallery/Holi1.jpg"
         },
         {
-          "link": "./gallery/Holi3.jpg"
+          "link": "https://www.nitgoa.ac.in/hostels/gallery/Holi3.jpg"
         },
         {
-          "link": "./gallery/Holi5.jpg"
+          "link": "https://www.nitgoa.ac.in/hostels/gallery/Holi5.jpg"
         },
         {
-          "link": "./gallery/Holi6.jpg"
+          "link": "https://www.nitgoa.ac.in/hostels/gallery/Holi6.jpg"
         }
       ]
     },
@@ -181,31 +183,31 @@
       "name": "Diwali Celebrations-2024",
       "images": [
         {
-          "link": "./diwali celebrations2024/DSC_7000.jpg"
+          "link": "https://www.nitgoa.ac.in/hostels/diwali%20celebrations2024/DSC_7000.jpg"
         },
         {
-          "link": "./diwali celebrations2024/DSC_7010.jpg"
+          "link": "https://www.nitgoa.ac.in/hostels/diwali%20celebrations2024/DSC_7010.jpg"
         },
         {
-          "link": "./diwali celebrations2024/DSC_7060.jpg"
+          "link": "https://www.nitgoa.ac.in/hostels/diwali%20celebrations2024/DSC_7060.jpg"
         },
         {
-          "link": "./diwali celebrations2024/DSC_7140.jpg"
+          "link": "https://www.nitgoa.ac.in/hostels/diwali%20celebrations2024/DSC_7140.jpg"
         },
         {
-          "link": "./diwali celebrations2024/DSC_7142.jpg"
+          "link": "https://www.nitgoa.ac.in/hostels/diwali%20celebrations2024/DSC_7142.jpg"
         },
         {
-          "link": "./diwali celebrations2024/DSC_7266.jpg"
+          "link": "https://www.nitgoa.ac.in/hostels/diwali%20celebrations2024/DSC_7266.jpg"
         },
         {
-          "link": "./diwali celebrations2024/DSC_7273.jpg"
+          "link": "https://www.nitgoa.ac.in/hostels/diwali%20celebrations2024/DSC_7273.jpg"
         },
         {
-          "link": "./diwali celebrations2024/DSC_7274.jpg"
+          "link": "https://www.nitgoa.ac.in/hostels/diwali%20celebrations2024/DSC_7274.jpg"
         },
         {
-          "link": "./diwali celebrations2024/DSC_7295.jpg"
+          "link": "https://www.nitgoa.ac.in/hostels/diwali%20celebrations2024/DSC_7295.jpg"
         }
       ]
     }
