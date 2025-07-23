@@ -25,7 +25,7 @@ import AcademicCalendar from './Views/Academics-Section/AcademicCalendar';
 import OutreachActivities from './Views/Outreach-Section/OutreachActivities';
 
 // Additional pages that exist but were missing from imports
-import GIAN from './Views/About/GIAN/GIAN';
+import GIAN from './Views//GIAN/GIAN';
 import BTechJosaa from './Views/Admission-Section/BTech/BTechJosaa';
 import BTechDasa from './Views/Admission-Section/BTech/BTechDasa';
 import BTechFacilities from './Views/Admission-Section/BTech/BTechFacilities';

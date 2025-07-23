@@ -1,0 +1,1891 @@
+/* GIAN Page Styles - Following BTech/MTech Design Patterns */
+:root {
+    /* Primary Colors */
+    --primary-blue: #2E86C1;
+    --primary-blue-light: #5DADE2;
+    --primary-blue-dark: #1B4F72;
+    
+    /* Secondary Colors */
+    --secondary-blue-50: #EBF5FB;
+    --secondary-blue-100: #D6EAF8;
+    --secondary-blue-200: #AED6F1;
+    --secondary-blue-800: #0F3460;
+    
+    /* Neutral Colors */
+    --white: #FFFFFF;
+    --gray-50: #F8F9FA;
+    --gray-100: #F1F3F4;
+    --gray-200: #E9ECEF;
+    --gray-600: #6C757D;
+    --gray-700: #495057;
+    --gray-800: #343A40;
+    
+    /* Accent Colors */
+    --accent-orange: #FF6B35;
+    --accent-green: #28A745;
+    --success-green: #198754;
+    
+    /* GIAN Component Variables - Light Theme */
+    --gian-bg-primary: #EBF5FB;
+    --gian-bg-secondary: #FFFFFF;
+    --gian-text-primary: #343A40;
+    --gian-text-secondary: #495057;
+    --gian-border: #E9ECEF;
+    --gian-card-bg: #FFFFFF;
+    --gian-shadow: rgba(0, 0, 0, 0.08);
+    --gian-shadow-medium: rgba(0, 0, 0, 0.12);
+    --gian-shadow-strong: rgba(0, 0, 0, 0.16);
+    
+    /* Completed Courses Variables */
+    --background-color: #F8F9FA;
+    --text-color: #343A40;
+    --border-color: #E9ECEF;
+    --gian-accent-color: #2E86C1;
+    --gian-secondary-color: #5DADE2;
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+    --primary-blue: #4A9EE7;
+    --primary-blue-light: #6BB6FF;
+    --primary-blue-dark: #2E86C1;
+    
+    --secondary-blue-50: #0f1726;
+    --secondary-blue-100: #1a2332;
+    --secondary-blue-200: #253041;
+    --secondary-blue-800: #0A1016;
+    
+    --gray-50: #0f1726;
+    --gray-100: #1a2332;
+    --gray-200: #253041;
+    --gray-600: #94a3b8;
+    --gray-700: #cbd5e1;
+    --gray-800: #e2e8f0;
+    
+    --accent-orange: #FF8C42;
+    --accent-green: #4CAF50;
+    --success-green: #66BB6A;
+    
+    --gian-bg-primary: #0a1220;
+    --gian-bg-secondary: #1a2332;
+    --gian-text-primary: #e2e8f0;
+    --gian-text-secondary: #cbd5e1;
+    --gian-border: #253041;
+    --gian-card-bg: #1e293b;
+    --gian-shadow: rgba(30, 41, 59, 0.4);
+    --gian-shadow-medium: rgba(30, 41, 59, 0.6);
+    --gian-shadow-strong: rgba(30, 41, 59, 0.8);
+    
+    /* Dark Theme Completed Courses Variables */
+    --background-color: #0a1220;
+    --text-color: #e2e8f0;
+    --border-color: #253041;
+    --gian-accent-color: #4A9EE7;
+    --gian-secondary-color: #6BB6FF;
+}
+
+/* Base Page Styles */
+.gian-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--gian-text-primary);
+    background: linear-gradient(135deg, var(--gian-bg-primary) 0%, var(--gian-bg-secondary) 100%);
+    min-height: 100vh;
+    transition: all 0.3s ease;
+    scroll-behavior: smooth;
+}
+
+/* Enable smooth scrolling for the entire page */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Dark Theme Page Override */
+[data-theme="dark"] .gian-page {
+    background: linear-gradient(135deg, #0a1220 0%, #1a2332 50%, #253041 100%);
+}
+
+[data-theme="dark"] .gian-page p {
+    color: #ffffff !important;
+}
+
+.gian-container {
+    max-width: 97%;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Hero Section - PhD Style */
+.gian-page-header {
+    text-align: center;
+    padding: 4rem 0 3rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+    margin: 0 -2rem 3rem;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Dark Theme Hero Override */
+[data-theme="dark"] .gian-page-header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
+    box-shadow: 0 4px 20px rgba(30, 58, 138, 0.3);
+}
+
+.gian-page-header * {
+    color: var(--white) !important;
+}
+
+.gian-page-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    animation: gian-float 20s ease-in-out infinite;
+}
+
+@keyframes gian-float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+.gian-page-header h1 {
+    font-size: 3.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1.1;
+    position: relative;
+    z-index: 2;
+}
+
+.gian-page-subtitle {
+    font-size: 1.4rem;
+    color: var(--white);
+    opacity: 0.95;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Main Layout */
+.gian-main-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    align-items: start;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Sidebar Navigation - Card Style */
+.gian-sidebar {
+    background: var(--gian-card-bg);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px var(--gian-shadow);
+    position: sticky;
+    top: 1rem;
+    height: fit-content;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+    border: 1px solid var(--gian-border);
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+[data-theme="dark"] .gian-sidebar {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: rgba(100, 116, 139, 0.2);
+    box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3);
+}
+
+/* Custom scrollbar for sidebar */
+.gian-sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.gian-sidebar::-webkit-scrollbar-track {
+    background: var(--gian-bg-secondary);
+    border-radius: 3px;
+}
+
+.gian-sidebar::-webkit-scrollbar-thumb {
+    background: var(--primary-blue);
+    border-radius: 3px;
+}
+
+.gian-sidebar::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-blue-dark);
+}
+
+.gian-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.gian-nav-item {
+    margin-bottom: 0.8rem;
+}
+
+.gian-nav-link {
+    display: block;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: none;
+    background: transparent;
+    color: var(--gian-text-primary);
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: left;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: 1px solid transparent;
+}
+
+[data-theme="dark"] .gian-nav-link {
+    color: var(--gian-text-secondary);
+}
+
+.gian-nav-link:hover {
+    background: var(--secondary-blue-50);
+    color: var(--primary-blue);
+    transform: translateX(4px);
+    border-color: var(--primary-blue-light);
+    box-shadow: 0 4px 12px rgba(46, 134, 193, 0.15);
+}
+
+[data-theme="dark"] .gian-nav-link:hover {
+    background: rgba(74, 158, 231, 0.1);
+    color: var(--primary-blue-light);
+    border-color: var(--primary-blue-light);
+}
+
+.gian-nav-active {
+    background: var(--primary-blue) !important;
+    color: var(--white) !important;
+    transform: translateX(4px);
+    box-shadow: 0 8px 20px rgba(46, 134, 193, 0.3);
+    font-weight: 600;
+    border-color: var(--primary-blue-dark);
+}
+
+[data-theme="dark"] .gian-nav-active {
+    background: var(--primary-blue) !important;
+    box-shadow: 0 8px 20px rgba(74, 158, 231, 0.4);
+}
+
+/* Content Area */
+.gian-content {
+    background: var(--gian-card-bg);
+    border-radius: 16px;
+    padding: 5rem;
+    box-shadow: 0 8px 32px var(--gian-shadow);
+    min-height: 600px;
+    border: 1px solid var(--gian-border);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: visible;
+}
+
+[data-theme="dark"] .gian-content {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: rgba(100, 116, 139, 0.2);
+    box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3);
+}
+
+.gian-section {
+    animation: gian-fadeIn 0.5s ease-in;
+}
+
+@keyframes gian-fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.gian-section-header {
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--gian-border);
+    text-align: center;
+}
+
+[data-theme="dark"] .gian-section-header {
+    border-bottom-color: rgba(100, 116, 139, 0.3);
+}
+
+.gian-section-header h2 {
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: var(--gian-text-primary);
+    margin: 0;
+    position: relative;
+    line-height: 1.2;
+}
+
+[data-theme="dark"] .gian-section-header h2 {
+    color: var(--gian-text-primary);
+}
+
+.gian-content-wrapper {
+    line-height: 1.7;
+}
+
+/* Home Section */
+.gian-intro-text {
+    font-size: 1.1rem;
+    color: var(--gian-text-secondary);
+    margin-bottom: 0;
+    text-align: justify;
+    line-height: 1.8;
+    padding: 2rem;
+    /* background: var(--secondary-blue-50);
+    border-radius: 12px;
+    border: 1px solid var(--gian-border); */
+}
+
+[data-theme="dark"] .gian-intro-text {
+    /* background: rgba(74, 158, 231, 0.05);
+    border-color: rgba(100, 116, 139, 0.2); */
+    color: var(--gian-text-secondary);
+}
+
+.gian-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.gian-feature-card {
+    background: var(--gian-card-bg);
+    padding: 2.5rem;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid var(--gian-border);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px var(--gian-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+[data-theme="dark"] .gian-feature-card {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: rgba(100, 116, 139, 0.2);
+}
+
+.gian-feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-blue-light), transparent);
+    border-radius: 0 0 0 60px;
+    opacity: 0.1;
+}
+
+.gian-feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px var(--gian-shadow-medium);
+    border-color: var(--primary-blue-light);
+}
+
+[data-theme="dark"] .gian-feature-card:hover {
+    box-shadow: 0 12px 32px rgba(15, 23, 38, 0.5);
+    border-color: var(--primary-blue-light);
+}
+
+.gian-feature-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.gian-feature-card h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--gian-text-primary);
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+[data-theme="dark"] .gian-feature-card h3 {
+    color: var(--gian-text-primary);
+}
+
+.gian-feature-card p {
+    color: var(--gian-text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+}
+
+[data-theme="dark"] .gian-feature-card p {
+    color: var(--gian-text-secondary);
+}
+
+/* Objectives Section */
+.gian-objectives-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.gian-objectives-list li {
+    background: var(--gian-card-bg);
+    margin-bottom: 0;
+    color: var(--gian-text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    padding: 3rem 2rem 3rem 5rem;
+    position: relative;
+    border-radius: 16px;
+    border: 1px solid var(--gian-border);
+    box-shadow: 0 4px 16px var(--gian-shadow);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+[data-theme="dark"] .gian-objectives-list li {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    color: var(--gian-text-secondary);
+    border-color: rgba(100, 116, 139, 0.2);
+    box-shadow: 0 4px 16px rgba(15, 23, 38, 0.3);
+}
+
+.gian-objectives-list li::before {
+    content: counter(objectives-counter);
+    counter-increment: objectives-counter;
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.5rem;
+    height: 2.5rem;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(46, 134, 193, 0.3);
+    z-index: 2;
+}
+
+[data-theme="dark"] .gian-objectives-list li::before {
+    background: linear-gradient(135deg, var(--primary-blue-light), var(--primary-blue));
+    box-shadow: 0 4px 12px rgba(74, 158, 231, 0.4);
+}
+
+.gian-objectives-list {
+    counter-reset: objectives-counter;
+}
+
+.gian-objectives-list li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-blue-light), transparent);
+    border-radius: 0 16px 0 80px;
+    opacity: 0.08;
+    z-index: 1;
+}
+
+/* Add animation delay for staggered effect */
+.gian-objectives-list li:nth-child(1) { animation-delay: 0.1s; }
+.gian-objectives-list li:nth-child(2) { animation-delay: 0.2s; }
+.gian-objectives-list li:nth-child(3) { animation-delay: 0.3s; }
+.gian-objectives-list li:nth-child(4) { animation-delay: 0.4s; }
+.gian-objectives-list li:nth-child(5) { animation-delay: 0.5s; }
+.gian-objectives-list li:nth-child(6) { animation-delay: 0.6s; }
+.gian-objectives-list li:nth-child(7) { animation-delay: 0.7s; }
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.gian-objectives-list li {
+    animation: slideInLeft 0.6s ease-out both;
+}
+
+.gian-objective-item {
+    background: var(--gian-card-bg);
+    padding: 2.5rem;
+    border-radius: 16px;
+    border-left: 5px solid var(--primary-blue);
+    box-shadow: 0 4px 16px var(--gian-shadow);
+    border: 1px solid var(--gian-border);
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .gian-objective-item {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: rgba(100, 116, 139, 0.2);
+    border-left-color: var(--primary-blue-light);
+}
+
+.gian-objective-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px var(--gian-shadow-medium);
+}
+
+.gian-objective-item h3 {
+    color: var(--gian-text-primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    border-bottom: 2px solid var(--gian-border);
+    padding-bottom: 0.5rem;
+}
+
+[data-theme="dark"] .gian-objective-item h3 {
+    color: var(--gian-text-primary);
+    border-bottom-color: rgba(100, 116, 139, 0.3);
+}
+
+.gian-objective-item ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.gian-objective-item li {
+    margin-bottom: 1rem;
+    color: var(--gian-text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    position: relative;
+}
+
+[data-theme="dark"] .gian-objective-item li {
+    color: var(--gian-text-secondary);
+}
+
+.gian-objective-item li::marker {
+    color: var(--primary-blue);
+}
+
+/* Guidelines Section */
+.gian-guidelines-content {
+    display: grid;
+    gap: 2rem;
+}
+
+.gian-guideline-item {
+    background: var(--gian-card-bg);
+    margin-bottom: 0;
+    color: var(--gian-text-secondary);
+    line-height: 1.7;
+    padding: 2.5rem;
+    border-radius: 16px;
+    border: 1px solid var(--gian-border);
+    box-shadow: 0 4px 16px var(--gian-shadow);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+[data-theme="dark"] .gian-guideline-item {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    color: var(--gian-text-secondary);
+    border-color: rgba(100, 116, 139, 0.2);
+    box-shadow: 0 4px 16px rgba(15, 23, 38, 0.3);
+}
+
+.gian-guideline-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--primary-blue-light), transparent);
+    border-radius: 0 16px 0 100px;
+    opacity: 0.06;
+    z-index: 1;
+}
+
+.gian-guideline-item p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: var(--gian-text-secondary);
+    position: relative;
+    z-index: 2;
+}
+
+[data-theme="dark"] .gian-guideline-item p {
+    color: var(--gian-text-secondary);
+}
+
+.gian-guideline-item strong {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+    color: var(--white);
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-right: 1rem;
+    box-shadow: 0 2px 8px rgba(46, 134, 193, 0.3);
+    position: relative;
+    z-index: 2;
+}
+
+[data-theme="dark"] .gian-guideline-item strong {
+    background: linear-gradient(135deg, var(--primary-blue-light), var(--primary-blue));
+    box-shadow: 0 2px 8px rgba(74, 158, 231, 0.4);
+}
+
+.gian-guideline-item ul {
+    margin-left: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.gian-guideline-item li {
+    margin-bottom: 0.8rem;
+    color: var(--gian-text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    padding-left: 0.5rem;
+    position: relative;
+}
+
+[data-theme="dark"] .gian-guideline-item li {
+    color: var(--gian-text-secondary);
+}
+
+.gian-guideline-item li::marker {
+    color: var(--primary-blue);
+}
+
+[data-theme="dark"] .gian-guideline-item li::marker {
+    color: var(--primary-blue-light);
+}
+
+.gian-guideline-item li::before {
+    content: '';
+    position: absolute;
+    left: -1rem;
+    top: 0.6rem;
+    width: 6px;
+    height: 6px;
+    background: var(--primary-blue);
+    border-radius: 50%;
+    opacity: 0.7;
+}
+
+[data-theme="dark"] .gian-guideline-item li::before {
+    background: var(--primary-blue-light);
+}
+
+/* Add animation delays for staggered effect */
+.gian-guideline-item:nth-child(1) { animation-delay: 0.1s; }
+.gian-guideline-item:nth-child(2) { animation-delay: 0.2s; }
+.gian-guideline-item:nth-child(3) { animation-delay: 0.3s; }
+.gian-guideline-item:nth-child(4) { animation-delay: 0.4s; }
+.gian-guideline-item:nth-child(5) { animation-delay: 0.5s; }
+.gian-guideline-item:nth-child(6) { animation-delay: 0.6s; }
+.gian-guideline-item:nth-child(7) { animation-delay: 0.7s; }
+.gian-guideline-item:nth-child(8) { animation-delay: 0.8s; }
+.gian-guideline-item:nth-child(9) { animation-delay: 0.9s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.gian-guideline-item {
+    animation: fadeInUp 0.6s ease-out both;
+}
+
+.gian-guideline-group {
+    background: var(--gian-card-bg);
+    padding: 2.5rem;
+    border-radius: 16px;
+    border: 1px solid var(--gian-border);
+    box-shadow: 0 4px 16px var(--gian-shadow);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+[data-theme="dark"] .gian-guideline-group {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: rgba(100, 116, 139, 0.2);
+}
+
+.gian-guideline-group::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-blue-light), transparent);
+    border-radius: 0 0 0 80px;
+    opacity: 0.1;
+}
+
+.gian-guideline-group:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px var(--gian-shadow-medium);
+}
+
+.gian-guideline-group h3 {
+    color: var(--gian-text-primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    border-bottom: 2px solid var(--gian-border);
+    padding-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+[data-theme="dark"] .gian-guideline-group h3 {
+    color: var(--gian-text-primary);
+    border-bottom-color: rgba(100, 116, 139, 0.3);
+}
+
+.gian-guideline-group ul {
+    margin: 0;
+    padding-left: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.gian-guideline-group li {
+    margin-bottom: 1rem;
+    color: var(--gian-text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+[data-theme="dark"] .gian-guideline-group li {
+    color: var(--gian-text-secondary);
+}
+
+.gian-guideline-group li::marker {
+    color: var(--primary-blue);
+}
+
+/* Upcoming Courses Section */
+.gian-upcoming-container {
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-blue-light) var(--secondary-blue-100);
+}
+
+.gian-upcoming-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.gian-upcoming-container::-webkit-scrollbar-track {
+    background: var(--secondary-blue-100);
+    border-radius: 10px;
+}
+
+[data-theme="dark"] .gian-upcoming-container::-webkit-scrollbar-track {
+    background: rgba(100, 116, 139, 0.2);
+}
+
+.gian-upcoming-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-light));
+    border-radius: 10px;
+    border: 1px solid var(--secondary-blue-200);
+}
+
+[data-theme="dark"] .gian-upcoming-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--primary-blue-light), var(--primary-blue));
+    border-color: rgba(100, 116, 139, 0.3);
+}
+
+.gian-upcoming-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--primary-blue-dark), var(--primary-blue));
+}
+
+.gian-upcoming-course {
+    background: var(--gian-card-bg);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--gian-border);
+    box-shadow: 0 8px 32px var(--gian-shadow);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .gian-upcoming-course {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: rgba(100, 116, 139, 0.2);
+    box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3);
+}
+
+.gian-upcoming-course::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+    z-index: 1;
+}
+
+[data-theme="dark"] .gian-upcoming-course::before {
+    background: linear-gradient(135deg, var(--primary-blue-light), var(--primary-blue));
+}
+
+.gian-upcoming-course::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, var(--primary-blue-light), transparent);
+    border-radius: 0 16px 0 120px;
+    opacity: 0.05;
+    z-index: 1;
+}
+
+.gian-course-number {
+    color: var(--primary-blue);
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+[data-theme="dark"] .gian-course-number {
+    color: var(--primary-blue-light);
+}
+
+.gian-course-details-upcoming {
+    position: relative;
+    z-index: 2;
+}
+
+.gian-course-title-upcoming {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--gian-text-primary);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+    display: inline;
+}
+
+[data-theme="dark"] .gian-course-title-upcoming {
+    color: var(--gian-text-primary);
+}
+
+.gian-course-faculty-info {
+    margin-bottom: 1.5rem;
+}
+
+.gian-course-faculty-info p {
+    margin-bottom: 0.8rem;
+    color: var(--gian-text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+[data-theme="dark"] .gian-course-faculty-info p {
+    color: var(--gian-text-secondary);
+}
+
+.gian-course-faculty-info strong {
+    color: var(--gian-text-primary);
+    font-weight: 600;
+}
+
+[data-theme="dark"] .gian-course-faculty-info strong {
+    color: var(--gian-text-primary);
+}
+
+.gian-course-schedule {
+    margin-bottom: 1.5rem;
+}
+
+.gian-course-schedule p {
+    margin-bottom: 0.5rem;
+    color: var(--gian-text-secondary);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+[data-theme="dark"] .gian-course-schedule p {
+    color: var(--gian-text-secondary);
+}
+
+.gian-course-schedule strong {
+    color: var(--gian-text-primary);
+    font-weight: 600;
+}
+
+[data-theme="dark"] .gian-course-schedule strong {
+    color: var(--gian-text-primary);
+}
+
+.gian-course-brochure {
+    margin-top: 1.5rem;
+}
+
+.gian-brochure-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba(46, 134, 193, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+[data-theme="dark"] .gian-brochure-link {
+    background: linear-gradient(135deg, var(--primary-blue-light), var(--primary-blue));
+    box-shadow: 0 4px 12px rgba(74, 158, 231, 0.4);
+}
+
+.gian-brochure-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.gian-brochure-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(46, 134, 193, 0.4);
+    background: linear-gradient(135deg, var(--primary-blue-dark), var(--primary-blue));
+}
+
+[data-theme="dark"] .gian-brochure-link:hover {
+    box-shadow: 0 6px 20px rgba(74, 158, 231, 0.5);
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+}
+
+.gian-brochure-link:hover::before {
+    left: 100%;
+}
+
+.gian-brochure-link::after {
+    content: '📄';
+    margin-left: 0.5rem;
+    font-size: 1rem;
+}
+
+/* Animation for upcoming courses */
+.gian-upcoming-course {
+    animation: fadeInScale 0.6s ease-out both;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Course Cards */
+.gian-courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 2rem;
+}
+
+.gian-course-card {
+    background: var(--gian-card-bg);
+    border-radius: 16px;
+    padding: 0;
+    box-shadow: 0 8px 32px var(--gian-shadow);
+    border: 1px solid var(--gian-border);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+[data-theme="dark"] .gian-course-card {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: rgba(100, 116, 139, 0.2);
+    box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3);
+}
+
+.gian-course-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px var(--gian-shadow-strong);
+}
+
+[data-theme="dark"] .gian-course-card:hover {
+    box-shadow: 0 16px 40px rgba(15, 23, 38, 0.6);
+}
+
+.gian-course-status {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(10px);
+    z-index: 2;
+}
+
+.gian-upcoming .gian-course-status {
+    background: rgba(46, 134, 193, 0.9);
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .gian-upcoming .gian-course-status {
+    background: rgba(74, 158, 231, 0.9);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.gian-completed .gian-course-status {
+    background: rgba(40, 167, 69, 0.9);
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .gian-completed .gian-course-status {
+    background: rgba(76, 175, 80, 0.9);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.gian-course-card h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--gian-text-primary);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    padding: 2.5rem 2.5rem 0;
+}
+
+[data-theme="dark"] .gian-course-card h3 {
+    color: var(--gian-text-primary);
+}
+
+.gian-course-faculty {
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    padding: 0 2.5rem;
+}
+
+[data-theme="dark"] .gian-course-faculty {
+    color: var(--primary-blue-light);
+}
+
+.gian-course-details {
+    margin-bottom: 1.5rem;
+    padding: 0 2.5rem;
+}
+
+.gian-course-details p {
+    margin-bottom: 0.5rem;
+    color: var(--gian-text-secondary);
+    font-size: 0.95rem;
+}
+
+[data-theme="dark"] .gian-course-details p {
+    color: var(--gian-text-secondary);
+}
+
+.gian-course-description {
+    padding: 2rem 2.5rem 2.5rem;
+    background: var(--secondary-blue-50);
+    margin-top: 1rem;
+}
+
+[data-theme="dark"] .gian-course-description {
+    background: rgba(74, 158, 231, 0.05);
+}
+
+.gian-course-description p {
+    color: var(--gian-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+[data-theme="dark"] .gian-course-description p {
+    color: var(--gian-text-secondary);
+}
+
+/* Contact Section - Simple Clean Design */
+.gian-contact-main-card {
+    background: var(--gian-card-bg);
+    border-radius: 12px;
+    padding: 3rem;
+    margin: 2rem auto;
+    max-width: 600px;
+    border: 1px solid var(--gian-border);
+    box-shadow: 0 4px 12px var(--gian-shadow);
+    text-align: center;
+}
+
+[data-theme="dark"] .gian-contact-main-card {
+    background: var(--gian-card-bg);
+    border-color: rgba(100, 116, 139, 0.2);
+}
+
+.gian-contact-content h3 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--gian-text-primary);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
+}
+
+[data-theme="dark"] .gian-contact-content h3 {
+    color: var(--gian-text-primary);
+}
+
+.gian-contact-title {
+    font-size: 1.2rem;
+    color: var(--primary-blue);
+    font-weight: 500;
+    margin: 0 0 2rem 0;
+    line-height: 1.4;
+}
+
+[data-theme="dark"] .gian-contact-title {
+    color: var(--primary-blue-light);
+}
+
+.gian-contact-details {
+    display: grid;
+    gap: 1.5rem;
+    text-align: left;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.gian-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem;
+    background: var(--secondary-blue-50);
+    border-radius: 8px;
+    border: 1px solid var(--gian-border);
+}
+
+[data-theme="dark"] .gian-contact-item {
+    background: rgba(74, 158, 231, 0.05);
+    border-color: rgba(100, 116, 139, 0.2);
+}
+
+.gian-contact-item-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: var(--primary-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    color: white;
+}
+
+[data-theme="dark"] .gian-contact-item-icon {
+    background: var(--primary-blue-light);
+}
+
+.gian-contact-item-text strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+[data-theme="dark"] .gian-contact-item-text strong {
+    color: var(--primary-blue-light);
+}
+
+.gian-contact-item-text p {
+    margin: 0;
+    color: var(--gian-text-secondary);
+    font-size: 1rem;
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+[data-theme="dark"] .gian-contact-item-text p {
+    color: var(--gian-text-secondary);
+}
+
+/* Responsive Design for Contact Section */
+@media (max-width: 768px) {
+    .gian-contact-main-card {
+        padding: 2rem;
+        margin: 1rem;
+    }
+    
+    .gian-contact-content h3 {
+        font-size: 2rem;
+    }
+    
+    .gian-contact-title {
+        font-size: 1.1rem;
+    }
+    
+    .gian-contact-item {
+        padding: 1rem;
+        gap: 0.8rem;
+    }
+    
+    .gian-contact-item-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .gian-contact-details {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .gian-contact-main-card {
+        padding: 1.5rem;
+        border-radius: 8px;
+    }
+    
+    .gian-contact-content h3 {
+        font-size: 1.8rem;
+    }
+    
+    .gian-contact-title {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .gian-contact-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+        padding: 1.2rem;
+    }
+    
+    .gian-contact-item-text {
+        text-align: center;
+    }
+}
+
+.gian-contact-form {
+    background: var(--secondary-blue-50);
+    padding: 2.5rem;
+    border-radius: 16px;
+    border: 1px solid var(--gian-border);
+    box-shadow: 0 4px 16px var(--gian-shadow);
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .gian-contact-form {
+    background: rgba(74, 158, 231, 0.05);
+    border-color: rgba(100, 116, 139, 0.2);
+}
+
+.gian-contact-form:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px var(--gian-shadow-medium);
+}
+
+.gian-contact-form h3 {
+    color: var(--gian-text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    border-bottom: 2px solid var(--gian-border);
+    padding-bottom: 0.5rem;
+}
+
+[data-theme="dark"] .gian-contact-form h3 {
+    color: var(--gian-text-primary);
+    border-bottom-color: rgba(100, 116, 139, 0.3);
+}
+
+.gian-contact-form p {
+    color: var(--gian-text-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+[data-theme="dark"] .gian-contact-form p {
+    color: var(--gian-text-secondary);
+}
+
+.gian-quick-links h4 {
+    color: var(--gian-text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+[data-theme="dark"] .gian-quick-links h4 {
+    color: var(--gian-text-primary);
+}
+
+.gian-quick-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.gian-quick-links li {
+    margin-bottom: 0.8rem;
+}
+
+.gian-quick-links a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid transparent;
+}
+
+[data-theme="dark"] .gian-quick-links a {
+    color: var(--primary-blue-light);
+}
+
+.gian-quick-links a:hover {
+    color: var(--primary-blue-dark);
+    border-bottom-color: var(--primary-blue-light);
+    transform: translateX(3px);
+}
+
+[data-theme="dark"] .gian-quick-links a:hover {
+    color: var(--white);
+    border-bottom-color: var(--primary-blue-light);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .gian-main-layout {
+        grid-template-columns: 240px 1fr;
+        gap: 1.5rem;
+    }
+    
+    .gian-container {
+        padding: 0 0.5rem;
+    }
+    
+    .gian-page-header {
+        margin: 0 -1rem 2rem;
+    }
+    
+    .gian-page-header h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .gian-main-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .gian-sidebar {
+        order: 2;
+        position: static;
+        margin-top: 2rem;
+    }
+    
+    .gian-nav-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 0.5rem;
+    }
+    
+    .gian-nav-item {
+        margin-bottom: 0;
+    }
+    
+    .gian-nav-link {
+        padding: 1rem;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+    
+    .gian-page-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .gian-page-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .gian-section-header h2 {
+        font-size: 2.2rem;
+    }
+    
+    .gian-features-grid,
+    .gian-courses-grid,
+    .gian-contact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .gian-content {
+        padding: 2rem;
+    }
+    
+    .gian-sidebar {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .gian-container {
+        padding: 0 0.5rem;
+    }
+    
+    .gian-content,
+    .gian-sidebar {
+        padding: 1.5rem;
+    }
+    
+    .gian-page-header {
+        padding: 3rem 1rem 2rem;
+    }
+    
+    .gian-page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .gian-page-subtitle {
+        font-size: 1rem;
+    }
+    
+    .gian-nav-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gian-nav-link {
+        padding: 0.8rem;
+        font-size: 0.85rem;
+    }
+    
+    .gian-course-card h3,
+    .gian-feature-card h3,
+    .gian-objective-item h3,
+    .gian-guideline-group h3,
+    .gian-contact-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .gian-feature-card,
+    .gian-objective-item,
+    .gian-guideline-group,
+    .gian-contact-card,
+    .gian-contact-form {
+        padding: 1.5rem;
+    }
+    
+    .gian-course-card h3 {
+        padding: 1.5rem 1.5rem 0;
+    }
+    
+    .gian-course-faculty,
+    .gian-course-details {
+        padding: 0 1.5rem;
+    }
+    
+    .gian-course-description {
+        padding: 1.5rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .gian-sidebar {
+        display: none;
+    }
+    
+    .gian-main-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .gian-page {
+        background: white;
+    }
+    
+    .gian-content {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+    
+    .gian-page-header {
+        margin: 0;
+        background: #f8f9fa !important;
+        color: #333 !important;
+    }
+    
+    .gian-page-header * {
+        color: #333 !important;
+    }
+}
+
+/* Completed Courses Section - Clean Professional Design */
+.gian-completed-header {
+    background: var(--gian-card-bg);
+    border: 1px solid var(--gian-border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .gian-completed-header {
+    background: var(--gian-bg-secondary);
+    border-color: rgba(100, 116, 139, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.gian-completed-main-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gian-text-primary);
+    margin: 0 0 0.5rem 0;
+}
+
+.gian-completed-subtitle {
+    font-size: 1.1rem;
+    color: var(--gian-text-secondary);
+    margin: 0 0 1rem 0;
+}
+
+.gian-completed-stats {
+    display: inline-block;
+    background: var(--primary-blue);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.gian-completed-container {
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.gian-completed-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    gap: 1.5rem;
+}
+
+.gian-completed-card {
+    background: var(--gian-card-bg);
+    border: 1px solid var(--gian-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+[data-theme="dark"] .gian-completed-card {
+    background: var(--gian-bg-secondary);
+    border-color: rgba(100, 116, 139, 0.2);
+}
+
+.gian-completed-card:hover {
+    border-color: var(--primary-blue);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+[data-theme="dark"] .gian-completed-card:hover {
+    border-color: var(--primary-blue-light);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.gian-completed-number-badge {
+    display: inline-block;
+    background: var(--primary-blue);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.gian-completed-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gian-text-primary);
+    margin: 0 0 1rem 0;
+    line-height: 1.4;
+}
+
+.gian-completed-faculty {
+    background: var(--gian-bg-secondary);
+    border-radius: 6px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+[data-theme="dark"] .gian-completed-faculty {
+    background: rgba(100, 116, 139, 0.1);
+}
+
+.gian-faculty-item {
+    margin-bottom: 0.75rem;
+}
+
+.gian-faculty-item:last-child {
+    margin-bottom: 0;
+}
+
+.gian-faculty-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.25rem;
+}
+
+[data-theme="dark"] .gian-faculty-label {
+    color: var(--primary-blue-light);
+}
+
+.gian-faculty-name {
+    font-size: 0.95rem;
+    color: var(--gian-text-primary);
+    line-height: 1.3;
+}
+
+.gian-completed-date {
+    background: var(--primary-blue);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* Custom Scrollbar */
+.gian-completed-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.gian-completed-container::-webkit-scrollbar-track {
+    background: var(--gian-bg-secondary);
+    border-radius: 3px;
+}
+
+.gian-completed-container::-webkit-scrollbar-thumb {
+    background: var(--primary-blue);
+    border-radius: 3px;
+}
+
+.gian-completed-container::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-blue-dark);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .gian-completed-header {
+        padding: 1.5rem;
+    }
+    
+    .gian-completed-main-title {
+        font-size: 2rem;
+    }
+    
+    .gian-completed-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .gian-completed-card {
+        padding: 1.25rem;
+    }
+    
+    .gian-completed-title {
+        font-size: 1rem;
+    }
+}
+
+/* Mobile L and below - Convert sidebar to horizontal navbar */
+@media (max-width: 768px) {
+    .gian-main-layout {
+        display: block;
+        grid-template-columns: none;
+        gap: 0;
+    }
+    
+    .gian-sidebar {
+        position: static;
+        top: auto;
+        height: auto;
+        max-height: none;
+        overflow-y: visible;
+        width: 100%;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px var(--gian-shadow);
+    }
+    
+    .gian-nav-list {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 0.3rem;
+        justify-content: flex-start;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding: 0.5rem 0;
+    }
+    
+    .gian-nav-list::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .gian-nav-item {
+        margin-bottom: 0;
+        flex: 0 0 auto;
+    }
+    
+    .gian-nav-link {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.75rem;
+        border-radius: 6px;
+        white-space: nowrap;
+        min-width: auto;
+        text-align: center;
+        font-weight: 500;
+    }
+    
+    /* Make active nav item more prominent on mobile */
+    .gian-nav-active {
+        background: var(--primary-blue) !important;
+        color: var(--white) !important;
+        font-weight: 600;
+    }
+    
+    .gian-content {
+        padding: 0;
+        width: 100%;
+    }
+    
+    /* Adjust page header for mobile */
+    .gian-page-header {
+        margin: 0 -1rem 1.5rem;
+        padding: 2.5rem 0 2rem;
+    }
+    
+    .gian-page-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .gian-page-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Mobile L and below - Smaller buttons for better fit */
+@media (max-width: 425px) {
+    .gian-nav-list {
+        gap: 0.2rem;
+    }
+    
+    .gian-nav-link {
+        padding: 0.5rem 0.6rem;
+        font-size: 0.7rem;
+        min-width: auto;
+        border-radius: 4px;
+    }
+    
+    .gian-sidebar {
+        padding: 0.8rem;
+    }
+}
+
+
