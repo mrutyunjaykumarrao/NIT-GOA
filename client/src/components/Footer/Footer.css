@@ -294,6 +294,8 @@
 }
 
 [data-theme="dark"] .footer-contact-main-card {
+  background: #1e293b;
+  border: 1px solid #374151;
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
 }
 
@@ -603,10 +605,13 @@
 }
 
 [data-theme="dark"] .footer-links-card {
+  background: #1e293b;
+  border: 1px solid #374151;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 [data-theme="dark"] .footer-links-card:hover {
+  border-color: #4A9EE7;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
@@ -915,5 +920,33 @@
   .footer-section a,
   .footer-social-icon {
     border: 2px solid;
+  }
+}
+
+/* Footer Last Updated Bottom */
+.footer-last-updated-bottom {
+  background: rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 20px;
+  text-align: right;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 0;
+}
+
+[data-theme="dark"] .footer-last-updated-bottom {
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 768px) {
+  .footer-last-updated-bottom {
+    justify-content: center;
+    font-size: 10px;
+    padding: 6px 15px;
   }
 }

@@ -1,10 +1,51 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Footer.css';
 
 const Footer = () => {
   const [visitorCount, setVisitorCount] = useState(1247892);
   const [animateCounter, setAnimateCounter] = useState(false);
   const [lastUpdated, setLastUpdated] = useState(new Date());
+  const navigate = useNavigate();
+
+  // Handle navigation with smooth scroll
+  const handleLinkClick = (e, path, hash = '') => {
+    e.preventDefault();
+    
+    // Store current scroll position
+    sessionStorage.setItem('footerScrollPosition', window.scrollY.toString());
+    
+    // Navigate to page
+    navigate(path + hash);
+    
+    // Smooth scroll to top or specific section
+    setTimeout(() => {
+      if (hash) {
+        const element = document.getElementById(hash.substring(1));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
+  // Handle back navigation - scroll to footer
+  useEffect(() => {
+    const handlePopState = () => {
+      const savedPosition = sessionStorage.getItem('footerScrollPosition');
+      if (savedPosition) {
+        setTimeout(() => {
+          window.scrollTo({ top: parseInt(savedPosition), behavior: 'smooth' });
+        }, 100);
+        sessionStorage.removeItem('footerScrollPosition');
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   // Update last updated date when component mounts or changes
   useEffect(() => {
@@ -104,13 +145,13 @@ const Footer = () => {
             <div className="footer-links-card">
               <h5 className="footer-contact-main-title">Important Links</h5>
               <ul>
-                <li><a href="/academics/regulations#ug-curriculum">Syllabus</a></li>
-                <li><a href="/e-downloads">e-Downloads</a></li>
+                <li><a href="/academics/regulations#ug-curriculum" onClick={(e) => handleLinkClick(e, '/academics/regulations', '#ug-curriculum')}>Syllabus</a></li>
+                <li><a href="/e-downloads" onClick={(e) => handleLinkClick(e, '/e-downloads')}>e-Downloads</a></li>
                 <li><a href="https://mis.nitgoa.ac.in/misnitgoa/result.aspx" target="_blank" rel="noopener noreferrer">Results</a></li>
-                <li><a href="/rti">RTI</a></li>
-                <li><a href="/sc-st-cell">SC/ST Cell</a></li>
-                <li><a href="/administration/committees#anti-ragging-committee">Anti-Ragging</a></li>
-                <li><a href="/administration/committees#grievance-redressal-committee">Grievance Portal</a></li>
+                <li><a href="/rti" onClick={(e) => handleLinkClick(e, '/rti')}>RTI</a></li>
+                <li><a href="/sc-st-cell" onClick={(e) => handleLinkClick(e, '/sc-st-cell')}>SC/ST Cell</a></li>
+                <li><a href="/administration/committees#anti-ragging-committee" onClick={(e) => handleLinkClick(e, '/administration/committees', '#anti-ragging-committee')}>Anti-Ragging</a></li>
+                <li><a href="/administration/committees#grievance-redressal-committee" onClick={(e) => handleLinkClick(e, '/administration/committees', '#grievance-redressal-committee')}>Grievance Portal</a></li>
               </ul>
             </div>
           </div> 
@@ -175,20 +216,20 @@ const Footer = () => {
 
         {/* Footer Bottom - Copyright */}
         <div className="footer-bottom">
-          <div className="footer-right-section">
-            <div className="footer-last-updated">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{width: '16px', height: '16px', marginRight: '6px', verticalAlign: 'middle'}}>
-                <circle cx="12" cy="12" r="10"/>
-                <polyline points="12,6 12,12 16,14"/>
-              </svg>
-              Last Updated: {formatLastUpdated(lastUpdated)}
-            </div>
-          </div>
-
           <div className="footer-copyright">
             <p>&copy; 2025 National Institute of Technology Goa</p>
           </div>
+          {/* Footer Last Updated - Bottom Most */}
+        <div className="footer-last-updated-bottom">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{width: '12px', height: '12px', marginRight: '0px', verticalAlign: 'middle'}}>
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12,6 12,12 16,14"/>
+          </svg>
+          Last Updated: {formatLastUpdated(lastUpdated)}
         </div>
+        </div>
+
+        
       </div>
     </footer>
   );
