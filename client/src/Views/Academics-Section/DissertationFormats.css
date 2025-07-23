@@ -10,7 +10,7 @@
 }
 
 .dissertation-formats-container {
-  max-width: 1200px;
+  max-width: 90%;
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -141,6 +141,12 @@
   .dissertation-formats-page .pretty-download-btn {
     align-self: flex-end;
   }
+  .dissertation-formats-page .pretty-download-btn {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 0.9rem;
+        align-items: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -159,4 +165,10 @@
   .dissertation-formats-page .event-title {
     font-size: 1rem !important;
   }
+  .dissertation-formats-page .pretty-download-btn {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 0.9rem;
+        align-items: center;
+    }
 }
