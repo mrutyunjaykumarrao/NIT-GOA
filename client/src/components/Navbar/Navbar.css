@@ -1,119 +1,202 @@
-/* NIT Goa Navbar Component - Page Specific Styles with Dark Mode Support */
+/* ===============================================================================
+   NIT GOA NAVBAR COMPONENT - COMPREHENSIVE STYLES
+   
+   A modern, responsive navigation system with:
+   - Progressive scroll animations
+   - Multi-level dropdown menus
+   - Dark mode support
+   - Mobile-first responsive design
+   - Enhanced accessibility
+   - Optimized for screens from 320px to 2560px+
+   =============================================================================== */
 
-/* Navbar global configuration */
+/* ========================================================================
+   1. GLOBAL CONFIGURATION & CSS VARIABLES
+   ======================================================================== */
+
+/* Global scroll behavior for smooth navigation */
 html {
   scroll-behavior: smooth;
 }
 
+/* Account for sticky navbar height in scroll positioning */
 body {
-  scroll-padding-top: 180px; /* Account for navbar sticky height */
+  scroll-padding-top: 180px;
 }
 
-/* Main navbar wrapper container with progressive animations */
+/* CSS Custom Properties for consistent theming and responsive design */
+:root {
+  /* ===== LAYOUT VARIABLES ===== */
+  --navbar-max-width-sm: 768px;       /* Small screens */
+  --navbar-max-width-md: 1024px;      /* Medium screens */
+  --navbar-max-width-lg: 1440px;      /* Large screens */
+  --navbar-max-width-xl: 1920px;      /* Extra large screens */
+  --navbar-max-width-xxl: 2560px;     /* Ultra-wide screens */
+  
+  /* ===== SPACING VARIABLES ===== */
+  --navbar-padding-xs: 15px;          /* Mobile padding */
+  --navbar-padding-sm: 25px;          /* Small tablet padding */
+  --navbar-padding-md: 40px;          /* Desktop padding */
+  --navbar-padding-lg: 60px;          /* Large screen padding */
+  --navbar-padding-xl: 80px;          /* Extra large screen padding */
+  
+  /* ===== Z-INDEX LAYERS ===== */
+  --z-navbar-base: 1100;              /* Base navbar layer */
+  --z-navbar-top: 1200;               /* Top header layer */
+  --z-dropdown: 1300;                 /* Dropdown menus */
+  --z-mobile-menu: 1400;              /* Mobile menu */
+  --z-mobile-overlay: 1500;           /* Mobile overlay */
+  
+  /* ===== ANIMATION VARIABLES ===== */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-medium: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  --transition-bounce: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* ===== PROGRESSIVE SCROLL VARIABLES ===== */
+  --scroll-progress: 0;                /* Scroll progress (0-1) */
+  --blur-amount: calc(8px + var(--scroll-progress) * 8px);
+  
+  /* ===== COLOR VARIABLES ===== */
+  --color-primary: #3b82f6;           /* Primary blue */
+  --color-primary-dark: #1e40af;      /* Darker blue */
+  --color-primary-light: #60a5fa;     /* Lighter blue */
+  --color-text-primary: #1f2937;      /* Dark text */
+  --color-text-secondary: #6b7280;    /* Gray text */
+  --color-background-light: #ffffff;  /* White background */
+  --color-background-gray: #f8fafc;   /* Light gray background */
+  --color-border: #e5e7eb;            /* Border color */
+}
+
+/* ========================================================================
+   2. MAIN NAVBAR WRAPPER - FOUNDATION STYLES
+   ======================================================================== */
+
+/* 
+   Primary navbar container with sticky positioning and progressive animations.
+   Features blur effects and smooth transforms based on scroll position.
+*/
 .navbar-wrapper {
   position: sticky;
   top: 0;
-  z-index: 1100;
-  background: #ffffff;
-  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: var(--z-navbar-base);
+  background: var(--color-background-light);
+  transition: 
+    box-shadow var(--transition-medium),
+    transform var(--transition-medium);
   transform: translateY(0) translateZ(0);
   will-change: box-shadow, backdrop-filter, transform;
-  --blur-amount: calc(8px + var(--scroll-progress, 0) * 8px);
   backdrop-filter: blur(var(--blur-amount));
   -webkit-backdrop-filter: blur(var(--blur-amount));
 }
 
-/* Dark mode navbar wrapper */
+/* Enhanced shadow and positioning when scrolled */
+.navbar-wrapper.navbar-compact {
+  transform: translateY(-35px) translateZ(0);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode navbar wrapper styling */
 [data-theme="dark"] .navbar-wrapper {
   background: #1f2937;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* Navbar compact state when scrolled */
-.navbar-wrapper.navbar-compact {
-  transform: translateY(-35px) translateZ(0);
-}
+/* ========================================================================
+   3. TOP HEADER SECTION - UTILITY NAVIGATION & CONTROLS
+   ======================================================================== */
 
-/* Navbar top header section */
+/* 
+   Top utility bar containing quick links, language selector, and auth controls.
+   Progressively shrinks and hides on scroll for space optimization.
+*/
 .navbar-top-header {
-  background-color: #f8fafc;
+  background-color: var(--color-background-gray);
   position: relative;
-  z-index: 1500;
+  z-index: var(--z-navbar-top);
+  /* Progressive sizing based on scroll position */
   --header-padding: calc(8px - var(--scroll-progress, 0) * 6px);
-  /* Progressive font-size - more responsive */
-  --navbar-header-padding: calc(8px - var(--scroll-progress, 0) * 6px);
-  --navbar-header-font-size: calc(14px - var(--scroll-progress, 0) * 2px);
-  padding: var(--navbar-header-padding) 0;
-  font-size: var(--navbar-header-font-size);
-  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --header-font-size: calc(14px - var(--scroll-progress, 0) * 2px);
+  padding: var(--header-padding) 0;
+  font-size: var(--header-font-size);
+  transition: 
+    all var(--transition-fast),
+    transform var(--transition-medium);
   transform: translateY(0) translateZ(0);
   will-change: padding, font-size, transform;
 }
 
-/* Dark mode top header */
-[data-theme="dark"] .navbar-top-header {
-  background-color: #374151;
-}
-
-/* Hide navbar top header when scrolled */
+/* Hide top header completely when scrolled */
 .navbar-top-header-hidden {
   transform: translateY(-100%) translateZ(0);
 }
 
+/* Container for top header content with responsive max-width */
 .navbar-top-header-content {
-  max-width: 1200px;
+  max-width: var(--navbar-max-width-lg);
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 var(--navbar-padding-xs);
 }
 
+/* Left side navigation links container */
 .navbar-top-nav {
   display: flex;
   align-items: center;
   gap: 25px;
 }
 
-/* Navbar top navigation right controls */
+/* Right side controls container (language, auth, etc.) */
 .navbar-top-nav-controls {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
+/* Styling for top navigation links */
 .navbar-top-nav a {
-  color: #1f2937;
+  color: var(--color-text-primary);
   text-decoration: none;
   font-weight: 500;
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all var(--transition-smooth);
   position: relative;
   padding: 4px 8px;
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
-/* Dark mode top nav links */
+.navbar-top-nav a:hover {
+  color: var(--color-primary);
+  background-color: var(--color-background-light);
+  transform: translateY(-1px);
+}
+
+/* Dark mode top header and navigation styles */
+[data-theme="dark"] .navbar-top-header {
+  background-color: #374151;
+}
+
 [data-theme="dark"] .navbar-top-nav a {
   color: #e5e7eb;
 }
 
-.navbar-top-nav a:hover {
-  color: #3b82f6;
-  background-color: #f8fafc;
-  transform: translateY(-1px);
-}
-
-/* Dark mode top nav hover */
 [data-theme="dark"] .navbar-top-nav a:hover {
-  color: #60a5fa;
+  color: var(--color-primary-light);
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+/* ========================================================================
+   4. DROPDOWN MENU SYSTEM - TOP NAVIGATION
+   ======================================================================== */
+
+/* Base dropdown container */
 .navbar-dropdown {
   position: relative;
-  z-index: 2000;
+  z-index: var(--z-dropdown);
 }
 
+/* Dropdown trigger element with animated arrow */
 .navbar-dropdown-trigger {
   display: flex;
   align-items: center;
@@ -121,81 +204,88 @@ body {
   cursor: pointer;
 }
 
+/* Animated dropdown arrow */
 .navbar-dropdown-arrow {
   font-size: 10px;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform var(--transition-medium);
 }
 
 .navbar-dropdown:hover .navbar-dropdown-arrow {
   transform: rotate(180deg);
 }
 
-/* Navbar top dropdown menu styles */
+/* Top navigation dropdown menu styling */
 .navbar-top-nav .navbar-dropdown-menu {
   position: absolute;
   top: 100%;
   left: 0;
-  background: #ffffff;
+  background: var(--color-background-light);
   border-radius: 8px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   min-width: 150px;
-  z-index: 2100;
+  z-index: calc(var(--z-dropdown) + 100);
   padding: 8px 0;
   opacity: 0;
   transform: translateY(-5px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all var(--transition-medium);
   pointer-events: none;
 }
 
-/* Dark mode dropdown menu */
-[data-theme="dark"] .navbar-top-nav .navbar-dropdown-menu {
-  background: #374151;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
+/* Show dropdown on hover */
 .navbar-top-nav .navbar-dropdown:hover .navbar-dropdown-menu {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
 
+/* Dropdown menu links */
 .navbar-top-nav .navbar-dropdown-menu a {
   display: block;
   padding: 10px 16px;
-  color: #1f2937;
+  color: var(--color-text-primary);
   text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all var(--transition-fast);
   border-radius: 4px;
   margin: 2px 8px;
   font-weight: 500;
   font-size: 14px;
 }
 
-/* Dark mode dropdown links */
-[data-theme="dark"] .navbar-top-nav .navbar-dropdown-menu a {
-  color: #f9fafb;
-}
-
 .navbar-top-nav .navbar-dropdown-menu a:hover {
-  background-color: #3b82f6;
+  background-color: var(--color-primary);
   color: white;
   transform: translateX(4px);
 }
 
-/* Dark mode dropdown link hover */
+/* Dark mode dropdown styles */
+[data-theme="dark"] .navbar-top-nav .navbar-dropdown-menu {
+  background: #374151;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .navbar-top-nav .navbar-dropdown-menu a {
+  color: #f9fafb;
+}
+
 [data-theme="dark"] .navbar-top-nav .navbar-dropdown-menu a:hover {
-  background-color: #3b82f6;
+  background-color: var(--color-primary);
   color: white;
 }
 
+/* ========================================================================
+   5. LANGUAGE SELECTOR COMPONENT
+   ======================================================================== */
+
+/* Language selector container */
 .navbar-language-selector {
   position: relative;
-  z-index: 2000;
+  z-index: var(--z-dropdown);
 }
 
+/* Language button styling */
 .navbar-language-btn {
-  background: #3b82f6;
-  color: #ffffff;
+  background: var(--color-primary);
+  color: white;
   border: none;
   padding: 6px 12px;
   border-radius: 4px;
@@ -207,40 +297,25 @@ body {
   min-width: 84px;
   height: 28px;
   font-weight: 500;
-  transition: background-color 0.3s ease;
-}
-
-/* Dark mode language button */
-[data-theme="dark"] .navbar-language-btn {
-  background: #4f46e5;
+  transition: background-color var(--transition-medium);
 }
 
 .navbar-language-btn:hover {
-  background: #1e40af;
+  background: var(--color-primary-dark);
 }
 
-/* Dark mode language button hover */
-[data-theme="dark"] .navbar-language-btn:hover {
-  background: #3730a3;
-}
-
+/* Language dropdown menu */
 .navbar-language-dropdown {
   position: absolute;
   top: 100%;
   right: 0;
-  background: #ffffff;
+  background: var(--color-background-light);
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   min-width: 84px;
-  z-index: 2100;
+  z-index: calc(var(--z-dropdown) + 100);
   padding: 8px 0;
   margin-top: 4px;
-}
-
-/* Dark mode language dropdown */
-[data-theme="dark"] .navbar-language-dropdown {
-  background: #374151;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-language-dropdown button {
@@ -248,33 +323,785 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 8px;
+  padding: 8px;
   background: none;
   border: none;
-  color: #1f2937;
+  color: var(--color-text-primary);
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  transition: background-color var(--transition-medium);
   cursor: pointer;
   font-size: 13px;
 }
 
-/* Dark mode language dropdown buttons */
+.navbar-language-dropdown button:hover {
+  background-color: var(--color-background-gray);
+  color: var(--color-primary);
+}
+
+/* Dark mode language selector */
+[data-theme="dark"] .navbar-language-btn {
+  background: #4f46e5;
+}
+
+[data-theme="dark"] .navbar-language-btn:hover {
+  background: #3730a3;
+}
+
+[data-theme="dark"] .navbar-language-dropdown {
+  background: #374151;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
 [data-theme="dark"] .navbar-language-dropdown button {
   color: #f9fafb;
 }
 
-.navbar-language-dropdown button:hover {
-  background-color: #f8fafc;
-  color: #3b82f6;
-}
-
-/* Dark mode language dropdown button hover */
 [data-theme="dark"] .navbar-language-dropdown button:hover {
   background-color: #4b5563;
-  color: #3b82f6;
+  color: var(--color-primary-light);
 }
 
-/* Mobile Language Selector */
+/* ========================================================================
+   6. MAIN HEADER SECTION - LOGO & BRANDING
+   ======================================================================== */
+
+/* 
+   Main header containing the institute logo and name.
+   Features progressive scaling and adaptive sizing based on screen size.
+*/
+.navbar-main-header {
+  background: var(--color-background-light);
+  /* Progressive padding that shrinks on scroll */
+  --main-padding: calc(15px - var(--scroll-progress, 0) * 10px);
+  padding: var(--main-padding) 0;
+  transition: all var(--transition-fast);
+  transform: translateZ(0);
+  will-change: padding;
+}
+
+/* Container for main header content with responsive max-width */
+.navbar-header-content {
+  max-width: var(--navbar-max-width-lg);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--navbar-padding-xs);
+}
+
+/* Logo section container */
+.navbar-logo-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Logo link wrapper with subtle hover effects */
+.navbar-logo-link {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity var(--transition-fast);
+  cursor: pointer;
+}
+
+.navbar-logo-link:hover {
+  opacity: 0.9;
+}
+
+.navbar-logo-link:visited {
+  color: inherit;
+}
+
+/* Institute logo with progressive scaling */
+.navbar-nit-logo {
+  /* Progressive logo size based on scroll position */
+  --logo-size: calc(80px - var(--scroll-progress, 0) * 20px);
+  width: var(--logo-size);
+  height: var(--logo-size);
+  object-fit: contain;
+  border-radius: 8px;
+  transition: all var(--transition-medium);
+  transform: translateZ(0);
+  will-change: width, height;
+}
+
+.navbar-nit-logo:hover {
+  transform: scale(1.05) translateZ(0);
+}
+
+/* Institute information container */
+.navbar-institute-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Hindi institute name with progressive sizing */
+.navbar-institute-name-hindi {
+  color: var(--color-primary);
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.2;
+  /* Progressive font size based on scroll position */
+  --hindi-font-size: calc(24px - var(--scroll-progress, 0) * 6px);
+  font-size: var(--hindi-font-size);
+  transition: all var(--transition-medium);
+  transform: translateZ(0);
+  will-change: font-size;
+}
+
+/* English institute name with progressive sizing */
+.navbar-institute-name-english {
+  color: var(--color-text-primary);
+  margin: 0;
+  font-weight: 500;
+  line-height: 1.2;
+  /* Progressive font size based on scroll position */
+  --english-font-size: calc(20px - var(--scroll-progress, 0) * 5px);
+  font-size: var(--english-font-size);
+  transition: all var(--transition-medium);
+  transform: translateZ(0);
+  will-change: font-size;
+}
+
+/* Dark mode main header styling */
+[data-theme="dark"] .navbar-main-header {
+  background: #1f2937;
+}
+
+[data-theme="dark"] .navbar-institute-name-hindi {
+  color: var(--color-primary-light);
+}
+
+[data-theme="dark"] .navbar-institute-name-english {
+  color: #e5e7eb;
+}
+
+/* ========================================================================
+   7. MAIN NAVIGATION SECTION - PRIMARY MENU
+   ======================================================================== */
+
+/* 
+   Main navigation bar with gradient background and primary menu items.
+   Features progressive sizing and smooth animations.
+*/
+.navbar-main-navigation {
+  background: linear-gradient(
+    to bottom, 
+    #000000 0%, 
+    #333333 20%, 
+    #666666 33%, 
+    #cccccc 60%, 
+    #ffffff 100%
+  );
+  color: white;
+  /* Progressive height based on scroll position */
+  --nav-height: calc(50px - var(--scroll-progress, 0) * 20px);
+  min-height: var(--nav-height);
+  transition: all var(--transition-fast);
+  transform: translateZ(0);
+  will-change: min-height;
+}
+
+/* Container for navigation content */
+.navbar-nav-content {
+  max-width: calc(100% - 140px);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  /* Progressive sizing variables */
+  --nav-content-height: calc(50px - var(--scroll-progress, 0) * 10px);
+  --nav-content-padding: calc(60px - var(--scroll-progress, 0) * 5px);
+  min-height: var(--nav-content-height);
+  padding: 0 var(--nav-content-padding);
+  transform: translateY(-8px) translateZ(0);
+  transition: all var(--transition-fast);
+  will-change: min-height, padding;
+}
+
+/* Individual navigation item styling */
+.navbar-nav-item {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  /* Progressive padding and font size */
+  --nav-item-padding-v: calc(6px - var(--scroll-progress, 0) * 2px);
+  --nav-item-padding-h: calc(16px - var(--scroll-progress, 0) * 4px);
+  --nav-item-font-size: calc(15px - var(--scroll-progress, 0) * 1px);
+  padding: var(--nav-item-padding-v) var(--nav-item-padding-h);
+  font-size: var(--nav-item-font-size);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  cursor: pointer;
+  position: relative;
+  transform: translateZ(0);
+  will-change: padding, font-size, transform, background-color;
+}
+
+.navbar-nav-item:hover {
+  color: #f0f0f0;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+/* Dropdown navigation items */
+.navbar-nav-item.navbar-dropdown {
+  cursor: pointer;
+}
+
+.navbar-nav-item.navbar-dropdown span {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Animated dropdown arrow for navigation items */
+.navbar-nav-item.navbar-dropdown > span::after {
+  content: '▼';
+  font-size: 10px;
+  transition: transform var(--transition-medium);
+  display: inline-block;
+}
+
+.navbar-nav-item.navbar-dropdown:hover > span::after {
+  transform: rotate(180deg);
+}
+
+/* Dark mode navigation styling */
+[data-theme="dark"] .navbar-main-navigation {
+  background: linear-gradient(
+    to bottom, 
+    #0a0a0a 0%, 
+    #1a1a1a 20%, 
+    #2a2a2a 40%, 
+    #404040 75%, 
+    #555555 100%
+  );
+}
+
+[data-theme="dark"] .navbar-nav-item {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* ========================================================================
+   8. ADVANCED DROPDOWN MENU SYSTEM - MAIN NAVIGATION
+   ======================================================================== */
+
+/* Base dropdown positioning for navigation items */
+.navbar-nav-item.navbar-dropdown,
+.navbar-main-navigation .navbar-dropdown {
+  position: relative;
+  z-index: var(--z-dropdown);
+}
+
+/* Main navigation dropdown menu styling */
+.navbar-dropdown-menu,
+.navbar-main-navigation .navbar-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-5px);
+  background: var(--color-background-light);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  min-width: 220px;
+  max-width: 280px;
+  z-index: calc(var(--z-dropdown) + 100);
+  padding: 8px 0;
+  opacity: 0;
+  transition: all 0.1s ease-out;
+  pointer-events: none;
+}
+
+/* Show dropdown on hover */
+.navbar-nav-item.navbar-dropdown:hover .navbar-dropdown-menu,
+.navbar-main-navigation .navbar-dropdown:hover .navbar-dropdown-menu {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+/* Dropdown menu links */
+.navbar-dropdown-menu > a,
+.navbar-main-navigation .navbar-dropdown-menu > a {
+  display: block;
+  padding: 10px 16px;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  border-radius: 4px;
+  margin: 2px 8px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.navbar-dropdown-menu > a:hover,
+.navbar-main-navigation .navbar-dropdown-menu > a:hover {
+  background-color: var(--color-primary);
+  color: white;
+  transform: translateX(4px);
+}
+
+/* ========================================================================
+   9. SUBMENU SYSTEM - MULTI-LEVEL NAVIGATION
+   ======================================================================== */
+
+/* Submenu container for nested dropdowns */
+.navbar-dropdown-item-with-submenu {
+  position: relative;
+  display: block;
+}
+
+/* Submenu trigger item with arrow indicator */
+.navbar-submenu-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 16px;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  border-radius: 4px;
+  margin: 2px 8px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  background: transparent;
+  text-align: center;
+  position: relative;
+}
+
+.navbar-submenu-item:hover {
+  background-color: var(--color-primary);
+  color: white;
+  transform: translateX(4px);
+}
+
+/* Submenu arrow indicator */
+.navbar-submenu-arrow {
+  font-size: 10px;
+  margin-left: 8px;
+  transition: transform 0.1s ease-out;
+  position: absolute;
+  right: 16px;
+}
+
+.navbar-dropdown-item-with-submenu:hover .navbar-submenu-arrow {
+  transform: rotate(90deg);
+}
+
+/* Submenu dropdown positioning */
+.navbar-submenu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background: var(--color-background-light);
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+  z-index: calc(var(--z-dropdown) + 200);
+  padding: 8px 0;
+  margin-left: 0;
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.05s ease-out;
+  pointer-events: auto;
+}
+
+.navbar-submenu a {
+  display: block;
+  padding: 10px 16px;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  border-radius: 4px;
+  margin: 2px 8px;
+  font-weight: 500;
+  font-size: 13px;
+  text-align: center;
+}
+
+.navbar-submenu a:hover {
+  background-color: var(--color-primary);
+  color: white;
+  transform: translateX(4px);
+}
+
+/* Prevent submenu items from getting extra arrows */
+.navbar-submenu-item::after,
+.navbar-submenu-item span::after {
+  display: none !important;
+}
+
+/* ========================================================================
+   10. DARK MODE SUPPORT - DROPDOWN SYSTEM
+   ======================================================================== */
+
+[data-theme="dark"] .navbar-dropdown-menu,
+[data-theme="dark"] .navbar-main-navigation .navbar-dropdown-menu {
+  background: #374151;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .navbar-dropdown-menu > a,
+[data-theme="dark"] .navbar-main-navigation .navbar-dropdown-menu > a {
+  color: #f9fafb;
+}
+
+[data-theme="dark"] .navbar-dropdown-menu > a:hover,
+[data-theme="dark"] .navbar-main-navigation .navbar-dropdown-menu > a:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+[data-theme="dark"] .navbar-submenu-item {
+  color: #f9fafb;
+}
+
+[data-theme="dark"] .navbar-submenu-item:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+[data-theme="dark"] .navbar-submenu {
+  background: #374151;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .navbar-submenu a {
+  color: #f9fafb;
+}
+
+[data-theme="dark"] .navbar-submenu a:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* ========================================================================
+   11. AUTHENTICATION SECTION - USER CONTROLS
+   ======================================================================== */
+
+/* Container for authentication controls */
+.auth-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 1rem;
+}
+
+/* User menu container */
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* User greeting text */
+.user-greeting {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+/* Base navigation button styling */
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.nav-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Login button variant */
+.nav-btn--login {
+  background: var(--color-primary);
+  color: white;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3);
+}
+
+.nav-btn--login:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.4);
+}
+
+/* Admin button variant */
+.nav-btn--admin {
+  background: var(--color-background-gray);
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+}
+
+.nav-btn--admin:hover {
+  background: var(--color-primary);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3);
+}
+
+/* Logout button variant */
+.nav-btn--logout {
+  background: transparent;
+  color: #999999;
+  border: 1px solid var(--color-border);
+}
+
+.nav-btn--logout:hover {
+  background: #fef2f2;
+  color: #f44336;
+  border-color: #f44336;
+}
+
+/* Top navigation controls container */
+.top-nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ========================================================================
+   12. MOBILE HAMBURGER MENU SYSTEM
+   ======================================================================== */
+
+/* Hamburger button - hidden by default, shown on mobile */
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  background: var(--color-background-light);
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--transition-medium);
+  position: relative;
+  z-index: var(--z-navbar-top);
+}
+
+.hamburger-btn:hover {
+  background: var(--color-background-gray);
+  transform: scale(1.05);
+}
+
+/* Hamburger line styling */
+.hamburger-line {
+  width: 20px;
+  height: 2px;
+  background: var(--color-text-primary);
+  margin: 2px 0;
+  transition: all var(--transition-medium);
+  border-radius: 2px;
+}
+
+/* Hamburger animation when active */
+.hamburger-active .hamburger-line:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger-active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-active .hamburger-line:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Mobile menu overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: var(--z-mobile-overlay);
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding-top: 0;
+}
+
+/* Mobile menu container */
+.mobile-menu {
+  width: 300px;
+  max-height: calc(100vh - 80px);
+  background: var(--color-background-light);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  animation: slideDownFromButton var(--transition-medium);
+  overflow-y: auto;
+  position: relative;
+  margin-top: 80px;
+  margin-right: 20px;
+  border: 1px solid var(--color-border);
+}
+
+/* Mobile menu animations */
+@keyframes slideDownFromButton {
+  from {
+    transform: translateY(-20px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Mobile menu header */
+.mobile-menu-header {
+  padding: 15px 20px 10px;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+
+/* Mobile menu close button */
+.mobile-menu-close {
+  background: var(--color-background-light);
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  padding: 8px;
+  transition: all var(--transition-medium);
+  position: absolute;
+  top: -35px;
+  right: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: calc(var(--z-mobile-overlay) + 1);
+}
+
+.mobile-menu-close:hover {
+  background: var(--color-background-gray);
+  color: var(--color-primary);
+}
+
+.mobile-menu-close svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Mobile menu content */
+.mobile-menu-content {
+  padding: 20px 0;
+}
+
+/* Mobile navigation item */
+.mobile-nav-item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.mobile-nav-item:last-child {
+  border-bottom: none;
+}
+
+.mobile-nav-item > button {
+  width: 100%;
+  padding: 16px 20px;
+  background: none;
+  border: none;
+  color: var(--color-text-primary);
+  font-size: 16px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition-medium);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-nav-item > button:hover {
+  background: var(--color-background-gray);
+  color: var(--color-primary);
+}
+
+/* Mobile dropdown components */
+.mobile-dropdown-trigger {
+  position: relative;
+}
+
+.dropdown-icon {
+  width: 20px;
+  height: 20px;
+  transition: transform var(--transition-medium);
+}
+
+.dropdown-icon.rotated {
+  transform: rotate(180deg);
+}
+
+.mobile-dropdown-menu {
+  background: var(--color-background-gray);
+  border-top: 1px solid var(--color-border);
+  animation: slideDown var(--transition-medium);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+  }
+}
+
+.mobile-dropdown-menu button {
+  width: 100%;
+  padding: 12px 40px;
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  font-weight: 400;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition-medium);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.mobile-dropdown-menu button:last-child {
+  border-bottom: none;
+}
+
+.mobile-dropdown-menu button:hover {
+  background: var(--color-background-light);
+  color: var(--color-primary);
+  padding-left: 50px;
+}
+
+/* Mobile language selector */
 .mobile-language {
   margin-left: 12px;
 }
@@ -292,610 +1119,136 @@ body {
   margin-top: 4px;
 }
 
-/* Mobile Menu Theme Section */
 .mobile-menu-theme {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-/* Dark mode support for language dropdown */
-[data-theme="dark"] .language-dropdown {
-  background: #374151;
-  border-color: #4b5563;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+/* Mobile auth controls */
+.mobile-auth {
+  flex-shrink: 0;
 }
 
-[data-theme="dark"] .language-dropdown button {
-  color: #f9fafb;
-}
-
-[data-theme="dark"] .language-dropdown button:hover {
-  background-color: #4b5563;
-  color: #3b82f6;
-}
-
-/* Navbar main header section */
-.navbar-main-header {
-  background: #ffffff;
-  --navbar-main-padding: calc(15px - var(--scroll-progress, 0) * 10px);
-  padding: var(--navbar-main-padding) 0;
-  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transform: translateZ(0);
-  will-change: padding;
-}
-
-/* Dark mode main header */
-[data-theme="dark"] .navbar-main-header {
-  background: #1f2937;
-}
-
-.navbar-header-content {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-}
-
-.navbar-logo-section {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-/* Navbar logo link styles */
-.navbar-logo-link {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: inherit;
-  transition: opacity 0.2s ease;
+.mobile-login, .mobile-logout {
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 4px;
+  background: var(--color-primary);
+  color: white;
+  border: none;
   cursor: pointer;
+  transition: background-color var(--transition-medium);
 }
 
-.navbar-logo-link:hover {
-  opacity: 0.9;
+.mobile-login:hover, .mobile-logout:hover {
+  background: var(--color-primary-dark);
 }
 
-.navbar-logo-link:visited {
-  color: inherit;
+/* Dark mode mobile menu styles */
+[data-theme="dark"] .mobile-menu {
+  background: #1f2937;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-.navbar-nit-logo {
-  --navbar-logo-size: calc(80px - var(--scroll-progress, 0) * 20px);
-  width: var(--navbar-logo-size);
-  height: var(--navbar-logo-size);
-  object-fit: contain;
-  border-radius: 8px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateZ(0);
-  will-change: width, height;
+[data-theme="dark"] .mobile-menu-overlay {
+  background: rgba(0, 0, 0, 0.7);
 }
 
-.navbar-nit-logo:hover {
-  transform: scale(1.05) translateZ(0);
-}
-
-.navbar-institute-info {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.navbar-institute-name-hindi {
-  color: #3b82f6;
-  margin: 0;
-  font-weight: 600;
-  line-height: 1.2;
-  --navbar-hindi-font-size: calc(24px - var(--scroll-progress, 0) * 6px);
-  font-size: var(--navbar-hindi-font-size);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateZ(0);
-  will-change: font-size;
-}
-
-/* Dark mode institute name hindi */
-[data-theme="dark"] .navbar-institute-name-hindi {
-  color: #60a5fa;
-}
-
-.navbar-institute-name-english {
-  color: #1f2937;
-  margin: 0;
-  font-weight: 500;
-  line-height: 1.2;
-  --navbar-english-font-size: calc(20px - var(--scroll-progress, 0) * 5px);
-  font-size: var(--navbar-english-font-size);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateZ(0);
-  will-change: font-size;
-}
-
-/* Dark mode institute name english */
-[data-theme="dark"] .navbar-institute-name-english {
+[data-theme="dark"] .mobile-nav-item > button {
   color: #e5e7eb;
 }
 
-/* Navbar main navigation section */
-.navbar-main-navigation {
-  background: linear-gradient(to bottom, #000000 0%, #333333 20%, #666666 33%, #cccccc 60%, #ffffff 100%);
-  color: white;
-  --navbar-nav-height: calc(50px - var(--scroll-progress, 0) * 20px);
-  min-height: var(--navbar-nav-height);
-  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transform: translateZ(0);
-  will-change: min-height;
+[data-theme="dark"] .mobile-nav-item > button:hover {
+  background: #374151;
+  color: var(--color-primary-light);
 }
 
-/* Dark mode main navigation */
-[data-theme="dark"] .navbar-main-navigation {
-  background: linear-gradient(to bottom, #0a0a0a 0%, #1a1a1a 20%, #2a2a2a 40%, #404040 75%, #555555 100%);
+[data-theme="dark"] .mobile-dropdown-menu {
+  background: #374151;
+  border-color: #4b5563;
 }
 
-.navbar-nav-content {
-  max-width: calc(100% - 140px);
-  margin: 0 auto;
+[data-theme="dark"] .mobile-dropdown-menu button {
+  color: #9ca3af;
+  border-color: #4b5563;
+}
+
+[data-theme="dark"] .mobile-dropdown-menu button:hover {
+  background: #1f2937;
+  color: var(--color-primary-light);
+}
+
+/* ========================================================================
+   13. RESPONSIVE DESIGN SYSTEM - MOBILE TO ULTRA-WIDE
+   ======================================================================== */
+
+/* ===== DISPLAY CONTROL CLASSES ===== */
+.desktop-only {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0px;
-  --navbar-nav-content-height: calc(50px - var(--scroll-progress, 0) * 10px);
-  --navbar-nav-content-padding: calc(60px - var(--scroll-progress, 0) * 5px);
-  min-height: var(--navbar-nav-content-height);
-  padding: 0 var(--navbar-nav-content-padding);
-  transform: translateY(-8px) translateZ(0);
-  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: min-height, padding;
 }
 
-.navbar-nav-item {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  --navbar-nav-item-padding-v: calc(6px - var(--scroll-progress, 0) * 2px);
-  --navbar-nav-item-padding-h: calc(16px - var(--scroll-progress, 0) * 4px);
-  --navbar-nav-item-font-size: calc(15px - var(--scroll-progress, 0) * 1px);
-  padding: var(--navbar-nav-item-padding-v) var(--navbar-nav-item-padding-h);
-  font-size: var(--navbar-nav-item-font-size);
-  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  white-space: nowrap;
-  cursor: pointer;
-  position: relative;
-  text-shadow: none;
-  transform: translateZ(0);
-  will-change: padding, font-size, transform, background-color;
+.mobile-only {
+  display: none;
 }
 
-/* Dark mode navbar item text shadow */
-[data-theme="dark"] .navbar-nav-item {
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.navbar-nav-item.navbar-dropdown {
-  cursor: pointer;
-}
-
-.navbar-nav-item.navbar-dropdown span {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* Navbar dropdown arrow styling with rotation animation */
-.navbar-nav-item.navbar-dropdown > span::after {
-  content: '▼';
-  font-size: 10px;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  display: inline-block;
-}
-
-.navbar-nav-item.navbar-dropdown:hover > span::after {
-  transform: rotate(180deg);
-}
-
-.navbar-nav-item:hover {
-  color: #f0f0f0;
-}
-
-/* Navbar unified dropdown system */
-.navbar-nav-item.navbar-dropdown,
-.navbar-main-navigation .navbar-dropdown {
-  position: relative;
-  z-index: 1500;
-}
-
-/* Navbar unified dropdown menu styles */
-.navbar-dropdown-menu,
-.navbar-main-navigation .navbar-dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-5px);
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  min-width: 220px;
-  max-width: 280px;
-  z-index: 1600;
-  padding: 8px 0;
-  opacity: 0;
-  transition: all 0.1s ease-out;
-  pointer-events: none;
-}
-
-/* Dark mode dropdown menu */
-[data-theme="dark"] .navbar-dropdown-menu,
-[data-theme="dark"] .navbar-main-navigation .navbar-dropdown-menu {
-  background: #374151;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
-/* Show navbar dropdown on hover */
-.navbar-nav-item.navbar-dropdown:hover .navbar-dropdown-menu,
-.navbar-main-navigation .navbar-dropdown:hover .navbar-dropdown-menu {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-  pointer-events: auto;
-}
-
-/* Navbar dropdown links */
-.navbar-dropdown-menu > a,
-.navbar-main-navigation .navbar-dropdown-menu > a {
-  display: block;
-  padding: 10px 16px;
-  color: #1f2937;
-  text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 4px;
-  margin: 2px 8px;
-  font-weight: 500;
-  font-size: 14px;
-}
-
-/* Dark mode dropdown links */
-[data-theme="dark"] .navbar-dropdown-menu > a,
-[data-theme="dark"] .navbar-main-navigation .navbar-dropdown-menu > a {
-  color: #f9fafb;
-}
-
-.navbar-dropdown-menu > a:hover,
-.navbar-main-navigation .navbar-dropdown-menu > a:hover {
-  background-color: #3b82f6;
-  color: white;
-  transform: translateX(4px);
-}
-
-/* Dark mode dropdown link hover */
-[data-theme="dark"] .navbar-dropdown-menu > a:hover,
-[data-theme="dark"] .navbar-main-navigation .navbar-dropdown-menu > a:hover {
-  background-color: #3b82f6;
-  color: white;
-}
-
-/* Navbar submenu system based on reference */
-.navbar-dropdown-item-with-submenu {
-  position: relative;
-  display: block;
-}
-
-/* Navbar submenu item styling - the parent item that shows the arrow */
-.navbar-submenu-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 16px;
-  color: #1f2937;
-  text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 4px;
-  margin: 2px 8px;
-  font-weight: 500;
-  font-size: 14px;
-  cursor: pointer;
-  background: transparent;
-  text-align: center;
-  position: relative;
-}
-
-/* Dark mode submenu item */
-[data-theme="dark"] .navbar-submenu-item {
-  color: #f9fafb;
-}
-
-.navbar-submenu-item:hover {
-  background-color: #3b82f6;
-  color: white;
-  transform: translateX(4px);
-}
-
-/* Dark mode submenu item hover */
-[data-theme="dark"] .navbar-submenu-item:hover {
-  background-color: #3b82f6;
-  color: white;
-}
-
-.navbar-submenu-arrow {
-  font-size: 10px;
-  margin-left: 8px;
-  transition: transform 0.1s ease-out;
-  position: absolute;
-  right: 16px;
-}
-
-.navbar-dropdown-item-with-submenu:hover .navbar-submenu-arrow {
-  transform: rotate(90deg);
-}
-
-/* Navbar submenu dropdown positioning */
-.navbar-submenu {
-  position: absolute;
-  top: 0;
-  left: 100%;
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-  min-width: 200px;
-  z-index: 1002;
-  padding: 8px 0;
-  margin-left: 0px;
-  opacity: 1;
-  transform: translateX(0);
-  transition: all 0.05s ease-out;
-  pointer-events: auto;
-}
-
-/* Dark mode submenu */
-[data-theme="dark"] .navbar-submenu {
-  background: #374151;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-}
-
-.navbar-submenu a {
-  display: block;
-  padding: 10px 16px;
-  color: #1f2937;
-  text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 4px;
-  margin: 2px 8px;
-  font-weight: 500;
-  font-size: 13px;
-  text-align: center;
-}
-
-/* Dark mode submenu links */
-[data-theme="dark"] .navbar-submenu a {
-  color: #f9fafb;
-}
-
-.navbar-submenu a:hover {
-  background-color: #3b82f6;
-  color: white;
-  transform: translateX(4px);
-}
-
-/* Dark mode submenu link hover */
-[data-theme="dark"] .navbar-submenu a:hover {
-  background-color: #3b82f6;
-  color: white;
-}
-
-/* Prevent navbar submenu items from getting extra arrows */
-.navbar-submenu-item::after,
-.navbar-submenu-item span::after {
-  display: none !important;
-}
-
-/* Enhanced navbar admissions dropdown with better hover area */
-.navbar-admissions-menu {
-  min-width: 240px;
-  margin-top: -2px;
-}
-
-/* Specific alignment for Hostels submenu to match main dropdown positioning */
-.navbar-hostels-submenu {
-  top: -50px;
-}
-
-.navbar-admissions-dropdown:hover .navbar-dropdown-menu,
-.navbar-admissions-dropdown .navbar-dropdown-menu:hover {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-  pointer-events: auto;
-}
-
-/* Fix navbar submenu hover behavior */
-.navbar-submenu-item:hover .navbar-submenu-dropdown,
-.navbar-submenu-dropdown:hover {
-  opacity: 1;
-  transform: translateX(0);
-  pointer-events: auto;
-}
-
-/* Navbar dropdown submenu styles */
-.navbar-dropdown-submenu {
-  position: relative;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.navbar-dropdown-submenu::after {
-  content: '▶';
-  font-size: 10px;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.navbar-dropdown-submenu:hover::after {
-  transform: translateX(2px);
-}
-
-.navbar-submenu-dropdown {
-  position: absolute;
-  left: 100%;
-  top: 0;
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  min-width: 200px;
-  z-index: 2200;
-  padding: 8px 0;
-  margin-left: -1px;
-  opacity: 0;
-  transform: translateX(-10px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none;
-}
-
-/* Dark mode submenu dropdown */
-[data-theme="dark"] .navbar-submenu-dropdown {
-  background: #374151;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
-.navbar-dropdown-submenu:hover .navbar-submenu-dropdown,
-.navbar-submenu-item:hover .navbar-submenu-dropdown {
-  opacity: 1;
-  transform: translateX(0);
-  pointer-events: auto;
-}
-
-.navbar-submenu-dropdown a {
-  display: block;
-  padding: 10px 16px;
-  color: #1f2937;
-  text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 4px;
-  margin: 2px 8px;
-  font-weight: 500;
-  font-size: 13px;
-  text-align: center;
-}
-
-/* Dark mode submenu dropdown links */
-[data-theme="dark"] .navbar-submenu-dropdown a {
-  color: #f9fafb;
-}
-
-.navbar-submenu-dropdown a:hover {
-  background-color: #3b82f6;
-  color: white;
-  transform: translateX(4px);
-}
-
-/* Dark mode submenu dropdown link hover */
-[data-theme="dark"] .navbar-submenu-dropdown a:hover {
-  background-color: #3b82f6;
-  color: white;
-}
-
-/* Navbar dark mode support for submenu */
-[data-theme="dark"] .navbar-submenu {
-  background: #374151;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-}
-
-/* Navbar dark mode support for unified dropdowns */
-[data-theme="dark"] .navbar-dropdown-menu,
-[data-theme="dark"] .navbar-main-navigation .navbar-dropdown-menu {
-  background: #374151;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
-[data-theme="dark"] .navbar-dropdown-menu > a,
-[data-theme="dark"] .navbar-main-navigation .navbar-dropdown-menu > a {
-  color: #f9fafb;
-}
-
-[data-theme="dark"] .navbar-dropdown-menu > a:hover,
-[data-theme="dark"] .navbar-main-navigation .navbar-dropdown-menu > a:hover {
-  background-color: #3b82f6;
-  color: white;
-}
-
-[data-theme="dark"] .navbar-submenu-dropdown {
-  background: #374151;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
-/* Navbar responsive dropdown adjustments */
+/* ===== MOBILE DEVICES (320px - 768px) ===== */
 @media (max-width: 768px) {
-  .navbar-main-navigation .navbar-dropdown-menu {
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    min-width: 90vw;
-    max-width: 320px;
+  .desktop-only {
+    display: none;
   }
   
-  .navbar-main-navigation .navbar-dropdown:hover .navbar-dropdown-menu {
-    transform: translateX(-50%);
+  .mobile-only {
+    display: flex;
   }
   
-  .navbar-submenu-dropdown {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%) scale(0.9);
-    width: 85vw;
-    max-width: 280px;
+  /* Show hamburger menu on mobile */
+  .hamburger-btn {
+    display: flex !important;
   }
   
-  .navbar-dropdown-submenu:hover .navbar-submenu-dropdown {
-    transform: translate(-50%, -50%) scale(1);
+  /* Hide desktop navigation on mobile */
+  .navbar-main-navigation {
+    display: none;
   }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
+  
+  /* Mobile top header adjustments */
   .navbar-top-header-content {
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     gap: 10px;
+    padding: 0 var(--navbar-padding-xs);
   }
   
-  .navbar-top-nav {
-    flex-wrap: wrap;
-    gap: 15px;
+  .navbar-top-nav.mobile-only {
+    flex: 1;
+    justify-content: flex-start;
+    gap: 18px;
   }
   
+  /* Mobile header content */
   .navbar-header-content {
     flex-direction: row;
     gap: 15px;
-    text-align: justify;
-    justify-content: center;
+    text-align: center;
+    justify-content: space-between;
+    padding: 0 var(--navbar-padding-xs);
   }
   
   .navbar-logo-section {
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row;
+    gap: 12px;
   }
   
+  /* Mobile institute names */
   .navbar-institute-name-hindi {
-    font-size: 24px;
+    font-size: 18px !important;
   }
   
   .navbar-institute-name-english {
-    font-size: 17px;
+    font-size: 14px !important;
     font-weight: 550;
-  }
-  
-  .navbar-nav-content {
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 10px 20px; /* Reduced padding for mobile */
-    min-height: 60px;
-    max-width: 100%; /* Full width on mobile */
-  }
-  
-  .navbar-nav-item {
-    padding: 12px 15px;
-    font-size: 14px;
   }
   
   /* Mobile dropdown adjustments */
@@ -911,259 +1264,22 @@ body {
   .navbar-main-navigation .navbar-nav-item.navbar-dropdown:hover .navbar-dropdown-menu {
     transform: translateX(-50%) translateY(0);
   }
-}
-
-/* Mobile and Tablet View (up to 1023px) */
-@media (max-width: 1023px) {
-  .header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 20px;
-    width: 100%;
+  
+  /* Mobile submenu adjustments */
+  .navbar-submenu-dropdown {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 85vw;
+    max-width: 280px;
   }
   
-  .logo-section {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 15px;
-    justify-content: flex-start;
-    flex: 0 1 auto;
-    min-width: 0;
+  .navbar-dropdown-submenu:hover .navbar-submenu-dropdown {
+    transform: translate(-50%, -50%) scale(1);
   }
   
-  .nit-logo {
-    width: 60px;
-    height: 60px;
-    flex-shrink: 0;
-  }
-  
-  .institute-info {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    min-width: 0;
-    flex: 0 1 auto;
-  }
-  
-  .institute-name-hindi {
-    font-size: 20px !important;
-    line-height: 1.1;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 0;
-  }
-  
-  .institute-name-english {
-    font-size: 16px !important;
-    line-height: 1.1;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 0;
-  }
-  
-  .hamburger-btn {
-    display: flex !important;
-    flex-shrink: 0;
-    align-self: center;
-    margin-left: auto;
-  }
-  
-  /* Hide desktop navigation on mobile */
-  .navbar-main-navigation {
-    display: none;
-  }
-}
-
-/* Large Tablet (769px - 1023px) */
-@media (min-width: 769px) and (max-width: 1023px) {
-  .header-content {
-    padding: 15px 30px;
-  }
-  
-  .logo-section {
-    gap: 18px;
-  }
-  
-  .nit-logo {
-    width: 65px;
-    height: 65px;
-  }
-  
-  .institute-name-hindi {
-    font-size: 22px !important;
-  }
-  
-  .institute-name-english {
-    font-size: 18px !important;
-  }
-  
-  .hamburger-btn {
-    width: 48px;
-    height: 48px;
-  }
-  
-  .hamburger-line {
-    width: 22px;
-  }
-}
-
-/* Small Tablet (481px - 768px) */
-@media (min-width: 481px) and (max-width: 768px) {
-  .header-content {
-    padding: 12px 20px;
-  }
-  
-  .logo-section {
-    gap: 15px;
-  }
-  
-  .nit-logo {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .institute-name-hindi {
-    font-size: 20px !important;
-  }
-  
-  .institute-name-english {
-    font-size: 16px !important;
-  }
-  
-  .hamburger-btn {
-    width: 44px;
-    height: 44px;
-  }
-  
-  .hamburger-line {
-    width: 20px;
-  }
-}
-
-/* Mobile (320px - 480px) */
-@media (max-width: 480px) {
-  .header-content {
-    padding: 10px 15px;
-  }
-  
-  .logo-section {
-    gap: 12px;
-  }
-  
-  .nit-logo {
-    width: 55px;
-    height: 55px;
-  }
-  
-  .institute-name-hindi {
-    font-size: 10px !important;
-  }
-  
-  .institute-name-english {
-    font-size: 9px !important;
-  }
-  
-  .hamburger-btn {
-    width: 42px;
-    height: 42px;
-    margin-left: 12px;
-  }
-  
-  .hamburger-line {
-    width: 18px;
-  }
-}
-
-/* Auth Section Styles */
-.auth-section {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-left: 1rem;
-}
-
-.user-menu {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.user-greeting {
-  font-size: 0.875rem;
-  color: #6b7280;
-  font-weight: 500;
-}
-
-.nav-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  font-family: inherit;
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  text-decoration: none;
-}
-
-.nav-btn svg {
-  width: 16px;
-  height: 16px;
-}
-
-.nav-btn--login {
-  background: #3b82f6;
-  color: white;
-  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3);
-}
-
-.nav-btn--login:hover {
-  background: #1e40af;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.4);
-}
-
-.nav-btn--admin {
-  background: #f8fafc;
-  color: #3b82f6;
-  border: 1px solid #e5e7eb;
-}
-
-.nav-btn--admin:hover {
-  background: #3b82f6;
-  color: white;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3);
-}
-
-.nav-btn--logout {
-  background: transparent;
-  color: #999999;
-  border: 1px solid #e5e7eb;
-}
-
-.nav-btn--logout:hover {
-  background: #fef2f2;
-  color: #f44336;
-  border-color: #f44336;
-}
-
-/* Top Nav Controls Update */
-.top-nav-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* Mobile Responsive Auth Section */
-@media (max-width: 768px) {
+  /* Mobile auth section */
   .auth-section {
     margin-left: 0.5rem;
   }
@@ -1183,249 +1299,85 @@ body {
   }
 }
 
-/* ===== HAMBURGER MENU STYLES ===== */
-
-/* Hamburger Button */
-.hamburger-btn {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  background: #ffffff;
-  border: 2px solid #e5e7eb;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  z-index: 1500;
-}
-
-.hamburger-btn:hover {
-  background: #f8fafc;
-  transform: scale(1.05);
-}
-
-.hamburger-line {
-  width: 20px;
-  height: 2px;
-  background: #1f2937;
-  margin: 2px 0;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 2px;
-}
-
-/* Hamburger Animation */
-.hamburger-active .hamburger-line:nth-child(1) {
-  transform: rotate(-45deg) translate(-5px, 6px);
-}
-
-.hamburger-active .hamburger-line:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger-active .hamburger-line:nth-child(3) {
-  transform: rotate(45deg) translate(-5px, -6px);
-}
-
-/* Mobile Menu Overlay */
-.mobile-menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 2000;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  padding-top: 0;
-}
-
-.mobile-menu {
-  width: 300px;
-  max-height: calc(100vh - 80px);
-  background: #ffffff;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  border-radius: 12px;
-  animation: slideDownFromButton 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow-y: auto;
-  position: relative;
-  margin-top: 80px;
-  margin-right: 20px;
-  border: 1px solid #e5e7eb;
-}
-
-@keyframes slideDownFromButton {
-  from {
-    transform: translateY(-20px) scale(0.95);
-    opacity: 0;
+/* ===== SMALL MOBILE (320px - 480px) ===== */
+@media (max-width: 480px) {
+  :root {
+    --navbar-padding-xs: 12px;
   }
-  to {
-    transform: translateY(0) scale(1);
-    opacity: 1;
+  
+  .navbar-header-content {
+    padding: 0 var(--navbar-padding-xs);
   }
-}
-
-@keyframes slideInFromRight {
-  from {
-    transform: translateX(100%);
+  
+  .navbar-logo-section {
+    gap: 10px;
   }
-  to {
-    transform: translateX(0);
+  
+  .navbar-nit-logo {
+    --logo-size: calc(55px - var(--scroll-progress, 0) * 15px);
   }
-}
-
-/* Mobile Menu Header */
-.mobile-menu-header {
-  padding: 15px 20px 10px;
-  border-bottom: 1px solid #e5e7eb;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  position: relative;
-}
-
-.mobile-menu-close {
-  background: #ffffff;
-  border: 2px solid #e5e7eb;
-  border-radius: 8px;
-  color: #1f2937;
-  cursor: pointer;
-  padding: 8px;
-  transition: all 0.3s ease;
-  position: absolute;
-  top: -35px;
-  right: 0px;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2001;
-}
-
-.mobile-menu-close:hover {
-  background: #f8fafc;
-  color: #3b82f6;
-}
-
-.mobile-menu-close svg {
-  width: 24px;
-  height: 24px;
-}
-
-/* Mobile Menu Content */
-.mobile-menu-content {
-  padding: 20px 0;
-}
-
-.mobile-nav-item {
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.mobile-nav-item:last-child {
-  border-bottom: none;
-}
-
-.mobile-nav-item > button {
-  width: 100%;
-  padding: 16px 20px;
-  background: none;
-  border: none;
-  color: #1f2937;
-  font-size: 16px;
-  font-weight: 500;
-  text-align: left;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.mobile-nav-item > button:hover {
-  background: #f8fafc;
-  color: #3b82f6;
-}
-
-.mobile-dropdown-trigger {
-  position: relative;
-}
-
-.dropdown-icon {
-  width: 20px;
-  height: 20px;
-  transition: transform 0.3s ease;
-}
-
-.dropdown-icon.rotated {
-  transform: rotate(180deg);
-}
-
-/* Mobile Dropdown Menu */
-.mobile-dropdown-menu {
-  background: #f8fafc;
-  border-top: 1px solid #e5e7eb;
-  animation: slideDown 0.3s ease;
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    max-height: 0;
+  
+  .navbar-institute-name-hindi {
+    font-size: 16px !important;
   }
-  to {
-    opacity: 1;
-    max-height: 500px;
+  
+  .navbar-institute-name-english {
+    font-size: 12px !important;
   }
-}
-
-.mobile-dropdown-menu button {
-  width: 100%;
-  padding: 12px 40px;
-  background: none;
-  border: none;
-  color: #6b7280;
-  font-size: 14px;
-  font-weight: 400;
-  text-align: left;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.mobile-dropdown-menu button:last-child {
-  border-bottom: none;
-}
-
-.mobile-dropdown-menu button:hover {
-  background: #ffffff;
-  color: #3b82f6;
-  padding-left: 50px;
-}
-
-/* Mobile Menu Responsive Positioning */
-@media (min-width: 769px) and (max-width: 1023px) {
+  
+  .hamburger-btn {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .hamburger-line {
+    width: 18px;
+  }
+  
   .mobile-menu {
-    width: 320px;
-    margin-right: 30px;
-    margin-top: 85px;
+    width: 280px;
+    margin-right: 12px;
+    margin-top: 70px;
   }
   
   .mobile-menu-close {
-    top: -40px;
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
+    top: -30px;
   }
 }
 
-/* Tablet specific adjustments */
+/* ===== SMALL TABLET (481px - 768px) ===== */
 @media (min-width: 481px) and (max-width: 768px) {
+  .navbar-header-content {
+    padding: 0 var(--navbar-padding-sm);
+  }
+  
+  .navbar-logo-section {
+    gap: 15px;
+  }
+  
+  .navbar-nit-logo {
+    --logo-size: calc(65px - var(--scroll-progress, 0) * 18px);
+  }
+  
+  .navbar-institute-name-hindi {
+    font-size: 20px !important;
+  }
+  
+  .navbar-institute-name-english {
+    font-size: 16px !important;
+  }
+  
+  .hamburger-btn {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .hamburger-line {
+    width: 20px;
+  }
+  
   .mobile-menu {
     width: 300px;
     margin-right: 20px;
@@ -1441,53 +1393,267 @@ body {
     padding: 14px 40px;
     font-size: 15px;
   }
-  
-  .mobile-menu-close {
-    top: -35px;
-    width: 44px;
-    height: 44px;
-  }
 }
 
-/* Small mobile adjustments */
-@media (max-width: 480px) {
+/* ===== LARGE TABLET (769px - 1023px) ===== */
+@media (min-width: 769px) and (max-width: 1023px) {
+  .navbar-top-header-content {
+    padding: 0 var(--navbar-padding-sm);
+  }
+  
+  .navbar-top-nav.desktop-only {
+    gap: 25px;
+  }
+  
+  .navbar-header-content {
+    padding: 0 var(--navbar-padding-sm);
+  }
+  
+  .navbar-logo-section {
+    gap: 18px;
+  }
+  
+  .navbar-nit-logo {
+    --logo-size: calc(70px - var(--scroll-progress, 0) * 18px);
+  }
+  
+  .navbar-institute-name-hindi {
+    font-size: 22px !important;
+  }
+  
+  .navbar-institute-name-english {
+    font-size: 18px !important;
+  }
+  
+  .hamburger-btn {
+    display: flex !important;
+    width: 48px;
+    height: 48px;
+  }
+  
+  .hamburger-line {
+    width: 22px;
+  }
+  
+  .navbar-main-navigation {
+    display: none;
+  }
+  
   .mobile-menu {
-    width: 280px;
-    margin-right: 15px;
-    margin-top: 75px;
-  }
-  
-  .mobile-menu-header {
-    padding: 12px 15px 8px;
+    width: 320px;
+    margin-right: 30px;
+    margin-top: 85px;
   }
   
   .mobile-menu-close {
-    width: 42px;
-    height: 42px;
-    top: -32px;
+    top: -40px;
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* ===== DESKTOP (1024px - 1439px) ===== */
+@media (min-width: 1024px) {
+  .navbar-top-header-content {
+    max-width: var(--navbar-max-width-md);
+    padding: 0 var(--navbar-padding-md);
   }
   
-  .mobile-nav-item > button {
-    padding: 16px 15px;
-    font-size: 16px;
+  .navbar-top-nav.desktop-only {
+    gap: 30px;
   }
   
-  .mobile-dropdown-menu button {
-    padding: 12px 30px;
-    font-size: 14px;
+  .navbar-header-content {
+    max-width: var(--navbar-max-width-md);
+    padding: 0 var(--navbar-padding-md);
+  }
+  
+  .navbar-logo-section {
+    gap: 20px;
+  }
+  
+  .navbar-nit-logo {
+    --logo-size: calc(75px - var(--scroll-progress, 0) * 20px);
+  }
+  
+  .navbar-institute-name-hindi {
+    font-size: 26px !important;
+  }
+  
+  .navbar-institute-name-english {
+    font-size: 22px !important;
+  }
+  
+  .navbar-main-navigation {
+    display: block !important;
+  }
+  
+  .hamburger-btn {
+    display: none !important;
+  }
+  
+  .mobile-menu,
+  .mobile-menu-overlay {
+    display: none !important;
   }
 }
 
-/* Dark mode adjustments for mobile menu */
-[data-theme="dark"] .mobile-menu {
-  box-shadow: -2px 0 20px rgba(0, 0, 0, 0.3);
+/* ===== LARGE DESKTOP (1440px - 1919px) ===== */
+@media (min-width: 1440px) {
+  .navbar-top-header-content {
+    max-width: var(--navbar-max-width-lg);
+    padding: 0 var(--navbar-padding-lg);
+  }
+  
+  .navbar-top-nav.desktop-only {
+    gap: 35px;
+  }
+  
+  .navbar-header-content {
+    max-width: var(--navbar-max-width-lg);
+    padding: 0 var(--navbar-padding-lg);
+  }
+  
+  .navbar-logo-section {
+    gap: 25px;
+  }
+  
+  .navbar-nit-logo {
+    --logo-size: calc(85px - var(--scroll-progress, 0) * 22px);
+  }
+  
+  .navbar-institute-name-hindi {
+    font-size: 28px !important;
+  }
+  
+  .navbar-institute-name-english {
+    font-size: 24px !important;
+  }
+  
+  .navbar-nav-content {
+    max-width: calc(100% - 200px);
+    --nav-content-padding: calc(80px - var(--scroll-progress, 0) * 10px);
+  }
+  
+  .navbar-nav-item {
+    --nav-item-padding-h: calc(20px - var(--scroll-progress, 0) * 6px);
+    --nav-item-font-size: calc(16px - var(--scroll-progress, 0) * 1px);
+  }
 }
 
-[data-theme="dark"] .mobile-menu-overlay {
-  background: rgba(0, 0, 0, 0.7);
+/* ===== EXTRA LARGE DESKTOP (1920px - 2559px) ===== */
+@media (min-width: 1920px) {
+  .navbar-top-header-content {
+    max-width: var(--navbar-max-width-xl);
+    padding: 0 var(--navbar-padding-xl);
+  }
+  
+  .navbar-top-nav.desktop-only {
+    gap: 40px;
+  }
+  
+  .navbar-header-content {
+    max-width: var(--navbar-max-width-xl);
+    padding: 0 var(--navbar-padding-xl);
+  }
+  
+  .navbar-logo-section {
+    gap: 30px;
+  }
+  
+  .navbar-nit-logo {
+    --logo-size: calc(95px - var(--scroll-progress, 0) * 25px);
+  }
+  
+  .navbar-institute-name-hindi {
+    font-size: 32px !important;
+  }
+  
+  .navbar-institute-name-english {
+    font-size: 28px !important;
+  }
+  
+  .navbar-nav-content {
+    max-width: calc(100% - 300px);
+    --nav-content-padding: calc(100px - var(--scroll-progress, 0) * 15px);
+  }
+  
+  .navbar-nav-item {
+    --nav-item-padding-h: calc(24px - var(--scroll-progress, 0) * 8px);
+    --nav-item-font-size: calc(17px - var(--scroll-progress, 0) * 1px);
+  }
+  
+  /* Enhanced dropdown sizing for large screens */
+  .navbar-dropdown-menu,
+  .navbar-main-navigation .navbar-dropdown-menu {
+    min-width: 280px;
+    max-width: 350px;
+  }
+  
+  .navbar-submenu {
+    min-width: 250px;
+  }
 }
 
-/* Accessibility improvements for mobile */
+/* ===== ULTRA-WIDE SCREENS (2560px+) ===== */
+@media (min-width: 2560px) {
+  .navbar-top-header-content {
+    max-width: var(--navbar-max-width-xxl);
+    padding: 0 calc(var(--navbar-padding-xl) * 1.5);
+  }
+  
+  .navbar-top-nav.desktop-only {
+    gap: 50px;
+  }
+  
+  .navbar-header-content {
+    max-width: var(--navbar-max-width-xxl);
+    padding: 0 calc(var(--navbar-padding-xl) * 1.5);
+  }
+  
+  .navbar-logo-section {
+    gap: 40px;
+  }
+  
+  .navbar-nit-logo {
+    --logo-size: calc(110px - var(--scroll-progress, 0) * 30px);
+  }
+  
+  .navbar-institute-name-hindi {
+    font-size: 36px !important;
+  }
+  
+  .navbar-institute-name-english {
+    font-size: 32px !important;
+  }
+  
+  .navbar-nav-content {
+    max-width: calc(100% - 400px);
+    --nav-content-padding: calc(120px - var(--scroll-progress, 0) * 20px);
+  }
+  
+  .navbar-nav-item {
+    --nav-item-padding-h: calc(28px - var(--scroll-progress, 0) * 10px);
+    --nav-item-font-size: calc(18px - var(--scroll-progress, 0) * 1px);
+  }
+  
+  /* Maximum dropdown sizing for ultra-wide screens */
+  .navbar-dropdown-menu,
+  .navbar-main-navigation .navbar-dropdown-menu {
+    min-width: 320px;
+    max-width: 400px;
+  }
+  
+  .navbar-submenu {
+    min-width: 280px;
+  }
+}
+
+/* ========================================================================
+   14. ACCESSIBILITY & PERFORMANCE OPTIMIZATIONS
+   ======================================================================== */
+
+/* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
   .mobile-menu {
     animation: none;
@@ -1504,211 +1670,44 @@ body {
   .dropdown-icon {
     transition: none;
   }
+  
+  .navbar-nit-logo:hover {
+    transform: none;
+  }
+  
+  .navbar-dropdown-arrow,
+  .navbar-submenu-arrow {
+    transition: none;
+  }
 }
 
-/* Focus styles for mobile menu */
+/* Focus styles for better accessibility */
 .hamburger-btn:focus,
 .mobile-menu-close:focus,
 .mobile-nav-item button:focus,
-.mobile-dropdown-menu button:focus {
-  outline: 2px solid #3b82f6;
+.mobile-dropdown-menu button:focus,
+.navbar-top-nav a:focus,
+.navbar-nav-item:focus,
+.nav-btn:focus {
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
-/* Desktop View (1024px and above) */
-@media (min-width: 1024px) {
-  .header {
-    display: flex;
-    flex-direction: column;
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .navbar-wrapper {
+    border-bottom: 2px solid var(--color-text-primary);
   }
   
-  .header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px 40px;
-    width: 100%;
-  }
-  
-  .logo-section {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
-    justify-content: flex-start;
-    flex: 0 1 auto;
-    min-width: 0;
-  }
-  
-  .nit-logo {
-    width: 70px;
-    height: 70px;
-    flex-shrink: 0;
-  }
-  
-  .institute-info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    min-width: 0;
-    flex: 0 1 auto;
-  }
-  
-  .institute-name-hindi {
-    font-size: 24px !important;
-    line-height: 1.1;
-    margin: 0;
-  }
-  
-  .institute-name-english {
-    font-size: 20px !important;
-    line-height: 1.1;
-    margin: 0;
-  }
-  
-  /* Show main navigation on desktop */
-  .navbar-main-navigation {
-    display: block !important;
-  }
-  
-  /* Hide hamburger menu on desktop */
-  .hamburger-btn {
-    display: none !important;
-  }
-  
-  /* Hide mobile menu on desktop */
-  .mobile-menu {
-    display: none !important;
-  }
-  
-  .mobile-menu-overlay {
-    display: none !important;
+  .navbar-dropdown-menu,
+  .navbar-submenu {
+    border: 2px solid var(--color-text-primary);
   }
 }
 
-/* Responsive Display Classes */
-.desktop-only {
-  display: flex;
-}
-
-.mobile-only {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .desktop-only {
+/* Print styles - hide navigation elements when printing */
+@media print {
+  .navbar-wrapper {
     display: none;
-  }
-  
-  .mobile-only {
-    display: flex;
-  }
-}
-
-/* Mobile Top Navbar Single Row Layout */
-@media (max-width: 768px) {
-  .navbar-top-header-content {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    padding: 0 15px; /* Add more horizontal padding for better spacing */
-  }
-  
-  .navbar-top-nav.mobile-only {
-    flex: 1;
-    justify-content: flex-start;
-    gap: 18px; /* Increase gap between mobile nav items */
-  }
-  
-  .mobile-auth {
-    flex-shrink: 0;
-  }
-  
-  .mobile-login, .mobile-logout {
-    padding: 6px 12px;
-    font-size: 12px;
-    border-radius: 4px;
-    background: #3b82f6;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .mobile-login:hover, .mobile-logout:hover {
-    background: #2563eb;
-  }
-}
-
-/* Enhanced spacing for desktop top header */
-@media (min-width: 769px) {
-  .navbar-top-header-content {
-    padding: 0 30px; /* Increase horizontal padding for better spacing */
-  }
-  
-  .navbar-top-nav.desktop-only {
-    gap: 30px; /* Increase gap between desktop nav items */
-  }
-}
-
-/* Enhanced Logo and Hamburger Spacing When Top Nav Hidden */
-@media (max-width: 768px) {
-  .navbar-wrapper.navbar-compact .logo-section {
-    padding-top: 8px;
-  }
-  
-  .navbar-wrapper.navbar-compact .nit-logo {
-    --logo-size: calc(85px - var(--scroll-progress, 0) * 15px);
-  }
-  
-  .navbar-wrapper.navbar-compact .hamburger-btn {
-    margin-top: 8px;
-  }
-}
-
-/* Mobile Menu Header Layout */
-.mobile-menu-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.mobile-menu-theme {
-  display: flex;
-  align-items: center;
-}
-
-.mobile-menu-close {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.mobile-menu-close:hover {
-  background-color: #f3f4f6;
-}
-
-/* Hamburger Button Alignment Fix */
-@media (max-width: 768px) {
-  .hamburger-btn {
-    position: relative;
-    z-index: 1200;
-    /* Ensure hamburger aligns with close button */
-    margin-right: 8px;
-  }
-  
-  /* Perfect alignment between hamburger and close button */
-  .mobile-menu-close {
-    margin-right: 8px;
-    transform: translateY(40px);
   }
 }
