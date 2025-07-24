@@ -1,0 +1,20 @@
+{
+  "MobileTopNav": [
+    {
+      "label": "Tenders",
+      "path": "/tenders"
+    },
+    {
+      "label": "GIAN",
+      "path": "/gian"
+    },
+    {
+      "label": "RAJBHASHA",
+      "href": "https://www.nitgoa.ac.in/rajbhasha/#/",
+      "external": true
+    },
+    {
+        "type": "authSection"
+    }
+  ]
+}
