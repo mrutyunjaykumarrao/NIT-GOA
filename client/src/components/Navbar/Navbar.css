@@ -28,17 +28,17 @@ body {
 :root {
   /* ===== LAYOUT VARIABLES ===== */
   --navbar-max-width-sm: 768px;       /* Small screens */
-  --navbar-max-width-md: 1024px;      /* Medium screens */
-  --navbar-max-width-lg: 1440px;      /* Large screens */
-  --navbar-max-width-xl: 1920px;      /* Extra large screens */
-  --navbar-max-width-xxl: 2560px;     /* Ultra-wide screens */
+  --navbar-max-width-md: 1400px;      /* Medium screens */
+  --navbar-max-width-lg: 1900px;      /* Large screens */
+  --navbar-max-width-xl: 2530px;      /* Extra large screens */
+  --navbar-max-width-xxl: 2620px;     /* Ultra-wide screens */
   
   /* ===== SPACING VARIABLES ===== */
-  --navbar-padding-xs: 15px;          /* Mobile padding */
-  --navbar-padding-sm: 25px;          /* Small tablet padding */
-  --navbar-padding-md: 40px;          /* Desktop padding */
-  --navbar-padding-lg: 60px;          /* Large screen padding */
-  --navbar-padding-xl: 80px;          /* Extra large screen padding */
+  --navbar-padding-xs: 20px;          /* Mobile padding */
+  --navbar-padding-sm: 40px;          /* Small tablet padding */
+  --navbar-padding-md: 30px;          /* Desktop padding */
+  --navbar-padding-lg: 30px;          /* Large screen padding */
+  --navbar-padding-xl: 40px;          /* Extra large screen padding */
   
   /* ===== Z-INDEX LAYERS ===== */
   --z-navbar-base: 1100;              /* Base navbar layer */
@@ -436,14 +436,14 @@ body {
 .navbar-institute-info {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 7px;
 }
 
 /* Hindi institute name with progressive sizing */
 .navbar-institute-name-hindi {
   color: var(--color-primary);
   margin: 0;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.2;
   /* Progressive font size based on scroll position */
   --hindi-font-size: calc(24px - var(--scroll-progress, 0) * 6px);
@@ -491,10 +491,10 @@ body {
 .navbar-main-navigation {
   background: linear-gradient(
     to bottom, 
-    #000000 0%, 
-    #333333 20%, 
-    #666666 33%, 
-    #cccccc 60%, 
+    #000000 5%, 
+    #333333 25%, 
+    #666666 50%, 
+    #cccccc 80%, 
     #ffffff 100%
   );
   color: white;
@@ -1248,7 +1248,7 @@ body {
   
   .navbar-institute-name-english {
     font-size: 14px !important;
-    font-weight: 550;
+    font-weight: 500;
   }
   
   /* Mobile dropdown adjustments */
@@ -1628,8 +1628,8 @@ body {
   }
   
   .navbar-nav-content {
-    max-width: calc(100% - 400px);
-    --nav-content-padding: calc(120px - var(--scroll-progress, 0) * 20px);
+    max-width: var(--navbar-max-width-xxl);
+    --nav-content-padding: calc(var(--navbar-padding-xl) * 1.5);
   }
   
   .navbar-nav-item {
