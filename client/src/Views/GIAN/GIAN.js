@@ -2,10 +2,29 @@ import React, { useState } from 'react';
 import './GIAN.css';
 
 const GIAN = () => {
-    const [activeSection, setActiveSection] = useState('home');
+    const [activeSection, setActiveSection] = useState(() => {
+        // Get saved section from localStorage or default to 'home'
+        return localStorage.getItem('gian-active-section') || 'home';
+    });
 
     const handleSectionChange = (section) => {
         setActiveSection(section);
+        // Save the current section to localStorage
+        localStorage.setItem('gian-active-section', section);
+        // Smooth scroll to section header when changing sections
+        setTimeout(() => {
+            const sectionHeader = document.querySelector('.gian-section-header');
+            if (sectionHeader) {
+                const headerOffset = 120; // Offset to account for navbar height
+                const elementPosition = sectionHeader.offsetTop;
+                const offsetPosition = elementPosition - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }, 100); // Small delay to ensure DOM is updated
     };
 
     return (

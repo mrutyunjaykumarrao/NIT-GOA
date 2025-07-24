@@ -35,7 +35,10 @@ import RameezCCC from '../../../assets/images/Technical Staff/CCC/Rameez.png';
 import VenkatCCC from '../../../assets/images/Technical Staff/CCC/Venkat.png';
 
 const TechnicalStaff = () => {
-    const [selectedDepartment, setSelectedDepartment] = useState('CSE');
+    const [selectedDepartment, setSelectedDepartment] = useState(() => {
+        // Get saved department from localStorage or default to 'CSE'
+        return localStorage.getItem('technical-staff-selected-department') || 'CSE';
+    });
     const [searchParams] = useSearchParams();
     const { theme } = useTheme();
 
@@ -47,9 +50,17 @@ const TechnicalStaff = () => {
             const validDepts = ['CSE', 'ECE', 'EEE', 'MCE', 'CVE', 'APS', 'CCC'];
             if (validDepts.includes(deptCode)) {
                 setSelectedDepartment(deptCode);
+                // Save to localStorage when set from URL
+                localStorage.setItem('technical-staff-selected-department', deptCode);
             }
         }
     }, [searchParams]);
+
+    // Handle department change with localStorage persistence
+    const handleDepartmentChange = (dept) => {
+        setSelectedDepartment(dept);
+        localStorage.setItem('technical-staff-selected-department', dept);
+    };
 
     const departments = [
         { code: 'CSE', name: 'Department of Computer Science and Engineering' },
@@ -219,7 +230,7 @@ const TechnicalStaff = () => {
     };
 
     const handleDepartmentFilter = (dept) => {
-        setSelectedDepartment(dept);
+        handleDepartmentChange(dept);
     };
 
     return (

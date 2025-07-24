@@ -87,7 +87,10 @@ const GallerySlider = ({ event }) => {
 };
 
 const Hostels = () => {
-    const [activeSection, setActiveSection] = useState('About');
+    const [activeSection, setActiveSection] = useState(() => {
+        // Get saved section from localStorage or default to 'About'
+        return localStorage.getItem('hostels-active-section') || 'About';
+    });
 
     // Scroll to top when component mounts
     useEffect(() => {
@@ -96,11 +99,22 @@ const Hostels = () => {
 
     const handleSectionChange = (section) => {
         setActiveSection(section);
-        // Smooth scroll to top when changing sections
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        // Save the current section to localStorage
+        localStorage.setItem('hostels-active-section', section);
+        // Smooth scroll to section header when changing sections
+        setTimeout(() => {
+            const sectionHeader = document.querySelector('.hostels-section-header');
+            if (sectionHeader) {
+                const headerOffset = 80; // Offset to account for navbar height
+                const elementPosition = sectionHeader.offsetTop;
+                const offsetPosition = elementPosition - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }, 100); // Small delay to ensure DOM is updated
     };
 
     const renderContent = () => {
