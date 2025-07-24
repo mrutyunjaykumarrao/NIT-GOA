@@ -259,7 +259,8 @@ const Navbar = () => {
                 <h2 className="navbar-institute-name-english">National Institute of Technology Goa</h2>
               </div>
             </a>
-            {/* Hamburger Menu Button - Only visible on mobile */}
+          </div>
+          {/* Hamburger Menu Button - Only visible on mobile */}
           <button 
             className={`hamburger-btn ${isMobileMenuOpen ? 'hamburger-active' : ''}`}
             onClick={toggleMobileMenu}
@@ -269,7 +270,6 @@ const Navbar = () => {
             <span className="hamburger-line"></span>
             <span className="hamburger-line"></span>
           </button>
-          </div>
         </div>
       </header>
 
