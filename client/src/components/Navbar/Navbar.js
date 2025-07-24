@@ -15,7 +15,9 @@ const Navbar = () => {
   const [isTopNavHidden, setIsTopNavHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileMenuClosing, setIsMobileMenuClosing] = useState(false);
   const [mobileOpenDropdown, setMobileOpenDropdown] = useState(null);
+  const [mobileNestedDropdown, setMobileNestedDropdown] = useState(null);
   const [currentLanguage, setCurrentLanguage] = useState('english');
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
   const ticking = useRef(false);
@@ -99,20 +101,42 @@ const Navbar = () => {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
     setMobileOpenDropdown(null); // Close any open mobile dropdowns
+    setMobileNestedDropdown(null); // Close any nested dropdowns
   };
 
   const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-    setMobileOpenDropdown(null);
+    setIsMobileMenuClosing(true);
+    setTimeout(() => {
+      setIsMobileMenuOpen(false);
+      setIsMobileMenuClosing(false);
+      setMobileOpenDropdown(null);
+      setMobileNestedDropdown(null);
+    }, 300); // Match animation duration
   };
 
   const toggleMobileDropdown = (dropdownName) => {
-    setMobileOpenDropdown(mobileOpenDropdown === dropdownName ? null : dropdownName);
+    if (mobileOpenDropdown === dropdownName) {
+      setMobileOpenDropdown(null);
+      setMobileNestedDropdown(null); // Close nested when main closes
+    } else {
+      setMobileOpenDropdown(dropdownName);
+      setMobileNestedDropdown(null); // Close any previous nested
+    }
+  };
+
+  const toggleMobileNestedDropdown = (nestedName) => {
+    setMobileNestedDropdown(mobileNestedDropdown === nestedName ? null : nestedName);
   };
 
   const handleMobileNavigation = (path) => {
-    navigate(path);
-    closeMobileMenu();
+    setIsMobileMenuClosing(true);
+    setTimeout(() => {
+      navigate(path);
+      setIsMobileMenuOpen(false);
+      setIsMobileMenuClosing(false);
+      setMobileOpenDropdown(null);
+      setMobileNestedDropdown(null);
+    }, 300);
   };
 
   // Language change handlers
@@ -132,6 +156,8 @@ const Navbar = () => {
       className={`navbar-wrapper ${isTopNavHidden ? 'navbar-compact' : ''}`}
       style={{
         '--scroll-progress': scrollProgress,
+        '--navbar-top-header-height': `${35 - scrollProgress * 10}px`,
+        '--navbar-main-header-height': `${85 - scrollProgress * 25}px`,
       }}
     >
       {/* Top Header */}
@@ -428,14 +454,13 @@ const Navbar = () => {
 
           <a href="/outreach-activities" className="navbar-nav-item">Outreach Activities</a>
           <a href="https://mis.nitgoa.ac.in/misnitgoa/academic/ONLINEFEESCOLLECTION/Payment.aspx" target="_blank" rel="noopener noreferrer" className="navbar-nav-item">Fee Payment</a>
-          <a href="/hostels" className="navbar-nav-item">Hostels</a>
         </div>
       </nav>
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="mobile-menu-overlay" onClick={closeMobileMenu}>
-          <div className="mobile-menu" onClick={(e) => e.stopPropagation()}>
+        <div className={`mobile-menu-overlay ${isMobileMenuClosing ? 'closing' : ''}`} onClick={closeMobileMenu}>
+          <div className={`mobile-menu ${isMobileMenuClosing ? 'closing' : ''}`} onClick={(e) => e.stopPropagation()}>
             {/* Mobile Menu Header */}
             <div className="mobile-menu-header">
               <div className="mobile-menu-theme">
@@ -493,7 +518,7 @@ const Navbar = () => {
                   </svg>
                 </button>
                 {mobileOpenDropdown === 'administration' && (
-                  <div className="mobile-dropdown-menu">
+                  <div className="mobile-dropdown-menu open">
                     <button onClick={() => handleMobileNavigation('/administration/board-of-governors')}>Board of Governors</button>
                     <button onClick={() => handleMobileNavigation('/administration/director')}>Director</button>
                     <button onClick={() => handleMobileNavigation('/administration/registrar')}>Registrar</button>
@@ -522,7 +547,7 @@ const Navbar = () => {
                   </svg>
                 </button>
                 {mobileOpenDropdown === 'academics' && (
-                  <div className="mobile-dropdown-menu">
+                  <div className="mobile-dropdown-menu open">
                     <button onClick={() => handleMobileNavigation('/academic-calendar')}>Academic Calendar</button>
                     <button onClick={() => handleMobileNavigation('/academics/regulations')}>Regulations and Curriculum</button>
                     <button onClick={() => handleMobileNavigation('/academics/dissertation-formats')}>Dissertation Formats</button>
@@ -545,15 +570,47 @@ const Navbar = () => {
                   </svg>
                 </button>
                 {mobileOpenDropdown === 'admissions' && (
-                  <div className="mobile-dropdown-menu">
-                    <button onClick={() => handleMobileNavigation('/admissions/btech/josaa-csab')}>JoSAA/CSAB</button>
-                    <button onClick={() => handleMobileNavigation('/admissions/btech/dasa')}>DASA</button>
-                    <button onClick={() => handleMobileNavigation('/admissions/btech/facilities')}>Facilities</button>
-                    <button onClick={() => handleMobileNavigation('/admissions/btech/strengths')}>Strengths of NIT Goa</button>
+                  <div className="mobile-dropdown-menu open">
+                    {/* B.Tech Submenu */}
+                    <button 
+                      className="mobile-dropdown-trigger"
+                      onClick={() => toggleMobileNestedDropdown('btech')}
+                    >
+                      B.Tech
+                      <svg className={`dropdown-icon ${mobileNestedDropdown === 'btech' ? 'rotated' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <polyline points="6,9 12,15 18,9"></polyline>
+                      </svg>
+                    </button>
+                    {mobileNestedDropdown === 'btech' && (
+                      <div className="mobile-dropdown-menu open">
+                        <button onClick={() => handleMobileNavigation('/admissions/btech/josaa-csab')}>JoSAA/CSAB</button>
+                        <button onClick={() => handleMobileNavigation('/admissions/btech/dasa')}>DASA</button>
+                        <button onClick={() => handleMobileNavigation('/admissions/btech/facilities')}>Facilities</button>
+                        <button onClick={() => handleMobileNavigation('/admissions/btech/strengths')}>Strengths of NIT Goa</button>
+                      </div>
+                    )}
+                    
                     <button onClick={() => handleMobileNavigation('/admissions/mtech')}>M.Tech</button>
                     <button onClick={() => handleMobileNavigation('/admissions/phd')}>Ph.D</button>
                     <button onClick={() => window.open('https://www.nitgoa.ac.in/static/fee_structure_23-24_25july2023.pdf', '_blank')}>Fee Structure</button>
                     <button onClick={() => window.open('https://www.nitgoa.ac.in/uploads/AdmissionBrochure%202august2024.pdf', '_blank')}>Admission Brochure</button>
+                    
+                    {/* Hostels Submenu */}
+                    <button 
+                      className="mobile-dropdown-trigger"
+                      onClick={() => toggleMobileNestedDropdown('hostels')}
+                    >
+                      Hostels
+                      <svg className={`dropdown-icon ${mobileNestedDropdown === 'hostels' ? 'rotated' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <polyline points="6,9 12,15 18,9"></polyline>
+                      </svg>
+                    </button>
+                    {mobileNestedDropdown === 'hostels' && (
+                      <div className="mobile-dropdown-menu open">
+                        <button onClick={() => window.open('https://www.nitgoa.ac.in/static/Rules_of_NIT_Goa_Hostel_18July2022.pdf', '_blank')}>B.Tech Students</button>
+                        <button onClick={() => window.open('https://www.nitgoa.ac.in/static/Rules_mtech_hostel_20june16.pdf', '_blank')}>M.Tech Students</button>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
@@ -570,7 +627,7 @@ const Navbar = () => {
                   </svg>
                 </button>
                 {mobileOpenDropdown === 'training' && (
-                  <div className="mobile-dropdown-menu">
+                  <div className="mobile-dropdown-menu open">
                     <button onClick={() => handleMobileNavigation('/training-placement')}>T & P</button>
                     <button onClick={() => handleMobileNavigation('/company-login')}>Company Login</button>
                     <button onClick={() => handleMobileNavigation('/forms-guidelines')}>Forms & Guidelines</button>
@@ -590,7 +647,7 @@ const Navbar = () => {
                   </svg>
                 </button>
                 {mobileOpenDropdown === 'people' && (
-                  <div className="mobile-dropdown-menu">
+                  <div className="mobile-dropdown-menu open">
                     <button onClick={() => handleMobileNavigation('/faculty')}>Faculty</button>
                     <button onClick={() => handleMobileNavigation('/technical-staff')}>Technical Staff</button>
                     <button onClick={() => handleMobileNavigation('/administrative-staff')}>Administrative Staff</button>
@@ -611,7 +668,7 @@ const Navbar = () => {
                   </svg>
                 </button>
                 {mobileOpenDropdown === 'research' && (
-                  <div className="mobile-dropdown-menu">
+                  <div className="mobile-dropdown-menu open">
                     <button onClick={() => handleMobileNavigation('/research/rd-projects')}>R & D Projects</button>
                     <button onClick={() => window.open('https://www.nitgoa.ac.in/research/Research_Consultancy/research_consultancy.html', '_blank')}>Research & Consultancy</button>
                     <button onClick={() => handleMobileNavigation('/research/mou-details')}>Details Of MoUs</button>
@@ -634,7 +691,7 @@ const Navbar = () => {
                 <button onClick={() => window.open('https://mis.nitgoa.ac.in/misnitgoa/academic/ONLINEFEESCOLLECTION/Payment.aspx', '_blank')}>Fee Payment</button>
               </div>
               <div className="mobile-nav-item">
-                <button onClick={() => handleMobileNavigation('/hostels')}>Hostel</button>
+                <button onClick={() => handleMobileNavigation('/hostels')}>Hostels</button>
               </div>
             </div>
           </div>
