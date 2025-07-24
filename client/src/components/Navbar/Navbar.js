@@ -135,14 +135,14 @@ const Navbar = () => {
       }}
     >
       {/* Top Header */}
-      <div className={`top-header ${isTopNavHidden ? 'top-header-hidden' : ''}`}>
-        <div className="top-header-content">
+      <div className={`navbar-top-header ${isTopNavHidden ? 'navbar-top-header-hidden' : ''}`}>
+        <div className="navbar-top-header-content">
           {/* Desktop Controls */}
-          <div className="top-nav-controls desktop-only">
+          <div className="navbar-top-nav-controls desktop-only">
             {/* Language Selector */}
-            <div className="language-selector">
+            <div className="navbar-language-selector">
               <button 
-                className="language-btn"
+                className="navbar-language-btn"
                 onClick={toggleLanguageDropdown}
                 aria-label="Change language"
               >
@@ -156,7 +156,7 @@ const Navbar = () => {
               </button>
               
               {isLanguageDropdownOpen && (
-                <div className="language-dropdown">
+                <div className="navbar-language-dropdown">
                   <button onClick={() => changeLanguage('english')}>
                     🇺🇸 English
                   </button>
@@ -172,7 +172,7 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Top Nav */}
-          <nav className="top-nav desktop-only">
+          <nav className="navbar-top-nav desktop-only">
             <a href="https://www.nitgoa.ac.in/alumni/" target="_blank" rel="noopener noreferrer">Alumni</a>
             <a href="/nirf">NIRF</a>
             <a href="/tenders">Tenders</a>
@@ -221,7 +221,7 @@ const Navbar = () => {
           </nav>
 
           {/* Mobile Top Nav */}
-          <nav className="top-nav mobile-only">
+          <nav className="navbar-top-nav mobile-only">
             <a href="/tenders">Tenders</a>
             <a href="/gian">GIAN</a>
             <a href="https://www.nitgoa.ac.in/rajbhasha/#/" target="_blank" rel="noopener noreferrer">RAJBHASHA</a>
@@ -249,14 +249,14 @@ const Navbar = () => {
       </div>
 
       {/* Main Header */}
-      <header className="main-header">
-        <div className="header-content">
-          <div className="logo-section">
-            <a href="/" className="logo-link">
-              <img src="/logo192.png" alt="NIT Goa Logo" className="nit-logo" />
-              <div className="institute-info">
-                <h1 className="institute-name-hindi">राष्ट्रीय प्रौद्योगिकी संस्थान गोवा</h1>
-                <h2 className="institute-name-english">National Institute of Technology Goa</h2>
+      <header className="navbar-main-header">
+        <div className="navbar-header-content">
+          <div className="navbar-logo-section">
+            <a href="/" className="navbar-logo-link">
+              <img src="/logo192.png" alt="NIT Goa Logo" className="navbar-nit-logo" />
+              <div className="navbar-institute-info">
+                <h1 className="navbar-institute-name-hindi">राष्ट्रीय प्रौद्योगिकी संस्थान गोवा</h1>
+                <h2 className="navbar-institute-name-english">National Institute of Technology Goa</h2>
               </div>
             </a>
             {/* Hamburger Menu Button - Only visible on mobile */}
@@ -274,19 +274,19 @@ const Navbar = () => {
       </header>
 
       {/* Main Navigation */}
-      <nav className="main-navigation">
-        <div className="nav-content">
-          <a href="/" className="nav-item">Home</a>
+      <nav className="navbar-main-navigation">
+        <div className="navbar-nav-content">
+          <a href="/" className="navbar-nav-item">Home</a>
 
           {/* Administration Dropdown */}
           <div 
-            className="nav-item dropdown"
+            className="navbar-nav-item navbar-dropdown"
             onMouseEnter={() => handleMouseEnter('administration')}
             onMouseLeave={handleMouseLeave}
           >
             <span>Administration</span>
             {openDropdown === 'administration' && (
-              <div className="dropdown-menu">
+              <div className="navbar-dropdown-menu">
                 <a href="/administration/board-of-governors">Board of Governors</a>
                 <a href="/administration/director">Director</a>
                 <a href="/administration/registrar">Registrar</a>
@@ -305,13 +305,13 @@ const Navbar = () => {
 
           {/* Academics Dropdown */}
           <div 
-            className="nav-item dropdown"
+            className="navbar-nav-item navbar-dropdown"
             onMouseEnter={() => handleMouseEnter('academics')}
             onMouseLeave={handleMouseLeave}
           >
             <span>Academics</span>
             {openDropdown === 'academics' && (
-              <div className="dropdown-menu">
+              <div className="navbar-dropdown-menu">
                 <a href="/academic-calendar">Academic Calendar</a>
                 <a href="/academics/regulations">Regulations and Curriculum</a>
                 <a href="/academics/dissertation-formats">Dissertation Formats</a>
@@ -323,28 +323,28 @@ const Navbar = () => {
           </div>
           {/* Admissions Dropdown */}
                 <div 
-                className="nav-item dropdown"
+                className="navbar-nav-item navbar-dropdown"
                 onMouseEnter={() => handleMouseEnter('admissions')}
                 onMouseLeave={handleMouseLeave}
                 >
                 <span>Admissions</span>
                 {openDropdown === 'admissions' && (
                   <div 
-                  className="dropdown-menu"
+                  className="navbar-dropdown-menu"
                   onMouseEnter={() => handleDropdownMouseEnter('admissions')}
                   onMouseLeave={handleMouseLeave}
                   >
                   <div 
-                    className="dropdown-item-with-submenu"
+                    className="navbar-dropdown-item-with-submenu"
                     onMouseEnter={() => handleSubmenuEnter('btech')}
                     onMouseLeave={handleSubmenuLeave}
                   >
-                    <span className="submenu-item">
+                    <span className="navbar-submenu-item">
                     B.Tech
-                    <span className="submenu-arrow">▶</span>
+                    <span className="navbar-submenu-arrow">▶</span>
                     </span>
                     {activeSubmenu === 'btech' && (
-                    <div className="submenu">
+                    <div className="navbar-submenu">
                       <a href="/admissions/btech/josaa-csab">JoSAA/CSAB</a>
                       <a href="/admissions/btech/dasa">DASA</a>
                       <a href="/admissions/btech/facilities">Facilities</a>
@@ -357,16 +357,16 @@ const Navbar = () => {
                   <a href="https://www.nitgoa.ac.in/uploads/AdmissionBrochure%202august2024.pdf" target="_blank" rel="noopener noreferrer">Admission Brochure</a>
                   <a href="https://www.nitgoa.ac.in/static/fee_structure_23-24_25july2023.pdf" target="_blank" rel="noopener noreferrer">Fee Structure</a>
                   <div 
-                    className="dropdown-item-with-submenu"
+                    className="navbar-dropdown-item-with-submenu"
                     onMouseEnter={() => handleSubmenuEnter('hostels')}
                     onMouseLeave={handleSubmenuLeave}
                   >
-                    <span className="submenu-item">
+                    <span className="navbar-submenu-item">
                     Hostels
-                    <span className="submenu-arrow">▶</span>
+                    <span className="navbar-submenu-arrow">▶</span>
                     </span>
                     {activeSubmenu === 'hostels' && (
-                    <div className="submenu hostels-submenu">
+                    <div className="navbar-submenu hostels-submenu">
                       <a href="https://www.nitgoa.ac.in/static/Rules_of_NIT_Goa_Hostel_18July2022.pdf" target="_blank" rel="noopener noreferrer">B.Tech Students</a>
                       <a href="https://www.nitgoa.ac.in/static/Rules_mtech_hostel_20june16.pdf" target="_blank" rel="noopener noreferrer">M.Tech Students</a>
                     </div>
@@ -378,13 +378,13 @@ const Navbar = () => {
 
                 {/* Training & Placement Dropdown */}
                 <div 
-                className="nav-item dropdown"
+                className="navbar-nav-item navbar-dropdown"
                 onMouseEnter={() => handleMouseEnter('training')}
                 onMouseLeave={handleMouseLeave}
                 >
                 <span>Training & Placement</span>
                 {openDropdown === 'training' && (
-                  <div className="dropdown-menu">
+                  <div className="navbar-dropdown-menu">
                   <a href="/training-placement">T & P</a>
                   <a href="/company-login">Company Login</a>
                   <a href="/forms-guidelines">Forms & Guidelines</a>
@@ -394,13 +394,13 @@ const Navbar = () => {
                 
                 {/* People Dropdown */}
           <div 
-            className="nav-item dropdown"
+            className="navbar-nav-item navbar-dropdown"
             onMouseEnter={() => handleMouseEnter('people')}
             onMouseLeave={handleMouseLeave}
           >
             <span>People</span>
             {openDropdown === 'people' && (
-              <div className="dropdown-menu">
+              <div className="navbar-dropdown-menu">
                 <a href="/faculty">Faculty</a>
                 <a href="/technical-staff">Technical Staff</a>
                 <a href="/administrative-staff">Administrative Staff</a>
@@ -411,13 +411,13 @@ const Navbar = () => {
 
           {/* Research Dropdown */}
           <div 
-            className="nav-item dropdown"
+            className="navbar-nav-item navbar-dropdown"
             onMouseEnter={() => handleMouseEnter('research')}
             onMouseLeave={handleMouseLeave}
           >
             <span>Research</span>
             {openDropdown === 'research' && (
-              <div className="dropdown-menu">
+              <div className="navbar-dropdown-menu">
                 <a href="/research/rd-projects">R & D Projects</a>
                 <a href="https://www.nitgoa.ac.in/research/Research_Consultancy/research_consultancy.html" target="_blank" rel="noopener noreferrer">Research & Consultancy</a>
                 <a href="/research/mou-details">Details Of MoUs</a>
@@ -426,9 +426,9 @@ const Navbar = () => {
             )}
           </div>
 
-          <a href="/outreach-activities" className="nav-item">Outreach Activities</a>
-          <a href="https://mis.nitgoa.ac.in/misnitgoa/academic/ONLINEFEESCOLLECTION/Payment.aspx" target="_blank" rel="noopener noreferrer" className="nav-item">Fee Payment</a>
-          <a href="/hostels" className="nav-item">Hostels</a>
+          <a href="/outreach-activities" className="navbar-nav-item">Outreach Activities</a>
+          <a href="https://mis.nitgoa.ac.in/misnitgoa/academic/ONLINEFEESCOLLECTION/Payment.aspx" target="_blank" rel="noopener noreferrer" className="navbar-nav-item">Fee Payment</a>
+          <a href="/hostels" className="navbar-nav-item">Hostels</a>
         </div>
       </nav>
 
@@ -442,9 +442,9 @@ const Navbar = () => {
                 <ThemeToggle />
                 
                 {/* Mobile Language Selector */}
-                <div className="language-selector mobile-language">
+                <div className="navbar-language-selector mobile-language">
                   <button 
-                    className="language-btn mobile-language-btn"
+                    className="navbar-language-btn mobile-language-btn"
                     onClick={toggleLanguageDropdown}
                     aria-label="Change language"
                   >
@@ -455,7 +455,7 @@ const Navbar = () => {
                   </button>
                   
                   {isLanguageDropdownOpen && (
-                    <div className="language-dropdown mobile-language-dropdown">
+                    <div className="navbar-language-dropdown mobile-language-dropdown">
                       <button onClick={() => changeLanguage('english')}>
                         🇺🇸 English
                       </button>
