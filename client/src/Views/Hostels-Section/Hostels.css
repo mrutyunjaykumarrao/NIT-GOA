@@ -79,6 +79,9 @@
     text-align: center;
     position: relative;
     overflow: hidden;
+    margin: 0 2rem 3rem 2rem;
+    border-radius: 16px;
+    box-shadow: var(--hostels-shadow-large);
 }
 
 .hostels-page-header::before {
@@ -110,13 +113,13 @@
 .hostels-page-subtitle {
     font-size: 1.2rem;
     color: rgba(255, 255, 255, 0.9);
-    max-width: 600px;
+    max-width: 635px;
     margin: 0 auto;
     line-height: 1.6;
 }
 
 .hostels-container {
-    max-width: 1400px;
+    max-width: 90%;
     margin: 0 auto;
     padding: 2rem;
 }
@@ -169,6 +172,7 @@
     border: 1px solid var(--hostels-border);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
 }
 
 .hostels-nav-list {
@@ -228,6 +232,29 @@
     overflow: hidden;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    /* height: calc(100vh - 6rem); */
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--hostels-primary-blue) var(--hostels-card-bg);
+}
+
+.hostels-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.hostels-content::-webkit-scrollbar-track {
+    background: var(--hostels-card-bg);
+    border-radius: 4px;
+}
+
+.hostels-content::-webkit-scrollbar-thumb {
+    background: var(--hostels-primary-blue);
+    border-radius: 4px;
+}
+
+.hostels-content::-webkit-scrollbar-thumb:hover {
+    background: var(--hostels-primary-blue-light);
 }
 
 .hostels-section {
@@ -272,9 +299,11 @@
 .hostels-facility-card {
     margin-bottom: 3rem;
     padding: 2rem;
-    background: rgba(30, 41, 59, 0.5);
+    background: var(--hostels-card-bg);
     border-radius: 12px;
     border: 1px solid var(--hostels-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 }
 
 .hostels-facility-card:last-child {
@@ -309,6 +338,105 @@
     object-fit: cover;
 }
 
+/* Academic Calendar Style Event Cards */
+.hostels-event-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: var(--hostels-card-bg);
+    border: 1px solid var(--hostels-border);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: var(--hostels-shadow-medium);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.hostels-event-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--hostels-shadow-large);
+}
+
+.hostels-event-content {
+    flex: 1;
+}
+
+.hostels-event-title {
+    color: var(--hostels-primary-blue);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.hostels-pretty-download-btn {
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3);
+    text-decoration: none;
+}
+
+.hostels-pretty-download-btn:hover {
+    background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.4);
+    color: white;
+}
+
+.hostels-pretty-download-btn:active {
+    transform: translateY(0);
+}
+
+.hostels-pretty-download-btn svg {
+    flex-shrink: 0;
+}
+
+/* Smaller Download Button for Guest Accommodation */
+.pretty-download-btn {
+    background: var(--hostels-gradient-primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+    text-decoration: none;
+    min-width: 160px;
+    white-space: nowrap;
+}
+
+.pretty-download-btn:hover {
+    background: var(--hostels-gradient-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+    color: white;
+    text-decoration: none;
+}
+
+.pretty-download-btn:active {
+    transform: translateY(0);
+}
+
 /* Documents Section */
 .hostels-documents-section {
     margin-top: 2rem;
@@ -327,6 +455,49 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
+}
+
+/* Form Section Styles */
+.hostels-form-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--hostels-border);
+}
+
+.hostels-form-section h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--hostels-primary-blue);
+    margin: 0 0 1.5rem 0;
+}
+
+.hostels-download-card {
+    background: var(--hostels-card-bg);
+    border: 2px solid var(--hostels-primary-blue-light);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--hostels-shadow-medium);
+    transition: all 0.3s ease;
+}
+
+.hostels-download-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--hostels-shadow-large);
+}
+
+.hostels-download-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
+}
+
+.hostels-download-content p {
+    color: var(--hostels-text-secondary);
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 .hostels-document-card {
@@ -584,8 +755,8 @@
 
 .hostels-forms-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
 }
 
 .hostels-form-card {
@@ -805,7 +976,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: all 0.5s ease-in-out;
 }
 
 .hostels-slider-overlay {
@@ -816,6 +987,9 @@
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
     padding: 1rem;
     color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .hostels-image-counter {
@@ -825,6 +999,35 @@
     padding: 0.5rem 1rem;
     border-radius: 20px;
     backdrop-filter: blur(10px);
+    color: white;
+}
+
+.hostels-auto-slide-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.hostels-auto-slide-toggle {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 0.4rem;
+    border-radius: 50%;
+    font-size: 1rem;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hostels-auto-slide-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
 }
 
 .hostels-slider-btn {
@@ -846,9 +1049,9 @@
 }
 
 .hostels-slider-btn:hover {
-    background: var(--hostels-primary-blue);
+    background: rgba(255, 255, 255, 0);
     color: white;
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
 }
 
 .hostels-slider-dots {
@@ -885,20 +1088,22 @@
 
 .hostels-guest-info {
     background: var(--hostels-card-bg);
-    border: 1px solid var(--hostels-border);
+    border: 2px solid var(--hostels-primary-blue-light);
     border-radius: 16px;
     padding: 2.5rem;
     margin-bottom: 2rem;
     text-align: center;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    box-shadow: var(--hostels-shadow-medium);
 }
 
 .hostels-guest-description {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 1.7;
-    color: var(--hostels-text-secondary);
+    color: var(--hostels-text-primary);
     margin-bottom: 2.5rem;
+    font-weight: 500;
 }
 
 .hostels-charges-section {
@@ -906,10 +1111,11 @@
 }
 
 .hostels-charges-section h4 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: var(--hostels-primary-blue);
     margin: 0 0 1.5rem 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .hostels-charges-grid {
@@ -920,31 +1126,34 @@
 }
 
 .hostels-charge-card {
-    background: rgba(59, 130, 246, 0.1);
-    border: 2px solid rgba(59, 130, 246, 0.2);
+    background: var(--hostels-card-bg);
+    border: 2px solid var(--hostels-primary-blue-light);
     border-radius: 12px;
     padding: 2rem;
     text-align: center;
     transition: all 0.3s ease;
+    box-shadow: var(--hostels-shadow-medium);
 }
 
 .hostels-charge-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2);
+    box-shadow: 0 12px 32px rgba(59, 130, 246, 0.3);
+    border-color: var(--hostels-primary-blue);
 }
 
 .hostels-charge-card h5 {
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1.3rem;
+    font-weight: 700;
     color: var(--hostels-text-primary);
     margin: 0 0 1rem 0;
 }
 
 .hostels-charge-rate {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.6rem;
+    font-weight: 800;
     color: var(--hostels-primary-blue);
     margin: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .hostels-guest-actions {
@@ -956,17 +1165,18 @@
 .hostels-booking-section,
 .hostels-contact-section {
     background: var(--hostels-card-bg);
-    border: 1px solid var(--hostels-border);
+    border: 2px solid var(--hostels-primary-blue-light);
     border-radius: 16px;
     padding: 2rem;
     text-align: center;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    box-shadow: var(--hostels-shadow-medium);
 }
 
 .hostels-booking-section h4,
 .hostels-contact-section h4 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: 700;
     color: var(--hostels-primary-blue);
     margin: 0 0 1rem 0;
@@ -974,12 +1184,14 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .hostels-booking-section p,
 .hostels-contact-section p {
-    color: var(--hostels-text-secondary);
+    color: var(--hostels-text-primary);
     margin-bottom: 1.5rem;
+    font-weight: 500;
 }
 
 .hostels-booking-btn {
@@ -1007,12 +1219,14 @@
 
 .hostels-contact-details p {
     margin: 0.5rem 0;
-    color: var(--hostels-text-secondary);
+    color: var(--hostels-text-primary);
+    font-weight: 500;
 }
 
 .hostels-contact-details strong {
     color: var(--hostels-text-primary);
     font-size: 1.1rem;
+    font-weight: 700;
 }
 
 .hostels-contact-details a {
@@ -1098,6 +1312,45 @@
 }
 
 /* Mobile and Tablet Responsive */
+
+/* Tablet (768px to 1024px) - Improve gallery sizing */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .hostels-gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .hostels-gallery-section {
+        margin-bottom: 2rem;
+    }
+    
+    .hostels-slider-main {
+        aspect-ratio: 16/9;
+        max-height: 400px;
+    }
+    
+    .hostels-gallery-slide img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 16px;
+    }
+    
+    .hostels-gallery-title {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hostels-slider-container {
+        gap: 1.5rem;
+    }
+    
+    .hostels-slider-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+}
 
 /* Mobile L and below - Convert sidebar to horizontal navbar (768px) */
 @media (max-width: 768px) {
@@ -1277,6 +1530,70 @@
         width: 40px;
         height: 40px;
         font-size: 1rem;
+    }
+    
+    .hostels-event-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .hostels-pretty-download-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Mobile Gallery - Make entire card an image */
+    .hostels-gallery-section {
+        position: relative;
+    }
+    
+    .hostels-gallery-title {
+        /* position: absolute; */
+        /* top: 1rem;
+        left: 1rem;
+        right: 1rem;
+        z-index: 10; */
+        /* background: rgba(0, 0, 0, 0.7);
+        color: white; */
+        /* padding: 0.8rem 1.2rem;
+        border-radius: 8px;
+        margin: 0; */
+        font-size: 1.1rem;
+        text-align: center;
+        backdrop-filter: blur(10px);
+    }
+    
+    .hostels-gallery-slider {
+        border-radius: 16px;
+        overflow: hidden;
+    }
+    
+    .hostels-slider-container {
+        position: relative;
+    }
+    
+    .hostels-slider-main {
+        aspect-ratio: 16/10;
+    }
+    
+    .hostels-slider-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 15;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0);
+    }
+    
+    .hostels-slider-prev {
+        left: 1rem;
+    }
+    
+    .hostels-slider-next {
+        right: 1rem;
     }
 }
 
@@ -1461,4 +1778,178 @@
     .hostels-contact-card {
         padding: 1.5rem;
     }
+}
+
+/* Very Small Screens (< 380px) */
+@media (max-width: 379px) {
+    .hostels-page {
+        padding: 0.5rem 0;
+    }
+    
+    .hostels-container {
+        padding: 0 0.25rem;
+    }
+    
+    .hostels-content-wrapper {
+        padding: 1rem;
+    }
+    
+    .hostels-faculty-card {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+    
+    .hostels-faculty-name {
+        font-size: 1.1rem !important;
+        line-height: 1.3;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hostels-faculty-designation {
+        font-size: 0.85rem !important;
+        margin-bottom: 1rem;
+    }
+    
+    .hostels-faculty-details {
+        gap: 0.5rem;
+    }
+    
+    .hostels-faculty-detail {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+    
+    .hostels-faculty-detail strong {
+        font-size: 0.8rem;
+    }
+    
+    .hostels-contact-card {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .hostels-contact-card h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .hostels-contact-details {
+        gap: 0.5rem;
+    }
+    
+    .hostels-contact-detail {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+    
+    .hostels-page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .hostels-page-subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* Dark Mode Improvements for Guest Accommodation and Contact Us */
+[data-theme="dark"] .hostels-guest-container {
+    color: var(--hostels-text-primary);
+}
+
+[data-theme="dark"] .hostels-guest-intro h3 {
+    color: var(--hostels-primary-blue-light);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .hostels-guest-intro p {
+    color: var(--hostels-text-secondary);
+}
+
+[data-theme="dark"] .hostels-contacts-section h4,
+[data-theme="dark"] .hostels-charges-section h4,
+[data-theme="dark"] .hostels-form-section h4 {
+    color: var(--hostels-primary-blue-light);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .hostels-contact-card {
+    background: rgba(30, 41, 59, 0.6);
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .hostels-contact-card:hover {
+    border-color: var(--hostels-primary-blue-light);
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2);
+}
+
+[data-theme="dark"] .hostels-contact-name {
+    color: var(--hostels-primary-blue-light);
+}
+
+[data-theme="dark"] .hostels-contact-detail strong {
+    color: var(--hostels-text-primary);
+}
+
+[data-theme="dark"] .hostels-contact-detail a {
+    color: var(--hostels-primary-blue-light);
+}
+
+[data-theme="dark"] .hostels-contact-text {
+    color: var(--hostels-text-secondary);
+}
+
+[data-theme="dark"] .hostels-contact-role {
+    color: var(--hostels-text-secondary);
+}
+
+[data-theme="dark"] .hostels-address-section h4 {
+    color: var(--hostels-primary-blue-light);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .hostels-address p {
+    color: var(--hostels-text-secondary);
+}
+
+[data-theme="dark"] .hostels-charge-card {
+    background: rgba(30, 41, 59, 0.6);
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .hostels-charge-card:hover {
+    border-color: var(--hostels-primary-blue-light);
+    box-shadow: 0 12px 32px rgba(59, 130, 246, 0.3);
+}
+
+[data-theme="dark"] .hostels-charge-type {
+    color: var(--hostels-text-primary);
+}
+
+[data-theme="dark"] .hostels-charge-amount {
+    color: var(--hostels-primary-blue-light);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .hostels-download-card {
+    background: rgba(30, 41, 59, 0.6);
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .hostels-download-content p {
+    color: var(--hostels-text-secondary);
+}
+
+[data-theme="dark"] .pretty-download-btn {
+    background: var(--hostels-gradient-primary);
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+}
+
+[data-theme="dark"] .pretty-download-btn:hover {
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
 }
