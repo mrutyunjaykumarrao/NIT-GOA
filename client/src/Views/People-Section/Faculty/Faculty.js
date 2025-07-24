@@ -39,7 +39,6 @@ import DrVeerakumar from '../../../assets/images/Faculty/ECE/drveerakumar.jpeg';
 import AnkeshwarapuSunil from '../../../assets/images/Faculty/EEE/Ankeshwarapu Sunil.jpg';
 import AmolRahulkar from '../../../assets/images/Faculty/EEE/Dr. Amol D. Rahulkar.jpg';
 import AnudeviSamuel from '../../../assets/images/Faculty/EEE/Dr. Anudevi Samuel.png';
-import VenugopalReddy from '../../../assets/images/Faculty/EEE/Dr. B. Venugopal Reddy.png';
 import Vyjayanthi from '../../../assets/images/Faculty/EEE/Dr. C.Vyjayanthi.png';
 import Raghavendra from '../../../assets/images/Faculty/EEE/Dr. K Raghavenrda Reddy.jpeg';
 import SoumitraDas from '../../../assets/images/Faculty/EEE/Dr. Soumitra Das.png';
@@ -70,7 +69,6 @@ import RanendraBhowmik from '../../../assets/images/Faculty/CVE/Ranendra Nath Bh
 import ChandraCVE from '../../../assets/images/Faculty/CVE/chandra_cve.jpeg';
 import ManiCVE from '../../../assets/images/Faculty/CVE/mani.jpg';
 import SaiduluCVE from '../../../assets/images/Faculty/CVE/saidulu.png';
-import SuryatejaCVE from '../../../assets/images/Faculty/CVE/suryateja.jpg';
 import VNMCVE from '../../../assets/images/Faculty/CVE/vnm.jpeg';
 
 // APS Department
