@@ -125,8 +125,8 @@
     transition: all 0.3s ease;
     border: 1px solid #e0e0e0;
     height: 485px;
-    min-height: 540px;
-    max-height: 540px;
+    min-height: 550px;
+    max-height: 550px;
     width: 100%;
     max-width: 400px;
     display: flex;
@@ -418,9 +418,9 @@
     
     .faculty-card {
         max-width: 420px;
-        height: 500px;
-        min-height: 500px;
-        max-height: 500px;
+        height: 600px;
+        min-height: 600px;
+        max-height: 600px;
         padding: 30px;
     }
     
@@ -474,9 +474,9 @@
     
     .faculty-card {
         max-width: 450px;
-        height: 520px;
-        min-height: 520px;
-        max-height: 520px;
+        height: 620px;
+        min-height: 620px;
+        max-height: 620px;
         padding: 35px;
     }
     

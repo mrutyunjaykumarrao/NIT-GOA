@@ -129,18 +129,6 @@
     line-height: 1.2;
 }
 
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-orange) 100%);
-    border-radius: 2px;
-}
-
 /* Institute Section */
 .institute-section {
     margin-bottom: 4rem;
@@ -155,7 +143,7 @@
     background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
     color: var(--white);
     padding: 2rem 2.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0;
     border-radius: 16px 16px 0 0;
 }
 
@@ -183,7 +171,7 @@
 }
 
 .content-body, .program-content {
-    padding: 0 2.5rem 2rem;
+    padding: 1rem 2.5rem 2rem;
     background: var(--white);
     border-radius: 0 0 16px 16px;
     box-shadow: 0 4px 20px var(--shadow-light);
@@ -260,9 +248,14 @@
 
 .departments-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-top: 2rem;
+    margin-bottom: 4rem;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: stretch;
 }
 
 .department-card {
@@ -325,7 +318,7 @@
 }
 
 .admission-content {
-    padding: 0 2.5rem 2rem;
+    padding: 1rem 2.5rem 2rem;
     background: var(--white);
     border-radius: 0 0 16px 16px;
     box-shadow: 0 4px 20px var(--shadow-light);
@@ -442,7 +435,7 @@
 }
 
 .placement-content {
-    padding: 0 2.5rem 2rem;
+    padding: 1rem 2.5rem 2rem;
     background: var(--white);
     border-radius: 0 0 16px 16px;
     box-shadow: 0 4px 20px var(--shadow-light);
@@ -583,7 +576,8 @@
     
     .admission-details-grid,
     .departments-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 1000px;
         gap: 1.5rem;
     }
 }

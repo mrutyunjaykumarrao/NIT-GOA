@@ -7,6 +7,10 @@
   flex-direction: column;
   position: relative;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  will-change: transform;
+  contain: layout style paint;
 }
 
 .registrar-page::before {
@@ -62,7 +66,8 @@
   grid-template-columns: 400px 1fr;
   overflow: hidden;
   width: 100%;
-  transition: all 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  will-change: transform, box-shadow;
 }
 
 .registrar-combined-section:hover {
@@ -377,4 +382,156 @@
   .registrar-right-content h3 {
     font-size: 1.4rem;
   }
+}
+
+
+/* @media (min-width: 1441px) {
+  .director-page .container {
+    max-width: 100vw;
+    width: 100vw;
+    margin: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    box-sizing: border-box;
+  }
+  .director-content {
+    transform: none;
+    margin: 0;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .director-profile {
+    max-width: 100%;
+    width: 100%;
+  }
+  .director-combined-section {
+    width: 100%;
+    max-width: 100%;
+  }
+} */
+/* Large Screen Scaling - For screens larger than 1440px */
+@media (min-width: 1441px) {
+    .registrar-page .container {
+        max-width: 100vw;
+    width: 100vw;
+    margin: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+    box-sizing: border-box;
+    }
+    
+    .registrar-content {
+        transform: none;
+    margin: 0;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    }
+    
+     .registrar-profile {
+    max-width: 100%;
+    width: 100%;
+  }
+  .registrar-combined-section {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* @media (min-width: 1600px) {
+    .registrar-page .container {
+        max-width: 1500px;
+        padding: 0 50px;
+    }
+    
+    .registrar-content {
+        transform: scale(1.04);
+        margin: 50px 0;
+    }
+    
+    .registrar-name {
+        font-size: 2.6rem;
+    }
+}
+
+@media (min-width: 1920px) {
+    .registrar-page .container {
+        max-width: 1600px;
+        padding: 0 60px;
+    }
+    
+    .registrar-content {
+        transform: scale(1.06);
+        margin: 60px 0;
+    }
+    
+    .registrar-name {
+        font-size: 2.8rem;
+    }
+}
+
+@media (min-width: 2560px) {
+    .registrar-page .container {
+        max-width: 1800px;
+        padding: 0 80px;
+    }
+    
+    .registrar-content {
+        transform: scale(1.08);
+        margin: 80px 0;
+    }
+    
+    .registrar-name {
+        font-size: 3rem;
+    }
+} */
+
+/* Dark Theme Support */
+[data-theme="dark"] .registrar-page {
+    background: linear-gradient(135deg, #1e1e1e 0%, #2c2c2c 100%);
+    color: #ffffff;
+}
+
+[data-theme="dark"] .registrar-page::before {
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid-dark" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23555555" stroke-width="0.5" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23grid-dark)"/></svg>');
+}
+
+[data-theme="dark"] .registrar-profile {
+    background: rgba(44, 44, 44, 0.95);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .registrar-left-content {
+    background: rgba(44, 44, 44, 0.9);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .registrar-right-content {
+    background: rgba(44, 44, 44, 0.9);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .registrar-name {
+    color: #64B5F6;
+    text-shadow: 0 2px 4px rgba(100, 181, 246, 0.3);
+}
+
+[data-theme="dark"] .registrar-designation {
+    color: #90CAF9;
+}
+
+[data-theme="dark"] .registrar-about-content p,
+[data-theme="dark"] .registrar-right-content p,
+[data-theme="dark"] .registrar-right-content li {
+    color: #CCCCCC;
+}
+
+[data-theme="dark"] .registrar-right-content h3 {
+    color: #64B5F6;
+}
+
+[data-theme="dark"] .registrar-contact-item strong {
+    color: #90CAF9;
 }

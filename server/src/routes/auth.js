@@ -1,22 +1,15 @@
 const express = require('express');
 const router = express.Router();
+const { authenticateToken } = require('../middleware/auth');
+const { login, changePassword, getProfile, forgotPassword } = require('../controllers/authController');
 
-// POST /api/auth/login
-router.post('/login', (req, res) => {
-  // TODO: Implement login logic
-  res.json({ message: 'Login endpoint - To be implemented' });
-});
+// Public routes
+router.post('/login', login);
+router.post('/forgot-password', forgotPassword);
 
-// POST /api/auth/logout
-router.post('/logout', (req, res) => {
-  // TODO: Implement logout logic
-  res.json({ message: 'Logout endpoint - To be implemented' });
-});
-
-// GET /api/auth/me
-router.get('/me', (req, res) => {
-  // TODO: Implement current user endpoint
-  res.json({ message: 'Current user endpoint - To be implemented' });
-});
+// Protected routes
+router.use(authenticateToken);
+router.post('/change-password', changePassword);
+router.get('/profile', getProfile);
 
 module.exports = router;

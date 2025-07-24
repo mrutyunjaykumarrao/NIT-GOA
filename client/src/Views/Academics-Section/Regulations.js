@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Regulations.css';
 
 const regulationsData = [
@@ -59,32 +59,31 @@ const regulationsData = [
 ];
 
 const Regulations = () => {
+	useEffect(() => {
+		// Check if there's a hash in the URL and scroll to it
+		if (window.location.hash) {
+			const targetId = window.location.hash.substring(1); // Remove the # symbol
+			const targetElement = document.getElementById(targetId);
+			if (targetElement) {
+				setTimeout(() => {
+					targetElement.scrollIntoView({ 
+						behavior: 'smooth', 
+						block: 'start' 
+					});
+				}, 100); // Small delay to ensure the component is fully rendered
+			}
+		}
+	}, []);
+
 	return (
 		<div className="regulations-page">
 			<div className="regulations-container">
-				<h1
-					style={{
-						fontWeight: 700,
-						fontSize: '2.2rem',
-						marginBottom: '2.5rem',
-						color: '#2c3e50',
-					}}
-				>
-					Rules and Regulations
-				</h1>
+				<div className="page-header">
+					<h1>Rules and Regulations</h1>
+				</div>
 				{regulationsData.map((block, i) => (
-					<div key={i} style={{ marginBottom: '2.5rem' }}>
-						<h2
-							style={{
-								fontWeight: 700,
-								fontSize: '1.4rem',
-								marginBottom: '1.2rem',
-								color: '#222',
-								borderBottom: '3px solid #1976d2',
-								display: 'inline-block',
-								paddingBottom: 4,
-							}}
-						>
+					<div key={i} className="regulation-block" id={block.section === 'U.G Curriculum:' ? 'ug-curriculum' : undefined}>
+						<h2 className="section-title">
 							{block.section}
 						</h2>
 						<div className="events-list">
@@ -92,25 +91,8 @@ const Regulations = () => {
 								<div
 									key={idx}
 									className="event-card"
-									style={{
-										justifyContent: 'space-between',
-										alignItems: 'center',
-										display: 'flex',
-										marginBottom: 20,
-										background: '#fff',
-										borderRadius: 16,
-										boxShadow: '0 2px 8px #0001',
-										padding: 24,
-									}}
 								>
-									<div
-										className="event-title"
-										style={{
-											fontSize: '1.1rem',
-											fontWeight: 600,
-											color: '#1565c0',
-										}}
-									>
+									<div className="event-title">
 										{entry.title}
 									</div>
 									<button
@@ -125,7 +107,7 @@ const Regulations = () => {
 											height="24"
 											fill="none"
 											viewBox="0 0 24 24"
-											style={{ marginRight: 8 }}
+											className="download-icon"
 										>
 											<rect
 												width="18"

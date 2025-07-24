@@ -16,6 +16,7 @@ export const navigationConfig = {
     nirf: '/nirf',
     outreach: '/outreach',
     rti: '/rti',
+    scstCell: '/sc-st-cell',
     contactUs: '/contact-us',
     tenders: '/tenders',
     gian: '/gian',

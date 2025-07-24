@@ -64,25 +64,25 @@ const BTechDasa = () => {
     };
 
     return (
-        <div className="admissions-page">
-            <div className="admissions-container">
+        <div className="btech-dasa-admissions-page">
+            <div className="btech-dasa-admissions-container">
                 {/* Header Section */}
-                <div className="admissions-hero" style={{textAlign: 'center'}}>
-                    <div className="hero-content" style={{textAlign: 'center'}}>
+                <div className="btech-dasa-admissions-hero" style={{textAlign: 'center'}}>
+                    <div className="btech-dasa-hero-content" style={{textAlign: 'center'}}>
                         <h1 style={{textAlign: 'center'}}>{dasaData.title}</h1>
-                        <p className="hero-subtitle" style={{textAlign: 'center'}}>{dasaData.subtitle}</p>
-                        <div className="ccmt-info">
-                            <span className="ccmt-label">Through {dasaData.examInfo.title}</span>
-                            <span className="ccmt-desc">{dasaData.examInfo.description}</span>
+                        <p className="btech-dasa-hero-subtitle" style={{textAlign: 'center'}}>{dasaData.subtitle}</p>
+                        <div className="btech-dasa-ccmt-info">
+                            <span className="btech-dasa-ccmt-label">Through {dasaData.examInfo.title}</span>
+                            <span className="btech-dasa-ccmt-desc">{dasaData.examInfo.description}</span>
                         </div>
                     </div>
                 </div>
 
                 {/* Admission Process Overview */}
-                <section className="programs-section">
-                    <h2 className="section-title">DASA Scheme 2025</h2>
-                    <div className="admission-overview">
-                        <div className="process-card">
+                <section className="btech-dasa-programs-section">
+                    <h2 className="btech-dasa-section-title">DASA Scheme 2025</h2>
+                    <div className="btech-dasa-admission-overview">
+                        <div className="btech-dasa-process-card">
                             <h3>Eligibility & Examination</h3>
                             <p>
                                 The UG admissions for academic year 2025-26 under DASA scheme shall be on the 
@@ -99,11 +99,11 @@ const BTechDasa = () => {
                 </section>
 
                 {/* Programs Section */}
-                <section className="programs-section">
-                    <h2 className="section-title">B.Tech Programs Offered</h2>
-                    <div className="programs-tiles">
+                <section className="btech-dasa-programs-section">
+                    <h2 className="btech-dasa-section-title">B.Tech Programs Offered</h2>
+                    <div className="btech-dasa-programs-tiles">
                         {dasaData.programs.map((program, index) => (
-                            <div key={index} className="program-tile" style={{textAlign: 'center'}}>
+                            <div key={index} className="btech-dasa-program-tile" style={{textAlign: 'center'}}>
                                 <h3 style={{textAlign: 'center'}}>{program.department}</h3>
                             </div>
                         ))}
@@ -111,11 +111,11 @@ const BTechDasa = () => {
                 </section>
 
                 {/* Important Resources */}
-                <section className="quick-access-section">
-                    <h2 className="section-title">Important Resources</h2>
-                    <div className="quick-links-grid">
+                <section className="btech-dasa-quick-access-section">
+                    <h2 className="btech-dasa-section-title">Important Resources</h2>
+                    <div className="btech-dasa-quick-links-grid">
                         {dasaData.resources.map((resource, index) => (
-                            <a key={index} href={resource.link} target="_blank" rel="noopener noreferrer" className="quick-link-card">
+                            <a key={index} href={resource.link} target="_blank" rel="noopener noreferrer" className="btech-dasa-quick-link-card">
                                 <h3>{resource.title}</h3>
                             </a>
                         ))}
@@ -123,32 +123,32 @@ const BTechDasa = () => {
                 </section>
 
                 {/* Contact Information */}
-                <section className="info-section">
-                    <h2 className="section-title">Contact Information</h2>
-                    <div className="info-grid">
-                        <div className="info-card">
+                <section className="btech-dasa-info-section">
+                    <h2 className="btech-dasa-section-title">Contact Information</h2>
+                    <div className="btech-dasa-info-grid">
+                        <div className="btech-dasa-info-card">
                             <h3>{dasaData.contact.headquarters.title}</h3>
-                            <div className="contact-details">
-                                <div className="contact-item">
-                                    <span className="contact-label">E-Mail:</span>
+                            <div className="btech-dasa-contact-details">
+                                <div className="btech-dasa-contact-item">
+                                    <span className="btech-dasa-contact-label">E-Mail:</span>
                                     <span>
                                         <a href={`mailto:${dasaData.contact.headquarters.email}`}>{dasaData.contact.headquarters.email}</a>
                                     </span>
                                 </div>
                             </div>
                         </div>
-                        <div className="info-card">
+                        <div className="btech-dasa-info-card">
                             <h3>{dasaData.contact.nitgoa.name}</h3>
                             <p>{dasaData.contact.nitgoa.designation}</p>
                             <p>{dasaData.contact.nitgoa.institute}</p>
                             <p>{dasaData.contact.nitgoa.address}</p>
-                            <div className="contact-details">
-                                <div className="contact-item">
-                                    <span className="contact-label">E-Mail:</span>
+                            <div className="btech-dasa-contact-details">
+                                <div className="btech-dasa-contact-item">
+                                    <span className="btech-dasa-contact-label">E-Mail:</span>
                                     <span>{dasaData.contact.nitgoa.email}</span>
                                 </div>
-                                <div className="contact-item">
-                                    <span className="contact-label">Ph. No.:</span>
+                                <div className="btech-dasa-contact-item">
+                                    <span className="btech-dasa-contact-label">Ph. No.:</span>
                                     <span>{dasaData.contact.nitgoa.phone}</span>
                                 </div>
                             </div>
@@ -157,10 +157,10 @@ const BTechDasa = () => {
                 </section>
 
                 {/* Important Note */}
-                <section className="info-section">
-                    <div className="info-grid">
-                        <div className="info-card">
-                            <div className="note">
+                <section className="btech-dasa-info-section">
+                    <div className="btech-dasa-info-grid">
+                        <div className="btech-dasa-info-card">
+                            <div className="btech-dasa-note">
                                 <p><strong>Note:</strong> For the latest updates and detailed information about the admission process, 
                                 regularly visit the <a href="https://dasanit.org" target="_blank" rel="noopener noreferrer">DASA official website</a>.</p>
                                 <p>Secure and separate hostel accommodation for boys and girls is available for all branches.</p>

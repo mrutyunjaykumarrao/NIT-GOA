@@ -1,10 +1,14 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
+import { useLoginModal } from '../../contexts/LoginModalContext';
 import './Navbar.css';
 import ThemeToggle from '../../Views/ThemeToggle/ThemeToggle';
 // import nitLogo from '../../assets/images/Home/NIT_LOGO_192.png'; // Now using public logo192.png
 
-const Navbar = ({ user, onLogout }) => {
+const Navbar = () => {
+  const { user, isAuthenticated, logout } = useAuth();
+  const { openLoginModal } = useLoginModal();
   const [openDropdown, setOpenDropdown] = useState(null);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -176,10 +180,10 @@ const Navbar = ({ user, onLogout }) => {
             <a href="https://www.nitgoa.ac.in/rajbhasha/#/" target="_blank" rel="noopener noreferrer">RAJBHASHA</a>
             {/* Login/User Section */}
             <div className="auth-section">
-              {user && user.role !== 'guest' ? (
+              {isAuthenticated && user ? (
                 <div className="user-menu">
                   <span className="user-greeting">
-                    Welcome, {user.username}
+                    Welcome, {user.name || user.username}
                   </span>
                   {user.role === 'admin' && (
                     <button 
@@ -194,7 +198,7 @@ const Navbar = ({ user, onLogout }) => {
                   )}
                   <button 
                     className="nav-btn nav-btn--logout"
-                    onClick={onLogout}
+                    onClick={logout}
                   >
                     <svg viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clipRule="evenodd" />
@@ -205,7 +209,7 @@ const Navbar = ({ user, onLogout }) => {
               ) : (
                 <button 
                   className="nav-btn nav-btn--login"
-                  onClick={() => navigate('/login')}
+                  onClick={openLoginModal}
                 >
                   <svg viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -225,17 +229,17 @@ const Navbar = ({ user, onLogout }) => {
 
           {/* Mobile Login Button */}
           <div className="mobile-auth mobile-only">
-            {user && user.role !== 'guest' ? (
+            {isAuthenticated && user ? (
               <button 
                 className="nav-btn nav-btn--logout mobile-logout"
-                onClick={onLogout}
+                onClick={logout}
               >
                 Logout
               </button>
             ) : (
               <button 
                 className="nav-btn nav-btn--login mobile-login"
-                onClick={() => navigate('/login')}
+                onClick={openLoginModal}
               >
                 Login
               </button>
@@ -381,7 +385,7 @@ const Navbar = ({ user, onLogout }) => {
                 <span>Training & Placement</span>
                 {openDropdown === 'training' && (
                   <div className="dropdown-menu">
-                  <a href="https://www.nitgoa.ac.in/placementcell/" target="_blank" rel="noopener noreferrer">T & P</a>
+                  <a href="/training-placement">T & P</a>
                   <a href="/company-login">Company Login</a>
                   <a href="/forms-guidelines">Forms & Guidelines</a>
                   </div>
@@ -424,7 +428,7 @@ const Navbar = ({ user, onLogout }) => {
 
           <a href="/outreach-activities" className="nav-item">Outreach Activities</a>
           <a href="https://mis.nitgoa.ac.in/misnitgoa/academic/ONLINEFEESCOLLECTION/Payment.aspx" target="_blank" rel="noopener noreferrer" className="nav-item">Fee Payment</a>
-          <a href="https://www.nitgoa.ac.in/hostels.html" target="_blank" rel="noopener noreferrer" className="nav-item">Hostels</a>
+          <a href="/hostels" className="nav-item">Hostels</a>
         </div>
       </nav>
 
@@ -567,7 +571,7 @@ const Navbar = ({ user, onLogout }) => {
                 </button>
                 {mobileOpenDropdown === 'training' && (
                   <div className="mobile-dropdown-menu">
-                    <button onClick={() => window.open('https://www.nitgoa.ac.in/placementcell/', '_blank')}>T & P</button>
+                    <button onClick={() => handleMobileNavigation('/training-placement')}>T & P</button>
                     <button onClick={() => handleMobileNavigation('/company-login')}>Company Login</button>
                     <button onClick={() => handleMobileNavigation('/forms-guidelines')}>Forms & Guidelines</button>
                   </div>
@@ -630,7 +634,7 @@ const Navbar = ({ user, onLogout }) => {
                 <button onClick={() => window.open('https://mis.nitgoa.ac.in/misnitgoa/academic/ONLINEFEESCOLLECTION/Payment.aspx', '_blank')}>Fee Payment</button>
               </div>
               <div className="mobile-nav-item">
-                <button onClick={() => window.open('https://www.nitgoa.ac.in/hostels.html', '_blank')}>Hostel</button>
+                <button onClick={() => handleMobileNavigation('/hostels')}>Hostel</button>
               </div>
             </div>
           </div>

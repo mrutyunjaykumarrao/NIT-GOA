@@ -24,6 +24,7 @@ server/coverage/
 *.lcov
 
 # Production builds
+build/
 client/build/
 server/dist/
 

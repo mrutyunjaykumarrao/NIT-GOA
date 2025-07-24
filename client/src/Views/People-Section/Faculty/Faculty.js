@@ -39,7 +39,6 @@ import DrVeerakumar from '../../../assets/images/Faculty/ECE/drveerakumar.jpeg';
 import AnkeshwarapuSunil from '../../../assets/images/Faculty/EEE/Ankeshwarapu Sunil.jpg';
 import AmolRahulkar from '../../../assets/images/Faculty/EEE/Dr. Amol D. Rahulkar.jpg';
 import AnudeviSamuel from '../../../assets/images/Faculty/EEE/Dr. Anudevi Samuel.png';
-import VenugopalReddy from '../../../assets/images/Faculty/EEE/Dr. B. Venugopal Reddy.png';
 import Vyjayanthi from '../../../assets/images/Faculty/EEE/Dr. C.Vyjayanthi.png';
 import Raghavendra from '../../../assets/images/Faculty/EEE/Dr. K Raghavenrda Reddy.jpeg';
 import SoumitraDas from '../../../assets/images/Faculty/EEE/Dr. Soumitra Das.png';
@@ -70,7 +69,6 @@ import RanendraBhowmik from '../../../assets/images/Faculty/CVE/Ranendra Nath Bh
 import ChandraCVE from '../../../assets/images/Faculty/CVE/chandra_cve.jpeg';
 import ManiCVE from '../../../assets/images/Faculty/CVE/mani.jpg';
 import SaiduluCVE from '../../../assets/images/Faculty/CVE/saidulu.png';
-import SuryatejaCVE from '../../../assets/images/Faculty/CVE/suryateja.jpg';
 import VNMCVE from '../../../assets/images/Faculty/CVE/vnm.jpeg';
 
 // APS Department
@@ -90,7 +88,10 @@ import UnaisKT from '../../../assets/images/Faculty/HSS/Dr. Unais KT.png';
 import VishanupadBarve from '../../../assets/images/Faculty/HSS/Mr. Vishnupad Barve.jpg';
 
 const Faculty = () => {
-    const [selectedDepartment, setSelectedDepartment] = useState('CSE');
+    const [selectedDepartment, setSelectedDepartment] = useState(() => {
+        // Get saved department from localStorage or default to 'CSE'
+        return localStorage.getItem('faculty-selected-department') || 'CSE';
+    });
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
     const { theme } = useTheme();
@@ -103,9 +104,18 @@ const Faculty = () => {
             const validDepts = ['CSE', 'ECE', 'EEE', 'MCE', 'CVE', 'APS', 'HSS'];
             if (validDepts.includes(deptCode)) {
                 setSelectedDepartment(deptCode);
+                // Save to localStorage when set from URL
+                localStorage.setItem('faculty-selected-department', deptCode);
             }
         }
     }, [searchParams]);
+
+    // Function to handle department change
+    const handleDepartmentChange = (department) => {
+        setSelectedDepartment(department);
+        // Save the current department to localStorage
+        localStorage.setItem('faculty-selected-department', department);
+    };
 
     const departments = [
         { code: 'CSE', name: 'Department of Computer Science & Engineering' },
@@ -768,7 +778,7 @@ const Faculty = () => {
     };
 
     const handleDepartmentFilter = (dept) => {
-        setSelectedDepartment(dept);
+        handleDepartmentChange(dept);
     };
 
     // Sort faculty to show HODs first

@@ -2,6 +2,7 @@
     min-height: 100vh;
     background: white;
     padding: 40px 20px;
+    transition: all 0.3s ease-in-out;
 }
 
 .annual-reports-content {
@@ -111,4 +112,111 @@
     .annual-reports-list {
         padding-left: 10px;
     }
+}
+
+/* Large Screen Scaling - For screens larger than 1440px */
+@media (min-width: 1441px) {
+    .annual-reports-page {
+        padding: 60px 40px;
+    }
+    
+    .annual-reports-content {
+        max-width: 1400px;
+        transform: scale(1.02);
+        transform-origin: center;
+        margin: 40px auto;
+        padding: 50px;
+    }
+    
+    .annual-reports-title {
+        font-size: 2.7rem;
+    }
+}
+
+@media (min-width: 1600px) {
+    .annual-reports-page {
+        padding: 80px 50px;
+    }
+    
+    .annual-reports-content {
+        max-width: 1500px;
+        transform: scale(1.04);
+        margin: 50px auto;
+        padding: 60px;
+    }
+    
+    .annual-reports-title {
+        font-size: 2.9rem;
+    }
+}
+
+@media (min-width: 1920px) {
+    .annual-reports-page {
+        padding: 100px 60px;
+    }
+    
+    .annual-reports-content {
+        max-width: 1600px;
+        transform: scale(1.06);
+        margin: 60px auto;
+        padding: 70px;
+    }
+    
+    .annual-reports-title {
+        font-size: 3.1rem;
+    }
+}
+
+@media (min-width: 2560px) {
+    .annual-reports-page {
+        padding: 120px 80px;
+    }
+    
+    .annual-reports-content {
+        max-width: 1800px;
+        transform: scale(1.08);
+        margin: 80px auto;
+        padding: 80px;
+    }
+    
+    .annual-reports-title {
+        font-size: 3.3rem;
+    }
+}
+
+/* Dark Theme Support */
+[data-theme="dark"] .annual-reports-page {
+    background: linear-gradient(135deg, #1e1e1e 0%, #2c2c2c 100%);
+    color: #ffffff;
+}
+
+[data-theme="dark"] .annual-reports-content {
+    background: rgba(44, 44, 44, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .annual-reports-title {
+    color: #64B5F6;
+    border-bottom-color: #64B5F6;
+    text-shadow: 0 2px 4px rgba(100, 181, 246, 0.3);
+}
+
+[data-theme="dark"] .annual-reports-section-title {
+    background: linear-gradient(135deg, #1e40af, #1e293b);
+    color: #64B5F6;
+    box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+}
+
+[data-theme="dark"] .annual-reports-link {
+    color: #64B5F6;
+    background: rgba(55, 65, 81, 0.7);
+    border-left-color: #64B5F6;
+}
+
+[data-theme="dark"] .annual-reports-link:hover {
+    color: #90CAF9;
+    background: rgba(100, 181, 246, 0.1);
+    border-left-color: #90CAF9;
+    box-shadow: 0 3px 10px rgba(100, 181, 246, 0.2);
 }
