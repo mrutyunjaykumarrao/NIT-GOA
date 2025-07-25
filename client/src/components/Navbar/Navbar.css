@@ -1594,7 +1594,7 @@ body {
   }
   
   .navbar-nit-logo {
-    --logo-size: calc(75px - var(--scroll-progress, 0) * 20px);
+    --logo-size: calc(90px - var(--scroll-progress, 0) * 20px);
   }
   
   .navbar-institute-name-hindi {
