@@ -1,7 +1,11 @@
 import React from 'react';
 import './Tenders.css';
+import useScrollToTop from '../../utils/useScrollToTop';
 
 const Tenders = () => {
+    // Handle smooth scroll to top for quick link navigation
+    useScrollToTop();
+    
     // All tenders from tender.html (complete list in chronological order)
     const tenders = [
         {

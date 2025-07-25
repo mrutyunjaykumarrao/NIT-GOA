@@ -1,7 +1,11 @@
 import React from 'react';
 import './RDProjects.css';
+import useScrollToTop from '../../utils/useScrollToTop';
 
 const RDProjects = () => {
+    // Handle smooth scroll to top for quick link navigation
+    useScrollToTop();
+    
     return (
         <div className="rd-projects-page">
             <div className="rd-projects-container">

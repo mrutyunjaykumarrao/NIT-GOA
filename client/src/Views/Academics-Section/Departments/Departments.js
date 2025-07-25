@@ -1,8 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Departments.css';
+import useScrollToTop from '../../../utils/useScrollToTop';
 
 const Departments = () => {
+    // Handle smooth scroll to top for quick link navigation
+    useScrollToTop();
+    
     const navigate = useNavigate();
 
     const departments = [
@@ -232,6 +236,7 @@ const Departments = () => {
         }
     ];
 
+    // eslint-disable-next-line no-unused-vars
     const handleViewFaculty = (deptCode) => {
         navigate(`/faculty?dept=${deptCode.toLowerCase()}`);
     };

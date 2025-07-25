@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import './TrainingPlacement.css';
 import tnpData from './tnp.json';
+import useScrollToTop from '../../utils/useScrollToTop';
 
 const TrainingPlacement = () => {
+    // Handle smooth scroll to top for quick link navigation
+    useScrollToTop();
+    
     const [activeSection, setActiveSection] = useState(() => {
         // Get saved section from localStorage or default to 'home'
         return localStorage.getItem('tnp-active-section') || 'home';

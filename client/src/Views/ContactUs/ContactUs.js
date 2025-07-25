@@ -1,7 +1,11 @@
 import React from 'react';
 import './ContactUs.css';
+import useScrollToTop from '../../utils/useScrollToTop';
 
 const ContactUs = () => {
+    // Handle smooth scroll to top for quick link navigation
+    useScrollToTop();
+    
     return (
         <div className="contactus-page">
             <div className="contactus-container">

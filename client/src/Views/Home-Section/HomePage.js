@@ -3,8 +3,12 @@ import './HomePage.css';
 import { QuickLinkIcons } from './QuickLinkIcons';
 import HeroSlider from './HeroSlider';
 import homeData from './home.json';
+import useScrollToTop from '../../utils/useScrollToTop';
 
 const HomePage = React.memo(() => {
+    // Handle smooth scroll to top for quick link navigation
+    useScrollToTop();
+    
     // Render tracking for performance monitoring
     const renderRef = useRef(0);
     renderRef.current++;
@@ -193,6 +197,20 @@ const HomePage = React.memo(() => {
         });
     }, [announcements.length]);
 
+    // Smooth scroll to top handler for quick links
+    const handleQuickLinkClick = useCallback((e, href, isExternal = false) => {
+        // For external links, let them open normally
+        if (isExternal) return;
+        
+        e.preventDefault();
+        
+        // Store the scroll-to-top flag in sessionStorage for the destination page
+        sessionStorage.setItem('scrollToTop', 'true');
+        
+        // Navigate immediately
+        window.location.href = href;
+    }, []);
+
     // Counting animation for statistics - Optimized to prevent re-renders
     useEffect(() => {
         if (countsAnimated) return; // Don't create observer if already animated
@@ -368,7 +386,11 @@ const HomePage = React.memo(() => {
                 <div className="homepage-container">
                     <h2 className="section-title">Quick Links</h2>
                     <div className="quick-links-grid">
-                        <a href="/academics/departments" className="quick-link-card">
+                        <a 
+                            href="/academics/departments" 
+                            className="quick-link-card"
+                            onClick={(e) => handleQuickLinkClick(e, '/academics/departments')}
+                        >
                             <div className="quick-link-icon-wrapper">
                                 <QuickLinkIcons.Departments />
                             </div>
@@ -376,7 +398,13 @@ const HomePage = React.memo(() => {
                             <div className="quick-link-description">Explore our academic departments and programs</div>
                         </a>
 
-                        <a href="https://mis.nitgoa.ac.in/misnitgoa/Default.aspx" className="quick-link-card" target="_blank" rel="noopener noreferrer">
+                        <a 
+                            href="https://mis.nitgoa.ac.in/misnitgoa/Default.aspx" 
+                            className="quick-link-card" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            onClick={(e) => handleQuickLinkClick(e, 'https://mis.nitgoa.ac.in/misnitgoa/Default.aspx', true)}
+                        >
                             <div className="quick-link-icon-wrapper">
                                 <QuickLinkIcons.MISPortal />
                             </div>
@@ -384,7 +412,11 @@ const HomePage = React.memo(() => {
                             <div className="quick-link-description">Management Information System for students and faculty</div>
                         </a>
 
-                        <a href="/research/rd-projects" className="quick-link-card">
+                        <a 
+                            href="/research/rd-projects" 
+                            className="quick-link-card"
+                            onClick={(e) => handleQuickLinkClick(e, '/research/rd-projects')}
+                        >
                             <div className="quick-link-icon-wrapper">
                                 <QuickLinkIcons.Research />
                             </div>
@@ -392,7 +424,11 @@ const HomePage = React.memo(() => {
                             <div className="quick-link-description">R&D projects and research initiatives</div>
                         </a>
 
-                        <a href="/tenders" className="quick-link-card">
+                        <a 
+                            href="/tenders" 
+                            className="quick-link-card"
+                            onClick={(e) => handleQuickLinkClick(e, '/tenders')}
+                        >
                             <div className="quick-link-icon-wrapper">
                                 <QuickLinkIcons.Tenders />
                             </div>
@@ -400,7 +436,11 @@ const HomePage = React.memo(() => {
                             <div className="quick-link-description">Current tenders and procurement notices</div>
                         </a>
 
-                        <a href="/training-placement" className="quick-link-card">
+                        <a 
+                            href="/training-placement" 
+                            className="quick-link-card"
+                            onClick={(e) => handleQuickLinkClick(e, '/training-placement')}
+                        >
                             <div className="quick-link-icon-wrapper">
                                 <QuickLinkIcons.TNP />
                             </div>
@@ -408,7 +448,11 @@ const HomePage = React.memo(() => {
                             <div className="quick-link-description">Career opportunities and placement services</div>
                         </a>
 
-                        <a href="/contact-us" className="quick-link-card">
+                        <a 
+                            href="/contact-us" 
+                            className="quick-link-card"
+                            onClick={(e) => handleQuickLinkClick(e, '/contact-us')}
+                        >
                             <div className="quick-link-icon-wrapper">
                                 <QuickLinkIcons.Contact />
                             </div>
