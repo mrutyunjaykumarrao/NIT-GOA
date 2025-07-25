@@ -1,13 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import './HomePage.css';
-// import placementStats from '/images/placement_statistics.png'; // Now in public/images, use direct src
-// import synapseNewsletter from '../../assets/images/Home/synapse_newsletter.png'; // Now in public/images
-// import moeImage from '../../assets/images/Home/moe.png'; // Now in public/images
-// import diiImage from '../../assets/images/Home/dii.png'; // Now in public/images  
-// import digilockerImage fro                            <img src={heroImages[0]} alt="NIT Goa Campus" /> '../../assets/images/Home/digilocker_nad.png'; // Now in public/images
-// import fitIndiaImage from '../../assets/images/Home/fit_india.png'; // Now in public/images
-// import swachhBharatImage from '../../assets/images/Home/swach_bharath.png'; // Now in public/images
-// import makeInIndiaImage from '../../assets/images/Home/MakeInIndia.png'; // Now in public/images
 
 const HomePage = () => {
     // Dynamically import all images from the HeroImages folder
