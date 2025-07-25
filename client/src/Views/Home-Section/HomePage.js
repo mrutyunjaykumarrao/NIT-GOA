@@ -1,7 +1,14 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import './HomePage.css';
+import { QuickLinkIcons } from './QuickLinkIcons';
+import HeroSlider from './HeroSlider';
+import homeData from './home.json';
 
-const HomePage = () => {
+const HomePage = React.memo(() => {
+    // Render tracking for performance monitoring
+    const renderRef = useRef(0);
+    renderRef.current++;
+
     // Dynamically import all images from the HeroImages folder
     const heroImages = useMemo(() => {
         function importAll(r) {
@@ -28,22 +35,38 @@ const HomePage = () => {
             .map(key => images[key]);
     }, []);
 
-    // Announcements data
-    const announcements = [
-        "Submit your original and unpublished research work to IEEE Conference STPEC 2025 at NIT Goa.",
-        "Call for Post Doctoral Fellow (PDF) Positions 2024-25 Session (May-2025)",
-        "Call for Paper 1st International Conference on Sustainability and Economic Growth",
-        "Registration open for B.Tech Admissions 2025-26 through JoSAA/CSAB",
-        "Workshop on Advanced Computing and Data Analytics - Registration Now Open",
-        "National Science Day Celebration - February 28, 2025",
-        "Industry-Academia Interface Program 2025 - Applications Invited"
-    ];
+    // Load announcements from home.json
+    const announcements = useMemo(() => {
+        return homeData.home_page.announcements;
+    }, []);
 
-    const [currentImageIndex, setCurrentImageIndex] = useState(1); // Start at 1 for infinite loop
+    // Load news and events from home.json
+    const newsAndEvents = useMemo(() => {
+        return homeData.home_page.news_and_events; // Load all items, not limited
+    }, []);
+
+    // Load notice board data from home.json
+    const noticeBoard = useMemo(() => {
+        return homeData.home_page.notice_board; // Load all items, not limited
+    }, []);
+
+    // Optimized dependency tracking
+    const prevDepsRef = useRef({});
+    const currentDeps = {
+        heroImages: heroImages?.length,
+        announcements: announcements?.length,
+        newsAndEvents: newsAndEvents?.length,
+        noticeBoard: noticeBoard?.length
+    };
+    
+    // Update previous dependencies
+    prevDepsRef.current = currentDeps;
+
     const [currentAnnouncementIndex, setCurrentAnnouncementIndex] = useState(0);
+    const [isAnnouncementPaused, setIsAnnouncementPaused] = useState(false);
+    const [announcementSlideDirection, setAnnouncementSlideDirection] = useState('right');
     const [countsAnimated, setCountsAnimated] = useState(false);
     const [activeAboutTab, setActiveAboutTab] = useState('about');
-    const [isTransitioning, setIsTransitioning] = useState(false);
     const [counts, setCounts] = useState({
         departments: 0,
         students: 0,
@@ -51,16 +74,30 @@ const HomePage = () => {
         publications: 0,
         patents: 0
     });
-    const statsRef = useRef(null);
-    const sliderRef = useRef(null);
-    const autoSlideRef = useRef(null);
 
-    // About section content
-    const aboutContent = {
+    // Optimized state change tracking
+    useEffect(() => {
+        // State changes are now properly isolated
+    }, [currentAnnouncementIndex, isAnnouncementPaused, announcementSlideDirection]);
+
+    // Component lifecycle management
+    useEffect(() => {
+        return () => {
+            if (announcementIntervalRef.current) {
+                clearInterval(announcementIntervalRef.current);
+            }
+        };
+    }, []);
+    
+    const statsRef = useRef(null);
+    const announcementIntervalRef = useRef(null);
+
+    // About section content - Memoized to prevent re-renders
+    const aboutContent = useMemo(() => ({
         about: "The National Institute of Technology Goa (NIT Goa) is a premier national-level technical institute in India established in 2010 by an act of parliament (NIT Act, 2007 and NIT (Amendment) Act, 2012). NIT Goa is an autonomous institute functioning under the aegis of Ministry of Education (MoE), Government of India, and has been declared an \"Institute of National Importance\".",
         vision: "National Institute of Technology Goa shall emerge as one of the nation's pre-eminent institutions. Through its excellence, it shall serve the Goan society, India and humanity at large with all the challenges and opportunities.",
         mission: "NIT Goa strives for quality faculty, good students and excellent infrastructure. Strives for excellence, through dissemination, generation and application of knowledge by laying stress on interdisciplinary approach in all the branches of Science, Engineering, Technology, Humanities and Management with emphasis on human values and ethics."
-    };
+    }), []);
 
     const animateCounts = useCallback(() => {
         const finalCounts = {
@@ -95,105 +132,71 @@ const HomePage = () => {
         });
     }, []);
 
-    // Helper function to handle infinite loop transitions
-    const handleTransitionEnd = useCallback(() => {
-        if (!isTransitioning) return;
-        
-        setIsTransitioning(false);
-        
-        // Jump to the corresponding real image without transition
-        if (currentImageIndex === heroImages.length + 1) {
-            // We're at the duplicated first image, jump to the real first image
-            setCurrentImageIndex(1);
-        } else if (currentImageIndex === 0) {
-            // We're at the duplicated last image, jump to the real last image
-            setCurrentImageIndex(heroImages.length);
-        }
-    }, [currentImageIndex, heroImages.length, isTransitioning]);
-
-    // Auto-cycle images every 8 seconds (slowed down)
+    // Auto-cycle announcements every 6 seconds - Optimized performance
     useEffect(() => {
-        if (heroImages.length === 0) return;
-        
-        const interval = setInterval(() => {
-            setIsTransitioning(true);
-            setCurrentImageIndex((prevIndex) => {
-                if (prevIndex === heroImages.length) {
-                    return heroImages.length + 1; // Go to duplicated first image
-                }
-                return prevIndex + 1;
+        // Clear any existing interval first
+        if (announcementIntervalRef.current) {
+            clearInterval(announcementIntervalRef.current);
+            announcementIntervalRef.current = null;
+        }
+
+        // Don't auto-slide if paused, only one announcement, or no announcements
+        if (isAnnouncementPaused || announcements.length <= 1) {
+            return;
+        }
+
+        // Start auto-slide interval
+        announcementIntervalRef.current = setInterval(() => {
+            setAnnouncementSlideDirection('right');
+            setCurrentAnnouncementIndex((prevIndex) => {
+                const nextIndex = prevIndex === announcements.length - 1 ? 0 : prevIndex + 1;
+                return nextIndex;
             });
-        }, 8000);
+        }, 6000);
 
-        autoSlideRef.current = interval;
-        return () => clearInterval(interval);
-    }, [heroImages.length]);
+        // Cleanup on unmount or dependency change
+        return () => {
+            if (announcementIntervalRef.current) {
+                clearInterval(announcementIntervalRef.current);
+                announcementIntervalRef.current = null;
+            }
+        };
+    }, [announcements.length, isAnnouncementPaused]);
 
-    // Function to restart auto-cycle after user interaction
-    const restartAutoSlide = useCallback(() => {
-        if (autoSlideRef.current) {
-            clearInterval(autoSlideRef.current);
-        }
+    // Simple pause/play toggle - FlexSlider style
+    const toggleAnnouncementPlayPause = useCallback(() => {
+        setIsAnnouncementPaused(!isAnnouncementPaused);
+    }, [isAnnouncementPaused]);
+
+    // Navigation functions - Stop auto-slide when manually navigating
+    const goToPreviousAnnouncement = useCallback(() => {
+        if (announcements.length <= 1) return;
         
-        if (heroImages.length === 0) return;
-        
-        const interval = setInterval(() => {
-            setIsTransitioning(true);
-            setCurrentImageIndex((prevIndex) => {
-                if (prevIndex === heroImages.length) {
-                    return heroImages.length + 1; // Go to duplicated first image
-                }
-                return prevIndex + 1;
-            });
-        }, 8000);
-        
-        autoSlideRef.current = interval;
-    }, [heroImages.length]);
-
-    // Reset slider position when heroImages are loaded
-    useEffect(() => {
-        if (heroImages.length > 0 && currentImageIndex === 1) {
-            // Ensure we start at the first real image (index 1)
-            setCurrentImageIndex(1);
-            setIsTransitioning(false);
-        }
-    }, [heroImages.length, currentImageIndex]);
-
-    // Auto-cycle announcements every 5 seconds
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentAnnouncementIndex((prevIndex) => 
-                prevIndex === announcements.length - 1 ? 0 : prevIndex + 1
-            );
-        }, 5000);
-
-        return () => clearInterval(interval);
+        // Stop auto-slide permanently when user manually navigates
+        setIsAnnouncementPaused(true);
+        setAnnouncementSlideDirection('left');
+        setCurrentAnnouncementIndex((prevIndex) => {
+            const newIndex = prevIndex === 0 ? announcements.length - 1 : prevIndex - 1;
+            return newIndex;
+        });
     }, [announcements.length]);
 
-    const goToPrevious = () => {
-        setIsTransitioning(true);
-        setCurrentImageIndex((prevIndex) => {
-            if (prevIndex === 1) {
-                return 0; // Go to duplicated last image
-            }
-            return prevIndex - 1;
+    const goToNextAnnouncement = useCallback(() => {
+        if (announcements.length <= 1) return;
+        
+        // Stop auto-slide permanently when user manually navigates
+        setIsAnnouncementPaused(true);
+        setAnnouncementSlideDirection('right');
+        setCurrentAnnouncementIndex((prevIndex) => {
+            const newIndex = prevIndex === announcements.length - 1 ? 0 : prevIndex + 1;
+            return newIndex;
         });
-        restartAutoSlide();
-    };
+    }, [announcements.length]);
 
-    const goToNext = () => {
-        setIsTransitioning(true);
-        setCurrentImageIndex((prevIndex) => {
-            if (prevIndex === heroImages.length) {
-                return heroImages.length + 1; // Go to duplicated first image
-            }
-            return prevIndex + 1;
-        });
-        restartAutoSlide();
-    };
-
-    // Counting animation for statistics
+    // Counting animation for statistics - Optimized to prevent re-renders
     useEffect(() => {
+        if (countsAnimated) return; // Don't create observer if already animated
+        
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
@@ -222,99 +225,7 @@ const HomePage = () => {
         <div className="homepage">
             {/* Hero Section */}
             <section className="hero-section">
-                <div className="hero-background">
-                    <div className="hero-slider-container">
-                        {heroImages.length > 0 ? (
-                            <div 
-                                ref={sliderRef}
-                                className="hero-images-wrapper"
-                                style={{
-                                    transform: `translateX(-${currentImageIndex * 100}%)`,
-                                    transition: isTransitioning ? 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none'
-                                }}
-                                onTransitionEnd={handleTransitionEnd}
-                            >
-                                {/* Duplicate last image at the beginning for smooth infinite loop */}
-                                {heroImages.length > 1 && (
-                                    <div className="hero-image-slide">
-                                        <img 
-                                            src={heroImages[heroImages.length - 1]} 
-                                            alt={`NIT Goa Campus ${heroImages.length}`} 
-                                            className="hero-campus-image"
-                                            loading="lazy"
-                                        />
-                                    </div>
-                                )}
-                                
-                                {/* Original images */}
-                                {heroImages.map((image, index) => (
-                                    <div key={`original-${index}`} className="hero-image-slide">
-                                        <img 
-                                            src={image} 
-                                            alt={`NIT Goa Campus ${index + 1}`} 
-                                            className="hero-campus-image"
-                                            loading={index === 0 ? "eager" : "lazy"}
-                                            onError={(e) => {
-                                                console.warn('Failed to load hero image:', e.target.src);
-                                            }}
-                                        />
-                                    </div>
-                                ))}
-                                
-                                {/* Duplicate first image at the end for smooth infinite loop */}
-                                {heroImages.length > 1 && (
-                                    <div className="hero-image-slide">
-                                        <img 
-                                            src={heroImages[0]} 
-                                            alt="NIT Goa Campus 1" 
-                                            className="hero-campus-image"
-                                            loading="lazy"
-                                        />
-                                    </div>
-                                )}
-                            </div>
-                        ) : (
-                            <div className="hero-loading">
-                                <p>Loading campus images...</p>
-                            </div>
-                        )}
-                    </div>
-                    
-                    {/* Navigation Arrows - Only show if we have multiple images */}
-                    {heroImages.length > 1 && (
-                        <>
-                            <button className="hero-nav-arrow hero-nav-left" onClick={goToPrevious}>
-                                <span>❮</span>
-                            </button>
-                            <button className="hero-nav-arrow hero-nav-right" onClick={goToNext}>
-                                <span>❯</span>
-                            </button>
-                        </>
-                    )}
-                    
-                    {/* Image Indicators - Only show if we have multiple images */}
-                    {heroImages.length > 1 && (
-                        <div className="hero-indicators">
-                            {heroImages.map((_, index) => {
-                                // Map currentImageIndex to actual image for indicator active state
-                                const realIndex = currentImageIndex === 0 ? heroImages.length - 1 : 
-                                                currentImageIndex === heroImages.length + 1 ? 0 : 
-                                                currentImageIndex - 1;
-                                return (
-                                    <button
-                                        key={index}
-                                        className={`hero-indicator ${index === realIndex ? 'active' : ''}`}
-                                        onClick={() => {
-                                            setIsTransitioning(true);
-                                            setCurrentImageIndex(index + 1); // Add 1 because real images start at index 1
-                                            restartAutoSlide();
-                                        }}
-                                    />
-                                );
-                            })}
-                        </div>
-                    )}
-                </div>
+                <HeroSlider heroImages={heroImages} />
             </section>
 
             {/* Announcements Section */}
@@ -327,111 +238,126 @@ const HomePage = () => {
                                 <span className="notice-text">NOTICE</span>
                             </div>
                             <div className="announcement-content">
-                                <p className="announcement-text">{announcements[currentAnnouncementIndex]}</p>
+                                <p 
+                                    key={`announcement-${currentAnnouncementIndex}`} 
+                                    className={`announcement-text ${
+                                        announcements.length === 1 
+                                            ? 'single-announcement' 
+                                            : announcementSlideDirection === 'right' 
+                                                ? 'slide-in-right' 
+                                                : 'slide-in-left'
+                                    }`}
+                                >
+                                    <a 
+                                        href={announcements[currentAnnouncementIndex]?.link} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer" 
+                                        className="announcement-link"
+                                    >
+                                        {announcements[currentAnnouncementIndex]?.title}
+                                    </a>
+                                </p>
+                            </div>
+                            <div className="announcement-controls">
+                                {announcements.length > 1 && (
+                                    <button 
+                                        className="announcement-nav-btn announcement-nav-left"
+                                        onClick={goToPreviousAnnouncement}
+                                        aria-label="Previous announcement"
+                                        title="Previous announcement"
+                                    >
+                                        <svg viewBox="0 0 24 24" className="nav-arrow-svg">
+                                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                )}
+                                <button 
+                                    className="announcement-play-pause"
+                                    onClick={toggleAnnouncementPlayPause}
+                                    aria-label={isAnnouncementPaused ? "Play announcements" : "Pause announcements"}
+                                    title={isAnnouncementPaused ? "Play announcements" : "Pause announcements"}
+                                >
+                                    <svg viewBox="0 0 24 24" className="play-pause-svg">
+                                        {isAnnouncementPaused ? (
+                                            <path d="M8 5v14l11-7z" fill="currentColor"/>
+                                        ) : (
+                                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" fill="currentColor"/>
+                                        )}
+                                    </svg>
+                                </button>
+                                {announcements.length > 1 && (
+                                    <button 
+                                        className="announcement-nav-btn announcement-nav-right"
+                                        onClick={goToNextAnnouncement}
+                                        aria-label="Next announcement"
+                                        title="Next announcement"
+                                    >
+                                        <svg viewBox="0 0 24 24" className="nav-arrow-svg">
+                                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                )}
                             </div>
                         </div>
-                        <div className="announcement-indicators">
-                            {announcements.map((_, index) => (
-                                <span 
-                                    key={index}
-                                    className={`announcement-dot ${index === currentAnnouncementIndex ? 'active' : ''}`}
-                                    onClick={() => setCurrentAnnouncementIndex(index)}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                    <div className="more-announcements">
-                        <button className="more-btn">View All Announcements →</button>
+                        
+                        {/* Announcement indicators for multiple announcements */}
+                        {announcements.length > 1 && (
+                            <div className="announcement-indicators">
+                                {announcements.map((_, index) => (
+                                    <button
+                                        key={index}
+                                        className={`announcement-indicator ${index === currentAnnouncementIndex ? 'active' : ''}`}
+                                        onClick={() => {
+                                            // Stop auto-slide when user clicks indicator
+                                            setIsAnnouncementPaused(true);
+                                            setAnnouncementSlideDirection(index > currentAnnouncementIndex ? 'right' : 'left');
+                                            setCurrentAnnouncementIndex(index);
+                                        }}
+                                        aria-label={`Go to announcement ${index + 1}`}
+                                    />
+                                ))}
+                            </div>
+                        )}
                     </div>
                 </div>
             </section>
 
-            {/* Three Column Section */}
-            <section className="three-column-section">
+            {/* Two Column Section (Previously Three Column) */}
+            <section className="two-column-section">
                 <div className="homepage-container">
-                    <div className="three-column-grid">
+                    <div className="two-column-grid">
                         {/* News And Events */}
                         <div className="column-card">
                             <h3 className="column-title">News And Events</h3>
-                            <div className="column-content">
-                                <div className="news-item">
-                                    <span className="news-bullet">→</span>
-                                    <p>Call for Post Doctoral Fellow (PDF) Positions 2024-25 Session (May-2025)</p>
-                                </div>
-                                <div className="news-item">
-                                    <span className="news-bullet">→</span>
-                                    <p>Call for Paper 1st International Conference of TASS on "Sustainability and Economic Growth and Global Prosperity" Agartala</p>
-                                </div>
-                                <div className="news-item">
-                                    <span className="news-bullet">→</span>
-                                    <p>Ph.D Advertisement for AY-2025-26 (July Session) - Full Time with scholarship/Part Time/Self Finance (without)</p>
-                                </div>
-                                <div className="news-item">
-                                    <span className="news-bullet">→</span>
-                                    <p>Advertisement for Walk-in Interview for Junior Research Fellow (JRF) in PHYSICS Discipline Under ISEA-CSR Project</p>
-                                </div>
-                                <div className="news-item">
-                                    <span className="news-bullet">→</span>
-                                    <p>Advertisement for Junior Solar Researcher Development</p>
-                                </div>
+                            <div className="column-content scrollable-content">
+                                {newsAndEvents.map((item, index) => (
+                                    <div key={index} className="news-item">
+                                        <span className="news-bullet">→</span>
+                                        <p>
+                                            <a href={item.link} target="_blank" rel="noopener noreferrer" className="news-link">
+                                                {item.title}
+                                            </a>
+                                        </p>
+                                    </div>
+                                ))}
                             </div>
-                            <button className="more-btn">More →</button>
                         </div>
 
                         {/* Notice Board */}
                         <div className="column-card">
                             <h3 className="column-title">Notice Board</h3>
-                            <div className="column-content">
-                                <div className="news-item">
-                                    <span className="news-bullet">→</span>
-                                    <p>Call for Post Doctoral Fellow (PDF) Positions 2024-25 Session (May-2025)</p>
-                                </div>
-                                <div className="news-item">
-                                    <span className="news-bullet">→</span>
-                                    <p>Call for Paper 1st International Conference of TASS on "Sustainability and Economic Growth and Global Prosperity" Agartala</p>
-                                </div>
-                                <div className="news-item">
-                                    <span className="news-bullet">→</span>
-                                    <p>Ph.D Advertisement for AY-2025-26 (July Session) - Full Time with scholarship/Part Time/Self Finance (without)</p>
-                                </div>
-                                <div className="news-item">
-                                    <span className="news-bullet">→</span>
-                                    <p>Advertisement for Walk-in Interview for Junior Research Fellow (JRF) in PHYSICS Discipline Under ISEA-CSR Project</p>
-                                </div>
-                                <div className="news-item">
-                                    <span className="news-bullet">→</span>
-                                    <p>Advertisement for Walk-in Interview for Junior Research Fellow (JRF) in Discipline under ISEA-CSR Project</p>
-                                </div>
+                            <div className="column-content scrollable-content">
+                                {noticeBoard.map((item, index) => (
+                                    <div key={index} className="news-item">
+                                        <span className="news-bullet">→</span>
+                                        <p>
+                                            <a href={item.link} target="_blank" rel="noopener noreferrer" className="news-link">
+                                                {item.title}
+                                            </a>
+                                        </p>
+                                    </div>
+                                ))}
                             </div>
-                            <button className="more-btn">More →</button>
-                        </div>
-
-                        {/* Tenders */}
-                        <div className="column-card">
-                            <h3 className="column-title">Tenders</h3>
-                            <div className="column-content">
-                                <div className="news-item">
-                                    <span className="news-bullet">→</span>
-                                    <p>Call for Post Doctoral Fellow (PDF) Positions 2024-25 Session (May-2025)</p>
-                                </div>
-                                <div className="news-item">
-                                    <span className="news-bullet">→</span>
-                                    <p>Call for Paper 1st International Conference of TASS on "Sustainability and Economic Growth and Global Prosperity" Agartala</p>
-                                </div>
-                                <div className="news-item">
-                                    <span className="news-bullet">→</span>
-                                    <p>Ph.D Advertisement for AY-2025-26 (July Session) - Full Time with scholarship/Part Time/Self Finance (without)</p>
-                                </div>
-                                <div className="news-item">
-                                    <span className="news-bullet">→</span>
-                                    <p>Advertisement for Walk-in Interview for Junior Research Fellow (JRF) in PHYSICS Discipline Under ISEA-CSR Project</p>
-                                </div>
-                                <div className="news-item">
-                                    <span className="news-bullet">→</span>
-                                    <p>Advertisement for Walk-in Interview for Junior Research Fellow (JRF) in Development</p>
-                                </div>
-                            </div>
-                            <button className="more-btn">More →</button>
                         </div>
                     </div>
                 </div>
@@ -442,99 +368,52 @@ const HomePage = () => {
                 <div className="homepage-container">
                     <h2 className="section-title">Quick Links</h2>
                     <div className="quick-links-grid">
-                        <a href="/admissions" className="quick-link-card">
-                            <div className="quick-link-icon">🎓</div>
-                            <div className="quick-link-title">Admissions</div>
-                            <div className="quick-link-description">Apply for undergraduate and postgraduate programs</div>
-                            <div className="quick-link-stats">
-                                <div className="quick-stat">
-                                    <span className="quick-stat-number">7</span>
-                                    <span className="quick-stat-label">Programs</span>
-                                </div>
-                                <div className="quick-stat">
-                                    <span className="quick-stat-number">900+</span>
-                                    <span className="quick-stat-label">Students</span>
-                                </div>
+                        <a href="/academics/departments" className="quick-link-card">
+                            <div className="quick-link-icon-wrapper">
+                                <QuickLinkIcons.Departments />
                             </div>
+                            <div className="quick-link-title">Departments</div>
+                            <div className="quick-link-description">Explore our academic departments and programs</div>
                         </a>
 
-                        <a href="/academics" className="quick-link-card">
-                            <div className="quick-link-icon">📚</div>
-                            <div className="quick-link-title">Academics</div>
-                            <div className="quick-link-description">Explore our academic programs and curriculum</div>
-                            <div className="quick-link-stats">
-                                <div className="quick-stat">
-                                    <span className="quick-stat-number">7</span>
-                                    <span className="quick-stat-label">Departments</span>
-                                </div>
-                                <div className="quick-stat">
-                                    <span className="quick-stat-number">55</span>
-                                    <span className="quick-stat-label">Faculty</span>
-                                </div>
+                        <a href="https://mis.nitgoa.ac.in/misnitgoa/Default.aspx" className="quick-link-card" target="_blank" rel="noopener noreferrer">
+                            <div className="quick-link-icon-wrapper">
+                                <QuickLinkIcons.MISPortal />
                             </div>
+                            <div className="quick-link-title">MIS Portal</div>
+                            <div className="quick-link-description">Management Information System for students and faculty</div>
                         </a>
 
-                        <a href="/placements" className="quick-link-card">
-                            <div className="quick-link-icon">💼</div>
-                            <div className="quick-link-title">Placements</div>
-                            <div className="quick-link-description">Career opportunities and placement statistics</div>
-                            <div className="quick-link-stats">
-                                <div className="quick-stat">
-                                    <span className="quick-stat-number">95%</span>
-                                    <span className="quick-stat-label">Placement</span>
-                                </div>
-                                <div className="quick-stat">
-                                    <span className="quick-stat-number">50+</span>
-                                    <span className="quick-stat-label">Companies</span>
-                                </div>
+                        <a href="/research/rd-projects" className="quick-link-card">
+                            <div className="quick-link-icon-wrapper">
+                                <QuickLinkIcons.Research />
                             </div>
-                        </a>
-
-                        <a href="/research" className="quick-link-card">
-                            <div className="quick-link-icon">🔬</div>
                             <div className="quick-link-title">Research</div>
-                            <div className="quick-link-description">Innovation and research initiatives</div>
-                            <div className="quick-link-stats">
-                                <div className="quick-stat">
-                                    <span className="quick-stat-number">1600+</span>
-                                    <span className="quick-stat-label">Publications</span>
-                                </div>
-                                <div className="quick-stat">
-                                    <span className="quick-stat-number">18</span>
-                                    <span className="quick-stat-label">Patents</span>
-                                </div>
-                            </div>
+                            <div className="quick-link-description">R&D projects and research initiatives</div>
                         </a>
 
-                        <a href="/campus-life" className="quick-link-card">
-                            <div className="quick-link-icon">🏫</div>
-                            <div className="quick-link-title">Campus Life</div>
-                            <div className="quick-link-description">Student activities and campus facilities</div>
-                            <div className="quick-link-stats">
-                                <div className="quick-stat">
-                                    <span className="quick-stat-number">10+</span>
-                                    <span className="quick-stat-label">Clubs</span>
-                                </div>
-                                <div className="quick-stat">
-                                    <span className="quick-stat-number">24/7</span>
-                                    <span className="quick-stat-label">Facilities</span>
-                                </div>
+                        <a href="/tenders" className="quick-link-card">
+                            <div className="quick-link-icon-wrapper">
+                                <QuickLinkIcons.Tenders />
                             </div>
+                            <div className="quick-link-title">Tenders</div>
+                            <div className="quick-link-description">Current tenders and procurement notices</div>
                         </a>
 
-                        <a href="/contact" className="quick-link-card">
-                            <div className="quick-link-icon">📞</div>
+                        <a href="/training-placement" className="quick-link-card">
+                            <div className="quick-link-icon-wrapper">
+                                <QuickLinkIcons.TNP />
+                            </div>
+                            <div className="quick-link-title">Training & Placements</div>
+                            <div className="quick-link-description">Career opportunities and placement services</div>
+                        </a>
+
+                        <a href="/contact-us" className="quick-link-card">
+                            <div className="quick-link-icon-wrapper">
+                                <QuickLinkIcons.Contact />
+                            </div>
                             <div className="quick-link-title">Contact Us</div>
                             <div className="quick-link-description">Get in touch with our administration</div>
-                            <div className="quick-link-stats">
-                                <div className="quick-stat">
-                                    <span className="quick-stat-number">24/7</span>
-                                    <span className="quick-stat-label">Support</span>
-                                </div>
-                                <div className="quick-stat">
-                                    <span className="quick-stat-label">Help Desk</span>
-                                </div>
-                            </div>
                         </a>
                     </div>
                 </div>
@@ -638,6 +517,6 @@ const HomePage = () => {
             </section>
         </div>
     );
-};
+});
 
 export default HomePage;
