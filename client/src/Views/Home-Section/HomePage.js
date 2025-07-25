@@ -660,17 +660,17 @@ const HomePage = React.memo(() => {
             </section>
 
             {/* Content Cards Section */}
-            <section className="content-cards-section">
+            <section className="homepage-content-cards-section">
                 <div className="homepage-container">
                     <h2 className="section-title">Featured Content</h2>
-                    <div className="content-cards-grid">
+                    <div className="homepage-content-cards-grid">
                         {/* Card 1: Interactive Google Chart */}
-                        <div className="content-card chart-card">
-                            <div className="card-header">
-                                <h3 className="card-title">Placement Statistics</h3>
-                                <p className="card-subtitle">Interactive placement data visualization</p>
+                        <div className="homepage-content-card chart-card">
+                            <div className="homepage-card-header">
+                                <h3 className="homepage-card-title">Placement Statistics</h3>
+                                <p className="homepage-card-subtitle">Interactive placement data visualization</p>
                             </div>
-                            <div className="card-content">
+                            <div className="homepage-card-content">
                                 <div 
                                     ref={chartRef}
                                     id="placement-chart" 
@@ -680,34 +680,34 @@ const HomePage = React.memo(() => {
                         </div>
 
                         {/* Card 2: Synapse Newsletter */}
-                        <div className="content-card newsletter-card">
-                            <div className="card-header">
-                                <h3 className="card-title">Synapse Newsletter</h3>
-                                <p className="card-subtitle">Biannual newsletter publications</p>
+                        <div className="homepage-content-card newsletter-card">
+                            <div className="homepage-card-header">
+                                <h3 className="homepage-card-title">Synapse Newsletter</h3>
+                                <p className="homepage-card-subtitle">Biannual newsletter publications</p>
                             </div>
-                            <div className="card-content">
+                            <div className="homepage-card-content">
                                 <div className="newsletter-preview">
-                                    <div className="newsletter-image">
+                                    <div className="homepage-newsletter-image">
                                         <img 
                                             src="/images/synapse_newsletter.png" 
                                             alt="Synapse Newsletter"
-                                            className="synapse-image"
+                                            className="homepage-synapse-image"
                                         />
                                     </div>
-                                    <div className="newsletter-info">
-                                        <span className="newsletter-count">{newsletters.length} Issues Available</span>
-                                        <span className="newsletter-latest">Latest: {newsletters[newsletters.length - 1]?.title}</span>
+                                    <div className="homepage-newsletter-info">
+                                        <span className="homepage-newsletter-count">{newsletters.length} Issues Available</span>
+                                        <span className="homepage-newsletter-latest">Latest: {newsletters[newsletters.length - 1]?.title}</span>
                                     </div>
                                 </div>
                                 <button 
-                                    className="expand-button"
+                                    className="homepage-expand-button"
                                     onClick={toggleNewsletters}
                                     aria-expanded={isNewslettersExpanded}
                                 >
                                     {isNewslettersExpanded ? 'Hide Newsletters' : 'View All Newsletters'}
                                     <svg 
                                         viewBox="0 0 24 24" 
-                                        className={`expand-icon ${isNewslettersExpanded ? 'expanded' : ''}`}
+                                        className={`homepage-expand-icon ${isNewslettersExpanded ? 'expanded' : ''}`}
                                     >
                                         <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" fill="currentColor"/>
                                     </svg>
@@ -716,13 +716,13 @@ const HomePage = React.memo(() => {
                         </div>
 
                         {/* Card 3: Lore Magazine */}
-                        <div className="content-card magazine-card">
-                            <div className="card-header">
-                                <h3 className="card-title">Lore Magazine</h3>
-                                <p className="card-subtitle">Institute annual magazine</p>
+                        <div className="homepage-content-card magazine-card">
+                            <div className="homepage-card-header">
+                                <h3 className="homepage-card-title">Lore Magazine</h3>
+                                <p className="homepage-card-subtitle">Institute annual magazine</p>
                             </div>
-                            <div className="card-content">
-                                <div className="magazine-preview">
+                            <div className="homepage-card-content">
+                                <div className="homepage-magazine-preview">
                                     <div className="pdf-preview-container">
                                         <PDFPreview
                                             src={loreMagazine[0]?.link}
@@ -735,10 +735,10 @@ const HomePage = React.memo(() => {
                                         href={loreMagazine[0]?.link} 
                                         target="_blank" 
                                         rel="noopener noreferrer"
-                                        className="magazine-button"
+                                        className="homepage-magazine-button"
                                     >
                                         Read Full Magazine
-                                        <svg viewBox="0 0 24 24" className="external-icon">
+                                        <svg viewBox="0 0 24 24" className="homepage-external-icon">
                                             <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" fill="currentColor"/>
                                         </svg>
                                     </a>
@@ -826,71 +826,71 @@ const HomePage = React.memo(() => {
             </section>
 
             {/* About Section */}
-            <section className="about-section">
+            <section className="homepage-about-section">
                 <div className="homepage-container">
-                    <div className="about-content">
-                        <div className="about-image">
+                    <div className="homepage-about-content">
+                        <div className="homepage-about-image">
                             <img src={heroImages[0]} alt="NIT Goa Campus" />
                         </div>
-                        <div className="about-text">
-                            <div className="about-buttons">
+                        <div className="homepage-about-text">
+                            <div className="homepage-about-buttons">
                                 <button 
-                                    className={`about-btn ${activeAboutTab === 'about' ? 'active' : ''}`}
+                                    className={`homepage-about-btn ${activeAboutTab === 'about' ? 'active' : ''}`}
                                     onClick={() => handleAboutTabClick('about')}
                                 >
                                     About
                                 </button>
                                 <button 
-                                    className={`about-btn ${activeAboutTab === 'vision' ? 'active' : ''}`}
+                                    className={`homepage-about-btn ${activeAboutTab === 'vision' ? 'active' : ''}`}
                                     onClick={() => handleAboutTabClick('vision')}
                                 >
                                     Vision
                                 </button>
                                 <button 
-                                    className={`about-btn ${activeAboutTab === 'mission' ? 'active' : ''}`}
+                                    className={`homepage-about-btn ${activeAboutTab === 'mission' ? 'active' : ''}`}
                                     onClick={() => handleAboutTabClick('mission')}
                                 >
                                     Mission
                                 </button>
                             </div>
-                            <div className="about-text-content">
-                                <p key={activeAboutTab} className={`about-paragraph ${activeAboutTab}`}>
+                            <div className="homepage-about-text-content">
+                                <p key={activeAboutTab} className={`homepage-about-paragraph ${activeAboutTab}`}>
                                     {aboutContent[activeAboutTab]}
                                 </p>
                             </div>
-                            <a href="/about" className="read-more-link enhanced-link">
-                                Read more 
-                                <svg viewBox="0 0 24 24" className="arrow-icon">
-                                    <path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z" fill="currentColor"/>
-                                </svg>
-                            </a>
+                            <div className="homepage-about-read-more">
+                                <a href="/about" className="homepage-enhanced-link">
+                                    Read more 
+                                    <svg viewBox="0 0 24 24" className="homepage-arrow-icon">
+                                        <path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z" fill="currentColor"/>
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Footer National Portals */}
-            <section className="national-portals">
+            <section className="homepage-national-portals">
                 <div className="homepage-container">
                     <h2 className="section-title">National Portals</h2>
-                    <div className="portals-grid enhanced-portals">
+                    <div className="homepage-enhanced-portals">
                         {nationalPortals.map((portal, index) => (
                             <a 
                                 key={index}
                                 href={portal.portal_link} 
                                 target="_blank" 
                                 rel="noopener noreferrer"
-                                className="portal-card"
+                                className="homepage-portal-card"
                                 title={portal.title}
                             >
-                                <div className="portal-icon-wrapper">
-                                    <img 
-                                        src={portal.image_link} 
-                                        alt={portal.title}
-                                        className="portal-icon"
-                                    />
+                                <div className="homepage-portal-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
                                 </div>
-                                <div className="portal-title">{portal.title}</div>
+                                <h3 className="homepage-portal-name">{portal.title}</h3>
                             </a>
                         ))}
                     </div>
