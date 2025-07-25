@@ -282,32 +282,32 @@
       {
         "title": "Ministry of Education",
         "portal_link": "https://www.education.gov.in/",
-        "image_link": "https://www.nitgoa.ac.in/static/moe.png"
+        "image_link": "client/public/images/moe.png"
       },
       {
         "title": "Make In India",
         "portal_link": "https://www.makeinindia.com/",
-        "image_link": "https://www.nitgoa.ac.in/static/mii.png"
+        "image_link": "client/public/images/mii.png"
       },
       {
         "title": "Digital India",
         "portal_link": "https://digitalindia.gov.in/",
-        "image_link": "https://www.nitgoa.ac.in/static/dii.png"
+        "image_link": "client/public/images/dii.png"
       },
       {
         "title": "Digilocker NAD",
         "portal_link": "https://nad.digilocker.gov.in/students",
-        "image_link": "https://www.nitgoa.ac.in/static/digilocker_nad.png"
+        "image_link": "client/public/images/digilocker_nad.png"
       },
       {
         "title": "Fit India",
         "portal_link": "https://fitindia.gov.in/",
-        "image_link": "https://www.nitgoa.ac.in/static/fit_india.png"
+        "image_link": "client/public/images/fit_india.png"
       },
       {
         "title": "Swachh Bharat",
         "portal_link": "https://swachhbharat.mygov.in/",
-        "image_link": "https://www.nitgoa.ac.in/static/swach_bharath.png"
+        "image_link": "client/public/images/swach_bharath.png"
       }
     ]
   }
