@@ -2,8 +2,64 @@ import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import './HomePage.css';
 import { QuickLinkIcons } from './QuickLinkIcons';
 import HeroSlider from './HeroSlider';
-import homeData from './home.json';
 import useScrollToTop from '../../utils/useScrollToTop';
+import homeData from './home.json';
+
+// Temporarily comment out problematic chart import
+// import { initializeChart } from './placement&StatisticsChart';
+
+// PDF Preview Component with lazy loading
+const PDFPreview = React.memo(({ src, title, className, isLarge = false }) => {
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [hasError, setHasError] = useState(false);
+    const [shouldLoad, setShouldLoad] = useState(false);
+
+    const handleLoad = () => {
+        setIsLoaded(true);
+        setHasError(false);
+    };
+
+    const handleError = () => {
+        setHasError(true);
+        setIsLoaded(false);
+    };
+
+    const handlePreviewClick = () => {
+        setShouldLoad(true);
+    };
+
+    // Show placeholder until user clicks to load
+    if (!shouldLoad || hasError) {
+        return (
+            <div className="pdf-placeholder" onClick={handlePreviewClick} style={{ cursor: 'pointer' }}>
+                <div className={isLarge ? "pdf-icon-large" : "pdf-icon-small"}>
+                    <svg viewBox="0 0 24 24" className="pdf-svg">
+                        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <div className="pdf-preview-text">
+                    <h4 style={{ fontSize: isLarge ? '1.1rem' : '0.95rem' }}>{title}</h4>
+                    <p style={{ fontSize: '0.9rem', color: 'var(--primary-blue)' }}>
+                        {hasError ? 'Click to retry loading preview' : 'Click to load PDF preview'}
+                    </p>
+                </div>
+            </div>
+        );
+    }
+
+    return (
+        <iframe
+            src={`${src}#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width&view=FitH`}
+            title={title}
+            frameBorder="0"
+            scrolling="yes"
+            className={className}
+            onLoad={handleLoad}
+            onError={handleError}
+            style={{ opacity: isLoaded ? 1 : 0 }}
+        />
+    );
+});
 
 const HomePage = React.memo(() => {
     // Handle smooth scroll to top for quick link navigation
@@ -46,12 +102,27 @@ const HomePage = React.memo(() => {
 
     // Load news and events from home.json
     const newsAndEvents = useMemo(() => {
-        return homeData.home_page.news_and_events; // Load all items, not limited
+        return homeData.home_page.news_and_events;
     }, []);
 
     // Load notice board data from home.json
     const noticeBoard = useMemo(() => {
-        return homeData.home_page.notice_board; // Load all items, not limited
+        return homeData.home_page.notice_board;
+    }, []);
+
+    // Load newsletters data from home.json
+    const newsletters = useMemo(() => {
+        return homeData.home_page.newsletters;
+    }, []);
+
+    // Load Lore magazine data from home.json
+    const loreMagazine = useMemo(() => {
+        return homeData.home_page.LoreMagazine;
+    }, []);
+
+    // Load national portals data from home.json
+    const nationalPortals = useMemo(() => {
+        return homeData.home_page.national_portals;
     }, []);
 
     // Optimized dependency tracking
@@ -60,7 +131,10 @@ const HomePage = React.memo(() => {
         heroImages: heroImages?.length,
         announcements: announcements?.length,
         newsAndEvents: newsAndEvents?.length,
-        noticeBoard: noticeBoard?.length
+        noticeBoard: noticeBoard?.length,
+        newsletters: newsletters?.length,
+        loreMagazine: loreMagazine?.length,
+        nationalPortals: nationalPortals?.length
     };
     
     // Update previous dependencies
@@ -71,6 +145,8 @@ const HomePage = React.memo(() => {
     const [announcementSlideDirection, setAnnouncementSlideDirection] = useState('right');
     const [countsAnimated, setCountsAnimated] = useState(false);
     const [activeAboutTab, setActiveAboutTab] = useState('about');
+    const [isNewslettersExpanded, setIsNewslettersExpanded] = useState(false);
+    const [chartInitialized, setChartInitialized] = useState(false);
     const [counts, setCounts] = useState({
         departments: 0,
         students: 0,
@@ -90,11 +166,107 @@ const HomePage = React.memo(() => {
             if (announcementIntervalRef.current) {
                 clearInterval(announcementIntervalRef.current);
             }
+            if (aboutSwitchIntervalRef.current) {
+                clearInterval(aboutSwitchIntervalRef.current);
+            }
         };
+    }, []);
+
+    // Auto-switch About section tabs every 6 seconds
+    useEffect(() => {
+        const tabs = ['about', 'vision', 'mission'];
+        let currentIndex = tabs.indexOf(activeAboutTab);
+
+        aboutSwitchIntervalRef.current = setInterval(() => {
+            currentIndex = (currentIndex + 1) % tabs.length;
+            setActiveAboutTab(tabs[currentIndex]);
+        }, 6000);
+
+        return () => {
+            if (aboutSwitchIntervalRef.current) {
+                clearInterval(aboutSwitchIntervalRef.current);
+            }
+        };
+    }, [activeAboutTab]);
+
+    // Simple Google Charts initialization - inline implementation
+    useEffect(() => {
+        if (!chartInitialized && chartRef.current) {
+            // Load Google Charts dynamically
+            const loadGoogleCharts = () => {
+                if (window.google?.charts) {
+                    // Charts already loaded
+                    drawChart();
+                } else {
+                    // Load Google Charts
+                    const script = document.createElement('script');
+                    script.src = 'https://www.gstatic.com/charts/loader.js';
+                    script.onload = () => {
+                        window.google.charts.load('current', { packages: ['corechart'] });
+                        window.google.charts.setOnLoadCallback(drawChart);
+                    };
+                    document.head.appendChild(script);
+                }
+            };
+
+            const drawChart = () => {
+                try {
+                    const data = window.google.visualization.arrayToDataTable([
+                        ['Batch', 'Highest Package', 'Average Package'],
+                        ['UG 2021', 20, 7.61],
+                        ['UG 2022', 44, 13.10],
+                        ['UG 2023', 26, 11.34],
+                        ['PG 2022', 21.69, 11.35],
+                        ['PG 2023', 37, 15.94]
+                    ]);
+
+                    const options = {
+                        title: 'Placement & Statistics',
+                        width: '100%',
+                        height: '100%',
+                        isStacked: true,
+                        vAxis: {
+                            title: 'Lakhs Per Annum',
+                            minValue: 0
+                        },
+                        hAxis: {
+                            title: 'Batch'
+                        },
+                        annotations: {
+                            alwaysOutside: true,
+                            textStyle: {
+                                fontSize: 12,
+                                auraColor: 'none',
+                                color: '#555'
+                            }
+                        },
+                        backgroundColor: 'transparent',
+                        legend: { position: 'bottom' }
+                    };
+
+                    const chart = new window.google.visualization.ColumnChart(
+                        document.getElementById('placement-chart')
+                    );
+                    chart.draw(data, options);
+                    setChartInitialized(true);
+                } catch (error) {
+                    console.warn('Chart initialization failed:', error);
+                }
+            };
+
+            loadGoogleCharts();
+        }
+    }, [chartInitialized]);
+
+    // Handle theme changes for chart - simple implementation
+    useEffect(() => {
+        // Theme change handling can be added later
     }, []);
     
     const statsRef = useRef(null);
     const announcementIntervalRef = useRef(null);
+    const aboutSwitchIntervalRef = useRef(null);
+    const chartRef = useRef(null);
 
     // About section content - Memoized to prevent re-renders
     const aboutContent = useMemo(() => ({
@@ -209,6 +381,30 @@ const HomePage = React.memo(() => {
         
         // Navigate immediately
         window.location.href = href;
+    }, []);
+
+    // Toggle newsletters expansion
+    const toggleNewsletters = useCallback(() => {
+        setIsNewslettersExpanded(!isNewslettersExpanded);
+    }, [isNewslettersExpanded]);
+
+    // Handle about tab manual selection (stop auto-switching)
+    const handleAboutTabClick = useCallback((tab) => {
+        if (aboutSwitchIntervalRef.current) {
+            clearInterval(aboutSwitchIntervalRef.current);
+        }
+        setActiveAboutTab(tab);
+        
+        // Restart auto-switching after user interaction
+        setTimeout(() => {
+            const tabs = ['about', 'vision', 'mission'];
+            let currentIndex = tabs.indexOf(tab);
+
+            aboutSwitchIntervalRef.current = setInterval(() => {
+                currentIndex = (currentIndex + 1) % tabs.length;
+                setActiveAboutTab(tabs[currentIndex]);
+            }, 6000);
+        }, 10000); // Wait 10 seconds before restarting auto-switch
     }, []);
 
     // Counting animation for statistics - Optimized to prevent re-renders
@@ -463,18 +659,139 @@ const HomePage = React.memo(() => {
                 </div>
             </section>
 
-            {/* Placement Statistics Section */}
-            <section className="placement-section">
+            {/* Content Cards Section */}
+            <section className="content-cards-section">
                 <div className="homepage-container">
-                    <h2 className="section-title">Placement Statistics</h2>
-                    <div className="placement-content">
-                        <div className="placement-chart">
-                            <img src="/images/placement_statistics.png" alt="Placement Statistics" />
-                        </div>
-                        <div className="placement-info">
-                            <div className="synapse-logo">
-                                <img src="/images/synapse_newsletter.png" alt="Synapse Newsletter" />
+                    <h2 className="section-title">Featured Content</h2>
+                    <div className="content-cards-grid">
+                        {/* Card 1: Interactive Google Chart */}
+                        <div className="content-card chart-card">
+                            <div className="card-header">
+                                <h3 className="card-title">Placement Statistics</h3>
+                                <p className="card-subtitle">Interactive placement data visualization</p>
                             </div>
+                            <div className="card-content">
+                                <div 
+                                    ref={chartRef}
+                                    id="placement-chart" 
+                                    className="chart-container"
+                                ></div>
+                            </div>
+                        </div>
+
+                        {/* Card 2: Synapse Newsletter */}
+                        <div className="content-card newsletter-card">
+                            <div className="card-header">
+                                <h3 className="card-title">Synapse Newsletter</h3>
+                                <p className="card-subtitle">Biannual newsletter publications</p>
+                            </div>
+                            <div className="card-content">
+                                <div className="newsletter-preview">
+                                    <div className="newsletter-image">
+                                        <img 
+                                            src="/images/synapse_newsletter.png" 
+                                            alt="Synapse Newsletter"
+                                            className="synapse-image"
+                                        />
+                                    </div>
+                                    <div className="newsletter-info">
+                                        <span className="newsletter-count">{newsletters.length} Issues Available</span>
+                                        <span className="newsletter-latest">Latest: {newsletters[newsletters.length - 1]?.title}</span>
+                                    </div>
+                                </div>
+                                <button 
+                                    className="expand-button"
+                                    onClick={toggleNewsletters}
+                                    aria-expanded={isNewslettersExpanded}
+                                >
+                                    {isNewslettersExpanded ? 'Hide Newsletters' : 'View All Newsletters'}
+                                    <svg 
+                                        viewBox="0 0 24 24" 
+                                        className={`expand-icon ${isNewslettersExpanded ? 'expanded' : ''}`}
+                                    >
+                                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Card 3: Lore Magazine */}
+                        <div className="content-card magazine-card">
+                            <div className="card-header">
+                                <h3 className="card-title">Lore Magazine</h3>
+                                <p className="card-subtitle">Institute annual magazine</p>
+                            </div>
+                            <div className="card-content">
+                                <div className="magazine-preview">
+                                    <div className="pdf-preview-container">
+                                        <PDFPreview
+                                            src={loreMagazine[0]?.link}
+                                            title={loreMagazine[0]?.title}
+                                            className="magazine-pdf-preview"
+                                            isLarge={true}
+                                        />
+                                    </div>
+                                    <a 
+                                        href={loreMagazine[0]?.link} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="magazine-button"
+                                    >
+                                        Read Full Magazine
+                                        <svg viewBox="0 0 24 24" className="external-icon">
+                                            <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" fill="currentColor"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Expandable Newsletters Section (4a) */}
+                <div className={`newsletters-expanded ${isNewslettersExpanded ? 'expanded' : ''}`}>
+                    <div className="homepage-container">
+                        <div className="newsletters-header">
+                            <h3>All Newsletter Issues</h3>
+                            <button 
+                                className="close-button"
+                                onClick={toggleNewsletters}
+                                aria-label="Close newsletters"
+                            >
+                                <svg viewBox="0 0 24 24" className="close-icon">
+                                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div className="newsletters-grid">
+                            {newsletters.map((newsletter, index) => (
+                                <div key={index} className="newsletter-item">
+                                    <div className="newsletter-preview-card">
+                                        <div className="newsletter-thumb">
+                                            <PDFPreview
+                                                src={newsletter.link}
+                                                title={newsletter.title}
+                                                className="newsletter-pdf-preview"
+                                                isLarge={false}
+                                            />
+                                        </div>
+                                        <div className="newsletter-details">
+                                            <h4 className="newsletter-title">{newsletter.title}</h4>
+                                            <a 
+                                                href={newsletter.link} 
+                                                target="_blank" 
+                                                rel="noopener noreferrer"
+                                                className="newsletter-link"
+                                            >
+                                                Read Full Newsletter
+                                                <svg viewBox="0 0 24 24" className="external-icon">
+                                                    <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" fill="currentColor"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -519,27 +836,34 @@ const HomePage = React.memo(() => {
                             <div className="about-buttons">
                                 <button 
                                     className={`about-btn ${activeAboutTab === 'about' ? 'active' : ''}`}
-                                    onClick={() => setActiveAboutTab('about')}
+                                    onClick={() => handleAboutTabClick('about')}
                                 >
                                     About
                                 </button>
                                 <button 
                                     className={`about-btn ${activeAboutTab === 'vision' ? 'active' : ''}`}
-                                    onClick={() => setActiveAboutTab('vision')}
+                                    onClick={() => handleAboutTabClick('vision')}
                                 >
                                     Vision
                                 </button>
                                 <button 
                                     className={`about-btn ${activeAboutTab === 'mission' ? 'active' : ''}`}
-                                    onClick={() => setActiveAboutTab('mission')}
+                                    onClick={() => handleAboutTabClick('mission')}
                                 >
                                     Mission
                                 </button>
                             </div>
-                            <p>
-                                {aboutContent[activeAboutTab]}
-                            </p>
-                            <a href="/about" className="read-more-link">Read more {'>'} {'>'}</a>
+                            <div className="about-text-content">
+                                <p key={activeAboutTab} className={`about-paragraph ${activeAboutTab}`}>
+                                    {aboutContent[activeAboutTab]}
+                                </p>
+                            </div>
+                            <a href="/about" className="read-more-link enhanced-link">
+                                Read more 
+                                <svg viewBox="0 0 24 24" className="arrow-icon">
+                                    <path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z" fill="currentColor"/>
+                                </svg>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -548,14 +872,27 @@ const HomePage = React.memo(() => {
             {/* Footer National Portals */}
             <section className="national-portals">
                 <div className="homepage-container">
-                    <h3>National Portals</h3>
-                    <div className="portals-grid">
-                        <img src="/images/moe.png" alt="Ministry of Education" />
-                        <img src="/images/dii.png" alt="Digital India" />
-                        <img src="/images/digilocker_nad.png" alt="DigiLocker NAD" />
-                        <img src="/images/fit_india.png" alt="FIT India" />
-                        <img src="/images/swach_bharath.png" alt="Swachh Bharat" />
-                        <img src="/images/MakeInIndia.png" alt="Make in India" />
+                    <h2 className="section-title">National Portals</h2>
+                    <div className="portals-grid enhanced-portals">
+                        {nationalPortals.map((portal, index) => (
+                            <a 
+                                key={index}
+                                href={portal.portal_link} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="portal-card"
+                                title={portal.title}
+                            >
+                                <div className="portal-icon-wrapper">
+                                    <img 
+                                        src={portal.image_link} 
+                                        alt={portal.title}
+                                        className="portal-icon"
+                                    />
+                                </div>
+                                <div className="portal-title">{portal.title}</div>
+                            </a>
+                        ))}
                     </div>
                 </div>
             </section>
