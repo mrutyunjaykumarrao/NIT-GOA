@@ -454,7 +454,9 @@ const Navbar = () => {
 
           <a href="/outreach-activities" className="navbar-nav-item">Outreach Activities</a>
           <a href="https://mis.nitgoa.ac.in/misnitgoa/academic/ONLINEFEESCOLLECTION/Payment.aspx" target="_blank" rel="noopener noreferrer" className="navbar-nav-item">Fee Payment</a>
+          <a href="/hostels" className="navbar-nav-item">Hostels</a>
         </div>
+        
       </nav>
 
       {/* Mobile Menu Overlay */}

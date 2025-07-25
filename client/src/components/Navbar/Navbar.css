@@ -1528,7 +1528,7 @@ body {
 }
 
 /* ===== LARGE TABLET (769px - 1023px) ===== */
-@media (min-width: 769px) and (max-width: 1023px) {
+@media (min-width: 769px) and (max-width: 1319px) {
   .navbar-top-header-content {
     padding: 0 var(--navbar-padding-sm);
   }
@@ -1573,7 +1573,7 @@ body {
 }
 
 /* ===== DESKTOP (1024px - 1439px) ===== */
-@media (min-width: 1024px) {
+@media (min-width: 1320px) {
   .navbar-top-header-content {
     max-width: var(--navbar-max-width-md);
     padding: 0 var(--navbar-padding-md);
@@ -1586,6 +1586,7 @@ body {
   .navbar-header-content {
     max-width: var(--navbar-max-width-md);
     padding: 0 var(--navbar-padding-md);
+
   }
   
   .navbar-logo-section {
@@ -1619,7 +1620,7 @@ body {
 }
 
 /* ===== LARGE DESKTOP (1440px - 1919px) ===== */
-@media (min-width: 1440px) {
+@media (min-width: 1441px) and (max-width: 1519px) {
   .navbar-top-header-content {
     max-width: var(--navbar-max-width-lg);
     padding: 0 var(--navbar-padding-lg);
@@ -1656,13 +1657,189 @@ body {
   }
   
   .navbar-nav-item {
-    --nav-item-padding-h: calc(20px - var(--scroll-progress, 0) * 6px);
+    --nav-item-padding-h: calc(18px - var(--scroll-progress, 0) * 6px);
     --nav-item-font-size: calc(16px - var(--scroll-progress, 0) * 1px);
   }
 }
 
+@media (min-width: 1520px) and (max-width: 1619px) {
+  .navbar-top-header-content {
+    max-width: var(--navbar-max-width-lg);
+    padding: 0 var(--navbar-padding-lg);
+  }
+  
+  .navbar-top-nav.desktop-only {
+    gap: 35px;
+  }
+  
+  .navbar-header-content {
+    max-width: var(--navbar-max-width-lg);
+    padding: 0 var(--navbar-padding-lg);
+  }
+  
+  .navbar-logo-section {
+    gap: 25px;
+  }
+  
+  .navbar-nit-logo {
+    --logo-size: calc(90px - var(--scroll-progress, 0) * 22px);
+  }
+  
+  .navbar-institute-name-hindi {
+    font-size: 30px !important;
+  }
+  
+  .navbar-institute-name-english {
+    font-size: 26px !important;
+  }
+  
+  .navbar-nav-content {
+    max-width: calc(100% - 250px);
+    --nav-content-padding: calc(85px - var(--scroll-progress, 0) * 12px);
+  }
+
+  .navbar-nav-item {
+    --nav-item-padding-h: calc(19px - var(--scroll-progress, 0) * 6px);
+    --nav-item-font-size: calc(17px - var(--scroll-progress, 0) * 1px);
+  } 
+
+}
+
+@media (min-width: 1620px) and (max-width: 1719px) {
+  .navbar-main-navigation {
+    display: block !important;
+  }
+  
+  .hamburger-btn {
+    display: none !important;
+  }
+  .navbar-top-header-content {
+    max-width: var(--navbar-max-width-lg);
+    padding: 0 var(--navbar-padding-lg);
+  }
+  
+  .mobile-menu,
+  .mobile-menu-overlay {
+    display: none !important;
+  }
+  .navbar-header-content {
+    max-width: var(--navbar-max-width-lg);
+    padding: 0 var(--navbar-padding-lg);
+  }
+  /* Enhanced dropdown sizing for large screens */
+  .navbar-dropdown-menu,
+  .navbar-main-navigation .navbar-dropdown-menu {
+    min-width: 240px;
+    max-width: 300px;
+  }
+  
+  .navbar-nav-item {
+    --nav-item-padding-h: calc(20px - var(--scroll-progress, 0) * 6px);
+    --nav-item-font-size: calc(18px - var(--scroll-progress, 0) * 1px);
+  }
+
+  .navbar-submenu {
+    min-width: 220px;
+  }
+} 
+
+@media (min-width: 1720px) and (max-width: 1919px) {
+  .navbar-top-header-content {
+    max-width: var(--navbar-max-width-lg);
+    padding: 0 var(--navbar-padding-lg);
+  }
+  
+  .navbar-top-nav.desktop-only {
+    gap: 35px;
+  }
+  
+  .navbar-header-content {
+    max-width: var(--navbar-max-width-lg);
+    padding: 0 var(--navbar-padding-lg);
+  }
+  
+  .navbar-logo-section {
+    gap: 25px;
+  }
+  
+  .navbar-nit-logo {
+    --logo-size: calc(90px - var(--scroll-progress, 0) * 22px);
+  }
+  
+  .navbar-institute-name-hindi {
+    font-size: 30px !important;
+  }
+  
+  .navbar-institute-name-english {
+    font-size: 26px !important;
+  }
+  
+  .navbar-nav-content {
+    max-width: calc(100% - 250px);
+    --nav-content-padding: calc(90px - var(--scroll-progress, 0) * 12px);
+  }
+  
+  .navbar-nav-item {
+    --nav-item-padding-h: calc(22px - var(--scroll-progress, 0) * 6px);
+    --nav-item-font-size: calc(20px - var(--scroll-progress, 0) * 1px);
+  }
+}
+
+
 /* ===== EXTRA LARGE DESKTOP (1920px - 2559px) ===== */
 @media (min-width: 1920px) {
+  .navbar-top-header-content {
+    max-width: var(--navbar-max-width-xl);
+    padding: 0 var(--navbar-padding-xl);
+  }
+  
+  .navbar-top-nav.desktop-only {
+    gap: 40px;
+  }
+  
+  .navbar-header-content {
+    max-width: var(--navbar-max-width-xl);
+    padding: 0 var(--navbar-padding-xl);
+  }
+.navbar-logo-section {
+  gap: 30px;
+}
+
+.navbar-nit-logo {
+    --logo-size: calc(95px - var(--scroll-progress, 0) * 25px);
+  }
+  
+  .navbar-institute-name-hindi {
+    font-size: 32px !important;
+  }
+  
+  .navbar-institute-name-english {
+    font-size: 28px !important;
+  }
+  
+  .navbar-nav-content {
+    max-width: calc(100% - 300px);
+    --nav-content-padding: calc(100px - var(--scroll-progress, 0) * 15px);
+  }
+  
+  .navbar-nav-item {
+    --nav-item-padding-h: calc(24px - var(--scroll-progress, 0) * 8px);
+    --nav-item-font-size: calc(22px - var(--scroll-progress, 0) * 1px);
+  }
+  
+  /* Enhanced dropdown sizing for large screens */
+  .navbar-dropdown-menu,
+  .navbar-main-navigation .navbar-dropdown-menu {
+    min-width: 280px;
+    max-width: 350px;
+  }
+  
+  .navbar-submenu {
+    min-width: 250px;
+  }
+}
+
+@media (min-wdth: 2120px) and (max-width: 2559px) {
   .navbar-top-header-content {
     max-width: var(--navbar-max-width-xl);
     padding: 0 var(--navbar-padding-xl);
@@ -1682,36 +1859,25 @@ body {
   }
   
   .navbar-nit-logo {
-    --logo-size: calc(95px - var(--scroll-progress, 0) * 25px);
+    --logo-size: calc(100px - var(--scroll-progress, 0) * 25px);
   }
   
   .navbar-institute-name-hindi {
-    font-size: 32px !important;
+    font-size: 34px !important;
   }
   
   .navbar-institute-name-english {
-    font-size: 28px !important;
+    font-size: 30px !important;
   }
   
   .navbar-nav-content {
-    max-width: calc(100% - 300px);
-    --nav-content-padding: calc(100px - var(--scroll-progress, 0) * 15px);
+    max-width: calc(100% - 350px);
+    --nav-content-padding: calc(110px - var(--scroll-progress, 0) * 15px);
   }
   
   .navbar-nav-item {
-    --nav-item-padding-h: calc(24px - var(--scroll-progress, 0) * 8px);
-    --nav-item-font-size: calc(17px - var(--scroll-progress, 0) * 1px);
-  }
-  
-  /* Enhanced dropdown sizing for large screens */
-  .navbar-dropdown-menu,
-  .navbar-main-navigation .navbar-dropdown-menu {
-    min-width: 280px;
-    max-width: 350px;
-  }
-  
-  .navbar-submenu {
-    min-width: 250px;
+    --nav-item-padding-h: calc(26px - var(--scroll-progress, 0) * 8px);
+    --nav-item-font-size: calc(24px - var(--scroll-progress, 0) * 1px);
   }
 }
 
@@ -1754,7 +1920,7 @@ body {
   
   .navbar-nav-item {
     --nav-item-padding-h: calc(28px - var(--scroll-progress, 0) * 10px);
-    --nav-item-font-size: calc(18px - var(--scroll-progress, 0) * 1px);
+    --nav-item-font-size: calc(26px - var(--scroll-progress, 0) * 1px);
   }
   
   /* Maximum dropdown sizing for ultra-wide screens */
@@ -1762,8 +1928,13 @@ body {
   .navbar-main-navigation .navbar-dropdown-menu {
     min-width: 320px;
     max-width: 400px;
+
   }
-  
+  .navbar-dropdown-menu > a, .navbar-main-navigation .navbar-dropdown-menu > a {
+    padding: 12px 16px;
+    font-size: 22px;
+  }
+
   .navbar-submenu {
     min-width: 280px;
   }
