@@ -189,73 +189,141 @@ const HomePage = React.memo(() => {
         };
     }, [activeAboutTab]);
 
-    // Simple Google Charts initialization - inline implementation
+    // Simple Google Charts initialization - inline implementation with dark mode support
     useEffect(() => {
+        let chart = null;
+        
+        const loadGoogleCharts = () => {
+            if (window.google?.charts) {
+                // Charts already loaded
+                drawChart();
+            } else {
+                // Load Google Charts
+                const script = document.createElement('script');
+                script.src = 'https://www.gstatic.com/charts/loader.js';
+                script.onload = () => {
+                    window.google.charts.load('current', { packages: ['corechart'] });
+                    window.google.charts.setOnLoadCallback(drawChart);
+                };
+                document.head.appendChild(script);
+            }
+        };
+
+        const drawChart = () => {
+            try {
+                if (!chartRef.current) return;
+
+                // Check for dark mode from body class (theme toggle)
+                const isDarkMode = document.body.classList.contains('dark-mode') || 
+                                 document.documentElement.classList.contains('dark-mode') ||
+                                 document.documentElement.getAttribute('data-theme') === 'dark';
+
+                const data = window.google.visualization.arrayToDataTable([
+                    ['Batch', 'Highest Package', 'Average Package'],
+                    ['UG 2021', 20, 7.61],
+                    ['UG 2022', 44, 13.10],
+                    ['UG 2023', 26, 11.34],
+                    ['PG 2022', 21.69, 11.35],
+                    ['PG 2023', 37, 15.94]
+                ]);
+
+                const options = {
+                    title: 'Placement & Statistics',
+                    titleTextStyle: {
+                        color: isDarkMode ? '#e0e0e0' : '#333',
+                        fontSize: 16
+                    },
+                    width: '100%',
+                    height: '100%',
+                    isStacked: true,
+                    backgroundColor: isDarkMode ? '#1a1a1a' : 'transparent',
+                    colors: isDarkMode ? ['#4285f4', '#34a853'] : ['#1f77b4', '#ff7f0e'],
+                    vAxis: {
+                        title: 'Lakhs Per Annum',
+                        titleTextStyle: {
+                            color: isDarkMode ? '#e0e0e0' : '#666'
+                        },
+                        textStyle: {
+                            color: isDarkMode ? '#b0b0b0' : '#333'
+                        },
+                        gridlines: {
+                            color: isDarkMode ? '#404040' : '#e0e0e0'
+                        },
+                        minValue: 0
+                    },
+                    hAxis: {
+                        title: 'Batch',
+                        titleTextStyle: {
+                            color: isDarkMode ? '#e0e0e0' : '#666'
+                        },
+                        textStyle: {
+                            color: isDarkMode ? '#b0b0b0' : '#333'
+                        },
+                        gridlines: {
+                            color: isDarkMode ? '#404040' : '#e0e0e0'
+                        }
+                    },
+                    annotations: {
+                        alwaysOutside: true,
+                        textStyle: {
+                            fontSize: 12,
+                            auraColor: 'none',
+                            color: isDarkMode ? '#b0b0b0' : '#555'
+                        }
+                    },
+                    legend: { 
+                        position: 'bottom',
+                        textStyle: {
+                            color: isDarkMode ? '#e0e0e0' : '#333'
+                        }
+                    }
+                };
+
+                if (!chart) {
+                    chart = new window.google.visualization.ColumnChart(chartRef.current);
+                }
+                chart.draw(data, options);
+                setChartInitialized(true);
+            } catch (error) {
+                console.warn('Chart initialization failed:', error);
+            }
+        };
+
+        // Initial load
         if (!chartInitialized && chartRef.current) {
-            // Load Google Charts dynamically
-            const loadGoogleCharts = () => {
-                if (window.google?.charts) {
-                    // Charts already loaded
-                    drawChart();
-                } else {
-                    // Load Google Charts
-                    const script = document.createElement('script');
-                    script.src = 'https://www.gstatic.com/charts/loader.js';
-                    script.onload = () => {
-                        window.google.charts.load('current', { packages: ['corechart'] });
-                        window.google.charts.setOnLoadCallback(drawChart);
-                    };
-                    document.head.appendChild(script);
-                }
-            };
-
-            const drawChart = () => {
-                try {
-                    const data = window.google.visualization.arrayToDataTable([
-                        ['Batch', 'Highest Package', 'Average Package'],
-                        ['UG 2021', 20, 7.61],
-                        ['UG 2022', 44, 13.10],
-                        ['UG 2023', 26, 11.34],
-                        ['PG 2022', 21.69, 11.35],
-                        ['PG 2023', 37, 15.94]
-                    ]);
-
-                    const options = {
-                        title: 'Placement & Statistics',
-                        width: '100%',
-                        height: '100%',
-                        isStacked: true,
-                        vAxis: {
-                            title: 'Lakhs Per Annum',
-                            minValue: 0
-                        },
-                        hAxis: {
-                            title: 'Batch'
-                        },
-                        annotations: {
-                            alwaysOutside: true,
-                            textStyle: {
-                                fontSize: 12,
-                                auraColor: 'none',
-                                color: '#555'
-                            }
-                        },
-                        backgroundColor: 'transparent',
-                        legend: { position: 'bottom' }
-                    };
-
-                    const chart = new window.google.visualization.ColumnChart(
-                        document.getElementById('placement-chart')
-                    );
-                    chart.draw(data, options);
-                    setChartInitialized(true);
-                } catch (error) {
-                    console.warn('Chart initialization failed:', error);
-                }
-            };
-
             loadGoogleCharts();
         }
+
+        // Listen for theme changes
+        const handleThemeChange = () => {
+            if (chartInitialized && window.google?.visualization) {
+                drawChart();
+            }
+        };
+
+        // Create a MutationObserver to watch for theme changes
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'attributes' && 
+                    (mutation.attributeName === 'class' || mutation.attributeName === 'data-theme')) {
+                    handleThemeChange();
+                }
+            });
+        });
+
+        // Watch for changes on both body and html elements
+        observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'data-theme'] });
+
+        // Also listen for custom theme change events
+        document.addEventListener('themechange', handleThemeChange);
+        window.addEventListener('themeToggle', handleThemeChange);
+
+        return () => {
+            observer.disconnect();
+            document.removeEventListener('themechange', handleThemeChange);
+            window.removeEventListener('themeToggle', handleThemeChange);
+        };
     }, [chartInitialized]);
 
     // Handle theme changes for chart - simple implementation
@@ -753,7 +821,7 @@ const HomePage = React.memo(() => {
                     <div className="homepage-container">
                         <div className="newsletters-header">
                             <h3>All Newsletter Issues</h3>
-                            <button 
+                            {/* <button 
                                 className="close-button"
                                 onClick={toggleNewsletters}
                                 aria-label="Close newsletters"
@@ -761,7 +829,7 @@ const HomePage = React.memo(() => {
                                 <svg viewBox="0 0 24 24" className="close-icon">
                                     <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/>
                                 </svg>
-                            </button>
+                            </button> */}
                         </div>
                         <div className="newsletters-grid">
                             {newsletters.map((newsletter, index) => (
