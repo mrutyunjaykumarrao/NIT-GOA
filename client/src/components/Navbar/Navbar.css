@@ -1460,19 +1460,19 @@ body {
   }
   
   .navbar-logo-section {
-    gap: 10px;
+    gap: 3px;
   }
   
   .navbar-nit-logo {
-    --logo-size: calc(55px - var(--scroll-progress, 0) * 15px);
+    --logo-size: calc(57px - var(--scroll-progress, 0) * 8px);
   }
   
   .navbar-institute-name-hindi {
-    font-size: 16px !important;
+    font-size: 18px !important;
   }
   
   .navbar-institute-name-english {
-    font-size: 12px !important;
+    font-size: 13px !important;
   }
   
   .hamburger-btn {
