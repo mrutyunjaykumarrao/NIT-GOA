@@ -121,19 +121,19 @@ const About = () => {
                                 <div className="aboutpage-department-card">
                                     <h4>Undergraduate Programs</h4>
                                     <ul>
-                                        <li><Link to="/departments/cse" className="aboutpage-department-link">Computer Science and Engineering (CSE)</Link></li>
-                                        <li><Link to="/departments/ece" className="aboutpage-department-link">Electronics and Communication Engineering (ECE)</Link></li>
-                                        <li><Link to="/departments/eee" className="aboutpage-department-link">Electrical and Electronics Engineering (EEE)</Link></li>
-                                        <li><Link to="/departments/cve" className="aboutpage-department-link">Civil Engineering (CVE)</Link></li>
-                                        <li><Link to="/departments/mce" className="aboutpage-department-link">Mechanical Engineering (MCE)</Link></li>
+                                        <li><Link to="/academics/computer-science" className="aboutpage-department-link">Computer Science and Engineering (CSE)</Link></li>
+                                        <li><Link to="/academics/electronics-communication" className="aboutpage-department-link">Electronics and Communication Engineering (ECE)</Link></li>
+                                        <li><Link to="/academics/electrical-electronics" className="aboutpage-department-link">Electrical and Electronics Engineering (EEE)</Link></li>
+                                        <li><Link to="/academics/civil-engineering" className="aboutpage-department-link">Civil Engineering (CVE)</Link></li>
+                                        <li><Link to="/academics/mechanical-engineering" className="aboutpage-department-link">Mechanical Engineering (MCE)</Link></li>
                                     </ul>
                                 </div>
                                 <div className="aboutpage-department-card">
                                     <h4>Postgraduate Programs</h4>
                                     <ul>
-                                        <li><Link to="/departments/cse" className="aboutpage-department-link">M.Tech. in Computer Science and Engineering</Link></li>
-                                        <li><Link to="/departments/ece" className="aboutpage-department-link">M.Tech. in VLSI</Link></li>
-                                        <li><Link to="/departments/eee" className="aboutpage-department-link">M.Tech. in Power Electronics and Power Systems (PEPS)</Link></li>
+                                        <li>M.Tech. in Computer Science and Engineering</li>
+                                        <li>M.Tech. in VLSI</li>
+                                        <li>M.Tech. in Power Electronics and Power Systems (PEPS)</li>
                                     </ul>
                                 </div>
                                 <div className="aboutpage-department-card">
@@ -183,9 +183,9 @@ const About = () => {
                                         <li>Total: 216 students (188 JoSAA/CSAB + 28 DASA)</li>
                                     </ul>
                                     <div className="aboutpage-admission-link-wrapper">
-                                        <a href="https://josaa.nic.in/" target="_blank" rel="noopener noreferrer" className="aboutpage-admission-link">
-                                            Visit JoSAA Portal
-                                        </a>
+                                        <Link to="/admissions/btech/josaa-csab" className="aboutpage-admission-link">
+                                            Visit JoSAA/CSAB Admissions
+                                        </Link>
                                     </div>
                                 </div>
                                 <div className="aboutpage-admission-detail-card">
@@ -198,7 +198,7 @@ const About = () => {
                                         <li>Full-time Self-Financed (Non-GATE) M.Tech. in vacant seats</li>
                                     </ul>
                                     <div className="aboutpage-admission-link-wrapper">
-                                        <Link to="/admission/mtech" className="aboutpage-admission-link">
+                                        <Link to="/admissions/mtech" className="aboutpage-admission-link">
                                             M.Tech Admission Details
                                         </Link>
                                     </div>
@@ -232,7 +232,7 @@ const About = () => {
                             </div>
                             
                             <div className="aboutpage-research-link-wrapper">
-                                <Link to="/research/projects" className="aboutpage-research-link">
+                                <Link to="/research/rd-projects" className="aboutpage-research-link">
                                     Explore R&D Projects
                                 </Link>
                             </div>
@@ -276,7 +276,7 @@ const About = () => {
                             </div>
                             
                             <div className="aboutpage-placement-link-wrapper">
-                                <Link to="/placement" className="aboutpage-placement-link">
+                                <Link to="/training-placement" className="aboutpage-placement-link">
                                     Visit Training & Placement
                                 </Link>
                             </div>
@@ -300,7 +300,7 @@ const About = () => {
                                     </p>
                                 </div>
                                 <div className="aboutpage-outreach-link-wrapper">
-                                    <Link to="/outreach" className="aboutpage-outreach-link">
+                                    <Link to="/outreach-activities" className="aboutpage-outreach-link">
                                         Explore Outreach Activities
                                     </Link>
                                 </div>
@@ -343,7 +343,7 @@ const About = () => {
                                     </p>
                                 </div>
                                 <div className="aboutpage-mou-link-wrapper">
-                                    <Link to="/mous" className="aboutpage-mou-link">
+                                    <Link to="/research/mou-details" className="aboutpage-mou-link">
                                         Details of MoUs
                                     </Link>
                                 </div>
