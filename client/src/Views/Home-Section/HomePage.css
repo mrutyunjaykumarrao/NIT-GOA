@@ -52,12 +52,13 @@
     position: relative;
     width: calc(100% - 80px); /* Full width minus 40px on each side */
     margin: 0 40px; /* 40px margin from left and right */
-    margin-top: -10px; /* Overlap with navbar by 10px */
+    margin-top: 0px; /* Overlap with navbar by 10px */
     z-index: 1; /* Keep behind navbar */
     aspect-ratio: 2.4 / 1; /* Set 2.4:1 aspect ratio to match 1360x566 images */
     max-height: 70vh; /* Maximum height constraint */
     min-height: 400px; /* Minimum height for smaller screens */
     max-width: 1360px; /* Match your image width */
+    padding: 20px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -1287,288 +1288,7 @@
     background: rgba(255, 255, 255, 1);
 }
 
-/* Responsive Design */
-@media (max-width: 1200px) {
-    .hero-section {
-        width: calc(100% - 60px);
-        margin: 0 30px;
-    }
-}
 
-@media (max-width: 1024px) {
-    .hero-section {
-        width: calc(100% - 40px);
-        margin: 0 20px;
-    }
-}
-
-@media (max-width: 900px) {
-    .hero-section {
-        margin: 0 20px;
-        width: calc(100% - 40px);
-        aspect-ratio: 2.2 / 1; /* Slightly adjust for smaller screens */
-    }
-}
-
-@media (max-width: 768px) {
-    .hero-section {
-        margin: 0 15px;
-        width: calc(100% - 30px);
-        min-height: 250px;
-        aspect-ratio: 2.0 / 1; /* More compact for mobile */
-        max-width: none; /* Remove max-width constraint on mobile */
-    }
-    
-    .hero-images-wrapper {
-        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    
-    .hero-campus-image {
-        /* Maintain cover fit on mobile */
-        object-fit: cover;
-        object-position: center;
-    }
-    
-    .hero-nav-arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-    }
-    
-    .hero-nav-left {
-        left: 10px;
-    }
-    
-    .hero-nav-right {
-        right: 10px;
-    }
-    
-    .hero-indicators {
-        bottom: 15px;
-    }
-    
-    .hero-indicator {
-        width: 10px;
-        height: 10px;
-    }
-
-    .hero-title {
-        font-size: 2.5rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-    }
-    
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-    
-    .hero-btn {
-        width: 250px;
-        padding: 12px 25px;
-    }
-    
-    .hero-content {
-        padding: 0 15px;
-    }
-
-    .three-column-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
-    .placement-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
-    .homepage .about-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
-    .homepage .about-text {
-        padding: 10px;
-    }
-
-    .homepage .about-buttons {
-        justify-content: center;
-    }
-
-    .stats-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 25px;
-        padding: 0 10px;
-    }
-    
-    .stat-item {
-        padding: 40px 25px;
-        min-height: 170px;
-    }
-    
-    .homepage-stat-number {
-        font-size: 3.2rem;
-    }
-
-    .announcements-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .announcements-section {
-        padding: 60px 0;
-    }
-    
-    .announcement-marquee {
-        margin: 0 auto 30px;
-    }
-    
-    .announcement-card {
-        border-radius: 8px;
-        min-height: 70px;
-        margin-bottom: 20px;
-    }
-    
-    .notice-badge {
-        width: 80px;
-    }
-    
-    .notice-text {
-        font-size: 0.8rem;
-        letter-spacing: 0.3px;
-    }
-    
-    .announcement-content {
-        padding: 20px 25px 20px 100px;
-        min-height: 70px;
-    }
-    
-    .announcement-text {
-        font-size: 1rem;
-        line-height: 1.5;
-    }
-    
-    .announcement-indicators {
-        gap: 8px;
-    }
-    
-    .announcement-dot {
-        width: 10px;
-        height: 10px;
-    }
-
-    .three-column-section {
-        padding: 60px 0;
-    }
-
-    .placement-section {
-        padding: 60px 0;
-    }
-
-    .homepage .about-section {
-        padding: 60px 0;
-    }
-
-    .statistics-section {
-        padding: 60px 0;
-    }
-
-    .national-portals {
-        padding: 50px 0;
-    }
-
-    .portals-grid {
-        gap: 20px;
-    }
-
-    .portals-grid img {
-        height: 50px;
-        padding: 12px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-section {
-        margin: 0 15px;
-        width: calc(100% - 30px);
-        min-height: 250px;
-        aspect-ratio: 1.4 / 1; /* Maintain reasonable proportions for very small screens */
-    }
-    
-    .hero-campus-image {
-        /* Ensure optimal scaling on very small screens */
-        object-fit: cover;
-        object-position: center;
-    }
-    
-    .hero-nav-arrow {
-        width: 35px;
-        height: 35px;
-        font-size: 14px;
-    }
-    
-    .hero-nav-left {
-        left: 10px;
-    }
-    
-    .hero-nav-right {
-        right: 10px;
-    }
-    
-    .hero-indicators {
-        bottom: 10px;
-        gap: 8px;
-    }
-    
-    .hero-indicator {
-        width: 8px;
-        height: 8px;
-    }
-
-    .hero-title {
-        font-size: 2rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1rem;
-    }
-    
-    .hero-btn {
-        width: 220px;
-    }
-
-    .section-title {
-        font-size: 1.8rem;
-        margin-bottom: 2rem;
-    }
-
-    .homepage-statistics-section {
-        padding: 50px 0;
-    }
-    
-    .homepage-stats-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 0 20px;
-    }
-    
-    .homepage-stat-item {
-        padding: 30px 20px;
-        min-height: 140px;
-    }
-    
-    .homepage-stat-number {
-        font-size: 2.8rem;
-    }
-    
-    .homepage-stat-label {
-        font-size: 0.95rem;
-    }
-}
 
 /* Animations */
 @keyframes slideInLeft {
@@ -1703,6 +1423,7 @@
     min-height: 300px;
     display: flex;
     flex-direction: column;
+    align-items: center; 
 }
 
 #placement-chart {
@@ -2994,6 +2715,308 @@
 /* ===============================
    RESPONSIVE DESIGN
    =============================== */
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .hero-section {
+        width: calc(100% - 60px);
+        margin: 0 30px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero-section {
+        width: calc(100% - 40px);
+        margin: 0 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .hero-section {
+        margin: 0 20px;
+        width: calc(100% - 40px);
+        aspect-ratio: 2.2 / 1; /* Slightly adjust for smaller screens */
+    }
+}
+
+@media (max-width: 768px) and (min-width: 540px) {
+    .hero-section {
+        margin: 0 15px;
+        width: calc(100% - 30px);
+        min-height: 250px;
+        aspect-ratio: 2.0 / 1; /* More compact for mobile */
+        max-width: none; /* Remove max-width constraint on mobile */
+    }
+    
+    .hero-images-wrapper {
+        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .hero-campus-image {
+        /* Maintain cover fit on mobile */
+        object-fit: cover;
+        object-position: center;
+    }
+    
+    .hero-nav-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .hero-nav-left {
+        left: 10px;
+    }
+    
+    .hero-nav-right {
+        right: 10px;
+    }
+    
+    .hero-indicators {
+        bottom: 15px;
+    }
+    
+    .hero-indicator {
+        width: 10px;
+        height: 10px;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .hero-btn {
+        width: 250px;
+        padding: 12px 25px;
+    }
+    
+    .hero-content {
+        padding: 0 15px;
+    }
+
+    .three-column-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .placement-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .homepage .about-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .homepage .about-text {
+        padding: 10px;
+    }
+
+    .homepage .about-buttons {
+        justify-content: center;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        padding: 0 10px;
+    }
+    
+    .stat-item {
+        padding: 40px 25px;
+        min-height: 170px;
+    }
+    
+    .homepage-stat-number {
+        font-size: 3.2rem;
+    }
+
+    .announcements-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .announcements-section {
+        padding: 60px 0;
+    }
+    
+    .announcement-marquee {
+        margin: 0 auto 30px;
+    }
+    
+    .announcement-card {
+        border-radius: 8px;
+        min-height: 70px;
+        margin-bottom: 20px;
+    }
+    
+    .notice-badge {
+        width: 80px;
+    }
+    
+    .notice-text {
+        font-size: 0.7rem;
+        letter-spacing: 0.3px;
+    }
+    
+    .announcement-content {
+        padding: 20px 25px 20px 100px;
+        min-height: 70px;
+    }
+    
+    .announcement-text {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+    
+    .announcement-indicators {
+        gap: 8px;
+    }
+    
+    .announcement-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .three-column-section {
+        padding: 60px 0;
+    }
+
+    .placement-section {
+        padding: 60px 0;
+    }
+
+    .homepage .about-section {
+        padding: 60px 0;
+    }
+
+    .statistics-section {
+        padding: 60px 0;
+    }
+
+    .national-portals {
+        padding: 50px 0;
+    }
+
+    .portals-grid {
+        gap: 20px;
+    }
+
+    .portals-grid img {
+        height: 50px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 539px){
+    .announcement-text {
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
+}
+
+
+@media (max-width: 450px) {
+    .hero-section {
+        margin: 0 15px;
+        width: calc(100% - 30px);
+        min-height: 250px;
+        aspect-ratio: 1.4 / 1; /* Maintain reasonable proportions for very small screens */
+    }
+
+    .hero-campus-image {
+        /* Ensure optimal scaling on very small screens */
+        object-fit: cover;
+        object-position: center;
+    }
+    
+    .hero-nav-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+    
+    .hero-nav-left {
+        left: 10px;
+    }
+    
+    .hero-nav-right {
+        right: 10px;
+    }
+    
+    .hero-indicators {
+        bottom: 10px;
+        gap: 8px;
+    }
+    
+    .hero-indicator {
+        width: 8px;
+        height: 8px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hero-btn {
+        width: 220px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+    }
+    
+    .announcement-text {
+        font-size: 0.6rem;
+        line-height: 1.5;
+    }
+
+
+    .homepage-statistics-section {
+        padding: 50px 0;
+    }
+    
+    .homepage-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 20px;
+    }
+    
+    .homepage-stat-item {
+        padding: 30px 20px;
+        min-height: 140px;
+    }
+    
+    .homepage-stat-number {
+        font-size: 2.8rem;
+    }
+    
+    .homepage-stat-label {
+        font-size: 0.95rem;
+    }
+}
+
+
+
+
+
 
 /* Large screens (1440px+) */
 @media (min-width: 1440px) {
