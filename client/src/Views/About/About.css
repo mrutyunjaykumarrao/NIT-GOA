@@ -12,7 +12,7 @@
   --about-secondary-blue-800: #0F3460;
 
   /* Neutrals */
-  --about-white: #ffffff;
+  --about-white: #FFFFFF;
   --about-gray-50: #F8F9FA;
   --about-gray-100: #F1F3F4;
   --about-gray-200: #E9ECEF;
@@ -271,6 +271,14 @@
 .aboutpage-content-body {
   padding: 3rem;
   background: var(--about-white);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutpage-content-description {
+  flex: 1;
+  margin-bottom: 2rem;
 }
 
 .aboutpage-content-description h4 {
@@ -320,7 +328,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Vision Mission Grid */
+/* Vision Mission Grid - UPDATED WITH FLEXBOX */
 .aboutpage-vision-mission-section {
   margin-bottom: 4rem;
 }
@@ -329,6 +337,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2.5rem;
+  align-items: stretch;
 }
 
 .aboutpage-vision-content,
@@ -339,6 +348,10 @@
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid rgba(46, 134, 193, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 400px;
 }
 
 .aboutpage-vision-content:hover,
@@ -353,6 +366,7 @@
   padding: 2rem 2.5rem;
   position: relative;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .aboutpage-mission-header {
@@ -361,6 +375,7 @@
   padding: 2rem 2.5rem;
   position: relative;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .aboutpage-vision-header::before,
@@ -378,6 +393,14 @@
 .aboutpage-vision-content:hover .aboutpage-vision-header::before,
 .aboutpage-mission-content:hover .aboutpage-mission-header::before {
   left: 100%;
+}
+
+.aboutpage-vision-header h3,
+.aboutpage-mission-header h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--about-white);
+  margin: 0;
 }
 
 /* Programs Section */
@@ -612,7 +635,15 @@
 .aboutpage-admission-description {
   margin-bottom: 2.5rem;
 }
-
+.aboutpage-admission-description h4 {
+    color: var(--about-primary-blue-dark);
+}
+.aboutpage-research-description h4 {
+    color: var(--about-primary-blue-dark);
+}
+.aboutpage-placement-description h4 {
+    color: var(--about-primary-blue-dark);
+}
 .aboutpage-admission-details-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -909,7 +940,7 @@
   color: var(--about-white);
 }
 
-/* Outreach & Student Life Grid */
+/* Outreach & Student Life Grid - UPDATED WITH FLEXBOX */
 .aboutpage-outreach-section {
   margin-bottom: 4rem;
 }
@@ -918,6 +949,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2.5rem;
+  align-items: stretch;
 }
 
 .aboutpage-outreach-content,
@@ -928,6 +960,10 @@
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid rgba(46, 134, 193, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 350px;
 }
 
 .aboutpage-outreach-content:hover,
@@ -942,6 +978,7 @@
   padding: 2rem 2.5rem;
   position: relative;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .aboutpage-student-life-header {
@@ -950,6 +987,7 @@
   padding: 2rem 2.5rem;
   position: relative;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .aboutpage-outreach-header::before,
@@ -977,9 +1015,19 @@
   margin: 0;
 }
 
+/* Content body with flexbox for proper spacing */
+.aboutpage-outreach-grid .aboutpage-content-body,
+.aboutpage-collaborations-grid .aboutpage-content-body {
+  padding: 2rem 2.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 .aboutpage-outreach-link-wrapper {
   text-align: center;
-  margin-top: 1.5rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
 }
 
 .aboutpage-outreach-link {
@@ -1000,7 +1048,7 @@
   color: var(--about-white);
 }
 
-/* Collaborations & Culture Grid */
+/* Collaborations & Culture Grid - UPDATED WITH FLEXBOX */
 .aboutpage-collaborations-section {
   margin-bottom: 4rem;
 }
@@ -1009,6 +1057,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2.5rem;
+  align-items: stretch;
 }
 
 .aboutpage-mou-content,
@@ -1019,6 +1068,10 @@
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid rgba(46, 134, 193, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 350px;
 }
 
 .aboutpage-mou-content:hover,
@@ -1033,6 +1086,7 @@
   padding: 2rem 2.5rem;
   position: relative;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .aboutpage-culture-header {
@@ -1041,6 +1095,7 @@
   padding: 2rem 2.5rem;
   position: relative;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .aboutpage-mou-header::before,
@@ -1071,7 +1126,8 @@
 .aboutpage-mou-link-wrapper,
 .aboutpage-culture-link-wrapper {
   text-align: center;
-  margin-top: 1.5rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
 }
 
 .aboutpage-mou-link {
@@ -1363,6 +1419,17 @@
   .aboutpage-culture-header h3 {
     font-size: 1.5rem;
   }
+
+  .aboutpage-outreach-grid .aboutpage-content-body,
+  .aboutpage-collaborations-grid .aboutpage-content-body {
+    padding: 1.5rem 2rem;
+  }
+
+  .aboutpage-outreach-link-wrapper,
+  .aboutpage-mou-link-wrapper,
+  .aboutpage-culture-link-wrapper {
+    padding-top: 1rem;
+  }
 }
 
 /* 420px - 480px */
@@ -1441,6 +1508,13 @@
   .aboutpage-culture-header {
     padding: 1.25rem 1.5rem;
   }
+
+  .aboutpage-outreach-content,
+  .aboutpage-student-life-content,
+  .aboutpage-mou-content,
+  .aboutpage-culture-content {
+    min-height: 300px;
+  }
 }
 
 /* Less than 420px */
@@ -1481,7 +1555,7 @@
 .aboutpage-collaborations-grid{
     grid-template-columns: 1fr;
     gap: 1.5rem;
-}
+  }
 
   .aboutpage-hero-subtitle {
     font-size: 1rem;
@@ -1562,6 +1636,18 @@
     padding: 0.75rem 1.5rem;
     font-size: 0.9rem;
   }
+
+  .aboutpage-outreach-content,
+  .aboutpage-student-life-content,
+  .aboutpage-mou-content,
+  .aboutpage-culture-content {
+    min-height: auto;
+  }
+
+  .aboutpage-outreach-grid .aboutpage-content-body,
+  .aboutpage-collaborations-grid .aboutpage-content-body {
+    padding: 1rem;
+  }
 }
 
 /* Print Styles */
@@ -1637,7 +1723,7 @@
   }
 }
 
-/* Dark mode specific overrides */
+/* Dark mode specific overrides with higher specificity */
 [data-theme="dark"] .aboutpage-page {
   background: linear-gradient(135deg, var(--about-secondary-blue-50) 0%, var(--about-gray-50) 100%);
 }
@@ -1682,27 +1768,43 @@
   border-color: var(--about-gray-200);
 }
 
-[data-theme="dark"] .aboutpage-content-description h4,
-[data-theme="dark"] .aboutpage-program-description h4,
-[data-theme="dark"] .aboutpage-department-card h4,
-[data-theme="dark"] .aboutpage-admission-detail-card h4,
-[data-theme="dark"] .aboutpage-company-highlights h4 {
-  color: var(--about-primary-blue-light);
+/* Enhanced dark mode text color fixes with higher specificity */
+[data-theme="dark"] .aboutpage-page .aboutpage-content-description p,
+[data-theme="dark"] .aboutpage-page .aboutpage-program-description p,
+[data-theme="dark"] .aboutpage-page .aboutpage-admission-detail-card p,
+[data-theme="dark"] .aboutpage-page .aboutpage-admission-detail-card li,
+[data-theme="dark"] .aboutpage-page .aboutpage-company-highlights p,
+[data-theme="dark"] .aboutpage-page .aboutpage-department-link {
+  color: var(--about-gray-700) !important;
 }
 
-[data-theme="dark"] .aboutpage-section-title {
-  color: var(--about-primary-blue-light);
+[data-theme="dark"] .aboutpage-page .aboutpage-content-body p,
+[data-theme="dark"] .aboutpage-page .aboutpage-placement-content p,
+[data-theme="dark"] .aboutpage-page .aboutpage-research-content p,
+[data-theme="dark"] .aboutpage-page .aboutpage-admission-content p {
+  color: var(--about-gray-700) !important;
 }
 
-[data-theme="dark"] .aboutpage-content-description p,
-[data-theme="dark"] .aboutpage-program-description p,
-[data-theme="dark"] .aboutpage-admission-detail-card p,
-[data-theme="dark"] .aboutpage-admission-detail-card li,
-[data-theme="dark"] .aboutpage-company-highlights p,
-[data-theme="dark"] .aboutpage-department-link {
-  color: var(--about-gray-700);
+[data-theme="dark"] .aboutpage-page .aboutpage-content-description h4,
+[data-theme="dark"] .aboutpage-page .aboutpage-program-description h4,
+[data-theme="dark"] .aboutpage-page .aboutpage-admission-description h4,
+[data-theme="dark"] .aboutpage-page .aboutpage-research-description h4,
+[data-theme="dark"] .aboutpage-page .aboutpage-placement-description h4,
+[data-theme="dark"] .aboutpage-page .aboutpage-department-card h4,
+[data-theme="dark"] .aboutpage-page .aboutpage-admission-detail-card h4,
+[data-theme="dark"] .aboutpage-page .aboutpage-company-highlights h4 {
+  color: var(--about-primary-blue-light) !important;
 }
 
-[data-theme="dark"] .aboutpage-department-link:hover {
-  color: var(--about-primary-blue-light);
+[data-theme="dark"] .aboutpage-page .aboutpage-section-title {
+  color: var(--about-primary-blue-light) !important;
+}
+
+[data-theme="dark"] .aboutpage-page .aboutpage-content-title,
+[data-theme="dark"] .aboutpage-page .aboutpage-program-title {
+  color: var(--about-white) !important;
+}
+
+[data-theme="dark"] .aboutpage-page .aboutpage-department-link:hover {
+  color: var(--about-primary-blue-light) !important;
 }
