@@ -1,704 +1,1708 @@
-/* About Page Styles - Based on M.Tech Page Design */
+/* About Page Specific Styles - Complete Redesign with Homepage Color Palette */
 :root {
-    /* Primary Blues - Based on NIT Goa Theme */
-    --primary-blue: #2E86C1;
-    --primary-blue-light: #5DADE2;
-    --primary-blue-dark: #1B4F72;
-    
-    /* Secondary Blues */
-    --secondary-blue-50: #EBF5FB;
-    --secondary-blue-100: #D6EAF8;
-    --secondary-blue-200: #AED6F1;
-    --secondary-blue-800: #0F3460;
-    
-    /* Neutrals */
-    --white: #FFFFFF;
-    --gray-50: #F8F9FA;
-    --gray-100: #F1F3F4;
-    --gray-200: #E9ECEF;
-    --gray-600: #6C757D;
-    --gray-700: #495057;
-    --gray-800: #343A40;
-    
-    /* Accents */
-    --accent-orange: #FF6B35;
-    --accent-green: #28A745;
-    --success-green: #198754;
-    --shadow-light: rgba(0, 0, 0, 0.08);
-    --shadow-medium: rgba(0, 0, 0, 0.12);
-    --shadow-strong: rgba(0, 0, 0, 0.16);
+  /* Primary Blues - Based on NIT Goa Theme */
+  --about-primary-blue: #2E86C1;
+  --about-primary-blue-light: #5DADE2;
+  --about-primary-blue-dark: #1B4F72;
+
+  /* Secondary Blues */
+  --about-secondary-blue-50: #EBF5FB;
+  --about-secondary-blue-100: #D6EAF8;
+  --about-secondary-blue-200: #AED6F1;
+  --about-secondary-blue-800: #0F3460;
+
+  /* Neutrals */
+  --about-white: #ffffff;
+  --about-gray-50: #F8F9FA;
+  --about-gray-100: #F1F3F4;
+  --about-gray-200: #E9ECEF;
+  --about-gray-300: #DEE2E6;
+  --about-gray-600: #6C757D;
+  --about-gray-700: #495057;
+  --about-gray-800: #343A40;
+  --about-gray-900: #212529;
+
+  /* Accents */
+  --about-accent-orange: #FF6B35;
+  --about-accent-green: #28A745;
+  --about-accent-red: #DC3545;
+  --about-success-green: #198754;
+
+  /* Shadows */
+  --about-shadow-light: rgba(46, 134, 193, 0.08);
+  --about-shadow-medium: rgba(46, 134, 193, 0.12);
+  --about-shadow-strong: rgba(46, 134, 193, 0.16);
+  --about-shadow-card: 0 4px 12px rgba(46, 134, 193, 0.1);
+  --about-shadow-card-hover: 0 8px 25px rgba(46, 134, 193, 0.15);
+
+  /* Gradients */
+  --about-gradient-primary: linear-gradient(135deg, var(--about-primary-blue) 0%, var(--about-primary-blue-dark) 100%);
+  --about-gradient-secondary: linear-gradient(135deg, var(--about-secondary-blue-50) 0%, var(--about-white) 100%);
 }
 
-.about-page {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: var(--gray-800);
-    background: linear-gradient(135deg, var(--secondary-blue-50) 0%, var(--white) 100%);
-    min-height: 100vh;
+/* Dark Mode Variables */
+[data-theme="dark"] {
+  --about-white: #ffffff;
+  --about-gray-50: #1e293b;
+  --about-gray-100: #334155;
+  --about-gray-200: #475569;
+  --about-gray-300: #64748b;
+  --about-gray-600: #cbd5e1;
+  --about-gray-700: #e2e8f0;
+  --about-gray-800: #f1f5f9;
+  --about-gray-900: #f8fafc;
+  --about-secondary-blue-50: #0f1726;
+  --about-secondary-blue-100: #1e2a3a;
+  --about-secondary-blue-200: #334155;
+  --about-shadow-light: rgba(59, 130, 246, 0.08);
+  --about-shadow-medium: rgba(59, 130, 246, 0.12);
+  --about-shadow-strong: rgba(59, 130, 246, 0.16);
+  --about-shadow-card: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --about-shadow-card-hover: 0 8px 25px rgba(59, 130, 246, 0.2);
+  --about-gradient-secondary: linear-gradient(135deg, var(--about-secondary-blue-50) 0%, var(--about-gray-50) 100%);
+  --about-primary-blue-light: #93c5fd;
+  --about-primary-blue: #60a5fa;
 }
 
-.about-container {
-    max-width: 1800px;
-    margin: 0 auto;
-    padding: 0 1rem;
+/* Main Page Container */
+.aboutpage-page {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--about-gray-800);
+  background: var(--about-gradient-secondary);
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.aboutpage-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="aboutgrain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%232E86C1" opacity="0.05"/><circle cx="75" cy="75" r="1" fill="%235DADE2" opacity="0.03"/></pattern></defs><rect width="100" height="100" fill="url(%23aboutgrain)"/></svg>');
+  pointer-events: none;
+  z-index: 0;
+}
+
+.aboutpage-container {
+  max-width: 95%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 /* Hero Section */
-.about-hero {
-    text-align: center;
-    padding: 4rem 0 3rem;
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
-    margin: 0 -2rem 3rem;
-    color: var(--white);
-    position: relative;
-    overflow: hidden;
+.aboutpage-hero {
+  text-align: center;
+  padding: 5rem 0 4rem;
+  background: var(--about-gradient-primary);
+  margin: 0 calc(-50vw + 50%) 4rem;
+  color: var(--about-white);
+  position: relative;
+  overflow: hidden;
 }
 
-.about-hero::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-    animation: float 20s ease-in-out infinite;
+.aboutpage-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="herograin" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23herograin)"/></svg>');
+  animation: aboutpage-float 20s ease-in-out infinite;
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(180deg); }
+@keyframes aboutpage-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
 }
 
-.hero-content {
-    position: relative;
-    z-index: 2;
+.aboutpage-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
-.about-hero h1 {
-    font-size: 3.8rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: var(--white);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    line-height: 1.1;
+.aboutpage-hero h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--about-white);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.1;
 }
 
-.hero-subtitle {
-    font-size: 1.4rem;
-    color: var(--white);
-    opacity: 0.95;
-    max-width: 600px;
-    margin: 0 auto;
-    font-weight: 400;
-    line-height: 1.4;
-    text-align: center;
+.aboutpage-hero-subtitle {
+  font-size: 1.5rem;
+  color: var(--about-white);
+  opacity: 0.95;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: center;
 }
 
-.about-info {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 1.5rem;
-    flex-wrap: wrap;
+.aboutpage-info {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
 }
 
-.about-label {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-weight: 600;
-    font-size: 0.9rem;
+.aboutpage-label {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 1rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.about-desc {
-    background: rgba(255, 255, 255, 0.15);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
+.aboutpage-desc {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Section Titles */
-.section-title {
-    text-align: center;
-    font-size: 2.8rem;
-    font-weight: 600;
-    margin-bottom: 3rem;
-    color: var(--primary-blue-dark);
-    position: relative;
-    line-height: 1.2;
+.aboutpage-section-title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: var(--about-primary-blue-dark);
+  position: relative;
+  line-height: 1.2;
+}
+
+.aboutpage-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--about-gradient-primary);
+  border-radius: 2px;
+}
+
+/* Common Card Styles */
+.aboutpage-card {
+  background: var(--about-white);
+  border-radius: 20px;
+  box-shadow: var(--about-shadow-card);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 2.5rem;
+  border: 1px solid rgba(46, 134, 193, 0.1);
+}
+
+.aboutpage-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--about-shadow-card-hover);
+}
+
+.aboutpage-card-header {
+  background: var(--about-gradient-primary);
+  color: var(--about-white);
+  padding: 2.5rem 3rem;
+  margin-bottom: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.aboutpage-card-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.aboutpage-card:hover .aboutpage-card-header::before {
+  left: 100%;
+}
+
+.aboutpage-content-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--about-white);
+  line-height: 1.2;
+}
+
+.aboutpage-content-meta {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.aboutpage-content-meta span {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 1rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.aboutpage-content-body {
+  padding: 3rem;
+  background: var(--about-white);
+}
+
+.aboutpage-content-description h4 {
+  color: var(--about-primary-blue-dark);
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  border-bottom: 3px solid var(--about-secondary-blue-200);
+  padding-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.aboutpage-content-description p {
+  color: var(--about-gray-700);
+  line-height: 1.8;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  text-align: justify;
 }
 
 /* Institute Section */
-.institute-section {
-    margin-bottom: 4rem;
+.aboutpage-institute-section {
+  margin-bottom: 4rem;
 }
 
-.institute-content {
-    max-width: 100%;
-    margin: 0 auto;
+.aboutpage-institute-content {
+  max-width: 100%;
+  margin: 0 auto;
 }
 
-.institute-header, .program-header, .admission-header, .placement-header {
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
-    color: var(--white);
-    padding: 2rem 2.5rem;
-    margin-bottom: 0;
-    border-radius: 16px 16px 0 0;
+.aboutpage-institute-header {
+  background: var(--about-gradient-primary);
+  color: var(--about-white);
+  padding: 2.5rem 3rem;
+  margin-bottom: 0;
+  border-radius: 20px 20px 0 0;
 }
 
-.content-title, .program-title {
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: var(--white);
-    line-height: 1.2;
-}
-
-.content-meta, .program-meta {
-    display: flex;
-    gap: 2.5rem;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.content-meta span, .program-meta span {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-
-.content-body, .program-content {
-    padding: 1rem 2.5rem 2rem;
-    background: var(--white);
-    border-radius: 0 0 16px 16px;
-    box-shadow: 0 4px 20px var(--shadow-light);
-}
-
-.content-description h4, .program-description h4 {
-    color: var(--primary-blue-dark);
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin-bottom: 1.2rem;
-    border-bottom: 2px solid var(--secondary-blue-200);
-    padding-bottom: 0.5rem;
-    line-height: 1.3;
-}
-
-.content-description p, .program-description p {
-    color: var(--gray-700);
-    line-height: 1.7;
-    font-size: 1.05rem;
-    margin-bottom: 1rem;
+.aboutpage-location,
+.aboutpage-type {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 1rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Vision Mission Grid */
-.vision-mission-section {
-    margin-bottom: 4rem;
+.aboutpage-vision-mission-section {
+  margin-bottom: 4rem;
 }
 
-.vision-mission-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+.aboutpage-vision-mission-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
 }
 
-.vision-content, .mission-content {
-    background: var(--white);
-    border-radius: 16px;
-    box-shadow: 0 4px 20px var(--shadow-light);
-    overflow: hidden;
+.aboutpage-vision-content,
+.aboutpage-mission-content {
+  background: var(--about-white);
+  border-radius: 20px;
+  box-shadow: var(--about-shadow-card);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(46, 134, 193, 0.1);
 }
 
-.vision-header {
-    background: linear-gradient(135deg, var(--accent-green) 0%, #1e7e34 100%);
-    color: var(--white);
-    padding: 1.5rem 2rem;
+.aboutpage-vision-content:hover,
+.aboutpage-mission-content:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--about-shadow-card-hover);
 }
 
-.mission-header {
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
-    color: var(--white);
-    padding: 1.5rem 2rem;
+.aboutpage-vision-header {
+  background: var(--about-gradient-primary);
+  color: var(--about-white);
+  padding: 2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
 }
 
-.vision-header h3, .mission-header h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--white);
-    margin: 0;
+.aboutpage-mission-header {
+  background: var(--about-gradient-primary);
+  color: var(--about-white);
+  padding: 2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.aboutpage-vision-header::before,
+.aboutpage-mission-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.aboutpage-vision-content:hover .aboutpage-vision-header::before,
+.aboutpage-mission-content:hover .aboutpage-mission-header::before {
+  left: 100%;
 }
 
 /* Programs Section */
-.programs-section {
-    margin-bottom: 4rem;
+.aboutpage-programs-section {
+  margin-bottom: 4rem;
 }
 
-.program-section {
-    margin-bottom: 3rem;
-    border-bottom: 2px solid var(--secondary-blue-200);
-    padding-bottom: 2rem;
+.aboutpage-program-section {
+  margin-bottom: 3rem;
 }
 
-.program-section:last-child {
-    border-bottom: none;
+.aboutpage-program-header {
+  background: var(--about-gradient-primary);
+  color: var(--about-white);
+  padding: 2.5rem 3rem;
+  margin-bottom: 0;
+  border-radius: 20px 20px 0 0;
+  position: relative;
+  overflow: hidden;
 }
 
-.departments-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 2rem;
-    margin-bottom: 4rem;
-    max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
-    align-items: stretch;
+.aboutpage-program-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
 }
 
-.department-card {
-    background: var(--gray-50);
-    border: 1px solid var(--gray-200);
-    border-radius: 12px;
-    padding: 1.5rem;
-    transition: all 0.3s ease;
+.aboutpage-program-section:hover .aboutpage-program-header::before {
+  left: 100%;
 }
 
-.department-card:hover {
-    background: var(--white);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px var(--shadow-light);
+.aboutpage-program-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--about-white);
+  line-height: 1.2;
 }
 
-.department-card h4 {
-    color: var(--primary-blue-dark);
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    text-align: center;
-    border-bottom: 2px solid var(--secondary-blue-200);
-    padding-bottom: 0.5rem;
+.aboutpage-program-meta {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.department-card ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.aboutpage-program-meta span {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 1rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.department-card li {
-    color: var(--gray-700);
-    padding: 0.5rem 0;
-    border-bottom: 1px solid var(--gray-200);
-    position: relative;
-    padding-left: 1.5rem;
+.aboutpage-program-content {
+  padding: 3rem;
+  background: var(--about-white);
+  border-radius: 0 0 20px 20px;
+  box-shadow: var(--about-shadow-card);
+  border: 1px solid rgba(46, 134, 193, 0.1);
+  border-top: none;
 }
 
-.department-card li:last-child {
-    border-bottom: none;
+.aboutpage-program-description h4 {
+  color: var(--about-primary-blue-dark);
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  border-bottom: 3px solid var(--about-secondary-blue-200);
+  padding-bottom: 0.75rem;
+  line-height: 1.3;
 }
 
-.department-card li::before {
-    content: '▶';
-    position: absolute;
-    left: 0;
-    color: var(--primary-blue);
-    font-size: 0.8rem;
+.aboutpage-program-description p {
+  color: var(--about-gray-700);
+  line-height: 1.8;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+.aboutpage-departments-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2.5rem;
+  align-items: stretch;
+}
+
+.aboutpage-department-card {
+  background: var(--about-gray-50);
+  border: 1px solid var(--about-gray-200);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.aboutpage-department-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(46, 134, 193, 0.05), transparent);
+  transition: left 0.6s ease;
+}
+
+.aboutpage-department-card:hover::before {
+  left: 100%;
+}
+
+.aboutpage-department-card:hover {
+  background: var(--about-white);
+  transform: translateY(-5px);
+  box-shadow: var(--about-shadow-card);
+  border-color: var(--about-primary-blue-light);
+}
+
+.aboutpage-department-card h4 {
+  color: var(--about-primary-blue-dark);
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid var(--about-secondary-blue-200);
+  padding-bottom: 0.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+.aboutpage-department-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.aboutpage-department-card li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--about-gray-200);
+  position: relative;
+  padding-left: 2rem;
+  transition: all 0.3s ease;
+}
+
+.aboutpage-department-card li:last-child {
+  border-bottom: none;
+}
+
+.aboutpage-department-card li::before {
+  content: '▶';
+  position: absolute;
+  left: 0;
+  color: var(--about-primary-blue);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.aboutpage-department-card:hover li::before {
+  color: var(--about-primary-blue-dark);
+  transform: scale(1.2);
+}
+
+.aboutpage-department-link {
+  color: var(--about-gray-700);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+
+.aboutpage-department-link:hover {
+  color: var(--about-primary-blue);
+  text-decoration: underline;
 }
 
 /* Admissions Section */
-.admissions-section {
-    margin-bottom: 4rem;
+.aboutpage-admissions-section {
+  margin-bottom: 4rem;
 }
 
-.admission-section {
-    margin-bottom: 2rem;
+.aboutpage-admission-section {
+  margin-bottom: 3rem;
 }
 
-.admission-content {
-    padding: 1rem 2.5rem 2rem;
-    background: var(--white);
-    border-radius: 0 0 16px 16px;
-    box-shadow: 0 4px 20px var(--shadow-light);
+.aboutpage-admission-header {
+  background: var(--about-gradient-primary);
+  color: var(--about-white);
+  padding: 2.5rem 3rem;
+  margin-bottom: 0;
+  border-radius: 20px 20px 0 0;
+  position: relative;
+  overflow: hidden;
 }
 
-.admission-description {
-    margin-bottom: 2rem;
+.aboutpage-admission-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
 }
 
-.admission-details-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-top: 2rem;
+.aboutpage-admission-section:hover .aboutpage-admission-header::before {
+  left: 100%;
 }
 
-.admission-detail-card {
-    background: var(--gray-50);
-    border: 1px solid var(--gray-200);
-    border-radius: 12px;
-    padding: 1.5rem;
-    transition: all 0.3s ease;
+.aboutpage-admission-content {
+  padding: 3rem;
+  background: var(--about-white);
+  border-radius: 0 0 20px 20px;
+  box-shadow: var(--about-shadow-card);
+  border: 1px solid rgba(46, 134, 193, 0.1);
+  border-top: none;
 }
 
-.admission-detail-card:hover {
-    background: var(--white);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px var(--shadow-light);
+.aboutpage-admission-description {
+  margin-bottom: 2.5rem;
 }
 
-.admission-detail-card h4 {
-    color: var(--primary-blue-dark);
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    text-align: center;
-    border-bottom: 2px solid var(--secondary-blue-200);
-    padding-bottom: 0.5rem;
+.aboutpage-admission-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
 }
 
-.admission-detail-card p {
-    margin-bottom: 1rem;
-    font-size: 1rem;
-    color: var(--gray-700);
+.aboutpage-admission-detail-card {
+  background: var(--about-gray-50);
+  border: 1px solid var(--about-gray-200);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
-.admission-detail-card ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.aboutpage-admission-detail-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(46, 134, 193, 0.05), transparent);
+  transition: left 0.6s ease;
 }
 
-.admission-detail-card li {
-    color: var(--gray-700);
-    padding: 0.4rem 0;
-    font-size: 0.95rem;
-    position: relative;
-    padding-left: 1.5rem;
+.aboutpage-admission-detail-card:hover::before {
+  left: 100%;
 }
 
-.admission-detail-card li::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: var(--primary-blue);
-    font-weight: bold;
-    font-size: 1.2rem;
+.aboutpage-admission-detail-card:hover {
+  background: var(--about-white);
+  transform: translateY(-5px);
+  box-shadow: var(--about-shadow-card);
+  border-color: var(--about-primary-blue-light);
 }
 
-/* Infrastructure & Research Grid */
-.infrastructure-section {
-    margin-bottom: 4rem;
+.aboutpage-admission-detail-card h4 {
+  color: var(--about-primary-blue-dark);
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid var(--about-secondary-blue-200);
+  padding-bottom: 0.75rem;
+  position: relative;
+  z-index: 1;
 }
 
-.infrastructure-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+.aboutpage-admission-detail-card p {
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+  color: var(--about-gray-700);
+  text-align: justify;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
 }
 
-.infrastructure-content, .research-content {
-    background: var(--white);
-    border-radius: 16px;
-    box-shadow: 0 4px 20px var(--shadow-light);
-    overflow: hidden;
+.aboutpage-admission-detail-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  position: relative;
+  z-index: 1;
 }
 
-.infrastructure-header {
-    background: linear-gradient(135deg, var(--accent-orange) 0%, #e67e22 100%);
-    color: var(--white);
-    padding: 1.5rem 2rem;
+.aboutpage-admission-detail-card li {
+  color: var(--about-gray-700);
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  position: relative;
+  padding-left: 2rem;
+  line-height: 1.6;
 }
 
-.research-header {
-    background: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--secondary-blue-800) 100%);
-    color: var(--white);
-    padding: 1.5rem 2rem;
+.aboutpage-admission-detail-card li::before {
+  content: '●';
+  position: absolute;
+  left: 0;
+  color: var(--about-primary-blue);
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
-.infrastructure-header h3, .research-header h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--white);
-    margin: 0;
+.aboutpage-admission-link-wrapper {
+  margin-top: 1.5rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.aboutpage-admission-link {
+  display: inline-block;
+  background: var(--about-gradient-primary);
+  color: var(--about-white);
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(46, 134, 193, 0.2);
+}
+
+.aboutpage-admission-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(46, 134, 193, 0.3);
+  color: var(--about-white);
+}
+
+/* Research Section */
+.aboutpage-research-section {
+  margin-bottom: 4rem;
+}
+
+.aboutpage-research-section-content {
+  margin-bottom: 2.5rem;
+}
+
+.aboutpage-research-header {
+  background: var(--about-gradient-primary);
+  color: var(--about-white);
+  padding: 2.5rem 3rem;
+  margin-bottom: 0;
+  border-radius: 20px 20px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.aboutpage-research-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.aboutpage-research-section-content:hover .aboutpage-research-header::before {
+  left: 100%;
+}
+
+.aboutpage-research-content {
+  padding: 3rem;
+  background: var(--about-white);
+  border-radius: 0 0 20px 20px;
+  box-shadow: var(--about-shadow-card);
+  border: 1px solid rgba(46, 134, 193, 0.1);
+  border-top: none;
+}
+
+.aboutpage-research-description {
+  margin-bottom: 2.5rem;
+}
+
+.aboutpage-research-link-wrapper {
+  text-align: center;
+}
+
+.aboutpage-research-link {
+  display: inline-block;
+  background: var(--about-gradient-primary);
+  color: var(--about-white);
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(15, 52, 96, 0.2);
+}
+
+.aboutpage-research-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(15, 52, 96, 0.3);
+  color: var(--about-white);
 }
 
 /* Placement Section */
-.placement-section {
-    margin-bottom: 4rem;
+.aboutpage-placement-section {
+  margin-bottom: 4rem;
 }
 
-.placement-section-content {
-    margin-bottom: 2rem;
+.aboutpage-placement-section-content {
+  margin-bottom: 2.5rem;
 }
 
-.placement-content {
-    padding: 1rem 2.5rem 2rem;
-    background: var(--white);
-    border-radius: 0 0 16px 16px;
-    box-shadow: 0 4px 20px var(--shadow-light);
+.aboutpage-placement-header {
+  background: var(--about-gradient-primary);
+  color: var(--about-white);
+  padding: 2.5rem 3rem;
+  margin-bottom: 0;
+  border-radius: 20px 20px 0 0;
+  position: relative;
+  overflow: hidden;
 }
 
-.placement-description {
-    margin-bottom: 2rem;
+.aboutpage-placement-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
 }
 
-.company-highlights {
-    background: var(--secondary-blue-50);
-    border: 1px solid var(--secondary-blue-200);
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin-top: 1.5rem;
+.aboutpage-placement-section-content:hover .aboutpage-placement-header::before {
+  left: 100%;
 }
 
-.company-highlights h4 {
-    color: var(--primary-blue-dark);
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+.aboutpage-placement-content {
+  padding: 3rem;
+  background: var(--about-white);
+  border-radius: 0 0 20px 20px;
+  box-shadow: var(--about-shadow-card);
+  border: 1px solid rgba(46, 134, 193, 0.1);
+  border-top: none;
 }
 
-.company-highlights p {
-    margin: 0;
-    font-style: italic;
-    color: var(--gray-700);
-    line-height: 1.6;
+.aboutpage-placement-description {
+  margin-bottom: 2.5rem;
+}
+
+.aboutpage-company-highlights {
+  background: var(--about-secondary-blue-50);
+  border: 2px solid var(--about-secondary-blue-200);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.aboutpage-company-highlights::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(46, 134, 193, 0.05), transparent);
+  transition: left 0.6s ease;
+}
+
+.aboutpage-company-highlights:hover::before {
+  left: 100%;
+}
+
+.aboutpage-company-highlights h4 {
+  color: var(--about-primary-blue-dark);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.aboutpage-company-highlights p {
+  margin: 0;
+  font-style: italic;
+  color: var(--about-gray-700);
+  line-height: 1.7;
+  text-align: justify;
+  font-size: 1.05rem;
+  position: relative;
+  z-index: 1;
+}
+
+.aboutpage-placement-link-wrapper {
+  text-align: center;
+}
+
+.aboutpage-placement-link {
+  display: inline-block;
+  background: var(--about-gradient-primary);
+  color: var(--about-white);
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(46, 134, 193, 0.2);
+}
+
+.aboutpage-placement-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(46, 134, 193, 0.3);
+  color: var(--about-white);
 }
 
 /* Outreach & Student Life Grid */
-.outreach-section {
-    margin-bottom: 4rem;
+.aboutpage-outreach-section {
+  margin-bottom: 4rem;
 }
 
-.outreach-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+.aboutpage-outreach-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
 }
 
-.outreach-content, .student-life-content {
-    background: var(--white);
-    border-radius: 16px;
-    box-shadow: 0 4px 20px var(--shadow-light);
-    overflow: hidden;
+.aboutpage-outreach-content,
+.aboutpage-student-life-content {
+  background: var(--about-white);
+  border-radius: 20px;
+  box-shadow: var(--about-shadow-card);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(46, 134, 193, 0.1);
 }
 
-.outreach-header {
-    background: linear-gradient(135deg, var(--success-green) 0%, #155724 100%);
-    color: var(--white);
-    padding: 1.5rem 2rem;
+.aboutpage-outreach-content:hover,
+.aboutpage-student-life-content:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--about-shadow-card-hover);
 }
 
-.student-life-header {
-    background: linear-gradient(135deg, #6f42c1 0%, #5a2d91 100%);
-    color: var(--white);
-    padding: 1.5rem 2rem;
+.aboutpage-outreach-header {
+  background: var(--about-gradient-primary);
+  color: var(--about-white);
+  padding: 2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
 }
 
-.outreach-header h3, .student-life-header h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--white);
-    margin: 0;
+.aboutpage-student-life-header {
+  background: var(--about-gradient-primary);
+  color: var(--about-white);
+  padding: 2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.aboutpage-outreach-header::before,
+.aboutpage-student-life-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.aboutpage-outreach-content:hover .aboutpage-outreach-header::before,
+.aboutpage-student-life-content:hover .aboutpage-student-life-header::before {
+  left: 100%;
+}
+
+.aboutpage-outreach-header h3,
+.aboutpage-student-life-header h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--about-white);
+  margin: 0;
+}
+
+.aboutpage-outreach-link-wrapper {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.aboutpage-outreach-link {
+  display: inline-block;
+  background: var(--about-gradient-primary);
+  color: var(--about-white);
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(25, 135, 84, 0.2);
+}
+
+.aboutpage-outreach-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(25, 135, 84, 0.3);
+  color: var(--about-white);
 }
 
 /* Collaborations & Culture Grid */
-.collaborations-section {
-    margin-bottom: 4rem;
+.aboutpage-collaborations-section {
+  margin-bottom: 4rem;
 }
 
-.collaborations-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+.aboutpage-collaborations-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
 }
 
-.mou-content, .culture-content {
-    background: var(--white);
-    border-radius: 16px;
-    box-shadow: 0 4px 20px var(--shadow-light);
-    overflow: hidden;
+.aboutpage-mou-content,
+.aboutpage-culture-content {
+  background: var(--about-white);
+  border-radius: 20px;
+  box-shadow: var(--about-shadow-card);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(46, 134, 193, 0.1);
 }
 
-.mou-header {
-    background: linear-gradient(135deg, #17a2b8 0%, #117a8b 100%);
-    color: var(--white);
-    padding: 1.5rem 2rem;
+.aboutpage-mou-content:hover,
+.aboutpage-culture-content:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--about-shadow-card-hover);
 }
 
-.culture-header {
-    background: linear-gradient(135deg, #fd7e14 0%, #e55a00 100%);
-    color: var(--white);
-    padding: 1.5rem 2rem;
+.aboutpage-mou-header {
+  background: var(--about-gradient-primary);
+  color: var(--about-white);
+  padding: 2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
 }
 
-.mou-header h3, .culture-header h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--white);
-    margin: 0;
+.aboutpage-culture-header {
+  background: var(--about-gradient-primary);
+  color: var(--about-white);
+  padding: 2rem 2.5rem;
+  position: relative;
+  overflow: hidden;
 }
-.mou-header h3, .culture-header h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--white);
-    margin: 0;
+
+.aboutpage-mou-header::before,
+.aboutpage-culture-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.aboutpage-mou-content:hover .aboutpage-mou-header::before,
+.aboutpage-culture-content:hover .aboutpage-culture-header::before {
+  left: 100%;
+}
+
+.aboutpage-mou-header h3,
+.aboutpage-culture-header h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--about-white);
+  margin: 0;
+}
+
+.aboutpage-mou-link-wrapper,
+.aboutpage-culture-link-wrapper {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.aboutpage-mou-link {
+  display: inline-block;
+  background: var(--about-gradient-primary);
+  color: white;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(23, 162, 184, 0.2);
+}
+
+.aboutpage-culture-link {
+  display: inline-block;
+  background: var(--about-gradient-primary);
+  color: var(--about-white);
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(253, 126, 20, 0.2);
+}
+
+.aboutpage-mou-link:hover,
+.aboutpage-culture-link:hover {
+  transform: translateY(-3px);
+  color: var(--about-white);
+}
+
+.aboutpage-mou-link:hover {
+  box-shadow: 0 8px 20px rgba(23, 162, 184, 0.3);
+}
+
+.aboutpage-culture-link:hover {
+  box-shadow: 0 8px 20px rgba(253, 126, 20, 0.3);
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
-    .about-hero {
-        margin: 0 -1rem 2rem;
-        padding: 3rem 0 2rem;
-    }
-    
-    .about-hero h1 {
-        font-size: 3rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.2rem;
-    }
-    
-    .about-info {
-        gap: 1rem;
-    }
-    
-    .vision-mission-grid,
-    .infrastructure-grid,
-    .outreach-grid,
-    .collaborations-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .admission-details-grid,
-    .departments-grid {
-        grid-template-columns: repeat(2, 1fr);
-        max-width: 1000px;
-        gap: 1.5rem;
-    }
+
+/* 2560px+ */
+@media (min-width: 2561px) {
+  .aboutpage-container {
+    max-width: 95%;
+    padding: 0 4rem;
+  }
+  
+  .aboutpage-hero h1 {
+    font-size: 5rem;
+  }
+  
+  .aboutpage-section-title {
+    font-size: 3.5rem;
+  }
+  
+  .aboutpage-departments-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
-@media (max-width: 768px) {
-    .about-container {
-        padding: 0 0.5rem;
-    }
-    
-    .about-hero {
-        margin: 0 -0.5rem 1.5rem;
-        padding: 2.5rem 0 1.5rem;
-    }
-    
-    .about-hero h1 {
-        font-size: 2.5rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.1rem;
-    }
-    
-    .section-title {
-        font-size: 2.2rem;
-        margin-bottom: 2rem;
-    }
-    
-    .institute-header,
-    .program-header,
-    .admission-header,
-    .placement-header {
-        padding: 1.5rem;
-    }
-    
-    .content-title,
-    .program-title {
-        font-size: 1.8rem;
-    }
-    
-    .content-body,
-    .program-content {
-        padding: 0 1.5rem 1.5rem;
-    }
-    
-    .content-meta,
-    .program-meta {
-        gap: 1rem;
-        flex-direction: column;
-    }
-    
-    .about-info {
-        flex-direction: column;
-        gap: 0.5rem;
-        align-items: center;
-    }
-    
-    .vision-header,
-    .mission-header,
-    .infrastructure-header,
-    .research-header,
-    .outreach-header,
-    .student-life-header,
-    .mou-header,
-    .culture-header {
-        padding: 1rem 1.5rem;
-    }
-    
-    .vision-header h3,
-    .mission-header h3,
-    .infrastructure-header h3,
-    .research-header h3,
-    .outreach-header h3,
-    .student-life-header h3,
-    .mou-header h3,
-    .culture-header h3 {
-        font-size: 1.3rem;
-    }
+/* 2240px - 2560px */
+@media (min-width: 2241px) and (max-width: 2560px) {
+  .aboutpage-container {
+    max-width: 95%;
+    padding: 0 3rem;
+  }
+  
+  .aboutpage-hero h1 {
+    font-size: 4.5rem;
+  }
+  
+  .aboutpage-departments-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-@media (max-width: 480px) {
-    .about-hero h1 {
-        font-size: 2rem;
+/* 1920px - 2240px */
+@media (min-width: 1921px) and (max-width: 2240px) {
+  .aboutpage-container {
+    max-width: 95%;
+    padding: 0 2.5rem;
+  }
+  
+  .aboutpage-hero h1 {
+    font-size: 4.2rem;
+  }
+  
+  .aboutpage-departments-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 1740px - 1920px */
+@media (min-width: 1741px) and (max-width: 1920px) {
+  .aboutpage-container {
+    max-width: 95%;
+    padding: 0 2.5rem;
+  }
+  
+  .aboutpage-hero h1 {
+    font-size: 4rem;
+  }
+}
+
+/* 1440px - 1740px */
+@media (min-width: 1441px) and (max-width: 1740px) {
+  .aboutpage-container {
+    max-width: 95%;
+    padding: 0 2rem;
+  }
+  
+  .aboutpage-hero h1 {
+    font-size: 3.8rem;
+  }
+}
+
+/* 1320px - 1440px */
+@media (min-width: 1321px) and (max-width: 1440px) {
+  .aboutpage-container {
+    max-width: 95%;
+    padding: 0 2rem;
+  }
+  
+  .aboutpage-hero h1 {
+    font-size: 3.5rem;
+  }
+}
+
+/* 1024px - 1320px */
+@media (min-width: 1025px) and (max-width: 1320px) {
+  .aboutpage-container {
+    max-width: 95%;
+    padding: 0 1.5rem;
+  }
+  
+  .aboutpage-hero h1 {
+    font-size: 3.2rem;
+  }
+  
+  .aboutpage-departments-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 768px - 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .aboutpage-container {
+    padding: 0 1.5rem;
+    max-width: 95%;
+  }
+
+  .aboutpage-hero {
+    margin: 0 calc(-50vw + 50%) 3rem;
+    padding: 4rem 0 3rem;
+  }
+
+  .aboutpage-hero h1 {
+    font-size: 3rem;
+  }
+
+  .aboutpage-hero-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .aboutpage-info {
+    gap: 1.5rem;
+  }
+
+  .aboutpage-vision-mission-grid,
+  .aboutpage-outreach-grid,
+  .aboutpage-collaborations-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .aboutpage-admission-details-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .aboutpage-departments-grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+  }
+
+  .aboutpage-section-title {
+    font-size: 2.5rem;
+  }
+
+  .aboutpage-content-title,
+  .aboutpage-program-title {
+    font-size: 2.2rem;
+  }
+}
+
+/* 481px - 767px */
+@media (min-width: 481px) and (max-width: 767px) {
+  .aboutpage-container {
+    padding: 0 1rem;
+    max-width: 95%;
+  }
+
+  .aboutpage-hero {
+    margin: 0 calc(-50vw + 50%) 2rem;
+    padding: 3rem 0 2rem;
+  }
+
+  .aboutpage-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .aboutpage-hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .aboutpage-section-title {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .aboutpage-card-header,
+  .aboutpage-institute-header,
+  .aboutpage-program-header,
+  .aboutpage-admission-header,
+  .aboutpage-placement-header,
+  .aboutpage-research-header {
+    padding: 2rem;
+  }
+
+  .aboutpage-content-title,
+  .aboutpage-program-title {
+    font-size: 2rem;
+  }
+
+  .aboutpage-content-body,
+  .aboutpage-program-content,
+  .aboutpage-admission-content,
+  .aboutpage-placement-content,
+  .aboutpage-research-content {
+    padding: 2rem;
+  }
+
+  .aboutpage-content-meta,
+  .aboutpage-program-meta {
+    gap: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .aboutpage-info {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .aboutpage-vision-mission-grid,
+  .aboutpage-outreach-grid,
+  .aboutpage-collaborations-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .aboutpage-admission-details-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .aboutpage-departments-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .aboutpage-vision-header,
+  .aboutpage-mission-header,
+  .aboutpage-outreach-header,
+  .aboutpage-student-life-header,
+  .aboutpage-mou-header,
+  .aboutpage-culture-header {
+    padding: 1.5rem 2rem;
+  }
+
+  .aboutpage-vision-header h3,
+  .aboutpage-mission-header h3,
+  .aboutpage-outreach-header h3,
+  .aboutpage-student-life-header h3,
+  .aboutpage-mou-header h3,
+  .aboutpage-culture-header h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* 420px - 480px */
+@media (min-width: 421px) and (max-width: 480px) {
+  .aboutpage-container {
+    padding: 0 0.75rem;
+  }
+
+  .aboutpage-hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .aboutpage-hero-subtitle {
+    font-size: 1.1rem;
+  }
+  .aboutpage-vision-mission-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .aboutpage-departments-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
     }
-    
-    .hero-subtitle {
-        font-size: 1rem;
+  .aboutpage-section-title {
+    font-size: 2rem;
+  }
+  .aboutpage-admission-details-grid{
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .aboutpage-outreach-grid{
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+.aboutpage-collaborations-grid{
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+  .aboutpage-card-header,
+  .aboutpage-institute-header,
+  .aboutpage-program-header,
+  .aboutpage-admission-header,
+  .aboutpage-placement-header,
+  .aboutpage-research-header {
+    padding: 1.5rem;
+  }
+
+  .aboutpage-content-title,
+  .aboutpage-program-title {
+    font-size: 1.8rem;
+  }
+
+  .aboutpage-content-body,
+  .aboutpage-program-content,
+  .aboutpage-admission-content,
+  .aboutpage-placement-content,
+  .aboutpage-research-content {
+    padding: 1.5rem;
+  }
+
+  .aboutpage-department-card,
+  .aboutpage-admission-detail-card {
+    padding: 1.5rem;
+  }
+
+  .aboutpage-company-highlights {
+    padding: 1.5rem;
+  }
+
+  .aboutpage-vision-header,
+  .aboutpage-mission-header,
+  .aboutpage-outreach-header,
+  .aboutpage-student-life-header,
+  .aboutpage-mou-header,
+  .aboutpage-culture-header {
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+/* Less than 420px */
+@media (max-width: 420px) {
+  .aboutpage-container {
+    padding: 0 0.5rem;
+  }
+
+  .aboutpage-hero {
+    margin: 0 calc(-50vw + 50%) 1.5rem;
+    padding: 2rem 0 1.5rem;
+  }
+
+  .aboutpage-hero h1 {
+    font-size: 2rem;
+  }
+
+  .aboutpage-vision-mission-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .aboutpage-departments-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
     }
-    
-    .section-title {
-        font-size: 1.8rem;
-    }
-    
-    .institute-header,
-    .program-header,
-    .admission-header,
-    .placement-header {
-        padding: 1rem;
-    }
-    
-    .content-title,
-    .program-title {
-        font-size: 1.5rem;
-    }
-    
-    .content-body,
-    .program-content {
-        padding: 0 1rem 1rem;
-    }
-    
-    .department-card,
-    .admission-detail-card {
-        padding: 1rem;
-    }
-    
-    .company-highlights {
-        padding: 1rem;
-    }
-    
-    .about-label,
-    .about-desc {
-        font-size: 0.8rem;
-        padding: 0.4rem 0.8rem;
-    }
+  .aboutpage-section-title {
+    font-size: 2rem;
+  }
+  .aboutpage-admission-details-grid{
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .aboutpage-outreach-grid{
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+.aboutpage-collaborations-grid{
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+  .aboutpage-hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .aboutpage-section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .aboutpage-card-header,
+  .aboutpage-institute-header,
+  .aboutpage-program-header,
+  .aboutpage-admission-header,
+  .aboutpage-placement-header,
+  .aboutpage-research-header {
+    padding: 1rem;
+  }
+
+  .aboutpage-content-title,
+  .aboutpage-program-title {
+    font-size: 1.5rem;
+  }
+
+  .aboutpage-content-body,
+  .aboutpage-program-content,
+  .aboutpage-admission-content,
+  .aboutpage-placement-content,
+  .aboutpage-research-content {
+    padding: 1rem;
+  }
+
+  .aboutpage-department-card,
+  .aboutpage-admission-detail-card {
+    padding: 1rem;
+  }
+
+  .aboutpage-company-highlights {
+    padding: 1rem;
+  }
+
+  .aboutpage-label,
+  .aboutpage-desc {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .aboutpage-content-meta span,
+  .aboutpage-program-meta span {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .aboutpage-vision-header,
+  .aboutpage-mission-header,
+  .aboutpage-outreach-header,
+  .aboutpage-student-life-header,
+  .aboutpage-mou-header,
+  .aboutpage-culture-header {
+    padding: 1rem;
+  }
+
+  .aboutpage-vision-header h3,
+  .aboutpage-mission-header h3,
+  .aboutpage-outreach-header h3,
+  .aboutpage-student-life-header h3,
+  .aboutpage-mou-header h3,
+  .aboutpage-culture-header h3 {
+    font-size: 1.2rem;
+  }
+
+  .aboutpage-admission-link,
+  .aboutpage-research-link,
+  .aboutpage-placement-link,
+  .aboutpage-outreach-link,
+  .aboutpage-mou-link,
+  .aboutpage-culture-link {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .aboutpage-hero {
+    margin: 0;
+    background: var(--about-primary-blue) !important;
+    color: white !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .aboutpage-card:hover,
+  .aboutpage-department-card:hover,
+  .aboutpage-admission-detail-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .aboutpage-admission-link,
+  .aboutpage-research-link,
+  .aboutpage-placement-link,
+  .aboutpage-outreach-link,
+  .aboutpage-mou-link,
+  .aboutpage-culture-link,
+  .aboutpage-department-link {
+    color: var(--about-primary-blue) !important;
+    text-decoration: underline !important;
+    background: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+  }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  .aboutpage-hero::before {
+    animation: none;
+  }
+
+  * {
+    transition: none !important;
+  }
+}
+
+/* Focus States for Accessibility */
+.aboutpage-admission-link:focus,
+.aboutpage-research-link:focus,
+.aboutpage-placement-link:focus,
+.aboutpage-outreach-link:focus,
+.aboutpage-mou-link:focus,
+.aboutpage-culture-link:focus,
+.aboutpage-department-link:focus {
+  outline: 3px solid var(--about-primary-blue);
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .aboutpage-card,
+  .aboutpage-department-card,
+  .aboutpage-admission-detail-card {
+    border: 2px solid var(--about-gray-800);
+  }
+
+  .aboutpage-admission-link,
+  .aboutpage-research-link,
+  .aboutpage-placement-link,
+  .aboutpage-outreach-link,
+  .aboutpage-mou-link,
+  .aboutpage-culture-link {
+    border: 2px solid var(--about-white);
+  }
+}
+
+/* Dark mode specific overrides */
+[data-theme="dark"] .aboutpage-page {
+  background: linear-gradient(135deg, var(--about-secondary-blue-50) 0%, var(--about-gray-50) 100%);
+}
+
+[data-theme="dark"] .aboutpage-hero {
+  background: linear-gradient(135deg, var(--about-primary-blue) 0%, var(--about-primary-blue-dark) 100%);
+}
+
+[data-theme="dark"] .aboutpage-card,
+[data-theme="dark"] .aboutpage-vision-content,
+[data-theme="dark"] .aboutpage-mission-content,
+[data-theme="dark"] .aboutpage-outreach-content,
+[data-theme="dark"] .aboutpage-student-life-content,
+[data-theme="dark"] .aboutpage-mou-content,
+[data-theme="dark"] .aboutpage-culture-content {
+  background: var(--about-gray-50);
+  border-color: var(--about-gray-200);
+}
+
+[data-theme="dark"] .aboutpage-content-body,
+[data-theme="dark"] .aboutpage-program-content,
+[data-theme="dark"] .aboutpage-admission-content,
+[data-theme="dark"] .aboutpage-placement-content,
+[data-theme="dark"] .aboutpage-research-content {
+  background: var(--about-gray-50);
+}
+
+[data-theme="dark"] .aboutpage-department-card,
+[data-theme="dark"] .aboutpage-admission-detail-card {
+  background: var(--about-gray-100);
+  border-color: var(--about-gray-200);
+}
+
+[data-theme="dark"] .aboutpage-department-card:hover,
+[data-theme="dark"] .aboutpage-admission-detail-card:hover {
+  background: var(--about-gray-50);
+  border-color: var(--about-primary-blue-light);
+}
+
+[data-theme="dark"] .aboutpage-company-highlights {
+  background: var(--about-gray-100);
+  border-color: var(--about-gray-200);
+}
+
+[data-theme="dark"] .aboutpage-content-description h4,
+[data-theme="dark"] .aboutpage-program-description h4,
+[data-theme="dark"] .aboutpage-department-card h4,
+[data-theme="dark"] .aboutpage-admission-detail-card h4,
+[data-theme="dark"] .aboutpage-company-highlights h4 {
+  color: var(--about-primary-blue-light);
+}
+
+[data-theme="dark"] .aboutpage-section-title {
+  color: var(--about-primary-blue-light);
+}
+
+[data-theme="dark"] .aboutpage-content-description p,
+[data-theme="dark"] .aboutpage-program-description p,
+[data-theme="dark"] .aboutpage-admission-detail-card p,
+[data-theme="dark"] .aboutpage-admission-detail-card li,
+[data-theme="dark"] .aboutpage-company-highlights p,
+[data-theme="dark"] .aboutpage-department-link {
+  color: var(--about-gray-700);
+}
+
+[data-theme="dark"] .aboutpage-department-link:hover {
+  color: var(--about-primary-blue-light);
 }
