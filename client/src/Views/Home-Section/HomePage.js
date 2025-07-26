@@ -145,6 +145,7 @@ const HomePage = React.memo(() => {
     const [announcementSlideDirection, setAnnouncementSlideDirection] = useState('right');
     const [countsAnimated, setCountsAnimated] = useState(false);
     const [activeAboutTab, setActiveAboutTab] = useState('about');
+    const [isAboutAutoSwitching, setIsAboutAutoSwitching] = useState(true);
     const [isNewslettersExpanded, setIsNewslettersExpanded] = useState(false);
     const [chartInitialized, setChartInitialized] = useState(false);
     const [counts, setCounts] = useState({
@@ -171,9 +172,10 @@ const HomePage = React.memo(() => {
             }
         };
     }, []);
-
     // Auto-switch About section tabs every 6 seconds
     useEffect(() => {
+        if (!isAboutAutoSwitching) return;
+
         const tabs = ['about', 'vision', 'mission'];
         let currentIndex = tabs.indexOf(activeAboutTab);
 
@@ -187,7 +189,7 @@ const HomePage = React.memo(() => {
                 clearInterval(aboutSwitchIntervalRef.current);
             }
         };
-    }, [activeAboutTab]);
+    }, [activeAboutTab, isAboutAutoSwitching]);
 
     // Simple Google Charts initialization - inline implementation with dark mode support
     useEffect(() => {
@@ -456,23 +458,16 @@ const HomePage = React.memo(() => {
         setIsNewslettersExpanded(!isNewslettersExpanded);
     }, [isNewslettersExpanded]);
 
-    // Handle about tab manual selection (stop auto-switching)
+    // Handle about tab manual selection (stop auto-switching temporarily)
     const handleAboutTabClick = useCallback((tab) => {
-        if (aboutSwitchIntervalRef.current) {
-            clearInterval(aboutSwitchIntervalRef.current);
-        }
         setActiveAboutTab(tab);
+        // Temporarily pause auto-switching by setting a flag
+        setIsAboutAutoSwitching(false);
         
-        // Restart auto-switching after user interaction
+        // Resume auto-switching after 10 seconds
         setTimeout(() => {
-            const tabs = ['about', 'vision', 'mission'];
-            let currentIndex = tabs.indexOf(tab);
-
-            aboutSwitchIntervalRef.current = setInterval(() => {
-                currentIndex = (currentIndex + 1) % tabs.length;
-                setActiveAboutTab(tabs[currentIndex]);
-            }, 6000);
-        }, 10000); // Wait 10 seconds before restarting auto-switch
+            setIsAboutAutoSwitching(true);
+        }, 10000);
     }, []);
 
     // Counting animation for statistics - Optimized to prevent re-renders

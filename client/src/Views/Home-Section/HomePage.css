@@ -823,67 +823,6 @@
     color: var(--gray-700);
 }
 
-/* Quick Links Responsive */
-@media (max-width: 768px) {
-    .quick-links-section {
-        padding: 60px 0;
-    }
-    
-    .quick-links-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-    }
-    
-    .quick-link-card {
-        height: 180px;
-        padding: 20px 15px;
-    }
-    
-    .quick-link-icon-wrapper {
-        width: 50px;
-        height: 50px;
-    }
-    
-    .quick-link-title {
-        font-size: 1.1rem;
-    }
-    
-    .quick-link-description {
-        font-size: 0.85rem;
-    }
-    
-    .two-column-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-}
-
-@media (max-width: 480px) {
-    .quick-links-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
-    
-    .quick-link-card {
-        height: 160px;
-        padding: 18px 12px;
-    }
-    
-    .quick-link-icon-wrapper {
-        width: 45px;
-        height: 45px;
-    }
-    
-    .quick-link-title {
-        font-size: 1rem;
-    }
-    
-    .quick-link-description {
-        font-size: 0.8rem;
-        max-width: 95%;
-    }
-}
-
 /* Placement Statistics Section - Enhanced */
 .placement-section {
     background: var(--secondary-blue-100);
@@ -1456,7 +1395,7 @@
 .homepage-synapse-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Changed to cover to fill completely */
+    object-fit: fill; /* Changed to fill to fill completely */
     padding: 0; /* No padding around image */
     border-radius: 12px;
 }
@@ -1744,6 +1683,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    justify-content: center;
     margin-bottom: 32px;
     padding-bottom: 16px;
     border-bottom: 2px solid var(--primary-blue-light);
@@ -1754,6 +1694,12 @@
     font-weight: 600;
     color: var(--primary-blue-dark);
     margin: 0;
+}
+
+.homepage-content-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
 }
 
 .close-button {
@@ -1782,8 +1728,11 @@
 
 .newsletters-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    /* grid-template-rows: repeat(2, 1fr); */
+    width: fit-content;
+    height: auto;
+    overflow-x: scroll;
     gap: 24px;
 }
 
@@ -1910,7 +1859,7 @@
 .homepage-about-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Complete image coverage */
+    object-fit: fill; /* Complete image coverage */
 }
 
 .homepage-about-text {
@@ -2717,6 +2666,41 @@
    =============================== */
 
 /* Responsive Design */
+/* Large screens (1440px+) */
+@media (min-width: 1440px) {
+    .homepage-container {
+        max-width: 1400px;
+    }
+    
+    .homepage-quick-links-grid {
+        max-width: 1400px;
+    }
+    
+    .homepage-content-cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .homepage-enhanced-portals {
+        max-width: 1000px;
+        gap: 40px;
+    }
+}
+
+/* Medium to large screens (1200px+) */
+@media (min-width: 1200px) {
+    .homepage-content-cards-section {
+        padding: 100px 0;
+    }
+    
+    .homepage-about-section {
+        padding: 80px 0;
+    }
+    
+    .homepage-national-portals {
+        padding: 100px 0;
+    }
+}
+
 @media (max-width: 1200px) {
     .hero-section {
         width: calc(100% - 60px);
@@ -2724,10 +2708,159 @@
     }
 }
 
+
+
+
+/* Medium screens (1024px+) */
+@media (min-width: 1024px) {
+    .section-title {
+        font-size: 2.5rem;
+    }
+}
+
 @media (max-width: 1024px) {
+    .homepage-container {
+        padding: 0 20px;
+    }
+    
+    .quick-links-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 24px;
+    }
+    
+    .quick-link-card {
+        height: 200px;
+        padding: 24px;
+    }
+    
+    .quick-link-icon {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 16px;
+    }
+    
+    .quick-link-icon svg {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .quick-link-title {
+        font-size: 1.2rem;
+    }
+    
+    .content-cards-section {
+        padding: 80px 0;
+    }
+
     .hero-section {
         width: calc(100% - 40px);
         margin: 0 20px;
+    }
+
+    .homepage-content-cards-grid{
+        grid-template-columns: 1fr; /* Adjust to 3 rows for better fit */
+        height: auto; /* Allow height to adjust based on content */
+        gap: 30px;
+    }
+    .homepage-about-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        height:680px;
+    }
+
+    .homepage-about-text-content{
+        height: 320px; /* Adjusted for better visibility */
+        max-height: 320px; /* Prevents overflow */
+        flex-shrink: 0;
+        flex-wrap: wrap;
+    }
+
+    .homepage-about-paragraph.mission{
+        font-size: 1.1rem;
+    }
+    .homepage-about-paragraph.vision{
+        font-size: 1.3rem;
+    }
+    .homepage-about-paragraph.values{
+        font-size: 1.1rem;
+    }
+
+    .homepage-enhanced-portals{
+        grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns for better fit */
+        gap: 20px  40px;
+        width: 680px;
+        justify-content: center;
+        align-content: center;
+    }
+    .homepage-portal-card {
+        width: 100%; /* Full width for better fit 320px*/
+        height: 200px; /* Adjusted height for better visibility */
+
+    }
+    
+    /* .homepage-content-cards-grid {
+        grid-template-rows: repeat(3, 1fr);
+        gap: 32px;
+    } */
+    
+    /* Desktop ordering: Placement Stats (1st), Lore Magazine (2nd), Newsletter (3rd) */
+    .homepage-content-card.chart-card {
+        order: 1;
+    }
+    
+    .homepage-content-card.magazine-card {
+        order: 2;
+    }
+    
+    .homepage-content-card.newsletter-card {
+        order: 3;
+    }
+
+    /* Reduce newsletter expandable height and add scroll on desktop */
+    .newsletters-expanded.expanded {
+        max-height: 630px; /* Increased height on desktop */
+    }
+
+    .newsletters-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        width: 100%;
+        height: auto;
+        overflow-y: auto;
+        max-height: 500px;
+        padding: 0 16px 16px 16px;
+    }
+    
+    /* Webkit scrollbar styling for vertical scroll */
+    .newsletters-grid::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    .newsletters-grid::-webkit-scrollbar-track {
+        background: var(--gray-200);
+        border-radius: 4px;
+    }
+    
+    .newsletters-grid::-webkit-scrollbar-thumb {
+        background: var(--primary-blue);
+        border-radius: 4px;
+    }
+    
+    .newsletters-grid::-webkit-scrollbar-thumb:hover {
+        background: var(--primary-blue-dark);
+    }
+    
+    .newsletter-item {
+        width: 100%;
+    }
+    
+    .newsletter-preview-card {
+        height: 440px; /* Fixed height for consistency */
+    }
+    
+    .newsletter-thumb {
+        height: 240px; /* Smaller height for tablet */
     }
 }
 
@@ -2736,6 +2869,176 @@
         margin: 0 20px;
         width: calc(100% - 40px);
         aspect-ratio: 2.2 / 1; /* Slightly adjust for smaller screens */
+    }
+}
+
+/* Small tablet screens (768px+) */
+@media (max-width: 768px) {
+    .quick-links-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .quick-links-section {
+        padding: 60px 0;
+    }
+    
+    .quick-links-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    
+    .quick-link-card {
+        height: 180px;
+        padding: 20px 15px;
+    }
+    
+    .quick-link-icon-wrapper {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .quick-link-title {
+        font-size: 1.1rem;
+    }
+    
+    .quick-link-description {
+        font-size: 0.85rem;
+    }
+    
+    .two-column-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .content-cards-section {
+        padding: 60px 0;
+    }
+    
+    .homepage-content-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    /* Mobile ordering: Placement Stats (1st), Lore Magazine (2nd), Newsletter (3rd) */
+    .homepage-content-card.chart-card {
+        order: 1;
+    }
+    
+    .homepage-content-card.magazine-card {
+        order: 2;
+    }
+    
+    .homepage-content-card.newsletter-card {
+        order: 3;
+    }
+
+    /* Reduce newsletter expandable height and add scroll on mobile */
+    .newsletters-expanded.expanded {
+        max-height: 600px; /* Reduced height on mobile */
+    }
+
+    .newsletters-grid {
+        max-height: 500px; /* Add scroll container */
+        overflow-y: hidden;
+        padding-right: 10px;
+    }
+
+    /* Style scrollbar for mobile */
+    .newsletters-grid::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .newsletters-grid::-webkit-scrollbar-track {
+        background: rgba(241, 243, 244, 0.5);
+        border-radius: 4px;
+    }
+
+    .newsletters-grid::-webkit-scrollbar-thumb {
+        background: var(--primary-blue);
+        border-radius: 4px;
+    }
+
+    .newsletters-grid::-webkit-scrollbar-thumb:hover {
+        background: var(--primary-blue-dark);
+    }
+    
+    .content-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    /* Mobile ordering: Chart (1st), Magazine (2nd), Newsletter (3rd) */
+    .content-card.chart-card {
+        order: 1;
+    }
+    
+    .content-card.magazine-card {
+        order: 2;
+    }
+    
+    .content-card.newsletter-card {
+        order: 3;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        min-height: auto;
+    }
+    
+    .about-image {
+        height: 300px;
+    }
+    
+    .about-text {
+        height: auto;
+    }
+    
+    .enhanced-portals {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .homepage-enhanced-portals {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .homepage-portal-card {
+        height: 120px;
+    }
+
+    .homepage-portal-image {
+        width: 40px;
+        height: 40px;
+    }
+
+    .homepage-portal-name {
+        font-size: 0.8rem;
+    }
+    
+    .newsletters-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+    
+    .national-portals {
+        padding: 60px 0;
+    }
+    
+    .about-section {
+        padding: 60px 0;
+    }
+    
+    .about-buttons {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .about-btn {
+        min-width: 80px;
     }
 }
 
@@ -2927,6 +3230,262 @@
     }
 }
 
+@media (max-width: 480px) {
+    .homepage-container {
+        padding: 0 16px;
+    }
+    
+    .quick-links-section{
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .quick-links-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+        gap: 16px;
+    }
+    
+    .quick-link-card {
+        height: 160px;
+        padding: 24px 16px;
+    }
+    
+    .quick-link-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 16px;
+    }
+    
+    .quick-link-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .quick-link-title {
+        font-size: 1rem;
+    }
+
+    .quick-links-grid {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 15px;
+    }
+    
+    .quick-link-card {
+        height: 160px;
+        padding: 18px 12px;
+    }
+    
+    .quick-link-icon-wrapper {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .quick-link-title {
+        font-size: 1rem;
+    }
+    
+    .quick-link-description {
+        font-size: 0.8rem;
+        max-width: 95%;
+    }
+    
+    .content-cards-section {
+        padding: 40px 0;
+    }
+    
+    /* Adjust card heights for mobile */
+    .content-card {
+        height: auto;
+        min-height: 450px;
+    }
+    
+    .newsletter-image {
+        height: 220px; /* Slightly smaller on mobile but still shows complete logo */
+    }
+    
+    .pdf-preview-container {
+        height: 280px; /* Smaller on mobile but still shows front page */
+        position: relative;
+    }
+    
+    .newsletter-thumb {
+        height: 250px; /* Smaller preview on mobile */
+    }
+    
+    .card-header {
+        padding: 20px 20px 14px;
+    }
+    
+    .card-content {
+        padding: 20px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 32px;
+    }
+    
+    .enhanced-portals {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .portal-card {
+        padding: 24px 20px;
+    }
+    .homepage-portal-card {
+        height: 200px;
+    }
+    .portal-icon-wrapper {
+        height: 80px;
+        margin-bottom: 16px;
+    }
+    
+    .about-image {
+        height: 250px;
+    }
+    
+    .about-text-content {
+        height: auto;
+        min-height: 150px;
+    }
+    .homepage-about-paragraph.mission{
+        font-size: 1rem;
+    }
+    .homepage-about-paragraph.vision{
+        font-size: 1.2rem;
+    }
+    .homepage-about-paragraph.values{
+        font-size: 1rem;
+    }
+
+    .about-buttons {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .about-btn {
+        padding: 12px;
+    }
+    
+    .enhanced-link {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+    .newsletters-expanded.expanded {
+        max-height: 600px; /* Reduced height for mobile */
+        padding: 24px 0;
+    }
+    
+    .newsletters-grid {
+        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+        gap: 16px;
+        padding: 0 16px 16px 16px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary-blue) var(--gray-200);
+        white-space: nowrap;
+        width: 100%;
+    }
+    
+    /* Webkit scrollbar styling for horizontal scroll */
+    .newsletters-grid::-webkit-scrollbar {
+        height: 8px;
+    }
+    
+    .newsletters-grid::-webkit-scrollbar-track {
+        background: var(--gray-200);
+        border-radius: 4px;
+    }
+    
+    .newsletters-grid::-webkit-scrollbar-thumb {
+        background: var(--primary-blue);
+        border-radius: 4px;
+    }
+    
+    .newsletters-grid::-webkit-scrollbar-thumb:hover {
+        background: var(--primary-blue-dark);
+    }
+    
+    .newsletter-item {
+        flex: 0 0 280px; /* Fixed width for each card */
+        scroll-snap-align: start;
+    }
+    
+    .newsletter-preview-card {
+        height: 440px; /* Fixed height for consistency */
+    }
+    
+    .newsletter-thumb {
+        height: 300px; /* Smaller height for mobile */
+    }
+    
+    .newsletters-header {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+        padding: 0 16px;
+    }
+    .newsletter-details h4 {
+        font-size: 0.8rem;
+    }
+
+    .homepage-about-image{
+        height: 200px;
+        min-height: 200px;
+    }
+    .homepage-about-content{
+        height: 720px;
+    }
+
+    .national-portals {
+        padding: 40px 0;
+    }
+    .two-column-section{
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    .homepage-content-cards-section{
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    .homepage-statistics-section{
+        padding-bottom: 40px;
+        padding-bottom: 40px;
+    }
+    .homepage-portal-image {
+        width: 250px;
+        height: 110px;
+    }
+    .homepage-about-section{
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    .about-section {
+        padding: 40px 0;
+    }
+    
+    .pdf-preview {
+        height: 150px;
+    }
+    
+    .pdf-preview-container {
+        height: 200px;
+    }
+    
+    .newsletter-image {
+        height: 150px;
+    }
+
+    .homepage-enhanced-portals {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
 
 @media (max-width: 450px) {
     .hero-section {
@@ -3013,420 +3572,9 @@
     }
 }
 
-
-
-
-
-
-/* Large screens (1440px+) */
-@media (min-width: 1440px) {
-    .homepage-container {
-        max-width: 1400px;
-    }
-    
-    .homepage-quick-links-grid {
-        max-width: 1400px;
-    }
-    
-    .homepage-content-cards-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .homepage-enhanced-portals {
-        max-width: 1000px;
-        gap: 40px;
-    }
-}
-
-/* Medium to large screens (1200px+) */
-@media (min-width: 1200px) {
-    .homepage-content-cards-section {
-        padding: 100px 0;
-    }
-    
-    .homepage-about-section {
-        padding: 80px 0;
-    }
-    
-    .homepage-national-portals {
-        padding: 100px 0;
-    }
-}
-
-/* Medium screens (1024px+) */
-@media (min-width: 1024px) {
-    .section-title {
-        font-size: 2.5rem;
-    }
-}
-
-@media (max-width: 1024px) {
-    .homepage-container {
-        padding: 0 20px;
-    }
-    
-    .quick-links-grid {
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        gap: 24px;
-    }
-    
-    .quick-link-card {
-        height: 200px;
-        padding: 24px;
-    }
-    
-    .quick-link-icon {
-        width: 64px;
-        height: 64px;
-        margin-bottom: 16px;
-    }
-    
-    .quick-link-icon svg {
-        width: 32px;
-        height: 32px;
-    }
-    
-    .quick-link-title {
-        font-size: 1.2rem;
-    }
-    
-    .content-cards-section {
-        padding: 80px 0;
-    }
-    
-    .homepage-content-cards-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
-    }
-    
-    /* Desktop ordering: Placement Stats (1st), Lore Magazine (2nd), Newsletter (3rd) */
-    .homepage-content-card.chart-card {
-        order: 1;
-    }
-    
-    .homepage-content-card.magazine-card {
-        order: 2;
-    }
-    
-    .homepage-content-card.newsletter-card {
-        order: 3;
-    }
-
-    /* Reduce newsletter expandable height and add scroll on desktop */
-    .newsletters-expanded.expanded {
-        max-height: 800px; /* Increased height on desktop */
-    }
-
-    .newsletters-grid {
-        max-height: none; /* Remove scroll container */
-        overflow-y: visible;
-        padding-right: 0; /* Remove padding */
-    }
-}
-
-/* Small tablet screens (768px+) */
-@media (max-width: 768px) {
-    .quick-links-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        gap: 20px;
-    }
-    
-    .content-cards-section {
-        padding: 60px 0;
-    }
-    
-    .homepage-content-cards-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-    
-    /* Mobile ordering: Placement Stats (1st), Lore Magazine (2nd), Newsletter (3rd) */
-    .homepage-content-card.chart-card {
-        order: 1;
-    }
-    
-    .homepage-content-card.magazine-card {
-        order: 2;
-    }
-    
-    .homepage-content-card.newsletter-card {
-        order: 3;
-    }
-
-    /* Reduce newsletter expandable height and add scroll on mobile */
-    .newsletters-expanded.expanded {
-        max-height: 600px; /* Reduced height on mobile */
-    }
-
-    .newsletters-grid {
-        max-height: 500px; /* Add scroll container */
-        overflow-y: hidden;
-        padding-right: 10px;
-    }
-
-    /* Style scrollbar for mobile */
-    .newsletters-grid::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    .newsletters-grid::-webkit-scrollbar-track {
-        background: rgba(241, 243, 244, 0.5);
-        border-radius: 4px;
-    }
-
-    .newsletters-grid::-webkit-scrollbar-thumb {
-        background: var(--primary-blue);
-        border-radius: 4px;
-    }
-
-    .newsletters-grid::-webkit-scrollbar-thumb:hover {
-        background: var(--primary-blue-dark);
-    }
-    
-    .content-cards-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-    
-    /* Mobile ordering: Chart (1st), Magazine (2nd), Newsletter (3rd) */
-    .content-card.chart-card {
-        order: 1;
-    }
-    
-    .content-card.magazine-card {
-        order: 2;
-    }
-    
-    .content-card.newsletter-card {
-        order: 3;
-    }
-    
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        min-height: auto;
-    }
-    
-    .about-image {
-        height: 300px;
-    }
-    
-    .about-text {
-        height: auto;
-    }
-    
-    .enhanced-portals {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
-    }
-
-    .homepage-enhanced-portals {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-    }
-
-    .homepage-portal-card {
-        height: 120px;
-    }
-
-    .homepage-portal-image {
-        width: 40px;
-        height: 40px;
-    }
-
-    .homepage-portal-name {
-        font-size: 0.8rem;
-    }
-    
-    .newsletters-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-    }
-    
-    .national-portals {
-        padding: 60px 0;
-    }
-    
-    .about-section {
-        padding: 60px 0;
-    }
-    
-    .about-buttons {
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-    
-    .about-btn {
-        min-width: 80px;
-    }
-}
-
-/* Mobile screens (480px+) */
-@media (max-width: 480px) {
-    .homepage-container {
-        padding: 0 16px;
-    }
-    
-    .quick-links-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(6, 1fr);
-        gap: 16px;
-    }
-    
-    .quick-link-card {
-        height: 160px;
-        padding: 24px 16px;
-    }
-    
-    .quick-link-icon {
-        width: 48px;
-        height: 48px;
-        margin-bottom: 16px;
-    }
-    
-    .quick-link-icon svg {
-        width: 24px;
-        height: 24px;
-    }
-    
-    .quick-link-title {
-        font-size: 1rem;
-    }
-    
-    .content-cards-section {
-        padding: 40px 0;
-    }
-    
-    /* Adjust card heights for mobile */
-    .content-card {
-        height: auto;
-        min-height: 450px;
-    }
-    
-    .newsletter-image {
-        height: 220px; /* Slightly smaller on mobile but still shows complete logo */
-    }
-    
-    .pdf-preview-container {
-        height: 280px; /* Smaller on mobile but still shows front page */
-        position: relative;
-    }
-    
-    .newsletter-thumb {
-        height: 250px; /* Smaller preview on mobile */
-    }
-    
-    .card-header {
-        padding: 20px 20px 14px;
-    }
-    
-    .card-content {
-        padding: 20px;
-    }
-    
-    .section-title {
-        font-size: 1.8rem;
-        margin-bottom: 32px;
-    }
-    
-    .enhanced-portals {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .portal-card {
-        padding: 24px 20px;
-    }
-    
-    .portal-icon-wrapper {
-        height: 80px;
-        margin-bottom: 16px;
-    }
-    
-    .about-image {
-        height: 250px;
-    }
-    
-    .about-text-content {
-        height: auto;
-        min-height: 150px;
-    }
-    
-    .about-buttons {
-        flex-direction: column;
-        gap: 8px;
-    }
-    
-    .about-btn {
-        padding: 12px;
-    }
-    
-    .enhanced-link {
-        padding: 12px 20px;
-        font-size: 0.9rem;
-    }
-    
-    .newsletters-expanded.expanded {
-        max-height: 600px; /* Reduced height for mobile */
-        padding: 24px 0;
-    }
-    
-    .newsletters-grid {
-        display: flex;
-        overflow-x: auto;
-        gap: 16px;
-        padding: 0 16px;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-    }
-    
-    .newsletter-item {
-        flex: 0 0 280px; /* Fixed width for each card */
-        scroll-snap-align: start;
-    }
-    
-    .newsletter-preview-card {
-        height: 440px; /* Fixed height for consistency */
-    }
-    
-    .newsletter-thumb {
-        height: 240px; /* Smaller height for mobile */
-    }
-    
-    .newsletters-header {
-        flex-direction: column;
-        gap: 16px;
-        text-align: center;
-        padding: 0 16px;
-    }
-    
-    .national-portals {
-        padding: 40px 0;
-    }
-    
-    .about-section {
-        padding: 40px 0;
-    }
-    
-    .pdf-preview {
-        height: 150px;
-    }
-    
-    .pdf-preview-container {
-        height: 200px;
-    }
-    
-    .newsletter-image {
-        height: 150px;
-    }
-
-    .homepage-enhanced-portals {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-}
+/* ===============================
+   PRINT STYLES
+   =============================== */
 
 /* Print styles */
 @media print {
