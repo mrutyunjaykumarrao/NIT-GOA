@@ -27,7 +27,11 @@ const LanguageSelector = ({
       >
         <span className="language-flag notranslate">{currentLang.flag}</span>
         <span className="notranslate">{currentLang.name}</span>
-        <span className={`dropdown-arrow notranslate ${isDropdownOpen ? 'rotated' : ''}`}>▼</span>
+        <span className={`dropdown-arrow notranslate ${isDropdownOpen ? 'rotated' : ''}`}>
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="currentColor">
+            <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </span>
       </button>
       
       {isDropdownOpen && (

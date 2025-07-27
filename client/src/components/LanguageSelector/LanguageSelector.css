@@ -56,8 +56,23 @@
   z-index: calc(var(--z-dropdown) + 100);
   padding: 8px 0;
   margin-top: 4px;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.mobile-language-dropdown {
+  transform: translateY(-10px) scale(0.95);
+}
+
+.navbar-language-dropdown.open,
+.mobile-language-dropdown.open {
   opacity: 1;
-  transition: all 0.2s ease;
+  pointer-events: auto;
+}
+
+.mobile-language-dropdown.open {
+  transform: translateY(0) scale(1);
 }
 
 .navbar-language-dropdown {
@@ -123,12 +138,23 @@
 }
 
 .dropdown-arrow {
-  font-size: 10px;
-  transition: transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+  will-change: transform;
+  margin-left: 4px;
 }
 
+.dropdown-arrow svg {
+  transition: inherit;
+}
+
+.navbar-language-btn .dropdown-arrow.rotated,
+.mobile-language-btn .dropdown-arrow.rotated,
 .dropdown-arrow.rotated {
-  transform: rotate(180deg);
+  transform: rotate(180deg) !important;
 }
 
 /* Dark mode support */
