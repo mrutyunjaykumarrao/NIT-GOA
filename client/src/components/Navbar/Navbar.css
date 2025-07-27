@@ -582,7 +582,7 @@ body {
 /* Submenu trigger item with arrow indicator */
 .navbar-submenu-item {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   padding: 10px 16px;
   color: var(--color-text-primary);
@@ -604,13 +604,17 @@ body {
   transform: translateX(4px);
 }
 
+.navbar-submenu.hostels-submenu {
+  transform: translateY(-50px) !important;
+}
+
 /* Submenu arrow indicator */
 .navbar-submenu-arrow {
   font-size: 10px;
   margin-left: 8px;
   transition: transform 0.1s ease-out;
   position: absolute;
-  right: 16px;
+  right: 20px;
 }
 
 .navbar-dropdown-item-with-submenu:hover .navbar-submenu-arrow {
