@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { useLoginModal } from '../../contexts/LoginModalContext';
-import './Navbar.css';
+import { useGoogleTranslate } from '../../hooks/useGoogleTranslate';
+import LanguageSelector from '../LanguageSelector/LanguageSelector';
+import TranslationConfirmDialog from '../TranslationConfirmDialog/TranslationConfirmDialog';
 import ThemeToggle from '../../Views/ThemeToggle/ThemeToggle';
-// import nitLogo from '../../assets/images/Home/NIT_LOGO_192.png'; // Now using public logo192.png
+import './Navbar.css';
 
 const Navbar = () => {
   const { user, isAuthenticated, logout } = useAuth();
@@ -18,33 +20,28 @@ const Navbar = () => {
   const [isMobileMenuClosing, setIsMobileMenuClosing] = useState(false);
   const [mobileOpenDropdown, setMobileOpenDropdown] = useState(null);
   const [mobileNestedDropdown, setMobileNestedDropdown] = useState(null);
-  const [currentLanguage, setCurrentLanguage] = useState('en');
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
   const [isMobileLanguageDropdownOpen, setIsMobileLanguageDropdownOpen] = useState(false);
-  const [showTranslateConfirm, setShowTranslateConfirm] = useState(false);
-  const [pendingTranslation, setPendingTranslation] = useState(null);
   const ticking = useRef(false);
   const languageDropdownRef = useRef(null);
   const mobileLanguageDropdownRef = useRef(null);
   const navigate = useNavigate();
 
-  // Language configuration with native names and flags - only reliable languages
-  const languages = useMemo(() => [
-    { code: 'en', name: 'English', native: 'English', flag: '🇺🇸' },
-    { code: 'hi', name: 'Hindi', native: 'हिन्दी', flag: '🇮🇳' },
-    { code: 'mr', name: 'Marathi', native: 'मराठी', flag: '🇮🇳' },
-    { code: 'gu', name: 'Gujarati', native: 'ગુજરાતી', flag: '🇮🇳' },
-    { code: 'ta', name: 'Tamil', native: 'தமிழ்', flag: '🇮🇳' },
-    { code: 'te', name: 'Telugu', native: 'తెలుగు', flag: '🇮🇳' },
-    { code: 'bn', name: 'Bengali', native: 'বাংলা', flag: '🇮🇳' }
-  ], []);
+  // Use the Google Translate hook
+  const {
+    currentLanguage,
+    languages,
+    showTranslateConfirm,
+    pendingTranslation,
+    handleTranslateConfirm,
+    changeLanguage,
+    getCurrentLanguage
+  } = useGoogleTranslate();
 
-  // Get current language object
-  const getCurrentLanguage = () => {
-    return languages.find(lang => lang.code === currentLanguage) || languages[0];
-  };
+  // Get current language object from the hook
+  const currentLang = getCurrentLanguage();
 
-    // Google Translate integration functions
+  // Google Translate integration functions
   const initializeGoogleTranslate = useCallback(() => {
     // Check if Google Translate is ready
     if (window.googleTranslateReady) {
@@ -80,183 +77,6 @@ const Navbar = () => {
       setTimeout(initializeGoogleTranslate, 500);
     }
   }, []);
-
-  // Optimized Google Translate integration with immediate reload for reliability
-  const translatePage = useCallback((targetLang) => {
-    console.log('translatePage called with:', targetLang);
-    
-    // Close dropdowns immediately
-    setIsLanguageDropdownOpen(false);
-    setIsMobileLanguageDropdownOpen(false);
-    
-    // Get the language name for the prompt
-    const selectedLanguage = languages.find(lang => lang.code === targetLang);
-    const languageName = selectedLanguage ? selectedLanguage.name : targetLang;
-    
-    // Set up pending translation data
-    const translationData = {
-      targetLang,
-      languageName,
-      isEnglish: targetLang === 'en'
-    };
-    
-    console.log('Setting pending translation:', translationData);
-    setPendingTranslation(translationData);
-    
-    // Show confirmation dialog
-    console.log('Showing confirmation dialog');
-    setShowTranslateConfirm(true);
-  }, [languages]);
-
-  // Handle confirmation dialog response
-  const handleTranslateConfirm = useCallback((confirmed) => {
-    console.log('handleTranslateConfirm called with:', confirmed);
-    console.log('pendingTranslation:', pendingTranslation);
-    
-    setShowTranslateConfirm(false);
-    
-    if (!confirmed || !pendingTranslation) {
-      console.log('Confirmation cancelled or no pending translation');
-      setPendingTranslation(null);
-      return;
-    }
-    
-    const { targetLang, isEnglish } = pendingTranslation;
-    console.log('Processing translation for:', targetLang, 'isEnglish:', isEnglish);
-    
-    if (isEnglish) {
-      console.log('English selected - clearing all translation and cache');
-      localStorage.removeItem('preferred-language');
-      
-      // Clear Google Translate cookie
-      document.cookie = 'googtrans=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
-      
-      // Force navigation to clean base URL
-      const baseUrl = window.location.href.split('#')[0].split('?')[0];
-      console.log('Reloading to English URL:', baseUrl);
-      
-      // Try multiple approaches for reliability
-      window.history.replaceState(null, null, baseUrl);
-      window.location.href = baseUrl;
-      
-      // Fallback reload if navigation doesn't work
-      setTimeout(() => {
-        window.location.reload();
-      }, 100);
-    } else {
-      // Cache the selection and prepare translation
-      localStorage.setItem('preferred-language', targetLang);
-      setCurrentLanguage(targetLang);
-      
-      const baseUrl = window.location.href.split('#')[0].split('?')[0];
-      const translateHash = `#googtrans(en|${targetLang})`;
-      const newUrl = baseUrl + translateHash;
-      
-      // Set Google Translate cookie
-      document.cookie = `googtrans=/en/${targetLang}; path=/; max-age=86400`;
-      
-      // Navigate to translated page
-      console.log('User confirmed - navigating to translated page:', newUrl);
-      
-      // Try multiple approaches for reliability
-      window.history.replaceState(null, null, newUrl);
-      window.location.href = newUrl;
-      
-      // Fallback reload if navigation doesn't work
-      setTimeout(() => {
-        window.location.reload();
-      }, 100);
-    }
-    
-    setPendingTranslation(null);
-  }, [pendingTranslation]);
-
-  // Load saved language preference on component mount
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('preferred-language');
-    console.log('Saved language from cache:', savedLanguage);
-    
-    // If no saved language, default to English (no cache)
-    if (!savedLanguage) {
-      console.log('No saved language, defaulting to English');
-      setCurrentLanguage('en');
-      return;
-    }
-    
-    // If saved language is English, don't translate
-    if (savedLanguage === 'en') {
-      console.log('Saved language is English, keeping original page');
-      setCurrentLanguage('en');
-      return;
-    }
-    
-    // For non-English saved languages, set current language
-    console.log('Setting current language to saved:', savedLanguage);
-    setCurrentLanguage(savedLanguage);
-  }, []);
-
-  // Monitor URL hash changes to sync language state (with English protection)
-  useEffect(() => {
-    let isProcessingHashChange = false; // Prevent recursive calls
-    
-    const handleHashChange = () => {
-      if (isProcessingHashChange) return;
-      isProcessingHashChange = true;
-      
-      setTimeout(() => {
-        const hash = window.location.hash;
-        const savedLanguage = localStorage.getItem('preferred-language');
-        
-        if (hash.includes('googtrans')) {
-          // Extract language from hash like #googtrans(en|hi)
-          const match = hash.match(/googtrans\(en\|(\w+)\)/);
-          if (match && match[1]) {
-            const detectedLang = match[1];
-            
-            // Only update if it's a valid language and user didn't explicitly choose English
-            if (detectedLang !== currentLanguage && 
-                languages.some(lang => lang.code === detectedLang) &&
-                savedLanguage !== 'en') {
-              console.log('URL hash language detected (not overriding English choice):', detectedLang);
-              setCurrentLanguage(detectedLang);
-              localStorage.setItem('preferred-language', detectedLang);
-            }
-          }
-        } else {
-          // No translation hash - only reset to English if not explicitly set
-          if (currentLanguage !== 'en' && savedLanguage !== 'en') {
-            console.log('No translation hash, resetting to English');
-            setCurrentLanguage('en');
-            localStorage.setItem('preferred-language', 'en');
-          }
-        }
-        
-        isProcessingHashChange = false;
-      }, 100); // Small delay to prevent rapid changes
-    };
-
-    // Listen for hash changes
-    window.addEventListener('hashchange', handleHashChange);
-    
-    // Check initial hash (but not if user explicitly chose English)
-    const initialSavedLang = localStorage.getItem('preferred-language');
-    if (initialSavedLang !== 'en') {
-      handleHashChange();
-    }
-
-    return () => {
-      window.removeEventListener('hashchange', handleHashChange);
-    };
-  }, [currentLanguage, languages]);
-
-  // Initialize Google Translate when component mounts
-  useEffect(() => {
-    initializeGoogleTranslate();
-    
-    // Cleanup on unmount
-    // No cleanup needed for translateTimeoutRef (removed)
-    return () => {};
-  }, [initializeGoogleTranslate]);
 
   // Close language dropdown when clicking outside
   useEffect(() => {
@@ -389,45 +209,6 @@ const Navbar = () => {
     }, 300);
   };
 
-  // Enhanced language change handler with English protection
-  const changeLanguage = useCallback((languageCode) => {
-    if (languageCode === currentLanguage) return;
-    
-    console.log(`Language change from ${currentLanguage} to: ${languageCode}`);
-    
-    // Close dropdown first
-    setIsLanguageDropdownOpen(false);
-    
-    // Update current language immediately for UI feedback
-    setCurrentLanguage(languageCode);
-    localStorage.setItem('preferred-language', languageCode);
-    
-    // Handle English selection properly
-    if (languageCode === 'en') {
-      console.log('English selected - clearing any existing translations');
-      // Clear the hash and reset to English
-      try {
-        const currentHash = window.location.hash;
-        if (currentHash.includes('googtrans')) {
-          const baseUrl = window.location.href.split('#')[0].split('?')[0];
-          window.history.replaceState(null, null, baseUrl); // Use replaceState to avoid reload
-        }
-        // Clear any Google Translate cookies
-        document.cookie = 'googtrans=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
-      } catch (error) {
-        console.error('Error clearing English translation:', error);
-      }
-    } else {
-      // Start translation for non-English languages
-      try {
-        translatePage(languageCode);
-      } catch (error) {
-        console.error('Translation error:', error);
-      }
-    }
-    
-  }, [currentLanguage, translatePage]);
-
   // Toggle language dropdown
   const toggleLanguageDropdown = () => {
     setIsLanguageDropdownOpen(!isLanguageDropdownOpen);
@@ -453,41 +234,14 @@ const Navbar = () => {
           {/* Desktop Controls - Hidden when hamburger menu is visible */}
           <div className="navbar-top-nav-controls desktop-only">
             {/* Enhanced Language Selector */}
-            <div className="navbar-language-selector desktop-language-selector" ref={languageDropdownRef}>
-              <button 
-                className="navbar-language-btn"
-                onClick={toggleLanguageDropdown}
-                aria-label="Change language"
-              >
-                <span className="language-flag">
-                  {getCurrentLanguage().flag}
-                </span>
-                <span className="language-name">
-                  {getCurrentLanguage().name}
-                </span>
-                <svg viewBox="0 0 20 20" fill="currentColor" width="12" height="12">
-                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              </button>
-              
-              <div className={`navbar-language-dropdown notranslate ${isLanguageDropdownOpen ? 'open' : ''}`}>
-                {languages.map((language) => (
-                  <button
-                    key={language.code}
-                    className={`language-option notranslate ${language.code === currentLanguage ? 'active' : ''}`}
-                    onClick={() => translatePage(language.code)}
-                  >
-                    <span className="language-flag notranslate">
-                      {language.flag}
-                    </span>
-                    <span className="language-name notranslate">
-                      {language.name}
-                      <div className="language-native notranslate">{language.native}</div>
-                    </span>
-                  </button>
-                ))}
-              </div>
-            </div>
+            <LanguageSelector
+              currentLanguage={currentLanguage}
+              languages={languages}
+              isDropdownOpen={isLanguageDropdownOpen}
+              onToggleDropdown={toggleLanguageDropdown}
+              onLanguageChange={changeLanguage}
+              dropdownRef={languageDropdownRef}
+            />
 
             {/* Theme Toggle */}
             <ThemeToggle />
@@ -765,43 +519,15 @@ const Navbar = () => {
                 <ThemeToggle />
                 
                 {/* Mobile Language Selector */}
-                <div className="navbar-language-selector mobile-language-selector" ref={mobileLanguageDropdownRef}>
-                  <button 
-                    className="navbar-language-btn mobile-language-btn"
-                    onClick={toggleMobileLanguageDropdown}
-                    aria-label="Change language"
-                  >
-                    <span className="language-flag notranslate">
-                      {getCurrentLanguage().flag}
-                    </span>
-                    <span className="language-name notranslate">
-                      {getCurrentLanguage().name}
-                    </span>
-                    <svg viewBox="0 0 20 20" fill="currentColor" width="12" height="12">
-                      <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </button>
-                  
-                  {isMobileLanguageDropdownOpen && (
-                    <div className="navbar-language-dropdown mobile-language-dropdown notranslate">
-                      {languages.map((language) => (
-                        <button
-                          key={language.code}
-                          className={`language-option notranslate ${language.code === currentLanguage ? 'active' : ''}`}
-                          onClick={() => translatePage(language.code)}
-                        >
-                          <span className="language-flag notranslate">
-                            {language.flag}
-                          </span>
-                          <span className="language-name notranslate">
-                            {language.name}
-                            <div className="language-native notranslate">{language.native}</div>
-                          </span>
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                <LanguageSelector
+                  currentLanguage={currentLanguage}
+                  languages={languages}
+                  isDropdownOpen={isMobileLanguageDropdownOpen}
+                  onToggleDropdown={toggleMobileLanguageDropdown}
+                  onLanguageChange={changeLanguage}
+                  dropdownRef={mobileLanguageDropdownRef}
+                  isMobile={true}
+                />
               </div>
               <button className="mobile-menu-close" onClick={closeMobileMenu}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -1011,39 +737,12 @@ const Navbar = () => {
       )}
 
       {/* Translation Confirmation Dialog */}
-      {showTranslateConfirm && pendingTranslation && (
-        <div className="translate-confirm-overlay">
-          <div className="translate-confirm-dialog">
-            <div className="translate-confirm-header">
-              <h3>
-                {pendingTranslation.isEnglish ? '🇺🇸 Switch to English' : `🌐 Translate to ${pendingTranslation.languageName}`}
-              </h3>
-            </div>
-            <div className="translate-confirm-body">
-              <p>
-                {pendingTranslation.isEnglish 
-                  ? 'This will reload the page and remove all translations, returning to the original English content.'
-                  : `This will reload the page and translate the content to ${pendingTranslation.languageName}.`
-                }
-              </p>
-            </div>
-            <div className="translate-confirm-actions">
-              <button 
-                className="translate-confirm-btn translate-confirm-cancel"
-                onClick={() => handleTranslateConfirm(false)}
-              >
-                Cancel
-              </button>
-              <button 
-                className="translate-confirm-btn translate-confirm-proceed"
-                onClick={() => handleTranslateConfirm(true)}
-              >
-                {pendingTranslation.isEnglish ? 'Switch to English' : 'Translate Page'}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <TranslationConfirmDialog
+        isOpen={showTranslateConfirm}
+        pendingTranslation={pendingTranslation}
+        onConfirm={handleTranslateConfirm}
+        onCancel={() => handleTranslateConfirm(false)}
+      />
     </div>
   );
 };
