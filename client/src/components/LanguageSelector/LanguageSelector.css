@@ -52,7 +52,7 @@
   background: var(--color-background-light);
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  min-width: 180px;
+  width: 160px;
   z-index: calc(var(--z-dropdown) + 100);
   padding: 8px 0;
   margin-top: 4px;
@@ -63,7 +63,7 @@
 
 .navbar-language-dropdown {
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(calc(-50% - 80px));
 }
 
 .mobile-language-dropdown {
