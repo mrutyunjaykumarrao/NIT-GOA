@@ -25,18 +25,61 @@ export const useGoogleTranslate = () => {
     return languages.find(lang => lang.code === currentLanguage) || languages[0];
   }, [languages, currentLanguage]);
 
-  // Clear translation data completely
+  // Clear translation data completely - Enhanced version
   const clearTranslationData = useCallback(() => {
-    localStorage.removeItem(LANGUAGE_STORAGE_KEY);
-    // Clear all possible Google Translate cookies
-    document.cookie = `${GOOGLE_TRANSLATE_COOKIE}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
-    document.cookie = `googtrans=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
-    document.cookie = `googtrans=; path=/; domain=${window.location.hostname}; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
-    document.cookie = `googtrans=/auto/en; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+    console.log('Performing comprehensive translation data clearing');
     
-    // Clear any session storage
-    sessionStorage.removeItem('googtrans');
-    sessionStorage.removeItem('preferred-language');
+    // Clear localStorage
+    localStorage.removeItem(LANGUAGE_STORAGE_KEY);
+    
+    // Clear all possible Google Translate cookies with multiple domain variations
+    const cookiesToClear = [
+      'googtrans',
+      'googtrans=/en/en',
+      'googtrans=/auto/en',
+      'googtrans=',
+      '__Secure-3PSID',
+      '__Secure-3PAPISID',
+      '__Secure-3PSIDCC'
+    ];
+    
+    cookiesToClear.forEach(cookieName => {
+      // Clear for current domain
+      document.cookie = `${cookieName}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; domain=${window.location.hostname}`;
+      document.cookie = `${cookieName}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; domain=.${window.location.hostname}`;
+      document.cookie = `${cookieName}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+      
+      // Clear for Google domains
+      document.cookie = `${cookieName}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; domain=.google.com`;
+      document.cookie = `${cookieName}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; domain=translate.google.com`;
+    });
+    
+    // Clear localStorage and sessionStorage comprehensively
+    try {
+      if (typeof(Storage) !== "undefined") {
+        // Clear all storage items that might contain Google Translate data
+        const keysToRemove = [];
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key && (key.includes('googtrans') || key.includes('translate') || key.includes('goog'))) {
+            keysToRemove.push(key);
+          }
+        }
+        keysToRemove.forEach(key => localStorage.removeItem(key));
+        
+        // Clear sessionStorage as well
+        const sessionKeysToRemove = [];
+        for (let i = 0; i < sessionStorage.length; i++) {
+          const key = sessionStorage.key(i);
+          if (key && (key.includes('googtrans') || key.includes('translate') || key.includes('goog'))) {
+            sessionKeysToRemove.push(key);
+          }
+        }
+        sessionKeysToRemove.forEach(key => sessionStorage.removeItem(key));
+      }
+    } catch (e) {
+      console.warn('Could not clear storage:', e);
+    }
     
     // Clear any window variables that might persist
     if (window.google && window.google.translate) {
@@ -48,6 +91,20 @@ export const useGoogleTranslate = () => {
         console.log('Error clearing Google Translate variables:', error);
       }
     }
+    
+    // Remove any Google Translate elements from DOM
+    try {
+      const elementsToRemove = document.querySelectorAll('[class*="goog-te"], [id*="goog"], .skiptranslate');
+      elementsToRemove.forEach(el => {
+        if (el && el.parentNode && el.id !== 'google_translate_element') {
+          el.parentNode.removeChild(el);
+        }
+      });
+    } catch (e) {
+      console.warn('Could not remove Google Translate elements:', e);
+    }
+    
+    console.log('Translation data clearing completed');
   }, []);
 
   // Set translation cookie
@@ -144,6 +201,7 @@ export const useGoogleTranslate = () => {
       window.history.replaceState(null, null, baseUrl);
       
       // Force a complete reload to ensure clean state
+      console.log('Forcing complete page replacement to:', baseUrl);
       window.location.replace(baseUrl);
       
     } else {
@@ -172,13 +230,12 @@ export const useGoogleTranslate = () => {
         
         // Clear URL hash if it contains translation data
         const currentHash = window.location.hash;
+        const baseUrl = getBaseUrl();
         if (currentHash.includes('googtrans') || currentHash.includes('#')) {
-          const baseUrl = getBaseUrl();
           window.history.replaceState(null, null, baseUrl);
         }
         
         // Force refresh to clean slate
-        const baseUrl = getBaseUrl();
         console.log('Forcing refresh to clean English page:', baseUrl);
         
         // Use location.replace for a clean reload without history
