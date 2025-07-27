@@ -485,7 +485,7 @@ const FacultyDetails = () => {
                         <div className="research-guidance-cards">
                             {faculty.researchGuidance?.map((student, index) => {
                                 // Extract student name, degree type, and status from the text
-                                const degreeMatch = student.match(/(Ph\.?D\.?|M\.?Tech\.?|M\.?S\.?|B\.?Tech\.?)/i);
+                                const degreeMatch = student.match(/(Ph.?D.?|M.?Tech.?|M.?S.?|B.?Tech.?)/i);
                                 const statusMatch = student.match(/(completed|ongoing|submitted|awarded)/i);
                                 const yearMatch = student.match(/\b(19|20)\d{2}\b/);
                                 

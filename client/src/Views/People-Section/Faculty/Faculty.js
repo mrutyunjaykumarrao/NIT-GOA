@@ -83,6 +83,7 @@ import VelavanKathirvelu from '../../../assets/images/Faculty/APS/Dr. Velavan Ka
 
 // HSS Department
 import SaraniMondal from '../../../assets/images/Faculty/HSS/Dr. Sarani Ghosal Mondal.jpg';
+// eslint-disable-next-line no-unused-vars
 import SunilKumar from '../../../assets/images/Faculty/HSS/Dr. Sunil Kumar.png';
 import UnaisKT from '../../../assets/images/Faculty/HSS/Dr. Unais KT.png';
 import VishanupadBarve from '../../../assets/images/Faculty/HSS/Mr. Vishnupad Barve.jpg';

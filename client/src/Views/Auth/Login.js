@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import { useTheme } from '../../contexts/ThemeContext';
+// import { useTheme } from '../../contexts/ThemeContext'; // Removed unused import
 import './Login.css';
 
 const Login = ({ isModalOpen, onClose }) => {
@@ -21,7 +21,7 @@ const Login = ({ isModalOpen, onClose }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { login, isAuthenticated } = useAuth();
-  const { theme } = useTheme();
+  // const { theme } = useTheme(); // Removed unused variable
 
   // Redirect if already authenticated and clear form when user logs out
   React.useEffect(() => {

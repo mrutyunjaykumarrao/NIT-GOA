@@ -34,12 +34,12 @@ const Navbar = () => {
     showTranslateConfirm,
     pendingTranslation,
     handleTranslateConfirm,
-    changeLanguage,
-    getCurrentLanguage
+    changeLanguage
+    // getCurrentLanguage - removed unused variable
   } = useGoogleTranslate();
 
   // Get current language object from the hook
-  const currentLang = getCurrentLanguage();
+  // const currentLang = getCurrentLanguage(); // Removed unused variable
 
   // Google Translate integration functions
   const initializeGoogleTranslate = useCallback(() => {

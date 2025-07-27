@@ -340,11 +340,12 @@ export const useGoogleTranslate = () => {
     }
 
     return () => window.removeEventListener('hashchange', handleHashChange);
-  }, [currentLanguage, languages]);
+  }, [currentLanguage, languages, getBaseUrl]);
 
   // Initialize Google Translate
   useEffect(() => {
     initializeGoogleTranslate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initializeGoogleTranslate]);
 
   return {
