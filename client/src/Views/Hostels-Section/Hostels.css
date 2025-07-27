@@ -1,0 +1,1955 @@
+/* Hostels Section - CSS Variables */
+:root {
+    /* Light Mode Colors */
+    --hostels-primary-blue: #1e40af;
+    --hostels-primary-blue-light: #3b82f6;
+    --hostels-secondary-blue: #1e3a8a;
+    --hostels-secondary-blue-50: rgba(59, 130, 246, 0.05);
+    --hostels-secondary-blue-100: rgba(59, 130, 246, 0.1);
+    --hostels-accent-orange: #f59e0b;
+    --hostels-accent-orange-light: #fbbf24;
+    --hostels-accent-green: #10b981;
+    --hostels-accent-purple: #8b5cf6;
+    
+    /* Light Mode Backgrounds */
+    --hostels-bg-primary: #ffffff;
+    --hostels-bg-secondary: #f8fafc;
+    --hostels-card-bg: #ffffff;
+    --hostels-card-bg-secondary: rgba(248, 250, 252, 0.8);
+    
+    /* Light Mode Text */
+    --hostels-text-primary: #1f2937;
+    --hostels-text-secondary: #4b5563;
+    --hostels-text-muted: #6b7280;
+    
+    /* Light Mode Borders & Shadows */
+    --hostels-border: rgba(107, 114, 128, 0.2);
+    --hostels-shadow: rgba(0, 0, 0, 0.1);
+    --hostels-shadow-medium: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --hostels-shadow-large: 0 8px 32px rgba(0, 0, 0, 0.15);
+    
+    /* Gradients */
+    --hostels-gradient-primary: linear-gradient(135deg, var(--hostels-primary-blue) 0%, var(--hostels-primary-blue-light) 100%);
+    --hostels-gradient-secondary: linear-gradient(135deg, var(--hostels-accent-orange) 0%, var(--hostels-accent-orange-light) 100%);
+}
+
+/* Dark Mode Colors */
+[data-theme="dark"] {
+    /* Dark Mode Colors */
+    --hostels-primary-blue: #3b82f6;
+    --hostels-primary-blue-light: #60a5fa;
+    --hostels-secondary-blue: #1e40af;
+    --hostels-secondary-blue-50: rgba(59, 130, 246, 0.05);
+    --hostels-secondary-blue-100: rgba(59, 130, 246, 0.1);
+    --hostels-accent-orange: #f59e0b;
+    --hostels-accent-orange-light: #fbbf24;
+    --hostels-accent-green: #34d399;
+    --hostels-accent-purple: #a78bfa;
+    
+    /* Dark Mode Backgrounds */
+    --hostels-bg-primary: #0f172a;
+    --hostels-bg-secondary: #1e293b;
+    --hostels-card-bg: rgba(30, 41, 59, 0.8);
+    --hostels-card-bg-secondary: rgba(15, 23, 42, 0.9);
+    
+    /* Dark Mode Text */
+    --hostels-text-primary: #f8fafc;
+    --hostels-text-secondary: #cbd5e1;
+    --hostels-text-muted: #94a3b8;
+    
+    /* Dark Mode Borders & Shadows */
+    --hostels-border: rgba(148, 163, 184, 0.2);
+    --hostels-shadow: rgba(0, 0, 0, 0.3);
+    --hostels-shadow-medium: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --hostels-shadow-large: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Main Page Layout */
+.hostels-page {
+    min-height: 100vh;
+    background: var(--hostels-bg-primary);
+    color: var(--hostels-text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    transition: all 0.3s ease;
+}
+
+.hostels-page-header {
+    background: var(--hostels-gradient-primary);
+    padding: 4rem 2rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin: 0 2rem 3rem 2rem;
+    border-radius: 16px;
+    box-shadow: var(--hostels-shadow-large);
+}
+
+.hostels-page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+}
+
+.hostels-header-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hostels-page-header h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hostels-page-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 635px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.hostels-container {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.hostels-main-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+/* About Section Styles */
+.hostels-about-card {
+    background: var(--hostels-card-bg);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: var(--hostels-shadow-medium);
+    border: 1px solid var(--hostels-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.hostels-about-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--hostels-primary-blue);
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+}
+
+.hostels-about-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--hostels-text-secondary);
+    text-align: justify;
+    margin: 0;
+}
+
+/* Sidebar Navigation */
+.hostels-sidebar {
+    position: sticky;
+    top: 2rem;
+    height: fit-content;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    background: var(--hostels-card-bg);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--hostels-shadow-medium);
+    border: 1px solid var(--hostels-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
+}
+
+.hostels-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.hostels-nav-item {
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--hostels-border);
+}
+
+.hostels-nav-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.hostels-nav-link {
+    display: block;
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    background: none;
+    border: none;
+    color: var(--hostels-text-primary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    transition: border-left 0.2s ease;
+    position: relative;
+    border-left: 4px solid transparent;
+}
+
+.hostels-nav-link:hover {
+    border-left: 4px solid var(--hostels-primary-blue);
+}
+
+[data-theme="dark"] .hostels-nav-link:hover {
+    border-left: 4px solid var(--hostels-primary-blue-light);
+}
+
+.hostels-nav-link.hostels-nav-active {
+    background: linear-gradient(135deg, var(--hostels-primary-blue) 0%, var(--hostels-primary-blue-light) 100%);
+    color: white;
+    font-weight: 600;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-left: 4px solid rgba(255, 255, 255, 0.8);
+}
+
+/* Content Area */
+.hostels-content {
+    background: var(--hostels-card-bg);
+    border-radius: 16px;
+    box-shadow: var(--hostels-shadow-medium);
+    border: 1px solid var(--hostels-border);
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    /* height: calc(100vh - 6rem); */
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--hostels-primary-blue) var(--hostels-card-bg);
+}
+
+.hostels-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.hostels-content::-webkit-scrollbar-track {
+    background: var(--hostels-card-bg);
+    border-radius: 4px;
+}
+
+.hostels-content::-webkit-scrollbar-thumb {
+    background: var(--hostels-primary-blue);
+    border-radius: 4px;
+}
+
+.hostels-content::-webkit-scrollbar-thumb:hover {
+    background: var(--hostels-primary-blue-light);
+}
+
+.hostels-section {
+    min-height: 400px;
+}
+
+.hostels-section-header {
+    background: linear-gradient(135deg, var(--hostels-primary-blue) 0%, var(--hostels-primary-blue-light) 100%);
+    padding: 2.5rem 2rem;
+    color: white;
+    position: relative;
+}
+
+.hostels-section-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--hostels-accent-orange) 0%, var(--hostels-accent-orange-light) 100%);
+}
+
+.hostels-section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    color: white;
+}
+
+.hostels-section-header p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+}
+
+.hostels-content-wrapper {
+    padding: 2.5rem 2rem;
+}
+
+/* Facility Cards */
+.hostels-facility-card {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: var(--hostels-card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--hostels-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.hostels-facility-card:last-child {
+    margin-bottom: 0;
+}
+
+.hostels-facility-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--hostels-primary-blue-light);
+    margin: 0 0 1rem 0;
+}
+
+.hostels-facility-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--hostels-text-secondary);
+    margin-bottom: 1.5rem;
+    white-space: pre-line;
+}
+
+.hostels-facility-image {
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.hostels-facility-image img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+/* Academic Calendar Style Event Cards */
+.hostels-event-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: var(--hostels-card-bg);
+    border: 1px solid var(--hostels-border);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: var(--hostels-shadow-medium);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.hostels-event-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--hostels-shadow-large);
+}
+
+.hostels-event-content {
+    flex: 1;
+}
+
+.hostels-event-title {
+    color: var(--hostels-primary-blue);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.hostels-pretty-download-btn {
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3);
+    text-decoration: none;
+}
+
+.hostels-pretty-download-btn:hover {
+    background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.4);
+    color: white;
+}
+
+.hostels-pretty-download-btn:active {
+    transform: translateY(0);
+}
+
+.hostels-pretty-download-btn svg {
+    flex-shrink: 0;
+}
+
+/* Smaller Download Button for Guest Accommodation */
+.pretty-download-btn {
+    background: var(--hostels-gradient-primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+    text-decoration: none;
+    min-width: 160px;
+    white-space: nowrap;
+}
+
+.pretty-download-btn:hover {
+    background: var(--hostels-gradient-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+    color: white;
+    text-decoration: none;
+}
+
+.pretty-download-btn:active {
+    transform: translateY(0);
+}
+
+/* Documents Section */
+.hostels-documents-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--hostels-border);
+}
+
+.hostels-documents-section h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--hostels-text-primary);
+    margin: 0 0 1.5rem 0;
+}
+
+.hostels-documents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+/* Form Section Styles */
+.hostels-form-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--hostels-border);
+}
+
+.hostels-form-section h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--hostels-primary-blue);
+    margin: 0 0 1.5rem 0;
+}
+
+.hostels-download-card {
+    background: var(--hostels-card-bg);
+    border: 2px solid var(--hostels-primary-blue-light);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--hostels-shadow-medium);
+    transition: all 0.3s ease;
+}
+
+.hostels-download-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--hostels-shadow-large);
+}
+
+.hostels-download-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
+}
+
+.hostels-download-content p {
+    color: var(--hostels-text-secondary);
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.hostels-document-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--hostels-text-primary);
+    transition: all 0.3s ease;
+}
+
+.hostels-document-card:hover {
+    background: rgba(59, 130, 246, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.hostels-document-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.hostels-document-title {
+    flex: 1;
+    font-weight: 500;
+}
+
+.hostels-download-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* Faculty Grid */
+.hostels-faculty-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 2rem;
+}
+
+.hostels-faculty-card {
+    background: var(--hostels-card-bg);
+    border: 1px solid var(--hostels-border);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+}
+
+.hostels-faculty-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--hostels-gradient-primary);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.hostels-faculty-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--hostels-shadow-large);
+}
+
+.hostels-faculty-card:hover::before {
+    transform: scaleY(1);
+}
+
+.hostels-faculty-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--hostels-primary-blue);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.3;
+}
+
+.hostels-faculty-designation {
+    font-size: 1rem;
+    color: var(--hostels-text-secondary);
+    margin: 0 0 1.5rem 0;
+    font-weight: 500;
+    line-height: 1.4;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--hostels-border);
+}
+
+.hostels-faculty-detail {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.hostels-faculty-detail:last-child {
+    margin-bottom: 0;
+}
+
+.hostels-faculty-detail strong {
+    color: var(--hostels-text-primary);
+    font-weight: 600;
+    min-width: 90px;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+}
+
+.hostels-faculty-detail span,
+.hostels-faculty-detail a {
+    color: var(--hostels-text-secondary);
+    flex: 1;
+}
+
+.hostels-faculty-detail a {
+    color: var(--hostels-primary-blue);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.hostels-faculty-detail a:hover {
+    color: var(--hostels-primary-blue-light);
+    text-decoration: underline;
+}
+
+/* Fee Structure - Enhanced */
+.hostels-fee-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+.hostels-fee-card {
+    background: var(--hostels-card-bg);
+    border: 1px solid var(--hostels-border);
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: var(--hostels-shadow-large);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+}
+
+.hostels-fee-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--hostels-gradient-primary);
+}
+
+.hostels-fee-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.hostels-fee-card h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--hostels-primary-blue);
+    margin: 0 0 1rem 0;
+}
+
+.hostels-fee-card p {
+    font-size: 1.1rem;
+    color: var(--hostels-text-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.hostels-fee-features {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.hostels-fee-feature {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 8px;
+    font-weight: 500;
+    color: var(--hostels-text-secondary);
+}
+
+.hostels-feature-icon {
+    font-size: 1.2rem;
+}
+
+.hostels-fee-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 2.5rem;
+    background: var(--hostels-gradient-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+}
+
+.hostels-fee-download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+}
+
+/* Forms & Formats - Redesigned */
+.hostels-forms-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.hostels-forms-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: var(--hostels-card-bg-secondary);
+    border-radius: 16px;
+    border: 1px solid var(--hostels-border);
+}
+
+.hostels-forms-intro h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--hostels-primary-blue);
+    margin: 0 0 1rem 0;
+}
+
+.hostels-forms-intro p {
+    font-size: 1.1rem;
+    color: var(--hostels-text-secondary);
+    margin: 0;
+}
+
+.hostels-forms-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.hostels-form-card {
+    background: var(--hostels-card-bg);
+    border: 1px solid var(--hostels-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: var(--hostels-text-primary);
+    transition: all 0.3s ease;
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.hostels-form-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--hostels-gradient-secondary);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.hostels-form-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--hostels-shadow-medium);
+}
+
+.hostels-form-card:hover::before {
+    transform: scaleX(1);
+}
+
+.hostels-form-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.hostels-form-icon {
+    font-size: 2rem;
+    color: var(--hostels-accent-orange);
+}
+
+.hostels-form-number {
+    background: var(--hostels-gradient-primary);
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.hostels-form-content {
+    flex: 1;
+}
+
+.hostels-form-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--hostels-text-primary);
+    margin: 0 0 1rem 0;
+    line-height: 1.4;
+}
+
+.hostels-form-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 8px;
+    font-weight: 500;
+    color: var(--hostels-primary-blue);
+}
+
+.hostels-download-icon {
+    font-size: 1.2rem;
+}
+
+/* Guest Accommodation */
+.hostels-guest-info {
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid var(--hostels-border);
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.hostels-guest-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--hostels-text-secondary);
+    margin-bottom: 2rem;
+}
+
+.hostels-charges-section,
+.hostels-booking-section,
+.hostels-contact-section {
+    margin: 2rem 0;
+    padding-top: 2rem;
+    border-top: 1px solid var(--hostels-border);
+}
+
+.hostels-charges-section h4,
+.hostels-booking-section h4,
+.hostels-contact-section h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--hostels-primary-blue-light);
+    margin: 0 0 1rem 0;
+}
+
+.hostels-charges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.hostels-charge-card {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.hostels-charge-card h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--hostels-text-primary);
+    margin: 0 0 0.5rem 0;
+}
+
+.hostels-charge-rate {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--hostels-primary-blue-light);
+    margin: 0;
+}
+
+.hostels-booking-btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--hostels-gradient-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.hostels-booking-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.hostels-contact-details p {
+    margin: 0.5rem 0;
+    color: var(--hostels-text-secondary);
+}
+
+.hostels-contact-details a {
+    color: var(--hostels-primary-blue-light);
+    text-decoration: none;
+}
+
+.hostels-contact-details a:hover {
+    text-decoration: underline;
+}
+
+/* Gallery Slider */
+.hostels-gallery-section {
+    margin-bottom: 4rem;
+}
+
+.hostels-gallery-section:last-child {
+    margin-bottom: 0;
+}
+
+.hostels-gallery-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--hostels-primary-blue);
+    margin: 0 0 2rem 0;
+    text-align: center;
+}
+
+.hostels-gallery-slider {
+    background: var(--hostels-card-bg);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--hostels-shadow-medium);
+    border: 1px solid var(--hostels-border);
+}
+
+.hostels-slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.hostels-slider-main {
+    flex: 1;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+}
+
+.hostels-slider-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease-in-out;
+}
+
+.hostels-slider-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    padding: 1rem;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hostels-image-counter {
+    font-weight: 600;
+    font-size: 0.9rem;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    color: white;
+}
+
+.hostels-auto-slide-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.hostels-auto-slide-toggle {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 0.4rem;
+    border-radius: 50%;
+    font-size: 1rem;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hostels-auto-slide-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.hostels-slider-btn {
+    background: var(--hostels-card-bg);
+    border: 1px solid var(--hostels-border);
+    color: var(--hostels-text-primary);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.hostels-slider-btn:hover {
+    background: rgba(255, 255, 255, 0);
+    color: white;
+    /* transform: scale(1.1); */
+}
+
+.hostels-slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.hostels-slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: var(--hostels-border);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hostels-slider-dot.active {
+    background: var(--hostels-primary-blue);
+    transform: scale(1.2);
+}
+
+.hostels-slider-dot:hover {
+    background: var(--hostels-primary-blue-light);
+}
+
+/* Guest Accommodation - Centered Layout */
+.hostels-guest-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hostels-guest-info {
+    background: var(--hostels-card-bg);
+    border: 2px solid var(--hostels-primary-blue-light);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: var(--hostels-shadow-medium);
+}
+
+.hostels-guest-description {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: var(--hostels-text-primary);
+    margin-bottom: 2.5rem;
+    font-weight: 500;
+}
+
+.hostels-charges-section {
+    margin-bottom: 0;
+}
+
+.hostels-charges-section h4 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--hostels-primary-blue);
+    margin: 0 0 1.5rem 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.hostels-charges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.hostels-charge-card {
+    background: var(--hostels-card-bg);
+    border: 2px solid var(--hostels-primary-blue-light);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: var(--hostels-shadow-medium);
+}
+
+.hostels-charge-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(59, 130, 246, 0.3);
+    border-color: var(--hostels-primary-blue);
+}
+
+.hostels-charge-card h5 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--hostels-text-primary);
+    margin: 0 0 1rem 0;
+}
+
+.hostels-charge-rate {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--hostels-primary-blue);
+    margin: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.hostels-guest-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.hostels-booking-section,
+.hostels-contact-section {
+    background: var(--hostels-card-bg);
+    border: 2px solid var(--hostels-primary-blue-light);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: var(--hostels-shadow-medium);
+}
+
+.hostels-booking-section h4,
+.hostels-contact-section h4 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--hostels-primary-blue);
+    margin: 0 0 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.hostels-booking-section p,
+.hostels-contact-section p {
+    color: var(--hostels-text-primary);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.hostels-booking-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background: var(--hostels-gradient-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+}
+
+.hostels-booking-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+}
+
+.hostels-contact-details {
+    text-align: center;
+}
+
+.hostels-contact-details p {
+    margin: 0.5rem 0;
+    color: var(--hostels-text-primary);
+    font-weight: 500;
+}
+
+.hostels-contact-details strong {
+    color: var(--hostels-text-primary);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.hostels-contact-details a {
+    color: var(--hostels-primary-blue);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.hostels-contact-details a:hover {
+    text-decoration: underline;
+}
+
+/* Contact Us */
+.hostels-contact-info {
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid var(--hostels-border);
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.hostels-contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.hostels-contact-card {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.hostels-contact-card h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--hostels-primary-blue-light);
+    margin: 0 0 0.5rem 0;
+}
+
+.hostels-contact-title {
+    font-size: 1rem;
+    color: var(--hostels-text-secondary);
+    margin: 0 0 1rem 0;
+}
+
+.hostels-contact-detail {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    color: var(--hostels-text-secondary);
+}
+
+.hostels-contact-detail strong {
+    color: var(--hostels-text-primary);
+}
+
+.hostels-contact-detail a {
+    color: var(--hostels-primary-blue-light);
+    text-decoration: none;
+}
+
+.hostels-contact-detail a:hover {
+    text-decoration: underline;
+}
+
+.hostels-address-section {
+    padding-top: 2rem;
+    border-top: 1px solid var(--hostels-border);
+}
+
+.hostels-address-section h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--hostels-primary-blue-light);
+    margin: 0 0 1rem 0;
+}
+
+.hostels-address {
+    font-size: 1rem;
+    color: var(--hostels-text-secondary);
+    line-height: 1.5;
+}
+
+/* Mobile and Tablet Responsive */
+
+/* Tablet (768px to 1024px) - Improve gallery sizing */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .hostels-gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .hostels-gallery-section {
+        margin-bottom: 2rem;
+    }
+    
+    .hostels-slider-main {
+        aspect-ratio: 16/9;
+        max-height: 400px;
+    }
+    
+    .hostels-gallery-slide img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 16px;
+    }
+    
+    .hostels-gallery-title {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hostels-slider-container {
+        gap: 1.5rem;
+    }
+    
+    .hostels-slider-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Mobile L and below - Convert sidebar to horizontal navbar (768px) */
+@media (max-width: 768px) {
+    .hostels-main-layout {
+        display: block;
+        grid-template-columns: none;
+        gap: 0;
+    }
+    
+    .hostels-sidebar {
+        position: static;
+        top: auto;
+        height: auto;
+        max-height: none;
+        overflow-y: visible;
+        width: 100%;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px var(--hostels-shadow);
+    }
+    
+    .hostels-nav-list {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 0.3rem;
+        justify-content: flex-start;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding: 0.5rem 0;
+        list-style: none;
+        margin: 0;
+    }
+    
+    .hostels-nav-list::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .hostels-nav-item {
+        margin-bottom: 0;
+        flex: 0 0 auto;
+        border-bottom: none;
+    }
+    
+    .hostels-nav-link {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.75rem;
+        border-radius: 6px;
+        white-space: nowrap;
+        min-width: auto;
+        text-align: center;
+        font-weight: 500;
+        border-left: none;
+        transition: none;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        flex: 0 0 auto;
+        min-height: 2.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .hostels-nav-link:hover,
+    .hostels-nav-link:focus,
+    .hostels-nav-link:active {
+        padding: 0.6rem 0.8rem;
+        border-left: none;
+        transform: none;
+        background: none;
+    }
+    
+    /* Make active nav item more prominent on mobile */
+    .hostels-nav-link.hostels-nav-active {
+        background: var(--hostels-primary-blue) !important;
+        color: white !important;
+        font-weight: 600;
+        border-left: none;
+        transition: none;
+        padding: 0.6rem 0.8rem;
+        min-height: 2.2rem;
+        flex: 0 0 auto;
+    }
+    
+    .hostels-nav-link.hostels-nav-active:hover,
+    .hostels-nav-link.hostels-nav-active:focus,
+    .hostels-nav-link.hostels-nav-active:active {
+        padding: 0.6rem 0.8rem;
+        border-left: none;
+        transform: none;
+        background: var(--hostels-primary-blue) !important;
+    }
+    
+    .hostels-content {
+        padding: 0;
+        width: 100%;
+    }
+}
+
+/* Mobile Landscape and Small Tablets (576px - 767px) */
+@media (max-width: 767px) {
+    .hostels-page {
+        padding: 1rem 0;
+    }
+    
+    .hostels-page-header {
+        padding: 2.5rem 1rem 2rem;
+        margin: 0 -0.5rem 1.5rem;
+    }
+    
+    .hostels-page-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hostels-page-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .hostels-container {
+        padding: 0 0.5rem;
+    }
+    
+    .hostels-content-wrapper {
+        padding: 1.5rem;
+    }
+    
+    .hostels-section-header {
+        padding: 1.5rem;
+    }
+    
+    .hostels-section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .hostels-faculty-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .hostels-documents-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hostels-forms-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hostels-gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .hostels-contacts-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hostels-charges-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hostels-guest-actions {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .hostels-slider-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .hostels-slider-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .hostels-event-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .hostels-pretty-download-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Mobile Gallery - Make entire card an image */
+    .hostels-gallery-section {
+        position: relative;
+    }
+    
+    .hostels-gallery-title {
+        /* position: absolute; */
+        /* top: 1rem;
+        left: 1rem;
+        right: 1rem;
+        z-index: 10; */
+        /* background: rgba(0, 0, 0, 0.7);
+        color: white; */
+        /* padding: 0.8rem 1.2rem;
+        border-radius: 8px;
+        margin: 0; */
+        font-size: 1.1rem;
+        text-align: center;
+        backdrop-filter: blur(10px);
+    }
+    
+    .hostels-gallery-slider {
+        border-radius: 16px;
+        overflow: hidden;
+    }
+    
+    .hostels-slider-container {
+        position: relative;
+    }
+    
+    .hostels-slider-main {
+        aspect-ratio: 16/10;
+    }
+    
+    .hostels-slider-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 15;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0);
+    }
+    
+    .hostels-slider-prev {
+        left: 1rem;
+    }
+    
+    .hostels-slider-next {
+        right: 1rem;
+    }
+}
+
+/* Contact Us */
+.hostels-contact-info {
+    background: var(--hostels-card-bg);
+    border: 1px solid var(--hostels-border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.hostels-contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.hostels-contact-card {
+    background: rgba(59, 130, 246, 0.1);
+    border: 2px solid rgba(59, 130, 246, 0.2);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.hostels-contact-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2);
+}
+
+.hostels-contact-card h4 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--hostels-primary-blue);
+    margin: 0 0 0.5rem 0;
+}
+
+.hostels-contact-title {
+    font-size: 1rem;
+    color: var(--hostels-text-secondary);
+    margin: 0 0 1.5rem 0;
+    font-weight: 500;
+}
+
+.hostels-contact-detail {
+    margin: 0.75rem 0;
+    font-size: 1rem;
+    color: var(--hostels-text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.hostels-contact-detail strong {
+    color: var(--hostels-text-primary);
+    font-weight: 600;
+}
+
+.hostels-contact-detail a {
+    color: var(--hostels-primary-blue);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.hostels-contact-detail a:hover {
+    text-decoration: underline;
+}
+
+.hostels-address-section {
+    padding-top: 2rem;
+    border-top: 2px solid var(--hostels-border);
+    text-align: center;
+}
+
+.hostels-address-section h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--hostels-primary-blue);
+    margin: 0 0 1rem 0;
+}
+
+.hostels-address {
+    font-size: 1.1rem;
+    color: var(--hostels-text-secondary);
+    line-height: 1.6;
+    background: rgba(59, 130, 246, 0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 0;
+}
+
+/* Mobile Portrait (480px) */
+@media (max-width: 480px) {
+    .hostels-page-header {
+        padding: 2rem 0.5rem 1.5rem;
+    }
+    
+    .hostels-page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .hostels-page-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hostels-container {
+        padding: 0 0.25rem;
+    }
+    
+    .hostels-content-wrapper {
+        padding: 1rem;
+    }
+    
+    .hostels-section-header {
+        padding: 1rem;
+    }
+    
+    .hostels-section-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .hostels-facility-card {
+        padding: 1rem;
+    }
+    
+    .hostels-faculty-card {
+        padding: 1rem;
+    }
+    
+    .hostels-fee-card {
+        padding: 2rem 1rem;
+    }
+    
+    .hostels-fee-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .hostels-forms-intro {
+        padding: 1.5rem;
+    }
+    
+    .hostels-forms-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hostels-form-card {
+        padding: 1rem;
+    }
+    
+    .hostels-guest-info {
+        padding: 1.5rem;
+    }
+    
+    .hostels-booking-section,
+    .hostels-contact-section {
+        padding: 1.5rem;
+    }
+    
+    .hostels-gallery-slider {
+        padding: 1rem;
+    }
+    
+    .hostels-slider-container {
+        gap: 0.5rem;
+    }
+    
+    .hostels-slider-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+    
+    .hostels-contact-info {
+        padding: 1.5rem;
+    }
+    
+    .hostels-contact-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Very Small Screens (< 380px) */
+@media (max-width: 379px) {
+    .hostels-page {
+        padding: 0.5rem 0;
+    }
+    
+    .hostels-container {
+        padding: 0 0.25rem;
+    }
+    
+    .hostels-content-wrapper {
+        padding: 1rem;
+    }
+    
+    .hostels-faculty-card {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+    
+    .hostels-faculty-name {
+        font-size: 1.1rem !important;
+        line-height: 1.3;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hostels-faculty-designation {
+        font-size: 0.85rem !important;
+        margin-bottom: 1rem;
+    }
+    
+    .hostels-faculty-details {
+        gap: 0.5rem;
+    }
+    
+    .hostels-faculty-detail {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+    
+    .hostels-faculty-detail strong {
+        font-size: 0.8rem;
+    }
+    
+    .hostels-contact-card {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .hostels-contact-card h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .hostels-contact-details {
+        gap: 0.5rem;
+    }
+    
+    .hostels-contact-detail {
+        padding: 0.5rem;
+        font-size: 0.85rem;
+    }
+    
+    .hostels-page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .hostels-page-subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* Dark Mode Improvements for Guest Accommodation and Contact Us */
+[data-theme="dark"] .hostels-guest-container {
+    color: var(--hostels-text-primary);
+}
+
+[data-theme="dark"] .hostels-guest-intro h3 {
+    color: var(--hostels-primary-blue-light);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .hostels-guest-intro p {
+    color: var(--hostels-text-secondary);
+}
+
+[data-theme="dark"] .hostels-contacts-section h4,
+[data-theme="dark"] .hostels-charges-section h4,
+[data-theme="dark"] .hostels-form-section h4 {
+    color: var(--hostels-primary-blue-light);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .hostels-contact-card {
+    background: rgba(30, 41, 59, 0.6);
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .hostels-contact-card:hover {
+    border-color: var(--hostels-primary-blue-light);
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2);
+}
+
+[data-theme="dark"] .hostels-contact-name {
+    color: var(--hostels-primary-blue-light);
+}
+
+[data-theme="dark"] .hostels-contact-detail strong {
+    color: var(--hostels-text-primary);
+}
+
+[data-theme="dark"] .hostels-contact-detail a {
+    color: var(--hostels-primary-blue-light);
+}
+
+[data-theme="dark"] .hostels-contact-text {
+    color: var(--hostels-text-secondary);
+}
+
+[data-theme="dark"] .hostels-contact-role {
+    color: var(--hostels-text-secondary);
+}
+
+[data-theme="dark"] .hostels-address-section h4 {
+    color: var(--hostels-primary-blue-light);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .hostels-address p {
+    color: var(--hostels-text-secondary);
+}
+
+[data-theme="dark"] .hostels-charge-card {
+    background: rgba(30, 41, 59, 0.6);
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .hostels-charge-card:hover {
+    border-color: var(--hostels-primary-blue-light);
+    box-shadow: 0 12px 32px rgba(59, 130, 246, 0.3);
+}
+
+[data-theme="dark"] .hostels-charge-type {
+    color: var(--hostels-text-primary);
+}
+
+[data-theme="dark"] .hostels-charge-amount {
+    color: var(--hostels-primary-blue-light);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .hostels-download-card {
+    background: rgba(30, 41, 59, 0.6);
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .hostels-download-content p {
+    color: var(--hostels-text-secondary);
+}
+
+[data-theme="dark"] .pretty-download-btn {
+    background: var(--hostels-gradient-primary);
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+}
+
+[data-theme="dark"] .pretty-download-btn:hover {
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+}

@@ -29,7 +29,34 @@
     --shadow-strong: rgba(0, 0, 0, 0.16);
 }
 
-.admissions-page {
+/* Dark Theme Variables */
+[data-theme="dark"] {
+    --primary-blue: #4A9EE7;
+    --primary-blue-light: #6BB6FF;
+    --primary-blue-dark: #2E86C1;
+    
+    --secondary-blue-50: #0f1726;
+    --secondary-blue-100: #1a2332;
+    --secondary-blue-200: #253041;
+    --secondary-blue-800: #0A1016;
+    
+    --white: #FFFFFF;
+    --gray-50: #0f1726;
+    --gray-100: #1a2332;
+    --gray-200: #253041;
+    --gray-600: #94a3b8;
+    --gray-700: #cbd5e1;
+    --gray-800: #e2e8f0;
+    
+    --accent-orange: #FF8C42;
+    --accent-green: #4CAF50;
+    --success-green: #66BB6A;
+    --shadow-light: rgba(30, 41, 59, 0.4);
+    --shadow-medium: rgba(30, 41, 59, 0.6);
+    --shadow-strong: rgba(30, 41, 59, 0.8);
+}
+
+.btech-josaa-admissions-page {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--gray-800);
@@ -37,16 +64,16 @@
     min-height: 100vh;
 }
 
-.admissions-container {
-    max-width: 1800px;
+.btech-josaa-admissions-container {
+    max-width: 2400px;
     margin: 0 auto;
     padding: 0 1rem;
 }
 
 /* Hero Section */
-.admissions-hero {
+.btech-josaa-admissions-hero {
     text-align: center;
-    padding: 4rem 0 3rem;
+    padding: 0;
     background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
     margin: 0 -1rem 3rem;
     color: var(--white);
@@ -54,7 +81,7 @@
     overflow: hidden;
 }
 
-.admissions-hero::before {
+.btech-josaa-admissions-hero::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -70,12 +97,13 @@
     50% { transform: translateY(-20px) rotate(180deg); }
 }
 
-.hero-content {
+.btech-josaa-hero-content {
     position: relative;
     z-index: 2;
+    padding: 2rem 1rem;
 }
 
-.admissions-hero h1 {
+.btech-josaa-admissions-hero h1 {
     font-size: 3.8rem;
     font-weight: 700;
     margin-bottom: 1rem;
@@ -84,7 +112,7 @@
     line-height: 1.1;
 }
 
-.hero-subtitle {
+.btech-josaa-hero-subtitle {
     font-size: 1.4rem;
     color: var(--white);
     opacity: 0.95;
@@ -95,7 +123,7 @@
     text-align: center !important;
 }
 
-.ccmt-info {
+.btech-josaa-ccmt-info {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -109,19 +137,19 @@
     margin: 0 auto;
 }
 
-.ccmt-label {
+.btech-josaa-ccmt-label {
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--white);
 }
 
-.ccmt-desc {
+.btech-josaa-ccmt-desc {
     font-size: 0.9rem;
     opacity: 0.9;
 }
 
 /* Section Titles */
-.section-title {
+.btech-josaa-section-title {
     text-align: center;
     font-size: 2.8rem;
     font-weight: 600;
@@ -131,24 +159,15 @@
     line-height: 1.2;
 }
 
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-orange) 100%);
-    border-radius: 2px;
-}
+
 
 /* Programs Section */
-.programs-section {
+.btech-josaa-programs-section {
     margin-bottom: 4rem;
+    padding: 0 1rem;
 }
 
-.programs-tiles {
+.btech-josaa-programs-tiles {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
@@ -156,7 +175,7 @@
     margin: 0 auto;
 }
 
-.program-tile {
+.btech-josaa-program-tile {
     background: var(--white);
     border-radius: 12px;
     padding: 2rem;
@@ -168,7 +187,7 @@
     overflow: hidden;
 }
 
-.program-tile::before {
+.btech-josaa-program-tile::before {
     content: '';
     position: absolute;
     top: 0;
@@ -178,12 +197,12 @@
     background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange));
 }
 
-.program-tile:hover {
+.btech-josaa-program-tile:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 50px var(--shadow-medium);
 }
 
-.program-tile h3 {
+.btech-josaa-program-tile h3 {
     color: var(--primary-blue-dark);
     font-size: 1.3rem;
     font-weight: 600;
@@ -192,90 +211,87 @@
     text-align: center;
 }
 
-.seats-info {
-    background: var(--secondary-blue-50);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    display: inline-block;
-}
-
-.seats-info span {
-    color: var(--primary-blue);
-    font-weight: 600;
-    font-size: 0.9rem;
-}
 /* Admission Overview Section */
-.admission-overview {
-    max-width: 900px;
+.btech-josaa-admission-overview {
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 0 1rem;
 }
 
-.process-card {
+.btech-josaa-process-card {
     background: var(--white);
     border-radius: 16px;
-    padding: 2.5rem;
+    padding: 3rem 4rem;
     box-shadow: 0 10px 40px var(--shadow-light);
     border: 1px solid var(--gray-200);
 }
 
-.process-card h3 {
+.btech-josaa-process-card h3 {
     color: var(--primary-blue-dark);
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 600;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     text-align: center;
 }
 
-.process-card p {
+.btech-josaa-process-card p {
     color: var(--gray-700);
-    line-height: 1.7;
-    font-size: 1.05rem;
-    margin-bottom: 2rem;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    text-align: justify;
 }
 
-.key-points {
+.btech-josaa-key-points {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
 }
 
-.point-item {
+.btech-josaa-point-item {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.2rem;
     background: var(--gray-50);
-    padding: 1rem;
-    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+    border-radius: 10px;
     border-left: 4px solid var(--primary-blue);
 }
 
-.point-icon {
-    width: 24px;
-    height: 24px;
+.btech-josaa-point-icon {
+    width: 28px;
+    height: 28px;
     background: var(--success-green);
     color: var(--white);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: bold;
     flex-shrink: 0;
 }
 
-/* Quick Access Section */
-.quick-access-section {
-    margin-bottom: 4rem;
+.btech-josaa-point-item span:last-child {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--gray-700);
 }
 
-.quick-links-grid {
+/* Quick Access Section */
+.btech-josaa-quick-access-section {
+    margin-bottom: 4rem;
+    padding: 0 1rem;
+}
+
+.btech-josaa-quick-links-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
 }
 
-.quick-link-card {
+.btech-josaa-quick-link-card {
     background: var(--white);
     padding: 2rem;
     border-radius: 12px;
@@ -288,7 +304,7 @@
     overflow: hidden;
 }
 
-.quick-link-card::before {
+.btech-josaa-quick-link-card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -298,14 +314,14 @@
     background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange));
 }
 
-.quick-link-card:hover {
+.btech-josaa-quick-link-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 50px var(--shadow-medium);
     text-decoration: none;
     color: var(--gray-800);
 }
 
-.quick-link-card h3 {
+.btech-josaa-quick-link-card h3 {
     color: var(--primary-blue-dark);
     font-size: 1.2rem;
     font-weight: 600;
@@ -314,192 +330,432 @@
 }
 
 /* Info Section */
-.info-section {
+.btech-josaa-info-section {
     margin-bottom: 4rem;
+    padding: 0 1rem;
 }
 
-.info-grid {
-    max-width: 900px;
+.btech-josaa-info-grid {
+    max-width: 1000px;
     margin: 0 auto;
 }
 
-.info-card {
-    background: var(--white);
-    border-radius: 16px;
-    padding: 2.5rem;
-    box-shadow: 0 10px 40px var(--shadow-light);
-    border: 1px solid var(--gray-200);
+.btech-josaa-info-card {
+    background: linear-gradient(145deg, var(--white) 0%, #fafbfc 100%);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 15px 60px rgba(46, 134, 193, 0.1), 0 5px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(46, 134, 193, 0.1);
+    position: relative;
+    overflow: hidden;
 }
 
-.info-card h3 {
+.btech-josaa-info-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-orange) 50%, var(--primary-blue-light) 100%);
+}
+
+.btech-josaa-info-card h3 {
     color: var(--primary-blue-dark);
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
 }
 
-.info-card p {
+
+
+.btech-josaa-info-card p {
     color: var(--gray-700);
-    margin-bottom: 0.5rem;
-    line-height: 1.6;
+    margin-bottom: 0.6rem;
+    line-height: 1.7;
+    font-size: 1.05rem;
+    text-align: center;
 }
 
-.contact-details {
-    margin-top: 1.5rem;
+.btech-josaa-info-card p:first-of-type {
+    color: var(--primary-blue);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.btech-josaa-contact-details {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    justify-items: center;
+}
+
+
+.btech-josaa-contact-item {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    align-items: center;
+    text-align: center;
+    gap: 0.8rem;
+    background: rgba(46, 134, 193, 0.02);
+    padding: 10px;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-blue);
+    border-right: 4px solid var(--primary-blue);
+    box-shadow: none;
+    
+    
+    width: 100%;
+    max-width: 350px;
 }
 
-.contact-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
+.btech-josaa-contact-item:hover {
+    transform: none;
+    box-shadow: none;
 }
 
-.contact-label {
-    font-weight: 600;
+.btech-josaa-contact-label {
+    font-weight: 700;
     color: var(--primary-blue-dark);
-    min-width: 80px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 0.5rem;
+    position: relative;
 }
 
-.contact-item a {
+
+
+.btech-josaa-contact-item span:last-child {
+    font-size: 1rem;
+    color: var(--gray-700);
+    font-weight: 600;
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+.btech-josaa-contact-item a {
     color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.btech-josaa-contact-item a:hover {
+    color: var(--primary-blue-dark);
+    border-bottom-color: var(--primary-blue);
     text-decoration: none;
 }
 
-.contact-item a:hover {
-    text-decoration: underline;
+/* Email container specific styling */
+.btech-josaa-contact-item span:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 /* Note Section */
-.note {
+.btech-josaa-note {
     background: var(--secondary-blue-50);
     border-left: 4px solid var(--accent-orange);
     padding: 1.5rem;
     border-radius: 8px;
 }
 
-.note p {
+.btech-josaa-note p {
     margin-bottom: 1rem;
     color: var(--gray-700);
     line-height: 1.7;
 }
 
-.note p:last-child {
+.btech-josaa-note p:last-child {
     margin-bottom: 0;
 }
 
-.note a {
+.btech-josaa-note a {
     color: var(--primary-blue);
     text-decoration: none;
     font-weight: 500;
 }
 
-.note a:hover {
+.btech-josaa-note a:hover {
     text-decoration: underline;
 }
 
+/* Dark Theme Styles */
+[data-theme="dark"] .btech-josaa-admissions-page {
+    background: linear-gradient(135deg, #0a1220 0%, #1a2332 50%, #253041 100%);
+    color: var(--gray-800);
+}
+
+[data-theme="dark"] .btech-josaa-admissions-hero {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
+    box-shadow: 0 4px 20px rgba(30, 58, 138, 0.3);
+}
+
+[data-theme="dark"] .btech-josaa-section-title {
+    color: var(--gray-800);
+}
+
+[data-theme="dark"] .btech-josaa-program-tile {
+    background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+    border-color: var(--gray-200);
+    box-shadow: 0 8px 30px var(--shadow-light);
+}
+
+[data-theme="dark"] .btech-josaa-program-tile:hover {
+    background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 100%);
+    box-shadow: 0 15px 50px var(--shadow-medium);
+}
+
+[data-theme="dark"] .btech-josaa-program-tile h3 {
+    color: var(--gray-800);
+}
+
+[data-theme="dark"] .btech-josaa-process-card {
+    background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+    border-color: var(--gray-200);
+    box-shadow: 0 10px 40px var(--shadow-light);
+}
+
+[data-theme="dark"] .btech-josaa-process-card h3 {
+    color: var(--gray-800);
+}
+
+[data-theme="dark"] .btech-josaa-process-card p {
+    color: var(--gray-700);
+}
+
+[data-theme="dark"] .btech-josaa-point-item {
+    background: var(--gray-50);
+    border-left-color: var(--primary-blue-light);
+}
+
+[data-theme="dark"] .btech-josaa-point-item span:last-child {
+    color: var(--gray-700);
+}
+
+[data-theme="dark"] .btech-josaa-quick-link-card {
+    background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+    border-color: var(--gray-200);
+    box-shadow: 0 8px 30px var(--shadow-light);
+}
+
+[data-theme="dark"] .btech-josaa-quick-link-card:hover {
+    background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 100%);
+    box-shadow: 0 15px 50px var(--shadow-medium);
+}
+
+[data-theme="dark"] .btech-josaa-quick-link-card h3 {
+    color: var(--gray-800);
+}
+
+[data-theme="dark"] .btech-josaa-info-card {
+    background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+    border-color: rgba(30, 41, 59, 0.3);
+    box-shadow: 0 15px 60px var(--shadow-light), 0 5px 20px var(--shadow-medium);
+}
+
+[data-theme="dark"] .btech-josaa-info-card h3 {
+    color: var(--gray-800);
+}
+
+[data-theme="dark"] .btech-josaa-info-card p {
+    color: var(--gray-700);
+}
+
+[data-theme="dark"] .btech-josaa-info-card p:first-of-type {
+    color: var(--primary-blue);
+}
+
+[data-theme="dark"] .btech-josaa-contact-item {
+    background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+    border-left-color: var(--primary-blue);
+    border-right-color: var(--primary-blue);
+}
+
+[data-theme="dark"] .btech-josaa-contact-label {
+    color: var(--gray-800);
+}
+
+[data-theme="dark"] .btech-josaa-contact-item span:last-child {
+    color: var(--gray-700);
+}
+
+[data-theme="dark"] .btech-josaa-contact-item a {
+    color: var(--primary-blue);
+}
+
+[data-theme="dark"] .btech-josaa-contact-item a:hover {
+    color: var(--primary-blue-dark);
+    border-bottom-color: var(--primary-blue);
+}
+
+[data-theme="dark"] .btech-josaa-note {
+    background: var(--gray-50);
+    border-left-color: var(--accent-orange);
+}
+
+[data-theme="dark"] .btech-josaa-note p {
+    color: var(--gray-700);
+}
+
+[data-theme="dark"] .btech-josaa-note a {
+    color: var(--primary-blue);
+}
+
+[data-theme="dark"] .btech-josaa-note a:hover {
+    color: var(--primary-blue-dark);
+}
+
 /* Responsive Design */
+/* 4K and Ultra-wide screens */
+@media (min-width: 2560px) {
+    .btech-josaa-admissions-container {
+        max-width: 100%;
+        padding: 0 2rem;
+    }
+    
+    .btech-josaa-programs-tiles {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+    }
+    
+    .btech-josaa-quick-links-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2.5rem;
+    }
+}
+
 @media (max-width: 1024px) {
-    .admissions-container {
+    .btech-josaa-admissions-container {
         padding: 0 1rem;
     }
     
-    .admissions-hero {
+    .btech-josaa-admissions-hero {
         margin: 0 -1rem 3rem;
     }
     
-    .program-header {
-        padding: 2rem 1.5rem;
-    }
-    
-    .program-content {
-        padding: 0 1.5rem;
-    }
-    
-    .key-points {
+    .btech-josaa-key-points {
         grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 768px) {
-    .admissions-hero h1 {
+    .btech-josaa-admissions-hero h1 {
         font-size: 2.8rem;
     }
     
-    .section-title {
+    .btech-josaa-section-title {
         font-size: 2.2rem;
     }
     
-    .program-title {
+    .btech-josaa-process-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .btech-josaa-process-card h3 {
         font-size: 1.8rem;
     }
     
-    .program-meta {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    
-    .program-header {
-        padding: 1.5rem;
-    }
-    
-    .program-content {
-        padding: 0 1.5rem;
-    }
-    
-    .quick-links-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .programs-tiles {
+    .btech-josaa-key-points {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
     
-    .contact-item {
-        flex-direction: column;
-        gap: 0.5rem;
+    .btech-josaa-quick-links-grid {
+        grid-template-columns: 1fr;
     }
     
-    .contact-label {
+    .btech-josaa-programs-tiles {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .btech-josaa-info-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .btech-josaa-info-card h3 {
+        font-size: 1.6rem;
+    }
+    
+    .btech-josaa-contact-details {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+        padding: 1.5rem;
+    }
+    
+    .btech-josaa-contact-item {
+        max-width: 100%;
+        padding: 1.2rem 1rem;
+    }
+    
+    .btech-josaa-contact-label {
         min-width: auto;
     }
 }
 
 @media (max-width: 480px) {
-    .admissions-hero {
+    .btech-josaa-admissions-hero {
         padding: 3rem 0 2rem;
     }
     
-    .admissions-hero h1 {
+    .btech-josaa-admissions-hero h1 {
         font-size: 2.2rem;
     }
     
-    .hero-subtitle {
+    .btech-josaa-hero-subtitle {
         font-size: 1.2rem;
         text-align: center;
     }
     
-    .ccmt-info {
+    .btech-josaa-ccmt-info {
         padding: 1rem;
     }
     
-    .section-title {
+    .btech-josaa-section-title {
         font-size: 1.8rem;
     }
     
-    .process-card,
-    .info-card {
+    .btech-josaa-process-card {
+        padding: 2rem;
+    }
+    
+    .btech-josaa-info-card {
         padding: 1.5rem;
     }
     
-    .programs-tiles {
+    .btech-josaa-key-points {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .btech-josaa-point-item {
+        padding: 1rem;
+    }
+    
+    .btech-josaa-programs-tiles {
         grid-template-columns: 1fr;
     }
     
-    .program-tile {
+    .btech-josaa-program-tile {
         padding: 1.5rem;
     }
 }

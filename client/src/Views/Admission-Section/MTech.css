@@ -1,17 +1,17 @@
-/* Admissions Page Styles - Using NIT Goa Color Palette */
+/* M.Tech Admissions Page Styles - Component Isolated with Clean Architecture */
 :root {
-    /* Primary Blues - Based on NIT Goa Theme */
+    /* Primary Colors */
     --primary-blue: #2E86C1;
     --primary-blue-light: #5DADE2;
     --primary-blue-dark: #1B4F72;
     
-    /* Secondary Blues */
+    /* Secondary Colors */
     --secondary-blue-50: #EBF5FB;
     --secondary-blue-100: #D6EAF8;
     --secondary-blue-200: #AED6F1;
     --secondary-blue-800: #0F3460;
     
-    /* Neutrals */
+    /* Neutral Colors */
     --white: #FFFFFF;
     --gray-50: #F8F9FA;
     --gray-100: #F1F3F4;
@@ -20,31 +20,79 @@
     --gray-700: #495057;
     --gray-800: #343A40;
     
-    /* Accents */
+    /* Accent Colors */
     --accent-orange: #FF6B35;
     --accent-green: #28A745;
     --success-green: #198754;
-    --shadow-light: rgba(0, 0, 0, 0.08);
-    --shadow-medium: rgba(0, 0, 0, 0.12);
-    --shadow-strong: rgba(0, 0, 0, 0.16);
+    
+    /* MTech Component Variables - Light Theme */
+    --mtech-bg-primary: #EBF5FB;
+    --mtech-bg-secondary: #FFFFFF;
+    --mtech-text-primary: #343A40;
+    --mtech-text-secondary: #495057;
+    --mtech-border: #E9ECEF;
+    --mtech-card-bg: #FFFFFF;
+    --mtech-shadow: rgba(0, 0, 0, 0.08);
+    --mtech-shadow-medium: rgba(0, 0, 0, 0.12);
+    --mtech-shadow-strong: rgba(0, 0, 0, 0.16);
 }
 
-.admissions-page {
+/* Dark Theme Variables */
+[data-theme="dark"] {
+    --primary-blue: #4A9EE7;
+    --primary-blue-light: #6BB6FF;
+    --primary-blue-dark: #2E86C1;
+    
+    --secondary-blue-50: #0f1726;
+    --secondary-blue-100: #1a2332;
+    --secondary-blue-200: #253041;
+    --secondary-blue-800: #0A1016;
+    
+    --gray-50: #0f1726;
+    --gray-100: #1a2332;
+    --gray-200: #253041;
+    --gray-600: #94a3b8;
+    --gray-700: #cbd5e1;
+    --gray-800: #e2e8f0;
+    
+    --accent-orange: #FF8C42;
+    --accent-green: #4CAF50;
+    --success-green: #66BB6A;
+    
+    --mtech-bg-primary: #0a1220;
+    --mtech-bg-secondary: #1a2332;
+    --mtech-text-primary: #e2e8f0;
+    --mtech-text-secondary: #cbd5e1;
+    --mtech-border: #253041;
+    --mtech-card-bg: #1e293b;
+    --mtech-shadow: rgba(30, 41, 59, 0.4);
+    --mtech-shadow-medium: rgba(30, 41, 59, 0.6);
+    --mtech-shadow-strong: rgba(30, 41, 59, 0.8);
+}
+
+/* Base Page Styles */
+.mtech-page {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: var(--gray-800);
-    background: linear-gradient(135deg, var(--secondary-blue-50) 0%, var(--white) 100%);
+    color: var(--mtech-text-primary);
+    background: linear-gradient(135deg, var(--mtech-bg-primary) 0%, var(--mtech-bg-secondary) 100%);
     min-height: 100vh;
+    transition: all 0.3s ease;
 }
 
-.admissions-container {
-    max-width: 1800px;
+/* Dark Theme Page Override */
+[data-theme="dark"] .mtech-page {
+    background: linear-gradient(135deg, #0a1220 0%, #1a2332 50%, #253041 100%);
+}
+
+.mtech-container {
+    max-width: 90%;
     margin: 0 auto;
     padding: 0 1rem;
 }
 
 /* Hero Section */
-.admissions-hero {
+.mtech-hero {
     text-align: center;
     padding: 4rem 0 3rem;
     background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
@@ -54,7 +102,17 @@
     overflow: hidden;
 }
 
-.admissions-hero::before {
+/* Dark Theme Hero Override */
+[data-theme="dark"] .mtech-hero {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
+    box-shadow: 0 4px 20px rgba(30, 58, 138, 0.3);
+}
+
+.mtech-hero * {
+    color: var(--white) !important;
+}
+
+.mtech-hero::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -62,20 +120,20 @@
     width: 200%;
     height: 200%;
     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-    animation: float 20s ease-in-out infinite;
+    animation: mtech-float 20s ease-in-out infinite;
 }
 
-@keyframes float {
+@keyframes mtech-float {
     0%, 100% { transform: translateY(0px) rotate(0deg); }
     50% { transform: translateY(-20px) rotate(180deg); }
 }
 
-.hero-content {
+.mtech-hero-content {
     position: relative;
     z-index: 2;
 }
 
-.admissions-hero h1 {
+.mtech-hero-title {
     font-size: 3.8rem;
     font-weight: 700;
     margin-bottom: 1rem;
@@ -84,68 +142,153 @@
     line-height: 1.1;
 }
 
-.hero-subtitle {
+.mtech-hero h1 {
+    font-size: 3.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1.1;
+}
+
+.mtech-hero p {
     font-size: 1.4rem;
     color: var(--white);
     opacity: 0.95;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 0 auto 2rem;
     font-weight: 400;
     line-height: 1.4;
     text-align: center;
 }
 
+.mtech-hero-subtitle {
+    font-size: 1.4rem;
+    color: var(--white);
+    opacity: 0.95;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.mtech-ccmt-info {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 1.2rem 2.5rem;
+    border-radius: 30px;
+    margin-top: 2rem;
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    display: inline-block;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.mtech-ccmt-info:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.mtech-ccmt-label {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--white) !important;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.mtech-ccmt-desc {
+    display: block;
+    font-size: 1rem;
+    color: var(--white) !important;
+    opacity: 0.95;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Hero Text Styling */
+.mtech-hero h1 {
+    color: var(--white) !important;
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+.mtech-hero p {
+    color: var(--white) !important;
+    font-size: 1.3rem;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    opacity: 0.95;
+    max-width: 800px;
+}
+
+.mtech-hero * {
+    color: var(--white) !important;
+}
+
 /* Section Titles */
-.section-title {
+.mtech-section-title {
     text-align: center;
     font-size: 2.8rem;
     font-weight: 600;
     margin-bottom: 3rem;
-    color: var(--primary-blue-dark);
+    color: var(--mtech-text-primary);
     position: relative;
     line-height: 1.2;
 }
 
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-orange) 100%);
-    border-radius: 2px;
-}
+
 
 /* Programs Section */
-.programs-section {
+.mtech-programs-section {
     margin-bottom: 4rem;
 }
 
-.programs-list {
+.mtech-programs-list {
     max-width: 100%;
     margin: 0 auto;
 }
 
-.program-section {
+.mtech-program-section {
     margin-bottom: 3rem;
-    border-bottom: 2px solid var(--secondary-blue-200);
-    padding-bottom: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background: var(--white);
+    border: 1px solid rgba(46, 134, 193, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding-bottom: 1rem;
 }
 
-.program-section:last-child {
+.mtech-program-section:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.mtech-program-section:last-child {
     border-bottom: none;
 }
 
-.program-header {
+.mtech-program-header {
     background: var(--primary-blue);
     color: var(--white);
     padding: 2rem 2.5rem;
     margin-bottom: 1.5rem;
+    border-radius: 16px 16px 0 0;
 }
 
-.program-title {
+.mtech-program-title {
     font-size: 2.2rem;
     font-weight: 700;
     margin-bottom: 1rem;
@@ -153,59 +296,121 @@
     line-height: 1.2;
 }
 
-.program-meta {
+.mtech-program-meta {
     display: flex;
     gap: 2.5rem;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-.program-content {
-    padding: 0 2.5rem;
+.mtech-program-content {
+    padding: 2.5rem;
+    background: var(--white);
+    border-radius: 0 0 16px 16px;
+    position: relative;
 }
 
-.program-description h4,
-.program-objectives h4 {
-    color: var(--primary-blue-dark);
+.mtech-program-description {
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--mtech-border);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .mtech-program-description {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: var(--mtech-border);
+    box-shadow: 0 4px 12px rgba(15, 23, 38, 0.4);
+}
+
+[data-theme="dark"] .mtech-program-section {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: rgba(100, 116, 139, 0.2);
+    box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3);
+}
+
+[data-theme="dark"] .mtech-program-content {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+}
+
+[data-theme="dark"] .mtech-program-objectives {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: var(--mtech-border);
+    box-shadow: 0 4px 12px rgba(15, 23, 38, 0.4);
+}
+
+.mtech-program-description::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-blue-light), transparent);
+    border-radius: 0 0 0 60px;
+    opacity: 0.1;
+}
+
+.mtech-program-description h4 {
+    color: var(--mtech-text-primary);
     font-size: 1.4rem;
     font-weight: 600;
     margin-bottom: 1.2rem;
-    border-bottom: 2px solid var(--secondary-blue-200);
+    border-bottom: 2px solid var(--mtech-border);
     padding-bottom: 0.5rem;
     line-height: 1.3;
 }
 
-.program-description {
-    margin-bottom: 2rem;
-}
-
-.program-description p {
-    color: var(--gray-700);
+.mtech-program-description p {
+    color: var(--mtech-text-primary);
+    font-size: 0.9rem;
     line-height: 1.7;
-    font-size: 1.05rem;
-    margin-bottom: 1rem;
+    margin: 0;
+    text-align: justify;
+    position: relative;
+    z-index: 1;
+    padding: 0 0.5rem;
 }
 
-.program-objectives {
+.mtech-program-objectives {
     margin-bottom: 2rem;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--mtech-border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.program-objectives ul {
+.mtech-program-objectives h4 {
+    color: var(--mtech-text-primary);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    border-bottom: 2px solid var(--mtech-border);
+    padding-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.mtech-program-objectives ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.program-objectives li {
+.mtech-program-objectives li {
     position: relative;
     padding-left: 1.8rem;
     margin-bottom: 1rem;
-    color: var(--gray-700);
+    color: var(--mtech-text-secondary);
     line-height: 1.6;
     font-size: 1.05rem;
 }
 
-.program-objectives li::before {
+.mtech-program-objectives li::before {
     content: '•';
     position: absolute;
     left: 0;
@@ -214,50 +419,32 @@
     font-size: 1.4rem;
 }
 
-.program-actions {
+.mtech-program-actions {
     text-align: center;
     margin-top: 1.5rem;
 }
 
-.syllabus-link {
-    display: inline-block;
-    background: var(--accent-orange);
+.mtech-syllabus-link {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
     color: var(--white);
     text-decoration: none;
-    padding: 0.8rem 2rem;
-    border-radius: 4px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
     font-weight: 600;
-    font-size: 1rem;
-    transition: background-color 0.2s ease;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(46, 134, 193, 0.3);
 }
 
-.syllabus-link:hover {
-    background: #e67e22;
+.mtech-syllabus-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--mtech-shadow-strong);
     color: var(--white);
     text-decoration: none;
 }
 
-.admissions-page .program-header {
-    padding: 1.5rem 1.5rem 0;
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
-    border-radius: 16px 16px 0 0;
-}
-
-.admissions-page .program-header h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 1rem;
-}
-
-.program-meta {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-bottom: 1rem;
-}
-
-.eligibility {
+/* Eligibility Section */
+.mtech-eligibility {
     background: var(--gray-50);
     padding: 1rem;
     border-radius: 8px;
@@ -265,42 +452,68 @@
     border-left: 4px solid var(--accent-orange);
 }
 
-.eligibility-label {
+[data-theme="dark"] .mtech-eligibility {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-left-color: var(--accent-orange);
+}
+
+/* Dark Theme Quick Links */
+[data-theme="dark"] .mtech-quick-link-card {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: var(--mtech-border);
+    box-shadow: 0 6px 20px rgba(15, 23, 38, 0.3);
+}
+
+[data-theme="dark"] .mtech-quick-link-card:hover {
+    background: linear-gradient(135deg, #253041 0%, #1e293b 100%);
+    border-color: var(--primary-blue-light);
+    box-shadow: 0 12px 32px rgba(15, 23, 38, 0.5);
+}
+
+/* Dark Theme Info Cards */
+[data-theme="dark"] .mtech-info-card {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: var(--mtech-border);
+    box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3);
+}
+
+.mtech-eligibility-label {
     font-weight: 600;
-    color: var(--primary-blue-dark);
+    color: var(--mtech-text-primary);
     margin-right: 0.5rem;
 }
 
-.eligibility-text {
-    color: var(--gray-600);
+.mtech-eligibility-text {
+    color: var(--mtech-text-secondary);
 }
 
-.departments-list h4 {
-    color: var(--primary-blue-dark);
+/* Departments List */
+.mtech-departments-list h4 {
+    color: var(--mtech-text-primary);
     margin-bottom: 1rem;
     font-size: 1.1rem;
     font-weight: 600;
 }
 
-.departments-list ul {
+.mtech-departments-list ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.departments-list li {
+.mtech-departments-list li {
     padding: 0.75rem 0;
-    color: var(--gray-600);
-    border-bottom: 1px solid var(--gray-200);
+    color: var(--mtech-text-secondary);
+    border-bottom: 1px solid var(--mtech-border);
     position: relative;
     padding-left: 1.5rem;
 }
 
-.departments-list li:last-child {
+.mtech-departments-list li:last-child {
     border-bottom: none;
 }
 
-.departments-list li::before {
+.mtech-departments-list li::before {
     content: '▶';
     position: absolute;
     left: 0;
@@ -309,35 +522,35 @@
 }
 
 /* Quick Access Section */
-.quick-access-section {
+.mtech-quick-access-section {
     margin-bottom: 4rem;
 }
 
-.quick-links-grid {
+.mtech-quick-links-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
 }
 
-.admissions-page .quick-access-section .quick-link-card {
-    background: var(--white) !important;
-    padding: 1.2rem !important;
-    border-radius: 12px !important;
-    text-align: center !important;
-    box-shadow: 0 6px 20px var(--shadow-light) !important;
-    border: 2px solid transparent !important;
+.mtech-quick-link-card {
+    background: var(--mtech-card-bg);
+    padding: 1.2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 6px 20px var(--mtech-shadow);
+    border: 2px solid transparent;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    min-height: auto !important;
-    max-height: 200px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
+    min-height: auto;
+    max-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.admissions-page .quick-link-card::before {
+.mtech-quick-link-card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -348,40 +561,40 @@
     transition: left 0.5s;
 }
 
-.admissions-page .quick-link-card:hover::before {
+.mtech-quick-link-card:hover::before {
     left: 100%;
 }
 
-.admissions-page .quick-link-card:hover {
+.mtech-quick-link-card:hover {
     border-color: var(--primary-blue-light);
     transform: translateY(-4px);
-    box-shadow: 0 12px 32px var(--shadow-medium);
+    box-shadow: 0 12px 32px var(--mtech-shadow-medium);
 }
 
-.quick-icon {
+.mtech-quick-link-card h3 {
+    color: var(--mtech-text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+}
+
+.mtech-quick-link-card p {
+    color: var(--mtech-text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    font-size: 0.9rem;
+    text-align: center;
+    width: 100%;
+}
+
+.mtech-quick-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
 }
 
-.admissions-page .quick-access-section .quick-link-card h3 {
-    color: var(--primary-blue-dark) !important;
-    margin-bottom: 0.5rem !important;
-    font-size: 1.1rem !important;
-    font-weight: 600 !important;
-    text-align: center !important;
-    width: 100% !important;
-}
-
-.admissions-page .quick-access-section .quick-link-card p {
-    color: var(--gray-600) !important;
-    margin-bottom: 1rem !important;
-    line-height: 1.4 !important;
-    font-size: 0.9rem !important;
-    text-align: center !important;
-    width: 100% !important;
-}
-
-.quick-action-btn {
+.mtech-quick-action-btn {
     background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
     color: var(--white);
     border: none;
@@ -395,60 +608,60 @@
     letter-spacing: 0.5px;
 }
 
-.quick-action-btn:hover {
+.mtech-quick-action-btn:hover {
     background: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--secondary-blue-800) 100%);
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(46, 134, 193, 0.3);
 }
 
 /* Info Section */
-.info-section {
+.mtech-info-section {
     margin-bottom: 3rem;
 }
 
-.info-grid {
+.mtech-info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 2rem;
 }
 
-.info-card {
-    background: var(--white);
+.mtech-info-card {
+    background: var(--mtech-card-bg);
     padding: 2.5rem;
     border-radius: 16px;
-    box-shadow: 0 8px 32px var(--shadow-light);
-    border: 1px solid var(--secondary-blue-200);
+    box-shadow: 0 8px 32px var(--mtech-shadow);
+    border: 1px solid var(--mtech-border);
     text-align: center;
 }
 
-.info-card h3 {
-    color: var(--primary-blue-dark);
+.mtech-info-card h3 {
+    color: var(--mtech-text-primary);
     margin-bottom: 0.5rem;
     font-size: 1.8rem;
     font-weight: 700;
 }
 
-.info-card p {
-    color: var(--gray-700);
+.mtech-info-card p {
+    color: var(--mtech-text-secondary);
     font-size: 1rem;
     margin-bottom: 0.5rem;
     line-height: 1.5;
 }
 
 /* Admission Process Styles */
-.process-steps {
+.mtech-process-steps {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
 
-.step {
+.mtech-step {
     display: flex;
     align-items: flex-start;
     gap: 1rem;
 }
 
-.step-number {
+.mtech-step-number {
     background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
     color: var(--white);
     width: 40px;
@@ -462,59 +675,81 @@
     flex-shrink: 0;
 }
 
-.step-content h4 {
-    color: var(--primary-blue-dark);
+.mtech-step-content h4 {
+    color: var(--mtech-text-primary);
     margin-bottom: 0.5rem;
     font-size: 1.1rem;
     font-weight: 600;
 }
 
-.step-content p {
-    color: var(--gray-600);
+.mtech-step-content p {
+    color: var(--mtech-text-secondary);
     margin: 0;
     line-height: 1.5;
 }
 
-/* Contact Card Styles */
-.contact-details {
+/* Contact Section */
+.mtech-contact-details {
     display: flex;
     justify-content: center;
     gap: 2rem;
     margin-top: 2rem;
 }
 
-.contact-item {
+.mtech-contact-item {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
     background: var(--secondary-blue-50);
     border-radius: 25px;
-    border: 1px solid var(--secondary-blue-200);
+    border: 1px solid var(--mtech-border);
 }
 
-.contact-label {
+[data-theme="dark"] .mtech-contact-item {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: var(--mtech-border);
+}
+
+/* Dark Theme Header */
+[data-theme="dark"] .mtech-header {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-left-color: var(--primary-blue);
+}
+
+/* Dark Theme Program Cards */
+[data-theme="dark"] .mtech-program-card-detailed {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: var(--mtech-border);
+    box-shadow: 0 4px 12px rgba(15, 23, 38, 0.3);
+}
+
+[data-theme="dark"] .mtech-program-card-detailed:hover {
+    box-shadow: 0 8px 24px rgba(15, 23, 38, 0.5);
+}
+
+.mtech-contact-label {
     font-weight: 600;
-    color: var(--primary-blue-dark);
+    color: var(--mtech-text-primary);
 }
 
-.contact-item span:last-child {
-    color: var(--gray-700);
+.mtech-contact-item span:last-child {
+    color: var(--mtech-text-secondary);
     font-weight: 500;
 }
 
-.contact-item span:last-child a {
+.mtech-contact-item span:last-child a {
     color: var(--primary-blue);
     text-decoration: none;
 }
 
-.contact-item span:last-child a:hover {
+.mtech-contact-item span:last-child a:hover {
     text-decoration: underline;
 }
 
-/* M.Tech Detailed Section Styles */
-.program-card.mtech-detailed {
-    grid-column: 1 / -1; /* Span full width */
+/* M.Tech Detailed Section */
+.mtech-program-card {
+    grid-column: 1 / -1;
     max-width: none;
 }
 
@@ -530,15 +765,64 @@
     border-left: 4px solid var(--primary-blue);
 }
 
+[data-theme="dark"] .mtech-header {
+    background: linear-gradient(135deg, var(--mtech-bg-secondary), var(--mtech-bg-primary));
+}
+
+[data-theme="dark"] .mtech-contact-item {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: var(--mtech-border);
+}
+
+/* Dark Theme Header */
+[data-theme="dark"] .mtech-header {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-left-color: var(--primary-blue);
+}
+
+/* Dark Theme Program Cards */
+[data-theme="dark"] .mtech-program-card-detailed {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: var(--mtech-border);
+    box-shadow: 0 4px 12px rgba(15, 23, 38, 0.3);
+}
+
+[data-theme="dark"] .mtech-program-card-detailed:hover {
+    box-shadow: 0 8px 24px rgba(15, 23, 38, 0.5);
+}
+
+/* Dark Theme Resource Links */
+[data-theme="dark"] .mtech-resource-link {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: var(--mtech-border);
+}
+
+[data-theme="dark"] .mtech-resource-link:hover {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+}
+
+/* Dark Theme Note */
+[data-theme="dark"] .mtech-note {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-left-color: var(--primary-blue-light);
+}
+
+/* Dark Theme Hostel Note */
+[data-theme="dark"] .mtech-hostel-note {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: var(--mtech-border);
+    border-left-color: var(--primary-blue);
+}
+
 .mtech-header h4 {
-    color: var(--primary-blue-dark);
+    color: var(--mtech-text-primary);
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
     font-weight: 600;
 }
 
 .mtech-intro {
-    color: var(--gray-700);
+    color: var(--mtech-text-secondary);
     font-size: 1.1rem;
     line-height: 1.6;
     margin: 0;
@@ -550,41 +834,41 @@
     margin-bottom: 2rem;
 }
 
-.mtech-program-card {
-    background: var(--white);
-    border: 1px solid var(--secondary-blue-200);
+.mtech-program-card-detailed {
+    background: var(--mtech-card-bg);
+    border: 1px solid var(--mtech-border);
     border-radius: 12px;
     padding: 2rem;
-    box-shadow: 0 4px 12px rgba(46, 134, 193, 0.1);
+    box-shadow: 0 4px 12px var(--mtech-shadow);
     transition: all 0.3s ease;
 }
 
-.mtech-program-card:hover {
+.mtech-program-card-detailed:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(46, 134, 193, 0.15);
+    box-shadow: 0 8px 24px var(--mtech-shadow-medium);
 }
 
-.dept-header {
+.mtech-dept-header {
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
-    border-bottom: 2px solid var(--secondary-blue-100);
+    border-bottom: 2px solid var(--mtech-border);
 }
 
-.dept-header h5 {
-    color: var(--primary-blue-dark);
+.mtech-dept-header h5 {
+    color: var(--mtech-text-primary);
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 0.8rem;
 }
 
-.dept-meta {
+.mtech-dept-meta {
     display: flex;
     gap: 2rem;
     flex-wrap: wrap;
 }
 
-.specialization,
-.seats {
+.mtech-specialization,
+.mtech-seats {
     font-size: 0.9rem;
     color: var(--white);
     background: rgba(255, 255, 255, 0.2);
@@ -595,35 +879,35 @@
     margin-right: 1rem;
 }
 
-.objectives {
+.mtech-objectives {
     margin-bottom: 1.5rem;
 }
 
-.objectives h6 {
-    color: var(--primary-blue-dark);
+.mtech-objectives h6 {
+    color: var(--mtech-text-primary);
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 0.8rem;
-    border-bottom: 2px solid var(--secondary-blue-200);
+    border-bottom: 2px solid var(--mtech-border);
     padding-bottom: 0.5rem;
 }
 
-.objectives ul {
+.mtech-objectives ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.objectives li {
+.mtech-objectives li {
     position: relative;
     padding-left: 1.5rem;
     margin-bottom: 0.6rem;
-    color: var(--gray-700);
+    color: var(--mtech-text-secondary);
     line-height: 1.5;
     font-size: 0.9rem;
 }
 
-.objectives li::before {
+.mtech-objectives li::before {
     content: '•';
     position: absolute;
     left: 0;
@@ -632,12 +916,12 @@
     font-size: 1.2rem;
 }
 
-.syllabus-link {
+.mtech-syllabus-link-detailed {
     text-align: center;
     margin-top: 1rem;
 }
 
-.syllabus-btn {
+.mtech-syllabus-btn {
     display: inline-block;
     background: var(--accent-orange);
     color: var(--white);
@@ -651,12 +935,13 @@
     cursor: pointer;
 }
 
-.syllabus-btn:hover {
+.mtech-syllabus-btn:hover {
     background: #e67e22;
     color: var(--white);
     text-decoration: none;
 }
 
+/* Contact Card */
 .mtech-contact {
     background: linear-gradient(135deg, var(--primary-blue-dark), var(--primary-blue));
     color: var(--white);
@@ -672,178 +957,90 @@
     font-weight: 600;
 }
 
-.mtech-contact .contact-details p {
+.mtech-contact .mtech-contact-details p {
     margin-bottom: 0.5rem;
     font-size: 1rem;
 }
 
-.mtech-contact .contact-details a {
+.mtech-contact .mtech-contact-details a {
     color: var(--secondary-blue-100);
     text-decoration: none;
 }
 
-.mtech-contact .contact-details a:hover {
+.mtech-contact .mtech-contact-details a:hover {
     color: var(--white);
     text-decoration: underline;
 }
 
+/* Links Section */
 .mtech-links {
     margin-bottom: 2rem;
 }
 
 .mtech-links h4 {
-    color: var(--primary-blue-dark);
+    color: var(--mtech-text-primary);
     font-size: 1.3rem;
     margin-bottom: 1rem;
     font-weight: 600;
 }
 
-.resource-links {
+.mtech-resource-links {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
 }
 
-.resource-link {
+.mtech-resource-link {
     display: block;
     background: var(--secondary-blue-50);
-    color: var(--primary-blue-dark);
+    color: var(--mtech-text-primary);
     text-decoration: none;
     padding: 1rem 1.5rem;
     border-radius: 8px;
     font-weight: 500;
     text-align: center;
     transition: all 0.3s ease;
-    border: 1px solid var(--secondary-blue-200);
+    border: 1px solid var(--mtech-border);
 }
 
-.resource-link:hover {
+[data-theme="dark"] .mtech-resource-link {
+    background: var(--mtech-bg-secondary);
+}
+
+.mtech-resource-link:hover {
     background: var(--primary-blue);
     color: var(--white);
     text-decoration: none;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(46, 134, 193, 0.2);
+    box-shadow: 0 4px 12px var(--mtech-shadow);
 }
 
-.note {
+/* Note Section */
+.mtech-note {
     background: var(--secondary-blue-50);
     padding: 1.5rem;
     border-radius: 8px;
     border-left: 4px solid var(--primary-blue-light);
     font-style: italic;
-    color: var(--gray-700);
+    color: var(--mtech-text-secondary);
 }
 
-.note p {
+[data-theme="dark"] .mtech-note {
+    background: var(--mtech-bg-secondary);
+}
+
+.mtech-note p {
     margin: 0;
     font-size: 0.95rem;
     line-height: 1.6;
 }
 
-/* Program objectives styling within cards */
-.card-content .program-objectives h4 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--primary-blue-dark);
-    margin-bottom: 1rem;
-}
-
-.card-content .program-objectives ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 1.5rem;
-}
-
-.card-content .program-objectives li {
-    position: relative;
-    padding-left: 1.5rem;
-    margin-bottom: 0.8rem;
-    color: var(--gray-800);
-    line-height: 1.6;
-    font-weight: 500;
-}
-
-.card-content .program-objectives li::before {
-    content: '▸';
-    position: absolute;
-    left: 0;
-    color: var(--primary-blue);
-    font-weight: bold;
-    font-size: 1.1rem;
-}
-
-.program-actions {
-    text-align: center;
-    margin-top: 1.5rem;
-}
-
-.syllabus-link {
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
-    color: var(--white);
-    text-decoration: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 25px;
-    font-weight: 600;
-    display: inline-block;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(46, 134, 193, 0.3);
-}
-
-.syllabus-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(46, 134, 193, 0.4);
-    color: var(--white);
-    text-decoration: none;
-}
-
-.program-meta {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-bottom: 1rem;
-}
-
-/* Program Description Styles */
-.program-description {
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background: linear-gradient(135deg, var(--secondary-blue-50) 0%, rgba(255, 255, 255, 0.8) 100%);
-    border-radius: 12px;
-    border-left: 4px solid var(--primary-blue);
-    border-right: 4px solid var(--primary-blue);
-    position: relative;
-    overflow: hidden;
-}
-
-.program-description::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, var(--primary-blue-light), transparent);
-    border-radius: 0 0 0 60px;
-    opacity: 0.1;
-}
-
-.program-description p {
-    color: var(--gray-800);
-    font-size: 0.9rem;
-    line-height: 1.7;
-    margin: 0;
-    text-align: justify;
-    position: relative;
-    z-index: 1;
-    padding: 0 0.5rem;
-}
-
 /* Hostel Accommodation Note */
-.hostel-note-section {
+.mtech-hostel-note-section {
     margin-bottom: 3rem;
 }
 
-.hostel-note {
+.mtech-hostel-note {
     max-width: 1000px;
     margin: 0 auto;
     background: linear-gradient(135deg, #e8f4fd 0%, #f0f8ff 100%);
@@ -854,163 +1051,167 @@
     text-align: center;
 }
 
-.hostel-note p {
-    color: var(--primary-blue-dark);
+[data-theme="dark"] .mtech-hostel-note {
+    background: linear-gradient(135deg, var(--mtech-bg-secondary) 0%, var(--mtech-bg-primary) 100%);
+    border: 1px solid var(--mtech-border);
+}
+
+.mtech-hostel-note p {
+    color: var(--mtech-text-primary);
     font-size: 1.1rem;
     margin: 0;
     line-height: 1.6;
 }
 
-.hostel-note strong {
-    color: var(--primary-blue-dark);
+.mtech-hostel-note strong {
+    color: var(--mtech-text-primary);
     font-weight: 700;
 }
 
 /* Responsive Design */
-/* Large screens - better space utilization */
 @media (min-width: 1400px) {
-    .admissions-container {
-        max-width: 1600px;
+    .mtech-container {
+        max-width: 95%;
         padding: 0 3rem;
     }
     
-    .programs-list {
+    .mtech-programs-list {
         max-width: 100%;
     }
     
-    .program-header {
+    .mtech-program-header {
         padding: 2rem 3rem;
     }
     
-    .program-content {
+    .mtech-program-content {
         padding: 0 3rem;
     }
     
-    .program-title {
+    .mtech-program-title {
         font-size: 2.5rem;
         line-height: 1.1;
     }
     
-    .program-description h4,
-    .program-objectives h4 {
+    .mtech-program-description h4,
+    .mtech-program-objectives h4 {
         font-size: 1.6rem;
     }
     
-    .program-description p {
+    .mtech-program-description p {
         font-size: 1.1rem;
     }
     
-    .program-objectives li {
+    .mtech-program-objectives li {
         font-size: 1.1rem;
     }
     
-    .info-grid {
+    .mtech-info-grid {
         grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
         gap: 2.5rem;
     }
     
-    .quick-links-grid {
+    .mtech-quick-links-grid {
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     }
 }
 
 @media (max-width: 1024px) {
-    .programs-list {
+    .mtech-programs-list {
         max-width: 100%;
         padding: 0 1rem;
     }
 }
 
 @media (max-width: 900px) {
-    .admissions-container {
+    .mtech-container {
         padding: 0 1.5rem;
     }
     
-    .info-grid {
+    .mtech-info-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
 }
 
 @media (max-width: 768px) {
-    .admissions-container {
+    .mtech-container {
         padding: 0 1rem;
     }
     
-    .admissions-hero {
+    .mtech-hero {
         margin: 0 -1rem 2rem;
         padding: 3rem 0 2rem;
     }
     
-    .admissions-hero h1 {
+    .mtech-hero-title {
         font-size: 2.8rem;
         line-height: 1.1;
     }
     
-    .hero-subtitle {
+    .mtech-hero-subtitle {
         font-size: 1.2rem;
         line-height: 1.4;
         text-align: center;
     }
     
-    .section-title {
+    .mtech-section-title {
         font-size: 2.2rem;
         line-height: 1.2;
         margin-bottom: 2rem;
     }
     
-    .program-header {
+    .mtech-program-header {
         padding: 1rem 1.5rem;
     }
     
-    .program-content {
+    .mtech-program-content {
         padding: 0 1.5rem;
     }
     
-    .program-title {
+    .mtech-program-title {
         font-size: 1.8rem;
         line-height: 1.2;
     }
     
-    .program-meta {
+    .mtech-program-meta {
         flex-direction: column;
         gap: 0.5rem;
     }
     
-    .quick-links-grid {
+    .mtech-quick-links-grid {
         grid-template-columns: 1fr;
     }
     
-    .info-grid {
+    .mtech-info-grid {
         grid-template-columns: 1fr;
     }
     
-    .process-steps {
+    .mtech-process-steps {
         gap: 1rem;
     }
     
-    .step {
+    .mtech-step {
         flex-direction: column;
         text-align: center;
         gap: 0.75rem;
     }
     
-    .contact-item {
+    .mtech-contact-item {
         flex-direction: column;
         text-align: center;
         gap: 0.5rem;
     }
     
-    .contact-label {
+    .mtech-contact-label {
         min-width: auto;
     }
     
-    .dept-meta {
+    .mtech-dept-meta {
         flex-direction: column;
         gap: 0.5rem;
     }
     
-    .resource-links {
+    .mtech-resource-links {
         grid-template-columns: 1fr;
     }
     
@@ -1018,35 +1219,88 @@
         padding: 1.5rem;
     }
     
-    .mtech-program-card {
+    .mtech-program-card-detailed {
         padding: 1.5rem;
     }
 }
 
 @media (max-width: 480px) {
-    .card-header,
-    .card-content {
+    .mtech-card-header,
+    .mtech-card-content {
         padding: 1.5rem;
     }
     
-    .quick-link-card,
-    .info-card {
+    .mtech-quick-link-card,
+    .mtech-info-card {
         padding: 1.5rem;
     }
     
-    .programs-grid,
-    .quick-links-grid {
+    .mtech-programs-grid,
+    .mtech-quick-links-grid {
         gap: 1rem;
     }
 }
 
-/* Ensure proper spacing for the detailed M.Tech card */
+/* Grid Layout for Detailed Cards */
 @media (min-width: 769px) {
-    .programs-grid {
+    .mtech-programs-grid {
         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     }
     
-    .program-card.mtech-detailed {
+    .mtech-program-card {
         grid-column: 1 / -1;
+    }
+}
+
+/* Hero Section Responsive Design */
+@media (max-width: 768px) {
+    .mtech-hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        line-height: 1.1;
+    }
+    
+    .mtech-hero p {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .mtech-ccmt-info {
+        padding: 1rem 1.5rem;
+        margin-top: 1.5rem;
+    }
+    
+    .mtech-ccmt-label {
+        font-size: 1.1rem;
+    }
+    
+    .mtech-ccmt-desc {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .mtech-hero h1 {
+        font-size: 2rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .mtech-hero p {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .mtech-ccmt-info {
+        padding: 0.8rem 1.2rem;
+        margin-top: 1rem;
+    }
+    
+    .mtech-ccmt-label {
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+    }
+    
+    .mtech-ccmt-desc {
+        font-size: 0.9rem;
     }
 }

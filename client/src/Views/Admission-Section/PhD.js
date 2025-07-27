@@ -31,25 +31,25 @@ const PhD = () => {
     };
 
     return (
-        <div className="phd-page">
-            <div className="phd-container">
+        <div className="phd-phd-page">
+            <div className="phd-phd-container">
                 {/* Header Section */}
-                <div className="phd-hero">
-                    <div className="hero-content">
+                <div className="phd-phd-hero">
+                    <div className="phd-hero-content">
                         <h1>{phdData.title}</h1>
-                        <p className="hero-subtitle">{phdData.subtitle}</p>
-                        <div className="session-info">
-                            <span className="session-label">{phdData.currentSession}</span>
+                        <p className="phd-hero-subtitle">{phdData.subtitle}</p>
+                        <div className="phd-session-info">
+                            <span className="phd-session-label">{phdData.currentSession}</span>
                         </div>
                     </div>
                 </div>
 
                 {/* Important Links */}
-                <section className="links-section">
-                    <h2 className="section-title">Important Links</h2>
-                    <div className="links-grid">
+                <section className="phd-links-section">
+                    <h2 className="phd-section-title">Important Links</h2>
+                    <div className="phd-links-grid">
                         {phdData.importantLinks.map((link, index) => (
-                            <a key={index} href={link.link} target="_blank" rel="noopener noreferrer" className="link-card">
+                            <a key={index} href={link.link} target="_blank" rel="noopener noreferrer" className="phd-link-card">
                                 <h3>{link.title}</h3>
                                 <p>{link.description}</p>
                             </a>

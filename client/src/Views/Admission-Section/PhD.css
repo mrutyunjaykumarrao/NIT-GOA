@@ -1,27 +1,27 @@
 /* PhD Admissions Page Styles */
-.phd-page {
+.phd-phd-page {
     min-height: 100vh;
     background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%);
 }
 
-.phd-container {
+.phd-phd-container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 2rem;
 }
 
 /* Hero Section */
-.phd-hero {
+.phd-phd-hero {
     background: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--primary-blue) 100%);
-    border-radius: 0;
+    border-radius: 16px;
     padding: 5rem 2rem;
     text-align: center;
-    margin: -2rem -2rem 4rem;
+    margin: 0 0 4rem;
     position: relative;
     overflow: hidden;
 }
 
-.phd-hero::before {
+.phd-phd-hero::before {
     content: '';
     position: absolute;
     top: 0;
@@ -37,12 +37,12 @@
     opacity: 0.3;
 }
 
-.hero-content {
+.phd-hero-content {
     position: relative;
     z-index: 2;
 }
 
-.phd-hero h1 {
+.phd-phd-hero h1 {
     font-size: 4rem;
     font-weight: 800;
     margin-bottom: 1rem;
@@ -51,7 +51,7 @@
     letter-spacing: -1px;
 }
 
-.hero-subtitle {
+.phd-hero-subtitle {
     font-size: 1.4rem;
     color: var(--white);
     opacity: 0.95;
@@ -61,11 +61,11 @@
     line-height: 1.5;
 }
 
-.session-info {
+.phd-session-info {
     margin-top: 2rem;
 }
 
-.session-label {
+.phd-session-label {
     background: var(--accent-orange);
     color: var(--white);
     padding: 1rem 2.5rem;
@@ -79,7 +79,7 @@
 }
 
 /* Section Titles */
-.section-title {
+.phd-section-title {
     text-align: center;
     font-size: 3rem;
     font-weight: 700;
@@ -90,36 +90,15 @@
     letter-spacing: 2px;
 }
 
-.section-title::before {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 6px;
-    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-orange) 100%);
-    border-radius: 3px;
-}
 
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 4px;
-    background: var(--accent-orange);
-    border-radius: 2px;
-}
+
 
 /* Important Links */
-.links-section {
+.phd-links-section {
     margin-bottom: 5rem;
 }
 
-.links-grid {
+.phd-links-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
@@ -127,7 +106,7 @@
     margin: 0;
 }
 
-.link-card {
+.phd-link-card {
     background: var(--white);
     padding: 2.5rem;
     border-radius: 16px;
@@ -140,7 +119,7 @@
     overflow: hidden;
 }
 
-.link-card::before {
+.phd-link-card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -151,17 +130,17 @@
     transition: left 0.4s ease;
 }
 
-.link-card:hover {
+.phd-link-card:hover {
     transform: translateY(-12px);
     box-shadow: 0 20px 50px rgba(46, 134, 193, 0.2);
     text-decoration: none;
 }
 
-.link-card:hover::before {
+.phd-link-card:hover::before {
     left: 0;
 }
 
-.link-card h3 {
+.phd-link-card h3 {
     color: var(--primary-blue-dark);
     font-size: 1.4rem;
     font-weight: 700;
@@ -170,7 +149,7 @@
     letter-spacing: 0.5px;
 }
 
-.link-card p {
+.phd-link-card p {
     color: var(--gray-600);
     line-height: 1.6;
     margin: 0;
@@ -178,54 +157,103 @@
     font-weight: 500;
 }
 
+/* Dark Theme Styles */
+[data-theme="dark"] .phd-phd-page {
+    background: linear-gradient(135deg, #0a0e1a 0%, #0f1419 25%, #1a1f2e 50%, #1e2a3a 75%, #243447 100%) !important;
+    color: #e8f0fe;
+    min-height: 100vh;
+}
+
+[data-theme="dark"] .phd-phd-hero {
+    background: linear-gradient(135deg, #0d2677 0%, #071f53 50%, #063e98 100%);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 8px 30px rgba(30, 64, 175, 0.3);
+}
+
+[data-theme="dark"] .phd-section-title {
+    color: #dbeafe;
+}
+
+[data-theme="dark"] .phd-section-title::before {
+    background: linear-gradient(90deg, #60a5fa 0%, #f59e0b 100%);
+}
+
+[data-theme="dark"] .phd-section-title::after {
+    background: #f59e0b;
+}
+
+[data-theme="dark"] .phd-link-card {
+     background: linear-gradient(135deg, #0d2677 0%, #071f53 50%, #063e98 100%);
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    box-shadow: 0 8px 30px rgba(30, 64, 175, 0.2);
+}
+
+[data-theme="dark"] .phd-link-card:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #1e40af 100%);
+    transform: translateY(-12px);
+    box-shadow: 0 20px 50px rgba(59, 130, 246, 0.3);
+}
+
+[data-theme="dark"] .phd-link-card::before {
+    background: linear-gradient(90deg, #60a5fa 0%, #f59e0b 100%);
+}
+
+[data-theme="dark"] .phd-link-card h3 {
+    color: #dbeafe;
+}
+
+[data-theme="dark"] .phd-link-card p {
+    color: #bfdbfe;
+}
+
 /* Responsive Design */
 /* Large screens - better space utilization */
 @media (min-width: 1400px) {
-    .phd-container {
-        max-width: 1600px;
+    .phd-phd-container {
+        max-width: 97%;
         padding: 3rem;
     }
 }
 
 @media (max-width: 768px) {
-    .phd-container {
+    .phd-phd-container {
         padding: 1rem;
     }
     
-    .phd-hero {
-        margin: -1rem -1rem 2rem;
+    .phd-phd-hero {
+        margin: 0 0 2rem;
         padding: 3rem 1rem 2rem;
     }
     
-    .phd-hero h1 {
+    .phd-phd-hero h1 {
         font-size: 2.5rem;
     }
     
-    .hero-subtitle {
+    .phd-hero-subtitle {
         font-size: 1.1rem;
     }
     
-    .section-title {
+    .phd-section-title {
         font-size: 2rem;
         margin-bottom: 2rem;
     }
     
-    .session-label {
+    .phd-session-label {
         font-size: 1rem;
         padding: 0.8rem 2rem;
     }
     
-    .links-grid {
+    .phd-links-grid {
         grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 480px) {
-    .phd-hero h1 {
+    .phd-phd-hero h1 {
         font-size: 2rem;
     }
     
-    .session-label {
+    .phd-session-label {
         font-size: 0.9rem;
         padding: 0.6rem 1.5rem;
     }

@@ -1,125 +1,211 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './OutreachActivities.css';
 
 const OutreachActivities = () => {
-  // State for the first card image swapping
-  const [card1MainImage, setCard1MainImage] = useState("https://www.nitgoa.ac.in/static/SPIEdamodarschool.jpg");
-  const [card1Gallery, setCard1Gallery] = useState([
-    "https://www.nitgoa.ac.in/static/SPIEmushtfund.jpg",
-    "https://www.nitgoa.ac.in/static/stem3.jpg"
-  ]);
+  // Carousel state for each card
+  const [carouselStates, setCarouselStates] = useState({
+    card1: { currentSlide: 0, isAutoRotating: true },
+    card2: { currentSlide: 0, isAutoRotating: true },
+    card3: { currentSlide: 0, isAutoRotating: true },
+    card4: { currentSlide: 0, isAutoRotating: true },
+    card5: { currentSlide: 0, isAutoRotating: true },
+    card6: { currentSlide: 0, isAutoRotating: true },
+    card7: { currentSlide: 0, isAutoRotating: true },
+    card8: { currentSlide: 0, isAutoRotating: true },
+    card9: { currentSlide: 0, isAutoRotating: true }
+  });
 
-  // State for the second card image swapping
-  const [card2MainImage, setCard2MainImage] = useState("https://www.nitgoa.ac.in/static/SCIENCE FAIR.jpg");
-  const [card2Gallery, setCard2Gallery] = useState([
-    "https://www.nitgoa.ac.in/static/RAA.jpg",
-    "https://www.nitgoa.ac.in/static/stem4.jpg"
-  ]);
+  // Auto-rotation interval (4 seconds)
+  const ROTATION_INTERVAL = 4000;
 
-  // State for remaining cards
-  const [card3MainImage, setCard3MainImage] = useState("https://www.nitgoa.ac.in/static/swachhata 21march2024.jpg");
-  const [card3Gallery, setCard3Gallery] = useState([
-    "https://www.nitgoa.ac.in/static/swachhata.jpg",
-    "https://www.nitgoa.ac.in/static/SHRAMDHAAN1.jpg"
-  ]);
+  // Image data for each card - using useMemo to prevent re-creation
+  const cardImages = useMemo(() => ({
+    card1: [
+      "https://www.nitgoa.ac.in/static/SPIEdamodarschool.jpg",
+      "https://www.nitgoa.ac.in/static/SPIEmushtfund.jpg",
+      "https://www.nitgoa.ac.in/static/stem3.jpg"
+    ],
+    card2: [
+      "https://www.nitgoa.ac.in/static/SCIENCE FAIR.jpg",
+      "https://www.nitgoa.ac.in/static/RAA.jpg",
+      "https://www.nitgoa.ac.in/static/stem4.jpg"
+    ],
+    card3: [
+      "https://www.nitgoa.ac.in/static/swachhata 21march2024.jpg",
+      "https://www.nitgoa.ac.in/static/swachhata.jpg",
+      "https://www.nitgoa.ac.in/static/SHRAMDHAAN1.jpg"
+    ],
+    card4: [
+      "https://www.nitgoa.ac.in/static/arduino(1).jpg",
+      "https://www.nitgoa.ac.in/static/arduino(2).jpg",
+      "https://www.nitgoa.ac.in/static/stem5.jpg"
+    ],
+    card5: [
+      "https://www.nitgoa.ac.in/static/UBA1.png",
+      "https://www.nitgoa.ac.in/static/SURVEY IN KALAY1.jpg",
+      "https://www.nitgoa.ac.in/static/KALAY_GRAMSABHA.jpg"
+    ],
+    card6: [
+      "https://www.nitgoa.ac.in/static/School Visit.jpg",
+      "https://www.nitgoa.ac.in/static/Permanent_Campus.jpeg",
+      "https://www.nitgoa.ac.in/static/Industrial visit(1).jpg"
+    ],
+    card7: [
+      "https://www.nitgoa.ac.in/static/img 16march2024.jpeg",
+      "https://www.nitgoa.ac.in/static/SHRAMDHAAN2.jpg",
+      "https://www.nitgoa.ac.in/static/img12march2024.jpg"
+    ],
+    card8: [
+      "https://www.nitgoa.ac.in/static/enggday1.jpg",
+      "https://www.nitgoa.ac.in/static/enggday2.jpg",
+      "https://www.nitgoa.ac.in/static/enggday3.jpg"
+    ],
+    card9: [
+      "https://www.nitgoa.ac.in/static/stem1.jpg",
+      "https://www.nitgoa.ac.in/static/stem2.jpg",
+      "https://www.nitgoa.ac.in/static/stem3.jpg"
+    ]
+  }), []);
 
-  const [card4MainImage, setCard4MainImage] = useState("https://www.nitgoa.ac.in/static/arduino(1).jpg");
-  const [card4Gallery, setCard4Gallery] = useState([
-    "https://www.nitgoa.ac.in/static/arduino(2).jpg",
-    "https://www.nitgoa.ac.in/static/stem5.jpg"
-  ]);
+  // Auto-rotation effect
+  useEffect(() => {
+    const intervals = {};
 
-  const [card5MainImage, setCard5MainImage] = useState("https://www.nitgoa.ac.in/static/UBA1.png");
-  const [card5Gallery, setCard5Gallery] = useState([
-    "https://www.nitgoa.ac.in/static/SURVEY IN KALAY1.jpg",
-    "https://www.nitgoa.ac.in/static/KALAY_GRAMSABHA.jpg"
-  ]);
+    Object.keys(carouselStates).forEach(cardId => {
+      if (carouselStates[cardId].isAutoRotating) {
+        intervals[cardId] = setInterval(() => {
+          setCarouselStates(prev => ({
+            ...prev,
+            [cardId]: {
+              ...prev[cardId],
+              currentSlide: (prev[cardId].currentSlide + 1) % cardImages[cardId].length
+            }
+          }));
+        }, ROTATION_INTERVAL);
+      }
+    });
 
-  const [card6MainImage, setCard6MainImage] = useState("https://www.nitgoa.ac.in/static/School Visit.jpg");
-  const [card6Gallery, setCard6Gallery] = useState([
-    "https://www.nitgoa.ac.in/static/Permanent_Campus.jpeg",
-    "https://www.nitgoa.ac.in/static/Industrial visit(1).jpg"
-  ]);
+    // Cleanup intervals on unmount or when auto-rotation stops
+    return () => {
+      Object.values(intervals).forEach(interval => clearInterval(interval));
+    };
+  }, [carouselStates, cardImages, ROTATION_INTERVAL]);
 
-  const [card7MainImage, setCard7MainImage] = useState("https://www.nitgoa.ac.in/static/img 16march2024.jpeg");
-  const [card7Gallery, setCard7Gallery] = useState([
-    "https://www.nitgoa.ac.in/static/SHRAMDHAAN2.jpg",
-    "https://www.nitgoa.ac.in/static/img12march2024.jpg"
-  ]);
+  // Pause auto-rotation when user interacts
+  const pauseAutoRotation = (cardId) => {
+    setCarouselStates(prev => ({
+      ...prev,
+      [cardId]: {
+        ...prev[cardId],
+        isAutoRotating: false
+      }
+    }));
 
-  const [card8MainImage, setCard8MainImage] = useState("https://www.nitgoa.ac.in/static/enggday1.jpg");
-  const [card8Gallery, setCard8Gallery] = useState([
-    "https://www.nitgoa.ac.in/static/enggday2.jpg",
-    "https://www.nitgoa.ac.in/static/enggday3.jpg"
-  ]);
-
-  const [card9MainImage, setCard9MainImage] = useState("https://www.nitgoa.ac.in/static/stem1.jpg");
-  const [card9Gallery, setCard9Gallery] = useState([
-    "https://www.nitgoa.ac.in/static/stem2.jpg",
-    "https://www.nitgoa.ac.in/static/stem3.jpg"
-  ]);
-
-  // Function to handle image swap for card 1
-  const handleCard1ImageSwap = (clickedImage) => {
-    const currentMain = card1MainImage;
-    setCard1MainImage(clickedImage);
-    setCard1Gallery(card1Gallery.map(img => 
-      img === clickedImage ? currentMain : img
-    ));
+    // Resume auto-rotation after 8 seconds of inactivity
+    setTimeout(() => {
+      setCarouselStates(prev => ({
+        ...prev,
+        [cardId]: {
+          ...prev[cardId],
+          isAutoRotating: true
+        }
+      }));
+    }, 8000);
   };
 
-  // Function to handle image swap for card 2
-  const handleCard2ImageSwap = (clickedImage) => {
-    const currentMain = card2MainImage;
-    setCard2MainImage(clickedImage);
-    setCard2Gallery(card2Gallery.map(img => 
-      img === clickedImage ? currentMain : img
-    ));
+  // Navigation functions for carousel
+  const nextSlide = (cardId) => {
+    pauseAutoRotation(cardId);
+    setCarouselStates(prev => ({
+      ...prev,
+      [cardId]: {
+        ...prev[cardId],
+        currentSlide: (prev[cardId].currentSlide + 1) % cardImages[cardId].length
+      }
+    }));
   };
 
-  // Handler functions for all remaining cards
-  const handleCard3ImageSwap = (clickedImage) => {
-    const currentMain = card3MainImage;
-    setCard3MainImage(clickedImage);
-    setCard3Gallery(card3Gallery.map(img => img === clickedImage ? currentMain : img));
+  const prevSlide = (cardId) => {
+    pauseAutoRotation(cardId);
+    setCarouselStates(prev => ({
+      ...prev,
+      [cardId]: {
+        ...prev[cardId],
+        currentSlide: prev[cardId].currentSlide === 0 
+          ? cardImages[cardId].length - 1 
+          : prev[cardId].currentSlide - 1
+      }
+    }));
   };
 
-  const handleCard4ImageSwap = (clickedImage) => {
-    const currentMain = card4MainImage;
-    setCard4MainImage(clickedImage);
-    setCard4Gallery(card4Gallery.map(img => img === clickedImage ? currentMain : img));
+  const goToSlide = (cardId, slideIndex) => {
+    pauseAutoRotation(cardId);
+    setCarouselStates(prev => ({
+      ...prev,
+      [cardId]: {
+        ...prev[cardId],
+        currentSlide: slideIndex
+      }
+    }));
   };
 
-  const handleCard5ImageSwap = (clickedImage) => {
-    const currentMain = card5MainImage;
-    setCard5MainImage(clickedImage);
-    setCard5Gallery(card5Gallery.map(img => img === clickedImage ? currentMain : img));
+  // Carousel component
+  const ImageCarousel = ({ cardId, images, alt }) => {
+    const currentSlide = carouselStates[cardId].currentSlide;
+    
+    return (
+      <div className="outreach-image-carousel">
+        <div 
+          className="outreach-carousel-container"
+          style={{
+            transform: `translateX(-${currentSlide * 33.333}%)`
+          }}
+        >
+          {images.map((imgSrc, index) => (
+            <div key={index} className="outreach-carousel-slide">
+              <img
+                src={imgSrc}
+                alt={`${alt} ${index + 1}`}
+                className="outreach-activity-image"
+                onError={(e) => {
+                  e.target.src = "https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80";
+                }}
+              />
+            </div>
+          ))}
+        </div>
+        
+        <button 
+          className="outreach-carousel-nav outreach-carousel-prev"
+          onClick={() => prevSlide(cardId)}
+          aria-label="Previous image"
+        >
+          &#8249;
+        </button>
+        
+        <button 
+          className="outreach-carousel-nav outreach-carousel-next"
+          onClick={() => nextSlide(cardId)}
+          aria-label="Next image"
+        >
+          &#8250;
+        </button>
+        
+        <div className="outreach-carousel-dots">
+          {images.map((_, index) => (
+            <button
+              key={index}
+              className={`outreach-carousel-dot ${index === currentSlide ? 'active' : ''} ${
+                carouselStates[cardId]?.isAutoRotating && index === currentSlide ? 'auto-rotating' : ''
+              }`}
+              onClick={() => goToSlide(cardId, index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+    );
   };
-
-  const handleCard6ImageSwap = (clickedImage) => {
-    const currentMain = card6MainImage;
-    setCard6MainImage(clickedImage);
-    setCard6Gallery(card6Gallery.map(img => img === clickedImage ? currentMain : img));
-  };
-
-  const handleCard7ImageSwap = (clickedImage) => {
-    const currentMain = card7MainImage;
-    setCard7MainImage(clickedImage);
-    setCard7Gallery(card7Gallery.map(img => img === clickedImage ? currentMain : img));
-  };
-
-  const handleCard8ImageSwap = (clickedImage) => {
-    const currentMain = card8MainImage;
-    setCard8MainImage(clickedImage);
-    setCard8Gallery(card8Gallery.map(img => img === clickedImage ? currentMain : img));
-  };
-
-  const handleCard9ImageSwap = (clickedImage) => {
-    const currentMain = card9MainImage;
-    setCard9MainImage(clickedImage);
-    setCard9Gallery(card9Gallery.map(img => img === clickedImage ? currentMain : img));
-  };
-
   return (
     <div className="outreach-container">
       <div className="outreach-hero">
@@ -130,15 +216,15 @@ const OutreachActivities = () => {
       <div className="outreach-content">
         
         {/* Main Story */}
-        <section className="featured-story">
-          <div className="featured-story-content">
-            <div className="featured-story-text">
-              <div className="story-category">Featured Initiative</div>
+        <section className="outreach-featured-story">
+          <div className="outreach-featured-story-content">
+            <div className="outreach-featured-story-text">
+              <div className="outreach-story-category">Featured Initiative</div>
               <h2>Women in STEM Workshop</h2>
               <p>The SPIE Student Chapter NIT Goa conducted an inspiring workshop at Sharada Mandir School, Panjim, focusing on sparking interest in STEM fields among middle school girls through hands-on experiments in physics, optics, and robotics.</p>
-              <div className="story-date">March 2024</div>
+              <div className="outreach-story-date">March 2024</div>
             </div>
-            <div className="featured-story-image">
+            <div className="outreach-featured-story-image">
               <img 
                 src="https://www.nitgoa.ac.in/static/img6march2024.jpg" 
                 alt="Women in STEM Initiative by SPIE Student Chapter" 
@@ -149,242 +235,134 @@ const OutreachActivities = () => {
         </section>
 
         {/* Recent Activities Grid */}
-        <section className="activities-section">
-          <h2 className="section-title">Recent Activities</h2>
+        <section className="outreach-activities-section">
+          <h2 className="outreach-section-title">Recent Activities</h2>
           
-          <div className="activities-grid">
-            <div className="activity-card">
-              <img 
-                src={card1MainImage}
-                alt="Light & Optics Workshop" 
-                className="activity-image"
-                onError={(e) => {e.target.src = "https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"}}
+          <div className="outreach-activities-grid">
+            <div className="outreach-activity-card">
+              <ImageCarousel 
+                cardId="card1" 
+                images={cardImages.card1} 
+                alt="Light & Optics Workshop"
               />
-              <div className="activity-content">
+              <div className="outreach-activity-content">
                 <h3>Light & Optics Workshops</h3>
                 <p>SPIE student chapter organized workshops at Mustifund High School and Damodar Higher Secondary School, introducing students to the fascinating world of light and optics through interactive demonstrations.</p>
-                <div className="activity-gallery">
-                  {card1Gallery.map((imgSrc, index) => (
-                    <img 
-                      key={index}
-                      src={imgSrc} 
-                      alt={index === 0 ? "Mustifund workshop" : "Interactive sessions"} 
-                      className="gallery-img"
-                      onClick={() => handleCard1ImageSwap(imgSrc)}
-                    />
-                  ))}
-                </div>
               </div>
             </div>
 
-            <div className="activity-card">
-              <img 
-                src={card2MainImage}
-                alt="All Goa Science Fair" 
-                className="activity-image"
-                onError={(e) => {e.target.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"}}
+            <div className="outreach-activity-card">
+              <ImageCarousel 
+                cardId="card2" 
+                images={cardImages.card2} 
+                alt="All Goa Science Fair"
               />
-              <div className="activity-content">
+              <div className="outreach-activity-content">
                 <h3>All Goa Science Fair</h3>
                 <p>The inaugural All Goa Science Fair brought together 42 teams of grades 8-10 students to showcase innovative projects on "Science and technology for a clean and green tomorrow".</p>
-                <div className="activity-gallery">
-                  {card2Gallery.map((imgSrc, index) => (
-                    <img 
-                      key={index}
-                      src={imgSrc} 
-                      alt={index === 0 ? "RAA programs" : "Student projects"} 
-                      className="gallery-img"
-                      onClick={() => handleCard2ImageSwap(imgSrc)}
-                    />
-                  ))}
-                </div>
               </div>
             </div>
 
-            <div className="activity-card">
-              <img 
-                src={card3MainImage}
-                alt="Swachh Bharat Initiative" 
-                className="activity-image"
-                onError={(e) => {e.target.src = "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"}}
+            <div className="outreach-activity-card">
+              <ImageCarousel 
+                cardId="card3" 
+                images={cardImages.card3} 
+                alt="Swachh Bharat Initiative"
               />
-              <div className="activity-content">
+              <div className="outreach-activity-content">
                 <h3>Swachhata Hi Seva Campaign</h3>
                 <p>NIT Goa conducted comprehensive cleanliness drives in collaboration with Cuncolim Municipality Corporation, cleaning Demani Village adjacent to our campus and promoting environmental awareness.</p>
-                <div className="activity-gallery">
-                  {card3Gallery.map((img, index) => (
-                    <img 
-                      key={index}
-                      src={img} 
-                      alt={`Swachhata activity ${index + 1}`} 
-                      className="gallery-img" 
-                      onClick={() => handleCard3ImageSwap(img)}
-                    />
-                  ))}
-                </div>
               </div>
             </div>
 
-            <div className="activity-card">
-              <img 
-                src={card4MainImage}
-                alt="Arduino Workshop" 
-                className="activity-image"
-                onError={(e) => {e.target.src = "https://images.unsplash.com/photo-1581092921461-eab62e97a780?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"}}
+            <div className="outreach-activity-card">
+              <ImageCarousel 
+                cardId="card4" 
+                images={cardImages.card4} 
+                alt="Arduino Workshop"
               />
-              <div className="activity-content">
+              <div className="outreach-activity-content">
                 <h3>Arduino & Electronics Workshops</h3>
                 <p>Hands-on Arduino workshops introduce school students to basic electronics and programming concepts, fostering understanding of microcontroller applications in modern technology.</p>
-                <div className="activity-gallery">
-                  {card4Gallery.map((img, index) => (
-                    <img 
-                      key={index}
-                      src={img} 
-                      alt={`Arduino workshop ${index + 1}`} 
-                      className="gallery-img" 
-                      onClick={() => handleCard4ImageSwap(img)}
-                    />
-                  ))}
-                </div>
               </div>
             </div>
 
-            <div className="activity-card">
-              <img 
-                src={card5MainImage}
-                alt="Village Development Programs" 
-                className="activity-image"
-                onError={(e) => {e.target.src = "https://images.unsplash.com/photo-1594736797933-d0401ba871ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"}}
+            <div className="outreach-activity-card">
+              <ImageCarousel 
+                cardId="card5" 
+                images={cardImages.card5} 
+                alt="Village Development Programs"
               />
-              <div className="activity-content">
+              <div className="outreach-activity-content">
                 <h3>Village Development Program</h3>
                 <p>Through Unnat Bharat Abhiyan, NIT Goa actively engages with adopted villages Kalay and Guirdolim, conducting surveys, participating in Gramsabha meetings, and implementing development initiatives.</p>
-                <div className="activity-gallery">
-                  {card5Gallery.map((img, index) => (
-                    <img 
-                      key={index}
-                      src={img} 
-                      alt={`Village development ${index + 1}`} 
-                      className="gallery-img" 
-                      onClick={() => handleCard5ImageSwap(img)}
-                    />
-                  ))}
-                </div>
               </div>
             </div>
 
-            <div className="activity-card">
-              <img 
-                src={card6MainImage}
-                alt="Campus Visit Program" 
-                className="activity-image"
-                onError={(e) => {e.target.src = "https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"}}
+            <div className="outreach-activity-card">
+              <ImageCarousel 
+                cardId="card6" 
+                images={cardImages.card6} 
+                alt="Campus Visit Program"
               />
-              <div className="activity-content">
+              <div className="outreach-activity-content">
                 <h3>School Campus Visit Program</h3>
                 <p>Government High School students from Vidhyanagar, Aquem, Margao visited NIT Goa campus as part of the new Education Policy, attending lectures on Experimental Physics, Chemistry, and Mathematics.</p>
-                <div className="activity-gallery">
-                  {card6Gallery.map((img, index) => (
-                    <img 
-                      key={index}
-                      src={img} 
-                      alt={`Campus visit ${index + 1}`} 
-                      className="gallery-img" 
-                      onClick={() => handleCard6ImageSwap(img)}
-                    />
-                  ))}
-                </div>
               </div>
             </div>
 
-            <div className="activity-card">
-              <img 
-                src={card7MainImage}
-                alt="Health Awareness Programs" 
-                className="activity-image"
-                onError={(e) => {e.target.src = "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"}}
+            <div className="outreach-activity-card">
+              <ImageCarousel 
+                cardId="card7" 
+                images={cardImages.card7} 
+                alt="Health Awareness Programs"
               />
-              <div className="activity-content">
+              <div className="outreach-activity-content">
                 <h3>Health & Safety Initiatives</h3>
                 <p>NIT Goa organizes blood donation camps, health awareness programs, and Safai Mitra Suraksha Shivirs focusing on worker safety, hygiene, and overall community well-being.</p>
-                <div className="activity-gallery">
-                  {card7Gallery.map((img, index) => (
-                    <img 
-                      key={index}
-                      src={img} 
-                      alt={`Health initiative ${index + 1}`} 
-                      className="gallery-img" 
-                      onClick={() => handleCard7ImageSwap(img)}
-                    />
-                  ))}
-                </div>
               </div>
             </div>
 
-            <div className="activity-card">
-              <img 
-                src={card8MainImage}
-                alt="Engineering Day Celebrations" 
-                className="activity-image"
-                onError={(e) => {e.target.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"}}
+            <div className="outreach-activity-card">
+              <ImageCarousel 
+                cardId="card8" 
+                images={cardImages.card8} 
+                alt="Engineering Day Celebrations"
               />
-              <div className="activity-content">
+              <div className="outreach-activity-content">
                 <h3>Engineering Day & Innovation Showcase</h3>
                 <p>Annual Engineering Day celebrations feature technical exhibitions, project demonstrations, and interactive sessions with school students, showcasing the latest research and innovations from all departments.</p>
-                <div className="activity-gallery">
-                  {card8Gallery.map((img, index) => (
-                    <img 
-                      key={index}
-                      src={img} 
-                      alt={`Engineering day ${index + 1}`} 
-                      className="gallery-img" 
-                      onClick={() => handleCard8ImageSwap(img)}
-                    />
-                  ))}
-                </div>
               </div>
             </div>
 
-            <div className="activity-card">
-              <img 
-                src={card9MainImage}
-                alt="STEM Activities" 
-                className="activity-image"
-                onError={(e) => {e.target.src = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"}}
+            <div className="outreach-activity-card">
+              <ImageCarousel 
+                cardId="card9" 
+                images={cardImages.card9} 
+                alt="STEM Activities"
               />
-              <div className="activity-content">
+              <div className="outreach-activity-content">
                 <h3>STEM Educational Programs</h3>
                 <p>Comprehensive STEM programs introducing students to hands-on learning experiences in science, technology, engineering, and mathematics through interactive workshops and demonstrations.</p>
-                <div className="activity-gallery">
-                  {card9Gallery.map((img, index) => (
-                    <img 
-                      key={index}
-                      src={img} 
-                      alt={`STEM activity ${index + 1}`} 
-                      className="gallery-img" 
-                      onClick={() => handleCard9ImageSwap(img)}
-                    />
-                  ))}
-                </div>
               </div>
             </div>
 
-            <div className="activity-card text-only-card">
-              <div className="activity-content">
+            <div className="outreach-activity-card outreach-text-only-card">
+              <div className="outreach-activity-content">
                 <h3>Rural Outreach Programs</h3>
                 <p>Rural outreach initiatives focusing on technology transfer, skill development, and infrastructure improvement to enhance quality of life in local villages through sustained community engagement. These programs include community surveys, skill development workshops, digital literacy training, and sustainable development projects that directly benefit rural communities around NIT Goa.</p>
               </div>
             </div>
 
-            <div className="activity-card text-only-card">
-              <div className="activity-content">
+            <div className="outreach-activity-card outreach-text-only-card">
+              <div className="outreach-activity-content">
                 <h3>Student Excellence & Recognition</h3>
                 <p>NIT Goa students consistently excel in national and international competitions, research projects, and innovation challenges, bringing recognition to the institute through their outstanding achievements. Students have won prestigious awards in robotics competitions, hackathons, research symposiums, and technical festivals across the country, showcasing the quality of education and innovation culture at NIT Goa.</p>
               </div>
             </div>
 
-            <div className="activity-card text-only-card">
-              <div className="activity-content">
+            <div className="outreach-activity-card outreach-text-only-card">
+              <div className="outreach-activity-content">
                 <h3>Special Events & Celebrations</h3>
                 <p>Cultural festivals, awareness campaigns, and special events that bring together the academic community and local residents in celebration of shared values and community spirit. These events include Independence Day celebrations, Republic Day ceremonies, cultural festivals, environmental awareness campaigns, and community gatherings that strengthen the bond between NIT Goa and the local community.</p>
               </div>
@@ -393,21 +371,21 @@ const OutreachActivities = () => {
         </section>
 
         {/* Impact Section */}
-        <section className="impact-section">
-          <div className="impact-content">
+        <section className="outreach-impact-section">
+          <div className="outreach-impact-content">
             <h2>Our Impact</h2>
-            <div className="impact-stats">
-              <div className="stat-item">
-                <div className="stat-number">500+</div>
-                <div className="stat-label">Students Reached</div>
+            <div className="outreach-impact-stats">
+              <div className="outreach-stat-item">
+                <div className="outreach-stat-number">500+</div>
+                <div className="outreach-stat-label">Students Reached</div>
               </div>
-              <div className="stat-item">
-                <div className="stat-number">15+</div>
-                <div className="stat-label">Schools Visited</div>
+              <div className="outreach-stat-item">
+                <div className="outreach-stat-number">15+</div>
+                <div className="outreach-stat-label">Schools Visited</div>
               </div>
-              <div className="stat-item">
-                <div className="stat-number">10+</div>
-                <div className="stat-label">Communities Served</div>
+              <div className="outreach-stat-item">
+                <div className="outreach-stat-number">10+</div>
+                <div className="outreach-stat-label">Communities Served</div>
               </div>
             </div>
           </div>

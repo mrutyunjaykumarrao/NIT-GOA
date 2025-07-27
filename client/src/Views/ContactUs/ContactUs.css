@@ -1,333 +1,698 @@
-.contact-page {
+/* ContactUs Page Styles - Following NIT GOA Design System */
+:root {
+    /* Primary Colors - Consistent with GIAN and other pages */
+    --primary-blue: #2E86C1;
+    --primary-blue-light: #5DADE2;
+    --primary-blue-dark: #1B4F72;
+    
+    /* Secondary Colors */
+    --secondary-blue-50: #EBF5FB;
+    --secondary-blue-100: #D6EAF8;
+    --secondary-blue-200: #AED6F1;
+    
+    /* Neutral Colors */
+    --white: #FFFFFF;
+    --gray-50: #F8F9FA;
+    --gray-100: #F1F3F4;
+    --gray-200: #E9ECEF;
+    --gray-600: #6C757D;
+    --gray-700: #495057;
+    --gray-800: #343A40;
+    
+    /* ContactUs Component Variables */
+    --contactus-bg-primary: #EBF5FB;
+    --contactus-bg-secondary: #FFFFFF;
+    --contactus-text-primary: #343A40;
+    --contactus-text-secondary: #495057;
+    --contactus-border: #E9ECEF;
+    --contactus-card-bg: #FFFFFF;
+    --contactus-shadow: rgba(0, 0, 0, 0.08);
+    --contactus-shadow-medium: rgba(0, 0, 0, 0.12);
+    --contactus-shadow-strong: rgba(0, 0, 0, 0.16);
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+    --primary-blue: #4A9EE7;
+    --primary-blue-light: #6BB6FF;
+    --primary-blue-dark: #2E86C1;
+    
+    --secondary-blue-50: #0f1726;
+    --secondary-blue-100: #1a2332;
+    --secondary-blue-200: #253041;
+    
+    --gray-50: #0f1726;
+    --gray-100: #1a2332;
+    --gray-200: #253041;
+    --gray-600: #94a3b8;
+    --gray-700: #cbd5e1;
+    --gray-800: #e2e8f0;
+    
+    --contactus-bg-primary: #0a1220;
+    --contactus-bg-secondary: #1a2332;
+    --contactus-text-primary: #e2e8f0;
+    --contactus-text-secondary: #cbd5e1;
+    --contactus-border: #253041;
+    --contactus-card-bg: #1e293b;
+    --contactus-shadow: rgba(30, 41, 59, 0.4);
+    --contactus-shadow-medium: rgba(30, 41, 59, 0.6);
+    --contactus-shadow-strong: rgba(30, 41, 59, 0.8);
+}
+
+/* Base Page Styles */
+.contactus-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--contactus-text-primary);
+    background: linear-gradient(135deg, var(--contactus-bg-primary) 0%, var(--contactus-bg-secondary) 100%);
     min-height: 100vh;
-    padding: 40px 0;
-    background: white;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+/* Dark Theme Page Override */
+[data-theme="dark"] .contactus-page {
+    background: linear-gradient(135deg, #0a1220 0%, #1a2332 50%, #253041 100%);
+}
+
+[data-theme="dark"] .contactus-page p {
+    color: var(--contactus-text-secondary) !important;
+}
+
+.contactus-container {
+    max-width: 95%;
+    margin: 0 auto;
+    padding: 2rem 0.5rem;
     position: relative;
 }
 
-.contact-page::before {
+/* Hero Section - Consistent with other pages */
+.contactus-page-header {
+    text-align: center;
+    padding: 4rem 0 3rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+    margin: 0 -1rem 3rem;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px 20px 20px 20px;
+}
+
+/* Dark Theme Hero Override */
+[data-theme="dark"] .contactus-page-header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
+    box-shadow: 0 4px 20px rgba(30, 58, 138, 0.3);
+}
+
+.contactus-page-header * {
+    color: var(--white) !important;
+}
+
+.contactus-page-header::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-    opacity: 0.3;
-    pointer-events: none;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    animation: contactus-float 20s ease-in-out infinite;
 }
 
-.contact-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    position: relative;
-    z-index: 1;
+@keyframes contactus-float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
 }
 
-.page-header {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.page-header h1 {
-    font-size: 3.5rem;
-    color: #2c3e50;
-    margin-bottom: 20px;
+.contactus-page-header h1 {
+    font-size: 3.8rem;
     font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1.1;
+    position: relative;
+    z-index: 2;
 }
 
-.page-subtitle {
-    font-size: 1.3rem;
-    color: #666;
-    margin: 0;
-    font-weight: 500;
+.contactus-page-subtitle {
+    font-size: 1.4rem;
+    color: var(--white);
+    opacity: 0.95;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
-.contact-content {
-    max-width: 1000px;
+/* Content Area */
+.contactus-content {
+    max-width: 95%;
     margin: 0 auto;
 }
 
-.contact-section {
-    background: #ffffff;
-    border: 1px solid #e0e0e0;
-    padding: 40px;
-    margin-bottom: 30px;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+/* Section Cards - Following GIAN pattern */
+.contactus-section {
+    background: var(--contactus-card-bg);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 32px var(--contactus-shadow);
+    border: 1px solid var(--contactus-border);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
 }
 
-.contact-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transition: left 0.8s ease;
+[data-theme="dark"] .contactus-section {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: rgba(100, 116, 139, 0.2);
+    box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3);
 }
 
-.contact-section:hover::before {
-    left: 100%;
+.contactus-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px var(--contactus-shadow-medium);
 }
 
-.contact-section:hover {
-    transform: translateY(-5px);
-    box-shadow: 
-        0 12px 40px rgba(0, 0, 0, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+[data-theme="dark"] .contactus-section:hover {
+    box-shadow: 0 12px 40px rgba(15, 23, 38, 0.5);
 }
 
-.main-contact-section {
-    background: #f8f9fa;
-    border: 2px solid #e9ecef;
+.contactus-main-section {
+    background: var(--secondary-blue-50);
+    border: 2px solid var(--primary-blue-light);
 }
 
-.contact-section h2 {
-    color: #2c3e50;
-    font-size: 2.2rem;
-    margin-bottom: 25px;
-    border-bottom: 3px solid #e0e0e0;
-    padding-bottom: 15px;
+[data-theme="dark"] .contactus-main-section {
+    background: rgba(74, 158, 231, 0.08);
+    border-color: var(--primary-blue-light);
+}
+
+/* Section Headers */
+.contactus-section h2 {
+    font-size: 2.5rem;
     font-weight: 600;
+    color: var(--contactus-text-primary);
+    margin-bottom: 2rem;
+    text-align: center;
+    border-bottom: 3px solid var(--contactus-border);
+    padding-bottom: 1rem;
+    position: relative;
 }
 
-.contact-section h3 {
-    color: #2c3e50;
-    font-size: 1.4rem;
-    margin-bottom: 15px;
+[data-theme="dark"] .contactus-section h2 {
+    color: var(--contactus-text-primary);
+    border-bottom-color: rgba(100, 116, 139, 0.3);
+}
+
+.contactus-section h3 {
+    font-size: 1.6rem;
     font-weight: 600;
+    color: var(--contactus-text-primary);
+    margin-bottom: 1rem;
 }
 
-.contact-section h4 {
-    color: #2c3e50;
+[data-theme="dark"] .contactus-section h3 {
+    color: var(--contactus-text-primary);
+}
+
+.contactus-section h4 {
     font-size: 1.2rem;
-    margin-bottom: 10px;
     font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 0.8rem;
 }
 
-.contact-section p {
-    color: #666;
-    line-height: 1.8;
+[data-theme="dark"] .contactus-section h4 {
+    color: var(--primary-blue-light);
+}
+
+.contactus-section p {
+    color: var(--contactus-text-secondary);
+    line-height: 1.7;
     font-size: 1rem;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
 }
 
-.contact-section strong {
-    color: #2c3e50;
+[data-theme="dark"] .contactus-section p {
+    color: var(--contactus-text-secondary);
+}
+
+.contactus-section strong {
+    color: var(--contactus-text-primary);
     font-weight: 600;
+}
+
+[data-theme="dark"] .contactus-section strong {
+    color: var(--contactus-text-primary);
 }
 
 /* Main Contact Card */
-.main-contact-card {
+.contactus-main-card {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    margin-top: 30px;
+    gap: 3rem;
+    margin-top: 2rem;
 }
 
-.contact-info h3 {
-    font-size: 1.6rem;
-    margin-bottom: 20px;
+.contactus-info h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
     text-align: center;
-    border-bottom: 2px solid #e0e0e0;
-    padding-bottom: 15px;
-    color: #2c3e50;
+    border-bottom: 2px solid var(--primary-blue-light);
+    padding-bottom: 1rem;
+    color: var(--primary-blue);
 }
 
-.address {
-    font-size: 1.1rem;
-    margin-bottom: 25px;
+[data-theme="dark"] .contactus-info h3 {
+    color: var(--primary-blue-light);
+    border-bottom-color: var(--primary-blue-light);
+}
+
+.contactus-address {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
     text-align: center;
-    color: #666;
+    color: var(--contactus-text-secondary);
+    line-height: 1.6;
+    padding: 1.5rem;
+    background: var(--contactus-card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--contactus-border);
 }
 
+[data-theme="dark"] .contactus-address {
+    color: var(--contactus-text-secondary);
+    background: rgba(100, 116, 139, 0.1);
+    border-color: rgba(100, 116, 139, 0.2);
+}
 
-.contact-item {
+.contactus-details {
+    display: grid;
+    gap: 1rem;
+}
+
+.contactus-item {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
-    padding: 12px;
-    background: #f8f9fa;
-    border-radius: 10px;
-    border: 1px solid #e9ecef;
-}
-
-.contact-icon {
-    font-size: 1.5rem;
-    margin-right: 15px;
-    flex-shrink: 0;
-}
-
-.map-placeholder {
-    background: #f8f9fa;
-    border: 2px dashed #dee2e6;
-    border-radius: 15px;
-    padding: 30px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.map-content h4 {
-    margin-bottom: 15px;
-    color: #4CAF50;
-}
-
-.coordinates {
-    margin-top: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 15px;
-    border-radius: 10px;
-    font-size: 0.9rem;
-}
-
-/* Department Grid */
-.departments-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
-}
-
-.department-card {
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 15px;
-    padding: 25px;
+    padding: 1.2rem;
+    background: var(--contactus-card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--contactus-border);
     transition: all 0.3s ease;
 }
 
-.department-card:hover {
-    background: #ffffff;
-    transform: translateY(-5px);
-    border-color: #dee2e6;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+[data-theme="dark"] .contactus-item {
+    background: rgba(100, 116, 139, 0.08);
+    border-color: rgba(100, 116, 139, 0.2);
 }
 
-.department-card h3 {
+.contactus-item:hover {
+    transform: translateX(4px);
+    border-color: var(--primary-blue-light);
+    box-shadow: 0 4px 12px var(--contactus-shadow);
+}
+
+[data-theme="dark"] .contactus-item:hover {
+    border-color: var(--primary-blue-light);
+}
+
+.contactus-item-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.contactus-item-label {
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+[data-theme="dark"] .contactus-item-label {
+    color: var(--primary-blue-light);
+}
+
+.contactus-item-value {
+    color: var(--contactus-text-secondary);
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+[data-theme="dark"] .contactus-item-value {
+    color: var(--contactus-text-secondary);
+}
+
+/* Map Container */
+.contactus-map-placeholder {
+    background: var(--contactus-card-bg);
+    border: 2px solid var(--primary-blue-light);
+    border-radius: 16px;
+    padding: 2rem;
     text-align: center;
-    border-bottom: 2px solid #e0e0e0;
-    padding-bottom: 12px;
-    margin-bottom: 20px;
-    font-size: 1.2rem;
-    color: #2c3e50;
+    min-height: 400px;
 }
 
-.department-card p {
-    margin-bottom: 10px;
+[data-theme="dark"] .contactus-map-placeholder {
+    background: var(--contactus-card-bg);
+    border-color: var(--primary-blue-light);
+}
+
+.contactus-map-content h4 {
+    margin-bottom: 1.5rem;
+    color: var(--primary-blue);
+    font-size: 1.5rem;
+}
+
+[data-theme="dark"] .contactus-map-content h4 {
+    color: var(--primary-blue-light);
+}
+
+.contactus-map-container {
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px var(--contactus-shadow);
+}
+
+[data-theme="dark"] .contactus-map-container {
+    box-shadow: 0 4px 12px rgba(15, 23, 38, 0.4);
+}
+
+.contactus-map-container iframe {
+    width: 100%;
+    height: 300px;
+    border: none;
+    border-radius: 12px;
+}
+
+.contactus-coordinates {
+    background: var(--secondary-blue-50);
+    padding: 1rem;
+    border-radius: 8px;
     font-size: 0.95rem;
+    border: 1px solid var(--contactus-border);
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+[data-theme="dark"] .contactus-coordinates {
+    background: rgba(74, 158, 231, 0.08);
+    border-color: rgba(100, 116, 139, 0.2);
+}
+
+/* Department Grid - Card-based design */
+.contactus-departments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.contactus-department-card {
+    background: var(--contactus-card-bg);
+    border: 1px solid var(--contactus-border);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px var(--contactus-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+[data-theme="dark"] .contactus-department-card {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: rgba(100, 116, 139, 0.2);
+}
+
+.contactus-department-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+    z-index: 1;
+}
+
+[data-theme="dark"] .contactus-department-card::before {
+    background: linear-gradient(135deg, var(--primary-blue-light), var(--primary-blue));
+}
+
+.contactus-department-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px var(--contactus-shadow-medium);
+    border-color: var(--primary-blue-light);
+}
+
+[data-theme="dark"] .contactus-department-card:hover {
+    box-shadow: 0 12px 32px rgba(15, 23, 38, 0.5);
+    border-color: var(--primary-blue-light);
+}
+
+.contactus-department-card h3 {
+    text-align: center;
+    border-bottom: 2px solid var(--primary-blue-light);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    color: var(--primary-blue);
+    position: relative;
+    z-index: 2;
+}
+
+[data-theme="dark"] .contactus-department-card h3 {
+    color: var(--primary-blue-light);
+    border-bottom-color: var(--primary-blue-light);
+}
+
+.contactus-department-card p {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    position: relative;
+    z-index: 2;
 }
 
 /* Administration Grid */
-.administration-grid {
+.contactus-administration-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
-.admin-card {
-    background: rgba(76, 175, 80, 0.1);
-    border: 1px solid rgba(76, 175, 80, 0.3);
-    border-radius: 15px;
-    padding: 25px;
+.contactus-admin-card {
+    background: var(--contactus-card-bg);
+    border: 2px solid var(--primary-blue-light);
+    border-radius: 16px;
+    padding: 2rem;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 16px var(--contactus-shadow);
+    position: relative;
+    overflow: hidden;
 }
 
-.admin-card:hover {
-    background: rgba(76, 175, 80, 0.15);
-    transform: translateY(-5px);
-    border-color: rgba(76, 175, 80, 0.5);
+[data-theme="dark"] .contactus-admin-card {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: var(--primary-blue-light);
 }
 
-.admin-card h3 {
+.contactus-admin-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-blue-light), transparent);
+    border-radius: 0 16px 0 80px;
+    opacity: 0.1;
+    z-index: 1;
+}
+
+.contactus-admin-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px var(--contactus-shadow-medium);
+    background: var(--secondary-blue-50);
+}
+
+[data-theme="dark"] .contactus-admin-card:hover {
+    box-shadow: 0 12px 32px rgba(15, 23, 38, 0.5);
+    background: rgba(74, 158, 231, 0.08);
+}
+
+.contactus-admin-card h3 {
     text-align: center;
-    border-bottom: 2px solid rgba(76, 175, 80, 0.4);
-    padding-bottom: 12px;
-    margin-bottom: 20px;
-    color: #4CAF50;
+    border-bottom: 2px solid var(--primary-blue);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-blue);
+    position: relative;
+    z-index: 2;
+}
+
+[data-theme="dark"] .contactus-admin-card h3 {
+    color: var(--primary-blue-light);
+    border-bottom-color: var(--primary-blue-light);
 }
 
 /* Services Grid */
-.services-grid {
+.contactus-services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
-.service-card {
-    background: rgba(33, 150, 243, 0.1);
-    border: 1px solid rgba(33, 150, 243, 0.3);
-    border-radius: 15px;
-    padding: 25px;
+.contactus-service-card {
+    background: var(--contactus-card-bg);
+    border: 1px solid var(--contactus-border);
+    border-radius: 16px;
+    padding: 2rem;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 16px var(--contactus-shadow);
+    position: relative;
+    overflow: hidden;
 }
 
-.service-card:hover {
-    background: rgba(33, 150, 243, 0.15);
-    transform: translateY(-5px);
-    border-color: rgba(33, 150, 243, 0.5);
+[data-theme="dark"] .contactus-service-card {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: rgba(100, 116, 139, 0.2);
 }
 
-.service-card h3 {
+.contactus-service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-blue-light), transparent);
+    border-radius: 0 0 0 60px;
+    opacity: 0.1;
+    z-index: 1;
+}
+
+.contactus-service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px var(--contactus-shadow-medium);
+    border-color: var(--primary-blue-light);
+}
+
+[data-theme="dark"] .contactus-service-card:hover {
+    box-shadow: 0 12px 32px rgba(15, 23, 38, 0.5);
+    border-color: var(--primary-blue-light);
+}
+
+.contactus-service-card h3 {
     text-align: center;
-    border-bottom: 2px solid rgba(33, 150, 243, 0.4);
-    padding-bottom: 12px;
-    margin-bottom: 20px;
-    color: #2196F3;
+    border-bottom: 2px solid var(--contactus-border);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-blue);
+    position: relative;
+    z-index: 2;
+}
+
+[data-theme="dark"] .contactus-service-card h3 {
+    color: var(--primary-blue-light);
+    border-bottom-color: rgba(100, 116, 139, 0.3);
 }
 
 /* Transport Grid */
-.transport-grid {
+.contactus-transport-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
-.transport-card {
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 15px;
-    padding: 25px;
+.contactus-transport-card {
+    background: var(--contactus-card-bg);
+    border: 1px solid var(--contactus-border);
+    border-radius: 16px;
+    padding: 2rem;
     text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px var(--contactus-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+[data-theme="dark"] .contactus-transport-card {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: rgba(100, 116, 139, 0.2);
+}
+
+.contactus-transport-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px var(--contactus-shadow-medium);
+    border-color: var(--primary-blue-light);
+}
+
+[data-theme="dark"] .contactus-transport-card:hover {
+    box-shadow: 0 12px 32px rgba(15, 23, 38, 0.5);
+    border-color: var(--primary-blue-light);
+}
+
+.contactus-transport-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+[data-theme="dark"] .contactus-transport-icon {
+    background: linear-gradient(135deg, var(--primary-blue-light), var(--primary-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.contactus-transport-card h3 {
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--contactus-border);
+    padding-bottom: 1rem;
+    color: var(--contactus-text-primary);
+}
+
+[data-theme="dark"] .contactus-transport-card h3 {
+    color: var(--contactus-text-primary);
+    border-bottom-color: rgba(100, 116, 139, 0.3);
+}
+
+.contactus-transport-details {
+    background: var(--secondary-blue-50);
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    border: 1px solid var(--contactus-border);
     transition: all 0.3s ease;
 }
 
-.transport-card:hover {
-    background: #ffffff;
-    transform: translateY(-5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+[data-theme="dark"] .contactus-transport-details {
+    background: rgba(74, 158, 231, 0.05);
+    border-color: rgba(100, 116, 139, 0.2);
 }
 
-.transport-icon {
-    font-size: 3rem;
-    margin-bottom: 15px;
-    display: block;
+.transport-details:hover {
+    background: var(--secondary-blue-100);
+    transform: translateX(4px);
 }
 
-.transport-card h3 {
-    margin-bottom: 20px;
-    border-bottom: 2px solid #e0e0e0;
-    padding-bottom: 10px;
-    color: #2c3e50;
-}
-
-.transport-details {
-    background: #f8f9fa;
-    border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 15px;
-    text-align: left;
-    border: 1px solid #e9ecef;
+[data-theme="dark"] .transport-details:hover {
+    background: rgba(74, 158, 231, 0.1);
 }
 
 .transport-details:last-child {
@@ -335,202 +700,362 @@
 }
 
 /* Emergency Grid */
-.emergency-grid {
+.contactus-emergency-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
-.emergency-card {
-    background: rgba(244, 67, 54, 0.1);
-    border: 2px solid rgba(244, 67, 54, 0.3);
-    border-radius: 15px;
-    padding: 25px;
+.contactus-emergency-card {
+    background: var(--contactus-card-bg);
+    border: 2px solid #F44336;
+    border-radius: 16px;
+    padding: 2rem;
     text-align: center;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(244, 67, 54, 0.2);
+    position: relative;
+    overflow: hidden;
 }
 
-.emergency-card:hover {
-    background: rgba(244, 67, 54, 0.15);
-    transform: translateY(-5px);
-    border-color: rgba(244, 67, 54, 0.5);
+[data-theme="dark"] .contactus-emergency-card {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: #FF5722;
+    box-shadow: 0 4px 16px rgba(255, 87, 34, 0.3);
 }
 
-.emergency-card h3 {
+.contactus-emergency-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #F44336, #FF5722, #F44336);
+    z-index: 1;
+}
+
+.contactus-emergency-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(244, 67, 54, 0.3);
+    background: rgba(244, 67, 54, 0.02);
+}
+
+[data-theme="dark"] .contactus-emergency-card:hover {
+    box-shadow: 0 12px 32px rgba(255, 87, 34, 0.4);
+    background: rgba(255, 87, 34, 0.05);
+}
+
+.contactus-emergency-card h3 {
     color: #F44336;
-    border-bottom: 2px solid rgba(244, 67, 54, 0.4);
-    padding-bottom: 12px;
-    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(244, 67, 54, 0.3);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+[data-theme="dark"] .contactus-emergency-card h3 {
+    color: #FF5722;
+    border-bottom-color: rgba(255, 87, 34, 0.4);
 }
 
 /* Feedback Section */
 .feedback-info {
-    margin-top: 30px;
+    margin-top: 2rem;
 }
 
-.feedback-channels {
+.contactus-feedback-channels {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    margin-top: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
-.feedback-channel {
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 12px;
-    padding: 20px;
+.contactus-feedback-channel {
+    background: var(--contactus-card-bg);
+    border: 1px solid var(--contactus-border);
+    border-radius: 16px;
+    padding: 2rem;
     text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px var(--contactus-shadow);
 }
 
-.feedback-channel h4 {
-    color: #4CAF50;
-    margin-bottom: 10px;
-    border-bottom: 1px solid rgba(76, 175, 80, 0.3);
-    padding-bottom: 8px;
+[data-theme="dark"] .contactus-feedback-channel {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: rgba(100, 116, 139, 0.2);
+}
+
+.contactus-feedback-channel:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px var(--contactus-shadow-medium);
+    border-color: var(--primary-blue-light);
+}
+
+[data-theme="dark"] .contactus-feedback-channel:hover {
+    box-shadow: 0 12px 32px rgba(15, 23, 38, 0.5);
+    border-color: var(--primary-blue-light);
+}
+
+.contactus-feedback-channel h4 {
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--primary-blue-light);
+    padding-bottom: 0.8rem;
+}
+
+[data-theme="dark"] .contactus-feedback-channel h4 {
+    color: var(--primary-blue-light);
+    border-bottom-color: var(--primary-blue-light);
 }
 
 /* Social Media */
-.social-media-links {
+.contactus-social-media-links {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
-.social-platform {
+.contactus-social-platform {
     display: flex;
     align-items: center;
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 12px;
-    padding: 20px;
+    background: var(--contactus-card-bg);
+    border: 1px solid var(--contactus-border);
+    border-radius: 16px;
+    padding: 1.5rem;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 16px var(--contactus-shadow);
 }
 
-.social-platform:hover {
-    background: #ffffff;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+[data-theme="dark"] .contactus-social-platform {
+    background: linear-gradient(135deg, #1e293b 0%, #1a2332 100%);
+    border-color: rgba(100, 116, 139, 0.2);
 }
 
-.social-icon {
-    font-size: 2rem;
-    margin-right: 15px;
-    flex-shrink: 0;
+.contactus-social-platform:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px var(--contactus-shadow-medium);
+    border-color: var(--primary-blue-light);
 }
 
-.social-platform h4 {
-    margin-bottom: 5px;
+[data-theme="dark"] .contactus-social-platform:hover {
+    box-shadow: 0 12px 32px rgba(15, 23, 38, 0.5);
+    border-color: var(--primary-blue-light);
+}
+
+.contactus-social-platform h4 {
+    margin-bottom: 0.3rem;
     font-size: 1.1rem;
+    color: var(--contactus-text-primary);
 }
 
-.social-platform p {
+[data-theme="dark"] .contactus-social-platform h4 {
+    color: var(--contactus-text-primary);
+}
+
+.contactus-social-platform p {
     margin: 0;
     font-size: 0.9rem;
-    color: #666;
+    color: var(--contactus-text-secondary);
+}
+
+[data-theme="dark"] .contactus-social-platform p {
+    color: var(--contactus-text-secondary);
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+    .contactus-container {
+        padding: 1rem 0.25rem;
+    }
+    
+    .contactus-page-header {
+        margin: 0 -0.5rem 2rem;
+    }
+    
+    .contactus-page-header h1 {
+        font-size: 3rem;
+    }
+    
+    .contactus-main-card {
+        gap: 2rem;
+    }
+}
+
 @media (max-width: 768px) {
-    .page-header h1 {
+    .contactus-page-header h1 {
         font-size: 2.5rem;
     }
     
-    .contact-section {
-        padding: 30px 20px;
+    .contactus-page-subtitle {
+        font-size: 1.2rem;
     }
     
-    .contact-section h2 {
-        font-size: 1.8rem;
+    .contactus-section {
+        padding: 2rem;
+        margin-bottom: 1.5rem;
     }
     
-    .main-contact-card {
+    .contactus-section h2 {
+        font-size: 2rem;
+    }
+    
+    .contactus-main-card {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 2rem;
     }
     
-    .departments-grid,
-    .administration-grid,
-    .services-grid,
-    .transport-grid,
-    .emergency-grid {
+    .contactus-departments-grid,
+    .contactus-administration-grid,
+    .contactus-services-grid,
+    .contactus-transport-grid,
+    .contactus-emergency-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 1.5rem;
     }
     
-    .feedback-channels {
+    .contactus-feedback-channels {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 1.5rem;
     }
     
-    .social-media-links {
+    .contactus-social-media-links {
         grid-template-columns: 1fr;
-        gap: 15px;
+        gap: 1rem;
     }
     
-    .social-platform {
+    .contactus-social-platform {
         justify-content: center;
         text-align: center;
     }
     
-    .transport-details {
+    .contactus-transport-details {
         text-align: center;
     }
 }
 
 @media (max-width: 480px) {
-    .contact-container {
-        padding: 0 15px;
+    .contactus-container {
+        padding: 0.25rem;
     }
     
-    .page-header h1 {
+    .contactus-page-header {
+        padding: 3rem 1rem 2rem;
+    }
+    
+    .contactus-page-header h1 {
         font-size: 2rem;
     }
     
-    .page-subtitle {
-        font-size: 1.1rem;
+    .contactus-page-subtitle {
+        font-size: 1rem;
     }
     
-    .contact-section {
-        padding: 25px 15px;
-        margin-bottom: 20px;
+    .contactus-section {
+        padding: 1.25rem;
+        margin-bottom: 1rem;
     }
     
-    .contact-section h2 {
-        font-size: 1.6rem;
+    .contactus-section h2 {
+        font-size: 1.8rem;
     }
     
-    .department-card,
-    .admin-card,
-    .service-card,
-    .transport-card,
-    .emergency-card {
-        padding: 20px 15px;
+    .contactus-section h3 {
+        font-size: 1.3rem;
     }
     
-    .contact-item {
+    .contactus-department-card,
+    .contactus-admin-card,
+    .contactus-service-card,
+    .contactus-transport-card,
+    .contactus-emergency-card,
+    .contactus-feedback-channel {
+        padding: 1.5rem;
+    }
+    
+    .contactus-item {
         flex-direction: column;
         text-align: center;
+        gap: 0.8rem;
     }
     
-    .contact-icon {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-    
-    .transport-icon {
+    .contactus-transport-icon {
         font-size: 2.5rem;
     }
     
-    .social-platform {
+    .contactus-social-platform {
         flex-direction: column;
-        padding: 15px;
+        padding: 1.5rem;
+        gap: 1rem;
     }
     
-    .social-icon {
-        margin-right: 0;
-        margin-bottom: 10px;
+    .contactus-map-placeholder {
+        padding: 1.5rem;
+        min-height: 350px;
+    }
+    
+    .contactus-map-container iframe {
+        height: 250px;
+    }
+    
+    .contactus-address {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+}
+
+/* Animation Enhancements */
+@keyframes contactus-fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contactus-section {
+    animation: contactus-fadeIn 0.6s ease-out;
+}
+
+/* Add staggered animation delays */
+.contactus-section:nth-child(1) { animation-delay: 0.1s; }
+.contactus-section:nth-child(2) { animation-delay: 0.2s; }
+.contactus-section:nth-child(3) { animation-delay: 0.3s; }
+.contactus-section:nth-child(4) { animation-delay: 0.4s; }
+.contactus-section:nth-child(5) { animation-delay: 0.5s; }
+.contactus-section:nth-child(6) { animation-delay: 0.6s; }
+.contactus-section:nth-child(7) { animation-delay: 0.7s; }
+.contactus-section:nth-child(8) { animation-delay: 0.8s; }
+
+/* Print Styles */
+@media print {
+    .contactus-page {
+        background: white;
+    }
+    
+    .contactus-page-header {
+        background: #f8f9fa !important;
+        color: #333 !important;
+        margin: 0;
+    }
+    
+    .contactus-page-header * {
+        color: #333 !important;
+    }
+    
+    .contactus-section {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        break-inside: avoid;
+    }
+    
+    .contactus-section:hover {
+        transform: none;
     }
 }
