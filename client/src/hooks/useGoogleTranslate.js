@@ -25,10 +25,29 @@ export const useGoogleTranslate = () => {
     return languages.find(lang => lang.code === currentLanguage) || languages[0];
   }, [languages, currentLanguage]);
 
-  // Clear translation data
+  // Clear translation data completely
   const clearTranslationData = useCallback(() => {
     localStorage.removeItem(LANGUAGE_STORAGE_KEY);
+    // Clear all possible Google Translate cookies
     document.cookie = `${GOOGLE_TRANSLATE_COOKIE}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+    document.cookie = `googtrans=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+    document.cookie = `googtrans=; path=/; domain=${window.location.hostname}; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+    document.cookie = `googtrans=/auto/en; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+    
+    // Clear any session storage
+    sessionStorage.removeItem('googtrans');
+    sessionStorage.removeItem('preferred-language');
+    
+    // Clear any window variables that might persist
+    if (window.google && window.google.translate) {
+      try {
+        // Reset any Google Translate state
+        delete window.googleTranslateInitialized;
+        delete window.googleTranslateReady;
+      } catch (error) {
+        console.log('Error clearing Google Translate variables:', error);
+      }
+    }
   }, []);
 
   // Set translation cookie
@@ -112,12 +131,21 @@ export const useGoogleTranslate = () => {
     const { targetLang, isEnglish } = pendingTranslation;
     
     if (isEnglish) {
-      console.log('English selected - clearing all translation and cache');
+      console.log('English confirmed - completely clearing all translation and cache');
+      
+      // Clear all translation data thoroughly
       clearTranslationData();
+      
+      // Get clean base URL
       const baseUrl = getBaseUrl();
+      console.log('Navigating to clean English URL:', baseUrl);
+      
+      // Clear URL state and navigate to clean page
       window.history.replaceState(null, null, baseUrl);
-      window.location.href = baseUrl;
-      setTimeout(() => window.location.reload(), 100);
+      
+      // Force a complete reload to ensure clean state
+      window.location.replace(baseUrl);
+      
     } else {
       localStorage.setItem(LANGUAGE_STORAGE_KEY, targetLang);
       setCurrentLanguage(targetLang);
@@ -137,16 +165,31 @@ export const useGoogleTranslate = () => {
     localStorage.setItem(LANGUAGE_STORAGE_KEY, languageCode);
     
     if (languageCode === 'en') {
-      console.log('English selected - clearing any existing translations');
+      console.log('English selected - completely clearing all translations and cache');
       try {
+        // Clear all translation data first
+        clearTranslationData();
+        
+        // Clear URL hash if it contains translation data
         const currentHash = window.location.hash;
-        if (currentHash.includes('googtrans')) {
+        if (currentHash.includes('googtrans') || currentHash.includes('#')) {
           const baseUrl = getBaseUrl();
           window.history.replaceState(null, null, baseUrl);
         }
-        clearTranslationData();
+        
+        // Force refresh to clean slate
+        const baseUrl = getBaseUrl();
+        console.log('Forcing refresh to clean English page:', baseUrl);
+        
+        // Use location.replace for a clean reload without history
+        setTimeout(() => {
+          window.location.replace(baseUrl);
+        }, 100);
+        
       } catch (error) {
         console.error('Error clearing English translation:', error);
+        // Fallback: force a simple reload
+        window.location.reload();
       }
     } else {
       try {
@@ -157,25 +200,33 @@ export const useGoogleTranslate = () => {
     }
   }, [currentLanguage, translatePage, getBaseUrl, clearTranslationData]);
 
-  // Load saved language preference
+  // Load saved language preference with English protection
   useEffect(() => {
     const savedLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY);
     console.log('Saved language from cache:', savedLanguage);
     
     if (!savedLanguage) {
+      console.log('No saved language, defaulting to English');
       setCurrentLanguage('en');
       return;
     }
     
     if (savedLanguage === 'en') {
+      console.log('Saved language is English, ensuring clean state');
       setCurrentLanguage('en');
+      // Ensure any unwanted translation artifacts are cleared
+      const currentHash = window.location.hash;
+      if (currentHash.includes('googtrans')) {
+        const baseUrl = getBaseUrl();
+        window.history.replaceState(null, null, baseUrl);
+      }
       return;
     }
     
     setCurrentLanguage(savedLanguage);
-  }, []);
+  }, [getBaseUrl]);
 
-  // Monitor URL hash changes
+  // Monitor URL hash changes with strong English protection
   useEffect(() => {
     let isProcessingHashChange = false;
     
@@ -187,19 +238,32 @@ export const useGoogleTranslate = () => {
         const hash = window.location.hash;
         const savedLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY);
         
+        // If user explicitly chose English, ignore any translation hashes
+        if (savedLanguage === 'en') {
+          if (hash.includes('googtrans')) {
+            console.log('User chose English - removing unwanted translation hash');
+            const baseUrl = getBaseUrl();
+            window.history.replaceState(null, null, baseUrl);
+          }
+          isProcessingHashChange = false;
+          return;
+        }
+        
         if (hash.includes('googtrans')) {
           const match = hash.match(/googtrans\(en\|(\w+)\)/);
           if (match && match[1]) {
             const detectedLang = match[1];
+            
+            // Only apply if it's a valid language and user didn't explicitly choose English
             if (detectedLang !== currentLanguage && 
-                languages.some(lang => lang.code === detectedLang) && 
-                savedLanguage !== 'en') {
+                languages.some(lang => lang.code === detectedLang)) {
               console.log('URL hash language detected:', detectedLang);
               setCurrentLanguage(detectedLang);
               localStorage.setItem(LANGUAGE_STORAGE_KEY, detectedLang);
             }
           }
         } else {
+          // No translation hash - only reset if not explicitly English
           if (currentLanguage !== 'en' && savedLanguage !== 'en') {
             console.log('No translation hash, resetting to English');
             setCurrentLanguage('en');

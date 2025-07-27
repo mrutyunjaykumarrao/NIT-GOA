@@ -10,36 +10,38 @@ const TranslationConfirmDialog = ({
   if (!isOpen || !pendingTranslation) return null;
 
   return (
-    <div className="translate-confirm-overlay">
-      <div className="translate-confirm-dialog">
-        <div className="translate-confirm-header">
-          <h3>
-            <span>🌐</span>
-            Translate Page
+    <div className={`translate-confirm-overlay ${isOpen ? 'open' : ''} notranslate`}>
+      <div className="translate-confirm-dialog notranslate">
+        <div className="translate-confirm-header notranslate">
+          <div className="translate-confirm-icon notranslate">
+            {pendingTranslation?.isEnglish ? '🇺🇸' : '🌐'}
+          </div>
+          <h3 className="notranslate">
+            {pendingTranslation?.isEnglish ? 'Switch to English' : `Translate to ${pendingTranslation?.languageName}`}
           </h3>
         </div>
         
-        <div className="translate-confirm-body">
-          <p>
-            {pendingTranslation.isEnglish 
+        <div className="translate-confirm-body notranslate">
+          <p className="notranslate">
+            {pendingTranslation?.isEnglish 
               ? 'This will reload the page and remove all translations, returning to the original English content.'
-              : `This will reload the page and translate the content to ${pendingTranslation.languageName}.`
+              : `This will reload the page and translate the content to ${pendingTranslation?.languageName}.`
             }
           </p>
         </div>
         
-        <div className="translate-confirm-actions">
+        <div className="translate-confirm-actions notranslate">
           <button 
-            className="translate-confirm-btn translate-confirm-cancel"
-            onClick={() => onConfirm(false)}
+            className="translate-confirm-btn cancel notranslate"
+            onClick={onCancel}
           >
             Cancel
           </button>
           <button 
-            className="translate-confirm-btn translate-confirm-proceed"
+            className="translate-confirm-btn confirm notranslate"
             onClick={() => onConfirm(true)}
           >
-            {pendingTranslation.isEnglish ? 'Remove Translation' : 'Translate'}
+            {pendingTranslation?.isEnglish ? 'Switch to English' : 'Translate'}
           </button>
         </div>
       </div>
