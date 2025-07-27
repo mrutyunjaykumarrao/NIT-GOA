@@ -239,7 +239,10 @@ const Navbar = () => {
               languages={languages}
               isDropdownOpen={isLanguageDropdownOpen}
               onToggleDropdown={toggleLanguageDropdown}
-              onLanguageChange={changeLanguage}
+              onLanguageChange={(languageCode) => {
+                setIsLanguageDropdownOpen(false); // Close dropdown immediately
+                changeLanguage(languageCode);
+              }}
               dropdownRef={languageDropdownRef}
             />
 
@@ -524,7 +527,10 @@ const Navbar = () => {
                   languages={languages}
                   isDropdownOpen={isMobileLanguageDropdownOpen}
                   onToggleDropdown={toggleMobileLanguageDropdown}
-                  onLanguageChange={changeLanguage}
+                  onLanguageChange={(languageCode) => {
+                    setIsMobileLanguageDropdownOpen(false); // Close dropdown immediately
+                    changeLanguage(languageCode);
+                  }}
                   dropdownRef={mobileLanguageDropdownRef}
                   isMobile={true}
                 />
