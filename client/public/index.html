@@ -25,9 +25,198 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>NIT Goa - National Institute of Technology Goa</title>
+    
+    <!-- Google Translate Styles -->
+    <style>
+      /* COMPLETE HIDING OF GOOGLE TRANSLATE UI ELEMENTS */
+      /* Hide Google Translate banner and frame completely */
+      .goog-te-banner-frame.skiptranslate {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        z-index: -9999 !important;
+      }
+      
+      /* Hide the floating translation tab */
+      .goog-te-ftab {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        z-index: -9999 !important;
+      }
+      
+      /* Hide any Google Translate menu that might appear */
+      .goog-te-menu-frame {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        z-index: -9999 !important;
+      }
+      
+      /* Hide the Google Translate button/dropdown */
+      .goog-te-gadget {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        z-index: -9999 !important;
+      }
+      
+      /* Hide any translate combo/select elements */
+      .goog-te-combo {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        z-index: -9999 !important;
+      }
+      
+      /* Hide the Google Translate element container completely */
+      #google_translate_element {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        z-index: -9999 !important;
+      }
+      
+      /* Prevent body positioning issues and layout shifts */
+      body {
+        top: 0px !important; 
+        position: static !important;
+        margin-top: 0px !important;
+      }
+      
+      /* Remove any borders or visual elements from Google Translate */
+      .goog-te-menu-value span {
+        border-bottom: none !important;
+        display: none !important;
+      }
+      
+      /* Hide any iframe that Google Translate might create */
+      iframe[name="goog_te_banner"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        z-index: -9999 !important;
+      }
+      
+      /* Ensure the main navbar stays accessible and properly positioned */
+      .navbar-wrapper {
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 2000 !important; /* Higher than any Google Translate elements */
+      }
+      
+      /* Extra safety: hide any Google Translate related classes */
+      [class*="goog-te"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        z-index: -9999 !important;
+      }
+      
+      /* Prevent translation of language dropdown and controls */
+      .notranslate {
+        -webkit-transform: none !important;
+        transform: none !important;
+      }
+      
+      /* Override any potential Google Translate styling that might interfere */
+      body > .skiptranslate {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        z-index: -9999 !important;
+      }
+    </style>
+    
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        if (window.googleTranslateInitialized) {
+          return;
+        }
+        
+        window.googleTranslateInitialized = true;
+        
+        try {
+          new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            autoDisplay: false
+          }, 'google_translate_element');
+        } catch (error) {
+          console.error('Error initializing Google Translate:', error);
+        }
+      }
+
+      // Simple URL-based translation function
+      function doGoogleTranslate(languagePair) {
+        const targetLang = languagePair.split('|')[1];
+        
+        if (targetLang === 'en') {
+          // Reset to English - clear all translation data
+          document.cookie = 'googtrans=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+          const baseUrl = window.location.href.split('#')[0].split('?')[0];
+          window.location.href = baseUrl;
+          return;
+        }
+        
+        // Apply translation using URL hash
+        const baseUrl = window.location.href.split('#')[0].split('?')[0];
+        const translateHash = `#googtrans(en|${targetLang})`;
+        document.cookie = `googtrans=/en/${targetLang}; path=/; max-age=86400`;
+        window.location.href = baseUrl + translateHash;
+      }
+    </script>
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="google_translate_element"></div>
     <div id="root"></div>
     <!--
       This HTML file is a template.
