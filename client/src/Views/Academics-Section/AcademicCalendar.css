@@ -5,26 +5,117 @@
   padding: 2rem 0;
 }
 
+[data-theme="dark"] .academic-calendar-page {
+  background: linear-gradient(135deg, #0a1220 0%, #1a2332 50%, #253041 100%);
+}
+
+/* Heading styles for dark mode */
+.academic-calendar-page h1 {
+  color: #2c3e50;
+}
+
+[data-theme="dark"] .academic-calendar-page h1 {
+  color: #e2e8f0 !important;
+}
+
+.academic-calendar-page h2 {
+  color: #222;
+}
+
+[data-theme="dark"] .academic-calendar-page h2 {
+  color: #e2e8f0 !important;
+}
+
+/* Event title styling for dark mode */
+.academic-calendar-page .event-title {
+  color: #1565c0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .academic-calendar-page .event-title {
+  color: #6fa6ff !important;
+}
+
 .academic-calendar-container {
-  max-width: 1200px;
+  max-width: 90%;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-.events-list {
+/* Page Header */
+.academic-calendar-page .page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+  height: 100px
+}
+
+.academic-calendar-page .page-header h1 {
+  font-weight: 700;
+  font-size: 2.2rem;
+  /* margin-bottom: 2.5rem; */
+  color: #2c3e50;
+}
+
+[data-theme="dark"] .academic-calendar-page .page-header h1 {
+  color: #e2e8f0;
+}
+
+/* Calendar Section */
+.academic-calendar-page .calendar-section {
+  margin-bottom: 2.5rem;
+}
+
+.academic-calendar-page .section-title {
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+  color: #222;
+  border-bottom: 3px solid #1976d2;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+[data-theme="dark"] .academic-calendar-page .section-title {
+  color: #e2e8f0;
+  border-bottom-color: #4A9EE7;
+}
+
+.academic-calendar-page .events-list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.event-card {
+.academic-calendar-page .event-card {
   transition: all 0.3s ease;
   cursor: pointer;
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.event-card:hover {
+/* Dark theme support for event cards if they inherit base styles */
+[data-theme="dark"] .academic-calendar-page .event-card {
+  background: #1e293b !important;
+  border-color: rgba(100, 116, 139, 0.2) !important;
+  box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3) !important;
+}
+
+.academic-calendar-page .event-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="dark"] .academic-calendar-page .event-card:hover {
+  box-shadow: 0 8px 25px rgba(15, 23, 38, 0.5) !important;
 }
 
 .pretty-download-btn {
@@ -67,6 +158,12 @@
   .pretty-download-btn {
     align-self: flex-end;
   }
+  .pretty-download-btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    align-items: center;
+  }
 }
 
 @media (max-width: 480px) {
@@ -84,5 +181,11 @@
   
   .event-title {
     font-size: 1rem !important;
+  }
+  .pretty-download-btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    align-items: center;
   }
 }

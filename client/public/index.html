@@ -25,9 +25,222 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>NIT Goa - National Institute of Technology Goa</title>
+    
+    <!-- Google Translate Styles - Complete UI Suppression -->
+    <style>
+      /* COMPREHENSIVE HIDING OF ALL GOOGLE TRANSLATE UI ELEMENTS */
+      /* Hide Google Translate banner, frames, and any UI elements */
+      .goog-te-banner-frame.skiptranslate,
+      .goog-te-ftab,
+      .goog-te-menu-frame,
+      .goog-te-gadget,
+      .goog-te-combo,
+      #google_translate_element,
+      iframe[name="goog_te_banner"],
+      [class*="goog-te"],
+      body > .skiptranslate {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        z-index: -9999 !important;
+        pointer-events: none !important;
+      }
+      
+      /* Prevent body positioning issues and layout shifts */
+      body {
+        top: 0px !important; 
+        position: static !important;
+        margin-top: 0px !important;
+      }
+      
+      /* Remove any borders or visual elements from Google Translate */
+      .goog-te-menu-value span {
+        border-bottom: none !important;
+        display: none !important;
+      }
+      
+      /* Ensure the main navbar stays accessible and properly positioned */
+      .navbar-wrapper {
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 2000 !important; /* Higher than any Google Translate elements */
+      }
+      
+      /* Prevent translation of language dropdown and controls */
+      .notranslate {
+        -webkit-transform: none !important;
+        transform: none !important;
+      }
+      
+      /* Additional safeguards for any Google Translate popups or overlays */
+      div[style*="position: fixed"][style*="z-index"] {
+        display: none !important;
+      }
+      
+      /* Hide any potential Google Translate loading indicators */
+      .goog-te-spinner-pos {
+        display: none !important;
+      }
+      
+      /* Prevent any Google Translate styling from affecting our layout */
+      body.translated-ltr,
+      body.translated-rtl {
+        margin-top: 0 !important;
+        top: 0 !important;
+      }
+    </style>
+    
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        if (window.googleTranslateInitialized) {
+          return;
+        }
+        
+        window.googleTranslateInitialized = true;
+        
+        try {
+          new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            autoDisplay: false
+          }, 'google_translate_element');
+        } catch (error) {
+          console.error('Error initializing Google Translate:', error);
+        }
+      }
+
+      // Comprehensive URL-based translation function with enhanced English reset
+      function doGoogleTranslate(languagePair) {
+        const targetLang = languagePair.split('|')[1];
+        
+        if (targetLang === 'en') {
+          // COMPREHENSIVE ENGLISH RESET - Clear all translation data
+          console.log('Resetting to English - clearing all translation data');
+          
+          // Clear all possible Google Translate cookies
+          const cookiesToClear = [
+            'googtrans',
+            'googtrans=/en/en',
+            'googtrans=/auto/en',
+            'googtrans=',
+            '__Secure-3PSID',
+            '__Secure-3PAPISID',
+            '__Secure-3PSIDCC'
+          ];
+          
+          cookiesToClear.forEach(cookieName => {
+            // Clear for current domain
+            document.cookie = `${cookieName}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; domain=${window.location.hostname}`;
+            document.cookie = `${cookieName}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; domain=.${window.location.hostname}`;
+            document.cookie = `${cookieName}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+            
+            // Clear for all possible domains
+            document.cookie = `${cookieName}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; domain=.google.com`;
+            document.cookie = `${cookieName}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; domain=translate.google.com`;
+          });
+          
+          // Clear localStorage and sessionStorage
+          try {
+            if (typeof(Storage) !== "undefined") {
+              // Clear all storage items that might contain Google Translate data
+              const keysToRemove = [];
+              for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key && (key.includes('googtrans') || key.includes('translate') || key.includes('goog'))) {
+                  keysToRemove.push(key);
+                }
+              }
+              keysToRemove.forEach(key => localStorage.removeItem(key));
+              
+              // Clear sessionStorage as well
+              const sessionKeysToRemove = [];
+              for (let i = 0; i < sessionStorage.length; i++) {
+                const key = sessionStorage.key(i);
+                if (key && (key.includes('googtrans') || key.includes('translate') || key.includes('goog'))) {
+                  sessionKeysToRemove.push(key);
+                }
+              }
+              sessionKeysToRemove.forEach(key => sessionStorage.removeItem(key));
+            }
+          } catch (e) {
+            console.warn('Could not clear storage:', e);
+          }
+          
+          // Remove any Google Translate elements from DOM
+          try {
+            const elementsToRemove = document.querySelectorAll('[class*="goog-te"], [id*="goog"], .skiptranslate');
+            elementsToRemove.forEach(el => {
+              if (el && el.parentNode) {
+                el.parentNode.removeChild(el);
+              }
+            });
+          } catch (e) {
+            console.warn('Could not remove Google Translate elements:', e);
+          }
+          
+          // Clear URL hash and parameters
+          const baseUrl = window.location.protocol + '//' + window.location.host + window.location.pathname;
+          
+          // Force page reload to original English state
+          window.location.replace(baseUrl);
+          return;
+        }
+        
+        // Apply translation using URL hash for non-English languages
+        const baseUrl = window.location.href.split('#')[0].split('?')[0];
+        const translateHash = `#googtrans(en|${targetLang})`;
+        
+        // Set multiple cookie formats for better compatibility
+        document.cookie = `googtrans=/en/${targetLang}; path=/; max-age=86400`;
+        document.cookie = `googtrans=en|${targetLang}; path=/; max-age=86400`;
+        
+        window.location.href = baseUrl + translateHash;
+      }
+
+      // Enhanced initialization with better error handling
+      function initializeGoogleTranslate() {
+        // Prevent multiple initializations
+        if (window.googleTranslateInitialized) {
+          return;
+        }
+        
+        try {
+          // Check if Google Translate is available
+          if (typeof google !== 'undefined' && google.translate && google.translate.TranslateElement) {
+            new google.translate.TranslateElement({
+              pageLanguage: 'en',
+              autoDisplay: false,
+              layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+            
+            window.googleTranslateInitialized = true;
+            console.log('Google Translate initialized successfully');
+          } else {
+            // Retry after a short delay
+            setTimeout(initializeGoogleTranslate, 100);
+          }
+        } catch (error) {
+          console.error('Error initializing Google Translate:', error);
+          // Retry after a longer delay
+          setTimeout(initializeGoogleTranslate, 1000);
+        }
+      }
+
+      // Alias for backward compatibility
+      function googleTranslateElementInit() {
+        initializeGoogleTranslate();
+      }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="google_translate_element"></div>
     <div id="root"></div>
     <!--
       This HTML file is a template.

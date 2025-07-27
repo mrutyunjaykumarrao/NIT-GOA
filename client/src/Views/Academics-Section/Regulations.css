@@ -5,36 +5,144 @@
     padding: 2rem 0;
 }
 
+[data-theme="dark"] .regulations-page {
+    background: linear-gradient(135deg, #0a1220 0%, #1a2332 50%, #253041 100%);
+}
+
 .regulations-container {
-    max-width: 1200px;
+    max-width: 90%;
     margin: 0 auto;
     padding: 0 2rem;
 }
 
 /* Page Header */
-.page-header {
+.regulations-page .page-header {
     text-align: center;
     margin-bottom: 3rem;
     padding: 2rem 0;
+    height: 100px
 }
 
-.page-header h1 {
-    font-size: 3.5rem;
+.regulations-page .page-header h1 {
     font-weight: 700;
+    font-size: 2.2rem;
+    /* margin-bottom: 2.5rem; */
     color: #2c3e50;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
-.page-subtitle {
+[data-theme="dark"] .regulations-page .page-header h1 {
+    color: #e2e8f0;
+}
+
+/* Regulation Block */
+.regulations-page .regulation-block {
+    margin-bottom: 2.5rem;
+}
+
+.regulations-page .section-title {
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+    color: #222;
+    border-bottom: 3px solid #1976d2;
+    display: inline-block;
+    padding-bottom: 4px;
+}
+
+[data-theme="dark"] .regulations-page .section-title {
+    color: #e2e8f0;
+    border-bottom-color: #4A9EE7;
+}
+
+/* Events List */
+.regulations-page .events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Event Card */
+.regulations-page .event-card {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .regulations-page .event-card {
+    background: #1e293b;
+    box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3);
+}
+
+.regulations-page .event-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .regulations-page .event-card:hover {
+    box-shadow: 0 8px 25px rgba(15, 23, 38, 0.5);
+}
+
+.regulations-page .event-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1565c0;
+    flex: 1;
+    margin-right: 1rem;
+}
+
+[data-theme="dark"] .regulations-page .event-title {
+    color: #6fa6ff;
+}
+
+/* Download Button */
+.pretty-download-btn {
+  background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3);
+}
+
+.regulations-page .pretty-download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+[data-theme="dark"] .regulations-page .pretty-download-btn {
+    background: linear-gradient(135deg, #4A9EE7 0%, #6BB6FF 100%);
+    box-shadow: 0 4px 15px rgba(74, 158, 231, 0.3);
+}
+
+[data-theme="dark"] .regulations-page .pretty-download-btn:hover {
+    box-shadow: 0 6px 20px rgba(74, 158, 231, 0.4);
+}
+
+.regulations-page .download-icon {
+    margin-right: 8px;
+}
+
+.regulations-page .page-subtitle {
     font-size: 1.2rem;
     color: #666;
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
+}
+
+[data-theme="dark"] .regulations-page .page-subtitle {
+    color: #cbd5e1;
 }
 
 /* Category Navigation */
@@ -61,9 +169,19 @@
     font-weight: 500;
 }
 
+[data-theme="dark"] .regulations-page .category-tab {
+    background: #1e293b;
+    border-color: rgba(100, 116, 139, 0.2);
+    color: #cbd5e1;
+}
+
 .category-tab:hover {
     background: #e9ecef;
     transform: translateY(-2px);
+}
+
+[data-theme="dark"] .regulations-page .category-tab:hover {
+    background: #334155;
 }
 
 .category-tab.active {
@@ -117,10 +235,20 @@
     transition: all 0.3s ease;
 }
 
+[data-theme="dark"] .regulations-page .regulation-section {
+    background: #1e293b;
+    border-color: rgba(100, 116, 139, 0.2);
+    box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3);
+}
+
 .regulation-section:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     border-color: #667eea;
+}
+
+[data-theme="dark"] .regulations-page .regulation-section:hover {
+    box-shadow: 0 10px 30px rgba(15, 23, 38, 0.5);
 }
 
 .regulation-section h3 {
@@ -130,6 +258,11 @@
     margin-bottom: 1.5rem;
     padding-bottom: 0.5rem;
     border-bottom: 3px solid #667eea;
+}
+
+[data-theme="dark"] .regulations-page .regulation-section h3 {
+    color: #e2e8f0;
+    border-bottom-color: #4A9EE7;
 }
 
 .regulation-list {
@@ -148,6 +281,11 @@
     font-size: 1rem;
 }
 
+[data-theme="dark"] .regulation-list li {
+    color: #adb5bd;
+    border-bottom-color: #444;
+}
+
 .regulation-list li:before {
     content: "▶";
     color: #667eea;
@@ -158,6 +296,10 @@
     top: 1.2rem;
 }
 
+[data-theme="dark"] .regulation-list li:before {
+    color: #4285f4;
+}
+
 .regulation-list li:last-child {
     border-bottom: none;
 }
@@ -166,6 +308,10 @@
     background: #f8f9fa;
     border-radius: 8px;
     padding-left: 1.8rem;
+}
+
+[data-theme="dark"] .regulation-list li:hover {
+    background: #3c3c3c;
 }
 
 /* Quick Reference */
@@ -179,6 +325,10 @@
     color: #2c3e50;
     text-align: center;
     margin-bottom: 2rem;
+}
+
+[data-theme="dark"] .quick-reference h2 {
+    color: #ffffff;
 }
 
 .reference-grid {
@@ -197,10 +347,21 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
+[data-theme="dark"] .reference-card {
+    background: #2c2c2c;
+    border-color: #444;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
 .reference-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     border-color: #667eea;
+}
+
+[data-theme="dark"] .reference-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border-color: #4285f4;
 }
 
 .reference-icon {
@@ -215,10 +376,18 @@
     margin-bottom: 1rem;
 }
 
+[data-theme="dark"] .reference-card h3 {
+    color: #ffffff;
+}
+
 .reference-card p {
     color: #666;
     line-height: 1.6;
     margin-bottom: 1.5rem;
+}
+
+[data-theme="dark"] .reference-card p {
+    color: #adb5bd;
 }
 
 .reference-value {
@@ -427,6 +596,13 @@
     .contact-info h2 {
         font-size: 2rem;
     }
+    .pretty-download-btn {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 0.9rem;
+        align-items: center;
+    }
+    
 }
 
 @media (max-width: 480px) {
@@ -459,6 +635,12 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 0.5rem;
+    }
+    .pretty-download-btn {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 0.9rem;
+        align-items: center;
     }
 
     .download-header h3 {

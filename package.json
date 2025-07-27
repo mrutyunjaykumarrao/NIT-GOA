@@ -16,7 +16,7 @@
     "dev-client": "cd client && npm start",
     "dev-server": "cd server && npm run dev",
     "start": "npm run cleanup-ports && npm run dev",
-    "build": "cd client && npm run build",
+    "build": "cd client && npm run build && cd .. && rm -rf build && cp -r client/build .",
     "test": "npm run test-client && npm run test-server",
     "test-client": "cd client && npm test",
     "test-server": "cd server && npm test",

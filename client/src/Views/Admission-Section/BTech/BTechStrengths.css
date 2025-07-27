@@ -7,24 +7,51 @@
     --gray-700: #495057;
     --gray-800: #343A40;
     --shadow-light: rgba(0, 0, 0, 0.08);
+    
+    /* Light theme variables */
+    --bg-gradient-start: #f8fbff;
+    --bg-gradient-end: #ffffff;
+    --content-bg: #FFFFFF;
+    --text-primary: #343A40;
+    --text-secondary: #495057;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Dark theme variables */
+[data-theme="dark"] {
+    --primary-blue: #4A9EE7;
+    --primary-blue-dark: #2E86C1;
+    --white: #FFFFFF;
+    --gray-50: #1a1a1a;
+    --gray-700: #e0e0e0;
+    --gray-800: #f5f5f5;
+    --shadow-light: rgba(255, 255, 255, 0.1);
+    
+    --bg-gradient-start: #0f1419;
+    --bg-gradient-end: #1a1a1a;
+    --content-bg: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #ffffff;
+    --shadow-color: rgba(255, 255, 255, 0.1);
 }
 
 .btech-strengths {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: var(--gray-800);
+    color: var(--text-primary);
     min-height: 100vh;
-    background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%);
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    transition: all 0.3s ease;
 }
 
 .btech-strengths-container {
-    max-width: 1600px;
+    max-width: 98%;
     margin: 0 auto;
     padding: 1rem;
 }
 
 /* Hero Section - PhD Style */
-.strengths-hero {
+.btech-strengths-hero {
     background: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--primary-blue) 100%);
     border-radius: 0;
     padding: 5rem 1rem;
@@ -34,7 +61,12 @@
     overflow: hidden;
 }
 
-.strengths-hero::before {
+/* Dark theme hero background */
+[data-theme="dark"] .btech-strengths-hero {
+    background: linear-gradient(135deg, #0a1929 0%, #1565c0 100%);
+}
+
+.btech-strengths-hero::before {
     content: '';
     position: absolute;
     top: 0;
@@ -50,63 +82,95 @@
     opacity: 0.3;
 }
 
-.hero-content {
+.btech-strengths-hero-content {
     position: relative;
     z-index: 2;
 }
 
-.strengths-hero h1 {
+.btech-strengths-hero h1 {
     font-size: 4rem;
     font-weight: 800;
     margin-bottom: 1rem;
     color: var(--white);
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
 }
 
-.hero-subtitle {
+/* Dark theme hero text enhancement */
+[data-theme="dark"] .btech-strengths-hero h1 {
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.9), 0 2px 6px rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.btech-strengths-hero-subtitle {
     font-size: 1.4rem;
     color: var(--white);
     opacity: 0.9;
     margin-bottom: 0;
     font-weight: 400;
+    transition: all 0.3s ease;
 }
 
-.content-section {
-    background: var(--white);
+/* Dark theme hero subtitle enhancement */
+[data-theme="dark"] .btech-strengths-hero-subtitle {
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    opacity: 1;
+}
+
+.btech-strengths-content-section {
+    background: var(--content-bg);
     border-radius: 12px;
     margin-bottom: 2rem;
-    box-shadow: 0 4px 20px var(--shadow-light);
+    box-shadow: 0 4px 20px var(--shadow-color);
     overflow: hidden;
+    transition: all 0.3s ease;
 }
 
-.main-content {
+.btech-strengths-main-content {
     padding: 2.5rem;
 }
 
-.main-content p {
+.btech-strengths-main-content p {
     font-size: 1.05rem;
     line-height: 1.7;
-    color: var(--gray-700);
+    color: var(--text-secondary);
     margin-bottom: 1.5rem;
     text-align: justify;
+    transition: color 0.3s ease;
 }
 
-.main-content p:first-child {
+.btech-strengths-main-content p:first-child {
     font-size: 1.1rem;
     font-weight: 500;
     color: var(--primary-blue-dark);
+    transition: color 0.3s ease;
 }
 
-.main-content ul {
+.btech-strengths-main-content ul {
     font-size: 1.05rem;
     line-height: 1.7;
-    color: var(--gray-700);
+    color: var(--text-secondary);
     margin-bottom: 1.5rem;
     padding-left: 2rem;
+    transition: color 0.3s ease;
 }
 
-.main-content li {
+.btech-strengths-main-content li {
     margin-bottom: 0.5rem;
+}
+
+/* Dark theme specific overrides */
+[data-theme="dark"] .btech-strengths-main-content p {
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .btech-strengths-main-content ul {
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .btech-strengths-main-content li {
+    color: #ffffff !important;
 }
 
 /* Responsive Design */
@@ -115,16 +179,16 @@
         padding: 1rem;
     }
     
-    .strengths-hero {
+    .btech-strengths-hero {
         margin: -1rem -1rem 2rem;
         padding: 3rem 0.5rem;
     }
     
-    .strengths-hero h1 {
+    .btech-strengths-hero h1 {
         font-size: 2.5rem;
     }
     
-    .hero-subtitle {
+    .btech-strengths-hero-subtitle {
         font-size: 1.1rem;
     }
     
@@ -132,31 +196,31 @@
         padding: 1.5rem 1rem;
     }
     
-    .main-content {
+    .btech-strengths-main-content {
         padding: 2rem 1.5rem;
     }
     
-    .main-content p {
+    .btech-strengths-main-content p {
         font-size: 1rem;
         margin-bottom: 1.2rem;
     }
     
-    .main-content ul {
+    .btech-strengths-main-content ul {
         font-size: 1rem;
         padding-left: 1.5rem;
     }
 }
 
 @media (max-width: 480px) {
-    .strengths-hero h1 {
+    .btech-strengths-hero h1 {
         font-size: 2rem;
     }
     
-    .hero-subtitle {
+    .btech-strengths-hero-subtitle {
         font-size: 1rem;
     }
     
-    .main-content {
+    .btech-strengths-main-content {
         padding: 1.5rem 1rem;
     }
 }

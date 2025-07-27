@@ -5,8 +5,8 @@ const MoUDetails = () => {
     return (
         <div className="mou-details-page">
             <div className="mou-container">
-                <div className="page-header">
-                    <h1>Details Of MoUs</h1>
+                <div className="mou-page-header">
+                    <h1 className='mou-header-h1'>Details Of MoUs</h1>
                 </div>
 
                 <div className="mou-table-container">

@@ -6,19 +6,19 @@ const BTechFacilities = () => {
         <div className="btech-facilities">
             <div className="btech-facilities-container">
                 {/* Hero Section */}
-                <div className="facilities-hero">
-                    <div className="hero-content">
+                <div className="btech-facilities-hero">
+                    <div className="btech-facilities-hero-content">
                         <h1>Facilities</h1>
-                        <p className="hero-subtitle">World-class Infrastructure and Learning Environment</p>
+                        <p className="btech-facilities-hero-subtitle">World-class Infrastructure and Learning Environment</p>
                     </div>
                 </div>
 
-                <div className="content-section">
-                    <div className="facility-image">
+                <div className="btech-facilities-content-section">
+                    <div className="btech-facilities-image">
                         <img src="https://www.nitgoa.ac.in/uploads/tutorialblock.jpg" alt="NIT Goa Campus - Academic Block" />
                     </div>
                     
-                    <div className="main-content">
+                    <div className="btech-facilities-main-content">
                         <p>
                             At the National Institute of Technology Goa (NIT Goa), we strive to provide our 
                             students with a comprehensive array of facilities and services to ensure a 

@@ -1,112 +1,42 @@
-/* NIRF Forms Page Styles - Responsive Design with Dark Mode Support */
-
-/* CSS Variables for Theme Support */
+/* NIRF Forms Page Styles */
 .nirf-page {
-    /* Light Theme Colors */
-    --primary-blue: #2E86C1;
-    --primary-blue-light: #5DADE2;
-    --primary-blue-dark: #1B4F72;
-    --secondary-blue-50: #EBF5FB;
-    --secondary-blue-100: #D6EAF8;
-    --secondary-blue-200: #AED6F1;
-    --white: #FFFFFF;
-    --gray-50: #F8F9FA;
-    --gray-100: #F1F3F4;
-    --gray-200: #E9ECEF;
-    --gray-600: #6C757D;
-    --gray-700: #495057;
-    --gray-800: #343A40;
-    --text-primary: #1f2937;
-    --text-secondary: #6b7280;
-    --background-primary: #ffffff;
-    --background-secondary: #f8fafc;
-    --border-color: #e5e7eb;
-    --shadow-light: rgba(0, 0, 0, 0.08);
-    --shadow-medium: rgba(0, 0, 0, 0.12);
-    --shadow-strong: rgba(0, 0, 0, 0.16);
-    --accent-orange: #FF6B35;
-    --success-green: #28A745;
-}
-
-/* Dark Theme Colors */
-[data-theme="dark"] .nirf-page {
-    --primary-blue: #60A5FA;
-    --primary-blue-light: #93C5FD;
-    --primary-blue-dark: #3B82F6;
-    --secondary-blue-50: #1e293b;
-    --secondary-blue-100: #334155;
-    --secondary-blue-200: #475569;
-    --white: #0f172a;
-    --gray-50: #0f172a;
-    --gray-100: #1e293b;
-    --gray-200: #334155;
-    --gray-600: #94a3b8;
-    --gray-700: #cbd5e1;
-    --gray-800: #f1f5f9;
-    --text-primary: #f1f5f9;
-    --text-secondary: #cbd5e1;
-    --background-primary: #0f172a;
-    --background-secondary: #1e293b;
-    --border-color: #334155;
-    --shadow-light: rgba(0, 0, 0, 0.3);
-    --shadow-medium: rgba(0, 0, 0, 0.4);
-    --shadow-strong: rgba(0, 0, 0, 0.5);
-    --accent-orange: #FB7185;
-    --success-green: #34D399;
-    background: #1e293b !important;
-}
-
-/* Main Container */
-.nirf-page {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    padding: 2rem 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: var(--text-primary);
-    background: var(--background-secondary);
-    min-height: 100vh;
+    color: #1f2937;
     transition: all 0.3s ease;
 }
 
+[data-theme="dark"] .nirf-page {
+    background: linear-gradient(135deg, #0a1220 0%, #1a2332 50%, #253041 100%);
+    color: #e2e8f0;
+}
+
 .nirf-container {
-    max-width: 1200px;
+    max-width: 90%;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 2rem;
 }
 
-/* Hero Section */
-.nirf-hero {
+/* Page Header */
+.nirf-page .page-header {
     text-align: center;
-    padding: 4rem 0 3rem;
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
-    color: white;
     margin-bottom: 3rem;
-    border-radius: 0 0 2rem 2rem;
-    position: relative;
-    overflow: hidden;
+    padding: 2rem 0;
+    height: 100px;
 }
 
-.nirf-hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="25" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="25" cy="75" r="1" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-    opacity: 0.3;
-}
-
-.nirf-hero-content {
-    position: relative;
-    z-index: 1;
-}
-
-.nirf-title {
-    font-size: 3.5rem;
+.nirf-page .page-header h1 {
     font-weight: 700;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    letter-spacing: -0.02em;
-    color: white !important;
+    font-size: 2.2rem;
+    /* margin-bottom: 2.5rem; */
+    color: #2c3e50;
+}
+
+[data-theme="dark"] .nirf-page .page-header h1 {
+    color: #e2e8f0;
 }
 
 /* Content Section */
@@ -122,23 +52,33 @@
 
 /* Year Section */
 .nirf-year-section {
-    background: var(--background-primary);
+    background: #ffffff;
     border-radius: 1rem;
-    box-shadow: var(--shadow-medium);
-    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
+[data-theme="dark"] .nirf-page .nirf-year-section {
+    background: #1e293b;
+    border-color: rgba(100, 116, 139, 0.2);
+    box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3);
+}
+
 .nirf-year-section:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-strong);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .nirf-page .nirf-year-section:hover {
+    box-shadow: 0 8px 25px rgba(15, 23, 38, 0.5);
 }
 
 /* Year Header */
 .nirf-year-header {
     padding: 1.5rem 2rem;
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+    background: linear-gradient(135deg, #4A9EE7 0%, #6BB6FF 100%);
     color: white;
     cursor: pointer;
     display: flex;
@@ -147,6 +87,10 @@
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+}
+
+[data-theme="dark"] .nirf-page .nirf-year-header {
+    background: linear-gradient(135deg, #4A9EE7 0%, #6BB6FF 100%);
 }
 
 .nirf-year-header::before {
@@ -165,7 +109,11 @@
 }
 
 .nirf-year-header.active {
-    background: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--primary-blue) 100%);
+    background: linear-gradient(135deg, #4A9EE7 0%, #6BB6FF 100%);
+}
+
+[data-theme="dark"] .nirf-page .nirf-year-header.active {
+    background: linear-gradient(135deg, #4A9EE7 0%, #6BB6FF 100%);
 }
 
 .nirf-year-header h2 {
@@ -175,7 +123,7 @@
     color: white;
 }
 
-.dropdown-arrow {
+.nirf-dropdown-arrow {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -186,17 +134,17 @@
     transition: all 0.3s ease;
 }
 
-.nirf-year-header:hover .dropdown-arrow {
+.nirf-year-header:hover .nirf-dropdown-arrow {
     background: rgba(255, 255, 255, 0.3);
     transform: scale(1.1);
 }
 
-.arrow-icon {
+.nirf-arrow-icon {
     transition: transform 0.3s ease;
     color: white;
 }
 
-.arrow-icon.rotated {
+.nirf-arrow-icon.rotated {
     transform: rotate(180deg);
 }
 
@@ -205,7 +153,11 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
-    background: var(--background-secondary);
+    background: #f8fafc;
+}
+
+[data-theme="dark"] .nirf-page .nirf-forms-dropdown {
+    background: #253041;
 }
 
 .nirf-forms-dropdown.open {
@@ -217,7 +169,11 @@
     max-height: 400px;
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: var(--primary-blue) var(--gray-200);
+    scrollbar-color: #4a9ee7 #e9ecef;
+}
+
+[data-theme="dark"] .nirf-page .nirf-forms-dropdown.open.scrollable {
+    scrollbar-color: #4a9ee7 #334155;
 }
 
 /* Custom scrollbar for webkit browsers */
@@ -226,20 +182,32 @@
 }
 
 .nirf-forms-dropdown.scrollable::-webkit-scrollbar-track {
-    background: var(--gray-200);
+    background: #e9ecef;
     border-radius: 3px;
+}
+
+[data-theme="dark"] .nirf-page .nirf-forms-dropdown.scrollable::-webkit-scrollbar-track {
+    background: #334155;
 }
 
 .nirf-forms-dropdown.scrollable::-webkit-scrollbar-thumb {
-    background: var(--primary-blue);
+    background: #4a9ee7;
     border-radius: 3px;
 }
 
-.nirf-forms-dropdown.scrollable::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-blue-dark);
+[data-theme="dark"] .nirf-page .nirf-forms-dropdown.scrollable::-webkit-scrollbar-thumb {
+    background: #4A9EE7;
 }
 
-.forms-list {
+.nirf-forms-dropdown.scrollable::-webkit-scrollbar-thumb:hover {
+    background: #4A9EE7;
+}
+
+[data-theme="dark"] .nirf-page .nirf-forms-dropdown.scrollable::-webkit-scrollbar-thumb:hover {
+    background: #6BB6FF;
+}
+
+.nirf-forms-list {
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -247,94 +215,143 @@
 }
 
 /* Form Links */
-.form-link {
+.nirf-form-link {
     text-decoration: none;
     color: inherit;
     display: block;
     transition: all 0.3s ease;
 }
 
-.form-item {
+.nirf-form-item {
     display: flex;
     align-items: center;
     gap: 1rem;
     padding: 1.5rem;
-    background: var(--background-primary);
-    border-radius: 0.75rem;
-    border: 1px solid var(--border-color);
+    background: #ffffff;
+    border-radius: 1rem;
+    border: 1px solid #e5e7eb;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
 }
 
-.form-item::before {
+[data-theme="dark"] .nirf-page .nirf-form-item {
+    background: #1e293b;
+    border-color: rgba(100, 116, 139, 0.2);
+}
+
+.nirf-form-item::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 4px;
     height: 100%;
-    background: var(--primary-blue);
+    background: #4a9ee7;
     transform: scaleY(0);
     transition: transform 0.3s ease;
 }
 
-.form-link:hover .form-item {
-    background: var(--secondary-blue-50);
-    border-color: var(--primary-blue-light);
-    transform: translateX(5px);
-    box-shadow: var(--shadow-medium);
+[data-theme="dark"] .nirf-page .nirf-form-item::before {
+    background: #4A9EE7;
 }
 
-.form-link:hover .form-item::before {
+.nirf-form-link:hover .nirf-form-item {
+    background: #f1f5fb;
+    border-color: #4a9ee7;
+    transform: translateX(8px);
+}
+
+[data-theme="dark"] .nirf-page .nirf-form-link:hover .nirf-form-item {
+    background: #253041;
+    border-color: #4A9EE7;
+}
+
+.nirf-form-link:hover .nirf-form-item::before {
     transform: scaleY(1);
 }
 
-.pdf-icon {
+.nirf-file-icon {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 2.5rem;
     height: 2.5rem;
-    background: var(--primary-blue);
     color: white;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     flex-shrink: 0;
     transition: all 0.3s ease;
 }
 
-.excel-icon {
+.nirf-pdf-icon {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 2.5rem;
     height: 2.5rem;
-    background: var(--success-green);
+    background: #4a9ee7;
     color: white;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     flex-shrink: 0;
     transition: all 0.3s ease;
 }
 
-.form-link:hover .pdf-icon {
-    background: var(--primary-blue-dark);
+[data-theme="dark"] .nirf-page .nirf-pdf-icon {
+    background: #4A9EE7;
+}
+
+.nirf-excel-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: #28A745;
+    color: white;
+    border-radius: 1rem;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .nirf-page .nirf-excel-icon {
+    background: #34D399;
+}
+
+.nirf-form-link:hover .nirf-pdf-icon {
+    background: #4A9EE7;
     transform: scale(1.1);
 }
 
-.form-link:hover .excel-icon {
+[data-theme="dark"] .nirf-page .nirf-form-link:hover .nirf-pdf-icon {
+    background: #6BB6FF;
+}
+
+.nirf-form-link:hover .nirf-excel-icon {
     background: #1e7a32;
     transform: scale(1.1);
 }
 
-.form-name {
-    color: var(--text-primary);
+[data-theme="dark"] .nirf-page .nirf-form-link:hover .nirf-excel-icon {
+    background: #10b981;
+}
+
+.nirf-form-name {
+    color: #1f2937;
     font-weight: 500;
     line-height: 1.4;
     transition: color 0.3s ease;
 }
 
-.form-link:hover .form-name {
-    color: var(--primary-blue);
+[data-theme="dark"] .nirf-page .nirf-form-name {
+    color: #e2e8f0;
+}
+
+.nirf-form-link:hover .nirf-form-name {
+    color: #4a9ee7;
+}
+
+[data-theme="dark"] .nirf-page .nirf-form-link:hover .nirf-form-name {
+    color: #4A9EE7;
 }
 
 /* Contact Info */
@@ -342,47 +359,44 @@
     margin-top: 3rem;
     text-align: center;
     padding: 2rem;
-    background: var(--background-primary);
+    background: #ffffff;
     border-radius: 1rem;
-    border: 2px dashed var(--primary-blue-light);
+    border: 2px dashed #93C5FD;
+}
+
+[data-theme="dark"] .nirf-page .nirf-contact-info {
+    background: #1e293b;
+    border-color: #4A9EE7;
 }
 
 .nirf-contact-info p {
-    color: var(--text-secondary);
+    color: #6b7280;
     font-size: 1rem;
     margin: 0;
 }
 
+[data-theme="dark"] .nirf-page .nirf-contact-info p {
+    color: #cbd5e1;
+}
+
 .nirf-contact-info a {
-    color: var(--primary-blue);
+    color: #4a9ee7;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
 }
 
+[data-theme="dark"] .nirf-page .nirf-contact-info a {
+    color: #4A9EE7;
+}
+
 .nirf-contact-info a:hover {
-    color: var(--primary-blue-dark);
+    color: #4A9EE7;
     text-decoration: underline;
 }
 
-/* Dark Mode Specific Overrides */
-[data-theme="dark"] .nirf-page .nirf-year-section {
-    background: var(--background-primary) !important;
-    border-color: var(--border-color) !important;
-}
-
-[data-theme="dark"] .nirf-page .form-item {
-    background: var(--background-secondary) !important;
-    border-color: var(--border-color) !important;
-}
-
-[data-theme="dark"] .nirf-page .form-name {
-    color: var(--text-primary) !important;
-}
-
-[data-theme="dark"] .nirf-page .nirf-contact-info {
-    background: var(--background-primary) !important;
-    border-color: var(--primary-blue-light) !important;
+[data-theme="dark"] .nirf-page .nirf-contact-info a:hover {
+    color: #6BB6FF;
 }
 
 /* Responsive Design */
@@ -393,6 +407,7 @@
 
     .nirf-hero {
         padding: 3rem 0 2rem;
+        margin-top: 1.5rem;
         margin-bottom: 2rem;
         border-radius: 0 0 1rem 1rem;
     }
@@ -409,19 +424,19 @@
         font-size: 1.3rem;
     }
 
-    .forms-list {
+    .nirf-forms-list {
         padding: 1.5rem;
         gap: 0.75rem;
     }
 
-    .form-item {
+    .nirf-form-item {
         padding: 1.25rem;
         flex-direction: column;
         text-align: center;
         gap: 0.75rem;
     }
 
-    .pdf-icon {
+    .nirf-pdf-icon {
         width: 2rem;
         height: 2rem;
     }
@@ -435,6 +450,7 @@
 @media (max-width: 480px) {
     .nirf-hero {
         padding: 2rem 0 1.5rem;
+        margin-top: 1rem;
     }
 
     .nirf-title {
@@ -449,15 +465,15 @@
         font-size: 1.1rem;
     }
 
-    .forms-list {
+    .nirf-forms-list {
         padding: 1rem;
     }
 
-    .form-item {
+    .nirf-form-item {
         padding: 1rem;
     }
 
-    .form-name {
+    .nirf-form-name {
         font-size: 0.9rem;
     }
 
@@ -477,9 +493,14 @@
 
 /* Focus states for accessibility */
 .nirf-year-header:focus,
-.form-link:focus {
-    outline: 2px solid var(--primary-blue);
+.nirf-form-link:focus {
+    outline: none;
     outline-offset: 2px;
+}
+
+[data-theme="dark"] .nirf-page .nirf-year-header:focus,
+[data-theme="dark"] .nirf-page .nirf-form-link:focus {
+    outline: none;
 }
 
 /* Print styles */
