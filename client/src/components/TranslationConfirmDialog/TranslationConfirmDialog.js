@@ -13,11 +13,8 @@ const TranslationConfirmDialog = ({
     <div className={`translate-confirm-overlay ${isOpen ? 'open' : ''} notranslate`}>
       <div className="translate-confirm-dialog notranslate">
         <div className="translate-confirm-header notranslate">
-          <div className="translate-confirm-icon notranslate">
-            {pendingTranslation?.isEnglish ? '🇺🇸' : '🌐'}
-          </div>
           <h3 className="notranslate">
-            {pendingTranslation?.isEnglish ? 'Switch to English' : `Translate to ${pendingTranslation?.languageName}`}
+            {pendingTranslation?.isEnglish ? 'Switch to English' : `🌐 Translate to ${pendingTranslation?.languageName}`}
           </h3>
         </div>
         
