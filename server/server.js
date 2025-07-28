@@ -47,6 +47,7 @@ app.use('/images', express.static(path.join(__dirname, '../client/public/images'
 // API Routes
 app.use('/api/auth', require('./src/routes/auth'));
 app.use('/api/faculty', require('./src/routes/faculty'));
+app.use('/api/faculty-edit', require('./src/routes/facultyEdit'));
 app.use('/api/staff', require('./src/routes/staff'));
 app.use('/api/admin', require('./src/routes/admin'));
 app.use('/api/content', require('./src/routes/content'));
