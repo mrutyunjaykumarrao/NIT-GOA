@@ -28,8 +28,8 @@ async function runTests() {
     
     if (!schemaValid) {
       console.log('\n⚠️  Database schema issues detected.');
-      console.log('💡 Run: mysql -u root -p nitgoa_db < ../database/schemas/schema.sql');
-      console.log('💡 Then: mysql -u root -p nitgoa_db < ../database/seeds/complete_faculty_data_migration.sql');
+      console.log('💡 Run: mysql -u root -p updated_nitgoa < ../database/schemas/updated_nitgoa_schema.sql');
+      console.log('💡 Database updated_nitgoa should be used instead of old nitgoa_db');
     }
     
     console.log('\n3️⃣ Checking admin user...');

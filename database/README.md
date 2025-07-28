@@ -22,7 +22,7 @@ database/
 
 ## Database Schema Overview
 
-The NIT GOA database (`nitgoa_db`) contains 16 tables organized into the following categories:
+The NIT GOA database (`updated_nitgoa`) contains 18 tables organized into the following categories:
 
 ### Core Faculty Tables
 - **`faculty_profiles`** - Main faculty information and profiles
@@ -50,7 +50,7 @@ The NIT GOA database (`nitgoa_db`) contains 16 tables organized into the followi
 
 ### Schema
 - **`schemas/nitgoa_database_schema.sql`** - Complete production database structure
-  - Generated from live database: `mysqldump -u root -p --no-data --routines --triggers nitgoa_db`
+  - Generated from live database: `mysqldump -u root -p --no-data --routines --triggers updated_nitgoa`
   - Contains all 16 table structures, indexes, constraints, and relationships
   - Enhanced with clear, descriptive comments for each table
   - Verified to match actual database structure exactly
@@ -68,12 +68,12 @@ The NIT GOA database (`nitgoa_db`) contains 16 tables organized into the followi
 ### Utilities
 - **`utilities/validate_schema.sql`** - Database schema validation script
   - Verifies table count, structure, indexes, and foreign key relationships
-  - Usage: `mysql -u root -p nitgoa_db < utilities/validate_schema.sql`
+  - Usage: `mysql -u root -p updated_nitgoa < utilities/validate_schema.sql` (deprecated - using new validation)
 
 ## Database Connection
 
 ### Configuration
-- Database: `nitgoa_db`
+- Database: `updated_nitgoa`
 - Host: `localhost`
 - User: `root`
 - Port: `3306`
@@ -84,7 +84,7 @@ Set these in your server's `.env` file:
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=your_password
-DB_NAME=nitgoa_db
+DB_NAME=updated_nitgoa
 DB_PORT=3306
 ```
 
@@ -93,28 +93,28 @@ DB_PORT=3306
 ### 1. Fresh Database Setup
 ```bash
 # Create database
-mysql -u root -p -e "CREATE DATABASE nitgoa_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+mysql -u root -p -e "CREATE DATABASE updated_nitgoa CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 
 # Import schema
-mysql -u root -p nitgoa_db < schemas/nitgoa_database_schema.sql
+mysql -u root -p updated_nitgoa < schemas/updated_nitgoa_schema.sql
 
 # Seed data (optional - only if you want to populate with sample data)
-mysql -u root -p nitgoa_db < seeds/complete_faculty_data_migration.sql
+mysql -u root -p updated_nitgoa < seeds/complete_faculty_data_migration.sql (deprecated - data now included in schema)
 ```
 
 ### 2. Schema Updates
 To update the schema file after database changes:
 ```bash
-mysqldump -u root -p --no-data --routines --triggers nitgoa_db > schemas/nitgoa_database_schema.sql
+mysqldump -u root -p --no-data --routines --triggers updated_nitgoa > schemas/updated_nitgoa_schema.sql
 ```
 
 ### 3. Data Backup
 ```bash
 # Full backup with data
-mysqldump -u root -p nitgoa_db > backup_$(date +%Y%m%d).sql
+mysqldump -u root -p updated_nitgoa > backup_$(date +%Y%m%d).sql
 
 # Schema only backup
-mysqldump -u root -p --no-data nitgoa_db > schema_backup_$(date +%Y%m%d).sql
+mysqldump -u root -p --no-data updated_nitgoa > schema_backup_$(date +%Y%m%d).sql
 ```
 
 ## Migration History

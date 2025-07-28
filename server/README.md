@@ -30,17 +30,17 @@ npm install
 
 1. Create MySQL database:
 ```sql
-CREATE DATABASE nitgoa_db;
+CREATE DATABASE updated_nitgoa;
 ```
 
 2. Run the schema setup:
 ```bash
-mysql -u root -p nitgoa_db < ../database/schemas/schema.sql
+mysql -u root -p updated_nitgoa < ../database/schemas/updated_nitgoa_schema.sql
 ```
 
 3. Run the faculty data migration:
 ```bash
-mysql -u root -p nitgoa_db < ../database/seeds/complete_faculty_data_migration.sql
+mysql -u root -p updated_nitgoa < ../database/seeds/complete_faculty_data_migration.sql (deprecated - data included in schema)
 ```
 
 ### 4. Environment Configuration
@@ -52,7 +52,7 @@ Configure the `.env` file with your database credentials:
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=your_password
-DB_NAME=nitgoa_db
+DB_NAME=updated_nitgoa
 DB_PORT=3306
 
 # JWT Configuration

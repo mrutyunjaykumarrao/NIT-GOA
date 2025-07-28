@@ -1,14 +1,19 @@
 {
   "name": "nitgoa-server",
-  "version": "1.0.0",
-  "description": "Backend API for NIT Goa website",
+  "version": "2.0.0",
+  "description": "Enhanced Backend API for NIT Goa website with updated database schema",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "start:updated": "node server.updated.js",
     "dev": "nodemon server.js",
+    "dev:updated": "nodemon server.updated.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:db": "node test-db.js",
+    "test:db:updated": "node -e \"require('./src/config/database.updated').testConnection()\"",
+    "migrate": "node ../scripts/migrate-database.js",
+    "setup:db": "mysql -u root -p < ../database/schemas/updated_nitgoa_schema.sql",
     "lint": "eslint src/**/*.js --quiet",
     "lint:fix": "eslint src/**/*.js --fix"
   },

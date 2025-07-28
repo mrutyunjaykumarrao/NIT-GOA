@@ -256,7 +256,7 @@ cp server/.env.example server/.env
 
 # 4. Configure database
 mysql -u root -p
-CREATE DATABASE nitgoa_db;
+CREATE DATABASE updated_nitgoa;
 
 # 5. Start development servers
 npm run dev

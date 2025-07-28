@@ -71,17 +71,17 @@ This will use `database/schemas/schema.sql` and automatically import seed data.
 
 ### 1. Create Database
 ```bash
-mysql -u root -pMrutyu@2026 -e "CREATE DATABASE IF NOT EXISTS nitgoa_db;"
+mysql -u root -pMrutyu@2026 -e "CREATE DATABASE IF NOT EXISTS updated_nitgoa;"
 ```
 
 ### 2. Import Schema
 ```bash
-mysql -u root -pMrutyu@2026 nitgoa_db < database/schemas/schema.sql
+mysql -u root -pMrutyu@2026 updated_nitgoa < database/schemas/updated_nitgoa_schema.sql
 ```
 
 ### 3. Import Seed Data
 ```bash
-mysql -u root -pMrutyu@2026 nitgoa_db < database/seeds/complete_faculty_data_migration.sql
+mysql -u root -pMrutyu@2026 updated_nitgoa < database/seeds/complete_faculty_data_migration.sql (deprecated)
 ```
 
 ## Usage Guidelines
@@ -119,7 +119,7 @@ The database contains these main tables:
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=Mrutyu@2026
-DB_NAME=nitgoa_db
+DB_NAME=updated_nitgoa
 DB_PORT=3306
 ```
 
