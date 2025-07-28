@@ -1,53 +1,187 @@
-# Database Setup Guide for Faculty Management System
+# Quick Database Setup Guide
 
-## Prerequisites
+## 🚀 One-Command Setup
 
-This guide assumes you have:
-- Node.js and npm installed
-- Homebrew installed (for macOS)
-- Admin access to install MySQL
+For quick development setup, choose your database and follow these commands:
 
-## Step 1: Install MySQL
+### Option 1: Original Database (Recommended for stable development)
+```bash
+# 1. Create database
+mysql -u root -p -e "CREATE DATABASE nitgoa_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 
-### Option A: Using Homebrew (Recommended for macOS)
+# 2. Configure environment  
+cd server
+cp .env.example .env
+# Edit .env: Set DB_NAME=nitgoa_db and add your MySQL password
+
+# 3. Switch to original database
+node switch-database.js original
+
+# 4. Test & start
+node test-db.js
+npm install && npm start
+```
+
+### Option 2: Enhanced Database (For new features)
+```bash
+# 1. Create database
+mysql -u root -p -e "CREATE DATABASE updated_nitgoa CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+
+# 2. Import schema
+mysql -u root -p updated_nitgoa < ../database/schemas/updated_nitgoa_schema.sql
+
+# 3. Configure environment
+cd server  
+cp .env.example .env
+# Edit .env: Set DB_NAME=updated_nitgoa and add your MySQL password
+
+# 4. Switch to enhanced database
+node switch-database.js updated
+
+# 5. Test & start
+node test-db.js
+npm install && npm start
+```
+
+## 🔄 Database Switching
+
+Already have both databases? Switch between them easily:
 
 ```bash
-# Install MySQL
+cd server
+
+# Check current database
+node switch-database.js status
+
+# Switch to original (nitgoa_db)  
+node switch-database.js original
+
+# Switch to enhanced (updated_nitgoa)
+node switch-database.js updated
+
+# Always test after switching
+node test-db.js
+
+# Restart server
+npm start
+```
+
+## ⚡ Prerequisites
+
+### Install MySQL (Choose one)
+
+**Option A: Homebrew (macOS)**
+```bash
 brew install mysql
-
-# Start MySQL service
 brew services start mysql
-
-# Secure MySQL installation (optional but recommended)
-mysql_secure_installation
+mysql_secure_installation  # Optional security setup
 ```
 
-### Option B: Using MySQL Installer
-Download and install MySQL from: https://dev.mysql.com/downloads/mysql/
+**Option B: Direct Download**
+- Download from https://dev.mysql.com/downloads/mysql/
+- Follow installation wizard
+- Remember your root password
 
-### Option C: Using Docker (Alternative)
+**Option C: Docker**
 ```bash
-# Run MySQL in Docker container
-docker run --name faculty-mysql -e MYSQL_ROOT_PASSWORD=root123 -p 3306:3306 -d mysql:8.0
-
-# Access MySQL shell in container
-docker exec -it faculty-mysql mysql -uroot -p
+docker run --name nitgoa-mysql -e MYSQL_ROOT_PASSWORD=root123 -p 3306:3306 -d mysql:8.0
 ```
 
-## Step 2: Create Database and User
-
-### Connect to MySQL as root:
+### Install Node.js
 ```bash
+# Using Homebrew
+brew install node
+
+# Or download from https://nodejs.org/
+```
+
+## 🔧 Environment Configuration
+
+Edit `server/.env` file with your settings:
+
+```bash
+# Database Configuration
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_mysql_password_here
+DB_NAME=nitgoa_db  # or updated_nitgoa
+DB_PORT=3306
+
+# JWT Configuration  
+JWT_SECRET=your-secret-key-change-in-production
+JWT_EXPIRES_IN=24h
+
+# Server Configuration
+PORT=3001
+NODE_ENV=development
+CORS_ORIGIN=http://localhost:3000
+```
+
+## 🎯 Verification Steps
+
+After setup, verify everything works:
+
+```bash
+# 1. Test database connection
+cd server && node test-db.js
+
+# 2. Check server health
+npm start &
+curl http://localhost:3001/api/health
+
+# 3. Test API endpoints
+curl http://localhost:3001/api/faculty
+curl http://localhost:3001/api/staff/administrative
+
+# 4. Access web interface (if client is running)
+# Open http://localhost:3000
+```
+
+## 🚨 Troubleshooting
+
+**Database connection fails?**
+```bash
+# Check MySQL is running
+brew services list | grep mysql  # macOS
+sudo service mysql status        # Linux
+
+# Test direct connection
 mysql -u root -p
+
+# Verify database exists
+mysql -u root -p -e "SHOW DATABASES;"
 ```
 
-### Create database and user:
-```sql
--- Create the database
-CREATE DATABASE faculty_management;
+**Server won't start?**
+```bash
+# Check if port is in use
+lsof -i :3001
 
--- Create a dedicated user for the application
-CREATE USER 'faculty_user'@'localhost' IDENTIFIED BY 'faculty_pass123';
+# Kill existing processes
+npm run cleanup-ports
+
+# Check logs
+npm start  # Look for error messages
+```
+
+**Schema errors?**
+```bash
+# Ensure correct database is selected
+node switch-database.js status
+
+# Re-import schema (enhanced DB only)
+mysql -u root -p updated_nitgoa < ../database/schemas/updated_nitgoa_schema.sql
+
+# Check table structure
+mysql -u root -p -e "USE nitgoa_db; SHOW TABLES;"
+```
+
+## 📚 Next Steps
+
+- Read the full guide: `docs/database/DATABASE-GUIDE.md`
+- Development setup: `docs/development/DEVELOPMENT_SETUP_GUIDE.md`
+- API documentation: Available at `http://localhost:3001/api/docs`
+- Team guide: `docs/development/SIMPLE_TEAM_GUIDE.md`
 
 -- Grant privileges
 GRANT ALL PRIVILEGES ON faculty_management.* TO 'faculty_user'@'localhost';

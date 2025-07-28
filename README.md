@@ -9,7 +9,7 @@
 A modern, full-stack web application for the National Institute of Technology, Goa. Built with React.js frontend, Node.js/Express backend, and MySQL database with role-based authentication and admin dashboard.
 
 🌐 **Live Demo**: [https://nit-goa-ac-in.web.app](https://nit-goa-ac-in.web.app)  
-📚 **Documentation**: [Complete Docs](./docs/README.md)
+📚 **Documentation**: [Complete Docs](./docs/README.md) | 🗄️ **Database Guide**: [Database Setup](./docs/database/DATABASE-GUIDE.md)
 
 ## 🏗️ Project Architecture
 
@@ -167,7 +167,28 @@ nitgoa/
 - **Node.js** 16+ 
 - **npm** or **yarn**
 - **Git** for version control
-- **MySQL** 8.0+ (for database implementation)
+- **MySQL** 8.0+ (for database features)
+
+### 🗄️ **Database Setup (Optional)**
+
+The project supports two database configurations:
+
+**🚀 Quick Database Setup:**
+```bash
+# For enhanced database features
+cd docs/database && cat setup-guide.md
+
+# Quick commands:
+mysql -u root -p -e "CREATE DATABASE updated_nitgoa CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+cd server && node switch-database.js updated && node test-db.js
+```
+
+**📚 Full Database Guide:** See [`docs/database/DATABASE-GUIDE.md`](./docs/database/DATABASE-GUIDE.md) for:
+- Database switching between `nitgoa_db` and `updated_nitgoa`
+- Schema details and API endpoints
+- Troubleshooting and security features
+
+> **💡 Note:** The frontend works without database setup. Database is needed for faculty management, authentication, and admin features.
 
 ### ⚡ **Instant Setup (3 Commands)**
 
