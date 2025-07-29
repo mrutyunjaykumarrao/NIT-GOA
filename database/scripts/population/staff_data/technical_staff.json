@@ -1,0 +1,191 @@
+{
+  "technical_staff": [
+    {
+      "employee_code": "TECH001",
+      "full_name": "Mr. S SUDHARSAN",
+      "email": "sudharsan@nitgoa.ac.in",
+      "extension_no": "0832-2404422",
+      "role": "Senior Technical Assistant",
+      "employment_status": "Permanent",
+      "image_url": "images/Technical Staff/CSE/Sudharsan.png",
+      "department_id": 1,
+      "specialty": null
+    },
+    {
+      "employee_code": "TECH002",
+      "full_name": "Mr. Srinath",
+      "email": "revoorisrinath@nitgoa.ac.in",
+      "extension_no": "0832-2404208",
+      "role": "Senior Technician",
+      "employment_status": "Permanent",
+      "image_url": "images/Technical Staff/CSE/srinath_lib.jpeg",
+      "department_id": 1,
+      "specialty": null
+    },
+    {
+      "employee_code": "TECH003",
+      "full_name": "Mr. Kokate Santosh Parvatrao",
+      "email": "ksantosh@nitgoa.ac.in",
+      "extension_no": "0832-2404430",
+      "role": "Technician",
+      "employment_status": "Permanent",
+      "image_url": "images/Technical Staff/CSE/Santosh.png",
+      "department_id": 1,
+      "specialty": null
+    },
+    {
+      "employee_code": "TECH004",
+      "full_name": "Mr. Patitapaban Pradhan",
+      "email": "pradhanp@nitgoa.ac.in",
+      "extension_no": "0832-2404503",
+      "role": "Senior Technical Assistant",
+      "employment_status": "Permanent",
+      "image_url": "images/Technical Staff/ECE/pradhan.jpg",
+      "department_id": 2,
+      "specialty": null
+    },
+    {
+      "employee_code": "TECH005",
+      "full_name": "Mr. Shri Ram Kumawat",
+      "email": "shriram@nitgoa.ac.in",
+      "extension_no": "0832-2404545",
+      "role": "Technical Assistant",
+      "employment_status": "Permanent",
+      "image_url": "images/Technical Staff/ECE/Ram.png",
+      "department_id": 2,
+      "specialty": null
+    },
+    {
+      "employee_code": "TECH006",
+      "full_name": "Mr. Nikhil Uday Naik",
+      "email": "nikhilnaik@nitgoa.ac.in",
+      "extension_no": "0832-2404537",
+      "role": "Technician",
+      "employment_status": "Permanent",
+      "image_url": "images/Technical Staff/ECE/Nikhil.png",
+      "department_id": 2,
+      "specialty": null
+    },
+    {
+      "employee_code": "TECH007",
+      "full_name": "Mr. Pinaki Chatterjee",
+      "email": "pinaki@nitgoa.ac.in",
+      "extension_no": "0832-2404616",
+      "role": "Technical Assistant",
+      "employment_status": "Permanent",
+      "image_url": "images/Technical Staff/EEE/Pinaki.png",
+      "department_id": 3,
+      "specialty": null
+    },
+    {
+      "employee_code": "TECH008",
+      "full_name": "Mr. Digambar R. D.",
+      "email": "digambar@nitgoa.ac.in",
+      "extension_no": "0832-2404219",
+      "role": "Senior Technician",
+      "employment_status": "Permanent",
+      "image_url": "images/Technical Staff/EEE/Digambar1.png",
+      "department_id": 3,
+      "specialty": null
+    },
+    {
+      "employee_code": "TECH009",
+      "full_name": "Mr. Rohit Madhu Gawas",
+      "email": "rohit@nitgoa.ac.in",
+      "extension_no": "0832-2404636",
+      "role": "Senior Technician",
+      "employment_status": "Permanent",
+      "image_url": "images/Technical Staff/EEE/Rohit.png",
+      "department_id": 3,
+      "specialty": null
+    },
+    {
+      "employee_code": "TECH010",
+      "full_name": "Mr. Arjun Singh",
+      "email": "arjunsingh@nitgoa.ac.in",
+      "extension_no": "0832-2404629",
+      "role": "Technician",
+      "employment_status": "Permanent",
+      "image_url": "images/Technical Staff/EEE/arjun_singh1.jpg",
+      "department_id": 3,
+      "specialty": null
+    },
+    {
+      "employee_code": "TECH011",
+      "full_name": "Mr. Koushik",
+      "email": "koushik@nitgoa.ac.in",
+      "extension_no": "0832-2404610",
+      "role": "Technician",
+      "employment_status": "Permanent",
+      "image_url": "images/Technical Staff/EEE/koushik_eee.jpeg",
+      "department_id": 3,
+      "specialty": null
+    },
+    {
+      "employee_code": "TECH012",
+      "full_name": "Mr. Vijeesh V.P",
+      "email": "vijeesh@nitgoa.ac.in",
+      "extension_no": "0832-2404812",
+      "role": "Senior Technical Assistant",
+      "employment_status": "Permanent",
+      "image_url": "images/Technical Staff/MCE/vijeesh_mce.jpg",
+      "department_id": 4,
+      "specialty": null
+    },
+    {
+      "employee_code": "TECH013",
+      "full_name": "Mr. K Rajkumar",
+      "email": "rajkumar@nitgoa.ac.in",
+      "extension_no": "0832-2404805",
+      "role": "Multi-Tasking Staff",
+      "employment_status": "Permanent",
+      "image_url": "images/Technical Staff/CVE/rajkumar_aps.jpeg",
+      "department_id": 5,
+      "specialty": null
+    },
+    {
+      "employee_code": "TECH014",
+      "full_name": "Ms. Priyanka Parab",
+      "email": "priyankaparab@nitgoa.ac.in",
+      "extension_no": "0832-2404722",
+      "role": "Technician",
+      "employment_status": "Permanent",
+      "image_url": "images/Technical Staff/APS & HSS/Priyanka.png",
+      "department_id": 6,
+      "specialty": null
+    },
+    {
+      "employee_code": "TECH015",
+      "full_name": "Mr. Venkat R Grandhi",
+      "email": "sysadmin@nitgoa.ac.in",
+      "extension_no": "0832-2404851",
+      "role": "Senior Technical Assistant",
+      "employment_status": "Permanent",
+      "image_url": "images/Technical Staff/CCC/Venkat.png",
+      "department_id": "8",
+      "specialty": "System Administrator"
+    },
+    {
+      "employee_code": "TECH016",
+      "full_name": "Mr. Rameez Rahman",
+      "email": "netadmin@nitgoa.ac.in",
+      "extension_no": "0832-2404852",
+      "role": "Senior Technical Assistant",
+      "employment_status": "Permanent",
+      "image_url": "images/Technical Staff/CCC/Rameez.png",
+      "department_id": "8",
+      "specialty": "Network Administrator"
+    },
+    {
+      "employee_code": "TECH017",
+      "full_name": "Mr. Nijin Mambrol",
+      "email": "misadmin@nitgoa.ac.in",
+      "extension_no": "0832-2404853",
+      "role": "Technical Assistant",
+      "employment_status": "Permanent",
+      "image_url": "images/Technical Staff/CCC/Nijin.png",
+      "department_id": "8",
+      "specialty": "MIS Administrator"
+    }
+  ]
+}
