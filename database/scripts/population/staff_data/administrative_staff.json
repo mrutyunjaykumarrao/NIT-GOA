@@ -1,0 +1,268 @@
+{
+  "administrative_staff": [
+    {
+      "employee_code": "ADMIN001",
+      "full_name": "Mr. Amit Kabiraj",
+      "email": "dy.reg@nitgoa.ac.in",
+      "extension_no": "0832-2404209",
+      "role": "Deputy Registrar",
+      "employment_status": "Permanent",
+      "image_url": "images/Administrative Staff/amit_kabiraj.jpg",
+      "department_id": null,
+      "specialty": "Administration"
+    },
+    {
+      "employee_code": "ADMIN002",
+      "full_name": "Mr. Manmohan Sakhuja",
+      "email": "ar_af@nitgoa.ac.in",
+      "extension_no": "0832-2404210",
+      "role": "Assistant Registrar",
+      "employment_status": "Permanent",
+      "image_url": "images/Administrative Staff/manmohan_sakhuja.jpg",
+      "department_id": null,
+      "specialty": "Accounts | Establishment | General Administration | Student Cell"
+    },
+    {
+      "employee_code": "ADMIN003",
+      "full_name": "Mr. Digamber D. Mayekar",
+      "email": "digamber.mayekar@nitgoa.ac.in",
+      "extension_no": "0832-2404221",
+      "role": "Accountant",
+      "employment_status": "Permanent",
+      "image_url": "images/Administrative Staff/digamber_mayekar.jpg",
+      "department_id": null,
+      "specialty": "Finance and Accounts"
+    },
+    {
+      "employee_code": "ADMIN004",
+      "full_name": "Mr. Amit Ajit Naik",
+      "email": "amitnaik@nitgoa.ac.in",
+      "extension_no": "0832-2404311",
+      "role": "Superintendent",
+      "employment_status": "Permanent",
+      "image_url": "images/Administrative Staff/amit_naik.jpg",
+      "department_id": null,
+      "specialty": "Administration"
+    },
+    {
+      "employee_code": "ADMIN005",
+      "full_name": "Mr. Anand Gachchinamath",
+      "email": "anandg@nitgoa.ac.in",
+      "extension_no": "0832-2404221",
+      "role": "Superintendent",
+      "employment_status": "Permanent",
+      "image_url": "images/Administrative Staff/anand_gachchinamath.jpg",
+      "department_id": null,
+      "specialty": "Administration"
+    },
+    {
+      "employee_code": "ADMIN006",
+      "full_name": "Dr. S. Kumaraguru",
+      "email": "sports_officer@nitgoa.ac.in",
+      "extension_no": "0832-2404237",
+      "role": "Student Activity and Sports Officer",
+      "employment_status": "On Contract Basis",
+      "image_url": "images/Administrative Staff/s_kumaraguru.jpg",
+      "department_id": null,
+      "specialty": "Sports and Cultural"
+    },
+    {
+      "employee_code": "ADMIN007",
+      "full_name": "Ms. Shewale Rashmi Madhukar",
+      "email": "smadhukar@nitgoa.ac.in",
+      "extension_no": "0832-2404208",
+      "role": "Assistant Librarian",
+      "employment_status": "On Temporary Basis",
+      "image_url": "images/Administrative Staff/shewale_madhukar.jpg",
+      "department_id": null,
+      "specialty": "Library"
+    },
+    {
+      "employee_code": "ADMIN008",
+      "full_name": "Mrs. Reshma R. Castelino",
+      "email": "reshma.castelino@nitgoa.ac.in",
+      "extension_no": "0832-2404267",
+      "role": "Technical Assistant",
+      "employment_status": "Permanent",
+      "image_url": "images/Administrative Staff/reshma_castelino.jpg",
+      "department_id": null,
+      "specialty": "Medical Unit"
+    },
+    {
+      "employee_code": "ADMIN009",
+      "full_name": "Mrs. Lotliker Swara Sarvesh",
+      "email": "stenographer@nitgoa.ac.in",
+      "extension_no": "0832-2404200",
+      "role": "Stenographer",
+      "employment_status": "Permanent",
+      "image_url": "images/Administrative Staff/lotliker_sarvesh.jpg",
+      "department_id": null,
+      "specialty": null
+    },
+    {
+      "employee_code": "ADMIN010",
+      "full_name": "Mrs. Sweta Jadhav",
+      "email": "sweta.jadhav@nitgoa.ac.in",
+      "extension_no": "0832-2404318",
+      "role": "Senior Assistant",
+      "employment_status": "Permanent",
+      "image_url": "images/Administrative Staff/sweta_jadhav.jpg",
+      "department_id": null,
+      "specialty": null
+    },
+    {
+      "employee_code": "ADMIN011",
+      "full_name": "Mrs. Namrata Prajesh Sawant",
+      "email": "namrata@nitgoa.ac.in",
+      "extension_no": "0832-2404206",
+      "role": "Senior Assistant",
+      "employment_status": "Permanent",
+      "image_url": "images/Administrative Staff/namrata_sawant.jpg",
+      "department_id": null,
+      "specialty": null
+    },
+    {
+      "employee_code": "ADMIN012",
+      "full_name": "Mr. Karthikeyan M.",
+      "email": "karthikeyan@nitgoa.ac.in",
+      "extension_no": "0832-2404221",
+      "role": "Junior Assistant",
+      "employment_status": "Relieved on Deputation",
+      "image_url": "images/Administrative Staff/karthikeyan_m.jpg",
+      "department_id": null,
+      "specialty": null
+    },
+    {
+      "employee_code": "ADMIN013",
+      "full_name": "Mrs. Tallulah Rodrigues",
+      "email": "tallulah@nitgoa.ac.in",
+      "extension_no": "0832-2404322",
+      "role": "Junior Assistant",
+      "employment_status": "Permanent",
+      "image_url": "images/Administrative Staff/tallulah_rodrigues.jpg",
+      "department_id": null,
+      "specialty": null
+    },
+    {
+      "employee_code": "ADMIN014",
+      "full_name": "Mr. Sandeep Jaishwar",
+      "email": "sandeep8025@nitgoa.ac.in",
+      "extension_no": "0832-2404200",
+      "role": "Junior Assistant",
+      "employment_status": "Permanent",
+      "image_url": "images/Administrative Staff/sandeep_jaishwar.jpg",
+      "department_id": null,
+      "specialty": null
+    },
+    {
+      "employee_code": "ADMIN015",
+      "full_name": "Mrs. Supriya S Shet Tilve",
+      "email": "supriya.tilve@nitgoa.ac.in",
+      "extension_no": "0832-2404605",
+      "role": "Junior Assistant",
+      "employment_status": "Permanent",
+      "image_url": "images/Administrative Staff/supriya_tilve.jpg",
+      "department_id": 3,
+      "specialty": null
+    },
+    {
+      "employee_code": "ADMIN016",
+      "full_name": "Mrs. Teju Vasim Shaikh",
+      "email": "tejubi@nitgoa.ac.in",
+      "extension_no": "0832-2404221",
+      "role": "Junior Assistant",
+      "employment_status": "Permanent",
+      "image_url": "images/Administrative Staff/teju_shaikh.jpg",
+      "department_id": null,
+      "specialty": null
+    },
+    {
+      "employee_code": "ADMIN017",
+      "full_name": "Mr. Pritam Nageshkar",
+      "email": "pritamnageshkar@nitgoa.ac.in",
+      "extension_no": "0832-2404221",
+      "role": "Multi-Tasking Staff",
+      "employment_status": "Permanent",
+      "image_url": "images/Administrative Staff/pritam_nageshkar.jpg",
+      "department_id": null,
+      "specialty": null
+    },
+    {
+      "employee_code": "ADMIN018",
+      "full_name": "Mrs. Dipti Devidas Gaude",
+      "email": "dipti@nitgoa.ac.in",
+      "extension_no": "0832-2404200",
+      "role": "Multi-Tasking Staff",
+      "employment_status": "Permanent",
+      "image_url": "images/Administrative Staff/dipti_gaude.jpg",
+      "department_id": null,
+      "specialty": null
+    },
+    {
+      "employee_code": "ADMIN019",
+      "full_name": "Mrs. Asmita Ashok Naik",
+      "email": "asmitnaik03@nitgoa.ac.in",
+      "extension_no": "0832-2404221",
+      "role": "Multi-Tasking Staff",
+      "employment_status": "Permanent",
+      "image_url": "images/Administrative Staff/asmita_naik.jpg",
+      "department_id": null,
+      "specialty": null
+    },
+    {
+      "employee_code": "ADMIN020",
+      "full_name": "Mr. Vinay Acharya",
+      "email": "ee.civil@nitgoa.ac.in",
+      "extension_no": "- (Internal)",
+      "role": "Estate Engineer",
+      "employment_status": "On Contract Basis",
+      "image_url": "images/Administrative Staff/vinay_acharya.jpg",
+      "department_id": null,
+      "specialty": null
+    },
+    {
+      "employee_code": "ADMIN021",
+      "full_name": "Mr. Kishor Paryekar",
+      "email": "paryekarkishor@nitgoa.ac.in",
+      "extension_no": "0832-2404206",
+      "role": "Junior Assistant-Purchase",
+      "employment_status": "On Contract Basis",
+      "image_url": "images/Administrative Staff/kishor_paryekar.jpg",
+      "department_id": null,
+      "specialty": null
+    },
+    {
+      "employee_code": "ADMIN022",
+      "full_name": "Mr. Atul Milind",
+      "email": "aop@nitgoa.ac.in",
+      "extension_no": "- (Internal)",
+      "role": "Administrative Officer (T&P Cell)",
+      "employment_status": "On Contract Basis",
+      "image_url": "images/Administrative Staff/atul_milind.jpg",
+      "department_id": null,
+      "specialty": null
+    },
+    {
+      "employee_code": "ADMIN023",
+      "full_name": "Mr. Suneel Mudhole",
+      "email": "suneelmudhole@nitgoa.ac.in",
+      "extension_no": "- (Internal)",
+      "role": "Field Technician",
+      "employment_status": "On Contract Basis",
+      "image_url": "images/Administrative Staff/suneel_mudhole.jpg",
+      "department_id": null,
+      "specialty": null
+    },
+    {
+      "employee_code": "ADMIN024",
+      "full_name": "Mrs. Archana Darshan Misal",
+      "email": "studentcounselor@nitgoa.ac.in",
+      "extension_no": "- (Internal)",
+      "role": "Student Counselor",
+      "employment_status": "On Contract Basis",
+      "image_url": "images/Administrative Staff/archana_misal.jpg",
+      "department_id": null,
+      "specialty": null
+    }
+  ]
+}
