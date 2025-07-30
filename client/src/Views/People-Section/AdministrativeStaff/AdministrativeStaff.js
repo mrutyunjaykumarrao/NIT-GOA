@@ -17,13 +17,6 @@ const AdministrativeStaff = () => {
                 
                 if (result.success) {
                     setStaffData(result.data);
-                    // Debug: Check if employment_status is being received
-                    console.log('Administrative staff data with employment_status:', 
-                        result.data.filter(staff => staff.employment_status).map(staff => ({
-                            name: staff.name,
-                            employment_status: staff.employment_status
-                        }))
-                    );
                 } else {
                     setError('Failed to fetch administrative staff data');
                 }
@@ -47,6 +40,23 @@ const AdministrativeStaff = () => {
     // Function to format the name with honorific
     const formatName = (staff) => {
         return staff.honorific ? `${staff.honorific} ${staff.name}` : staff.name;
+    };
+
+    // Function to get specialty or employment status for display
+    const getSpecialtyOrStatus = (staff) => {
+        // First check if there's a specialty from staff_profiles
+        if (staff.specialty && staff.specialty.trim()) {
+            return `(${staff.specialty})`;
+        }
+        
+        // Then check employment status (but don't show if it's "Permanent")
+        if (staff.employment_status && 
+            staff.employment_status.trim() && 
+            staff.employment_status.toLowerCase() !== 'permanent') {
+            return `(${staff.employment_status})`;
+        }
+        
+        return null;
     };
 
     return (
@@ -108,8 +118,13 @@ const AdministrativeStaff = () => {
                                 <div className="administrative-staff-info">
                                     <h3 className="administrative-staff-name">{formatName(staff)}</h3>
                                     <p className="administrative-staff-designation">{staff.designation}</p>
-                                    {staff.employment_status && <p className="administrative-staff-employment">{staff.employment_status}</p>}
-                                    <p className="administrative-staff-department">{staff.department_name || 'Administration'}</p>
+                                    {getSpecialtyOrStatus(staff) && (
+                                        <p className="administrative-staff-specialty">{getSpecialtyOrStatus(staff)}</p>
+                                    )}
+                                    {staff.department_name && 
+                                     staff.department_name !== 'General Administration' && (
+                                        <p className="administrative-staff-department">{staff.department_name}</p>
+                                    )}
                                     <div className="administrative-staff-contact">
                                         <p><strong>Email:</strong> {staff.email}</p>
                                         <p><strong>Extension No.:</strong> {staff.phone}</p>
