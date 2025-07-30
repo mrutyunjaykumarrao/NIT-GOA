@@ -19,7 +19,8 @@ router.get('/administrative', async (req, res) => {
         e.display_order,
         COALESCE(d.department_name, 'General Administration') as department_name,
         d.department_code as department_code,
-        e.honorific
+        e.honorific,
+        sp.specialty
       FROM employees e
       LEFT JOIN staff_profiles sp ON e.employee_id = sp.employee_id
       LEFT JOIN departments d ON sp.department_id = d.department_id
@@ -56,7 +57,7 @@ router.get('/technical', async (req, res) => {
       LEFT JOIN staff_profiles sp ON e.employee_id = sp.employee_id
       LEFT JOIN departments d ON sp.department_id = d.department_id
       WHERE e.is_active = 1 AND e.role = 'Technical'
-      ORDER BY d.department_code ASC, e.display_order ASC, e.full_name ASC
+      ORDER BY e.display_order ASC, e.full_name ASC
     `);
     
     res.json({ success: true, data: staff });
