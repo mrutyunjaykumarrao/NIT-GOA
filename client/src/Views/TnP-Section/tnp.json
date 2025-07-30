@@ -109,10 +109,10 @@
       },
       "for_recruiters": {
         "placement_documents": [
-            { "file_name": "Institute Placement Procedure", "link": "https://www.nitgoa.ac.in/placementcell/Placement%20Procedure.pdf" },
-            { "file_name": "Institute Placement Policy", "link": "https://www.nitgoa.ac.in/placementcell/Placement%20policy.pdf" },
-            { "file_name": "Institute Internship Policy for B.Tech", "link": "https://www.nitgoa.ac.in/placementcell/Internship%20Policy%20for%20B.Tech.pdf" },
-            { "file_name": "Institute Internship Policy for M.Tech", "link": "https://www.nitgoa.ac.in/placementcell/Internship%20Policy%20for%20M.Tech.pdf" }
+            { "file_name": "Institute Placement Procedure", "link": "pdf/Training&Placement/Placement Procedure.pdf" },
+            { "file_name": "Institute Placement Policy", "link": "pdf/Training&Placement/Placement policy.pdf" },
+            { "file_name": "Institute Internship Policy for B.Tech", "link": "pdf/Training&Placement/Internship Policy for B.Tech.pdf" },
+            { "file_name": "Institute Internship Policy for M.Tech", "link": "pdf/Training&Placement/Internship Policy for M.Tech.pdf" }
         ],
         "facilities": {
             "title": "Facilities for Recruiters",
