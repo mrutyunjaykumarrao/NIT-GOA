@@ -42,7 +42,7 @@
       },
       "directors_message": {
         "title": "Director's Message",
-        "image_url": "https://www.nitgoa.ac.in/placementcell/images/director2023.jpeg",
+        "image_url": "/images/Training&Placement/director2023.jpeg",
         "description": [
           "It is my privilege being the director of the institute, which is graduating this year. NIT Goa aims at providing quality education and producing people equipped with necessary skills to work in this fast changing world. The world is changing too fast in terms of technology, skills and working environment. Therefore, it is necessary that the upcoming skill force have adequate preparation in their forming years.",
           "The institute has taken adequate care in terms of building strong foundation of the students. The students have been exposed to strong foundation courses in terms of analytical and computing skills. With emphasis on problem solving and laboratory projects in small teams, they are prepared to work deeply in the real working environment. The students have worked with faculty members on a number of innovative projects. It is a matter of pride for this new institute that some of their works have been published in international conferences.",
@@ -75,7 +75,7 @@
         "image_gallery": [
           {
             "title": "Some of the Organisations our students visited this summer for Training and Internship",
-            "url": "https://www.nitgoa.ac.in/placementcell/images/placement%20image.jpg"
+            "url": "/images/Training&Placement/placement-image.jpg"
           }
         ]
       },
