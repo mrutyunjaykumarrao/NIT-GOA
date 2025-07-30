@@ -186,11 +186,25 @@
     text-overflow: ellipsis;
 }
 
+.technical-staff-specialty {
+    font-size: 15px;
+    font-weight: 550;
+    color: #666;
+    margin-bottom: 8px;
+    font-style: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
 .technical-staff-department {
     font-size: 13px;
     color: #666;
     margin-bottom: 15px;
-    font-style: italic;
+    font-style: normal;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -272,6 +286,11 @@
     
     .technical-staff-designation {
         font-size: 15px;
+    }
+    
+    .technical-staff-specialty {
+        font-size: 12px;
+        margin-bottom: 6px;
     }
     
     .technical-staff-department-filters {

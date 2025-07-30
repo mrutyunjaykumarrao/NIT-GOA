@@ -58,6 +58,17 @@ const TechnicalStaff = () => {
         return staff.honorific ? `${staff.honorific} ${staff.name}` : staff.name;
     };
 
+    // Function to get specialty or employment status for display
+    const getSpecialtyOrStatus = (staff) => {
+        if (staff.specialty) {
+            return staff.specialty;
+        }
+        if (staff.employment_status && staff.employment_status !== 'Permanent') {
+            return staff.employment_status;
+        }
+        return null;
+    };
+
     const departments = [
         { code: 'CSE', name: 'Department of Computer Science and Engineering' },
         { code: 'ECE', name: 'Department of Electronics & Communication Engineering' },
@@ -171,11 +182,39 @@ const TechnicalStaff = () => {
                                     <div className="technical-staff-info">
                                         <h3 className="technical-staff-name">{formatName(staff)}</h3>
                                         <p className="technical-staff-designation">{staff.designation}</p>
-                                        {staff.specialty && <p className="technical-staff-designation">{staff.specialty}</p>}
+                                        {getSpecialtyOrStatus(staff) && (
+                                            <p className="technical-staff-specialty">({getSpecialtyOrStatus(staff)})</p>
+                                        )}
                                         <p className="technical-staff-department">{staff.department_name}</p>
                                         <div className="technical-staff-contact">
-                                            <p><strong>Email:</strong> {staff.email}</p>
-                                            <p><strong>Extension No.:</strong> {staff.phone}</p>
+                                            <p>
+                                                <strong>Email:</strong> 
+                                                <a 
+                                                    href={`mailto:${staff.email}`}
+                                                    style={{ 
+                                                        color: 'inherit', 
+                                                        textDecoration: 'none',
+                                                        marginLeft: '5px',
+                                                        cursor: 'pointer'
+                                                    }}
+                                                >
+                                                    {staff.email}
+                                                </a>
+                                            </p>
+                                            <p>
+                                                <strong>Extension No.:</strong> 
+                                                <a 
+                                                    href={`tel:${staff.phone}`}
+                                                    style={{ 
+                                                        color: 'inherit', 
+                                                        textDecoration: 'none',
+                                                        marginLeft: '5px',
+                                                        cursor: 'pointer'
+                                                    }}
+                                                >
+                                                    {staff.phone}
+                                                </a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
