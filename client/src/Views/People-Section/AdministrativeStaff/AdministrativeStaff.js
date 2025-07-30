@@ -41,7 +41,12 @@ const AdministrativeStaff = () => {
     // Function to get the image path for administrative staff
     const getImagePath = (staff) => {
         if (!staff.profile_image) return '/images/fallback-profile.svg';
-        return `/images/Administrative Staff/${staff.profile_image}`;
+        return `/${staff.profile_image}`;
+    };
+
+    // Function to format the name with honorific
+    const formatName = (staff) => {
+        return staff.honorific ? `${staff.honorific} ${staff.name}` : staff.name;
     };
 
     return (
@@ -85,11 +90,11 @@ const AdministrativeStaff = () => {
                 ) : (
                     <div className="administrative-staff-grid">
                         {staffData.map((staff, index) => (
-                            <div key={index} className="administrative-staff-card">
+                            <div key={staff.id || index} className="administrative-staff-card">
                                 <div className="administrative-staff-image">
                                     <img 
                                         src={getImagePath(staff)}
-                                        alt={staff.name}
+                                        alt={formatName(staff)}
                                         onError={(e) => {
                                             e.target.src = '/images/fallback-profile.svg';
                                         }}
@@ -101,10 +106,10 @@ const AdministrativeStaff = () => {
                                     />
                                 </div>
                                 <div className="administrative-staff-info">
-                                    <h3 className="administrative-staff-name">{staff.name}</h3>
+                                    <h3 className="administrative-staff-name">{formatName(staff)}</h3>
                                     <p className="administrative-staff-designation">{staff.designation}</p>
                                     {staff.employment_status && <p className="administrative-staff-employment">{staff.employment_status}</p>}
-                                    <p className="administrative-staff-department">{staff.department}</p>
+                                    <p className="administrative-staff-department">{staff.department_name || 'Administration'}</p>
                                     <div className="administrative-staff-contact">
                                         <p><strong>Email:</strong> {staff.email}</p>
                                         <p><strong>Extension No.:</strong> {staff.phone}</p>

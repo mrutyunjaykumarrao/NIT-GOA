@@ -8,26 +8,29 @@ router.get('/administrative', async (req, res) => {
   try {
     const [staff] = await executeQuery(`
       SELECT 
-        sp.id,
-        CONCAT(e.first_name, ' ', e.last_name) as name,
-        sp.designation,
+        e.employee_id as id,
+        e.full_name as name,
+        e.job_title as designation,
         e.email,
-        e.phone,
-        sp.profile_image_url,
-        sp.is_active,
-        sp.display_order,
-        d.name as department_name
-      FROM staff_profiles sp
-      JOIN employees e ON sp.employee_id = e.id
-      JOIN departments d ON e.department_id = d.id
-      WHERE sp.is_active = 1 AND sp.staff_type = 'administrative'
-      ORDER BY sp.display_order ASC, e.last_name ASC
+        e.extension_no as phone,
+        e.image_url as profile_image,
+        e.employment_status,
+        e.is_active,
+        e.display_order,
+        COALESCE(d.department_name, 'General Administration') as department_name,
+        d.department_code as department_code,
+        e.honorific
+      FROM employees e
+      LEFT JOIN staff_profiles sp ON e.employee_id = sp.employee_id
+      LEFT JOIN departments d ON sp.department_id = d.department_id
+      WHERE e.is_active = 1 AND e.role = 'Administrative'
+      ORDER BY e.display_order ASC, e.full_name ASC
     `);
     
-    res.json(staff);
+    res.json({ success: true, data: staff });
   } catch (error) {
     console.error('Get administrative staff error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ success: false, error: 'Internal server error' });
   }
 });
 
@@ -36,26 +39,30 @@ router.get('/technical', async (req, res) => {
   try {
     const [staff] = await executeQuery(`
       SELECT 
-        sp.id,
-        CONCAT(e.first_name, ' ', e.last_name) as name,
-        sp.designation,
+        e.employee_id as id,
+        e.full_name as name,
+        e.job_title as designation,
         e.email,
-        e.phone,
-        sp.profile_image_url,
-        sp.is_active,
-        sp.display_order,
-        d.name as department_name
-      FROM staff_profiles sp
-      JOIN employees e ON sp.employee_id = e.id
-      JOIN departments d ON e.department_id = d.id
-      WHERE sp.is_active = 1 AND sp.staff_type = 'technical'
-      ORDER BY sp.display_order ASC, e.last_name ASC
+        e.extension_no as phone,
+        e.image_url as profile_image,
+        e.employment_status,
+        e.is_active,
+        e.display_order,
+        d.department_name,
+        d.department_code,
+        e.honorific,
+        sp.specialty
+      FROM employees e
+      LEFT JOIN staff_profiles sp ON e.employee_id = sp.employee_id
+      LEFT JOIN departments d ON sp.department_id = d.department_id
+      WHERE e.is_active = 1 AND e.role = 'Technical'
+      ORDER BY d.department_code ASC, e.display_order ASC, e.full_name ASC
     `);
     
-    res.json(staff);
+    res.json({ success: true, data: staff });
   } catch (error) {
     console.error('Get technical staff error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ success: false, error: 'Internal server error' });
   }
 });
 
@@ -66,27 +73,30 @@ router.get('/technical/department/:department', async (req, res) => {
     
     const [staff] = await executeQuery(`
       SELECT 
-        sp.id,
-        CONCAT(e.first_name, ' ', e.last_name) as name,
-        sp.designation,
+        e.employee_id as id,
+        e.full_name as name,
+        e.job_title as designation,
         e.email,
-        e.phone,
-        sp.profile_image_url,
-        sp.is_active,
-        sp.display_order,
-        d.name as department_name,
-        d.code as department_code
-      FROM staff_profiles sp
-      JOIN employees e ON sp.employee_id = e.id
-      JOIN departments d ON e.department_id = d.id
-      WHERE sp.is_active = 1 AND sp.staff_type = 'technical' AND d.code = ?
-      ORDER BY sp.display_order ASC, e.last_name ASC
+        e.extension_no as phone,
+        e.image_url as profile_image,
+        e.employment_status,
+        e.is_active,
+        e.display_order,
+        d.department_name,
+        d.department_code,
+        e.honorific,
+        sp.specialty
+      FROM employees e
+      LEFT JOIN staff_profiles sp ON e.employee_id = sp.employee_id
+      LEFT JOIN departments d ON sp.department_id = d.department_id
+      WHERE e.is_active = 1 AND e.role = 'Technical' AND d.department_code = ?
+      ORDER BY e.display_order ASC, e.full_name ASC
     `, [department]);
     
-    res.json(staff);
+    res.json({ success: true, data: staff });
   } catch (error) {
     console.error('Get technical staff by department error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ success: false, error: 'Internal server error' });
   }
 });
 

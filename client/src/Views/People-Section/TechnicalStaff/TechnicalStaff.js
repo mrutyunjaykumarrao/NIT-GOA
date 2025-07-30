@@ -50,17 +50,12 @@ const TechnicalStaff = () => {
     // Function to get the image path based on department
     const getImagePath = (staff) => {
         if (!staff.profile_image) return '/images/fallback-profile.svg';
-        
-        let deptFolder = '';
-        if (staff.department.includes('Computer Science')) deptFolder = 'CSE';
-        else if (staff.department.includes('Electronics') && staff.department.includes('Communication')) deptFolder = 'ECE';
-        else if (staff.department.includes('Electrical')) deptFolder = 'EEE';
-        else if (staff.department.includes('Mechanical')) deptFolder = 'MCE';
-        else if (staff.department.includes('Civil')) deptFolder = 'CVE';
-        else if (staff.department.includes('Applied Physics') || staff.department.includes('Applied Sciences') || staff.department.includes('Humanities')) deptFolder = 'APS & HSS';
-        else if (staff.department.includes('Campus Control')) deptFolder = 'CCC';
-        
-        return `/images/Technical Staff/${deptFolder}/${staff.profile_image}`;
+        return `/${staff.profile_image}`;
+    };
+
+    // Function to format the name with honorific
+    const formatName = (staff) => {
+        return staff.honorific ? `${staff.honorific} ${staff.name}` : staff.name;
     };
 
     const departments = [
@@ -75,15 +70,17 @@ const TechnicalStaff = () => {
 
     // Group staff data by department
     const groupedStaffData = allStaffData.reduce((acc, staff) => {
-        // Map database department names to department codes
-        let deptCode = '';
-        if (staff.department.includes('Computer Science')) deptCode = 'CSE';
-        else if (staff.department.includes('Electronics') && staff.department.includes('Communication')) deptCode = 'ECE';
-        else if (staff.department.includes('Electrical') && staff.department.includes('Electronics')) deptCode = 'EEE';
-        else if (staff.department.includes('Mechanical')) deptCode = 'MCE';
-        else if (staff.department.includes('Civil')) deptCode = 'CVE';
-        else if (staff.department.includes('Applied Sciences') || staff.department.includes('HSS')) deptCode = 'APS';
-        else if (staff.department.includes('Campus Control')) deptCode = 'CCC';
+        // Use department_code from database if available, otherwise map department name
+        let deptCode = staff.department_code;
+        if (!deptCode && staff.department_name) {
+            if (staff.department_name.includes('Computer Science')) deptCode = 'CSE';
+            else if (staff.department_name.includes('Electronics') && staff.department_name.includes('Communication')) deptCode = 'ECE';
+            else if (staff.department_name.includes('Electrical') && staff.department_name.includes('Electronics')) deptCode = 'EEE';
+            else if (staff.department_name.includes('Mechanical')) deptCode = 'MCE';
+            else if (staff.department_name.includes('Civil')) deptCode = 'CVE';
+            else if (staff.department_name.includes('Applied Sciences') || staff.department_name.includes('HSS')) deptCode = 'APS';
+            else if (staff.department_name.includes('Campus Control')) deptCode = 'CCC';
+        }
         
         if (deptCode && !acc[deptCode]) {
             acc[deptCode] = [];
@@ -156,11 +153,11 @@ const TechnicalStaff = () => {
                     <div className="technical-staff-grid">
                         {groupedStaffData[selectedDepartment] && groupedStaffData[selectedDepartment].length > 0 ? (
                             groupedStaffData[selectedDepartment].map((staff, index) => (
-                                <div key={index} className="technical-staff-card">
+                                <div key={staff.id || index} className="technical-staff-card">
                                     <div className="technical-staff-image">
                                         <img 
                                             src={getImagePath(staff)}
-                                            alt={staff.name}
+                                            alt={formatName(staff)}
                                             onError={(e) => {
                                                 e.target.src = '/images/fallback-profile.svg';
                                             }}
@@ -172,10 +169,10 @@ const TechnicalStaff = () => {
                                         />
                                     </div>
                                     <div className="technical-staff-info">
-                                        <h3 className="technical-staff-name">{staff.name}</h3>
+                                        <h3 className="technical-staff-name">{formatName(staff)}</h3>
                                         <p className="technical-staff-designation">{staff.designation}</p>
-                                        {staff.speciality && <p className="technical-staff-designation">{staff.speciality}</p>}
-                                        <p className="technical-staff-department">{staff.department}</p>
+                                        {staff.specialty && <p className="technical-staff-designation">{staff.specialty}</p>}
+                                        <p className="technical-staff-department">{staff.department_name}</p>
                                         <div className="technical-staff-contact">
                                             <p><strong>Email:</strong> {staff.email}</p>
                                             <p><strong>Extension No.:</strong> {staff.phone}</p>
