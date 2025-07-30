@@ -14,15 +14,15 @@
     "sections": {
       "home": {
         "description": "Welcome to the web interface of Training and Placement (T&P) cell of National Institute of Technology Goa (NIT Goa). It is an institute of national importance established by Ministry of Human Resources Development (MHRD), Government of India in 2010. The training and placement cell is endowed with the responsibility to cater to the needs of training and placement of its elite students. It helps the institute in inviting companies for campus recruitment, organising pre-placement talks, interviews and corporate interaction. This interface serves as a guide for the companies to make them familiar with the facts and process, pertaining to recruitment.",
-        "image_url": "https://www.nitgoa.ac.in/placementcell/images/NITG.jpg",
+        "image_url": "/images/Training&Placement/NITG.jpg",
         "downloads": [
           {
             "file_name": "Placement Brochure",
-            "link": "https://www.nitgoa.ac.in/uploads/DCRG%20form.pdf"
+            "link": "/pdf/Training&Placement/DCRG form.pdf"
           },
           {
             "file_name": "Job Announcement Form",
-            "link": "https://www.nitgoa.ac.in/placementcell/JAF%20-%20NIT%20Goa.docx"
+            "link": "/pdf/Training&Placement/JAF - NIT Goa.docx"
           }
         ],
         "news": [
@@ -32,11 +32,11 @@
           },
           {
             "title": "Lecture by Representative of EDHEC B School",
-            "link": "https://www.nitgoa.ac.in/placementcell/Poster10.pdf"
+            "link": "pdf/Training&Placement/Poster10.pdf"
           },
           {
             "title": "Campus Recruitment Record (2013-14)",
-            "link": "https://www.nitgoa.ac.in/placementcell/campus_placement_record_2013_-14.pdf"
+            "link": "pdf/Training&Placement/campus_placement_record_2013_-14.pdf"
           }
         ]
       },
@@ -63,7 +63,7 @@
         },
         "gitic_program": {
           "title": "GITIC Student Connect Program",
-          "link": "https://www.nitgoa.ac.in/placementcell/Greetings%20from%20GITIC.pdf"
+          "link": "pdf/Training&Placement/Greetings from GITIC.pdf"
         }
       },
       "training": {
