@@ -17,11 +17,13 @@ const Faculty = () => {
         const fetchFaculty = async () => {
             try {
                 setLoading(true);
-                const response = await fetch('/api/faculty');
-                const facultyData = await response.json();
+                const response = await fetch('/api/public/faculty');
+                const result = await response.json();
                 
-                if (Array.isArray(facultyData)) {
-                    setAllFacultyData(facultyData);
+                if (result.success && result.data && Array.isArray(result.data)) {
+                    setAllFacultyData(result.data);
+                } else if (Array.isArray(result)) {
+                    setAllFacultyData(result);
                 } else {
                     setError('Failed to fetch faculty data');
                 }
@@ -60,6 +62,7 @@ const Faculty = () => {
 
     // Helper function to get department code from full name
     function getDepartmentCode(fullDepartmentName) {
+        if (!fullDepartmentName) return 'CSE';
         if (fullDepartmentName.includes('Computer Science')) return 'CSE';
         if (fullDepartmentName.includes('Electronics & Communication')) return 'ECE';
         if (fullDepartmentName.includes('Electrical & Electronics')) return 'EEE';
@@ -67,12 +70,12 @@ const Faculty = () => {
         if (fullDepartmentName.includes('Civil')) return 'CVE';
         if (fullDepartmentName.includes('Applied Sciences')) return 'APS';
         if (fullDepartmentName.includes('Humanities')) return 'HSS';
-        return 'OTHER'; // fallback
+        return 'CSE';
     }
 
     // Function to generate slug from faculty name
     const generateSlug = (name) => {
-        if (!name) return 'unknown-faculty'; // Safety check for undefined/null names
+        if (!name) return 'unknown-faculty';
         return name.toLowerCase()
             .replace(/^dr\.?\s*/i, '') // Remove "Dr." prefix
             .replace(/\s+/g, '-') // Replace spaces with hyphens
@@ -97,21 +100,29 @@ const Faculty = () => {
 
     // Group faculty data by department
     const groupedFacultyData = allFacultyData.reduce((acc, faculty) => {
-        // Extract department code from full department name
-        const deptCode = getDepartmentCode(faculty.department);
+        // Extract department code from full department name or default to CSE
+        const deptCode = getDepartmentCode(faculty.department_name);
         if (!acc[deptCode]) {
             acc[deptCode] = [];
         }
+        
+        // Format name with honorific
+        const formatName = (faculty) => {
+            return faculty.honorific ? `${faculty.honorific} ${faculty.full_name}` : faculty.full_name;
+        };
+        
         acc[deptCode].push({
-            id: faculty.faculty_id || faculty.id.toString(),
+            id: faculty.id.toString(),
             name: faculty.full_name,
+            formattedName: formatName(faculty),
             designation: faculty.designation,
-            department: faculty.department, // Use full department name from database
+            department: faculty.department_name || 'Department of Computer Science & Engineering',
             email: faculty.email,
-            phone: faculty.phone || '0832-2404420', // Default phone if not available
-            researchAreas: '', // Not available in short profile
+            phone: faculty.phone || '0832-2404420',
+            researchAreas: faculty.research_interests ? JSON.parse(faculty.research_interests).join(', ') : '',
             image: getImagePath(faculty.profile_image, deptCode),
-            isHOD: faculty.is_hod === 1
+            isHOD: faculty.is_hod === 1 || faculty.is_hod === true,
+            displayOrder: faculty.display_order || 999
         });
         return acc;
     }, {});
@@ -122,7 +133,6 @@ const Faculty = () => {
         
         // If it's already a full path starting with 'client/src/assets', convert it
         if (imagePath.startsWith('client/src/assets/images/Faculty/')) {
-            // Extract the relative path from the full client path
             const relativePath = imagePath.replace('client/src/assets/images/Faculty/', '');
             return `/images/Faculty/${relativePath}`;
         }
@@ -139,12 +149,18 @@ const Faculty = () => {
         setSelectedDepartment(dept);
     };
 
-    // Sort faculty to show HODs first
+    // Sort faculty to show by display order, then HODs first, then alphabetically
     const getSortedFaculty = (facultyList) => {
         return [...facultyList].sort((a, b) => {
+            // First sort by display order
+            if (a.displayOrder !== b.displayOrder) {
+                return a.displayOrder - b.displayOrder;
+            }
+            // Then by HOD status
             if (a.isHOD && !b.isHOD) return -1;
             if (!a.isHOD && b.isHOD) return 1;
-            return 0;
+            // Finally alphabetically
+            return a.name.localeCompare(b.name);
         });
     };
 
@@ -175,7 +191,6 @@ const Faculty = () => {
                 {loading ? (
                     <div className="faculty-loading">
                         <div className="faculty-grid">
-                            {/* Skeleton loading cards */}
                             {[...Array(6)].map((_, index) => (
                                 <div key={index} className="faculty-card faculty-skeleton">
                                     <div className="faculty-image">
@@ -216,7 +231,7 @@ const Faculty = () => {
                                             />
                                         </div>
                                         <div className="faculty-info">
-                                            <h3 className="faculty-name">{faculty.name}</h3>
+                                            <h3 className="faculty-name">{faculty.formattedName}</h3>
                                             <p className="faculty-designation">{faculty.designation}</p>
                                             <p className="faculty-department">{faculty.department}</p>
                                             <div className="faculty-contact">

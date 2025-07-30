@@ -1,12 +1,24 @@
 const express = require('express');
-const { executeQuery } = require('../config/database');
+const mysql = require('mysql2/promise');
 
 const router = express.Router();
+
+// Database connection function
+async function getDbConnection() {
+  return await mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'Mrutyu@2026',
+    database: 'updated_nitgoa'
+  });
+}
 
 // Get all departments
 router.get('/departments', async (req, res) => {
   try {
-    const [departments] = await executeQuery(`
+    const connection = await getDbConnection();
+    
+    const [departments] = await connection.execute(`
       SELECT 
         department_id as id,
         department_name as name,
@@ -19,6 +31,7 @@ router.get('/departments', async (req, res) => {
       ORDER BY display_order ASC, department_name ASC
     `);
 
+    await connection.end();
     res.json(departments);
   } catch (error) {
     console.error('Get departments error:', error);
@@ -29,80 +42,38 @@ router.get('/departments', async (req, res) => {
 // Get all faculty profiles (public)
 router.get('/faculty', async (req, res) => {
   try {
-    const { department, search, limit = 50, offset = 0 } = req.query;
+    const connection = await getDbConnection();
     
-    let query = `
+    const [faculty] = await connection.execute(`
       SELECT 
-        fp.id,
-        fp.faculty_id,
-        e.first_name,
-        e.last_name,
-        CONCAT(e.first_name, ' ', e.last_name) as full_name,
+        e.employee_id as id,
+        e.employee_code,
+        e.full_name,
+        e.honorific,
         e.email,
-        e.phone,
-        fp.designation,
-        fp.specialization,
-        fp.profile_image_url,
-        fp.is_hod,
-        fp.display_order,
-        d.name as department_name,
-        d.code as department_code
-      FROM faculty_profiles fp
-      JOIN employees e ON fp.employee_id = e.id
-      JOIN departments d ON e.department_id = d.id
-      WHERE fp.is_active = 1 AND e.is_active = 1
-    `;
+        e.extension_no as phone,
+        e.role as designation,
+        e.employment_status,
+        e.image_url as profile_image,
+        e.is_hod,
+        e.display_order,
+        d.department_name,
+        d.department_code,
+        fp.bio_summary,
+        fp.research_interests
+      FROM employees e
+      LEFT JOIN faculty_profiles fp ON e.employee_id = fp.employee_id
+      LEFT JOIN departments d ON fp.department_id = d.department_id
+      WHERE e.is_active = 1 AND (e.role LIKE '%Faculty%' OR e.role LIKE '%Professor%')
+      ORDER BY e.display_order ASC, e.full_name ASC
+      LIMIT 50
+    `);
     
-    const params = [];
-    
-    if (department) {
-      query += ' AND d.code = ?';
-      params.push(department);
-    }
-    
-    if (search) {
-      query += ' AND (e.first_name LIKE ? OR e.last_name LIKE ? OR fp.designation LIKE ? OR fp.specialization LIKE ?)';
-      const searchTerm = `%${search}%`;
-      params.push(searchTerm, searchTerm, searchTerm, searchTerm);
-    }
-    
-    query += ' ORDER BY d.display_order ASC, fp.display_order ASC, e.last_name ASC';
-    query += ' LIMIT ? OFFSET ?';
-    params.push(parseInt(limit), parseInt(offset));
-    
-    const [faculty] = await executeQuery(query, params);
-    
-    // Get total count for pagination
-    let countQuery = `
-      SELECT COUNT(*) as total
-      FROM faculty_profiles fp
-      JOIN employees e ON fp.employee_id = e.id
-      JOIN departments d ON e.department_id = d.id
-      WHERE fp.is_active = 1 AND e.is_active = 1
-    `;
-    
-    const countParams = [];
-    if (department) {
-      countQuery += ' AND d.code = ?';
-      countParams.push(department);
-    }
-    
-    if (search) {
-      countQuery += ' AND (e.first_name LIKE ? OR e.last_name LIKE ? OR fp.designation LIKE ? OR fp.specialization LIKE ?)';
-      const searchTerm = `%${search}%`;
-      countParams.push(searchTerm, searchTerm, searchTerm, searchTerm);
-    }
-    
-    const [countResult] = await executeQuery(countQuery, countParams);
+    await connection.end();
     
     res.json({
-      faculty,
-      pagination: {
-        total: countResult[0].total,
-        limit: parseInt(limit),
-        offset: parseInt(offset),
-        hasMore: (parseInt(offset) + parseInt(limit)) < countResult[0].total
-      }
+      success: true,
+      data: faculty
     });
   } catch (error) {
     console.error('Get faculty error:', error);
