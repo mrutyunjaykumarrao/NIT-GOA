@@ -82,19 +82,19 @@
       "placement_records": {
         "title": "Placement Records",
         "b_tech": [
-          {"year": "2019-20", "link": "https://www.nitgoa.ac.in/placementcell/B.Tech%202019-20.pdf"},
+          {"year": "2019-20", "link": "pdf/Training&Placement/B.Tech 2019-20.pdf"},
           {"year": "2020-21", "link": "https://www.nitgoa.ac.in/placementcell/B.Tech%2020120-21.pdf"},
-          {"year": "2021-22", "link": "https://www.nitgoa.ac.in/placementcell/B.Tech%202021-22.pdf"},
-          {"year": "2022-23", "link": "https://www.nitgoa.ac.in/placementcell/B.Tech%202022-23.pdf"},
-          {"year": "2023-24", "link": "https://www.nitgoa.ac.in/placementcell/B.Tech%202023-24.pdf"},
+          {"year": "2021-22", "link": "pdf/Training&Placement/B.Tech 2021-22.pdf"},
+          {"year": "2022-23", "link": "pdf/Training&Placement/B.Tech 2022-23.pdf"},
+          {"year": "2023-24", "link": "pdf/Training&Placement/B.Tech 2023-24.pdf"},
           {"year": "2024-25", "link": "#", "status": "Ongoing process, data in the process of compilation"}
         ],
         "m_tech": [
-          {"year": "2019-20", "link": "https://www.nitgoa.ac.in/placementcell/M.Tech%202019-20.pdf"},
-          {"year": "2020-21", "link": "https://www.nitgoa.ac.in/placementcell/M.Tech%202020-21.pdf"},
-          {"year": "2021-22", "link": "https://www.nitgoa.ac.in/placementcell/M.Tech%202021-22.pdf"},
-          {"year": "2022-23", "link": "https://www.nitgoa.ac.in/placementcell/M.Tech%202022-23.pdf"},
-          {"year": "2023-24", "link": "https://www.nitgoa.ac.in/placementcell/M.Tech%202023-24.pdf"},
+          {"year": "2019-20", "link": "pdf/Training&Placement/M.Tech 2019-20.pdf"},
+          {"year": "2020-21", "link": "pdf/Training&Placement/M.Tech 2020-21.pdf"},
+          {"year": "2021-22", "link": "pdf/Training&Placement/M.Tech 2021-22.pdf"},
+          {"year": "2022-23", "link": "pdf/Training&Placement/M.Tech 2022-23.pdf"},
+          {"year": "2023-24", "link": "pdf/Training&Placement/M.Tech 2023-24.pdf"},
           {"year": "2024-25", "link": "#", "status": "Ongoing process, data in the process of compilation"}
         ]
       },
