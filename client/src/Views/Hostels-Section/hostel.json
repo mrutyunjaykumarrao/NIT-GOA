@@ -20,11 +20,11 @@
     {
       "title": "Talpona Hostel (Boys Hostel)",
       "description": "Welcome to Hostel Talpona, a premier boys' hostel offering a comfortable and secure living environment for students. With a total of 825 single occupancy rooms, our hostel is designed to provide privacy and a conducive atmosphere for academic excellence. The hostel spans five floors, with 161 rooms on the ground floor and 166 rooms on each of the remaining four floors. Each room is equipped with a cot, chair, table, cupboard, calling bell, one fan, and one tube light, ensuring that every resident has a well-furnished and comfortable personal space.\nOur hostel boasts a range of facilities to cater to the needs of our residents. The mess facility, spread over two floors, can accommodate 200 students in a single sitting, ensuring timely and hygienic meals. Hostel Talpona features ten spacious common halls for socializing, studying, and recreational activities, along with four sick rooms equipped for basic healthcare and emergencies. Additionally, there are 20 store rooms, one conference hall, a security room, a visitor room, and one office room on each floor, ensuring all administrative and safety needs are met efficiently. The warden office will oversee all administration of the hostel.\nHostel Talpona is conveniently located near the NIT Goa ground, facilitating easy access for students to engage in various sports activities, including cricket, football, and volleyball. Inside the hostel, there are two badminton courts available for use. The hostel is governed by rules that promote cleanliness, respect, and a harmonious living environment.",
-      "image_url": "https://www.nitgoa.ac.in/uploads/boys%20hostel.png"
+      "image_url": "images/Hostels/boys-hostel.png"
     },
     {
       "title": "Terekhol Hostel (Girls Hostel)",
-       "image_url": "https://www.nitgoa.ac.in/uploads/girls%20hostel.png",
+       "image_url": "images/Hostels/girls-hostel.png",
       "description": "Welcome to Hostel Terekhol, a dedicated girls' hostel offering a secure and nurturing environment for students. With a capacity of 280 single occupancy rooms spread across three floors, our hostel is strategically designed to promote academic excellence and personal growth. The ground floor features essential facilities including a common hall for gatherings, a conference hall for events, a visitor room for guest accommodations, two store rooms for storage needs, and a warden room for administrative oversight. A separate mess facility is provided.\nMoving to the first floor, residents will find additional spaces to enhance their living experience. Two common halls provide areas for social interaction and group activities, complemented by three store rooms for convenience. A dedicated sick room ensures that residents receive prompt care and attention when needed. On the second floor, similar amenities are mirrored with two common halls, three store rooms, and another sick room, providing comprehensive support for our residents' well-being.\nHostel Terekhol is situated near the academic complex Mandovi, offering easy access to educational resources and cultural activities. Our commitment to safety is reflected in the presence of CCTV surveillance and round-the-clock security personnel. With amenities like WiFi connectivity and well-maintained facilities including a mess serving nutritious meals, residents enjoy a balanced lifestyle conducive to both academic success and personal development.\nFor more details on our facilities, guidelines, or fee structure, please reach out to our administrative office. We are dedicated to fostering a supportive community where every resident feels at home and empowered to excel in their academic journey."
     
     },
@@ -32,15 +32,15 @@
       "documents": [
         {
           "title": "Hostel Rules & Regulations",
-          "url": "https://www.nitgoa.ac.in/hostels/uploads/rules.pdf"
+          "url": "pdf/Hostels/rules.pdf"
         },
         {
           "title": "Hostel Code of Conduct",
-          "url": "https://www.nitgoa.ac.in/hostels/uploads/codeofconduct.pdf"
+          "url": "pdf/Hostels/codeofconduct.pdf"
         },
         {
           "title": "Hostel Fee Structure",
-          "url": "https://www.nitgoa.ac.in/hostels/uploads/hostelfeestructure.pdf"
+          "url": "pdf/Hostels/hostelfeestructure.pdf"
         }
       ]
     }
