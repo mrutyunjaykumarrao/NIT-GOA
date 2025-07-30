@@ -52,7 +52,7 @@ router.get('/faculty', async (req, res) => {
         e.honorific,
         e.email,
         e.extension_no as phone,
-        e.role as designation,
+        e.job_title as designation,
         e.employment_status,
         e.image_url as profile_image,
         e.is_hod,
