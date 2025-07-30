@@ -133,7 +133,7 @@
     font-weight: 400;
     color: #666;
     margin-bottom: 8px;
-    font-style: italic;
+    font-style: normal;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -145,14 +145,14 @@
 .administrative-staff-employment {
     font-size: 13px;
     font-weight: 600;
-    font-style: italic;
+    font-style: normal;
 }
 
 .administrative-staff-department {
     font-size: 13px;
     color: #666;
     margin-bottom: 15px;
-    font-style: italic;
+    font-style: normal;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
