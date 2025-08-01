@@ -424,6 +424,43 @@
       "other_social_links": null,
       "bio_summary": "Mr. Mohd Jahangeer Pasha is a Faculty on Contract in the Department of Computer Science and Engineering at NIT Goa.",
       "research_interests": null
+    },
+    {
+      "employee_code": "FAC013",
+      "full_name": "T. Veerakumar",
+      "honorific": "Dr.",
+      "email": "tveerakumar@nitgoa.ac.in",
+      "extension_no": "520",
+      "role": "Associate Professor & HOD",
+      "employment_status": "Permanent",
+      "employment_type": "Full-time",
+      "image_url": "images/Faculty/CSE/t_veerakumar.jpg",
+      "department_id": 2,
+      "designation_id": 25,
+      "is_hod": true,
+      "display_order": 1,
+      "gender": "Male",
+      "date_of_birth": null,
+      "date_of_joining": "2013-05-12",
+      "date_of_leaving": null,
+      "research_teaching_experience": "15 Years Teaching Experience as on 01/11/2021",
+      "address": "Department of Electronics & Communication Engineering, National Institute of Technology Goa , Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+      "office_location": "ECE Department, NIT Goa",
+      "office_hours": "Monday-Friday: 10:00 AM - 5:00 PM",
+      "linkedin_url": null,
+      "personal_website_url": "https://sites.google.com/view/tveerakumar/home",
+      "google_scholar_url": null,
+      "orcid_id": null,
+      "scopus_id": null,
+      "research_gate_url": null,
+      "other_social_links": null,
+      "bio_summary": "Dr. T. Veerakumar is an Associate Professor and Head of the Department of Electronics & Communication Engineering at NIT Goa",
+      "research_interests": [
+        "Image Compression",
+        "Image Denoising",
+        "Object detection and tracking",
+        "Medical Image Analysis"
+      ]
     }
   ]
 }
