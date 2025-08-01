@@ -21,49 +21,49 @@ const OutreachActivities = () => {
   // Image data for each card - using useMemo to prevent re-creation
   const cardImages = useMemo(() => ({
     card1: [
-      "https://www.nitgoa.ac.in/static/SPIEdamodarschool.jpg",
-      "https://www.nitgoa.ac.in/static/SPIEmushtfund.jpg",
-      "https://www.nitgoa.ac.in/static/stem3.jpg"
+      "/images/Outreach-activities/SPIEdamodarschool.jpg",
+      "/images/Outreach-activities/SPIEmushtfund.jpg",
+      "/images/Outreach-activities/stem3.jpg"
     ],
     card2: [
-      "https://www.nitgoa.ac.in/static/SCIENCE FAIR.jpg",
-      "https://www.nitgoa.ac.in/static/RAA.jpg",
-      "https://www.nitgoa.ac.in/static/stem4.jpg"
+      "/images/Outreach-activities/SCIENCE_FAIR.jpg",
+      "/images/Outreach-activities/RAA.jpg",
+      "/images/Outreach-activities/stem4.jpg"
     ],
     card3: [
-      "https://www.nitgoa.ac.in/static/swachhata 21march2024.jpg",
-      "https://www.nitgoa.ac.in/static/swachhata.jpg",
-      "https://www.nitgoa.ac.in/static/SHRAMDHAAN1.jpg"
+      "/images/Outreach-activities/swachhata_21march2024.jpg",
+      "/images/Outreach-activities/swachhata.jpg",
+      "/images/Outreach-activities/SHRAMDHAAN1.jpg"
     ],
     card4: [
-      "https://www.nitgoa.ac.in/static/arduino(1).jpg",
-      "https://www.nitgoa.ac.in/static/arduino(2).jpg",
-      "https://www.nitgoa.ac.in/static/stem5.jpg"
+      "/images/Outreach-activities/arduino_1.jpg",
+      "/images/Outreach-activities/arduino_2.jpg",
+      "/images/Outreach-activities/stem5.jpg"
     ],
     card5: [
-      "https://www.nitgoa.ac.in/static/UBA1.png",
-      "https://www.nitgoa.ac.in/static/SURVEY IN KALAY1.jpg",
-      "https://www.nitgoa.ac.in/static/KALAY_GRAMSABHA.jpg"
+      "/images/Outreach-activities/UBA1.png",
+      "/images/Outreach-activities/SURVEY_IN_KALAY1.jpg",
+      "/images/Outreach-activities/KALAY_GRAMSABHA.jpg"
     ],
     card6: [
-      "https://www.nitgoa.ac.in/static/School Visit.jpg",
-      "https://www.nitgoa.ac.in/static/Permanent_Campus.jpeg",
-      "https://www.nitgoa.ac.in/static/Industrial visit(1).jpg"
+      "/images/Outreach-activities/School_Visit.jpg",
+      "/images/Outreach-activities/Permanent_Campus.jpeg",
+      "/images/Outreach-activities/Industrial_visit_1.jpg"
     ],
     card7: [
-      "https://www.nitgoa.ac.in/static/img 16march2024.jpeg",
-      "https://www.nitgoa.ac.in/static/SHRAMDHAAN2.jpg",
-      "https://www.nitgoa.ac.in/static/img12march2024.jpg"
+      "/images/Outreach-activities/img_16march2024.jpeg",
+      "/images/Outreach-activities/SHRAMDHAAN2.jpg",
+      "/images/Outreach-activities/img12march2024.jpg"
     ],
     card8: [
-      "https://www.nitgoa.ac.in/static/enggday1.jpg",
-      "https://www.nitgoa.ac.in/static/enggday2.jpg",
-      "https://www.nitgoa.ac.in/static/enggday3.jpg"
+      "/images/Outreach-activities/enggday1.jpg",
+      "/images/Outreach-activities/enggday2.jpg",
+      "/images/Outreach-activities/enggday3.jpg"
     ],
     card9: [
-      "https://www.nitgoa.ac.in/static/stem1.jpg",
-      "https://www.nitgoa.ac.in/static/stem2.jpg",
-      "https://www.nitgoa.ac.in/static/stem3.jpg"
+      "/images/Outreach-activities/stem1.jpg",
+      "/images/Outreach-activities/stem2.jpg",
+      "/images/Outreach-activities/stem3.jpg"
     ]
   }), []);
 
@@ -226,7 +226,7 @@ const OutreachActivities = () => {
             </div>
             <div className="outreach-featured-story-image">
               <img 
-                src="https://www.nitgoa.ac.in/static/img6march2024.jpg" 
+                src="/images/Outreach-activities/img6march2024.jpg" 
                 alt="Women in STEM Initiative by SPIE Student Chapter" 
                 onError={(e) => {e.target.src = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"}}
               />

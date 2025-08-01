@@ -199,7 +199,7 @@ const GIAN = () => {
                                                     <p><strong>Date:</strong> 7-11 July, 2025</p>
                                                 </div>
                                                 <div className="gian-course-brochure">
-                                                    <a href="https://www.nitgoa.ac.in/gian/gianuploads/GIANBrochure%2015jan2025.pdf" target="_blank" rel="noopener noreferrer" className="gian-brochure-link">
+                                                    <a href="/pdf/GIAN/GIANBrochure_15jan2025.pdf" target="_blank" rel="noopener noreferrer" className="gian-brochure-link">
                                                         BROCHURE
                                                     </a>
                                                 </div>
