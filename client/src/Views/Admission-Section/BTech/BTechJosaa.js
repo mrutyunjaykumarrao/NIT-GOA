@@ -93,11 +93,11 @@ const BTechJosaa = () => {
             },
             {
                 title: "JoSAA 2024 Online Reporting Schedule",
-                link: "https://cdnbbsr.s3waas.gov.in/s313111c20aee51aeb480ecbd988cd8cc9/uploads/2024/06/2024062757.pdf"
+                link: "/pdf/admission/Btech/JOSAA-CSAB/JoSAA_2024_Online_Reporting_Schedule.pdf"
             },
             {
                 title: "JoSAA 2024 Business Rules",
-                link: "https://cdnbbsr.s3waas.gov.in/s313111c20aee51aeb480ecbd988cd8cc9/uploads/2024/06/2024062773.pdf"
+                link: "/pdf/admission/Btech/JOSAA-CSAB/JoSAA_2024_Business_Rules.pdf"
             },
             {
                 title: "Opening & Closing Ranks (CSAB Special Round-II)",
