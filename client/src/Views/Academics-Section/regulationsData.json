@@ -1,0 +1,118 @@
+{
+  "regulations_page": {
+    "title": "Rules and Regulations",
+    "sections": [
+      {
+        "id": "ug-rules-regulations",
+        "section": "U.G Rules Regulations:",
+        "type": "simple",
+        "entries": [
+          {
+            "title": "Batches Admitted for B.Tech from 2023 onwards",
+            "file": "/pdf/Academics/Rules_Regulations/Batches Admitted for B.Tech from 2023 onwards.pdf"
+          },
+          {
+            "title": "Batches Admitted for B.Tech from 2013 to 2022",
+            "file": "/pdf/Academics/Rules_Regulations/Batches Admitted for B.Tech from 2013 to 2022.pdf"
+          },
+          {
+            "title": "Batches Admitted for B.Tech in 2010, 2011, 2012",
+            "file": "/pdf/Academics/Rules_Regulations/Batches Admitted for B.Tech in 2010, 2011, 2012.pdf"
+          },
+          {
+            "title": "P.G Rules & Regulations",
+            "file": "/pdf/Academics/Rules_Regulations/P.G Rules & Regulations.pdf"
+          },
+          {
+            "title": "Ph.D. Rules & Regulations",
+            "file": "/pdf/Academics/Rules_Regulations/Ph.D. Rules & Regulations.pdf"
+          },
+          {
+            "title": "Post-Doc Fellowship Rules & Regulations",
+            "file": "/pdf/Academics/Rules_Regulations/Post-Doc Fellowship Rules & Regulations.pdf"
+          }
+        ]
+      },
+      {
+        "id": "ug-curriculum",
+        "section": "U.G Curriculum:",
+        "type": "mixed",
+        "entries": [
+          {
+            "title": "Academic Handbook for Batches admitted for B.Tech from 2023 onwards",
+            "type": "dropdown",
+            "dropdownItems": [
+              {
+                "title": "First Year (Common to all departments)",
+                "file": "/pdf/Academics/Curriculum/Academic Handbook for Batches admitted for B.Tech from 2023 onwards.pdf"
+              },
+              {
+                "title": "II, III & IV Year",
+                "type": "department_buttons",
+                "departments": [
+                  {
+                    "name": "CSE",
+                    "file": "/pdf/Academics/Curriculum/CSE_Academic_Handbook_2023_onwards.pdf"
+                  },
+                  {
+                    "name": "ECE",
+                    "file": "/pdf/Academics/Curriculum/ECE_Academic_Handbook_2023_onwards.pdf"
+                  },
+                  {
+                    "name": "EEE",
+                    "file": "/pdf/Academics/Curriculum/EEE_Academic_Handbook_2023_onwards.pdf"
+                  },
+                  {
+                    "name": "MCE",
+                    "file": "/pdf/Academics/Curriculum/MCE_Academic_Handbook_2023_onwards.pdf"
+                  },
+                  {
+                    "name": "CVE",
+                    "file": "/pdf/Academics/Curriculum/CVE_Academic_Handbook_2023_onwards.pdf"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Minor Syllabus for Batches Admitted in B.Tech from 2022 onwards",
+            "type": "dropdown",
+            "dropdownItems": [
+              {
+                "title": "Minor in CSE",
+                "file": "/pdf/Academics/Curriculum/Minor_CSE_2022_onwards.pdf"
+              },
+              {
+                "title": "Minor in ECE",
+                "file": "/pdf/Academics/Curriculum/Minor_ECE_2022_onwards.pdf"
+              },
+              {
+                "title": "Minor in EEE",
+                "file": "/pdf/Academics/Curriculum/Minor_EEE_2022_onwards.pdf"
+              },
+              {
+                "title": "Minor in Computational Mathematics",
+                "file": "/pdf/Academics/Curriculum/Minor_Computational_Mathematics_2022_onwards.pdf"
+              }
+            ]
+          },
+          {
+            "title": "Academic Handbook for Batches admitted for B.Tech from 2013 to 2022",
+            "type": "simple",
+            "file": "/pdf/Academics/Curriculum/Academic Handbook for Batches admitted for B.Tech from 2013 to 2022.pdf"
+          },
+          {
+            "title": "Academic Handbook for B.Tech in 2010, 2011, 2012",
+            "type": "simple",
+            "file": "/pdf/Academics/Curriculum/Academic Handbook for Batches admitted for B.Tech in 2010, 2011, 2012.pdf"
+          },
+          {
+            "title": "Academic Handbook of courses for PG",
+            "type": "simple",
+            "file": "/pdf/Academics/Curriculum/Academic Handbook of courses for PG.pdf"
+          }
+        ]
+      }
+    ]
+  }
+}
