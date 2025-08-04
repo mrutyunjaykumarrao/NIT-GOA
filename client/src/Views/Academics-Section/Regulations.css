@@ -71,12 +71,46 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     padding: 24px;
     transition: all 0.3s ease;
+    outline: none !important;
+    border: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    user-select: none !important;
+}
+
+.regulations-page .event-card:focus,
+.regulations-page .event-card:active,
+.regulations-page .event-card:focus-visible,
+.regulations-page .event-card:focus-within {
+    outline: none !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+    -webkit-tap-highlight-color: transparent !important;
 }
 
 /* Dropdown specific card styling */
 .regulations-page .dropdown-card {
     flex-direction: column;
     align-items: stretch;
+    outline: none !important;
+    border: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    user-select: none !important;
+}
+
+.regulations-page .dropdown-card:focus,
+.regulations-page .dropdown-card:active,
+.regulations-page .dropdown-card:focus-visible,
+.regulations-page .dropdown-card:focus-within {
+    outline: none !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+    -webkit-tap-highlight-color: transparent !important;
 }
 
 [data-theme="dark"] .regulations-page .event-card {
@@ -100,6 +134,15 @@
     align-items: center;
     padding: 0;
     width: 100%;
+    outline: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.regulations-page .dropdown-header:focus {
+    outline: none;
+    border: none;
 }
 
 /* Dropdown Arrow */

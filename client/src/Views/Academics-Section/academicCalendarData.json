@@ -3,20 +3,20 @@
     "title": "Academic Calendar",
     "sections": [
       {
-        "id": "academic-calendar-2025-26",
-        "section": "Academic Calendar 2025-26:",
+        "id": "academic-calendar-2025-2026",
+        "section": "Academic Calendar 2025-2026:",
         "type": "simple",
         "entries": [
           {
-            "title": "Academic Calendar(ODD Semester of AY: 2025-26) For B.Tech, M.Tech & Ph.D (Higher Semesters)",
+            "title": "Academic Calendar (ODD Semester of AY: 2025-26) For B.Tech, M.Tech & Ph.D (Higher Semesters)",
             "type": "simple",
             "file": "/pdf/Academics/Academic_Calendar/Academic Calendar(ODD Semester of AY- 2025-26) For B.Tech, M.Tech & Ph.D (Higher Semesters).pdf"
           }
         ]
       },
       {
-        "id": "academic-calendar-2024-25",
-        "section": "Academic Calendar 2024-25:",
+        "id": "academic-calendar-2024-2025",
+        "section": "Academic Calendar 2024-2025:",
         "type": "simple",
         "entries": [
           {
@@ -30,7 +30,7 @@
             "file": "/pdf/Academics/Academic_Calendar/Academic Calendar(ODD Semester of AY- 2024-25) For B.Tech, M.Tech & Ph.D (Higher Semesters).pdf"
           },
           {
-            "title": "Academic Calendar(EVEN Semester of AY: 2024-25) For B.Tech, M.Tech & Ph.D (All Semesters)",
+            "title": "Academic Calendar (EVEN Semester of AY: 2024-25) For B.Tech, M.Tech & Ph.D (All Semesters)",
             "type": "simple",
             "file": "/pdf/Academics/Academic_Calendar/Academic Calendar(EVEN Semester of AY- 2024-25) For B.Tech, M.Tech & Ph.D (All Semesters).pdf"
           }
