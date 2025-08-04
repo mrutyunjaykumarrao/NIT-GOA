@@ -44,7 +44,7 @@
             "dropdownItems": [
               {
                 "title": "First Year (Common to all departments)",
-                "file": "/pdf/Academics/Curriculum/Academic Handbook for Batches admitted for B.Tech from 2023 onwards.pdf"
+                "file": "/pdf/Academics/Curriculum/Academic Handbook/FIRST YEAR 24july2025.pdf"
               },
               {
                 "title": "II, III & IV Year",
@@ -52,23 +52,23 @@
                 "departments": [
                   {
                     "name": "CSE",
-                    "file": "/pdf/Academics/Curriculum/CSE_Academic_Handbook_2023_onwards.pdf"
+                    "file": "/pdf/Academics/Curriculum/Academic Handbook/CSE2025.pdf"
                   },
                   {
                     "name": "ECE",
-                    "file": "/pdf/Academics/Curriculum/ECE_Academic_Handbook_2023_onwards.pdf"
+                    "file": "/pdf/Academics/Curriculum/Academic Handbook/ECE2025.pdf"
                   },
                   {
                     "name": "EEE",
-                    "file": "/pdf/Academics/Curriculum/EEE_Academic_Handbook_2023_onwards.pdf"
+                    "file": "/pdf/Academics/Curriculum/Academic Handbook/EEE2025.pdf"
                   },
                   {
                     "name": "MCE",
-                    "file": "/pdf/Academics/Curriculum/MCE_Academic_Handbook_2023_onwards.pdf"
+                    "file": "/pdf/Academics/Curriculum/Academic Handbook/Mechanical2025.pdf"
                   },
                   {
                     "name": "CVE",
-                    "file": "/pdf/Academics/Curriculum/CVE_Academic_Handbook_2023_onwards.pdf"
+                    "file": "/pdf/Academics/Curriculum/Academic Handbook/CVE2025.pdf"
                   }
                 ]
               }
@@ -80,19 +80,19 @@
             "dropdownItems": [
               {
                 "title": "Minor in CSE",
-                "file": "/pdf/Academics/Curriculum/Minor_CSE_2022_onwards.pdf"
+                "file": "/pdf/Academics/Curriculum//Minor Syllabus for Batches Admitted in B.Tech from 2022 onwards/Minor in CSE.pdf"
               },
               {
                 "title": "Minor in ECE",
-                "file": "/pdf/Academics/Curriculum/Minor_ECE_2022_onwards.pdf"
+                "file": "/pdf/Academics/Curriculum/Minor Syllabus for Batches Admitted in B.Tech from 2022 onwards/Minor in ECE.pdf"
               },
               {
                 "title": "Minor in EEE",
-                "file": "/pdf/Academics/Curriculum/Minor_EEE_2022_onwards.pdf"
+                "file": "/pdf/Academics/Curriculum/Minor Syllabus for Batches Admitted in B.Tech from 2022 onwards/Minor in EEE.pdf"
               },
               {
                 "title": "Minor in Computational Mathematics",
-                "file": "/pdf/Academics/Curriculum/Minor_Computational_Mathematics_2022_onwards.pdf"
+                "file": "/pdf/Academics/Curriculum/Minor Syllabus for Batches Admitted in B.Tech from 2022 onwards/Minor in Computational Mathematics.pdf"
               }
             ]
           },

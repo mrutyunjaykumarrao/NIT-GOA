@@ -1,62 +1,23 @@
 import React from 'react';
 import './AcademicCalendar.css';
-
-const academicCalendarData = [
-  {
-    section: 'Academic Calendar 2024-25:',
-    entries: [
-      {
-        title: 'Academic Calendar (ODD Semester 2024-25) - First Year',
-        file: '/pdf/Academics/Academic_Calendar/Academic Calendar(ODD Semester of AY- 2024-25) For B.Tech, M.Tech & Ph.D (First Year).pdf',
-      },
-      {
-        title: 'Academic Calendar (ODD Semester 2024-25) - Higher Semesters',
-        file: '/pdf/Academics/Academic_Calendar/Academic Calendar(ODD Semester of AY- 2024-25) For B.Tech, M.Tech & Ph.D (Higher Semesters).pdf',
-      },
-      {
-        title: 'Academic Calendar (EVEN Semester 2024-25)',
-        file: '/pdf/Academics/Academic_Calendar/Academic Calendar(EVEN Semester of AY- 2024-25) For B.Tech, M.Tech & Ph.D (All Semesters).pdf',
-      },
-    ],
-  },
-  {
-    section: 'Academic Calendar 2025-26:',
-    entries: [
-      {
-        title: 'Academic Calendar (ODD Semester 2025-26) - Higher Semesters',
-        file: '/pdf/Academics/Academic_Calendar/Academic Calendar(ODD Semester of AY- 2025-26) For B.Tech, M.Tech & Ph.D (Higher Semesters).pdf',
-      },
-    ],
-  },
-  {
-    section: 'Holiday Lists:',
-    entries: [
-      {
-        title: 'List of Closed Holidays for the Year 2024',
-        file: '/pdf/Academics/Academic_Calendar/List of Closed Holidays for the Year 2024.pdf',
-      },
-      {
-        title: 'List of Closed Holidays for the Year 2025',
-        file: '/pdf/Academics/Academic_Calendar/List of Closed Holidays for the Year 2025.pdf',
-      },
-    ],
-  },
-];
+import academicCalendarDataFile from './academicCalendarData.json';
 
 const AcademicCalendar = () => {
+  const academicCalendarData = academicCalendarDataFile.academic_calendar_page.sections;
+
   return (
     <div className="academic-calendar-page">
       <div className="academic-calendar-container">
         <div className="page-header">
           <h1>Academic Calendar</h1>
         </div>
-        {academicCalendarData.map((block, i) => (
+        {academicCalendarData.map((section, i) => (
           <div key={i} className="calendar-section">
             <h2 className="section-title">
-              {block.section}
+              {section.section}
             </h2>
             <div className="events-list">
-              {block.entries.map((entry, idx) => (
+              {section.entries.map((entry, idx) => (
                 <div
                   key={idx}
                   className="event-card"
