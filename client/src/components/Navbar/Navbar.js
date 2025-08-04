@@ -375,8 +375,8 @@ const Navbar = () => {
                 <a href="/administration/finance-committee">Finance Committee</a>
                 <a href="/administration/building-works-committee">Building and Works Committee</a>
                 <a href="/heads-of-departments">Heads of Departments</a>
-                <a href="https://www.nitgoa.ac.in/uploads/NITGoaStatute-2023.pdf" target="_blank" rel="noopener noreferrer">NIT Goa(Amendment) Statute 2023</a>
-                <a href="/pdf/Administration/organisationalstructure/Org_Chart.pdf" target="_blank" rel="noopener noreferrer">Organizational Structure</a>
+                <a href="/pdf/administration/NIT-GOA-Amendment-statute-2023/NITGoaStatute-2023.pdf" target="_blank" rel="noopener noreferrer">NIT Goa(Amendment) Statute 2023</a>
+                <a href="/pdf/administration/organizational-structure/Org_Chart.pdf" target="_blank" rel="noopener noreferrer">Organizational Structure</a>
                 <a href="/reports">Reports</a>
               </div>
             )}
@@ -434,7 +434,7 @@ const Navbar = () => {
                   <a href="/admissions/mtech">M.Tech</a>
                   <a href="/admissions/phd">Ph.D</a>
                   <a href="https://www.nitgoa.ac.in/uploads/AdmissionBrochure%202august2024.pdf" target="_blank" rel="noopener noreferrer">Admission Brochure</a>
-                  <a href="https://www.nitgoa.ac.in/static/fee_structure_23-24_25july2023.pdf" target="_blank" rel="noopener noreferrer">Fee Structure</a>
+                  <a href="/pdf/admission/fee-structure/fee_structure_23-24_25july2023.pdf" target="_blank" rel="noopener noreferrer">Fee Structure</a>
                   <div 
                     className="navbar-dropdown-item-with-submenu"
                     onMouseEnter={() => handleSubmenuEnter('hostels')}
@@ -446,7 +446,7 @@ const Navbar = () => {
                     </span>
                     {activeSubmenu === 'hostels' && (
                     <div className="navbar-submenu hostels-submenu">
-                      <a href="https://www.nitgoa.ac.in/static/Rules_of_NIT_Goa_Hostel_18July2022.pdf" target="_blank" rel="noopener noreferrer">B.Tech Students</a>
+                      <a href="/pdf/admission/Hostels/Btech-student/Rules_of_NIT_Goa_Hostel_18July2022.pdf" target="_blank" rel="noopener noreferrer">B.Tech Students</a>
                       <a href="https://www.nitgoa.ac.in/static/Rules_mtech_hostel_20june16.pdf" target="_blank" rel="noopener noreferrer">M.Tech Students</a>
                     </div>
                     )}
@@ -483,7 +483,7 @@ const Navbar = () => {
                 <a href="/faculty">Faculty</a>
                 <a href="/technical-staff">Technical Staff</a>
                 <a href="/administrative-staff">Administrative Staff</a>
-                <a href="https://www.nitgoa.ac.in/static/TelephoneDirectory.pdf" target="_blank" rel="noopener noreferrer">Telephone Directory</a>
+                <a href="/pdf/administration/Telephone-Directory/TelephoneDirectory.pdf" target="_blank" rel="noopener noreferrer">Telephone Directory</a>
               </div>
             )}
           </div>
@@ -500,7 +500,7 @@ const Navbar = () => {
                 <a href="/research/rd-projects">R & D Projects</a>
                 <a href="https://www.nitgoa.ac.in/research/Research_Consultancy/research_consultancy.html" target="_blank" rel="noopener noreferrer">Research & Consultancy</a>
                 <a href="/research/mou-details">Details Of MoUs</a>
-                <a href="https://www.nitgoa.ac.in/static/NIT_Goa_IPR_10Nov2015.pdf" target="_blank" rel="noopener noreferrer">IPR Policy</a>
+                <a href="/pdf/research/IPR-policy/NIT_Goa_IPR_10Nov2015.pdf" target="_blank" rel="noopener noreferrer">IPR Policy</a>
               </div>
             )}
           </div>
@@ -572,8 +572,8 @@ const Navbar = () => {
                     <button onClick={() => handleMobileNavigation('/administration/finance-committee')}>Finance Committee</button>
                     <button onClick={() => handleMobileNavigation('/administration/building-works-committee')}>Building and Works Committee</button>
                     <button onClick={() => handleMobileNavigation('/heads-of-departments')}>Heads of Departments</button>
-                    <button onClick={() => window.open('https://www.nitgoa.ac.in/uploads/NITGoaStatute-2023.pdf', '_blank')}>NIT Goa(Amendment) Statute 2023</button>
-                    <button onClick={() => window.open('/pdf/Administration/organisationalstructure/Org_Chart.pdf', '_blank')}>Organizational Structure</button>
+                    <button onClick={() => window.open('/pdf/administration/NIT-GOA-Amendment-statute-2023/NITGoaStatute-2023.pdf', '_blank')}>NIT Goa(Amendment) Statute 2023</button>
+                    <button onClick={() => window.open('/pdf/administration/organizational-structure/Org_Chart.pdf', '_blank')}>Organizational Structure</button>
                     <button onClick={() => handleMobileNavigation('/reports')}>Reports</button>
                   </div>
                 )}
@@ -636,7 +636,7 @@ const Navbar = () => {
                     
                     <button onClick={() => handleMobileNavigation('/admissions/mtech')}>M.Tech</button>
                     <button onClick={() => handleMobileNavigation('/admissions/phd')}>Ph.D</button>
-                    <button onClick={() => window.open('https://www.nitgoa.ac.in/static/fee_structure_23-24_25july2023.pdf', '_blank')}>Fee Structure</button>
+                    <button onClick={() => window.open('/pdf/admission/fee-structure/fee_structure_23-24_25july2023.pdf', '_blank')}>Fee Structure</button>
                     <button onClick={() => window.open('https://www.nitgoa.ac.in/uploads/AdmissionBrochure%202august2024.pdf', '_blank')}>Admission Brochure</button>
                     
                     {/* Hostels Submenu */}
@@ -651,7 +651,7 @@ const Navbar = () => {
                     </button>
                     {mobileNestedDropdown === 'hostels' && (
                       <div className="mobile-dropdown-menu open">
-                        <button onClick={() => window.open('https://www.nitgoa.ac.in/static/Rules_of_NIT_Goa_Hostel_18July2022.pdf', '_blank')}>B.Tech Students</button>
+                        <button onClick={() => window.open('/pdf/admission/Hostels/Btech-student/Rules_of_NIT_Goa_Hostel_18July2022.pdf', '_blank')}>B.Tech Students</button>
                         <button onClick={() => window.open('https://www.nitgoa.ac.in/static/Rules_mtech_hostel_20june16.pdf', '_blank')}>M.Tech Students</button>
                       </div>
                     )}
@@ -716,7 +716,7 @@ const Navbar = () => {
                     <button onClick={() => handleMobileNavigation('/research/rd-projects')}>R & D Projects</button>
                     <button onClick={() => window.open('https://www.nitgoa.ac.in/research/Research_Consultancy/research_consultancy.html', '_blank')}>Research & Consultancy</button>
                     <button onClick={() => handleMobileNavigation('/research/mou-details')}>Details Of MoUs</button>
-                    <button onClick={() => window.open('https://www.nitgoa.ac.in/static/NIT_Goa_IPR_10Nov2015.pdf', '_blank')}>IPR Policy</button>
+                    <button onClick={() => window.open('/pdf/research/IPR-policy/NIT_Goa_IPR_10Nov2015.pdf', '_blank')}>IPR Policy</button>
                   </div>
                 )}
               </div>

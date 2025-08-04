@@ -60,11 +60,11 @@ const MTech = () => {
         resources: [
             {
                 title: "CCMT Information Brochure 2025",
-                link: "https://www.nitgoa.ac.in/uploads/ccmtbrochure2025.pdf"
+                link: "/pdf/admission/Mtech/ccmtbrochure2025.pdf"
             },
             {
                 title: "Fee Structure 2025-26",
-                link: "https://www.nitgoa.ac.in/static/fee_structure_23-24_25july2023.pdf"
+                link: "/pdf/admission/fee-structure/fee_structure_23-24_25july2023.pdf"
             },
             {
                 title: "CCMT Schedule 2025",
@@ -72,7 +72,7 @@ const MTech = () => {
             },
             {
                 title: "Admission Brochure 2024",
-                link: "https://www.nitgoa.ac.in/uploads/AdmissionBrochure2024.pdf"
+                link: "/pdf/admission/admission-brochure/AdmissionBrochure2024.pdf"
             }
         ]
     };

@@ -50,11 +50,11 @@ const BTechDasa = () => {
         resources: [
             {
                 title: "Schedule of DASA 2024 UG Counselling",
-                link: "https://www.nitgoa.ac.in/uploads/DASA%20Schedule%202024.pdf"
+                link: "/pdf/admission/Btech/DASA/DASA_Schedule_2024.pdf"
             },
             {
                 title: "DASA UG Brochure 2024",
-                link: "https://www.nitgoa.ac.in/uploads/DASA%20Brochure%202024.pdf"
+                link: "/pdf/admission/Btech/DASA/DASA_Brochure_2024.pdf"
             },
             {
                 title: "DASA Official Website",

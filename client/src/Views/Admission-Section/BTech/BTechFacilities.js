@@ -15,7 +15,7 @@ const BTechFacilities = () => {
 
                 <div className="btech-facilities-content-section">
                     <div className="btech-facilities-image">
-                        <img src="https://www.nitgoa.ac.in/uploads/tutorialblock.jpg" alt="NIT Goa Campus - Academic Block" />
+                        <img src="/images/admission/Btech/facilities/tutorialblock.jpg" alt="NIT Goa Campus - Academic Block" />
                     </div>
                     
                     <div className="btech-facilities-main-content">

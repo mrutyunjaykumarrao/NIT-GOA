@@ -9,7 +9,7 @@ const PhD = () => {
         importantLinks: [
             {
                 title: "Ph.D. Information Brochure",
-                link: "https://www.nitgoa.ac.in/static/Ph.D%20Admission%20Brochure%2022%20May%202025Rev.pdf",
+                link: "/pdf/admission/phd/PhD_Admission_Brochure_22_May_2025Rev.pdf",
                 description: "Complete admission guidelines and requirements"
             },
             {
@@ -24,7 +24,7 @@ const PhD = () => {
             },
             {
                 title: "Ph.D. Rules & Regulations",
-                link: "https://www.nitgoa.ac.in/uploads/PhD%20(Rules%20&%20Regulations)_2014-15_Jan%202025_Merge.pdf",
+                link: "/pdf/admission/phd/PhD_Rules_Regulations_2014-15_Jan_2025_Merge.pdf",
                 description: "Official Ph.D. program regulations"
             }
         ]
