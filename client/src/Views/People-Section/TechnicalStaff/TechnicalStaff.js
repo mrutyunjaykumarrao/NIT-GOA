@@ -268,8 +268,8 @@ const TechnicalStaff = () => {
                                     <p className="technical-staff-designation">{staff.speciality}</p>
                                     <p className="technical-staff-department">{staff.department}</p>
                                     <div className="technical-staff-contact">
-                                        <p><strong>Email:</strong> {staff.email}</p>
-                                        <p><strong>Extension No.:</strong> {staff.phone}</p>
+                                        <p><strong>Email:</strong> <a href={`mailto:${staff.email}`}>{staff.email}</a></p>
+                                        <p><strong>Extension No.:</strong> <a href={`tel:${staff.phone}`}>{staff.phone}</a></p>
                                     </div>
                                 </div>
                             </div>

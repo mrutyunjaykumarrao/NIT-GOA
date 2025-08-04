@@ -826,8 +826,8 @@ const Faculty = () => {
                                     <p className="faculty-designation">{faculty.designation}</p>
                                     <p className="faculty-department">{faculty.department}</p>
                                     <div className="faculty-contact">
-                                        <p><strong>Email:</strong> {faculty.email}</p>
-                                        <p><strong>Extension No.:</strong> {faculty.phone}</p>
+                                        <p><strong>Email:</strong> <a href={`mailto:${faculty.email}`}>{faculty.email}</a></p>
+                                        <p><strong>Extension No.:</strong> <a href={`tel:${faculty.phone}`}>{faculty.phone}</a></p>
                                     </div>
                                     <div className="faculty-actions">
                                         <button className="view-profile-btn" onClick={() => {

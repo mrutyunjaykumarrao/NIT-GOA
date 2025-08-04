@@ -244,8 +244,8 @@ const AdministrativeStaff = () => {
                                 <p className="administrative-staff-designation">{staff.designation}</p>
                                 <p className="administrative-staff-department">{staff.department}</p>
                                 <div className="administrative-staff-contact">
-                                    <p><strong>Email:</strong> {staff.email}</p>
-                                    <p><strong>Extenson No.:</strong> {staff.phone}</p>
+                                    <p><strong>Email:</strong> <a href={`mailto:${staff.email}`}>{staff.email}</a></p>
+                                    <p><strong>Extenson No.:</strong> <a href={`tel:${staff.phone}`}>{staff.phone}</a></p>
                                 </div>
                             </div>
                         </div>

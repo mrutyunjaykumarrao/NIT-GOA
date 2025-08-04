@@ -64,6 +64,30 @@
         inset 0 -1px 0 rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
+    outline: none;
+}
+
+.faculty-filter-btn {
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+.faculty-filter-btn:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.faculty-filter-btn:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.faculty-filter-btn:active {
+    outline: none !important;
+    box-shadow: 
+        0 8px 32px rgba(31, 38, 135, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1) !important;
 }
 
 .faculty-filter-btn::before {
@@ -292,7 +316,7 @@
 .faculty-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .faculty-info {
@@ -333,7 +357,7 @@
     font-size: 13px;
     color: #666;
     margin-bottom: 15px;
-    font-style: italic;
+    font-style: normal;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -358,6 +382,28 @@
 
 .faculty-contact strong {
     color: #1976d2;
+}
+
+/* Contact Links Styles */
+.faculty-contact a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.faculty-contact a:hover {
+    color: #1976d2;
+    text-decoration: none;
+}
+
+.faculty-contact a:focus {
+    outline: none;
+    color: #1976d2;
+}
+
+.faculty-contact a:visited {
+    color: inherit;
+    text-decoration: none;
 }
 
 /* Faculty Actions */
@@ -661,7 +707,7 @@
     .faculty-image img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: fill;
     }
     
     .faculty-name {
@@ -719,6 +765,26 @@
         0 8px 32px rgba(0, 0, 0, 0.4),
         inset 0 1px 0 rgba(255, 255, 255, 0.08),
         inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+.faculty-page.dark .faculty-filter-btn:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.faculty-page.dark .faculty-filter-btn:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.faculty-page.dark .faculty-filter-btn:active {
+    outline: none !important;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.4) !important;
 }
 
 .faculty-page.dark .faculty-filter-btn:hover {
@@ -784,6 +850,26 @@
 
 .faculty-page.dark .faculty-contact strong {
     color: #4fc3f7;
+}
+
+.faculty-page.dark .faculty-contact a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.faculty-page.dark .faculty-contact a:hover {
+    color: #4fc3f7;
+    text-decoration: none;
+}
+
+.faculty-page.dark .faculty-contact a:focus {
+    outline: none;
+    color: #4fc3f7;
+}
+
+.faculty-page.dark .faculty-contact a:visited {
+    color: inherit;
+    text-decoration: none;
 }
 
 .faculty-page.dark .faculty-card.hod-card .faculty-contact {
