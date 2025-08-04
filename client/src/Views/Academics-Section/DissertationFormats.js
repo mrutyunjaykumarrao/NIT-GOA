@@ -1,55 +1,28 @@
 import React from 'react';
 import './DissertationFormats.css';
-
-const dissertationFormatsData = [
-  {
-    section: 'B.Tech Dissertation Formats:',
-    entries: [
-      {
-        title: 'B.Tech Project Report Format',
-        file: '/pdf/Academics/Dissertation_Formats/BTechReportFormat.rar',
-      },
-    ],
-  },
-  {
-    section: 'M.Tech Dissertation Formats:',
-    entries: [
-      {
-        title: 'M.Tech Dissertation Format',
-        file: '/pdf/Academics/Dissertation_Formats/MTechDissertationFormat.rar',
-      },
-    ],
-  },
-  {
-    section: 'Ph.D Dissertation Formats:',
-    entries: [
-      {
-        title: 'Ph.D Dissertation Format',
-        file: '/pdf/Academics/Dissertation_Formats/PhDDissertationFormat.rar',
-      },
-    ],
-  },
-];
+import dissertationFormatsDataFile from './dissertationFormatsData.json';
 
 const DissertationFormats = () => {
+  const dissertationFormatsData = dissertationFormatsDataFile.dissertation_formats_page.sections;
+
   return (
     <div className="dissertation-formats-page">
       <div className="dissertation-formats-container">
         <div className="page-header">
           <h1>Dissertation Formats</h1>
         </div>
-        {dissertationFormatsData.map((block, i) => (
-          <div key={i} className="format-section">
+        {dissertationFormatsData.map((section, i) => (
+          <div key={i} className="formats-section">
             <h2 className="section-title">
-              {block.section}
+              {section.section}
             </h2>
-            <div className="events-list">
-              {block.entries.map((entry, idx) => (
+            <div className="formats-list">
+              {section.entries.map((entry, idx) => (
                 <div
                   key={idx}
-                  className="event-card"
+                  className="format-card"
                 >
-                  <div className="event-title">
+                  <div className="format-title">
                     {entry.title}
                   </div>
                   <button
@@ -105,7 +78,7 @@ const DissertationFormats = () => {
                         fill="#e3eafc"
                       />
                     </svg>
-                    Download PDF
+                    Download File
                   </button>
                 </div>
               ))}
