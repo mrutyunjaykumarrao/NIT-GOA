@@ -1,5 +1,6 @@
 import React from 'react';
 import './HeadsOfDepartments.css';
+import hodData from './headsOfDepartments.json';
 
 // Import head of department images
 import VeenathenkanidiyoorImg from '../../assets/images/Faculty/CSE/Dr. Veena Thenkanidiyoor.png';
@@ -10,62 +11,21 @@ import PrasenjitDeyImg from '../../assets/images/Faculty/MCE/Dr. PRASENJIT DEY.p
 import HarikumarImg from '../../assets/images/Faculty/CVE/Dr. Harikumar M.png';
 
 const HeadsOfDepartments = () => {
-  const departmentHeads = [
-    {
-      name: 'Dr. Veena Thenkanidiyoor',
-      department: 'Computer Science and Engineering',
-      shortDept: 'CSE',
-      email: 'hod.cse@nitgoa.ac.in',
-      phone: '0832-2404432',
-      image: VeenathenkanidiyoorImg
-    },
-    {
-      name: 'Dr. Suresh Mikkili',
-      department: 'Electrical and Electronics Engineering',
-      shortDept: 'EEE',
-      email: 'hod.eee@nitgoa.ac.in',
-      phone: '0832-2404645',
-      image: SureshMikkiliImg
-    },
-    {
-      name: 'Dr. Veerakumar T',
-      department: 'Electronics and Communication Engineering',
-      shortDept: 'ECE',
-      email: 'hod.ece@nitgoa.ac.in',
-      phone: '0832-2404520',
-      image: VeerakumarImg
-    },
-    {
-      name: 'Dr. L. Shangerganesh',
-      department: 'Applied Sciences and Humanities & Social Sciences',
-      shortDept: 'APS',
-      email: 'hod.hs@nitgoa.ac.in',
-      phone: '0832-2404728',
-      image: ShangerganeshImg
-    },
-    {
-      name: 'Dr. Prasenjit Dey',
-      department: 'Mechanical Engineering',
-      shortDept: 'MCE',
-      email: 'hod.mech@nitgoa.ac.in',
-      phone: '0832-2404834',
-      image: PrasenjitDeyImg
-    },
-    {
-      name: 'Dr. Harikumar M',
-      department: 'Civil Engineering',
-      shortDept: 'CVE',
-      email: 'hod.civil@nitgoa.ac.in',
-      phone: '0832-2404846',
-      image: HarikumarImg
-    }
-  ];
+  // Image mapping object
+  const imageMap = {
+    VeenathenkanidiyoorImg,
+    SureshMikkiliImg,
+    VeerakumarImg,
+    ShangerganeshImg,
+    PrasenjitDeyImg,
+    HarikumarImg
+  };
 
   const renderHodProfile = (head) => (
     <div className="hod-profile">
       <div className="hod-image">
-        {head.image ? (
-          <img src={head.image} alt={head.name} />
+        {imageMap[head.image_key] ? (
+          <img src={imageMap[head.image_key]} alt={head.name} />
         ) : (
           <div className="hod-image-placeholder">
             👤
@@ -87,14 +47,14 @@ const HeadsOfDepartments = () => {
     <div className="heads-of-departments-page">
       <div className="heads-of-departments-container">
         <div className="heads-of-departments-page-header">
-          <h1>Heads of Departments</h1>
+          <h1>{hodData.page_info.title}</h1>
         </div>
 
         <div className="hod-cards-grid">
-          {departmentHeads.map((head, index) => (
+          {hodData.department_heads.map((head, index) => (
             <div key={index} className="hod-card">
               <div className="hod-card-header">
-                <h2 className="hod-department-title">{head.shortDept}</h2>
+                <h2 className="hod-department-title">{head.short_dept}</h2>
                 <div className="hod-department-full">{head.department}</div>
               </div>
               

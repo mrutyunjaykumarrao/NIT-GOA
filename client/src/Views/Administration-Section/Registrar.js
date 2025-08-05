@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Registrar.css';
+import registrarData from './registrar.json';
 import registrarImage from '../../assets/images/administration/registrar2023.jpeg';
 
 const Registrar = () => {
@@ -13,7 +14,7 @@ const Registrar = () => {
     <div className="registrar-page">
       <div className="container">
         <div className="registrar-page-header">
-          <h1>Registrar</h1>
+          <h1>{registrarData.page_info.title}</h1>
         </div>
 
         <div className="registrar-content">
@@ -24,45 +25,39 @@ const Registrar = () => {
                   {!imageError ? (
                     <img 
                       src={registrarImage} 
-                      alt="Dr. Shashidhar K. Kudari"
+                      alt={registrarData.registrar.name}
                       className="registrar-image"
                       onError={handleImageError}
                     />
                   ) : (
                     <div className="registrar-image-placeholder">
                       <div className="registrar-placeholder-avatar">👨‍💼</div>
-                      <p>Dr. Shashidhar K. Kudari</p>
-                      <span>Registrar, NIT Goa</span>
+                      <p>{registrarData.registrar.name}</p>
+                      <span>{registrarData.registrar.designation}, {registrarData.registrar.institute}</span>
                     </div>
                   )}
                 </div>
                 
                 <div className="registrar-name-title-section">
-                  <h2>Dr. Shashidhar K. Kudari</h2>
-                  <p className="registrar-designation">Registrar</p>
-                  <p className="registrar-institute">National Institute of Technology Goa</p>
+                  <h2>{registrarData.registrar.name}</h2>
+                  <p className="registrar-designation">{registrarData.registrar.designation}</p>
+                  <p className="registrar-institute">{registrarData.registrar.institute}</p>
                 </div>
                 
                 <div className="registrar-contact-info">
-                  registrar@nitgoa.ac.in<br />
-                  Sardar Patel Administrative Complex
+                  {registrarData.registrar.email}<br />
+                  {registrarData.registrar.office_location}
                 </div>
               </div>
               
               <div className="registrar-right-content">
                 <h3>About Registrar</h3>
                 <div className="registrar-about-content">
-                  <p>
-                    Dr. Shashidhar K. Kudari obtained his B.E (Mechanical Engineering) degree from Karnataka University, Dharwad. He received M. Tech. (Machine Design) and Ph.D. degrees from the Indian Institute of Technology, Kharagpur. He has 34 years of Teaching / Research and Administration experience.
-                  </p>
-                  
-                  <p>
-                    He has 55 research publications to his credit; five research scholars obtained Ph.D. degrees under his supervision. His research area includes stress analysis, elastic-plastic fracture, mixed mode fracture and fatigue analysis of engineering materials. He is the adaptation author of book Mechanical Vibrations, by S. G Kelly, Published by Schaum's Outline and Tata Mc Graw Hill.
-                  </p>
-                  
-                  <p>
-                    Dr. Kudari joined as the Registrar of NIT Goa in the month of February 2021.
-                  </p>
+                  {registrarData.registrar.about.map((paragraph, index) => (
+                    <p key={index}>
+                      {paragraph}
+                    </p>
+                  ))}
                 </div>
               </div>
             </div>
