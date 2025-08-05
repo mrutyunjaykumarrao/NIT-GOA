@@ -127,7 +127,7 @@ const Senate = () => {
           </div>
 
           <div className="minutes-section">
-            <h3>Minutes of Senate Meeting</h3>
+            <h3 className="senate-minutes-heading">Minutes of Senate</h3>
             <div className="minutes-links">
               {senatePDFs.map((senate, index) => (
                 <span key={senate.number}>

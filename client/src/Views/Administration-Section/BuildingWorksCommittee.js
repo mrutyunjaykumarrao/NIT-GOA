@@ -71,7 +71,7 @@ const BuildingWorksCommittee = () => {
             </table>
             
             <div className="minutes-section">
-              <h3>Minutes of BWC Meeting</h3>
+              <h3 className="building-works-committee-minutes-heading">Minutes of BWC Meeting</h3>
               <div className="minutes-links">
                 <a href="/pdf/Administration/buildingworkscommittee/BWC-2.pdf" target="_blank" rel="noopener noreferrer">BWC-2</a> | {' '}
                 <a href="/pdf/Administration/buildingworkscommittee/BWC-3.pdf" target="_blank" rel="noopener noreferrer">BWC-3</a> | {' '}

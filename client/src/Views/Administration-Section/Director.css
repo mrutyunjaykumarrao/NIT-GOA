@@ -170,7 +170,7 @@
 
 .director-name-title-section h2 {
   font-size: 2.2rem;
-  color: #1e293b;
+  color: #ffffff;
   margin-bottom: 0.5rem;
   font-weight: 700;
   line-height: 1.2;
@@ -216,7 +216,7 @@
 
 .director-institute {
   font-size: 1rem;
-  color: #64748b;
+  color: #ffffff;
   font-weight: 500;
   margin: 0 0 0.8rem 0;
   line-height: 1.4;
@@ -240,7 +240,7 @@
 /* Contact Information */
 .director-contact-info {
   font-size: 1rem;
-  color: #64748b;
+  color: #ffffff;
   font-weight: 500;
   line-height: 1.4;
   text-align: center;

@@ -302,11 +302,34 @@ div.senate-page div.senate-container div.senate-page-header h1 {
   border-top: 2px solid #e9ecef;
 }
 
+/* Page-specific minutes heading class */
+.senate-minutes-heading {
+  font-size: 1.5rem !important;
+  color: #2E86C1 !important;
+  margin-bottom: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+}
+
 .senate-minutes-section h3 {
   font-size: 1.5rem;
-  color: #2c3e50;
+  color: #2E86C1 !important;
   margin-bottom: 1rem;
   font-weight: 600;
+}
+
+/* Ensure Senate page minutes heading overrides global app.css styles */
+.senate-page .senate-minutes-section h3,
+.senate-page .senate-container .senate-minutes-section h3 {
+  color: #2E86C1 !important;
+}
+
+/* Ultra-specific selectors to override App.css h1,h2,h3,h4,h5,h6 rule */
+div.senate-page div.senate-container div.senate-content div.senate-minutes-section h3,
+div.senate-page div.senate-minutes-section h3,
+.senate-page .senate-content .senate-minutes-section h3 {
+  color: #2E86C1 !important;
+  font-size: 1.5rem !important;
 }
 
 .senate-minutes-links {
@@ -552,8 +575,30 @@ div.senate-page div.senate-container div.senate-page-header h1 {
     border-left-color: #64B5F6;
 }
 
+/* Dark theme - Page-specific minutes heading class */
+[data-theme="dark"] .senate-minutes-heading {
+    color: #ffffff !important;
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+}
+
 [data-theme="dark"] .senate-minutes-section h3 {
-    color: #64B5F6;
+    color: #ffffff !important;
+}
+
+/* Dark theme - Ensure Senate page minutes heading overrides global app.css styles */
+[data-theme="dark"] .senate-page .senate-minutes-section h3,
+[data-theme="dark"] .senate-page .senate-container .senate-minutes-section h3 {
+    color: #ffffff !important;
+}
+
+/* Dark theme - Ultra-specific selectors to override App.css h1,h2,h3,h4,h5,h6 rule */
+[data-theme="dark"] div.senate-page div.senate-container div.senate-content div.senate-minutes-section h3,
+[data-theme="dark"] div.senate-page div.senate-minutes-section h3,
+[data-theme="dark"] .senate-page .senate-content .senate-minutes-section h3 {
+    color: #ffffff !important;
+    font-size: 1.5rem !important;
 }
 
 [data-theme="dark"] .senate-minutes-section p {

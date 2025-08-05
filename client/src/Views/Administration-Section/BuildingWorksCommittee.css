@@ -226,11 +226,34 @@
   border-top: 2px solid #e9ecef;
 }
 
+/* Page-specific minutes heading class */
+.building-works-committee-minutes-heading {
+  font-size: 1.5rem !important;
+  color: #2E86C1 !important;
+  margin-bottom: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+}
+
 .building-works-committee-minutes-section h3 {
   font-size: 1.5rem;
-  color: #2c3e50;
+  color: #2E86C1 !important;
   margin-bottom: 1rem;
   font-weight: 600;
+}
+
+/* Ensure BWC page minutes heading overrides global app.css styles */
+.building-works-committee-page .building-works-committee-minutes-section h3,
+.building-works-committee-page .building-works-committee-wrapper .building-works-committee-minutes-section h3 {
+  color: #2E86C1 !important;
+}
+
+/* Ultra-specific selectors to override App.css h1,h2,h3,h4,h5,h6 rule */
+div.building-works-committee-page div.building-works-committee-wrapper div.building-works-committee-main-content div.building-works-committee-minutes-section h3,
+div.building-works-committee-page div.building-works-committee-minutes-section h3,
+.building-works-committee-page .building-works-committee-main-content .building-works-committee-minutes-section h3 {
+  color: #2E86C1 !important;
+  font-size: 1.5rem !important;
 }
 
 .building-works-committee-minutes-links {
@@ -864,4 +887,44 @@
 
 [data-theme="dark"] .building-works-committee-info p {
     color: #d1d5db;
+}
+
+/* Dark theme for BWC minutes section */
+[data-theme="dark"] .building-works-committee-minutes-section {
+    background: rgba(44, 44, 44, 0.9);
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Dark theme - Page-specific minutes heading class */
+[data-theme="dark"] .building-works-committee-minutes-heading {
+    color: #ffffff !important;
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+}
+
+[data-theme="dark"] .building-works-committee-minutes-section h3 {
+    color: #ffffff !important;
+}
+
+/* Dark theme - Ensure BWC page minutes heading overrides global app.css styles */
+[data-theme="dark"] .building-works-committee-page .building-works-committee-minutes-section h3,
+[data-theme="dark"] .building-works-committee-page .building-works-committee-wrapper .building-works-committee-minutes-section h3 {
+    color: #ffffff !important;
+}
+
+/* Dark theme - Ultra-specific selectors to override App.css h1,h2,h3,h4,h5,h6 rule */
+[data-theme="dark"] div.building-works-committee-page div.building-works-committee-wrapper div.building-works-committee-main-content div.building-works-committee-minutes-section h3,
+[data-theme="dark"] div.building-works-committee-page div.building-works-committee-minutes-section h3,
+[data-theme="dark"] .building-works-committee-page .building-works-committee-main-content .building-works-committee-minutes-section h3 {
+    color: #ffffff !important;
+    font-size: 1.5rem !important;
+}
+
+[data-theme="dark"] .building-works-committee-minutes-links a {
+    color: #64B5F6;
+}
+
+[data-theme="dark"] .building-works-committee-minutes-links a:hover {
+    color: #90CAF9;
 }
