@@ -100,8 +100,8 @@ const Faculty = () => {
 
     // Group faculty data by department
     const groupedFacultyData = allFacultyData.reduce((acc, faculty) => {
-        // Extract department code from full department name or default to CSE
-        const deptCode = getDepartmentCode(faculty.department_name);
+        // Use department_code directly from the API response, fallback to extracting from name
+        const deptCode = faculty.department_code || getDepartmentCode(faculty.department_name);
         if (!acc[deptCode]) {
             acc[deptCode] = [];
         }
@@ -147,21 +147,6 @@ const Faculty = () => {
 
     const handleDepartmentFilter = (dept) => {
         setSelectedDepartment(dept);
-    };
-
-    // Sort faculty to show by display order, then HODs first, then alphabetically
-    const getSortedFaculty = (facultyList) => {
-        return [...facultyList].sort((a, b) => {
-            // First sort by display order
-            if (a.displayOrder !== b.displayOrder) {
-                return a.displayOrder - b.displayOrder;
-            }
-            // Then by HOD status
-            if (a.isHOD && !b.isHOD) return -1;
-            if (!a.isHOD && b.isHOD) return 1;
-            // Finally alphabetically
-            return a.name.localeCompare(b.name);
-        });
     };
 
     return (
@@ -215,7 +200,7 @@ const Faculty = () => {
                         {/* Faculty Grid */}
                         <div className="faculty-grid">
                             {groupedFacultyData[selectedDepartment] && groupedFacultyData[selectedDepartment].length > 0 ? (
-                                getSortedFaculty(groupedFacultyData[selectedDepartment]).map((faculty, index) => (
+                                groupedFacultyData[selectedDepartment].map((faculty, index) => (
                                     <div key={index} className={`faculty-card ${faculty.isHOD ? 'hod-card' : ''}`}>
                                         <div className="faculty-image">
                                             <img 

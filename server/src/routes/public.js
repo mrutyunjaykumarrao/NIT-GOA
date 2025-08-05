@@ -64,9 +64,12 @@ router.get('/faculty', async (req, res) => {
       FROM employees e
       LEFT JOIN faculty_profiles fp ON e.employee_id = fp.employee_id
       LEFT JOIN departments d ON fp.department_id = d.department_id
-      WHERE e.is_active = 1 AND (e.role LIKE '%Faculty%' OR e.role LIKE '%Professor%')
-      ORDER BY e.display_order ASC, e.full_name ASC
-      LIMIT 50
+      WHERE e.is_active = 1 AND e.role = 'Faculty'
+      ORDER BY 
+        d.department_id ASC,
+        CASE WHEN e.display_order = 0 THEN 999999 ELSE e.display_order END ASC,
+        e.is_hod DESC,
+        e.full_name ASC
     `);
     
     await connection.end();
