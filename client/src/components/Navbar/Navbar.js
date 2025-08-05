@@ -433,7 +433,7 @@ const Navbar = () => {
                   </div>
                   <a href="/admissions/mtech">M.Tech</a>
                   <a href="/admissions/phd">Ph.D</a>
-                  <a href="https://www.nitgoa.ac.in/uploads/AdmissionBrochure%202august2024.pdf" target="_blank" rel="noopener noreferrer">Admission Brochure</a>
+                  <a href="/pdf/admission/admission-brochure/AdmissionBrochure2024.pdf" target="_blank" rel="noopener noreferrer">Admission Brochure</a>
                   <a href="/pdf/admission/fee-structure/fee_structure_23-24_25july2023.pdf" target="_blank" rel="noopener noreferrer">Fee Structure</a>
                   <div 
                     className="navbar-dropdown-item-with-submenu"
@@ -483,7 +483,7 @@ const Navbar = () => {
                 <a href="/faculty">Faculty</a>
                 <a href="/technical-staff">Technical Staff</a>
                 <a href="/administrative-staff">Administrative Staff</a>
-                <a href="/pdf/administration/Telephone-Directory/TelephoneDirectory.pdf" target="_blank" rel="noopener noreferrer">Telephone Directory</a>
+                <a href="/pdf/People/Telephone-Directory/TelephoneDirectory.pdf" target="_blank" rel="noopener noreferrer">Telephone Directory</a>
               </div>
             )}
           </div>
