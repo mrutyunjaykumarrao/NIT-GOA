@@ -35,11 +35,6 @@ const Senate = () => {
     { number: 29, file: '/pdf/Administration/senate/MoM 29th Senate.pdf' }
   ];
 
-  const handlePDFClick = (pdfFile, senateNumber) => {
-    // Open PDF in new tab
-    window.open(pdfFile, '_blank');
-  };
-
   return (
     <div className="senate-page">
       <div className="senate-container">
@@ -126,19 +121,19 @@ const Senate = () => {
             </table>
           </div>
 
-          <div className="minutes-section">
-            <h3 className="senate-minutes-heading">Minutes of Senate</h3>
-            <div className="minutes-links">
-              {senatePDFs.map((senate, index) => (
-                <span key={senate.number}>
-                  <button 
-                    className="senate-link" 
-                    onClick={() => handlePDFClick(senate.file, senate.number)}
-                  >
-                    Senate-{senate.number}
-                  </button>
-                  {index < senatePDFs.length - 1 && ' | '}
-                </span>
+          <div className="minutes-section senate-page-section">
+            <h2 className="senate-page-section-title">Minutes of Senate</h2>
+            <div className="senate-page-list senate-minutes-list">
+              {senatePDFs.map((senate) => (
+                <a
+                  key={senate.number}
+                  href={senate.file}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="senate-page-link senate-minutes-link"
+                >
+                  Senate-{senate.number}
+                </a>
               ))}
             </div>
           </div>

@@ -295,65 +295,77 @@ div.senate-page div.senate-container div.senate-page-header h1 {
   display: none !important;
 }
 
-/* Senate Minutes Section */
-.senate-minutes-section {
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 2px solid #e9ecef;
+/* Senate Minutes Section - RTI Style */
+.senate-page-section {
+  margin-bottom: 50px;
 }
 
-/* Page-specific minutes heading class */
-.senate-minutes-heading {
-  font-size: 1.5rem !important;
-  color: #2E86C1 !important;
-  margin-bottom: 1rem !important;
-  font-weight: 600 !important;
-  line-height: 1.2 !important;
-}
-
-.senate-minutes-section h3 {
-  font-size: 1.5rem;
-  color: #2E86C1 !important;
-  margin-bottom: 1rem;
+.senate-page-section-title {
+  color: white;
+  font-size: 1.8rem;
   font-weight: 600;
+  margin-bottom: 25px;
+  padding: 15px 20px;
+  background: linear-gradient(135deg, #2E86C1 0%, #1B4F72 100%);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(46, 134, 193, 0.3);
 }
 
-/* Ensure Senate page minutes heading overrides global app.css styles */
-.senate-page .senate-minutes-section h3,
-.senate-page .senate-container .senate-minutes-section h3 {
-  color: #2E86C1 !important;
+.senate-page-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-bottom: 30px;
 }
 
-/* Ultra-specific selectors to override App.css h1,h2,h3,h4,h5,h6 rule */
-div.senate-page div.senate-container div.senate-content div.senate-minutes-section h3,
-div.senate-page div.senate-minutes-section h3,
-.senate-page .senate-content .senate-minutes-section h3 {
-  color: #2E86C1 !important;
-  font-size: 1.5rem !important;
-}
-
-.senate-minutes-links {
-  line-height: 2;
-  text-align: left;
-}
-
-.senate-link {
-  color: #007bff;
+.senate-page-link {
   text-decoration: none;
-  font-weight: 500;
-  margin: 0 0.3rem;
-  transition: color 0.3s ease;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: inherit;
-  font-family: inherit;
-  padding: 0;
+  transition: all 0.3s ease;
 }
 
-.senate-link:hover {
-  color: #0056b3;
-  text-decoration: underline;
+/* Senate Minutes List - RTI Style */
+.senate-minutes-list {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 0 !important;
+  width: auto !important;
+  padding-left: 0 !important;
+  margin: 0 !important;
+}
+
+.senate-minutes-link {
+  display: block !important;
+  width: 120px !important;
+  min-width: 120px;
+  white-space: nowrap !important;
+  margin: 0 12px 12px 0 !important;
+  padding: 10px 18px !important;
+  color: #1565c0 !important;
+  font-size: 1.08rem !important;
+  font-weight: 600 !important;
+  background: #f8f9fa !important;
+  border-left: 5px solid #3498db !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(21, 101, 192, 0.08) !important;
+  text-decoration: none !important;
+  transition: color 0.2s, box-shadow 0.2s !important;
+  position: static !important;
+  line-height: 1.5 !important;
+  text-align: center !important;
+}
+
+.senate-minutes-link:hover {
+  color: #0d47a1 !important;
+  background: #e3f2fd !important;
+  border-left-color: #0d47a1 !important;
+  box-shadow: 0 4px 16px rgba(21, 101, 192, 0.13) !important;
+}
+
+.senate-minutes-link:before {
+  content: none !important;
+  display: none !important;
 }
 
 /* Responsive Design */
@@ -401,8 +413,17 @@ div.senate-page div.senate-minutes-section h3,
     padding: 0.6rem 0.4rem;
   }
   
-  .senate-minutes-links {
-    text-align: center;
+  .senate-minutes-list {
+    justify-content: center;
+  }
+  
+  .senate-minutes-link {
+    width: 100px !important;
+    min-width: 100px;
+    margin: 0 8px 12px 0 !important;
+    padding: 8px 14px !important;
+    font-size: 1rem !important;
+    text-align: center !important;
   }
 }
 
@@ -570,35 +591,30 @@ div.senate-page div.senate-minutes-section h3,
     color: #d1d5db;
 }
 
-[data-theme="dark"] .senate-minutes-section {
-    background: rgba(44, 44, 44, 0.9);
-    border-left-color: #64B5F6;
+/* Dark theme for Senate Minutes section */
+[data-theme="dark"] .senate-page-section {
+    background: transparent;
 }
 
-/* Dark theme - Page-specific minutes heading class */
-[data-theme="dark"] .senate-minutes-heading {
-    color: #ffffff !important;
-    font-size: 1.5rem !important;
-    font-weight: 600 !important;
-    line-height: 1.2 !important;
+[data-theme="dark"] .senate-page-section-title {
+    color: white;
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e293b 100%);
+    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
 }
 
-[data-theme="dark"] .senate-minutes-section h3 {
-    color: #ffffff !important;
+/* Dark theme for Senate Minutes Links */
+[data-theme="dark"] .senate-minutes-link {
+  color: #64b5f6 !important;
+  background: rgba(55, 65, 81, 0.8) !important;
+  border-left-color: #64b5f6 !important;
+  box-shadow: 0 2px 8px rgba(100, 181, 246, 0.15) !important;
 }
 
-/* Dark theme - Ensure Senate page minutes heading overrides global app.css styles */
-[data-theme="dark"] .senate-page .senate-minutes-section h3,
-[data-theme="dark"] .senate-page .senate-container .senate-minutes-section h3 {
-    color: #ffffff !important;
-}
-
-/* Dark theme - Ultra-specific selectors to override App.css h1,h2,h3,h4,h5,h6 rule */
-[data-theme="dark"] div.senate-page div.senate-container div.senate-content div.senate-minutes-section h3,
-[data-theme="dark"] div.senate-page div.senate-minutes-section h3,
-[data-theme="dark"] .senate-page .senate-content .senate-minutes-section h3 {
-    color: #ffffff !important;
-    font-size: 1.5rem !important;
+[data-theme="dark"] .senate-minutes-link:hover {
+  color: #90caf9 !important;
+  background: rgba(55, 65, 81, 0.95) !important;
+  border-left-color: #90caf9 !important;
+  box-shadow: 0 4px 16px rgba(100, 181, 246, 0.25) !important;
 }
 
 [data-theme="dark"] .senate-minutes-section p {

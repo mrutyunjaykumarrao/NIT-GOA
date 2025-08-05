@@ -2,6 +2,22 @@ import React from 'react';
 import './BuildingWorksCommittee.css';
 
 const BuildingWorksCommittee = () => {
+  // Array of BWC PDF files with public folder paths
+  const bwcPDFs = [
+    { number: 2, file: '/pdf/Administration/buildingworkscommittee/BWC-2.pdf' },
+    { number: 3, file: '/pdf/Administration/buildingworkscommittee/BWC-3.pdf' },
+    { number: 4, file: '/pdf/Administration/buildingworkscommittee/BWC-4.pdf' },
+    { number: 5, file: '/pdf/Administration/buildingworkscommittee/BWC-5.pdf' },
+    { number: 6, file: '/pdf/Administration/buildingworkscommittee/BWC-6.pdf' },
+    { number: 7, file: '/pdf/Administration/buildingworkscommittee/BWC-7.pdf' },
+    { number: 8, file: '/pdf/Administration/buildingworkscommittee/BWC-8.pdf' },
+    { number: 9, file: '/pdf/Administration/buildingworkscommittee/BWC-9.pdf' },
+    { number: 10, file: '/pdf/Administration/buildingworkscommittee/BWC-10.pdf' },
+    { number: 11, file: '/pdf/Administration/buildingworkscommittee/MoM 11th BWC.pdf' },
+    { number: 12, file: '/pdf/Administration/buildingworkscommittee/MoM 12th BWC.pdf' },
+    { number: 13, file: '/pdf/Administration/buildingworkscommittee/MoM 13BWC.pdf' },
+  ];
+
   return (
     <div className="building-works-committee-page">
       <div className="building-works-committee-wrapper">
@@ -70,21 +86,20 @@ const BuildingWorksCommittee = () => {
               </tbody>
             </table>
             
-            <div className="minutes-section">
-              <h3 className="building-works-committee-minutes-heading">Minutes of BWC Meeting</h3>
-              <div className="minutes-links">
-                <a href="/pdf/Administration/buildingworkscommittee/BWC-2.pdf" target="_blank" rel="noopener noreferrer">BWC-2</a> | {' '}
-                <a href="/pdf/Administration/buildingworkscommittee/BWC-3.pdf" target="_blank" rel="noopener noreferrer">BWC-3</a> | {' '}
-                <a href="/pdf/Administration/buildingworkscommittee/BWC-4.pdf" target="_blank" rel="noopener noreferrer">BWC-4</a> | {' '}
-                <a href="/pdf/Administration/buildingworkscommittee/BWC-5.pdf" target="_blank" rel="noopener noreferrer">BWC-5</a> | {' '}
-                <a href="/pdf/Administration/buildingworkscommittee/BWC-6.pdf" target="_blank" rel="noopener noreferrer">BWC-6</a> | {' '}
-                <a href="/pdf/Administration/buildingworkscommittee/BWC-7.pdf" target="_blank" rel="noopener noreferrer">BWC-7</a> | {' '}
-                <a href="/pdf/Administration/buildingworkscommittee/BWC-8.pdf" target="_blank" rel="noopener noreferrer">BWC-8</a> | {' '}
-                <a href="/pdf/Administration/buildingworkscommittee/BWC-9.pdf" target="_blank" rel="noopener noreferrer">BWC-9</a> | {' '}
-                <a href="/pdf/Administration/buildingworkscommittee/BWC-10.pdf" target="_blank" rel="noopener noreferrer">BWC-10</a> | {' '}
-                <a href="/pdf/Administration/buildingworkscommittee/MoM 11th BWC.pdf" target="_blank" rel="noopener noreferrer">BWC-11</a> | {' '}
-                <a href="/pdf/Administration/buildingworkscommittee/MoM 12th BWC.pdf" target="_blank" rel="noopener noreferrer">BWC-12</a> | {' '}
-                <a href="/pdf/Administration/buildingworkscommittee/MoM 13BWC.pdf" target="_blank" rel="noopener noreferrer">BWC-13</a>
+            <div className="minutes-section bwc-page-section">
+              <h2 className="bwc-page-section-title">Minutes of BWC Meeting</h2>
+              <div className="bwc-page-list bwc-minutes-list">
+                {bwcPDFs.map((bwc) => (
+                  <a
+                    key={bwc.number}
+                    href={bwc.file}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bwc-page-link bwc-minutes-link"
+                  >
+                    BWC-{bwc.number}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
