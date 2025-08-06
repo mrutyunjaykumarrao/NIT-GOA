@@ -1,0 +1,68 @@
+{
+  "title": "B.Tech Admissions - DASA",
+  "subtitle": "Direct Admission of Students Abroad",
+  "examInfo": {
+    "title": "JEE Main 2025",
+    "description": "Joint Entrance Examination (Main)",
+    "website": "https://jeemain.nta.nic.in/"
+  },
+  "dasaScheme": {
+    "title": "DASA Scheme 2025",
+    "eligibility": "The UG admissions for academic year 2025-26 under DASA scheme shall be on the basis of the ranks obtained by the students in JEE(Main).",
+    "description": "Admissions are open for Foreign Nationals / Persons of Indian Origin (PIOs) / Non-Resident Indians (NRIs) under Direct Admission of Students Abroad (DASA) Scheme to National Institutes of Technology (NITs), IIITs and other premier Technical Institutions."
+  },
+  "programs": [
+    {
+      "department": "Computer Science & Engineering",
+      "link": "https://www.nitgoa.ac.in/academics/ComputerScience.html"
+    },
+    {
+      "department": "Electronics & Communication Engineering",
+      "link": "https://www.nitgoa.ac.in/academics/Electronics.html"
+    },
+    {
+      "department": "Electrical & Electronics Engineering",
+      "link": "https://www.nitgoa.ac.in/academics/Electrical.html"
+    },
+    {
+      "department": "Civil Engineering",
+      "link": "https://www.nitgoa.ac.in/academics/Civil.html"
+    },
+    {
+      "department": "Mechanical Engineering",
+      "link": "https://www.nitgoa.ac.in/academics/Mechnical.html"
+    }
+  ],
+  "contact": {
+    "headquarters": {
+      "title": "Headquarters",
+      "email": "dasa2024help@nitrr.ac.in"
+    },
+    "nitgoa": {
+      "name": "Dr. Ragoju Ravi",
+      "designation": "Centre In-Charge, Admissions (DASA)",
+      "institute": "National Institute of Technology Goa",
+      "address": "Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+      "email": "ravi@nitgoa.ac.in | dasa@nitgoa.ac.in",
+      "phone": "+91 9404715466 | 0832-2404743"
+    }
+  },
+  "resources": [
+    {
+      "title": "Schedule of DASA 2024 UG Counselling",
+      "link": "/pdf/admission/Btech/DASA/DASA_Schedule_2024.pdf"
+    },
+    {
+      "title": "DASA UG Brochure 2024",
+      "link": "/pdf/admission/Btech/DASA/DASA_Brochure_2024.pdf"
+    },
+    {
+      "title": "DASA Official Website",
+      "link": "https://dasanit.org"
+    }
+  ],
+  "notes": [
+    "For the latest updates and detailed information about the admission process, regularly visit the DASA official website.",
+    "Secure and separate hostel accommodation for boys and girls is available for all branches."
+  ]
+}
