@@ -4,6 +4,7 @@ import { useTheme } from '../../../../contexts/ThemeContext';
 import FacultyEditForm from '../../../../components/FacultyEditForm/FacultyEditForm';
 import TableEditForm from '../../../../components/TableEditForm/TableEditForm';
 import ListEditForm from '../../../../components/ListEditForm/ListEditForm';
+import SocialLinks from '../../../../components/SVGIcons/SocialLinks';
 import './FacultyDetails.css';
 
 const FacultyDetails = () => {
@@ -26,7 +27,9 @@ const FacultyDetails = () => {
         memberships: false,
         professionalServices: false,
         coursesAttended: false,
-        coursesConducted: false
+        coursesConducted: false,
+        biography: false,
+        socialLinks: false
     });
 
     const [expandedPublications, setExpandedPublications] = useState({
@@ -50,7 +53,7 @@ const FacultyDetails = () => {
                 // Scroll to top when component mounts
                 window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
                 
-                const response = await fetch(`/api/faculty/${id}/details`);
+                const response = await fetch(`/api/faculty-details/${id}/details`);
                 const result = await response.json();
                 
                 if (response.ok) {
@@ -58,7 +61,7 @@ const FacultyDetails = () => {
                     const facultyWithImage = {
                         ...result,
                         image: result.profile?.profile_image ? 
-                            `/images/Faculty/${getDepartmentCode(result.profile.department)}/${result.profile.profile_image}` : 
+                            (result.profile.profile_image.startsWith('/') ? result.profile.profile_image : `/${result.profile.profile_image}`) : 
                             '/images/fallback-profile.svg'
                     };
                     setFaculty(facultyWithImage);
@@ -279,38 +282,90 @@ const FacultyDetails = () => {
         return configs[type];
     };
 
-    const renderExpandableSection = (title, key, content, isExpanded = false, editType = null) => (
-        <div className="expandable-section">
-            <div className="section-header-main">
-                <div 
-                    className="section-header" 
-                    onClick={() => toggleSection(key)}
-                >
-                    <div className="section-icon">
-                        <i className={`fas fa-${expandedSections[key] ? 'minus' : 'plus'}`}></i>
-                    </div>
-                    <h2>{title}</h2>
-                    <i className={`fas fa-chevron-${expandedSections[key] ? 'up' : 'down'}`}></i>
-                </div>
-                {canEdit() && editType && (
-                    <button 
-                        className="edit-button"
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            setEditMode(editType);
-                        }}
-                        title={`Edit ${title}`}
+    // Helper function to check if data exists and is not empty
+    const hasData = (data) => {
+        if (!data) return false;
+        if (Array.isArray(data)) return data.length > 0;
+        if (typeof data === 'object') {
+            return Object.values(data).some(value => {
+                if (Array.isArray(value)) return value.length > 0;
+                return value !== null && value !== undefined && value !== '';
+            });
+        }
+        return data !== null && data !== undefined && data !== '';
+    };
+
+    const renderExpandableSection = (title, key, content, isExpanded = false, editType = null) => {
+        // Don't render the section if it doesn't have data
+        if (!hasData(getDataForSection(key))) {
+            return null;
+        }
+
+        return (
+            <div className="expandable-section">
+                <div className="section-header-main">
+                    <div 
+                        className="section-header" 
+                        onClick={() => toggleSection(key)}
                     >
-                        <i className="fas fa-edit"></i>
-                        Edit
-                    </button>
-                )}
+                        <div className="section-icon">
+                            <i className={`fas fa-${expandedSections[key] ? 'minus' : 'plus'}`}></i>
+                        </div>
+                        <h2>{title}</h2>
+                        <i className={`fas fa-chevron-${expandedSections[key] ? 'up' : 'down'}`}></i>
+                    </div>
+                    {canEdit() && editType && (
+                        <button 
+                            className="edit-button"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                setEditMode(editType);
+                            }}
+                            title={`Edit ${title}`}
+                        >
+                            <i className="fas fa-edit"></i>
+                            Edit
+                        </button>
+                    )}
+                </div>
+                <div className={`section-content ${expandedSections[key] ? 'expanded' : 'collapsed'}`}>
+                    {content}
+                </div>
             </div>
-            <div className={`section-content ${expandedSections[key] ? 'expanded' : 'collapsed'}`}>
-                {content}
-            </div>
-        </div>
-    );
+        );
+    };
+
+    // Helper function to get data for a specific section
+    const getDataForSection = (sectionKey) => {
+        if (!faculty) return null;
+        
+        switch (sectionKey) {
+            case 'researchAreas':
+                return faculty.profile?.researchAreaSummary;
+            case 'coursesTaught':
+                return faculty.coursesTaught;
+            case 'academicInfo':
+                return faculty.academicInformation;
+            case 'publications':
+                return faculty.publications;
+            case 'researchGuidance':
+                return faculty.researchGuidance;
+            case 'fundedProjects':
+                return faculty.fundedProjects;
+            case 'awards':
+                return faculty.awardsAndHonors;
+            case 'memberships':
+                return faculty.memberships || faculty.membershipAndProfessionalSociety;
+            case 'professionalServices':
+                return faculty.professionalServices || faculty.professionalService;
+            case 'coursesAttended':
+                return faculty.trainingConferencesAndShortTermCoursesAttended;
+            case 'coursesConducted':
+                return faculty.trainingConferencesAndShortTermCoursesConducted;
+            default:
+                return null;
+        }
+    };
 
     const renderPublicationSubSection = (title, key, content) => (
         <div className="publication-sub-section">
@@ -396,14 +451,15 @@ const FacultyDetails = () => {
                             <p className="faculty-details-department">{faculty.profile?.department}</p>
                             
                             {/* Social/Contact Links */}
-                            <div className="faculty-links">
-                                <div className="faculty-details-social-link">
-                                    <i className="fas fa-envelope"></i>
+                            {faculty.socialLinks && Object.keys(faculty.socialLinks).length > 0 && (
+                                <div className="faculty-links">
+                                    <SocialLinks 
+                                        socialLinks={faculty.socialLinks} 
+                                        size={24}
+                                        className="faculty-social-links"
+                                    />
                                 </div>
-                                <div className="faculty-details-social-link">
-                                    <i className="fab fa-linkedin"></i>
-                                </div>
-                            </div>
+                            )}
                         </div>
                     </div>
 

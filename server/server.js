@@ -76,21 +76,23 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Serve static files from client's public directory (for images)
 app.use('/images', express.static(path.join(__dirname, '../client/public/images')));
 
-// API Routes - Updated routes
+// API Routes - New organized structure
 app.use('/api/auth', require('./src/routes/auth'));
-app.use('/api/public', require('./src/routes/public'));
-app.use('/api/faculty', require('./src/routes/faculty'));
+app.use('/api/public', require('./src/routes/publicRoutes'));
+app.use('/api/faculty-profiles', require('./src/routes/facultyProfiles'));
+app.use('/api/faculty-details', require('./src/routes/facultyDetails'));
 
-// Legacy routes (can be gradually phased out)
-try {
-  app.use('/api/faculty-legacy', require('./src/routes/faculty'));
-  app.use('/api/staff', require('./src/routes/staff'));
-  app.use('/api/admin', require('./src/routes/admin'));
-  app.use('/api/content', require('./src/routes/content'));
-  app.use('/api/upload', require('./src/routes/upload'));
-} catch (error) {
-  console.warn('⚠️  Some legacy routes could not be loaded:', error.message);
-}
+// Currently used routes
+app.use('/api/staff', require('./src/routes/staff'));
+
+// Temporary backward compatibility - will redirect to new endpoints
+app.use('/api/faculty', (req, res) => {
+  if (req.path.includes('/details')) {
+    return res.redirect(`/api/faculty-details${req.path}`);
+  } else {
+    return res.redirect(`/api/faculty-profiles${req.path}`);
+  }
+});
 
 // Database test endpoint
 app.get('/api/test-db', async (req, res) => {

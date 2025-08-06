@@ -18,19 +18,16 @@ const Faculty = () => {
         const fetchFaculty = async () => {
             try {
                 setLoading(true);
-                const response = await fetch('/api/public/faculty');
+                const response = await fetch('/api/faculty-profiles');
                 const result = await response.json();
                 
-                if (result.success && result.data && Array.isArray(result.data)) {
+                if (response.ok && result.success) {
                     setAllFacultyData(result.data);
-                } else if (Array.isArray(result)) {
-                    setAllFacultyData(result);
                 } else {
-                    setError('Failed to fetch faculty data');
+                    console.error('Failed to fetch faculty:', result.error);
                 }
             } catch (err) {
                 console.error('Error fetching faculty:', err);
-                setError('Failed to load faculty data');
             } finally {
                 setLoading(false);
             }
@@ -114,6 +111,7 @@ const Faculty = () => {
         
         acc[deptCode].push({
             id: faculty.id.toString(),
+            employee_code: faculty.employee_code,
             name: faculty.full_name,
             formattedName: formatName(faculty),
             designation: faculty.designation,
@@ -236,8 +234,7 @@ const Faculty = () => {
                                             </div>
                                             <div className="faculty-actions">
                                                 <button className="view-profile-btn" onClick={() => {
-                                                    const slug = generateSlug(faculty.name);
-                                                    navigate(`/people/faculty/${slug}`);
+                                                    navigate(`/people/faculty/${faculty.employee_code}`);
                                                 }}>
                                                     View Profile
                                                 </button>
