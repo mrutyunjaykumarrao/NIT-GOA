@@ -224,8 +224,8 @@ const Navbar = () => {
       className={`navbar-wrapper ${isTopNavHidden ? 'navbar-compact' : ''}`}
       style={{
         '--scroll-progress': scrollProgress,
-        '--navbar-top-header-height': `${35 - scrollProgress * 10}px`,
-        '--navbar-main-header-height': `${85 - scrollProgress * 25}px`,
+        '--logo-scale': `${1 - scrollProgress * 0.25}`, // Logo scale from 1 to 0.75 (80px to 60px)
+        '--logo-gap': `${15 - scrollProgress * 5}px`, // Gap reduces from 15px to 10px as logo shrinks
       }}
     >
       {/* Top Header */}

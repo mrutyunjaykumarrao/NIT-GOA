@@ -120,16 +120,13 @@ body {
   background-color: var(--color-background-gray);
   position: relative;
   z-index: 2100 !important; /* Higher than navbar wrapper for proper layering */
-  /* Progressive sizing based on scroll position */
-  --header-padding: calc(8px - var(--scroll-progress, 0) * 6px);
-  --header-font-size: calc(14px - var(--scroll-progress, 0) * 2px);
-  padding: var(--header-padding) 0;
-  font-size: var(--header-font-size);
-  transition: 
-    all var(--transition-fast),
-    transform var(--transition-medium);
+  /* Fixed base values - no layout-causing calc() */
+  padding: 8px 0;
+  font-size: 14px;
+  /* GPU-accelerated transitions only */
+  transition: transform var(--transition-medium);
   transform: translateY(0) translateZ(0);
-  will-change: padding, font-size, transform;
+  will-change: transform;
   /* Ensure top header stays accessible above any Google Translate elements */
   isolation: isolate;
 }
@@ -291,12 +288,11 @@ body {
    Features progressive scaling and adaptive sizing based on screen size.
 */
 .navbar-main-header {
-  background: var(--color-background-light);
-  /* Progressive padding that shrinks on scroll */
   --main-padding: calc(30px - var(--scroll-progress, 0) * 10px);
+  background: var(--color-background-light);
   padding: var(--main-padding) 0;
-  transition: all var(--transition-fast);
   transform: translateZ(0);
+  transition: all var(--transition-fast);
   will-change: padding;
 }
 
@@ -314,18 +310,20 @@ body {
 .navbar-logo-section {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: var(--logo-gap, 15px);
+  flex: 1;
 }
 
 /* Logo link wrapper with subtle hover effects */
 .navbar-logo-link {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: var(--logo-gap, 15px);
   text-decoration: none;
   color: inherit;
   transition: opacity var(--transition-fast);
   cursor: pointer;
+  flex: 1;
 }
 
 .navbar-logo-link:hover {
@@ -336,17 +334,17 @@ body {
   color: inherit;
 }
 
-/* Institute logo with progressive scaling */
+/* Institute logo with GPU-accelerated scaling */
 .navbar-nit-logo {
-  /* Progressive logo size based on scroll position */
-  --logo-size: calc(80px - var(--scroll-progress, 0) * 20px);
-  width: var(--logo-size);
-  height: var(--logo-size);
+  /* Fixed base size - no layout-causing calc() */
+  width: 90px;
+  height: 90px;
   object-fit: contain;
   border-radius: 8px;
-  transition: all var(--transition-medium);
-  transform: translateZ(0);
-  will-change: width, height;
+  /* GPU-accelerated transitions only */
+  transition: transform var(--transition-medium);
+  transform: scale(var(--logo-scale, 1)) translateZ(0);
+  will-change: transform;
 }
 
 .navbar-nit-logo:hover {
@@ -360,32 +358,32 @@ body {
   gap: 7px;
 }
 
-/* Hindi institute name with progressive sizing */
+/* Hindi institute name - no scaling */
 .navbar-institute-name-hindi {
   color: var(--color-primary);
   margin: 0;
   font-weight: 500;
   line-height: 1.2;
-  /* Progressive font size based on scroll position */
-  --hindi-font-size: calc(24px - var(--scroll-progress, 0) * 6px);
-  font-size: var(--hindi-font-size);
-  transition: all var(--transition-medium);
+  /* Fixed font size - no scaling */
+  font-size: 24px;
+  /* Only basic GPU optimization */
+  transition: color var(--transition-medium);
   transform: translateZ(0);
-  will-change: font-size;
+  will-change: color;
 }
 
-/* English institute name with progressive sizing */
+/* English institute name - no scaling */
 .navbar-institute-name-english {
   color: var(--color-text-primary);
   margin: 0;
   font-weight: 500;
   line-height: 1.2;
-  /* Progressive font size based on scroll position */
-  --english-font-size: calc(20px - var(--scroll-progress, 0) * 5px);
-  font-size: var(--english-font-size);
-  transition: all var(--transition-medium);
+  /* Fixed font size - no scaling */
+  font-size: 20px;
+  /* Only basic GPU optimization */
+  transition: color var(--transition-medium);
   transform: translateZ(0);
-  will-change: font-size;
+  will-change: color;
 }
 
 /* Dark mode main header styling */
@@ -419,12 +417,12 @@ body {
     #ffffff 100%
   );
   color: white;
-  /* Progressive height based on scroll position */
-  --nav-height: calc(50px - var(--scroll-progress, 0) * 20px);
-  min-height: var(--nav-height);
-  transition: all var(--transition-fast);
+  /* Fixed base height - no layout-causing calc() */
+  min-height: 50px;
+  /* GPU-accelerated transitions only */
+  transition: transform var(--transition-fast);
   transform: translateZ(0);
-  will-change: min-height;
+  will-change: transform;
 }
 
 /* Container for navigation content */
@@ -435,14 +433,12 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0;
-  /* Progressive sizing variables */
-  --nav-content-height: calc(50px - var(--scroll-progress, 0) * 10px);
-  --nav-content-padding: calc(60px - var(--scroll-progress, 0) * 5px);
-  min-height: var(--nav-content-height);
-  padding: 0 var(--nav-content-padding);
-  transform: translateY(-8px) translateZ(0);
+  /* Fixed sizing - no calc() to prevent flickering */
+  min-height: 50px;
+  padding: 0 60px;
+  transform: translateZ(0);
   transition: all var(--transition-fast);
-  will-change: min-height, padding;
+  will-change: transform;
 }
 
 /* Individual navigation item styling */
