@@ -138,6 +138,23 @@
     gap: 40px;
     padding: 20px 0;
     justify-items: center;
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.faculty-grid.updating {
+    opacity: 0.7;
+    pointer-events: none; /* Prevent interactions during transition */
+}
+
+.faculty-grid.updating .faculty-card {
+    transform: translateZ(0) scale(0.99);
+    transition: transform 0.15s ease-out;
+}
+
+.faculty-grid.updating .faculty-card.hod-card {
+    transform: translateZ(0) scale(0.99);
+    transition: transform 0.15s ease-out;
 }
 
 /* Faculty Card */
@@ -155,6 +172,8 @@
     max-width: 400px;
     display: flex;
     flex-direction: column;
+    transform: translateZ(0); /* Force GPU acceleration */
+    will-change: transform; /* Optimize for animations */
 }
 
 /* Base HOD Card styles for all screens */
@@ -164,6 +183,9 @@
     position: relative;
     display: flex;
     align-items: center;
+    transform: translateZ(0); /* Force GPU acceleration */
+    will-change: auto; /* Reset will-change for stable performance */
+    transition: all 0.3s ease;
 }
 
 .faculty-card.hod-card::before {
@@ -197,9 +219,9 @@
         align-items: center;
         gap: 40px;
         padding: 40px;
-        height: 320px;
-        min-height: 320px;
-        max-height: 320px;
+        height: 335px;
+        min-height: 335px;
+        max-height: 335px;
     }
 
     .faculty-card.hod-card .faculty-image {
@@ -413,7 +435,7 @@
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
     width: 100%;
-    max-width: 200px;
+    max-width: 360px;
 }
 
 .view-profile-btn:hover {
@@ -463,9 +485,9 @@
         width: 800px;
         max-width: 800px;
         min-width: 800px;
-        height: 350px;
-        min-height: 350px;
-        max-height: 350px;
+        height: 365px;
+        min-height: 365px;
+        max-height: 365px;
         padding: 50px;
         gap: 50px;
         transform: scale(1.1);
@@ -524,9 +546,9 @@
         width: 900px;
         max-width: 900px;
         min-width: 900px;
-        height: 380px;
-        min-height: 380px;
-        max-height: 380px;
+        height: 395px;
+        min-height: 395px;
+        max-height: 395px;
         padding: 60px;
         gap: 60px;
     }
@@ -584,10 +606,10 @@
     }
     
     .faculty-card {
-        padding: 20px;
-        height: 475px;
-        min-height: 475px;
-        max-height: 475px;
+        padding: 20px 20px 0px 20px;
+        height: 450px;
+        min-height: 450px;
+        max-height: 450px;
     }
     
     /* HOD cards same dimensions as faculty cards on mobile - more specific selectors */
@@ -600,9 +622,9 @@
         width: 400px !important;
         max-width: 100% !important;
         min-width: unset !important;
-        height: 475px !important;
-        min-height: 475px !important;
-        max-height: 475px !important;
+        height: 495px !important;
+        min-height: 495px !important;
+        max-height: 495px !important;
         align-items: center !important;
         background: white !important;
         border: 1px solid #e0e0e0 !important;
@@ -638,7 +660,7 @@
     
     .faculty-page .faculty-container .faculty-grid .faculty-card.hod-card .view-profile-btn {
         width: 100% !important;
-        max-width: 200px !important;
+        max-width: 360px !important;
     }
     
     
@@ -705,9 +727,9 @@
     
     .faculty-card {
         padding: 15px;
-        height: 450px;
-        min-height: 450px;
-        max-height: 450px;
+        height: 430px;
+        min-height: 430px;
+        max-height: 430px;
     }
     
     /* HOD cards same dimensions as faculty cards on small mobile - more specific selectors */
@@ -720,9 +742,9 @@
         width: 100% !important;
         max-width: 100% !important;
         min-width: unset !important;
-        height: 450px !important;
-        min-height: 450px !important;
-        max-height: 450px !important;
+        height: 470px !important;
+        min-height: 470px !important;
+        max-height: 470px !important;
         align-items: center !important;
         background: white !important;
         border: 1px solid #e0e0e0 !important;
@@ -758,7 +780,7 @@
     
     .faculty-page .faculty-container .faculty-grid .faculty-card.hod-card .view-profile-btn {
         width: 100% !important;
-        max-width: 200px !important;
+        max-width: 360px !important;
         padding: 10px 20px !important;
         font-size: 13px !important;
     }

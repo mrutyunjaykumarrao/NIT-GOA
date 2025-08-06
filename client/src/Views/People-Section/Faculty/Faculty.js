@@ -11,6 +11,7 @@ const Faculty = () => {
     const [allFacultyData, setAllFacultyData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [isTransitioning, setIsTransitioning] = useState(false);
 
     // Fetch faculty data from API
     useEffect(() => {
@@ -146,7 +147,17 @@ const Faculty = () => {
     }
 
     const handleDepartmentFilter = (dept) => {
-        setSelectedDepartment(dept);
+        if (dept !== selectedDepartment) {
+            setIsTransitioning(true);
+            // Shorter, smoother transition timing
+            setTimeout(() => {
+                setSelectedDepartment(dept);
+                // Reset transition state after content is updated
+                setTimeout(() => {
+                    setIsTransitioning(false);
+                }, 100); // Reduced delay for quicker recovery
+            }, 100); // Reduced delay for faster transition
+        }
     };
 
     return (
@@ -198,7 +209,7 @@ const Faculty = () => {
                 ) : (
                     <>
                         {/* Faculty Grid */}
-                        <div className="faculty-grid">
+                        <div className={`faculty-grid ${isTransitioning ? 'updating' : ''}`}>
                             {groupedFacultyData[selectedDepartment] && groupedFacultyData[selectedDepartment].length > 0 ? (
                                 groupedFacultyData[selectedDepartment].map((faculty, index) => (
                                     <div key={index} className={`faculty-card ${faculty.isHOD ? 'hod-card' : ''}`}>
