@@ -1,0 +1,154 @@
+/* Social Links Component Styles */
+.social-links-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.social-icon-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.social-icon {
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.social-link:hover .social-icon {
+  transform: scale(1.1);
+}
+
+.social-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-color, #333);
+  white-space: nowrap;
+}
+
+/* Dark theme support */
+[data-theme="dark"] .social-link {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .social-link:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .social-label {
+  color: var(--text-color-dark, #fff);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .social-links-container {
+    gap: 8px;
+  }
+  
+  .social-link {
+    padding: 6px;
+  }
+  
+  .social-label {
+    font-size: 12px;
+  }
+}
+
+/* Specific icon hover effects */
+.linkedin-icon {
+  color: #0077B5;
+}
+
+.twitter-icon {
+  color: #1DA1F2;
+}
+
+.youtube-icon {
+  color: #FF0000;
+}
+
+.facebook-icon {
+  color: #1877F2;
+}
+
+.instagram-icon {
+  color: #E4405F;
+}
+
+.github-icon {
+  color: #333;
+}
+
+.googleScholar-icon {
+  color: #4285F4;
+}
+
+.orcid-icon {
+  color: #A6CE39;
+}
+
+.researchGate-icon {
+  color: #00CCBB;
+}
+
+.scopus-icon {
+  color: #F36C21;
+}
+
+.ieee-icon {
+  color: #00629B;
+}
+
+.website-icon {
+  color: #666;
+}
+
+.email-icon {
+  color: #666;
+}
+
+.phone-icon {
+  color: #666;
+}
+
+.academia-icon {
+  color: #41454A;
+}
+
+.mendeley-icon {
+  color: #9D1620;
+}
+
+.publons-icon {
+  color: #005A9C;
+}
+
+/* Dark theme icon colors */
+[data-theme="dark"] .github-icon,
+[data-theme="dark"] .website-icon,
+[data-theme="dark"] .email-icon,
+[data-theme="dark"] .phone-icon {
+  color: #ccc;
+}
