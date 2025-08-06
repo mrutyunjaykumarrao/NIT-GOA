@@ -806,12 +806,12 @@
 
 /* Dark Theme Support */
 [data-theme="dark"] .building-works-committee-page {
-    background: linear-gradient(135deg, #1e1e1e 0%, #2c2c2c 100%);
+    background: linear-gradient(135deg, #0a1220 0%, #1a2332 50%, #253041 100%);
     color: #ffffff;
 }
 
 [data-theme="dark"] .building-works-committee-page-header {
-    background: linear-gradient(135deg, #1e3a8a 0%, #1e293b 100%);
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
 }
 
 [data-theme="dark"] .building-works-committee-page-header::before {
@@ -819,55 +819,55 @@
 }
 
 [data-theme="dark"] .building-works-committee-page-header h1 {
-    color: #64B5F6;
-    text-shadow: 0 2px 4px rgba(100, 181, 246, 0.3);
+    color: #e2e8f0;
+    text-shadow: 0 2px 4px rgba(226, 232, 240, 0.3);
 }
 
 [data-theme="dark"] .building-works-committee-content {
-    background: rgba(44, 44, 44, 0.95);
-    border-color: rgba(255, 255, 255, 0.1);
+    background: #1e293b;
+    border-color: rgba(100, 116, 139, 0.2);
 }
 
 [data-theme="dark"] .building-works-committee-section {
-    background: rgba(44, 44, 44, 0.9);
-    border-color: rgba(255, 255, 255, 0.1);
+    background: #1e293b;
+    border-color: rgba(100, 116, 139, 0.2);
 }
 
 [data-theme="dark"] .building-works-committee-section h2 {
-    color: #64B5F6;
+    color: #6fa6ff;
 }
 
 [data-theme="dark"] .building-works-committee-table {
-    background: transparent;
-    color: #ffffff;
+    background: #1e293b;
+    color: #e2e8f0;
 }
 
 [data-theme="dark"] .building-works-committee-main-content {
-    background: linear-gradient(145deg, rgba(44, 44, 44, 0.95) 0%, rgba(30, 30, 30, 0.95) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    background: #1e293b;
+    border: 1px solid rgba(100, 116, 139, 0.2);
+    box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3);
 }
 
 [data-theme="dark"] .building-works-committee-page table {
-    background-color: rgba(44, 44, 44, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+    background-color: #1e293b;
+    border: 1px solid rgba(100, 116, 139, 0.2);
+    box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3);
 }
 
 [data-theme="dark"] .building-works-committee-table th {
-    background: linear-gradient(135deg, #1e40af 0%, #1e293b 100%) !important;
-    color: #64B5F6 !important;
-    border-color: rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%) !important;
+    color: #e2e8f0 !important;
+    border-color: rgba(100, 116, 139, 0.2);
 }
 
 [data-theme="dark"] .building-works-committee-page th {
-    background: linear-gradient(135deg, #1e40af 0%, #1e293b 100%) !important;
-    color: #64B5F6 !important;
-    border-color: rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%) !important;
+    color: #e2e8f0 !important;
+    border-color: rgba(100, 116, 139, 0.2);
 }
 
 [data-theme="dark"] .building-works-committee-page td {
-    border-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(100, 116, 139, 0.2);
     color: #d1d5db;
 }
 
@@ -879,24 +879,24 @@
 
 [data-theme="dark"] .building-works-committee-page td[rowspan] {
     color: #d1d5db !important;
-    background-color: rgba(44, 44, 44, 0.9) !important;
+    background-color: #1e293b !important;
 }
 
 [data-theme="dark"] .building-works-committee-page td strong,
 [data-theme="dark"] .building-works-committee-page td b {
-    color: #64B5F6 !important;
+    color: #6fa6ff !important;
 }
 
 [data-theme="dark"] .building-works-committee-page tbody tr:nth-child(even) {
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    background: rgba(30, 41, 59, 0.5);
 }
 
 [data-theme="dark"] .building-works-committee-page tbody tr:hover {
-    background: linear-gradient(145deg, rgba(100, 181, 246, 0.1) 0%, rgba(100, 181, 246, 0.05) 100%);
+    background: rgba(111, 166, 255, 0.1);
 }
 
 [data-theme="dark"] .building-works-committee-table td {
-    border-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(100, 116, 139, 0.2);
     color: #d1d5db;
 }
 
@@ -923,28 +923,28 @@
 }
 
 /* Dark theme for BWC minutes section */
-/* Dark theme for BWC minutes section */
 [data-theme="dark"] .bwc-page-section {
-    background: transparent;
+    background: #1e293b;
+    border-color: rgba(100, 116, 139, 0.2);
 }
 
 [data-theme="dark"] .bwc-page-section-title {
-    color: white;
-    background: linear-gradient(135deg, #1e3a8a 0%, #1e293b 100%);
-    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+    color: #e2e8f0;
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+    box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3);
 }
 
 /* Dark theme for BWC Minutes Links */
 [data-theme="dark"] .bwc-minutes-link {
-  color: #64b5f6 !important;
-  background: rgba(55, 65, 81, 0.8) !important;
-  border-left-color: #64b5f6 !important;
-  box-shadow: 0 2px 8px rgba(100, 181, 246, 0.15) !important;
+  color: #6fa6ff !important;
+  background: #1e293b !important;
+  border-left-color: #4A9EE7 !important;
+  box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3) !important;
 }
 
 [data-theme="dark"] .bwc-minutes-link:hover {
-  color: #90caf9 !important;
-  background: rgba(55, 65, 81, 0.95) !important;
-  border-left-color: #90caf9 !important;
-  box-shadow: 0 4px 16px rgba(100, 181, 246, 0.25) !important;
+  color: #e2e8f0 !important;
+  background: #1e293b !important;
+  border-left-color: #6fa6ff !important;
+  box-shadow: 0 8px 25px rgba(15, 23, 38, 0.5) !important;
 }

@@ -598,12 +598,12 @@
 
 /* Dark Theme Support */
 [data-theme="dark"] .deans-page {
-    background: linear-gradient(135deg, #1e1e1e 0%, #2c2c2c 100%);
+    background: linear-gradient(135deg, #0a1220 0%, #1a2332 50%, #253041 100%);
     color: #ffffff;
 }
 
 [data-theme="dark"] .deans-page-header {
-    background: linear-gradient(135deg, #1e40af 0%, #1e293b 100%);
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
 }
 
 [data-theme="dark"] .deans-page-header::before {
@@ -611,31 +611,39 @@
 }
 
 [data-theme="dark"] .deans-page-header h1 {
-    color: #64B5F6 !important;
-    text-shadow: 0 2px 4px rgba(100, 181, 246, 0.3);
+    color: #e2e8f0 !important;
+    text-shadow: 0 2px 4px rgba(226, 232, 240, 0.3);
 }
 
 [data-theme="dark"] .deans-page-title {
-    color: #64B5F6;
-    text-shadow: 0 2px 4px rgba(100, 181, 246, 0.3);
+    color: #e2e8f0;
+    text-shadow: 0 2px 4px rgba(226, 232, 240, 0.3);
 }
 
 [data-theme="dark"] .deans-section-title {
-    color: #64B5F6;
+    color: #6fa6ff;
+}
+
+[data-theme="dark"] .deans-section-title::after {
+    background: #4A9EE7;
+}
+
+[data-theme="dark"] .dean-section-title::after {
+    background: #4A9EE7;
 }
 
 [data-theme="dark"] .dean-card {
-    background: rgba(44, 44, 44, 0.95);
-    border-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    background: #1e293b;
+    border-color: rgba(100, 116, 139, 0.2);
+    box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3);
 }
 
 [data-theme="dark"] .dean-name {
-    color: #90CAF9;
+    color: #6fa6ff;
 }
 
 [data-theme="dark"] .dean-title {
-    color: #64B5F6;
+    color: #6fa6ff;
 }
 
 [data-theme="dark"] .dean-contact p,
@@ -644,21 +652,21 @@
 }
 
 [data-theme="dark"] .associates-grid .dean-card {
-    background: rgba(44, 44, 44, 0.95);
-    border-color: rgba(255, 255, 255, 0.1);
+    background: #1e293b;
+    border-color: rgba(100, 116, 139, 0.2);
 }
 
 [data-theme="dark"] .dean-designation {
-    color: #90CAF9;
+    color: #6fa6ff;
 }
 
 [data-theme="dark"] .dean-email {
-    color: #64B5F6;
-    background: rgba(100, 181, 246, 0.1);
+    color: #6fa6ff;
+    background: rgba(111, 166, 255, 0.1);
 }
 
 [data-theme="dark"] .dean-email:hover {
-    background: rgba(100, 181, 246, 0.2);
+    background: rgba(111, 166, 255, 0.2);
 }
 
 [data-theme="dark"] .dean-info {
@@ -666,61 +674,61 @@
 }
 
 [data-theme="dark"] .dean-section-title {
-    color: #64B5F6;
+    color: #6fa6ff;
 }
 
 [data-theme="dark"] .dean-card-header {
-    background: linear-gradient(135deg, #1e40af 0%, #1e293b 100%);
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
 }
 
 [data-theme="dark"] .dean-category-title {
-    color: #64B5F6;
+    color: #e2e8f0;
 }
 
 [data-theme="dark"] .dean-card-body {
-    background: rgba(44, 44, 44, 0.9);
+    background: #1e293b;
     color: #d1d5db;
 }
 
 [data-theme="dark"] .dean-profile {
-    background: linear-gradient(135deg, rgba(44, 44, 44, 0.9) 0%, rgba(30, 30, 30, 0.9) 100%);
-    border-left-color: #64B5F6;
+    background: #1e293b;
+    border-left-color: #4A9EE7;
 }
 
 [data-theme="dark"] .dean-image-placeholder {
-    background: linear-gradient(135deg, rgba(44, 44, 44, 0.9) 0%, rgba(30, 30, 30, 0.9) 100%);
-    color: #64B5F6;
+    background: #1e293b;
+    color: #6fa6ff;
 }
 
 [data-theme="dark"] .associate-dean-profile {
-    background: linear-gradient(135deg, rgba(44, 44, 44, 0.9) 0%, rgba(30, 30, 30, 0.9) 100%);
-    border-left-color: #64B5F6;
+    background: #1e293b;
+    border-left-color: #4A9EE7;
 }
 
 [data-theme="dark"] .associate-dean-image {
-    border-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(100, 116, 139, 0.2);
 }
 
 [data-theme="dark"] .associate-dean-image-placeholder {
-    background: linear-gradient(135deg, rgba(44, 44, 44, 0.9) 0%, rgba(30, 30, 30, 0.9) 100%);
-    color: #64B5F6;
+    background: #1e293b;
+    color: #6fa6ff;
 }
 
 [data-theme="dark"] .associate-dean-name {
-    color: #90CAF9;
+    color: #6fa6ff;
 }
 
 [data-theme="dark"] .associate-dean-designation {
-    color: #64B5F6;
+    color: #6fa6ff;
 }
 
 [data-theme="dark"] .associate-dean-email {
-    color: #64B5F6;
-    background: rgba(100, 181, 246, 0.1);
+    color: #6fa6ff;
+    background: rgba(111, 166, 255, 0.1);
 }
 
 [data-theme="dark"] .associate-dean-email:hover {
-    background: rgba(100, 181, 246, 0.2);
+    background: rgba(111, 166, 255, 0.2);
 }
 
 [data-theme="dark"] .associate-dean-info {
