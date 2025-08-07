@@ -264,7 +264,7 @@ const Navbar = () => {
                   <span className="user-greeting">
                     Welcome, {user.name || user.username}
                   </span>
-                  {user.role === 'admin' && (
+                  {user.role === 'Admin' && (
                     <button 
                       className="nav-btn nav-btn--admin"
                       onClick={() => navigate('/admin')}

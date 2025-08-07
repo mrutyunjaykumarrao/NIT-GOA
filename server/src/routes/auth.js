@@ -143,39 +143,46 @@ router.get('/validate', authenticateToken, async (req, res) => {
 });
 
 // Get current user profile
-router.get('/profile', authenticateToken, async (req, res) => {
+router.get('/profile', async (req, res) => {
   try {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+
+    if (!token) {
+      return res.status(401).json({ error: 'No token provided' });
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
+    
     const [users] = await executeQuery(`
       SELECT 
-        ua.id,
+        ua.user_id as id,
         ua.username,
-        ua.role,
-        ua.created_at,
-        ua.last_login,
-        e.employee_id,
-        e.first_name,
-        e.last_name,
-        e.email,
-        e.phone,
-        e.department_id,
-        d.name as department_name
+        ua.access_level as role,
+        ua.is_active
       FROM user_accounts ua
-      LEFT JOIN employees e ON ua.employee_id = e.id
-      LEFT JOIN departments d ON e.department_id = d.id
-      WHERE ua.id = ?
-    `, [req.user.userId]);
+      WHERE ua.user_id = ? AND ua.is_active = 1
+    `, [decoded.userId]);
 
     if (users.length === 0) {
       return res.status(404).json({ error: 'User not found' });
     }
 
     const user = users[0];
-    const { password_hash, ...userProfile } = user;
-
-    res.json(userProfile);
+    res.json({
+      valid: true,
+      user: {
+        id: user.id,
+        username: user.username,
+        role: user.role
+      }
+    });
   } catch (error) {
-    console.error('Get profile error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error('Profile error:', error);
+    if (error.name === 'JsonWebTokenError') {
+      return res.status(401).json({ error: 'Invalid token' });
+    }
+    res.status(500).json({ error: 'Server error' });
   }
 });
 

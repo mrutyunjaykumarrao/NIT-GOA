@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
   // Verify token validity (optional - can be called periodically)
   const verifyToken = async () => {
     try {
-      const response = await axios.get('/api/auth/profile');
+      const response = await axios.get('/api/auth/validate');
       return response.data;
     } catch (error) {
       console.error('Token verification failed:', error);
@@ -45,7 +45,8 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const initializeAuth = () => {
       try {
-        const token = localStorage.getItem('authToken');
+        // Check both token storage methods for backward compatibility
+        const token = localStorage.getItem('authToken') || localStorage.getItem('token');
         const userData = localStorage.getItem('user');
 
         if (token && userData) {
@@ -54,6 +55,10 @@ export const AuthProvider = ({ children }) => {
           // Set axios default header
           axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
           
+          // Ensure we're using consistent storage
+          localStorage.setItem('authToken', token);
+          localStorage.removeItem('token'); // Remove old token if it exists
+          
           setUser(parsedUser);
           setIsAuthenticated(true);
         }
@@ -61,6 +66,7 @@ export const AuthProvider = ({ children }) => {
         console.error('Error initializing auth:', error);
         // Clear invalid data
         localStorage.removeItem('authToken');
+        localStorage.removeItem('token');
         localStorage.removeItem('user');
       } finally {
         setIsLoading(false);

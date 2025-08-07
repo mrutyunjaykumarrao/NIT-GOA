@@ -56,19 +56,32 @@ const FacultyEdit = () => {
     });
 
     useEffect(() => {
-        // Always ensure we have a valid token first, then fetch data
-        ensureAuthentication().then(() => {
-            fetchFacultyData();
-        });
+        const initializePage = async () => {
+            console.log('Initializing faculty edit page...');
+            const authSuccess = await ensureAuthentication();
+            if (authSuccess) {
+                console.log('Authentication successful, fetching faculty data...');
+                await fetchFacultyData();
+            } else {
+                console.error('Authentication failed, cannot load faculty data');
+                alert('Unable to authenticate. Please refresh the page and try again.');
+            }
+        };
+        
+        initializePage();
     }, [id]);
 
     // Ensure authentication
     const ensureAuthentication = async () => {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('authToken');
         
         if (!token) {
             console.log('No token found, attempting auto-login...');
-            await autoLogin();
+            const loginSuccess = await autoLogin();
+            if (!loginSuccess) {
+                console.error('Failed to authenticate');
+                return false;
+            }
         } else {
             // Verify token is still valid
             try {
@@ -77,18 +90,28 @@ const FacultyEdit = () => {
                 });
                 if (!response.ok) {
                     console.log('Token invalid, attempting auto-login...');
-                    await autoLogin();
+                    const loginSuccess = await autoLogin();
+                    if (!loginSuccess) {
+                        console.error('Failed to re-authenticate');
+                        return false;
+                    }
                 }
             } catch (error) {
                 console.log('Token validation failed, attempting auto-login...');
-                await autoLogin();
+                const loginSuccess = await autoLogin();
+                if (!loginSuccess) {
+                    console.error('Failed to re-authenticate');
+                    return false;
+                }
             }
         }
+        return true;
     };
 
     // Auto-login function for development/testing
     const autoLogin = async () => {
         try {
+            console.log('Attempting auto-login...');
             const response = await fetch('/api/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -97,12 +120,18 @@ const FacultyEdit = () => {
 
             if (response.ok) {
                 const data = await response.json();
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('userRole', data.role || 'admin');
-                console.log('Auto-login successful');
+                // Use consistent storage keys with AuthContext
+                localStorage.setItem('authToken', data.token);
+                localStorage.setItem('user', JSON.stringify(data.user));
+                console.log('Auto-login successful:', data.user);
+                return true;
+            } else {
+                console.error('Auto-login failed with status:', response.status);
+                return false;
             }
         } catch (error) {
-            console.log('Auto-login failed:', error);
+            console.error('Auto-login failed:', error);
+            return false;
         }
     };
 
@@ -252,7 +281,7 @@ const FacultyEdit = () => {
     const handleSave = async () => {
         setSaving(true);
         try {
-            const token = localStorage.getItem('token');
+            const token = localStorage.getItem('authToken');
             if (!token) {
                 alert('You must be logged in to save changes');
                 return;
@@ -315,7 +344,7 @@ const FacultyEdit = () => {
                     await autoLogin();
                     
                     // Retry the request with new token
-                    const newToken = localStorage.getItem('token');
+                    const newToken = localStorage.getItem('authToken');
                     if (newToken) {
                         const retryResponse = await fetch(`/api/faculty-edit/${id}/bulk-update`, {
                             method: 'PUT',

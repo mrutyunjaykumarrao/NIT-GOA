@@ -156,7 +156,7 @@ const FacultyDetails = () => {
     // Check if user can edit (admin or the faculty member themselves)
     const canEdit = () => {
         if (!isAuthenticated) return false;
-        return userRole === 'admin' || userRole === 'faculty';
+        return userRole === 'Admin' || userRole === 'faculty';
     };
 
     // Helper function to check if data exists and is not empty

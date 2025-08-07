@@ -477,10 +477,32 @@ router.put('/:employeeCode/bulk-update', authenticateToken, async (req, res) => 
         
         for (const interest of research_interests) {
           if (interest && interest.trim()) {
+            // First, check if the research area exists, if not create it
+            const areaName = interest.trim();
+            
+            // Check if area exists
+            const [existingArea] = await connection.execute(
+              `SELECT area_id FROM research_areas WHERE area_name = ?`, 
+              [areaName]
+            );
+            
+            let areaId;
+            if (existingArea.length > 0) {
+              areaId = existingArea[0].area_id;
+            } else {
+              // Create new research area
+              const [insertResult] = await connection.execute(
+                `INSERT INTO research_areas (area_name) VALUES (?)`, 
+                [areaName]
+              );
+              areaId = insertResult.insertId;
+            }
+            
+            // Now insert into faculty_research_areas
             await connection.execute(`
-              INSERT INTO faculty_research_areas (employee_id, research_area)
+              INSERT INTO faculty_research_areas (employee_id, area_id)
               VALUES (?, ?)
-            `, [employeeId, interest.trim()]);
+            `, [employeeId, areaId]);
           }
         }
       }
