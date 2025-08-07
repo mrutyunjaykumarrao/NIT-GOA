@@ -81,6 +81,7 @@ app.use('/api/auth', require('./src/routes/auth'));
 app.use('/api/public', require('./src/routes/publicRoutes'));
 app.use('/api/faculty-profiles', require('./src/routes/facultyProfiles'));
 app.use('/api/faculty-details', require('./src/routes/facultyDetails'));
+app.use('/api/faculty-edit', require('./src/routes/facultyEdit'));
 
 // Currently used routes
 app.use('/api/staff', require('./src/routes/staff'));

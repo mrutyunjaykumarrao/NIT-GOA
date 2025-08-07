@@ -34,6 +34,7 @@ import MTech from './Views/Admission-Section/MTech';
 import PhD from './Views/Admission-Section/PhD';
 import Faculty from './Views/People-Section/Faculty/Faculty';
 import FacultyDetails from './Views/People-Section/Faculty/FacultyDetails/FacultyDetails';
+import FacultyEdit from './Views/People-Section/Faculty/FacultyEdit/FacultyEdit';
 import AdministrativeStaff from './Views/People-Section/AdministrativeStaff/AdministrativeStaff';
 import TechnicalStaff from './Views/People-Section/TechnicalStaff/TechnicalStaff';
 import RDProjects from './Views/Research-Section/RDProjects';
@@ -148,6 +149,7 @@ function AppContent() {
         {/* People Section Routes */}
         <Route path="/faculty" element={<Faculty />} />
         <Route path="/faculty/:id" element={<FacultyDetails />} />
+        <Route path="/faculty/:id/edit" element={<FacultyEdit />} />
         <Route path="/people/faculty/:id" element={<FacultyDetails />} />
         <Route path="/administrative-staff" element={<AdministrativeStaff />} />
         <Route path="/technical-staff" element={<TechnicalStaff />} />

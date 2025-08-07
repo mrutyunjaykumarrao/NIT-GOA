@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTheme } from '../../../../contexts/ThemeContext';
-import FacultyEditForm from '../../../../components/FacultyEditForm/FacultyEditForm';
-import TableEditForm from '../../../../components/TableEditForm/TableEditForm';
-import ListEditForm from '../../../../components/ListEditForm/ListEditForm';
 import SocialLinks from '../../../../components/SVGIcons/SocialLinks';
 import './FacultyDetails.css';
 
@@ -40,7 +37,6 @@ const FacultyDetails = () => {
     });
 
     // Edit mode states
-    const [editMode, setEditMode] = useState(null); // 'profile', 'academic', 'publications', etc.
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [userRole, setUserRole] = useState(null);
 
@@ -163,125 +159,6 @@ const FacultyDetails = () => {
         return userRole === 'admin' || userRole === 'faculty';
     };
 
-    // Handle profile update
-    const handleProfileUpdate = async (formData) => {
-        try {
-            const response = await fetch(`/api/faculty-edit/faculty/${faculty.profile.faculty_id}/profile`, {
-                method: 'PUT',
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to update profile');
-            }
-
-            // Refresh faculty data
-            window.location.reload();
-        } catch (error) {
-            console.error('Error updating profile:', error);
-            alert('Failed to update profile. Please try again.');
-        }
-    };
-
-    // Handle data refresh after CRUD operations
-    const handleDataRefresh = () => {
-        window.location.reload();
-    };
-
-    // Table configurations for different data types
-    const getTableConfig = (type) => {
-        const configs = {
-            academic: {
-                columns: [
-                    { key: 'degree', label: 'Degree', type: 'text', required: true, width: '25%' },
-                    { key: 'institute', label: 'Institute', type: 'textarea', required: true, width: '40%' },
-                    { key: 'subject', label: 'Subject', type: 'text', width: '20%' },
-                    { key: 'year', label: 'Year', type: 'number', min: 1970, max: 2030, width: '15%' }
-                ],
-                apiEndpoint: '/api/faculty-edit/faculty/:facultyId/academic-info'
-            },
-            publications: {
-                columns: [
-                    { key: 'title', label: 'Title', type: 'textarea', required: true, width: '40%' },
-                    { key: 'authors', label: 'Authors', type: 'textarea', width: '25%' },
-                    { key: 'publication_type', label: 'Type', type: 'select', required: true, width: '15%',
-                      options: [
-                        { value: 'journal', label: 'Journal' },
-                        { value: 'conference', label: 'Conference' },
-                        { value: 'proceedings', label: 'Proceedings' },
-                        { value: 'book', label: 'Book' },
-                        { value: 'chapter', label: 'Book Chapter' }
-                      ]
-                    },
-                    { key: 'publication_year', label: 'Year', type: 'number', min: 1970, max: 2030, width: '10%' },
-                    { key: 'journal_name', label: 'Journal/Conference', type: 'text', width: '10%' }
-                ],
-                apiEndpoint: '/api/faculty-edit/faculty/:facultyId/publications'
-            },
-            awards: {
-                columns: [
-                    { key: 'award_title', label: 'Award Title', type: 'textarea', required: true, width: '40%' },
-                    { key: 'awarded_by', label: 'Awarded By', type: 'text', width: '30%' },
-                    { key: 'award_year', label: 'Year', type: 'number', min: 1970, max: 2030, width: '15%' },
-                    { key: 'award_type', label: 'Type', type: 'select', width: '15%',
-                      options: [
-                        { value: 'national', label: 'National' },
-                        { value: 'international', label: 'International' },
-                        { value: 'institutional', label: 'Institutional' },
-                        { value: 'research', label: 'Research' },
-                        { value: 'teaching', label: 'Teaching' }
-                      ]
-                    }
-                ],
-                apiEndpoint: '/api/faculty-edit/faculty/:facultyId/awards'
-            },
-            fundedProjects: {
-                columns: [
-                    { key: 'project_title', label: 'Project Title', type: 'textarea', required: true, width: '35%' },
-                    { key: 'funding_agency', label: 'Funding Agency', type: 'text', width: '25%' },
-                    { key: 'amount', label: 'Amount', type: 'text', width: '15%' },
-                    { key: 'duration', label: 'Duration', type: 'text', width: '15%' },
-                    { key: 'status', label: 'Status', type: 'select', width: '10%',
-                      options: [
-                        { value: 'ongoing', label: 'Ongoing' },
-                        { value: 'completed', label: 'Completed' },
-                        { value: 'submitted', label: 'Submitted' }
-                      ]
-                    }
-                ],
-                apiEndpoint: '/api/faculty-edit/faculty/:facultyId/funded-projects'
-            },
-            researchGuidance: {
-                columns: [
-                    { key: 'student_name', label: 'Student Name', type: 'text', required: true, width: '25%' },
-                    { key: 'research_topic', label: 'Research Topic', type: 'textarea', width: '35%' },
-                    { key: 'guidance_type', label: 'Type', type: 'select', required: true, width: '15%',
-                      options: [
-                        { value: 'phd', label: 'PhD' },
-                        { value: 'mtech', label: 'M.Tech' },
-                        { value: 'btech', label: 'B.Tech' },
-                        { value: 'postdoc', label: 'Post-Doc' }
-                      ]
-                    },
-                    { key: 'status', label: 'Status', type: 'select', width: '15%',
-                      options: [
-                        { value: 'ongoing', label: 'Ongoing' },
-                        { value: 'completed', label: 'Completed' },
-                        { value: 'submitted', label: 'Submitted' }
-                      ]
-                    },
-                    { key: 'completion_year', label: 'Year', type: 'number', min: 2000, max: 2030, width: '10%' }
-                ],
-                apiEndpoint: '/api/faculty-edit/faculty/:facultyId/research-guidance'
-            }
-        };
-        return configs[type];
-    };
-
     // Helper function to check if data exists and is not empty
     const hasData = (data) => {
         if (!data) return false;
@@ -295,7 +172,7 @@ const FacultyDetails = () => {
         return data !== null && data !== undefined && data !== '';
     };
 
-    const renderExpandableSection = (title, key, content, isExpanded = false, editType = null) => {
+    const renderExpandableSection = (title, key, content, isExpanded = false) => {
         // Don't render the section if it doesn't have data
         if (!hasData(getDataForSection(key))) {
             return null;
@@ -314,19 +191,6 @@ const FacultyDetails = () => {
                         <h2>{title}</h2>
                         <i className={`fas fa-chevron-${expandedSections[key] ? 'up' : 'down'}`}></i>
                     </div>
-                    {canEdit() && editType && (
-                        <button 
-                            className="edit-button"
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                setEditMode(editType);
-                            }}
-                            title={`Edit ${title}`}
-                        >
-                            <i className="fas fa-edit"></i>
-                            Edit
-                        </button>
-                    )}
                 </div>
                 <div className={`section-content ${expandedSections[key] ? 'expanded' : 'collapsed'}`}>
                     {content}
@@ -424,10 +288,23 @@ const FacultyDetails = () => {
         <div className={`faculty-details-page ${theme}`} data-theme={theme}>
             <div className="faculty-details-container">
                 {/* Back Button */}
-                <button onClick={handleBackToFaculty} className="back-button">
-                    <i className="fas fa-arrow-left"></i>
-                    Back To Faculty
-                </button>
+                <div className="faculty-header-actions">
+                    <button onClick={handleBackToFaculty} className="back-button">
+                        <i className="fas fa-arrow-left"></i>
+                        Back To Faculty
+                    </button>
+                    
+                    {canEdit() && (
+                        <button 
+                            onClick={() => navigate(`/faculty/${id}/edit`)} 
+                            className="edit-profile-button"
+                            title="Edit Faculty Profile"
+                        >
+                            <i className="fas fa-edit"></i>
+                            Edit Profile
+                        </button>
+                    )}
+                </div>
 
                 {/* Main Content */}
                 <div className="faculty-main-content">
@@ -469,16 +346,6 @@ const FacultyDetails = () => {
                         <div className="info-section personal-info-section">
                             <div className="section-header-main">
                                 <h2>Personal Information</h2>
-                                {canEdit() && (
-                                    <button 
-                                        className="edit-button"
-                                        onClick={() => setEditMode('profile')}
-                                        title="Edit Personal Information"
-                                    >
-                                        <i className="fas fa-edit"></i>
-                                        Edit
-                                    </button>
-                                )}
                             </div>
                             
                             {expandedSections.personalInfo && (
@@ -511,16 +378,6 @@ const FacultyDetails = () => {
                         <div className="info-section contact-info-section">
                             <div className="section-header-main">
                                 <h2>Contact Information</h2>
-                                {canEdit() && (
-                                    <button 
-                                        className="edit-button"
-                                        onClick={() => setEditMode('profile')}
-                                        title="Edit Contact Information"
-                                    >
-                                        <i className="fas fa-edit"></i>
-                                        Edit
-                                    </button>
-                                )}
                             </div>
                             
                             {expandedSections.contactInfo && (
@@ -566,8 +423,7 @@ const FacultyDetails = () => {
                                 </div>
                                     </div>
                                 </div>,
-                        false,
-                        'profile'
+                        false
                     )}
 
                                                 {renderExpandableSection(
@@ -655,8 +511,7 @@ const FacultyDetails = () => {
                                                             </tbody>
                                                         </table>
                                                     </div>,
-                                                    false,
-                                                    'academic'
+                                                    false
                                                 )}
 
                                                 {renderExpandableSection(
@@ -815,8 +670,7 @@ const FacultyDetails = () => {
                                 )
                             }
                         </div>,
-                        false,
-                        'publications'
+                        false
                     )}
 
                     {renderExpandableSection(
@@ -851,8 +705,7 @@ const FacultyDetails = () => {
                                 );
                             })}
                         </div>,
-                        false,
-                        'researchGuidance'
+                        false
                     )}
 
                     {renderExpandableSection(
@@ -927,8 +780,7 @@ const FacultyDetails = () => {
                                 </tbody>
                             </table>
                         </div>,
-                        false,
-                        'fundedProjects'
+                        false
                     )}
 
                     {renderExpandableSection(
@@ -958,8 +810,7 @@ const FacultyDetails = () => {
                                 );
                             })}
                         </div>,
-                        false,
-                        'awards'
+                        false
                     )}
 
                     {renderExpandableSection(
@@ -977,8 +828,7 @@ const FacultyDetails = () => {
                                 }
                             </ul>
                         </div>,
-                        false,
-                        'memberships'
+                        false
                     )}
 
                     {renderExpandableSection(
@@ -993,8 +843,7 @@ const FacultyDetails = () => {
                                 )) || <li>No professional services available</li>}
                             </ul>
                         </div>,
-                        true,
-                        'professionalServices'
+                        true
                     )}
 
                     {renderExpandableSection(
@@ -1053,8 +902,7 @@ const FacultyDetails = () => {
                                 </tbody>
                             </table>
                         </div>,
-                        true,
-                        'coursesAttended'
+                        true
                     )}
 
                     {renderExpandableSection(
@@ -1125,149 +973,10 @@ const FacultyDetails = () => {
                                 </tbody>
                             </table>
                         </div>,
-                        true,
-                        'coursesConducted'
+                        true
                     )}
                 </div>
             </div>
-
-            {/* Edit Modals */}
-            {editMode === 'profile' && (
-                <FacultyEditForm
-                    faculty={faculty.profile || faculty}
-                    onSave={handleProfileUpdate}
-                    onCancel={() => setEditMode(null)}
-                    section="all"
-                />
-            )}
-
-            {editMode === 'academic' && (
-                <TableEditForm
-                    data={faculty.academicInformation || []}
-                    columns={getTableConfig('academic').columns}
-                    tableName="Academic Information"
-                    facultyId={faculty.profile?.faculty_id}
-                    onSave={handleDataRefresh}
-                    onCancel={() => setEditMode(null)}
-                    apiEndpoint={getTableConfig('academic').apiEndpoint}
-                />
-            )}
-
-            {editMode === 'publications' && (
-                <TableEditForm
-                    data={[...(faculty.publications?.journal || []), ...(faculty.publications?.proceedings || []), ...(faculty.publications?.bookChapters || []), ...(faculty.publications?.booksAuthored || [])].map(pub => ({ title: pub }))}
-                    columns={getTableConfig('publications').columns}
-                    tableName="Publications"
-                    facultyId={faculty.profile?.faculty_id}
-                    onSave={handleDataRefresh}
-                    onCancel={() => setEditMode(null)}
-                    apiEndpoint={getTableConfig('publications').apiEndpoint}
-                />
-            )}
-
-            {editMode === 'awards' && (
-                <TableEditForm
-                    data={faculty.awardsAndHonors?.map(award => ({ award_title: award })) || []}
-                    columns={getTableConfig('awards').columns}
-                    tableName="Awards & Honors"
-                    facultyId={faculty.profile?.faculty_id}
-                    onSave={handleDataRefresh}
-                    onCancel={() => setEditMode(null)}
-                    apiEndpoint={getTableConfig('awards').apiEndpoint}
-                />
-            )}
-
-            {editMode === 'fundedProjects' && (
-                <TableEditForm
-                    data={faculty.fundedProjects?.map(project => ({ project_title: project })) || []}
-                    columns={getTableConfig('fundedProjects').columns}
-                    tableName="Funded Projects"
-                    facultyId={faculty.profile?.faculty_id}
-                    onSave={handleDataRefresh}
-                    onCancel={() => setEditMode(null)}
-                    apiEndpoint={getTableConfig('fundedProjects').apiEndpoint}
-                />
-            )}
-
-            {editMode === 'researchGuidance' && (
-                <TableEditForm
-                    data={faculty.researchGuidance?.map(guidance => ({ student_name: guidance })) || []}
-                    columns={getTableConfig('researchGuidance').columns}
-                    tableName="Research Guidance"
-                    facultyId={faculty.profile?.faculty_id}
-                    onSave={handleDataRefresh}
-                    onCancel={() => setEditMode(null)}
-                    apiEndpoint={getTableConfig('researchGuidance').apiEndpoint}
-                />
-            )}
-
-            {editMode === 'memberships' && (
-                <ListEditForm
-                    data={faculty.memberships || []}
-                    listName="Memberships"
-                    facultyId={faculty.profile?.faculty_id}
-                    onSave={handleDataRefresh}
-                    onCancel={() => setEditMode(null)}
-                    apiEndpoint="/api/faculty-edit/faculty/:facultyId/memberships"
-                    itemStructure={{ field: 'organization_name', placeholder: 'Enter organization name' }}
-                />
-            )}
-
-            {editMode === 'professionalServices' && (
-                <ListEditForm
-                    data={faculty.professionalServices || []}
-                    listName="Professional Services"
-                    facultyId={faculty.profile?.faculty_id}
-                    onSave={handleDataRefresh}
-                    onCancel={() => setEditMode(null)}
-                    apiEndpoint="/api/faculty-edit/faculty/:facultyId/professional-services"
-                    itemStructure={{ field: 'service_details', placeholder: 'Enter service details' }}
-                />
-            )}
-
-            {editMode === 'coursesAttended' && (
-                <TableEditForm
-                    data={faculty.trainingConferencesAndShortTermCoursesAttended || []}
-                    tableName="Training/Conferences/Short Term Courses Attended"
-                    facultyId={faculty.profile?.faculty_id}
-                    onSave={handleDataRefresh}
-                    onCancel={() => setEditMode(null)}
-                    apiEndpoint="/api/faculty-edit/faculty/:facultyId/courses-attended"
-                    columns={[
-                        { key: 'course_title', label: 'Course/Conference Title', type: 'text', required: true },
-                        { key: 'organizer', label: 'Organizer', type: 'text' },
-                        { key: 'location', label: 'Location/Venue', type: 'text' },
-                        { key: 'start_date', label: 'Start Date', type: 'date' },
-                        { key: 'end_date', label: 'End Date', type: 'date' },
-                        { key: 'duration', label: 'Duration', type: 'text' },
-                        { key: 'year', label: 'Year', type: 'number' },
-                        { key: 'course_type', label: 'Type', type: 'text' },
-                        { key: 'description', label: 'Description', type: 'textarea' }
-                    ]}
-                />
-            )}
-
-            {editMode === 'coursesConducted' && (
-                <TableEditForm
-                    data={faculty.trainingConferencesAndShortTermCoursesConducted || []}
-                    tableName="Training/Conferences/Short Term Courses Conducted"
-                    facultyId={faculty.profile?.faculty_id}
-                    onSave={handleDataRefresh}
-                    onCancel={() => setEditMode(null)}
-                    apiEndpoint="/api/faculty-edit/faculty/:facultyId/courses-conducted"
-                    columns={[
-                        { key: 'course_title', label: 'Course/Conference Title', type: 'text', required: true },
-                        { key: 'organizer', label: 'Organizer', type: 'text' },
-                        { key: 'location', label: 'Location/Venue', type: 'text' },
-                        { key: 'start_date', label: 'Start Date', type: 'date' },
-                        { key: 'end_date', label: 'End Date', type: 'date' },
-                        { key: 'duration', label: 'Duration', type: 'text' },
-                        { key: 'year', label: 'Year', type: 'number' },
-                        { key: 'course_type', label: 'Type', type: 'text' },
-                        { key: 'description', label: 'Description', type: 'textarea' }
-                    ]}
-                />
-            )}
         </div>
     );
 };

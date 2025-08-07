@@ -79,6 +79,40 @@
     font-size: 14px;
 }
 
+/* Faculty Header Actions */
+.faculty-header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.edit-profile-button {
+    background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+    border: none;
+    border-radius: 12px;
+    padding: 12px 20px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.edit-profile-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    background: linear-gradient(135deg, var(--brand-accent), var(--brand-primary));
+}
+
+.edit-profile-button i {
+    font-size: 14px;
+}
+
 /* Loading and Error States */
 .loading-container, .error-container {
     display: flex;
@@ -1521,6 +1555,18 @@
     }
     
     .faculty-links {
+        justify-content: center;
+    }
+    
+    /* Header Actions Responsive */
+    .faculty-header-actions {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+    
+    .edit-profile-button {
+        width: 100%;
         justify-content: center;
     }
     

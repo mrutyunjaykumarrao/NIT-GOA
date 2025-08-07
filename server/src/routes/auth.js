@@ -28,20 +28,14 @@ router.post('/login', authLimiter, async (req, res) => {
     // Get user account with employee details
     const [users] = await executeQuery(`
       SELECT 
-        ua.id,
+        ua.user_id as id,
         ua.username,
         ua.password_hash,
-        ua.role,
+        ua.access_level as role,
         ua.is_active,
         ua.failed_login_attempts,
-        ua.locked_until,
-        e.employee_id,
-        e.first_name,
-        e.last_name,
-        e.email,
-        e.department_id
+        ua.locked_until
       FROM user_accounts ua
-      LEFT JOIN employees e ON ua.employee_id = e.id
       WHERE ua.username = ? AND ua.is_active = 1
     `, [username]);
 
@@ -71,9 +65,8 @@ router.post('/login', authLimiter, async (req, res) => {
           locked_until = CASE 
             WHEN failed_login_attempts >= 4 THEN DATE_ADD(NOW(), INTERVAL 30 MINUTE)
             ELSE NULL
-          END,
-          last_failed_login = NOW()
-        WHERE id = ?
+          END
+        WHERE user_id = ?
       `, [user.id]);
 
       return res.status(401).json({ error: 'Invalid credentials' });
@@ -86,14 +79,13 @@ router.post('/login', authLimiter, async (req, res) => {
         failed_login_attempts = 0,
         locked_until = NULL,
         last_login = NOW()
-      WHERE id = ?
+      WHERE user_id = ?
     `, [user.id]);
 
     // Generate JWT token
     const token = jwt.sign(
       { 
         userId: user.id,
-        employeeId: user.employee_id,
         username: user.username,
         role: user.role
       },
@@ -101,28 +93,51 @@ router.post('/login', authLimiter, async (req, res) => {
       { expiresIn: process.env.JWT_EXPIRES_IN || '24h' }
     );
 
-    // Log successful login
-    await executeQuery(`
-      INSERT INTO audit_log (user_id, action, entity_type, details)
-      VALUES (?, 'login', 'authentication', ?)
-    `, [user.id, JSON.stringify({ ip: req.ip, userAgent: req.get('User-Agent') })]);
+    // Log successful login (simplified for now)
+    try {
+      await executeQuery(`
+        INSERT INTO audit_log (table_name, record_id, action, new_values, changed_by, ip_address)
+        VALUES (?, ?, ?, ?, ?, ?)
+      `, [
+        'user_accounts', 
+        user.id, 
+        'UPDATE', 
+        JSON.stringify({ username, action: 'login' }), 
+        user.id,
+        req.ip || req.connection.remoteAddress
+      ]);
+    } catch (auditError) {
+      console.error('Audit log failed:', auditError.message);
+    }
 
     res.json({
       token,
       user: {
         id: user.id,
         username: user.username,
-        role: user.role,
-        employeeId: user.employee_id,
-        firstName: user.first_name,
-        lastName: user.last_name,
-        email: user.email,
-        departmentId: user.department_id
+        role: user.role
       }
     });
 
   } catch (error) {
     console.error('Login error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Validate JWT token
+router.get('/validate', authenticateToken, async (req, res) => {
+  try {
+    res.json({ 
+      valid: true, 
+      user: {
+        userId: req.user.userId,
+        username: req.user.username,
+        role: req.user.role
+      }
+    });
+  } catch (error) {
+    console.error('Token validation error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
