@@ -48,6 +48,10 @@ export const AuthProvider = ({ children }) => {
   };
 
   const openLoginModal = (redirectPath = null) => {
+    // If no redirect path is provided, preserve the current location
+    if (!redirectPath && typeof window !== 'undefined') {
+      redirectPath = window.location.pathname;
+    }
     setLoginRedirectPath(redirectPath);
     setShowLoginModal(true);
   };

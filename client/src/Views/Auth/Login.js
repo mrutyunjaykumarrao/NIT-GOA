@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { useTheme } from '../../contexts/ThemeContext';
@@ -17,6 +17,9 @@ const Login = ({ isModalOpen, onClose }) => {
   const [forgotEmail, setForgotEmail] = useState('');
   const [isForgotLoading, setIsForgotLoading] = useState(false);
   const [forgotMessage, setForgotMessage] = useState('');
+  
+  // Ref for auto-focusing username field
+  const usernameInputRef = useRef(null);
   
   const navigate = useNavigate();
   const location = useLocation();
@@ -45,7 +48,7 @@ const Login = ({ isModalOpen, onClose }) => {
     }
   }, [isAuthenticated, navigate, location, onClose]);
 
-  // Close modal on escape key
+  // Close modal on escape key and auto-focus username field
   React.useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape' && onClose) {
@@ -56,6 +59,13 @@ const Login = ({ isModalOpen, onClose }) => {
     if (isModalOpen) {
       document.addEventListener('keydown', handleEscape);
       document.body.style.overflow = 'hidden'; // Prevent background scroll
+      
+      // Auto-focus the username field when modal opens
+      setTimeout(() => {
+        if (usernameInputRef.current) {
+          usernameInputRef.current.focus();
+        }
+      }, 100); // Small delay to ensure modal is fully rendered
     } else {
       // Clear form when modal closes
       setCredentials({ username: '', password: '' });
@@ -83,6 +93,14 @@ const Login = ({ isModalOpen, onClose }) => {
     if (error) setError('');
   };
 
+  const handleKeyDown = (e) => {
+    // Submit form on Enter key press
+    if (e.key === 'Enter' && !isLoading) {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -96,15 +114,19 @@ const Login = ({ isModalOpen, onClose }) => {
         setFailedAttempts(0);
         setShowForgotPassword(false);
         
-        // Redirect based on user role or return to intended page
-        const from = location.state?.from?.pathname;
-        if (result.user.role === 'admin' && !from) {
-          navigate('/admin');
-        } else {
-          navigate(from || '/');
-        }
-        
+        // Close modal and stay on current page (don't navigate away)
         if (onClose) onClose();
+        
+        // Only navigate if we're on the actual /login page
+        if (location.pathname === '/login') {
+          const from = location.state?.from?.pathname;
+          if (result.user.role === 'admin' && !from) {
+            navigate('/admin');
+          } else {
+            navigate(from || '/');
+          }
+        }
+        // If we're not on /login page, stay on current page after login
       } else {
         // Show username in error message to help user remember
         const errorMsg = credentials.username 
@@ -212,7 +234,7 @@ const Login = ({ isModalOpen, onClose }) => {
           <p>National Institute of Technology Goa</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="login-form">
+        <form onSubmit={handleSubmit} onKeyDown={handleKeyDown} className="login-form">
           {error && (
             <div className="error-message">
               <i className="fas fa-exclamation-circle"></i>
@@ -225,6 +247,7 @@ const Login = ({ isModalOpen, onClose }) => {
             <div className="input-wrapper">
               <i className="fas fa-user"></i>
               <input
+                ref={usernameInputRef}
                 type="text"
                 id="username"
                 name="username"
