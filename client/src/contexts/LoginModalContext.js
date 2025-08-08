@@ -12,31 +12,19 @@ export const useLoginModal = () => {
 
 export const LoginModalProvider = ({ children }) => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [postLoginAction, setPostLoginAction] = useState(null);
 
-  const openLoginModal = (onSuccessCallback = null) => {
+  const openLoginModal = () => {
     setIsLoginModalOpen(true);
-    setPostLoginAction(onSuccessCallback);
   };
 
   const closeLoginModal = () => {
     setIsLoginModalOpen(false);
-    setPostLoginAction(null);
-  };
-
-  const executePostLoginAction = () => {
-    if (postLoginAction) {
-      postLoginAction();
-      setPostLoginAction(null);
-    }
   };
 
   const value = {
     isLoginModalOpen,
     openLoginModal,
-    closeLoginModal,
-    executePostLoginAction,
-    postLoginAction
+    closeLoginModal
   };
 
   return (

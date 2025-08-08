@@ -1,26 +1,54 @@
 /* Login Modal Specific Styles - Scoped to avoid global conflicts */
 
-/* Login Page Container for direct route access */
+/* Login Page Container for direct route access - Enhanced responsiveness */
 .login-page-container {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
   padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10000;
+}
+
+/* Responsive adjustments for login page container */
+@media (max-width: 768px) {
+  .login-page-container {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-page-container {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 320px) {
+  .login-page-container {
+    padding: 8px;
+  }
 }
 
 .login-page-container .login-modal-overlay {
   position: static;
-  background: none;
+  background: transparent;
   backdrop-filter: none;
-  animation: none;
+  animation: loginFadeIn 0.3s ease-out;
+  padding: 0;
 }
 
 .login-page-container .login-modal-content {
   animation: loginSlideIn 0.5s ease-out;
 }
 
+/* Enhanced Login Modal Overlay with better browser support */
 .login-modal-overlay {
   position: fixed;
   top: 0;
@@ -29,12 +57,21 @@
   bottom: 0;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 10000;
   padding: 20px;
   animation: loginFadeIn 0.3s ease-out;
+  overflow-y: auto; /* Allow scrolling on very small screens */
+}
+
+/* Fallback for browsers that don't support backdrop-filter */
+@supports not (backdrop-filter: blur(8px)) {
+  .login-modal-overlay {
+    background: rgba(0, 0, 0, 0.85);
+  }
 }
 
 @keyframes loginFadeIn {
@@ -53,22 +90,140 @@
   }
 }
 
-/* Light mode - plain white background */
+/* Enhanced Login Modal Content with better accessibility */
 .login-modal-content {
-  background: #ffffff;
-  backdrop-filter: none;
+  background: rgba(44, 57, 75, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px); /* Safari support */
   border-radius: 20px;
   padding: 40px;
   box-shadow: 
-    0 25px 50px rgba(0, 0, 0, 0.15),
-    0 10px 25px rgba(0, 0, 0, 0.1);
+    0 25px 50px rgba(0, 0, 0, 0.4),
+    0 10px 25px rgba(0, 0, 0, 0.2);
   width: 100%;
   max-width: 450px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
   animation: loginSlideIn 0.3s ease-out;
   max-height: 90vh;
   overflow-y: auto;
+  color: #fff;
+  margin: auto; /* Center the modal */
+}
+
+/* Large screens - scale up the modal */
+@media (min-width: 1441px) {
+  .login-modal-content {
+    max-width: 520px;
+    padding: 50px;
+    border-radius: 24px;
+  }
+  
+  .login-modal-content .login-header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .login-modal-content .login-logo {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .login-modal-content .input-wrapper input {
+    padding: 18px 18px 18px 50px;
+    font-size: 1.1rem;
+  }
+  
+  .login-modal-content .input-wrapper i {
+    left: 18px;
+    font-size: 1.2rem;
+  }
+  
+  .login-modal-content .password-wrapper input {
+    padding-right: 55px;
+  }
+  
+  .login-modal-content .password-toggle {
+    right: 45px;
+  }
+  
+  .login-modal-content .login-button {
+    padding: 18px 24px;
+    font-size: 1.2rem;
+  }
+  
+  .login-modal-content .form-group {
+    gap: 10px;
+  }
+  
+  .login-modal-content .login-form {
+    gap: 24px;
+  }
+}
+
+/* Ultra-wide screens - even larger modal */
+@media (min-width: 1921px) {
+  .login-modal-content {
+    max-width: 580px;
+    padding: 60px;
+    border-radius: 28px;
+  }
+  
+  .login-modal-content .login-header h1 {
+    font-size: 2.4rem;
+  }
+  
+  .login-modal-content .login-logo {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .login-modal-content .input-wrapper input {
+    padding: 20px 20px 20px 55px;
+    font-size: 1.15rem;
+  }
+  
+  .login-modal-content .input-wrapper i {
+    left: 20px;
+    font-size: 1.3rem;
+  }
+  
+  .login-modal-content .password-wrapper input {
+    padding-right: 60px;
+  }
+  
+  .login-modal-content .password-toggle {
+    right: 50px;
+  }
+  
+  .login-modal-content .login-button {
+    padding: 20px 28px;
+    font-size: 1.25rem;
+  }
+  
+  .login-modal-content .form-group {
+    gap: 12px;
+  }
+  
+  .login-modal-content .login-form {
+    gap: 28px;
+  }
+}
+
+/* Focus trap for accessibility */
+.login-modal-content:focus {
+  outline: none;
+}
+
+/* Ensure modal is properly centered on all screen sizes */
+.login-modal-overlay {
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.login-modal-overlay * {
+  box-sizing: border-box;
 }
 
 /* Dark theme support - glassmorphism background */
@@ -82,7 +237,7 @@
   position: absolute;
   top: 15px;
   right: 15px;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 50%;
   width: 35px;
@@ -92,11 +247,11 @@
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  color: #666;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .login-modal-close:hover {
-  background: rgba(239, 68, 68, 0.1);
+  background: rgba(239, 68, 68, 0.2);
   color: #ef4444;
   transform: rotate(90deg);
 }
@@ -120,18 +275,14 @@
 }
 
 .login-modal-content .login-header h1 {
-  color: #1f2937;
+  color: #ffffff;
   font-size: 2rem;
   font-weight: 700;
   margin: 15px 0 10px 0;
-  background: linear-gradient(135deg, #1f2937, #374151);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .login-modal-content .login-header p {
-  color: #6b7280;
+  color: #d1d5db;
   font-size: 0.95rem;
   font-weight: 500;
   margin: 0;
@@ -151,7 +302,7 @@
 
 .login-modal-content .form-group label {
   font-weight: 600;
-  color: #374151;
+  color: #e5e7eb;
   font-size: 0.95rem;
 }
 
@@ -172,22 +323,28 @@
 .login-modal-content .input-wrapper input {
   width: 100%;
   padding: 15px 15px 15px 45px;
-  border: 2px solid #e5e7eb;
+  border: 2px solid rgba(75, 85, 99, 0.4);
   border-radius: 12px;
   font-size: 1rem;
-  background: #fff;
+  background: rgba(55, 65, 81, 0.6);
+  color: #ffffff;
   transition: all 0.3s ease;
   outline: none;
 }
 
+.login-modal-content .input-wrapper input::placeholder {
+  color: #9ca3af;
+}
+
 .login-modal-content .input-wrapper input:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  background: rgba(55, 65, 81, 0.8);
   transform: translateY(-1px);
 }
 
 .login-modal-content .input-wrapper input:disabled {
-  background: #f9fafb;
+  background: rgba(55, 65, 81, 0.3);
   cursor: not-allowed;
   opacity: 0.7;
 }
@@ -322,7 +479,7 @@
 .login-modal-content .forgot-password-section {
   margin-top: 25px;
   padding-top: 25px;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid rgba(75, 85, 99, 0.3);
   animation: loginSlideDown 0.3s ease-out;
 }
 
@@ -343,8 +500,8 @@
 }
 
 .login-modal-content .forgot-password-divider span {
-  background: #fff;
-  color: #6b7280;
+  background: rgba(44, 57, 75, 0.95);
+  color: #9ca3af;
   font-size: 0.9rem;
   font-weight: 600;
   padding: 0 15px;
@@ -406,45 +563,119 @@
   text-align: center;
   margin-top: 30px;
   padding-top: 20px;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid rgba(75, 85, 99, 0.3);
 }
 
 .login-modal-content .login-footer p {
-  color: #6b7280;
+  color: #9ca3af;
   font-size: 0.85rem;
   margin: 0;
 }
 
 /* Responsive Design - Login Modal Specific */
-@media (max-width: 480px) {
+@media (max-width: 768px) and (min-width: 481px) {
   .login-modal-overlay {
     padding: 15px;
   }
   
   .login-modal-content {
-    padding: 30px 25px;
-    border-radius: 15px;
+    padding: 35px 25px;
+    border-radius: 18px;
+    max-width: 380px; /* Narrower for tablet screens */
+    margin: 0 auto;
   }
   
   .login-modal-content .login-header h1 {
-    font-size: 1.7rem;
+    font-size: 1.8rem;
   }
   
   .login-modal-content .login-logo {
-    width: 60px;
-    height: 60px;
+    width: 65px;
+    height: 65px;
+  }
+  
+  .login-modal-content .input-wrapper input {
+    padding: 15px 15px 15px 44px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  .login-modal-content .password-wrapper input {
+    padding-right: 50px;
+  }
+  
+  .login-modal-content .password-toggle {
+    right: 40px;
+  }
+  
+  .login-modal-content .login-button {
+    padding: 15px 22px;
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-modal-overlay {
+    padding: 8px;
+  }
+  
+  .login-modal-content {
+    padding: 25px 18px;
+    border-radius: 12px;
+    max-width: 95vw;
+  }
+  
+  .login-modal-content .login-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .login-modal-content .login-logo {
+    width: 55px;
+    height: 55px;
   }
   
   .login-modal-content .input-wrapper input {
     padding: 12px 12px 12px 40px;
+    font-size: 16px; /* Prevents zoom on iOS */
   }
   
   .login-modal-content .password-wrapper input {
     padding-right: 45px;
   }
   
+  .login-modal-content .password-toggle {
+    right: 35px;
+  }
+  
   .login-modal-content .login-button {
-    padding: 12px 20px;
+    padding: 12px 18px;
+    font-size: 0.95rem;
+  }
+  
+  .login-modal-content .form-group {
+    gap: 6px;
+  }
+  
+  .login-modal-content .login-form {
+    gap: 18px;
+  }
+}
+
+@media (max-width: 320px) {
+  .login-modal-content {
+    padding: 20px 15px;
+    max-width: 98vw;
+  }
+  
+  .login-modal-content .login-header h1 {
+    font-size: 1.4rem;
+  }
+  
+  .login-modal-content .input-wrapper input {
+    padding: 11px 11px 11px 38px;
+  }
+  
+  .login-modal-content .login-button {
+    padding: 11px 16px;
   }
 }
 

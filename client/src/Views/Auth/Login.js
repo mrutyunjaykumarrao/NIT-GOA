@@ -98,7 +98,7 @@ const Login = ({ isModalOpen, onClose }) => {
         
         // Redirect based on user role or return to intended page
         const from = location.state?.from?.pathname;
-        if (result.user.role === 'Admin' && !from) {
+        if (result.user.role === 'admin' && !from) {
           navigate('/admin');
         } else {
           navigate(from || '/');

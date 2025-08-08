@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import './Authorization.css';
@@ -14,8 +14,16 @@ const ProtectedRoute = ({
   fallbackPath = '/',
   showUnauthorizedMessage = false 
 }) => {
-  const { isAuthenticated, user, isLoading } = useAuth();
+  const { isAuthenticated, user, isLoading, openLoginModal } = useAuth();
   const location = useLocation();
+
+  // Open login modal if not authenticated (hook must be called before any conditional returns)
+  useEffect(() => {
+    if (!isLoading && !isAuthenticated) {
+      console.log('🔒 OPENING LOGIN MODAL: User not authenticated');
+      openLoginModal();
+    }
+  }, [isAuthenticated, isLoading, openLoginModal]);
 
   console.log('🔒 PROTECTED ROUTE CHECK:', {
     path: location.pathname,
@@ -37,7 +45,7 @@ const ProtectedRoute = ({
     );
   }
 
-  // Redirect to login if not authenticated
+  // Redirect to login if not authenticated (fallback for direct navigation)
   if (!isAuthenticated) {
     console.log('🔒 REDIRECTING TO LOGIN: User not authenticated');
     return <Navigate to="/login" state={{ from: location }} replace />;

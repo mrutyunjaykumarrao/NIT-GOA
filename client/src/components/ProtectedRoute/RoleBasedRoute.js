@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 
@@ -14,8 +14,16 @@ const RoleBasedRoute = ({
   fallbackPath = '/',
   unauthorizedComponent = null 
 }) => {
-  const { isAuthenticated, user, isLoading } = useAuth();
+  const { isAuthenticated, user, isLoading, openLoginModal } = useAuth();
   const location = useLocation();
+
+  // Open login modal if authentication is required but user is not authenticated (hook must be called before any conditional returns)
+  useEffect(() => {
+    if (!isLoading && requireAuthentication && !isAuthenticated) {
+      console.log('🛡️ OPENING LOGIN MODAL: Authentication required but user not authenticated');
+      openLoginModal();
+    }
+  }, [isAuthenticated, isLoading, requireAuthentication, openLoginModal]);
 
   console.log('🛡️ ROLE-BASED ROUTE CHECK:', {
     path: location.pathname,

@@ -1,11 +1,11 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { useLoginModal } from '../../contexts/LoginModalContext';
+import { useAuth } from '../../contexts/AuthContext';
 import Login from './Login';
 
 const LoginWrapper = () => {
   const location = useLocation();
-  const { isLoginModalOpen, closeLoginModal } = useLoginModal();
+  const { showLoginModal, closeLoginModal } = useAuth();
   
   // If we're on the /login route, render as a page
   if (location.pathname === '/login') {
@@ -19,7 +19,7 @@ const LoginWrapper = () => {
   // Otherwise, render as a modal
   return (
     <Login 
-      isModalOpen={isLoginModalOpen} 
+      isModalOpen={showLoginModal} 
       onClose={closeLoginModal} 
     />
   );

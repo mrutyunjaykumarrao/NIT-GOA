@@ -34,7 +34,7 @@ const LoggingLink = ({ to, children, className, ...props }) => {
 };
 
 const Navbar = () => {
-  const { user, isAuthenticated, logout } = useAuth();
+  const { user, isAuthenticated, logout, openLoginModal } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -66,14 +66,12 @@ const Navbar = () => {
   // Get current language object from the hook
   const currentLang = getCurrentLanguage();
 
-  // Custom logout handler that redirects to login with return path
+  // Custom logout handler that opens login modal on same page
   const handleLogout = () => {
     logout();
-    // Navigate to login page with current location as return path
-    navigate('/login', { 
-      state: { from: location },
-      replace: true 
-    });
+    // Open login modal instead of navigating to login page
+    // This keeps the user on the same page with background blur
+    openLoginModal();
   };
 
   // Google Translate integration functions
@@ -330,7 +328,7 @@ const Navbar = () => {
               ) : (
                 <button 
                   className="nav-btn nav-btn--login"
-                  onClick={() => navigate('/login')}
+                  onClick={() => openLoginModal()}
                 >
                   <svg viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -360,7 +358,7 @@ const Navbar = () => {
             ) : (
               <button 
                 className="nav-btn nav-btn--login mobile-login"
-                onClick={() => navigate('/login')}
+                onClick={() => openLoginModal()}
               >
                 Login
               </button>
