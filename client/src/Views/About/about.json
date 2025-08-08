@@ -1,0 +1,188 @@
+{
+  "hero": {
+    "title": "About NIT Goa",
+    "subtitle": "National Institute of Technology Goa - Institute of National Importance",
+    "establishment": "Established 2010",
+    "description": "Autonomous institute under Ministry of Education, Government of India"
+  },
+  "institute_overview": {
+    "section_title": "Institute Overview",
+    "title": "About Our Institute",
+    "location": "Location: Cuncolim, South Goa",
+    "type": "Type: Institute of National Importance",
+    "overview": {
+      "title": "Overview",
+      "paragraphs": [
+        "The National Institute of Technology Goa (NIT Goa) is a premier national-level technical institute in India established in 2010 by an act of parliament (NIT Act, 2007 and NIT (Amendment) Act, 2012). NIT Goa is an autonomous institute functioning under the aegis of Ministry of Education (MoE), Government of India, and has been declared an \"Institute of National Importance\".",
+        "The Campus is located at Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703. Cuncolim is located 15 kilometers from Margao City. Dabolim Airport in Vasco caters to domestic and international airlines that stop en route to other Indian destinations. It is at a distance of around 38 km (45 minutes by car) from the Institute. Manohar International Airport in Mopa is 77 km (1 hour and 30 minutes by car) from the Institute. The closest major railway station is 'Madgaon Railway Station', which is around 15 km (25 minutes by car) from the Institute. Goa is well connected by roadways, railways and airways with various parts of the country. The Institute is dedicated to its academic excellence and aims to produce quality Engineers and Scientists."
+      ]
+    }
+  },
+  "vision_mission": {
+    "vision": {
+      "title": "Our Vision",
+      "content": "National Institute of Technology Goa shall emerge as one of the nation's pre-eminent institutions. Through its excellence, it shall serve the Goan society, India and humanity at large with all the challenges and opportunities."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "content": "NIT Goa strives for quality faculty, good students and excellent infrastructure. Strives for excellence, through dissemination, generation and application of knowledge by laying stress on interdisciplinary approach in all the branches of Science, Engineering, Technology, Humanities and Management with emphasis on human values and ethics."
+    }
+  },
+  "academic_programs": {
+    "section_title": "Academic Programs",
+    "title": "Academic Excellence",
+    "specialization": "5 UG + 3 PG + PhD Programs",
+    "seats": "Total Intake: 296 Students",
+    "overview": {
+      "title": "Program Overview",
+      "content": "The Institute offers undergraduate programmes in Five Engineering Departments: (1) Computer Science and Engineering (CSE), (2) Electronics and Communication Engineering (ECE), (3) Electrical and Electronics Engineering (EEE), (4) Civil Engineering (CVE), and (5) Mechanical Engineering (MCE). The Institute offers M.Tech. Programmes in the Three disciplines: (1) Computer Science and Engineering (CSE), (2) VLSI and (3) Power Electronics and Power Systems (PEPS). The Institute also offers Ph.D. degree in various stream of Engineering, Applied Sciences, Technology and Humanities & Social Sciences."
+    },
+    "departments": {
+      "undergraduate": {
+        "title": "Undergraduate Programs",
+        "programs": [
+          {
+            "name": "Computer Science and Engineering (CSE)",
+            "link": "/academics/computer-science"
+          },
+          {
+            "name": "Electronics and Communication Engineering (ECE)",
+            "link": "/academics/electronics-communication"
+          },
+          {
+            "name": "Electrical and Electronics Engineering (EEE)",
+            "link": "/academics/electrical-electronics"
+          },
+          {
+            "name": "Civil Engineering (CVE)",
+            "link": "/academics/civil-engineering"
+          },
+          {
+            "name": "Mechanical Engineering (MCE)",
+            "link": "/academics/mechanical-engineering"
+          }
+        ]
+      },
+      "postgraduate": {
+        "title": "Postgraduate Programs",
+        "programs": [
+          "M.Tech. in Computer Science and Engineering",
+          "M.Tech. in VLSI",
+          "M.Tech. in Power Electronics and Power Systems (PEPS)"
+        ]
+      },
+      "doctoral": {
+        "title": "Doctoral Programs",
+        "programs": [
+          "Ph.D. in Engineering streams",
+          "Ph.D. in Applied Sciences",
+          "Ph.D. in Technology",
+          "Ph.D. in Humanities & Social Sciences"
+        ]
+      }
+    }
+  },
+  "admissions": {
+    "section_title": "Admissions",
+    "title": "Admission Process",
+    "process": "B.Tech: JEE Main | M.Tech: GATE",
+    "seats": "Total Seats: 296",
+    "overview": {
+      "title": "Admission Overview",
+      "content": "The Institute admits students into the B.Tech. degree programme based on the ranks obtained in the Joint Entrance Examination JEE (Main) and the scheme of Direct Admission to Students Abroad (DASA). The Institute admits M.Tech. students through valid GATE score followed by CCMT (Centralized Counselling for M.Tech. Admissions), and few seats are offered to the sponsored and DRDO candidates."
+    },
+    "programs": {
+      "btech": {
+        "title": "B.Tech Admissions",
+        "description": "Students are admitted based on JEE (Main) ranks through JoSAA/CSAB and DASA scheme.",
+        "details": [
+          "CSE/EEE/ECE: 44 seats each (38 JoSAA/CSAB + 6 DASA)",
+          "CVE/MCE: 42 seats each (37 JoSAA/CSAB + 5 DASA)",
+          "Total: 216 students (188 JoSAA/CSAB + 28 DASA)"
+        ],
+        "link": {
+          "url": "/admissions/btech/josaa-csab",
+          "text": "Visit JoSAA/CSAB Admissions"
+        }
+      },
+      "mtech": {
+        "title": "M.Tech Admissions",
+        "description": "Students are admitted through GATE score followed by CCMT.",
+        "details": [
+          "CSE/VLSI: 27 seats each (23 CCMT + 2 sponsored + 2 DRDO)",
+          "PEPS: 26 seats (22 CCMT + 2 sponsored + 2 DRDO)",
+          "Total: 80 students",
+          "Full-time Self-Financed (Non-GATE) M.Tech. in vacant seats"
+        ],
+        "link": {
+          "url": "/admissions/mtech",
+          "text": "M.Tech Admission Details"
+        }
+      }
+    }
+  },
+  "research": {
+    "section_title": "Research & Innovation",
+    "title": "Research Excellence",
+    "focus": "Cutting-edge Research",
+    "projects": "Multiple R&D Projects",
+    "overview": {
+      "title": "Research Overview",
+      "content": "All the faculty members of NIT Goa are dedicated to training the students with a world-class education. Faculty members are actively involved in research works and have executed many funded R & D projects. They have been publishing research articles and book chapters regularly. Many faculty members have been granted and many have filed patent/patents. Institute has organised several GIAN, STTP, FDP, Workshops, National and International Conferences etc."
+    },
+    "link": {
+      "url": "/research/rd-projects",
+      "text": "Explore R&D Projects"
+    }
+  },
+  "placement": {
+    "section_title": "Training & Placement",
+    "title": "Career Opportunities",
+    "companies": "100+ Companies",
+    "sectors": "Multiple Sectors",
+    "overview": {
+      "title": "Placement Overview",
+      "content": "The Training and Placement Cell of NIT Goa aims to provide opportunities to students to shape their career. Major companies keep visiting the Institute regularly. They are from varied sectors: Research and Development, Engineering & Technology, IT/ Software Development, Analytics, Finance, Education, Consulting, Public Sector Undertaking and others. Additionally, the institute has witnessed an increase in the number of internships offered to pre-final year students by MNCs like Samsung, Dell, Intel, etc."
+    },
+    "recruiters": {
+      "title": "Notable Recruiters",
+      "content": "Navratna Public Sector Undertaking (PSU) like Bharat Electronics Limited, Indian Space Research Organisation (ISRO), Multinational Corporations including Amazon, Samsung, Oracle, Dell, Intel, Qualcomm, Global Foundries, IBM, Capgemini, Jio, AMD, Bosch, ZS Associates, Tata Power, L&T, HDFC, Jindal South West, HCL Technologies, Adani Group, Infosys, TCS, Cognizant, Increff, Schneider Electric, Aequs, Publicis Sapient, Accenture, ASEC Inc., Persistent Systems and many more."
+    },
+    "link": {
+      "url": "/training-placement",
+      "text": "Visit Training & Placement"
+    }
+  },
+  "outreach_student_life": {
+    "outreach": {
+      "title": "Outreach Activities",
+      "content": "The Institute also organises outreach activities/initiatives like 'Rashtriya Aavishkar Abhiyan (RAA)', 'Unnat Bharat Abhiyan', 'Swachh Bharat Abhiyan', 'Ek Bharat Shreshtha Bharat', 'FiT India' programmes, and many more community development initiatives.",
+      "link": {
+        "url": "/outreach-activities",
+        "text": "Explore Outreach Activities"
+      }
+    },
+    "student_life": {
+      "title": "Student Life & Activities",
+      "content": "The students of NIT Goa are actively involved in various co-curricular activities through students' clubs, councils, and study circles like SPECTRA, TESLA, QUANTA, CESCO & META etc. The SPIE and IEEE student chapters of the Institute organise various scientific and research-oriented events. The annual techno-cultural fest of NIT Goa is SAAVYAS. For overall development of the students, the institute also provides sports facilities. In 2018, NIT Goa organised All India Inter NIT Faculty and Staff Tournament."
+    }
+  },
+  "collaborations_culture": {
+    "collaborations": {
+      "title": "Collaborations & MoUs",
+      "content": "NIT Goa signed many MoUs and Agreements with other academic & research institutes, industries and organizations to facilitate faculty and student exchange programs, knowledge sharing, carrying-out interdisciplinary research works, joint research guidance, curriculum and course developments, joint workshop, conferences, seminars, and many more student and faculty development programs.",
+      "link": {
+        "url": "/research/mou-details",
+        "text": "Details of MoUs"
+      }
+    },
+    "culture": {
+      "title": "Cultural Diversity",
+      "content": "The students also celebrate cultural festivals of different states of India to maintain unity in diversity and it is a collective effort by the institute to inculcate integral education of mind and body.",
+      "link": {
+        "url": "/hostels",
+        "text": "Explore Hostels"
+      }
+    }
+  }
+}

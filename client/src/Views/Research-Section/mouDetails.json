@@ -1,0 +1,217 @@
+{
+  "page_header": {
+    "title": "Details Of MoUs"
+  },
+  "table_headers": [
+    "S.No.",
+    "Date", 
+    "Duration",
+    "Organization",
+    "Scope/Activities"
+  ],
+  "mous": [
+    {
+      "sno": "1.",
+      "date": "March 19, 2025",
+      "duration": "02 years",
+      "organization": "Universidad de Tarapacá (UTA) – Arica, Chile",
+      "scope": "The selected scope of cooperation includes research, education, and training in areas of mutual interest, particularly in Science, Engineering, Economics and Humanities. Specific activities include: o Research collaborations and joint projects. o Exchange of researchers, postgraduates, and postdocs o Research assistantships for Master's and Ph.D. students o Sharing of scientific publications and technical resources Joint workshops, conferences, and seminars."
+    },
+    {
+      "sno": "2.",
+      "date": "21/11/2024",
+      "duration": "05 years",
+      "organization": "INESC TEC, Institute for Systems and Computer Engineering, Technology and Science, Portugal (INESC TEC)",
+      "scope": "Article 1: General Purpose 1. INESC TEC and NIT Goa establish a formal affiliation for collaborative academic, research, and cultural exchange programs. 2. Areas of collaboration include: o Marine Science and Technology integrated with various engineering and scientific disciplines. o Joint research and innovation projects, focusing on Ocean Exploration and Blue Economy. o Defining lab resources at NIT Goa with INESC TEC's support. o International projects and researcher/student exchanges. o Sharing documentation, research materials, publications, and strategies for intellectual property and start-ups. o Hosting joint academic events, workshops, and conferences. Article 2: Specific Targets 1. Explore postgraduate education programs in Ocean Technologies, positioning Goa as a center of excellence. 2. Facilitate student stays in Portugal for research, with joint supervision of post-graduate theses. 3. Promote the CEMENT initiative for multidisciplinary cooperation between engineering and marine sciences."
+    },
+    {
+      "sno": "3.",
+      "date": "21/11/2024",
+      "duration": "05 years",
+      "organization": "ASSOCIAÇÃO BIOPOLIS, PORTUGAL",
+      "scope": "Clause 1: Purpose 1. Establishes a formal affiliation between NIT Goa and BIOPOLIS. 2. Aims to enhance the relationship through collaborative academic, research, and cultural exchange programs. 3. Promotes mutual cooperation in areas of interest and benefit. Clause 2: Actions 1. Joint research in Science, Technology, Biodiversity, Genetics, Evolution, etc. 2. Collaborative R&D and innovation projects in areas like climate change and environmental monitoring. 3. Cooperation in international projects. 4. Exchange of students and researchers. 5. Hosting joint academic and cultural events. 6. Promotion of sustainable technologies. 7. Sharing intellectual property strategies, promoting startups. 8. Mutual exchange of information, advice, and assistance. 9. Other mutually beneficial collaborations. Clause 3: Specific Actions 1. Expand the Coastal Temperature and Biodiversity Observation Network to Indo-Pacific regions, with Goa as a strategic location."
+    },
+    {
+      "sno": "4.",
+      "date": "11/06/2024",
+      "duration": "05 years",
+      "organization": "Brest National School of Engineering, France",
+      "scope": "• Activities such as collaborative research, lectures, symposium. • Exchange of information and materials in fields of interest to both parties. • Exchange of scholars, researchers and staff. • Sponsorship of cooperative seminars, workshops, and academic meetings • Exchange of students ( including undergraduate & graduate) • Other activities as agreed by both parties."
+    },
+    {
+      "sno": "5. (Memorandum of Agreement)",
+      "date": "11/06/2024",
+      "duration": "05 years",
+      "organization": "Brest National School of Engineering, France",
+      "scope": "• The number of outgoing exchange students from each institution is limited to two (2) per year. • The period of study at the host institution is limited to one (1) year. • The home institution will select the appropriate students to attend the host institution. Final acceptance is ratified by the host institution • The status of the student at the host institution will be a non- degree exchange student. • The exchange student must possess a sufficient level of linguistic ability to attend the course at the host Institution. • Upon completion of courses, the host institutions will provide the exchange students with an academic record of completed courses, which the exchange student may use to obtain credits at home institutions, subject to the rules & regulations of the home institution. • The exchange student will pay the tuition and other fees of the home institution and will not be charged an entrance examination fees, submission fee or tuition fee by the institution. • The exchange student will be individually responsible for all other expenses including travel, accommodation, health insurance, etc."
+    },
+    {
+      "sno": "6.",
+      "date": "2024",
+      "duration": "05 years",
+      "organization": "IIT Madras",
+      "scope": "Scope • Academic and research collaboration • Exchange of academic information, materials, and publications • Exchange of students and faculty • Sponsorship of cooperative seminars, workshops, and academic meetings Student Exchange • Top 10% of NIT Goa students can apply for direct PhD at IIT Madras • Students can pursue 7th and 8th semesters at IIT Madras • Credits earned will be transferred to NIT Goa for B.Tech degree Research Collaboration • Joint research activities in disciplines of mutual interest • Faculty from both institutions will collaborate in supervision of exchange students and joint research Admission to Direct PhD • Top 10% of NIT Goa students with minimum CGPA of 8.0 can apply • Students must complete comprehensive viva within 3 semesters of joining direct PhD program Operational Aspects • IIT Madras will select eligible students for direct PhD program • IIT Madras will select students for summer fellowship and direct PhD program • Students will pay tuition fees to NIT Goa during 7th and 8th semesters at IIT Madras"
+    },
+    {
+      "sno": "7.",
+      "date": "2024",
+      "duration": "05 years",
+      "organization": "IIT Hyderabad",
+      "scope": "Scope • Academic and research collaboration • Exchange of academic information, materials, and publications • Exchange of students and faculty • Sponsorship of cooperative seminars, workshops, and academic meetings Student Exchange • Generally top 10% of NIT Goa students can apply to spend 7th and 8th semesters at IIT Hyderabad • No admission or tuition fees will be charged, but students will pay hostel, mess, insurance, and other applicable charges Research Collaboration • Joint research activities in disciplines of mutual interest • Faculty from both institutions will collaborate in supervision of exchange students and joint research Admission to Direct PhD • Generally top 10% of NIT Goa students with CGPA 8.0 (must) and higher can apply • Students will spend 7th and 8th semesters at IIT Hyderabad and be evaluated for selection to PhD program Operational Aspects • IIT Hyderabad will select eligible students for direct PhD program • IIT Hyderabad will select students for 7th and 8th semesters and PhD program • Students will pay tuition fees to NIT Goa during 7th and 8th semesters at IIT Hyderabad"
+    },
+    {
+      "sno": "8.",
+      "date": "18.04.2024",
+      "duration": "05 years",
+      "organization": "Airport Authority of India",
+      "scope": "[A] Aim To create interest in Civil Aviation among students by: • Supplementing theoretical knowledge with practical operations / working • Giving exposure to students in STEM (Science, Technology, Engineering and Mathematics) / non-STEM domains • Giving opportunity to work on small-duration projects related to Civil Aviation [B] INTERNSHIP PROGRAM: Shall refer to the working arrangement between both the parties, as agreed, i.e.: i.Being part of project implementation at Airport (Observe implementation & Learn) ii. 2-5 days Familiarization (Visits / Workshops) iii. 4-20 weeks Internship [C] APPLICABILITY: The educational institutions in the vicinity of AAI Airports (25-40 km radius), can sign the MoU for their students undergoing Graduation / Post-Graduation / Professional degree courses. [D] DURATION OF MoU: The term of this Memorandum shall be for a period of 5 years from the date of its signing, and may be renewed by mutual consent of both the parties."
+    },
+    {
+      "sno": "9.",
+      "date": "27.02.2024",
+      "duration": "05 years",
+      "organization": "University Paris XIII named University Sorbonne Paris Nord – USPN",
+      "scope": "Scope of the cooperation The partners will identify the areas of common interest and will define the projects they wish to develop together, in conformity with the law in force in each of the countries and within the limits determined by the Agreement. These may include the following activities: a) The exchange of administrative staff, of professors and researchers. b) The exchange of students. c) The development of joint training programs. d) The development of common research projects. e) The common direction of PhDs and dissertations. f) The writing of shared academic articles This collaboration can be extended to other areas by simple amendment."
+    },
+    {
+      "sno": "10.",
+      "date": "30/01/2024",
+      "duration": "06 years",
+      "organization": "TELECOMMUNICATIONS CONSULTANTS INDIA LIMITED",
+      "scope": "Objectives of MoU's: 1. To build competencies and engagement in 5G technologies in students and academic fraternity. 2. To enable projects at under-graduation and postgraduate level for students using the 5G environment. 3. To encourage academia-industry engagement to ideate and develop 5G use cases. 4. To provide local access to 5G test setup for Startups and MSMEs around the institution. 5. Making Indian academia & startup ecosystem 6G ready. PURPOSE OF AGREEMENT: 1. In line with the budget announcement with an objective to build competencies and engagement in 5G technologies for students & startup communities, DoT is setting up one hundred 5G Use case labs at Higher Educational Institutions across all States/Union territories to facilitate the development, experimentation of 5G applications in various socioeconomic verticals. 2. The use cases could span across socioeconomic verticals including education, agriculture, health, manufacturing, transportation, etc."
+    },
+    {
+      "sno": "11.",
+      "date": "04/01/2024",
+      "duration": "03 years",
+      "organization": "National Institute of Entrepreneurship and small business development (NIESBUD)",
+      "scope": "1. Training Programs: NIESBUD specializes in providing entrepreneurship training programs and support initiatives for entrepreneurs. NIT GOA can contribute to these programs by sharing their expertise in business incubation, mentoring, and supporting startups. Collaboratively, both institutes can design comprehensive training programs that address both the theoretical and practical aspects of entrepreneurship. 2. Knowledge and Resource Sharing: NIESBUD and NIT GOA can collaborate to share their knowledge, research, and resources related to entrepreneurship and small business development. This can include sharing case studies, research findings, best practices, and success stories to enhance the learning experience for entrepreneurs and aspiring business owners. 3. Inclusive Entrepreneurship Collaboration: NIT Goa has a successful track record of teaching, research, consultancy, etc., providing them with the necessary infrastructure, mentorship, and networking opportunities. Collaborating with NIESBUD expands the reach of such support to a wider audience, including entrepreneurs from diverse backgrounds."
+    },
+    {
+      "sno": "12.",
+      "date": "29th November, 2023",
+      "duration": "2 Years",
+      "organization": "Goa Institute of Public Administration & Rural Development (GIPARD)",
+      "scope": "This collaboration would enable GIPARD: (a)to conduct a number of training programmes thereby trying to achieve the targets as mandated in the State Training Policy of Goa. (b)to cater to the training programmes for the Elected Representatives at the block levels and district levels. (c)Joint Holding of Conference / Seminar / Workshop / Training /Symposia. (d)Academic Collaboration (e)Exchange of Knowledge Resource Sharing The parties agree to cooperate in the following areas of activity: (a)to conduct training programmes allotted by GIPARD. (b)to provide faculty support in conducting the programmes at their premises. (c)to collaborate in research activities wherever the need arises. (d)to provide their infrastructure to conduct the training programmes, workshops, seminars, symposiums, etc. (e)to promote collaborative academic exchange through faculty, students, lectures and publications. (f)to provide funding for pilot projects by GIPARD related to good governance."
+    },
+    {
+      "sno": "13.",
+      "date": "25th November, 2023",
+      "duration": "2 Years",
+      "organization": "BITS BioCyTiH Foundation",
+      "scope": "Joint pitching for externally funded R&D innovation /Project. Joint development and organization. Techno entrepreneurship programs. Cyber physical systems."
+    },
+    {
+      "sno": "14.",
+      "date": "2nd August 2023",
+      "duration": "---",
+      "organization": "INFLIBNET Centre, Gandhinagar, Gujarat",
+      "scope": "To achieve the goal of submitting and accessing electronic theses and dissertations."
+    },
+    {
+      "sno": "15.",
+      "date": "22nd June 2023",
+      "duration": "05 Years",
+      "organization": "Indian Institute of Technology Mandi (IIT Mandi), Himachal Pradesh.",
+      "scope": "Academic and research collaboration. Exchange of students and faculty, as well as the exchange of academic information, scholarly materials, and publications. Admissions for NIT Goa students to pursue direct PhD/early PhD at IIT Mandi, Joint Ph.D./PG, subject to the policy approved by the appropriate body of the host institution."
+    },
+    {
+      "sno": "16.",
+      "date": "06th June 2023",
+      "duration": "05 Years",
+      "organization": "Indian Institute of Technology Jammu (IIT Jammu), Jammu and Kashmir.",
+      "scope": "Collaborating on research projects, joint Ph.D. supervisions, organization of workshops, seminars, etc. Exchange of students and faculty, academic information, scholarly materials, and publications, following the MOU rules. Admission of NIT Goa students for direct or early M.Tech/Ph.D. at IIT Jammu/joint Ph.D./PG, subject to the policy. Create a shared pool of faculty members in each basic discipline at IIT Jammu and NIT Goa."
+    },
+    {
+      "sno": "17.",
+      "date": "26th May 2023",
+      "duration": "02 Years",
+      "organization": "Motilal Nehru National Institute of Technology (MNNIT), Allahabad, Uttar Pradesh.",
+      "scope": "Visits by and exchange of faculty members and research scholars. Exchange of information, including but not limited to, research publications of faculty members. Joint academic training programs. Joint research activities and supervision of research work. Joint curriculum and MOOCs development work."
+    },
+    {
+      "sno": "18.",
+      "date": "15th May 2023",
+      "duration": "03 Years",
+      "organization": "Siemens Limited, Goa.",
+      "scope": "Work together on the digitization of power systems, electrical, and computer-based projects in the distribution automation domain."
+    },
+    {
+      "sno": "19.",
+      "date": "21st April 2023",
+      "duration": "05 Years",
+      "organization": "National Forensic Sciences University (NFSU), Goa Campus.",
+      "scope": "To promote interest in the teaching and research activities of the respective institutions, both in general and in the specific fields of Artificial Intelligence, Machine Learning, High-Performance Computing, Digital Forensics, Blockchain, Cybersecurity, Forensic Chemistry and Toxicology, Questioned Documents, and Fingerprint Examination.   The two Educational Institutions shall seek to promote: (i) Exchange of faculty and students for the mutual benefit of both institutions; (ii) Organize symposia, conferences, workshops, short courses, and meetings on research issues; (iii) Conduct joint research and continuing education programs."
+    },
+    {
+      "sno": "20.",
+      "date": "10th April 2023",
+      "duration": "02 years",
+      "organization": "Sardar Vallabhbhai National Institute of Technology (SVNIT) Surat, Gujarat.",
+      "scope": "Visits by and exchanges of faculty members and research scholars. Exchange of information, including but not limited to, research publications of faculty members. Joint research activities and joint supervision of research work. Joint conferences or symposia on subjects of mutual interest."
+    },
+    {
+      "sno": "21.",
+      "date": "20thNovember 2022",
+      "duration": "04 Years",
+      "organization": "Shraman Foundation For Creation of Shraman Foundation Scholarship",
+      "scope": "The objective is to provide scholarships based on applications from NIT Goa students, following the eligibility and selection criteria outlined in the MoU."
+    },
+    {
+      "sno": "22.",
+      "date": "14thSeptember 2022",
+      "duration": "03 years",
+      "organization": "Alcolab India LLP Goa, India",
+      "scope": "Joint research and development projects in key fields that are of mutual interest, such as (but not limited to) cement, concrete, and the reuse of by-products/wastes. Organization of educational programs/training in Goa. Specialized hands-on, intense training focusing on theoretical concepts and practical industrial practices for students/faculty. Personnel exchange and visits for sharing knowledge and experience."
+    },
+    {
+      "sno": "23.",
+      "date": "15th July 2022",
+      "duration": "05 Years",
+      "organization": "Directorate of Skill Development, Goa",
+      "scope": "Upgrading ITIs with the upskilling of trainees in the state of Goa."
+    },
+    {
+      "sno": "24.",
+      "date": "06th July 2022",
+      "duration": "05 Years",
+      "organization": "University of Agder, Norway",
+      "scope": "Joint research projects in the field of mutual interests. Exchange of academic publications and reports. Organization of joint symposia, workshops, lectures, and conferences. Exchange of faculty and students."
+    },
+    {
+      "sno": "25.",
+      "date": "19th May 2020",
+      "duration": "04 years",
+      "organization": "VYAKTI VIKAS KENDRA INDIA",
+      "scope": "Online yoga for Youth Empowerment and Skills Programme (YES) for students. Coping with stress and emotions through breath connection. Education: A holistic perspective. Interpersonal Relationships and People Skills. Responsibility, Initiative, and Leadership. Time Management and Teamwork. Healthy Habits and Environment."
+    },
+    {
+      "sno": "26.",
+      "date": "04thNovember 2019",
+      "duration": "05 Years",
+      "organization": "Don Bosco College of Engineering, Goa",
+      "scope": "To undertake joint research projects Publications and patents Knowledge sharing Placement & internships Areas of Research Co-operation:     I. Image Processing     II. Artificial Intelligence     III. Thermography     IV. Remote Sensing     V. GIS     VI. Robotics     VII. Communication Engineering     VIII. VLSI     IX. Signal Processing     X. Machine Learning     XI. Social Media Mining     XII. Software Defined Network and 5G     XIII. Brain-Computer Interface"
+    },
+    {
+      "sno": "27.",
+      "date": "20th June 2019",
+      "duration": "03 years",
+      "organization": "Department of Nanoscience & Engineering /BK21PLUS NANO CONVERGENCE PROJECT GROUP, INJE UNIVERSITY, REPUBLIC OF KOREA",
+      "scope": "Exchange of faculty. Exchange of research scholars and students. Exchange of information and materials in fields of mutual interest. Collaboration in activities such as research projects, lectures, symposiums, etc. Implementation of joint cultural programs."
+    },
+    {
+      "sno": "28.",
+      "date": "1st November 2018",
+      "duration": "03 years",
+      "organization": "Siemens Limited, Goa.",
+      "scope": "Research and implementation of Big Data analytics and machine learning. Testing the products under diverse terms and conditions."
+    },
+    {
+      "sno": "29.",
+      "date": "08th August 2018",
+      "duration": "05 Years",
+      "organization": "CSIR- National Institute of Oceanography, Goa",
+      "scope": "Undertaking joint research projects with outcomes translated into industry applications. Collaborative publications and patents. Development of sensors for marine applications using optics/photonics. Advancements in marine instrumentation. Joint participation in research projects and publication efforts. Collaboration on academic projects. Conducting seminars and lectures on topics of mutual interest and relevance. Facilitating technology transfers."
+    }
+  ]
+}

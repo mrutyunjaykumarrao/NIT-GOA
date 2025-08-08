@@ -1,0 +1,296 @@
+{
+  "page_header": {
+    "title": "GIAN",
+    "subtitle": "Global Initiative of Academic Networks"
+  },
+  "navigation": [
+    {
+      "id": "home",
+      "label": "Home"
+    },
+    {
+      "id": "objective",
+      "label": "Objective"
+    },
+    {
+      "id": "guidelines",
+      "label": "Guidelines"
+    },
+    {
+      "id": "upcoming",
+      "label": "Upcoming Courses"
+    },
+    {
+      "id": "completed",
+      "label": "Completed Courses"
+    },
+    {
+      "id": "contact",
+      "label": "Contact Us"
+    }
+  ],
+  "home": {
+    "intro_texts": [
+      "Global Initiative for Academic Network (GIAN) programme approved by Union Cabinet in Higher Education aimed at tapping the talent pool of Scientist and Entrepreneur Internationally to encourage their engagement with the institutes of higher Education in India so as to augment the country's existing academic resources, accelerate the pace of quality reform, and elevate India's scientific and technological capacity to global excellence.",
+      "In order to (i) gather the best international experience into our systems of education, (ii) enable interaction of students and faculty with the best academic and industry experts from all over the world, (iii) share their experiences and expertise to motivate people to work on Indian problems, there is a need for a Scheme of International Summer and Winter Term. During the 'Retreat' of IITs with Minister of Human Resource Development Smt. Smriti Zubin Irani on 29th June, 2014 at Goa, it was decided that a system of Guest Lectures by internationally and nationally renowned experts would be evolved along with a comprehensive Faculty Development Programme not only for new IITs, IIMs, IISERs but also for NITs and other institutions in the country."
+    ]
+  },
+  "objective": {
+    "title": "THE PROPOSED GIAN IS ENVISAGED TO ACHIEVE THE FOLLOWING OBJECTIVES:",
+    "objectives": [
+      "To increase the footfalls of reputed international faculty in the Indian academic institutes.",
+      "Provide opportunity to our faculty and students to learn and share knowledge and teaching skills in cutting edge areas.",
+      "To create avenue for possible collaborative research.",
+      "To increase participation and presence of international students in the academic Institutes.",
+      "Opportunity for the students of different Institutes/Universities to interact and learn subjects in niche areas through collaborative learning process.",
+      "Provide opportunity for the technical persons from Indian Industries to improve understandings and update their knowledge in relevant areas.",
+      "Motivate the best international experts in the world to work on problems related to India."
+    ]
+  },
+  "guidelines": {
+    "title": "The important aspects of the ISWT programme area as follows:",
+    "guidelines": [
+      {
+        "number": "i",
+        "text": "Academic Institute/Universities will identify one or more subjects to be offered in this Ministry of Education scheme. This subject typically should not be offered in the regular semesters/year and can be interdisciplinary/industry oriented/ research oriented in nature and scope."
+      },
+      {
+        "number": "ii",
+        "text": "Duration: Subjects should be offered in the Summer and Winter vacation of the host Institute."
+      },
+      {
+        "number": "iii",
+        "text": "Each subject should be taught by at least one reputed international faculty jointly with one faculty from the host Institute. One additional faculty may be associated from another academic/ research organization in India."
+      },
+      {
+        "number": "iv",
+        "text": "The international faculty should be-",
+        "subpoints": [
+          "an expert in the area specified in the subject.",
+          "working in academic institutions / industry / research organizations / independent researcher of international repute.",
+          "encouraged to engage in a long term collaborative research programme with faculty members of the host Institute."
+        ]
+      },
+      {
+        "number": "v",
+        "text": "Each subject should be designed as per following:",
+        "details": [
+          "Duration of a lecture hour: 1hr.",
+          "Total number of lectures: 30",
+          "Maximum lectures per day: 3 lectures and / or tutorials ( eg 2 lectures and 1 tutorial)",
+          "Total duration of a subject: 10 working days."
+        ]
+      },
+      {
+        "number": "vi",
+        "text": "The students can also obtain academic credits for these subjects based on the evaluation and grading process and agreed credit transfer mechanism between that host institute and the home institute of the students. The home university of the student will be mainly responsible for transferring academic credits. The host institute will only provide information on the grading system, subject syllabus, and the academic policy."
+      },
+      {
+        "number": "vii",
+        "text": "A number of course would be taught by the Institute during the International Summer/Winter term. The participants have to resister for the subjects offered in this ISWT scheme with payments of registration fee plus the subject fee for each subject registered. While, the registration fee would be a nominal fee for registering for the course, once selected, the subject fee would depend on the number of subjects, the participants chooses to take."
+      },
+      {
+        "number": "viii",
+        "text": "After successful completion of the subject , all participants, will get subject participation certificates. Those participating in examinations will get completion certificates with grades and credits."
+      },
+      {
+        "number": "ix",
+        "text": "Each course should have a minimum of 50 participants. At least 30 participants must be teachers and students from other institutions, among whom at least 20 must be teachers from other Institutions."
+      }
+    ]
+  },
+  "upcoming": {
+    "title": "Upcoming Courses:",
+    "courses": [
+      {
+        "number": "2412164",
+        "title": "Controller Design: Evolution from Classical to Machine Learning Framework",
+        "foreign_faculty": "Dr. Akshya K. Swain, University of Auckland, New Zealand",
+        "host_faculty": "Dr. Amol D. Rahulkar",
+        "date": "7-11 July, 2025",
+        "brochure_url": "https://www.nitgoa.ac.in/gian/gianuploads/GIANBrochure%2015jan2025.pdf"
+      }
+    ]
+  },
+  "completed": {
+    "title": "Completed Courses",
+    "subtitle": "GIAN courses successfully conducted at NIT Goa",
+    "stats": {
+      "number": "18",
+      "label": "Courses Completed"
+    },
+    "courses": [
+      {
+        "number": "01",
+        "id": "151038D04",
+        "title": "POWER CONVERTERS FOR ALTERNATE ENERGY SOURCES",
+        "foreign_faculty": "Ashoka Krishna Sarpangal Bhat, Canada",
+        "host_faculty": "Dr. Soumitra Das",
+        "date": "21-03-2016 to 01-04-2016"
+      },
+      {
+        "number": "02",
+        "id": "161038K01",
+        "title": "Computational Mathematics and Finite Element Method",
+        "foreign_faculty": "Karan S. Surana, University of Kansas, Lawrence, KS, USA, United States of America",
+        "host_faculty": "Dr. P Saidi Reddy",
+        "date": "01-07-2016 to 11-07-2016"
+      },
+      {
+        "number": "03",
+        "id": "161038D01",
+        "title": "Public Key Infrastructure (PKI) and Trust Management",
+        "foreign_faculty": "Audun Jøsang, Department of Informatics, University of Oslo, Norway, Norway",
+        "host_faculty": "Dr. Modi Chirag Navinchandra",
+        "date": "05-11-2016 to 14-11-2016"
+      },
+      {
+        "number": "04",
+        "id": "151038M02",
+        "title": "Computational Nonlinear Optics",
+        "foreign_faculty": "Jeremy R. Gulley, Kennesaw State University, north of Atlanta, GA, United States of America",
+        "host_faculty": "Dr. Saidi Reddy Parne",
+        "date": "07-11-2016 to 18-11-2016"
+      },
+      {
+        "number": "05",
+        "id": "161038D10",
+        "title": "Cyber Crime Investigation and Digital Forensics",
+        "foreign_faculty": "Greg Gogolin, Ferris State University, Michigan, USA, United States of America",
+        "host_faculty": "Dr. Modi Chirag Navinchandra",
+        "date": "30-11-2016 to 06-12-2016"
+      },
+      {
+        "number": "06",
+        "id": "161038D04",
+        "title": "POWER ELECTRONICS FOR RENEWABLE ENERGY SYSTEMS",
+        "foreign_faculty": "Marcelo Godoy Simoes, Colorado School of Mines, USA, United States of America",
+        "host_faculty": "Dr. Suresh Mikkili",
+        "date": "08-12-2016 to 17-12-2016"
+      },
+      {
+        "number": "07",
+        "id": "151038D01",
+        "title": "Cloud Security and Privacy",
+        "foreign_faculty": "Muttukrishnan Rajarajan, School of Mathematics, Computer Science and Engineering, City University London, United Kingdom",
+        "host_faculty": "Dr. Damodar Reddy Edla",
+        "date": "12-12-2016 to 18-12-2016"
+      },
+      {
+        "number": "08",
+        "id": "161038L01",
+        "title": "Applied Continuum Mechanics",
+        "foreign_faculty": "J. N. Reddy, Department of Mechanical Engineering Texas A&M University, College Station, TX, United States of America",
+        "host_faculty": "Dr. Saidi Reddy Parne",
+        "date": "15-12-2016 to 25-12-2016"
+      },
+      {
+        "number": "09",
+        "id": "161038D02",
+        "title": "Nanoscale Wireless Networking: Opportunities, Challenges, and Recent Advances",
+        "foreign_faculty": "Mahbub Hassan, Australia",
+        "host_faculty": "Dr. Trilochan Panigrahi",
+        "date": "19-12-2016 to 24-12-2016"
+      },
+      {
+        "number": "10",
+        "id": "161038K02",
+        "title": "Advancements in Privacy Preserving Data Mining",
+        "foreign_faculty": "Ljiljana Brankovic, University of Newcastle, Australia, Australia",
+        "host_faculty": "Dr. Modi Chirag Navinchandra",
+        "date": "19-12-2016 to 29-12-2016"
+      },
+      {
+        "number": "11",
+        "id": "161038D08",
+        "title": "Low Power Nyquist-rate Data Converter",
+        "foreign_faculty": "Edoardo Bonizzoni, University of Pavia, Italy., Italy",
+        "host_faculty": "Dr. Nithin Kumar Y.B.",
+        "date": "06-03-2017 to 10-03-2017"
+      },
+      {
+        "number": "12",
+        "id": "151038D06",
+        "title": "Non-linear Adaptive Signal Processing",
+        "foreign_faculty": "John Soraghan, University of Strathclyde, United Kingdom",
+        "host_faculty": "Dr. Badri Narayan Subudhi",
+        "date": "13-03-2017 to 18-03-2017"
+      },
+      {
+        "number": "13",
+        "id": "161038D06",
+        "title": "Advance Adjustable Speed AC Motor Drive Systems: Application Problems & Solutions",
+        "foreign_faculty": "Prasad N. Enjeti, Texas A&M University, United States of America",
+        "host_faculty": "Dr. Suresh Mikkili",
+        "date": "15-05-2017 to 19-05-2017"
+      },
+      {
+        "number": "14",
+        "id": "151038M03",
+        "title": "The Field Theory of Classical and Quantum Phase Transitions",
+        "foreign_faculty": "Flavio S. Nogueira, Institute for Theoretical Solid State Physics, IFW Dresden, Germany",
+        "host_faculty": "Dr. Saidi Reddy Parne",
+        "date": "03-07-2017 to 13-07-2017"
+      },
+      {
+        "number": "15",
+        "id": "171038D01",
+        "title": "Redox based Resistive Non-volatile Memory Technology",
+        "foreign_faculty": "Vikas Rana, Germany",
+        "host_faculty": "Dr. Lalat Indu Giri",
+        "date": "04-12-2017 to 09-12-2017"
+      },
+      {
+        "number": "16",
+        "id": "171038B01",
+        "title": "Principle and Applications of Electron Paramagnetic Resonance Spectroscopy",
+        "foreign_faculty": "Thomas Prisner, Germany",
+        "host_faculty": "Dr. Velavan Kathirvelu",
+        "date": "29-01-2018 to 09-02-2018"
+      },
+      {
+        "number": "17",
+        "id": "171038D07",
+        "title": "Emerging antennas for future communications systems: Theory, Challenges and Physical Implementation",
+        "foreign_faculty": "Yahia M.M. Antar, Royal Military College, Canada",
+        "host_faculty": "Dr. Pragati Patel",
+        "date": "05-03-2018 to 10-03-2018"
+      },
+      {
+        "number": "18",
+        "id": "2412134",
+        "title": "BLOCKCHAIN EVOLUTION AND ITS APPLICATIONS",
+        "foreign_faculty": "Prof. Roman Vitenberg, University of Oslo, Norway",
+        "host_faculty": "Dr. Modi Chirag Navinchandra",
+        "date": "10-20 March, 2025"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact Us",
+    "main_contact": {
+      "name": "Dr. B.Santhi",
+      "title": "Local Coordinator, GIAN Cell NIT Goa",
+      "address": "Cuncolim, South Goa, Goa\nPIN-403 703, INDIA",
+      "email": "gian@nitgoa.ac.in",
+      "phone": "-"
+    },
+    "contact_items": [
+      {
+        "icon": "📍",
+        "title": "Address",
+        "text": "Cuncolim, South Goa, Goa\nPIN-403 703, INDIA"
+      },
+      {
+        "icon": "📧",
+        "title": "Email",
+        "text": "gian@nitgoa.ac.in"
+      },
+      {
+        "icon": "📞",
+        "title": "Phone",
+        "text": "-"
+      }
+    ]
+  }
+}

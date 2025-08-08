@@ -1,0 +1,295 @@
+{
+  "page_header": {
+    "title": "R & D Projects"
+  },
+  "projects": [
+    {
+      "sr_no": 1,
+      "project_name": "An Integrated Computational and Experimental Approach to Structural design for ballistic impacts and blasts",
+      "pi_name": "Dr.G.R.C.Reddy",
+      "funding_agency": "IISC Bangalore"
+    },
+    {
+      "sr_no": 2,
+      "project_name": "Visvesvaraya PhD Scheme for Electronics & IT- Batch 2014-15",
+      "pi_name": "Dr.Nithin KumarY.B.",
+      "funding_agency": "Media Lab Asia"
+    },
+    {
+      "sr_no": 3,
+      "project_name": "Visvesvaraya PhD Scheme for Electronics & IT- Batch 2015-16",
+      "pi_name": "Dr.Nithin KumarY.B.",
+      "funding_agency": "Media Lab Asia"
+    },
+    {
+      "sr_no": 4,
+      "project_name": "Design, Simulation and Implementing of Band-pass Sigma-Delta Modulator",
+      "pi_name": "Dr. Nithin Kumar Y.B.",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 5,
+      "project_name": "Development Of Efficient Algorithms For Photoacoustic Tomography (Pat)",
+      "pi_name": "Dr. Raviprasad K.J",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 6,
+      "project_name": "EPR Studies of some Ni(II) complex in crystalline envirnoment",
+      "pi_name": "Dr. Velavan Kathirvelu",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 7,
+      "project_name": "Special Manpower Development Programme for Chips to System Design",
+      "pi_name": "Dr. Nithin Kumar Y.B.",
+      "funding_agency": "CEERI, Pilani"
+    },
+    {
+      "sr_no": 8,
+      "project_name": "Suspended functional magnetic microparticle array based point-of-care diagnostic system for multiplexed bio-molecular sensing and diagnostic",
+      "pi_name": "Dr. Prasanth G.R.",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 9,
+      "project_name": "Design and implementation of an inverter for a grid connected Photovoltaic System which is a part of Virtual Power Plant",
+      "pi_name": "Dr Sreeraj E.S.",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 10,
+      "project_name": "Development of Secure Key Management Protocols for Group CommunicatioBeing Grant Received from SERB for Project Development of Secure Key Management Protocols for Group Communication Under Active Outsider Attack Model",
+      "pi_name": "Dr. Purushothama B.R.",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 11,
+      "project_name": "Enhanced Automation of 3-Axis CNC Milling  Machine using Computer Vision and Artificial Intelligence",
+      "pi_name": "Dr. Pravati Swain",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 12,
+      "project_name": "Energy Efficient Lighting with Visible Light based Communication & Power Line Communication",
+      "pi_name": "Dr. Ankit Dubey",
+      "funding_agency": "Department of Science & Technology, Ministry of Science & Technology"
+    },
+    {
+      "sr_no": 13,
+      "project_name": "Design & Development of a Photovoltaic -Thermoelectric Hybrid Energy System",
+      "pi_name": "Dr. Lalat Indu Giri",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 14,
+      "project_name": "Design & Development of Roast Distributed Nonlinear Channel Eqaulization & Identification",
+      "pi_name": "Dr. Trilochan Panigrahi",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 15,
+      "project_name": "Monit Air: An IoT Based Air Pollution Monitoring System",
+      "pi_name": "Dr. S. Mini",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 16,
+      "project_name": "Computational and Theoretical Studies on Parabolic Partial Differential Equations in Cancer Modelling",
+      "pi_name": "Dr. Shangerganesh",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 17,
+      "project_name": "Design of Compact Shaped Beam Antenna Array for Dedicated Short Range Communication Service",
+      "pi_name": "Dr. Anirban Chatterjee",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 18,
+      "project_name": "Development of a Multipurpose Intelligent Controller for a Nano Grid Operation",
+      "pi_name": "Dr. C Vyjayanthi",
+      "funding_agency": "Ministry of New & Renewable Energy"
+    },
+    {
+      "sr_no": 19,
+      "project_name": "Improved PHY and MAC Strategies for M2M Communications in Smart Grid Over Wireless  and PLC Hetrogenous Network",
+      "pi_name": "Dr. Ankit Dubey",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 20,
+      "project_name": "Secure and efficient communications inside partitioned socialoverlaynetworks",
+      "pi_name": "Dr. Keshavamurthy B N",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 21,
+      "project_name": "Smart City Surveillance using Decentralized Multi Camera Network",
+      "pi_name": "Dr. Badrinarayan Subudhi",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 22,
+      "project_name": "Designing out-of-VM Monitoring based Virtual Machine Introspection Framework for Securing Virtual Environment of Cloud computing",
+      "pi_name": "Dr. Chirag Modi",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 23,
+      "project_name": "MonitNoise: An loT Based Noise Level Assessment System in Urban Cities of India",
+      "pi_name": "Dr. Trilochan Panigrahi",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 24,
+      "project_name": "Design and Development of Fingerprint and Face Recognition Systems for Infants and Toddlers (IATs)",
+      "pi_name": "Dr. Amol Deodas Rahulkar",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 25,
+      "project_name": "Design and Development of efficient Grid Integrated Distributed Maximum Power Point Tracking to Photovoltic System for Enhancing Power Quality Under Partial Shading Condition",
+      "pi_name": "Dr. Suresh Mikkili",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 26,
+      "project_name": "Development of coordination control schemes for hybrid AC/DC micro grids for a stable and reliable system operation.",
+      "pi_name": "Dr. C Vyjayanthi",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 27,
+      "project_name": "Design of Superior Pulsewidth Modulation Schemes for High-Performance Multilevel Converter based Grid Connected Photovoltaic Systems",
+      "pi_name": "Dr. Soumitra Das",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 28,
+      "project_name": "Analysis of Cardiovascular Disorders Using Heart Sound Signals",
+      "pi_name": "Dr. Shivnarayan Patidar",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 29,
+      "project_name": "Development of Efficient Algorithms for Predicting The Incidence of Malaria Cases in India Using Spiking Neuron Models",
+      "pi_name": "Dr. Venkatanareshbabu Kuppilli",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 30,
+      "project_name": "Off Grid Sensor Controlled Irrigation Using Bank Filtration Technology",
+      "pi_name": "Dr. Lalat Indu Giri",
+      "funding_agency": "Deaprtment of Science & Technology, Ministry of Science & Technology"
+    },
+    {
+      "sr_no": 31,
+      "project_name": "Equipment - Design and Development of Compact and Wideband Dielectric Resonator Antennas",
+      "pi_name": "Dr. Pragati Patel",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 32,
+      "project_name": "Design & Development  of a Dynamic Photovoltic Array Fed Singlae Stage PV System Using an Open Winding Induction Motor",
+      "pi_name": "Dr.Venugopal Reddy",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 33,
+      "project_name": "Manpower-Design and Development of Acoustic Methods for early detection of Stem and Root Borer Plocaederus spp infestation in cashew",
+      "pi_name": "Dr. Veerakumar T.",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 34,
+      "project_name": "Convective Instabilities in Double Diffusive Systems",
+      "pi_name": "Dr. Ravi Ragoju",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 35,
+      "project_name": "Harnessing Technological Innovations for Stustainable Development: The Role of Intellectual Property Rights - ICSSR (MHRD)",
+      "pi_name": "Dr. Sunil Kumar A.",
+      "funding_agency": "Indian Council of Social Science Research"
+    },
+    {
+      "sr_no": 36,
+      "project_name": "Developing Smart Controller for Optimum Utilization of Energy and Trustworthy Management in a Micro Grid Enviornment",
+      "pi_name": "Dr. Chirag Modi",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 37,
+      "project_name": "Designing Efficient Algebraic Activation Functions In Deep Learning For Classification Of Eletroencephalography (Eeg) Data",
+      "pi_name": "Dr. Damodar Reddy Edla",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 38,
+      "project_name": "Interference Rejection Using Built-In Filter Based Band-Pass Sigma Delta Modulators",
+      "pi_name": "Dr. Nithin Kumar Y.B.",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 39,
+      "project_name": "Deep-Learning Assisted Tomographic Ground Penetrating Radar for the Detection of Electrical and Morphological Features of Buried Objects",
+      "pi_name": "Dr. Mallikarjun E.",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 40,
+      "project_name": "Development of Metaheuristic Algorithms Based maximum power point tracking controllers for various grid connected-stand-alone PV system to enhance the maximum power generation capability",
+      "pi_name": "Dr. Suresh Mikkili",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 41,
+      "project_name": "Wind Energy Harvesting from Vortex Induced Vibration of Multiple cylinders using novel multiple Piezoelectric strips Arrangement",
+      "pi_name": "Dr. Prasenjit Dey",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 42,
+      "project_name": "Speech Technologies in Indian Languages",
+      "pi_name": "Dr. Veena T.",
+      "funding_agency": "MEITY"
+    },
+    {
+      "sr_no": 43,
+      "project_name": "Designing Efficient Algebraic Activation Functions in Deep Learning for Classification of Electroencephalography (EEG) Data",
+      "pi_name": "Dr. Damodar Reddy Edla",
+      "funding_agency": "Science & Engineering Research Board"
+    },
+    {
+      "sr_no": 44,
+      "project_name": "Indo-Norwegian collaboration in Intelligent Offshore Mechatronic Systems (INMOST)",
+      "pi_name": "Dr. Saidi Reddy Parne",
+      "funding_agency": "Norwegian research organizations"
+    },
+    {
+      "sr_no": 45,
+      "project_name": "Quantum Materials in Novel Science and Applications",
+      "pi_name": "Dr. Saidi Reddy Parne",
+      "funding_agency": "Nano Mission Program of DST"
+    },
+    {
+      "sr_no": 46,
+      "project_name": "A novel power on pilot IC for ultra low power wireless IoT devices\" under Chips to Startup Programme",
+      "pi_name": "Dr. Vasantha M H.",
+      "funding_agency": "MEITY"
+    },
+    {
+      "sr_no": 47,
+      "project_name": "Modelling and Simulation of Brain-Computer Interface for Implanted Neural Prosthetic Devices using Spiking Neural Networks and Bio-Inspired Optimization Algorithms",
+      "pi_name": "Dr. Damodar Reddy Edla",
+      "funding_agency": "IISc ARTPARK-SIG"
+    },
+    {
+      "sr_no": 48,
+      "project_name": "Design and Development of FPGA Accelator IP for Deep Neural Network",
+      "pi_name": "Dr. Amol Rahulkar",
+      "funding_agency": "MEITY"
+    }
+  ]
+}
