@@ -20,26 +20,21 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
-// Admin middleware
+// Admin-only middleware
 const requireAdmin = (req, res, next) => {
-  if (req.user.role !== 'admin') {
+  if (!req.user || req.user.role.toLowerCase() !== 'admin') {
     return res.status(403).json({ error: 'Admin access required' });
   }
   next();
 };
 
 // Faculty middleware - allows faculty to access their own data
+// Faculty or Admin middleware  
 const requireFacultyOrAdmin = (req, res, next) => {
-  if (req.user.role === 'admin') {
-    return next();
+  if (!req.user || !['admin', 'faculty'].includes(req.user.role.toLowerCase())) {
+    return res.status(403).json({ error: 'Faculty or Admin access required' });
   }
-  
-  if (req.user.role === 'faculty') {
-    // Faculty can only access their own data
-    return next();
-  }
-  
-  return res.status(403).json({ error: 'Faculty or admin access required' });
+  next();
 };
 
 module.exports = {

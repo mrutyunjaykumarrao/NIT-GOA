@@ -37,8 +37,54 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
+// Middleware to check if user can edit the faculty profile
+const checkEditPermission = async (req, res, next) => {
+  try {
+    const { employeeCode } = req.params;
+    const user = req.user;
+
+    // Admin can edit any profile
+    if (user.role === 'Admin') {
+      return next();
+    }
+
+    // Faculty can only edit their own profile
+    if (user.role === 'Faculty') {
+      const connection = await getDbConnection();
+      try {
+        // Get the employee_code for the logged-in user
+        const [userEmployee] = await connection.execute(`
+          SELECT e.employee_code 
+          FROM employees e 
+          JOIN user_accounts ua ON e.user_account_id = ua.user_id 
+          WHERE ua.user_id = ?
+        `, [user.userId]);
+
+        if (userEmployee.length === 0) {
+          return res.status(403).json({ error: 'Faculty member not found' });
+        }
+
+        // Check if trying to edit their own profile
+        if (userEmployee[0].employee_code !== employeeCode) {
+          return res.status(403).json({ error: 'You can only edit your own profile' });
+        }
+
+        return next();
+      } finally {
+        await connection.end();
+      }
+    }
+
+    // Unknown role
+    return res.status(403).json({ error: 'Insufficient permissions' });
+  } catch (error) {
+    console.error('Permission check error:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
 // Update faculty profile (personal and contact information)
-router.put('/:employeeCode/profile', authenticateToken, async (req, res) => {
+router.put('/:employeeCode/profile', authenticateToken, checkEditPermission, async (req, res) => {
   try {
     const { employeeCode } = req.params;
     const {
@@ -180,7 +226,7 @@ router.put('/:employeeCode/profile', authenticateToken, async (req, res) => {
 });
 
 // Update education information
-router.put('/:employeeCode/education', authenticateToken, async (req, res) => {
+router.put('/:employeeCode/education', authenticateToken, checkEditPermission, async (req, res) => {
   try {
     const { employeeCode } = req.params;
     const { education } = req.body;
@@ -232,7 +278,7 @@ router.put('/:employeeCode/education', authenticateToken, async (req, res) => {
 });
 
 // Update research interests
-router.put('/:employeeCode/research-interests', authenticateToken, async (req, res) => {
+router.put('/:employeeCode/research-interests', authenticateToken, checkEditPermission, async (req, res) => {
   try {
     const { employeeCode } = req.params;
     const { research_interests } = req.body;
@@ -283,7 +329,7 @@ router.put('/:employeeCode/research-interests', authenticateToken, async (req, r
 });
 
 // Update publications
-router.put('/:employeeCode/publications', authenticateToken, async (req, res) => {
+router.put('/:employeeCode/publications', authenticateToken, checkEditPermission, async (req, res) => {
   try {
     const { employeeCode } = req.params;
     const { publications } = req.body;
@@ -338,7 +384,7 @@ router.put('/:employeeCode/publications', authenticateToken, async (req, res) =>
 });
 
 // Bulk update all faculty data
-router.put('/:employeeCode/bulk-update', authenticateToken, async (req, res) => {
+router.put('/:employeeCode/bulk-update', authenticateToken, checkEditPermission, async (req, res) => {
   try {
     const { employeeCode } = req.params;
     const {

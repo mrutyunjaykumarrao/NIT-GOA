@@ -1,16 +1,42 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import { useLoginModal } from '../../contexts/LoginModalContext';
 import { useGoogleTranslate } from '../../hooks/useGoogleTranslate';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import TranslationConfirmDialog from '../TranslationConfirmDialog/TranslationConfirmDialog';
 import ThemeToggle from '../../Views/ThemeToggle/ThemeToggle';
 import './Navbar.css';
 
+// Custom logging Link component
+const LoggingLink = ({ to, children, className, ...props }) => {
+  const { isAuthenticated, user } = useAuth();
+  
+  const handleClick = () => {
+    console.log('🔗 NAVIGATION LINK CLICK:', {
+      targetPath: to,
+      currentPath: window.location.pathname,
+      isAuthenticated,
+      user: user ? { id: user.id, role: user.role, username: user.username } : null,
+      linkText: typeof children === 'string' ? children : 'Complex content'
+    });
+  };
+  
+  return (
+    <Link 
+      to={to} 
+      className={className} 
+      onClick={handleClick}
+      {...props}
+    >
+      {children}
+    </Link>
+  );
+};
+
 const Navbar = () => {
   const { user, isAuthenticated, logout } = useAuth();
-  const { openLoginModal } = useLoginModal();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [openDropdown, setOpenDropdown] = useState(null);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -25,7 +51,6 @@ const Navbar = () => {
   const ticking = useRef(false);
   const languageDropdownRef = useRef(null);
   const mobileLanguageDropdownRef = useRef(null);
-  const navigate = useNavigate();
 
   // Use the Google Translate hook
   const {
@@ -40,6 +65,16 @@ const Navbar = () => {
 
   // Get current language object from the hook
   const currentLang = getCurrentLanguage();
+
+  // Custom logout handler that redirects to login with return path
+  const handleLogout = () => {
+    logout();
+    // Navigate to login page with current location as return path
+    navigate('/login', { 
+      state: { from: location },
+      replace: true 
+    });
+  };
 
   // Google Translate integration functions
   const initializeGoogleTranslate = useCallback(() => {
@@ -199,6 +234,13 @@ const Navbar = () => {
   };
 
   const handleMobileNavigation = (path) => {
+    console.log('📱 MOBILE NAVIGATION CLICK:', {
+      targetPath: path,
+      currentPath: window.location.pathname,
+      isAuthenticated,
+      user: user ? { id: user.id, role: user.role, username: user.username } : null
+    });
+    
     setIsMobileMenuClosing(true);
     setTimeout(() => {
       navigate(path);
@@ -253,9 +295,9 @@ const Navbar = () => {
           {/* Desktop Top Nav */}
           <nav className="navbar-top-nav desktop-only">
             <a href="https://www.nitgoa.ac.in/alumni/" target="_blank" rel="noopener noreferrer">Alumni</a>
-            <a href="/nirf">NIRF</a>
-            <a href="/tenders">Tenders</a>
-            <a href="/gian">GIAN</a>
+            <Link to="/nirf">NIRF</Link>
+            <Link to="/tenders">Tenders</Link>
+            <Link to="/gian">GIAN</Link>
             <a href="https://www.nitgoa.ac.in/rajbhasha/#/" target="_blank" rel="noopener noreferrer">RAJBHASHA</a>
             {/* Login/User Section */}
             <div className="auth-section">
@@ -277,7 +319,7 @@ const Navbar = () => {
                   )}
                   <button 
                     className="nav-btn nav-btn--logout"
-                    onClick={logout}
+                    onClick={handleLogout}
                   >
                     <svg viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clipRule="evenodd" />
@@ -288,7 +330,7 @@ const Navbar = () => {
               ) : (
                 <button 
                   className="nav-btn nav-btn--login"
-                  onClick={openLoginModal}
+                  onClick={() => navigate('/login')}
                 >
                   <svg viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -301,8 +343,8 @@ const Navbar = () => {
 
           {/* Mobile Top Nav */}
           <nav className="navbar-top-nav mobile-only">
-            <a href="/tenders">Tenders</a>
-            <a href="/gian">GIAN</a>
+            <Link to="/tenders">Tenders</Link>
+            <Link to="/gian">GIAN</Link>
             <a href="https://www.nitgoa.ac.in/rajbhasha/#/" target="_blank" rel="noopener noreferrer">RAJBHASHA</a>
           </nav>
 
@@ -311,14 +353,14 @@ const Navbar = () => {
             {isAuthenticated && user ? (
               <button 
                 className="nav-btn nav-btn--logout mobile-logout"
-                onClick={logout}
+                onClick={handleLogout}
               >
                 Logout
               </button>
             ) : (
               <button 
                 className="nav-btn nav-btn--login mobile-login"
-                onClick={openLoginModal}
+                onClick={() => navigate('/login')}
               >
                 Login
               </button>
@@ -331,13 +373,13 @@ const Navbar = () => {
       <header className="navbar-main-header">
         <div className="navbar-header-content">
           <div className="navbar-logo-section">
-            <a href="/" className="navbar-logo-link">
+            <Link to="/" className="navbar-logo-link">
               <img src="/logo192.png" alt="NIT Goa Logo" className="navbar-nit-logo" />
               <div className="navbar-institute-info">
                 <h1 className="navbar-institute-name-hindi">राष्ट्रीय प्रौद्योगिकी संस्थान गोवा</h1>
                 <h2 className="navbar-institute-name-english">National Institute of Technology Goa</h2>
               </div>
-            </a>
+            </Link>
           </div>
           {/* Hamburger Menu Button - Only visible on mobile */}
           <button 
@@ -355,7 +397,7 @@ const Navbar = () => {
       {/* Main Navigation */}
       <nav className="navbar-main-navigation">
         <div className="navbar-nav-content">
-          <a href="/" className="navbar-nav-item">Home</a>
+          <LoggingLink to="/" className="navbar-nav-item">Home</LoggingLink>
 
           {/* Administration Dropdown */}
           <div 
@@ -366,18 +408,18 @@ const Navbar = () => {
             <span>Administration</span>
             {openDropdown === 'administration' && (
               <div className="navbar-dropdown-menu">
-                <a href="/administration/board-of-governors">Board of Governors</a>
-                <a href="/administration/director">Director</a>
-                <a href="/administration/registrar">Registrar</a>
-                <a href="/administration/senate">Senate</a>
-                <a href="/administration/deans">Deans</a>
-                <a href="/administration/committees">Committees</a>
-                <a href="/administration/finance-committee">Finance Committee</a>
-                <a href="/administration/building-works-committee">Building and Works Committee</a>
-                <a href="/heads-of-departments">Heads of Departments</a>
+                <LoggingLink to="/administration/board-of-governors">Board of Governors</LoggingLink>
+                <LoggingLink to="/administration/director">Director</LoggingLink>
+                <LoggingLink to="/administration/registrar">Registrar</LoggingLink>
+                <LoggingLink to="/administration/senate">Senate</LoggingLink>
+                <LoggingLink to="/administration/deans">Deans</LoggingLink>
+                <LoggingLink to="/administration/committees">Committees</LoggingLink>
+                <LoggingLink to="/administration/finance-committee">Finance Committee</LoggingLink>
+                <LoggingLink to="/administration/building-works-committee">Building and Works Committee</LoggingLink>
+                <LoggingLink to="/heads-of-departments">Heads of Departments</LoggingLink>
                 <a href="https://www.nitgoa.ac.in/uploads/NITGoaStatute-2023.pdf" target="_blank" rel="noopener noreferrer">NIT Goa(Amendment) Statute 2023</a>
                 <a href="/pdf/Administration/organisationalstructure/Org_Chart.pdf" target="_blank" rel="noopener noreferrer">Organizational Structure</a>
-                <a href="/reports">Reports</a>
+                <Link to="/reports">Reports</Link>
               </div>
             )}
           </div>
@@ -391,11 +433,11 @@ const Navbar = () => {
             <span>Academics</span>
             {openDropdown === 'academics' && (
               <div className="navbar-dropdown-menu">
-                <a href="/academic-calendar">Academic Calendar</a>
-                <a href="/academics/regulations">Regulations and Curriculum</a>
-                <a href="/academics/dissertation-formats">Dissertation Formats</a>
+                <LoggingLink to="/academic-calendar">Academic Calendar</LoggingLink>
+                <LoggingLink to="/academics/regulations">Regulations and Curriculum</LoggingLink>
+                <LoggingLink to="/academics/dissertation-formats">Dissertation Formats</LoggingLink>
                 <a href="https://mis.nitgoa.ac.in/misnitgoa/result.aspx" target="_blank" rel="noopener noreferrer">Results</a>
-                <a href="/academics/departments">Departments</a>
+                <LoggingLink to="/academics/departments">Departments</LoggingLink>
                 <a href="https://www.nitgoa.ac.in/academics/library.html" target="_blank" rel="noopener noreferrer">Library</a>
               </div>
             )}
@@ -424,15 +466,15 @@ const Navbar = () => {
                     </span>
                     {activeSubmenu === 'btech' && (
                     <div className="navbar-submenu">
-                      <a href="/admissions/btech/josaa-csab">JoSAA/CSAB</a>
-                      <a href="/admissions/btech/dasa">DASA</a>
-                      <a href="/admissions/btech/facilities">Facilities</a>
-                      <a href="/admissions/btech/strengths">Strengths of NIT Goa</a>
+                      <Link to="/admissions/btech/josaa-csab">JoSAA/CSAB</Link>
+                      <Link to="/admissions/btech/dasa">DASA</Link>
+                      <Link to="/admissions/btech/facilities">Facilities</Link>
+                      <Link to="/admissions/btech/strengths">Strengths of NIT Goa</Link>
                     </div>
                     )}
                   </div>
-                  <a href="/admissions/mtech">M.Tech</a>
-                  <a href="/admissions/phd">Ph.D</a>
+                  <Link to="/admissions/mtech">M.Tech</Link>
+                  <Link to="/admissions/phd">Ph.D</Link>
                   <a href="https://www.nitgoa.ac.in/uploads/AdmissionBrochure%202august2024.pdf" target="_blank" rel="noopener noreferrer">Admission Brochure</a>
                   <a href="https://www.nitgoa.ac.in/static/fee_structure_23-24_25july2023.pdf" target="_blank" rel="noopener noreferrer">Fee Structure</a>
                   <div 
@@ -464,9 +506,9 @@ const Navbar = () => {
                 <span>Training & Placement</span>
                 {openDropdown === 'training' && (
                   <div className="navbar-dropdown-menu">
-                  <a href="/training-placement">T & P</a>
-                  <a href="/company-login">Company Login</a>
-                  <a href="/forms-guidelines">Forms & Guidelines</a>
+                  <Link to="/training-placement">T & P</Link>
+                  <Link to="/company-login">Company Login</Link>
+                  <Link to="/forms-guidelines">Forms & Guidelines</Link>
                   </div>
                 )}
                 </div>
@@ -480,9 +522,9 @@ const Navbar = () => {
             <span>People</span>
             {openDropdown === 'people' && (
               <div className="navbar-dropdown-menu">
-                <a href="/faculty">Faculty</a>
-                <a href="/technical-staff">Technical Staff</a>
-                <a href="/administrative-staff">Administrative Staff</a>
+                <Link to="/faculty">Faculty</Link>
+                <Link to="/technical-staff">Technical Staff</Link>
+                <Link to="/administrative-staff">Administrative Staff</Link>
                 <a href="https://www.nitgoa.ac.in/static/TelephoneDirectory.pdf" target="_blank" rel="noopener noreferrer">Telephone Directory</a>
               </div>
             )}
@@ -497,15 +539,15 @@ const Navbar = () => {
             <span>Research</span>
             {openDropdown === 'research' && (
               <div className="navbar-dropdown-menu">
-                <a href="/research/rd-projects">R & D Projects</a>
+                <Link to="/research/rd-projects">R & D Projects</Link>
                 <a href="https://www.nitgoa.ac.in/research/Research_Consultancy/research_consultancy.html" target="_blank" rel="noopener noreferrer">Research & Consultancy</a>
-                <a href="/research/mou-details">Details Of MoUs</a>
+                <Link to="/research/mou-details">Details Of MoUs</Link>
                 <a href="https://www.nitgoa.ac.in/static/NIT_Goa_IPR_10Nov2015.pdf" target="_blank" rel="noopener noreferrer">IPR Policy</a>
               </div>
             )}
           </div>
 
-          <a href="/outreach-activities" className="navbar-nav-item">Outreach Activities</a>
+          <Link to="/outreach-activities" className="navbar-nav-item">Outreach Activities</Link>
           <a href="https://mis.nitgoa.ac.in/misnitgoa/academic/ONLINEFEESCOLLECTION/Payment.aspx" target="_blank" rel="noopener noreferrer" className="navbar-nav-item">Fee Payment</a>
           <a href="/hostels" className="navbar-nav-item">Hostels</a>
         </div>

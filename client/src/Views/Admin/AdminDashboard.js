@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import axios from 'axios';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState('overview');
   const [isLoading, setIsLoading] = useState(true);
   const [stats, setStats] = useState({
@@ -16,7 +18,15 @@ const AdminDashboard = () => {
   const [users, setUsers] = useState([]);
   const [faculty, setFaculty] = useState([]);
   const [error, setError] = useState('');
-  const navigate = useNavigate();
+
+  // Custom logout handler
+  const handleLogout = () => {
+    logout();
+    navigate('/login', { 
+      state: { from: location },
+      replace: true 
+    });
+  };
 
   useEffect(() => {
     // Check if user is admin
@@ -115,7 +125,7 @@ const AdminDashboard = () => {
           </div>
           <div className="admin-user-info">
             <span>Welcome, {user?.name || user?.username}</span>
-            <button className="logout-btn" onClick={logout}>
+            <button className="logout-btn" onClick={handleLogout}>
               <i className="fas fa-sign-out-alt"></i>
               Logout
             </button>

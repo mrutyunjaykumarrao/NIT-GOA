@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTheme } from '../../../../contexts/ThemeContext';
+import { EditPermission } from '../../../../components/ConditionalRender/ConditionalRender';
 import SocialLinks from '../../../../components/SVGIcons/SocialLinks';
 import './FacultyDetails.css';
 
@@ -36,9 +37,9 @@ const FacultyDetails = () => {
         booksAuthored: false
     });
 
-    // Edit mode states
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [userRole, setUserRole] = useState(null);
+    // Edit mode states - Remove these, we'll use the permission hook instead
+    // const [isAuthenticated, setIsAuthenticated] = useState(false);
+    // const [userRole, setUserRole] = useState(null);
 
     useEffect(() => {
         const fetchFacultyDetails = async () => {
@@ -77,48 +78,26 @@ const FacultyDetails = () => {
         }
     }, [id]);
 
-    // Check authentication status
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        const role = localStorage.getItem('userRole');
-        
-        // Auto-login for development/testing purposes if no token exists
-        if (!token) {
-            autoLogin();
-        } else {
-            setIsAuthenticated(!!token);
-            setUserRole(role);
-        }
-    }, []);
-
-    // Auto-login function for development/testing
-    const autoLogin = async () => {
-        try {
-            const response = await fetch('/api/auth/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username: 'admin', password: 'admin123' })
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('userRole', data.user.role);
-                localStorage.setItem('userId', data.user.id);
-                setIsAuthenticated(true);
-                setUserRole(data.user.role);
-                console.log('Auto-login successful');
-            } else {
-                console.log('Auto-login failed');
-                setIsAuthenticated(false);
-                setUserRole(null);
-            }
-        } catch (error) {
-            console.error('Auto-login error:', error);
-            setIsAuthenticated(false);
-            setUserRole(null);
-        }
-    };
+    // Remove this authentication check - we'll use the AuthContext instead
+    // useEffect(() => {
+    //     const token = localStorage.getItem('authToken');
+    //     const user = localStorage.getItem('user');
+    //     
+    //     if (token && user) {
+    //         try {
+    //             const parsedUser = JSON.parse(user);
+    //             setIsAuthenticated(true);
+    //             setUserRole(parsedUser.role);
+    //         } catch (error) {
+    //             console.error('Error parsing user data:', error);
+    //             setIsAuthenticated(false);
+    //             setUserRole(null);
+    //         }
+    //     } else {
+    //         setIsAuthenticated(false);
+    //         setUserRole(null);
+    //     }
+    // }, []);
 
     // Function to get department code for image path
     const getDepartmentCode = (department) => {
@@ -153,11 +132,11 @@ const FacultyDetails = () => {
         navigate('/faculty');
     };
 
-    // Check if user can edit (admin or the faculty member themselves)
-    const canEdit = () => {
-        if (!isAuthenticated) return false;
-        return userRole === 'Admin' || userRole === 'faculty';
-    };
+    // Remove this function - we'll use the permission component instead
+    // const canEdit = () => {
+    //     if (!isAuthenticated) return false;
+    //     return userRole === 'Admin' || userRole === 'Faculty';
+    // };
 
     // Helper function to check if data exists and is not empty
     const hasData = (data) => {
@@ -294,7 +273,8 @@ const FacultyDetails = () => {
                         Back To Faculty
                     </button>
                     
-                    {canEdit() && (
+                    {/* Use the new permission-based conditional rendering */}
+                    <EditPermission facultyId={id}>
                         <button 
                             onClick={() => navigate(`/faculty/${id}/edit`)} 
                             className="edit-profile-button"
@@ -303,7 +283,7 @@ const FacultyDetails = () => {
                             <i className="fas fa-edit"></i>
                             Edit Profile
                         </button>
-                    )}
+                    </EditPermission>
                 </div>
 
                 {/* Main Content */}

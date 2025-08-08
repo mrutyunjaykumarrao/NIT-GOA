@@ -26,8 +26,12 @@ const Login = ({ isModalOpen, onClose }) => {
   // Redirect if already authenticated and clear form when user logs out
   React.useEffect(() => {
     if (isAuthenticated) {
-      const from = location.state?.from?.pathname || '/';
-      navigate(from, { replace: true });
+      // Only redirect if we're on the actual /login page, not when rendered as a modal
+      if (location.pathname === '/login') {
+        const from = location.state?.from?.pathname || '/';
+        navigate(from, { replace: true });
+      }
+      // Always close modal if it's open
       if (onClose) onClose();
     } else {
       // User logged out, clear the form

@@ -15,6 +15,8 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [loginRedirectPath, setLoginRedirectPath] = useState(null);
 
   // Verify token validity (optional - can be called periodically)
   const verifyToken = async () => {
@@ -39,6 +41,20 @@ export const AuthProvider = ({ children }) => {
     // Update state
     setUser(null);
     setIsAuthenticated(false);
+    setShowLoginModal(false);
+    setLoginRedirectPath(null);
+  };
+
+  const openLoginModal = (redirectPath = null) => {
+    console.log('🔐 MODAL: Opening login modal', { redirectPath });
+    setLoginRedirectPath(redirectPath);
+    setShowLoginModal(true);
+  };
+
+  const closeLoginModal = () => {
+    console.log('🔐 MODAL: Closing login modal');
+    setShowLoginModal(false);
+    setLoginRedirectPath(null);
   };
 
   // Initialize auth state from localStorage
@@ -52,6 +68,13 @@ export const AuthProvider = ({ children }) => {
         if (token && userData) {
           const parsedUser = JSON.parse(userData);
           
+          console.log('🔐 AUTH INIT: User found in localStorage', {
+            user: parsedUser,
+            role: parsedUser.role,
+            isAuthenticated: true,
+            token: token ? 'present' : 'missing'
+          });
+          
           // Set axios default header
           axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
           
@@ -61,6 +84,8 @@ export const AuthProvider = ({ children }) => {
           
           setUser(parsedUser);
           setIsAuthenticated(true);
+        } else {
+          console.log('🔐 AUTH INIT: No user found in localStorage');
         }
       } catch (error) {
         console.error('Error initializing auth:', error);
@@ -79,8 +104,16 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (credentials) => {
     try {
+      console.log('🔐 LOGIN ATTEMPT: Starting login process');
+      
       const response = await axios.post('/api/auth/login', credentials);
       const { token, user: userData } = response.data;
+      
+      console.log('🔐 LOGIN SUCCESS: Received response from server', {
+        user: userData,
+        role: userData.role,
+        token: token ? 'present' : 'missing'
+      });
       
       // Store in localStorage
       localStorage.setItem('authToken', token);
@@ -93,9 +126,21 @@ export const AuthProvider = ({ children }) => {
       setUser(userData);
       setIsAuthenticated(true);
       
-      return { success: true, user: userData };
+      // Close modal and handle redirect
+      setShowLoginModal(false);
+      const redirectPath = loginRedirectPath;
+      setLoginRedirectPath(null);
+      
+      console.log('🔐 LOGIN COMPLETE: Auth state updated', {
+        isAuthenticated: true,
+        user: userData,
+        role: userData.role,
+        redirectPath
+      });
+      
+      return { success: true, user: userData, redirectPath };
     } catch (error) {
-      console.error('Login error:', error);
+      console.error('🔐 LOGIN ERROR:', error);
       return {
         success: false,
         error: error.response?.data?.error || 'Login failed'
@@ -115,7 +160,11 @@ export const AuthProvider = ({ children }) => {
     login,
     logout,
     updateUser,
-    verifyToken
+    verifyToken,
+    showLoginModal,
+    openLoginModal,
+    closeLoginModal,
+    loginRedirectPath
   };
 
   return (

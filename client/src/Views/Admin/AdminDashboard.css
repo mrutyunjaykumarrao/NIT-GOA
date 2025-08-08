@@ -1,15 +1,15 @@
 .admin-dashboard {
   min-height: 100vh;
-  background: #f8f9fa;
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
   display: flex;
   flex-direction: column;
 }
 
 .admin-header {
-  background: linear-gradient(135deg, #2c3e50, #34495e);
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
   color: white;
   padding: 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -19,7 +19,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 30px;
+  padding: 24px 30px;
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
@@ -36,8 +36,9 @@
 
 .admin-title p {
   margin: 5px 0 0 0;
-  opacity: 0.8;
+  opacity: 0.9;
   font-size: 0.9rem;
+  font-weight: 300;
 }
 
 .admin-user-info {
@@ -48,24 +49,31 @@
 
 .admin-user-info span {
   font-weight: 500;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 16px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
 }
 
 .logout-btn {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 8px 16px;
-  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 18px;
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   gap: 8px;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
 }
 
 .logout-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .admin-loading {
@@ -73,31 +81,36 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #f8f9fa;
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
 }
 
 .loading-spinner {
   text-align: center;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .loading-spinner i {
   font-size: 3rem;
-  color: #667eea;
+  color: #2563eb;
   margin-bottom: 15px;
 }
 
 .loading-spinner p {
   font-size: 1.1rem;
-  color: #666;
+  color: #374151;
+  font-weight: 500;
 }
 
 .error-banner {
-  background: #fee;
-  border: 1px solid #fcc;
-  color: #c33;
-  padding: 15px 20px;
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+  border: 1px solid #fca5a5;
+  color: #dc2626;
+  padding: 16px 24px;
   margin: 20px 30px;
-  border-radius: 8px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -120,124 +133,158 @@
   margin: 0 auto;
   width: 100%;
   gap: 0;
+  background: white;
+  margin-top: 0;
+  border-radius: 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .admin-sidebar {
   width: 280px;
   background: white;
-  border-right: 1px solid #e1e5e9;
+  border-right: 1px solid rgba(37, 99, 235, 0.1);
   padding: 30px 0;
 }
 
 .admin-nav {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
   padding: 0 20px;
 }
 
 .tab-button {
   background: none;
   border: none;
-  padding: 15px 20px;
+  padding: 16px 20px;
   text-align: left;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 12px;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   font-size: 1rem;
-  color: #555;
+  color: #6b7280;
   width: 100%;
+  font-weight: 500;
+  position: relative;
 }
 
 .tab-button:hover {
-  background: #f8f9fa;
-  color: #333;
+  background: rgba(37, 99, 235, 0.05);
+  color: #2563eb;
+  transform: translateX(4px);
 }
 
 .tab-button.active {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
   color: white;
-  transform: translateX(5px);
+  transform: translateX(6px);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+}
+
+.tab-button.active::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 24px;
+  background: #2563eb;
+  border-radius: 0 4px 4px 0;
 }
 
 .tab-button i {
   width: 20px;
   text-align: center;
+  font-size: 1.1rem;
 }
 
 .admin-main {
   flex: 1;
   padding: 30px;
-  background: #f8f9fa;
+  background: #fafbfc;
+  border-radius: 0;
 }
 
 /* Overview Tab Styles */
 .overview-tab h2 {
-  color: #333;
+  color: #1f2937;
   margin-bottom: 30px;
   font-size: 1.8rem;
+  font-weight: 600;
 }
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
   margin-bottom: 40px;
 }
 
 .stat-card {
   background: white;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;
-  gap: 20px;
-  transition: transform 0.3s ease;
+  gap: 24px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(37, 99, 235, 0.1);
 }
 
 .stat-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.15);
 }
 
 .stat-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.25);
 }
 
 .stat-content h3 {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 700;
-  color: #333;
+  color: #1f2937;
   margin: 0;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .stat-content p {
-  color: #666;
-  margin: 5px 0 0 0;
+  color: #6b7280;
+  margin: 8px 0 0 0;
   font-weight: 500;
+  font-size: 1rem;
 }
 
 .recent-activity {
   background: white;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.1);
 }
 
 .recent-activity h3 {
-  color: #333;
-  margin-bottom: 15px;
+  color: #1f2937;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+  font-weight: 600;
 }
 
 /* Users Tab Styles */
@@ -249,17 +296,18 @@
 }
 
 .tab-header h2 {
-  color: #333;
+  color: #1f2937;
   margin: 0;
   font-size: 1.8rem;
+  font-weight: 600;
 }
 
 .create-btn {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
   color: white;
   border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
+  padding: 14px 24px;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: 600;
   display: flex;

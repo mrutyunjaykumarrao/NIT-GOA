@@ -7,6 +7,8 @@ import { LoginModalProvider } from './contexts/LoginModalContext';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import RoleBasedRoute from './components/ProtectedRoute/RoleBasedRoute';
+import PublicRoute from './components/ProtectedRoute/PublicRoute';
 
 // Auth components
 import LoginWrapper from './Views/Auth/LoginWrapper';
@@ -72,6 +74,9 @@ import TrainingPlacement from './Views/TnP-Section/TrainingPlacement';
 // Hostels Section
 import Hostels from './Views/Hostels-Section/Hostels';
 
+// Example component for testing permissions
+import PermissionsExample from './Views/PermissionsExample/PermissionsExample';
+
 function App() {
   return (
     <ThemeProvider>
@@ -87,6 +92,16 @@ function App() {
 function AppContent() {
   const location = useLocation();
 
+  // Log route changes
+  useEffect(() => {
+    console.log('🛣️ ROUTE CHANGE:', {
+      pathname: location.pathname,
+      search: location.search,
+      hash: location.hash,
+      timestamp: new Date().toISOString()
+    });
+  }, [location]);
+
   // Scroll to top on route change
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -97,14 +112,15 @@ function AppContent() {
       <Navbar />
       <LoginWrapper />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/gian" element={<GIAN />} />
+        {/* PUBLIC ROUTES - Accessible to everyone (authenticated or not) */}
+        <Route path="/" element={<PublicRoute><HomePage /></PublicRoute>} />
+        <Route path="/about" element={<PublicRoute><About /></PublicRoute>} />
+        <Route path="/gian" element={<PublicRoute><GIAN /></PublicRoute>} />
         
         {/* Auth Routes */}
         <Route path="/login" element={<div />} /> {/* Handled by LoginWrapper */}
         
-        {/* Protected Admin Route */}
+        {/* ADMIN-ONLY ROUTES */}
         <Route 
           path="/admin" 
           element={
@@ -114,70 +130,97 @@ function AppContent() {
           } 
         />
         
-        {/* Academics Section Routes */}
-        <Route path="/academics/departments" element={<Departments />} />
-        <Route path="/academics/computer-science" element={<ComputerScience />} />
-        <Route path="/academics/electronics-communication" element={<ElectronicsAndCommunication />} />
-        <Route path="/academics/electrical-electronics" element={<ElectricalAndElectronics />} />
-        <Route path="/academics/mechanical-engineering" element={<MechanicalEngineering />} />
-        <Route path="/academics/civil-engineering" element={<CivilEngineering />} />
-        <Route path="/academics/applied-sciences" element={<AppliedSciences />} />
-        <Route path="/academics/humanities-social-sciences" element={<HumanitiesSocialSciences />} />
-        <Route path="/academics/regulations" element={<Regulations />} />
-        <Route path="/academics/dissertation-formats" element={<DissertationFormats />} />
-        {/* <Route path="/academics/syllabus" element={<Syllabus />} /> */}
-        <Route path="/academic-calendar" element={<AcademicCalendar />} />
+        {/* PUBLIC ACADEMIC ROUTES - Everyone can view these */}
+        <Route path="/academics/departments" element={<PublicRoute><Departments /></PublicRoute>} />
+        <Route path="/academics/computer-science" element={<PublicRoute><ComputerScience /></PublicRoute>} />
+        <Route path="/academics/electronics-communication" element={<PublicRoute><ElectronicsAndCommunication /></PublicRoute>} />
+        <Route path="/academics/electrical-electronics" element={<PublicRoute><ElectricalAndElectronics /></PublicRoute>} />
+        <Route path="/academics/mechanical-engineering" element={<PublicRoute><MechanicalEngineering /></PublicRoute>} />
+        <Route path="/academics/civil-engineering" element={<PublicRoute><CivilEngineering /></PublicRoute>} />
+        <Route path="/academics/applied-sciences" element={<PublicRoute><AppliedSciences /></PublicRoute>} />
+        <Route path="/academics/humanities-social-sciences" element={<PublicRoute><HumanitiesSocialSciences /></PublicRoute>} />
+        <Route path="/academics/regulations" element={<PublicRoute><Regulations /></PublicRoute>} />
+        <Route path="/academics/dissertation-formats" element={<PublicRoute><DissertationFormats /></PublicRoute>} />
+        <Route path="/academic-calendar" element={<PublicRoute><AcademicCalendar /></PublicRoute>} />
         
-        {/* e-Downloads Route */}
-        <Route path="/e-downloads" element={<EDownloads />} />
+        {/* PUBLIC DOWNLOADS */}
+        <Route path="/e-downloads" element={<PublicRoute><EDownloads /></PublicRoute>} />
         
-        {/* Training & Placement Routes */}
-        <Route path="/forms-guidelines" element={<FormsGuidelines />} />
-        <Route path="/training-placement" element={<TrainingPlacement />} />
+        {/* PUBLIC TRAINING & PLACEMENT */}
+        <Route path="/forms-guidelines" element={<PublicRoute><FormsGuidelines /></PublicRoute>} />
+        <Route path="/training-placement" element={<PublicRoute><TrainingPlacement /></PublicRoute>} />
         
-        {/* Hostels Route */}
-        <Route path="/hostels" element={<Hostels />} />
+        {/* PUBLIC HOSTEL INFO */}
+        <Route path="/hostels" element={<PublicRoute><Hostels /></PublicRoute>} />
         
-        {/* Admissions Section Routes */}
-        <Route path="/admissions/btech/josaa-csab" element={<BTechJosaa />} />
-        <Route path="/admissions/btech/dasa" element={<BTechDasa />} />
-        <Route path="/admissions/btech/facilities" element={<BTechFacilities />} />
-        <Route path="/admissions/btech/strengths" element={<BTechStrengths />} />
-        <Route path="/admissions/mtech" element={<MTech />} />
-        <Route path="/admissions/phd" element={<PhD />} />
+        {/* PUBLIC ADMISSIONS - Everyone can view these */}
+        <Route path="/admissions/btech/josaa-csab" element={<PublicRoute><BTechJosaa /></PublicRoute>} />
+        <Route path="/admissions/btech/dasa" element={<PublicRoute><BTechDasa /></PublicRoute>} />
+        <Route path="/admissions/btech/facilities" element={<PublicRoute><BTechFacilities /></PublicRoute>} />
+        <Route path="/admissions/btech/strengths" element={<PublicRoute><BTechStrengths /></PublicRoute>} />
+        <Route path="/admissions/mtech" element={<PublicRoute><MTech /></PublicRoute>} />
+        <Route path="/admissions/phd" element={<PublicRoute><PhD /></PublicRoute>} />
         
-        {/* People Section Routes */}
-        <Route path="/faculty" element={<Faculty />} />
-        <Route path="/faculty/:id" element={<FacultyDetails />} />
-        <Route path="/faculty/:id/edit" element={<FacultyEdit />} />
-        <Route path="/people/faculty/:id" element={<FacultyDetails />} />
-        <Route path="/administrative-staff" element={<AdministrativeStaff />} />
-        <Route path="/technical-staff" element={<TechnicalStaff />} />
+        {/* PUBLIC PEOPLE SECTION - Everyone can view faculty and staff */}
+        <Route path="/faculty" element={<PublicRoute><Faculty /></PublicRoute>} />
+        <Route path="/faculty/:id" element={<PublicRoute><FacultyDetails /></PublicRoute>} />
+        <Route path="/people/faculty/:id" element={<PublicRoute><FacultyDetails /></PublicRoute>} />
+        <Route path="/administrative-staff" element={<PublicRoute><AdministrativeStaff /></PublicRoute>} />
+        <Route path="/technical-staff" element={<PublicRoute><TechnicalStaff /></PublicRoute>} />
         
-        {/* Research Section Routes */}
-        <Route path="/research/rd-projects" element={<RDProjects />} />
-        <Route path="/research/mou-details" element={<MoUDetails />} />
+        {/* ROLE-BASED FACULTY EDIT ROUTES */}
+        <Route 
+          path="/faculty/:id/edit" 
+          element={
+            <RoleBasedRoute 
+              allowedRoles={['Admin', 'Faculty']}
+              customAuthCheck={(user, location) => {
+                const facultyId = location.pathname.split('/')[2];
+                // Admin can edit any faculty
+                if (user.role === 'Admin') return true;
+                // Faculty can only edit their own profile
+                if (user.role === 'Faculty') {
+                  return facultyId === user.employee_code || 
+                         facultyId === user.employee_id?.toString() ||
+                         facultyId === user.id?.toString();
+                }
+                return false;
+              }}
+            >
+              <FacultyEdit />
+            </RoleBasedRoute>
+          } 
+        />
         
-        {/* Administration Section Routes */}
-        <Route path="/administration/board-of-governors" element={<BoardOfGovernors />} />
-        <Route path="/administration/director" element={<Director />} />
-        <Route path="/administration/registrar" element={<Registrar />} />
-        <Route path="/administration/senate" element={<Senate />} />
-        <Route path="/administration/deans" element={<Deans />} />
-        <Route path="/administration/committees" element={<Committees />} />
-        <Route path="/administration/finance-committee" element={<FinanceCommittee />} />
-        <Route path="/administration/building-works-committee" element={<BuildingWorksCommittee />} />
-        <Route path="/heads-of-departments" element={<HeadsOfDepartments />} />
-        <Route path="/reports" element={<AnnualReports />} />
+        {/* PUBLIC RESEARCH SECTION */}
+        <Route path="/research/rd-projects" element={<PublicRoute><RDProjects /></PublicRoute>} />
+        <Route path="/research/mou-details" element={<PublicRoute><MoUDetails /></PublicRoute>} />
         
-        <Route path="/rti" element={<RTI />} />
-        <Route path="/sc-st-cell" element={<SCSTCell />} />
-        <Route path="/nirf" element={<NIRF />} />
-        <Route path="/contact-us" element={<ContactUs />} />
-        <Route path="/tenders" element={<Tenders />} />
-        <Route path="/outreach-activities" element={<OutreachActivities />} />
-        {/* Additional routes can be added here */}
-        <Route path="*" element={<HomePage />} />
+        {/* PUBLIC ADMINISTRATION SECTION */}
+        <Route path="/administration/board-of-governors" element={<PublicRoute><BoardOfGovernors /></PublicRoute>} />
+        <Route path="/administration/director" element={<PublicRoute><Director /></PublicRoute>} />
+        <Route path="/administration/registrar" element={<PublicRoute><Registrar /></PublicRoute>} />
+        <Route path="/administration/senate" element={<PublicRoute><Senate /></PublicRoute>} />
+        <Route path="/administration/deans" element={<PublicRoute><Deans /></PublicRoute>} />
+        <Route path="/administration/committees" element={<PublicRoute><Committees /></PublicRoute>} />
+        <Route path="/administration/finance-committee" element={<PublicRoute><FinanceCommittee /></PublicRoute>} />
+        <Route path="/administration/building-works-committee" element={<PublicRoute><BuildingWorksCommittee /></PublicRoute>} />
+        <Route path="/heads-of-departments" element={<PublicRoute><HeadsOfDepartments /></PublicRoute>} />
+        <Route path="/reports" element={<PublicRoute><AnnualReports /></PublicRoute>} />
+        
+        {/* PUBLIC INFORMATION PAGES */}
+        <Route path="/rti" element={<PublicRoute><RTI /></PublicRoute>} />
+        <Route path="/sc-st-cell" element={<PublicRoute><SCSTCell /></PublicRoute>} />
+        <Route path="/nirf" element={<PublicRoute><NIRF /></PublicRoute>} />
+        <Route path="/contact-us" element={<PublicRoute><ContactUs /></PublicRoute>} />
+        <Route path="/tenders" element={<PublicRoute><Tenders /></PublicRoute>} />
+        <Route path="/outreach-activities" element={<PublicRoute><OutreachActivities /></PublicRoute>} />
+        
+        {/* TESTING ROUTE - Remove this in production */}
+        <Route path="/permissions-test" element={<PublicRoute><PermissionsExample /></PublicRoute>} />
+        
+        {/* DEFAULT ROUTE */}
+        <Route path="*" element={<PublicRoute><HomePage /></PublicRoute>} />
       </Routes>
       <Footer />
     </div>

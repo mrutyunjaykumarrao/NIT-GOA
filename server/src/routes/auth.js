@@ -25,7 +25,7 @@ router.post('/login', authLimiter, async (req, res) => {
       return res.status(400).json({ error: 'Username and password are required' });
     }
 
-    // Get user account with employee details
+    // Find user by username
     const [users] = await executeQuery(`
       SELECT 
         ua.user_id as id,
@@ -33,9 +33,14 @@ router.post('/login', authLimiter, async (req, res) => {
         ua.password_hash,
         ua.access_level as role,
         ua.is_active,
+        ua.locked_until,
         ua.failed_login_attempts,
-        ua.locked_until
+        e.employee_id,
+        e.employee_code,
+        e.full_name as employee_name,
+        e.email as employee_email
       FROM user_accounts ua
+      LEFT JOIN employees e ON ua.user_id = e.user_account_id
       WHERE ua.username = ? AND ua.is_active = 1
     `, [username]);
 
@@ -115,7 +120,11 @@ router.post('/login', authLimiter, async (req, res) => {
       user: {
         id: user.id,
         username: user.username,
-        role: user.role
+        role: user.role,
+        employee_id: user.employee_id,
+        employee_code: user.employee_code,
+        employee_name: user.employee_name,
+        employee_email: user.employee_email
       }
     });
 
