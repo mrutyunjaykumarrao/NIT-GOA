@@ -13,6 +13,7 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -40,19 +41,18 @@ export const AuthProvider = ({ children }) => {
     
     // Update state
     setUser(null);
+    setToken(null);
     setIsAuthenticated(false);
     setShowLoginModal(false);
     setLoginRedirectPath(null);
   };
 
   const openLoginModal = (redirectPath = null) => {
-    console.log('🔐 MODAL: Opening login modal', { redirectPath });
     setLoginRedirectPath(redirectPath);
     setShowLoginModal(true);
   };
 
   const closeLoginModal = () => {
-    console.log('🔐 MODAL: Closing login modal');
     setShowLoginModal(false);
     setLoginRedirectPath(null);
   };
@@ -62,30 +62,22 @@ export const AuthProvider = ({ children }) => {
     const initializeAuth = () => {
       try {
         // Check both token storage methods for backward compatibility
-        const token = localStorage.getItem('authToken') || localStorage.getItem('token');
+        const storedToken = localStorage.getItem('authToken') || localStorage.getItem('token');
         const userData = localStorage.getItem('user');
 
-        if (token && userData) {
+        if (storedToken && userData) {
           const parsedUser = JSON.parse(userData);
           
-          console.log('🔐 AUTH INIT: User found in localStorage', {
-            user: parsedUser,
-            role: parsedUser.role,
-            isAuthenticated: true,
-            token: token ? 'present' : 'missing'
-          });
-          
           // Set axios default header
-          axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+          axios.defaults.headers.common['Authorization'] = `Bearer ${storedToken}`;
           
           // Ensure we're using consistent storage
-          localStorage.setItem('authToken', token);
+          localStorage.setItem('authToken', storedToken);
           localStorage.removeItem('token'); // Remove old token if it exists
           
           setUser(parsedUser);
+          setToken(storedToken);
           setIsAuthenticated(true);
-        } else {
-          console.log('🔐 AUTH INIT: No user found in localStorage');
         }
       } catch (error) {
         console.error('Error initializing auth:', error);
@@ -104,26 +96,19 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (credentials) => {
     try {
-      console.log('🔐 LOGIN ATTEMPT: Starting login process');
-      
       const response = await axios.post('/api/auth/login', credentials);
-      const { token, user: userData } = response.data;
-      
-      console.log('🔐 LOGIN SUCCESS: Received response from server', {
-        user: userData,
-        role: userData.role,
-        token: token ? 'present' : 'missing'
-      });
+      const { token: authToken, user: userData } = response.data;
       
       // Store in localStorage
-      localStorage.setItem('authToken', token);
+      localStorage.setItem('authToken', authToken);
       localStorage.setItem('user', JSON.stringify(userData));
       
       // Set axios default header
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      axios.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
       
       // Update state
       setUser(userData);
+      setToken(authToken);
       setIsAuthenticated(true);
       
       // Close modal and handle redirect
@@ -131,16 +116,9 @@ export const AuthProvider = ({ children }) => {
       const redirectPath = loginRedirectPath;
       setLoginRedirectPath(null);
       
-      console.log('🔐 LOGIN COMPLETE: Auth state updated', {
-        isAuthenticated: true,
-        user: userData,
-        role: userData.role,
-        redirectPath
-      });
-      
       return { success: true, user: userData, redirectPath };
     } catch (error) {
-      console.error('🔐 LOGIN ERROR:', error);
+      console.error('Login error:', error);
       return {
         success: false,
         error: error.response?.data?.error || 'Login failed'
@@ -155,6 +133,7 @@ export const AuthProvider = ({ children }) => {
 
   const value = {
     user,
+    token,
     isAuthenticated,
     isLoading,
     login,

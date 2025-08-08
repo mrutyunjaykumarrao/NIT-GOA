@@ -33,35 +33,41 @@ const AdminDashboard = () => {
 
   const [employeeForm, setEmployeeForm] = useState({
     employee_code: '',
-    first_name: '',
-    last_name: '',
+    full_name: '',
+    honorific: '',
     email: '',
-    phone: '',
+    phone_mobile: '',
+    phone_office: '',
+    extension_no: '',
     department_id: '',
     role: 'Faculty',
-    position: '',
-    joining_date: '',
+    job_title: '',
+    date_of_joining: '',
+    employment_status: '',
+    employment_type: 'Full-time',
+    is_hod: false,
     is_active: true
   });
 
   const [facultyForm, setFacultyForm] = useState({
-    faculty_id: '',
     employee_id: '',
-    designation: '',
-    specialization: '',
-    qualification: '',
-    experience_years: '',
+    department_id: '',
+    designation_id: '',
+    gender: '',
+    date_of_birth: '',
+    research_teaching_experience: '',
+    address: '',
+    office_location: '',
+    office_hours: '',
+    bio_summary: '',
     research_interests: '',
-    is_hod: false,
     is_active: true
   });
 
   const [staffForm, setStaffForm] = useState({
     employee_id: '',
-    position: '',
-    department: '',
-    qualifications: '',
-    skills: '',
+    department_id: '',
+    specialty: '',
     is_active: true
   });
 
@@ -82,9 +88,10 @@ const AdminDashboard = () => {
         throw new Error(errorData.error || 'API request failed');
       }
 
-      return await response.json();
+      const data = await response.json();
+      return data;
     } catch (error) {
-      console.error('API call error:', error);
+      console.error(`API call error for ${endpoint}:`, error);
       throw error;
     }
   };
@@ -95,15 +102,17 @@ const AdminDashboard = () => {
       const data = await apiCall('/admin/analytics');
       setAnalytics(data);
     } catch (error) {
+      console.error('Failed to fetch analytics:', error);
       setError('Failed to fetch analytics');
     }
   };
 
-  const fetchUsers = async () => {
+    const fetchUsers = async () => {
     try {
       const data = await apiCall('/admin/users');
-      setUsers(data);
+      setUsers(Array.isArray(data) ? data : []);
     } catch (error) {
+      console.error('Failed to fetch users:', error);
       setError('Failed to fetch users');
     }
   };
@@ -113,6 +122,7 @@ const AdminDashboard = () => {
       const data = await apiCall('/admin/employees');
       setEmployees(data);
     } catch (error) {
+      console.error('Failed to fetch employees:', error);
       setError('Failed to fetch employees');
     }
   };
@@ -122,6 +132,7 @@ const AdminDashboard = () => {
       const data = await apiCall('/admin/faculty');
       setFaculty(data);
     } catch (error) {
+      console.error('Failed to fetch faculty:', error);
       setError('Failed to fetch faculty');
     }
   };
@@ -131,6 +142,7 @@ const AdminDashboard = () => {
       const data = await apiCall('/admin/staff');
       setStaff(data);
     } catch (error) {
+      console.error('Failed to fetch staff:', error);
       setError('Failed to fetch staff');
     }
   };
@@ -140,6 +152,7 @@ const AdminDashboard = () => {
       const data = await apiCall('/admin/departments');
       setDepartments(data);
     } catch (error) {
+      console.error('Failed to fetch departments:', error);
       setError('Failed to fetch departments');
     }
   };
@@ -561,274 +574,331 @@ const AdminDashboard = () => {
 };
 
 // Analytics Tab Component
-const AnalyticsTab = ({ analytics }) => (
-  <div className="analytics-tab">
-    <h2>System Overview</h2>
-    <div className="analytics-grid">
-      <div className="analytics-card">
-        <h3>Active Users</h3>
-        <p className="analytics-number">{analytics.totals?.users || 0}</p>
+const AnalyticsTab = ({ analytics }) => {
+  // Extract the first item from array if it's an array
+  const data = Array.isArray(analytics) && analytics.length > 0 ? analytics[0] : analytics || {};
+  
+  return (
+    <div className="analytics-tab">
+      <h2>System Overview</h2>
+      <div className="analytics-grid">
+        <div className="analytics-card">
+          <h3>Active Users</h3>
+          <p className="analytics-number">{data.active_users || data.total_users || 0}</p>
+        </div>
+        <div className="analytics-card">
+          <h3>Total Employees</h3>
+          <p className="analytics-number">{data.total_employees || 0}</p>
+        </div>
+        <div className="analytics-card">
+          <h3>Faculty Members</h3>
+          <p className="analytics-number">{data.total_faculty || 0}</p>
+        </div>
+        <div className="analytics-card">
+          <h3>Staff Members</h3>
+          <p className="analytics-number">{data.total_staff || 0}</p>
+        </div>
+        <div className="analytics-card">
+          <h3>Departments</h3>
+          <p className="analytics-number">{data.active_departments || 0}</p>
+        </div>
       </div>
-      <div className="analytics-card">
-        <h3>Total Employees</h3>
-        <p className="analytics-number">{analytics.totals?.employees || 0}</p>
-      </div>
-      <div className="analytics-card">
-        <h3>Faculty Members</h3>
-        <p className="analytics-number">{analytics.totals?.faculty || 0}</p>
-      </div>
-      <div className="analytics-card">
-        <h3>Staff Members</h3>
-        <p className="analytics-number">{analytics.totals?.staff || 0}</p>
-      </div>
-      <div className="analytics-card">
-        <h3>Departments</h3>
-        <p className="analytics-number">{analytics.totals?.departments || 0}</p>
-      </div>
+      
+      {analytics.recent?.users && analytics.recent.users.length > 0 && (
+        <div className="recent-activity">
+          <h3>Recent User Registrations</h3>
+          <ul>
+            {analytics.recent.users.map((user, index) => (
+              <li key={index}>
+                {user.name || 'Unknown'} - {new Date(user.created_at).toLocaleDateString()}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
-    
-    {analytics.recent?.users && analytics.recent.users.length > 0 && (
-      <div className="recent-activity">
-        <h3>Recent User Registrations</h3>
-        <ul>
-          {analytics.recent.users.map((user, index) => (
-            <li key={index}>
-              {user.name || 'Unknown'} - {new Date(user.created_at).toLocaleDateString()}
-            </li>
-          ))}
-        </ul>
-      </div>
-    )}
-  </div>
-);
+  );
+};
 
 // Users Tab Component
-const UsersTab = ({ users, employees, onEdit, onDelete, onCreate, loading }) => (
-  <div className="users-tab">
-    <div className="tab-header">
-      <h2>User Accounts</h2>
-      <button className="create-btn" onClick={onCreate} disabled={loading}>
-        + Create User
-      </button>
-    </div>
-    
-    <div className="table-container">
-      <table className="admin-table">
-        <thead>
-          <tr>
-            <th>Username</th>
-            <th>Full Name</th>
-            <th>Role</th>
-            <th>Email</th>
-            <th>Department</th>
-            <th>Status</th>
-            <th>Last Login</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map(user => (
-            <tr key={user.id}>
-              <td>{user.username}</td>
-              <td>{user.full_name || 'N/A'}</td>
-              <td>
-                <span className={`role-badge ${user.role.toLowerCase()}`}>
-                  {user.role}
-                </span>
-              </td>
-              <td>{user.email || 'N/A'}</td>
-              <td>{user.department_name || 'N/A'}</td>
-              <td>
-                <span className={`status-badge ${user.is_active ? 'active' : 'inactive'}`}>
-                  {user.is_active ? 'Active' : 'Inactive'}
-                </span>
-              </td>
-              <td>{user.last_login ? new Date(user.last_login).toLocaleDateString() : 'Never'}</td>
-              <td>
-                <div className="action-buttons">
-                  <button className="edit-btn" onClick={() => onEdit(user)}>Edit</button>
-                  <button className="delete-btn" onClick={() => onDelete(user.id)}>Delete</button>
-                </div>
-              </td>
+const UsersTab = ({ users, employees, onEdit, onDelete, onCreate, loading }) => {
+  // Handle nested array structure - flatten if needed
+  let userList = [];
+  if (Array.isArray(users)) {
+    if (users.length > 0 && Array.isArray(users[0])) {
+      // If it's a nested array, flatten it
+      userList = users.flat();
+    } else {
+      userList = users;
+    }
+  }
+  
+  return (
+    <div className="users-tab">
+      <div className="tab-header">
+        <h2>User Accounts</h2>
+        <button className="create-btn" onClick={onCreate} disabled={loading}>
+          + Create User
+        </button>
+      </div>
+      
+      <div className="table-container">
+        <table className="admin-table">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Full Name</th>
+              <th>Role</th>
+              <th>Email</th>
+              <th>Department</th>
+              <th>Status</th>
+              <th>Last Login</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {userList.map(user => (
+              <tr key={user.id}>
+                <td>{user.username}</td>
+                <td>{user.full_name || 'N/A'}</td>
+                <td>
+                  <span className={`role-badge ${user.role?.toLowerCase() || 'user'}`}>
+                    {user.role || 'User'}
+                  </span>
+                </td>
+                <td>{user.email || 'N/A'}</td>
+                <td>{user.department_name || 'N/A'}</td>
+                <td>
+                  <span className={`status-badge ${user.is_active ? 'active' : 'inactive'}`}>
+                    {user.is_active ? 'Active' : 'Inactive'}
+                  </span>
+                </td>
+                <td>{user.last_login ? new Date(user.last_login).toLocaleDateString() : 'Never'}</td>
+                <td>
+                  <div className="action-buttons">
+                    <button className="edit-btn" onClick={() => onEdit(user)}>Edit</button>
+                    <button className="delete-btn" onClick={() => onDelete(user.id)}>Delete</button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 // Employees Tab Component
-const EmployeesTab = ({ employees, departments, onEdit, onDelete, onCreate, loading }) => (
-  <div className="employees-tab">
-    <div className="tab-header">
-      <h2>Employee Management</h2>
-      <button className="create-btn" onClick={onCreate} disabled={loading}>
-        + Create Employee
-      </button>
-    </div>
-    
-    <div className="table-container">
-      <table className="admin-table">
-        <thead>
-          <tr>
-            <th>Employee Code</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Department</th>
-            <th>Role</th>
-            <th>Position</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {employees.map(employee => (
-            <tr key={employee.id}>
-              <td>{employee.employee_code}</td>
-              <td>{`${employee.first_name} ${employee.last_name}`}</td>
-              <td>{employee.email}</td>
-              <td>{employee.phone || 'N/A'}</td>
-              <td>{employee.department_name || 'N/A'}</td>
-              <td>
-                <span className={`role-badge ${employee.role.toLowerCase()}`}>
-                  {employee.role}
-                </span>
-              </td>
-              <td>{employee.position || 'N/A'}</td>
-              <td>
-                <span className={`status-badge ${employee.is_active ? 'active' : 'inactive'}`}>
-                  {employee.is_active ? 'Active' : 'Inactive'}
-                </span>
-              </td>
-              <td>
-                <div className="action-buttons">
-                  <button className="edit-btn" onClick={() => onEdit(employee)}>Edit</button>
-                  <button className="delete-btn" onClick={() => onDelete(employee.id)}>Delete</button>
-                </div>
-              </td>
+const EmployeesTab = ({ employees, departments, onEdit, onDelete, onCreate, loading }) => {
+  // Handle nested array structure - flatten if needed
+  let employeeList = [];
+  if (Array.isArray(employees)) {
+    if (employees.length > 0 && Array.isArray(employees[0])) {
+      // If it's a nested array, flatten it
+      employeeList = employees.flat();
+    } else {
+      employeeList = employees;
+    }
+  }
+  
+  return (
+    <div className="employees-tab">
+      <div className="tab-header">
+        <h2>Employee Management</h2>
+        <button className="create-btn" onClick={onCreate} disabled={loading}>
+          + Create Employee
+        </button>
+      </div>
+      
+      <div className="table-container">
+        <table className="admin-table">
+          <thead>
+            <tr>
+              <th>Employee Code</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Department</th>
+              <th>Role</th>
+              <th>Position</th>
+              <th>Status</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {employeeList.map(employee => (
+              <tr key={employee.id}>
+                <td>{employee.employee_code}</td>
+                <td>{`${employee.first_name || ''} ${employee.last_name || ''}`.trim() || 'N/A'}</td>
+                <td>{employee.email}</td>
+                <td>{employee.phone || 'N/A'}</td>
+                <td>{employee.department_name || 'N/A'}</td>
+                <td>
+                  <span className={`role-badge ${employee.role?.toLowerCase() || 'employee'}`}>
+                    {employee.role || 'Employee'}
+                  </span>
+                </td>
+                <td>{employee.position || 'N/A'}</td>
+                <td>
+                  <span className={`status-badge ${employee.is_active ? 'active' : 'inactive'}`}>
+                    {employee.is_active ? 'Active' : 'Inactive'}
+                  </span>
+                </td>
+                <td>
+                  <div className="action-buttons">
+                    <button className="edit-btn" onClick={() => onEdit(employee)}>Edit</button>
+                    <button className="delete-btn" onClick={() => onDelete(employee.id)}>Delete</button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 // Faculty Tab Component
-const FacultyTab = ({ faculty, employees, onEdit, onDelete, onCreate, loading }) => (
-  <div className="faculty-tab">
-    <div className="tab-header">
-      <h2>Faculty Management</h2>
-      <button className="create-btn" onClick={onCreate} disabled={loading}>
-        + Create Faculty Profile
-      </button>
-    </div>
-    
-    <div className="table-container">
-      <table className="admin-table">
-        <thead>
-          <tr>
-            <th>Faculty ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Department</th>
-            <th>Designation</th>
-            <th>Specialization</th>
-            <th>Experience</th>
-            <th>HOD</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {faculty.map(fac => (
-            <tr key={fac.id}>
-              <td>{fac.faculty_id}</td>
-              <td>{fac.full_name}</td>
-              <td>{fac.email}</td>
-              <td>{fac.department_name || 'N/A'}</td>
-              <td>{fac.designation || 'N/A'}</td>
-              <td>{fac.specialization || 'N/A'}</td>
-              <td>{fac.experience_years ? `${fac.experience_years} years` : 'N/A'}</td>
-              <td>{fac.is_hod ? '✓' : '✗'}</td>
-              <td>
-                <span className={`status-badge ${fac.is_active ? 'active' : 'inactive'}`}>
-                  {fac.is_active ? 'Active' : 'Inactive'}
-                </span>
-              </td>
-              <td>
-                <div className="action-buttons">
-                  <button className="edit-btn" onClick={() => onEdit(fac)}>Edit</button>
-                  <button className="delete-btn" onClick={() => onDelete(fac.id)}>Delete</button>
-                </div>
-              </td>
+const FacultyTab = ({ faculty, employees, onEdit, onDelete, onCreate, loading }) => {
+  // Handle nested array structure - flatten if needed
+  let facultyList = [];
+  if (Array.isArray(faculty)) {
+    if (faculty.length > 0 && Array.isArray(faculty[0])) {
+      // If it's a nested array, flatten it
+      facultyList = faculty.flat();
+    } else {
+      facultyList = faculty;
+    }
+  }
+  
+  return (
+    <div className="faculty-tab">
+      <div className="tab-header">
+        <h2>Faculty Management</h2>
+        <button className="create-btn" onClick={onCreate} disabled={loading}>
+          + Create Faculty Profile
+        </button>
+      </div>
+      
+      <div className="table-container">
+        <table className="admin-table">
+          <thead>
+            <tr>
+              <th>Faculty ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Department</th>
+              <th>Designation</th>
+              <th>Specialization</th>
+              <th>Experience</th>
+              <th>HOD</th>
+              <th>Status</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {facultyList.map(fac => (
+              <tr key={fac.id}>
+                <td>{fac.faculty_id}</td>
+                <td>{fac.full_name || 'N/A'}</td>
+                <td>{fac.email}</td>
+                <td>{fac.department_name || 'N/A'}</td>
+                <td>{fac.designation || 'N/A'}</td>
+                <td>{fac.specialization || 'N/A'}</td>
+                <td>{fac.experience_years ? `${fac.experience_years} years` : 'N/A'}</td>
+                <td>{fac.is_hod ? '✓' : '✗'}</td>
+                <td>
+                  <span className={`status-badge ${fac.is_active ? 'active' : 'inactive'}`}>
+                    {fac.is_active ? 'Active' : 'Inactive'}
+                  </span>
+                </td>
+                <td>
+                  <div className="action-buttons">
+                    <button className="edit-btn" onClick={() => onEdit(fac)}>Edit</button>
+                    <button className="delete-btn" onClick={() => onDelete(fac.id)}>Delete</button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 // Staff Tab Component
-const StaffTab = ({ staff, employees, onEdit, onDelete, onCreate, loading }) => (
-  <div className="staff-tab">
-    <div className="tab-header">
-      <h2>Staff Management</h2>
-      <button className="create-btn" onClick={onCreate} disabled={loading}>
-        + Create Staff Profile
-      </button>
-    </div>
-    
-    <div className="table-container">
-      <table className="admin-table">
-        <thead>
-          <tr>
-            <th>Employee Code</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Department</th>
-            <th>Position</th>
-            <th>Role</th>
-            <th>Qualifications</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {staff.map(stf => (
-            <tr key={stf.id}>
-              <td>{stf.employee_code}</td>
-              <td>{stf.full_name}</td>
-              <td>{stf.email}</td>
-              <td>{stf.department_name || stf.department || 'N/A'}</td>
-              <td>{stf.position || 'N/A'}</td>
-              <td>
-                <span className={`role-badge ${stf.employee_role?.toLowerCase() || 'staff'}`}>
-                  {stf.employee_role || 'Staff'}
-                </span>
-              </td>
-              <td>{stf.qualifications || 'N/A'}</td>
-              <td>
-                <span className={`status-badge ${stf.is_active ? 'active' : 'inactive'}`}>
-                  {stf.is_active ? 'Active' : 'Inactive'}
-                </span>
-              </td>
-              <td>
-                <div className="action-buttons">
-                  <button className="edit-btn" onClick={() => onEdit(stf)}>Edit</button>
-                  <button className="delete-btn" onClick={() => onDelete(stf.id)}>Delete</button>
-                </div>
-              </td>
+const StaffTab = ({ staff, employees, onEdit, onDelete, onCreate, loading }) => {
+  // Handle nested array structure - flatten if needed
+  let staffList = [];
+  if (Array.isArray(staff)) {
+    if (staff.length > 0 && Array.isArray(staff[0])) {
+      // If it's a nested array, flatten it
+      staffList = staff.flat();
+    } else {
+      staffList = staff;
+    }
+  }
+  
+  return (
+    <div className="staff-tab">
+      <div className="tab-header">
+        <h2>Staff Management</h2>
+        <button className="create-btn" onClick={onCreate} disabled={loading}>
+          + Create Staff Profile
+        </button>
+      </div>
+      
+      <div className="table-container">
+        <table className="admin-table">
+          <thead>
+            <tr>
+              <th>Employee Code</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Department</th>
+              <th>Position</th>
+              <th>Role</th>
+              <th>Qualifications</th>
+              <th>Status</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {staffList.map(stf => (
+              <tr key={stf.id}>
+                <td>{stf.employee_code}</td>
+                <td>{stf.full_name || 'N/A'}</td>
+                <td>{stf.email}</td>
+                <td>{stf.department_name || stf.department || 'N/A'}</td>
+                <td>{stf.position || 'N/A'}</td>
+                <td>
+                  <span className={`role-badge ${stf.employee_role?.toLowerCase() || 'staff'}`}>
+                    {stf.employee_role || 'Staff'}
+                  </span>
+                </td>
+                <td>{stf.qualifications || 'N/A'}</td>
+                <td>
+                  <span className={`status-badge ${stf.is_active ? 'active' : 'inactive'}`}>
+                    {stf.is_active ? 'Active' : 'Inactive'}
+                  </span>
+                </td>
+                <td>
+                  <div className="action-buttons">
+                    <button className="edit-btn" onClick={() => onEdit(stf)}>Edit</button>
+                    <button className="delete-btn" onClick={() => onDelete(stf.id)}>Delete</button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 // Modal Component
 const Modal = ({ 
