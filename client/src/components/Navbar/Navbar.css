@@ -1262,6 +1262,12 @@ body {
     display: none;
   }
   
+  /* Disable blur effect on mobile for better performance and clarity */
+  .navbar-wrapper {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  
   /* Mobile top header adjustments */
   .navbar-top-header-content {
     flex-direction: row;
@@ -1355,6 +1361,12 @@ body {
     --navbar-padding-xs: 12px;
   }
   
+  /* Ensure no blur on smallest screens */
+  .navbar-wrapper {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  
   .navbar-header-content {
     padding: 0 var(--navbar-padding-xs);
   }
@@ -1387,6 +1399,12 @@ body {
 
 /* ===== SMALL TABLET (481px - 768px) ===== */
 @media (min-width: 481px) and (max-width: 768px) {
+  /* Ensure no blur on tablet screens */
+  .navbar-wrapper {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  
   .navbar-header-content {
     padding: 0 var(--navbar-padding-sm);
   }
@@ -1429,6 +1447,11 @@ body {
 
 /* ===== LARGE TABLET (769px - 1023px) ===== */
 @media (min-width: 769px) and (max-width: 1319px) {
+  /* Ensure no blur on large tablet screens */
+  .navbar-wrapper {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
   .navbar-top-header-content {
     padding: 0 var(--navbar-padding-sm);
   }
