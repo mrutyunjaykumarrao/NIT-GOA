@@ -1,6 +1,8 @@
 {
-  "page_header": {
-    "title": "R & D Projects"
+  "page_info": {
+    "title": "R & D Projects",
+    "subtitle": "Research & Development Initiatives",
+    "description": "Active research projects and their funding details"
   },
   "projects": [
     {

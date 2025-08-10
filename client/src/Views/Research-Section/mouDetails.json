@@ -1,6 +1,8 @@
 {
-  "page_header": {
-    "title": "Details Of MoUs"
+  "page_info": {
+    "title": "Details Of MoUs",
+    "subtitle": "Memoranda of Understanding",
+    "description": "Comprehensive list of active and past partnerships with various organizations"
   },
   "table_headers": [
     "S.No.",
