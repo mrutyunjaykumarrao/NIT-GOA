@@ -296,7 +296,7 @@ body {
 */
 .navbar-main-header {
   background: var(--color-background-light);
-  padding: 20px 0;
+  padding: 30px 0;
   transition: padding 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transform: translateZ(0);
   will-change: padding;
@@ -306,7 +306,7 @@ body {
 
 /* Scrolled state - very subtle reduction like reference site */
 .navbar-main-header.scrolled {
-  padding: 18px 0;
+  padding: 26px 0;
 }
 
 /* Container for main header content with responsive max-width */
@@ -360,9 +360,9 @@ body {
   color: inherit;
 }
 
-/* Institute logo with crisp rendering - larger like reference site */
+/* Institute logo with crisp rendering - even larger base size like reference site */
 .navbar-nit-logo {
-  height: 65px;
+  height: 92px;
   width: auto;
   transition: height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: height;
@@ -377,7 +377,7 @@ body {
 
 /* Scrolled state - very subtle logo reduction like reference site */
 .navbar-main-header.scrolled .navbar-nit-logo {
-  height: 62px;
+  height: 84px;
 }
 
 .navbar-nit-logo:hover {
@@ -392,12 +392,12 @@ body {
   line-height: 1.1;
 }
 
-/* Hindi institute name with crisp text rendering */
+/* Hindi institute name with crisp text rendering - even larger base size */
 .navbar-institute-name-hindi {
-  font-size: 17px;
+  font-size: 26px;
   font-weight: 500;
   color: var(--color-primary);
-  margin: 0;
+  margin: 0 0 4px 0;
   line-height: 1.2;
   transition: font-size 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: font-size;
@@ -410,12 +410,12 @@ body {
 
 /* Scrolled state - barely noticeable font reduction */
 .navbar-main-header.scrolled .navbar-institute-name-hindi {
-  font-size: 16.8px;
+  font-size: 24px;
 }
 
-/* English institute name with crisp text rendering */
+/* English institute name with crisp text rendering - even larger base size */
 .navbar-institute-name-english {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 400;
   color: var(--color-text-primary);
   margin: 0;
@@ -431,7 +431,7 @@ body {
 
 /* Scrolled state - barely noticeable font reduction */
 .navbar-main-header.scrolled .navbar-institute-name-english {
-  font-size: 13.8px;
+  font-size: 18px;
 }
 
 /* Dark mode main header styling */
@@ -1323,11 +1323,11 @@ body {
   
   /* Mobile main header - appropriately sized */
   .navbar-main-header {
-    padding: 16px 0;
+    padding: 20px 0;
   }
   
   .navbar-main-header.scrolled {
-    padding: 14px 0;
+    padding: 18px 0;
   }
   
   /* Mobile logo section - no scaling */
@@ -1337,28 +1337,29 @@ body {
   
   /* Mobile logo sizes */
   .navbar-nit-logo {
-    height: 55px;
+    height: 65px;
   }
   
   .navbar-main-header.scrolled .navbar-nit-logo {
-    height: 52px;
+    height: 60px;
   }
   
   /* Mobile text sizes */
   .navbar-institute-name-hindi {
-    font-size: 15px;
+    font-size: 19px;
+    margin: 0 0 3px 0;
   }
   
   .navbar-main-header.scrolled .navbar-institute-name-hindi {
-    font-size: 14.8px;
+    font-size: 18px;
   }
   
   .navbar-institute-name-english {
-    font-size: 12px;
+    font-size: 15px;
   }
   
   .navbar-main-header.scrolled .navbar-institute-name-english {
-    font-size: 11.8px;
+    font-size: 14px;
   }
   
   /* Mobile top header adjustments */
@@ -1467,11 +1468,11 @@ body {
   
   /* Small mobile header */
   .navbar-main-header {
-    padding: 14px 0;
+    padding: 16px 0;
   }
   
   .navbar-main-header.scrolled {
-    padding: 12px 0;
+    padding: 14px 0;
   }
   
   .navbar-logo-section {
@@ -1479,27 +1480,27 @@ body {
   }
   
   .navbar-nit-logo {
-    height: 50px;
+    height: 55px;
   }
   
   .navbar-main-header.scrolled .navbar-nit-logo {
-    height: 48px;
+    height: 52px;
   }
   
   .navbar-institute-name-hindi {
-    font-size: 13px;
+    font-size: 15px;
   }
   
   .navbar-main-header.scrolled .navbar-institute-name-hindi {
-    font-size: 12.8px;
+    font-size: 14px;
   }
   
   .navbar-institute-name-english {
-    font-size: 11px;
+    font-size: 12px;
   }
   
   .navbar-main-header.scrolled .navbar-institute-name-english {
-    font-size: 10.8px;
+    font-size: 11px;
   }
   
   .navbar-header-content {
