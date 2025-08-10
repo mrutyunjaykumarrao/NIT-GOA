@@ -75,29 +75,29 @@ body {
    ======================================================================== */
 
 /* 
-   Primary navbar container with sticky positioning and progressive animations.
-   Features blur effects and smooth transforms based on scroll position.
-   Enhanced with Google Translate protection to ensure navbar stays accessible.
+   Primary navbar container with ultra-smooth transitions.
+   No blur effects that affect content clarity.
 */
 .navbar-wrapper {
   position: sticky !important;
   top: 0 !important;
-  z-index: 2000 !important; /* Higher z-index to override Google Translate elements */
+  z-index: 2000 !important;
   background: var(--color-background-light);
-  transition: 
-    box-shadow var(--transition-medium),
-    transform var(--transition-medium);
+  transition: box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transform: translateY(0) translateZ(0);
-  will-change: box-shadow, backdrop-filter, transform;
-  backdrop-filter: blur(var(--blur-amount));
-  -webkit-backdrop-filter: blur(var(--blur-amount));
-  /* Ensure navbar stays accessible above any Google Translate elements */
+  will-change: box-shadow;
   isolation: isolate;
+  margin: 0;
+  border: none;
 }
 
-/* Enhanced shadow and positioning when scrolled */
+/* Scrolled state - clean shadow without blur */
+.navbar-wrapper.scrolled {
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Legacy compact class - keep for compatibility */
 .navbar-wrapper.navbar-compact {
-  transform: translateY(-35px) translateZ(0);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
@@ -112,28 +112,35 @@ body {
    ======================================================================== */
 
 /* 
-   Top utility bar containing quick links, language selector, and auth controls.
-   Progressively shrinks and hides on scroll for space optimization.
-   Enhanced with Google Translate protection to ensure accessibility.
+   Top utility bar with ultra-smooth hiding transitions.
 */
 .navbar-top-header {
   background-color: var(--color-background-gray);
   position: relative;
-  z-index: 2100 !important; /* Higher than navbar wrapper for proper layering */
-  /* Fixed base values - no layout-causing calc() */
+  z-index: 2100 !important;
   padding: 8px 0;
   font-size: 14px;
-  /* GPU-accelerated transitions only */
-  transition: transform var(--transition-medium);
-  transform: translateY(0) translateZ(0);
-  will-change: transform;
-  /* Ensure top header stays accessible above any Google Translate elements */
+  transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              padding 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  max-height: 50px;
+  opacity: 1;
+  overflow: hidden;
   isolation: isolate;
 }
 
-/* Hide top header completely when scrolled */
+/* Hidden state - ultra-smooth collapse */
+.navbar-top-header.hidden {
+  max-height: 0;
+  opacity: 0;
+  padding: 0;
+}
+
+/* Legacy class for compatibility */
 .navbar-top-header-hidden {
-  transform: translateY(-100%) translateZ(0);
+  max-height: 0;
+  opacity: 0;
+  padding: 0;
 }
 
 /* Container for top header content with responsive max-width */
@@ -285,15 +292,21 @@ body {
 
 /* 
    Main header containing the institute logo and name.
-   Features progressive scaling and adaptive sizing based on screen size.
+   Features extremely subtle sizing changes matching the reference website.
 */
 .navbar-main-header {
-  --main-padding: calc(30px - var(--scroll-progress, 0) * 10px);
   background: var(--color-background-light);
-  padding: var(--main-padding) 0;
+  padding: 20px 0;
+  transition: padding 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transform: translateZ(0);
-  transition: all var(--transition-fast);
   will-change: padding;
+  position: relative;
+  z-index: var(--z-navbar-base);
+}
+
+/* Scrolled state - very subtle reduction like reference site */
+.navbar-main-header.scrolled {
+  padding: 18px 0;
 }
 
 /* Container for main header content with responsive max-width */
@@ -306,15 +319,23 @@ body {
   padding: 0 var(--navbar-padding-xs);
 }
 
-/* Logo section container */
+/* Logo section container without scaling - no blur issues */
 .navbar-logo-section {
   display: flex;
   align-items: center;
-  gap: var(--logo-gap, 15px);
+  gap: 15px;
   flex: 1;
+  /* Remove scaling to prevent blur - use individual element sizing instead */
+  transform: translateZ(0);
+  /* Ensure crisp rendering */
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Logo link wrapper with subtle hover effects */
+/* No scaling on scroll - individual elements handle their own sizing */
+
+/* Logo link wrapper with crisp rendering */
 .navbar-logo-link {
   display: flex;
   align-items: center;
@@ -324,6 +345,11 @@ body {
   transition: opacity var(--transition-fast);
   cursor: pointer;
   flex: 1;
+  /* Ensure crisp rendering */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .navbar-logo-link:hover {
@@ -334,17 +360,24 @@ body {
   color: inherit;
 }
 
-/* Institute logo with GPU-accelerated scaling */
+/* Institute logo with crisp rendering - larger like reference site */
 .navbar-nit-logo {
-  /* Fixed base size - no layout-causing calc() */
-  width: 90px;
-  height: 90px;
+  height: 65px;
+  width: auto;
+  transition: height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: height;
   object-fit: contain;
   border-radius: 8px;
-  /* GPU-accelerated transitions only */
-  transition: transform var(--transition-medium);
-  transform: scale(var(--logo-scale, 1)) translateZ(0);
-  will-change: transform;
+  /* Ensure crisp rendering */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Scrolled state - very subtle logo reduction like reference site */
+.navbar-main-header.scrolled .navbar-nit-logo {
+  height: 62px;
 }
 
 .navbar-nit-logo:hover {
@@ -355,35 +388,50 @@ body {
 .navbar-institute-info {
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  justify-content: center;
+  line-height: 1.1;
 }
 
-/* Hindi institute name - no scaling */
+/* Hindi institute name with crisp text rendering */
 .navbar-institute-name-hindi {
+  font-size: 17px;
+  font-weight: 500;
   color: var(--color-primary);
   margin: 0;
-  font-weight: 500;
   line-height: 1.2;
-  /* Fixed font size - no scaling */
-  font-size: 24px;
-  /* Only basic GPU optimization */
-  transition: color var(--transition-medium);
+  transition: font-size 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: font-size;
+  /* Ensure crisp text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   transform: translateZ(0);
-  will-change: color;
 }
 
-/* English institute name - no scaling */
+/* Scrolled state - barely noticeable font reduction */
+.navbar-main-header.scrolled .navbar-institute-name-hindi {
+  font-size: 16.8px;
+}
+
+/* English institute name with crisp text rendering */
 .navbar-institute-name-english {
+  font-size: 14px;
+  font-weight: 400;
   color: var(--color-text-primary);
   margin: 0;
-  font-weight: 500;
   line-height: 1.2;
-  /* Fixed font size - no scaling */
-  font-size: 20px;
-  /* Only basic GPU optimization */
-  transition: color var(--transition-medium);
+  transition: font-size 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: font-size;
+  /* Ensure crisp text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   transform: translateZ(0);
-  will-change: color;
+}
+
+/* Scrolled state - barely noticeable font reduction */
+.navbar-main-header.scrolled .navbar-institute-name-english {
+  font-size: 13.8px;
 }
 
 /* Dark mode main header styling */
@@ -1268,6 +1316,51 @@ body {
     -webkit-backdrop-filter: none !important;
   }
   
+  .navbar-wrapper.scrolled {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  
+  /* Mobile main header - appropriately sized */
+  .navbar-main-header {
+    padding: 16px 0;
+  }
+  
+  .navbar-main-header.scrolled {
+    padding: 14px 0;
+  }
+  
+  /* Mobile logo section - no scaling */
+  .navbar-logo-section {
+    gap: 12px;
+  }
+  
+  /* Mobile logo sizes */
+  .navbar-nit-logo {
+    height: 55px;
+  }
+  
+  .navbar-main-header.scrolled .navbar-nit-logo {
+    height: 52px;
+  }
+  
+  /* Mobile text sizes */
+  .navbar-institute-name-hindi {
+    font-size: 15px;
+  }
+  
+  .navbar-main-header.scrolled .navbar-institute-name-hindi {
+    font-size: 14.8px;
+  }
+  
+  .navbar-institute-name-english {
+    font-size: 12px;
+  }
+  
+  .navbar-main-header.scrolled .navbar-institute-name-english {
+    font-size: 11.8px;
+  }
+  
   /* Mobile top header adjustments */
   .navbar-top-header-content {
     flex-direction: row;
@@ -1367,6 +1460,48 @@ body {
     -webkit-backdrop-filter: none !important;
   }
   
+  .navbar-wrapper.scrolled {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  
+  /* Small mobile header */
+  .navbar-main-header {
+    padding: 14px 0;
+  }
+  
+  .navbar-main-header.scrolled {
+    padding: 12px 0;
+  }
+  
+  .navbar-logo-section {
+    gap: 10px;
+  }
+  
+  .navbar-nit-logo {
+    height: 50px;
+  }
+  
+  .navbar-main-header.scrolled .navbar-nit-logo {
+    height: 48px;
+  }
+  
+  .navbar-institute-name-hindi {
+    font-size: 13px;
+  }
+  
+  .navbar-main-header.scrolled .navbar-institute-name-hindi {
+    font-size: 12.8px;
+  }
+  
+  .navbar-institute-name-english {
+    font-size: 11px;
+  }
+  
+  .navbar-main-header.scrolled .navbar-institute-name-english {
+    font-size: 10.8px;
+  }
+  
   .navbar-header-content {
     padding: 0 var(--navbar-padding-xs);
   }
@@ -1403,6 +1538,20 @@ body {
   .navbar-wrapper {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+  }
+  
+  .navbar-wrapper.scrolled {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  
+  /* Tablet header */
+  .navbar-main-header {
+    padding: 14px 0;
+  }
+  
+  .navbar-main-header.scrolled {
+    padding: 11px 0;
   }
   
   .navbar-header-content {
@@ -1451,6 +1600,20 @@ body {
   .navbar-wrapper {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+  }
+  
+  .navbar-wrapper.scrolled {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  
+  /* Large tablet header */
+  .navbar-main-header {
+    padding: 16px 0;
+  }
+  
+  .navbar-main-header.scrolled {
+    padding: 13px 0;
   }
   .navbar-top-header-content {
     padding: 0 var(--navbar-padding-sm);

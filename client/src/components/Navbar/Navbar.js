@@ -119,48 +119,57 @@ const Navbar = () => {
     setOpenDropdown(dropdownName);
   };
 
-  // Throttled scroll handler for smooth progressive scaling and top nav hiding
+  // Ultra-smooth scroll handler with minimal flickering - matching reference site
   const handleScroll = useCallback(() => {
     if (!ticking.current) {
       requestAnimationFrame(() => {
-        const scrollTop = window.scrollY;
-        const startScroll = 10; // Start shrinking earlier
-        const maxScroll = 80; // Shorter distance for complete shrink
+        const currentScrollY = window.scrollY;
+        const navbar = document.querySelector('.navbar-wrapper');
+        const mainHeader = document.querySelector('.navbar-main-header');
+        const topHeader = document.querySelector('.navbar-top-header');
         
-        // Calculate smooth progress from 0 to 1 with easing
-        const rawProgress = (scrollTop - startScroll) / (maxScroll - startScroll);
-        const progress = Math.max(0, Math.min(rawProgress, 1));
+        // Much larger hysteresis to prevent any flickering
+        const scrollStartThreshold = 80;   // When scaling starts
+        const scrollEndThreshold = 40;     // When scaling ends (going back up)
+        const hideTopNavThreshold = 150;   // When top nav hides
+        const showTopNavThreshold = 100;   // When top nav shows (going back up)
         
-        // Apply easing function for smoother animation
-        const easedProgress = progress * progress * (3 - 2 * progress); // Smoothstep function
-        
-        setScrollProgress(easedProgress);
-
-        // Top navbar hiding logic
-        const scrollDelta = scrollTop - lastScrollY;
-        const scrollThreshold = 5; // Minimum scroll distance to trigger hide/show
-
-        if (Math.abs(scrollDelta) > scrollThreshold) {
-          if (scrollTop > 100) { // Only hide after scrolling past 100px
-            if (scrollDelta > 0) {
-              // Scrolling down - hide top nav
-              setIsTopNavHidden(true);
-            } else {
-              // Scrolling up - show top nav
-              setIsTopNavHidden(false);
-            }
-          } else {
-            // Always show top nav when near the top
-            setIsTopNavHidden(false);
+        // Add/remove scrolled class with large hysteresis gap (40px difference)
+        if (currentScrollY > scrollStartThreshold) {
+          if (!navbar?.classList.contains('scrolled')) {
+            navbar?.classList.add('scrolled');
+            mainHeader?.classList.add('scrolled');
           }
-          setLastScrollY(scrollTop);
+        } else if (currentScrollY < scrollEndThreshold) {
+          if (navbar?.classList.contains('scrolled')) {
+            navbar?.classList.remove('scrolled');
+            mainHeader?.classList.remove('scrolled');
+          }
+        }
+        
+        // Handle top nav hiding with even larger thresholds and minimal sensitivity
+        const isScrollingDown = currentScrollY > lastScrollY;
+        const isScrollingUp = currentScrollY < lastScrollY;
+        const scrollDifference = Math.abs(currentScrollY - lastScrollY);
+        
+        // Only trigger changes with significant scroll movement
+        if (scrollDifference > 15) {
+          if (currentScrollY > hideTopNavThreshold && isScrollingDown && !isTopNavHidden) {
+            setIsTopNavHidden(true);
+            topHeader?.classList.add('hidden');
+          } else if (currentScrollY < showTopNavThreshold && isScrollingUp && isTopNavHidden) {
+            setIsTopNavHidden(false);
+            topHeader?.classList.remove('hidden');
+          }
+          
+          setLastScrollY(currentScrollY);
         }
         
         ticking.current = false;
       });
-      ticking.current = true;
     }
-  }, [lastScrollY]);
+    ticking.current = true;
+  }, [lastScrollY, isTopNavHidden]);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -220,16 +229,9 @@ const Navbar = () => {
   };
 
   return (
-    <div 
-      className={`navbar-wrapper ${isTopNavHidden ? 'navbar-compact' : ''}`}
-      style={{
-        '--scroll-progress': scrollProgress,
-        '--logo-scale': `${1 - scrollProgress * 0.25}`, // Logo scale from 1 to 0.75 (80px to 60px)
-        '--logo-gap': `${15 - scrollProgress * 5}px`, // Gap reduces from 15px to 10px as logo shrinks
-      }}
-    >
+    <div className="navbar-wrapper">
       {/* Top Header */}
-      <div className={`navbar-top-header ${isTopNavHidden ? 'navbar-top-header-hidden' : ''}`}>
+      <div className={`navbar-top-header ${isTopNavHidden ? 'hidden' : ''}`}>
         <div className="navbar-top-header-content">
           {/* Desktop Controls - Hidden when hamburger menu is visible */}
           <div className="navbar-top-nav-controls desktop-only">
