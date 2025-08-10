@@ -5,6 +5,7 @@ import { useGoogleTranslate } from '../../hooks/useGoogleTranslate';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import TranslationConfirmDialog from '../TranslationConfirmDialog/TranslationConfirmDialog';
 import ThemeToggle from '../../Views/ThemeToggle/ThemeToggle';
+import ProfileDropdown from '../ProfileDropdown/ProfileDropdown';
 import './Navbar.css';
 
 // Custom logging Link component
@@ -297,45 +298,9 @@ const Navbar = () => {
             <Link to="/tenders">Tenders</Link>
             <Link to="/gian">GIAN</Link>
             <a href="https://www.nitgoa.ac.in/rajbhasha/#/" target="_blank" rel="noopener noreferrer">RAJBHASHA</a>
-            {/* Login/User Section */}
-            <div className="auth-section">
-              {isAuthenticated && user ? (
-                <div className="user-menu">
-                  <span className="user-greeting">
-                    Welcome, {user.name || user.username}
-                  </span>
-                  {user.role === 'Admin' && (
-                    <button 
-                      className="nav-btn nav-btn--admin"
-                      onClick={() => navigate('/admin')}
-                    >
-                      <svg viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clipRule="evenodd" />
-                      </svg>
-                      Admin Panel
-                    </button>
-                  )}
-                  <button 
-                    className="nav-btn nav-btn--logout"
-                    onClick={handleLogout}
-                  >
-                    <svg viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clipRule="evenodd" />
-                    </svg>
-                    Logout
-                  </button>
-                </div>
-              ) : (
-                <button 
-                  className="nav-btn nav-btn--login"
-                  onClick={() => openLoginModal()}
-                >
-                  <svg viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  Login
-                </button>
-              )}
+            {/* Profile Dropdown - Modern Design */}
+            <div className="navbar-profile-section">
+              <ProfileDropdown />
             </div>
           </nav>
 
@@ -346,23 +311,9 @@ const Navbar = () => {
             <a href="https://www.nitgoa.ac.in/rajbhasha/#/" target="_blank" rel="noopener noreferrer">RAJBHASHA</a>
           </nav>
 
-          {/* Mobile Login Button */}
+          {/* Mobile Profile Section */}
           <div className="mobile-auth mobile-only">
-            {isAuthenticated && user ? (
-              <button 
-                className="nav-btn nav-btn--logout mobile-logout"
-                onClick={handleLogout}
-              >
-                Logout
-              </button>
-            ) : (
-              <button 
-                className="nav-btn nav-btn--login mobile-login"
-                onClick={() => openLoginModal()}
-              >
-                Login
-              </button>
-            )}
+            <ProfileDropdown />
           </div>
         </div>
       </div>

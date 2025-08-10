@@ -48,6 +48,7 @@ body {
   --z-dropdown: 1300;                 /* Dropdown menus */
   --z-mobile-menu: 1400;              /* Mobile menu */
   --z-mobile-overlay: 1500;           /* Mobile overlay */
+  --z-profile-dropdown: 1600;         /* Profile dropdown */
   
   /* ===== ANIMATION VARIABLES ===== */
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -712,7 +713,19 @@ body {
    11. AUTHENTICATION SECTION - USER CONTROLS
    ======================================================================== */
 
-/* Container for authentication controls */
+/* ========================================================================
+   12. NAVBAR PROFILE SECTION - MODERN PROFILE DROPDOWN
+   ======================================================================== */
+
+/* Container for profile dropdown */
+.navbar-profile-section {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  z-index: var(--z-profile-dropdown);
+}
+
+/* Legacy auth section - deprecated but kept for compatibility */
 .auth-section {
   display: flex;
   align-items: center;
