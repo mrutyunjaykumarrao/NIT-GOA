@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import { useTheme } from '../../contexts/ThemeContext';
+// import { useTheme } from '../../contexts/ThemeContext';
 import './ProfileDropdown.css';
 
 const ProfileDropdown = () => {
   const { user, logout, openLoginModal } = useAuth();
-  const { theme } = useTheme();
+  // const { theme } = useTheme(); // Commented out - unused variable
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -45,8 +45,8 @@ const ProfileDropdown = () => {
   const handleLogout = () => {
     setIsDropdownOpen(false);
     logout();
-    // Open login modal instead of navigating away
-    openLoginModal();
+    // Navigate to home page after logout instead of opening login modal
+    navigate('/');
   };
 
   const handleProfileClick = () => {

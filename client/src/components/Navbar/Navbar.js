@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { useNavigate, Link, useLocation } from 'react-router-dom';
+import { useNavigate, Link /* , useLocation */ } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { useGoogleTranslate } from '../../hooks/useGoogleTranslate';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
@@ -35,9 +35,9 @@ const LoggingLink = ({ to, children, className, ...props }) => {
 };
 
 const Navbar = () => {
-  const { user, isAuthenticated, logout, openLoginModal } = useAuth();
+  const { user, isAuthenticated /* , logout, openLoginModal */ } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation();
+  // const location = useLocation(); // Commented out - unused variable
   const [openDropdown, setOpenDropdown] = useState(null);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -60,20 +60,20 @@ const Navbar = () => {
     showTranslateConfirm,
     pendingTranslation,
     handleTranslateConfirm,
-    changeLanguage,
-    getCurrentLanguage
+    changeLanguage
+    // getCurrentLanguage
   } = useGoogleTranslate();
 
   // Get current language object from the hook
-  const currentLang = getCurrentLanguage();
+  // const currentLang = getCurrentLanguage(); // Commented out - unused variable
 
   // Custom logout handler that opens login modal on same page
-  const handleLogout = () => {
-    logout();
-    // Open login modal instead of navigating to login page
-    // This keeps the user on the same page with background blur
-    openLoginModal();
-  };
+  // const handleLogout = () => {  // Commented out - unused function
+  //   logout();
+  //   // Open login modal instead of navigating to login page
+  //   // This keeps the user on the same page with background blur
+  //   openLoginModal();
+  // };
 
   // Google Translate integration functions
   const initializeGoogleTranslate = useCallback(() => {

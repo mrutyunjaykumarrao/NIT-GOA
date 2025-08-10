@@ -3,7 +3,6 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { AuthProvider } from './contexts/AuthContext';
-import { LoginModalProvider } from './contexts/LoginModalContext';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
@@ -81,9 +80,7 @@ function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <LoginModalProvider>
-          <AppContent />
-        </LoginModalProvider>
+        <AppContent />
       </AuthProvider>
     </ThemeProvider>
   );

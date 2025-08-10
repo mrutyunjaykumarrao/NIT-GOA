@@ -1,59 +1,715 @@
-/* Admin Dashboard - Modern Design */
-.admin-dashboard {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-  color: #334155;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+/* ===============================================================================
+   ADMIN DASHBOARD - MODERN DESIGN WITH DARK MODE SUPPORT
+   
+   A comprehensive admin dashboard with:
+   - Modern card-based design
+   - Dark mode toggle support
+   - Responsive layout system
+   - Professional typography
+   - Advanced data visualization
+   - Consistent CSS naming convention (admin-dashboard-*)
+   =============================================================================== */
+
+/* ========================================================================
+   1. ADMIN DASHBOARD GLOBAL STYLES & VARIABLES
+   ======================================================================== */
+
+:root {
+  /* ===== ADMIN DASHBOARD COLORS - LIGHT MODE ===== */
+  --admin-dashboard-bg-primary: #f8fafc;
+  --admin-dashboard-bg-secondary: #ffffff;
+  --admin-dashboard-bg-tertiary: #f1f5f9;
+  --admin-dashboard-text-primary: #1e293b;
+  --admin-dashboard-text-secondary: #64748b;
+  --admin-dashboard-text-muted: #94a3b8;
+  --admin-dashboard-border-color: #e2e8f0;
+  --admin-dashboard-accent-blue: #3b82f6;
+  --admin-dashboard-accent-success: #10b981;
+  --admin-dashboard-accent-warning: #f59e0b;
+  --admin-dashboard-accent-danger: #ef4444;
+  --admin-dashboard-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --admin-dashboard-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --admin-dashboard-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --admin-dashboard-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* ===== ADMIN DASHBOARD LAYOUT ===== */
+  --admin-dashboard-header-height: 80px;
+  --admin-dashboard-sidebar-width: 280px;
+  --admin-dashboard-container-padding: 32px;
+  --admin-dashboard-card-radius: 16px;
+  --admin-dashboard-button-radius: 12px;
+  --admin-dashboard-input-radius: 8px;
+
+  /* ===== ADMIN DASHBOARD TRANSITIONS ===== */
+  --admin-dashboard-transition-fast: 0.15s ease-in-out;
+  --admin-dashboard-transition-normal: 0.3s ease-in-out;
+  --admin-dashboard-transition-slow: 0.5s ease-in-out;
 }
 
-/* Header Styles */
-.admin-header {
-  background: linear-gradient(135deg, #3b82f6, #1e40af);
+/* Dark mode variables */
+[data-theme="dark"] {
+  --admin-dashboard-bg-primary: #0f172a;
+  --admin-dashboard-bg-secondary: #1e293b;
+  --admin-dashboard-bg-tertiary: #334155;
+  --admin-dashboard-text-primary: #f1f5f9;
+  --admin-dashboard-text-secondary: #cbd5e1;
+  --admin-dashboard-text-muted: #94a3b8;
+  --admin-dashboard-border-color: #334155;
+  --admin-dashboard-accent-blue: #60a5fa;
+  --admin-dashboard-accent-success: #34d399;
+  --admin-dashboard-accent-warning: #fbbf24;
+  --admin-dashboard-accent-danger: #f87171;
+  --admin-dashboard-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --admin-dashboard-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --admin-dashboard-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  --admin-dashboard-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+}
+
+/* ========================================================================
+   2. ADMIN DASHBOARD MAIN CONTAINER
+   ======================================================================== */
+
+.admin-dashboard {
+  min-height: 100vh;
+  background: var(--admin-dashboard-bg-primary);
+  color: var(--admin-dashboard-text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  transition: background-color var(--admin-dashboard-transition-normal);
+}
+
+/* ========================================================================
+   3. ADMIN DASHBOARD HEADER
+   ======================================================================== */
+
+.admin-dashboard-header {
+  background: linear-gradient(135deg, var(--admin-dashboard-accent-blue), #1d4ed8);
   color: white;
-  padding: 1.5rem 2rem;
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+  padding: 2rem var(--admin-dashboard-container-padding);
+  box-shadow: var(--admin-dashboard-shadow-lg);
   position: sticky;
   top: 0;
   z-index: 100;
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.admin-header h1 {
+.admin-dashboard-header-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.admin-dashboard-title {
   margin: 0;
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 2.5rem;
+  font-weight: 800;
   color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.admin-header p {
+.admin-dashboard-subtitle {
   margin: 0.5rem 0 0 0;
   opacity: 0.9;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
 }
 
-/* Access Denied */
-.access-denied {
+.admin-dashboard-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-dashboard-welcome-badge {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ========================================================================
+   4. ADMIN DASHBOARD CONTENT LAYOUT
+   ======================================================================== */
+
+.admin-dashboard-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--admin-dashboard-container-padding);
+}
+
+/* ========================================================================
+   4.1. ADMIN DASHBOARD ERROR & LOADING STATES
+   ======================================================================== */
+
+.admin-dashboard-error-banner {
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+  border: 1px solid #fca5a5;
+  color: #991b1b;
+  padding: 1rem 1.5rem;
+  border-radius: var(--admin-dashboard-card-radius);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: var(--admin-dashboard-shadow-md);
+}
+
+[data-theme="dark"] .admin-dashboard-error-banner {
+  background: linear-gradient(135deg, #991b1b, #7f1d1d);
+  border-color: #b91c1c;
+  color: #fecaca;
+}
+
+.admin-dashboard-error-banner i {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.admin-dashboard-error-close {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+  margin-left: auto;
+  transition: background-color var(--admin-dashboard-transition-fast);
+}
+
+.admin-dashboard-error-close:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.admin-dashboard-loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 3rem;
+  color: var(--admin-dashboard-text-secondary);
+}
+
+.admin-dashboard-loading-spinner i {
+  animation: admin-dashboard-spin 1s linear infinite;
+}
+
+@keyframes admin-dashboard-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ========================================================================
+   5. ADMIN DASHBOARD NAVIGATION TABS
+   ======================================================================== */
+
+.admin-dashboard-nav-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+  background: var(--admin-dashboard-bg-secondary);
+  border-radius: var(--admin-dashboard-card-radius);
+  box-shadow: var(--admin-dashboard-shadow-sm);
+  border: 1px solid var(--admin-dashboard-border-color);
+}
+
+.admin-dashboard-nav-tab {
+  background: transparent;
+  border: none;
+  padding: 0.875rem 1.5rem;
+  border-radius: var(--admin-dashboard-button-radius);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--admin-dashboard-text-secondary);
+  cursor: pointer;
+  transition: all var(--admin-dashboard-transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-dashboard-nav-tab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--admin-dashboard-accent-blue), #1d4ed8);
+  opacity: 0;
+  transition: opacity var(--admin-dashboard-transition-fast);
+  z-index: -1;
+}
+
+.admin-dashboard-nav-tab:hover {
+  color: var(--admin-dashboard-text-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--admin-dashboard-shadow-md);
+}
+
+.admin-dashboard-nav-tab:hover::before {
+  opacity: 0.1;
+}
+
+.admin-dashboard-nav-tab.admin-dashboard-nav-tab--active {
+  background: linear-gradient(135deg, var(--admin-dashboard-accent-blue), #1d4ed8);
+  color: white;
+  box-shadow: var(--admin-dashboard-shadow-md);
+}
+
+.admin-dashboard-nav-tab.admin-dashboard-nav-tab--active::before {
+  opacity: 0;
+}
+
+.admin-dashboard-nav-tab i {
+  font-size: 1rem;
+}
+
+/* ========================================================================
+   6. ADMIN DASHBOARD CARDS & STATISTICS
+   ======================================================================== */
+
+.admin-dashboard-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.admin-dashboard-stat-card {
+  background: var(--admin-dashboard-bg-secondary);
+  border-radius: var(--admin-dashboard-card-radius);
+  padding: 2rem;
+  box-shadow: var(--admin-dashboard-shadow-md);
+  border: 1px solid var(--admin-dashboard-border-color);
+  transition: all var(--admin-dashboard-transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-dashboard-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--admin-dashboard-accent-blue), #1d4ed8);
+}
+
+.admin-dashboard-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--admin-dashboard-shadow-xl);
+}
+
+.admin-dashboard-stat-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.admin-dashboard-stat-card-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  background: linear-gradient(135deg, var(--admin-dashboard-accent-blue), #1d4ed8);
+  box-shadow: var(--admin-dashboard-shadow-md);
+}
+
+.admin-dashboard-stat-card-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--admin-dashboard-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.admin-dashboard-stat-card-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--admin-dashboard-text-primary);
+  margin: 0.5rem 0;
+  line-height: 1;
+}
+
+.admin-dashboard-stat-card-change {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.admin-dashboard-stat-card-change--positive {
+  color: var(--admin-dashboard-accent-success);
+}
+
+.admin-dashboard-stat-card-change--negative {
+  color: var(--admin-dashboard-accent-danger);
+}
+
+.admin-dashboard-stat-card-change--neutral {
+  color: var(--admin-dashboard-text-muted);
+}
+
+/* ========================================================================
+   7. ADMIN DASHBOARD ACCESS DENIED
+   ======================================================================== */
+
+.admin-dashboard-access-denied {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 60vh;
-  background: white;
+  background: var(--admin-dashboard-bg-secondary);
   margin: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-radius: var(--admin-dashboard-card-radius);
+  box-shadow: var(--admin-dashboard-shadow-xl);
   padding: 3rem;
+  text-align: center;
+  border: 1px solid var(--admin-dashboard-border-color);
 }
 
-.access-denied h2 {
-  color: #dc2626;
-  margin-bottom: 1rem;
+.admin-dashboard-access-denied-icon {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--admin-dashboard-accent-danger), #dc2626);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 2rem;
+  color: white;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--admin-dashboard-shadow-lg);
 }
 
-.access-denied p {
-  color: #64748b;
-  font-size: 1.1rem;
+.admin-dashboard-access-denied h2 {
+  color: var(--admin-dashboard-text-primary);
+  margin-bottom: 1rem;
+  font-size: 1.875rem;
+  font-weight: 700;
+}
+
+.admin-dashboard-access-denied p {
+  color: var(--admin-dashboard-text-secondary);
+  margin-bottom: 2rem;
+  font-size: 1.125rem;
+  max-width: 400px;
+  line-height: 1.6;
+}
+
+/* ========================================================================
+   8. ADMIN DASHBOARD ERROR BANNER
+   ======================================================================== */
+
+.admin-dashboard-error-banner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, #fee2e2, #fecaca);
+  border: 1px solid #fca5a5;
+  color: #dc2626;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: var(--admin-dashboard-card-radius);
+  box-shadow: var(--admin-dashboard-shadow-md);
+  animation: adminDashboardSlideIn 0.3s ease-out;
+}
+
+[data-theme="dark"] .admin-dashboard-error-banner {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.15));
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #f87171;
+}
+
+.admin-dashboard-error-close {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: auto;
+  padding: 0.25rem;
+  border-radius: 6px;
+  transition: all var(--admin-dashboard-transition-fast);
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-dashboard-error-close:hover {
+  background: rgba(220, 38, 38, 0.1);
+}
+
+[data-theme="dark"] .admin-dashboard-error-close:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+@keyframes adminDashboardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================================================
+   9. ADMIN DASHBOARD TAB CONTENT
+   ======================================================================== */
+
+.admin-dashboard-tab-content {
+  margin-top: 2rem;
+}
+
+.admin-dashboard-analytics-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.admin-dashboard-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--admin-dashboard-text-primary);
+  margin: 2rem 0 1rem 0;
+}
+
+/* ========================================================================
+   10. ADMIN DASHBOARD RECENT ACTIVITY
+   ======================================================================== */
+
+.admin-dashboard-recent-activity {
+  background: var(--admin-dashboard-bg-secondary);
+  border-radius: var(--admin-dashboard-card-radius);
+  padding: 2rem;
+  box-shadow: var(--admin-dashboard-shadow-md);
+  border: 1px solid var(--admin-dashboard-border-color);
+}
+
+.admin-dashboard-activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.admin-dashboard-activity-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--admin-dashboard-bg-tertiary);
+  border-radius: var(--admin-dashboard-button-radius);
+  border: 1px solid var(--admin-dashboard-border-color);
+  transition: all var(--admin-dashboard-transition-fast);
+}
+
+.admin-dashboard-activity-item:hover {
+  transform: translateX(4px);
+  box-shadow: var(--admin-dashboard-shadow-md);
+}
+
+.admin-dashboard-activity-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--admin-dashboard-accent-blue), #1d4ed8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.admin-dashboard-activity-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-dashboard-activity-title {
+  margin: 0 0 0.25rem 0;
+  font-weight: 600;
+  color: var(--admin-dashboard-text-primary);
+  font-size: 0.95rem;
+}
+
+.admin-dashboard-activity-date {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--admin-dashboard-text-muted);
+}
+
+/* ========================================================================
+   11. ADMIN DASHBOARD RESPONSIVE DESIGN
+   ======================================================================== */
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+  .admin-dashboard-stats-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  
+  .admin-dashboard-container-padding {
+    padding: 3rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .admin-dashboard-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 991px) {
+  .admin-dashboard-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .admin-dashboard-content {
+    padding: 1.5rem;
+  }
+  
+  .admin-dashboard-header {
+    padding: 1.5rem;
+  }
+  
+  .admin-dashboard-title {
+    font-size: 2rem;
+  }
+  
+  .admin-dashboard-nav-tabs {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+  
+  .admin-dashboard-nav-tab {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .admin-dashboard-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .admin-dashboard-content {
+    padding: 1rem;
+  }
+  
+  .admin-dashboard-header {
+    padding: 1rem;
+  }
+  
+  .admin-dashboard-header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .admin-dashboard-title {
+    font-size: 1.75rem;
+  }
+  
+  .admin-dashboard-subtitle {
+    font-size: 1rem;
+  }
+  
+  .admin-dashboard-nav-tabs {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .admin-dashboard-nav-tab {
+    justify-content: flex-start;
+    width: 100%;
+    padding: 1rem;
+  }
+  
+  .admin-dashboard-stat-card {
+    padding: 1.5rem;
+  }
+  
+  .admin-dashboard-stat-card-value {
+    font-size: 2rem;
+  }
+  
+  .admin-dashboard-activity-item {
+    padding: 0.75rem;
+  }
+  
+  .admin-dashboard-activity-icon {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .admin-dashboard-content {
+    padding: 0.75rem;
+  }
+  
+  .admin-dashboard-header {
+    padding: 0.75rem;
+  }
+  
+  .admin-dashboard-title {
+    font-size: 1.5rem;
+  }
+  
+  .admin-dashboard-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .admin-dashboard-welcome-badge {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .admin-dashboard-stat-card {
+    padding: 1rem;
+  }
+  
+  .admin-dashboard-stat-card-value {
+    font-size: 1.75rem;
+  }
+  
+  .admin-dashboard-nav-tab {
+    padding: 0.75rem;
+    font-size: 0.8rem;
+  }
 }
 
 /* Error Banner */
@@ -268,26 +924,28 @@
 
 /* Table Styles */
 .table-container {
-  background: white;
+  background: var(--admin-dashboard-bg-secondary);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
+  box-shadow: var(--admin-dashboard-shadow-md);
+  border: 1px solid var(--admin-dashboard-border-color);
+  transition: background-color var(--admin-dashboard-transition-normal);
 }
 
 .admin-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.9rem;
+  background: var(--admin-dashboard-bg-secondary);
 }
 
 .admin-table th {
-  background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-  color: #475569;
+  background: var(--admin-dashboard-bg-tertiary);
+  color: var(--admin-dashboard-text-secondary);
   font-weight: 600;
   padding: 1rem;
   text-align: left;
-  border-bottom: 2px solid #e2e8f0;
+  border-bottom: 2px solid var(--admin-dashboard-border-color);
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -295,12 +953,13 @@
 
 .admin-table td {
   padding: 1rem;
-  border-bottom: 1px solid #f1f5f9;
-  color: #334155;
+  border-bottom: 1px solid var(--admin-dashboard-border-color);
+  color: var(--admin-dashboard-text-primary);
+  background: var(--admin-dashboard-bg-secondary);
 }
 
 .admin-table tr:hover {
-  background: #f8fafc;
+  background: var(--admin-dashboard-bg-tertiary);
 }
 
 /* Badge Styles */

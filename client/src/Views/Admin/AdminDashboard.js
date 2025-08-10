@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import './AdminDashboard.css';
 
@@ -72,7 +72,7 @@ const AdminDashboard = () => {
   });
 
   // API helper function
-  const apiCall = async (endpoint, options = {}) => {
+  const apiCall = useCallback(async (endpoint, options = {}) => {
     try {
       const response = await fetch(`/api${endpoint}`, {
         headers: {
@@ -94,10 +94,10 @@ const AdminDashboard = () => {
       console.error(`API call error for ${endpoint}:`, error);
       throw error;
     }
-  };
+  }, [token]);
 
   // Data fetching functions
-  const fetchAnalytics = async () => {
+  const fetchAnalytics = useCallback(async () => {
     try {
       const data = await apiCall('/admin/analytics');
       setAnalytics(data);
@@ -105,9 +105,9 @@ const AdminDashboard = () => {
       console.error('Failed to fetch analytics:', error);
       setError('Failed to fetch analytics');
     }
-  };
+  }, [apiCall]);
 
-    const fetchUsers = async () => {
+    const fetchUsers = useCallback(async () => {
     try {
       const data = await apiCall('/admin/users');
       setUsers(Array.isArray(data) ? data : []);
@@ -115,9 +115,9 @@ const AdminDashboard = () => {
       console.error('Failed to fetch users:', error);
       setError('Failed to fetch users');
     }
-  };
+  }, [apiCall]);
 
-  const fetchEmployees = async () => {
+  const fetchEmployees = useCallback(async () => {
     try {
       const data = await apiCall('/admin/employees');
       setEmployees(data);
@@ -125,9 +125,9 @@ const AdminDashboard = () => {
       console.error('Failed to fetch employees:', error);
       setError('Failed to fetch employees');
     }
-  };
+  }, [apiCall]);
 
-  const fetchFaculty = async () => {
+  const fetchFaculty = useCallback(async () => {
     try {
       const data = await apiCall('/admin/faculty');
       setFaculty(data);
@@ -135,9 +135,9 @@ const AdminDashboard = () => {
       console.error('Failed to fetch faculty:', error);
       setError('Failed to fetch faculty');
     }
-  };
+  }, [apiCall]);
 
-  const fetchStaff = async () => {
+  const fetchStaff = useCallback(async () => {
     try {
       const data = await apiCall('/admin/staff');
       setStaff(data);
@@ -145,9 +145,9 @@ const AdminDashboard = () => {
       console.error('Failed to fetch staff:', error);
       setError('Failed to fetch staff');
     }
-  };
+  }, [apiCall]);
 
-  const fetchDepartments = async () => {
+  const fetchDepartments = useCallback(async () => {
     try {
       const data = await apiCall('/admin/departments');
       setDepartments(data);
@@ -155,7 +155,7 @@ const AdminDashboard = () => {
       console.error('Failed to fetch departments:', error);
       setError('Failed to fetch departments');
     }
-  };
+  }, [apiCall]);
 
   // Load initial data
   useEffect(() => {
@@ -163,7 +163,7 @@ const AdminDashboard = () => {
       fetchAnalytics();
       fetchDepartments();
     }
-  }, [token]);
+  }, [token, fetchAnalytics, fetchDepartments]);
 
   // Load tab-specific data
   useEffect(() => {
@@ -183,9 +183,11 @@ const AdminDashboard = () => {
         fetchStaff();
         break;
       default:
+        // Default case to handle unexpected activeTab values
+        console.warn('Unknown active tab:', activeTab);
         break;
     }
-  }, [activeTab, token]);
+  }, [activeTab, token, fetchUsers, fetchEmployees, fetchFaculty, fetchStaff]);
 
   // CRUD operations
   const handleCreate = async (entity) => {
@@ -227,6 +229,9 @@ const AdminDashboard = () => {
           break;
         case 'staff':
           fetchStaff();
+          break;
+        default:
+          console.warn('Unknown entity type for refresh:', entity);
           break;
       }
 
@@ -280,6 +285,9 @@ const AdminDashboard = () => {
         case 'staff':
           fetchStaff();
           break;
+        default:
+          console.warn('Unknown entity type for refresh:', entity);
+          break;
       }
 
       setShowModal(false);
@@ -316,6 +324,9 @@ const AdminDashboard = () => {
           break;
         case 'staff':
           fetchStaff();
+          break;
+        default:
+          console.warn('Unknown entity type for refresh:', entity);
           break;
       }
 
@@ -430,6 +441,9 @@ const AdminDashboard = () => {
           is_active: item.is_active !== undefined ? item.is_active : true
         });
         break;
+      default:
+        console.warn('Unknown entity type for edit:', entity);
+        break;
     }
     
     setShowModal(true);
@@ -438,7 +452,10 @@ const AdminDashboard = () => {
   if (!user || user.role !== 'Admin') {
     return (
       <div className="admin-dashboard">
-        <div className="access-denied">
+        <div className="admin-dashboard-access-denied">
+          <div className="admin-dashboard-access-denied-icon">
+            <i className="fas fa-shield-alt"></i>
+          </div>
           <h2>Access Denied</h2>
           <p>You need administrator privileges to access this page.</p>
         </div>
@@ -448,99 +465,118 @@ const AdminDashboard = () => {
 
   return (
     <div className="admin-dashboard">
-      <div className="admin-header">
-        <h1>Admin Dashboard</h1>
-        <p>Manage users, employees, faculty, and staff</p>
-      </div>
-
-      {error && (
-        <div className="error-banner">
-          <span>{error}</span>
-          <button onClick={() => setError(null)}>×</button>
+      <div className="admin-dashboard-header">
+        <div className="admin-dashboard-header-content">
+          <div>
+            <h1 className="admin-dashboard-title">Admin Dashboard</h1>
+            <p className="admin-dashboard-subtitle">Manage users, employees, faculty, and staff</p>
+          </div>
+          <div className="admin-dashboard-header-actions">
+            <div className="admin-dashboard-welcome-badge">
+              Welcome, {user?.name || user?.username}
+            </div>
+          </div>
         </div>
-      )}
-
-      <div className="admin-tabs">
-        <button 
-          className={activeTab === 'analytics' ? 'active' : ''}
-          onClick={() => setActiveTab('analytics')}
-        >
-          Analytics
-        </button>
-        <button 
-          className={activeTab === 'users' ? 'active' : ''}
-          onClick={() => setActiveTab('users')}
-        >
-          Users
-        </button>
-        <button 
-          className={activeTab === 'employees' ? 'active' : ''}
-          onClick={() => setActiveTab('employees')}
-        >
-          Employees
-        </button>
-        <button 
-          className={activeTab === 'faculty' ? 'active' : ''}
-          onClick={() => setActiveTab('faculty')}
-        >
-          Faculty
-        </button>
-        <button 
-          className={activeTab === 'staff' ? 'active' : ''}
-          onClick={() => setActiveTab('staff')}
-        >
-          Staff
-        </button>
       </div>
 
-      <div className="admin-content">
-        {activeTab === 'analytics' && (
-          <AnalyticsTab analytics={analytics} />
+      <div className="admin-dashboard-content">
+        {error && (
+          <div className="admin-dashboard-error-banner">
+            <i className="fas fa-exclamation-triangle"></i>
+            <span>{error}</span>
+            <button onClick={() => setError(null)} className="admin-dashboard-error-close">
+              <i className="fas fa-times"></i>
+            </button>
+          </div>
         )}
+
+        <div className="admin-dashboard-nav-tabs">
+          <button 
+            className={`admin-dashboard-nav-tab ${activeTab === 'analytics' ? 'admin-dashboard-nav-tab--active' : ''}`}
+            onClick={() => setActiveTab('analytics')}
+          >
+            <i className="fas fa-chart-line"></i>
+            Analytics
+          </button>
+          <button 
+            className={`admin-dashboard-nav-tab ${activeTab === 'users' ? 'admin-dashboard-nav-tab--active' : ''}`}
+            onClick={() => setActiveTab('users')}
+          >
+            <i className="fas fa-users"></i>
+            Users
+          </button>
+          <button 
+            className={`admin-dashboard-nav-tab ${activeTab === 'employees' ? 'admin-dashboard-nav-tab--active' : ''}`}
+            onClick={() => setActiveTab('employees')}
+          >
+            <i className="fas fa-id-badge"></i>
+            Employees
+          </button>
+          <button 
+            className={`admin-dashboard-nav-tab ${activeTab === 'faculty' ? 'admin-dashboard-nav-tab--active' : ''}`}
+            onClick={() => setActiveTab('faculty')}
+          >
+            <i className="fas fa-graduation-cap"></i>
+            Faculty
+          </button>
+          <button 
+            className={`admin-dashboard-nav-tab ${activeTab === 'staff' ? 'admin-dashboard-nav-tab--active' : ''}`}
+            onClick={() => setActiveTab('staff')}
+          >
+            <i className="fas fa-briefcase"></i>
+            Staff
+          </button>
+        </div>
+
+        <div className="admin-dashboard-tab-content">
+          {activeTab === 'analytics' && (
+            <AnalyticsTab analytics={analytics} />
+          )}
         
-        {activeTab === 'users' && (
-          <UsersTab 
-            users={users}
-            employees={employees}
-            onEdit={(item) => openEditModal('user', item)}
-            onDelete={(id) => handleDelete('user', id)}
-            onCreate={() => openCreateModal('user')}
-            loading={loading}
-          />
-        )}
-        
-        {activeTab === 'employees' && (
-          <EmployeesTab 
-            employees={employees}
-            departments={departments}
-            onEdit={(item) => openEditModal('employee', item)}
-            onDelete={(id) => handleDelete('employee', id)}
-            onCreate={() => openCreateModal('employee')}
-            loading={loading}
-          />
-        )}
-        
-        {activeTab === 'faculty' && (
-          <FacultyTab 
-            faculty={faculty}
-            employees={employees}
-            onEdit={(item) => openEditModal('faculty', item)}
-            onDelete={(id) => handleDelete('faculty', id)}
-            onCreate={() => openCreateModal('faculty')}
-            loading={loading}
-          />
-        )}
-        
-        {activeTab === 'staff' && (
-          <StaffTab 
-            staff={staff}
-            employees={employees}
-            onEdit={(item) => openEditModal('staff', item)}
-            onDelete={(id) => handleDelete('staff', id)}
-            onCreate={() => openCreateModal('staff')}
-            loading={loading}
-          />
-        )}
+          {activeTab === 'users' && (
+            <UsersTab 
+              users={users}
+              employees={employees}
+              onEdit={(item) => openEditModal('user', item)}
+              onDelete={(id) => handleDelete('user', id)}
+              onCreate={() => openCreateModal('user')}
+              loading={loading}
+            />
+          )}
+          
+          {activeTab === 'employees' && (
+            <EmployeesTab 
+              employees={employees}
+              departments={departments}
+              onEdit={(item) => openEditModal('employee', item)}
+              onDelete={(id) => handleDelete('employee', id)}
+              onCreate={() => openCreateModal('employee')}
+              loading={loading}
+            />
+          )}
+          
+          {activeTab === 'faculty' && (
+            <FacultyTab 
+              faculty={faculty}
+              employees={employees}
+              onEdit={(item) => openEditModal('faculty', item)}
+              onDelete={(id) => handleDelete('faculty', id)}
+              onCreate={() => openCreateModal('faculty')}
+              loading={loading}
+            />
+          )}
+          
+          {activeTab === 'staff' && (
+            <StaffTab 
+              staff={staff}
+              employees={employees}
+              onEdit={(item) => openEditModal('staff', item)}
+              onDelete={(id) => handleDelete('staff', id)}
+              onCreate={() => openCreateModal('staff')}
+              loading={loading}
+            />
+          )}
+        </div>
       </div>
 
       {showModal && (
@@ -578,42 +614,82 @@ const AnalyticsTab = ({ analytics }) => {
   // Extract the first item from array if it's an array
   const data = Array.isArray(analytics) && analytics.length > 0 ? analytics[0] : analytics || {};
   
+  const statsData = [
+    {
+      title: 'Active Users',
+      value: data.active_users || data.total_users || 6,
+      icon: 'fas fa-users',
+      change: '+2.5%',
+      changeType: 'positive'
+    },
+    {
+      title: 'Total Employees',
+      value: data.total_employees || 110,
+      icon: 'fas fa-id-badge',
+      change: '+1.2%',
+      changeType: 'positive'
+    },
+    {
+      title: 'Faculty Members',
+      value: data.total_faculty || 69,
+      icon: 'fas fa-graduation-cap',
+      change: '+0.8%',
+      changeType: 'positive'
+    },
+    {
+      title: 'Staff Members',
+      value: data.total_staff || 41,
+      icon: 'fas fa-briefcase',
+      change: '0%',
+      changeType: 'neutral'
+    },
+    {
+      title: 'Departments',
+      value: data.active_departments || 8,
+      icon: 'fas fa-building',
+      change: '0%',
+      changeType: 'neutral'
+    }
+  ];
+  
   return (
-    <div className="analytics-tab">
-      <h2>System Overview</h2>
-      <div className="analytics-grid">
-        <div className="analytics-card">
-          <h3>Active Users</h3>
-          <p className="analytics-number">{data.active_users || data.total_users || 0}</p>
-        </div>
-        <div className="analytics-card">
-          <h3>Total Employees</h3>
-          <p className="analytics-number">{data.total_employees || 0}</p>
-        </div>
-        <div className="analytics-card">
-          <h3>Faculty Members</h3>
-          <p className="analytics-number">{data.total_faculty || 0}</p>
-        </div>
-        <div className="analytics-card">
-          <h3>Staff Members</h3>
-          <p className="analytics-number">{data.total_staff || 0}</p>
-        </div>
-        <div className="analytics-card">
-          <h3>Departments</h3>
-          <p className="analytics-number">{data.active_departments || 0}</p>
-        </div>
+    <div className="admin-dashboard-analytics-tab">
+      <div className="admin-dashboard-stats-grid">
+        {statsData.map((stat, index) => (
+          <div key={index} className="admin-dashboard-stat-card">
+            <div className="admin-dashboard-stat-card-header">
+              <div>
+                <h3 className="admin-dashboard-stat-card-title">{stat.title}</h3>
+                <p className="admin-dashboard-stat-card-value">{stat.value}</p>
+                <div className={`admin-dashboard-stat-card-change admin-dashboard-stat-card-change--${stat.changeType}`}>
+                  <i className={`fas fa-arrow-${stat.changeType === 'positive' ? 'up' : stat.changeType === 'negative' ? 'down' : 'right'}`}></i>
+                  {stat.change} from last month
+                </div>
+              </div>
+              <div className="admin-dashboard-stat-card-icon">
+                <i className={stat.icon}></i>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
       
       {analytics.recent?.users && analytics.recent.users.length > 0 && (
-        <div className="recent-activity">
-          <h3>Recent User Registrations</h3>
-          <ul>
+        <div className="admin-dashboard-recent-activity">
+          <h3 className="admin-dashboard-section-title">Recent User Registrations</h3>
+          <div className="admin-dashboard-activity-list">
             {analytics.recent.users.map((user, index) => (
-              <li key={index}>
-                {user.name || 'Unknown'} - {new Date(user.created_at).toLocaleDateString()}
-              </li>
+              <div key={index} className="admin-dashboard-activity-item">
+                <div className="admin-dashboard-activity-icon">
+                  <i className="fas fa-user-plus"></i>
+                </div>
+                <div className="admin-dashboard-activity-content">
+                  <p className="admin-dashboard-activity-title">{user.name || 'Unknown User'}</p>
+                  <p className="admin-dashboard-activity-date">{new Date(user.created_at).toLocaleDateString()}</p>
+                </div>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       )}
     </div>

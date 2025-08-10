@@ -102,6 +102,7 @@
     0 10px 25px rgba(0, 0, 0, 0.2);
   width: 100%;
   max-width: 450px;
+  min-width: 400px; /* Ensure minimum width for consistency */
   border: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
   animation: loginSlideIn 0.3s ease-out;
@@ -573,7 +574,7 @@
 }
 
 /* Responsive Design - Login Modal Specific */
-@media (max-width: 768px) and (min-width: 481px) {
+@media (max-width: 768px) and (min-width: 481px) and (orientation: portrait) {
   .login-modal-overlay {
     padding: 15px;
   }
@@ -581,7 +582,8 @@
   .login-modal-content {
     padding: 35px 25px;
     border-radius: 18px;
-    max-width: 380px; /* Narrower for tablet screens */
+    max-width: 450px; /* Keep consistent with default width */
+    min-width: 380px; /* Maintain reasonable minimum width */
     margin: 0 auto;
   }
   
