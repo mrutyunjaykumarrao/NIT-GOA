@@ -369,7 +369,7 @@
 }
 
 [data-theme="dark"] .faculty-tab-full-name {
-  color: var(--gray-100);
+  color: #ffffff;
 }
 
 .faculty-tab-hod-badge {

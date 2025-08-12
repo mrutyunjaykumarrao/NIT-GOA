@@ -142,7 +142,7 @@
 }
 
 [data-theme="dark"] .staff-tab-position-title {
-  color: var(--gray-100);
+  color: #ffffff;
 }
 
 .staff-tab-speciality-text {
@@ -178,7 +178,7 @@
 }
 
 [data-theme="dark"] .staff-tab-full-name {
-  color: var(--gray-100);
+  color: #ffffff;
 }
 
 .staff-tab-employee-code {
