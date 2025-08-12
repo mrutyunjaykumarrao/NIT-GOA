@@ -102,7 +102,7 @@ const AdminDashboard = () => {
   const fetchAnalytics = useCallback(async () => {
     try {
       const data = await apiCall('/admin/analytics');
-      setAnalytics(data[0] || {});
+      setAnalytics(data.analytics || {});
     } catch (error) {
       console.error('Failed to fetch analytics:', error);
       setError('Failed to load analytics data');
@@ -112,7 +112,7 @@ const AdminDashboard = () => {
   const fetchUsers = useCallback(async () => {
     try {
       const data = await apiCall('/admin/users');
-      setUsers(data || []);
+      setUsers(data.users || []);
     } catch (error) {
       console.error('Failed to fetch users:', error);
       setError('Failed to load users data');
@@ -122,7 +122,7 @@ const AdminDashboard = () => {
   const fetchEmployees = useCallback(async () => {
     try {
       const data = await apiCall('/admin/employees');
-      setEmployees(data || []);
+      setEmployees(data.employees || []);
     } catch (error) {
       console.error('Failed to fetch employees:', error);
       setError('Failed to load employees data');
@@ -132,7 +132,7 @@ const AdminDashboard = () => {
   const fetchFaculty = useCallback(async () => {
     try {
       const data = await apiCall('/admin/faculty');
-      setFaculty(data || []);
+      setFaculty(data.faculty || []);
     } catch (error) {
       console.error('Failed to fetch faculty:', error);
       setError('Failed to load faculty data');
@@ -142,7 +142,7 @@ const AdminDashboard = () => {
   const fetchStaff = useCallback(async () => {
     try {
       const data = await apiCall('/admin/staff');
-      setStaff(data || []);
+      setStaff(data.staff || []);
     } catch (error) {
       console.error('Failed to fetch staff:', error);
       setError('Failed to load staff data');
@@ -152,7 +152,7 @@ const AdminDashboard = () => {
   const fetchDepartments = useCallback(async () => {
     try {
       const data = await apiCall('/admin/departments');
-      setDepartments(data || []);
+      setDepartments(data.departments || []);
     } catch (error) {
       console.error('Failed to fetch departments:', error);
       setError('Failed to load departments data');

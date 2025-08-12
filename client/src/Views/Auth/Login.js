@@ -117,16 +117,33 @@ const Login = ({ isModalOpen, onClose }) => {
         // Close modal and stay on current page (don't navigate away)
         if (onClose) onClose();
         
-        // Only navigate if we're on the actual /login page
-        if (location.pathname === '/login') {
-          const from = location.state?.from?.pathname;
-          if (result.user.role === 'admin' && !from) {
-            navigate('/admin');
+        // Role-based redirection logic
+        const userRole = result.user.role;
+        const from = location.state?.from?.pathname;
+        
+        // Only navigate if we're on the actual /login page OR if redirecting from protected route
+        if (location.pathname === '/login' || from) {
+          if (from) {
+            // If user was redirected from a protected route, go back there
+            navigate(from);
           } else {
-            navigate(from || '/');
+            // Default redirection based on role
+            switch (userRole) {
+              case 'Admin':
+                navigate('/admin');
+                break;
+              case 'Faculty':
+                // Redirect to faculty edit page using employee_id or employee_code
+                const facultyId = result.user.employee_id || result.user.employee_code || result.user.id;
+                navigate(`/faculty/${facultyId}/edit`);
+                break;
+              default:
+                navigate('/');
+                break;
+            }
           }
         }
-        // If we're not on /login page, stay on current page after login
+        // If we're not on /login page and no redirect needed, stay on current page after login
       } else {
         // Show username in error message to help user remember
         const errorMsg = credentials.username 
