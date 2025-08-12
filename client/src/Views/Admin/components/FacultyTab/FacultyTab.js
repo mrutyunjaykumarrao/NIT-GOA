@@ -6,7 +6,7 @@ const FacultyTab = ({ facultyList }) => {
   const [departmentFilter, setDepartmentFilter] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
   const [hodFilter, setHodFilter] = useState('');
-  const [sortBy, setSortBy] = useState('name');
+  const [sortBy, setSortBy] = useState('employee_id');
   const [sortOrder, setSortOrder] = useState('asc');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
@@ -94,7 +94,7 @@ const FacultyTab = ({ facultyList }) => {
     setDepartmentFilter('');
     setStatusFilter('');
     setHodFilter('');
-    setSortBy('name');
+    setSortBy('employee_id');
     setSortOrder('asc');
     setCurrentPage(1);
     setShowAll(false);
@@ -229,7 +229,7 @@ const FacultyTab = ({ facultyList }) => {
     );
   };
 
-  const FacultyImageWithFallback = ({ faculty, size = 60 }) => {
+  const FacultyImageWithFallback = ({ faculty, size = 100 }) => {
     const [imageError, setImageError] = useState(false);
     const [imageLoaded, setImageLoaded] = useState(false);
 
@@ -282,7 +282,7 @@ const FacultyTab = ({ facultyList }) => {
             width: size,
             height: size,
             borderRadius: '50%',
-            objectFit: 'cover'
+            objectFit: 'fill'
           }}
           onError={handleImageError}
           onLoad={handleImageLoad}
@@ -438,7 +438,7 @@ const FacultyTab = ({ facultyList }) => {
                 <tr key={fac.id} className="faculty-tab-table-row">
                   <td className="faculty-tab-image-cell">
                     <div className="faculty-tab-faculty-image">
-                      <FacultyImageWithFallback faculty={fac} size={60} />
+                      <FacultyImageWithFallback faculty={fac} size={100} />
                     </div>
                   </td>
                   <td className="faculty-tab-id-cell">
@@ -448,15 +448,14 @@ const FacultyTab = ({ facultyList }) => {
                   </td>
                   <td className="faculty-tab-name-cell">
                     <div className="faculty-tab-faculty-name">
-                      <span className="faculty-tab-honorific">
-                        {fac.honorific ? `${fac.honorific} ` : ''}
-                      </span>
-                      <span className="faculty-tab-full-name">
-                        {fac.full_name || 'N/A'}
-                      </span>
-                      {fac.is_hod && (
-                        <span className="faculty-tab-hod-badge">HOD</span>
-                      )}
+                      <div className="faculty-tab-name-content">
+                        <span className="faculty-tab-full-name">
+                          {fac.honorific && `${fac.honorific} `}{fac.full_name || 'N/A'}
+                        </span>
+                        {fac.is_hod && (
+                          <span className="faculty-tab-hod-badge">HOD</span>
+                        )}
+                      </div>
                     </div>
                   </td>
                   <td className="faculty-tab-email-cell">
