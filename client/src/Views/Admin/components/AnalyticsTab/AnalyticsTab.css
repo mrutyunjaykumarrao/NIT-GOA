@@ -1,0 +1,930 @@
+/* ===============================================================================
+   ANALYTICS TAB COMPONENT STYLES
+   Following project guidelines with page-specific CSS classes
+   Ultra responsive design for screens 320px to 2560px+
+   Dark mode support with data-theme attribute
+   =============================================================================== */
+
+/* ========================================================================
+   ANALYTICS TAB CONTAINER & HEADER
+   ======================================================================== */
+
+.analytics-tab-container {
+  width: 100%;
+  padding: 0;
+  min-height: 600px;
+}
+
+.analytics-tab-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  padding: 20px 0;
+  border-bottom: 2px solid var(--admin-dashboard-border-color);
+}
+
+[data-theme="dark"] .analytics-tab-header {
+  border-bottom-color: rgba(59, 130, 246, 0.3);
+}
+
+.analytics-tab-title-section {
+  flex: 1;
+}
+
+.analytics-tab-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--admin-dashboard-text-primary);
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+}
+
+[data-theme="dark"] .analytics-tab-title {
+  color: var(--primary-blue-light);
+}
+
+.analytics-tab-subtitle {
+  font-size: 1rem;
+  color: var(--admin-dashboard-text-secondary);
+  margin: 0;
+  font-weight: 400;
+}
+
+[data-theme="dark"] .analytics-tab-subtitle {
+  color: var(--gray-300);
+}
+
+.analytics-tab-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.analytics-tab-time-select {
+  padding: 10px 14px;
+  border: 2px solid var(--admin-dashboard-border-color);
+  border-radius: var(--admin-dashboard-input-radius);
+  background: var(--admin-dashboard-bg-secondary);
+  color: var(--admin-dashboard-text-primary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--admin-dashboard-transition-fast);
+  min-width: 140px;
+}
+
+[data-theme="dark"] .analytics-tab-time-select {
+  background: rgba(55, 65, 81, 0.6);
+  border-color: rgba(75, 85, 99, 0.4);
+  color: white;
+}
+
+.analytics-tab-time-select:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* ========================================================================
+   STATS GRID
+   ======================================================================== */
+
+.analytics-tab-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.analytics-tab-stat-card {
+  background: var(--admin-dashboard-bg-secondary);
+  border-radius: var(--admin-dashboard-card-radius);
+  padding: 24px;
+  box-shadow: var(--admin-dashboard-shadow-md);
+  border: 1px solid var(--admin-dashboard-border-color);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all var(--admin-dashboard-transition-normal);
+}
+
+[data-theme="dark"] .analytics-tab-stat-card {
+  background: rgba(30, 41, 59, 0.6);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.analytics-tab-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--admin-dashboard-shadow-lg);
+}
+
+.analytics-tab-stat-card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.analytics-tab-stat-card--blue .analytics-tab-stat-card-icon {
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+}
+
+.analytics-tab-stat-card--green .analytics-tab-stat-card-icon {
+  background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+}
+
+.analytics-tab-stat-card--purple .analytics-tab-stat-card-icon {
+  background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%);
+}
+
+.analytics-tab-stat-card--orange .analytics-tab-stat-card-icon {
+  background: linear-gradient(135deg, #F59E0B 0%, #FCD34D 100%);
+}
+
+.analytics-tab-stat-card-content {
+  flex: 1;
+}
+
+.analytics-tab-stat-card-title {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--admin-dashboard-text-secondary);
+  margin: 0 0 4px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+[data-theme="dark"] .analytics-tab-stat-card-title {
+  color: var(--gray-300);
+}
+
+.analytics-tab-stat-card-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--admin-dashboard-text-primary);
+  margin: 0 0 4px 0;
+  line-height: 1.1;
+}
+
+[data-theme="dark"] .analytics-tab-stat-card-value {
+  color: white;
+}
+
+.analytics-tab-stat-card-subtitle {
+  font-size: 0.8rem;
+  color: var(--admin-dashboard-text-muted);
+  font-weight: 500;
+}
+
+[data-theme="dark"] .analytics-tab-stat-card-subtitle {
+  color: var(--gray-400);
+}
+
+/* ========================================================================
+   CHARTS GRID
+   ======================================================================== */
+
+.analytics-tab-charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.analytics-tab-chart-card {
+  background: var(--admin-dashboard-bg-secondary);
+  border-radius: var(--admin-dashboard-card-radius);
+  padding: 24px;
+  box-shadow: var(--admin-dashboard-shadow-md);
+  border: 1px solid var(--admin-dashboard-border-color);
+}
+
+[data-theme="dark"] .analytics-tab-chart-card {
+  background: rgba(30, 41, 59, 0.6);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.analytics-tab-chart-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--admin-dashboard-text-primary);
+  margin: 0 0 20px 0;
+}
+
+[data-theme="dark"] .analytics-tab-chart-title {
+  color: white;
+}
+
+.analytics-tab-chart-content {
+  width: 100%;
+}
+
+/* ========================================================================
+   PROGRESS BARS
+   ======================================================================== */
+
+.analytics-tab-department-stats,
+.analytics-tab-role-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.analytics-tab-progress-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.analytics-tab-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.analytics-tab-progress-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--admin-dashboard-text-primary);
+}
+
+[data-theme="dark"] .analytics-tab-progress-label {
+  color: white;
+}
+
+.analytics-tab-progress-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--admin-dashboard-text-secondary);
+}
+
+[data-theme="dark"] .analytics-tab-progress-value {
+  color: var(--gray-300);
+}
+
+.analytics-tab-progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--admin-dashboard-bg-tertiary);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .analytics-tab-progress-bar {
+  background: rgba(55, 65, 81, 0.6);
+}
+
+.analytics-tab-progress-fill {
+  height: 100%;
+  transition: width 0.6s ease;
+  border-radius: 4px;
+}
+
+/* ========================================================================
+   ACTIVITY OVERVIEW
+   ======================================================================== */
+
+.analytics-tab-activity-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.analytics-tab-activity-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.analytics-tab-activity-metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.analytics-tab-activity-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--admin-dashboard-text-primary);
+}
+
+[data-theme="dark"] .analytics-tab-activity-label {
+  color: white;
+}
+
+.analytics-tab-activity-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+}
+
+[data-theme="dark"] .analytics-tab-activity-value {
+  color: var(--primary-blue-light);
+}
+
+.analytics-tab-activity-bar {
+  width: 100%;
+  height: 12px;
+  background: var(--admin-dashboard-bg-tertiary);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .analytics-tab-activity-bar {
+  background: rgba(55, 65, 81, 0.6);
+}
+
+.analytics-tab-activity-fill {
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+  transition: width 0.8s ease;
+  border-radius: 6px;
+}
+
+.analytics-tab-activity-summary {
+  margin-top: 12px;
+  padding: 16px;
+  background: rgba(59, 130, 246, 0.05);
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-blue);
+}
+
+[data-theme="dark"] .analytics-tab-activity-summary {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.analytics-tab-activity-summary p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--admin-dashboard-text-secondary);
+}
+
+[data-theme="dark"] .analytics-tab-activity-summary p {
+  color: var(--gray-300);
+}
+
+/* ========================================================================
+   QUICK STATS
+   ======================================================================== */
+
+.analytics-tab-quick-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.analytics-tab-quick-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 16px;
+  background: var(--admin-dashboard-bg-tertiary);
+  border-radius: 8px;
+  border: 1px solid var(--admin-dashboard-border-color);
+}
+
+[data-theme="dark"] .analytics-tab-quick-stat {
+  background: rgba(55, 65, 81, 0.6);
+  border-color: rgba(75, 85, 99, 0.4);
+}
+
+.analytics-tab-quick-stat-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--admin-dashboard-text-secondary);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+[data-theme="dark"] .analytics-tab-quick-stat-label {
+  color: var(--gray-300);
+}
+
+.analytics-tab-quick-stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--admin-dashboard-text-primary);
+}
+
+[data-theme="dark"] .analytics-tab-quick-stat-value {
+  color: white;
+}
+
+/* ========================================================================
+   DETAILED METRICS SECTION
+   ======================================================================== */
+
+.analytics-tab-detailed-section {
+  background: var(--admin-dashboard-bg-secondary);
+  border-radius: var(--admin-dashboard-card-radius);
+  padding: 24px;
+  box-shadow: var(--admin-dashboard-shadow-md);
+  border: 1px solid var(--admin-dashboard-border-color);
+}
+
+[data-theme="dark"] .analytics-tab-detailed-section {
+  background: rgba(30, 41, 59, 0.6);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.analytics-tab-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--admin-dashboard-border-color);
+}
+
+[data-theme="dark"] .analytics-tab-section-header {
+  border-bottom-color: rgba(75, 85, 99, 0.3);
+}
+
+.analytics-tab-section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--admin-dashboard-text-primary);
+  margin: 0;
+}
+
+[data-theme="dark"] .analytics-tab-section-title {
+  color: white;
+}
+
+.analytics-tab-metric-tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.analytics-tab-metric-tab {
+  padding: 8px 16px;
+  border: 1px solid var(--admin-dashboard-border-color);
+  background: transparent;
+  color: var(--admin-dashboard-text-secondary);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--admin-dashboard-transition-fast);
+}
+
+[data-theme="dark"] .analytics-tab-metric-tab {
+  border-color: rgba(75, 85, 99, 0.4);
+  color: var(--gray-300);
+}
+
+.analytics-tab-metric-tab:hover {
+  background: rgba(59, 130, 246, 0.05);
+  border-color: var(--primary-blue);
+  color: var(--primary-blue);
+}
+
+[data-theme="dark"] .analytics-tab-metric-tab:hover {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: var(--primary-blue-light);
+  color: var(--primary-blue-light);
+}
+
+.analytics-tab-metric-tab--active {
+  background: var(--primary-blue);
+  border-color: var(--primary-blue);
+  color: white;
+}
+
+[data-theme="dark"] .analytics-tab-metric-tab--active {
+  background: var(--primary-blue-light);
+  border-color: var(--primary-blue-light);
+  color: var(--bg-dark-primary);
+}
+
+.analytics-tab-metric-content {
+  min-height: 200px;
+}
+
+/* ========================================================================
+   OVERVIEW CARDS
+   ======================================================================== */
+
+.analytics-tab-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.analytics-tab-overview-card {
+  padding: 20px;
+  background: var(--admin-dashboard-bg-tertiary);
+  border-radius: 8px;
+  border: 1px solid var(--admin-dashboard-border-color);
+}
+
+[data-theme="dark"] .analytics-tab-overview-card {
+  background: rgba(55, 65, 81, 0.6);
+  border-color: rgba(75, 85, 99, 0.4);
+}
+
+.analytics-tab-overview-card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--admin-dashboard-text-primary);
+  margin: 0 0 12px 0;
+}
+
+[data-theme="dark"] .analytics-tab-overview-card h4 {
+  color: white;
+}
+
+.analytics-tab-health-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.analytics-tab-health-indicator--good {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+[data-theme="dark"] .analytics-tab-health-indicator--good {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+/* ========================================================================
+   DEPARTMENTS TABLE
+   ======================================================================== */
+
+.analytics-tab-departments-detail {
+  width: 100%;
+}
+
+.analytics-tab-departments-table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.analytics-tab-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.analytics-tab-table th {
+  background: var(--admin-dashboard-bg-tertiary);
+  color: var(--admin-dashboard-text-primary);
+  font-weight: 600;
+  padding: 12px;
+  text-align: left;
+  border-bottom: 2px solid var(--admin-dashboard-border-color);
+}
+
+[data-theme="dark"] .analytics-tab-table th {
+  background: rgba(51, 65, 85, 0.8);
+  color: var(--primary-blue-light);
+  border-bottom-color: rgba(59, 130, 246, 0.3);
+}
+
+.analytics-tab-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--admin-dashboard-border-color);
+  vertical-align: middle;
+}
+
+[data-theme="dark"] .analytics-tab-table td {
+  border-bottom-color: rgba(75, 85, 99, 0.3);
+}
+
+.analytics-tab-status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.analytics-tab-status-badge--success {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.analytics-tab-status-badge--warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: #F59E0B;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+[data-theme="dark"] .analytics-tab-status-badge--success {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+[data-theme="dark"] .analytics-tab-status-badge--warning {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+/* ========================================================================
+   ACTIVITY DETAIL
+   ======================================================================== */
+
+.analytics-tab-activity-detail {
+  width: 100%;
+}
+
+.analytics-tab-activity-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.analytics-tab-activity-card {
+  padding: 20px;
+  background: var(--admin-dashboard-bg-tertiary);
+  border-radius: 8px;
+  border: 1px solid var(--admin-dashboard-border-color);
+}
+
+[data-theme="dark"] .analytics-tab-activity-card {
+  background: rgba(55, 65, 81, 0.6);
+  border-color: rgba(75, 85, 99, 0.4);
+}
+
+.analytics-tab-activity-card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--admin-dashboard-text-primary);
+  margin: 0 0 12px 0;
+}
+
+[data-theme="dark"] .analytics-tab-activity-card h4 {
+  color: white;
+}
+
+.analytics-tab-activity-card p {
+  font-size: 0.9rem;
+  color: var(--admin-dashboard-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+[data-theme="dark"] .analytics-tab-activity-card p {
+  color: var(--gray-300);
+}
+
+/* ========================================================================
+   RESPONSIVE DESIGN - ULTRA RESPONSIVE 320px to 2560px+
+   ======================================================================== */
+
+/* Ultra-wide screens - 2560px+ */
+@media (min-width: 2560px) {
+  .analytics-tab-container {
+    max-width: 2400px;
+    margin: 0 auto;
+  }
+
+  .analytics-tab-title {
+    font-size: 2rem;
+  }
+
+  .analytics-tab-stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .analytics-tab-charts-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+}
+
+/* Large desktop screens - 1440px to 2559px */
+@media (min-width: 1440px) and (max-width: 2559px) {
+  .analytics-tab-stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .analytics-tab-charts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Standard desktop screens - 1024px to 1439px */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .analytics-tab-title {
+    font-size: 1.6rem;
+  }
+
+  .analytics-tab-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .analytics-tab-charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablet screens - 768px to 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .analytics-tab-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .analytics-tab-controls {
+    align-self: flex-start;
+  }
+
+  .analytics-tab-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .analytics-tab-charts-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .analytics-tab-quick-stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .analytics-tab-metric-tabs {
+    flex-wrap: wrap;
+  }
+}
+
+/* Small tablet and large mobile - 640px to 767px */
+@media (min-width: 640px) and (max-width: 767px) {
+  .analytics-tab-container {
+    padding: 0 8px;
+  }
+
+  .analytics-tab-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .analytics-tab-stat-card {
+    padding: 20px;
+  }
+
+  .analytics-tab-chart-card {
+    padding: 20px;
+  }
+
+  .analytics-tab-quick-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile screens - 480px to 639px */
+@media (min-width: 480px) and (max-width: 639px) {
+  .analytics-tab-title {
+    font-size: 1.4rem;
+  }
+
+  .analytics-tab-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .analytics-tab-stat-card {
+    padding: 16px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .analytics-tab-stat-card-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.3rem;
+  }
+
+  .analytics-tab-detailed-section {
+    padding: 20px;
+  }
+
+  .analytics-tab-section-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .analytics-tab-metric-tabs {
+    justify-content: center;
+  }
+}
+
+/* Small mobile screens - 360px to 479px */
+@media (min-width: 360px) and (max-width: 479px) {
+  .analytics-tab-header {
+    padding: 16px 0;
+  }
+
+  .analytics-tab-title {
+    font-size: 1.25rem;
+  }
+
+  .analytics-tab-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .analytics-tab-stat-card {
+    padding: 14px;
+  }
+
+  .analytics-tab-stat-card-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+
+  .analytics-tab-stat-card-value {
+    font-size: 1.5rem;
+  }
+
+  .analytics-tab-chart-card {
+    padding: 16px;
+  }
+
+  .analytics-tab-time-select {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    min-width: 120px;
+  }
+
+  .analytics-tab-metric-tab {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Very small mobile screens - 320px to 359px */
+@media (max-width: 359px) {
+  .analytics-tab-container {
+    padding: 0 4px;
+  }
+
+  .analytics-tab-header {
+    padding: 12px 0;
+  }
+
+  .analytics-tab-title {
+    font-size: 1.1rem;
+  }
+
+  .analytics-tab-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .analytics-tab-stat-card {
+    padding: 12px;
+  }
+
+  .analytics-tab-stat-card-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  .analytics-tab-stat-card-value {
+    font-size: 1.3rem;
+  }
+
+  .analytics-tab-chart-card {
+    padding: 14px;
+  }
+
+  .analytics-tab-detailed-section {
+    padding: 16px;
+  }
+
+  .analytics-tab-time-select {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    min-width: 100px;
+  }
+
+  .analytics-tab-metric-tab {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+  }
+
+  .analytics-tab-quick-stats {
+    grid-template-columns: 1fr;
+  }
+}

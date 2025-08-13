@@ -2,6 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import FacultyTab from './components/FacultyTab/FacultyTab';
 import StaffTab from './components/StaffTab/StaffTab';
+import AnalyticsTab from './components/AnalyticsTab/AnalyticsTab';
+import UsersTab from './components/UsersTab/UsersTab';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
@@ -523,17 +525,18 @@ const AdminDashboard = () => {
 
         <div className="admin-dashboard-tab-content">
           {activeTab === 'analytics' && (
-            <div className="admin-dashboard-analytics">
-              <h3>Analytics Overview</h3>
-              <p>Analytics functionality will be implemented here.</p>
-            </div>
+            <AnalyticsTab 
+              analytics={analytics}
+              users={users}
+              faculty={faculty}
+              staff={staff}
+            />
           )}
         
           {activeTab === 'users' && (
-            <div className="admin-dashboard-users">
-              <h3>Users Management</h3>
-              <p>Users management functionality will be implemented here.</p>
-            </div>
+            <UsersTab 
+              usersList={users}
+            />
           )}
           
           {activeTab === 'faculty' && (
