@@ -104,7 +104,7 @@ const AdminDashboard = () => {
   const fetchAnalytics = useCallback(async () => {
     try {
       const data = await apiCall('/admin/analytics');
-      setAnalytics(data[0] || {});
+      setAnalytics(data || {});
     } catch (error) {
       console.error('Failed to fetch analytics:', error);
       setError('Failed to load analytics data');
