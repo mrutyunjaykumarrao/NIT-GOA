@@ -1,0 +1,334 @@
+/* Admin Modal Styles */
+.admin-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.admin-modal {
+  background: var(--color-surface, #ffffff);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.admin-modal-large {
+  max-width: 900px;
+}
+
+.admin-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 24px 0;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--color-border, #e0e0e0);
+  padding-bottom: 16px;
+}
+
+.admin-modal-header h2 {
+  margin: 0;
+  color: var(--color-primary, #2563eb);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.admin-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--color-text-secondary, #6b7280);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.admin-modal-close:hover {
+  background: var(--color-hover, #f3f4f6);
+  color: var(--color-text-primary, #111827);
+}
+
+.admin-modal-form {
+  padding: 0 24px 24px;
+}
+
+.admin-form-section {
+  margin-bottom: 32px;
+}
+
+.admin-form-section h3 {
+  margin: 0 0 20px 0;
+  color: var(--color-text-primary, #111827);
+  font-size: 1.25rem;
+  font-weight: 600;
+  border-bottom: 2px solid var(--color-accent, #3b82f6);
+  padding-bottom: 8px;
+  display: inline-block;
+}
+
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.admin-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-form-group-full {
+  grid-column: 1 / -1;
+}
+
+.admin-form-group label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: var(--color-text-primary, #111827);
+  font-size: 0.95rem;
+}
+
+.admin-form-group input,
+.admin-form-group select,
+.admin-form-group textarea {
+  padding: 12px 16px;
+  border: 2px solid var(--color-border, #e5e7eb);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: var(--color-input-bg, #ffffff);
+  color: var(--color-text-primary, #111827);
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.admin-form-group input:focus,
+.admin-form-group select:focus,
+.admin-form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-primary, #2563eb);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.admin-form-group input.error,
+.admin-form-group select.error,
+.admin-form-group textarea.error {
+  border-color: var(--color-error, #ef4444);
+  background-color: #fef2f2;
+}
+
+.admin-form-group input.error:focus,
+.admin-form-group select.error:focus,
+.admin-form-group textarea.error:focus {
+  border-color: var(--color-error, #ef4444);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.admin-form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.admin-form-group input::placeholder,
+.admin-form-group textarea::placeholder {
+  color: var(--color-text-muted, #9ca3af);
+}
+
+.error-message {
+  color: var(--color-error, #ef4444);
+  font-size: 0.875rem;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* Checkbox Styling */
+.admin-form-group-checkbox {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.admin-checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--color-text-primary, #111827);
+  margin-bottom: 0 !important;
+}
+
+.admin-checkbox-label input[type="checkbox"] {
+  display: none;
+}
+
+.admin-checkbox-label .checkmark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-border, #e5e7eb);
+  border-radius: 4px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  background: var(--color-input-bg, #ffffff);
+}
+
+.admin-checkbox-label input[type="checkbox"]:checked + .checkmark {
+  background: var(--color-primary, #2563eb);
+  border-color: var(--color-primary, #2563eb);
+}
+
+.admin-checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+  content: "✓";
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+/* Modal Actions */
+.admin-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border, #e5e7eb);
+}
+
+.admin-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 120px;
+  justify-content: center;
+}
+
+.admin-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.admin-btn-secondary {
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text-secondary, #6b7280);
+  border: 2px solid var(--color-border, #e5e7eb);
+}
+
+.admin-btn-secondary:hover:not(:disabled) {
+  background: var(--color-hover, #f9fafb);
+  border-color: var(--color-text-secondary, #6b7280);
+}
+
+.admin-btn-primary {
+  background: var(--color-primary, #2563eb);
+  color: white;
+}
+
+.admin-btn-primary:hover:not(:disabled) {
+  background: var(--color-primary-dark, #1d4ed8);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admin-modal-overlay {
+    padding: 10px;
+  }
+  
+  .admin-modal,
+  .admin-modal-large {
+    max-width: 100%;
+  }
+  
+  .admin-form-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .admin-modal-header {
+    padding: 16px 16px 0;
+  }
+  
+  .admin-modal-form {
+    padding: 0 16px 16px;
+  }
+  
+  .admin-modal-actions {
+    flex-direction: column-reverse;
+  }
+  
+  .admin-btn {
+    width: 100%;
+  }
+}
+
+/* Loading Animation */
+.admin-btn .fa-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .admin-modal {
+    background: var(--color-surface-dark, #1f2937);
+  }
+  
+  .admin-modal-header h2 {
+    color: var(--color-primary-light, #60a5fa);
+  }
+  
+  .admin-form-section h3 {
+    color: var(--color-text-primary-dark, #f9fafb);
+    border-bottom-color: var(--color-accent-dark, #60a5fa);
+  }
+  
+  .admin-form-group label {
+    color: var(--color-text-primary-dark, #f9fafb);
+  }
+  
+  .admin-form-group input,
+  .admin-form-group select,
+  .admin-form-group textarea {
+    background: var(--color-input-bg-dark, #374151);
+    border-color: var(--color-border-dark, #4b5563);
+    color: var(--color-text-primary-dark, #f9fafb);
+  }
+  
+  .admin-checkbox-label .checkmark {
+    background: var(--color-input-bg-dark, #374151);
+    border-color: var(--color-border-dark, #4b5563);
+  }
+}

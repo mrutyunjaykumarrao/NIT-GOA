@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './FacultyTab.css';
 
-const FacultyTab = ({ facultyList }) => {
+const FacultyTab = ({ facultyList, onCreateFaculty, onEditFaculty, onDeleteFaculty }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [departmentFilter, setDepartmentFilter] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
@@ -311,7 +311,7 @@ const FacultyTab = ({ facultyList }) => {
           <h2 className="faculty-tab-title">Faculty Management</h2>
           <p className="faculty-tab-subtitle">Manage faculty profiles and information</p>
         </div>
-        <button className="faculty-tab-create-btn" onClick={() => console.log('Create faculty - TODO')}>
+        <button className="faculty-tab-create-btn" onClick={onCreateFaculty}>
           <i className="fas fa-plus"></i>
           Create Faculty Profile
         </button>
@@ -477,14 +477,14 @@ const FacultyTab = ({ facultyList }) => {
                     <div className="faculty-tab-action-buttons">
                       <button 
                         className="faculty-tab-edit-btn" 
-                        onClick={() => console.log('Edit faculty:', fac.id)}
+                        onClick={() => onEditFaculty(fac)}
                         title="Edit Faculty Profile"
                       >
                         <i className="fas fa-edit"></i>
                       </button>
                       <button 
                         className="faculty-tab-delete-btn" 
-                        onClick={() => console.log('Delete faculty:', fac.id)}
+                        onClick={() => onDeleteFaculty(fac.faculty_id || fac.employee_id)}
                         title="Delete Faculty Profile"
                       >
                         <i className="fas fa-trash"></i>

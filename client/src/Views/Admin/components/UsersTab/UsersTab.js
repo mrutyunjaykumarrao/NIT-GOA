@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './UsersTab.css';
 
-const UsersTab = ({ usersList }) => {
+const UsersTab = ({ usersList, onCreateUser, onEditUser, onDeleteUser }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [roleFilter, setRoleFilter] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
@@ -271,7 +271,7 @@ const UsersTab = ({ usersList }) => {
             Manage system users, roles, and access permissions
           </p>
         </div>
-        <button className="users-tab-create-btn">
+        <button className="users-tab-create-btn" onClick={onCreateUser}>
           <i className="fas fa-plus"></i>
           Add User
         </button>
@@ -447,12 +447,14 @@ const UsersTab = ({ usersList }) => {
                       <button 
                         className="users-tab-edit-btn"
                         title="Edit User"
+                        onClick={() => onEditUser(user)}
                       >
                         <i className="fas fa-edit"></i>
                       </button>
                       <button 
                         className="users-tab-delete-btn"
                         title="Delete User"
+                        onClick={() => onDeleteUser(user.user_id)}
                       >
                         <i className="fas fa-trash"></i>
                       </button>

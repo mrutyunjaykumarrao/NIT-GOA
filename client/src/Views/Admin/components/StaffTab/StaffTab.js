@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './StaffTab.css';
 import './StaffTab-pagination.css';
 
-const StaffTab = ({ staffList }) => {
+const StaffTab = ({ staffList, onCreateStaff, onEditStaff, onDeleteStaff }) => {
   // Separate staff into administrative and technical categories
   const administrativeStaff = staffList.filter(staff => staff.role === 'Administrative');
   const technicalStaff = staffList.filter(staff => staff.role === 'Technical');
@@ -168,14 +168,14 @@ const StaffTab = ({ staffList }) => {
         <div className="staff-tab-action-buttons">
           <button
             className="staff-tab-edit-btn"
-            onClick={() => handleEditStaff(staff.id)}
+            onClick={() => onEditStaff(staff)}
             title="Edit Staff Member"
           >
             <i className="fas fa-edit"></i>
           </button>
           <button
             className="staff-tab-delete-btn"
-            onClick={() => handleDeleteStaff(staff.id)}
+            onClick={() => onDeleteStaff(staff.staff_id || staff.employee_id)}
             title="Delete Staff Member"
           >
             <i className="fas fa-trash"></i>
@@ -240,14 +240,14 @@ const StaffTab = ({ staffList }) => {
         <div className="staff-tab-action-buttons">
           <button
             className="staff-tab-edit-btn"
-            onClick={() => handleEditStaff(staff.id)}
+            onClick={() => onEditStaff(staff)}
             title="Edit Staff Member"
           >
             <i className="fas fa-edit"></i>
           </button>
           <button
             className="staff-tab-delete-btn"
-            onClick={() => handleDeleteStaff(staff.id)}
+            onClick={() => onDeleteStaff(staff.staff_id || staff.employee_id)}
             title="Delete Staff Member"
           >
             <i className="fas fa-trash"></i>
@@ -256,23 +256,6 @@ const StaffTab = ({ staffList }) => {
       </td>
     </tr>
   );
-
-  const handleEditStaff = (staffId) => {
-    console.log('Edit staff member:', staffId);
-    // TODO: Implement edit functionality
-  };
-
-  const handleDeleteStaff = (staffId) => {
-    if (window.confirm('Are you sure you want to delete this staff member?')) {
-      console.log('Delete staff member:', staffId);
-      // TODO: Implement delete functionality
-    }
-  };
-
-  const handleCreateStaff = () => {
-    console.log('Create new staff member');
-    // TODO: Implement create functionality
-  };
 
   return (
     <div className="staff-tab-container">
@@ -286,7 +269,7 @@ const StaffTab = ({ staffList }) => {
         </div>
         <button 
           className="staff-tab-create-btn"
-          onClick={handleCreateStaff}
+          onClick={onCreateStaff}
         >
           <i className="fas fa-plus"></i>
           Add New Staff

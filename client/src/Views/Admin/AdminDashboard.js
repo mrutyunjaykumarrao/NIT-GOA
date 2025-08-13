@@ -4,6 +4,7 @@ import FacultyTab from './components/FacultyTab/FacultyTab';
 import StaffTab from './components/StaffTab/StaffTab';
 import AnalyticsTab from './components/AnalyticsTab/AnalyticsTab';
 import UsersTab from './components/UsersTab/UsersTab';
+import { UserModal, EmployeeModal, FacultyModal, StaffModal } from './components/AdminModals';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
@@ -25,55 +26,6 @@ const AdminDashboard = () => {
   const [modalType, setModalType] = useState(''); // 'create' or 'edit'
   const [modalEntity, setModalEntity] = useState(''); // 'user', 'employee', 'faculty', 'staff'
   const [selectedItem, setSelectedItem] = useState(null);
-
-  // Form data states
-  const [userForm, setUserForm] = useState({
-    username: '',
-    password: '',
-    role: 'Faculty',
-    employee_id: '',
-    is_active: true
-  });
-
-  const [employeeForm, setEmployeeForm] = useState({
-    employee_code: '',
-    full_name: '',
-    honorific: '',
-    email: '',
-    phone_mobile: '',
-    phone_office: '',
-    extension_no: '',
-    department_id: '',
-    role: 'Faculty',
-    job_title: '',
-    date_of_joining: '',
-    employment_status: '',
-    employment_type: 'Full-time',
-    is_hod: false,
-    is_active: true
-  });
-
-  const [facultyForm, setFacultyForm] = useState({
-    employee_id: '',
-    department_id: '',
-    designation_id: '',
-    gender: '',
-    date_of_birth: '',
-    research_teaching_experience: '',
-    address: '',
-    office_location: '',
-    office_hours: '',
-    bio_summary: '',
-    research_interests: '',
-    is_active: true
-  });
-
-  const [staffForm, setStaffForm] = useState({
-    employee_id: '',
-    department_id: '',
-    specialty: '',
-    is_active: true
-  });
 
   // API helper function
   const apiCall = useCallback(async (endpoint, options = {}) => {
@@ -199,26 +151,22 @@ const AdminDashboard = () => {
   }, [activeTab, loadTabData]);
 
   // CRUD operations
-  const handleCreate = async (entity) => {
+  const handleCreate = async (entity, formData) => {
     setLoading(true);
     try {
-      let formData, endpoint;
+      let endpoint;
       
       switch (entity) {
         case 'user':
-          formData = userForm;
           endpoint = '/admin/users';
           break;
         case 'employee':
-          formData = employeeForm;
           endpoint = '/admin/employees';
           break;
         case 'faculty':
-          formData = facultyForm;
           endpoint = '/admin/faculty';
           break;
         case 'staff':
-          formData = staffForm;
           endpoint = '/admin/staff';
           break;
         default:
@@ -241,26 +189,22 @@ const AdminDashboard = () => {
     }
   };
 
-  const handleUpdate = async (entity, id) => {
+  const handleUpdate = async (entity, id, formData) => {
     setLoading(true);
     try {
-      let formData, endpoint;
+      let endpoint;
       
       switch (entity) {
         case 'user':
-          formData = userForm;
           endpoint = `/admin/users/${id}`;
           break;
         case 'employee':
-          formData = employeeForm;
           endpoint = `/admin/employees/${id}`;
           break;
         case 'faculty':
-          formData = facultyForm;
           endpoint = `/admin/faculty/${id}`;
           break;
         case 'staff':
-          formData = staffForm;
           endpoint = `/admin/staff/${id}`;
           break;
         default:
@@ -328,65 +272,6 @@ const AdminDashboard = () => {
     setModalType('create');
     setModalEntity(entity);
     setSelectedItem(null);
-    
-    // Reset forms
-    switch (entity) {
-      case 'user':
-        setUserForm({
-          username: '',
-          password: '',
-          role: 'Faculty',
-          employee_id: '',
-          is_active: true
-        });
-        break;
-      case 'employee':
-        setEmployeeForm({
-          employee_code: '',
-          full_name: '',
-          honorific: '',
-          email: '',
-          phone_mobile: '',
-          phone_office: '',
-          extension_no: '',
-          department_id: '',
-          role: 'Faculty',
-          job_title: '',
-          date_of_joining: '',
-          employment_status: '',
-          employment_type: 'Full-time',
-          is_hod: false,
-          is_active: true
-        });
-        break;
-      case 'faculty':
-        setFacultyForm({
-          employee_id: '',
-          department_id: '',
-          designation_id: '',
-          gender: '',
-          date_of_birth: '',
-          research_teaching_experience: '',
-          address: '',
-          office_location: '',
-          office_hours: '',
-          bio_summary: '',
-          research_interests: '',
-          is_active: true
-        });
-        break;
-      case 'staff':
-        setStaffForm({
-          employee_id: '',
-          department_id: '',
-          specialty: '',
-          is_active: true
-        });
-        break;
-      default:
-        break;
-    }
-    
     setShowModal(true);
   };
 
@@ -394,60 +279,6 @@ const AdminDashboard = () => {
     setModalType('edit');
     setModalEntity(entity);
     setSelectedItem(item);
-    
-    // Populate forms with existing data
-    switch (entity) {
-      case 'user':
-        setUserForm({
-          username: item.username || '',
-          password: '', // Don't populate password for security
-          role: item.role || 'Faculty',
-          employee_id: item.employee_id || '',
-          is_active: item.is_active !== undefined ? item.is_active : true
-        });
-        break;
-      case 'employee':
-        setEmployeeForm({
-          employee_code: item.employee_code || '',
-          first_name: item.first_name || '',
-          last_name: item.last_name || '',
-          email: item.email || '',
-          phone: item.phone || '',
-          department_id: item.department_id || '',
-          role: item.role || 'Faculty',
-          position: item.position || '',
-          joining_date: item.joining_date ? item.joining_date.split('T')[0] : '',
-          is_active: item.is_active !== undefined ? item.is_active : true
-        });
-        break;
-      case 'faculty':
-        setFacultyForm({
-          faculty_id: item.faculty_id || '',
-          employee_id: item.employee_id || '',
-          designation: item.designation || '',
-          specialization: item.specialization || '',
-          qualification: item.qualification || '',
-          experience_years: item.experience_years || '',
-          research_interests: item.research_interests || '',
-          is_hod: item.is_hod || false,
-          is_active: item.is_active !== undefined ? item.is_active : true
-        });
-        break;
-      case 'staff':
-        setStaffForm({
-          employee_id: item.employee_id || '',
-          position: item.position || '',
-          department: item.department || '',
-          qualifications: item.qualifications || '',
-          skills: item.skills || '',
-          is_active: item.is_active !== undefined ? item.is_active : true
-        });
-        break;
-      default:
-        console.warn('Unknown entity type for edit:', entity);
-        break;
-    }
-    
     setShowModal(true);
   };
 
@@ -536,21 +367,81 @@ const AdminDashboard = () => {
           {activeTab === 'users' && (
             <UsersTab 
               usersList={users}
+              onCreateUser={() => openCreateModal('user')}
+              onEditUser={(user) => openEditModal('user', user)}
+              onDeleteUser={(id) => handleDelete('user', id)}
             />
           )}
           
           {activeTab === 'faculty' && (
             <FacultyTab 
               facultyList={faculty}
+              onCreateFaculty={() => openCreateModal('faculty')}
+              onEditFaculty={(faculty) => openEditModal('faculty', faculty)}
+              onDeleteFaculty={(id) => handleDelete('faculty', id)}
             />
           )}
           
           {activeTab === 'staff' && (
             <StaffTab 
               staffList={staff}
+              onCreateStaff={() => openCreateModal('staff')}
+              onEditStaff={(staff) => openEditModal('staff', staff)}
+              onDeleteStaff={(id) => handleDelete('staff', id)}
             />
           )}
         </div>
+
+        {/* Modals */}
+        <UserModal
+          show={showModal && modalEntity === 'user'}
+          onClose={() => setShowModal(false)}
+          onSubmit={modalType === 'create' ? 
+            (data) => handleCreate('user', data) : 
+            (data) => handleUpdate('user', selectedItem?.user_id, data)
+          }
+          mode={modalType}
+          initialData={selectedItem}
+          employees={employees}
+        />
+
+        <EmployeeModal
+          show={showModal && modalEntity === 'employee'}
+          onClose={() => setShowModal(false)}
+          onSubmit={modalType === 'create' ? 
+            (data) => handleCreate('employee', data) : 
+            (data) => handleUpdate('employee', selectedItem?.employee_id, data)
+          }
+          mode={modalType}
+          initialData={selectedItem}
+          departments={departments}
+        />
+
+        <FacultyModal
+          show={showModal && modalEntity === 'faculty'}
+          onClose={() => setShowModal(false)}
+          onSubmit={modalType === 'create' ? 
+            (data) => handleCreate('faculty', data) : 
+            (data) => handleUpdate('faculty', selectedItem?.faculty_id, data)
+          }
+          mode={modalType}
+          initialData={selectedItem}
+          employees={employees}
+          departments={departments}
+        />
+
+        <StaffModal
+          show={showModal && modalEntity === 'staff'}
+          onClose={() => setShowModal(false)}
+          onSubmit={modalType === 'create' ? 
+            (data) => handleCreate('staff', data) : 
+            (data) => handleUpdate('staff', selectedItem?.staff_id, data)
+          }
+          mode={modalType}
+          initialData={selectedItem}
+          employees={employees}
+          departments={departments}
+        />
       </div>
     </div>
   );
