@@ -47,23 +47,53 @@ check_port() {
 
 # Function to kill processes on specific ports
 cleanup_ports() {
-    print_status "Cleaning up ports..."
+    local ports_to_clean="$1"  # Can be "both", "client", or "server"
     
-    # Clean up port 3000 (Frontend)
-    if check_port 3000; then
-        print_warning "Port 3000 is in use, killing processes..."
-        lsof -ti:3000 | xargs kill -9 2>/dev/null || true
-        sleep 1
-    fi
-    
-    # Clean up port 3001 (Backend)
-    if check_port 3001; then
-        print_warning "Port 3001 is in use, killing processes..."
-        lsof -ti:3001 | xargs kill -9 2>/dev/null || true
-        sleep 1
-    fi
-    
-    print_success "Ports 3000 and 3001 are now available"
+    case "$ports_to_clean" in
+        "both"|"")
+            print_status "Cleaning up both ports..."
+            
+            # Clean up port 3000 (Frontend)
+            if check_port 3000; then
+                print_warning "Port 3000 is in use, killing processes..."
+                lsof -ti:3000 | xargs kill -9 2>/dev/null || true
+                sleep 1
+            fi
+            
+            # Clean up port 3001 (Backend)
+            if check_port 3001; then
+                print_warning "Port 3001 is in use, killing processes..."
+                lsof -ti:3001 | xargs kill -9 2>/dev/null || true
+                sleep 1
+            fi
+            
+            print_success "Ports 3000 and 3001 are now available"
+            ;;
+        "client")
+            print_status "Cleaning up client port..."
+            
+            # Clean up port 3000 (Frontend) only
+            if check_port 3000; then
+                print_warning "Port 3000 is in use, killing processes..."
+                lsof -ti:3000 | xargs kill -9 2>/dev/null || true
+                sleep 1
+            fi
+            
+            print_success "Port 3000 is now available"
+            ;;
+        "server")
+            print_status "Cleaning up server port..."
+            
+            # Clean up port 3001 (Backend) only
+            if check_port 3001; then
+                print_warning "Port 3001 is in use, killing processes..."
+                lsof -ti:3001 | xargs kill -9 2>/dev/null || true
+                sleep 1
+            fi
+            
+            print_success "Port 3001 is now available"
+            ;;
+    esac
 }
 
 # Function to check if dependencies are installed
@@ -141,7 +171,7 @@ main() {
     
     case "${1:-start}" in
         "start"|"dev"|"")
-            cleanup_ports
+            cleanup_ports "both"
             check_dependencies
             start_servers
             ;;
@@ -151,12 +181,12 @@ main() {
             print_success "All development servers stopped"
             ;;
         "client")
-            cleanup_ports
+            cleanup_ports "client"
             print_status "Starting frontend server only..."
             cd client && npm start
             ;;
         "server")
-            cleanup_ports
+            cleanup_ports "server"
             print_status "Starting backend server only..."
             cd server && npm run dev
             ;;
@@ -166,7 +196,7 @@ main() {
             print_success "All dependencies installed"
             ;;
         "clean")
-            cleanup_ports
+            cleanup_ports "both"
             ;;
         "help"|"-h"|"--help")
             show_help
