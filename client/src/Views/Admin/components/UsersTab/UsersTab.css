@@ -365,8 +365,19 @@
   font-size: 0.95rem;
 }
 
+.users-tab-full-name {
+  font-size: 0.85rem;
+  color: var(--admin-dashboard-text-secondary);
+  margin-top: 2px;
+  font-weight: 400;
+}
+
 [data-theme="dark"] .users-tab-username {
   color: white;
+}
+
+[data-theme="dark"] .users-tab-full-name {
+  color: var(--gray-300);
 }
 
 .users-tab-role-cell {

@@ -398,7 +398,7 @@ const AdminDashboard = () => {
           onClose={() => setShowModal(false)}
           onSubmit={modalType === 'create' ? 
             (data) => handleCreate('user', data) : 
-            (data) => handleUpdate('user', selectedItem?.user_id, data)
+            (data) => handleUpdate('user', selectedItem?.user_id || selectedItem?.id, data)
           }
           mode={modalType}
           initialData={selectedItem}

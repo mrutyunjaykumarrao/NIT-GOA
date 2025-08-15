@@ -12,7 +12,7 @@ const UserModal = ({
   const [formData, setFormData] = useState({
     username: '',
     password: '',
-    role: 'Faculty',
+    access_level: 'Faculty',
     employee_id: '',
     is_active: true
   });
@@ -25,7 +25,7 @@ const UserModal = ({
       setFormData({
         username: initialData.username || '',
         password: '', // Don't populate password for security
-        role: initialData.role || 'Faculty',
+        access_level: initialData.access_level || initialData.role || 'Faculty',
         employee_id: initialData.employee_id || '',
         is_active: initialData.is_active !== undefined ? initialData.is_active : true
       });
@@ -33,7 +33,7 @@ const UserModal = ({
       setFormData({
         username: '',
         password: '',
-        role: 'Faculty',
+        access_level: 'Faculty',
         employee_id: '',
         is_active: true
       });
@@ -74,7 +74,7 @@ const UserModal = ({
       newErrors.password = 'Password must be at least 6 characters';
     }
 
-    if (!formData.role) {
+    if (!formData.access_level) {
       newErrors.role = 'Role is required';
     }
 
@@ -152,11 +152,11 @@ const UserModal = ({
             </div>
 
             <div className="admin-form-group">
-              <label htmlFor="role">Role *</label>
+              <label htmlFor="access_level">Role *</label>
               <select
-                id="role"
-                name="role"
-                value={formData.role}
+                id="access_level"
+                name="access_level"
+                value={formData.access_level}
                 onChange={handleInputChange}
                 className={errors.role ? 'error' : ''}
               >

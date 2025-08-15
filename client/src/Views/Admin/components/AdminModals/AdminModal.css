@@ -13,6 +13,21 @@
   padding: 20px;
   overflow-y: auto;
 }
+.admin-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 10010;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  transition: opacity 0.2s;
+}
 
 .admin-modal {
   background: var(--color-surface, #ffffff);

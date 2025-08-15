@@ -57,9 +57,9 @@ const UsersTab = ({ usersList, onCreateUser, onEditUser, onDeleteUser }) => {
         aValue = a.employee_id || '';
         bValue = b.employee_id || '';
         break;
-      case 'user_id':
-        aValue = a.user_id || '';
-        bValue = b.user_id || '';
+      case 'last_login':
+        aValue = new Date(a.last_login || 0);
+        bValue = new Date(b.last_login || 0);
         break;
       case 'created_at':
         aValue = new Date(a.created_at || 0);
@@ -70,7 +70,7 @@ const UsersTab = ({ usersList, onCreateUser, onEditUser, onDeleteUser }) => {
         bValue = '';
     }
 
-    if (sortBy === 'created_at') {
+    if (sortBy === 'created_at' || sortBy === 'last_login') {
       return sortOrder === 'asc' ? aValue - bValue : bValue - aValue;
     }
 
@@ -97,7 +97,7 @@ const UsersTab = ({ usersList, onCreateUser, onEditUser, onDeleteUser }) => {
     setSearchTerm('');
     setRoleFilter('');
     setStatusFilter('');
-    setSortBy('user_id');
+    setSortBy('employee_id');
     setSortOrder('asc');
     setCurrentPage(1);
     setShowAll(false);
@@ -186,8 +186,11 @@ const UsersTab = ({ usersList, onCreateUser, onEditUser, onDeleteUser }) => {
     );
   };
 
-  // Simple fallback avatar component
-  const FallbackAvatar = ({ name, size = 40 }) => {
+  // Avatar component with image fallback
+  const UserAvatar = ({ user, size = 40 }) => {
+    const [imageError, setImageError] = useState(false);
+    const [imageLoading, setImageLoading] = useState(true);
+
     const getInitials = (username) => {
       if (!username) return 'U';
       const names = username.split(' ');
@@ -208,9 +211,63 @@ const UsersTab = ({ usersList, onCreateUser, onEditUser, onDeleteUser }) => {
       return colors[Math.abs(hash) % colors.length];
     };
 
-    const initials = getInitials(name);
-    const backgroundColor = getColor(name);
+    const hasValidImage = user?.image_url && !imageError;
+    const initials = getInitials(user?.username || user?.full_name);
+    const backgroundColor = getColor(user?.username || user?.full_name);
 
+    if (hasValidImage) {
+      return (
+        <div
+          style={{
+            width: size,
+            height: size,
+            borderRadius: '50%',
+            overflow: 'hidden',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#f3f4f6'
+          }}
+        >
+          <img
+            src={user.image_url}
+            alt={`${user.username} avatar`}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              display: imageLoading ? 'none' : 'block'
+            }}
+            onLoad={() => setImageLoading(false)}
+            onError={() => {
+              setImageError(true);
+              setImageLoading(false);
+            }}
+          />
+          {imageLoading && (
+            <div
+              style={{
+                width: size,
+                height: size,
+                borderRadius: '50%',
+                backgroundColor,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'white',
+                fontSize: size > 40 ? '14px' : '12px',
+                fontWeight: '600',
+                fontFamily: 'system-ui, -apple-system, sans-serif'
+              }}
+            >
+              {initials}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // Fallback avatar with initials
     return (
       <div
         style={{
@@ -338,10 +395,10 @@ const UsersTab = ({ usersList, onCreateUser, onEditUser, onDeleteUser }) => {
               <th>Avatar</th>
               <th 
                 className="users-tab-sortable-header"
-                onClick={() => handleSort('user_id')}
+                onClick={() => handleSort('employee_id')}
               >
-                User ID
-                <i className={`fas fa-sort${sortBy === 'user_id' ? (sortOrder === 'asc' ? '-up' : '-down') : ''}`}></i>
+                Employee ID
+                <i className={`fas fa-sort${sortBy === 'employee_id' ? (sortOrder === 'asc' ? '-up' : '-down') : ''}`}></i>
               </th>
               <th 
                 className="users-tab-sortable-header"
@@ -359,17 +416,16 @@ const UsersTab = ({ usersList, onCreateUser, onEditUser, onDeleteUser }) => {
               </th>
               <th 
                 className="users-tab-sortable-header"
-                onClick={() => handleSort('employee_id')}
+                onClick={() => handleSort('last_login')}
               >
-                Employee ID
-                <i className={`fas fa-sort${sortBy === 'employee_id' ? (sortOrder === 'asc' ? '-up' : '-down') : ''}`}></i>
+                Last Logged In
+                <i className={`fas fa-sort${sortBy === 'last_login' ? (sortOrder === 'asc' ? '-up' : '-down') : ''}`}></i>
               </th>
-              <th>Status</th>
               <th 
                 className="users-tab-sortable-header"
                 onClick={() => handleSort('created_at')}
               >
-                Created
+                Created At
                 <i className={`fas fa-sort${sortBy === 'created_at' ? (sortOrder === 'asc' ? '-up' : '-down') : ''}`}></i>
               </th>
               <th>Actions</th>
@@ -378,42 +434,18 @@ const UsersTab = ({ usersList, onCreateUser, onEditUser, onDeleteUser }) => {
           <tbody>
             {paginatedUsers.length === 0 ? (
               <tr>
-                <td colSpan="8" className="users-tab-empty-cell">
+                <td colSpan="7" className="users-tab-empty-cell">
                   {users.length === 0 ? 'No users found' : 'No users match the current filters'}
                 </td>
               </tr>
             ) : (
               paginatedUsers.map((user) => (
-                <tr key={user.user_id} className="users-tab-table-row">
+                <tr key={user.user_id || user.id} className="users-tab-table-row">
                   {/* Avatar */}
                   <td className="users-tab-avatar-cell">
                     <div className="users-tab-user-avatar">
-                      <FallbackAvatar name={user.username} size={40} />
+                      <UserAvatar user={user} size={40} />
                     </div>
-                  </td>
-
-                  {/* User ID */}
-                  <td className="users-tab-id-cell">
-                    <span className="users-tab-user-id">
-                      #{user.user_id}
-                    </span>
-                  </td>
-
-                  {/* Username */}
-                  <td className="users-tab-username-cell">
-                    <div className="users-tab-username-content">
-                      <span className="users-tab-username">{user.username}</span>
-                    </div>
-                  </td>
-
-                  {/* Role */}
-                  <td className="users-tab-role-cell">
-                    <span 
-                      className="users-tab-role-badge"
-                      style={{ backgroundColor: getRoleColor(user.role) }}
-                    >
-                      {user.role}
-                    </span>
                   </td>
 
                   {/* Employee ID */}
@@ -427,10 +459,30 @@ const UsersTab = ({ usersList, onCreateUser, onEditUser, onDeleteUser }) => {
                     )}
                   </td>
 
-                  {/* Status */}
-                  <td className="users-tab-status-cell">
-                    <span className={`users-tab-status-badge ${user.is_active ? 'users-tab-status-badge--active' : 'users-tab-status-badge--inactive'}`}>
-                      {user.is_active ? 'Active' : 'Inactive'}
+                  {/* Username */}
+                  <td className="users-tab-username-cell">
+                    <div className="users-tab-username-content">
+                      <span className="users-tab-username">{user.username}</span>
+                      {user.full_name && (
+                        <span className="users-tab-full-name">{user.full_name}</span>
+                      )}
+                    </div>
+                  </td>
+
+                  {/* Role */}
+                  <td className="users-tab-role-cell">
+                    <span 
+                      className="users-tab-role-badge"
+                      style={{ backgroundColor: getRoleColor(user.role) }}
+                    >
+                      {user.role}
+                    </span>
+                  </td>
+
+                  {/* Last Login */}
+                  <td className="users-tab-date-cell">
+                    <span className="users-tab-last-login">
+                      {user.last_login ? formatDate(user.last_login) : 'Never'}
                     </span>
                   </td>
 
@@ -454,7 +506,7 @@ const UsersTab = ({ usersList, onCreateUser, onEditUser, onDeleteUser }) => {
                       <button 
                         className="users-tab-delete-btn"
                         title="Delete User"
-                        onClick={() => onDeleteUser(user.user_id)}
+                        onClick={() => onDeleteUser(user.user_id || user.id)}
                       >
                         <i className="fas fa-trash"></i>
                       </button>
