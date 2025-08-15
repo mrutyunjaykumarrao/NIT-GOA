@@ -154,185 +154,67 @@ const AnalyticsTab = ({ analytics, users, faculty, staff }) => {
         />
       </div>
 
-      {/* Charts Section */}
-      <div className="analytics-tab-charts-grid">
-        {/* Department Distribution */}
-        <ChartCard title="Faculty Distribution by Department">
-          <div className="analytics-tab-department-stats">
-            {Object.entries(analyticsData.departments).map(([dept, count]) => (
-              <ProgressBar
-                key={dept}
-                label={dept}
-                value={count}
-                total={analyticsData.totals.faculty}
-                color="#10B981"
-              />
-            ))}
-          </div>
-        </ChartCard>
-
-        {/* User Roles Distribution */}
-        <ChartCard title="User Roles Distribution">
-          <div className="analytics-tab-role-stats">
-            {Object.entries(analyticsData.roles).map(([role, count]) => (
-              <ProgressBar
-                key={role}
-                label={role}
-                value={count}
-                total={analyticsData.totals.users}
-                color="#8B5CF6"
-              />
-            ))}
-          </div>
-        </ChartCard>
-
-        {/* Activity Overview */}
-        <ChartCard title="System Activity Overview">
-          <div className="analytics-tab-activity-overview">
-            <div className="analytics-tab-activity-item">
-              <div className="analytics-tab-activity-metric">
-                <span className="analytics-tab-activity-label">Active Users</span>
-                <span className="analytics-tab-activity-value">
-                  {analyticsData.active.percentage}%
-                </span>
-              </div>
-              <div className="analytics-tab-activity-bar">
-                <div 
-                  className="analytics-tab-activity-fill"
-                  style={{ width: `${analyticsData.active.percentage}%` }}
-                ></div>
-              </div>
+      {/* Charts Section - New Layout */}
+      <div className="analytics-tab-charts-grid analytics-tab-charts-grid--redesigned">
+        {/* Left Column - Department Distribution */}
+        <div className="analytics-tab-chart-column analytics-tab-chart-column--left">
+          <ChartCard title="Faculty Distribution by Department">
+            <div className="analytics-tab-department-stats">
+              {Object.entries(analyticsData.departments).map(([dept, count]) => (
+                <ProgressBar
+                  key={dept}
+                  label={dept}
+                  value={count}
+                  total={analyticsData.totals.faculty}
+                  color="#10B981"
+                />
+              ))}
             </div>
-            <div className="analytics-tab-activity-summary">
-              <p>
-                <strong>{analyticsData.active.users}</strong> out of{' '}
-                <strong>{analyticsData.totals.users}</strong> users are currently active
-              </p>
-            </div>
-          </div>
-        </ChartCard>
-
-        {/* Quick Stats */}
-        <ChartCard title="Quick Statistics">
-          <div className="analytics-tab-quick-stats">
-            <div className="analytics-tab-quick-stat">
-              <span className="analytics-tab-quick-stat-label">Total Employees</span>
-              <span className="analytics-tab-quick-stat-value">{analyticsData.totals.employees}</span>
-            </div>
-            <div className="analytics-tab-quick-stat">
-              <span className="analytics-tab-quick-stat-label">Departments</span>
-              <span className="analytics-tab-quick-stat-value">{Object.keys(analyticsData.departments).length}</span>
-            </div>
-            <div className="analytics-tab-quick-stat">
-              <span className="analytics-tab-quick-stat-label">User Roles</span>
-              <span className="analytics-tab-quick-stat-value">{Object.keys(analyticsData.roles).length}</span>
-            </div>
-            <div className="analytics-tab-quick-stat">
-              <span className="analytics-tab-quick-stat-label">Active Rate</span>
-              <span className="analytics-tab-quick-stat-value">{analyticsData.active.percentage}%</span>
-            </div>
-          </div>
-        </ChartCard>
-      </div>
-
-      {/* Detailed Metrics */}
-      <div className="analytics-tab-detailed-section">
-        <div className="analytics-tab-section-header">
-          <h3 className="analytics-tab-section-title">Detailed Metrics</h3>
-          <div className="analytics-tab-metric-tabs">
-            <button
-              className={`analytics-tab-metric-tab ${selectedMetric === 'overview' ? 'analytics-tab-metric-tab--active' : ''}`}
-              onClick={() => setSelectedMetric('overview')}
-            >
-              Overview
-            </button>
-            <button
-              className={`analytics-tab-metric-tab ${selectedMetric === 'departments' ? 'analytics-tab-metric-tab--active' : ''}`}
-              onClick={() => setSelectedMetric('departments')}
-            >
-              Departments
-            </button>
-            <button
-              className={`analytics-tab-metric-tab ${selectedMetric === 'activity' ? 'analytics-tab-metric-tab--active' : ''}`}
-              onClick={() => setSelectedMetric('activity')}
-            >
-              Activity
-            </button>
-          </div>
+          </ChartCard>
         </div>
 
-        <div className="analytics-tab-metric-content">
-          {selectedMetric === 'overview' && (
-            <div className="analytics-tab-overview-grid">
-              <div className="analytics-tab-overview-card">
-                <h4>System Health</h4>
-                <div className="analytics-tab-health-indicator analytics-tab-health-indicator--good">
-                  <i className="fas fa-check-circle"></i>
-                  <span>All systems operational</span>
-                </div>
-              </div>
-              <div className="analytics-tab-overview-card">
-                <h4>Data Integrity</h4>
-                <div className="analytics-tab-health-indicator analytics-tab-health-indicator--good">
-                  <i className="fas fa-database"></i>
-                  <span>Data consistent</span>
-                </div>
-              </div>
+        {/* Right Column - User Roles and Activity */}
+        <div className="analytics-tab-chart-column analytics-tab-chart-column--right">
+          {/* User Roles Distribution - Compact */}
+          <ChartCard title="User Roles Distribution">
+            <div className="analytics-tab-role-stats analytics-tab-role-stats--compact">
+              {Object.entries(analyticsData.roles).map(([role, count]) => (
+                <ProgressBar
+                  key={role}
+                  label={role}
+                  value={count}
+                  total={analyticsData.totals.users}
+                  color="#8B5CF6"
+                />
+              ))}
             </div>
-          )}
+          </ChartCard>
 
-          {selectedMetric === 'departments' && (
-            <div className="analytics-tab-departments-detail">
-              <div className="analytics-tab-departments-table">
-                <table className="analytics-tab-table">
-                  <thead>
-                    <tr>
-                      <th>Department</th>
-                      <th>Faculty Count</th>
-                      <th>HOD Assigned</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {Object.entries(analyticsData.departments).map(([dept, count]) => {
-                      const hasHod = faculty?.some(fac => fac.department_name === dept && fac.is_hod);
-                      return (
-                        <tr key={dept}>
-                          <td>{dept}</td>
-                          <td>{count}</td>
-                          <td>
-                            <span className={`analytics-tab-status-badge ${hasHod ? 'analytics-tab-status-badge--success' : 'analytics-tab-status-badge--warning'}`}>
-                              {hasHod ? 'Yes' : 'No'}
-                            </span>
-                          </td>
-                          <td>
-                            <span className="analytics-tab-status-badge analytics-tab-status-badge--success">
-                              Active
-                            </span>
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          )}
-
-          {selectedMetric === 'activity' && (
-            <div className="analytics-tab-activity-detail">
-              <div className="analytics-tab-activity-cards">
-                <div className="analytics-tab-activity-card">
-                  <h4>Recent Activity</h4>
-                  <p>Activity tracking will be implemented based on system logs and user interactions.</p>
+          {/* System Activity Overview */}
+          <ChartCard title="System Activity Overview">
+            <div className="analytics-tab-activity-overview">
+              <div className="analytics-tab-activity-item">
+                <div className="analytics-tab-activity-metric">
+                  <span className="analytics-tab-activity-label">Active Users</span>
+                  <span className="analytics-tab-activity-value">
+                    {analyticsData.active.percentage}%
+                  </span>
                 </div>
-                <div className="analytics-tab-activity-card">
-                  <h4>Performance Metrics</h4>
-                  <p>Performance monitoring and metrics collection will be added in future updates.</p>
+                <div className="analytics-tab-activity-bar">
+                  <div 
+                    className="analytics-tab-activity-fill"
+                    style={{ width: `${analyticsData.active.percentage}%` }}
+                  ></div>
                 </div>
               </div>
+              <div className="analytics-tab-activity-summary">
+                <p>
+                  <strong>{analyticsData.active.users}</strong> out of{' '}
+                  <strong>{analyticsData.totals.users}</strong> users are currently active
+                </p>
+              </div>
             </div>
-          )}
+          </ChartCard>
         </div>
       </div>
     </div>

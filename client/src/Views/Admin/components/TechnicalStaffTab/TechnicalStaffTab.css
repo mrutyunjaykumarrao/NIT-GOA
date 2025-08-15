@@ -1,0 +1,434 @@
+/* ===============================================================================
+   TECHNICAL STAFF TAB COMPONENT STYLES
+   Following project guidelines with page-specific CSS classes
+   Ultra responsive design for screens 320px to 2560px+
+   Dark mode support with data-theme attribute
+   =============================================================================== */
+
+/* ========================================================================
+   TECHNICAL STAFF TAB CONTAINER
+   ======================================================================== */
+
+.technical-staff-tab-container {
+  width: 100%;
+  padding: 0;
+  min-height: 600px;
+}
+
+/* ========================================================================
+   SEARCH AND FILTERS SECTION
+   ======================================================================== */
+
+.technical-staff-tab-filters-section {
+  background: var(--admin-dashboard-bg-secondary);
+  padding: 20px;
+  border-radius: var(--admin-dashboard-card-radius);
+  margin-bottom: 24px;
+  box-shadow: var(--admin-dashboard-shadow-sm);
+  border: 1px solid var(--admin-dashboard-border-color);
+}
+
+[data-theme="dark"] .technical-staff-tab-filters-section {
+  background: rgba(30, 41, 59, 0.6);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.technical-staff-tab-search-bar {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.technical-staff-tab-search-bar i {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--admin-dashboard-text-muted);
+  font-size: 1rem;
+}
+
+[data-theme="dark"] .technical-staff-tab-search-bar i {
+  color: var(--gray-300);
+}
+
+.technical-staff-tab-search-input {
+  width: 100%;
+  padding: 14px 16px 14px 48px;
+  border: 2px solid var(--admin-dashboard-border-color);
+  border-radius: var(--admin-dashboard-input-radius);
+  font-size: 1rem;
+  background: var(--admin-dashboard-bg-secondary);
+  color: var(--admin-dashboard-text-primary);
+  transition: all var(--admin-dashboard-transition-fast);
+}
+
+[data-theme="dark"] .technical-staff-tab-search-input {
+  background: rgba(55, 65, 81, 0.6);
+  border-color: rgba(75, 85, 99, 0.4);
+  color: white;
+}
+
+.technical-staff-tab-search-input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.technical-staff-tab-search-input::placeholder {
+  color: var(--admin-dashboard-text-muted);
+}
+
+[data-theme="dark"] .technical-staff-tab-search-input::placeholder {
+  color: var(--gray-300);
+}
+
+.technical-staff-tab-filter-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.technical-staff-tab-filter-left {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.technical-staff-tab-filter-select {
+  padding: 10px 16px;
+  border: 2px solid var(--admin-dashboard-border-color);
+  border-radius: var(--admin-dashboard-input-radius);
+  background: var(--admin-dashboard-bg-primary);
+  color: var(--admin-dashboard-text-primary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--admin-dashboard-transition-fast);
+  min-width: 140px;
+}
+
+[data-theme="dark"] .technical-staff-tab-filter-select {
+  background: rgba(55, 65, 81, 0.6);
+  border-color: rgba(75, 85, 99, 0.4);
+  color: white;
+}
+
+.technical-staff-tab-filter-select:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.technical-staff-tab-clear-filters-btn {
+  padding: 10px 16px;
+  background: var(--admin-dashboard-accent-danger);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--admin-dashboard-transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.technical-staff-tab-clear-filters-btn:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+.technical-staff-tab-create-btn {
+  background: linear-gradient(135deg, var(--admin-dashboard-accent-success) 0%, #10b981 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: var(--admin-dashboard-button-radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--admin-dashboard-transition-normal);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--admin-dashboard-shadow-md);
+}
+
+.technical-staff-tab-create-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--admin-dashboard-shadow-lg);
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+/* ========================================================================
+   RESULTS SUMMARY
+   ======================================================================== */
+
+.technical-staff-tab-results-summary {
+  font-size: 0.9rem;
+  color: var(--admin-dashboard-text-secondary);
+  margin-bottom: 16px;
+  padding: 0 4px;
+}
+
+[data-theme="dark"] .technical-staff-tab-results-summary {
+  color: var(--gray-300);
+}
+
+/* ========================================================================
+   STAFF TABLE
+   ======================================================================== */
+
+.technical-staff-tab-table-container {
+  background: var(--admin-dashboard-bg-secondary);
+  border-radius: var(--admin-dashboard-card-radius);
+  box-shadow: var(--admin-dashboard-shadow-sm);
+  border: 1px solid var(--admin-dashboard-border-color);
+  overflow: hidden;
+}
+
+[data-theme="dark"] .technical-staff-tab-table-container {
+  background: rgba(30, 41, 59, 0.6);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.technical-staff-tab-table-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.technical-staff-tab-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.technical-staff-tab-table thead {
+  background: var(--admin-dashboard-bg-tertiary);
+  border-bottom: 2px solid var(--admin-dashboard-border-color);
+}
+
+[data-theme="dark"] .technical-staff-tab-table thead {
+  background: rgba(15, 23, 42, 0.8);
+  border-bottom-color: rgba(59, 130, 246, 0.4);
+}
+
+.technical-staff-tab-table th {
+  padding: 16px 12px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--admin-dashboard-text-primary);
+  white-space: nowrap;
+  user-select: none;
+}
+
+[data-theme="dark"] .technical-staff-tab-table th {
+  color: var(--primary-blue-light);
+}
+
+.technical-staff-tab-sortable {
+  cursor: pointer;
+  transition: all var(--admin-dashboard-transition-fast);
+}
+
+.technical-staff-tab-sortable:hover {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+[data-theme="dark"] .technical-staff-tab-sortable:hover {
+  background: rgba(96, 165, 250, 0.15);
+}
+
+.technical-staff-tab-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--admin-dashboard-border-color);
+  color: var(--admin-dashboard-text-primary);
+  vertical-align: middle;
+}
+
+[data-theme="dark"] .technical-staff-tab-table td {
+  border-bottom-color: rgba(75, 85, 99, 0.3);
+  color: white;
+}
+
+.technical-staff-tab-table tbody tr:hover {
+  background: rgba(59, 130, 246, 0.05);
+}
+
+[data-theme="dark"] .technical-staff-tab-table tbody tr:hover {
+  background: rgba(96, 165, 250, 0.1);
+}
+
+.technical-staff-tab-status {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.technical-staff-tab-active {
+  background: rgba(34, 197, 94, 0.15);
+  color: #059669;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+[data-theme="dark"] .technical-staff-tab-active {
+  background: rgba(34, 197, 94, 0.2);
+  color: #10b981;
+}
+
+.technical-staff-tab-inactive {
+  background: rgba(239, 68, 68, 0.15);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+[data-theme="dark"] .technical-staff-tab-inactive {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+.technical-staff-tab-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.technical-staff-tab-action-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--admin-dashboard-transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.technical-staff-tab-edit-btn {
+  background: var(--admin-dashboard-accent-blue);
+  color: white;
+}
+
+.technical-staff-tab-edit-btn:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: var(--admin-dashboard-shadow-md);
+}
+
+.technical-staff-tab-delete-btn {
+  background: var(--admin-dashboard-accent-danger);
+  color: white;
+}
+
+.technical-staff-tab-delete-btn:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+  box-shadow: var(--admin-dashboard-shadow-md);
+}
+
+.technical-staff-tab-no-data {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--admin-dashboard-text-secondary);
+  font-style: italic;
+}
+
+[data-theme="dark"] .technical-staff-tab-no-data {
+  color: var(--gray-400);
+}
+
+/* ========================================================================
+   PAGINATION
+   ======================================================================== */
+
+.technical-staff-tab-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  padding: 16px 0;
+}
+
+.technical-staff-tab-pagination-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.technical-staff-tab-pagination-btn {
+  padding: 8px 12px;
+  border: 1px solid var(--admin-dashboard-border-color);
+  background: var(--admin-dashboard-bg-secondary);
+  color: var(--admin-dashboard-text-primary);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all var(--admin-dashboard-transition-fast);
+  font-size: 0.9rem;
+  min-width: 40px;
+}
+
+[data-theme="dark"] .technical-staff-tab-pagination-btn {
+  background: rgba(55, 65, 81, 0.6);
+  border-color: rgba(75, 85, 99, 0.4);
+  color: var(--gray-200);
+}
+
+.technical-staff-tab-pagination-btn:hover {
+  background: var(--primary-blue);
+  color: white;
+  border-color: var(--primary-blue);
+}
+
+.technical-staff-tab-pagination-active {
+  background: var(--primary-blue);
+  color: white;
+  border-color: var(--primary-blue);
+}
+
+.technical-staff-tab-show-all-btn {
+  padding: 8px 16px;
+  background: transparent;
+  color: var(--primary-blue);
+  border: 1px solid var(--primary-blue);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all var(--admin-dashboard-transition-fast);
+  font-size: 0.9rem;
+}
+
+.technical-staff-tab-show-all-btn:hover {
+  background: var(--primary-blue);
+  color: white;
+}
+
+/* ========================================================================
+   RESPONSIVE DESIGN
+   ======================================================================== */
+
+@media (max-width: 768px) {
+  .technical-staff-tab-filter-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .technical-staff-tab-filter-left {
+    flex-direction: column;
+    margin-bottom: 12px;
+  }
+  
+  .technical-staff-tab-table {
+    font-size: 0.8rem;
+  }
+  
+  .technical-staff-tab-table th,
+  .technical-staff-tab-table td {
+    padding: 10px 8px;
+  }
+}

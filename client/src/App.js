@@ -104,10 +104,13 @@ function AppContent() {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
+  // Check if current route should hide navbar and footer
+  const shouldHideNavAndFooter = location.pathname.startsWith('/admin');
+
   return (
     <div className="App">
-      <Navbar />
-      <LoginWrapper />
+      {!shouldHideNavAndFooter && <Navbar />}
+      {!shouldHideNavAndFooter && <LoginWrapper />}
       <Routes>
         {/* PUBLIC ROUTES - Accessible to everyone (authenticated or not) */}
         <Route path="/" element={<PublicRoute><HomePage /></PublicRoute>} />
@@ -219,7 +222,7 @@ function AppContent() {
         {/* DEFAULT ROUTE */}
         <Route path="*" element={<PublicRoute><HomePage /></PublicRoute>} />
       </Routes>
-      <Footer />
+      {!shouldHideNavAndFooter && <Footer />}
     </div>
   );
 }

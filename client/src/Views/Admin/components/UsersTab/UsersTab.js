@@ -320,27 +320,13 @@ const UsersTab = ({ usersList, onCreateUser, onEditUser, onDeleteUser }) => {
 
   return (
     <div className="users-tab-container">
-      {/* Header */}
-      <div className="users-tab-header">
-        <div className="users-tab-title-section">
-          <h2 className="users-tab-title">User Management</h2>
-          <p className="users-tab-subtitle">
-            Manage system users, roles, and access permissions
-          </p>
-        </div>
-        <button className="users-tab-create-btn" onClick={onCreateUser}>
-          <i className="fas fa-plus"></i>
-          Add User
-        </button>
-      </div>
-
-      {/* Search and Filters */}
+      {/* Search and Filters Section */}
       <div className="users-tab-filters-section">
         <div className="users-tab-search-bar">
           <i className="fas fa-search"></i>
           <input
             type="text"
-            placeholder="Search users by username, role, or employee ID..."
+            placeholder="Search by name, email, or employee ID..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="users-tab-search-input"
@@ -348,43 +334,54 @@ const UsersTab = ({ usersList, onCreateUser, onEditUser, onDeleteUser }) => {
         </div>
         
         <div className="users-tab-filter-controls">
-          <select
-            value={roleFilter}
-            onChange={(e) => setRoleFilter(e.target.value)}
-            className="users-tab-filter-select"
-          >
-            <option value="">All Roles</option>
-            {roles.map(role => (
-              <option key={role} value={role}>{role}</option>
-            ))}
-          </select>
-
-          <select
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-            className="users-tab-filter-select"
-          >
-            <option value="">All Status</option>
-            <option value="active">Active</option>
-            <option value="inactive">Inactive</option>
-          </select>
-
-          {hasActiveFilters && (
-            <button
-              onClick={clearFilters}
-              className="users-tab-clear-filters-btn"
+          <div className="users-tab-filter-left">
+            <select
+              value={roleFilter}
+              onChange={(e) => setRoleFilter(e.target.value)}
+              className="users-tab-filter-select"
             >
-              <i className="fas fa-times"></i>
-              Clear Filters
-            </button>
-          )}
+              <option value="">All Roles</option>
+              {roles.map(role => (
+                <option key={role} value={role}>{role}</option>
+              ))}
+            </select>
+
+            <select
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+              className="users-tab-filter-select"
+            >
+              <option value="">All Status</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+
+            {hasActiveFilters && (
+              <button
+                onClick={clearFilters}
+                className="users-tab-clear-filters-btn"
+                title="Clear all filters"
+              >
+                <i className="fas fa-times"></i>
+                Clear
+              </button>
+            )}
+          </div>
+
+          <button className="users-tab-create-btn" onClick={onCreateUser}>
+            <i className="fas fa-plus"></i>
+            Add User
+          </button>
         </div>
       </div>
 
       {/* Results Summary */}
       <div className="users-tab-results-summary">
-        Showing {filteredUsers.length} of {users.length} users
-        {hasActiveFilters && ' (filtered)'}
+        {showAll ? (
+          <>Showing all {sortedUsers.length} of {users.length} users</>
+        ) : (
+          <>Showing {startIndex + 1}-{Math.min(endIndex, sortedUsers.length)} of {sortedUsers.length} users (Page {currentPage} of {totalPages})</>
+        )}
       </div>
 
       {/* Users Table */}

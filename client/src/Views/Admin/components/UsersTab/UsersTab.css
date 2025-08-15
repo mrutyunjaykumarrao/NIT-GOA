@@ -113,25 +113,25 @@
 
 .users-tab-search-bar i {
   position: absolute;
-  left: 12px;
+  left: 16px;
   top: 50%;
   transform: translateY(-50%);
   color: var(--admin-dashboard-text-muted);
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 [data-theme="dark"] .users-tab-search-bar i {
-  color: var(--gray-400);
+  color: var(--gray-300);
 }
 
 .users-tab-search-input {
   width: 100%;
-  padding: 12px 12px 12px 40px;
+  padding: 14px 16px 14px 48px;
   border: 2px solid var(--admin-dashboard-border-color);
   border-radius: var(--admin-dashboard-input-radius);
-  background: var(--admin-dashboard-bg-primary);
+  background: var(--admin-dashboard-bg-secondary);
   color: var(--admin-dashboard-text-primary);
-  font-size: 0.95rem;
+  font-size: 1rem;
   transition: all var(--admin-dashboard-transition-fast);
 }
 
@@ -152,11 +152,27 @@
   box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
 }
 
+.users-tab-search-input::placeholder {
+  color: var(--admin-dashboard-text-muted);
+}
+
+[data-theme="dark"] .users-tab-search-input::placeholder {
+  color: var(--gray-300);
+}
+
 .users-tab-filter-controls {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
   flex-wrap: wrap;
+}
+
+.users-tab-filter-left {
+  display: flex;
   gap: 12px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .users-tab-filter-select {
@@ -184,34 +200,32 @@
 }
 
 .users-tab-clear-filters-btn {
+  padding: 10px 16px;
+  background: var(--admin-dashboard-accent-danger);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--admin-dashboard-transition-fast);
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 10px 16px;
-  background: transparent;
-  color: var(--admin-dashboard-text-secondary);
-  border: 2px solid var(--admin-dashboard-border-color);
-  border-radius: var(--admin-dashboard-button-radius);
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: all var(--admin-dashboard-transition-fast);
 }
 
 [data-theme="dark"] .users-tab-clear-filters-btn {
-  border-color: rgba(75, 85, 99, 0.4);
-  color: var(--gray-300);
+  background: var(--admin-dashboard-accent-danger);
 }
 
 .users-tab-clear-filters-btn:hover {
-  background: rgba(239, 68, 68, 0.1);
-  border-color: #EF4444;
-  color: #EF4444;
+  background: #dc2626;
+  transform: translateY(-1px);
 }
 
 [data-theme="dark"] .users-tab-clear-filters-btn:hover {
-  background: rgba(239, 68, 68, 0.15);
-  border-color: #F87171;
-  color: #F87171;
+  background: #dc2626;
+  transform: translateY(-1px);
 }
 
 /* ========================================================================

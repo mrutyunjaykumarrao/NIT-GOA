@@ -306,17 +306,6 @@ const FacultyTab = ({ facultyList, onCreateFaculty, onEditFaculty, onDeleteFacul
   
   return (
     <div className="faculty-tab-container">
-      <div className="faculty-tab-header">
-        <div className="faculty-tab-title-section">
-          <h2 className="faculty-tab-title">Faculty Management</h2>
-          <p className="faculty-tab-subtitle">Manage faculty profiles and information</p>
-        </div>
-        <button className="faculty-tab-create-btn" onClick={onCreateFaculty}>
-          <i className="fas fa-plus"></i>
-          Create Faculty Profile
-        </button>
-      </div>
-
       {/* Search and Filters Section */}
       <div className="faculty-tab-filters-section">
         <div className="faculty-tab-search-bar">
@@ -331,47 +320,54 @@ const FacultyTab = ({ facultyList, onCreateFaculty, onEditFaculty, onDeleteFacul
         </div>
         
         <div className="faculty-tab-filter-controls">
-          <select
-            value={departmentFilter}
-            onChange={(e) => setDepartmentFilter(e.target.value)}
-            className="faculty-tab-filter-select"
-          >
-            <option value="">All Departments</option>
-            {departments.map(dept => (
-              <option key={dept} value={dept}>{getDepartmentCode(dept)}</option>
-            ))}
-          </select>
-
-          <select
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-            className="faculty-tab-filter-select"
-          >
-            <option value="">All Status</option>
-            <option value="active">Active</option>
-            <option value="inactive">Inactive</option>
-          </select>
-
-          <select
-            value={hodFilter}
-            onChange={(e) => setHodFilter(e.target.value)}
-            className="faculty-tab-filter-select"
-          >
-            <option value="">All Faculty</option>
-            <option value="hod">HOD Only</option>
-            <option value="non-hod">Non-HOD</option>
-          </select>
-
-          {hasActiveFilters && (
-            <button
-              onClick={clearFilters}
-              className="faculty-tab-clear-filters-btn"
-              title="Clear all filters"
+          <div className="faculty-tab-filter-left">
+            <select
+              value={departmentFilter}
+              onChange={(e) => setDepartmentFilter(e.target.value)}
+              className="faculty-tab-filter-select"
             >
-              <i className="fas fa-times"></i>
-              Clear
-            </button>
-          )}
+              <option value="">All Departments</option>
+              {departments.map(dept => (
+                <option key={dept} value={dept}>{getDepartmentCode(dept)}</option>
+              ))}
+            </select>
+
+            <select
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+              className="faculty-tab-filter-select"
+            >
+              <option value="">All Status</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+
+            <select
+              value={hodFilter}
+              onChange={(e) => setHodFilter(e.target.value)}
+              className="faculty-tab-filter-select"
+            >
+              <option value="">All Faculty</option>
+              <option value="hod">HOD Only</option>
+              <option value="non-hod">Non-HOD</option>
+            </select>
+
+            {hasActiveFilters && (
+              <button
+                onClick={clearFilters}
+                className="faculty-tab-clear-filters-btn"
+                title="Clear all filters"
+              >
+                <i className="fas fa-times"></i>
+                Clear
+              </button>
+            )}
+          </div>
+
+          <button className="faculty-tab-create-btn" onClick={onCreateFaculty}>
+            <i className="fas fa-plus"></i>
+            Create Faculty Profile
+          </button>
         </div>
       </div>
 

@@ -259,14 +259,8 @@ const StaffTab = ({ staffList, onCreateStaff, onEditStaff, onDeleteStaff }) => {
 
   return (
     <div className="staff-tab-container">
-      {/* Header Section */}
-      <div className="staff-tab-header">
-        <div className="staff-tab-title-section">
-          <h2 className="staff-tab-title">Staff Management</h2>
-          <p className="staff-tab-subtitle">
-            Manage administrative and technical staff members
-          </p>
-        </div>
+      {/* Create Button Section */}
+      <div className="staff-tab-create-section">
         <button 
           className="staff-tab-create-btn"
           onClick={onCreateStaff}

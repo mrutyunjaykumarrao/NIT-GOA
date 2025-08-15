@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
+import AdminLayout from './AdminLayout';
 import FacultyTab from './components/FacultyTab/FacultyTab';
-import StaffTab from './components/StaffTab/StaffTab';
+import TechnicalStaffTab from './components/TechnicalStaffTab/TechnicalStaffTab';
+import AdministrativeStaffTab from './components/AdministrativeStaffTab/AdministrativeStaffTab';
 import AnalyticsTab from './components/AnalyticsTab/AnalyticsTab';
 import UsersTab from './components/UsersTab/UsersTab';
 import { UserModal, EmployeeModal, FacultyModal, StaffModal } from './components/AdminModals';
@@ -131,7 +133,8 @@ const AdminDashboard = () => {
         case 'faculty':
           await Promise.all([fetchFaculty(), fetchEmployees(), fetchDepartments()]);
           break;
-        case 'staff':
+        case 'technical-staff':
+        case 'administrative-staff':
           await Promise.all([fetchStaff(), fetchEmployees(), fetchDepartments()]);
           break;
         default:
@@ -284,75 +287,33 @@ const AdminDashboard = () => {
 
   if (!user || user.role !== 'Admin') {
     return (
-      <div className="admin-dashboard">
-        <div className="admin-dashboard-access-denied">
-          <div className="admin-dashboard-access-denied-icon">
-            <i className="fas fa-shield-alt"></i>
+      <AdminLayout activeTab={activeTab} setActiveTab={setActiveTab}>
+        <div className="admin-dashboard">
+          <div className="admin-dashboard-access-denied">
+            <div className="admin-dashboard-access-denied-icon">
+              <i className="fas fa-shield-alt"></i>
+            </div>
+            <h2>Access Denied</h2>
+            <p>You need administrator privileges to access this page.</p>
           </div>
-          <h2>Access Denied</h2>
-          <p>You need administrator privileges to access this page.</p>
         </div>
-      </div>
+      </AdminLayout>
     );
   }
 
   return (
-    <div className="admin-dashboard">
-      <div className="admin-dashboard-header">
-        <div className="admin-dashboard-header-content">
-          <div>
-            <h1 className="admin-dashboard-title">Admin Dashboard</h1>
-            <p className="admin-dashboard-subtitle">Manage users, faculty, and staff</p>
-          </div>
-          <div className="admin-dashboard-header-actions">
-            <div className="admin-dashboard-welcome-badge">
-              Welcome, {user?.name || user?.username}
+    <AdminLayout activeTab={activeTab} setActiveTab={setActiveTab}>
+      <div className="admin-dashboard">
+        <div className="admin-dashboard-content">
+          {error && (
+            <div className="admin-dashboard-error-banner">
+              <i className="fas fa-exclamation-triangle"></i>
+              <span>{error}</span>
+              <button onClick={() => setError(null)} className="admin-dashboard-error-close">
+                <i className="fas fa-times"></i>
+              </button>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="admin-dashboard-content">
-        {error && (
-          <div className="admin-dashboard-error-banner">
-            <i className="fas fa-exclamation-triangle"></i>
-            <span>{error}</span>
-            <button onClick={() => setError(null)} className="admin-dashboard-error-close">
-              <i className="fas fa-times"></i>
-            </button>
-          </div>
-        )}
-
-        <div className="admin-dashboard-nav-tabs">
-          <button 
-            className={`admin-dashboard-nav-tab ${activeTab === 'analytics' ? 'admin-dashboard-nav-tab--active' : ''}`}
-            onClick={() => setActiveTab('analytics')}
-          >
-            <i className="fas fa-chart-line"></i>
-            Analytics
-          </button>
-          <button 
-            className={`admin-dashboard-nav-tab ${activeTab === 'users' ? 'admin-dashboard-nav-tab--active' : ''}`}
-            onClick={() => setActiveTab('users')}
-          >
-            <i className="fas fa-users"></i>
-            Users
-          </button>
-          <button 
-            className={`admin-dashboard-nav-tab ${activeTab === 'faculty' ? 'admin-dashboard-nav-tab--active' : ''}`}
-            onClick={() => setActiveTab('faculty')}
-          >
-            <i className="fas fa-graduation-cap"></i>
-            Faculty
-          </button>
-          <button 
-            className={`admin-dashboard-nav-tab ${activeTab === 'staff' ? 'admin-dashboard-nav-tab--active' : ''}`}
-            onClick={() => setActiveTab('staff')}
-          >
-            <i className="fas fa-briefcase"></i>
-            Staff
-          </button>
-        </div>
+          )}
 
         <div className="admin-dashboard-tab-content">
           {activeTab === 'analytics' && (
@@ -382,8 +343,17 @@ const AdminDashboard = () => {
             />
           )}
           
-          {activeTab === 'staff' && (
-            <StaffTab 
+          {activeTab === 'technical-staff' && (
+            <TechnicalStaffTab 
+              staffList={staff}
+              onCreateStaff={() => openCreateModal('staff')}
+              onEditStaff={(staff) => openEditModal('staff', staff)}
+              onDeleteStaff={(id) => handleDelete('staff', id)}
+            />
+          )}
+          
+          {activeTab === 'administrative-staff' && (
+            <AdministrativeStaffTab 
               staffList={staff}
               onCreateStaff={() => openCreateModal('staff')}
               onEditStaff={(staff) => openEditModal('staff', staff)}
@@ -442,8 +412,9 @@ const AdminDashboard = () => {
           employees={employees}
           departments={departments}
         />
+        </div>
       </div>
-    </div>
+    </AdminLayout>
   );
 };
 
