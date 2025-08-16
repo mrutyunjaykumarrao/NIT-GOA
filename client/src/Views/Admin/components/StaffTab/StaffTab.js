@@ -19,8 +19,16 @@ const StaffTab = ({ staffList, onCreateStaff, onEditStaff, onDeleteStaff }) => {
     'Campus Control Centre': 'CCC'
   };
 
+  const validCodes = new Set(['CVE', 'CSE', 'EEE', 'ECE', 'MCE', 'APS', 'HSS', 'CCC', 'APS & HSS']);
+
   const getDepartmentCode = (department) => {
-    return departmentCodes[department] || 'CSE'; // Default to CSE instead of 'GEN'
+    if (!department) return 'N/A';
+    if (validCodes.has(department)) return department;
+    if (typeof department === 'string') {
+      if (department.includes('Applied Sciences')) return 'APS';
+      if (department.includes('Humanities and Social Sciences')) return 'HSS';
+    }
+    return departmentCodes[department] || 'N/A';
   };
 
   // Simple fallback avatar component
@@ -229,7 +237,7 @@ const StaffTab = ({ staffList, onCreateStaff, onEditStaff, onDeleteStaff }) => {
       <td className="staff-tab-department-cell">
         <div className="staff-tab-department-info">
           <span className="staff-tab-department-code">
-            {getDepartmentCode(staff.department_name)}
+            {getDepartmentCode(staff.department_name || staff.department)}
           </span>
         </div>
       </td>

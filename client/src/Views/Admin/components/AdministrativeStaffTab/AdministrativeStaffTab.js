@@ -236,16 +236,19 @@ const AdministrativeStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDelet
 
     return (
       <div className="administrative-staff-tab-pagination">
+        <div className="administrative-staff-tab-pagination-info">
+          Showing {startIndex + 1}-{Math.min(endIndex, sortedStaff.length)} of {sortedStaff.length} administrative staff members
+        </div>
         <div className="administrative-staff-tab-pagination-controls">
           {pages}
-        </div>
-        <div className="administrative-staff-tab-pagination-info">
-          <button
-            onClick={handleShowAll}
-            className="administrative-staff-tab-show-all-btn"
-          >
-            Show All
-          </button>
+          {totalPages > 1 && !showAll && (
+            <button
+              onClick={handleShowAll}
+              className="administrative-staff-tab-show-all-btn"
+            >
+              Show All
+            </button>
+          )}
         </div>
       </div>
     );

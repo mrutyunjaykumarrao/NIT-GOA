@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import './TechnicalStaffTab.css';
+import { 
+  getDepartmentCode, 
+  getDynamicDepartmentOptions, 
+  matchesDepartmentFilter 
+} from '../../../../utils/departmentMapping';
 
 const TechnicalStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDeleteStaff }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -14,24 +19,8 @@ const TechnicalStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDeleteStaf
   // Filter only technical staff
   const technicalStaff = staffList.filter(staff => staff.role === 'Technical');
 
-  // Department code mapping for technical staff
-  const departmentCodes = {
-    'Department of Civil Engineering': 'CVE',
-    'Department of Computer Science and Engineering': 'CSE',
-    'Department of Electrical and Electronics Engineering': 'EEE',
-    'Department of Electronics and Communication Engineering': 'ECE',
-    'Department of Mechanical Engineering': 'MCE',
-    'Department of Applied Sciences': 'APS',
-    'Department of Humanities and Social Sciences': 'HSS',
-    'Campus Control Centre': 'CCC'
-  };
-
-  const getDepartmentCode = (department) => {
-    return departmentCodes[department] || 'CSE';
-  };
-
-  // Get unique departments for filter - use department codes
-  const departments = ['CSE', 'ECE', 'EEE', 'MCE', 'CVE', 'APS & HSS', 'CCC'];
+  // Get dynamic department options from actual data
+  const departments = getDynamicDepartmentOptions(technicalStaff);
 
   // Filter and search functionality
   const filteredStaff = technicalStaff.filter(staff => {
@@ -41,7 +30,7 @@ const TechnicalStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDeleteStaf
       staff.employee_code?.toString().includes(searchTerm) ||
       staff.position?.toLowerCase().includes(searchTerm.toLowerCase());
     
-    const matchesDepartment = !departmentFilter || getDepartmentCode(staff.department) === departmentFilter;
+    const matchesDepartment = matchesDepartmentFilter(staff, departmentFilter);
     const matchesStatus = !statusFilter || 
       (statusFilter === 'active' && staff.is_active) ||
       (statusFilter === 'inactive' && !staff.is_active);
@@ -59,8 +48,8 @@ const TechnicalStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDeleteStaf
         bValue = b.full_name || '';
         break;
       case 'department':
-        aValue = a.department || '';
-        bValue = b.department || '';
+        aValue = a.department_name || a.department || '';
+        bValue = b.department_name || b.department || '';
         break;
       case 'position':
         aValue = a.position || '';
@@ -314,7 +303,7 @@ const TechnicalStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDeleteStaf
             >
               <option value="">All Departments</option>
               {departments.map(dept => (
-                <option key={dept} value={dept}>{getDepartmentCode(dept)}</option>
+                <option key={dept} value={dept}>{dept}</option>
               ))}
             </select>
 
@@ -453,7 +442,7 @@ const TechnicalStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDeleteStaf
                   </td>
                   <td className="technical-staff-tab-department-cell">
                     <span className="technical-staff-tab-department-badge">
-                      {getDepartmentCode(staff.department)}
+                      {getDepartmentCode(staff.department_name || staff.department)}
                     </span>
                   </td>
                   <td className="technical-staff-tab-extension-cell">
@@ -462,14 +451,14 @@ const TechnicalStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDeleteStaf
                   <td className="technical-staff-tab-actions-cell">
                     <div className="technical-staff-tab-action-buttons">
                       <button
-                        className="technical-staff-tab-edit-btn"
+                        className="technical-staff-tab-action-btn technical-staff-tab-edit-btn"
                         onClick={() => onEditStaff(staff)}
                         title="Edit Staff Member"
                       >
                         <i className="fas fa-edit"></i>
                       </button>
                       <button
-                        className="technical-staff-tab-delete-btn"
+                        className="technical-staff-tab-action-btn technical-staff-tab-delete-btn"
                         onClick={() => onDeleteStaff(staff.staff_id || staff.employee_id)}
                         title="Delete Staff Member"
                       >
