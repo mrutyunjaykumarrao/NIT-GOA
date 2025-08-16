@@ -146,7 +146,7 @@
 }
 
 .administrative-staff-tab-create-btn {
-  background: linear-gradient(135deg, var(--admin-dashboard-accent-success) 0%, #10b981 100%);
+  background: #3b82f6;
   color: white;
   border: none;
   padding: 12px 24px;
@@ -164,7 +164,7 @@
 .administrative-staff-tab-create-btn:hover {
   transform: translateY(-2px);
   box-shadow: var(--admin-dashboard-shadow-lg);
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  background: #2563eb;
 }
 
 /* ========================================================================

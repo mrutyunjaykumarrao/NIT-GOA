@@ -77,13 +77,13 @@
 }
 
 .users-tab-create-btn:hover {
-  background: #2563EB;
+  background: #3b82f6;
   transform: translateY(-1px);
   box-shadow: var(--admin-dashboard-shadow-md);
 }
 
 [data-theme="dark"] .users-tab-create-btn:hover {
-  background: #60A5FA;
+  background: #2563eb;
 }
 
 /* ========================================================================
