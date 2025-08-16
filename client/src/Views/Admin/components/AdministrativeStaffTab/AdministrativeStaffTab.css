@@ -383,7 +383,7 @@
   width: 120px !important;
   height: 120px !important;
   border-radius: 50% !important;
-  object-fit: cover !important;
+  object-fit: fill !important;
 }
 
 /* Enhanced styling matching faculty images */

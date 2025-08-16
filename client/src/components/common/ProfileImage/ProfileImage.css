@@ -70,7 +70,7 @@
   border-width: 4px !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
   border-radius: 50% !important;
-  object-fit: cover !important;
+  object-fit: fill !important;
 }
 
 /* Enhanced styling for technical staff images */
@@ -81,7 +81,7 @@
   border-width: 4px !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
   border-radius: 50% !important;
-  object-fit: cover !important;
+  object-fit: fill !important;
 }
 
 /* Enhanced styling for administrative staff images */
@@ -92,7 +92,7 @@
   border-width: 4px !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
   border-radius: 50% !important;
-  object-fit: cover !important;
+  object-fit: fill !important;
 }
 
 /* Responsive sizing */

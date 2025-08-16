@@ -301,7 +301,7 @@
   width: 120px !important;
   height: 120px !important;
   border-radius: 50% !important;
-  object-fit: cover !important;
+  object-fit: fill !important;
   border: 3px solid rgba(59, 130, 246, 0.2) !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
   transition: all 0.3s ease !important;
@@ -323,7 +323,7 @@
 .faculty-tab-faculty-avatar {
   width: 120px !important;
   height: 120px !important;
-  object-fit: cover !important;
+  object-fit: fill !important;
 }
 
 .faculty-tab-id-cell {
