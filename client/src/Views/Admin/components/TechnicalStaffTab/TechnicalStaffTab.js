@@ -30,8 +30,8 @@ const TechnicalStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDeleteStaf
     return departmentCodes[department] || 'CSE';
   };
 
-  // Get unique departments for filter
-  const departments = [...new Set(technicalStaff.map(staff => staff.department).filter(Boolean))];
+  // Get unique departments for filter - use department codes
+  const departments = ['CSE', 'ECE', 'EEE', 'MCE', 'CVE', 'APS & HSS', 'CCC'];
 
   // Filter and search functionality
   const filteredStaff = technicalStaff.filter(staff => {
@@ -41,7 +41,7 @@ const TechnicalStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDeleteStaf
       staff.employee_code?.toString().includes(searchTerm) ||
       staff.position?.toLowerCase().includes(searchTerm.toLowerCase());
     
-    const matchesDepartment = !departmentFilter || staff.department === departmentFilter;
+    const matchesDepartment = !departmentFilter || getDepartmentCode(staff.department) === departmentFilter;
     const matchesStatus = !statusFilter || 
       (statusFilter === 'active' && staff.is_active) ||
       (statusFilter === 'inactive' && !staff.is_active);
@@ -109,6 +109,90 @@ const TechnicalStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDeleteStaf
 
   // Check if any filters are applied
   const hasActiveFilters = searchTerm || departmentFilter || statusFilter;
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    setShowAll(false);
+  };
+
+  const handleShowAll = () => {
+    setShowAll(true);
+    setCurrentPage(1);
+  };
+
+  const renderPagination = () => {
+    if (showAll || totalPages <= 1) return null;
+
+    const pages = [];
+    const maxVisiblePages = 5;
+    
+    let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+    
+    if (endPage - startPage + 1 < maxVisiblePages) {
+      startPage = Math.max(1, endPage - maxVisiblePages + 1);
+    }
+
+    // Previous button
+    if (currentPage > 1) {
+      pages.push(
+        <button
+          key="prev"
+          onClick={() => handlePageChange(currentPage - 1)}
+          className="technical-staff-tab-pagination-btn technical-staff-tab-pagination-prev"
+        >
+          ‹
+        </button>
+      );
+    }
+
+    // Page numbers
+    for (let i = startPage; i <= endPage; i++) {
+      pages.push(
+        <button
+          key={i}
+          onClick={() => handlePageChange(i)}
+          className={`technical-staff-tab-pagination-btn ${
+            i === currentPage ? 'technical-staff-tab-pagination-active' : ''
+          }`}
+        >
+          {i}
+        </button>
+      );
+    }
+
+    // Next button
+    if (currentPage < totalPages) {
+      pages.push(
+        <button
+          key="next"
+          onClick={() => handlePageChange(currentPage + 1)}
+          className="technical-staff-tab-pagination-btn technical-staff-tab-pagination-next"
+        >
+          ›
+        </button>
+      );
+    }
+
+    return (
+      <div className="technical-staff-tab-pagination">
+        <div className="technical-staff-tab-pagination-info">
+          Showing {startIndex + 1}-{Math.min(endIndex, sortedStaff.length)} of {sortedStaff.length} technical staff members
+        </div>
+        <div className="technical-staff-tab-pagination-controls">
+          {pages}
+          {totalPages > 1 && !showAll && (
+            <button
+              onClick={handleShowAll}
+              className="technical-staff-tab-show-all-btn"
+            >
+              Show All
+            </button>
+          )}
+        </div>
+      </div>
+    );
+  };
 
   // Simple fallback avatar component
   const FallbackAvatar = ({ name, size = 40 }) => {
@@ -222,37 +306,39 @@ const TechnicalStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDeleteStaf
         </div>
         
         <div className="technical-staff-tab-filter-controls">
-          <select
-            value={departmentFilter}
-            onChange={(e) => setDepartmentFilter(e.target.value)}
-            className="technical-staff-tab-filter-select"
-          >
-            <option value="">All Departments</option>
-            {departments.map(dept => (
-              <option key={dept} value={dept}>{getDepartmentCode(dept)}</option>
-            ))}
-          </select>
-
-          <select
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-            className="technical-staff-tab-filter-select"
-          >
-            <option value="">All Status</option>
-            <option value="active">Active</option>
-            <option value="inactive">Inactive</option>
-          </select>
-
-          {hasActiveFilters && (
-            <button
-              onClick={clearFilters}
-              className="technical-staff-tab-clear-filters-btn"
-              title="Clear all filters"
+          <div className="technical-staff-tab-filters-group">
+            <select
+              value={departmentFilter}
+              onChange={(e) => setDepartmentFilter(e.target.value)}
+              className="technical-staff-tab-filter-select"
             >
-              <i className="fas fa-times"></i>
-              Clear
-            </button>
-          )}
+              <option value="">All Departments</option>
+              {departments.map(dept => (
+                <option key={dept} value={dept}>{getDepartmentCode(dept)}</option>
+              ))}
+            </select>
+
+            <select
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+              className="technical-staff-tab-filter-select"
+            >
+              <option value="">All Status</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+
+            {hasActiveFilters && (
+              <button
+                onClick={clearFilters}
+                className="technical-staff-tab-clear-filters-btn"
+                title="Clear all filters"
+              >
+                <i className="fas fa-times"></i>
+                Clear
+              </button>
+            )}
+          </div>
 
           <button className="technical-staff-tab-create-btn" onClick={onCreateStaff}>
             <i className="fas fa-plus"></i>
@@ -397,6 +483,9 @@ const TechnicalStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDeleteStaf
           </tbody>
         </table>
       </div>
+
+      {/* Pagination */}
+      {renderPagination()}
     </div>
   );
 };

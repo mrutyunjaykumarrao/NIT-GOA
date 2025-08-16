@@ -242,6 +242,50 @@
   background: rgba(96, 165, 250, 0.15);
 }
 
+/* Column width adjustments */
+.administrative-staff-tab-table th:nth-child(1), /* Photo */
+.administrative-staff-tab-table td:nth-child(1) {
+  width: 100px;
+  min-width: 100px;
+}
+
+.administrative-staff-tab-table th:nth-child(2), /* Employee Code */
+.administrative-staff-tab-table td:nth-child(2) {
+  width: 120px;
+  min-width: 120px;
+}
+
+.administrative-staff-tab-table th:nth-child(3), /* Name */
+.administrative-staff-tab-table td:nth-child(3) {
+  width: 180px;
+  min-width: 180px;
+}
+
+.administrative-staff-tab-table th:nth-child(4), /* Email */
+.administrative-staff-tab-table td:nth-child(4) {
+  width: 220px;
+  min-width: 220px;
+}
+
+.administrative-staff-tab-table th:nth-child(5), /* Position */
+.administrative-staff-tab-table td:nth-child(5) {
+  width: 200px;
+  min-width: 200px;
+}
+
+.administrative-staff-tab-table th:nth-child(6), /* Extension */
+.administrative-staff-tab-table td:nth-child(6) {
+  width: 120px;
+  min-width: 120px;
+}
+
+.administrative-staff-tab-table th:nth-child(7), /* Actions */
+.administrative-staff-tab-table td:nth-child(7) {
+  width: 120px;
+  min-width: 120px;
+  text-align: center;
+}
+
 .administrative-staff-tab-table td {
   padding: 14px 12px;
   border-bottom: 1px solid var(--admin-dashboard-border-color);
@@ -294,9 +338,11 @@
 }
 
 .administrative-staff-tab-actions {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
 }
 
 .administrative-staff-tab-action-btn {

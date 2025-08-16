@@ -5,6 +5,100 @@
    Dark mode support with data-theme attribute
    =============================================================================== */
 
+/* =====================[data-theme="dark"] .technical-staff-tab-no-data {
+  color: var(--gray-300);
+}
+
+/* ========================================================================
+   PAGINATION STYLES
+   ======================================================================== */
+
+.technical-staff-tab-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  padding: 16px 0;
+  border-top: 1px solid var(--admin-dashboard-border-color);
+}
+
+[data-theme="dark"] .technical-staff-tab-pagination {
+  border-top-color: rgba(59, 130, 246, 0.3);
+}
+
+.technical-staff-tab-pagination-info {
+  font-size: 0.9rem;
+  color: var(--admin-dashboard-text-secondary);
+}
+
+[data-theme="dark"] .technical-staff-tab-pagination-info {
+  color: var(--gray-300);
+}
+
+.technical-staff-tab-pagination-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.technical-staff-tab-pagination-btn {
+  padding: 8px 12px;
+  border: 1px solid var(--admin-dashboard-border-color);
+  background: var(--admin-dashboard-bg-secondary);
+  color: var(--admin-dashboard-text-primary);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all var(--admin-dashboard-transition-fast);
+  font-size: 0.9rem;
+  min-width: 40px;
+  text-align: center;
+}
+
+[data-theme="dark"] .technical-staff-tab-pagination-btn {
+  background: rgba(55, 65, 81, 0.6);
+  border-color: rgba(75, 85, 99, 0.4);
+  color: white;
+}
+
+.technical-staff-tab-pagination-btn:hover {
+  background: var(--primary-blue);
+  color: white;
+  border-color: var(--primary-blue);
+}
+
+[data-theme="dark"] .technical-staff-tab-pagination-btn:hover {
+  background: var(--primary-blue-light);
+  border-color: var(--primary-blue-light);
+}
+
+.technical-staff-tab-pagination-active {
+  background: var(--primary-blue) !important;
+  color: white !important;
+  border-color: var(--primary-blue) !important;
+}
+
+[data-theme="dark"] .technical-staff-tab-pagination-active {
+  background: var(--primary-blue-light) !important;
+  border-color: var(--primary-blue-light) !important;
+}
+
+.technical-staff-tab-show-all-btn {
+  padding: 8px 16px;
+  background: var(--admin-dashboard-accent-blue);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all var(--admin-dashboard-transition-fast);
+  font-size: 0.9rem;
+  margin-left: 12px;
+}
+
+.technical-staff-tab-show-all-btn:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
 /* ========================================================================
    TECHNICAL STAFF TAB CONTAINER
    ======================================================================== */
@@ -84,10 +178,17 @@
 
 .technical-staff-tab-filter-controls {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   gap: 12px;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.technical-staff-tab-filter-controls .technical-staff-tab-filters-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .technical-staff-tab-filter-left {
@@ -240,6 +341,56 @@
 
 [data-theme="dark"] .technical-staff-tab-sortable:hover {
   background: rgba(96, 165, 250, 0.15);
+}
+
+/* Column width adjustments */
+.technical-staff-tab-table th:nth-child(1), /* Photo */
+.technical-staff-tab-table td:nth-child(1) {
+  width: 100px;
+  min-width: 100px;
+}
+
+.technical-staff-tab-table th:nth-child(2), /* Employee Code */
+.technical-staff-tab-table td:nth-child(2) {
+  width: 120px;
+  min-width: 120px;
+}
+
+.technical-staff-tab-table th:nth-child(3), /* Name */
+.technical-staff-tab-table td:nth-child(3) {
+  width: 180px;
+  min-width: 180px;
+}
+
+.technical-staff-tab-table th:nth-child(4), /* Email */
+.technical-staff-tab-table td:nth-child(4) {
+  width: 200px;
+  min-width: 200px;
+}
+
+.technical-staff-tab-table th:nth-child(5), /* Position */
+.technical-staff-tab-table td:nth-child(5) {
+  width: 150px;
+  min-width: 150px;
+}
+
+.technical-staff-tab-table th:nth-child(6), /* Department */
+.technical-staff-tab-table td:nth-child(6) {
+  width: 100px;
+  min-width: 100px;
+}
+
+.technical-staff-tab-table th:nth-child(7), /* Extension */
+.technical-staff-tab-table td:nth-child(7) {
+  width: 120px;
+  min-width: 120px;
+}
+
+.technical-staff-tab-table th:nth-child(8), /* Actions */
+.technical-staff-tab-table td:nth-child(8) {
+  width: 120px;
+  min-width: 120px;
+  text-align: center;
 }
 
 .technical-staff-tab-table td {

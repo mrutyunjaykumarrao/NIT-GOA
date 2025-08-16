@@ -98,6 +98,90 @@ const AdministrativeStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDelet
     setCurrentPage(1);
   };
 
+  // Simple fallback avatar component
+  const FallbackAvatar = ({ name, size = 40 }) => {
+    const getInitials = (fullName) => {
+      if (!fullName) return 'U';
+      const names = fullName.split(' ');
+      if (names.length === 1) return names[0].charAt(0).toUpperCase();
+      return (names[0].charAt(0) + names[names.length - 1].charAt(0)).toUpperCase();
+    };
+
+    const getColor = (name) => {
+      if (!name) return '#6B7280';
+      let hash = 0;
+      for (let i = 0; i < name.length; i++) {
+        hash = name.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      const colors = [
+        '#EF4444', '#F97316', '#F59E0B', '#10B981', 
+        '#06B6D4', '#3B82F6', '#8B5CF6', '#EC4899'
+      ];
+      return colors[Math.abs(hash) % colors.length];
+    };
+
+    const initials = getInitials(name);
+    const backgroundColor = getColor(name);
+
+    return (
+      <div
+        style={{
+          width: size,
+          height: size,
+          borderRadius: '50%',
+          backgroundColor,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: 'white',
+          fontSize: size * 0.4,
+          fontWeight: 'bold',
+          flexShrink: 0
+        }}
+      >
+        {initials}
+      </div>
+    );
+  };
+
+  const StaffImageWithFallback = ({ staff, size = 100 }) => {
+    const [imageError, setImageError] = useState(false);
+    const imageSrc = getImagePath(staff.image_url);
+    const staffName = staff.full_name || (staff.first_name + ' ' + staff.last_name) || 'Staff';
+
+    const handleImageError = () => {
+      setImageError(true);
+    };
+
+    if (imageError || !staff.image_url) {
+      return <FallbackAvatar name={staffName} size={size} />;
+    }
+
+    return (
+      <img
+        src={imageSrc}
+        alt={staffName}
+        className="administrative-staff-tab-staff-photo"
+        onError={handleImageError}
+        style={{
+          width: size,
+          height: size,
+          objectFit: 'fill',
+          borderRadius: '50%'
+        }}
+      />
+    );
+  };
+
+  // Image helper function 
+  const getImagePath = (imagePath) => {
+    if (!imagePath) return '';
+    if (imagePath.startsWith('http')) {
+      return imagePath;
+    }
+    return `${process.env.PUBLIC_URL}/${imagePath.replace(/^\/+/, '')}`;
+  };
+
   const renderPagination = () => {
     if (showAll || totalPages <= 1) return null;
 
@@ -228,11 +312,12 @@ const AdministrativeStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDelet
           <table className="administrative-staff-tab-table">
             <thead>
               <tr>
+                <th>Photo</th>
                 <th 
                   className="administrative-staff-tab-sortable" 
-                  onClick={() => handleSort('staff_id')}
+                  onClick={() => handleSort('employee_code')}
                 >
-                  ID {sortBy === 'staff_id' && (sortOrder === 'asc' ? '↑' : '↓')}
+                  Employee Code {sortBy === 'employee_code' && (sortOrder === 'asc' ? '↑' : '↓')}
                 </th>
                 <th 
                   className="administrative-staff-tab-sortable" 
@@ -240,43 +325,70 @@ const AdministrativeStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDelet
                 >
                   Name {sortBy === 'full_name' && (sortOrder === 'asc' ? '↑' : '↓')}
                 </th>
-                <th 
-                  className="administrative-staff-tab-sortable" 
-                  onClick={() => handleSort('employee_id')}
-                >
-                  Employee ID {sortBy === 'employee_id' && (sortOrder === 'asc' ? '↑' : '↓')}
-                </th>
+                <th>Email</th>
                 <th>Position</th>
-                <th>Status</th>
+                <th>Extension</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               {paginatedStaff.length > 0 ? (
                 paginatedStaff.map((staff) => (
-                  <tr key={staff.staff_id}>
-                    <td>{staff.staff_id}</td>
-                    <td>{staff.full_name || `${staff.first_name} ${staff.last_name}`}</td>
-                    <td>{staff.employee_id}</td>
-                    <td>{staff.position || 'Administrative Staff'}</td>
-                    <td>
-                      <span className={`administrative-staff-tab-status ${staff.is_active ? 'administrative-staff-tab-active' : 'administrative-staff-tab-inactive'}`}>
-                        {staff.is_active ? 'Active' : 'Inactive'}
+                  <tr key={staff.staff_id || staff.id} className="administrative-staff-tab-table-row">
+                    <td className="administrative-staff-tab-image-cell">
+                      <div className="administrative-staff-tab-staff-image">
+                        <StaffImageWithFallback staff={staff} size={100} />
+                      </div>
+                    </td>
+                    <td className="administrative-staff-tab-id-cell">
+                      <span className="administrative-staff-tab-employee-code">
+                        {staff.employee_code || `ADM${staff.id.toString().padStart(3, '0')}`}
                       </span>
                     </td>
-                    <td>
-                      <div className="administrative-staff-tab-actions">
+                    <td className="administrative-staff-tab-name-cell">
+                      <div className="administrative-staff-tab-staff-name">
+                        <span className="administrative-staff-tab-full-name">
+                          {staff.honorific && `${staff.honorific} `}{staff.full_name}
+                        </span>
+                      </div>
+                    </td>
+                    <td className="administrative-staff-tab-email-cell">
+                      <a 
+                        href={`mailto:${staff.email}`} 
+                        className="administrative-staff-tab-email-link"
+                        title={`Send email to ${staff.full_name}`}
+                      >
+                        {staff.email}
+                      </a>
+                    </td>
+                    <td className="administrative-staff-tab-category-cell">
+                      <div className="administrative-staff-tab-category-info">
+                        <div className="administrative-staff-tab-position-title">
+                          {staff.position || 'Administrative Staff'}
+                        </div>
+                        {staff.specialty && (
+                          <div className="administrative-staff-tab-speciality-text">
+                            {staff.specialty}
+                          </div>
+                        )}
+                      </div>
+                    </td>
+                    <td className="administrative-staff-tab-extension-cell">
+                      {staff.extension_no || '-'}
+                    </td>
+                    <td className="administrative-staff-tab-actions-cell">
+                      <div className="administrative-staff-tab-action-buttons">
                         <button
-                          onClick={() => onEditStaff(staff)}
                           className="administrative-staff-tab-action-btn administrative-staff-tab-edit-btn"
-                          title="Edit staff"
+                          onClick={() => onEditStaff(staff)}
+                          title="Edit Staff Member"
                         >
                           <i className="fas fa-edit"></i>
                         </button>
                         <button
-                          onClick={() => onDeleteStaff(staff.staff_id)}
                           className="administrative-staff-tab-action-btn administrative-staff-tab-delete-btn"
-                          title="Delete staff"
+                          onClick={() => onDeleteStaff(staff.staff_id || staff.employee_id)}
+                          title="Delete Staff Member"
                         >
                           <i className="fas fa-trash"></i>
                         </button>
