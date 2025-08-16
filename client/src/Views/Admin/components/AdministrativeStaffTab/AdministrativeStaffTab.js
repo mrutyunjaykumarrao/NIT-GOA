@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './AdministrativeStaffTab.css';
+import { ProfileImage } from '../../../../components/common';
 
 const AdministrativeStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDeleteStaff }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -96,90 +97,6 @@ const AdministrativeStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDelet
   const handleShowAll = () => {
     setShowAll(true);
     setCurrentPage(1);
-  };
-
-  // Simple fallback avatar component
-  const FallbackAvatar = ({ name, size = 40 }) => {
-    const getInitials = (fullName) => {
-      if (!fullName) return 'U';
-      const names = fullName.split(' ');
-      if (names.length === 1) return names[0].charAt(0).toUpperCase();
-      return (names[0].charAt(0) + names[names.length - 1].charAt(0)).toUpperCase();
-    };
-
-    const getColor = (name) => {
-      if (!name) return '#6B7280';
-      let hash = 0;
-      for (let i = 0; i < name.length; i++) {
-        hash = name.charCodeAt(i) + ((hash << 5) - hash);
-      }
-      const colors = [
-        '#EF4444', '#F97316', '#F59E0B', '#10B981', 
-        '#06B6D4', '#3B82F6', '#8B5CF6', '#EC4899'
-      ];
-      return colors[Math.abs(hash) % colors.length];
-    };
-
-    const initials = getInitials(name);
-    const backgroundColor = getColor(name);
-
-    return (
-      <div
-        style={{
-          width: size,
-          height: size,
-          borderRadius: '50%',
-          backgroundColor,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: 'white',
-          fontSize: size * 0.4,
-          fontWeight: 'bold',
-          flexShrink: 0
-        }}
-      >
-        {initials}
-      </div>
-    );
-  };
-
-  const StaffImageWithFallback = ({ staff, size = 100 }) => {
-    const [imageError, setImageError] = useState(false);
-    const imageSrc = getImagePath(staff.image_url);
-    const staffName = staff.full_name || (staff.first_name + ' ' + staff.last_name) || 'Staff';
-
-    const handleImageError = () => {
-      setImageError(true);
-    };
-
-    if (imageError || !staff.image_url) {
-      return <FallbackAvatar name={staffName} size={size} />;
-    }
-
-    return (
-      <img
-        src={imageSrc}
-        alt={staffName}
-        className="administrative-staff-tab-staff-photo"
-        onError={handleImageError}
-        style={{
-          width: size,
-          height: size,
-          objectFit: 'fill',
-          borderRadius: '50%'
-        }}
-      />
-    );
-  };
-
-  // Image helper function 
-  const getImagePath = (imagePath) => {
-    if (!imagePath) return '';
-    if (imagePath.startsWith('http')) {
-      return imagePath;
-    }
-    return `${process.env.PUBLIC_URL}/${imagePath.replace(/^\/+/, '')}`;
   };
 
   const renderPagination = () => {
@@ -340,7 +257,7 @@ const AdministrativeStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDelet
                   <tr key={staff.staff_id || staff.id} className="administrative-staff-tab-table-row">
                     <td className="administrative-staff-tab-image-cell">
                       <div className="administrative-staff-tab-staff-image">
-                        <StaffImageWithFallback staff={staff} size={100} />
+                                              <ProfileImage staff={staff} size={120} className="administrative-staff-tab-staff-avatar" />
                       </div>
                     </td>
                     <td className="administrative-staff-tab-id-cell">

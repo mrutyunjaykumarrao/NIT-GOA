@@ -280,26 +280,50 @@
    ======================================================================== */
 
 .faculty-tab-image-cell {
-  width: 100px;
-  padding: 8px 12px;
+  width: 140px;
+  padding: 12px;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .faculty-tab-faculty-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid var(--admin-dashboard-border-color);
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 120px !important;
+  height: 120px !important;
+  margin: 0 auto !important;
 }
 
-[data-theme="dark"] .faculty-tab-faculty-image {
-  border-color: rgba(59, 130, 246, 0.3);
+/* Enhanced styling for faculty ProfileImage to match technical staff */
+.faculty-tab-faculty-image .profile-image,
+.faculty-tab-faculty-image .profile-image-fallback {
+  width: 120px !important;
+  height: 120px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  border: 3px solid rgba(59, 130, 246, 0.2) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  transition: all 0.3s ease !important;
+}
+
+.faculty-tab-faculty-image .profile-image:hover,
+.faculty-tab-faculty-image .profile-image-fallback:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Strong specificity to override any ProfileImage component defaults */
+.faculty-tab-faculty-image .profile-image-container {
+  width: 120px !important;
+  height: 120px !important;
+  display: inline-block !important;
 }
 
 .faculty-tab-faculty-avatar {
-  width: 100px;
-  height: 100px;
-  object-fit: fill;
+  width: 120px !important;
+  height: 120px !important;
+  object-fit: cover !important;
 }
 
 .faculty-tab-id-cell {

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './FacultyTab.css';
+import { ProfileImage } from '../../../../components/common';
 
 const FacultyTab = ({ facultyList, onCreateFaculty, onEditFaculty, onDeleteFaculty }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -183,114 +184,6 @@ const FacultyTab = ({ facultyList, onCreateFaculty, onEditFaculty, onDeleteFacul
     );
   };
 
-  // Simple fallback avatar component
-  const FallbackAvatar = ({ name, size = 40 }) => {
-    const getInitials = (fullName) => {
-      if (!fullName) return 'U';
-      const names = fullName.split(' ');
-      if (names.length === 1) return names[0].charAt(0).toUpperCase();
-      return (names[0].charAt(0) + names[names.length - 1].charAt(0)).toUpperCase();
-    };
-
-    const getColor = (name) => {
-      if (!name) return '#6B7280';
-      let hash = 0;
-      for (let i = 0; i < name.length; i++) {
-        hash = name.charCodeAt(i) + ((hash << 5) - hash);
-      }
-      const colors = [
-        '#EF4444', '#F97316', '#F59E0B', '#10B981', 
-        '#06B6D4', '#3B82F6', '#8B5CF6', '#EC4899'
-      ];
-      return colors[Math.abs(hash) % colors.length];
-    };
-
-    const initials = getInitials(name);
-    const backgroundColor = getColor(name);
-
-    return (
-      <div
-        style={{
-          width: size,
-          height: size,
-          borderRadius: '50%',
-          backgroundColor,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: 'white',
-          fontSize: '14px',
-          fontWeight: '600',
-          fontFamily: 'system-ui, -apple-system, sans-serif'
-        }}
-      >
-        {initials}
-      </div>
-    );
-  };
-
-  const FacultyImageWithFallback = ({ faculty, size = 100 }) => {
-    const [imageError, setImageError] = useState(false);
-    const [imageLoaded, setImageLoaded] = useState(false);
-
-    const handleImageError = () => {
-      setImageError(true);
-      setImageLoaded(true);
-    };
-
-    const handleImageLoad = () => {
-      setImageLoaded(true);
-      setImageError(false);
-    };
-
-    const getImagePath = (imagePath) => {
-      if (!imagePath) return null;
-      // Check if it's already a full path or needs to be constructed
-      if (imagePath.startsWith('images/')) {
-        return `/${imagePath}`;
-      }
-      return imagePath;
-    };
-
-    const imageSrc = getImagePath(faculty.image_url);
-
-    if (imageError || !imageSrc) {
-      return (
-        <FallbackAvatar 
-          name={faculty.full_name || faculty.first_name + ' ' + faculty.last_name || 'Faculty'} 
-          size={size}
-          className="faculty-tab-faculty-avatar"
-        />
-      );
-    }
-
-    return (
-      <div style={{ position: 'relative' }}>
-        {!imageLoaded && (
-          <FallbackAvatar 
-            name={faculty.full_name || faculty.first_name + ' ' + faculty.last_name || 'Faculty'} 
-            size={size}
-            className="faculty-tab-faculty-avatar"
-          />
-        )}
-        <img
-          src={imageSrc}
-          alt={faculty.full_name || 'Faculty'}
-          className="faculty-tab-faculty-avatar"
-          style={{ 
-            display: imageLoaded && !imageError ? 'block' : 'none',
-            width: size,
-            height: size,
-            borderRadius: '50%',
-            objectFit: 'fill'
-          }}
-          onError={handleImageError}
-          onLoad={handleImageLoad}
-        />
-      </div>
-    );
-  };
-
   const getDepartmentCode = (deptName) => {
     const deptMap = {
       'Department of Computer Science and Engineering': 'CSE',
@@ -434,7 +327,7 @@ const FacultyTab = ({ facultyList, onCreateFaculty, onEditFaculty, onDeleteFacul
                 <tr key={fac.id} className="faculty-tab-table-row">
                   <td className="faculty-tab-image-cell">
                     <div className="faculty-tab-faculty-image">
-                      <FacultyImageWithFallback faculty={fac} size={100} />
+                      <ProfileImage staff={fac} size={120} className="faculty-tab-faculty-image" />
                     </div>
                   </td>
                   <td className="faculty-tab-id-cell">

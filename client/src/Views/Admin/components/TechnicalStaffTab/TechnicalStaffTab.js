@@ -5,6 +5,7 @@ import {
   getDynamicDepartmentOptions, 
   matchesDepartmentFilter 
 } from '../../../../utils/departmentMapping';
+import { ProfileImage } from '../../../../components/common';
 
 const TechnicalStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDeleteStaff }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -183,102 +184,6 @@ const TechnicalStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDeleteStaf
     );
   };
 
-  // Simple fallback avatar component
-  const FallbackAvatar = ({ name, size = 40 }) => {
-    const getInitials = (fullName) => {
-      if (!fullName) return 'U';
-      const names = fullName.split(' ');
-      if (names.length === 1) return names[0].charAt(0).toUpperCase();
-      return (names[0].charAt(0) + names[names.length - 1].charAt(0)).toUpperCase();
-    };
-
-    const getColor = (name) => {
-      if (!name) return '#6B7280';
-      let hash = 0;
-      for (let i = 0; i < name.length; i++) {
-        hash = name.charCodeAt(i) + ((hash << 5) - hash);
-      }
-      const colors = [
-        '#EF4444', '#F97316', '#F59E0B', '#10B981', 
-        '#06B6D4', '#3B82F6', '#8B5CF6', '#EC4899'
-      ];
-      return colors[Math.abs(hash) % colors.length];
-    };
-
-    const initials = getInitials(name);
-    const backgroundColor = getColor(name);
-
-    return (
-      <div
-        style={{
-          width: size,
-          height: size,
-          borderRadius: '50%',
-          backgroundColor,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: 'white',
-          fontSize: '14px',
-          fontWeight: '600',
-          fontFamily: 'system-ui, -apple-system, sans-serif'
-        }}
-      >
-        {initials}
-      </div>
-    );
-  };
-
-  const StaffImageWithFallback = ({ staff, size = 100 }) => {
-    const [imageError, setImageError] = useState(false);
-    const [imageLoaded, setImageLoaded] = useState(false);
-
-    const handleImageError = () => {
-      setImageError(true);
-      setImageLoaded(true);
-    };
-
-    const handleImageLoad = () => {
-      setImageLoaded(true);
-      setImageError(false);
-    };
-
-    const getImagePath = (imagePath) => {
-      if (!imagePath) return null;
-      if (imagePath.startsWith('images/')) {
-        return `/${imagePath}`;
-      }
-      return imagePath;
-    };
-
-    const imageSrc = getImagePath(staff.image_url);
-    const staffName = staff.full_name || (staff.first_name + ' ' + staff.last_name) || 'Staff';
-
-    if (imageError || !imageSrc) {
-      return <FallbackAvatar name={staffName} size={size} />;
-    }
-
-    return (
-      <div style={{ position: 'relative' }}>
-        {!imageLoaded && <FallbackAvatar name={staffName} size={size} />}
-        <img
-          src={imageSrc}
-          alt={staffName}
-          className="technical-staff-tab-staff-avatar"
-          style={{ 
-            display: imageLoaded && !imageError ? 'block' : 'none',
-            width: size,
-            height: size,
-            borderRadius: '50%',
-            objectFit: 'fill'
-          }}
-          onError={handleImageError}
-          onLoad={handleImageLoad}
-        />
-      </div>
-    );
-  };
-
   return (
     <div className="technical-staff-tab-container">
       {/* Search and Filters Section */}
@@ -404,7 +309,7 @@ const TechnicalStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDeleteStaf
                 <tr key={staff.id} className="technical-staff-tab-table-row">
                   <td className="technical-staff-tab-image-cell">
                     <div className="technical-staff-tab-staff-image">
-                      <StaffImageWithFallback staff={staff} size={100} />
+                      <ProfileImage staff={staff} size={120} className="technical-staff-tab-staff-avatar" />
                     </div>
                   </td>
                   <td className="technical-staff-tab-id-cell">

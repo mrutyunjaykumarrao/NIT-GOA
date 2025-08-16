@@ -347,24 +347,46 @@
 
 /* Cell-specific styles */
 .technical-staff-tab-image-cell {
+  width: 140px;
+  padding: 12px;
   text-align: center;
+  vertical-align: middle;
 }
 
 .technical-staff-tab-staff-image {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
 }
 
+/* Ensure ProfileImage displays properly with consistent sizing */
 .technical-staff-tab-staff-avatar {
-  border: 2px solid var(--admin-dashboard-border-color);
-  border-radius: 50%;
-  transition: border-color var(--admin-dashboard-transition-fast);
+  margin: 0 auto;
+  display: block !important;
+  width: 120px !important;
+  height: 120px !important;
 }
 
-[data-theme="dark"] .technical-staff-tab-staff-avatar {
-  border-color: rgba(75, 85, 99, 0.5);
+.technical-staff-tab-staff-avatar .profile-image,
+.technical-staff-tab-staff-avatar .profile-image-fallback {
+  margin: 0 auto;
+  width: 120px !important;
+  height: 120px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
 }
+
+/* Enhanced styling matching faculty images */
+.technical-staff-tab-staff-image .profile-image,
+.technical-staff-tab-staff-image .profile-image-fallback {
+  border-width: 4px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+
 
 .technical-staff-tab-employee-code {
   font-family: 'Monaco', 'Menlo', monospace;
