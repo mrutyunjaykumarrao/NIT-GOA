@@ -234,12 +234,13 @@ const AdminDashboard = () => {
   const handleCreateAdminStaff = async (formData) => {
     setLoading(true);
     try {
-      const response = await fetch('/api/admin/staff/administrative', {
+      const response = await fetch('/api/admin/employees', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${token}`
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
         },
-        body: formData // FormData for file upload
+        body: JSON.stringify(formData)
       });
 
       if (!response.ok) {
@@ -271,12 +272,13 @@ const AdminDashboard = () => {
   const handleUpdateAdminStaff = async (id, formData) => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/admin/staff/administrative/${id}`, {
+      const response = await fetch(`/api/admin/employees/${id}`, {
         method: 'PUT',
         headers: {
-          'Authorization': `Bearer ${token}`
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
         },
-        body: formData // FormData for file upload
+        body: JSON.stringify(formData)
       });
 
       if (!response.ok) {
@@ -302,12 +304,13 @@ const AdminDashboard = () => {
   const handleCreateTechStaff = async (formData) => {
     setLoading(true);
     try {
-      const response = await fetch('/api/admin/staff/technical', {
+      const response = await fetch('/api/admin/employees', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${token}`
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
         },
-        body: formData // FormData for file upload
+        body: JSON.stringify(formData)
       });
 
       if (!response.ok) {
@@ -339,12 +342,13 @@ const AdminDashboard = () => {
   const handleUpdateTechStaff = async (id, formData) => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/admin/staff/technical/${id}`, {
+      const response = await fetch(`/api/admin/employees/${id}`, {
         method: 'PUT',
         headers: {
-          'Authorization': `Bearer ${token}`
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
         },
-        body: formData // FormData for file upload
+        body: JSON.stringify(formData)
       });
 
       if (!response.ok) {

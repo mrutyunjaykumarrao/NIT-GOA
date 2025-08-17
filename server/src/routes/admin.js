@@ -223,6 +223,103 @@ router.get('/employees', async (req, res) => {
   }
 });
 
+// Get next employee code for a role
+router.get('/employees/next-code/:role', async (req, res) => {
+  try {
+    const { role } = req.params;
+    console.log(`🔍 [NEXT-CODE DEBUG] Fetching next code for role: ${role}`);
+    
+    // Get all employee codes for the role and filter in JavaScript
+    const result = await executeQuery(`
+      SELECT employee_code 
+      FROM employees 
+      WHERE role = ? AND employee_code IS NOT NULL
+      ORDER BY employee_code DESC
+    `, [role]);
+    
+    console.log(`🔍 [NEXT-CODE DEBUG] Found ${result.length} employee codes for role ${role}:`);
+    console.log(`🔍 [NEXT-CODE DEBUG] Raw query result:`, result);
+    
+    // Extract the actual data array (MySQL2 returns [rows, metadata])
+    const employeeCodes = Array.isArray(result[0]) ? result[0] : result;
+    console.log(`🔍 [NEXT-CODE DEBUG] Employee codes array:`, employeeCodes.slice(0, 10)); // Show first 10
+    
+    let nextCode;
+    if (employeeCodes.length > 0) {
+      // Filter codes that match the pattern and extract numbers
+      const validCodes = employeeCodes
+        .map(row => row.employee_code)
+        .filter(code => code && /^[A-Z]+[0-9]+$/.test(code))
+        .map(code => {
+          const match = code.match(/^([A-Z]+)([0-9]+)$/);
+          return match ? { prefix: match[1], number: parseInt(match[2]), full: code } : null;
+        })
+        .filter(item => item !== null);
+      
+      console.log(`🔍 [NEXT-CODE DEBUG] Valid codes after filtering:`, validCodes.slice(0, 5));
+      
+      if (validCodes.length > 0) {
+        // Sort by number and get the highest
+        validCodes.sort((a, b) => b.number - a.number);
+        const lastCode = validCodes[0];
+        console.log(`🔍 [NEXT-CODE DEBUG] Highest code found:`, lastCode);
+        nextCode = `${lastCode.prefix}${String(lastCode.number + 1).padStart(3, '0')}`;
+        console.log(`🔍 [NEXT-CODE DEBUG] Generated next code: ${nextCode}`);
+      } else {
+        // No valid codes found, use default
+        console.log(`🔍 [NEXT-CODE DEBUG] No valid codes found, using default`);
+        const prefixes = {
+          'Faculty': 'FAC',
+          'Administrative': 'ADMIN',
+          'Technical': 'TECH'
+        };
+        nextCode = `${prefixes[role] || 'EMP'}001`;
+      }
+    } else {
+      // No codes found at all, use default
+      console.log(`🔍 [NEXT-CODE DEBUG] No employee codes found at all, using default`);
+      const prefixes = {
+        'Faculty': 'FAC',
+        'Administrative': 'ADMIN',
+        'Technical': 'TECH'
+      };
+      nextCode = `${prefixes[role] || 'EMP'}001`;
+    }
+    
+    res.json({ next_code: nextCode });
+  } catch (error) {
+    console.error('Get next employee code error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Get next display order for a role
+router.get('/employees/next-display-order/:role', async (req, res) => {
+  try {
+    const { role } = req.params;
+    console.log(`🔍 [NEXT-DISPLAY-ORDER DEBUG] Fetching next display order for role: ${role}`);
+    
+    const result = await executeQuery(`
+      SELECT COALESCE(MAX(display_order), 0) + 1 as next_display_order
+      FROM employees 
+      WHERE role = ?
+    `, [role]);
+    
+    console.log(`🔍 [NEXT-DISPLAY-ORDER DEBUG] Raw result:`, result);
+    
+    // Extract the actual data array (MySQL2 returns [rows, metadata])
+    const displayOrderData = Array.isArray(result[0]) ? result[0] : result;
+    const nextDisplayOrder = displayOrderData[0]?.next_display_order || 1;
+    
+    console.log(`🔍 [NEXT-DISPLAY-ORDER DEBUG] Next display order: ${nextDisplayOrder}`);
+    
+    res.json({ next_display_order: nextDisplayOrder });
+  } catch (error) {
+    console.error('Get next display order error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 // Create new employee
 router.post('/employees', async (req, res) => {
   try {
@@ -260,26 +357,44 @@ router.post('/employees', async (req, res) => {
           employment_type, image_url, is_active, is_public_visible, display_order
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `, [
-        employee_code, full_name, honorific, email, phone_mobile, phone_office,
-        extension_no, date_of_joining, role, job_title, is_hod, employment_status,
-        employment_type, image_url, is_active, is_public_visible, display_order
+        employee_code || null, 
+        full_name || null, 
+        honorific || null, 
+        email || null, 
+        phone_mobile || null, 
+        phone_office || null,
+        extension_no || null, 
+        date_of_joining || null, 
+        role || null, 
+        job_title || null, 
+        is_hod || false, 
+        employment_status || null,
+        employment_type || 'Full-time', 
+        image_url || null, 
+        is_active !== undefined ? is_active : true, 
+        is_public_visible !== undefined ? is_public_visible : true, 
+        display_order || 0
       ], connection);
 
       const employee_id = employeeResult.insertId;
 
-      // Insert into role-specific profile table if department is provided
-      if (department_id) {
-        if (role === 'Faculty') {
+      // Insert into role-specific profile table
+      if (role === 'Faculty') {
+        // Faculty profiles require department_id
+        if (department_id) {
           await executeQuery(`
             INSERT INTO faculty_profiles (employee_id, department_id)
             VALUES (?, ?)
           `, [employee_id, department_id], connection);
-        } else if (role === 'Administrative' || role === 'Technical') {
-          await executeQuery(`
-            INSERT INTO staff_profiles (employee_id, department_id)
-            VALUES (?, ?)
-          `, [employee_id, department_id], connection);
         }
+      } else if (role === 'Administrative' || role === 'Technical') {
+        // Staff profiles - department_id is optional
+        await executeQuery(`
+          INSERT INTO staff_profiles (employee_id, department_id)
+          VALUES (?, ?)
+        `, [employee_id, department_id || null], connection);
+        
+        console.log(`✅ Created staff profile for employee_id: ${employee_id}, department_id: ${department_id || 'null'}`);
       }
     });
 

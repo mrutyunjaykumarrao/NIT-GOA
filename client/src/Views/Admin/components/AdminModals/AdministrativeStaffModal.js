@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import ImageUpload from '../../../../components/ImageUpload';
 import './AdminModal.css';
 
@@ -40,10 +40,11 @@ const AdministrativeStaffModal = ({
   // Define dropdown options
   const honorifics = ['Mr.', 'Ms.', 'Mrs.', 'Dr.', 'Prof.'];
   const employmentStatuses = ['Adjunct', 'Guest', 'On Contract Basis', 'On Temporary Basis', 'Permanent', 'Relieved on Deputation', 'Visiting'];
-  const roles = ['Administrative'];
-  const jobTitles = ['Accountant', 'Administrative Officer (T&P Cell)', 'Assistant Librarian', 'Assistant Registrar', 'Deputy Registrar', 'Estate Engineer', 'Field Technician', 'Junior Assistant', 'Junior Assistant-Purchase', 'Multi-Tasking Staff', 'Senior Assistant', 'Stenographer', 'Student Activity and Sports Officer', 'Student Counselor', 'Superintendent', 'Technical Assistant'];
-  const employmentTypes = ['Full-time', 'Part-time', 'Contract'];  // Define fetch functions before useEffect
-  const fetchNextEmployeeCode = async () => {
+  const employmentTypes = ['Full-time', 'Part-time', 'Contract'];
+  
+    
+  // Define fetch functions before useEffect
+  const fetchNextEmployeeCode = useCallback(async () => {
     try {
       console.log('Fetching next employee code for Administrative...');
       const response = await fetch('/api/admin/employees/next-code/Administrative', {
@@ -54,17 +55,17 @@ const AdministrativeStaffModal = ({
       });
       if (response.ok) {
         const data = await response.json();
-        console.log('Received next employee code:', data);
-        setNextEmployeeCode(data.nextCode);
+        console.log('Next employee code:', data.next_code);
+        setNextEmployeeCode(data.next_code);
       } else {
         console.error('Failed to fetch next employee code:', response.status, response.statusText);
       }
     } catch (error) {
       console.error('Error fetching next employee code:', error);
     }
-  };
+  }, [token]);
 
-  const fetchNextDisplayOrder = async () => {
+  const fetchNextDisplayOrder = useCallback(async () => {
     try {
       console.log('Fetching next display order for Administrative...');
       const response = await fetch('/api/admin/employees/next-display-order/Administrative', {
@@ -75,15 +76,15 @@ const AdministrativeStaffModal = ({
       });
       if (response.ok) {
         const data = await response.json();
-        console.log('Received next display order:', data);
-        setNextDisplayOrder(data.nextDisplayOrder);
+        console.log('Next display order:', data.next_display_order);
+        setNextDisplayOrder(data.next_display_order);
       } else {
         console.error('Failed to fetch next display order:', response.status, response.statusText);
       }
     } catch (error) {
       console.error('Error fetching next display order:', error);
     }
-  };
+  }, [token]);
 
   useEffect(() => {
     if (show) {
@@ -101,7 +102,7 @@ const AdministrativeStaffModal = ({
           email: initialData.email || '',
           extension_no: initialData.extension_no || '',
           role: 'Administrative',
-          job_title: initialData.job_title || '',
+          job_title: initialData.position || initialData.job_title || '',  // Use position field from backend
           specialty: initialData.specialty || '',
           employment_status: initialData.employment_status || 'Permanent',
           employment_type: initialData.employment_type || 'Full-time',
@@ -138,7 +139,7 @@ const AdministrativeStaffModal = ({
       setSelectedImage(null);
       setErrors({});
     }
-  }, [mode, initialData, show]);
+  }, [mode, initialData, show, fetchNextEmployeeCode, fetchNextDisplayOrder]);
 
   // Auto-fill suggestions when they are fetched
   useEffect(() => {
@@ -217,40 +218,32 @@ const AdministrativeStaffModal = ({
 
     setLoading(true);
     try {
-      // Create FormData for file upload
-      const submitData = new FormData();
+      // Debug: Log form data before submission
+      console.log('🔍 [MODAL DEBUG] Form data before submission:', formData);
       
-      // Add form data with proper type conversion
-      Object.keys(formData).forEach(key => {
-        let value = formData[key];
-        
-        // Convert boolean to proper format for database
-        if (key === 'is_active') {
-          value = value ? 1 : 0;
-        }
-        
-        // Convert display_order to number
-        if (key === 'display_order' && value) {
-          value = parseInt(value, 10);
-        }
-        
-        // Handle empty strings and convert to null for optional fields
-        if (value === '' || value === undefined) {
-          // Required fields should not be null
+      // For now, send JSON data like FacultyModal does
+      // TODO: Implement proper image upload handling later
+      const submitData = { ...formData };
+      
+      // Convert boolean to proper format for database
+      submitData.is_active = submitData.is_active ? 1 : 0;
+      
+      // Convert display_order to number
+      if (submitData.display_order) {
+        submitData.display_order = parseInt(submitData.display_order, 10);
+      }
+      
+      // Handle empty strings for optional fields
+      Object.keys(submitData).forEach(key => {
+        if (submitData[key] === '' || submitData[key] === undefined) {
           const requiredFields = ['employee_code', 'full_name', 'email', 'role', 'job_title'];
           if (!requiredFields.includes(key)) {
-            value = null;
+            submitData[key] = null;
           }
         }
-        
-        // Only append non-null values (or append null as string 'null' for FormData)
-        submitData.append(key, value === null ? '' : value);
       });
-
-      // Add image if selected
-      if (selectedImage) {
-        submitData.append('image', selectedImage);
-      }
+      
+      console.log('🔍 [MODAL DEBUG] Final submit data:', submitData);
 
       await onSubmit(submitData, mode);
       onClose();

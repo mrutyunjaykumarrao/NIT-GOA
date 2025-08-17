@@ -219,40 +219,32 @@ const TechnicalStaffModal = ({
 
     setLoading(true);
     try {
-      // Create FormData for file upload
-      const submitData = new FormData();
+      // Debug: Log form data before submission
+      console.log('🔍 [TECH MODAL DEBUG] Form data before submission:', formData);
       
-      // Add form data with proper type conversion
-      Object.keys(formData).forEach(key => {
-        let value = formData[key];
-        
-        // Convert boolean to proper format for database
-        if (key === 'is_active') {
-          value = value ? 1 : 0;
-        }
-        
-        // Convert display_order to number
-        if (key === 'display_order' && value) {
-          value = parseInt(value, 10);
-        }
-        
-        // Handle empty strings and convert to null for optional fields
-        if (value === '' || value === undefined) {
-          // Required fields should not be null
+      // For now, send JSON data like FacultyModal does
+      // TODO: Implement proper image upload handling later
+      const submitData = { ...formData };
+      
+      // Convert boolean to proper format for database
+      submitData.is_active = submitData.is_active ? 1 : 0;
+      
+      // Convert display_order to number
+      if (submitData.display_order) {
+        submitData.display_order = parseInt(submitData.display_order, 10);
+      }
+      
+      // Handle empty strings for optional fields
+      Object.keys(submitData).forEach(key => {
+        if (submitData[key] === '' || submitData[key] === undefined) {
           const requiredFields = ['employee_code', 'full_name', 'email', 'role', 'job_title'];
           if (!requiredFields.includes(key)) {
-            value = null;
+            submitData[key] = null;
           }
         }
-        
-        // Only append non-null values (or append null as string 'null' for FormData)
-        submitData.append(key, value === null ? '' : value);
       });
-
-      // Add image if selected
-      if (selectedImage) {
-        submitData.append('image', selectedImage);
-      }
+      
+      console.log('🔍 [TECH MODAL DEBUG] Final submit data:', submitData);
 
       await onSubmit(submitData, mode);
       onClose();

@@ -288,6 +288,7 @@ const Login = ({ isModalOpen, onClose }) => {
                 value={credentials.password}
                 onChange={handleChange}
                 placeholder="Enter your password"
+                autoComplete="current-password"
                 required
                 disabled={isLoading}
               />
