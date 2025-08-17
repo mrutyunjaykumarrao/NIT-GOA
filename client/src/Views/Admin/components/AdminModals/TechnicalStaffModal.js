@@ -37,13 +37,11 @@ const TechnicalStaffModal = ({
   const [nextEmployeeCode, setNextEmployeeCode] = useState('');
   const [nextDisplayOrder, setNextDisplayOrder] = useState('');
 
-  // Honorifics options
+    // Define dropdown options
   const honorifics = ['Mr.', 'Ms.', 'Mrs.', 'Dr.', 'Prof.'];
-
-  // Employment status options
-  const employmentStatuses = ['Permanent', 'Contract', 'Temporary', 'Probation'];
-
-  // Employment type options
+  const employmentStatuses = ['Adjunct', 'Guest', 'On Contract Basis', 'On Temporary Basis', 'Permanent', 'Relieved on Deputation', 'Visiting'];
+  const roles = ['Technical'];
+  const jobTitles = ['Multi-Tasking Staff', 'Senior Technical Assistant', 'Senior Technician', 'Technical Assistant', 'Technician'];
   const employmentTypes = ['Full-time', 'Part-time', 'Contract'];
 
   // Define fetch functions before useEffect

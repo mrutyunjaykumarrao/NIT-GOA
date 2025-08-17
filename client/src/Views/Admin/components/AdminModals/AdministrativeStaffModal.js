@@ -37,16 +37,12 @@ const AdministrativeStaffModal = ({
   const [nextEmployeeCode, setNextEmployeeCode] = useState('');
   const [nextDisplayOrder, setNextDisplayOrder] = useState('');
 
-  // Honorifics options
+  // Define dropdown options
   const honorifics = ['Mr.', 'Ms.', 'Mrs.', 'Dr.', 'Prof.'];
-
-  // Employment status options
-  const employmentStatuses = ['Permanent', 'Contract', 'Temporary', 'Probation'];
-
-  // Employment type options
-  const employmentTypes = ['Full-time', 'Part-time', 'Contract'];
-
-  // Define fetch functions before useEffect
+  const employmentStatuses = ['Adjunct', 'Guest', 'On Contract Basis', 'On Temporary Basis', 'Permanent', 'Relieved on Deputation', 'Visiting'];
+  const roles = ['Administrative'];
+  const jobTitles = ['Accountant', 'Administrative Officer (T&P Cell)', 'Assistant Librarian', 'Assistant Registrar', 'Deputy Registrar', 'Estate Engineer', 'Field Technician', 'Junior Assistant', 'Junior Assistant-Purchase', 'Multi-Tasking Staff', 'Senior Assistant', 'Stenographer', 'Student Activity and Sports Officer', 'Student Counselor', 'Superintendent', 'Technical Assistant'];
+  const employmentTypes = ['Full-time', 'Part-time', 'Contract'];  // Define fetch functions before useEffect
   const fetchNextEmployeeCode = async () => {
     try {
       console.log('Fetching next employee code for Administrative...');
