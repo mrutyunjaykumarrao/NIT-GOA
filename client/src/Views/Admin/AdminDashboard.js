@@ -6,7 +6,7 @@ import TechnicalStaffTab from './components/TechnicalStaffTab/TechnicalStaffTab'
 import AdministrativeStaffTab from './components/AdministrativeStaffTab/AdministrativeStaffTab';
 import AnalyticsTab from './components/AnalyticsTab/AnalyticsTab';
 import UsersTab from './components/UsersTab/UsersTab';
-import { UserModal, EmployeeModal, FacultyModal, StaffModal } from './components/AdminModals';
+import { UserModal, EmployeeModal, FacultyModal, StaffModal, AdministrativeStaffModal, TechnicalStaffModal, PendingApprovalsModal } from './components/AdminModals';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
@@ -230,6 +230,143 @@ const AdminDashboard = () => {
     }
   };
 
+  // Enhanced staff handlers
+  const handleCreateAdminStaff = async (formData) => {
+    setLoading(true);
+    try {
+      const response = await fetch('/api/admin/staff/administrative', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
+        body: formData // FormData for file upload
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Failed to create administrative staff');
+      }
+
+      const result = await response.json();
+      
+      // Show success message
+      if (result.imagePending) {
+        alert(result.message + ' Image is pending admin approval.');
+      } else {
+        alert(result.message);
+      }
+
+      setShowModal(false);
+      loadTabData(activeTab);
+      
+    } catch (error) {
+      console.error('Failed to create administrative staff:', error);
+      setError(`Failed to create administrative staff: ${error.message}`);
+      alert('Error: ' + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleUpdateAdminStaff = async (id, formData) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`/api/admin/staff/administrative/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
+        body: formData // FormData for file upload
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Failed to update administrative staff');
+      }
+
+      const result = await response.json();
+      alert(result.message);
+
+      setShowModal(false);
+      loadTabData(activeTab);
+      
+    } catch (error) {
+      console.error('Failed to update administrative staff:', error);
+      setError(`Failed to update administrative staff: ${error.message}`);
+      alert('Error: ' + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleCreateTechStaff = async (formData) => {
+    setLoading(true);
+    try {
+      const response = await fetch('/api/admin/staff/technical', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
+        body: formData // FormData for file upload
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Failed to create technical staff');
+      }
+
+      const result = await response.json();
+      
+      // Show success message
+      if (result.imagePending) {
+        alert(result.message + ' Image is pending admin approval.');
+      } else {
+        alert(result.message);
+      }
+
+      setShowModal(false);
+      loadTabData(activeTab);
+      
+    } catch (error) {
+      console.error('Failed to create technical staff:', error);
+      setError(`Failed to create technical staff: ${error.message}`);
+      alert('Error: ' + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleUpdateTechStaff = async (id, formData) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`/api/admin/staff/technical/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
+        body: formData // FormData for file upload
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Failed to update technical staff');
+      }
+
+      const result = await response.json();
+      alert(result.message);
+
+      setShowModal(false);
+      loadTabData(activeTab);
+      
+    } catch (error) {
+      console.error('Failed to update technical staff:', error);
+      setError(`Failed to update technical staff: ${error.message}`);
+      alert('Error: ' + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleDelete = async (entity, id) => {
     if (!window.confirm(`Are you sure you want to delete this ${entity}?`)) {
       return;
@@ -346,8 +483,8 @@ const AdminDashboard = () => {
           {activeTab === 'technical-staff' && (
             <TechnicalStaffTab 
               staffList={staff}
-              onCreateStaff={() => openCreateModal('staff')}
-              onEditStaff={(staff) => openEditModal('staff', staff)}
+              onCreateStaff={() => openCreateModal('technical-staff')}
+              onEditStaff={(staff) => openEditModal('technical-staff', staff)}
               onDeleteStaff={(id) => handleDelete('staff', id)}
             />
           )}
@@ -355,8 +492,8 @@ const AdminDashboard = () => {
           {activeTab === 'administrative-staff' && (
             <AdministrativeStaffTab 
               staffList={staff}
-              onCreateStaff={() => openCreateModal('staff')}
-              onEditStaff={(staff) => openEditModal('staff', staff)}
+              onCreateStaff={() => openCreateModal('administrative-staff')}
+              onEditStaff={(staff) => openEditModal('administrative-staff', staff)}
               onDeleteStaff={(id) => handleDelete('staff', id)}
             />
           )}
@@ -411,6 +548,32 @@ const AdminDashboard = () => {
           initialData={selectedItem}
           employees={employees}
           departments={departments}
+        />
+
+        <AdministrativeStaffModal
+          show={showModal && modalEntity === 'administrative-staff'}
+          onClose={() => setShowModal(false)}
+          onSubmit={modalType === 'create' ? 
+            (data) => handleCreateAdminStaff(data) : 
+            (data) => handleUpdateAdminStaff(selectedItem?.employee_id, data)
+          }
+          mode={modalType}
+          initialData={selectedItem}
+          departments={departments}
+          token={token}
+        />
+
+        <TechnicalStaffModal
+          show={showModal && modalEntity === 'technical-staff'}
+          onClose={() => setShowModal(false)}
+          onSubmit={modalType === 'create' ? 
+            (data) => handleCreateTechStaff(data) : 
+            (data) => handleUpdateTechStaff(selectedItem?.employee_id, data)
+          }
+          mode={modalType}
+          initialData={selectedItem}
+          departments={departments}
+          token={token}
         />
         </div>
       </div>

@@ -100,6 +100,233 @@
   display: inline-block;
 }
 
+/* Form hint styles */
+.form-hint {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary, #6b7280);
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* Pending Approvals Styles */
+.admin-modal-content {
+  padding: 0 24px 24px;
+}
+
+.loading-container,
+.no-data-container {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--color-text-secondary, #6b7280);
+}
+
+.loading-container i,
+.no-data-container i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.no-data-container i {
+  color: var(--color-success, #10b981);
+}
+
+.pending-changes-list {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.pending-change-item {
+  background: var(--color-surface-alt, #f9fafb);
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.change-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  border-bottom: 1px solid var(--color-border, #e5e7eb);
+  background: white;
+}
+
+.change-info h4 {
+  margin: 0 0 8px 0;
+  color: var(--color-text-primary, #111827);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.change-type {
+  margin: 0 0 4px 0;
+  color: var(--color-text-secondary, #6b7280);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.change-date {
+  margin: 0;
+  color: var(--color-text-tertiary, #9ca3af);
+  font-size: 0.85rem;
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.status-badge.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.change-details {
+  padding: 20px;
+}
+
+.image-comparison {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.image-container {
+  flex: 1;
+  min-width: 200px;
+}
+
+.image-container h5 {
+  margin: 0 0 12px 0;
+  color: var(--color-text-primary, #111827);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.comparison-image {
+  width: 100%;
+  max-width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid var(--color-border, #e5e7eb);
+  display: block;
+  margin: 0 auto;
+}
+
+.no-image {
+  width: 200px;
+  height: 200px;
+  background: var(--color-surface-alt, #f3f4f6);
+  border: 2px dashed var(--color-border, #d1d5db);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary, #6b7280);
+  margin: 0 auto;
+}
+
+.no-image i {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.no-image p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.arrow-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary, #6b7280);
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.employee-details {
+  background: white;
+  padding: 16px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border, #e5e7eb);
+}
+
+.employee-details p {
+  margin: 0 0 8px 0;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary, #6b7280);
+}
+
+.employee-details p:last-child {
+  margin-bottom: 0;
+}
+
+.employee-details strong {
+  color: var(--color-text-primary, #111827);
+}
+
+.change-actions {
+  padding: 20px;
+  background: white;
+  border-top: 1px solid var(--color-border, #e5e7eb);
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.admin-btn-success {
+  background: var(--color-success, #10b981);
+  color: white;
+}
+
+.admin-btn-success:hover {
+  background: var(--color-success-dark, #059669);
+}
+
+.admin-btn-danger {
+  background: var(--color-error, #ef4444);
+  color: white;
+}
+
+.admin-btn-danger:hover {
+  background: var(--color-error-dark, #dc2626);
+}
+
+/* Responsive adjustments for pending approvals */
+@media (max-width: 768px) {
+  .image-comparison {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .arrow-container {
+    transform: rotate(90deg);
+    margin: 10px 0;
+  }
+  
+  .change-actions {
+    flex-direction: column;
+  }
+  
+  .admin-btn {
+    width: 100%;
+  }
+}
+
 .admin-form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

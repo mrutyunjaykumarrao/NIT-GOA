@@ -93,11 +93,6 @@ const ProfileImage = ({
   };
 
   const handleImageLoad = () => {
-    console.log('✅ IMAGE LOAD SUCCESS:', {
-      staffName: getStaffName(staff),
-      originalImageUrl: staff?.image_url || staff?.image,
-      processedImageSrc: imageSrc
-    });
     setImageLoaded(true);
     setImageError(false);
   };
@@ -106,19 +101,6 @@ const ProfileImage = ({
   const imageSrc = getImagePath(staff?.image_url || staff?.image);
   const initials = getInitials(staffName);
   const avatarColor = getAvatarColor(staffName);
-
-  // Debug logging for troubleshooting 
-  if (process.env.NODE_ENV === 'development') {
-    console.log('ProfileImage Debug:', {
-      staffName,
-      originalImageUrl: staff?.image_url || staff?.image,
-      processedImageSrc: imageSrc,
-      initials,
-      avatarColor,
-      imageLoaded,
-      imageError
-    });
-  }
 
   // Fallback Avatar Component
   const FallbackAvatar = () => (

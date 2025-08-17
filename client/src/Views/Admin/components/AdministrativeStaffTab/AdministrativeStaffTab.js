@@ -12,9 +12,15 @@ const AdministrativeStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDelet
   const [showAll, setShowAll] = useState(false);
 
   // Filter only administrative staff
+  console.log('🔍 [ADMIN TAB DEBUG] All staff received:', staffList?.length, 'items');
+  console.log('🔍 [ADMIN TAB DEBUG] First few staff items:', staffList?.slice(0, 3));
+  
   const administrativeStaff = staffList.filter(staff => 
     staff.role === 'Administrative' || staff.department === 'Administration'
   );
+  
+  console.log('🔍 [ADMIN TAB DEBUG] Filtered administrative staff:', administrativeStaff?.length, 'items');
+  console.log('🔍 [ADMIN TAB DEBUG] Administrative staff details:', administrativeStaff?.slice(0, 3));
 
   // Filter and search functionality
   const filteredStaff = administrativeStaff.filter(staff => {
@@ -307,7 +313,7 @@ const AdministrativeStaffTab = ({ staffList, onCreateStaff, onEditStaff, onDelet
                         </button>
                         <button
                           className="administrative-staff-tab-action-btn administrative-staff-tab-delete-btn"
-                          onClick={() => onDeleteStaff(staff.staff_id || staff.employee_id)}
+                          onClick={() => onDeleteStaff(staff.id || staff.staff_id || staff.employee_id)}
                           title="Delete Staff Member"
                         >
                           <i className="fas fa-trash"></i>
