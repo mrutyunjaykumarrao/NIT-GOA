@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './ImageUpload.css';
 
 const ImageUpload = ({ 
@@ -12,6 +12,11 @@ const ImageUpload = ({
   const [previewImage, setPreviewImage] = useState(currentImage);
   const [error, setError] = useState('');
   const fileInputRef = useRef(null);
+
+  // Reset preview image when currentImage prop changes
+  useEffect(() => {
+    setPreviewImage(currentImage);
+  }, [currentImage]);
 
   const validateFile = (file) => {
     if (!file) return 'No file selected';

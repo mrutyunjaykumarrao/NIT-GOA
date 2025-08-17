@@ -116,6 +116,7 @@ const TechnicalStaffModal = ({
           responsibilities: initialData.responsibilities || '',
           office_location: initialData.office_location || ''
         });
+        // Immediately set the current image URL for edit mode
         setCurrentImageUrl(initialData.image_url || '');
       } else if (mode === 'create') {
         setFormData({
@@ -277,72 +278,78 @@ const TechnicalStaffModal = ({
         </div>
 
         <form onSubmit={handleSubmit} className="admin-modal-form">
-          {/* Image Upload Section */}
-          <div className="admin-form-section">
-            <h3>Profile Image</h3>
-            <div className="admin-form-group admin-form-group-full">
-              <ImageUpload
-                currentImage={currentImageUrl}
-                onImageSelect={handleImageSelect}
-                maxSizeKB={5120}
-                acceptedFormats={['image/jpeg', 'image/jpg', 'image/png', 'image/webp']}
-              />
-            </div>
-          </div>
-
-          {/* Basic Information Section */}
+          {/* Profile Header Section - Image on Left, Basic Info on Right */}
           <div className="admin-form-section">
             <h3>Basic Information</h3>
+            <div className="admin-profile-layout">
+              {/* Profile Image Column */}
+              <div className="admin-profile-image">
+                <ImageUpload
+                  currentImage={currentImageUrl}
+                  onImageSelect={handleImageSelect}
+                  maxSizeKB={5120}
+                  acceptedFormats={['image/jpeg', 'image/jpg', 'image/png', 'image/webp']}
+                />
+              </div>
+
+              {/* Basic Information Column */}
+              <div className="admin-profile-info">
+                <div className="admin-form-grid">
+                  <div className="admin-form-group">
+                    <label htmlFor="employee_code">Employee Code *</label>
+                    <input
+                      type="text"
+                      id="employee_code"
+                      name="employee_code"
+                      value={formData.employee_code}
+                      onChange={handleInputChange}
+                      className={errors.employee_code ? 'error' : ''}
+                      placeholder={mode === 'create' && nextEmployeeCode ? nextEmployeeCode : 'e.g., TECH025'}
+                    />
+                    {mode === 'create' && nextEmployeeCode && (
+                      <small className="form-hint">
+                        Suggested next code: {nextEmployeeCode}
+                      </small>
+                    )}
+                    {errors.employee_code && <span className="error-message">{errors.employee_code}</span>}
+                  </div>
+
+                  <div className="admin-form-group">
+                    <label htmlFor="honorific">Honorific</label>
+                    <select
+                      id="honorific"
+                      name="honorific"
+                      value={formData.honorific}
+                      onChange={handleInputChange}
+                    >
+                      <option value="">Select Honorific</option>
+                      {honorifics.map(honorific => (
+                        <option key={honorific} value={honorific}>
+                          {honorific}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="admin-form-group admin-form-group-full">
+                    <label htmlFor="full_name">Name *</label>
+                    <input
+                      type="text"
+                      id="full_name"
+                      name="full_name"
+                      value={formData.full_name}
+                      onChange={handleInputChange}
+                      className={errors.full_name ? 'error' : ''}
+                      placeholder="Full Name"
+                    />
+                    {errors.full_name && <span className="error-message">{errors.full_name}</span>}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Additional Basic Information */}
             <div className="admin-form-grid">
-              <div className="admin-form-group">
-                <label htmlFor="employee_code">Employee Code *</label>
-                <input
-                  type="text"
-                  id="employee_code"
-                  name="employee_code"
-                  value={formData.employee_code}
-                  onChange={handleInputChange}
-                  className={errors.employee_code ? 'error' : ''}
-                  placeholder={mode === 'create' && nextEmployeeCode ? nextEmployeeCode : 'e.g., TECH025'}
-                />
-                {mode === 'create' && nextEmployeeCode && (
-                  <small className="form-hint">
-                    Suggested next code: {nextEmployeeCode}
-                  </small>
-                )}
-                {errors.employee_code && <span className="error-message">{errors.employee_code}</span>}
-              </div>
-
-              <div className="admin-form-group">
-                <label htmlFor="honorific">Honorific</label>
-                <select
-                  id="honorific"
-                  name="honorific"
-                  value={formData.honorific}
-                  onChange={handleInputChange}
-                >
-                  <option value="">Select Honorific</option>
-                  {honorifics.map(honorific => (
-                    <option key={honorific} value={honorific}>
-                      {honorific}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div className="admin-form-group admin-form-group-full">
-                <label htmlFor="full_name">Name *</label>
-                <input
-                  type="text"
-                  id="full_name"
-                  name="full_name"
-                  value={formData.full_name}
-                  onChange={handleInputChange}
-                  className={errors.full_name ? 'error' : ''}
-                  placeholder="Full Name"
-                />
-                {errors.full_name && <span className="error-message">{errors.full_name}</span>}
-              </div>
 
               <div className="admin-form-group">
                 <label htmlFor="email">Email *</label>
