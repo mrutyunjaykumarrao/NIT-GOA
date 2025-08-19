@@ -410,7 +410,9 @@
 
 .error500-message {
   font-size: 1.1rem;
+  font-weight: 500;
   margin-bottom: 32px;
+  margin-top: 10px;
   line-height: 1.6;
   color: #6b7280;
   max-width: 100%;
@@ -487,30 +489,31 @@
   border-color: #6b7280;
   color: #ffffff !important;
 }
-
+/* 
 .error500-btn-tertiary {
-  background: transparent;
-  color: #6b7280;
+  background: rgba(90, 184, 2246, 0.868);
+  color: #ffffff;
   border: 2px solid #e5e7eb;
 }
 
 .error500-btn-tertiary:hover {
-  background: #f9fafb;
-  color: #374151 !important;
+  background: rgba(90, 184, 2246, 0.868);
+  color: #ffffff !important;
   border-color: #d1d5db;
   transform: translateY(-1px);
 }
 
 [data-theme="dark"] .error500-btn-tertiary {
-  color: #9ca3af;
+  background: #ffffffee;
+  color: rgb(39, 147, 255);
   border-color: #4b5563;
 }
 
 [data-theme="dark"] .error500-btn-tertiary:hover {
   background: rgba(55, 65, 81, 0.5);
-  color: #f3f4f6 !important;
+  color: rgba(90, 184, 2246, 0.868)!important;
   border-color: #6b7280;
-}
+} */
 
 /* ============= ERROR 403 PAGE ============= */
 

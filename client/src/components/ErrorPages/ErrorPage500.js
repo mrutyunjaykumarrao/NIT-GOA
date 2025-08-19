@@ -57,15 +57,15 @@ const ErrorPage500 = () => {
             Please try again in a few moments.
           </p>
           <div className="error500-action-buttons">
-            <button onClick={handleRefresh} className="error500-btn error500-btn-primary">
-              <RefreshIcon />
-              Try Again
-            </button>
             <Link to="/" className="error500-btn error500-btn-secondary">
               <HomeIcon />
               Go Home
             </Link>
-            <button onClick={handleGoBack} className="error500-btn error500-btn-tertiary">
+            <button onClick={handleRefresh} className="error500-btn error500-btn-primary">
+              <RefreshIcon />
+              Try Again
+            </button>
+            <button onClick={handleGoBack} className="error500-btn error500-btn-secondary">
               <BackIcon />
               Go Back
             </button>
