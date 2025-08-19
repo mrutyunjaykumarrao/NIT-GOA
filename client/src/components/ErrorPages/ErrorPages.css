@@ -256,7 +256,7 @@
   .error404-visual-section {
     gap: 25px;
     padding: 10px;
-    flex-direction: column;
+    flex-direction: row;
     text-align: center;
   }
   
@@ -289,7 +289,7 @@
 
 @media (max-width: 360px) {
   .error404-visual-section {
-    flex-direction: column;
+    flex-direction: row;
     gap: 15px;
   }
   
