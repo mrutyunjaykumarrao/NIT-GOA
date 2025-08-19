@@ -29,31 +29,26 @@ const errorReducer = (state, action) => {
         error: action.payload,
         isLoading: false
       };
-    
     case ERROR_ACTIONS.CLEAR_ERROR:
       return {
         ...state,
         error: null
       };
-    
     case ERROR_ACTIONS.SET_LOADING:
       return {
         ...state,
         isLoading: action.payload
       };
-    
     case ERROR_ACTIONS.ADD_TOAST:
       return {
         ...state,
         toasts: [...state.toasts, action.payload]
       };
-    
     case ERROR_ACTIONS.REMOVE_TOAST:
       return {
         ...state,
         toasts: state.toasts.filter(toast => toast.id !== action.payload)
       };
-    
     default:
       return state;
   }
@@ -79,15 +74,14 @@ export const ErrorProvider = ({ children }) => {
   const addToast = useCallback((message, type = 'error', duration = 5000) => {
     const id = Date.now() + Math.random();
     const toast = { id, message, type, duration };
-    
     dispatch({ type: ERROR_ACTIONS.ADD_TOAST, payload: toast });
-    
+
     if (duration > 0) {
       setTimeout(() => {
         dispatch({ type: ERROR_ACTIONS.REMOVE_TOAST, payload: id });
       }, duration);
     }
-    
+
     return id;
   }, []);
 
@@ -97,22 +91,18 @@ export const ErrorProvider = ({ children }) => {
 
   const handleAsync = useCallback(async (asyncFunction, options = {}) => {
     const { showLoading = true, showToastOnError = false } = options;
-    
     try {
       if (showLoading) setLoading(true);
       clearError();
-      
       const result = await asyncFunction();
       return result;
     } catch (error) {
       const appError = error instanceof AppError ? error : AppError.fromHttpError(error);
-      
       if (showToastOnError) {
         addToast(appError.message, 'error');
       } else {
         setError(appError);
       }
-      
       throw appError;
     } finally {
       if (showLoading) setLoading(false);
@@ -149,7 +139,7 @@ export const useError = () => {
 export const withErrorHandler = (Component) => {
   return function WithErrorHandlerComponent(props) {
     const errorContext = useError();
-    return <Component {...props} errorHandler={errorContext} />;
+    return <Component {...props} errorContext={errorContext} />;
   };
 };
 

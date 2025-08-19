@@ -13,11 +13,15 @@ const NetworkError = () => {
     window.location.reload();
   };
 
+  const handleRetry = () => {
+    window.location.reload();
+  };
+
   return (
-    <div className="error-page">
-      <div className="error-container">
-        <div className="error-animation-section">
-          <div className="error-code-display">
+    <div className="error-network-page">
+      <div className="error-network-container">
+        <div className="error-network-animation-section">
+          <div className="error-network-code-display">
             <div className="error-network-icon">🌐</div>
             <div className="error-network-signal">
               <div className="error-network-signal-bar"></div>
@@ -28,33 +32,22 @@ const NetworkError = () => {
           </div>
         </div>
         
-        <div className="error-content-section">
-          <h1 className="error-content-title">Network Error</h1>
-          <p className="error-content-message">
-            Unable to connect to our servers. Please check your internet connection
-            and try again.
+        <div className="error-network-content-section">
+          <h1 className="error-network-title">Connection Error</h1>
+          <p className="error-network-message">
+            Unable to connect to our servers. Please check your internet connection and try again.
           </p>
           
-          <div className="error-action-buttons">
-            <button onClick={handleRefresh} className="error-btn error-btn-primary">
-              Try Again
+          <div className="error-network-action-buttons">
+            <button onClick={handleRetry} className="error-network-btn error-network-btn-primary">
+              🔄 Retry Connection
             </button>
-            <Link to="/" className="error-btn error-btn-secondary">
-              Go to Homepage
-            </Link>
-            <button onClick={handleGoBack} className="error-btn error-btn-tertiary">
-              Go Back
+            <button onClick={handleRefresh} className="error-network-btn error-network-btn-secondary">
+              ↻ Refresh Page
             </button>
-          </div>
-          
-          <div className="error-help-section">
-            <h3>Troubleshooting steps:</h3>
-            <ul>
-              <li>Check your internet connection</li>
-              <li>Refresh the page</li>
-              <li>Try again in a few minutes</li>
-              <li>Contact your network administrator</li>
-            </ul>
+            <button onClick={handleGoBack} className="error-network-btn error-network-btn-tertiary">
+              ← Go Back
+            </button>
           </div>
         </div>
       </div>

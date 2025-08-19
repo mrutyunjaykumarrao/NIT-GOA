@@ -5,7 +5,11 @@ import './ErrorPages.css';
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { hasError: false, error: null, errorInfo: null };
+    this.state = { 
+      hasError: false, 
+      error: null, 
+      errorInfo: null 
+    };
   }
 
   static getDerivedStateFromError(error) {
@@ -17,12 +21,8 @@ class ErrorBoundary extends React.Component {
       error: error,
       errorInfo: errorInfo
     });
-    
-    // Log error to console for debugging
+
     console.error('Error caught by boundary:', error, errorInfo);
-    
-    // You can also log the error to an error reporting service here
-    // logErrorToService(error, errorInfo);
   }
 
   handleRefresh = () => {
@@ -32,46 +32,54 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="error-page">
-          <div className="error-container">
-            <div className="error-animation-section">
-              <div className="error-code-display">
-                <div className="error-boundary-icon">⚠️</div>
-                <div className="error-boundary-circuit">
-                  <div className="error-boundary-circuit-line"></div>
-                  <div className="error-boundary-circuit-line"></div>
-                  <div className="error-boundary-circuit-node"></div>
-                  <div className="error-boundary-circuit-node"></div>
-                </div>
+        <div className="error-boundary-page">
+          <div className="error-boundary-container">
+            <div className="error-boundary-animation-section">
+              <div className="error-boundary-code-display">
+                <h1 className="error-boundary-number">⚠️</h1>
               </div>
             </div>
             
-            <div className="error-content-section">
-              <h1 className="error-content-title">Something Went Wrong</h1>
-              <p className="error-content-message">
-                An unexpected error occurred while rendering this page. 
-                Our team has been notified and is working to fix the issue.
+            <div className="error-boundary-content-section">
+              <h1 className="error-boundary-title">Something went wrong</h1>
+              <p className="error-boundary-message">
+                An unexpected error occurred while rendering this page. Our team has been 
+                notified and is working to fix the issue.
               </p>
               
-              <div className="error-action-buttons">
-                <button onClick={this.handleRefresh} className="error-btn error-btn-primary">
-                  Refresh Page
+              <div className="error-boundary-action-buttons">
+                <button 
+                  onClick={this.handleRefresh} 
+                  className="error-boundary-btn error-boundary-btn-primary"
+                >
+                  🔄 Refresh Page
                 </button>
-                <Link to="/" className="error-btn error-btn-secondary">
-                  Go to Homepage
+                <Link 
+                  to="/" 
+                  className="error-boundary-btn error-boundary-btn-secondary"
+                >
+                  🏠 Go Home
                 </Link>
               </div>
-              
+
               {process.env.NODE_ENV === 'development' && (
-                <details className="error-debug-details">
-                  <summary>Error Details (Development Only)</summary>
-                  <div className="error-debug-stack">
-                    <h4>Error:</h4>
-                    <pre>{this.state.error && this.state.error.toString()}</pre>
-                    <h4>Component Stack:</h4>
-                    <pre>{this.state.errorInfo.componentStack}</pre>
-                  </div>
-                </details>
+                <div className="error-boundary-development-details">
+                  <details>
+                    <summary className="error-boundary-details-summary">
+                      View Error Details (Development)
+                    </summary>
+                    <div className="error-boundary-details-stack">
+                      <h3 className="error-boundary-details-heading">Error:</h3>
+                      <pre className="error-boundary-details-code">
+                        {this.state.error && this.state.error.toString()}
+                      </pre>
+                      <h3 className="error-boundary-details-heading">Component Stack:</h3>
+                      <pre className="error-boundary-details-code">
+                        {this.state.errorInfo.componentStack}
+                      </pre>
+                    </div>
+                  </details>
+                </div>
               )}
             </div>
           </div>
