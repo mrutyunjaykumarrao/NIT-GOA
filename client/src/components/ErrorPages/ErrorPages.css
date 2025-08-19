@@ -1,5 +1,4 @@
 /* Error Pages Styles - Centered Single Column Design with Proper Animation Positioning */
-
 /* ============= ERROR 404 PAGE ============= */
 
 .error404-page {
@@ -9,7 +8,7 @@
   justify-content: center;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   position: relative;
-  padding: 40px 20px;
+  padding: 0px;
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
 }
 
@@ -24,147 +23,103 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 40px 20px;
+  padding: 40px 0px 80px 0px;
   position: relative;
   z-index: 1;
 }
 
-.error404-animation-section {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 40px;
-  height: auto;
-  position: relative;
-  min-height: 150px;
-}
-
-.error404-code-display {
-  position: relative;
+.error404-visual-section {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 50px;
+  margin: 20px auto 0px auto;
+  padding: 20px;
+  max-width: 100%;
+  width: 100%;
+  position: relative;
 }
 
-.error404-number {
-  font-size: 120px;
+/* SVG Icon Container & SVG */
+.error404-icon-container {
+  position: relative;
+  animation: error404Pulse 4s ease-in-out infinite;
+  transform: scale(2.0);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+}
+
+.error404-broken-link-svg {
+  width: 60px;
+  height: 60px;
+  --svg-fill-color: #1e293b; /* Light mode color */
+  transition: color 0.3s ease, filter 0.3s ease;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+[data-theme="dark"] .error404-broken-link-svg {
+  --svg-fill-color: #ffffff; /* Dark mode color */
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+
+/* Error number display */
+.error404-number-display {
+  font-size: 140px;
   font-weight: 900;
   margin: 0;
-  line-height: 1;
+  line-height: 0.85;
   letter-spacing: -4px;
-  position: relative;
-  z-index: 2;
   color: #1e293b;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
 }
 
-[data-theme="dark"] .error404-number {
+[data-theme="dark"] .error404-number-display {
   color: #f1f5f9;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.error404-planet {
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, #ef4444, #dc2626);
-  border-radius: 50%;
-  position: absolute;
-  top: 10px;
-  right: -60px;
-  animation: error404Float 4s ease-in-out infinite;
-  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);
-  z-index: 1;
+.error404-title-section {
+  margin-bottom: 20px;
 }
 
-.error404-planet::before {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  border: 2px solid rgba(239, 68, 68, 0.3);
-  border-radius: 50%;
-  animation: error404Rotate 12s linear infinite;
-}
-
-.error404-astronaut {
-  position: absolute;
-  top: 30px;
-  left: -60px;
-  animation: error404Drift 6s ease-in-out infinite;
-  z-index: 3;
-}
-
-.error404-astronaut-body {
-  width: 20px;
-  height: 28px;
-  border-radius: 10px;
-  position: relative;
-  border: 2px solid #cbd5e1;
-  background: #f8fafc;
-}
-
-[data-theme="dark"] .error404-astronaut-body {
-  background: #334155;
-  border-color: #475569;
-}
-
-.error404-astronaut-helmet {
-  width: 24px;
-  height: 24px;
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-  border-radius: 50%;
-  position: absolute;
-  top: -18px;
-  left: -2px;
-  border: 2px solid #cbd5e1;
-  box-shadow: 0 2px 12px rgba(59, 130, 246, 0.3);
-}
-
-[data-theme="dark"] .error404-astronaut-helmet {
-  border-color: #475569;
-}
-
-.error404-astronaut-helmet::after {
-  content: '';
-  width: 12px;
-  height: 12px;
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 50%;
-  position: absolute;
-  top: 4px;
-  left: 4px;
-}
-
-.error404-content-section {
-  text-align: center;
-  width: 100%;
-}
-
-.error404-title {
+.error404-main-title {
   font-size: 3rem;
   font-weight: 800;
-  margin-bottom: 16px;
+  margin: 0;
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: #1f2937;
 }
 
-[data-theme="dark"] .error404-title {
+[data-theme="dark"] .error404-main-title {
   color: #f9fafb;
 }
 
-.error404-message {
+.error404-content-section {
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.error404-description-message {
   font-size: 1.1rem;
   margin-bottom: 32px;
   line-height: 1.6;
   color: #6b7280;
-  max-width: fit-content;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
 
-[data-theme="dark"] .error404-message {
+[data-theme="dark"] .error404-description-message {
   color: #d1d5db;
 }
 
@@ -246,6 +201,110 @@
 [data-theme="dark"] .error404-btn-tertiary:hover {
   background: rgba(55, 65, 81, 0.5);
   color: #f3f4f6;
+}
+
+/* Icon pulse animation */
+@keyframes error404Pulse {
+  0%, 100% {
+    transform: scale(2.0);
+  }
+  50% {
+    transform: scale(2.2);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .error404-visual-section {
+    gap: 35px;
+    padding: 15px;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .error404-number-display {
+    font-size: 110px;
+  }
+  
+  .error404-main-title {
+    font-size: 2.5rem;
+  }
+  
+  .error404-icon-container {
+    transform: scale(1.4);
+    width: 50px;
+    height: 50px;
+  }
+  
+  .error404-broken-link-svg {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .error404-action-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .error404-btn {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .error404-visual-section {
+    gap: 25px;
+    padding: 10px;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .error404-number-display {
+    font-size: 90px;
+    order: 2;
+  }
+  
+  .error404-icon-container {
+    transform: scale(1.1);
+    order: 1;
+    margin-bottom: 10px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .error404-broken-link-svg {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .error404-main-title {
+    font-size: 2rem;
+  }
+  
+  .error404-description-message {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .error404-visual-section {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .error404-number-display {
+    font-size: 80px;
+  }
+  
+  .error404-icon-container {
+    transform: scale(1);
+  }
+  
+  .error404-broken-link-svg {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 /* ============= ERROR 500 PAGE ============= */
