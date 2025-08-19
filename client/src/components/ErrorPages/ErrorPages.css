@@ -278,7 +278,7 @@
 .error500-animation-section {
   display: flex;
   justify-content: center;
-  margin-bottom: 40px;
+  margin-bottom: 12px;
   height: auto;
   position: relative;
   min-height: 150px;
@@ -349,8 +349,8 @@
 
 .error500-sparks {
   position: absolute;
-  top: -10px;
-  left: 50%;
+  top: 45px;
+  left: 45%;
   transform: translateX(-50%);
 }
 
@@ -1396,4 +1396,67 @@
   .error-boundary-btn-secondary {
     border-width: 3px;
   }
+}
+
+/* ============= TARGETED FIXES - ADD TO END OF FILE ============= */
+
+/* Better positioning for existing animations */
+.error404-planet {
+  top: 20px !important;
+  right: -70px !important;
+}
+
+.error404-astronaut {
+  top: 40px !important;
+  left: -70px !important;
+}
+
+.error500-server {
+  top: 90px !important; 
+  right: -130px !important; 
+  scale: 3;
+}
+
+.error403-lock {
+  top: 20px !important;
+  right: -75px !important;
+}
+
+/* SVG Icons for Buttons */
+.btn-icon-svg {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+/* Better button hover states */
+.error404-btn:hover,
+.error500-btn:hover,
+.error403-btn:hover {
+  color: white !important;
+}
+
+.error404-btn-secondary:hover,
+.error500-btn-secondary:hover,
+.error403-btn-secondary:hover {
+  color: #1f2937 !important;
+}
+
+[data-theme="dark"] .error404-btn-secondary:hover,
+[data-theme="dark"] .error500-btn-secondary:hover,
+[data-theme="dark"] .error403-btn-secondary:hover {
+  color: #ffffff !important;
+}
+
+.error404-btn-tertiary:hover,
+.error500-btn-tertiary:hover,
+.error403-btn-tertiary:hover {
+  color: #374151 !important;
+}
+
+[data-theme="dark"] .error404-btn-tertiary:hover,
+[data-theme="dark"] .error500-btn-tertiary:hover,
+[data-theme="dark"] .error403-btn-tertiary:hover {
+  color: #f3f4f6 !important;
 }
