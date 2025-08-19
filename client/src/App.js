@@ -35,8 +35,6 @@ import GIAN from './Views//GIAN/GIAN';
 import BTechJosaa from './Views/Admission-Section/BTech/BTechJosaa';
 import BTechDasa from './Views/Admission-Section/BTech/BTechDasa';
 
-// Test component for ErrorBoundary
-import TestErrorComponent from './components/TestErrorComponent';
 import BTechFacilities from './Views/Admission-Section/BTech/BTechFacilities';
 import BTechStrengths from './Views/Admission-Section/BTech/BTechStrengths';
 import MTech from './Views/Admission-Section/MTech';
@@ -235,12 +233,6 @@ function AppContent() {
         <Route path="/error/500" element={<ErrorPage500 />} />
         <Route path="/error/network" element={<NetworkError />} />
         
-        {/* TEST ERROR BOUNDARY - wrapped in ErrorBoundary */}
-        <Route path="/error/boundary" element={
-          <ErrorBoundary>
-            <TestErrorComponent />
-          </ErrorBoundary>
-        } />
 
         
         {/* 404 CATCH-ALL ROUTE - Must be last */}
