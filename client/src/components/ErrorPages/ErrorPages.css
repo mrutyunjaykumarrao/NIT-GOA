@@ -1084,11 +1084,11 @@
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   position: relative;
   padding: 40px 20px;
-  background: linear-gradient(135deg, #fefce8 0%, #fef3c7 50%, #fefce8 100%);
+  background: linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 50%, #F9FAFB 100%);
 }
 
 [data-theme="dark"] .error-boundary-page {
-  background: linear-gradient(135deg, #1c1917 0%, #292524 50%, #1c1917 100%);
+  background: linear-gradient(135deg, #1C1917 0%, #292524 50%, #1C1917 100%);
 }
 
 .error-boundary-container {
@@ -1106,7 +1106,7 @@
 .error-boundary-animation-section {
   display: flex;
   justify-content: center;
-  margin-bottom: 40px;
+  margin-bottom: 0px;
   height: auto;
   position: relative;
   min-height: 120px;
@@ -1119,6 +1119,22 @@
   justify-content: center;
 }
 
+.error-boundary-warning-svg {
+  color: #DC2626;
+  filter: drop-shadow(0 2px 4px rgba(220, 38, 38, 0.3));
+  animation: errorBoundaryPulse 3s ease-in-out infinite;
+}
+
+[data-theme="dark"] .error-boundary-warning-svg {
+  color: #F87171;
+  filter: drop-shadow(0 2px 4px rgba(248, 113, 113, 0.4));
+}
+
+@keyframes errorBoundaryPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
+
 .error-boundary-number {
   font-size: 80px;
   font-weight: 900;
@@ -1126,13 +1142,13 @@
   line-height: 1;
   position: relative;
   z-index: 2;
-  color: #f59e0b;
-  text-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+  color: #DC2626;
+  text-shadow: 0 2px 4px rgba(220, 38, 38, 0.2);
 }
 
 [data-theme="dark"] .error-boundary-number {
-  color: #fbbf24;
-  text-shadow: 0 2px 4px rgba(245, 158, 11, 0.4);
+  color: #F87171;
+  text-shadow: 0 2px 4px rgba(248, 113, 113, 0.4);
 }
 
 .error-boundary-content-section {
@@ -1146,25 +1162,26 @@
   margin-bottom: 16px;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  color: #f59e0b;
+  color: #991B1B;
 }
 
 [data-theme="dark"] .error-boundary-title {
-  color: #fbbf24;
+  color: #FCA5A5;
 }
+
 
 .error-boundary-message {
   font-size: 1.1rem;
   margin-bottom: 32px;
   line-height: 1.6;
-  color: #6b7280;
+  color: #4B5563;
   max-width: fit-content;
   margin-left: auto;
   margin-right: auto;
 }
 
 [data-theme="dark"] .error-boundary-message {
-  color: #d1d5db;
+  color: #D1D5DB;
 }
 
 .error-boundary-action-buttons {
@@ -1193,15 +1210,15 @@
 }
 
 .error-boundary-btn-primary {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
+  background: linear-gradient(135deg, #DC2626, #B91C1C);
   color: white;
-  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.25);
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.25);
 }
 
 .error-boundary-btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
-  background: linear-gradient(135deg, #d97706, #b45309);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
+  background: linear-gradient(135deg, #B91C1C, #991B1B);
 }
 
 .error-boundary-btn-secondary {
@@ -1231,68 +1248,157 @@
   margin-top: 24px;
   text-align: left;
   border-radius: 12px;
-  border: 1px solid #e2e8f0;
-  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
   max-width: 100%;
   overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="dark"] .error-boundary-development-details {
   background: #1e293b;
   border-color: #334155;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .error-boundary-details-summary {
-  padding: 16px;
+  padding: 18px;
   cursor: pointer;
   border-radius: 12px 12px 0 0;
   font-weight: 600;
-  font-size: 0.95rem;
-  transition: background-color 0.2s ease;
-  background: #f1f5f9;
-  color: #475569;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  background: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%);
+  color: #991B1B;
+  border-bottom: 1px solid #FCA5A5;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.error-boundary-details-summary:before {
+  content: "";
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23991B1B'%3E%3Cpath d='M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z'/%3E%3C/svg%3E");
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.2s ease;
+}
+
+.error-boundary-details-summary:after {
+  font-size: 1.1em;
+  opacity: 0.8;
+  margin-right: auto;
 }
 
 .error-boundary-details-summary:hover {
-  background: #e2e8f0;
+  background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%);
+  color: #7F1D1D;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.1);
+}
+
+.error-boundary-details-summary:hover:before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%237F1D1D'%3E%3Cpath d='M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z'/%3E%3C/svg%3E");
+}
+
+/* When details is open, show minus icon */
+details[open] .error-boundary-details-summary:before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23991B1B'%3E%3Cpath d='M19 13H5v-2h14v2z'/%3E%3C/svg%3E");
+  transform: translateY(-50%) rotate(0deg);
+}
+
+details[open] .error-boundary-details-summary:hover:before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%237F1D1D'%3E%3Cpath d='M19 13H5v-2h14v2z'/%3E%3C/svg%3E");
 }
 
 [data-theme="dark"] .error-boundary-details-summary {
-  background: #334155;
-  color: #cbd5e1;
+  background: #334155; 
+  color: #cbd5e1; 
+  border-bottom-color: #475569;
+}
+
+[data-theme="dark"] .error-boundary-details-summary:before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23cbd5e1'%3E%3Cpath d='M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z'/%3E%3C/svg%3E");
 }
 
 [data-theme="dark"] .error-boundary-details-summary:hover {
-  background: #475569;
+  background: #475569; 
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .error-boundary-details-summary:hover:before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e2e8f0'%3E%3Cpath d='M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] details[open] .error-boundary-details-summary:before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23cbd5e1'%3E%3Cpath d='M19 13H5v-2h14v2z'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] details[open] .error-boundary-details-summary:hover:before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e2e8f0'%3E%3Cpath d='M19 13H5v-2h14v2z'/%3E%3C/svg%3E");
 }
 
 .error-boundary-details-stack {
-  padding: 16px;
+  padding: 20px;
+  background: #F8FAFC;
+  border-top: 1px solid #E5E7EB;
+}
+
+[data-theme="dark"] .error-boundary-details-stack {
+  background: #1e293b;
+  border-top-color: #475569;
 }
 
 .error-boundary-details-heading {
-  margin-bottom: 8px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #475569;
+  margin-bottom: 12px;
+  margin-top: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #DC2626;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid #FEE2E2;
+  padding-bottom: 6px;
+}
+
+.error-boundary-details-heading:first-child {
+  margin-top: 0;
 }
 
 [data-theme="dark"] .error-boundary-details-heading {
   color: #cbd5e1;
+  border-bottom-color: #475569;
 }
 
 .error-boundary-details-code {
-  background: #1e293b;
-  color: #10b981;
-  padding: 12px;
-  border-radius: 8px;
-  overflow-x: auto;
-  font-size: 0.8rem;
-  line-height: 1.5;
-  margin-bottom: 16px;
-  border: 1px solid #334155;
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-  white-space: pre-wrap;
+    background:#fff8f8;
+    color: #298e6d;
+    padding: 16px;
+    text-align: left;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    border: 1px solid #ffffff;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    white-space: pre-wrap;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .error-boundary-details-code {
+    background: #1e293b;
+    color: #10b981;
+    border-color: #334155;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* ============= KEYFRAME ANIMATIONS ============= */
@@ -1570,6 +1676,12 @@
   .error-network-signal {
     right: -35px;
   }
+}
+
+@media (max-width: 390px) {
+    .error-boundary-details-summary {
+        font-size: 0.9rem;
+    }
 }
 
 /* Reduced motion support */
