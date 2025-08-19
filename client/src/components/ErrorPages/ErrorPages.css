@@ -1,6 +1,7 @@
 /* Error Pages Styles - Centered Single Column Design with Proper Animation Positioning */
 
 /* ============= ERROR 404 PAGE ============= */
+
 .error404-page {
   width: 100%;
   display: flex;
@@ -248,6 +249,7 @@
 }
 
 /* ============= ERROR 500 PAGE ============= */
+
 .error500-page {
   width: 100%;
   display: flex;
@@ -255,7 +257,7 @@
   justify-content: center;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   position: relative;
-  padding: 40px 20px;
+  padding: 0px;
   background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 50%, #fef2f2 100%);
 }
 
@@ -270,53 +272,73 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 40px 20px;
+  padding: 40px 0px 80px 0px;
   position: relative;
   z-index: 1;
 }
 
-.error500-animation-section {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 12px;
-  height: auto;
-  position: relative;
-  min-height: 150px;
-}
+/* ============= HORIZONTAL LAYOUT SECTION ============= */
 
-.error500-code-display {
-  position: relative;
+.error500-horizontal-section {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 60px;
+  margin: 20px auto 0px auto;
+  max-width: 100%;
+  width: 100%;
+  padding: 20px;
 }
 
-.error500-number {
-  font-size: 120px;
+.error500-text-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.error500-number-horizontal {
+  font-size: 130px;
   font-weight: 900;
   margin: 0;
-  line-height: 1;
+  line-height: 0.9;
   letter-spacing: -4px;
-  position: relative;
-  z-index: 2;
   color: #dc2626;
   text-shadow: 0 2px 4px rgba(220, 38, 38, 0.2);
 }
 
-[data-theme="dark"] .error500-number {
+[data-theme="dark"] .error500-number-horizontal {
   color: #fca5a5;
   text-shadow: 0 2px 4px rgba(220, 38, 38, 0.4);
 }
 
-.error500-server {
-  position: absolute;
-  top: 0;
-  right: -70px;
-  z-index: 1;
-  animation: error500ServerShake 3s ease-in-out infinite;
+.error500-title-horizontal {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #dc2626;
+  margin-top: -12px;
 }
 
-.error500-server-rack {
+[data-theme="dark"] .error500-title-horizontal {
+  color: #fca5a5;
+}
+
+/* ============= SERVER COMPONENT ============= */
+
+.error500-server-large {
+  position: relative;
+  animation: error500ServerShake 3s ease-in-out infinite;
+  scale: 2.7;
+  flex-shrink: 0;
+  margin: 0 20px;
+}
+
+.error500-server-rack-large {
   width: 40px;
   height: 56px;
   background: #374151;
@@ -325,8 +347,8 @@
   box-shadow: 0 4px 16px rgba(55, 65, 81, 0.4);
 }
 
-.error500-server-rack::before,
-.error500-server-rack::after {
+.error500-server-rack-large::before,
+.error500-server-rack-large::after {
   content: '';
   position: absolute;
   left: 6px;
@@ -335,19 +357,19 @@
   border-radius: 2px;
 }
 
-.error500-server-rack::before {
+.error500-server-rack-large::before {
   top: 14px;
   background: #10b981;
   animation: error500ServerBlink 2s ease-in-out infinite;
 }
 
-.error500-server-rack::after {
+.error500-server-rack-large::after {
   top: 24px;
   background: #ef4444;
   animation: error500ServerBlink 2s ease-in-out infinite 1s;
 }
 
-.error500-sparks {
+.error500-sparks-large {
   position: absolute;
   top: 45px;
   left: 45%;
@@ -363,26 +385,27 @@
   animation: error500Sparkle 2.5s ease-in-out infinite;
 }
 
-.error500-spark:nth-child(1) { left: -10px; animation-delay: 0s; }
-.error500-spark:nth-child(2) { left: 0px; animation-delay: 0.8s; }
-.error500-spark:nth-child(3) { left: 10px; animation-delay: 1.6s; }
+.error500-spark:nth-child(1) { 
+  left: -10px; 
+  animation-delay: 0s; 
+}
+
+.error500-spark:nth-child(2) { 
+  left: 0px; 
+  animation-delay: 0.8s; 
+}
+
+.error500-spark:nth-child(3) { 
+  left: 10px; 
+  animation-delay: 1.6s; 
+}
+
+/* ============= CONTENT SECTION ============= */
 
 .error500-content-section {
   text-align: center;
   width: 100%;
-}
-
-.error500-title {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 16px;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  color: #dc2626;
-}
-
-[data-theme="dark"] .error500-title {
-  color: #fca5a5;
+  max-width: 600px;
 }
 
 .error500-message {
@@ -390,7 +413,7 @@
   margin-bottom: 32px;
   line-height: 1.6;
   color: #6b7280;
-  max-width: fit-content;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -398,6 +421,8 @@
 [data-theme="dark"] .error500-message {
   color: #d1d5db;
 }
+
+/* ============= ACTION BUTTONS ============= */
 
 .error500-action-buttons {
   display: flex;
@@ -414,59 +439,66 @@
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   min-width: 140px;
   justify-content: center;
   letter-spacing: 0.025em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .error500-btn-primary {
   background: linear-gradient(135deg, #dc2626, #b91c1c);
   color: white;
   box-shadow: 0 2px 8px rgba(220, 38, 38, 0.25);
+  border: 2px solid transparent;
 }
 
 .error500-btn-primary:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
   background: linear-gradient(135deg, #b91c1c, #991b1b);
+  color: white !important;
 }
 
 .error500-btn-secondary {
-  background: #f3f4f6;
+  background: white;
   color: #374151;
   border: 2px solid #e5e7eb;
 }
 
 .error500-btn-secondary:hover {
-  background: #e5e7eb;
+  background: #f9fafb;
   border-color: #d1d5db;
   transform: translateY(-1px);
+  color: #1f2937 !important;
 }
 
 [data-theme="dark"] .error500-btn-secondary {
   background: #374151;
-  color: #f3f4f6;
+  color: #f9fafb;
   border-color: #4b5563;
 }
 
 [data-theme="dark"] .error500-btn-secondary:hover {
   background: #4b5563;
   border-color: #6b7280;
+  color: #ffffff !important;
 }
 
 .error500-btn-tertiary {
   background: transparent;
-  border: 2px solid #e5e7eb;
   color: #6b7280;
+  border: 2px solid #e5e7eb;
 }
 
 .error500-btn-tertiary:hover {
   background: #f9fafb;
-  color: #374151;
+  color: #374151 !important;
+  border-color: #d1d5db;
+  transform: translateY(-1px);
 }
 
 [data-theme="dark"] .error500-btn-tertiary {
@@ -476,12 +508,13 @@
 
 [data-theme="dark"] .error500-btn-tertiary:hover {
   background: rgba(55, 65, 81, 0.5);
-  color: #f3f4f6;
+  color: #f3f4f6 !important;
+  border-color: #6b7280;
 }
 
 /* ============= ERROR 403 PAGE ============= */
+
 .error403-page {
-  
   width: 100%;
   display: flex;
   align-items: center;
@@ -705,8 +738,8 @@
 }
 
 /* ============= NETWORK ERROR PAGE ============= */
+
 .error-network-page {
-  
   width: 100%;
   display: flex;
   align-items: center;
@@ -909,6 +942,7 @@
 }
 
 /* ============= ERROR BOUNDARY PAGE ============= */
+
 .error-boundary-page {
   width: 100%;
   display: flex;
@@ -1129,6 +1163,7 @@
 }
 
 /* ============= KEYFRAME ANIMATIONS ============= */
+
 @keyframes error404Float {
   0%, 100% {
     transform: translateY(0px) rotate(0deg);
@@ -1227,6 +1262,16 @@
 }
 
 /* ============= RESPONSIVE DESIGN ============= */
+@media (max-width: 1024px) {
+  .error500-horizontal-section {
+    gap: 60px;
+  }
+  
+  .error500-server-large {
+    transform: scale(2.1);
+  }
+}
+
 @media (max-width: 768px) {
   .error404-container,
   .error500-container,
@@ -1237,7 +1282,6 @@
   }
 
   .error404-number,
-  .error500-number,
   .error403-number {
     font-size: 100px;
   }
@@ -1247,7 +1291,6 @@
   }
 
   .error404-title,
-  .error500-title,
   .error403-title,
   .error-network-title,
   .error-boundary-title {
@@ -1255,7 +1298,6 @@
   }
 
   .error404-message,
-  .error500-message,
   .error403-message,
   .error-network-message,
   .error-boundary-message {
@@ -1263,7 +1305,6 @@
   }
 
   .error404-action-buttons,
-  .error500-action-buttons,
   .error403-action-buttons,
   .error-network-action-buttons,
   .error-boundary-action-buttons {
@@ -1272,10 +1313,41 @@
   }
 
   .error404-btn,
-  .error500-btn,
   .error403-btn,
   .error-network-btn,
   .error-boundary-btn {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  /* Error 500 responsive */
+  .error500-horizontal-section {
+    flex-direction: row;
+    gap: 40px;
+    text-align: center;
+    padding: 20px 10px;
+  }
+  
+  .error500-number-horizontal {
+    font-size: 100px;
+  }
+  
+  .error500-title-horizontal {
+    font-size: 2.2rem;
+    margin-top: -8px;
+  }
+  
+  .error500-server-large {
+    scale: 2;
+    margin: 0;
+  }
+  
+  .error500-action-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .error500-btn {
     width: 100%;
     max-width: 280px;
   }
@@ -1289,10 +1361,6 @@
 
   .error404-astronaut {
     left: -45px;
-  }
-
-  .error500-server {
-    right: -55px;
   }
 
   .error403-lock {
@@ -1314,7 +1382,6 @@
   }
 
   .error404-number,
-  .error500-number,
   .error403-number {
     font-size: 80px;
   }
@@ -1324,11 +1391,32 @@
   }
 
   .error404-title,
-  .error500-title,
   .error403-title,
   .error-network-title,
   .error-boundary-title {
     font-size: 2rem;
+  }
+
+  /* Error 500 mobile */
+  .error500-horizontal-section {
+    gap: 30px;
+    padding: 10px;
+  }
+
+.error500-number-horizontal {
+    font-size: 3rem !important;
+}
+
+  .error500-title-horizontal .h2 {
+    font-size: 1.8rem;
+  }
+  
+  .error500-server-large {
+    scale: 1.2;
+  }
+  
+  .error500-message {
+    font-size: 1rem;
   }
 
   /* Further adjust animation positions for very small screens */
@@ -1340,10 +1428,6 @@
 
   .error404-astronaut {
     left: -35px;
-  }
-
-  .error500-server {
-    right: -45px;
   }
 
   .error403-lock {
@@ -1359,10 +1443,10 @@
 @media (prefers-reduced-motion: reduce) {
   .error404-planet,
   .error404-astronaut,
-  .error500-server-rack::before,
-  .error500-server-rack::after,
+  .error500-server-large,
+  .error500-server-rack-large::before,
+  .error500-server-rack-large::after,
   .error500-spark,
-  .error500-server,
   .error403-lock,
   .error-network-icon,
   .error-network-signal-bar {
@@ -1398,7 +1482,7 @@
   }
 }
 
-/* ============= TARGETED FIXES - ADD TO END OF FILE ============= */
+/* ============= TARGETED FIXES ============= */
 
 /* Better positioning for existing animations */
 .error404-planet {
@@ -1409,12 +1493,6 @@
 .error404-astronaut {
   top: 40px !important;
   left: -70px !important;
-}
-
-.error500-server {
-  top: 90px !important; 
-  right: -130px !important; 
-  scale: 3;
 }
 
 .error403-lock {
