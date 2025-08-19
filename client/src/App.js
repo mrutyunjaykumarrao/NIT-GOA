@@ -3,11 +3,16 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { AuthProvider } from './contexts/AuthContext';
+import { ErrorProvider } from './contexts/ErrorContext';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
+import Toast from './components/Toast/Toast';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import RoleBasedRoute from './components/ProtectedRoute/RoleBasedRoute';
 import PublicRoute from './components/ProtectedRoute/PublicRoute';
+
+// Error Pages
+import { ErrorBoundary, ErrorPage404, ErrorPage403, ErrorPage500, NetworkError } from './components/ErrorPages';
 
 // Auth components
 import LoginWrapper from './Views/Auth/LoginWrapper';
@@ -78,11 +83,16 @@ import PermissionsExample from './Views/PermissionsExample/PermissionsExample';
 
 function App() {
   return (
-    <ThemeProvider>
-      <AuthProvider>
-        <AppContent />
-      </AuthProvider>
-    </ThemeProvider>
+    <ErrorBoundary>
+      <ThemeProvider>
+        <AuthProvider>
+          <ErrorProvider>
+            <AppContent />
+            <Toast />
+          </ErrorProvider>
+        </AuthProvider>
+      </ThemeProvider>
+    </ErrorBoundary>
   );
 }
 
@@ -216,11 +226,17 @@ function AppContent() {
         <Route path="/tenders" element={<PublicRoute><Tenders /></PublicRoute>} />
         <Route path="/outreach-activities" element={<PublicRoute><OutreachActivities /></PublicRoute>} />
         
+        {/* ERROR PAGES */}
+        <Route path="/error/404" element={<ErrorPage404 />} />
+        <Route path="/error/403" element={<ErrorPage403 />} />
+        <Route path="/error/500" element={<ErrorPage500 />} />
+        <Route path="/error/network" element={<NetworkError />} />
+        
         {/* TESTING ROUTE - Remove this in production */}
         <Route path="/permissions-test" element={<PublicRoute><PermissionsExample /></PublicRoute>} />
         
-        {/* DEFAULT ROUTE */}
-        <Route path="*" element={<PublicRoute><HomePage /></PublicRoute>} />
+        {/* 404 CATCH-ALL ROUTE - Must be last */}
+        <Route path="*" element={<ErrorPage404 />} />
       </Routes>
       {!shouldHideNavAndFooter && <Footer />}
     </div>
