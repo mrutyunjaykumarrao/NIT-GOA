@@ -83,6 +83,7 @@ app.use('/api/faculty-profiles', require('./src/routes/facultyProfiles'));
 app.use('/api/faculty-details', require('./src/routes/facultyDetails'));
 app.use('/api/faculty-edit', require('./src/routes/facultyEdit'));
 app.use('/api/admin', require('./src/routes/admin'));
+app.use('/api/analytics', require('./src/routes/analytics'));
 
 // Currently used routes
 app.use('/api/staff', require('./src/routes/staff'));

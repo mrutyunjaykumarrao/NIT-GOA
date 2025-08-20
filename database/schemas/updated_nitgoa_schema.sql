@@ -383,3 +383,80 @@ INSERT INTO designations (designation_title, designation_level) VALUES
 ('Technical Officer', 3),
 ('Lab Assistant', 2),
 ('System Administrator', 4);
+
+-- =================================================================
+-- Section 8: Site Analytics & Tracking Tables
+-- Tables for visitor tracking and content update monitoring
+-- =================================================================
+
+-- Visitor tracking and analytics for admin dashboard
+CREATE TABLE site_analytics (
+    analytics_id INT PRIMARY KEY AUTO_INCREMENT,
+    
+    -- Basic Visitor Tracking
+    total_visitors BIGINT DEFAULT 0,          -- All-time unique visitors
+    total_page_views BIGINT DEFAULT 0,        -- All-time page views
+    daily_visitors INT DEFAULT 0,             -- Today's unique visitors
+    daily_page_views INT DEFAULT 0,           -- Today's page views
+    
+    -- Simple Device Tracking (for admin dashboard)
+    desktop_visits INT DEFAULT 0,
+    mobile_visits INT DEFAULT 0,
+    
+    -- Date tracking
+    date_recorded DATE NOT NULL,
+    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    UNIQUE KEY unique_date (date_recorded),
+    INDEX idx_date_recorded (date_recorded)
+);
+
+-- Content updates tracking for "last updated" display
+CREATE TABLE content_updates (
+    update_id INT PRIMARY KEY AUTO_INCREMENT,
+    
+    -- What was updated
+    content_type ENUM('faculty', 'announcement', 'academics', 'administration', 'general') NOT NULL,
+    update_description VARCHAR(500) NOT NULL,  -- Simple description like "Faculty profile updated", "New announcement added"
+    
+    -- When and who
+    updated_by VARCHAR(100),                   -- Username or "System"
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    -- For display purposes
+    is_major_update BOOLEAN DEFAULT FALSE,     -- Whether to show in "last updated" footer
+    
+    INDEX idx_major_updates (is_major_update, updated_at),
+    INDEX idx_content_type (content_type),
+    INDEX idx_updated_at (updated_at)
+);
+
+-- Initialize site analytics with current date
+INSERT INTO site_analytics (
+    date_recorded, 
+    total_visitors, 
+    daily_visitors, 
+    desktop_visits, 
+    mobile_visits
+) VALUES (
+    CURDATE(), 
+    1248567,  -- Starting with current simulated count
+    0, 
+    0, 
+    0
+);
+
+-- Initialize with a sample content update
+INSERT INTO content_updates (
+    content_type, 
+    update_description, 
+    updated_by, 
+    is_major_update,
+    updated_at
+) VALUES (
+    'general', 
+    'Website analytics system initialized', 
+    'System', 
+    TRUE,
+    NOW()
+);

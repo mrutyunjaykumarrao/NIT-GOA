@@ -6,67 +6,98 @@ const Footer = () => {
   const [visitorCount, setVisitorCount] = useState(0);
   const [animateCounter, setAnimateCounter] = useState(false);
   const [lastUpdated, setLastUpdated] = useState(new Date());
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  // Initialize visitor counter from localStorage or set default
+  // Track visitor and fetch real analytics data
   useEffect(() => {
-    const initializeVisitorCounter = () => {
-      const storedCount = localStorage.getItem('nitgoa_visitor_count');
-      const storedDate = localStorage.getItem('nitgoa_last_visit');
-      const sessionId = sessionStorage.getItem('nitgoa_session_id');
-      const today = new Date().toDateString();
+    const initializeAnalytics = async () => {
+      try {
+        // Check if this is a new session
+        const sessionId = sessionStorage.getItem('nitgoa_session_id');
+        const isNewSession = !sessionId;
+        
+        if (isNewSession) {
+          // Generate unique session ID
+          const newSessionId = Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+          sessionStorage.setItem('nitgoa_session_id', newSessionId);
+          
+          // Detect device type
+          const deviceType = window.innerWidth <= 768 ? 'mobile' : 'desktop';
+          
+          // Track this visit
+          await fetch('/api/analytics/track-visit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              device: deviceType,
+              page: window.location.pathname,
+              userAgent: navigator.userAgent
+            })
+          });
+        }
 
-      // Check if this is a new session
-      if (!sessionId) {
-        // Generate unique session ID
-        const newSessionId = Date.now() + '-' + Math.random().toString(36).substr(2, 9);
-        sessionStorage.setItem('nitgoa_session_id', newSessionId);
-        
-        // Increment visitor count for new session
-        const baseCount = storedCount ? parseInt(storedCount) : 1248157;
-        const newCount = baseCount + 1;
-        
-        setVisitorCount(newCount);
-        localStorage.setItem('nitgoa_visitor_count', newCount.toString());
-        localStorage.setItem('nitgoa_last_visit', today);
-        
-        // Animate the counter on new session
-        setTimeout(() => {
-          setAnimateCounter(true);
-          setTimeout(() => setAnimateCounter(false), 1000);
-        }, 800);
-      } else {
-        // Existing session - just display current count
-        const currentCount = storedCount ? parseInt(storedCount) : 1248157;
-        setVisitorCount(currentCount);
+        // Fetch current footer stats
+        const response = await fetch('/api/analytics/footer-stats');
+        if (response.ok) {
+          const data = await response.json();
+          if (data.success) {
+            setVisitorCount(data.data.totalVisitors);
+            setLastUpdated(new Date(data.data.lastUpdated));
+            
+            if (isNewSession) {
+              // Animate counter for new visitors
+              setTimeout(() => {
+                setAnimateCounter(true);
+                setTimeout(() => setAnimateCounter(false), 1000);
+              }, 800);
+            }
+          }
+        } else {
+          // Fallback to localStorage if API fails
+          console.warn('Analytics API unavailable, using fallback');
+          const storedCount = localStorage.getItem('nitgoa_visitor_count') || '1248567';
+          setVisitorCount(parseInt(storedCount));
+        }
+      } catch (error) {
+        console.error('Error initializing analytics:', error);
+        // Fallback to localStorage
+        const storedCount = localStorage.getItem('nitgoa_visitor_count') || '1248567';
+        setVisitorCount(parseInt(storedCount));
+      } finally {
+        setLoading(false);
       }
     };
 
-    initializeVisitorCounter();
-    setLastUpdated(new Date());
+    initializeAnalytics();
   }, []);
 
-  // Simulate realistic visitor counter updates (other visitors)
+  // Periodic refresh of visitor count (every 2 minutes)
   useEffect(() => {
-    const interval = setInterval(() => {
-      // Only increment if there are likely other visitors (more conservative)
-      const shouldIncrement = Math.random() < 0.3; // 30% chance every interval
-      
-      if (shouldIncrement) {
-        const increment = Math.floor(Math.random() * 2) + 1; // 1-2 visitors
-        setVisitorCount(prev => {
-          const newCount = prev + increment;
-          localStorage.setItem('nitgoa_visitor_count', newCount.toString());
-          return newCount;
-        });
-        setAnimateCounter(true);
-        setLastUpdated(new Date());
-        setTimeout(() => setAnimateCounter(false), 600);
+    const interval = setInterval(async () => {
+      try {
+        const response = await fetch('/api/analytics/footer-stats');
+        if (response.ok) {
+          const data = await response.json();
+          if (data.success) {
+            const newCount = data.data.totalVisitors;
+            if (newCount > visitorCount) {
+              setVisitorCount(newCount);
+              setAnimateCounter(true);
+              setTimeout(() => setAnimateCounter(false), 600);
+            }
+            setLastUpdated(new Date(data.data.lastUpdated));
+          }
+        }
+      } catch (error) {
+        console.error('Error refreshing analytics:', error);
       }
-    }, Math.random() * 45000 + 30000); // Random interval between 30-75 seconds
+    }, 120000); // 2 minutes
 
     return () => clearInterval(interval);
-  }, []);
+  }, [visitorCount]);
 
   // Handle navigation with smooth scroll
   const handleLinkClick = (e, path, hash = '') => {
@@ -190,6 +221,26 @@ const Footer = () => {
       minute: '2-digit',
       hour12: true
     });
+  };
+
+  // Helper function to track content updates (can be used by other components)
+  window.trackContentUpdate = async (contentType, description, isMajorUpdate = true) => {
+    try {
+      await fetch('/api/analytics/content-update', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          contentType,
+          description,
+          updatedBy: 'Admin', // This could be dynamic based on logged-in user
+          isMajorUpdate
+        })
+      });
+    } catch (error) {
+      console.error('Error tracking content update:', error);
+    }
   };
 
   return (

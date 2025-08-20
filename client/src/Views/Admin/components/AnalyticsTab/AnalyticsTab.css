@@ -1147,3 +1147,238 @@
     gap: 12px;
   }
 }
+
+/* ========================================================================
+   WEBSITE ANALYTICS SPECIFIC STYLES
+   ======================================================================== */
+
+/* Loading and Error States */
+.analytics-tab-loading,
+.analytics-tab-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  background: var(--admin-dashboard-bg-secondary);
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+.analytics-tab-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--admin-dashboard-border-color);
+  border-top: 4px solid var(--admin-dashboard-accent-blue);
+  border-radius: 50%;
+  animation: analytics-tab-spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes analytics-tab-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.analytics-tab-error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+}
+
+[data-theme="dark"] .analytics-tab-error {
+  background: rgba(220, 38, 38, 0.1);
+  border-color: rgba(220, 38, 38, 0.3);
+  color: #fca5a5;
+}
+
+.analytics-tab-error h3 {
+  color: inherit;
+  margin-bottom: 10px;
+}
+
+/* Section Titles */
+.analytics-tab-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--admin-dashboard-text-primary);
+  margin: 2rem 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--admin-dashboard-accent-blue);
+}
+
+[data-theme="dark"] .analytics-tab-section-title {
+  color: var(--primary-blue-light);
+}
+
+/* Metric Selector */
+.analytics-tab-metric-select {
+  padding: 8px 12px;
+  border: 2px solid var(--admin-dashboard-border-color);
+  border-radius: 6px;
+  background: var(--admin-dashboard-bg-secondary);
+  color: var(--admin-dashboard-text-primary);
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  margin-right: 10px;
+}
+
+.analytics-tab-metric-select:focus {
+  outline: none;
+  border-color: var(--admin-dashboard-accent-blue);
+}
+
+.analytics-tab-period-select {
+  padding: 8px 12px;
+  border: 2px solid var(--admin-dashboard-border-color);
+  border-radius: 6px;
+  background: var(--admin-dashboard-bg-secondary);
+  color: var(--admin-dashboard-text-primary);
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.analytics-tab-period-select:focus {
+  outline: none;
+  border-color: var(--admin-dashboard-accent-blue);
+}
+
+/* Website Analytics Charts Grid */
+.analytics-tab-charts-grid--website {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.analytics-tab-chart-column--full {
+  grid-column: 1 / -1;
+}
+
+/* Table Styles for Website Analytics */
+.analytics-tab-table-container {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid var(--admin-dashboard-border-color);
+}
+
+.analytics-tab-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--admin-dashboard-bg-secondary);
+}
+
+.analytics-tab-table th,
+.analytics-tab-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--admin-dashboard-border-color);
+  color: var(--admin-dashboard-text-primary);
+}
+
+.analytics-tab-table th {
+  background: var(--admin-dashboard-bg-tertiary);
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.analytics-tab-table tr:hover {
+  background: var(--admin-dashboard-bg-tertiary);
+}
+
+/* Content Type Badges */
+.analytics-tab-content-badge {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.analytics-tab-content-badge.faculty {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.analytics-tab-content-badge.announcement {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.analytics-tab-content-badge.academics {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.analytics-tab-content-badge.administration {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+
+.analytics-tab-content-badge.general {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+[data-theme="dark"] .analytics-tab-content-badge.faculty {
+  background: rgba(29, 78, 216, 0.2);
+  color: #93c5fd;
+}
+
+[data-theme="dark"] .analytics-tab-content-badge.announcement {
+  background: rgba(6, 95, 70, 0.2);
+  color: #6ee7b7;
+}
+
+[data-theme="dark"] .analytics-tab-content-badge.academics {
+  background: rgba(146, 64, 14, 0.2);
+  color: #fcd34d;
+}
+
+[data-theme="dark"] .analytics-tab-content-badge.administration {
+  background: rgba(91, 33, 182, 0.2);
+  color: #c4b5fd;
+}
+
+[data-theme="dark"] .analytics-tab-content-badge.general {
+  background: rgba(55, 65, 81, 0.4);
+  color: #d1d5db;
+}
+
+/* Responsive Design for Website Analytics */
+@media (max-width: 768px) {
+  .analytics-tab-charts-grid--website {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .analytics-tab-table-container {
+    font-size: 14px;
+  }
+  
+  .analytics-tab-table th,
+  .analytics-tab-table td {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .analytics-tab-table-container {
+    font-size: 12px;
+  }
+  
+  .analytics-tab-table th,
+  .analytics-tab-table td {
+    padding: 6px;
+  }
+  
+  .analytics-tab-content-badge {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+}

@@ -460,9 +460,6 @@ const AdminDashboard = () => {
           {activeTab === 'analytics' && (
             <AnalyticsTab 
               analytics={analytics}
-              users={users}
-              faculty={faculty}
-              staff={staff}
             />
           )}
         
