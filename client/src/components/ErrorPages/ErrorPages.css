@@ -921,6 +921,15 @@
   z-index: 2;
   animation: errorNetworkPulse 3s ease-in-out infinite;
   color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-network-icon-svg {
+  width: 80px;
+  height: 80px;
+  color: inherit;
 }
 
 [data-theme="dark"] .error-network-icon {
@@ -1019,15 +1028,15 @@
 }
 
 .error-network-btn-primary {
-  background: linear-gradient(135deg, #6b7280, #4b5563);
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
   color: white;
-  box-shadow: 0 2px 8px rgba(107, 114, 128, 0.25);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25);
 }
 
 .error-network-btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(107, 114, 128, 0.35);
-  background: linear-gradient(135deg, #4b5563, #374151);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
+  background: linear-gradient(135deg, #2563eb, #1e40af);
 }
 
 .error-network-btn-secondary {
@@ -1054,9 +1063,9 @@
 }
 
 .error-network-btn-tertiary {
-  background: transparent;
+  background: #f3f4f6;
   border: 2px solid #e5e7eb;
-  color: #6b7280;
+  color: #374151;
 }
 
 .error-network-btn-tertiary:hover {
@@ -1065,8 +1074,9 @@
 }
 
 [data-theme="dark"] .error-network-btn-tertiary {
-  color: #9ca3af;
-  border-color: #4b5563;
+  background: transparent;
+  color: #d3dae6;
+  border-color: #f3f4f6;
 }
 
 [data-theme="dark"] .error-network-btn-tertiary:hover {
