@@ -393,15 +393,13 @@ INSERT INTO designations (designation_title, designation_level) VALUES
 CREATE TABLE site_analytics (
     analytics_id INT PRIMARY KEY AUTO_INCREMENT,
     
-    -- Basic Visitor Tracking
+    -- Basic Visitor Tracking (simplified)
     total_visitors BIGINT DEFAULT 0,          -- All-time unique visitors
-    total_page_views BIGINT DEFAULT 0,        -- All-time page views
     daily_visitors INT DEFAULT 0,             -- Today's unique visitors
-    daily_page_views INT DEFAULT 0,           -- Today's page views
     
     -- Simple Device Tracking (for admin dashboard)
-    desktop_visits INT DEFAULT 0,
-    mobile_visits INT DEFAULT 0,
+    desktop_visits INT DEFAULT 0,             -- Today's desktop visitors
+    mobile_visits INT DEFAULT 0,              -- Today's mobile visitors
     
     -- Date tracking
     date_recorded DATE NOT NULL,

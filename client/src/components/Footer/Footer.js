@@ -25,7 +25,7 @@ const Footer = () => {
           // Detect device type
           const deviceType = window.innerWidth <= 768 ? 'mobile' : 'desktop';
           
-          // Track this visit
+          // Track this visit (simplified - only device and user agent)
           await fetch('/api/analytics/track-visit', {
             method: 'POST',
             headers: {
@@ -33,7 +33,6 @@ const Footer = () => {
             },
             body: JSON.stringify({
               device: deviceType,
-              page: window.location.pathname,
               userAgent: navigator.userAgent
             })
           });
