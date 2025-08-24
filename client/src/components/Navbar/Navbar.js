@@ -13,7 +13,7 @@ const Navbar = () => {
   const { openLoginModal } = useLoginModal();
   const [openDropdown, setOpenDropdown] = useState(null);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isTopNavHidden, setIsTopNavHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -119,39 +119,25 @@ const Navbar = () => {
     setOpenDropdown(dropdownName);
   };
 
-  // Throttled scroll handler for smooth progressive scaling and top nav hiding
+  // Simplified scroll handler for clean state-based transitions
   const handleScroll = useCallback(() => {
     if (!ticking.current) {
       requestAnimationFrame(() => {
         const scrollTop = window.scrollY;
-        const startScroll = 10; // Start shrinking earlier
-        const maxScroll = 80; // Shorter distance for complete shrink
+        const scrollThreshold = 50; // Simple threshold for navbar state change
         
-        // Calculate smooth progress from 0 to 1 with easing
-        const rawProgress = (scrollTop - startScroll) / (maxScroll - startScroll);
-        const progress = Math.max(0, Math.min(rawProgress, 1));
-        
-        // Apply easing function for smoother animation
-        const easedProgress = progress * progress * (3 - 2 * progress); // Smoothstep function
-        
-        setScrollProgress(easedProgress);
+        // Simple boolean state instead of complex calculations
+        setIsScrolled(scrollTop > scrollThreshold);
 
-        // Top navbar hiding logic
+        // Top navbar hiding logic with simplified logic
         const scrollDelta = scrollTop - lastScrollY;
-        const scrollThreshold = 5; // Minimum scroll distance to trigger hide/show
+        const hideThreshold = 5; // Minimum scroll distance to trigger hide/show
 
-        if (Math.abs(scrollDelta) > scrollThreshold) {
-          if (scrollTop > 100) { // Only hide after scrolling past 100px
-            if (scrollDelta > 0) {
-              // Scrolling down - hide top nav
-              setIsTopNavHidden(true);
-            } else {
-              // Scrolling up - show top nav
-              setIsTopNavHidden(false);
-            }
+        if (Math.abs(scrollDelta) > hideThreshold) {
+          if (scrollTop > 100) {
+            setIsTopNavHidden(scrollDelta > 0); // Hide when scrolling down, show when scrolling up
           } else {
-            // Always show top nav when near the top
-            setIsTopNavHidden(false);
+            setIsTopNavHidden(false); // Always show when near top
           }
           setLastScrollY(scrollTop);
         }
@@ -221,12 +207,7 @@ const Navbar = () => {
 
   return (
     <div 
-      className={`navbar-wrapper ${isTopNavHidden ? 'navbar-compact' : ''}`}
-      style={{
-        '--scroll-progress': scrollProgress,
-        '--navbar-top-header-height': `${35 - scrollProgress * 10}px`,
-        '--navbar-main-header-height': `${85 - scrollProgress * 25}px`,
-      }}
+      className={`navbar-wrapper ${isScrolled ? 'navbar-scrolled' : ''} ${isTopNavHidden ? 'navbar-compact' : ''}`}
     >
       {/* Top Header */}
       <div className={`navbar-top-header ${isTopNavHidden ? 'navbar-top-header-hidden' : ''}`}>
