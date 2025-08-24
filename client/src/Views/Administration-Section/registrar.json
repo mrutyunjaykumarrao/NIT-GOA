@@ -1,0 +1,49 @@
+{
+  "page_info": {
+    "title": "Registrar",
+    "subtitle": "National Institute of Technology Goa",
+    "description": "Office of the Registrar"
+  },
+  "registrar": {
+    "name": "Dr. Shashidhar K. Kudari",
+    "designation": "Registrar",
+    "institute": "National Institute of Technology Goa",
+    "email": "registrar@nitgoa.ac.in",
+    "office_location": "Sardar Patel Administrative Complex",
+    "joining_date": "February 2021",
+    "about": [
+      "Dr. Shashidhar K. Kudari obtained his B.E (Mechanical Engineering) degree from Karnataka University, Dharwad. He received M. Tech. (Machine Design) and Ph.D. degrees from the Indian Institute of Technology, Kharagpur. He has 34 years of Teaching / Research and Administration experience.",
+      "He has 55 research publications to his credit; five research scholars obtained Ph.D. degrees under his supervision. His research area includes stress analysis, elastic-plastic fracture, mixed mode fracture and fatigue analysis of engineering materials. He is the adaptation author of book Mechanical Vibrations, by S. G Kelly, Published by Schaum's Outline and Tata Mc Graw Hill.",
+      "Dr. Kudari joined as the Registrar of NIT Goa in the month of February 2021."
+    ],
+    "education": [
+      {
+        "degree": "B.E. (Mechanical Engineering)",
+        "institution": "Karnataka University, Dharwad"
+      },
+      {
+        "degree": "M. Tech. (Machine Design)",
+        "institution": "Indian Institute of Technology, Kharagpur"
+      },
+      {
+        "degree": "Ph.D.",
+        "institution": "Indian Institute of Technology, Kharagpur"
+      }
+    ],
+    "experience": {
+      "total_years": 34,
+      "areas": ["Teaching", "Research", "Administration"]
+    },
+    "research_areas": [
+      "Stress analysis",
+      "Elastic-plastic fracture",
+      "Mixed mode fracture",
+      "Fatigue analysis of engineering materials"
+    ],
+    "achievements": [
+      "55 research publications",
+      "Supervised 5 Ph.D. scholars",
+      "Adaptation author of book 'Mechanical Vibrations' by S. G Kelly, Published by Schaum's Outline and Tata Mc Graw Hill"
+    ]
+  }
+}

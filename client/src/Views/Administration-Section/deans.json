@@ -1,0 +1,159 @@
+{
+  "page_info": {
+    "title": "Deans",
+    "subtitle": "National Institute of Technology Goa",
+    "description": "Deanship Offices and Associate Deans"
+  },
+  "image_imports": {
+    "drSMini": "../../assets/images/Faculty/CSE/Dr. S. Mini.png",
+    "drShivnarayanPatidar": "../../assets/images/Faculty/ECE/Dr. Shivnarayan Patidar.png",
+    "drSoumitraDas": "../../assets/images/Faculty/EEE/Dr. Soumitra Das.png",
+    "drLokeshKumarBramhane": "../../assets/images/Faculty/ECE/Dr. Lokesh Kumar Bramhane.png",
+    "drAmolRahulkar": "../../assets/images/Faculty/EEE/Dr. Amol D. Rahulkar.jpg",
+    "drPrasanjitDey": "../../assets/images/Faculty/MCE/Dr. PRASENJIT DEY.png",
+    "drChiragModi": "../../assets/images/Faculty/CSE/Dr. Modi Chirag Navinchandra.png",
+    "drSreerajES": "../../assets/images/Faculty/EEE/Dr. Sreeraj E S.png",
+    "drHarikumar": "../../assets/images/Faculty/CVE/Dr. Harikumar M.png",
+    "drTrilochanPanigrahi": "../../assets/images/Faculty/ECE/Dr. Trilochan Panigrahi.jpg",
+    "drLalatInduGiri": "../../assets/images/Faculty/ECE/Dr. Lalat Indu Giri.png",
+    "drVelavanKathirvelu": "../../assets/images/Faculty/APS/Dr. Velavan Kathirvelu.png",
+    "drSunilkumar": "../../assets/images/Faculty/HSS/Dr. Sunil Kumar.png"
+  },
+  "deans_data": [
+    {
+      "category": "Academics",
+      "dean": {
+        "name": "Dr. S. Mini",
+        "designation": "Associate Professor of CSE",
+        "email": "dean.acad@nitgoa.ac.in",
+        "image_key": "drSMini"
+      },
+      "associate_dean": {
+        "name": "Dr. Shivnarayan Patidar",
+        "designation": "Assistant Professor of ECE",
+        "email": "asd.acad@nitgoa.ac.in",
+        "image_key": "drShivnarayanPatidar"
+      },
+      "office_details": {
+        "room_no": "16",
+        "floor": "1st Floor",
+        "building": "Sardar Patel Building",
+        "contact": "0832-2404214"
+      }
+    },
+    {
+      "category": "Students Welfare",
+      "dean": {
+        "name": "Dr. Soumitra Das",
+        "designation": "Associate Professor of EEE",
+        "email": "dean.sw@nitgoa.ac.in",
+        "image_key": "drSoumitraDas"
+      },
+      "associate_dean": {
+        "name": "Dr. Lokesh Kumar Bramhane",
+        "designation": "Assistant Professor of ECE",
+        "email": "asd.sw@nitgoa.ac.in",
+        "image_key": "drLokeshKumarBramhane"
+      },
+      "office_details": {
+        "room_no": "15",
+        "floor": "1st Floor",
+        "building": "Sardar Patel Building",
+        "contact": "0832-2404213"
+      }
+    },
+    {
+      "category": "Faculty Welfare",
+      "dean": {
+        "name": "Dr. Amol D Rahulkar",
+        "designation": "Associate Professor of EEE",
+        "email": "dean.fw@nitgoa.ac.in",
+        "image_key": "drAmolRahulkar"
+      },
+      "associate_dean": {
+        "name": "Dr. Prasenjit Dey",
+        "designation": "Assistant Professor of Mechanical",
+        "email": "asd.fw@nitgoa.ac.in",
+        "image_key": "drPrasanjitDey"
+      },
+      "office_details": {
+        "room_no": "15",
+        "floor": "1st Floor",
+        "building": "Sardar Patel Building",
+        "contact": "0832-2404213"
+      }
+    },
+    {
+      "category": "Research & Consultancy",
+      "dean": {
+        "name": "Dr. Chirag Modi",
+        "designation": "Associate Professor of CSE",
+        "email": "dean.rc@nitgoa.ac.in",
+        "image_key": "drChiragModi"
+      },
+      "associate_dean": {
+        "name": "Dr. Sreeraj E.S",
+        "designation": "Associate Professor of EEE",
+        "email": "asd.rc@nitgoa.ac.in",
+        "image_key": "drSreerajES"
+      },
+      "office_details": {
+        "room_no": "18",
+        "floor": "1st Floor",
+        "building": "Sardar Patel Building",
+        "contact": "0832-2404216"
+      }
+    },
+    {
+      "category": "Planning & Development",
+      "dean": {
+        "name": "Dr. Velavan Kathirvelu",
+        "designation": "Associate Professor of Applied Sciences",
+        "email": "dean.pd@nitgoa.ac.in",
+        "image_key": "drVelavanKathirvelu"
+      },
+      "associate_dean": [
+        {
+          "name": "Dr. Harikumar",
+          "designation": "Assistant Professor of Civil",
+          "email": "asd.pd@nitgoa.ac.in",
+          "image_key": "drHarikumar"
+        },
+        {
+          "name": "Dr. Sunilkumar",
+          "designation": "Assistant Professor of Economics",
+          "email": "asd.fm@nitgoa.ac.in",
+          "image_key": "drSunilkumar",
+          "category": "Facility Management"
+        }
+      ],
+      "office_details": {
+        "room_no": "10",
+        "floor": "1st Floor",
+        "building": "Sardar Patel Building",
+        "contact": "0832-2404211"
+      }
+    },
+    {
+      "category": "Institutional Relations & Alumni Affairs",
+      "dean": {
+        "name": "Dr. Trilochan Panigrahi",
+        "designation": "Associate Professor of ECE",
+        "email": "dean.iraa@nitgoa.ac.in",
+        "image_key": "drTrilochanPanigrahi"
+      },
+      "associate_dean": {
+        "name": "Dr. Lalat Indu Giri",
+        "designation": "Assistant Professor of ECE",
+        "email": "asd.iraa@nitgoa.ac.in",
+        "image_key": "drLalatInduGiri"
+      },
+      "office_details": {
+        "room_no": "13",
+        "floor": "1st Floor",
+        "building": "Sardar Patel Building",
+        "contact": "0832-2404212"
+      }
+    }
+  ]
+}

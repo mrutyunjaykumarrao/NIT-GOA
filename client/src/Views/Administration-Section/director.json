@@ -1,0 +1,83 @@
+{
+  "page_info": {
+    "title": "Director",
+    "subtitle": "National Institute of Technology Goa",
+    "description": "Office of the Director"
+  },
+  "director": {
+    "name": "Prof. O. R. Jaiswal",
+    "designation": "Director",
+    "institute": "National Institute of Technology Goa",
+    "email": "director@nitgoa.ac.in",
+    "office_location": "Sardar Patel Administrative Complex",
+    "joining_date": "8th June 2023",
+    "about": [
+      "Prof. O. R. Jaiswal, took over the charge as Director of NIT Goa on 8th June 2023. He is on deputation from the Visvesvaraya National Institute of Technology (VNIT), Nagpur, wherein, he is a Professor at the Department of Applied Mechanics. His basic field is Structural Engineering with research work in the areas related to earthquake analysis of structures, tuned mass dampers for seismic and wind response control, Dynamic response of Railway Tracks etc.",
+      "He had graduated in Civil Engineering from Visvesvaraya Regional Engineering College (VRCE), Nagpur (Now, VNIT) in 1987; completed his Masters in 1991 and Doctoral degree in 1995 from the Indian Institute of Science, Bangalore. Subsequently, he was a post-doctoral fellow at the University of Liverpool for a period of about two years.",
+      "He joined as faculty at VRCE in 1998. After becoming Professor in 2008, he was Head of the Department from 2010 to 2012 and then Dean (Academics) from 2013 to 2016. During his deanship, VNIT Nagpur had initiated the Student Mentor Program (SMP), wherein, first year UG students were mentored by third year students. This SMP is very effective in handling the anxiety and curiosity of new entrants at early stage.",
+      "Professor Jaiswal has coordinated funded R&D projects from MHRD, DST, CSIR and World Bank. In a collaborative project with IIT Kanpur, he developed Guidelines for Seismic Design of Liquid Storage Tanks. He is a member of BIS committees for earthquake and wind codes. He has supervised seven Ph.D. students. He has more than eighty scholarly papers to his credit."
+    ],
+    "education": [
+      {
+        "degree": "B.E. (Civil Engineering)",
+        "institution": "Visvesvaraya Regional Engineering College (VRCE), Nagpur",
+        "year": "1987"
+      },
+      {
+        "degree": "Masters",
+        "institution": "Indian Institute of Science, Bangalore", 
+        "year": "1991"
+      },
+      {
+        "degree": "Ph.D.",
+        "institution": "Indian Institute of Science, Bangalore",
+        "year": "1995"
+      },
+      {
+        "degree": "Post-Doctoral Fellowship",
+        "institution": "University of Liverpool",
+        "duration": "About 2 years"
+      }
+    ],
+    "career_highlights": [
+      {
+        "position": "Faculty",
+        "institution": "VRCE",
+        "year": "1998"
+      },
+      {
+        "position": "Professor",
+        "institution": "VNIT Nagpur",
+        "year": "2008"
+      },
+      {
+        "position": "Head of Department",
+        "institution": "VNIT Nagpur",
+        "duration": "2010-2012"
+      },
+      {
+        "position": "Dean (Academics)",
+        "institution": "VNIT Nagpur",
+        "duration": "2013-2016"
+      },
+      {
+        "position": "Director",
+        "institution": "NIT Goa",
+        "start_date": "8th June 2023"
+      }
+    ],
+    "research_areas": [
+      "Structural Engineering",
+      "Earthquake analysis of structures",
+      "Tuned mass dampers for seismic and wind response control",
+      "Dynamic response of Railway Tracks"
+    ],
+    "achievements": [
+      "Coordinated funded R&D projects from MHRD, DST, CSIR and World Bank",
+      "Developed Guidelines for Seismic Design of Liquid Storage Tanks (collaborative project with IIT Kanpur)",
+      "Member of BIS committees for earthquake and wind codes",
+      "Supervised seven Ph.D. students",
+      "More than eighty scholarly papers"
+    ]
+  }
+}

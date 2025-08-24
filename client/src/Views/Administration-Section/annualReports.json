@@ -1,0 +1,103 @@
+{
+  "page_info": {
+    "title": "Annual Reports & Annual Accounts",
+    "subtitle": "National Institute of Technology Goa",
+    "description": "Annual Reports and Accounts"
+  },
+  "annual_reports_data": [
+    {
+      "section": "Annual Reports & Annual Accounts (English Version)",
+      "entries": [
+        {
+          "title": "Annual Report and Annual Accounts of 2010-11",
+          "file": "/pdf/Administration/reports/english/annual_report_2010.pdf"
+        },
+        {
+          "title": "Annual Report and Annual Accounts of 2011-12",
+          "file": "/pdf/Administration/reports/english/Annual_and_Accounts_2011-2012.pdf"
+        },
+        {
+          "title": "Annual Report and Annual Accounts of 2012-13",
+          "file": "/pdf/Administration/reports/english/Annual_and_Accounts_2012-2013.pdf"
+        },
+        {
+          "title": "Annual Report and Annual Accounts of 2013-14",
+          "file": "/pdf/Administration/reports/english/Annual_Report_Book_-2013-2014.pdf"
+        },
+        {
+          "title": "Annual Report and Annual Accounts of 2014-15",
+          "file": "/pdf/Administration/reports/english/Annual & Accounts 2014-2015.pdf"
+        },
+        {
+          "title": "Annual Report and Annual Accounts of 2015-16",
+          "file": "/pdf/Administration/reports/english/Annual report - 2015-2016.pdf"
+        },
+        {
+          "title": "Annual Report and Annual Accounts of 2016-17",
+          "file": "/pdf/Administration/reports/english/Annual Report -2016-2017.pdf"
+        },
+        {
+          "title": "Annual Report and Annual Accounts of 2019-20",
+          "file": "/pdf/Administration/reports/english/Annual Report -2019-2020.pdf"
+        },
+        {
+          "title": "Annual Report and Annual Accounts of 2020-21",
+          "file": "/pdf/Administration/reports/english/Annual Report -2020-2021.pdf"
+        },
+        {
+          "title": "Annual Report and Annual Accounts of 2021-22",
+          "file": "/pdf/Administration/reports/english/Annual Report -2021-2022.pdf"
+        },
+        {
+          "title": "Annual Report and Annual Accounts of 2022-23",
+          "file": "/pdf/Administration/reports/english/Annual Report -2022-2023.pdf"
+        }
+      ]
+    },
+    {
+      "section": "Annual Reports & Annual Accounts (Hindi Version)",
+      "entries": [
+        {
+          "title": "Annual Report and Annual Accounts of 2010-11",
+          "file": "/pdf/Administration/reports/hindi/Hindi_annual_report_2010.pdf"
+        },
+        {
+          "title": "Annual Report and Annual Accounts of 2011-12",
+          "file": "/pdf/Administration/reports/hindi/Hindi_Annual_Report_2011.pdf"
+        },
+        {
+          "title": "Annual Report and Annual Accounts of 2012-13",
+          "file": "/pdf/Administration/reports/hindi/Hindi_Annual_Report_2012.pdf"
+        },
+        {
+          "title": "Annual Report and Annual Accounts of 2013-14",
+          "file": "/pdf/Administration/reports/hindi/Hindi_Annual_Report_2013.pdf"
+        },
+        {
+          "title": "Annual Report and Annual Accounts of 2014-15",
+          "file": "/pdf/Administration/reports/hindi/Hindi_Annual_Report_2014.pdf"
+        },
+        {
+          "title": "Annual Report and Annual Accounts of 2015-16",
+          "file": "/pdf/Administration/reports/hindi/HindiAnnual Report- 2015-2016.pdf"
+        },
+        {
+          "title": "Annual Report and Annual Accounts of 2016-17",
+          "file": "/pdf/Administration/reports/hindi/HindiAnnual Report -2016-2017.pdf"
+        },
+        {
+          "title": "Annual Report and Annual Accounts of 2020-21",
+          "file": "/pdf/Administration/reports/hindi/HindiAnnual Report -2020-2021.pdf"
+        },
+        {
+          "title": "Annual Report and Annual Accounts of 2021-22",
+          "file": "/pdf/Administration/reports/hindi/HindiAnnual-Report-2021-2022.pdf"
+        },
+        {
+          "title": "Annual Report and Annual Accounts of 2022-23",
+          "file": "/pdf/Administration/reports/hindi/HindiAnnual Report -2022-2023.pdf"
+        }
+      ]
+    }
+  ]
+}

@@ -457,12 +457,12 @@
 
 /* Dark Theme Support */
 [data-theme="dark"] .board-of-governors-page {
-    background: linear-gradient(135deg, #1e1e1e 0%, #2c2c2c 100%);
+    background: linear-gradient(135deg, #0a1220 0%, #1a2332 50%, #253041 100%);
     color: #ffffff;
 }
 
 [data-theme="dark"] .board-page-header {
-    background: linear-gradient(135deg, #1e3a8a 0%, #1e293b 100%);
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
 }
 
 [data-theme="dark"] .board-page-header::before {
@@ -470,12 +470,12 @@
 }
 
 [data-theme="dark"] .board-page-header h1 {
-    color: #64B5F6;
-    text-shadow: 0 2px 4px rgba(100, 181, 246, 0.3);
+    color: #e2e8f0;
+    text-shadow: 0 2px 4px rgba(226, 232, 240, 0.3);
 }
 
 [data-theme="dark"] .board-subtitle {
-    color: #90CAF9;
+    color: #6fa6ff;
 }
 
 [data-theme="dark"] .board-description {
@@ -483,46 +483,46 @@
 }
 
 [data-theme="dark"] .board-of-governors-content {
-    background: linear-gradient(145deg, rgba(44, 44, 44, 0.95) 0%, rgba(55, 65, 81, 0.9) 100%);
-    border-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    background: #1e293b;
+    border-color: rgba(100, 116, 139, 0.2);
+    box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3);
 }
 
 [data-theme="dark"] .board-table-container {
-    background: rgba(44, 44, 44, 0.95);
-    border-color: rgba(255, 255, 255, 0.1);
+    background: #1e293b;
+    border-color: rgba(100, 116, 139, 0.2);
 }
 
 [data-theme="dark"] .board-table {
-    background: transparent;
-    color: #ffffff;
+    background: #1e293b;
+    color: #e2e8f0;
 }
 
 [data-theme="dark"] .board-table th {
-    background: linear-gradient(135deg, #1e40af 0%, #1e293b 100%);
-    color: #64B5F6;
-    border-color: rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+    color: #e2e8f0;
+    border-color: rgba(100, 116, 139, 0.2);
 }
 
 [data-theme="dark"] .board-table td {
-    border-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(100, 116, 139, 0.2);
     color: #d1d5db;
 }
 
 [data-theme="dark"] .board-table tbody tr:nth-child(even) {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(30, 41, 59, 0.5);
 }
 
 [data-theme="dark"] .board-table tbody tr:hover {
-    background: rgba(100, 181, 246, 0.1);
+    background: rgba(111, 166, 255, 0.1);
 }
 
 [data-theme="dark"] .board-note {
-    background: rgba(44, 44, 44, 0.9);
-    border-left-color: #64B5F6;
+    background: #1e293b;
+    border-left-color: #4A9EE7;
     color: #d1d5db;
 }
 
 [data-theme="dark"] .board-note h3 {
-    color: #64B5F6;
+    color: #6fa6ff;
 }

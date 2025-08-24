@@ -1,0 +1,56 @@
+{
+  "page_info": {
+    "title": "Finance Committee",
+    "subtitle": "National Institute of Technology Goa",
+    "description": "Financial Governance as per NIT Statute"
+  },
+  "finance_committee_members": [
+    {
+      "s_no": 1,
+      "nit_statute_section": "10(i)",
+      "position": "Chairperson BoG, ex-officio Chairman",
+      "name": "Vacant",
+      "designation": "--"
+    },
+    {
+      "s_no": 2,
+      "nit_statute_section": "10(ii)",
+      "position": "Director, Ex-Officio Member",
+      "name": "Prof. O.R. Jaiswal",
+      "designation": "Director, National Institute of Technology Goa"
+    },
+    {
+      "s_no": 3,
+      "nit_statute_section": "10(ii)",
+      "position": "Jt. Secretary Dealing with NIT or his nominee and Finance advisor (MoE) or his nominee",
+      "name": "Mrs. Saumya Gupta",
+      "designation": "Addnl Secretary/Jt. Secretary (Technical Education), MHRD, Govt. of India",
+      "rowspan": 2
+    },
+    {
+      "s_no": 4,
+      "name": "Sh. Sanjog Kapoor",
+      "designation": "Financial Advisor, Dept of Higher Education, MHRD, Govt. of India"
+    },
+    {
+      "s_no": 5,
+      "nit_statute_section": "10(iv)",
+      "position": "Two persons nominated by the Board",
+      "name": "Prof. B. G. Farnandes",
+      "designation": "Professor, Department of Electrical Engineering, IIT Bombay",
+      "rowspan": 2
+    },
+    {
+      "s_no": 6,
+      "name": "Dr. Sreeraj E. S",
+      "designation": "Associate Professor, Department of Electrical and Electronics Engineering, NIT Goa"
+    },
+    {
+      "s_no": 7,
+      "nit_statute_section": "10(v)",
+      "position": "Member Secretary",
+      "name": "Dr. Shashidhar K. Kudari",
+      "designation": "Registrar, NIT Goa"
+    }
+  ]
+}
