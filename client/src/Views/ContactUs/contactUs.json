@@ -1,0 +1,235 @@
+{
+  "page_header": {
+    "title": "Contact Us",
+    "subtitle": "Get in Touch with NIT Goa"
+  },
+  "institute_address": {
+    "section_title": "Institute Address",
+    "name": "National Institute of Technology Goa",
+    "address": [
+      "Kottamoll Plateau, Cuncolim Municipal Area,",
+      "Salcete Taluka, South Goa District,",
+      "Goa - 403703, India"
+    ],
+    "contact_details": [
+      {
+        "label": "Phone",
+        "value": "+91-832-2404200"
+      },
+      {
+        "label": "Email",
+        "value": "registrar@nitgoa.ac.in"
+      },
+      {
+        "label": "Website",
+        "value": "www.nitgoa.ac.in"
+      }
+    ],
+    "map": {
+      "title": "Location Map",
+      "embed_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3847.5789!2d74.0121875!3d15.1691875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbe4dade7a19b97%3A0x9db46cb6ea1d0d3f!2sNational%20Institute%20of%20Technology%20Goa!5e0!3m2!1sen!2sin!4v1640995200000!5m2!1sen!2sin",
+      "coordinates": {
+        "latitude": "15.1691875° N",
+        "longitude": "74.0121875° E"
+      }
+    }
+  },
+  "departments": {
+    "section_title": "Department Contacts",
+    "list": [
+      {
+        "name": "Computer Science & Engineering",
+        "hod": "Dr. Veena Thenkanidiyoor",
+        "email": "veenat@nitgoa.ac.in",
+        "phone": "0832-2404432"
+      },
+      {
+        "name": "Electronics & Communication Engineering",
+        "hod": "Dr. T. Veerakumar",
+        "email": "tveerakumar@nitgoa.ac.in",
+        "phone": "0832-2404520"
+      },
+      {
+        "name": "Electrical & Electronics Engineering",
+        "hod": "Dr. Suresh Mikkili",
+        "email": "mikkili.suresh@nitgoa.ac.in",
+        "phone": "0832-2404645"
+      },
+      {
+        "name": "Mechanical Engineering",
+        "hod": "Dr. Prasenjit Dey",
+        "email": "prasenjit.dey@nitgoa.ac.in",
+        "phone": "0832-2404834"
+      },
+      {
+        "name": "Civil Engineering",
+        "hod": "Dr. Harikumar M",
+        "email": "harikumar@nitgoa.ac.in",
+        "phone": "0832-2404846"
+      },
+      {
+        "name": "Humanities & Social Sciences & Applied Sciences",
+        "hod": "Dr. L. Shangerganesh",
+        "email": "shangerganesh@nitgoa.ac.in",
+        "phone": "0832-2404728"
+      }
+    ]
+  },
+  "administration": {
+    "section_title": "Administration",
+    "list": [
+      {
+        "title": "Director's Office",
+        "name": "Prof. G. Santhosh Kumar",
+        "designation": "Director",
+        "email": "director@nitgoa.ac.in",
+        "phone": "+91-832-2404201"
+      },
+      {
+        "title": "Registrar's Office",
+        "name": "[Name]",
+        "designation": "Registrar",
+        "email": "registrar@nitgoa.ac.in",
+        "phone": "+91-832-2404200"
+      },
+      {
+        "title": "Dean (Academic Affairs)",
+        "name": "Dr. [Name]",
+        "designation": "Dean",
+        "email": "dean.acad@nitgoa.ac.in",
+        "phone": "+91-832-2404210"
+      },
+      {
+        "title": "Dean (Student Affairs)",
+        "name": "Dr. [Name]",
+        "designation": "Dean",
+        "email": "dean.student@nitgoa.ac.in",
+        "phone": "+91-832-2404220"
+      }
+    ]
+  },
+  "services": {
+    "section_title": "Important Services",
+    "list": [
+      {
+        "title": "Admissions Office",
+        "email": "admissions@nitgoa.ac.in",
+        "phone": "+91-832-2404300",
+        "description": "For B.Tech, M.Tech, and Ph.D. admission queries"
+      },
+      {
+        "title": "Training & Placement Cell",
+        "email": "placement@nitgoa.ac.in",
+        "phone": "+91-832-2404310",
+        "description": "For placement and internship opportunities"
+      },
+      {
+        "title": "Library",
+        "email": "library@nitgoa.ac.in",
+        "phone": "+91-832-2404320",
+        "description": "For library services and digital resources"
+      },
+      {
+        "title": "IT Services",
+        "email": "itservices@nitgoa.ac.in",
+        "phone": "+91-832-2404330",
+        "description": "For technical support and IT infrastructure"
+      },
+      {
+        "title": "Accounts Office",
+        "email": "accounts@nitgoa.ac.in",
+        "phone": "+91-832-2404340",
+        "description": "For fee payments and financial matters"
+      },
+      {
+        "title": "Medical Centre",
+        "email": "medical@nitgoa.ac.in",
+        "phone": "+91-832-2404350",
+        "description": "For health services and medical emergencies"
+      }
+    ]
+  },
+  "transport": {
+    "section_title": "How to Reach NIT Goa",
+    "options": [
+      {
+        "type": "By Air",
+        "icon": "✈️",
+        "details": [
+          {
+            "name": "Dabolim Airport (Vasco)",
+            "distance": "38 km (45 minutes by car)",
+            "description": "Domestic and international flights"
+          },
+          {
+            "name": "Manohar International Airport (Mopa)",
+            "distance": "77 km (1 hour 30 minutes by car)",
+            "description": "New international airport"
+          }
+        ]
+      },
+      {
+        "type": "By Train",
+        "icon": "🚂",
+        "details": [
+          {
+            "name": "Madgaon Railway Station",
+            "distance": "15 km (25 minutes by car)",
+            "description": "Major railway junction with good connectivity"
+          },
+          {
+            "name": "Vasco da Gama Railway Station",
+            "distance": "40 km (50 minutes by car)",
+            "description": "Alternative railway station"
+          }
+        ]
+      },
+      {
+        "type": "By Road",
+        "icon": "🚌",
+        "details": [
+          {
+            "name": "NH 66 (Goa Highway)",
+            "distance": "Well connected by state and private buses",
+            "description": "Regular services from major cities"
+          },
+          {
+            "name": "Distance References",
+            "distance": "From Margao: 15 km | From Panaji: 45 km | From Vasco: 40 km",
+            "description": ""
+          }
+        ]
+      }
+    ]
+  },
+  "social_media": {
+    "section_title": "Connect With Us",
+    "platforms": [
+      {
+        "name": "Twitter/X",
+        "handle": "@NITGoa_Official",
+        "url": "https://x.com/NITGoa_Official"
+      },
+      {
+        "name": "LinkedIn",
+        "handle": "National Institute of Technology Goa",
+        "url": "https://www.linkedin.com/school/nitgoa/"
+      },
+      {
+        "name": "YouTube",
+        "handle": "National Institute of Technology Goa",
+        "url": "https://www.youtube.com/c/NationalInstituteofTechnologyGoa"
+      },
+      {
+        "name": "Instagram",
+        "handle": "@nitgoa",
+        "url": "https://www.instagram.com/nitgoa/?hl=en"
+      },
+      {
+        "name": "Facebook",
+        "handle": "@nitgoa",
+        "url": "https://www.facebook.com/nitgoa/"
+      }
+    ]
+  }
+}

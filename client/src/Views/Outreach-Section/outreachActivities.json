@@ -1,0 +1,168 @@
+{
+  "hero": {
+    "title": "Outreach Activities",
+    "subtitle": "Connecting with communities through education, innovation, and social responsibility"
+  },
+  "featured_story": {
+    "category": "Featured Initiative",
+    "title": "Women in STEM Workshop",
+    "description": "The SPIE Student Chapter NIT Goa conducted an inspiring workshop at Sharada Mandir School, Panjim, focusing on sparking interest in STEM fields among middle school girls through hands-on experiments in physics, optics, and robotics.",
+    "date": "March 2024",
+    "image": "https://www.nitgoa.ac.in/static/img6march2024.jpg",
+    "alt": "Women in STEM Initiative by SPIE Student Chapter"
+  },
+  "activities": {
+    "title": "Recent Activities",
+    "cards": [
+      {
+        "id": "card1",
+        "title": "Light & Optics Workshops",
+        "description": "SPIE student chapter organized workshops at Mustifund High School and Damodar Higher Secondary School, introducing students to the fascinating world of light and optics through interactive demonstrations.",
+        "images": [
+          "https://www.nitgoa.ac.in/static/SPIEdamodarschool.jpg",
+          "https://www.nitgoa.ac.in/static/SPIEmushtfund.jpg",
+          "https://www.nitgoa.ac.in/static/stem3.jpg"
+        ],
+        "alt": "Light & Optics Workshop",
+        "type": "carousel"
+      },
+      {
+        "id": "card2",
+        "title": "All Goa Science Fair",
+        "description": "The inaugural All Goa Science Fair brought together 42 teams of grades 8-10 students to showcase innovative projects on \"Science and technology for a clean and green tomorrow\".",
+        "images": [
+          "https://www.nitgoa.ac.in/static/SCIENCE FAIR.jpg",
+          "https://www.nitgoa.ac.in/static/RAA.jpg",
+          "https://www.nitgoa.ac.in/static/stem4.jpg"
+        ],
+        "alt": "All Goa Science Fair",
+        "type": "carousel"
+      },
+      {
+        "id": "card3",
+        "title": "Swachhata Hi Seva Campaign",
+        "description": "NIT Goa conducted comprehensive cleanliness drives in collaboration with Cuncolim Municipality Corporation, cleaning Demani Village adjacent to our campus and promoting environmental awareness.",
+        "images": [
+          "https://www.nitgoa.ac.in/static/swachhata 21march2024.jpg",
+          "https://www.nitgoa.ac.in/static/swachhata.jpg",
+          "https://www.nitgoa.ac.in/static/SHRAMDHAAN1.jpg"
+        ],
+        "alt": "Swachh Bharat Initiative",
+        "type": "carousel"
+      },
+      {
+        "id": "card4",
+        "title": "Arduino & Electronics Workshops",
+        "description": "Hands-on Arduino workshops introduce school students to basic electronics and programming concepts, fostering understanding of microcontroller applications in modern technology.",
+        "images": [
+          "https://www.nitgoa.ac.in/static/arduino(1).jpg",
+          "https://www.nitgoa.ac.in/static/arduino(2).jpg",
+          "https://www.nitgoa.ac.in/static/stem5.jpg"
+        ],
+        "alt": "Arduino Workshop",
+        "type": "carousel"
+      },
+      {
+        "id": "card5",
+        "title": "Village Development Program",
+        "description": "Through Unnat Bharat Abhiyan, NIT Goa actively engages with adopted villages Kalay and Guirdolim, conducting surveys, participating in Gramsabha meetings, and implementing development initiatives.",
+        "images": [
+          "https://www.nitgoa.ac.in/static/UBA1.png",
+          "https://www.nitgoa.ac.in/static/SURVEY IN KALAY1.jpg",
+          "https://www.nitgoa.ac.in/static/KALAY_GRAMSABHA.jpg"
+        ],
+        "alt": "Village Development Programs",
+        "type": "carousel"
+      },
+      {
+        "id": "card6",
+        "title": "School Campus Visit Program",
+        "description": "Government High School students from Vidhyanagar, Aquem, Margao visited NIT Goa campus as part of the new Education Policy, attending lectures on Experimental Physics, Chemistry, and Mathematics.",
+        "images": [
+          "https://www.nitgoa.ac.in/static/School Visit.jpg",
+          "https://www.nitgoa.ac.in/static/Permanent_Campus.jpeg",
+          "https://www.nitgoa.ac.in/static/Industrial visit(1).jpg"
+        ],
+        "alt": "Campus Visit Program",
+        "type": "carousel"
+      },
+      {
+        "id": "card7",
+        "title": "Health & Safety Initiatives",
+        "description": "NIT Goa organizes blood donation camps, health awareness programs, and Safai Mitra Suraksha Shivirs focusing on worker safety, hygiene, and overall community well-being.",
+        "images": [
+          "https://www.nitgoa.ac.in/static/img 16march2024.jpeg",
+          "https://www.nitgoa.ac.in/static/SHRAMDHAAN2.jpg",
+          "https://www.nitgoa.ac.in/static/img12march2024.jpg"
+        ],
+        "alt": "Health Awareness Programs",
+        "type": "carousel"
+      },
+      {
+        "id": "card8",
+        "title": "Engineering Day & Innovation Showcase",
+        "description": "Annual Engineering Day celebrations feature technical exhibitions, project demonstrations, and interactive sessions with school students, showcasing the latest research and innovations from all departments.",
+        "images": [
+          "https://www.nitgoa.ac.in/static/enggday1.jpg",
+          "https://www.nitgoa.ac.in/static/enggday2.jpg",
+          "https://www.nitgoa.ac.in/static/enggday3.jpg"
+        ],
+        "alt": "Engineering Day Celebrations",
+        "type": "carousel"
+      },
+      {
+        "id": "card9",
+        "title": "STEM Educational Programs",
+        "description": "Comprehensive STEM programs introducing students to hands-on learning experiences in science, technology, engineering, and mathematics through interactive workshops and demonstrations.",
+        "images": [
+          "https://www.nitgoa.ac.in/static/stem1.jpg",
+          "https://www.nitgoa.ac.in/static/stem2.jpg",
+          "https://www.nitgoa.ac.in/static/stem3.jpg"
+        ],
+        "alt": "STEM Activities",
+        "type": "carousel"
+      },
+      {
+        "id": "card10",
+        "title": "Rural Outreach Programs",
+        "description": "Rural outreach initiatives focusing on technology transfer, skill development, and infrastructure improvement to enhance quality of life in local villages through sustained community engagement. These programs include community surveys, skill development workshops, digital literacy training, and sustainable development projects that directly benefit rural communities around NIT Goa.",
+        "type": "text_only"
+      },
+      {
+        "id": "card11",
+        "title": "Student Excellence & Recognition",
+        "description": "NIT Goa students consistently excel in national and international competitions, research projects, and innovation challenges, bringing recognition to the institute through their outstanding achievements. Students have won prestigious awards in robotics competitions, hackathons, research symposiums, and technical festivals across the country, showcasing the quality of education and innovation culture at NIT Goa.",
+        "type": "text_only"
+      },
+      {
+        "id": "card12",
+        "title": "Special Events & Celebrations",
+        "description": "Cultural festivals, awareness campaigns, and special events that bring together the academic community and local residents in celebration of shared values and community spirit. These events include Independence Day celebrations, Republic Day ceremonies, cultural festivals, environmental awareness campaigns, and community gatherings that strengthen the bond between NIT Goa and the local community.",
+        "type": "text_only"
+      }
+    ]
+  },
+  "impact": {
+    "title": "Our Impact",
+    "stats": [
+      {
+        "number": "500+",
+        "label": "Students Reached"
+      },
+      {
+        "number": "15+",
+        "label": "Schools Visited"
+      },
+      {
+        "number": "10+",
+        "label": "Communities Served"
+      }
+    ]
+  },
+  "settings": {
+    "carousel": {
+      "rotation_interval": 4000,
+      "auto_rotation_pause_duration": 8000
+    }
+  }
+}
