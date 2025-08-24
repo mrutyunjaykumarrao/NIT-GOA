@@ -30,7 +30,7 @@ router.get('/footer-stats', async (req, res) => {
             LIMIT 1
         `);
 
-        const totalVisitors = visitorStats.length > 0 ? visitorStats[0].total_visitors : 1248567;
+        const totalVisitors = visitorStats.length > 0 ? visitorStats[0].total_visitors : 0;
         const todaysVisitors = visitorStats.length > 0 ? visitorStats[0].todays_visitors : 0;
         const lastUpdated = lastUpdate.length > 0 ? lastUpdate[0].updated_at : new Date();
         const lastUpdateDescription = lastUpdate.length > 0 ? lastUpdate[0].update_description : 'Website initialized';
@@ -73,7 +73,7 @@ router.post('/track-visit', async (req, res) => {
         );
 
         if (existingRecord.length > 0) {
-            // Update existing record
+            // Update existing record - just increment counters
             const record = existingRecord[0];
             const updateValues = {
                 total_visitors: record.total_visitors + 1,
@@ -92,14 +92,24 @@ router.post('/track-visit', async (req, res) => {
                 updateValues.desktop_visits, updateValues.mobile_visits, today
             ]);
         } else {
-            // Create new record for today
+            // Get previous total to make it cumulative
+            const [previousTotal] = await connection.execute(`
+                SELECT MAX(total_visitors) as max_total 
+                FROM site_analytics 
+                WHERE date_recorded < ?
+            `, [today]);
+            
+            const previousTotalVisitors = previousTotal.length > 0 && previousTotal[0].max_total ? 
+                previousTotal[0].max_total : 0;
+            
+            // Create new record for today with cumulative total
             await connection.execute(`
                 INSERT INTO site_analytics (
                     date_recorded, total_visitors, todays_visitors,
                     desktop_visits, mobile_visits
                 ) VALUES (?, ?, ?, ?, ?)
             `, [
-                today, 1, 1,
+                today, previousTotalVisitors + 1, 1,
                 device === 'desktop' ? 1 : 0,
                 device === 'mobile' ? 1 : 0
             ]);
@@ -169,7 +179,6 @@ router.get('/dashboard-stats', async (req, res) => {
         let targetDateValue = new Date().toISOString().split('T')[0];
         
         if (period === 'custom' && date) {
-            // Custom date - get specific date data
             targetDateValue = date;
             const [customStats] = await connection.execute(`
                 SELECT total_visitors, todays_visitors, 
@@ -185,7 +194,6 @@ router.get('/dashboard-stats', async (req, res) => {
                 mobile_visits: 0
             };
         } else if (period === 'today') {
-            // Today's data
             const [todayData] = await connection.execute(`
                 SELECT total_visitors, todays_visitors, 
                        desktop_visits, mobile_visits
@@ -200,7 +208,6 @@ router.get('/dashboard-stats', async (req, res) => {
                 mobile_visits: 0
             };
         } else if (period === 'week') {
-            // This week - sum up the last 7 days
             const [weekData] = await connection.execute(`
                 SELECT 
                     MAX(total_visitors) as total_visitors,
@@ -209,7 +216,6 @@ router.get('/dashboard-stats', async (req, res) => {
                     SUM(mobile_visits) as mobile_visits
                 FROM site_analytics 
                 WHERE date_recorded >= DATE_SUB(CURDATE(), INTERVAL 6 DAY)
-                AND date_recorded <= CURDATE()
             `);
             
             targetStats = weekData[0] || {
@@ -219,7 +225,6 @@ router.get('/dashboard-stats', async (req, res) => {
                 mobile_visits: 0
             };
         } else if (period === 'month') {
-            // This month - sum up the last 30 days
             const [monthData] = await connection.execute(`
                 SELECT 
                     MAX(total_visitors) as total_visitors,
@@ -228,7 +233,6 @@ router.get('/dashboard-stats', async (req, res) => {
                     SUM(mobile_visits) as mobile_visits
                 FROM site_analytics 
                 WHERE date_recorded >= DATE_SUB(CURDATE(), INTERVAL 29 DAY)
-                AND date_recorded <= CURDATE()
             `);
             
             targetStats = monthData[0] || {
@@ -237,34 +241,15 @@ router.get('/dashboard-stats', async (req, res) => {
                 desktop_visits: 0,
                 mobile_visits: 0
             };
-        } else if (period === 'year') {
-            // This year - sum up the last 365 days
-            const [yearData] = await connection.execute(`
-                SELECT 
-                    MAX(total_visitors) as total_visitors,
-                    SUM(todays_visitors) as todays_visitors,
-                    SUM(desktop_visits) as desktop_visits,
-                    SUM(mobile_visits) as mobile_visits
-                FROM site_analytics 
-                WHERE date_recorded >= DATE_SUB(CURDATE(), INTERVAL 364 DAY)
-                AND date_recorded <= CURDATE()
-            `);
-            
-            targetStats = yearData[0] || {
-                total_visitors: 0,
-                todays_visitors: 0,
-                desktop_visits: 0,
-                mobile_visits: 0
-            };
         }
 
-        // Get total all-time visitors (sum of the highest total_visitors value since it's cumulative)
+        // Get total all-time visitors
         const [totalStats] = await connection.execute(`
             SELECT MAX(total_visitors) as all_time_visitors 
             FROM site_analytics
         `);
 
-        // Get last 30 days visitor trends
+        // Get visitor trends for charts
         const [visitorTrends] = await connection.execute(`
             SELECT date_recorded, todays_visitors, 
                    desktop_visits, mobile_visits
@@ -273,7 +258,7 @@ router.get('/dashboard-stats', async (req, res) => {
             ORDER BY date_recorded ASC
         `);
 
-        // Calculate total mobile vs desktop for last 30 days
+        // Get device breakdown
         const [deviceStats] = await connection.execute(`
             SELECT 
                 SUM(desktop_visits) as total_desktop,
@@ -287,7 +272,6 @@ router.get('/dashboard-stats', async (req, res) => {
         res.json({
             success: true,
             data: {
-                // Target date stats (today, week, month, year, or custom date)
                 targetDate: {
                     date: targetDateValue,
                     period: period,
@@ -296,13 +280,10 @@ router.get('/dashboard-stats', async (req, res) => {
                     desktop_visits: targetStats.desktop_visits || 0,
                     mobile_visits: targetStats.mobile_visits || 0
                 },
-                // All-time total
                 allTime: {
                     total_visitors: totalStats[0]?.all_time_visitors || 0
                 },
-                // Daily trends for charts
                 visitorTrends: visitorTrends,
-                // Device breakdown
                 deviceBreakdown: {
                     desktop: deviceStats[0]?.total_desktop || 0,
                     mobile: deviceStats[0]?.total_mobile || 0
