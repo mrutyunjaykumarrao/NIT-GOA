@@ -37,6 +37,76 @@ router.get('/analytics', async (req, res) => {
   }
 });
 
+// Website Analytics endpoint
+router.get('/website-analytics', async (req, res) => {
+  try {
+    console.log('🔍 [ADMIN DEBUG] GET /website-analytics - Starting request');
+    
+    // Get current period (default 30 days)
+    const { period = '30' } = req.query;
+    const days = parseInt(period) || 30;
+    
+    // Get aggregated analytics data
+    const websiteStats = await executeQuery(`
+      SELECT 
+        SUM(total_visitors) as all_time_visitors,
+        SUM(daily_visitors) as period_visitors,
+        SUM(desktop_visits) as desktop_total,
+        SUM(mobile_visits) as mobile_total,
+        DATE(date_recorded) as analytics_date,
+        daily_visitors as daily_count
+      FROM site_analytics 
+      WHERE date_recorded >= DATE_SUB(CURDATE(), INTERVAL ? DAY)
+      ORDER BY date_recorded DESC
+    `, [days]);
+
+    // Get today's stats
+    const todayStats = await executeQuery(`
+      SELECT total_visitors, daily_visitors, desktop_visits, mobile_visits
+      FROM site_analytics 
+      WHERE date_recorded = CURDATE()
+    `);
+
+    // Get all-time stats
+    const allTimeStats = await executeQuery(`
+      SELECT 
+        MAX(total_visitors) as total_visitors,
+        SUM(desktop_visits) as total_desktop,
+        SUM(mobile_visits) as total_mobile
+      FROM site_analytics
+    `);
+
+    // Format data for charts
+    const chartData = websiteStats.map(row => ({
+      date: row.analytics_date,
+      visitors: row.daily_count || 0
+    }));
+
+    const response = {
+      allTime: {
+        total_visitors: allTimeStats[0]?.total_visitors || 0
+      },
+      today: {
+        daily_visitors: todayStats[0]?.daily_visitors || 0
+      },
+      deviceBreakdown: {
+        desktop: allTimeStats[0]?.total_desktop || 0,
+        mobile: allTimeStats[0]?.total_mobile || 0
+      },
+      chartData: {
+        visitors: chartData
+      }
+    };
+
+    console.log('🔍 [ADMIN DEBUG] Website analytics result:', response);
+    res.json(response);
+    
+  } catch (error) {
+    console.error('Website analytics error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 // ======================
 // USER ACCOUNTS MANAGEMENT
 // ======================

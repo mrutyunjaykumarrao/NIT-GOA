@@ -15,6 +15,8 @@ import {
   Bar
 } from 'recharts';
 import { useAuth } from '../../../../contexts/AuthContext';
+import WebsiteAnalytics from './WebsiteAnalytics';
+import UserAnalytics from './UserAnalytics';
 import './AnalyticsTab.css';
 
 const AnalyticsTab = ({ analytics }) => {
@@ -24,8 +26,44 @@ const AnalyticsTab = ({ analytics }) => {
   const [analyticsData, setAnalyticsData] = useState(null);
   const [chartData, setChartData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [chartLoading, setChartLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedPeriod, setSelectedPeriod] = useState('30');
+  const [selectedPeriod, setSelectedPeriod] = useState('today');
+  const [customDate, setCustomDate] = useState('');
+
+  // Handle period change and clear custom date if needed
+  const handlePeriodChange = (newPeriod) => {
+    setSelectedPeriod(newPeriod);
+    if (newPeriod !== 'custom') {
+      setCustomDate(''); // Clear custom date when switching away from custom
+    } else if (newPeriod === 'custom' && !customDate) {
+      // Set today's date as default when switching to custom
+      const today = new Date().toISOString().split('T')[0];
+      setCustomDate(today);
+    }
+  };
+
+  // Navigate custom date by one day
+  const navigateDate = (direction) => {
+    if (!customDate) return;
+    
+    const currentDate = new Date(customDate);
+    if (direction === 'prev') {
+      currentDate.setDate(currentDate.getDate() - 1);
+    } else if (direction === 'next') {
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+    
+    // Don't go beyond today
+    const today = new Date();
+    const todayDateString = today.toISOString().split('T')[0];
+    const newDateString = currentDate.toISOString().split('T')[0];
+    
+    // Allow dates up to and including today
+    if (newDateString <= todayDateString) {
+      setCustomDate(newDateString);
+    }
+  };
   
   // Add state for user management data
   const [users, setUsers] = useState([]);
@@ -52,32 +90,74 @@ const AnalyticsTab = ({ analytics }) => {
     return await response.json();
   };
 
+  // Helper function to convert period to API format
+  const getPeriodForAPI = () => {
+    switch(selectedPeriod) {
+      case 'today': return '1';
+      case 'week': return '7';
+      case 'month': return '30';
+      case 'year': return '365';
+      case 'custom': return customDate ? '30' : '30'; // For now, default to 30 for custom
+      default: return '30';
+    }
+  };
+
   // Fetch ALL data that analytics needs
   useEffect(() => {
     const fetchAllAnalyticsData = async () => {
       try {
         setLoading(true);
+        setChartLoading(true);
         setUserDataLoading(true);
         
-        // Fetch website analytics data (no auth required)
-        const [dashboardResponse, chartResponse] = await Promise.all([
-          fetch('/api/analytics/dashboard-stats'),
-          fetch(`/api/analytics/chart-data?period=${selectedPeriod}`)
-        ]);
+        const apiPeriod = getPeriodForAPI();
         
-        // Process website analytics
-        if (dashboardResponse.ok && chartResponse.ok) {
-          const dashboardData = await dashboardResponse.json();
-          const chartDataResult = await chartResponse.json();
-          
-          if (dashboardData.success && chartDataResult.success) {
-            setAnalyticsData(dashboardData.data);
-            setChartData(chartDataResult.data);
-          } else {
-            console.error('Failed to load website analytics data');
+        // Fetch website analytics data using the analytics endpoints
+        try {
+          const dashboardParams = new URLSearchParams();
+          dashboardParams.append('period', selectedPeriod);
+          if (selectedPeriod === 'custom' && customDate) {
+            dashboardParams.append('date', customDate);
           }
-        } else {
-          console.error('Website analytics service unavailable');
+          
+          const chartParams = new URLSearchParams();
+          chartParams.append('period', selectedPeriod);
+          if (selectedPeriod === 'custom' && customDate) {
+            chartParams.append('date', customDate);
+          }
+          
+          const [dashboardResponse, chartResponse] = await Promise.all([
+            fetch(`/api/analytics/dashboard-stats?${dashboardParams}`),
+            fetch(`/api/analytics/chart-data?${chartParams}`)
+          ]);
+          
+          if (dashboardResponse.ok && chartResponse.ok) {
+            const dashboardData = await dashboardResponse.json();
+            const chartDataResult = await chartResponse.json();
+            
+            if (dashboardData.success && chartDataResult.success) {
+              setAnalyticsData(dashboardData.data);
+              setChartData(chartDataResult.data);
+              console.log('Analytics data loaded:', dashboardData.data);
+              console.log('Chart data loaded:', chartDataResult.data);
+              setError(null);
+            } else {
+              console.error('Failed to load website analytics data');
+              setError('Failed to load analytics data');
+              setAnalyticsData(null);
+              setChartData(null);
+            }
+          } else {
+            console.error('Website analytics service unavailable');
+            setError('Analytics service unavailable');
+            setAnalyticsData(null);
+            setChartData(null);
+          }
+        } catch (error) {
+          console.error('Failed to load website analytics:', error);
+          setError('Failed to load website analytics');
+          setAnalyticsData(null);
+          setChartData(null);
         }
         
         // Fetch user management data (auth required)
@@ -108,6 +188,7 @@ const AnalyticsTab = ({ analytics }) => {
         setError('Failed to connect to analytics service');
       } finally {
         setLoading(false);
+        setChartLoading(false);
         setUserDataLoading(false);
       }
     };
@@ -115,7 +196,7 @@ const AnalyticsTab = ({ analytics }) => {
     if (token) {
       fetchAllAnalyticsData();
     }
-  }, [selectedPeriod, token]);
+  }, [selectedPeriod, customDate, token]);
 
   // Calculate admin/user analytics data (existing functionality)
   const calculateAdminAnalytics = () => {
@@ -257,26 +338,50 @@ const AnalyticsTab = ({ analytics }) => {
             <option value="website">Website Analytics</option>
             <option value="users">User Management</option>
           </select>
-          <select 
-            value={timeRange}
-            onChange={(e) => setTimeRange(e.target.value)}
-            className="analytics-tab-time-select"
-          >
-            <option value="week">Last Week</option>
-            <option value="month">Last Month</option>
-            <option value="quarter">Last Quarter</option>
-            <option value="year">Last Year</option>
-          </select>
+          
+          {/* Only show time filter for Website Analytics */}
           {selectedMetric === 'website' && (
             <select 
               value={selectedPeriod} 
-              onChange={(e) => setSelectedPeriod(e.target.value)}
+              onChange={(e) => handlePeriodChange(e.target.value)}
               className="analytics-tab-period-select"
             >
-              <option value="7">Last 7 days</option>
-              <option value="30">Last 30 days</option>
-              <option value="90">Last 90 days</option>
+              <option value="today">Today</option>
+              <option value="week">This Week</option>
+              <option value="month">This Month</option>
+              <option value="year">This Year</option>
+              <option value="custom">Custom Date</option>
             </select>
+          )}
+          
+          {/* Custom date picker for Website Analytics */}
+          {selectedMetric === 'website' && selectedPeriod === 'custom' && (
+            <div className="analytics-tab-date-navigator">
+              <button 
+                onClick={() => navigateDate('prev')}
+                className="analytics-tab-date-nav-btn"
+                type="button"
+                title="Previous day"
+              >
+                ←
+              </button>
+              <input
+                type="date"
+                value={customDate}
+                onChange={(e) => setCustomDate(e.target.value)}
+                className="analytics-tab-date-picker"
+                max={new Date().toISOString().split('T')[0]}
+              />
+              <button 
+                onClick={() => navigateDate('next')}
+                className="analytics-tab-date-nav-btn"
+                type="button"
+                title="Next day"
+                disabled={customDate === new Date().toISOString().split('T')[0]}
+              >
+                →
+              </button>
+            </div>
           )}
         </div>
       </div>
@@ -368,261 +473,21 @@ const AnalyticsTab = ({ analytics }) => {
 
       {/* Website Analytics Tab */}
       {selectedMetric === 'website' && (
-        <>
-          {loading && (
-            <div className="analytics-tab-loading">
-              <div className="analytics-tab-spinner"></div>
-              <p>Loading website analytics...</p>
-            </div>
-          )}
-
-          {!loading && !error && analyticsData && (
-            <>
-              {/* Website Analytics Stats */}
-              <div className="analytics-tab-stats-grid">
-                <StatCard
-                  title="Total Visitors"
-                  value={formatNumber(analyticsData?.allTime?.total_visitors || 0)}
-                  subtitle="All time"
-                  icon="fas fa-globe"
-                  color="blue"
-                />
-                <StatCard
-                  title="Today's Visitors"
-                  value={formatNumber(analyticsData?.today?.daily_visitors || 0)}
-                  subtitle="New today"
-                  icon="fas fa-calendar-day"
-                  color="green"
-                />
-                <StatCard
-                  title="Page Views Today"
-                  value={formatNumber(analyticsData?.today?.daily_page_views || 0)}
-                  subtitle="Today"
-                  icon="fas fa-eye"
-                  color="purple"
-                />
-                <StatCard
-                  title="Mobile Traffic"
-                  value={`${analyticsData?.today?.mobile_visits && analyticsData?.today?.desktop_visits ? 
-                    Math.round((analyticsData.today.mobile_visits / (analyticsData.today.mobile_visits + analyticsData.today.desktop_visits)) * 100) : 0}%`}
-                  subtitle="Mobile users"
-                  icon="fas fa-mobile-alt"
-                  color="orange"
-                />
-              </div>
-
-              {/* Website Analytics Charts */}
-              {chartData && (
-                <div className="analytics-tab-charts-grid analytics-tab-charts-grid--website">
-                  {/* Visitor Trends Chart */}
-                  <div className="analytics-tab-chart-column analytics-tab-chart-column--full">
-                    <ChartCard title="Visitor Trends">
-                      <ResponsiveContainer width="100%" height={300}>
-                        <LineChart data={chartData?.visitors?.map(item => ({
-                          ...item,
-                          date: formatChartDate(item.date)
-                        }))}>
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis dataKey="date" />
-                          <YAxis />
-                          <Tooltip />
-                          <Legend />
-                          <Line 
-                            type="monotone" 
-                            dataKey="visitors" 
-                            stroke={COLORS.primary} 
-                            strokeWidth={3}
-                            name="Daily Visitors"
-                          />
-                          <Line 
-                            type="monotone" 
-                            dataKey="pageViews" 
-                            stroke={COLORS.secondary} 
-                            strokeWidth={3}
-                            name="Page Views"
-                          />
-                        </LineChart>
-                      </ResponsiveContainer>
-                    </ChartCard>
-                  </div>
-
-                  {/* Device Breakdown */}
-                  <div className="analytics-tab-chart-column analytics-tab-chart-column--left">
-                    <ChartCard title="Device Breakdown">
-                      <ResponsiveContainer width="100%" height={300}>
-                        <PieChart>
-                          <Pie
-                            data={chartData?.deviceBreakdown || []}
-                            cx="50%"
-                            cy="50%"
-                            labelLine={false}
-                            label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
-                            outerRadius={80}
-                            fill="#8884d8"
-                            dataKey="value"
-                          >
-                            {(chartData?.deviceBreakdown || []).map((entry, index) => (
-                              <Cell key={`cell-${index}`} fill={entry.color || PIE_COLORS[index % PIE_COLORS.length]} />
-                            ))}
-                          </Pie>
-                          <Tooltip />
-                        </PieChart>
-                      </ResponsiveContainer>
-                    </ChartCard>
-                  </div>
-
-                  {/* Content Updates */}
-                  <div className="analytics-tab-chart-column analytics-tab-chart-column--right">
-                    <ChartCard title="Content Updates (Last 30 Days)">
-                      <ResponsiveContainer width="100%" height={300}>
-                        <BarChart data={chartData?.contentBreakdown}>
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis dataKey="content_type" />
-                          <YAxis />
-                          <Tooltip />
-                          <Bar dataKey="count" fill={COLORS.accent} />
-                        </BarChart>
-                      </ResponsiveContainer>
-                    </ChartCard>
-                  </div>
-                </div>
-              )}
-
-              {/* Recent Updates Table */}
-              {analyticsData?.recentUpdates && (
-                <ChartCard title="Recent Content Updates">
-                  <div className="analytics-tab-table-container">
-                    <table className="analytics-tab-table">
-                      <thead>
-                        <tr>
-                          <th>Description</th>
-                          <th>Type</th>
-                          <th>Updated By</th>
-                          <th>Date</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {analyticsData.recentUpdates.map((update, index) => (
-                          <tr key={index}>
-                            <td>{update.update_description}</td>
-                            <td>
-                              <span className={`analytics-tab-content-badge ${update.content_type}`}>
-                                {update.content_type}
-                              </span>
-                            </td>
-                            <td>{update.updated_by}</td>
-                            <td>{new Date(update.updated_at).toLocaleDateString()}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </ChartCard>
-              )}
-            </>
-          )}
-        </>
+        <WebsiteAnalytics 
+          analyticsData={analyticsData}
+          chartData={chartData}
+          loading={loading}
+          chartLoading={chartLoading}
+          error={error}
+          selectedPeriod={selectedPeriod}
+          setSelectedPeriod={setSelectedPeriod}
+          customDate={customDate}
+        />
       )}
 
       {/* User Management Analytics Tab */}
       {selectedMetric === 'users' && (
-        <>
-          {/* User Management Stats */}
-          <div className="analytics-tab-stats-grid">
-            <StatCard
-              title="Total Users"
-              value={adminAnalyticsData.totals.users}
-              subtitle={`${adminAnalyticsData.active.users} active`}
-              icon="fas fa-users"
-              color="blue"
-            />
-            <StatCard
-              title="Faculty Members"
-              value={adminAnalyticsData.totals.faculty}
-              subtitle={`${adminAnalyticsData.active.faculty} active`}
-              icon="fas fa-chalkboard-teacher"
-              color="green"
-            />
-            <StatCard
-              title="Staff Members"
-              value={adminAnalyticsData.totals.staff}
-              subtitle={`${adminAnalyticsData.active.staff} active`}
-              icon="fas fa-user-tie"
-              color="purple"
-            />
-            <StatCard
-              title="Department Heads"
-              value={adminAnalyticsData.hods}
-              subtitle="HODs appointed"
-              icon="fas fa-crown"
-              color="orange"
-            />
-          </div>
-
-          {/* Charts Section - Existing Layout */}
-          <div className="analytics-tab-charts-grid analytics-tab-charts-grid--redesigned">
-            {/* Left Column - Department Distribution */}
-            <div className="analytics-tab-chart-column analytics-tab-chart-column--left">
-              <ChartCard title="Faculty Distribution by Department">
-                <div className="analytics-tab-department-stats">
-                  {Object.entries(adminAnalyticsData.departments).map(([dept, count]) => (
-                    <ProgressBar
-                      key={dept}
-                      label={dept}
-                      value={count}
-                      total={adminAnalyticsData.totals.faculty}
-                      color="#10B981"
-                    />
-                  ))}
-                </div>
-              </ChartCard>
-            </div>
-
-            {/* Right Column - User Roles and Activity */}
-            <div className="analytics-tab-chart-column analytics-tab-chart-column--right">
-              {/* User Roles Distribution - Compact */}
-              <ChartCard title="User Roles Distribution">
-                <div className="analytics-tab-role-stats analytics-tab-role-stats--compact">
-                  {Object.entries(adminAnalyticsData.roles).map(([role, count]) => (
-                    <ProgressBar
-                      key={role}
-                      label={role}
-                      value={count}
-                      total={adminAnalyticsData.totals.users}
-                      color="#8B5CF6"
-                    />
-                  ))}
-                </div>
-              </ChartCard>
-
-              {/* System Activity Overview */}
-              <ChartCard title="System Activity Overview">
-                <div className="analytics-tab-activity-overview">
-                  <div className="analytics-tab-activity-item">
-                    <div className="analytics-tab-activity-metric">
-                      <span className="analytics-tab-activity-label">Active Users</span>
-                      <span className="analytics-tab-activity-value">
-                        {adminAnalyticsData.active.percentage}%
-                      </span>
-                    </div>
-                    <div className="analytics-tab-activity-bar">
-                      <div 
-                        className="analytics-tab-activity-fill"
-                        style={{ width: `${adminAnalyticsData.active.percentage}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                  <div className="analytics-tab-activity-summary">
-                    <p>
-                      <strong>{adminAnalyticsData.active.users}</strong> out of{' '}
-                      <strong>{adminAnalyticsData.totals.users}</strong> users are currently active
-                    </p>
-                  </div>
-                </div>
-              </ChartCard>
-            </div>
-          </div>
-        </>
+        <UserAnalytics />
       )}
     </div>
   );
