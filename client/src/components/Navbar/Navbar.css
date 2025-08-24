@@ -56,8 +56,7 @@ body {
   --transition-bounce: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   
   /* ===== PROGRESSIVE SCROLL VARIABLES ===== */
-  --scroll-progress: 0;                /* Scroll progress (0-1) */
-  --blur-amount: calc(8px + var(--scroll-progress) * 8px);
+  /* Simplified - removed variable calculations */
   
   /* ===== COLOR VARIABLES ===== */
   --color-primary: #3b82f6;           /* Primary blue */
@@ -88,9 +87,7 @@ body {
     box-shadow var(--transition-medium),
     transform var(--transition-medium);
   transform: translateY(0) translateZ(0);
-  will-change: box-shadow, backdrop-filter, transform;
-  backdrop-filter: blur(var(--blur-amount));
-  -webkit-backdrop-filter: blur(var(--blur-amount));
+  will-change: box-shadow, transform;
   /* Ensure navbar stays accessible above any Google Translate elements */
   isolation: isolate;
 }
@@ -120,16 +117,12 @@ body {
   background-color: var(--color-background-gray);
   position: relative;
   z-index: 2100 !important; /* Higher than navbar wrapper for proper layering */
-  /* Progressive sizing based on scroll position */
-  --header-padding: calc(8px - var(--scroll-progress, 0) * 6px);
-  --header-font-size: calc(14px - var(--scroll-progress, 0) * 2px);
-  padding: var(--header-padding) 0;
-  font-size: var(--header-font-size);
+  padding: 8px 0;
+  font-size: 14px;
   transition: 
     all var(--transition-fast),
     transform var(--transition-medium);
   transform: translateY(0) translateZ(0);
-  will-change: padding, font-size, transform;
   /* Ensure top header stays accessible above any Google Translate elements */
   isolation: isolate;
 }
@@ -146,7 +139,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 var(--navbar-padding-xs);
+  padding: 0 20px;
 }
 
 /* Left side navigation links container */
@@ -292,12 +285,9 @@ body {
 */
 .navbar-main-header {
   background: var(--color-background-light);
-  /* Progressive padding that shrinks on scroll */
-  --main-padding: calc(30px - var(--scroll-progress, 0) * 10px);
-  padding: var(--main-padding) 0;
+  padding: 15px 0;
   transition: all var(--transition-fast);
   transform: translateZ(0);
-  will-change: padding;
 }
 
 /* Container for main header content with responsive max-width */
@@ -307,7 +297,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 var(--navbar-padding-xs);
+  padding: 0 20px;
 }
 
 /* Logo section container */
@@ -336,17 +326,14 @@ body {
   color: inherit;
 }
 
-/* Institute logo with progressive scaling */
+/* Institute logo with fixed sizing */
 .navbar-nit-logo {
-  /* Progressive logo size based on scroll position */
-  --logo-size: calc(80px - var(--scroll-progress, 0) * 20px);
-  width: var(--logo-size);
-  height: var(--logo-size);
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   border-radius: 8px;
-  transition: all var(--transition-medium);
+  transition: transform var(--transition-medium);
   transform: translateZ(0);
-  will-change: width, height;
 }
 
 .navbar-nit-logo:hover {
@@ -360,32 +347,26 @@ body {
   gap: 7px;
 }
 
-/* Hindi institute name with progressive sizing */
+/* Hindi institute name with fixed sizing */
 .navbar-institute-name-hindi {
   color: var(--color-primary);
   margin: 0;
   font-weight: 500;
   line-height: 1.2;
-  /* Progressive font size based on scroll position */
-  --hindi-font-size: calc(24px - var(--scroll-progress, 0) * 6px);
-  font-size: var(--hindi-font-size);
+  font-size: 24px;
   transition: all var(--transition-medium);
   transform: translateZ(0);
-  will-change: font-size;
 }
 
-/* English institute name with progressive sizing */
+/* English institute name with fixed sizing */
 .navbar-institute-name-english {
   color: var(--color-text-primary);
   margin: 0;
   font-weight: 500;
   line-height: 1.2;
-  /* Progressive font size based on scroll position */
-  --english-font-size: calc(20px - var(--scroll-progress, 0) * 5px);
-  font-size: var(--english-font-size);
+  font-size: 20px;
   transition: all var(--transition-medium);
   transform: translateZ(0);
-  will-change: font-size;
 }
 
 /* Dark mode main header styling */
@@ -420,11 +401,11 @@ body {
   );
   color: white;
   /* Progressive height based on scroll position */
-  --nav-height: calc(50px - var(--scroll-progress, 0) * 20px);
-  min-height: var(--nav-height);
+  /* --nav-height: calc(50px - var(--scroll-progress, 0) * 20px); */
+  min-height: 15px !important;
   transition: all var(--transition-fast);
   transform: translateZ(0);
-  will-change: min-height;
+  /* will-change: min-height; */
 }
 
 /* Container for navigation content */
@@ -435,14 +416,10 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0;
-  /* Progressive sizing variables */
-  --nav-content-height: calc(50px - var(--scroll-progress, 0) * 10px);
-  --nav-content-padding: calc(60px - var(--scroll-progress, 0) * 5px);
-  min-height: var(--nav-content-height);
-  padding: 0 var(--nav-content-padding);
+  min-height: 50px;
+  padding: 0 60px;
   transform: translateY(-8px) translateZ(0);
   transition: all var(--transition-fast);
-  will-change: min-height, padding;
 }
 
 /* Individual navigation item styling */
@@ -450,18 +427,13 @@ body {
   color: white;
   text-decoration: none;
   font-weight: 600;
-  /* Progressive padding and font size */
-  --nav-item-padding-v: calc(6px - var(--scroll-progress, 0) * 2px);
-  --nav-item-padding-h: calc(16px - var(--scroll-progress, 0) * 4px);
-  --nav-item-font-size: calc(15px - var(--scroll-progress, 0) * 1px);
-  padding: var(--nav-item-padding-v) var(--nav-item-padding-h);
-  font-size: var(--nav-item-font-size);
+  padding: 6px 16px;
+  font-size: 15px;
   transition: all var(--transition-fast);
   white-space: nowrap;
   cursor: pointer;
   position: relative;
   transform: translateZ(0);
-  will-change: padding, font-size, transform, background-color;
 }
 
 .navbar-nav-item:hover {
@@ -945,9 +917,7 @@ body {
 
 /* Mobile menu header */
 .mobile-menu-header {
-  /* Progressive padding that matches main header */
-  --mobile-header-padding: calc(26px - var(--scroll-progress, 0) * 10px);
-  padding: var(--mobile-header-padding) 20px;
+  padding: 26px 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
@@ -955,10 +925,8 @@ body {
   background: var(--color-background-light);
   flex-shrink: 0;
   border-radius: 12px 0 0 0;
-  /* Match main header height changes */
-  min-height: calc(60px - var(--scroll-progress, 0) * 15px);
+  min-height: 60px;
   transition: all var(--transition-fast);
-  will-change: padding, min-height;
 }
 
 /* Mobile menu close button */
@@ -1285,7 +1253,7 @@ body {
   .navbar-header-content {
     flex-direction: row;
     gap: 15px;
-    text-align: center;
+    text-align: left;
     justify-content: space-between;
     padding: 0 var(--navbar-padding-xs);
   }
@@ -1354,13 +1322,44 @@ body {
 }
 
 /* ===== SMALL MOBILE (320px - 480px) ===== */
-@media (max-width: 480px) {
-  :root {
-    --navbar-padding-xs: 12px;
+@media (max-width: 420px)
+{ 
+  .navbar-nit-logo {
+    width: 57px;
+    height: 57px;
+  }
+  .navbar-logo-link{
+    gap: 7px;
+  }
+
+  .navbar-logo-section {
+    gap: 3px;
+  }
+
+  .navbar-institute-name-hindi {
+    font-size: 15px !important;
+    font-weight: 600;
   }
   
+  .navbar-institute-name-english {
+    font-size: 12px !important;
+    font-weight: 700;
+  }
+
+  .hamburger-btn {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .hamburger-line {
+    width: 18px;
+  }
+
+}
+
+@media (max-width: 480px && min-width: 420px) {
   .navbar-header-content {
-    padding: 0 var(--navbar-padding-xs);
+    padding: 0 12px;
   }
   
   .navbar-logo-section {
@@ -1368,7 +1367,8 @@ body {
   }
   
   .navbar-nit-logo {
-    --logo-size: calc(57px - var(--scroll-progress, 0) * 8px);
+    width: 57px;
+    height: 57px;
   }
   
   .navbar-institute-name-hindi {
@@ -1376,7 +1376,7 @@ body {
   }
   
   .navbar-institute-name-english {
-    font-size: 13px !important;
+    font-size: 15px !important;
   }
   
   .hamburger-btn {
@@ -1392,7 +1392,7 @@ body {
 /* ===== SMALL TABLET (481px - 768px) ===== */
 @media (min-width: 481px) and (max-width: 768px) {
   .navbar-header-content {
-    padding: 0 var(--navbar-padding-sm);
+    padding: 0 40px;
   }
   
   .navbar-logo-section {
@@ -1400,7 +1400,8 @@ body {
   }
   
   .navbar-nit-logo {
-    --logo-size: calc(65px - var(--scroll-progress, 0) * 18px);
+    width: 65px;
+    height: 65px;
   }
   
   .navbar-institute-name-hindi {
@@ -1434,7 +1435,7 @@ body {
 /* ===== LARGE TABLET (769px - 1023px) ===== */
 @media (min-width: 769px) and (max-width: 1319px) {
   .navbar-top-header-content {
-    padding: 0 var(--navbar-padding-sm);
+    padding: 0 40px;
   }
   
   .navbar-top-nav.desktop-only {
@@ -1442,7 +1443,7 @@ body {
   }
   
   .navbar-header-content {
-    padding: 0 var(--navbar-padding-sm);
+    padding: 0 40px;
   }
   
   .navbar-logo-section {
@@ -1450,7 +1451,8 @@ body {
   }
   
   .navbar-nit-logo {
-    --logo-size: calc(70px - var(--scroll-progress, 0) * 18px);
+    width: 70px;
+    height: 70px;
   }
   
   .navbar-institute-name-hindi {
@@ -1480,7 +1482,7 @@ body {
 @media (min-width: 1320px) {
   .navbar-top-header-content {
     max-width: var(--navbar-max-width-md);
-    padding: 0 var(--navbar-padding-md);
+    padding: 0 30px;
   }
   
   .navbar-top-nav.desktop-only {
@@ -1489,7 +1491,7 @@ body {
   
   .navbar-header-content {
     max-width: var(--navbar-max-width-md);
-    padding: 0 var(--navbar-padding-md);
+    padding: 0 30px;
 
   }
   
@@ -1498,7 +1500,8 @@ body {
   }
   
   .navbar-nit-logo {
-    --logo-size: calc(90px - var(--scroll-progress, 0) * 20px);
+    width: 90px;
+    height: 90px;
   }
   
   .navbar-institute-name-hindi {
@@ -1527,7 +1530,7 @@ body {
 @media (min-width: 1441px) and (max-width: 1519px) {
   .navbar-top-header-content {
     max-width: var(--navbar-max-width-lg);
-    padding: 0 var(--navbar-padding-lg);
+    padding: 0 30px;
   }
   
   .navbar-top-nav.desktop-only {
@@ -1536,7 +1539,7 @@ body {
   
   .navbar-header-content {
     max-width: var(--navbar-max-width-lg);
-    padding: 0 var(--navbar-padding-lg);
+    padding: 0 30px;
   }
   
   .navbar-logo-section {
@@ -1544,7 +1547,8 @@ body {
   }
   
   .navbar-nit-logo {
-    --logo-size: calc(85px - var(--scroll-progress, 0) * 22px);
+    width: 85px;
+    height: 85px;
   }
   
   .navbar-institute-name-hindi {
@@ -1557,19 +1561,19 @@ body {
   
   .navbar-nav-content {
     max-width: calc(100% - 200px);
-    --nav-content-padding: calc(80px - var(--scroll-progress, 0) * 10px);
+    padding: 0 80px;
   }
   
   .navbar-nav-item {
-    --nav-item-padding-h: calc(18px - var(--scroll-progress, 0) * 6px);
-    --nav-item-font-size: calc(16px - var(--scroll-progress, 0) * 1px);
+    padding: 6px 18px;
+    font-size: 16px;
   }
 }
 
 @media (min-width: 1520px) and (max-width: 1619px) {
   .navbar-top-header-content {
     max-width: var(--navbar-max-width-lg);
-    padding: 0 var(--navbar-padding-lg);
+    padding: 0 30px;
   }
   
   .navbar-top-nav.desktop-only {
@@ -1578,7 +1582,7 @@ body {
   
   .navbar-header-content {
     max-width: var(--navbar-max-width-lg);
-    padding: 0 var(--navbar-padding-lg);
+    padding: 0 30px;
   }
   
   .navbar-logo-section {
@@ -1586,7 +1590,8 @@ body {
   }
   
   .navbar-nit-logo {
-    --logo-size: calc(90px - var(--scroll-progress, 0) * 22px);
+    width: 90px;
+    height: 90px;
   }
   
   .navbar-institute-name-hindi {
@@ -1599,12 +1604,12 @@ body {
   
   .navbar-nav-content {
     max-width: calc(100% - 250px);
-    --nav-content-padding: calc(85px - var(--scroll-progress, 0) * 12px);
+    padding: 0 85px;
   }
 
   .navbar-nav-item {
-    --nav-item-padding-h: calc(19px - var(--scroll-progress, 0) * 6px);
-    --nav-item-font-size: calc(17px - var(--scroll-progress, 0) * 1px);
+    padding: 6px 19px;
+    font-size: 17px;
   } 
 
 }
@@ -1619,7 +1624,7 @@ body {
   }
   .navbar-top-header-content {
     max-width: var(--navbar-max-width-lg);
-    padding: 0 var(--navbar-padding-lg);
+    padding: 0 30px;
   }
   
   .mobile-menu,
@@ -1628,7 +1633,7 @@ body {
   }
   .navbar-header-content {
     max-width: var(--navbar-max-width-lg);
-    padding: 0 var(--navbar-padding-lg);
+    padding: 0 30px;
   }
   /* Enhanced dropdown sizing for large screens */
   .navbar-dropdown-menu,
@@ -1638,8 +1643,8 @@ body {
   }
   
   .navbar-nav-item {
-    --nav-item-padding-h: calc(20px - var(--scroll-progress, 0) * 6px);
-    --nav-item-font-size: calc(18px - var(--scroll-progress, 0) * 1px);
+    padding: 6px 20px;
+    font-size: 18px;
   }
 
   .navbar-submenu {
@@ -1650,7 +1655,7 @@ body {
 @media (min-width: 1720px) and (max-width: 1919px) {
   .navbar-top-header-content {
     max-width: var(--navbar-max-width-lg);
-    padding: 0 var(--navbar-padding-lg);
+    padding: 20 30px;
   }
   
   .navbar-top-nav.desktop-only {
@@ -1659,7 +1664,7 @@ body {
   
   .navbar-header-content {
     max-width: var(--navbar-max-width-lg);
-    padding: 0 var(--navbar-padding-lg);
+    padding: 10 60px !important;
   }
   
   .navbar-logo-section {
@@ -1667,7 +1672,8 @@ body {
   }
   
   .navbar-nit-logo {
-    --logo-size: calc(90px - var(--scroll-progress, 0) * 22px);
+    width: 90px;
+    height: 90px;
   }
   
   .navbar-institute-name-hindi {
@@ -1680,12 +1686,12 @@ body {
   
   .navbar-nav-content {
     max-width: calc(100% - 250px);
-    --nav-content-padding: calc(90px - var(--scroll-progress, 0) * 12px);
+    padding: 0 90px;
   }
   
   .navbar-nav-item {
-    --nav-item-padding-h: calc(22px - var(--scroll-progress, 0) * 6px);
-    --nav-item-font-size: calc(20px - var(--scroll-progress, 0) * 1px);
+    padding: 6px 22px;
+    font-size: 20px;
   }
 }
 
@@ -1694,7 +1700,7 @@ body {
 @media (min-width: 1920px) {
   .navbar-top-header-content {
     max-width: var(--navbar-max-width-xl);
-    padding: 0 var(--navbar-padding-xl);
+    padding: 0 40px;
   }
   
   .navbar-top-nav.desktop-only {
@@ -1703,14 +1709,15 @@ body {
   
   .navbar-header-content {
     max-width: var(--navbar-max-width-xl);
-    padding: 0 var(--navbar-padding-xl);
+    padding: 0 40px;
   }
 .navbar-logo-section {
   gap: 30px;
 }
 
 .navbar-nit-logo {
-    --logo-size: calc(95px - var(--scroll-progress, 0) * 25px);
+    width: 95px;
+    height: 95px;
   }
   
   .navbar-institute-name-hindi {
@@ -1723,12 +1730,12 @@ body {
   
   .navbar-nav-content {
     max-width: calc(100% - 300px);
-    --nav-content-padding: calc(100px - var(--scroll-progress, 0) * 15px);
+    padding: 0 100px;
   }
   
   .navbar-nav-item {
-    --nav-item-padding-h: calc(24px - var(--scroll-progress, 0) * 8px);
-    --nav-item-font-size: calc(22px - var(--scroll-progress, 0) * 1px);
+    padding: 6px 24px;
+    font-size: 22px;
   }
   
   /* Enhanced dropdown sizing for large screens */
@@ -1743,10 +1750,10 @@ body {
   }
 }
 
-@media (min-wdth: 2120px) and (max-width: 2559px) {
+@media (min-width: 2120px) and (max-width: 2559px) {
   .navbar-top-header-content {
     max-width: var(--navbar-max-width-xl);
-    padding: 0 var(--navbar-padding-xl);
+    padding: 0 40px;
   }
   
   .navbar-top-nav.desktop-only {
@@ -1755,7 +1762,7 @@ body {
   
   .navbar-header-content {
     max-width: var(--navbar-max-width-xl);
-    padding: 0 var(--navbar-padding-xl);
+    padding: 0 40px;
   }
   
   .navbar-logo-section {
@@ -1763,7 +1770,8 @@ body {
   }
   
   .navbar-nit-logo {
-    --logo-size: calc(100px - var(--scroll-progress, 0) * 25px);
+    width: 100px;
+    height: 100px;
   }
   
   .navbar-institute-name-hindi {
@@ -1776,12 +1784,12 @@ body {
   
   .navbar-nav-content {
     max-width: calc(100% - 350px);
-    --nav-content-padding: calc(110px - var(--scroll-progress, 0) * 15px);
+    padding: 0 110px;
   }
   
   .navbar-nav-item {
-    --nav-item-padding-h: calc(26px - var(--scroll-progress, 0) * 8px);
-    --nav-item-font-size: calc(24px - var(--scroll-progress, 0) * 1px);
+    padding: 6px 26px;
+    font-size: 24px;
   }
 }
 
@@ -1789,7 +1797,7 @@ body {
 @media (min-width: 2560px) {
   .navbar-top-header-content {
     max-width: var(--navbar-max-width-xxl);
-    padding: 0 calc(var(--navbar-padding-xl) * 1.5);
+    padding: 0 60px;
   }
   
   .navbar-top-nav.desktop-only {
@@ -1798,7 +1806,7 @@ body {
   
   .navbar-header-content {
     max-width: var(--navbar-max-width-xxl);
-    padding: 0 calc(var(--navbar-padding-xl) * 1.5);
+    padding: 0 60px;
   }
   
   .navbar-logo-section {
@@ -1806,7 +1814,8 @@ body {
   }
   
   .navbar-nit-logo {
-    --logo-size: calc(110px - var(--scroll-progress, 0) * 30px);
+    width: 110px;
+    height: 110px;
   }
   
   .navbar-institute-name-hindi {
@@ -1819,12 +1828,12 @@ body {
   
   .navbar-nav-content {
     max-width: var(--navbar-max-width-xxl);
-    --nav-content-padding: calc(var(--navbar-padding-xl) * 1.5);
+    padding: 0 60px;
   }
   
   .navbar-nav-item {
-    --nav-item-padding-h: calc(28px - var(--scroll-progress, 0) * 10px);
-    --nav-item-font-size: calc(26px - var(--scroll-progress, 0) * 1px);
+    padding: 6px 28px;
+    font-size: 26px;
   }
   
   /* Maximum dropdown sizing for ultra-wide screens */
