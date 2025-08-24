@@ -82,8 +82,8 @@ const ContactUs = () => {
                                 <div key={index} className="contactus-department-card">
                                     <h3>{department.name}</h3>
                                     <p><strong>HOD:</strong> {department.hod}</p>
-                                    <p><strong>Email:</strong> {department.email}</p>
-                                    <p><strong>Phone:</strong> {department.phone}</p>
+                                    <p><strong>Email:</strong> <a href={`mailto:${department.email}`} className="email-link">{department.email}</a></p>
+                                    <p><strong>Phone:</strong> <a href={`tel:${department.phone}`} className="phone-link">{department.phone}</a></p>
                                 </div>
                             ))}
                         </div>
@@ -96,8 +96,8 @@ const ContactUs = () => {
                                 <div key={index} className="contactus-admin-card">
                                     <h3>{admin.title}</h3>
                                     <p><strong>{admin.designation}:</strong> {admin.name}</p>
-                                    <p><strong>Email:</strong> {admin.email}</p>
-                                    <p><strong>Phone:</strong> {admin.phone}</p>
+                                    <p><strong>Email:</strong> <a href={`mailto:${admin.email}`} className="email-link">{admin.email}</a></p>
+                                    <p><strong>Phone:</strong> <a href={`tel:${admin.phone}`} className="phone-link">{admin.phone}</a></p>
                                 </div>
                             ))}
                         </div>
@@ -109,8 +109,8 @@ const ContactUs = () => {
                             {contactUsData.services.list.map((service, index) => (
                                 <div key={index} className="contactus-service-card">
                                     <h3>{service.title}</h3>
-                                    <p><strong>Email:</strong> {service.email}</p>
-                                    <p><strong>Phone:</strong> {service.phone}</p>
+                                    <p><strong>Email:</strong> <a href={`mailto:${service.email}`} className="email-link">{service.email}</a></p>
+                                    <p><strong>Phone:</strong> <a href={`tel:${service.phone}`} className="phone-link">{service.phone}</a></p>
                                     <p>{service.description}</p>
                                 </div>
                             ))}
