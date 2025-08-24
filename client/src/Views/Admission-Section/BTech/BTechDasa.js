@@ -1,67 +1,8 @@
 import React from 'react';
 import './BTechDasa.css';
+import dasaData from './BTechDasa.json';
 
 const BTechDasa = () => {
-    // DASA program data - following JoSAA page pattern
-    const dasaData = {
-        title: "B.Tech Admissions - DASA",
-        subtitle: "Direct Admission of Students Abroad",
-        examInfo: {
-            title: "JEE Main 2025",
-            description: "Joint Entrance Examination (Main)",
-            website: "https://jeemain.nta.nic.in/"
-        },
-        programs: [
-            {
-                department: "Computer Science & Engineering",
-                link: "https://www.nitgoa.ac.in/academics/ComputerScience.html"
-            },
-            {
-                department: "Electronics & Communication Engineering",
-                link: "https://www.nitgoa.ac.in/academics/Electronics.html"
-            },
-            {
-                department: "Electrical & Electronics Engineering",
-                link: "https://www.nitgoa.ac.in/academics/Electrical.html"
-            },
-            {
-                department: "Civil Engineering",
-                link: "https://www.nitgoa.ac.in/academics/Civil.html"
-            },
-            {
-                department: "Mechanical Engineering",
-                link: "https://www.nitgoa.ac.in/academics/Mechnical.html"
-            }
-        ],
-        contact: {
-            headquarters: {
-                title: "Headquarters",
-                email: "dasa2024help@nitrr.ac.in"
-            },
-            nitgoa: {
-                name: "Dr. Ragoju Ravi",
-                designation: "Centre In-Charge, Admissions (DASA)",
-                institute: "National Institute of Technology Goa",
-                address: "Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
-                email: "ravi@nitgoa.ac.in | dasa@nitgoa.ac.in",
-                phone: "+91 9404715466 | 0832-2404743"
-            }
-        },
-        resources: [
-            {
-                title: "Schedule of DASA 2024 UG Counselling",
-                link: "/pdf/admission/Btech/DASA/DASA_Schedule_2024.pdf"
-            },
-            {
-                title: "DASA UG Brochure 2024",
-                link: "/pdf/admission/Btech/DASA/DASA_Brochure_2024.pdf"
-            },
-            {
-                title: "DASA Official Website",
-                link: "https://dasanit.org"
-            }
-        ]
-    };
 
     return (
         <div className="btech-dasa-admissions-page">
@@ -80,13 +21,12 @@ const BTechDasa = () => {
 
                 {/* Admission Process Overview */}
                 <section className="btech-dasa-programs-section">
-                    <h2 className="btech-dasa-section-title">DASA Scheme 2025</h2>
+                    <h2 className="btech-dasa-section-title">{dasaData.dasaScheme.title}</h2>
                     <div className="btech-dasa-admission-overview">
                         <div className="btech-dasa-process-card">
                             <h3>Eligibility & Examination</h3>
                             <p>
-                                The UG admissions for academic year 2025-26 under DASA scheme shall be on the 
-                                basis of the ranks obtained by the students in JEE(Main).
+                                {dasaData.dasaScheme.eligibility}
                             </p>
                             <p>
                                 Admissions are open for <strong>Foreign Nationals / Persons of Indian Origin (PIOs) / 
@@ -145,11 +85,11 @@ const BTechDasa = () => {
                             <div className="btech-dasa-contact-details">
                                 <div className="btech-dasa-contact-item">
                                     <span className="btech-dasa-contact-label">E-Mail:</span>
-                                    <span>{dasaData.contact.nitgoa.email}</span>
+                                    <span><a href={`mailto:${dasaData.contact.nitgoa.email}`}>{dasaData.contact.nitgoa.email}</a></span>
                                 </div>
                                 <div className="btech-dasa-contact-item">
                                     <span className="btech-dasa-contact-label">Ph. No.:</span>
-                                    <span>{dasaData.contact.nitgoa.phone}</span>
+                                    <span><a href={`tel:${dasaData.contact.nitgoa.phone}`}>{dasaData.contact.nitgoa.phone}</a></span>
                                 </div>
                             </div>
                         </div>
@@ -161,9 +101,8 @@ const BTechDasa = () => {
                     <div className="btech-dasa-info-grid">
                         <div className="btech-dasa-info-card">
                             <div className="btech-dasa-note">
-                                <p><strong>Note:</strong> For the latest updates and detailed information about the admission process, 
-                                regularly visit the <a href="https://dasanit.org" target="_blank" rel="noopener noreferrer">DASA official website</a>.</p>
-                                <p>Secure and separate hostel accommodation for boys and girls is available for all branches.</p>
+                                <p><strong>Note:</strong> {dasaData.notes[0]}</p>
+                                <p>{dasaData.notes[1]}</p>
                             </div>
                         </div>
                     </div>

@@ -1,0 +1,120 @@
+{
+  "title": "B.Tech Admissions - JoSAA/CSAB",
+  "subtitle": "Joint Seat Allocation Authority & Central Seat Allocation Board",
+  "examInfo": {
+    "title": "JEE Main 2025",
+    "description": "Joint Entrance Examination (Main)",
+    "website": "https://jeemain.nta.nic.in/"
+  },
+  "admissionProcess": {
+    "title": "Admission Process",
+    "description": "Admission to Undergraduate Engineering Programs for candidates from India at NITs, IIITs, and other centrally funded Technical Institutions is based on performance in Class 12/other Qualifying Examination and Joint Entrance Examination (JEE Main).",
+    "steps": [
+      "Qualify JEE Main examination",
+      "Register for JoSAA counselling",
+      "Fill choice preferences",
+      "Participate in seat allotment rounds"
+    ]
+  },
+  "programs": [
+    {
+      "department": "Computer Science & Engineering",
+      "specialization": "Computer Science & Engineering",
+      "seats": "120",
+      "description": "Our Computer Science & Engineering program offers comprehensive education in software development, artificial intelligence, machine learning, and data science. Students gain practical experience through hands-on projects and industry collaborations.",
+      "objectives": [
+        "To provide strong foundation in computer science principles and software engineering practices",
+        "To develop skills in emerging technologies like AI, ML, and cybersecurity",
+        "To prepare students for leadership roles in technology industries and research organizations"
+      ],
+      "syllabusLink": "https://www.nitgoa.ac.in/academics/ComputerScience.html"
+    },
+    {
+      "department": "Electronics & Communication Engineering",
+      "specialization": "Electronics & Communication Engineering", 
+      "seats": "60",
+      "description": "The ECE program focuses on communication systems, VLSI design, signal processing, and IoT technologies. Students learn to design and develop electronic systems for various applications in telecommunications and embedded systems.",
+      "objectives": [
+        "To provide expertise in analog and digital communication systems",
+        "To develop skills in VLSI design and embedded system development", 
+        "To prepare students for careers in telecommunications and electronics industries"
+      ],
+      "syllabusLink": "https://www.nitgoa.ac.in/academics/Electronics.html"
+    },
+    {
+      "department": "Electrical & Electronics Engineering",
+      "specialization": "Electrical & Electronics Engineering",
+      "seats": "60", 
+      "description": "Our EEE program covers power systems, control systems, power electronics, and renewable energy technologies. Students gain knowledge in electrical power generation, transmission, and utilization systems.",
+      "objectives": [
+        "To provide comprehensive knowledge in electrical power systems and electronics",
+        "To develop expertise in renewable energy and smart grid technologies",
+        "To prepare students for careers in power industry and electrical consultancy"
+      ],
+      "syllabusLink": "https://www.nitgoa.ac.in/academics/Electrical.html"
+    },
+    {
+      "department": "Civil Engineering",
+      "specialization": "Civil Engineering",
+      "seats": "60",
+      "description": "The Civil Engineering program encompasses structural engineering, environmental engineering, transportation, and construction management. Students learn to design and construct sustainable infrastructure projects.",
+      "objectives": [
+        "To provide strong foundation in structural and environmental engineering",
+        "To develop skills in sustainable construction and project management",
+        "To prepare students for careers in infrastructure development and consultancy"
+      ],
+      "syllabusLink": "https://www.nitgoa.ac.in/academics/Civil.html"
+    },
+    {
+      "department": "Mechanical Engineering", 
+      "specialization": "Mechanical Engineering",
+      "seats": "60",
+      "description": "Our Mechanical Engineering program covers manufacturing, design, thermal systems, and robotics. Students gain expertise in mechanical system design, analysis, and manufacturing processes.",
+      "objectives": [
+        "To provide comprehensive knowledge in mechanical design and manufacturing",
+        "To develop expertise in automation and robotics technologies",
+        "To prepare students for careers in automotive, aerospace, and manufacturing industries"
+      ],
+      "syllabusLink": "https://www.nitgoa.ac.in/academics/Mechnical.html"
+    }
+  ],
+  "contact": {
+    "name": "Dr. Ravi Ragoju",
+    "designation": "Centre In-Charge, UG Admissions (JoSAA/CSAB)",
+    "institute": "National Institute of Technology Goa",
+    "address": "Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "email": "ravi@nitgoa.ac.in",
+    "additionalEmail": "ugadmissions@nitgoa.ac.in",
+    "phone": "9404715466"
+  },
+  "resources": [
+    {
+      "title": "JoSAA Official Portal",
+      "link": "http://josaa.nic.in"
+    },
+    {
+      "title": "CSAB Official Portal", 
+      "link": "http://csab.nic.in"
+    },
+    {
+      "title": "JoSAA 2024 Online Reporting Schedule",
+      "link": "/pdf/admission/Btech/JOSAA-CSAB/JoSAA_2024_Online_Reporting_Schedule.pdf"
+    },
+    {
+      "title": "JoSAA 2024 Business Rules",
+      "link": "/pdf/admission/Btech/JOSAA-CSAB/JoSAA_2024_Business_Rules.pdf"
+    },
+    {
+      "title": "Opening & Closing Ranks (CSAB Special Round-II)",
+      "link": "https://admissions.nic.in/csabspl/Applicant/SeatAllotmentResult/CurrentORCR.aspx"
+    },
+    {
+      "title": "Opening & Closing Ranks (JoSAA Round-6)",
+      "link": "https://josaa.admissions.nic.in/applicant/SeatAllotmentResult/CurrentORCR.aspx"
+    }
+  ],
+  "notes": [
+    "For the latest updates and detailed information about the admission process, regularly visit the JoSAA official website and CSAB official website.",
+    "Secure and separate hostel accommodation for boys and girls is available for all branches."
+  ]
+}
