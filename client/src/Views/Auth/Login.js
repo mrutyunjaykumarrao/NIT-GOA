@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { useTheme } from '../../contexts/ThemeContext';
+import useAsyncOperation from '../../hooks/useAsyncOperation';
 import './Login.css';
 
 const Login = ({ isModalOpen, onClose }) => {
@@ -9,13 +10,11 @@ const Login = ({ isModalOpen, onClose }) => {
     username: '',
     password: ''
   });
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [failedAttempts, setFailedAttempts] = useState(0);
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [forgotEmail, setForgotEmail] = useState('');
-  const [isForgotLoading, setIsForgotLoading] = useState(false);
   const [forgotMessage, setForgotMessage] = useState('');
   
   // Ref for auto-focusing username field
@@ -25,6 +24,8 @@ const Login = ({ isModalOpen, onClose }) => {
   const location = useLocation();
   const { login, isAuthenticated } = useAuth();
   const { theme } = useTheme();
+  const { loading: isLoading, executeAsync } = useAsyncOperation();
+  const { loading: isForgotLoading, executeAsync: executeForgotAsync } = useAsyncOperation();
 
   // Redirect if already authenticated and clear form when user logs out
   React.useEffect(() => {
@@ -101,112 +102,114 @@ const Login = ({ isModalOpen, onClose }) => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsLoading(true);
     setError('');
 
-    try {
-      const result = await login(credentials);
-      
-      if (result.success) {
-        // Reset failed attempts on successful login
-        setFailedAttempts(0);
-        setShowForgotPassword(false);
+    executeAsync(
+      async () => {
+        const result = await login(credentials);
         
-        // Close modal and stay on current page (don't navigate away)
-        if (onClose) onClose();
-        
-        // Role-based redirection logic
-        const userRole = result.user.role;
-        const from = location.state?.from?.pathname;
-        
-        // Only navigate if we're on the actual /login page OR if redirecting from protected route
-        if (location.pathname === '/login' || from) {
-          if (from) {
-            // If user was redirected from a protected route, go back there
-            navigate(from);
-          } else {
-            // Default redirection based on role
-            switch (userRole) {
-              case 'Admin':
-                navigate('/admin');
-                break;
-              case 'Faculty':
-                // Redirect to faculty edit page using employee_id or employee_code
-                const facultyId = result.user.employee_id || result.user.employee_code || result.user.id;
-                navigate(`/faculty/${facultyId}/edit`);
-                break;
-              default:
-                navigate('/');
-                break;
+        if (result.success) {
+          // Reset failed attempts on successful login
+          setFailedAttempts(0);
+          setShowForgotPassword(false);
+          
+          // Close modal and stay on current page (don't navigate away)
+          if (onClose) onClose();
+          
+          // Role-based redirection logic
+          const userRole = result.user.role;
+          const from = location.state?.from?.pathname;
+          
+          // Only navigate if we're on the actual /login page OR if redirecting from protected route
+          if (location.pathname === '/login' || from) {
+            if (from) {
+              // If user was redirected from a protected route, go back there
+              navigate(from);
+            } else {
+              // Default redirection based on role
+              switch (userRole) {
+                case 'Admin':
+                  navigate('/admin');
+                  break;
+                case 'Faculty':
+                  // Redirect to faculty edit page using employee_id or employee_code
+                  const facultyId = result.user.employee_id || result.user.employee_code || result.user.id;
+                  navigate(`/faculty/${facultyId}/edit`);
+                  break;
+                default:
+                  navigate('/');
+                  break;
+              }
             }
           }
+          // If we're not on /login page and no redirect needed, stay on current page after login
+        } else {
+          // Show username in error message to help user remember
+          const errorMsg = credentials.username 
+            ? `Invalid credentials for username: ${credentials.username}` 
+            : result.error;
+          throw new Error(errorMsg);
         }
-        // If we're not on /login page and no redirect needed, stay on current page after login
-      } else {
-        // Show username in error message to help user remember
-        const errorMsg = credentials.username 
-          ? `Invalid credentials for username: ${credentials.username}` 
-          : result.error;
-        setError(errorMsg);
-        const newFailedAttempts = failedAttempts + 1;
-        setFailedAttempts(newFailedAttempts);
-        
-        // Show forgot password after 2 failed attempts
-        if (newFailedAttempts >= 2) {
-          setShowForgotPassword(true);
+      },
+      {
+        showSuccessToast: true,
+        successMessage: 'Login successful!',
+        showErrorToast: false, // We'll handle errors manually for better UX
+        onError: (error) => {
+          const errorMsg = credentials.username 
+            ? `Invalid credentials for username: ${credentials.username}` 
+            : error.message;
+          setError(errorMsg);
+          const newFailedAttempts = failedAttempts + 1;
+          setFailedAttempts(newFailedAttempts);
+          
+          // Show forgot password after 2 failed attempts
+          if (newFailedAttempts >= 2) {
+            setShowForgotPassword(true);
+          }
         }
       }
-    } catch (error) {
-      console.error('Login error:', error);
-      const errorMsg = credentials.username 
-        ? `Connection error for username: ${credentials.username}. Please try again.` 
-        : 'An unexpected error occurred. Please try again.';
-      setError(errorMsg);
-      const newFailedAttempts = failedAttempts + 1;
-      setFailedAttempts(newFailedAttempts);
-      
-      if (newFailedAttempts >= 2) {
-        setShowForgotPassword(true);
-      }
-    } finally {
-      setIsLoading(false);
-    }
+    );
   };
 
-  const handleForgotPassword = async (e) => {
+  const handleForgotPassword = (e) => {
     e.preventDefault();
-    setIsForgotLoading(true);
     setForgotMessage('');
     
-    try {
-      // For now, we'll simulate retrieving password
-      // In a real application, you would send a password reset email
-      const response = await fetch('/api/auth/forgot-password', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email: forgotEmail }),
-      });
-      
-      if (response.ok) {
-        const data = await response.json();
-        setForgotMessage(`Your password is: ${data.password}`);
-      } else {
-        setForgotMessage('Email not found. Please check your email address.');
+    executeForgotAsync(
+      async () => {
+        // For now, we'll simulate retrieving password
+        // In a real application, you would send a password reset email
+        const response = await fetch('/api/auth/forgot-password', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: forgotEmail }),
+        });
+        
+        if (response.ok) {
+          const data = await response.json();
+          setForgotMessage(`Your password is: ${data.password}`);
+        } else {
+          setForgotMessage('Email not found. Please check your email address.');
+        }
+      },
+      {
+        showSuccessToast: false, // We'll show the message directly
+        showErrorToast: false, // Handle error manually
+        onError: (error) => {
+          // For demo purposes, show a mock password
+          if (forgotEmail === 'admin@nitgoa.ac.in') {
+            setForgotMessage('Your password is: admin123');
+          } else {
+            setForgotMessage('Email not found. Please check your email address.');
+          }
+        }
       }
-    } catch (error) {
-      // For demo purposes, show a mock password
-      if (forgotEmail === 'admin@nitgoa.ac.in') {
-        setForgotMessage('Your password is: admin123');
-      } else {
-        setForgotMessage('Email not found. Please check your email address.');
-      }
-    } finally {
-      setIsForgotLoading(false);
-    }
+    );
   };
 
   const togglePasswordVisibility = () => {

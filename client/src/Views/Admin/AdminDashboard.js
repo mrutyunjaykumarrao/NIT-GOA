@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
+import useAsyncOperation from '../../hooks/useAsyncOperation';
 import AdminLayout from './AdminLayout';
 import FacultyTab from './components/FacultyTab/FacultyTab';
 import TechnicalStaffTab from './components/TechnicalStaffTab/TechnicalStaffTab';
@@ -11,8 +12,8 @@ import './AdminDashboard.css';
 
 const AdminDashboard = () => {
   const { user, token } = useAuth();
+  const { loading, executeAsync } = useAsyncOperation();
   const [activeTab, setActiveTab] = useState('analytics');
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   
   // Data states
@@ -55,71 +56,94 @@ const AdminDashboard = () => {
   }, [token]);
 
   // Data fetching functions
-  const fetchAnalytics = useCallback(async () => {
-    try {
-      const data = await apiCall('/admin/analytics');
-      setAnalytics(data || {});
-    } catch (error) {
-      console.error('Failed to fetch analytics:', error);
-      setError('Failed to load analytics data');
-    }
-  }, [apiCall]);
+  const fetchAnalytics = useCallback(() => {
+    return executeAsync(
+      async () => {
+        const data = await apiCall('/admin/analytics');
+        setAnalytics(data || {});
+        return data;
+      },
+      {
+        showErrorToast: true,
+        errorMessage: 'Failed to load analytics data'
+      }
+    );
+  }, [apiCall, executeAsync]);
 
-  const fetchUsers = useCallback(async () => {
-    try {
-      const data = await apiCall('/admin/users');
-      setUsers(data || []);
-    } catch (error) {
-      console.error('Failed to fetch users:', error);
-      setError('Failed to load users data');
-    }
-  }, [apiCall]);
+  const fetchUsers = useCallback(() => {
+    return executeAsync(
+      async () => {
+        const data = await apiCall('/admin/users');
+        setUsers(data || []);
+        return data;
+      },
+      {
+        showErrorToast: true,
+        errorMessage: 'Failed to load users data'
+      }
+    );
+  }, [apiCall, executeAsync]);
 
-  const fetchEmployees = useCallback(async () => {
-    try {
-      const data = await apiCall('/admin/employees');
-      setEmployees(data || []);
-    } catch (error) {
-      console.error('Failed to fetch employees:', error);
-      setError('Failed to load employees data');
-    }
-  }, [apiCall]);
+  const fetchEmployees = useCallback(() => {
+    return executeAsync(
+      async () => {
+        const data = await apiCall('/admin/employees');
+        setEmployees(data || []);
+        return data;
+      },
+      {
+        showErrorToast: true,
+        errorMessage: 'Failed to load employees data'
+      }
+    );
+  }, [apiCall, executeAsync]);
 
-  const fetchFaculty = useCallback(async () => {
-    try {
-      const data = await apiCall('/admin/faculty');
-      setFaculty(data || []);
-    } catch (error) {
-      console.error('Failed to fetch faculty:', error);
-      setError('Failed to load faculty data');
-    }
-  }, [apiCall]);
+  const fetchFaculty = useCallback(() => {
+    return executeAsync(
+      async () => {
+        const data = await apiCall('/admin/faculty');
+        setFaculty(data || []);
+        return data;
+      },
+      {
+        showErrorToast: true,
+        errorMessage: 'Failed to load faculty data'
+      }
+    );
+  }, [apiCall, executeAsync]);
 
-  const fetchStaff = useCallback(async () => {
-    try {
-      const data = await apiCall('/admin/staff');
-      setStaff(data || []);
-    } catch (error) {
-      console.error('Failed to fetch staff:', error);
-      setError('Failed to load staff data');
-    }
-  }, [apiCall]);
+  const fetchStaff = useCallback(() => {
+    return executeAsync(
+      async () => {
+        const data = await apiCall('/admin/staff');
+        setStaff(data || []);
+        return data;
+      },
+      {
+        showErrorToast: true,
+        errorMessage: 'Failed to load staff data'
+      }
+    );
+  }, [apiCall, executeAsync]);
 
-  const fetchDepartments = useCallback(async () => {
-    try {
-      const data = await apiCall('/admin/departments');
-      setDepartments(data || []);
-    } catch (error) {
-      console.error('Failed to fetch departments:', error);
-      setError('Failed to load departments data');
-    }
-  }, [apiCall]);
+  const fetchDepartments = useCallback(() => {
+    return executeAsync(
+      async () => {
+        const data = await apiCall('/admin/departments');
+        setDepartments(data || []);
+        return data;
+      },
+      {
+        showErrorToast: true,
+        errorMessage: 'Failed to load departments data'
+      }
+    );
+  }, [apiCall, executeAsync]);
 
   // Load data based on active tab
   const loadTabData = useCallback(async (tab) => {
     if (!token) return;
     
-    setLoading(true);
     setError(null);
     
     try {
@@ -143,8 +167,6 @@ const AdminDashboard = () => {
     } catch (error) {
       console.error(`Failed to load ${tab} data:`, error);
       setError(`Failed to load ${tab} data`);
-    } finally {
-      setLoading(false);
     }
   }, [token, fetchAnalytics, fetchUsers, fetchEmployees, fetchFaculty, fetchStaff, fetchDepartments]);
 
@@ -154,261 +176,272 @@ const AdminDashboard = () => {
   }, [activeTab, loadTabData]);
 
   // CRUD operations
-  const handleCreate = async (entity, formData) => {
-    setLoading(true);
-    try {
-      let endpoint;
-      
-      switch (entity) {
-        case 'user':
-          endpoint = '/admin/users';
-          break;
-        case 'employee':
-          endpoint = '/admin/employees';
-          break;
-        case 'faculty':
-          endpoint = '/admin/faculty';
-          break;
-        case 'staff':
-          endpoint = '/admin/staff';
-          break;
-        default:
-          throw new Error('Unknown entity type');
+  const handleCreate = (entity, formData) => {
+    return executeAsync(
+      async () => {
+        let endpoint;
+        
+        switch (entity) {
+          case 'user':
+            endpoint = '/admin/users';
+            break;
+          case 'employee':
+            endpoint = '/admin/employees';
+            break;
+          case 'faculty':
+            endpoint = '/admin/faculty';
+            break;
+          case 'staff':
+            endpoint = '/admin/staff';
+            break;
+          default:
+            throw new Error('Unknown entity type');
+        }
+
+        await apiCall(endpoint, {
+          method: 'POST',
+          body: JSON.stringify(formData)
+        });
+
+        setShowModal(false);
+        await loadTabData(activeTab);
+      },
+      {
+        showSuccessToast: true,
+        successMessage: `${entity.charAt(0).toUpperCase() + entity.slice(1)} created successfully!`,
+        showErrorToast: true,
+        errorMessage: `Failed to create ${entity}`
       }
-
-      await apiCall(endpoint, {
-        method: 'POST',
-        body: JSON.stringify(formData)
-      });
-
-      setShowModal(false);
-      loadTabData(activeTab);
-      
-    } catch (error) {
-      console.error(`Failed to create ${entity}:`, error);
-      setError(`Failed to create ${entity}: ${error.message}`);
-    } finally {
-      setLoading(false);
-    }
+    );
   };
 
-  const handleUpdate = async (entity, id, formData) => {
-    setLoading(true);
-    try {
-      let endpoint;
-      
-      switch (entity) {
-        case 'user':
-          endpoint = `/admin/users/${id}`;
-          break;
-        case 'employee':
-          endpoint = `/admin/employees/${id}`;
-          break;
-        case 'faculty':
-          endpoint = `/admin/faculty/${id}`;
-          break;
-        case 'staff':
-          endpoint = `/admin/staff/${id}`;
-          break;
-        default:
-          throw new Error('Unknown entity type');
+  const handleUpdate = (entity, id, formData) => {
+    return executeAsync(
+      async () => {
+        let endpoint;
+        
+        switch (entity) {
+          case 'user':
+            endpoint = `/admin/users/${id}`;
+            break;
+          case 'employee':
+            endpoint = `/admin/employees/${id}`;
+            break;
+          case 'faculty':
+            endpoint = `/admin/faculty/${id}`;
+            break;
+          case 'staff':
+            endpoint = `/admin/staff/${id}`;
+            break;
+          default:
+            throw new Error('Unknown entity type');
+        }
+
+        await apiCall(endpoint, {
+          method: 'PUT',
+          body: JSON.stringify(formData)
+        });
+
+        setShowModal(false);
+        await loadTabData(activeTab);
+      },
+      {
+        showSuccessToast: true,
+        successMessage: `${entity.charAt(0).toUpperCase() + entity.slice(1)} updated successfully!`,
+        showErrorToast: true,
+        errorMessage: `Failed to update ${entity}`
       }
-
-      await apiCall(endpoint, {
-        method: 'PUT',
-        body: JSON.stringify(formData)
-      });
-
-      setShowModal(false);
-      loadTabData(activeTab);
-      
-    } catch (error) {
-      console.error(`Failed to update ${entity}:`, error);
-      setError(`Failed to update ${entity}: ${error.message}`);
-    } finally {
-      setLoading(false);
-    }
+    );
   };
 
   // Enhanced staff handlers
-  const handleCreateAdminStaff = async (formData) => {
-    setLoading(true);
-    try {
-      const response = await fetch('/api/admin/employees', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
+  const handleCreateAdminStaff = (formData) => {
+    return executeAsync(
+      async () => {
+        const response = await fetch('/api/admin/employees', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
 
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.error || 'Failed to create administrative staff');
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.error || 'Failed to create administrative staff');
+        }
+
+        const result = await response.json();
+        
+        // Show success message
+        if (result.imagePending) {
+          alert(result.message + ' Image is pending admin approval.');
+        } else {
+          alert(result.message);
+        }
+
+        setShowModal(false);
+        await loadTabData(activeTab);
+        
+        return result;
+      },
+      {
+        showSuccessToast: true,
+        successMessage: 'Administrative staff created successfully!',
+        showErrorToast: true,
+        errorMessage: 'Failed to create administrative staff'
       }
+    );
+  };
 
-      const result = await response.json();
-      
-      // Show success message
-      if (result.imagePending) {
-        alert(result.message + ' Image is pending admin approval.');
-      } else {
+  const handleUpdateAdminStaff = (id, formData) => {
+    return executeAsync(
+      async () => {
+        const response = await fetch(`/api/admin/employees/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.error || 'Failed to update administrative staff');
+        }
+
+        const result = await response.json();
         alert(result.message);
-      }
 
-      setShowModal(false);
-      loadTabData(activeTab);
-      
-    } catch (error) {
-      console.error('Failed to create administrative staff:', error);
-      setError(`Failed to create administrative staff: ${error.message}`);
-      alert('Error: ' + error.message);
-    } finally {
-      setLoading(false);
-    }
+        setShowModal(false);
+        await loadTabData(activeTab);
+        
+        return result;
+      },
+      {
+        showSuccessToast: true,
+        successMessage: 'Administrative staff updated successfully!',
+        showErrorToast: true,
+        errorMessage: 'Failed to update administrative staff'
+      }
+    );
   };
 
-  const handleUpdateAdminStaff = async (id, formData) => {
-    setLoading(true);
-    try {
-      const response = await fetch(`/api/admin/employees/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
+  const handleCreateTechStaff = (formData) => {
+    return executeAsync(
+      async () => {
+        const response = await fetch('/api/admin/employees', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
 
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.error || 'Failed to update administrative staff');
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.error || 'Failed to create technical staff');
+        }
+
+        const result = await response.json();
+        
+        // Show success message
+        if (result.imagePending) {
+          alert(result.message + ' Image is pending admin approval.');
+        } else {
+          alert(result.message);
+        }
+
+        setShowModal(false);
+        await loadTabData(activeTab);
+        
+        return result;
+      },
+      {
+        showSuccessToast: true,
+        successMessage: 'Technical staff created successfully!',
+        showErrorToast: true,
+        errorMessage: 'Failed to create technical staff'
       }
-
-      const result = await response.json();
-      alert(result.message);
-
-      setShowModal(false);
-      loadTabData(activeTab);
-      
-    } catch (error) {
-      console.error('Failed to update administrative staff:', error);
-      setError(`Failed to update administrative staff: ${error.message}`);
-      alert('Error: ' + error.message);
-    } finally {
-      setLoading(false);
-    }
+    );
   };
 
-  const handleCreateTechStaff = async (formData) => {
-    setLoading(true);
-    try {
-      const response = await fetch('/api/admin/employees', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
+  const handleUpdateTechStaff = (id, formData) => {
+    return executeAsync(
+      async () => {
+        const response = await fetch(`/api/admin/employees/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
 
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.error || 'Failed to create technical staff');
-      }
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.error || 'Failed to update technical staff');
+        }
 
-      const result = await response.json();
-      
-      // Show success message
-      if (result.imagePending) {
-        alert(result.message + ' Image is pending admin approval.');
-      } else {
+        const result = await response.json();
         alert(result.message);
-      }
 
-      setShowModal(false);
-      loadTabData(activeTab);
-      
-    } catch (error) {
-      console.error('Failed to create technical staff:', error);
-      setError(`Failed to create technical staff: ${error.message}`);
-      alert('Error: ' + error.message);
-    } finally {
-      setLoading(false);
-    }
+        setShowModal(false);
+        await loadTabData(activeTab);
+        
+        return result;
+      },
+      {
+        showSuccessToast: true,
+        successMessage: 'Technical staff updated successfully!',
+        showErrorToast: true,
+        errorMessage: 'Failed to update technical staff'
+      }
+    );
   };
 
-  const handleUpdateTechStaff = async (id, formData) => {
-    setLoading(true);
-    try {
-      const response = await fetch(`/api/admin/employees/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.error || 'Failed to update technical staff');
-      }
-
-      const result = await response.json();
-      alert(result.message);
-
-      setShowModal(false);
-      loadTabData(activeTab);
-      
-    } catch (error) {
-      console.error('Failed to update technical staff:', error);
-      setError(`Failed to update technical staff: ${error.message}`);
-      alert('Error: ' + error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleDelete = async (entity, id) => {
+  const handleDelete = (entity, id) => {
     if (!window.confirm(`Are you sure you want to delete this ${entity}?`)) {
       return;
     }
 
-    setLoading(true);
-    try {
-      let endpoint;
-      
-      switch (entity) {
-        case 'user':
-          endpoint = `/admin/users/${id}`;
-          break;
-        case 'employee':
-          endpoint = `/admin/employees/${id}`;
-          break;
-        case 'faculty':
-          endpoint = `/admin/faculty/${id}`;
-          break;
-        case 'staff':
-          endpoint = `/admin/staff/${id}`;
-          break;
-        default:
-          throw new Error('Unknown entity type');
+    return executeAsync(
+      async () => {
+        let endpoint;
+        
+        switch (entity) {
+          case 'user':
+            endpoint = `/admin/users/${id}`;
+            break;
+          case 'employee':
+            endpoint = `/admin/employees/${id}`;
+            break;
+          case 'faculty':
+            endpoint = `/admin/faculty/${id}`;
+            break;
+          case 'staff':
+            endpoint = `/admin/staff/${id}`;
+            break;
+          default:
+            throw new Error('Unknown entity type');
+        }
+
+        await apiCall(endpoint, {
+          method: 'DELETE'
+        });
+
+        await loadTabData(activeTab);
+      },
+      {
+        showSuccessToast: true,
+        successMessage: `${entity.charAt(0).toUpperCase() + entity.slice(1)} deleted successfully!`,
+        showErrorToast: true,
+        errorMessage: `Failed to delete ${entity}`
       }
-
-      await apiCall(endpoint, {
-        method: 'DELETE'
-      });
-
-      loadTabData(activeTab);
-      
-    } catch (error) {
-      console.error(`Failed to delete ${entity}:`, error);
-      setError(`Failed to delete ${entity}: ${error.message}`);
-    } finally {
-      setLoading(false);
-    }
+    );
   };
 
   // Modal handlers
