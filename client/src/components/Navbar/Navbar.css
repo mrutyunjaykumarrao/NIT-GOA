@@ -88,6 +88,31 @@ body {
 }
 
 /* ========================================================================
+   MOBILE TAP HIGHLIGHT PREVENTION
+   ======================================================================== */
+
+/* Remove blue tap highlight on mobile devices for all navbar elements */
+.navbar-wrapper *,
+.navbar-wrapper *:focus,
+.navbar-wrapper *:active {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Allow text selection for specific elements */
+.navbar-institute-name-hindi,
+.navbar-institute-name-english {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* ========================================================================
    2. MAIN NAVBAR WRAPPER - FOUNDATION STYLES + GOOGLE TRANSLATE OVERRIDE
    ======================================================================== */
 
@@ -334,6 +359,8 @@ body {
   color: inherit;
   transition: opacity var(--transition-fast);
   cursor: pointer;
+  outline: none; /* Remove default focus outline */
+  -webkit-tap-highlight-color: transparent; /* Remove blue highlight on mobile tap */
 }
 
 .navbar-logo-link:hover {
@@ -342,6 +369,15 @@ body {
 
 .navbar-logo-link:visited {
   color: inherit;
+}
+
+.navbar-logo-link:focus {
+  outline: none; /* Remove focus outline */
+  opacity: 0.9; /* Subtle focus indication instead */
+}
+
+.navbar-logo-link:active {
+  opacity: 0.8; /* Feedback on tap/click */
 }
 
 /* Institute logo with fixed sizing */
@@ -409,14 +445,8 @@ body {
    Features progressive sizing and smooth animations.
 */
 .navbar-main-navigation {
-  background: linear-gradient(
-    to bottom, 
-    #000000 5%, 
-    #333333 25%, 
-    #666666 50%, 
-    #cccccc 80%, 
-    #ffffff 100%
-  );
+  background: #2e6da3; 
+  /* #052963; */
   color: white;
   /* Progressive height based on scroll position */
   /* --nav-height: calc(50px - var(--scroll-progress, 0) * 20px); */
@@ -436,7 +466,7 @@ body {
   gap: 0;
   min-height: 50px;
   padding: 0 60px;
-  transform: translateY(-8px) translateZ(0);
+  transform: translateY(0px) translateZ(0);
   transition: all var(--transition-fast);
 }
 
@@ -486,14 +516,7 @@ body {
 
 /* Dark mode navigation styling */
 [data-theme="dark"] .navbar-main-navigation {
-  background: linear-gradient(
-    to bottom, 
-    #0a0a0a 0%, 
-    #1a1a1a 20%, 
-    #2a2a2a 40%, 
-    #404040 75%, 
-    #555555 100%
-  );
+  background: #0f172a;
 }
 
 [data-theme="dark"] .navbar-nav-item {
@@ -1351,8 +1374,19 @@ body {
     width: 57px;
     height: 57px;
   }
+  
   .navbar-logo-link{
     gap: 7px;
+    outline: none; /* Remove default focus outline */
+    -webkit-tap-highlight-color: transparent; /* Remove blue highlight on mobile tap */
+  }
+  
+  .navbar-logo-link:focus {
+    outline: none; /* Remove focus outline */
+  }
+  
+  .navbar-logo-link:active {
+    opacity: 0.8; /* Feedback on tap */
   }
 
   .navbar-logo-section {
@@ -1647,7 +1681,7 @@ body {
   }
 
   .navbar-nav-item {
-    padding: calc(6px * var(--scale-1520)) calc(19px * var(--scale-1520)); /* 6px 20px */
+    /* padding: calc(6px * var(--scale-1520)) calc(19px * var(--scale-1520)); 6px 20px */
     font-size: calc(17px * var(--scale-1520)); /* 18px */
   } 
 
@@ -1729,7 +1763,7 @@ body {
   }
   
   .navbar-nav-item {
-    padding: 6px 22px;
+    padding: 6px 20px;
     font-size: 20px;
   }
 }
