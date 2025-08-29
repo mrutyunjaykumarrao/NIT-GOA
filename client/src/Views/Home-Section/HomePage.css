@@ -57,7 +57,7 @@
     aspect-ratio: 2.4 / 1; /* Set 2.4:1 aspect ratio to match 1360x566 images */
     max-height: 70vh; /* Maximum height constraint */
     min-height: 400px; /* Minimum height for smaller screens */
-    max-width: 1360px; /* Match your image width */
+    /* max-width: 1360px; /* Match your image width */
     padding: 20px;
     margin-left: auto;
     margin-right: auto;
@@ -102,7 +102,7 @@
 .hero-campus-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Fill the container while maintaining aspect ratio */
+    object-fit: fill; /* Fill the container while maintaining aspect ratio */
     object-position: center;
     display: block;
     border-radius: 8px; /* Slight rounding to match container */
@@ -2921,6 +2921,11 @@
         gap: 24px;
     }
     
+    /* Reduce card heights for mobile to prevent elongated appearance */
+    .homepage-content-card {
+        height: 500px; /* Reduced from 700px for mobile */
+    }
+    
     /* Mobile ordering: Placement Stats (1st), Lore Magazine (2nd), Newsletter (3rd) */
     .homepage-content-card.chart-card {
         order: 1;
@@ -3300,6 +3305,11 @@
         min-height: 450px;
     }
     
+    /* Further reduce homepage content card heights for small mobile screens */
+    .homepage-content-card {
+        height: 450px; /* Further reduced for very small screens */
+    }
+    
     .newsletter-image {
         height: 220px; /* Slightly smaller on mobile but still shows complete logo */
     }
@@ -3479,6 +3489,11 @@
     
     .newsletter-image {
         height: 150px;
+    }
+    
+    /* Make homepage content cards even more compact for very small screens */
+    .homepage-content-card {
+        height: 400px; /* Most compact for smallest screens */
     }
 
     .homepage-enhanced-portals {
