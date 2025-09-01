@@ -25,6 +25,54 @@
     --accent-red: #DC3545;
 }
 
+/* Global Reset for Tap Highlights and Focus Outlines */
+*,
+*::before,
+*::after {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Remove default focus outlines */
+button,
+input,
+select,
+textarea,
+a,
+[tabindex] {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+a:focus,
+[tabindex]:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Allow text selection for content areas */
+p,
+h1, h2, h3, h4, h5, h6,
+span,
+.announcement-content,
+.announcement-text {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
 /* General Styles */
 .homepage {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -548,6 +596,7 @@
 .nav-arrow-svg {
     width: 18px;
     height: 18px;
+    pointer-events: none;
 }
 
 /* Play/Pause Button */
@@ -574,6 +623,7 @@
 .play-pause-svg {
     width: 20px;
     height: 20px;
+    pointer-events: none;
 }
 
 /* Announcement Indicators */
@@ -703,11 +753,11 @@
         border: none;
         box-shadow: none;
         padding: 6px;
-        width: 32px;
-        height: 32px;
+        /* width: 32px;
+        height: 32px; */
     }
     
-    .nav-arrow-svg {
+    /* .nav-arrow-svg {
         width: 16px;
         height: 16px;
     }
@@ -716,16 +766,16 @@
         width: 18px;
         height: 18px;
     }
-    
+     */
     .announcement-indicators {
         margin-top: 10px;
         gap: 6px;
     }
     
-    .announcement-indicator {
+    /* .announcement-indicator {
         width: 10px;
         height: 10px;
-    }
+    } */
 }
 
 @keyframes slideInUp {
@@ -2945,7 +2995,7 @@
 }
 
 [data-theme="dark"] .announcement-content {
-    background: #0f172a;
+    background: transparent;
     border-color: var(--gray-200);
 }
 
@@ -3854,7 +3904,7 @@
     }
     
     .announcement-content {
-        font-size: 0.6rem;
+        font-size: 0.75rem;
         line-height: 1.5;
     }
 
