@@ -373,14 +373,15 @@
 [data-theme="dark"] .announcement-card {
     background: rgba(15, 23, 42, 1);
     border-color: rgba(59, 130, 246, 0.3);
+    border-width: thick;
 }
 
-[data-theme="dark"] .announcement-card:hover {
-    background: rgba(30, 41, 59, 1);
+ [data-theme="dark"] .announcement-card:hover {
+    /* background: rgba(30, 41, 59, 1); */
     box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15), 0 4px 8px rgba(59, 130, 246, 0.1);
 }
 
-[data-theme="dark"] .announcement-text {
+[data-theme="dark"] .announcement-content {
     color: var(--gray-300);
 }
 
@@ -438,7 +439,7 @@
     overflow: hidden;
     transition: all 0.3s ease;
     border: 1px solid rgba(0, 0, 0, 0.08);
-    height: 90px;
+    min-height: 90px;
     display: flex;
     align-items: center;
     animation: slideInUp 0.6s ease-out;
@@ -461,19 +462,20 @@
     align-items: center;
     justify-content: center;
     z-index: 2;
+    flex-shrink: 0;
 }
 
 .notice-text {
     color: white;
     font-weight: 700;
-    font-size: 0.9rem;
-    letter-spacing: 0.5px;
+    font-size: 1rem;
+    letter-spacing: 3px;
     writing-mode: horizontal-tb;
     text-align: center;
 }
 
-/* Announcement Content */
-.announcement-content {
+/* Announcement Text */
+.announcement-text {
     padding: 25px 30px 25px 130px;
     display: flex;
     align-items: center;
@@ -482,7 +484,7 @@
     overflow: hidden;
 }
 
-.announcement-text {
+.announcement-content {
     margin: 0;
     font-size: 1.1rem;
     line-height: 1.6;
@@ -491,11 +493,11 @@
     transition: all 0.5s ease;
 }
 
-.announcement-text.slide-in-right {
+.announcement-content.slide-in-right {
     animation: slideInFromRight 0.6s ease-out;
 }
 
-.announcement-text.slide-in-left {
+.announcement-content.slide-in-left {
     animation: slideInFromLeft 0.6s ease-out;
 }
 
@@ -504,13 +506,13 @@
     text-decoration: none;
 }
 
-.announcement-text.single-announcement {
+.announcement-content.single-announcement {
     animation: continuousSlide 4s ease-in-out infinite;
 }
 
 /* Remove animation when multiple announcements */
-.announcement-text.slide-in-right,
-.announcement-text.slide-in-left {
+.announcement-content.slide-in-right,
+.announcement-content.slide-in-left {
     animation-fill-mode: forwards;
 }
 
@@ -600,6 +602,130 @@
 .announcement-indicator:hover {
     background: rgba(46, 134, 193, 0.6);
     transform: scale(1.1);
+}
+
+/* ===============================
+   MOBILE RESPONSIVE STYLES FOR ANNOUNCEMENTS
+   =============================== */
+
+/* Tablet styles */
+@media (max-width: 768px) {
+    .announcement-card {
+        min-height: auto;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0;
+    }
+    
+    .notice-badge {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 8px 0;
+        align-self: center;
+    }
+    
+    .notice-text {
+        font-size: 0.8rem;
+    }
+    
+    .announcement-text {
+        padding: 15px 20px;
+        min-height: auto;
+    }
+    
+    .announcement-content {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+    
+    .announcement-controls {
+        padding: 0;
+        justify-content: center;
+        background: none;
+        border: none;
+        box-shadow: none;
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 480px) {
+    .announcement-card {
+        min-height: auto;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0;
+        height: auto;
+    }
+    
+    .notice-badge {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 6px 0;
+        align-self: center;
+        margin: 0;
+        top: auto;
+        bottom: auto;
+        left: auto;
+    }
+    
+    .notice-text {
+        font-size: 0.75rem;
+        letter-spacing: 0.3px;
+    }
+    
+    .announcement-text {
+        padding: 16px 16px 16px 16px;
+        min-height: auto;
+        flex: 1;
+    }
+    
+    .announcement-content {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    .announcement-controls {
+        padding: 0;
+        justify-content: center;
+        background: none;
+        border: none;
+        box-shadow: none;
+        gap: 12px;
+    }
+    
+    .announcement-nav-btn,
+    .announcement-play-pause {
+        background: none;
+        border: none;
+        box-shadow: none;
+        padding: 6px;
+        width: 32px;
+        height: 32px;
+    }
+    
+    .nav-arrow-svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .play-pause-svg {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .announcement-indicators {
+        margin-top: 10px;
+        gap: 6px;
+    }
+    
+    .announcement-indicator {
+        width: 10px;
+        height: 10px;
+    }
 }
 
 @keyframes slideInUp {
@@ -2819,7 +2945,7 @@
 }
 
 [data-theme="dark"] .announcement-content {
-    background: var(--white);
+    background: #0f172a;
     border-color: var(--gray-200);
 }
 
@@ -2828,7 +2954,7 @@
 }
 
 [data-theme="dark"] .announcement-link {
-    color: var(--primary-blue);
+    color: #FFFFFF;
 }
 
 [data-theme="dark"] .announcement-link:hover {
@@ -3221,7 +3347,7 @@
     }
 }
 
-@media (max-width: 768px) and (min-width: 540px) {
+@media (max-width: 768px) and (min-width: 480px) {
     .hero-section {
         margin: 0 15px;
         width: calc(100% - 30px);
@@ -3344,21 +3470,17 @@
         margin-bottom: 20px;
     }
     
-    .notice-badge {
-        width: 80px;
-    }
-    
     .notice-text {
-        font-size: 0.7rem;
-        letter-spacing: 0.3px;
-    }
-    
-    .announcement-content {
-        padding: 20px 25px 20px 100px;
-        min-height: 70px;
+        font-size: 1rem;
+        letter-spacing: 3px;
     }
     
     .announcement-text {
+        padding: 20px 20px 10px 20px;
+        min-height: 70px;
+    }
+    
+    .announcement-content {
         font-size: 1rem;
         line-height: 1.5;
     }
@@ -3403,7 +3525,7 @@
 }
 
 @media (max-width: 539px){
-    .announcement-text {
+    .announcement-content {
         font-size: 0.8rem;
         line-height: 1.5;
     }
@@ -3731,7 +3853,7 @@
         margin-bottom: 2rem;
     }
     
-    .announcement-text {
+    .announcement-content {
         font-size: 0.6rem;
         line-height: 1.5;
     }

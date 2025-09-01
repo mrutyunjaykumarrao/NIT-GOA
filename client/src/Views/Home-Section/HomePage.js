@@ -572,10 +572,10 @@ const HomePage = React.memo(() => {
                             <div className="notice-badge">
                                 <span className="notice-text">NOTICE</span>
                             </div>
-                            <div className="announcement-content">
+                            <div className="announcement-text">
                                 <p 
                                     key={`announcement-${currentAnnouncementIndex}`} 
-                                    className={`announcement-text ${
+                                    className={`announcement-content ${
                                         announcements.length === 1 
                                             ? 'single-announcement' 
                                             : announcementSlideDirection === 'right' 
