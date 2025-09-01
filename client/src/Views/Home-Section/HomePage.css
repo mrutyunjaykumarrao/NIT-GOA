@@ -33,9 +33,19 @@
 }
 
 .homepage-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* Section Content Container - Applied to content within each section */
+.section-content-container {
     max-width: 90%;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative;
 }
 
 .section-title {
@@ -45,6 +55,156 @@
     margin-bottom: 2rem;
     color: var(--primary-blue-dark);
     position: relative;
+}
+
+/* Mobile/Desktop Display Control */
+.mobile-only {
+    display: none;
+}
+
+.desktop-tablet-only {
+    display: block;
+}
+
+@media (max-width: 480px) {
+    .mobile-only {
+        display: block;
+    }
+    
+    .desktop-tablet-only {
+        display: none;
+    }
+    
+    /* Magazine Card Mobile Optimization */
+    .homepage-content-card.magazine-card {
+        height: auto; /* Allow natural height */
+        min-height: 400px; /* Minimum height to ensure button visibility */
+    }
+    
+    .homepage-magazine-preview {
+        padding: 12px;
+        gap: 16px; /* Add gap between elements */
+    }
+    
+    .magazine-image-container {
+        height: 200px; /* Smaller height on mobile */
+        flex-shrink: 0; /* Don't shrink */
+        pointer-events: none; /* Disable interactions on mobile */
+        cursor: default; /* Remove pointer cursor */
+    }
+    
+    .magazine-cover-image {
+        pointer-events: none; /* Disable interactions on mobile image */
+    }
+    
+    .homepage-magazine-button {
+        width: 100%; /* Full width button on mobile */
+        margin-top: 16px;
+        padding: 14px 24px; /* Larger padding for better touch targets */
+        font-size: 16px; /* Larger font size for mobile */
+    }
+    
+    /* All content cards mobile optimization */
+    .homepage-content-card {
+        height: auto; /* Allow natural height */
+        min-height: 350px; /* Minimum height */
+    }
+    
+    .homepage-card-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Newsletter card mobile fix */
+    .homepage-content-card.newsletter-card {
+        min-height: 400px; /* Taller for newsletter content */
+    }
+    
+    .homepage-content-card.newsletter-card .homepage-card-content {
+        padding: 16px; /* Reduce padding */
+    }
+    
+    .newsletter-preview {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .homepage-newsletter-image {
+        flex-shrink: 0; /* Don't shrink image */
+        height: 120px; /* Fixed height on mobile */
+    }
+    
+    .homepage-expand-button {
+        margin-top: auto; /* Push to bottom */
+        flex-shrink: 0; /* Don't shrink button */
+    }
+}
+
+/* Magazine Cover Image for Mobile */
+.magazine-cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; /* Changed from cover to fill */
+    border-radius: 8px;
+    display: block;
+}
+
+.magazine-image-container {
+    width: 100%;
+    height: 250px; /* Fixed height for better button visibility */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gray-100);
+    border-radius: 8px;
+    margin-bottom: 16px; /* Add space for button */
+}
+
+/* Lore PDF Preview Fallback Styles */
+.pdf-placeholder.lore-fallback {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.lore-fallback-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease;
+}
+
+.lore-fallback-message {
+    font-size: 0.9rem;
+    color: white;
+    background: rgba(46, 134, 193, 0.9); /* Primary blue instead of black */
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.lore-fallback-image {
+    transition: opacity 0.3s ease;
+}
+
+/* Hover effects */
+.pdf-placeholder.lore-fallback:hover .lore-fallback-overlay {
+    opacity: 1; /* Show on hover */
+}
+
+.pdf-placeholder.lore-fallback:hover .lore-fallback-image {
+    opacity: 0.7; /* Dim image on hover */
 }
 
 /* Hero Section */
@@ -904,27 +1064,6 @@
     border-radius: 10px;
 }
 
-.tweets-section {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
-
-.tweets-section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.tweets-section h3 {
-    color: var(--primary-blue);
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-    font-weight: 600;
-}
-
 /* Statistics Section - Updated */
 .homepage-statistics-section {
     background: linear-gradient(135deg, var(--secondary-blue-100) 0%, var(--primary-blue-light) 25%, var(--primary-blue) 50%, var(--primary-blue-dark) 75%, var(--secondary-blue-800) 100%);
@@ -943,11 +1082,6 @@
     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stats-pattern" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1.5" fill="rgba(100,100,100,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23stats-pattern)"/></svg>');
     opacity: 0.3;
     pointer-events: none;
-}
-
-.homepage-statistics-section .homepage-container {
-    position: relative;
-    z-index: 1;
 }
 
 .homepage-stats-grid {
@@ -1381,7 +1515,7 @@
 
 .homepage-newsletter-image {
     width: 100%;
-    height: 400px; /* Increased height to match PDF preview card from magazine */
+   /* height: 400px; /* Increased height to match PDF preview card from magazine */
     border-radius: 12px;
     overflow: hidden;
     background: var(--gray-50);
@@ -1462,7 +1596,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 20px;
+    padding: 0px;
     height: 100%;
     width: 100%;
     background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
@@ -1585,6 +1719,46 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    padding: 16px;
+    min-height: 0; /* Allow flexbox to work properly */
+}
+
+.pdf-preview-container {
+    flex: 1;
+    min-height: 300px; /* Minimum height for PDF preview */
+    margin-bottom: 16px;
+}
+
+.homepage-magazine-button {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    margin-top: auto; /* Push button to bottom */
+    align-self: center; /* Center the button */
+}
+
+.homepage-magazine-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(46, 134, 193, 0.3);
+    text-decoration: none;
+    color: white;
+}
+
+.homepage-external-icon {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+}
+
+.homepage-magazine-button:hover .homepage-external-icon {
+    transform: translateX(2px);
 }
 
 .homepage-magazine-cover {
@@ -2669,7 +2843,7 @@
 /* Large screens (1440px+) */
 @media (min-width: 1440px) {
     .homepage-container {
-        max-width: 1400px;
+        max-width: 100%;
     }
     
     .homepage-quick-links-grid {
@@ -3584,6 +3758,203 @@
     
     .homepage-stat-label {
         font-size: 0.95rem;
+    }
+}
+
+/* ===============================
+   LARGE SCREEN OPTIMIZATIONS (1900px+ and 2560px+)
+   =============================== */
+
+@media (min-width: 1441px) {
+    .column-card {
+        min-height: 620px;
+    }
+}
+
+
+/* Large screens (1900px+) */
+@media (min-width: 1900px) {
+    /* Increase section padding for better proportions */
+    .announcements-section {
+        padding: 70px 0;
+    }
+    
+    .two-column-section {
+        padding: 90px 0;
+    }
+    
+    .quick-links-section {
+        padding: 90px 0;
+    }
+    
+    .homepage-content-cards-section {
+        padding: 90px 0;
+    }
+    
+    .homepage-statistics-section {
+        padding: 90px 0;
+    }
+    
+    .homepage-about-section {
+        padding: 90px 0;
+    }
+    
+    .homepage-national-portals {
+        padding: 90px 0;
+    }
+    
+    /* Increase card heights for better content display */
+    .homepage-content-card {
+        min-height: 450px;
+    }
+    
+    .homepage-content-card.chart-card {
+        height: 520px;
+    }
+    
+    .homepage-content-card.newsletter-card {
+        height: 520px;
+    }
+    
+    .homepage-content-card.magazine-card {
+        height: 520px;
+    }
+    
+    /* Increase column card heights */
+    .column-card {
+        min-height: 620px;
+    }
+    
+    /* Increase quick link card sizes */
+    .quick-link-card {
+        padding: 35px 25px;
+        min-height: 200px;
+    }
+    
+    /* Better spacing for statistics */
+    .homepage-stats-grid {
+        gap: 40px;
+    }
+    
+    .homepage-stat-item {
+        padding: 50px 30px;
+    }
+    
+    /* Increase newsletter grid spacing */
+    .newsletters-grid {
+        gap: 35px;
+    }
+    
+    .newsletter-item {
+        min-height: 280px;
+    }
+    
+    /* National portals better spacing */
+    .homepage-enhanced-portals {
+        gap: 35px;
+    }
+    
+    .homepage-portal-card {
+        padding: 25px;
+        min-height: 180px;
+    }
+}
+
+/* Extra large screens (2560px+) */
+@media (min-width: 2560px) {
+    /* Further increase section padding */
+    .announcements-section {
+        padding: 100px 0;
+    }
+    
+    .two-column-section {
+        padding: 120px 0;
+    }
+    
+    .quick-links-section {
+        padding: 120px 0;
+    }
+    
+    .homepage-content-cards-section {
+        padding: 120px 0;
+    }
+    
+    .homepage-statistics-section {
+        padding: 120px 0;
+    }
+    
+    .homepage-about-section {
+        padding: 120px 0;
+    }
+    
+    .homepage-national-portals {
+        padding: 120px 0;
+    }
+    
+    /* Significantly increase card heights for ultra-wide screens */
+    .homepage-content-card {
+        min-height: 600px;
+    }
+    
+    .homepage-content-card.chart-card {
+        height: 1000px;
+    }
+    
+    .homepage-content-card.newsletter-card {
+        height: 1000px;
+    }
+    
+    .homepage-content-card.magazine-card {
+        height: 1000px;
+    }
+    .pdf-preview-container.desktop-tablet-only {
+        height: 800px;
+    }
+
+    /* Increase column card heights significantly */
+    .column-card {
+        min-height: 700px;
+    }
+    
+    /* Larger quick link cards */
+    .quick-link-card {
+        padding: 45px 35px;
+        min-height: 250px;
+    }
+    
+    /* Statistics with more generous spacing */
+    .homepage-stats-grid {
+        gap: 60px;
+    }
+    
+    .homepage-stat-item {
+        padding: 70px 40px;
+        min-height: 200px;
+    }
+    
+    /* Newsletter grid with better proportions */
+    .newsletters-grid {
+        gap: 50px;
+    }
+    
+    .newsletter-item {
+        min-height: 350px;
+    }
+    
+    /* National portals with more spacing */
+    .homepage-enhanced-portals {
+        gap: 50px;
+    }
+    
+    .homepage-portal-card {
+        padding: 35px;
+        min-height: 220px;
+    }
+    
+    /* Adjust hero section for ultra-wide screens */
+    .hero-section {
+        max-height: 80vh;
+        min-height: 500px;
     }
 }
 
