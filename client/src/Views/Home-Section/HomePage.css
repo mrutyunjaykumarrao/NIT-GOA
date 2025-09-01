@@ -426,7 +426,7 @@
     position: relative;
     z-index: 1;
     max-width: 1600px;
-    width: 98%;
+    width: 92%;
     margin: 0 auto;
 }
 
@@ -3236,7 +3236,7 @@
     
     .hero-campus-image {
         /* Maintain cover fit on mobile */
-        object-fit: cover;
+        object-fit: fill;
         object-position: center;
     }
     
@@ -3686,7 +3686,7 @@
 
     .hero-campus-image {
         /* Ensure optimal scaling on very small screens */
-        object-fit: cover;
+        object-fit: fill;
         object-position: center;
     }
     
