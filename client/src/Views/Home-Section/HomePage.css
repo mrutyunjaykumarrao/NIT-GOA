@@ -78,6 +78,7 @@ span,
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--gray-800);
+    /* background: linear-gradient(135deg, var(--secondary-blue-50) 0%, rgba(224, 242, 254, 0.8) 100%); */
 }
 
 .homepage-container {
@@ -258,13 +259,13 @@ span,
 /* Hero Section */
 .hero-section {
     position: relative;
-    width: calc(100% - 80px); /* Full width minus 40px on each side */
+    width: calc(100% - 50px); /* Full width minus 40px on each side */
     margin: 0 40px; /* 40px margin from left and right */
     margin-top: 0px; /* Overlap with navbar by 10px */
     z-index: 1; /* Keep behind navbar */
     aspect-ratio: 2.4 / 1; /* Set 2.4:1 aspect ratio to match 1360x566 images */
     max-height: 70vh; /* Maximum height constraint */
-    min-height: 400px; /* Minimum height for smaller screens */
+    /*min-height: 400px; /* Minimum height for smaller screens */
     /* max-width: 1360px; /* Match your image width */
     padding: 20px;
     margin-left: auto;
@@ -404,7 +405,7 @@ span,
 /* Announcements Section - Enhanced Marquee */
 .announcements-section {
     background: var(--white);
-    padding: 40px 0 80px 0;
+    padding: 25px 0 50px 0;
     position: relative;
     overflow: hidden;
 }
@@ -461,7 +462,7 @@ span,
 
 .announcements-section .section-title {
     font-size: 2.5rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     text-align: center;
     color: var(--primary-blue-dark);
     font-weight: 700;
@@ -474,7 +475,6 @@ span,
 .announcement-marquee {
     position: relative;
     z-index: 1;
-    max-width: 1600px;
     width: 92%;
     margin: 0 auto;
 }
@@ -700,6 +700,9 @@ span,
 
 /* Mobile styles */
 @media (max-width: 480px) {
+    .announcements-section .section-title {
+        font-size: 2rem;
+    }
     .announcement-card {
         min-height: auto;
         flex-direction: column;
@@ -3034,6 +3037,51 @@ span,
         max-width: 1000px;
         gap: 40px;
     }
+    
+    /* Announcement Card Base Scaling for 1440px */
+    .announcement-card {
+        min-height: 100px;
+    }
+    
+    .notice-badge {
+        width: 110px;
+    }
+    
+    .notice-text {
+        font-size: 1rem;
+    }
+    
+    .announcement-text {
+        padding: 30px 35px 30px 140px;
+        min-height: 100px;
+    }
+    
+    .announcement-content {
+        font-size: 1.2rem;
+        line-height: 1.7;
+    }
+    
+    .announcement-nav-btn {
+        width: 40px;
+        height: 40px;
+        padding: 10px;
+    }
+    
+    .announcement-play-pause {
+        width: 45px;
+        height: 45px;
+        padding: 10px;
+    }
+    
+    .nav-arrow-svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .play-pause-svg {
+        width: 22px;
+        height: 22px;
+    }
 }
 
 /* Medium to large screens (1200px+) */
@@ -3053,8 +3101,9 @@ span,
 
 @media (max-width: 1200px) {
     .hero-section {
-        width: calc(100% - 60px);
-        margin: 0 30px;
+        width: 100%;
+        padding: 20px 30px 30px 30px;
+        margin: 0px;
     }
 }
 
@@ -3104,8 +3153,7 @@ span,
     }
 
     .hero-section {
-        width: calc(100% - 40px);
-        margin: 0 20px;
+        margin: 0px;
     }
 
     .homepage-content-cards-grid{
@@ -3214,13 +3262,13 @@ span,
     }
 }
 
-@media (max-width: 900px) {
+/* @media (max-width: 900px) {
     .hero-section {
         margin: 0 20px;
         width: calc(100% - 40px);
-        aspect-ratio: 2.2 / 1; /* Slightly adjust for smaller screens */
+        aspect-ratio: 2.2 / 1; 
     }
-}
+} */
 
 /* Small tablet screens (768px+) */
 @media (max-width: 768px) {
@@ -3259,7 +3307,7 @@ span,
     
     .two-column-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 60px;
     }
     
     .content-cards-section {
@@ -3507,7 +3555,7 @@ span,
     }
 
     .announcements-section {
-        padding: 60px 0;
+        padding: 30px 0;
     }
     
     .announcement-marquee {
@@ -3850,10 +3898,12 @@ span,
 
 @media (max-width: 450px) {
     .hero-section {
-        margin: 0 15px;
+        margin: 0;
         width: calc(100% - 30px);
+        width: 100%;
+        padding: 16px;
         min-height: 250px;
-        aspect-ratio: 1.4 / 1; /* Maintain reasonable proportions for very small screens */
+        /*aspect-ratio: 1.4 / 1; /* Maintain reasonable proportions for very small screens */
     }
 
     .hero-campus-image {
@@ -3940,6 +3990,29 @@ span,
 @media (min-width: 1441px) {
     .column-card {
         min-height: 620px;
+    }
+    
+    /* Announcement Card Scaling for 1441px+ */
+    .announcement-card {
+        min-height: 110px;
+    }
+    
+    .notice-badge {
+        width: 115px;
+    }
+    
+    .notice-text {
+        font-size: 1.05rem;
+    }
+    
+    .announcement-text {
+        padding: 32px 38px 32px 145px;
+        min-height: 110px;
+    }
+    
+    .announcement-content {
+        font-size: 1.25rem;
+        line-height: 1.75;
     }
 }
 
@@ -4029,6 +4102,62 @@ span,
     .homepage-portal-card {
         padding: 25px;
         min-height: 180px;
+    }
+    
+    /* Announcement Card Scaling for 1900px+ */
+    .announcement-card {
+        min-height: 120px;
+    }
+    
+    .notice-badge {
+        width: 125px;
+    }
+    
+    .notice-text {
+        font-size: 1.1rem;
+        letter-spacing: 0.6px;
+    }
+    
+    .announcement-text {
+        padding: 35px 45px 35px 155px;
+        min-height: 120px;
+    }
+    
+    .announcement-content {
+        font-size: 1.35rem;
+        line-height: 1.8;
+    }
+    
+    .announcement-nav-btn {
+        width: 45px;
+        height: 45px;
+        padding: 12px;
+    }
+    
+    .announcement-play-pause {
+        width: 50px;
+        height: 50px;
+        padding: 12px;
+    }
+    
+    .nav-arrow-svg {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .play-pause-svg {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .announcement-indicators {
+        margin-top: 20px;
+        gap: 10px;
+    }
+    
+    .announcement-indicator {
+        width: 14px;
+        height: 14px;
     }
 }
 
@@ -4127,6 +4256,62 @@ span,
     .hero-section {
         max-height: 80vh;
         min-height: 500px;
+    }
+    
+    /* Announcement Card Scaling for 2560px+ Ultra-Wide Screens */
+    .announcement-card {
+        min-height: 140px;
+    }
+    
+    .notice-badge {
+        width: 140px;
+    }
+    
+    .notice-text {
+        font-size: 1.2rem;
+        letter-spacing: 0.7px;
+    }
+    
+    .announcement-text {
+        padding: 40px 55px 40px 170px;
+        min-height: 140px;
+    }
+    
+    .announcement-content {
+        font-size: 1.5rem;
+        line-height: 1.9;
+    }
+    
+    .announcement-nav-btn {
+        width: 50px;
+        height: 50px;
+        padding: 15px;
+    }
+    
+    .announcement-play-pause {
+        width: 55px;
+        height: 55px;
+        padding: 15px;
+    }
+    
+    .nav-arrow-svg {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .play-pause-svg {
+        width: 26px;
+        height: 26px;
+    }
+    
+    .announcement-indicators {
+        margin-top: 25px;
+        gap: 12px;
+    }
+    
+    .announcement-indicator {
+        width: 16px;
+        height: 16px;
     }
 }
 
