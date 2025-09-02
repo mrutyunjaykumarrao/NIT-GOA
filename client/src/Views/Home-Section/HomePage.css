@@ -2370,13 +2370,14 @@ span,
     z-index: 1;
 }
 
+/* Base design optimized for 1440px screens */
 .homepage-enhanced-portals {
     display: grid;
-    grid-template-columns: repeat(6, 1fr); /* 6 columns for single row */
-    grid-template-rows: 1fr; /* Single row */
-    gap: 12px 15px; /* Reduced gap for better space utilization */
-    width: 100%; /* Use full width of parent container */
-    max-width: none; /* Remove max-width constraint completely */
+    grid-template-columns: repeat(6, 1fr); /* 6 columns for single row at 1440px */
+    grid-template-rows: 1fr;
+    gap: 12px 15px;
+    width: 100%;
+    max-width: none;
     margin: 0 auto;
     position: relative;
     justify-content: center;
@@ -2396,9 +2397,9 @@ span,
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 16px rgba(46, 134, 193, 0.1);
-    height: 140px; /* Slightly increased height */
-    width: 100%; /* Use full width of grid cell */
-    min-width: 160px; /* Increased minimum width for better space utilization */
+    height: 140px;
+    width: 100%;
+    min-width: 160px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -3089,7 +3090,7 @@ span,
     }
     
     .homepage-national-portals {
-        padding: 100px 0;
+        padding: 60px 0 80px 0;
     }
 }
 
@@ -4100,21 +4101,10 @@ span,
         min-height: 280px;
     }
     
-    /* National portals better spacing */
+    /* National Portals Scaling for 1900px+ screens */
     .homepage-enhanced-portals {
-        gap: 15px 20px; /* Reduced gap for better space utilization */
-        max-width: none; /* Use full available width */
-    }
-    
-    .homepage-portal-card {
-        padding: 15px 10px 10px 10px;
-        min-height: 145px; /* Increased height */
-        min-width: 190px; /* Increased minimum width for large screens */
-    }
-    
-    .homepage-portal-image {
-        width: 130px; /* Larger for better space utilization */
-        height: 95px; /* Increased proportionally */
+        transform: scale(1.15); /* Scale up from 1440px base */
+        gap: 15px 20px;
     }
     
     .homepage-portal-name {
@@ -4259,21 +4249,10 @@ span,
         min-height: 350px;
     }
     
-    /* National portals with more spacing */
+    /* National Portals Scaling for 2560px+ Ultra-Wide screens */
     .homepage-enhanced-portals {
-        gap: 18px 25px; /* Reduced gap for better space utilization */
-        max-width: none; /* Use full available width for ultra-wide */
-    }
-    
-    .homepage-portal-card {
-        padding: 20px 15px 15px 15px;
-        min-height: 165px; /* Increased height for ultra-wide */
-        min-width: 240px; /* Larger minimum width for ultra-wide */
-    }
-    
-    .homepage-portal-image {
-        width: 150px; /* Larger images for ultra-wide screens */
-        height: 110px; /* Increased proportionally */
+        transform: scale(1.35); /* Scale up significantly from 1440px base */
+        gap: 20px 25px;
     }
     
     .homepage-portal-name {
