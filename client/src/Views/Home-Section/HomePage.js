@@ -993,7 +993,6 @@ const HomePage = React.memo(() => {
 
             {/* Footer National Portals */}
             <section className="homepage-national-portals">
-                <div className="section-content-container">
                     <h2 className="section-title">National Portals</h2>
                     <div className="homepage-enhanced-portals">
                         {nationalPortals.map((portal, index) => (
@@ -1014,7 +1013,6 @@ const HomePage = React.memo(() => {
                             </a>
                         ))}
                     </div>
-                </div>
             </section>
         </div>
     );

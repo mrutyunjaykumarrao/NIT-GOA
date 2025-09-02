@@ -2372,10 +2372,11 @@ span,
 
 .homepage-enhanced-portals {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 6 columns for horizontal spread */
-    grid-template-rows: repeat(2, 1fr); /* 2 rows for vertical stacking */
-    gap: 20px 40px;
-    max-width: 100%;
+    grid-template-columns: repeat(6, 1fr); /* 6 columns for single row */
+    grid-template-rows: 1fr; /* Single row */
+    gap: 12px 15px; /* Reduced gap for better space utilization */
+    width: 100%; /* Use full width of parent container */
+    max-width: none; /* Remove max-width constraint completely */
     margin: 0 auto;
     position: relative;
     justify-content: center;
@@ -2386,8 +2387,8 @@ span,
 .homepage-portal-card {
     background: var(--white);
     border: 2px solid var(--gray-200);
-    border-radius: 16px;
-    padding: 40px 0px 20px 0px;
+    border-radius: 12px;
+    padding: 20px 8px 8px 8px;
     text-align: center;
     text-decoration: none;
     color: var(--gray-800);
@@ -2395,35 +2396,36 @@ span,
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 16px rgba(46, 134, 193, 0.1);
-    height: 225px; /* Fixed smaller height */
-    width: 380px; /* Full width for each card */
+    height: 140px; /* Slightly increased height */
+    width: 100%; /* Use full width of grid cell */
+    min-width: 160px; /* Increased minimum width for better space utilization */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 0px;
+    gap: 10px;
 }
 
 .homepage-portal-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 32px rgba(46, 134, 193, 0.2);
-    border-color: var(--primary-blue-light);
-    background: var(--white);
+    transform: translateY(-4px); /* Keep the subtle lift */
+    box-shadow: 0 8px 24px rgba(46, 134, 193, 0.2); /* Enhanced shadow */
+    border-color: var(--primary-blue-light); /* Keep border color change */
+    /* No background color change */
 }
 
 .homepage-portal-image {
-    width: 250px;
-    height: 125px;
-    border-radius: 12px;
-    object-fit: contain;
+    width: 160px; /* Increased to better utilize card width */
+    height: 110px; /* Increased proportionally */
+    border-radius: 8px;
+    object-fit: fill;
     transition: transform 0.3s ease;
-    margin-bottom: 8px;
+    margin-bottom: 0px;
 }
 
 
 
 .homepage-portal-name {
-    font-size: 0.9rem;
+    font-size: 0.75rem; /* Smaller font */
     font-weight: 600;
     color: var(--gray-800);
     margin: 0;
@@ -2445,13 +2447,13 @@ span,
 }
 
 [data-theme="dark"] .homepage-portal-card {
-    background: rgba(15, 23, 42, 0.95);
-    border-color: rgba(59, 130, 246, 0.3);
+    background: rgba(30, 41, 59, 0.8); /* Match parent section background */
+    border-color: rgba(59, 130, 246, 0.2); /* More subtle border */
     color: white;
 }
 
 [data-theme="dark"] .homepage-portal-card:hover {
-    background: rgba(30, 41, 59, 0.98);
+    /* No background color change in dark mode */
     border-color: var(--primary-blue-light);
 }
 
@@ -2472,14 +2474,7 @@ span,
     opacity: 1;
 }
 
-.homepage-portal-card:hover {
-    transform: translateY(-12px) scale(1.02);
-    border-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-    text-decoration: none;
-    color: white;
-    background: rgba(255, 255, 255, 0.25);
-}
+/* Remove duplicate hover style */
 
 .homepage-portal-icon-wrapper {
     width: 120px;
@@ -2813,23 +2808,16 @@ span,
 }
 
 [data-theme="dark"] .homepage-portal-card {
-    background: #1e293b;
-    border-color: rgba(59, 130, 246, 0.2);
+    background: transparent;
+    border-color: none;
+    border: none;
     color: var(--gray-300);
 }
 
 [data-theme="dark"] .homepage-portal-card:hover {
-    background: #1e293b;
-    /* border-color: var(--primary-blue-light); */
+    /* background: #1e293b; */
+    border-color: var(--primary-blue-light);
 }
-
-/* [data-theme="dark"] .homepage-portal-icon {
-    background: var(--primary-blue);
-} */
-
-/* [data-theme="dark"] .homepage-portal-card:hover .homepage-portal-icon {
-    background: var(--primary-blue-light);
-} */
 
 [data-theme="dark"] .homepage-portal-name {
     color: var(--gray-300);
@@ -3037,10 +3025,11 @@ span,
     .homepage-content-cards-grid {
         grid-template-columns: repeat(3, 1fr);
     }
-    
+
+
     .homepage-enhanced-portals {
-        max-width: 1000px;
-        gap: 40px;
+        max-width: 95%; /* Use more space on large screens */
+        gap: 20px 25px;
     }
     
     /* Announcement Card Base Scaling for 1440px */
@@ -3190,16 +3179,26 @@ span,
     }
 
     .homepage-enhanced-portals{
-        grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns for better fit */
-        gap: 20px  40px;
-        width: 680px;
+        grid-template-columns: repeat(6, 1fr); /* Keep 6 columns on tablet */
+        gap: 12px 15px;
+        max-width: 95%; /* Use more space on tablet */
         justify-content: center;
         align-content: center;
     }
     .homepage-portal-card {
-        width: 100%; /* Full width for better fit 320px*/
-        height: 200px; /* Adjusted height for better visibility */
-
+        width: 100%;
+        height: 100px; /* Smaller for tablet */
+        min-width: 100px; /* Adjust minimum width for tablet */
+        padding: 8px 6px 6px 6px;
+    }
+    
+    .homepage-portal-image {
+        width: 70px; /* Slightly larger for better space use */
+        height: 55px;
+    }
+    
+    .homepage-portal-name {
+        font-size: 0.65rem;
     }
     
     /* .homepage-content-cards-grid {
@@ -3410,21 +3409,23 @@ span,
     }
 
     .homepage-enhanced-portals {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on mobile for better fit */
+        gap: 10px 8px;
     }
 
     .homepage-portal-card {
-        height: 120px;
+        height: 90px; /* Very compact for mobile */
+        max-width: 100px;
+        padding: 6px 4px 4px 4px;
     }
 
     .homepage-portal-image {
-        width: 40px;
-        height: 40px;
+        width: 45px;
+        height: 35px;
     }
 
     .homepage-portal-name {
-        font-size: 0.8rem;
+        font-size: 0.6rem;
     }
     
     .newsletters-grid {
@@ -3867,8 +3868,8 @@ span,
         padding-bottom: 40px;
     }
     .homepage-portal-image {
-        width: 250px;
-        height: 110px;
+        width: 40px; /* Very small for tiny screens */
+        height: 30px;
     }
     .homepage-about-section{
         padding-top: 40px;
@@ -4101,12 +4102,23 @@ span,
     
     /* National portals better spacing */
     .homepage-enhanced-portals {
-        gap: 35px;
+        gap: 15px 20px; /* Reduced gap for better space utilization */
+        max-width: none; /* Use full available width */
     }
     
     .homepage-portal-card {
-        padding: 25px;
-        min-height: 180px;
+        padding: 15px 10px 10px 10px;
+        min-height: 145px; /* Increased height */
+        min-width: 190px; /* Increased minimum width for large screens */
+    }
+    
+    .homepage-portal-image {
+        width: 130px; /* Larger for better space utilization */
+        height: 95px; /* Increased proportionally */
+    }
+    
+    .homepage-portal-name {
+        font-size: 0.85rem;
     }
     
     /* Announcement Card Scaling for 1900px+ */
@@ -4249,12 +4261,23 @@ span,
     
     /* National portals with more spacing */
     .homepage-enhanced-portals {
-        gap: 50px;
+        gap: 18px 25px; /* Reduced gap for better space utilization */
+        max-width: none; /* Use full available width for ultra-wide */
     }
     
     .homepage-portal-card {
-        padding: 35px;
-        min-height: 220px;
+        padding: 20px 15px 15px 15px;
+        min-height: 165px; /* Increased height for ultra-wide */
+        min-width: 240px; /* Larger minimum width for ultra-wide */
+    }
+    
+    .homepage-portal-image {
+        width: 150px; /* Larger images for ultra-wide screens */
+        height: 110px; /* Increased proportionally */
+    }
+    
+    .homepage-portal-name {
+        font-size: 1rem;
     }
     
     /* Adjust hero section for ultra-wide screens */
