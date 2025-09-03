@@ -2355,7 +2355,7 @@ span,
    =============================== */
 
 .homepage-national-portals {
-    padding: 40px 0; /* Reduced height */
+    padding: 40px 0 80px 0; /* Reduced height */
     background: linear-gradient(135deg, var(--secondary-blue-50) 0%, rgba(224, 242, 254, 0.8) 100%);
     color: var(--gray-800);
     position: relative;
@@ -2389,7 +2389,7 @@ span,
     background: var(--white);
     border: 2px solid var(--gray-200);
     border-radius: 12px;
-    padding: 20px 8px 8px 8px;
+    padding: 15px 8px 15px 8px;
     text-align: center;
     text-decoration: none;
     color: var(--gray-800);
@@ -2468,6 +2468,108 @@ span,
 
 .homepage-portal-card:hover .homepage-portal-name {
     color: var(--primary-blue-dark);
+}
+
+/* ===== RESPONSIVE BREAKPOINTS FOR NATIONAL PORTALS ===== */
+
+/* Mobile view: 6 rows × 1 column (screens < 480px) */
+@media screen and (max-width: 479px) {
+    .homepage-national-portals{
+        padding: 20px 0 40px 0; /* Reduced height for mobile */
+    }
+    .homepage-enhanced-portals {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+        gap: 0px;
+    }
+    
+    .homepage-portal-card {
+        transform: scale(0.85); /* Scale down individual cards */
+        min-width: unset;
+        height: fit-content;
+    }
+
+    .homepage-portal-card {
+        /* Disable all transform and hover effects on mobile */
+        transform: scale(0.85) !important;
+        transition: none !important;
+    }
+    
+    .homepage-portal-card:hover,
+    .homepage-portal-card:active,
+    .homepage-portal-card:focus {
+        /* Prevent any enlargement on mobile */
+        transform: scale(0.85) !important;
+        box-shadow: 0 4px 16px rgba(46, 134, 193, 0.1) !important;
+        border-color: var(--gray-200) !important;
+        background: var(--white) !important;
+        color: var(--gray-800) !important;
+    }
+
+    .homepage-portal-image{
+        width: 85%;
+    }
+    .homepage-portal-name {
+        font-size: 0.875rem; /* Smaller font */
+    }
+
+    .homepage-national-portals .section-title {
+        transform: scale(0.85); /* Scale down title */
+    }
+}
+
+/* Small tablets: 3 rows × 2 columns (480px - 767px) */
+@media screen and (min-width: 480px) and (max-width: 767px) {
+    .homepage-enhanced-portals {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 10px 0px;
+        padding: 0px 20px;
+    }
+    
+    .homepage-portal-card {
+        transform: scale(0.9); /* Scale down individual cards */
+        min-width: unset;
+        height: fit-content;
+    }
+    
+    .homepage-national-portals .section-title {
+        transform: scale(0.9); /* Scale down title */
+    }
+
+    .homepage-portal-image{
+        width: 85%;
+    }
+    .homepage-portal-name{
+        font-size: 1rem;
+    }
+}
+
+/* Large tablets/Small desktops: 2 rows × 3 columns (1024px - 1439px) */
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+    .homepage-enhanced-portals {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 20px 20px;
+        max-width: 90%;
+    }
+    
+    .homepage-portal-card {
+        transform: scale(1); /* Base scale for individual cards */
+        min-width: unset;
+        height: fit-content;
+    }
+    .homepage-portal-image{
+        width: 95%;
+    }
+
+    .homepage-portal-name {
+        font-size: 1rem;
+    }
+
+    .homepage-national-portals .section-title {
+        transform: scale(1); /* Base scale for title */
+    }
 }
 
 
@@ -3178,36 +3280,7 @@ span,
     .homepage-about-paragraph.values{
         font-size: 1.1rem;
     }
-
-    .homepage-enhanced-portals{
-        grid-template-columns: repeat(6, 1fr); /* Keep 6 columns on tablet */
-        gap: 12px 15px;
-        max-width: 95%; /* Use more space on tablet */
-        justify-content: center;
-        align-content: center;
-    }
-    .homepage-portal-card {
-        width: 100%;
-        height: 100px; /* Smaller for tablet */
-        min-width: 100px; /* Adjust minimum width for tablet */
-        padding: 8px 6px 6px 6px;
-    }
     
-    .homepage-portal-image {
-        width: 70px; /* Slightly larger for better space use */
-        height: 55px;
-    }
-    
-    .homepage-portal-name {
-        font-size: 0.65rem;
-    }
-    
-    /* .homepage-content-cards-grid {
-        grid-template-rows: repeat(3, 1fr);
-        gap: 32px;
-    } */
-    
-    /* Desktop ordering: Placement Stats (1st), Lore Magazine (2nd), Newsletter (3rd) */
     .homepage-content-card.chart-card {
         order: 1;
     }
@@ -3403,39 +3476,10 @@ span,
     .about-text {
         height: auto;
     }
-    
-    .enhanced-portals {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
-    }
 
-    .homepage-enhanced-portals {
-        grid-template-columns: repeat(3, 1fr); /* 3 columns on mobile for better fit */
-        gap: 10px 8px;
-    }
-
-    .homepage-portal-card {
-        height: 90px; /* Very compact for mobile */
-        max-width: 100px;
-        padding: 6px 4px 4px 4px;
-    }
-
-    .homepage-portal-image {
-        width: 45px;
-        height: 35px;
-    }
-
-    .homepage-portal-name {
-        font-size: 0.6rem;
-    }
-    
     .newsletters-grid {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
-    }
-    
-    .national-portals {
-        padding: 60px 0;
     }
     
     .about-section {
@@ -3737,21 +3781,6 @@ span,
         margin-bottom: 32px;
     }
     
-    .enhanced-portals {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .portal-card {
-        padding: 24px 20px;
-    }
-    .homepage-portal-card {
-        height: 200px;
-    }
-    .portal-icon-wrapper {
-        height: 80px;
-        margin-bottom: 16px;
-    }
     
     .about-image {
         height: 250px;
@@ -3853,9 +3882,6 @@ span,
         height: 720px;
     }
 
-    .national-portals {
-        padding: 40px 0;
-    }
     .two-column-section{
         padding-top: 40px;
         padding-bottom: 40px;
@@ -3867,10 +3893,6 @@ span,
     .homepage-statistics-section{
         padding-bottom: 40px;
         padding-bottom: 40px;
-    }
-    .homepage-portal-image {
-        width: 40px; /* Very small for tiny screens */
-        height: 30px;
     }
     .homepage-about-section{
         padding-top: 40px;
@@ -3895,11 +3917,6 @@ span,
     /* Make homepage content cards even more compact for very small screens */
     .homepage-content-card {
         height: 400px; /* Most compact for smallest screens */
-    }
-
-    .homepage-enhanced-portals {
-        grid-template-columns: 1fr;
-        gap: 16px;
     }
 }
 
@@ -4103,8 +4120,19 @@ span,
     
     /* National Portals Scaling for 1900px+ screens */
     .homepage-enhanced-portals {
-        transform: scale(1.15); /* Scale up from 1440px base */
-        gap: 15px 20px;
+        gap: 18px 25px; /* Increased gap spacing */
+    }
+    
+    .homepage-portal-card {
+        transform: scale(1.15); /* Scale individual cards */
+    }
+    
+    .homepage-national-portals .section-title {
+        transform: scale(1.15); /* Scale the title */
+    }
+    
+    .homepage-national-portals {
+        padding: 90px 0 105px 0; /* Increased padding to accommodate scaling */
     }
     
     .homepage-portal-name {
@@ -4251,8 +4279,19 @@ span,
     
     /* National Portals Scaling for 2560px+ Ultra-Wide screens */
     .homepage-enhanced-portals {
-        transform: scale(1.35); /* Scale up significantly from 1440px base */
-        gap: 20px 25px;
+        gap: 25px 35px; /* Increased gap spacing */
+    }
+    
+    .homepage-portal-card {
+        transform: scale(1.35); /* Scale individual cards significantly */
+    }
+    
+    .homepage-national-portals .section-title {
+        transform: scale(1.35); /* Scale the title */
+    }
+    
+    .homepage-national-portals {
+        padding: 120px 0 140px 0; /* Increased padding to accommodate scaling */
     }
     
     .homepage-portal-name {
