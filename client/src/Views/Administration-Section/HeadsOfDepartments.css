@@ -464,12 +464,12 @@
 
 /* Dark Theme Support */
 [data-theme="dark"] .heads-of-departments-page {
-    background: linear-gradient(135deg, #1e1e1e 0%, #2c2c2c 100%);
+    background: linear-gradient(135deg, #0a1220 0%, #1a2332 50%, #253041 100%);
     color: #ffffff;
 }
 
 [data-theme="dark"] .heads-of-departments-page-header {
-    background: linear-gradient(135deg, #1e3a8a 0%, #1e293b 100%);
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
 }
 
 [data-theme="dark"] .heads-of-departments-page-header::before {
@@ -477,17 +477,17 @@
 }
 
 [data-theme="dark"] .hod-card {
-    background: rgba(44, 44, 44, 0.95);
-    border-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    background: #1e293b;
+    border-color: rgba(100, 116, 139, 0.2);
+    box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3);
 }
 
 [data-theme="dark"] .hod-card-header {
-    background: linear-gradient(135deg, #1e40af 0%, #1e293b 100%);
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
 }
 
 [data-theme="dark"] .hod-department-title {
-    color: #64B5F6 !important;
+    color: #e2e8f0 !important;
     text-shadow: 0 2px 4px rgba(100, 181, 246, 0.3);
 }
 

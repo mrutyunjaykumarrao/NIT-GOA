@@ -1,0 +1,70 @@
+{
+  "page_info": {
+    "title": "Building and Works Committee",
+    "subtitle": "National Institute of Technology Goa", 
+    "description": "Infrastructure Development & Management"
+  },
+  "bwc_members": [
+    {
+      "sr_no": 1,
+      "nit_statute_section": "(i)",
+      "designation": "Director, Ex-officio Chairman",
+      "name_address": "Prof. O.R. Jaiswal Director NIT Goa"
+    },
+    {
+      "sr_no": 2,
+      "nit_statute_section": "(ii)",
+      "designation": "Deputy Secretary, MoE dealing with NIT Member",
+      "name_address": "Ms. Garima Sharma, Deputy Secretary, MoE"
+    },
+    {
+      "sr_no": 3,
+      "nit_statute_section": "(ii)",
+      "designation": "MoE, dealing with Finance Member",
+      "name_address": "Shri. Narayan Singh Bisht, Deputy Secretary, IFD, MoE"
+    },
+    {
+      "sr_no": 4,
+      "nit_statute_section": "(iii)",
+      "designation": "Nominee of BoG Member",
+      "name_address": "Prof. R.K. Tripathi, Professor Dept. of Civil Engineering & Dean (P&D), NIT Raipur"
+    },
+    {
+      "sr_no": 5,
+      "nit_statute_section": "(iv)",
+      "designation": "Registrar, Ex-officio Member Secretary",
+      "name_address": "Dr. Shashidhar K. Kudari"
+    },
+    {
+      "sr_no": 6,
+      "nit_statute_section": "(v)",
+      "designation": "Dean (P&D) Member",
+      "name_address": "Dr. Velavan Kathirvelu"
+    },
+    {
+      "sr_no": 7,
+      "nit_statute_section": "(vi)",
+      "designation": "One Expert each from Civil & Electrical wing of Central or State or any autonomous body. Members.",
+      "name_address": "Prof. Krishna Kant Pathak Professor Dept. of Civil Engineering IIT BHU",
+      "rowspan": 2
+    },
+    {
+      "sr_no": 8,
+      "name_address": "Shri A.K Jain Former DDG (Works), CPWD Delhi"
+    }
+  ],
+  "bwc_pdfs": [
+    { "number": 2, "file": "/pdf/Administration/buildingworkscommittee/BWC-2.pdf" },
+    { "number": 3, "file": "/pdf/Administration/buildingworkscommittee/BWC-3.pdf" },
+    { "number": 4, "file": "/pdf/Administration/buildingworkscommittee/BWC-4.pdf" },
+    { "number": 5, "file": "/pdf/Administration/buildingworkscommittee/BWC-5.pdf" },
+    { "number": 6, "file": "/pdf/Administration/buildingworkscommittee/BWC-6.pdf" },
+    { "number": 7, "file": "/pdf/Administration/buildingworkscommittee/BWC-7.pdf" },
+    { "number": 8, "file": "/pdf/Administration/buildingworkscommittee/BWC-8.pdf" },
+    { "number": 9, "file": "/pdf/Administration/buildingworkscommittee/BWC-9.pdf" },
+    { "number": 10, "file": "/pdf/Administration/buildingworkscommittee/BWC-10.pdf" },
+    { "number": 11, "file": "/pdf/Administration/buildingworkscommittee/MoM 11th BWC.pdf" },
+    { "number": 12, "file": "/pdf/Administration/buildingworkscommittee/MoM 12th BWC.pdf" },
+    { "number": 13, "file": "/pdf/Administration/buildingworkscommittee/MoM 13BWC.pdf" }
+  ]
+}

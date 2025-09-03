@@ -1,34 +1,8 @@
 import React from 'react';
 import './PhD.css';
+import phdData from './PhD.json';
 
 const PhD = () => {
-    const phdData = {
-        title: "Ph.D. Admissions",
-        subtitle: "Doctor of Philosophy Programs at NIT Goa",
-        currentSession: "AY: 2025-26 (July Session)",
-        importantLinks: [
-            {
-                title: "Ph.D. Information Brochure",
-                link: "https://www.nitgoa.ac.in/static/Ph.D%20Admission%20Brochure%2022%20May%202025Rev.pdf",
-                description: "Complete admission guidelines and requirements"
-            },
-            {
-                title: "Online Application Portal", 
-                link: "https://forms.gle/a8Y4RBBx3gMnNs4i9",
-                description: "Apply online for Ph.D. admission"
-            },
-            {
-                title: "Application Fee Payment",
-                link: "https://u.payu.in/PAYUMN/xr3RLYOl16Ug", 
-                description: "Pay application fee online"
-            },
-            {
-                title: "Ph.D. Rules & Regulations",
-                link: "https://www.nitgoa.ac.in/uploads/PhD%20(Rules%20&%20Regulations)_2014-15_Jan%202025_Merge.pdf",
-                description: "Official Ph.D. program regulations"
-            }
-        ]
-    };
 
     return (
         <div className="phd-phd-page">

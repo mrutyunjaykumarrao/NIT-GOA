@@ -417,6 +417,28 @@
     color: #1976d2;
 }
 
+/* Contact Links Styles */
+.faculty-contact a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.faculty-contact a:hover {
+    color: #1976d2;
+    text-decoration: none;
+}
+
+.faculty-contact a:focus {
+    outline: none;
+    color: #1976d2;
+}
+
+.faculty-contact a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
 /* Faculty Actions */
 .faculty-actions {
     margin-top: auto;
@@ -994,6 +1016,26 @@
 
 .faculty-page.dark .faculty-contact strong {
     color: #4fc3f7;
+}
+
+.faculty-page.dark .faculty-contact a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.faculty-page.dark .faculty-contact a:hover {
+    color: #4fc3f7;
+    text-decoration: none;
+}
+
+.faculty-page.dark .faculty-contact a:focus {
+    outline: none;
+    color: #4fc3f7;
+}
+
+.faculty-page.dark .faculty-contact a:visited {
+    color: inherit;
+    text-decoration: none;
 }
 
 .faculty-page.dark .faculty-card.hod-card .faculty-contact {

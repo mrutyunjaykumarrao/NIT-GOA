@@ -35,7 +35,7 @@
 }
 
 /* Format Section */
-.dissertation-formats-page .format-section {
+.dissertation-formats-page .formats-section {
   margin-bottom: 2.5rem;
 }
 
@@ -54,13 +54,13 @@
   border-bottom-color: #4A9EE7;
 }
 
-.dissertation-formats-page .events-list {
+.dissertation-formats-page .formats-list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.dissertation-formats-page .event-card {
+.dissertation-formats-page .format-card {
   transition: all 0.3s ease;
   cursor: pointer;
   background: #ffffff;
@@ -74,30 +74,30 @@
   margin-bottom: 20px;
 }
 
-/* Dark theme support for event cards */
-[data-theme="dark"] .dissertation-formats-page .event-card {
+/* Dark theme support for format cards */
+[data-theme="dark"] .dissertation-formats-page .format-card {
   background: #1e293b !important;
   border-color: rgba(100, 116, 139, 0.2) !important;
   box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3) !important;
 }
 
-.dissertation-formats-page .event-card:hover {
+.dissertation-formats-page .format-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
 }
 
-[data-theme="dark"] .dissertation-formats-page .event-card:hover {
+[data-theme="dark"] .dissertation-formats-page .format-card:hover {
   box-shadow: 0 8px 25px rgba(15, 23, 38, 0.5) !important;
 }
 
-/* Event title styling */
-.dissertation-formats-page .event-title {
+/* Format title styling */
+.dissertation-formats-page .format-title {
   color: #1565c0;
   font-size: 1.1rem;
   font-weight: 600;
 }
 
-[data-theme="dark"] .dissertation-formats-page .event-title {
+[data-theme="dark"] .dissertation-formats-page .format-title {
   color: #6fa6ff !important;
 }
 
@@ -132,7 +132,7 @@
     padding: 0 1rem;
   }
   
-  .dissertation-formats-page .event-card {
+  .dissertation-formats-page .format-card {
     flex-direction: column !important;
     align-items: flex-start !important;
     gap: 1rem;
@@ -158,11 +158,11 @@
     font-size: 1.8rem !important;
   }
   
-  .dissertation-formats-page .event-card {
+  .dissertation-formats-page .format-card {
     padding: 1rem !important;
   }
   
-  .dissertation-formats-page .event-title {
+  .dissertation-formats-page .format-title {
     font-size: 1rem !important;
   }
   .dissertation-formats-page .pretty-download-btn {

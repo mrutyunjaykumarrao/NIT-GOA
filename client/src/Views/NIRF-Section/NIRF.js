@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './NIRF.css';
+import nirfData from './nirf.json';
 
 const NIRF = () => {
     const [openDropdowns, setOpenDropdowns] = useState({});
@@ -11,91 +12,16 @@ const NIRF = () => {
         }));
     };
 
-    const nirfData = [
-        {
-            year: '2025',
-            forms: [
-                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - ENGG', url: 'https://www.nitgoa.ac.in/static/National%20Institute%20of%20Technology%20Goa2025_Engg.pdf' },
-                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - OVERALL', url: 'https://www.nitgoa.ac.in/static/National%20Institute%20of%20Technology%20Goa2025_Overall.pdf' }
-            ]
-        },
-        {
-            year: '2024',
-            forms: [
-                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - ENGG', url: 'https://www.nitgoa.ac.in/uploads/NITGoa_Engineering%2028feb2024.pdf' },
-                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - OVERALL', url: 'https://www.nitgoa.ac.in/uploads/NITGoa_Overall%2028feb2024.pdf' }
-            ]
-        },
-        {
-            year: '2023',
-            forms: [
-                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - ENGG', url: 'https://www.nitgoa.ac.in/static/NITGoa-Engg_13jan2023.pdf' },
-                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - OVERALL', url: 'https://www.nitgoa.ac.in/static/NITGoa-Overall_13jan2023.pdf' }
-            ]
-        },
-        {
-            year: '2022',
-            forms: [
-                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - ENGG', url: 'https://www.nitgoa.ac.in/static/NIRF-Engg_2022.pdf' },
-                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - OVERALL', url: 'https://www.nitgoa.ac.in/static/NIRF-Overall_2022.pdf' }
-            ]
-        },
-        {
-            year: '2021',
-            forms: [
-                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - ENGG', url: 'https://www.nitgoa.ac.in/static/NIRF_2021-NIT_Goa_Engineering.pdf' },
-                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - OVERALL', url: 'https://www.nitgoa.ac.in/static/NIRF_2021-NIT_Goa_Overall.pdf' }
-            ]
-        },
-        {
-            year: '2020',
-            forms: [
-                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - ENGG', url: 'https://www.nitgoa.ac.in/static/National_Institute_of_Technology_Goa-2020-Engineering.pdf' },
-                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - OVERALL', url: 'https://www.nitgoa.ac.in/static/National_Institute_of_Technology_Goa-2020-Overall.pdf' }
-            ]
-        },
-        {
-            year: '2019',
-            forms: [
-                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - ENGG', url: 'https://www.nitgoa.ac.in/static/NIRF-ENGG_Category_(LOCKED).pdf' },
-                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - OVERALL', url: 'https://www.nitgoa.ac.in/static/NIRF-OVERALL_Category_(LOCKED).pdf' }
-            ]
-        },
-        {
-            year: '2018',
-            forms: [
-                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - ENGG', url: 'https://www.nitgoa.ac.in/static/ENGINEERING-All_Report-MHRD,_National_Institutional_Ranking_Framework_(NIRF)_8jan2018.pdf' },
-                { name: 'Full Report-MoE, National Institutional Ranking Framework (NIRF) - OVERALL', url: 'https://www.nitgoa.ac.in/static/OVERALL_-_All_Report-MHRD,_National_Institutional_Ranking_Framework_(NIRF)_8jan2018.pdf' }
-            ]
-        },
-        {
-            year: '2017',
-            forms: [
-                { name: 'Consultancy Project Details', url: 'https://www.nitgoa.ac.in/static/Consultancy_Project_Detail.xlsx' },
-                { name: 'Enterpreneurship', url: 'https://www.nitgoa.ac.in/static/Enterpreneurship.xlsx' },
-                { name: 'Program Details', url: 'https://www.nitgoa.ac.in/static/edp.xlsx' },
-                { name: 'PG - Higher Studies', url: 'https://www.nitgoa.ac.in/static/PG_-_HigherStudies.xlsx' },
-                { name: 'UG - Higher Studies', url: 'https://www.nitgoa.ac.in/static/UG_-_HigherStudies.xlsx' },
-                { name: 'Sponsored Research Details', url: 'https://www.nitgoa.ac.in/static/Sponsored_Research_Detail.xlsx' },
-                { name: 'Top University Details_5D', url: 'https://www.nitgoa.ac.in/static/TopUniversityDetails_5D.xlsx' },
-                { name: 'Top University Details_3D', url: 'https://www.nitgoa.ac.in/static/Top_UniversityDetails_3D.xlsx' },
-                { name: 'Placements', url: 'https://www.nitgoa.ac.in/static/Placement_20feb2017.xlsx' },
-                { name: 'Full Report-MHRD, National Institutional Ranking Framework (NIRF) - ENGG', url: 'https://www.nitgoa.ac.in/static/Full_Report_MHRD_National_Institutional_Ranking_Framework_(NIRF)_-_ENGG_20feb2017.pdf' },
-                { name: 'Full Report-MHRD, National Institutional Ranking Framework (NIRF)-OVERALL', url: 'https://www.nitgoa.ac.in/static/Full_Report_MHRD__National_Institutional_Ranking_Framework_(NIRF)_-_OVERALL_20feb2017.pdf' }
-            ]
-        }
-    ];
-
     return (
         <div className="nirf-page">
             <div className="nirf-container">
                 <div className="page-header">
-                    <h1>NIRF Forms</h1>
+                    <h1>{nirfData.page_header.title}</h1>
                 </div>
 
                 <div className="nirf-content">
                     <div className="nirf-forms-section">
-                        {nirfData.map((item) => (
+                        {nirfData.nirf_data.map((item) => (
                             <div key={item.year} className="nirf-year-section">
                                 <div 
                                     className={`nirf-year-header ${openDropdowns[item.year] ? 'active' : ''}`}
@@ -161,7 +87,7 @@ const NIRF = () => {
                     </div>
 
                     <div className="nirf-contact-info">
-                        <p>FOR ANY COMMENTS AND FEEDBACK PLEASE E-MAIL TO <a href="mailto:nirf@nitgoa.ac.in">nirf@nitgoa.ac.in</a></p>
+                        <p>{nirfData.contact_info.text} <a href={`mailto:${nirfData.contact_info.email}`}>{nirfData.contact_info.email}</a></p>
                     </div>
                 </div>
             </div>

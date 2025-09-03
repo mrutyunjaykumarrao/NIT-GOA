@@ -1,0 +1,97 @@
+{
+  "page_info": {
+    "title": "Board of Governors",
+    "subtitle": "National Institute of Technology Goa",
+    "description": "Governing Body as per NIT Act 2007"
+  },
+  "board_members": [
+    {
+      "sr_no": 1,
+      "nit_act_sec": "11(a)",
+      "position": "Chairperson",
+      "name": "Vacant",
+      "designation": "--"
+    },
+    {
+      "sr_no": 2,
+      "nit_act_sec": "11(b)",
+      "position": "Director, Ex-Officio Member",
+      "name": "Prof. O. R. Jaiswal",
+      "designation": "Director, National Institute of Technology Goa"
+    },
+    {
+      "sr_no": 3,
+      "nit_act_sec": "11(c)",
+      "position": "Two persons not below the rank of JS to the Govt. of India to be nominated by the Central Govt. from amongst persons dealing with tech. edu. And finance",
+      "names": [
+        {
+          "name": "Mrs. Saumya Gupta",
+          "designation": "Addl. Secretary/Jt. Secretary (Technical Education), MHRD, Govt. of India"
+        },
+        {
+          "name": "Sh. Sanjog Kapoor",
+          "designation": "Financial Advisor, Dept of Higher Education, MHRD, Govt. of India"
+        }
+      ]
+    },
+    {
+      "sr_no": 5,
+      "nit_act_sec": "11(d)",
+      "position": "Two persons nominated by the Govt. of the States in which the Institute is situated.",
+      "names": [
+        {
+          "name": "Dr. Venkatesh Ganesh Prabhu Desai",
+          "designation": "Chairman, Chandranath Education Society, Assolda, Quepem, Goa"
+        },
+        {
+          "name": "Dr. Mahesh Dhawalkar",
+          "designation": "Professor, Department of Mechanical Engineering, Goa Engineering College, Farmagudi, Ponda, Goa"
+        }
+      ]
+    },
+    {
+      "sr_no": 7,
+      "nit_act_sec": "11(e)",
+      "position": "Two persons at least one whom shall be a woman having special knowledge or practical experience in respect of education, engineering or science to be nominated by the council",
+      "names": [
+        {
+          "name": "Vacant",
+          "designation": "--"
+        },
+        {
+          "name": "Vacant",
+          "designation": "--"
+        }
+      ]
+    },
+    {
+      "sr_no": 9,
+      "nit_act_sec": "11(f)",
+      "position": "One Professor and one Assistant Professor or a Lecturer nominated by Senate",
+      "names": [
+        {
+          "name": "Dr. Sreeraj E. S",
+          "designation": "Associate Professor, Department of Electrical and Electronics Engineering"
+        },
+        {
+          "name": "Dr. Mallikarjun Eramshetty",
+          "designation": "Assistant Professor, Department of Electronics and Communication Engineering"
+        }
+      ]
+    },
+    {
+      "sr_no": 11,
+      "nit_act_sec": "11(g)",
+      "position": "Director of IIT in whose zone the Institute is located, or his nominee not below the rank of Professor",
+      "name": "Prof. B. G. Fernandes",
+      "designation": "Professor & Head of Department of Electrical Engineering, IIT Bombay"
+    },
+    {
+      "sr_no": 12,
+      "nit_act_sec": "18(2)",
+      "position": "Member Secretary",
+      "name": "Dr. Shashidhar K. Kudari",
+      "designation": "Registrar, NIT Goa"
+    }
+  ]
+}

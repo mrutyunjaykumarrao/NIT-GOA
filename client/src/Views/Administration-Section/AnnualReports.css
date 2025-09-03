@@ -1,222 +1,190 @@
+/* Annual Reports Page Styles */
 .annual-reports-page {
-    min-height: 100vh;
-    background: white;
-    padding: 40px 20px;
-    transition: all 0.3s ease-in-out;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  padding: 2rem 0;
 }
 
-.annual-reports-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    padding: 40px;
+[data-theme="dark"] .annual-reports-page {
+  background: linear-gradient(135deg, #0a1220 0%, #1a2332 50%, #253041 100%);
 }
 
-.annual-reports-title {
-    color: #2c3e50;
-    font-size: 2.5rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 40px;
-    border-bottom: 3px solid #3498db;
-    padding-bottom: 20px;
+/* Heading styles for dark mode */
+.annual-reports-page h1 {
+  color: #2c3e50;
 }
 
-.annual-reports-section {
-    margin-bottom: 50px;
+[data-theme="dark"] .annual-reports-page h1 {
+  color: #e2e8f0 !important;
 }
 
-.annual-reports-section-title {
-    color: #2c3e50;
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-bottom: 25px;
-    padding: 15px 20px;
-    background: linear-gradient(135deg, #3498db, #2980b9);
-    color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+.annual-reports-page h2 {
+  color: #222;
 }
 
-.annual-reports-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding-left: 20px;
+[data-theme="dark"] .annual-reports-page h2 {
+  color: #e2e8f0 !important;
 }
 
-.annual-reports-link {
-    color: #3498db;
-    text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 500;
-    padding: 12px 15px;
-    border-left: 4px solid #3498db;
-    background: #f8f9fa;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    position: relative;
-    display: block;
+/* Report title styling for dark mode */
+.annual-reports-page .report-title {
+  color: #1565c0;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
-.annual-reports-link:hover {
-    color: #2980b9;
-    background: #e3f2fd;
-    border-left-color: #2980b9;
-    transform: translateX(5px);
-    box-shadow: 0 3px 10px rgba(52, 152, 219, 0.2);
+[data-theme="dark"] .annual-reports-page .report-title {
+  color: #6fa6ff !important;
 }
 
-.annual-reports-link:before {
-    content: "📄";
-    margin-right: 10px;
+.annual-reports-container {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Page Header */
+.annual-reports-page .page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+  height: 100px;
+}
+
+.annual-reports-page .page-header h1 {
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: #2c3e50;
+}
+
+[data-theme="dark"] .annual-reports-page .page-header h1 {
+  color: #e2e8f0;
+}
+
+/* Reports Section */
+.annual-reports-page .reports-section {
+  margin-bottom: 2.5rem;
+}
+
+.annual-reports-page .section-title {
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+  color: #222;
+  border-bottom: 3px solid #1976d2;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+[data-theme="dark"] .annual-reports-page .section-title {
+  color: #e2e8f0;
+  border-bottom-color: #4A9EE7;
+}
+
+.annual-reports-page .reports-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.annual-reports-page .report-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Dark theme support for report cards */
+[data-theme="dark"] .annual-reports-page .report-card {
+  background: #1e293b !important;
+  border-color: rgba(100, 116, 139, 0.2) !important;
+  box-shadow: 0 8px 32px rgba(15, 23, 38, 0.3) !important;
+}
+
+.annual-reports-page .report-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="dark"] .annual-reports-page .report-card:hover {
+  box-shadow: 0 8px 25px rgba(15, 23, 38, 0.5) !important;
+}
+
+.pretty-download-btn {
+  background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3);
+}
+
+.pretty-download-btn:hover {
+  background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.4);
+}
+
+.pretty-download-btn:active {
+  transform: translateY(0);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .annual-reports-page {
-        padding: 20px 10px;
-    }
-    
-    .annual-reports-content {
-        padding: 20px;
-    }
-    
-    .annual-reports-title {
-        font-size: 2rem;
-        margin-bottom: 30px;
-    }
-    
-    .annual-reports-section-title {
-        font-size: 1.5rem;
-        padding: 12px 15px;
-    }
-    
-    .annual-reports-link {
-        font-size: 1rem;
-        padding: 10px 12px;
-    }
+  .annual-reports-container {
+    padding: 0 1rem;
+  }
+  
+  .report-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1rem;
+  }
+  
+  .pretty-download-btn {
+    align-self: flex-end;
+  }
+  .pretty-download-btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    align-items: center;
+  }
 }
 
 @media (max-width: 480px) {
-    .annual-reports-title {
-        font-size: 1.5rem;
-    }
-    
-    .annual-reports-section-title {
-        font-size: 1.3rem;
-    }
-    
-    .annual-reports-list {
-        padding-left: 10px;
-    }
-}
-
-/* Large Screen Scaling - For screens larger than 1440px */
-@media (min-width: 1441px) {
-    .annual-reports-page {
-        padding: 60px 40px;
-    }
-    
-    .annual-reports-content {
-        max-width: 1400px;
-        transform: scale(1.02);
-        transform-origin: center;
-        margin: 40px auto;
-        padding: 50px;
-    }
-    
-    .annual-reports-title {
-        font-size: 2.7rem;
-    }
-}
-
-@media (min-width: 1600px) {
-    .annual-reports-page {
-        padding: 80px 50px;
-    }
-    
-    .annual-reports-content {
-        max-width: 1500px;
-        transform: scale(1.04);
-        margin: 50px auto;
-        padding: 60px;
-    }
-    
-    .annual-reports-title {
-        font-size: 2.9rem;
-    }
-}
-
-@media (min-width: 1920px) {
-    .annual-reports-page {
-        padding: 100px 60px;
-    }
-    
-    .annual-reports-content {
-        max-width: 1600px;
-        transform: scale(1.06);
-        margin: 60px auto;
-        padding: 70px;
-    }
-    
-    .annual-reports-title {
-        font-size: 3.1rem;
-    }
-}
-
-@media (min-width: 2560px) {
-    .annual-reports-page {
-        padding: 120px 80px;
-    }
-    
-    .annual-reports-content {
-        max-width: 1800px;
-        transform: scale(1.08);
-        margin: 80px auto;
-        padding: 80px;
-    }
-    
-    .annual-reports-title {
-        font-size: 3.3rem;
-    }
-}
-
-/* Dark Theme Support */
-[data-theme="dark"] .annual-reports-page {
-    background: linear-gradient(135deg, #1e1e1e 0%, #2c2c2c 100%);
-    color: #ffffff;
-}
-
-[data-theme="dark"] .annual-reports-content {
-    background: rgba(44, 44, 44, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-}
-
-[data-theme="dark"] .annual-reports-title {
-    color: #64B5F6;
-    border-bottom-color: #64B5F6;
-    text-shadow: 0 2px 4px rgba(100, 181, 246, 0.3);
-}
-
-[data-theme="dark"] .annual-reports-section-title {
-    background: linear-gradient(135deg, #1e40af, #1e293b);
-    color: #64B5F6;
-    box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
-}
-
-[data-theme="dark"] .annual-reports-link {
-    color: #64B5F6;
-    background: rgba(55, 65, 81, 0.7);
-    border-left-color: #64B5F6;
-}
-
-[data-theme="dark"] .annual-reports-link:hover {
-    color: #90CAF9;
-    background: rgba(100, 181, 246, 0.1);
-    border-left-color: #90CAF9;
-    box-shadow: 0 3px 10px rgba(100, 181, 246, 0.2);
+  .annual-reports-page {
+    padding: 1rem 0;
+  }
+  
+  h1 {
+    font-size: 1.8rem !important;
+  }
+  
+  .report-card {
+    padding: 1rem !important;
+  }
+  
+  .report-title {
+    font-size: 1rem !important;
+  }
+  .pretty-download-btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    align-items: center;
+  }
 }

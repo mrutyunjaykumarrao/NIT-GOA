@@ -1,5 +1,6 @@
 import React from 'react';
 import './SCSTCell.css';
+import scstData from './scstCell.json';
 
 const SCSTCell = () => {
     return (
@@ -8,8 +9,8 @@ const SCSTCell = () => {
                 {/* Hero Section */}
                 <div className="sc-st-cell-hero">
                     <div className="sc-st-cell-hero-content">
-                        <h1 className="sc-st-cell-hero-title">SC/ST Cell</h1>
-                        <p className="sc-st-cell-hero-subtitle">National Institute of Technology Goa</p>
+                        <h1 className="sc-st-cell-hero-title">{scstData.hero.title}</h1>
+                        <p className="sc-st-cell-hero-subtitle">{scstData.hero.subtitle}</p>
                     </div>
                 </div>
 
@@ -19,48 +20,17 @@ const SCSTCell = () => {
                     <section className="sc-st-cell-main-section">
                         <div className="sc-st-cell-content-card">
                             <p className="sc-st-cell-intro-text">
-                                NIT Goa aims to create an inclusive and impartial atmosphere for people from 
-                                various communities. SC/ST cells play a crucial role in safeguarding the rights and 
-                                interests of Scheduled Castes (SC) and Scheduled Tribes (ST) students and 
-                                employees at NIT Goa. The cell ensures the implementation of policies and laws aimed 
-                                at promoting social equality, preventing discrimination, and addressing 
-                                grievances specific to SC and ST communities. It also provides support, representation, 
-                                and advocacy for SC/ST individuals facing issues such as discrimination, 
-                                harassment, or unfair treatment. Additionally, they often work towards creating 
-                                awareness, promoting education, and facilitating socio-economic empowerment among SC/ST 
-                                populations.
+                                {scstData.introduction.text}
                             </p>
                             
-                            <h2 className="sc-st-cell-section-title">Duties and Responsibilities of the SC/ST Cell:</h2>
+                            <h2 className="sc-st-cell-section-title">{scstData.duties.title}</h2>
                             <div className="sc-st-cell-duties-list">
-                                <div className="sc-st-cell-duty-item">
-                                    <span className="sc-st-cell-duty-number">1.</span>
-                                    <p>Ensure Equal opportunities, Protection of Right and Full Participation (Act 1995).</p>
-                                </div>
-                                <div className="sc-st-cell-duty-item">
-                                    <span className="sc-st-cell-duty-number">2.</span>
-                                    <p>Promotion of higher education among the SC/ST or weaker communities that are suffering from economic, social, and educational lacks.</p>
-                                </div>
-                                <div className="sc-st-cell-duty-item">
-                                    <span className="sc-st-cell-duty-number">3.</span>
-                                    <p>Evaluation of all matters related to SC/ST students and employees of the Institute including the reservation rules as per Government of India norms.</p>
-                                </div>
-                                <div className="sc-st-cell-duty-item">
-                                    <span className="sc-st-cell-duty-number">4.</span>
-                                    <p>Redressal of complaints related to SC/ST students and employees at NIT Goa.</p>
-                                </div>
-                                <div className="sc-st-cell-duty-item">
-                                    <span className="sc-st-cell-duty-number">5.</span>
-                                    <p>Follow-up measures for achieving the objectives and targets laid down by MoE, GoI for the empowerment of SC and ST.</p>
-                                </div>
-                                <div className="sc-st-cell-duty-item">
-                                    <span className="sc-st-cell-duty-number">6.</span>
-                                    <p>Regular supervision of the reservation policies and other programs intended for SC/ST by the GoI for their effective implementation at NIT Goa.</p>
-                                </div>
-                                <div className="sc-st-cell-duty-item">
-                                    <span className="sc-st-cell-duty-number">7.</span>
-                                    <p>Ensuring timely submission of SC/ST Reports I and II by each appointing authority under the Ministry/Department to the Ministry/Department and ensuring scrutiny and consolidation of the above reports in respect of all establishments and services in and under the control of the Ministry/Department and sending the consolidated reports in the prescribed proformas to the Department of Personnel & Training.</p>
-                                </div>
+                                {scstData.duties.items.map((duty, index) => (
+                                    <div key={index} className="sc-st-cell-duty-item">
+                                        <span className="sc-st-cell-duty-number">{index + 1}.</span>
+                                        <p>{duty}</p>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </section>
@@ -68,44 +38,40 @@ const SCSTCell = () => {
                     {/* Contact and Complaint Section - Combined */}
                     <section className="sc-st-cell-contact-section">
                         <div className="sc-st-cell-content-card">
-                            <h2 className="sc-st-cell-section-title">Contact Us</h2>
+                            <h2 className="sc-st-cell-section-title">{scstData.contact.title}</h2>
                             
                             {/* Contact Information */}
                             <div className="sc-st-cell-contact-info">
                                 <div className="sc-st-cell-contact-item">
                                     <h3>For Your Queries/Complaints</h3>
-                                    <p className="sc-st-cell-contact-name"><strong>Dr. T. Veerakumar</strong></p>
-                                    <p className="sc-st-cell-contact-designation">Liaison Officer (SC/ST Cell)</p>
+                                    <p className="sc-st-cell-contact-name"><strong>{scstData.contact.liaison_officer.name}</strong></p>
+                                    <p className="sc-st-cell-contact-designation">{scstData.contact.liaison_officer.designation}</p>
                                 </div>
                                 
                                 <div className="sc-st-cell-contact-item">
-                                    <p style={{textAlign: 'center'}}>Your feedback is welcome. Please write to: <a href="mailto:scstcell@nitgoa.ac.in" className="sc-st-cell-email-link">scstcell@nitgoa.ac.in</a></p>
+                                    <p style={{textAlign: 'center'}}>{scstData.contact.email.text} <a href={`mailto:${scstData.contact.email.address}`} className="sc-st-cell-email-link">{scstData.contact.email.address}</a></p>
                                 </div>
 
                                 <div className="sc-st-cell-contact-item">
                                     <p>
-                                        The cell aims to ensure that anti-discrimination laws in the context of caste 
-                                        are followed in letter and in spirit. On grievances (if any), students are 
-                                        encouraged to approach the cell or fill in the enclosed Complaint Registration Form. 
-                                        The cell strives to ensure that anonymity is maintained throughout the 
-                                        investigation.
+                                        {scstData.contact.grievance_info}
                                     </p>
                                 </div>
                             </div>
                             
                             {/* Complaint Form */}
                             <div className="sc-st-cell-complaint-form-container">
-                                <h3 className="sc-st-cell-form-title">File a Complaint</h3>
+                                <h3 className="sc-st-cell-form-title">{scstData.complaint_form.title}</h3>
                                 <p className="sc-st-cell-form-description">
-                                    If you have any grievances or complaints, please use our online complaint registration form.
+                                    {scstData.complaint_form.description}
                                 </p>
                                 <a 
-                                    href="https://docs.google.com/forms/d/1htlljT6BxR9KsRUeF6q1eMhUB5l_IinhRWIDTPIxcGc/viewform?pli=1&pli=1&edit_requested=true" 
+                                    href={scstData.complaint_form.form_url} 
                                     target="_blank" 
                                     rel="noopener noreferrer"
                                     className="sc-st-cell-complaint-btn"
                                 >
-                                    Formal Online Complaint Registration Form (SC/ST Cell)
+                                    {scstData.complaint_form.button_text}
                                 </a>
                             </div>
                         </div>

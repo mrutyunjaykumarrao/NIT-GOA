@@ -2,26 +2,8 @@
 .administrative-staff-page {
     background-color: white;
     padding-top: 20px;
+    padding-bottom: 40px;
     transition: background-color 0.3s ease;
-}
-
-.administrative-staff-contact {
-    background: #f8f9fa;
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    text-align: left;
-    margin-top: auto;
-}
-
-.administrative-staff-contact p {
-    margin: 4px 0;
-    font-size: 13px;
-    color: #555;
-}
-
-.administrative-staff-contact strong {
-    color: #1976d2;
 }
 
 /* Dark Mode Styles */
@@ -171,14 +153,36 @@
     margin-top: auto;
 }
 
-.staff-contact p {
+.administrative-staff-contact p {
     margin: 4px 0;
     font-size: 13px;
     color: #555;
 }
 
-.staff-contact strong {
+.administrative-staff-contact strong {
     color: #1976d2;
+}
+
+/* Contact Links Styles */
+.administrative-staff-contact a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.administrative-staff-contact a:hover {
+    color: #1976d2;
+    text-decoration: none;
+}
+
+.administrative-staff-contact a:focus {
+    outline: none;
+    color: #1976d2;
+}
+
+.administrative-staff-contact a:visited {
+    color: inherit;
+    text-decoration: none;
 }
 
 /* Responsive Design */
@@ -293,9 +297,9 @@
     
     .administrative-staff-card {
         max-width: 420px;
-        height: 520px;
-        min-height: 520px;
-        max-height: 520px;
+        height: 500px;
+        min-height: 500px;
+        max-height: 500px;
         padding: 30px;
     }
     
@@ -399,6 +403,26 @@
 
 .administrative-staff-page.dark .administrative-staff-contact strong {
     color: #4fc3f7;
+}
+
+.administrative-staff-page.dark .administrative-staff-contact a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.administrative-staff-page.dark .administrative-staff-contact a:hover {
+    color: #4fc3f7;
+    text-decoration: none;
+}
+
+.administrative-staff-page.dark .administrative-staff-contact a:focus {
+    outline: none;
+    color: #4fc3f7;
+}
+
+.administrative-staff-page.dark .administrative-staff-contact a:visited {
+    color: inherit;
+    text-decoration: none;
 }
 
 .administrative-staff-page.dark .no-staff {

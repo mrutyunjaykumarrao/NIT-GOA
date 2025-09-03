@@ -61,10 +61,10 @@ export const navigationConfig = {
       mtech: '/admissions/mtech',
       phd: '/admissions/phd',
       hostel: '/admissions/hostel',
-      btechHostel: 'https://www.nitgoa.ac.in/static/Rules_of_NIT_Goa_Hostel_18July2022.pdf',
+      btechHostel: '/pdf/admission/hostels/Btech-Hostel/Hostel_Rules__Regulations_23march2016.pdf',
       mtechHostel: 'https://www.nitgoa.ac.in/static/Rules_mtech_hostel_20june16.pdf',
-      brochure: 'https://www.nitgoa.ac.in/uploads/AdmissionBrochure%202august2024.pdf',
-      fees: 'https://www.nitgoa.ac.in/static/fee_structure_23-24_25july2023.pdf'
+      brochure: '/pdf/admission/admission-brochure/AdmissionBrochure2024.pdf',
+      fees: '/pdf/admission/fee-structure/fee_structure_23-24_25july2023.pdf'
     },
     training: {
       statistics: '/placement/statistics',
@@ -76,7 +76,7 @@ export const navigationConfig = {
       rdProjects: '/research/rd-projects',
       researchConsultancy: 'https://www.nitgoa.ac.in/research/Research_Consultancy/research_consultancy.html',
       mouDetails: '/research/mou-details',
-      iprPolicy: 'https://www.nitgoa.ac.in/static/NIT_Goa_IPR_10Nov2015.pdf'
+      iprPolicy: '/pdf/research/IPR-policy/NIT_Goa_IPR_10Nov2015.pdf'
     },
     resources: {
       facilities: '/facilities',
@@ -93,6 +93,9 @@ export const navigationConfig = {
       research: '/research',
       campusLife: '/campus',
       careerServices: '/placement/career-services'
+    },
+    people: {
+      telephoneDirectory: '/pdf/People/Telephone-Directory/TelephoneDirectory.pdf'
     },
     departments: {
       cse: '/academics/departments/computer-science',

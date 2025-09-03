@@ -71,6 +71,46 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     padding: 24px;
     transition: all 0.3s ease;
+    outline: none !important;
+    border: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    user-select: none !important;
+}
+
+.regulations-page .event-card:focus,
+.regulations-page .event-card:active,
+.regulations-page .event-card:focus-visible,
+.regulations-page .event-card:focus-within {
+    outline: none !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+/* Dropdown specific card styling */
+.regulations-page .dropdown-card {
+    flex-direction: column;
+    align-items: stretch;
+    outline: none !important;
+    border: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    user-select: none !important;
+}
+
+.regulations-page .dropdown-card:focus,
+.regulations-page .dropdown-card:active,
+.regulations-page .dropdown-card:focus-visible,
+.regulations-page .dropdown-card:focus-within {
+    outline: none !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+    -webkit-tap-highlight-color: transparent !important;
 }
 
 [data-theme="dark"] .regulations-page .event-card {
@@ -85,6 +125,181 @@
 
 [data-theme="dark"] .regulations-page .event-card:hover {
     box-shadow: 0 8px 25px rgba(15, 23, 38, 0.5);
+}
+
+/* Dropdown Header */
+.regulations-page .dropdown-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    width: 100%;
+    outline: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.regulations-page .dropdown-header:focus {
+    outline: none;
+    border: none;
+}
+
+/* Dropdown Arrow */
+.regulations-page .dropdown-arrow {
+    transition: transform 0.3s ease;
+    color: #1976d2;
+    min-width: 20px;
+    width: 20px;
+    height: 20px;
+    margin-left: 1rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+[data-theme="dark"] .regulations-page .dropdown-arrow {
+    color: #4A9EE7;
+}
+
+.regulations-page .dropdown-arrow.expanded {
+    transform: rotate(180deg);
+}
+
+/* Dropdown Content */
+.regulations-page .dropdown-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.regulations-page .dropdown-content.open {
+    max-height: 1000px;
+    opacity: 1;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e9ecef;
+}
+
+[data-theme="dark"] .regulations-page .dropdown-content.open {
+    border-top-color: #475569;
+}
+
+/* Dropdown Items */
+.regulations-page .dropdown-item {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 1rem;
+    border: 1px solid #e9ecef;
+}
+
+[data-theme="dark"] .regulations-page .dropdown-item {
+    background: #334155;
+    border-color: #475569;
+}
+
+.regulations-page .dropdown-item-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1565c0;
+    margin-bottom: 0.75rem;
+}
+
+[data-theme="dark"] .regulations-page .dropdown-item-title {
+    color: #6fa6ff;
+}
+
+/* Simple dropdown item */
+.regulations-page .dropdown-simple-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Department Buttons Container */
+.regulations-page .department-buttons-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+/* Department Buttons */
+.regulations-page .department-btn {
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(25, 118, 210, 0.3);
+    min-width: 80px;
+    width: 100%;
+}
+
+.regulations-page .department-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.4);
+    background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+}
+
+[data-theme="dark"] .regulations-page .department-btn {
+    background: linear-gradient(135deg, #4A9EE7 0%, #6BB6FF 100%);
+    box-shadow: 0 2px 6px rgba(74, 158, 231, 0.3);
+}
+
+[data-theme="dark"] .regulations-page .department-btn:hover {
+    box-shadow: 0 4px 12px rgba(74, 158, 231, 0.4);
+    background: linear-gradient(135deg, #3d8bdb 0%, #5aa3f0 100%);
+}
+
+/* Dropdown Download Button */
+.regulations-page .dropdown-download-btn {
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3);
+    white-space: nowrap;
+    min-width: 140px;
+}
+
+.regulations-page .dropdown-download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+[data-theme="dark"] .regulations-page .dropdown-download-btn {
+    background: linear-gradient(135deg, #4A9EE7 0%, #6BB6FF 100%);
+    box-shadow: 0 4px 15px rgba(74, 158, 231, 0.3);
+}
+
+[data-theme="dark"] .regulations-page .dropdown-download-btn:hover {
+    box-shadow: 0 6px 20px rgba(74, 158, 231, 0.4);
+}
+
+.regulations-page .dropdown-download-btn .download-icon {
+    margin-right: 8px;
 }
 
 .regulations-page .event-title {
@@ -596,13 +811,57 @@
     .contact-info h2 {
         font-size: 2rem;
     }
+    
     .pretty-download-btn {
         width: 100%;
         padding: 0.75rem;
         font-size: 0.9rem;
         align-items: center;
     }
-    
+
+    /* Dropdown responsive styles */
+    .regulations-page .dropdown-simple-item {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    .regulations-page .dropdown-item-title {
+        text-align: center;
+    }
+
+    .regulations-page .dropdown-download-btn {
+        align-self: center;
+        min-width: 140px;
+    }
+
+    .regulations-page .department-buttons-container {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 0.5rem;
+    }
+
+    .regulations-page .department-btn {
+        font-size: 0.8rem;
+        padding: 8px 16px;
+        min-width: 80px;
+    }
+
+    /* Fix dropdown content spacing for mobile */
+    .regulations-page .dropdown-content {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+    }
+
+    .regulations-page .dropdown-content.open {
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid #e9ecef;
+    }
+
+    [data-theme="dark"] .regulations-page .dropdown-content.open {
+        border-top-color: #475569;
+    }
 }
 
 @media (max-width: 480px) {
@@ -636,6 +895,7 @@
         align-items: flex-start;
         gap: 0.5rem;
     }
+    
     .pretty-download-btn {
         width: 100%;
         padding: 0.75rem;
@@ -645,5 +905,50 @@
 
     .download-header h3 {
         margin-right: 0;
+    }
+
+    /* Mobile dropdown styles */
+    .regulations-page .dropdown-item {
+        padding: 0.75rem;
+    }
+
+    .regulations-page .dropdown-item-title {
+        font-size: 0.9rem;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .regulations-page .department-buttons-container {
+        grid-template-columns: repeat(auto-fit, minmax(85px, 1fr));
+        gap: 0.5rem;
+    }
+
+    .regulations-page .department-btn {
+        font-size: 0.75rem;
+        padding: 6px 12px;
+        min-width: 70px;
+    }
+
+    .regulations-page .dropdown-download-btn {
+        font-size: 0.8rem;
+        padding: 8px 16px;
+        min-width: 120px;
+    }
+
+    /* Fix dropdown content spacing for small mobile */
+    .regulations-page .dropdown-content {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+    }
+
+    .regulations-page .dropdown-content.open {
+        margin-top: 0.5rem;
+        padding-top: 0.5rem;
+        border-top: 1px solid #e9ecef;
+    }
+
+    [data-theme="dark"] .regulations-page .dropdown-content.open {
+        border-top-color: #475569;
     }
 }

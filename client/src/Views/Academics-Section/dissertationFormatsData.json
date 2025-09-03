@@ -1,0 +1,43 @@
+{
+  "dissertation_formats_page": {
+    "title": "Dissertation Formats",
+    "sections": [
+      {
+        "id": "btech-dissertation-formats",
+        "section": "B.Tech Dissertation Formats:",
+        "type": "simple",
+        "entries": [
+          {
+            "title": "B.Tech Project Report Format",
+            "type": "simple",
+            "file": "/pdf/Academics/Dissertation_Formats/BTechReportFormat.rar"
+          }
+        ]
+      },
+      {
+        "id": "mtech-dissertation-formats",
+        "section": "M.Tech Dissertation Formats:",
+        "type": "simple",
+        "entries": [
+          {
+            "title": "M.Tech Dissertation Format",
+            "type": "simple",
+            "file": "/pdf/Academics/Dissertation_Formats/MTechDissertationFormat.rar"
+          }
+        ]
+      },
+      {
+        "id": "phd-dissertation-formats",
+        "section": "Ph.D Dissertation Formats:",
+        "type": "simple",
+        "entries": [
+          {
+            "title": "Ph.D Dissertation Format",
+            "type": "simple",
+            "file": "/pdf/Academics/Dissertation_Formats/PhDDissertationFormat.rar"
+          }
+        ]
+      }
+    ]
+  }
+}

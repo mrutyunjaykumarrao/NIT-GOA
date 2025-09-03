@@ -1,0 +1,540 @@
+{
+  "page_info": {
+    "title": "Committees",
+    "subtitle": "National Institute of Technology Goa",
+    "description": "Institutional Committees & Contact Information"
+  },
+  "committees": [
+    {
+      "name": "Training & Placement Cell",
+      "members": [
+        {
+          "role": "Chairperson",
+          "name": "Dr. Sarani Ghosal Mondal",
+          "email": "tpo@nitgoa.ac.in",
+          "phone": "0832-2404741"
+        },
+        {
+          "role": "Convener",
+          "name": "Dr. Venkatanareshbabu Kuppili",
+          "email": "venkatanaresh@nitgoa.ac.in",
+          "phone": "0832-2404402"
+        },
+        {
+          "role": "Member",
+          "name": "Dr. Prasenjit Dey",
+          "email": "prasenjit.dey@nitgoa.ac.in",
+          "phone": "0832-2404834"
+        }
+      ]
+    },
+    {
+      "name": "RTI-Act",
+      "members": [
+        {
+          "role": "Central Public Information Officer",
+          "name": "Dr. Shangerganesh L.",
+          "email": "pio@nitgoa.ac.in",
+          "phone": "0832-2404728"
+        },
+        {
+          "role": "Assistant Public Information Officer",
+          "name": "Dr. Ragoju Ravi",
+          "email": "apio@nitgoa.ac.in",
+          "phone": "0832-2404743"
+        },
+        {
+          "role": "First Appellate Authority",
+          "name": "Dr. C. Vyjayanthi",
+          "email": "faa@nitgoa.ac.in",
+          "phone": "0832-2404632"
+        },
+        {
+          "role": "Chief Vigilance Officer",
+          "name": "Dr. Velavan Kathirvelu",
+          "email": "cvo@nitgoa.ac.in",
+          "phone": "0832-2404726"
+        }
+      ]
+    },
+    {
+      "name": "Public Relations Officer",
+      "members": [
+        {
+          "role": "",
+          "name": "Dr. Sarani Ghosal Mondal",
+          "email": "sarani@nitgoa.ac.in",
+          "phone": "8404528880(Mob)|0832-2404741"
+        }
+      ]
+    },
+    {
+      "name": "Library Committee",
+      "members": [
+        {
+          "role": "Chairperson",
+          "name": "Dr. Ragoju Ravi",
+          "email": "ravi@nitgoa.ac.in",
+          "phone": "0832-2404743"
+        },
+        {
+          "role": "Member",
+          "name": "Dr. C. Vyjayanthi",
+          "email": "c.vyjayanthi@nitgoa.ac.in",
+          "phone": "0832-2404632"
+        },
+        {
+          "role": "Member",
+          "name": "Dr. Venkatanareshbabu Kuppili",
+          "email": "venkatanaresh@nitgoa.ac.in",
+          "phone": "0832-2404402"
+        },
+        {
+          "role": "Member",
+          "name": "Dr. Saidi Reddy Parne",
+          "email": "psreddy@nitgoa.ac.in",
+          "phone": "0832-2404729"
+        },
+        {
+          "role": "Member",
+          "name": "Dr. B. Santhi",
+          "email": "santhi@nitgoa.ac.in",
+          "phone": "0832-2404829"
+        },
+        {
+          "role": "Member",
+          "name": "Dr. Prashanth G. R.",
+          "email": "grprashanth@nitgoa.ac.in",
+          "phone": "0832-2404533"
+        }
+      ]
+    },
+    {
+      "name": "Admissions",
+      "members": [
+        {
+          "role": "Centre Incharge - JoSAA/CSAB/DASA",
+          "name": "Dr. Ravi Ragoju",
+          "additional_info": "Dr. Sreeraj E.S. (Dy. Centre Incharge)",
+          "email": "ugadmissions@nitgoa.ac.in / dasa@nitgoa.ac.in",
+          "phone": "0832-2404743 / 0832-2404617"
+        },
+        {
+          "role": "Centre Incharge - CCMT",
+          "name": "Dr. Venkatanareshbabu Kuppili",
+          "additional_info": "Dr. Raviprasad K.J (Dy. Centre Incharge)",
+          "email": "pgadmissions@nitgoa.ac.in",
+          "phone": "0832-2404402"
+        },
+        {
+          "role": "Chairperson - Ph.D Admissions",
+          "name": "Dr. C. Vyjayanthi",
+          "additional_info": "Dr. Modi Chirag N. (Member), Dr. Shangerganesh L (Convenor)",
+          "email": "phdadmissions@nitgoa.ac.in",
+          "phone": "0832-2404632"
+        }
+      ]
+    },
+    {
+      "name": "Examination Cell In-Charge",
+      "members": [
+        {
+          "role": "",
+          "name": "Dr. S. Shivnarayan Patidar",
+          "email": "examcell@nitgoa.ac.in",
+          "phone": "0832-2404532"
+        }
+      ]
+    },
+    {
+      "name": "Disciplinary Committee",
+      "members": [
+        {
+          "role": "Chairperson",
+          "name": "Dean (Student Welfare)",
+          "email": "dean.sw@nitgoa.ac.in",
+          "phone": "0832-2404643"
+        },
+        {
+          "role": "Convener",
+          "name": "Dr. T. Veerakumar",
+          "email": "tveerakumar@nitgoa.ac.in",
+          "phone": "0832-2404520"
+        },
+        {
+          "role": "Member",
+          "name": "Dr. Saidi Reddy Parne",
+          "email": "psreddy@nitgoa.ac.in",
+          "phone": "0832-2404729"
+        },
+        {
+          "role": "Member",
+          "name": "Dr. Suresh Mikkili",
+          "email": "mikkili.suresh@nitgoa.ac.in",
+          "phone": "0832-2404645"
+        },
+        {
+          "role": "Member",
+          "name": "Dr. Sarani Ghosal Mondal",
+          "email": "sarani@nitgoa.ac.in",
+          "phone": "0832-2404741"
+        }
+      ]
+    },
+    {
+      "name": "Research Committee",
+      "members": [
+        {
+          "role": "Chairman",
+          "name": "Dr. Nithin Kumar Y.B.",
+          "email": "nithin.shastri@nitgoa.ac.in",
+          "phone": "0832-2404547"
+        },
+        {
+          "role": "Member",
+          "name": "Dr. B. Venugopal Reddy",
+          "email": "bvenugopal_reddy@nitgoa.ac.in",
+          "phone": "-"
+        },
+        {
+          "role": "Member",
+          "name": "Dr. Saidi Reddy Parne",
+          "email": "psreddy@nitgoa.ac.in",
+          "phone": "0832-2404729"
+        },
+        {
+          "role": "Member",
+          "name": "Dr. Pravati Swain",
+          "email": "pravati@nitgoa.ac.in",
+          "phone": "0832-2404420"
+        }
+      ]
+    },
+    {
+      "name": "Hostel Wardens",
+      "members": [
+        {
+          "role": "Chief Warden / II Year B.Tech Warden - Boys Hostel",
+          "name": "Dr. Mallikarjun Erramshetty",
+          "email": "emallikarjuna@nitgoa.ac.in",
+          "phone": "0832-2404521"
+        },
+        {
+          "role": "III Year B.Tech Warden - Boys Hostel",
+          "name": "Dr. Venkatanareshbabu K",
+          "email": "venkatanaresh@nitgoa.ac.in",
+          "phone": "0832-2404402"
+        },
+        {
+          "role": "IV Year B.Tech Warden - Boys Hostel",
+          "name": "Dr. Lokesh Kumar Bramhane",
+          "email": "lokesh.bramhane@nitgoa.ac.in",
+          "phone": "0832-2404518"
+        },
+        {
+          "role": "I Year B.Tech, M.Tech., Ph.D. Warden & Guests Warden- Boys Hostel",
+          "name": "Dr. Sunil Kumar A.",
+          "email": "sunilkumar@nitgoa.ac.in",
+          "phone": "0832-2404715"
+        },
+        {
+          "role": "III & IV Year B.Tech, II year M.Tech., Ph.D & Guests Warden - Girls Hostel",
+          "name": "Dr. Pravati Swain",
+          "email": "pravati@nitgoa.ac.in",
+          "phone": "0832-2404420"
+        },
+        {
+          "role": "I & II Year B.Tech, I M.Tech Warden - Girls Hostel",
+          "name": "Dr. B.Santhi",
+          "email": "santhi@nitgoa.ac.in",
+          "phone": "0832-2404829"
+        }
+      ]
+    },
+    {
+      "name": "Community Outreach Cell",
+      "members": [
+        {
+          "role": "Coordinator",
+          "name": "Dr. Prashanth G.R",
+          "email": "grprashanth@nitgoa.ac.in",
+          "phone": "0832-2404533"
+        },
+        {
+          "role": "Nodal Officer, Unnat Bharat Abhiyan",
+          "name": "Dr. Sreeraj E.S.",
+          "email": "sreeraj@nitgoa.ac.in",
+          "phone": "0832-2404617"
+        },
+        {
+          "role": "Nodal Officer, Rashtriya Avishkar Abhiyan",
+          "name": "Dr. Saidi Reddy Parne",
+          "email": "psreddy@nitgoa.ac.in",
+          "phone": "0832-2404729"
+        },
+        {
+          "role": "Nodal Officer, PMM Scheme",
+          "name": "Dr. Venkatanareshbabu Kuppili",
+          "email": "venkatanaresh@nitgoa.ac.in",
+          "phone": "0832-2404402"
+        },
+        {
+          "role": "Nodal Officer, Digital India",
+          "name": "Dr. Purushothama B.R.",
+          "email": "puru@nitgoa.ac.in",
+          "phone": ""
+        }
+      ]
+    },
+    {
+      "name": "GIAN Scheme",
+      "members": [
+        {
+          "role": "Local Coordinator",
+          "name": "Dr. B.Santhi",
+          "email": "gian@nitgoa.ac.in",
+          "phone": "0832-2404829"
+        }
+      ]
+    },
+    {
+      "name": "Ek Bharat Shreshtha Bharat",
+      "members": [
+        {
+          "role": "Nodal Officer",
+          "name": "Dr. Sunil Kumar Ambrammal",
+          "email": "sunilkumar@nitgoa.ac.in",
+          "phone": "0832-2404715"
+        }
+      ]
+    },
+    {
+      "name": "SC/ST Cell & PWD",
+      "members": [
+        {
+          "role": "Liaison Officer",
+          "name": "Dr. T Veerakumar",
+          "email": "scstcell@nitgoa.ac.in",
+          "phone": "0832-2404520"
+        }
+      ]
+    },
+    {
+      "name": "OBC & EWS",
+      "members": [
+        {
+          "role": "Liaison Officer",
+          "name": "Dr. Ragoju Ravi",
+          "email": "ravi@nitgoa.ac.in",
+          "phone": "0832-2404743"
+        }
+      ]
+    },
+    {
+      "name": "In-charge, Campus Control Center (CCC)",
+      "members": [
+        {
+          "role": "",
+          "name": "Dr. Venkatanareshbabu Kuppili",
+          "email": "ccc.incharge@nitgoa.ac.in",
+          "phone": "0832-2404402"
+        }
+      ]
+    },
+    {
+      "name": "NIRF",
+      "members": [
+        {
+          "role": "Convener",
+          "name": "Dr. Veerakumar T",
+          "email": "nirf@nitgoa.ac.in",
+          "phone": "0832-2404520"
+        }
+      ]
+    },
+    {
+      "name": "Student Mentor Programme(SMP)",
+      "members": [
+        {
+          "role": "Faculty In-Charge",
+          "name": "Dr. Trilochan Panigrahi",
+          "email": "tpanigrahi@nitgoa.ac.in",
+          "phone": "0832-2404502"
+        }
+      ]
+    },
+    {
+      "name": "National Service Scheme(NSS)",
+      "members": [
+        {
+          "role": "Faculty In-Charge",
+          "name": "Dr. Lokesh Kumar Bramhane",
+          "email": "lokesh.bramhane@nitgoa.ac.in",
+          "phone": "0832-2404518"
+        }
+      ]
+    },
+    {
+      "name": "New Education Policy(NEP Cell)",
+      "members": [
+        {
+          "role": "Chairperson",
+          "name": "Dr. Saidi Reddy Parne",
+          "email": "psreddy@nitgoa.ac.in",
+          "phone": "0832-2404729"
+        }
+      ]
+    },
+    {
+      "name": "Grievance Redressal Committee",
+      "description": "Institute Level Committee\nDean(FW) - Chairperson\nInternal BoG Member - Member(Professor/Associate Professor)\nDean(SW)- Member\nSC/ST Liaison Officer - Member\nOBC/EWS Liaison Officer - Member\nAssistant Registrar(Estt.) - Member\nRegistrar - Ex-Officiao\n\nDepartmental Committee Member:\nDept. of Applied Sciences & Humanities and Social Sciences:\n1) HoD - Chairperson\n2)Dr. Saidi Reddy Parne - Internal Dept. Member\n3)Dr. Mini S. - Other Dept. Member\n\nDepartment of Computer Science & Engg.:\n1)HoD - Chairperson\n2)Dr. Venkatanareshbabu K - Internal Dept. Member\n3)Dr. Lalat Indu Giri -Other Dept. Member\n\nDepartment of Civil Engg.:\n1)HoD - Chairman\n2)Dr. Pragati Patel - External Dept. Member\n3)Dr. Mallikarjun E - Other Dept. Member\n\nDept. of Electrical & Electronics Engg.:\n1)HoD - Chairman\n2)Dr. Sreeraj E.S -Internal Dept. Member\n3)Dr. Sarani Ghosal Mondal - Other Dept. Member\n\nDept. of Electonics & Communication Engg.:\n1)HoD - Chairman\n2)Dr. Anirban Chatterjee - Internal Dept. Member\n3)Dr. Pravati Swain - Other Dept. Member\n\nDepartment of Mechanical Engg.:\n1)HoD - Chairperson\n2)Dr. Prasenjit Dey - Internal Dept. Member\n3)Dr. Shangerganesh- Other Dept. Member",
+      "members": []
+    },
+    {
+      "name": "Institute Anti-Ragging Committee (IARC)",
+      "members": [
+        {
+          "role": "Chairman",
+          "name": "Dean SW",
+          "email": "dean.sw@nitgoa.ac.in",
+          "phone": "0832-2404213"
+        },
+        {
+          "role": "Member",
+          "name": "Chief Warden",
+          "email": "chiefwarden@nitgoa.ac.in",
+          "phone": "0832-2404521"
+        },
+        {
+          "role": "Member",
+          "name": "Registrar",
+          "email": "registrar@nitgoa.ac.in",
+          "phone": "0832-2404202"
+        },
+        {
+          "role": "Member",
+          "name": "Concerned HoD",
+          "email": "",
+          "phone": ""
+        },
+        {
+          "role": "Member",
+          "name": "Liaison Officer",
+          "email": "",
+          "phone": ""
+        },
+        {
+          "role": "Member",
+          "name": "Two 1st year students nominated by Dean (SW)",
+          "email": "",
+          "phone": ""
+        }
+      ]
+    },
+    {
+      "name": "Institute Anti-Ragging Squad (IARS)",
+      "members": [
+        {
+          "role": "",
+          "name": "Dr. Venkatanareshbabu Kuppili",
+          "email": "venkatanaresh@nitgoa.ac.in",
+          "phone": "0832-2404402"
+        },
+        {
+          "role": "",
+          "name": "Dr. Lokesh Kumar",
+          "email": "lokesh@nitgoa.ac.in",
+          "phone": "0832-2404518"
+        },
+        {
+          "role": "",
+          "name": "Mr. Karteek Dokala",
+          "email": "",
+          "phone": ""
+        },
+        {
+          "role": "",
+          "name": "Ms. Deeksha Yadav",
+          "email": "",
+          "phone": ""
+        }
+      ]
+    },
+    {
+      "name": "Internal Committee on Gender Harassment",
+      "members": [
+        {
+          "role": "Presiding Officer",
+          "name": "Dr. Veena Thenkanidiyoor",
+          "email": "ic@nitgoa.ac.in",
+          "phone": "0832-2404432"
+        },
+        {
+          "role": "Member",
+          "name": "Dr. S. Mini",
+          "email": "mini@nitgoa.ac.in",
+          "phone": "0832-2404419"
+        },
+        {
+          "role": "Member",
+          "name": "Dr. Shivnarayan Patidar",
+          "email": "shivnarayan.patidar@nitgoa.ac.in",
+          "phone": "0832-2404532"
+        },
+        {
+          "role": "Staff Member",
+          "name": "Mrs. Sweta Jadhav",
+          "email": "sweta.jadhav@nitgoa.ac.in",
+          "phone": "0832-2404318"
+        },
+        {
+          "role": "Staff Member",
+          "name": "Mr. Anand Gachichinamath",
+          "email": "anandg@nitgoa.ac.in",
+          "phone": "0832-2404221"
+        },
+        {
+          "role": "NGO",
+          "name": "As Nominated by Director (on case to case basis)",
+          "email": "",
+          "phone": ""
+        },
+        {
+          "role": "Student",
+          "name": "As Nominated by Dean(SW) (on case to case basis)",
+          "email": "",
+          "phone": ""
+        }
+      ]
+    },
+    {
+      "name": "Research Advisory Committee (RAC)",
+      "members": [
+        {
+          "role": "Chairperson",
+          "name": "Dr. B. Venugopal Reddy",
+          "email": "bvenugopal_reddy@nitgoa.ac.in",
+          "phone": ""
+        },
+        {
+          "role": "Member",
+          "name": "Dr. T. Veerakumar",
+          "email": "tveerakumar@nitgoa.ac.in",
+          "phone": "0832-2404520"
+        },
+        {
+          "role": "Member",
+          "name": "Dr. Purushothama B.R.",
+          "email": "puru@nitgoa.ac.in",
+          "phone": ""
+        },
+        {
+          "role": "Member",
+          "name": "Dr. Sreeraj E.S.",
+          "email": "sreeraj@nitgoa.ac.in",
+          "phone": "0832-2404617"
+        }
+      ]
+    }
+  ]
+}

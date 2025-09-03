@@ -8,6 +8,64 @@ import homeData from './home.json';
 // Temporarily comment out problematic chart import
 // import { initializeChart } from './placement&StatisticsChart';
 
+// PDF Preview Component with lazy loading and Lore image fallback
+const LorePDFPreview = React.memo(({ src, title, className, isLarge = false }) => {
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [hasError, setHasError] = useState(false);
+    const [shouldLoad, setShouldLoad] = useState(false);
+
+    const handleLoad = () => {
+        setIsLoaded(true);
+        setHasError(false);
+    };
+
+    const handleError = () => {
+        setHasError(true);
+        setIsLoaded(false);
+    };
+
+    const handlePreviewClick = () => {
+        setShouldLoad(true);
+    };
+
+    // Show Lore image as fallback when error or not loaded
+    if (!shouldLoad || hasError) {
+        return (
+            <div className="pdf-placeholder lore-fallback" onClick={handlePreviewClick} style={{ cursor: 'pointer' }}>
+                <img 
+                    src="/images/Home/nationalportal/Lore.png" 
+                    alt="Lore Magazine Cover"
+                    className="lore-fallback-image"
+                    style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'fill',
+                        borderRadius: '8px'
+                    }}
+                />
+                <div className="lore-fallback-overlay">
+                    <p className="lore-fallback-message">
+                        {hasError ? 'Click to retry PDF preview' : 'Click to load PDF preview'}
+                    </p>
+                </div>
+            </div>
+        );
+    }
+
+    return (
+        <iframe
+            src={`${src}#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width&view=FitH`}
+            title={title}
+            frameBorder="0"
+            scrolling="yes"
+            className={className}
+            onLoad={handleLoad}
+            onError={handleError}
+            style={{ opacity: isLoaded ? 1 : 0 }}
+        />
+    );
+});
+
 // PDF Preview Component with lazy loading
 const PDFPreview = React.memo(({ src, title, className, isLarge = false }) => {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -500,7 +558,7 @@ const HomePage = React.memo(() => {
 
     return (
         <div className="homepage">
-            {/* Hero Section */}
+            {/* Hero Section - Full Width Outside Container */}
             <section className="hero-section">
                 <HeroSlider heroImages={heroImages} />
             </section>
@@ -514,10 +572,10 @@ const HomePage = React.memo(() => {
                             <div className="notice-badge">
                                 <span className="notice-text">NOTICE</span>
                             </div>
-                            <div className="announcement-content">
+                            <div className="announcement-text">
                                 <p 
                                     key={`announcement-${currentAnnouncementIndex}`} 
-                                    className={`announcement-text ${
+                                    className={`announcement-content ${
                                         announcements.length === 1 
                                             ? 'single-announcement' 
                                             : announcementSlideDirection === 'right' 
@@ -601,7 +659,7 @@ const HomePage = React.memo(() => {
 
             {/* Two Column Section (Previously Three Column) */}
             <section className="two-column-section">
-                <div className="homepage-container">
+                <div className="section-content-container">
                     <div className="two-column-grid">
                         {/* News And Events */}
                         <div className="column-card">
@@ -642,7 +700,7 @@ const HomePage = React.memo(() => {
 
             {/* Quick Links Section */}
             <section className="quick-links-section">
-                <div className="homepage-container">
+                <div className="section-content-container">
                     <h2 className="section-title">Quick Links</h2>
                     <div className="quick-links-grid">
                         <a 
@@ -724,7 +782,7 @@ const HomePage = React.memo(() => {
 
             {/* Content Cards Section */}
             <section className="homepage-content-cards-section">
-                <div className="homepage-container">
+                <div className="section-content-container">
                     <h2 className="section-title">Featured Content</h2>
                     <div className="homepage-content-cards-grid">
                         {/* Card 1: Interactive Google Chart */}
@@ -786,8 +844,9 @@ const HomePage = React.memo(() => {
                             </div>
                             <div className="homepage-card-content">
                                 <div className="homepage-magazine-preview">
-                                    <div className="pdf-preview-container">
-                                        <PDFPreview
+                                    {/* Desktop/Tablet: Show PDF Preview with image fallback */}
+                                    <div className="pdf-preview-container desktop-tablet-only">
+                                        <LorePDFPreview
                                             src={loreMagazine[0]?.link}
                                             title={loreMagazine[0]?.title}
                                             className="magazine-pdf-preview"
@@ -809,11 +868,9 @@ const HomePage = React.memo(() => {
                             </div>
                         </div>
                     </div>
-                </div>
 
-                {/* Expandable Newsletters Section (4a) */}
-                <div className={`newsletters-expanded ${isNewslettersExpanded ? 'expanded' : ''}`}>
-                    <div className="homepage-container">
+                    {/* Expandable Newsletters Section (4a) */}
+                    <div className={`newsletters-expanded ${isNewslettersExpanded ? 'expanded' : ''}`}>
                         <div className="newsletters-header">
                             <h3>All Newsletter Issues</h3>
                             {/* <button 
@@ -862,7 +919,7 @@ const HomePage = React.memo(() => {
 
             {/* Statistics Section */}
             <section className="homepage-statistics-section" ref={statsRef}>
-                <div className="homepage-container">
+                <div className="section-content-container">
                     <div className="homepage-stats-grid">
                         <div className="homepage-stat-item">
                             <div className="homepage-stat-number">{counts.departments}</div>
@@ -890,7 +947,7 @@ const HomePage = React.memo(() => {
 
             {/* About Section */}
             <section className="homepage-about-section">
-                <div className="homepage-container">
+                <div className="section-content-container">
                     <div className="homepage-about-content">
                         <div className="homepage-about-image">
                             <img src={heroImages[0]} alt="NIT Goa Campus" />
@@ -936,7 +993,6 @@ const HomePage = React.memo(() => {
 
             {/* Footer National Portals */}
             <section className="homepage-national-portals">
-                <div className="homepage-container">
                     <h2 className="section-title">National Portals</h2>
                     <div className="homepage-enhanced-portals">
                         {nationalPortals.map((portal, index) => (
@@ -957,7 +1013,6 @@ const HomePage = React.memo(() => {
                             </a>
                         ))}
                     </div>
-                </div>
             </section>
         </div>
     );
