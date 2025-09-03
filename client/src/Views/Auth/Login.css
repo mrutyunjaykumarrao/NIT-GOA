@@ -6,8 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(8px);
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
   padding: 20px;
   position: fixed;
   top: 0;
@@ -38,7 +37,7 @@
 
 .login-page-container .login-modal-overlay {
   position: static;
-  background: transparent;
+  background: none;
   backdrop-filter: none;
   animation: loginFadeIn 0.3s ease-out;
   padding: 0;
@@ -92,9 +91,8 @@
 
 /* Enhanced Login Modal Content with better accessibility - LIGHT MODE DEFAULT */
 .login-modal-content {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px); /* Safari support */
+  background: #ffffff;
+  backdrop-filter: none;
   border-radius: 20px;
   padding: 40px;
   box-shadow: 
@@ -102,7 +100,6 @@
     0 10px 25px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 450px;
-  min-width: 400px; /* Ensure minimum width for consistency */
   border: 1px solid rgba(0, 0, 0, 0.1);
   position: relative;
   animation: loginSlideIn 0.3s ease-out;
@@ -227,7 +224,7 @@
   box-sizing: border-box;
 }
 
-/* Dark theme support - glassmorphism background */
+/* Dark theme support - solid background like light mode */
 [data-theme="dark"] .login-modal-content {
   background: rgba(31, 41, 55, 0.95) !important;
   backdrop-filter: blur(20px) !important;
