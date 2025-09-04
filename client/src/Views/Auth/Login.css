@@ -63,7 +63,6 @@
   z-index: 10000;
   padding: 20px;
   animation: loginFadeIn 0.3s ease-out;
-  overflow-y: auto; /* Allow scrolling on very small screens */
 }
 
 /* Fallback for browsers that don't support backdrop-filter */
@@ -105,7 +104,7 @@
   animation: loginSlideIn 0.3s ease-out;
   max-height: 90vh;
   overflow-y: auto;
-  color: #343A40;
+  /* color: #343A40; */
   margin: auto; /* Center the modal */
 }
 
@@ -246,7 +245,7 @@
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  color: #343A40;
+  color: #666;
 }
 
 [data-theme="dark"] .login-modal-close {
@@ -280,6 +279,7 @@
 
 .login-modal-content .login-header h1 {
   /* color: #2E86C1; */
+  color: #1f2937;
   font-size: 2rem;
   font-weight: 700;
   margin: 15px 0 10px 0;
@@ -571,7 +571,7 @@
 }
 
 .login-modal-content .login-footer p {
-  color: #9ca3af;
+  color: rgb(107, 114, 128);
   font-size: 0.85rem;
   margin: 0;
 }
