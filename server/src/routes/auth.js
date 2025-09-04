@@ -12,8 +12,17 @@ const router = express.Router();
 // Rate limiting for auth routes
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 10, // 10 attempts per window
+  max: 20, // 20 attempts per window (increased for development)
   message: { error: 'Too many authentication attempts, please try again later' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+// Separate rate limiter for forgot password (more lenient)
+const forgotPasswordLimiter = rateLimit({
+  windowMs: 10 * 60 * 1000, // 10 minutes
+  max: 5, // 5 attempts per window
+  message: { error: 'Too many password reset attempts, please try again later' },
   standardHeaders: true,
   legacyHeaders: false,
 });
@@ -47,16 +56,25 @@ router.post('/login', authLimiter, async (req, res) => {
     `, [username]);
 
     if (users.length === 0) {
-      return res.status(401).json({ error: 'Invalid credentials' });
+      return res.status(401).json({ 
+        error: 'Invalid credential: username not found',
+        errorType: 'USERNAME_NOT_FOUND'
+      });
     }
 
     const user = users[0];
 
     // Check if account is locked
     if (user.locked_until && new Date(user.locked_until) > new Date()) {
+      const lockedUntil = new Date(user.locked_until);
+      const now = new Date();
+      const remainingTime = Math.ceil((lockedUntil - now) / (1000 * 60)); // minutes
+      
       return res.status(423).json({ 
-        error: 'Account is temporarily locked due to too many failed attempts',
-        lockedUntil: user.locked_until
+        error: `Cannot log in until cooldown period ends (${remainingTime} minutes remaining)`,
+        errorType: 'ACCOUNT_LOCKED',
+        lockedUntil: user.locked_until,
+        remainingMinutes: remainingTime
       });
     }
 
@@ -76,7 +94,11 @@ router.post('/login', authLimiter, async (req, res) => {
         WHERE user_id = ?
       `, [user.id]);
 
-      return res.status(401).json({ error: 'Invalid credentials' });
+      return res.status(401).json({ 
+        error: `Invalid credentials for username: ${username}`,
+        errorType: 'WRONG_PASSWORD',
+        username: username
+      });
     }
 
     // Reset failed login attempts on successful login
@@ -270,7 +292,7 @@ router.post('/logout', authenticateToken, async (req, res) => {
 // ======================
 
 // Request password reset
-router.post('/forgot-password', authLimiter, async (req, res) => {
+router.post('/forgot-password', forgotPasswordLimiter, async (req, res) => {
   try {
     const { email } = req.body;
 

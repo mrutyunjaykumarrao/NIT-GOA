@@ -13,9 +13,11 @@ const Login = ({ isModalOpen, onClose }) => {
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [failedAttempts, setFailedAttempts] = useState(0);
+  const [showForgotPasswordLink, setShowForgotPasswordLink] = useState(false);
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [forgotEmail, setForgotEmail] = useState('');
   const [forgotMessage, setForgotMessage] = useState('');
+  const [cooldownTimer, setCooldownTimer] = useState(null);
   
   // Refs for auto-focusing and navigation
   const usernameInputRef = useRef(null);
@@ -44,9 +46,11 @@ const Login = ({ isModalOpen, onClose }) => {
       setError('');
       setShowPassword(false);
       setFailedAttempts(0);
+      setShowForgotPasswordLink(false);
       setShowForgotPassword(false);
       setForgotEmail('');
       setForgotMessage('');
+      setCooldownTimer(null);
     }
   }, [isAuthenticated, navigate, location, onClose]);
 
@@ -74,9 +78,11 @@ const Login = ({ isModalOpen, onClose }) => {
       setError('');
       setShowPassword(false);
       setFailedAttempts(0);
+      setShowForgotPasswordLink(false);
       setShowForgotPassword(false);
       setForgotEmail('');
       setForgotMessage('');
+      setCooldownTimer(null);
     }
     
     return () => {
@@ -84,6 +90,38 @@ const Login = ({ isModalOpen, onClose }) => {
       document.body.style.overflow = 'unset';
     };
   }, [isModalOpen, onClose]);
+
+  // Cooldown timer effect
+  useEffect(() => {
+    let interval;
+    if (cooldownTimer > 0) {
+      interval = setInterval(() => {
+        setCooldownTimer(prev => {
+          if (prev <= 1) {
+            // Timer expired, allow retry
+            setError('');
+            return null;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [cooldownTimer]);
+
+  // Format cooldown timer display
+  const formatCooldownTime = (seconds) => {
+    if (!seconds) return '';
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    
+    if (hours > 0) {
+      return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    } else {
+      return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -124,6 +162,7 @@ const Login = ({ isModalOpen, onClose }) => {
         if (result.success) {
           // Reset failed attempts on successful login
           setFailedAttempts(0);
+          setShowForgotPasswordLink(false);
           setShowForgotPassword(false);
           
           // Close modal and stay on current page (don't navigate away)
@@ -157,11 +196,8 @@ const Login = ({ isModalOpen, onClose }) => {
           }
           // If we're not on /login page and no redirect needed, stay on current page after login
         } else {
-          // Show username in error message to help user remember
-          const errorMsg = credentials.username 
-            ? `Invalid credentials for username: ${credentials.username}` 
-            : result.error;
-          throw new Error(errorMsg);
+          // Use the error directly from the backend
+          throw new Error(result.error);
         }
       },
       {
@@ -169,16 +205,23 @@ const Login = ({ isModalOpen, onClose }) => {
         successMessage: 'Login successful!',
         showErrorToast: false, // We'll handle errors manually for better UX
         onError: (error) => {
-          const errorMsg = credentials.username 
-            ? `Invalid credentials for username: ${credentials.username}` 
-            : error.message;
-          setError(errorMsg);
+          setError(error.message);
           const newFailedAttempts = failedAttempts + 1;
           setFailedAttempts(newFailedAttempts);
           
-          // Show forgot password after 2 failed attempts
-          if (newFailedAttempts >= 2) {
-            setShowForgotPassword(true);
+          // Show forgot password LINK after 2 failed password attempts (not username not found)
+          if (newFailedAttempts >= 2 && !error.message.includes('username not found')) {
+            setShowForgotPasswordLink(true);
+          }
+          
+          // Handle cooldown timer for locked accounts
+          if (error.message.includes('cooldown period')) {
+            // Extract remaining minutes from error message and start countdown
+            const match = error.message.match(/\((\d+) minutes remaining\)/);
+            if (match) {
+              const minutes = parseInt(match[1]);
+              setCooldownTimer(minutes * 60); // Convert to seconds
+            }
           }
         }
       }
@@ -232,9 +275,11 @@ const Login = ({ isModalOpen, onClose }) => {
     setError('');
     setShowPassword(false);
     setFailedAttempts(0);
+    setShowForgotPasswordLink(false);
     setShowForgotPassword(false);
     setForgotEmail('');
     setForgotMessage('');
+    setCooldownTimer(null);
     
     if (onClose) {
       onClose();
@@ -260,92 +305,27 @@ const Login = ({ isModalOpen, onClose }) => {
             alt="NIT Goa Logo" 
             className="login-logo"
           />
-          <h1>Login</h1>
+          <h1>{showForgotPassword ? 'Password Reset' : 'Login'}</h1>
           <p>National Institute of Technology Goa</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="login-form">
-          {error && (
-            <div className="error-message">
-              <i className="fas fa-exclamation-circle"></i>
-              {error}
-            </div>
-          )}
-
-          <div className="form-group">
-            <label htmlFor="username">Username</label>
-            <div className="input-wrapper">
-              <i className="fas fa-user"></i>
-              <input
-                ref={usernameInputRef}
-                type="text"
-                id="username"
-                name="username"
-                value={credentials.username}
-                onChange={handleChange}
-                onKeyDown={handleKeyDown}
-                placeholder="Enter your username"
-                required
-                disabled={isLoading}
-              />
-            </div>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <div className="input-wrapper password-wrapper">
-              <i className="fas fa-lock"></i>
-              <input
-                ref={passwordInputRef}
-                type={showPassword ? 'text' : 'password'}
-                id="password"
-                name="password"
-                value={credentials.password}
-                onChange={handleChange}
-                onKeyDown={handleKeyDown}
-                placeholder="Enter your password"
-                autoComplete="current-password"
-                required
-                disabled={isLoading}
-              />
-              <button
-                type="button"
-                className="password-toggle"
-                onClick={togglePasswordVisibility}
-                aria-label={showPassword ? 'Hide password' : 'Show password'}
-              >
-                <i className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
-              </button>
-            </div>
-          </div>
-
-          <button 
-            type="submit" 
-            className="login-button"
-            disabled={isLoading}
-          >
-            {isLoading ? (
+        {error && (
+          <div className="error-message">
+            <i className="fas fa-exclamation-circle"></i>
+            {cooldownTimer ? (
               <>
-                <i className="fas fa-spinner fa-spin"></i>
-                Signing in...
+                Cannot log in until cooldown period ends ({formatCooldownTime(cooldownTimer)} remaining)
               </>
             ) : (
-              <>
-                <i className="fas fa-sign-in-alt"></i>
-                Sign In
-              </>
+              error
             )}
-          </button>
-        </form>
+          </div>
+        )}
 
-        {showForgotPassword && (
+        {showForgotPassword ? (
           <div className="forgot-password-section">
-            <div className="forgot-password-divider">
-              <span>Forgot Password?</span>
-            </div>
-            
             <form onSubmit={handleForgotPassword} className="forgot-password-form">
-              <div className="form-group">
+              <div className="login-form-group">
                 <label htmlFor="forgotEmail">Enter your email to receive reset instructions</label>
                 <div className="input-wrapper">
                   <i className="fas fa-envelope"></i>
@@ -376,6 +356,19 @@ const Login = ({ isModalOpen, onClose }) => {
                 )}
               </button>
               
+              <button 
+                type="button" 
+                className="back-to-login-button"
+                onClick={() => {
+                  setShowForgotPassword(false);
+                  setForgotEmail('');
+                  setForgotMessage('');
+                }}
+                disabled={isForgotLoading}
+              >
+                Back to Login
+              </button>
+              
               {forgotMessage && (
                 <div className="forgot-message">
                   <i className="fas fa-info-circle"></i>
@@ -384,6 +377,85 @@ const Login = ({ isModalOpen, onClose }) => {
               )}
             </form>
           </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="login-form">
+            <div className="login-form-group">
+              <label htmlFor="username">Username</label>
+              <div className="input-wrapper">
+                <i className="fas fa-user"></i>
+                <input
+                  ref={usernameInputRef}
+                  type="text"
+                  id="username"
+                  name="username"
+                  value={credentials.username}
+                  onChange={handleChange}
+                  onKeyDown={handleKeyDown}
+                  placeholder="Enter your username"
+                  required
+                  disabled={isLoading}
+                />
+              </div>
+            </div>
+
+            <div className="login-form-group">
+              <label htmlFor="password">Password</label>
+              <div className="input-wrapper password-wrapper">
+                <i className="fas fa-lock"></i>
+                <input
+                  ref={passwordInputRef}
+                  type={showPassword ? 'text' : 'password'}
+                  id="password"
+                  name="password"
+                  value={credentials.password}
+                  onChange={handleChange}
+                  onKeyDown={handleKeyDown}
+                  placeholder="Enter your password"
+                  autoComplete="current-password"
+                  required
+                  disabled={isLoading}
+                />
+                <button
+                  type="button"
+                  className="password-toggle"
+                  onClick={togglePasswordVisibility}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                >
+                  <i className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
+                </button>
+              </div>
+            </div>
+
+            <button 
+              type="submit" 
+              className="login-button"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <>
+                  <i className="fas fa-spinner fa-spin"></i>
+                  Signing in...
+                </>
+              ) : (
+                <>
+                  <i className="fas fa-sign-in-alt"></i>
+                  Sign In
+                </>
+              )}
+            </button>
+
+            {showForgotPasswordLink && !showForgotPassword && (
+              <div className="forgot-password-link-container">
+                <button
+                  type="button"
+                  className="forgot-password-link"
+                  onClick={() => setShowForgotPassword(true)}
+                >
+                  Forgot Password?
+                </button>
+              </div>
+            )}
+          </form>
         )}
 
         <div className="login-footer">

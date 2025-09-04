@@ -157,7 +157,7 @@
     font-size: 1.2rem;
   }
   
-  .login-modal-content .form-group {
+  .login-modal-content .login-form-group {
     gap: 10px;
   }
   
@@ -206,7 +206,7 @@
     font-size: 1.25rem;
   }
   
-  .login-modal-content .form-group {
+  .login-modal-content .login-form-group {
     gap: 12px;
   }
   
@@ -307,13 +307,13 @@
   gap: 15px;
 }
 
-.login-modal-content .form-group {
+.login-modal-content .login-form-group {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.login-modal-content .form-group label {
+.login-modal-content .login-form-group label {
   font-weight: 600;
   color: #343A40;
   font-size: 0.95rem;
@@ -471,6 +471,30 @@
   display: none;
 }
 
+/* Forgot Password Link */
+.login-modal-content .forgot-password-link-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.login-modal-content .forgot-password-link {
+  background: none;
+  border: none;
+  color: #2563eb;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.login-modal-content .forgot-password-link:hover {
+  color: #1d4ed8;
+  background: rgba(37, 99, 235, 0.05);
+  text-decoration: none;
+}
+
 .login-modal-content .error-message {
   background: rgba(239, 68, 68, 0.1);
   border: 1px solid rgba(239, 68, 68, 0.3);
@@ -554,6 +578,37 @@
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
+}
+
+.login-modal-content .back-to-login-button {
+  width: 100%;
+  padding: 14px 20px;
+  background: transparent;
+  color: #6b7280;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.login-modal-content .back-to-login-button:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+  color: #4b5563;
+  transform: translateY(-1px);
+}
+
+.login-modal-content .back-to-login-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .login-modal-content .forgot-message {
@@ -666,7 +721,7 @@
     font-size: 0.95rem;
   }
   
-  .login-modal-content .form-group {
+  .login-modal-content .login-form-group {
     gap: 6px;
   }
   
@@ -707,7 +762,7 @@
   color: #d1d5db;
 }
 
-[data-theme="dark"] .login-modal-content .form-group label {
+[data-theme="dark"] .login-modal-content .login-form-group label {
   color: #f3f4f6;
 }
 
@@ -732,6 +787,15 @@
 
 [data-theme="dark"] .login-modal-content .forgot-password-section {
   border-top-color: #4b5563;
+}
+
+[data-theme="dark"] .login-modal-content .forgot-password-link {
+  color: #60a5fa;
+}
+
+[data-theme="dark"] .login-modal-content .forgot-password-link:hover {
+  color: #93c5fd;
+  background: rgba(59, 130, 246, 0.1);
 }
 
 [data-theme="dark"] .login-modal-content .forgot-password-divider span {
