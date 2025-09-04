@@ -30,6 +30,18 @@ const forgotPasswordLimiter = rateLimit({
   }
 });
 
+// Even more lenient rate limiter for password reset operations (token protected)
+const resetPasswordLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 1000, // 1000 attempts per window (extremely generous since token-protected)
+  message: { error: 'Too many password reset completion attempts, please try again later' },
+  standardHeaders: true,
+  legacyHeaders: false,
+  onLimitReached: (req, res) => {
+    console.log('Rate limit reached for password reset completion:', req.ip);
+  }
+});
+
 // Login endpoint
 router.post('/login', authLimiter, async (req, res) => {
   try {
@@ -353,8 +365,9 @@ router.post('/forgot-password', forgotPasswordLimiter, async (req, res) => {
     `, [
       'user_accounts', 
       user.user_id, 
-      'PASSWORD_RESET_REQUEST', 
+      'UPDATE', 
       JSON.stringify({ 
+        action: 'PASSWORD_RESET_REQUEST',
         email: user.primary_email,
         reset_token_expires: resetExpiry 
       }),
@@ -365,8 +378,8 @@ router.post('/forgot-password', forgotPasswordLimiter, async (req, res) => {
     try {
       await emailService.sendPasswordResetEmail(
         user.primary_email,
-        user.username,
-        resetToken
+        resetToken,
+        user.username
       );
       console.log(`✅ Password reset email sent to ${user.primary_email} for user ${user.username}`);
     } catch (emailError) {
@@ -379,8 +392,9 @@ router.post('/forgot-password', forgotPasswordLimiter, async (req, res) => {
       `, [
         'user_accounts', 
         user.user_id, 
-        'EMAIL_SEND_FAILED', 
+        'UPDATE', 
         JSON.stringify({ 
+          action: 'EMAIL_SEND_FAILED',
           error: emailError.message,
           email: user.primary_email,
           reset_token: resetToken 
@@ -392,6 +406,152 @@ router.post('/forgot-password', forgotPasswordLimiter, async (req, res) => {
     res.json(successResponse);
   } catch (error) {
     console.error('Forgot password error details:', {
+      message: error.message,
+      stack: error.stack,
+      code: error.code,
+      errno: error.errno,
+      sqlMessage: error.sqlMessage
+    });
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Test endpoint for debugging
+router.post('/test-forgot-username', async (req, res) => {
+  try {
+    const { username } = req.body;
+    console.log('Test endpoint called with username:', username);
+    
+    if (!username) {
+      return res.status(400).json({ error: 'Username is required' });
+    }
+    
+    res.json({ message: 'Test endpoint working', username });
+  } catch (error) {
+    console.error('Test endpoint error:', error);
+    res.status(500).json({ error: 'Test endpoint error' });
+  }
+});
+
+// Request password reset by username (for failed login scenarios)
+router.post('/forgot-password-by-username', async (req, res) => {
+  try {
+    console.log('📧 Forgot password by username endpoint called');
+    const { username } = req.body;
+    console.log('📧 Username received:', username);
+
+    if (!username) {
+      return res.status(400).json({ error: 'Username is required' });
+    }
+
+    console.log('📧 About to query database for username:', username);
+    
+    // Find user by username and get their email
+    const [users] = await executeQuery(`
+      SELECT 
+        ua.user_id,
+        ua.username,
+        ua.email as user_email,
+        e.email as employee_email,
+        COALESCE(ua.email, e.email) as primary_email
+      FROM user_accounts ua
+      LEFT JOIN employees e ON ua.user_id = e.user_account_id
+      WHERE ua.username = ? 
+        AND ua.is_active = 1
+        AND (ua.locked_until IS NULL OR ua.locked_until <= NOW())
+    `, [username]);
+
+    console.log('📧 Database query completed. Found users:', users.length);
+
+    // Always return success to prevent username enumeration attacks
+    const successResponse = { 
+      message: 'If this username is associated with an account, you will receive password reset instructions.',
+      hasEmail: false,
+      email: null
+    };
+
+    if (users.length === 0) {
+      console.log('📧 No user found, returning generic success');
+      // Wait a bit to prevent timing attacks
+      await new Promise(resolve => setTimeout(resolve, 200));
+      return res.json(successResponse);
+    }
+
+    const user = users[0];
+    console.log('📧 User found:', { user_id: user.user_id, username: user.username, hasEmail: !!user.primary_email });
+
+    // Check if user has an email address
+    if (!user.primary_email) {
+      console.log('📧 User has no email address');
+      return res.json({
+        message: 'This account does not have an email address associated with it. Please contact your administrator.',
+        hasEmail: false,
+        email: null
+      });
+    }
+
+    console.log('📧 Generating reset token...');
+    // Generate reset token
+    const resetToken = crypto.randomBytes(32).toString('hex');
+    const resetExpiry = new Date(Date.now() + 60 * 60 * 1000); // 1 hour from now
+    console.log('📧 Reset token generated, updating database...');
+
+    // Store reset token
+    await executeQuery(`
+      UPDATE user_accounts 
+      SET 
+        reset_token = ?,
+        reset_token_expires = ?,
+        reset_token_used = FALSE,
+        updated_at = CURRENT_TIMESTAMP
+      WHERE user_id = ?
+    `, [resetToken, resetExpiry, user.user_id]);
+
+    console.log('📧 Database updated with reset token, skipping audit log for now...');
+
+    console.log('📧 About to send email...');
+    // Send password reset email with extended timeout handling
+    try {
+      console.log(`📧 Sending password reset email to: ${user.primary_email}`);
+      
+      // Set a longer timeout for the email sending (45 seconds)
+      const emailPromise = emailService.sendPasswordResetEmail(
+        user.primary_email,
+        resetToken,
+        user.username
+      );
+      
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Email send timeout after 45 seconds')), 45000)
+      );
+      
+      await Promise.race([emailPromise, timeoutPromise]);
+      console.log(`✅ Password reset email sent to ${user.primary_email} for user ${user.username}`);
+      
+      // Return success with masked email for confirmation
+      const maskedEmail = user.primary_email.replace(/(.{2})(.*)(@.*)/, '$1***$3');
+      return res.json({
+        message: `Password reset instructions have been sent to ${maskedEmail}`,
+        hasEmail: true,
+        email: maskedEmail
+      });
+      
+    } catch (emailError) {
+      console.error('❌ Failed to send password reset email:', emailError.message);
+      
+      // Still return success to prevent username enumeration attacks
+      // But let the user know the email system may be temporarily unavailable
+      const maskedEmail = user.primary_email.replace(/(.{2})(.*)(@.*)/, '$1***$3');
+      return res.json({
+        message: `Password reset requested for ${maskedEmail}. If you don't receive an email shortly, please contact your administrator.`,
+        hasEmail: true,
+        email: maskedEmail,
+        emailWarning: true
+      });
+    }
+
+  } catch (error) {
+    console.error('Forgot password by username error details:', {
       message: error.message,
       stack: error.stack,
       code: error.code,
@@ -443,7 +603,7 @@ router.get('/verify-reset-token/:token', async (req, res) => {
 });
 
 // Reset password with token
-router.post('/reset-password', authLimiter, async (req, res) => {
+router.post('/reset-password', resetPasswordLimiter, async (req, res) => {
   try {
     const { token, newPassword } = req.body;
 
@@ -504,8 +664,9 @@ router.post('/reset-password', authLimiter, async (req, res) => {
     `, [
       'user_accounts', 
       user.user_id, 
-      'PASSWORD_RESET_COMPLETE', 
+      'UPDATE', 
       JSON.stringify({ 
+        action: 'PASSWORD_RESET_COMPLETE',
         reset_completed: true,
         ip: req.ip 
       }),

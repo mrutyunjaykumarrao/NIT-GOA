@@ -232,19 +232,20 @@ const Login = ({ isModalOpen, onClose }) => {
     e.preventDefault();
     setForgotMessage('');
     
-    if (!forgotEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(forgotEmail)) {
-      setForgotMessage('Please enter a valid email address.');
+    // Use the username from the login attempt instead of asking for email
+    if (!credentials.username) {
+      setForgotMessage('Please enter your username first and try logging in.');
       return;
     }
     
     executeForgotAsync(
       async () => {
-        const response = await fetch('/api/auth/forgot-password', {
+        const response = await fetch('/api/auth/forgot-password-by-username', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ email: forgotEmail }),
+          body: JSON.stringify({ username: credentials.username }),
         });
         
         const data = await response.json();
@@ -325,20 +326,12 @@ const Login = ({ isModalOpen, onClose }) => {
         {showForgotPassword ? (
           <div className="forgot-password-section">
             <form onSubmit={handleForgotPassword} className="forgot-password-form">
-              <div className="login-form-group">
-                <label htmlFor="forgotEmail">Enter your email to receive reset instructions</label>
-                <div className="input-wrapper">
-                  <i className="fas fa-envelope"></i>
-                  <input
-                    type="email"
-                    id="forgotEmail"
-                    value={forgotEmail}
-                    onChange={(e) => setForgotEmail(e.target.value)}
-                    placeholder="Enter your email address"
-                    required
-                    disabled={isForgotLoading}
-                  />
-                </div>
+              <div className="forgot-password-confirmation">
+                <i className="fas fa-key forgot-password-icon"></i>
+                <h3>Reset Password for "{credentials.username}"</h3>
+                <p>
+                  We'll send password reset instructions to the email address associated with this account.
+                </p>
               </div>
               
               <button 
@@ -361,7 +354,6 @@ const Login = ({ isModalOpen, onClose }) => {
                 className="back-to-login-button"
                 onClick={() => {
                   setShowForgotPassword(false);
-                  setForgotEmail('');
                   setForgotMessage('');
                 }}
                 disabled={isForgotLoading}

@@ -552,6 +552,31 @@
   gap: 15px;
 }
 
+.login-modal-content .forgot-password-confirmation {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.login-modal-content .forgot-password-icon {
+  font-size: 2.5rem;
+  color: #059669;
+  margin-bottom: 15px;
+}
+
+.login-modal-content .forgot-password-confirmation h3 {
+  color: #1f2937;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+}
+
+.login-modal-content .forgot-password-confirmation p {
+  color: #6b7280;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
 .login-modal-content .forgot-password-button {
   background: linear-gradient(135deg, #059669, #047857);
   color: white;
@@ -800,5 +825,13 @@
 
 [data-theme="dark"] .login-modal-content .forgot-password-divider span {
   background: rgba(31, 41, 55, 0.98);
+  color: #d1d5db;
+}
+
+[data-theme="dark"] .login-modal-content .forgot-password-confirmation h3 {
+  color: #f9fafb;
+}
+
+[data-theme="dark"] .login-modal-content .forgot-password-confirmation p {
   color: #d1d5db;
 }
