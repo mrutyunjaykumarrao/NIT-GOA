@@ -17,8 +17,9 @@ const Login = ({ isModalOpen, onClose }) => {
   const [forgotEmail, setForgotEmail] = useState('');
   const [forgotMessage, setForgotMessage] = useState('');
   
-  // Ref for auto-focusing username field
+  // Refs for auto-focusing and navigation
   const usernameInputRef = useRef(null);
+  const passwordInputRef = useRef(null);
   
   const navigate = useNavigate();
   const location = useLocation();
@@ -95,10 +96,20 @@ const Login = ({ isModalOpen, onClose }) => {
   };
 
   const handleKeyDown = (e) => {
-    // Submit form on Enter key press
+    // Handle Enter key based on which field is focused
     if (e.key === 'Enter' && !isLoading) {
       e.preventDefault();
-      handleSubmit(e);
+      
+      // If Enter is pressed in username field, move to password field
+      if (e.target.name === 'username') {
+        if (passwordInputRef.current) {
+          passwordInputRef.current.focus();
+        }
+      }
+      // If Enter is pressed in password field, submit the form
+      else if (e.target.name === 'password') {
+        handleSubmit(e);
+      }
     }
   };
 
@@ -254,7 +265,7 @@ const Login = ({ isModalOpen, onClose }) => {
           <p>National Institute of Technology Goa</p>
         </div>
 
-        <form onSubmit={handleSubmit} onKeyDown={handleKeyDown} className="login-form">
+        <form onSubmit={handleSubmit} className="login-form">
           {error && (
             <div className="error-message">
               <i className="fas fa-exclamation-circle"></i>
@@ -273,6 +284,7 @@ const Login = ({ isModalOpen, onClose }) => {
                 name="username"
                 value={credentials.username}
                 onChange={handleChange}
+                onKeyDown={handleKeyDown}
                 placeholder="Enter your username"
                 required
                 disabled={isLoading}
@@ -285,11 +297,13 @@ const Login = ({ isModalOpen, onClose }) => {
             <div className="input-wrapper password-wrapper">
               <i className="fas fa-lock"></i>
               <input
+                ref={passwordInputRef}
                 type={showPassword ? 'text' : 'password'}
                 id="password"
                 name="password"
                 value={credentials.password}
                 onChange={handleChange}
+                onKeyDown={handleKeyDown}
                 placeholder="Enter your password"
                 autoComplete="current-password"
                 required
