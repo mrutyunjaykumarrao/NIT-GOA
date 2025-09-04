@@ -17,6 +17,9 @@ body {
   scroll-behavior: smooth;
 }
 
+body::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+}
 /* Utility Classes */
 .container {
   max-width: 1200px;

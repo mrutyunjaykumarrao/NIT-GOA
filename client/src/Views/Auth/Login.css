@@ -104,8 +104,17 @@
   animation: loginSlideIn 0.3s ease-out;
   max-height: 90vh;
   overflow-y: auto;
-  /* color: #343A40; */
+  color: #343A40;
   margin: auto; /* Center the modal */
+}
+
+/* Hide Scroll Bar */
+.login-modal-content {
+  overflow-y: scroll;
+}
+
+.login-modal-content::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
 }
 
 /* Large screens - scale up the modal */
