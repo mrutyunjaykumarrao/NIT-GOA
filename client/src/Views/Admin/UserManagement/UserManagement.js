@@ -4,7 +4,7 @@ import useAsyncOperation from '../../../hooks/useAsyncOperation';
 import './UserManagement.css';
 
 const UserManagement = () => {
-  const { user } = useAuth();
+  const { user, token, openLoginModal } = useAuth();
   const { loading: isLoading, executeAsync } = useAsyncOperation();
   
   const [users, setUsers] = useState([]);
@@ -23,29 +23,91 @@ const UserManagement = () => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [showEmailModal, setShowEmailModal] = useState(false);
   const [newEmail, setNewEmail] = useState('');
+  
+  // Confirmation modal state
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [confirmAction, setConfirmAction] = useState(null);
+  const [confirmMessage, setConfirmMessage] = useState('');
 
   useEffect(() => {
-    fetchUsers();
-  }, [filters, pagination.currentPage]);
+    if (user && token && user.role === 'Admin') {
+      fetchUsers();
+    }
+  }, [filters, pagination?.currentPage, user, token]);
+
+  // Don't render if user is not authenticated or not an admin
+  if (!user || !token) {
+    return (
+      <div className="user-management-container">
+        <div className="error-message">
+          <i className="fas fa-exclamation-triangle"></i>
+          Please log in to access this page.
+          <button 
+            onClick={() => openLoginModal('/admin')} 
+            className="btn-primary"
+            style={{ marginLeft: '1rem' }}
+          >
+            Login
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (user.role !== 'Admin') {
+    return (
+      <div className="user-management-container">
+        <div className="error-message">
+          <i className="fas fa-exclamation-triangle"></i>
+          Access denied. Admin privileges required.
+        </div>
+      </div>
+    );
+  }
+
+  // Helper function to show confirmation dialog
+  const showConfirmation = (message, action) => {
+    setConfirmMessage(message);
+    setConfirmAction(() => action);
+    setShowConfirmModal(true);
+  };
+
+  const handleConfirm = async () => {
+    if (confirmAction) {
+      await confirmAction();
+    }
+    setShowConfirmModal(false);
+    setConfirmAction(null);
+    setConfirmMessage('');
+  };
+
+  const handleCancelConfirm = () => {
+    setShowConfirmModal(false);
+    setConfirmAction(null);
+    setConfirmMessage('');
+  };
 
   const fetchUsers = async () => {
+    if (!pagination || !filters) return;
+    
     executeAsync(
       async () => {
         const queryParams = new URLSearchParams({
-          page: pagination.currentPage.toString(),
-          limit: pagination.itemsPerPage.toString(),
-          search: filters.search,
-          status: filters.status
+          page: (pagination?.currentPage || 1).toString(),
+          limit: (pagination?.itemsPerPage || 20).toString(),
+          search: filters?.search || '',
+          status: filters?.status || 'all'
         });
 
         const response = await fetch(`/api/admin/users?${queryParams}`, {
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
+            'Authorization': `Bearer ${token}`
           }
         });
 
         if (!response.ok) {
-          throw new Error('Failed to fetch users');
+          const errorData = await response.json().catch(() => ({ error: 'Failed to fetch users' }));
+          throw new Error(errorData.error || 'Failed to fetch users');
         }
 
         const data = await response.json();
@@ -53,8 +115,9 @@ const UserManagement = () => {
         setPagination(data.pagination);
       },
       {
-        showSuccessToast: false,
-        showErrorToast: true
+        showSuccessToast: false, // Don't show success toast for fetching users
+        showErrorToast: true,
+        errorMessage: 'Failed to load users. Please try again.'
       }
     );
   };
@@ -74,32 +137,35 @@ const UserManagement = () => {
   };
 
   const unlockUser = async (userId, username) => {
-    if (!confirm(`Are you sure you want to unlock ${username}?`)) {
-      return;
-    }
+    const unlockAction = async () => {
+      executeAsync(
+        async () => {
+          const response = await fetch(`/api/admin/users/${userId}/unlock`, {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            }
+          });
 
-    executeAsync(
-      async () => {
-        const response = await fetch(`/api/admin/users/${userId}/unlock`, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            'Content-Type': 'application/json'
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || 'Failed to unlock user');
           }
-        });
 
-        if (!response.ok) {
-          const error = await response.json();
-          throw new Error(error.error || 'Failed to unlock user');
+          // Refresh users list
+          fetchUsers();
+        },
+        {
+          showSuccessToast: true,
+          successMessage: `User ${username} has been unlocked successfully!`
         }
+      );
+    };
 
-        await fetchUsers(); // Refresh the list
-      },
-      {
-        showSuccessToast: true,
-        successMessage: `${username} has been unlocked successfully`,
-        showErrorToast: true
-      }
+    showConfirmation(
+      `Are you sure you want to unlock ${username}?`,
+      unlockAction
     );
   };
 
@@ -109,7 +175,7 @@ const UserManagement = () => {
         const response = await fetch(`/api/admin/users/${userId}/reset-attempts`, {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
           }
         });
@@ -131,32 +197,36 @@ const UserManagement = () => {
 
   const toggleUserStatus = async (userId, username, currentStatus) => {
     const action = currentStatus ? 'deactivate' : 'activate';
-    if (!confirm(`Are you sure you want to ${action} ${username}?`)) {
-      return;
-    }
+    
+    const toggleAction = async () => {
+      executeAsync(
+        async () => {
+          const response = await fetch(`/api/admin/users/${userId}/toggle-status`, {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            }
+          });
 
-    executeAsync(
-      async () => {
-        const response = await fetch(`/api/admin/users/${userId}/toggle-status`, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            'Content-Type': 'application/json'
+          if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.error || 'Failed to toggle user status');
           }
-        });
 
-        if (!response.ok) {
-          const error = await response.json();
-          throw new Error(error.error || 'Failed to toggle user status');
+          await fetchUsers(); // Refresh the list
+        },
+        {
+          showSuccessToast: true,
+          successMessage: `${username} has been ${action}d successfully`,
+          showErrorToast: true
         }
+      );
+    };
 
-        await fetchUsers(); // Refresh the list
-      },
-      {
-        showSuccessToast: true,
-        successMessage: `${username} has been ${action}d successfully`,
-        showErrorToast: true
-      }
+    showConfirmation(
+      `Are you sure you want to ${action} ${username}?`,
+      toggleAction
     );
   };
 
@@ -177,7 +247,7 @@ const UserManagement = () => {
         const response = await fetch(`/api/admin/users/${selectedUser.user_id}/email`, {
           method: 'PUT',
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({ email: newEmail })
@@ -344,7 +414,7 @@ const UserManagement = () => {
       </div>
 
       {/* Pagination */}
-      {pagination.totalPages > 1 && (
+      {pagination?.totalPages > 1 && (
         <div className="pagination">
           <button
             onClick={() => handlePageChange(pagination.currentPage - 1)}
@@ -385,7 +455,7 @@ const UserManagement = () => {
             
             <div className="modal-body">
               <p>This email will be used for password reset functionality.</p>
-              <div className="form-group">
+              <div className="user-management-form-group">
                 <label htmlFor="newEmail">Email Address</label>
                 <input
                   type="email"
@@ -411,6 +481,43 @@ const UserManagement = () => {
                 disabled={!newEmail}
               >
                 Update Email
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Confirmation Modal */}
+      {showConfirmModal && (
+        <div className="modal-overlay" onClick={handleCancelConfirm}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h3>Confirm Action</h3>
+              <button
+                onClick={handleCancelConfirm}
+                className="modal-close"
+              >
+                <i className="fas fa-times"></i>
+              </button>
+            </div>
+            
+            <div className="modal-body">
+              <p>{confirmMessage}</p>
+            </div>
+            
+            <div className="modal-actions">
+              <button
+                onClick={handleCancelConfirm}
+                className="btn-cancel"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleConfirm}
+                className="btn-primary"
+                disabled={isLoading}
+              >
+                {isLoading ? 'Processing...' : 'Confirm'}
               </button>
             </div>
           </div>

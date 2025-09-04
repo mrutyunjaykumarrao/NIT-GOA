@@ -194,7 +194,7 @@ const PasswordReset = () => {
             </div>
           )}
 
-          <div className="form-group">
+          <div className="password-reset-form-group">
             <label htmlFor="password">New Password</label>
             <div className="input-wrapper">
               <i className="fas fa-lock"></i>
@@ -212,7 +212,7 @@ const PasswordReset = () => {
             <small className="form-hint">Password must be at least 6 characters long</small>
           </div>
 
-          <div className="form-group">
+          <div className="password-reset-form-group">
             <label htmlFor="confirmPassword">Confirm New Password</label>
             <div className="input-wrapper">
               <i className="fas fa-lock"></i>

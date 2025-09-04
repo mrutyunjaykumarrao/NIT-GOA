@@ -394,11 +394,11 @@
   line-height: 1.6;
 }
 
-.form-group {
+.user-management-form-group {
   margin-bottom: 1rem;
 }
 
-.form-group label {
+.user-management-form-group label {
   display: block;
   margin-bottom: 0.5rem;
   color: #2d3748;
@@ -406,7 +406,7 @@
   font-size: 0.9rem;
 }
 
-.form-group input {
+.user-management-form-group input {
   width: 100%;
   padding: 0.75rem;
   border: 2px solid #e2e8f0;
@@ -417,7 +417,7 @@
   box-sizing: border-box;
 }
 
-.form-group input:focus {
+.user-management-form-group input:focus {
   border-color: #667eea;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }

@@ -1187,35 +1187,35 @@
   gap: 1.5rem;
 }
 
-.form-group {
+.admin-dashboard-form-group {
   display: flex;
   flex-direction: column;
 }
 
-.form-group.full-width {
+.admin-dashboard-form-group.full-width {
   grid-column: 1 / -1;
 }
 
-.form-group.checkbox-group {
+.admin-dashboard-form-group.checkbox-group {
   flex-direction: row;
   align-items: center;
 }
 
-.form-group label {
+.admin-dashboard-form-group label {
   font-weight: 500;
   color: #374151;
   /* margin-bottom: 0.5rem; */
   font-size: 0.9rem;
 }
 
-.form-group.checkbox-group label {
+.admin-dashboard-form-group.checkbox-group label {
   margin-bottom: 0;
   margin-left: 0.5rem;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
+.admin-dashboard-form-group input,
+.admin-dashboard-form-group select,
+.admin-dashboard-form-group textarea {
   padding: 0.75rem;
   border: 1px solid #d1d5db;
   border-radius: 8px;
@@ -1225,20 +1225,20 @@
   color: #374151;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
+.admin-dashboard-form-group input:focus,
+.admin-dashboard-form-group select:focus,
+.admin-dashboard-form-group textarea:focus {
   outline: none;
   border-color: #3b82f6;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
-.form-group textarea {
+.admin-dashboard-form-group textarea {
   resize: vertical;
   min-height: 80px;
 }
 
-.form-group input[type="checkbox"] {
+.admin-dashboard-form-group input[type="checkbox"] {
   width: auto;
   margin: 0;
 }

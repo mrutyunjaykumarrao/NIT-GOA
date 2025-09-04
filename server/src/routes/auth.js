@@ -20,11 +20,14 @@ const authLimiter = rateLimit({
 
 // Separate rate limiter for forgot password (more lenient)
 const forgotPasswordLimiter = rateLimit({
-  windowMs: 10 * 60 * 1000, // 10 minutes
-  max: 5, // 5 attempts per window
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 100, // 100 attempts per window (very generous for development)
   message: { error: 'Too many password reset attempts, please try again later' },
   standardHeaders: true,
   legacyHeaders: false,
+  onLimitReached: (req, res) => {
+    console.log('Rate limit reached for forgot password:', req.ip);
+  }
 });
 
 // Login endpoint
@@ -388,7 +391,13 @@ router.post('/forgot-password', forgotPasswordLimiter, async (req, res) => {
 
     res.json(successResponse);
   } catch (error) {
-    console.error('Forgot password error:', error);
+    console.error('Forgot password error details:', {
+      message: error.message,
+      stack: error.stack,
+      code: error.code,
+      errno: error.errno,
+      sqlMessage: error.sqlMessage
+    });
     res.status(500).json({ error: 'Internal server error' });
   }
 });
