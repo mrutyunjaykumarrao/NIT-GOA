@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const { executeQuery, withTransaction } = require('../config/database');
 const { authenticateToken, requireAdmin } = require('../middleware/auth');
+const emailService = require('../utils/emailService');
 
 const router = express.Router();
 
@@ -777,6 +778,314 @@ router.delete('/departments/:id', async (req, res) => {
     res.json({ message: 'Department deleted successfully' });
   } catch (error) {
     console.error('Delete department error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// ======================
+// USER ACCOUNT MANAGEMENT
+// ======================
+
+// Get all user accounts with lock status
+router.get('/users', async (req, res) => {
+  try {
+    const { page = 1, limit = 20, search = '', status = 'all' } = req.query;
+    const offset = (parseInt(page) - 1) * parseInt(limit);
+
+    let whereClause = '';
+    const params = [];
+
+    // Search filter
+    if (search) {
+      whereClause += ' WHERE (ua.username LIKE ? OR e.full_name LIKE ? OR e.email LIKE ? OR ua.email LIKE ?)';
+      const searchPattern = `%${search}%`;
+      params.push(searchPattern, searchPattern, searchPattern, searchPattern);
+    }
+
+    // Status filter
+    if (status !== 'all') {
+      const statusCondition = whereClause ? ' AND ' : ' WHERE ';
+      if (status === 'active') {
+        whereClause += statusCondition + 'ua.is_active = 1 AND (ua.locked_until IS NULL OR ua.locked_until <= NOW())';
+      } else if (status === 'inactive') {
+        whereClause += statusCondition + 'ua.is_active = 0';
+      } else if (status === 'locked') {
+        whereClause += statusCondition + 'ua.locked_until > NOW()';
+      }
+    }
+
+    const users = await executeQuery(`
+      SELECT 
+        ua.user_id,
+        ua.username,
+        ua.email as user_email,
+        ua.access_level,
+        ua.is_active,
+        ua.last_login,
+        ua.failed_login_attempts,
+        ua.locked_until,
+        ua.created_at,
+        e.employee_id,
+        e.full_name,
+        e.email as employee_email,
+        e.role as employee_role,
+        CASE 
+          WHEN ua.locked_until > NOW() THEN 'locked'
+          WHEN ua.is_active = 0 THEN 'inactive'
+          ELSE 'active'
+        END as status
+      FROM user_accounts ua
+      LEFT JOIN employees e ON ua.user_id = e.user_account_id
+      ${whereClause}
+      ORDER BY ua.created_at DESC
+      LIMIT ? OFFSET ?
+    `, [...params, parseInt(limit), offset]);
+
+    // Get total count
+    const totalCount = await executeQuery(`
+      SELECT COUNT(*) as count
+      FROM user_accounts ua
+      LEFT JOIN employees e ON ua.user_id = e.user_account_id
+      ${whereClause}
+    `, params.slice(0, -2)); // Remove limit and offset params
+
+    res.json({
+      users,
+      pagination: {
+        currentPage: parseInt(page),
+        totalPages: Math.ceil(totalCount[0].count / parseInt(limit)),
+        totalItems: totalCount[0].count,
+        itemsPerPage: parseInt(limit)
+      }
+    });
+  } catch (error) {
+    console.error('Get users error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Unlock user account
+router.post('/users/:userId/unlock', async (req, res) => {
+  try {
+    const { userId } = req.params;
+    
+    // Get user details including email
+    const users = await executeQuery(`
+      SELECT 
+        ua.username, 
+        ua.email as user_email,
+        e.email as employee_email,
+        e.full_name,
+        COALESCE(ua.email, e.email) as primary_email
+      FROM user_accounts ua
+      LEFT JOIN employees e ON ua.user_id = e.user_account_id
+      WHERE ua.user_id = ?
+    `, [userId]);
+    
+    if (users.length === 0) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    const user = users[0];
+
+    // Unlock the account
+    await executeQuery(`
+      UPDATE user_accounts 
+      SET 
+        locked_until = NULL,
+        failed_login_attempts = 0,
+        updated_at = CURRENT_TIMESTAMP
+      WHERE user_id = ?
+    `, [userId]);
+
+    // Log the admin action
+    await executeQuery(`
+      INSERT INTO audit_log (table_name, record_id, action, new_values, changed_by, ip_address)
+      VALUES (?, ?, ?, ?, ?, ?)
+    `, [
+      'user_accounts', 
+      userId, 
+      'UNLOCK', 
+      JSON.stringify({ 
+        action: 'account_unlocked_by_admin',
+        unlocked_by: req.user.username 
+      }), 
+      req.user.userId,
+      req.ip
+    ]);
+
+    // Send email notification if user has email
+    if (user.primary_email) {
+      try {
+        await emailService.sendAccountUnlockedEmail(
+          user.primary_email,
+          user.username,
+          req.user.username
+        );
+        console.log(`✅ Account unlock notification sent to ${user.primary_email}`);
+      } catch (emailError) {
+        console.error('❌ Failed to send unlock notification email:', emailError.message);
+        // Don't fail the unlock operation if email fails
+      }
+    }
+
+    res.json({ 
+      message: `Account for ${user.username} has been unlocked successfully` 
+    });
+  } catch (error) {
+    console.error('Unlock user error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Reset failed login attempts
+router.post('/users/:userId/reset-attempts', async (req, res) => {
+  try {
+    const { userId } = req.params;
+    
+    const users = await executeQuery('SELECT username FROM user_accounts WHERE user_id = ?', [userId]);
+    if (users.length === 0) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    await executeQuery(`
+      UPDATE user_accounts 
+      SET 
+        failed_login_attempts = 0,
+        locked_until = NULL,
+        updated_at = CURRENT_TIMESTAMP
+      WHERE user_id = ?
+    `, [userId]);
+
+    // Log the admin action
+    await executeQuery(`
+      INSERT INTO audit_log (table_name, record_id, action, new_values, changed_by, ip_address)
+      VALUES (?, ?, ?, ?, ?, ?)
+    `, [
+      'user_accounts', 
+      userId, 
+      'UPDATE', 
+      JSON.stringify({ 
+        action: 'failed_attempts_reset_by_admin',
+        reset_by: req.user.username 
+      }), 
+      req.user.userId,
+      req.ip
+    ]);
+
+    res.json({ 
+      message: `Failed login attempts reset for ${users[0].username}` 
+    });
+  } catch (error) {
+    console.error('Reset attempts error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Toggle user active status
+router.post('/users/:userId/toggle-status', async (req, res) => {
+  try {
+    const { userId } = req.params;
+    
+    // Don't allow disabling self
+    if (parseInt(userId) === req.user.userId) {
+      return res.status(400).json({ error: 'Cannot disable your own account' });
+    }
+
+    const users = await executeQuery('SELECT username, is_active FROM user_accounts WHERE user_id = ?', [userId]);
+    if (users.length === 0) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    const newStatus = !users[0].is_active;
+    
+    await executeQuery(`
+      UPDATE user_accounts 
+      SET 
+        is_active = ?,
+        updated_at = CURRENT_TIMESTAMP
+      WHERE user_id = ?
+    `, [newStatus, userId]);
+
+    // Log the admin action
+    await executeQuery(`
+      INSERT INTO audit_log (table_name, record_id, action, new_values, changed_by, ip_address)
+      VALUES (?, ?, ?, ?, ?, ?)
+    `, [
+      'user_accounts', 
+      userId, 
+      'UPDATE', 
+      JSON.stringify({ 
+        action: newStatus ? 'account_activated' : 'account_deactivated',
+        changed_by: req.user.username 
+      }), 
+      req.user.userId,
+      req.ip
+    ]);
+
+    res.json({ 
+      message: `Account ${newStatus ? 'activated' : 'deactivated'} for ${users[0].username}` 
+    });
+  } catch (error) {
+    console.error('Toggle user status error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Update user email (for admin-only accounts)
+router.put('/users/:userId/email', async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const { email } = req.body;
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return res.status(400).json({ error: 'Valid email address is required' });
+    }
+
+    // Check if email is already in use
+    const existingEmail = await executeQuery(
+      'SELECT user_id FROM user_accounts WHERE email = ? AND user_id != ?',
+      [email, userId]
+    );
+    if (existingEmail.length > 0) {
+      return res.status(400).json({ error: 'Email address is already in use' });
+    }
+
+    const users = await executeQuery('SELECT username FROM user_accounts WHERE user_id = ?', [userId]);
+    if (users.length === 0) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    await executeQuery(`
+      UPDATE user_accounts 
+      SET 
+        email = ?,
+        updated_at = CURRENT_TIMESTAMP
+      WHERE user_id = ?
+    `, [email, userId]);
+
+    // Log the admin action
+    await executeQuery(`
+      INSERT INTO audit_log (table_name, record_id, action, new_values, changed_by, ip_address)
+      VALUES (?, ?, ?, ?, ?, ?)
+    `, [
+      'user_accounts', 
+      userId, 
+      'UPDATE', 
+      JSON.stringify({ 
+        action: 'email_updated_by_admin',
+        new_email: email,
+        updated_by: req.user.username 
+      }), 
+      req.user.userId,
+      req.ip
+    ]);
+
+    res.json({ 
+      message: `Email updated for ${users[0].username}` 
+    });
+  } catch (error) {
+    console.error('Update email error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });

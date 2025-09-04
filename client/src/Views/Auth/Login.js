@@ -189,10 +189,13 @@ const Login = ({ isModalOpen, onClose }) => {
     e.preventDefault();
     setForgotMessage('');
     
+    if (!forgotEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(forgotEmail)) {
+      setForgotMessage('Please enter a valid email address.');
+      return;
+    }
+    
     executeForgotAsync(
       async () => {
-        // For now, we'll simulate retrieving password
-        // In a real application, you would send a password reset email
         const response = await fetch('/api/auth/forgot-password', {
           method: 'POST',
           headers: {
@@ -201,23 +204,19 @@ const Login = ({ isModalOpen, onClose }) => {
           body: JSON.stringify({ email: forgotEmail }),
         });
         
+        const data = await response.json();
+        
         if (response.ok) {
-          const data = await response.json();
-          setForgotMessage(`Your password is: ${data.password}`);
+          setForgotMessage(data.message);
         } else {
-          setForgotMessage('Email not found. Please check your email address.');
+          throw new Error(data.error || 'Failed to process password reset request');
         }
       },
       {
         showSuccessToast: false, // We'll show the message directly
         showErrorToast: false, // Handle error manually
         onError: (error) => {
-          // For demo purposes, show a mock password
-          if (forgotEmail === 'admin@nitgoa.ac.in') {
-            setForgotMessage('Your password is: admin123');
-          } else {
-            setForgotMessage('Email not found. Please check your email address.');
-          }
+          setForgotMessage(error.message || 'Failed to process password reset request. Please try again.');
         }
       }
     );
@@ -347,7 +346,7 @@ const Login = ({ isModalOpen, onClose }) => {
             
             <form onSubmit={handleForgotPassword} className="forgot-password-form">
               <div className="form-group">
-                <label htmlFor="forgotEmail">Enter your email to retrieve password</label>
+                <label htmlFor="forgotEmail">Enter your email to receive reset instructions</label>
                 <div className="input-wrapper">
                   <i className="fas fa-envelope"></i>
                   <input
@@ -370,10 +369,10 @@ const Login = ({ isModalOpen, onClose }) => {
                 {isForgotLoading ? (
                   <>
                     <i className="fas fa-spinner fa-spin"></i>
-                    Retrieving...
+                    Sending Instructions...
                   </>
                 ) : (
-                  'Get Password'
+                  'Send Reset Instructions'
                 )}
               </button>
               

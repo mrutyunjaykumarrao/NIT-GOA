@@ -7,6 +7,7 @@ import TechnicalStaffTab from './components/TechnicalStaffTab/TechnicalStaffTab'
 import AdministrativeStaffTab from './components/AdministrativeStaffTab/AdministrativeStaffTab';
 import AnalyticsTab from './components/AnalyticsTab/AnalyticsTab';
 import UsersTab from './components/UsersTab/UsersTab';
+import UserManagement from './UserManagement/UserManagement';
 import { UserModal, EmployeeModal, FacultyModal, StaffModal, AdministrativeStaffModal, TechnicalStaffModal, PendingApprovalsModal } from './components/AdminModals';
 import './AdminDashboard.css';
 
@@ -503,6 +504,10 @@ const AdminDashboard = () => {
               onEditUser={(user) => openEditModal('user', user)}
               onDeleteUser={(id) => handleDelete('user', id)}
             />
+          )}
+
+          {activeTab === 'user-management' && (
+            <UserManagement />
           )}
           
           {activeTab === 'faculty' && (

@@ -16,6 +16,7 @@ import { ErrorBoundary, ErrorPage404, ErrorPage403, ErrorPage500, NetworkError }
 
 // Auth components
 import LoginWrapper from './Views/Auth/LoginWrapper';
+import PasswordReset from './Views/Auth/PasswordReset';
 import AdminDashboard from './Views/Admin/AdminDashboard';
 import HomePage from './Views/Home-Section/HomePage';
 import About from './Views/About/About';
@@ -130,6 +131,7 @@ function AppContent() {
         
         {/* Auth Routes */}
         <Route path="/login" element={<div />} /> {/* Handled by LoginWrapper */}
+        <Route path="/reset-password" element={<PasswordReset />} />
         
         {/* ADMIN-ONLY ROUTES */}
         <Route 

@@ -1,9 +1,11 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
 const rateLimit = require('express-rate-limit');
 const { executeQuery } = require('../config/database');
 const { authenticateToken } = require('../middleware/auth');
+const emailService = require('../utils/emailService');
 
 const router = express.Router();
 
@@ -259,6 +261,229 @@ router.post('/logout', authenticateToken, async (req, res) => {
     res.json({ message: 'Logged out successfully' });
   } catch (error) {
     console.error('Logout error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// ======================
+// PASSWORD RESET FUNCTIONALITY
+// ======================
+
+// Request password reset
+router.post('/forgot-password', authLimiter, async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    if (!email) {
+      return res.status(400).json({ error: 'Email address is required' });
+    }
+
+    // Find user by email (check both user_accounts.email and employees.email)
+    const [users] = await executeQuery(`
+      SELECT 
+        ua.user_id,
+        ua.username,
+        ua.email as user_email,
+        e.email as employee_email,
+        COALESCE(ua.email, e.email) as primary_email
+      FROM user_accounts ua
+      LEFT JOIN employees e ON ua.user_id = e.user_account_id
+      WHERE (ua.email = ? OR e.email = ?) 
+        AND ua.is_active = 1
+        AND (ua.locked_until IS NULL OR ua.locked_until <= NOW())
+    `, [email, email]);
+
+    // Always return success to prevent email enumeration attacks
+    const successResponse = { 
+      message: 'If this email is associated with an account, you will receive password reset instructions.' 
+    };
+
+    if (users.length === 0) {
+      // Wait a bit to prevent timing attacks
+      await new Promise(resolve => setTimeout(resolve, 200));
+      return res.json(successResponse);
+    }
+
+    const user = users[0];
+
+    // Generate reset token
+    const resetToken = crypto.randomBytes(32).toString('hex');
+    const resetExpiry = new Date(Date.now() + 60 * 60 * 1000); // 1 hour from now
+
+    // Store reset token
+    await executeQuery(`
+      UPDATE user_accounts 
+      SET 
+        reset_token = ?,
+        reset_token_expires = ?,
+        reset_token_used = FALSE,
+        updated_at = CURRENT_TIMESTAMP
+      WHERE user_id = ?
+    `, [resetToken, resetExpiry, user.user_id]);
+
+    // Log password reset request
+    await executeQuery(`
+      INSERT INTO audit_log (table_name, record_id, action, new_values, ip_address)
+      VALUES (?, ?, ?, ?, ?)
+    `, [
+      'user_accounts', 
+      user.user_id, 
+      'PASSWORD_RESET_REQUEST', 
+      JSON.stringify({ 
+        email: user.primary_email,
+        reset_token_expires: resetExpiry 
+      }),
+      req.ip
+    ]);
+
+    // Send password reset email
+    try {
+      await emailService.sendPasswordResetEmail(
+        user.primary_email,
+        user.username,
+        resetToken
+      );
+      console.log(`✅ Password reset email sent to ${user.primary_email} for user ${user.username}`);
+    } catch (emailError) {
+      console.error('❌ Failed to send password reset email:', emailError.message);
+      // Don't throw error here - we still want to return success to prevent email enumeration
+      // But log the error for admin monitoring
+      await executeQuery(`
+        INSERT INTO audit_log (table_name, record_id, action, new_values, ip_address)
+        VALUES (?, ?, ?, ?, ?)
+      `, [
+        'user_accounts', 
+        user.user_id, 
+        'EMAIL_SEND_FAILED', 
+        JSON.stringify({ 
+          error: emailError.message,
+          email: user.primary_email,
+          reset_token: resetToken 
+        }),
+        req.ip
+      ]);
+    }
+
+    res.json(successResponse);
+  } catch (error) {
+    console.error('Forgot password error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Verify reset token
+router.get('/verify-reset-token/:token', async (req, res) => {
+  try {
+    const { token } = req.params;
+
+    const [users] = await executeQuery(`
+      SELECT 
+        ua.user_id,
+        ua.username,
+        ua.reset_token_expires,
+        ua.reset_token_used
+      FROM user_accounts ua
+      WHERE ua.reset_token = ? 
+        AND ua.is_active = 1
+    `, [token]);
+
+    if (users.length === 0) {
+      return res.status(400).json({ error: 'Invalid reset token' });
+    }
+
+    const user = users[0];
+
+    if (user.reset_token_used) {
+      return res.status(400).json({ error: 'Reset token has already been used' });
+    }
+
+    if (new Date() > new Date(user.reset_token_expires)) {
+      return res.status(400).json({ error: 'Reset token has expired' });
+    }
+
+    res.json({ 
+      valid: true, 
+      username: user.username 
+    });
+  } catch (error) {
+    console.error('Verify reset token error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Reset password with token
+router.post('/reset-password', authLimiter, async (req, res) => {
+  try {
+    const { token, newPassword } = req.body;
+
+    if (!token || !newPassword) {
+      return res.status(400).json({ error: 'Reset token and new password are required' });
+    }
+
+    if (newPassword.length < 6) {
+      return res.status(400).json({ error: 'Password must be at least 6 characters long' });
+    }
+
+    const [users] = await executeQuery(`
+      SELECT 
+        ua.user_id,
+        ua.username,
+        ua.reset_token_expires,
+        ua.reset_token_used
+      FROM user_accounts ua
+      WHERE ua.reset_token = ? 
+        AND ua.is_active = 1
+    `, [token]);
+
+    if (users.length === 0) {
+      return res.status(400).json({ error: 'Invalid reset token' });
+    }
+
+    const user = users[0];
+
+    if (user.reset_token_used) {
+      return res.status(400).json({ error: 'Reset token has already been used' });
+    }
+
+    if (new Date() > new Date(user.reset_token_expires)) {
+      return res.status(400).json({ error: 'Reset token has expired' });
+    }
+
+    // Hash new password
+    const saltRounds = 12;
+    const newPasswordHash = await bcrypt.hash(newPassword, saltRounds);
+
+    // Update password and mark token as used
+    await executeQuery(`
+      UPDATE user_accounts 
+      SET 
+        password_hash = ?,
+        reset_token_used = TRUE,
+        failed_login_attempts = 0,
+        locked_until = NULL,
+        password_changed_at = CURRENT_TIMESTAMP,
+        updated_at = CURRENT_TIMESTAMP
+      WHERE user_id = ?
+    `, [newPasswordHash, user.user_id]);
+
+    // Log password reset completion
+    await executeQuery(`
+      INSERT INTO audit_log (table_name, record_id, action, new_values, ip_address)
+      VALUES (?, ?, ?, ?, ?)
+    `, [
+      'user_accounts', 
+      user.user_id, 
+      'PASSWORD_RESET_COMPLETE', 
+      JSON.stringify({ 
+        reset_completed: true,
+        ip: req.ip 
+      }),
+      req.ip
+    ]);
+
+    res.json({ message: 'Password has been reset successfully' });
+  } catch (error) {
+    console.error('Reset password error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });

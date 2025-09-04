@@ -110,6 +110,13 @@ const AdminLayout = ({ children, activeTab, setActiveTab }) => {
                 <span>Users</span>
               </button>
               <button 
+                className={`admin-layout-nav-tab ${activeTab === 'user-management' ? 'admin-layout-nav-tab--active' : ''}`}
+                onClick={() => handleTabClick('user-management')}
+              >
+                <i className="fas fa-user-cog"></i>
+                <span>Account Management</span>
+              </button>
+              <button 
                 className={`admin-layout-nav-tab ${activeTab === 'faculty' ? 'admin-layout-nav-tab--active' : ''}`}
                 onClick={() => handleTabClick('faculty')}
               >
