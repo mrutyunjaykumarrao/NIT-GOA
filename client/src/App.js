@@ -134,7 +134,7 @@ function AppContent() {
         
         {/* Auth Routes */}
         <Route path="/login" element={<LoginBackground />} /> {/* Smart background based on previous page */}
-        <Route path="/reset-password" element={<PasswordReset />} />
+        <Route path="/reset-password" element={<><PublicRoute><HomePage /></PublicRoute><PasswordReset /></>} /> {/* Homepage as background for password reset */}
         
         {/* ADMIN-ONLY ROUTES */}
         <Route 

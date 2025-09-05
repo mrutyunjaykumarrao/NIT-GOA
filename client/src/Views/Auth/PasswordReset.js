@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 import useAsyncOperation from '../../hooks/useAsyncOperation';
 import './PasswordReset.css';
 
 const PasswordReset = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const { loading: isLoading, executeAsync } = useAsyncOperation();
   
   const [token, setToken] = useState('');
@@ -16,6 +17,10 @@ const PasswordReset = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+
+  const navigateToLogin = () => {
+    navigate('/login');
+  };
 
   useEffect(() => {
     const tokenFromUrl = searchParams.get('token');
@@ -108,9 +113,9 @@ const PasswordReset = () => {
 
   if (!tokenVerified) {
     return (
-      <div className="password-reset-container" onClick={() => navigate('/login')}>
+      <div className="password-reset-container" onClick={navigateToLogin}>
         <div className="password-reset-card" onClick={(e) => e.stopPropagation()}>
-          <button className="password-reset-close" onClick={() => navigate('/login')} aria-label="Close password reset">
+          <button className="password-reset-close" onClick={navigateToLogin} aria-label="Close password reset">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -135,7 +140,7 @@ const PasswordReset = () => {
                   {error}
                 </div>
                 <button 
-                  onClick={() => navigate('/login')} 
+                  onClick={navigateToLogin} 
                   className="back-to-login-button"
                 >
                   Back to Login
@@ -155,9 +160,9 @@ const PasswordReset = () => {
 
   if (success) {
     return (
-      <div className="password-reset-container" onClick={() => navigate('/login')}>
+      <div className="password-reset-container" onClick={navigateToLogin}>
         <div className="password-reset-card" onClick={(e) => e.stopPropagation()}>
-          <button className="password-reset-close" onClick={() => navigate('/login')} aria-label="Close password reset">
+          <button className="password-reset-close" onClick={navigateToLogin} aria-label="Close password reset">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -178,7 +183,7 @@ const PasswordReset = () => {
             {success}
             <p>You will be redirected to the login page in a few seconds.</p>
             <button 
-              onClick={() => navigate('/login')} 
+              onClick={navigateToLogin} 
               className="login-now-button"
             >
               Login Now
@@ -190,9 +195,9 @@ const PasswordReset = () => {
   }
 
   return (
-    <div className="password-reset-container" onClick={() => navigate('/login')}>
+    <div className="password-reset-container" onClick={navigateToLogin}>
       <div className="password-reset-card" onClick={(e) => e.stopPropagation()}>
-        <button className="password-reset-close" onClick={() => navigate('/login')} aria-label="Close password reset">
+        <button className="password-reset-close" onClick={navigateToLogin} aria-label="Close password reset">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -273,7 +278,7 @@ const PasswordReset = () => {
 
         <div className="reset-footer">
           <button 
-            onClick={() => navigate('/login')} 
+            onClick={navigateToLogin} 
             className="back-to-login-link"
           >
             ← Back to Login
