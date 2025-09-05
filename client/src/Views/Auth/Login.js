@@ -282,6 +282,11 @@ const Login = ({ isModalOpen, onClose }) => {
     setForgotMessage('');
     setCooldownTimer(null);
     
+    // If we're on the /login route, navigate to home when closing
+    if (location.pathname === '/login') {
+      navigate('/', { replace: true });
+    }
+    
     if (onClose) {
       onClose();
     }

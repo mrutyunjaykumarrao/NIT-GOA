@@ -130,7 +130,7 @@ function AppContent() {
         <Route path="/gian" element={<PublicRoute><GIAN /></PublicRoute>} />
         
         {/* Auth Routes */}
-        <Route path="/login" element={<div />} /> {/* Handled by LoginWrapper */}
+        <Route path="/login" element={<PublicRoute><HomePage /></PublicRoute>} /> {/* Show homepage as background for login modal */}
         <Route path="/reset-password" element={<PasswordReset />} />
         
         {/* ADMIN-ONLY ROUTES */}
