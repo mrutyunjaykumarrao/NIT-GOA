@@ -310,7 +310,7 @@ const Login = ({ isModalOpen, onClose }) => {
           <p>National Institute of Technology Goa</p>
         </div>
 
-        {error && (
+        {error && !showForgotPassword && (
           <div className="error-message">
             <i className="fas fa-exclamation-circle"></i>
             {cooldownTimer ? (

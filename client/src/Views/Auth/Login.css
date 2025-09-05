@@ -516,7 +516,7 @@
 /* Forgot Password Section */
 .login-modal-content .forgot-password-section {
   margin-top: 25px;
-  padding-top: 25px;
+  padding-top: 0px 25px 25px 25px;
   border-top: 1px solid rgba(75, 85, 99, 0.3);
   animation: loginSlideDown 0.3s ease-out;
 }
@@ -621,6 +621,10 @@
   justify-content: center;
   gap: 8px;
   margin-top: 12px;
+}
+
+[data-theme="dark"] .login-modal-content .back-to-login-button {
+  color: white;
 }
 
 .login-modal-content .back-to-login-button:hover {

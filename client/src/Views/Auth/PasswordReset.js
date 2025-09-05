@@ -108,8 +108,15 @@ const PasswordReset = () => {
 
   if (!tokenVerified) {
     return (
-      <div className="password-reset-container">
-        <div className="password-reset-card">
+      <div className="password-reset-container" onClick={() => navigate('/login')}>
+        <div className="password-reset-card" onClick={(e) => e.stopPropagation()}>
+          <button className="password-reset-close" onClick={() => navigate('/login')} aria-label="Close password reset">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+          
           <div className="password-reset-header">
             <img 
               src="/NIT_LOGO.png" 
@@ -146,8 +153,15 @@ const PasswordReset = () => {
 
   if (success) {
     return (
-      <div className="password-reset-container">
-        <div className="password-reset-card">
+      <div className="password-reset-container" onClick={() => navigate('/login')}>
+        <div className="password-reset-card" onClick={(e) => e.stopPropagation()}>
+          <button className="password-reset-close" onClick={() => navigate('/login')} aria-label="Close password reset">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+          
           <div className="password-reset-header">
             <img 
               src="/NIT_LOGO.png" 
@@ -174,8 +188,15 @@ const PasswordReset = () => {
   }
 
   return (
-    <div className="password-reset-container">
-      <div className="password-reset-card">
+    <div className="password-reset-container" onClick={() => navigate('/login')}>
+      <div className="password-reset-card" onClick={(e) => e.stopPropagation()}>
+        <button className="password-reset-close" onClick={() => navigate('/login')} aria-label="Close password reset">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        
         <div className="password-reset-header">
           <img 
             src="/NIT_LOGO.png" 
