@@ -282,13 +282,27 @@ const Login = ({ isModalOpen, onClose }) => {
     setForgotMessage('');
     setCooldownTimer(null);
     
-    // If we're on the /login route, navigate to home when closing
-    if (location.pathname === '/login') {
-      navigate('/', { replace: true });
-    }
-    
+    // Close the modal first before navigation to prevent race conditions
     if (onClose) {
       onClose();
+    }
+    
+    // If we're on the /login route, navigate back to the previous page
+    if (location.pathname === '/login') {
+      const previousPath = location.state?.from?.pathname || '/';
+      
+      // Define protected routes that require authentication
+      const protectedRoutes = ['/admin', '/faculty/edit', '/profile'];
+      const isProtectedRoute = protectedRoutes.some(route => previousPath.startsWith(route));
+      
+      // If the previous path is a protected route, go to homepage instead to avoid infinite loop
+      const targetPath = isProtectedRoute ? '/' : 
+        previousPath + (location.state?.from?.search || '') + (location.state?.from?.hash || '');
+      
+      // Use setTimeout to ensure the modal state is updated before navigation
+      setTimeout(() => {
+        navigate(targetPath, { replace: true });
+      }, 0);
     }
   };
 

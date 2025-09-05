@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 // import { useTheme } from '../../contexts/ThemeContext';
 import './ProfileDropdown.css';
@@ -8,6 +8,7 @@ const ProfileDropdown = () => {
   const { user, logout, openLoginModal } = useAuth();
   // const { theme } = useTheme(); // Commented out - unused variable
   const navigate = useNavigate();
+  const location = useLocation();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -86,11 +87,25 @@ const ProfileDropdown = () => {
     return user?.role || 'User';
   };
 
+  const handleLoginClick = () => {
+    // Always navigate to /login but pass current location as state 
+    // so the login route knows what page to show as background
+    navigate('/login', { 
+      state: { 
+        from: { 
+          pathname: location.pathname,
+          search: location.search,
+          hash: location.hash
+        } 
+      } 
+    });
+  };
+
   if (!user) {
     return (
       <button 
         className="profile-dropdown-login-btn"
-        onClick={() => navigate('/login')}
+        onClick={handleLoginClick}
         aria-label="Login"
       >
         <i className="fas fa-sign-in-alt"></i>

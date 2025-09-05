@@ -16,6 +16,7 @@ import { ErrorBoundary, ErrorPage404, ErrorPage403, ErrorPage500, NetworkError }
 
 // Auth components
 import LoginWrapper from './Views/Auth/LoginWrapper';
+import LoginBackground from './Views/Auth/LoginBackground';
 import PasswordReset from './Views/Auth/PasswordReset';
 import AdminDashboard from './Views/Admin/AdminDashboard';
 import HomePage from './Views/Home-Section/HomePage';
@@ -111,9 +112,11 @@ function AppContent() {
     });
   }, [location]);
 
-  // Scroll to top on route change
+  // Scroll to top on route change (but not for login route to preserve background page scroll)
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (location.pathname !== '/login') {
+      window.scrollTo(0, 0);
+    }
   }, [location.pathname]);
 
   // Check if current route should hide navbar and footer
@@ -130,7 +133,7 @@ function AppContent() {
         <Route path="/gian" element={<PublicRoute><GIAN /></PublicRoute>} />
         
         {/* Auth Routes */}
-        <Route path="/login" element={<PublicRoute><HomePage /></PublicRoute>} /> {/* Show homepage as background for login modal */}
+        <Route path="/login" element={<LoginBackground />} /> {/* Smart background based on previous page */}
         <Route path="/reset-password" element={<PasswordReset />} />
         
         {/* ADMIN-ONLY ROUTES */}
