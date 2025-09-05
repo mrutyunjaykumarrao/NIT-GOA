@@ -90,7 +90,7 @@ const ProfileDropdown = () => {
     return (
       <button 
         className="profile-dropdown-login-btn"
-        onClick={() => openLoginModal()}
+        onClick={() => navigate('/login')}
         aria-label="Login"
       >
         <i className="fas fa-sign-in-alt"></i>

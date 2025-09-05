@@ -12,8 +12,13 @@ const LoginWrapper = () => {
     if (location.pathname === '/login' && !showLoginModal) {
       openLoginModal();
     }
-  }, [location.pathname, showLoginModal, openLoginModal]);
-  
+  }, [location.pathname, showLoginModal, openLoginModal]); 
+  // Close modal when navigating away from /login route
+  useEffect(() => {
+    if (location.pathname !== '/login' && showLoginModal) {
+      closeLoginModal();
+    }
+  }, [location.pathname, showLoginModal, closeLoginModal]);
   // Always render as a modal overlay
   return (
     <Login 
