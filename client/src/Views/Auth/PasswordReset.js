@@ -129,16 +129,18 @@ const PasswordReset = () => {
           
           <div className="verification-status">
             {error ? (
-              <div className="error-message">
-                <i className="fas fa-exclamation-circle"></i>
-                {error}
+              <>
+                <div className="error-message">
+                  <i className="fas fa-exclamation-circle"></i>
+                  {error}
+                </div>
                 <button 
                   onClick={() => navigate('/login')} 
                   className="back-to-login-button"
                 >
                   Back to Login
                 </button>
-              </div>
+              </>
             ) : (
               <div className="loading-message">
                 <i className="fas fa-spinner fa-spin"></i>
