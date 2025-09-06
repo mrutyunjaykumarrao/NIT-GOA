@@ -165,36 +165,36 @@ const Login = ({ isModalOpen, onClose }) => {
           setShowForgotPasswordLink(false);
           setShowForgotPassword(false);
           
-          // Close modal and stay on current page (don't navigate away)
+          // Close modal immediately
           if (onClose) onClose();
           
           // Role-based redirection logic
           const userRole = result.user.role;
           const from = location.state?.from?.pathname;
           
-          // Only navigate if we're on the actual /login page OR if redirecting from protected route
-          if (location.pathname === '/login' || from) {
+          // Navigate away from /login route to prevent modal conflicts
+          if (location.pathname === '/login') {
             if (from) {
               // If user was redirected from a protected route, go back there
-              navigate(from);
+              navigate(from, { replace: true });
             } else {
               // Default redirection based on role
               switch (userRole) {
                 case 'Admin':
-                  navigate('/admin');
+                  navigate('/admin', { replace: true });
                   break;
                 case 'Faculty':
                   // Redirect to faculty edit page using employee_id or employee_code
                   const facultyId = result.user.employee_id || result.user.employee_code || result.user.id;
-                  navigate(`/faculty/${facultyId}/edit`);
+                  navigate(`/faculty/${facultyId}/edit`, { replace: true });
                   break;
                 default:
-                  navigate('/');
+                  navigate('/', { replace: true });
                   break;
               }
             }
           }
-          // If we're not on /login page and no redirect needed, stay on current page after login
+          // If we're not on /login page, just close modal and stay on current page
         } else {
           // Use the error directly from the backend
           throw new Error(result.error);
