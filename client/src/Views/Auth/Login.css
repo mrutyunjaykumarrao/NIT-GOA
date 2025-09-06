@@ -674,6 +674,7 @@
 @media (max-width: 768px) and (min-width: 481px) and (orientation: portrait) {
   .login-modal-overlay {
     padding: 15px;
+    padding-top: 40px; /* Less top padding for tablets */
   }
   
   .login-modal-content {
@@ -715,12 +716,15 @@
 @media (max-width: 480px) {
   .login-modal-overlay {
     padding: 8px;
+    padding-top: 30px; /* Minimal top padding for mobile */
+    align-items: flex-start; /* Ensure it stays at top */
   }
   
   .login-modal-content {
     padding: 25px 18px;
     border-radius: 12px;
     max-width: 95vw;
+    margin: 35px auto;
   }
   
   .login-modal-content .login-header h1 {
@@ -760,6 +764,10 @@
 }
 
 @media (max-width: 320px) {
+  .login-modal-overlay {
+    padding-top: 25px; /* Even less padding for very small screens */
+  }
+  
   .login-modal-content {
     padding: 20px 15px;
     max-width: 98vw;
