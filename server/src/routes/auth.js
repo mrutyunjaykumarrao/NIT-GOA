@@ -85,6 +85,15 @@ router.post('/login', authLimiter, async (req, res) => {
       const now = new Date();
       const remainingTime = Math.ceil((lockedUntil - now) / (1000 * 60)); // minutes
       
+      // Debug logging to understand the timezone issue
+      console.log('🔒 LOCKOUT DEBUG:', {
+        locked_until_raw: user.locked_until,
+        locked_until_parsed: lockedUntil.toISOString(),
+        now: now.toISOString(),
+        remaining_minutes: remainingTime,
+        time_diff_hours: ((lockedUntil - now) / (1000 * 60 * 60)).toFixed(2)
+      });
+      
       return res.status(423).json({ 
         error: `Cannot log in until cooldown period ends (${remainingTime} minutes remaining)`,
         errorType: 'ACCOUNT_LOCKED',
@@ -103,7 +112,7 @@ router.post('/login', authLimiter, async (req, res) => {
         SET 
           failed_login_attempts = failed_login_attempts + 1,
           locked_until = CASE 
-            WHEN failed_login_attempts >= 4 THEN DATE_ADD(NOW(), INTERVAL 30 MINUTE)
+            WHEN failed_login_attempts >= 4 THEN DATE_ADD(UTC_TIMESTAMP(), INTERVAL 20 MINUTE)
             ELSE NULL
           END
         WHERE user_id = ?
@@ -676,6 +685,48 @@ router.post('/reset-password', resetPasswordLimiter, async (req, res) => {
     res.json({ message: 'Password has been reset successfully' });
   } catch (error) {
     console.error('Reset password error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Debug endpoint to check lockout status (temporary for debugging)
+router.get('/debug-lockout/:username', async (req, res) => {
+  try {
+    const { username } = req.params;
+    
+    const [users] = await executeQuery(`
+      SELECT 
+        username,
+        failed_login_attempts,
+        locked_until,
+        NOW() as current_time,
+        UTC_TIMESTAMP() as current_utc_time
+      FROM user_accounts 
+      WHERE username = ?
+    `, [username]);
+
+    if (users.length === 0) {
+      return res.json({ error: 'User not found' });
+    }
+
+    const user = users[0];
+    const lockedUntil = user.locked_until ? new Date(user.locked_until + 'Z') : null;
+    const now = new Date();
+    const remainingTime = lockedUntil ? Math.ceil((lockedUntil - now) / (1000 * 60)) : 0;
+
+    res.json({
+      username: user.username,
+      failed_attempts: user.failed_login_attempts,
+      locked_until_raw: user.locked_until,
+      locked_until_parsed: lockedUntil ? lockedUntil.toISOString() : null,
+      server_time: user.current_time,
+      server_utc_time: user.current_utc_time,
+      client_time: now.toISOString(),
+      remaining_minutes: remainingTime,
+      is_locked: remainingTime > 0
+    });
+  } catch (error) {
+    console.error('Debug lockout error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
