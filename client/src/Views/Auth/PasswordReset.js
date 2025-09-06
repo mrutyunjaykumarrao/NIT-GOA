@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 import useAsyncOperation from '../../hooks/useAsyncOperation';
 import './PasswordReset.css';
@@ -17,9 +17,34 @@ const PasswordReset = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  
+  // Refs for auto-focusing and navigation
+  const passwordInputRef = useRef(null);
+  const confirmPasswordInputRef = useRef(null);
 
   const navigateToLogin = () => {
     navigate('/login');
+  };
+
+  // Auto-focus on password field when token is verified
+  useEffect(() => {
+    if (tokenVerified && passwordInputRef.current) {
+      // Small delay to ensure modal is rendered
+      setTimeout(() => {
+        passwordInputRef.current.focus();
+      }, 100);
+    }
+  }, [tokenVerified]);
+
+  // Password visibility toggle functions
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
   };
 
   useEffect(() => {
@@ -60,6 +85,24 @@ const PasswordReset = () => {
   const handleConfirmPasswordChange = (e) => {
     setConfirmPassword(e.target.value);
     setError(''); // Clear error when user types
+  };
+
+  // Handle Enter key navigation
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !isLoading) {
+      e.preventDefault();
+      
+      // If Enter is pressed in password field, move to confirm password field
+      if (e.target.name === 'password') {
+        if (confirmPasswordInputRef.current) {
+          confirmPasswordInputRef.current.focus();
+        }
+      }
+      // If Enter is pressed in confirm password field, submit the form
+      else if (e.target.name === 'confirmPassword') {
+        handleSubmit(e);
+      }
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -224,36 +267,58 @@ const PasswordReset = () => {
 
           <div className="password-reset-form-group">
             <label htmlFor="password">New Password</label>
-            <div className="input-wrapper">
+            <div className="input-wrapper password-wrapper">
               <i className="fas fa-lock"></i>
               <input
-                type="password"
+                ref={passwordInputRef}
+                type={showPassword ? 'text' : 'password'}
                 id="password"
+                name="password"
                 value={password}
                 onChange={handlePasswordChange}
+                onKeyDown={handleKeyDown}
                 placeholder="Enter your new password"
                 required
                 disabled={isLoading}
                 minLength={6}
               />
+              <button
+                type="button"
+                className="password-toggle"
+                onClick={togglePasswordVisibility}
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+              >
+                <i className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
+              </button>
             </div>
             <small className="form-hint">Password must be at least 6 characters long</small>
           </div>
 
           <div className="password-reset-form-group">
             <label htmlFor="confirmPassword">Confirm New Password</label>
-            <div className="input-wrapper">
+            <div className="input-wrapper password-wrapper">
               <i className="fas fa-lock"></i>
               <input
-                type="password"
+                ref={confirmPasswordInputRef}
+                type={showConfirmPassword ? 'text' : 'password'}
                 id="confirmPassword"
+                name="confirmPassword"
                 value={confirmPassword}
                 onChange={handleConfirmPasswordChange}
+                onKeyDown={handleKeyDown}
                 placeholder="Confirm your new password"
                 required
                 disabled={isLoading}
                 minLength={6}
               />
+              <button
+                type="button"
+                className="password-toggle"
+                onClick={toggleConfirmPasswordVisibility}
+                aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
+              >
+                <i className={`fas ${showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
+              </button>
             </div>
           </div>
 
