@@ -169,28 +169,28 @@ const PasswordReset = () => {
             <img 
               src="/NIT_LOGO.png" 
               alt="NIT Goa Logo" 
-              className="reset-logo"
+              className="password-reset-logo"
             />
             <h1>Reset Password</h1>
             <p>National Institute of Technology Goa</p>
           </div>
           
-          <div className="verification-status">
+          <div className="password-reset-verification-status">
             {error ? (
               <>
-                <div className="error-message">
+                <div className="password-reset-error-message">
                   <i className="fas fa-exclamation-circle"></i>
                   {error}
                 </div>
                 <button 
                   onClick={navigateToLogin} 
-                  className="back-to-login-button"
+                  className="password-reset-back-to-login-button"
                 >
                   Back to Login
                 </button>
               </>
             ) : (
-              <div className="loading-message">
+              <div className="password-reset-loading-message">
                 <i className="fas fa-spinner fa-spin"></i>
                 Verifying reset token...
               </div>
@@ -216,18 +216,18 @@ const PasswordReset = () => {
             <img 
               src="/NIT_LOGO.png" 
               alt="NIT Goa Logo" 
-              className="reset-logo"
+              className="password-reset-logo"
             />
             <h1>Password Reset Successful</h1>
           </div>
           
-          <div className="success-message">
+          <div className="password-reset-success-message">
             <i className="fas fa-check-circle"></i>
             {success}
             <p>You will be redirected to the login page in a few seconds.</p>
             <button 
               onClick={navigateToLogin} 
-              className="login-now-button"
+              className="password-reset-login-now-button"
             >
               Login Now
             </button>
@@ -251,7 +251,7 @@ const PasswordReset = () => {
           <img 
             src="/NIT_LOGO.png" 
             alt="NIT Goa Logo" 
-            className="reset-logo"
+            className="password-reset-logo"
           />
           <h1>Reset Password</h1>
           <p>Enter your new password for: <strong>{username}</strong></p>
@@ -259,7 +259,7 @@ const PasswordReset = () => {
 
         <form onSubmit={handleSubmit} className="password-reset-form">
           {error && (
-            <div className="error-message">
+            <div className="password-reset-error-message">
               <i className="fas fa-exclamation-circle"></i>
               {error}
             </div>
@@ -267,7 +267,7 @@ const PasswordReset = () => {
 
           <div className="password-reset-form-group">
             <label htmlFor="password">New Password</label>
-            <div className="input-wrapper password-wrapper">
+            <div className="password-reset-input-wrapper password-reset-password-wrapper">
               <i className="fas fa-lock"></i>
               <input
                 ref={passwordInputRef}
@@ -284,19 +284,19 @@ const PasswordReset = () => {
               />
               <button
                 type="button"
-                className="password-toggle"
+                className="password-reset-password-toggle"
                 onClick={togglePasswordVisibility}
                 aria-label={showPassword ? 'Hide password' : 'Show password'}
               >
                 <i className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}></i>
               </button>
             </div>
-            <small className="form-hint">Password must be at least 6 characters long</small>
+            <small className="password-reset-form-hint">Password must be at least 6 characters long</small>
           </div>
 
           <div className="password-reset-form-group">
             <label htmlFor="confirmPassword">Confirm New Password</label>
-            <div className="input-wrapper password-wrapper">
+            <div className="password-reset-input-wrapper password-reset-password-wrapper">
               <i className="fas fa-lock"></i>
               <input
                 ref={confirmPasswordInputRef}
@@ -313,7 +313,7 @@ const PasswordReset = () => {
               />
               <button
                 type="button"
-                className="password-toggle"
+                className="password-reset-password-toggle"
                 onClick={toggleConfirmPasswordVisibility}
                 aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
               >
@@ -324,7 +324,7 @@ const PasswordReset = () => {
 
           <button 
             type="submit" 
-            className="reset-button"
+            className="password-reset-button"
             disabled={isLoading || !password || !confirmPassword}
           >
             {isLoading ? (
@@ -341,10 +341,10 @@ const PasswordReset = () => {
           </button>
         </form>
 
-        <div className="reset-footer">
+        <div className="password-reset-footer">
           <button 
             onClick={navigateToLogin} 
-            className="back-to-login-link"
+            className="password-reset-back-to-login-link"
           >
             ← Back to Login
           </button>
