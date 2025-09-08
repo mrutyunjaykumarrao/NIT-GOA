@@ -107,22 +107,22 @@ span,
 }
 
 /* Mobile/Desktop Display Control */
-.mobile-only {
+/* .mobile-only {
     display: none;
-}
+} */
 
 .desktop-tablet-only {
     display: block;
 }
 
 @media (max-width: 480px) {
-    .mobile-only {
+    /* .mobile-only {
         display: block;
-    }
+    } */
     
-    .desktop-tablet-only {
+    /* .desktop-tablet-only {
         display: none;
-    }
+    } */
     
     /* Magazine Card Mobile Optimization */
     .homepage-content-card.magazine-card {
