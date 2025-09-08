@@ -115,9 +115,20 @@ export const AuthProvider = ({ children }) => {
       setToken(authToken);
       setIsAuthenticated(true);
       
-      // Close modal and handle redirect
+      // Close modal
       setShowLoginModal(false);
-      const redirectPath = loginRedirectPath;
+      
+      // Determine redirect path based on user role
+      let redirectPath;
+      if (userData.role === 'Admin') {
+        redirectPath = '/admin';
+      } else if (userData.role === 'Faculty' && userData.employee_code) {
+        redirectPath = `/people/faculty/${userData.employee_code}`;
+      } else {
+        // Default fallback - use stored redirect path or home
+        redirectPath = loginRedirectPath || '/';
+      }
+      
       setLoginRedirectPath(null);
       
       return { success: true, user: userData, redirectPath };

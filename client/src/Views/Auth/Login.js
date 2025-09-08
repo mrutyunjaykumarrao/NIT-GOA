@@ -30,14 +30,9 @@ const Login = ({ isModalOpen, onClose }) => {
   const { loading: isLoading, executeAsync } = useAsyncOperation();
   const { loading: isForgotLoading, executeAsync: executeForgotAsync } = useAsyncOperation();
 
-  // Redirect if already authenticated and clear form when user logs out
+  // Clear form when user logs out (don't handle redirection here)
   React.useEffect(() => {
     if (isAuthenticated) {
-      // Only redirect if we're on the actual /login page, not when rendered as a modal
-      if (location.pathname === '/login') {
-        const from = location.state?.from?.pathname || '/';
-        navigate(from, { replace: true });
-      }
       // Always close modal if it's open
       if (onClose) onClose();
     } else {
@@ -52,7 +47,7 @@ const Login = ({ isModalOpen, onClose }) => {
       setForgotMessage('');
       setCooldownTimer(null);
     }
-  }, [isAuthenticated, navigate, location, onClose]);
+  }, [isAuthenticated, onClose]);
 
   // Close modal on escape key and auto-focus username field
   React.useEffect(() => {
@@ -168,33 +163,12 @@ const Login = ({ isModalOpen, onClose }) => {
           // Close modal immediately
           if (onClose) onClose();
           
-          // Role-based redirection logic
-          const userRole = result.user.role;
-          const from = location.state?.from?.pathname;
+          // Always use the redirectPath from AuthContext which handles role-based redirection
+          const redirectPath = result.redirectPath || '/';
           
-          // Navigate away from /login route to prevent modal conflicts
-          if (location.pathname === '/login') {
-            if (from) {
-              // If user was redirected from a protected route, go back there
-              navigate(from, { replace: true });
-            } else {
-              // Default redirection based on role
-              switch (userRole) {
-                case 'Admin':
-                  navigate('/admin', { replace: true });
-                  break;
-                case 'Faculty':
-                  // Redirect to faculty edit page using employee_id or employee_code
-                  const facultyId = result.user.employee_id || result.user.employee_code || result.user.id;
-                  navigate(`/faculty/${facultyId}/edit`, { replace: true });
-                  break;
-                default:
-                  navigate('/', { replace: true });
-                  break;
-              }
-            }
-          }
-          // If we're not on /login page, just close modal and stay on current page
+          // Always navigate to the redirect path for proper role-based redirection
+          // Admin -> /admin, Faculty -> /people/faculty/employee_code, Default -> /
+          navigate(redirectPath, { replace: true });
         } else {
           // Use the error directly from the backend
           throw new Error(result.error);

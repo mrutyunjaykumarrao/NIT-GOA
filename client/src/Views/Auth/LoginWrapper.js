@@ -14,12 +14,11 @@ const LoginWrapper = () => {
   // Handle navigation after successful login
   useEffect(() => {
     if (isAuthenticated && location.pathname === '/login') {
-      // User is authenticated and on login page - navigate away
+      // User is authenticated and on login page - they will be redirected by Login component
       closeLoginModal();
-      navigate('/', { replace: true });
       return;
     }
-  }, [isAuthenticated, location.pathname, closeLoginModal, navigate]);
+  }, [isAuthenticated, location.pathname, closeLoginModal]);
   
   // Auto-open modal when user navigates to /login route (only if not authenticated)
   useEffect(() => {
