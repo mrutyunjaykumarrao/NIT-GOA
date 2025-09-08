@@ -61,12 +61,14 @@ router.post('/login', authLimiter, async (req, res) => {
         ua.is_active,
         ua.locked_until,
         ua.failed_login_attempts,
+        ua.employee_code,
         e.employee_id,
-        e.employee_code,
+        e.honorific,
         e.full_name as employee_name,
-        e.email as employee_email
+        e.email as employee_email,
+        e.image_url as employee_image
       FROM user_accounts ua
-      LEFT JOIN employees e ON ua.user_id = e.user_account_id
+      LEFT JOIN employees e ON ua.employee_code = e.employee_code
       WHERE ua.username = ? AND ua.is_active = 1
     `, [username]);
 
@@ -164,17 +166,19 @@ router.post('/login', authLimiter, async (req, res) => {
     }
 
     res.json({
-      token,
-      user: {
-        id: user.id,
-        username: user.username,
-        role: user.role,
-        employee_id: user.employee_id,
-        employee_code: user.employee_code,
-        employee_name: user.employee_name,
-        employee_email: user.employee_email
-      }
-    });
+        token,
+        user: {
+          userId: user.id,
+          username: user.username,
+          role: user.role,
+          employee_id: user.employee_id,
+          employee_code: user.employee_code,
+          honorific: user.honorific,
+          employee_name: user.employee_name,
+          employee_email: user.employee_email,
+          employee_image: user.employee_image
+        }
+      });
 
   } catch (error) {
     console.error('Login error:', error);

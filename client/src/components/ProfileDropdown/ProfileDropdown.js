@@ -10,7 +10,79 @@ const ProfileDropdown = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [userImage, setUserImage] = useState(null);
+  const [imageError, setImageError] = useState(false);
+  const [hoverTimeout, setHoverTimeout] = useState(null);
   const dropdownRef = useRef(null);
+
+  // Fetch user image when user data is available
+  useEffect(() => {
+    const fetchUserImage = async () => {
+      if (!user?.employee_code || !user?.role) {
+        // If user has employee_image directly from auth, use it
+        if (user?.employee_image) {
+          const imageUrl = user.employee_image.startsWith('/') 
+            ? user.employee_image 
+            : `/${user.employee_image}`;
+          
+          // Test if the image actually exists
+          const img = new Image();
+          img.onload = () => {
+            setUserImage(imageUrl);
+            setImageError(false);
+          };
+          img.onerror = () => {
+            setUserImage(null);
+            setImageError(true);
+          };
+          img.src = imageUrl;
+        }
+        return;
+      }
+      
+      try {
+        let imageUrl = null;
+        
+        // If user already has employee_image from auth response, use it first
+        if (user.employee_image) {
+          imageUrl = user.employee_image.startsWith('/') 
+            ? user.employee_image 
+            : `/${user.employee_image}`;
+        } else if (user.role === 'Faculty') {
+          // For faculty, fetch their profile image from the faculty endpoint
+          const response = await fetch(`/api/public/faculty/${user.employee_code}`);
+          if (response.ok) {
+            const facultyData = await response.json();
+            if (facultyData.profile?.profile_image) {
+              imageUrl = facultyData.profile.profile_image.startsWith('/') 
+                ? facultyData.profile.profile_image 
+                : `/${facultyData.profile.profile_image}`;
+            }
+          }
+        }
+        
+        if (imageUrl) {
+          // Test if the image actually exists
+          const img = new Image();
+          img.onload = () => {
+            setUserImage(imageUrl);
+            setImageError(false);
+          };
+          img.onerror = () => {
+            setUserImage(null);
+            setImageError(true);
+          };
+          img.src = imageUrl;
+        }
+      } catch (error) {
+        console.error('Error fetching user image:', error);
+        setUserImage(null);
+        setImageError(true);
+      }
+    };
+
+    fetchUserImage();
+  }, [user?.employee_code, user?.role, user?.employee_image]);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -43,6 +115,15 @@ const ProfileDropdown = () => {
     };
   }, [isDropdownOpen]);
 
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (hoverTimeout) {
+        clearTimeout(hoverTimeout);
+      }
+    };
+  }, [hoverTimeout]);
+
   const handleLogout = () => {
     setIsDropdownOpen(false);
     logout();
@@ -50,24 +131,22 @@ const ProfileDropdown = () => {
     navigate('/');
   };
 
-  const handleProfileClick = () => {
-    setIsDropdownOpen(false);
-    // TODO: Navigate to profile page when implemented
-    console.log('Navigate to profile page');
-  };
-
-  const handleDashboardClick = () => {
-    setIsDropdownOpen(false);
-    if (user?.role === 'Admin') {
-      navigate('/admin');
+  // Handle hover interactions
+  const handleMouseEnter = () => {
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
     }
+    setIsDropdownOpen(true);
   };
 
-  const handleSettingsClick = () => {
-    setIsDropdownOpen(false);
-    // TODO: Navigate to settings page when implemented
-    console.log('Navigate to settings page');
+  const handleMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setIsDropdownOpen(false);
+    }, 200); // Small delay to prevent flickering when moving between avatar and dropdown
+    setHoverTimeout(timeout);
   };
+
+  // All navigation will now be handled during login, so we only need logout handler
 
   const getInitials = (name) => {
     if (!name) return 'U';
@@ -80,7 +159,10 @@ const ProfileDropdown = () => {
   };
 
   const getUserDisplayName = () => {
-    return user?.name || user?.username || 'User';
+    if (user?.honorific && user?.employee_name) {
+      return `${user.honorific} ${user.employee_name}`;
+    }
+    return user?.employee_name || user?.name || user?.username || 'User';
   };
 
   const getUserRole = () => {
@@ -115,19 +197,35 @@ const ProfileDropdown = () => {
   }
 
   return (
-    <div className="profile-dropdown" ref={dropdownRef}>
+    <div 
+      className="profile-dropdown" 
+      ref={dropdownRef}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <button 
         className="profile-dropdown-trigger"
-        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         aria-expanded={isDropdownOpen}
         aria-haspopup="true"
         aria-label="User menu"
         title={`${getUserDisplayName()} (${getUserRole()})`}
       >
         <div className="profile-dropdown-avatar">
-          <span className="profile-dropdown-initials">
-            {getInitials(getUserDisplayName())}
-          </span>
+          {userImage && !imageError ? (
+            <img 
+              src={userImage} 
+              alt={getUserDisplayName()}
+              className="profile-dropdown-avatar-img"
+              onError={() => {
+                setImageError(true);
+                setUserImage(null);
+              }}
+            />
+          ) : (
+            <span className="profile-dropdown-initials">
+              {getInitials(getUserDisplayName())}
+            </span>
+          )}
         </div>
       </button>
 
@@ -135,9 +233,21 @@ const ProfileDropdown = () => {
         <div className="profile-dropdown-menu">
           <div className="profile-dropdown-header">
             <div className="profile-dropdown-avatar-large">
-              <span className="profile-dropdown-initials">
-                {getInitials(getUserDisplayName())}
-              </span>
+              {userImage && !imageError ? (
+                <img 
+                  src={userImage} 
+                  alt={getUserDisplayName()}
+                  className="profile-dropdown-avatar-large-img"
+                  onError={() => {
+                    setImageError(true);
+                    setUserImage(null);
+                  }}
+                />
+              ) : (
+                <span className="profile-dropdown-initials">
+                  {getInitials(getUserDisplayName())}
+                </span>
+              )}
             </div>
             <div className="profile-dropdown-user-info">
               <p className="profile-dropdown-display-name">{getUserDisplayName()}</p>
@@ -147,38 +257,6 @@ const ProfileDropdown = () => {
               )}
             </div>
           </div>
-
-          <div className="profile-dropdown-divider"></div>
-
-          <div className="profile-dropdown-section">
-            {user?.role === 'Admin' && (
-              <button 
-                className="profile-dropdown-item"
-                onClick={handleDashboardClick}
-              >
-                <i className="fas fa-tachometer-alt"></i>
-                <span>Admin Dashboard</span>
-              </button>
-            )}
-            
-            <button 
-              className="profile-dropdown-item"
-              onClick={handleProfileClick}
-            >
-              <i className="fas fa-user"></i>
-              <span>Profile</span>
-            </button>
-
-            <button 
-              className="profile-dropdown-item"
-              onClick={handleSettingsClick}
-            >
-              <i className="fas fa-cog"></i>
-              <span>Settings</span>
-            </button>
-          </div>
-
-          <div className="profile-dropdown-divider"></div>
 
           <div className="profile-dropdown-section">
             <button 
