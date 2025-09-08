@@ -138,7 +138,7 @@ body {
 
 /* Enhanced shadow and positioning when scrolled */
 .navbar-wrapper.navbar-compact {
-  transform: translateY(-35px) translateZ(0);
+  transform: translateY(-56px) translateZ(0);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
@@ -160,6 +160,7 @@ body {
 .navbar-top-header {
   background-color: var(--color-background-gray);
   position: relative;
+  height: 56px;
   z-index: 2100 !important; /* Higher than navbar wrapper for proper layering */
   padding: 8px 0;
   font-size: 14px;
@@ -179,6 +180,7 @@ body {
 /* Container for top header content with responsive max-width */
 .navbar-top-header-content {
   max-width: var(--navbar-max-width-lg);
+  height: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -908,9 +910,9 @@ body {
 /* Mobile menu container */
 .mobile-menu {
   position: fixed;
-  top: calc(var(--navbar-Top-header-height) + var(--navbar-Main-header-height));
+  top: 56px;
   right: 0;
-  height: calc(100vh - var(--navbar-Top-header-height) - var(--navbar-Main-header-height));
+  height: 600px;
   width: 75%;
   max-width: 320px;
   background: var(--color-background-light);
@@ -972,6 +974,7 @@ body {
 /* Mobile menu header */
 .mobile-menu-header {
   padding: 26px 20px;
+  height: 100px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
@@ -1088,8 +1091,8 @@ body {
   border-top: 1px solid rgba(59, 130, 246, 0.1);
   margin: 0 8px;
   border-radius: 0 0 12px 12px;
-  overflow: hidden;
-  max-height: 0;
+  overflow: scroll;
+  max-height: 320px;
   opacity: 0;
   transform: translateY(-10px);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1097,7 +1100,7 @@ body {
 }
 
 .mobile-dropdown-menu.open {
-  max-height: 500px;
+  max-height: 320px;
   opacity: 1;
   transform: translateY(0);
 }
@@ -1307,6 +1310,7 @@ body {
   .navbar-header-content {
     flex-direction: row;
     gap: 15px;
+    height: 100%;
     text-align: left;
     justify-content: space-between;
     padding: 0 var(--navbar-padding-xs);
@@ -1378,6 +1382,10 @@ body {
 /* ===== SMALL MOBILE (320px - 480px) ===== */
 @media (max-width: 420px)
 { 
+
+  .navbar-main-header{
+    height: 100px;
+  }
 
   .mobile-menu-theme {
     gap: 2px;
@@ -1461,6 +1469,9 @@ body {
 
 /* ===== SMALL TABLET (481px - 768px) ===== */
 @media (min-width: 481px) and (max-width: 768px) {
+  .navbar-main-header {
+        height: 100px;
+  }
   .navbar-header-content {
     padding: 0 40px;
   }
