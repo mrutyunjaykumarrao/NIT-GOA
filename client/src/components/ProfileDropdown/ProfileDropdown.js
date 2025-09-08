@@ -10,6 +10,7 @@ const ProfileDropdown = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDropdownClosing, setIsDropdownClosing] = useState(false);
   const [userImage, setUserImage] = useState(null);
   const [imageError, setImageError] = useState(false);
   const [hoverTimeout, setHoverTimeout] = useState(null);
@@ -88,7 +89,7 @@ const ProfileDropdown = () => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsDropdownOpen(false);
+        closeDropdown();
       }
     };
 
@@ -102,7 +103,7 @@ const ProfileDropdown = () => {
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape') {
-        setIsDropdownOpen(false);
+        closeDropdown();
       }
     };
 
@@ -124,11 +125,33 @@ const ProfileDropdown = () => {
     };
   }, [hoverTimeout]);
 
+  const closeDropdown = () => {
+    if (!isDropdownOpen) return;
+    
+    setIsDropdownClosing(true);
+    setTimeout(() => {
+      setIsDropdownOpen(false);
+      setIsDropdownClosing(false);
+    }, 300); // Match the animation duration
+  };
+
   const handleLogout = () => {
-    setIsDropdownOpen(false);
+    closeDropdown();
     logout();
     // Navigate to home page after logout instead of opening login modal
     navigate('/');
+  };
+
+  const handleAdminDashboard = () => {
+    closeDropdown();
+    navigate('/admin');
+  };
+
+  const handleFacultyProfile = () => {
+    closeDropdown();
+    if (user?.employee_code) {
+      navigate(`/people/faculty/${user.employee_code}`);
+    }
   };
 
   // Handle hover interactions
@@ -141,7 +164,7 @@ const ProfileDropdown = () => {
 
   const handleMouseLeave = () => {
     const timeout = setTimeout(() => {
-      setIsDropdownOpen(false);
+      closeDropdown();
     }, 200); // Small delay to prevent flickering when moving between avatar and dropdown
     setHoverTimeout(timeout);
   };
@@ -230,7 +253,9 @@ const ProfileDropdown = () => {
       </button>
 
       {isDropdownOpen && (
-        <div className="profile-dropdown-menu">
+        <div 
+          className={`profile-dropdown-menu ${isDropdownClosing ? 'profile-dropdown-menu-closing' : ''}`}
+        >
           <div className="profile-dropdown-header">
             <div className="profile-dropdown-avatar-large">
               {userImage && !imageError ? (
@@ -259,6 +284,26 @@ const ProfileDropdown = () => {
           </div>
 
           <div className="profile-dropdown-section">
+            {user?.role === 'Admin' && (
+              <button 
+                className="profile-dropdown-item profile-dropdown-dashboard"
+                onClick={handleAdminDashboard}
+              >
+                <i className="fas fa-tachometer-alt"></i>
+                <span>Admin Dashboard</span>
+              </button>
+            )}
+            
+            {user?.role === 'Faculty' && user?.employee_code && (
+              <button 
+                className="profile-dropdown-item profile-dropdown-profile"
+                onClick={handleFacultyProfile}
+              >
+                <i className="fas fa-user"></i>
+                <span>My Profile</span>
+              </button>
+            )}
+            
             <button 
               className="profile-dropdown-item profile-dropdown-logout"
               onClick={handleLogout}
