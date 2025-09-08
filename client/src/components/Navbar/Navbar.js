@@ -350,17 +350,6 @@ const Navbar = () => {
                 <a href="https://www.nitgoa.ac.in/uploads/NITGoaStatute-2023.pdf" target="_blank" rel="noopener noreferrer">NIT Goa(Amendment) Statute 2023</a>
                 <a href="/pdf/Administration/organizational-structure/Org_Chart.pdf" target="_blank" rel="noopener noreferrer">Organizational Structure</a>
                 <Link to="/reports">Reports</Link>
-                <a href="/administration/director">Director</a>
-                <a href="/administration/registrar">Registrar</a>
-                <a href="/administration/senate">Senate</a>
-                <a href="/administration/deans">Deans</a>
-                <a href="/administration/committees">Committees</a>
-                <a href="/administration/finance-committee">Finance Committee</a>
-                <a href="/administration/building-works-committee">Building and Works Committee</a>
-                <LoggingLink to="/heads-of-departments">Heads of Departments</LoggingLink>
-                <a href="https://www.nitgoa.ac.in/uploads/NITGoaStatute-2023.pdf" target="_blank" rel="noopener noreferrer">NIT Goa(Amendment) Statute 2023</a>
-                <a href="/pdf/Administration/organizational-structure/Org_Chart.pdf" target="_blank" rel="noopener noreferrer">Organizational Structure</a>
-                <Link to="/reports">Reports</Link>
               </div>
             )}
           </div>

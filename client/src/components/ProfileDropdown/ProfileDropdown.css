@@ -541,8 +541,8 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .profile-dropdown-menu {
-    width: 100vw;
-    border-radius: 0;
+    width: fit-content;
+    border-radius: 15px;
     border: none;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   }
