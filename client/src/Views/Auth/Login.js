@@ -178,6 +178,7 @@ const Login = ({ isModalOpen, onClose }) => {
         showSuccessToast: true,
         successMessage: 'Login successful!',
         showErrorToast: false, // We'll handle errors manually for better UX
+        suppressErrorRethrow: true, // Prevent React error overlay
         onError: (error) => {
           setError(error.message);
           const newFailedAttempts = failedAttempts + 1;
@@ -233,6 +234,7 @@ const Login = ({ isModalOpen, onClose }) => {
       {
         showSuccessToast: false, // We'll show the message directly
         showErrorToast: false, // Handle error manually
+        suppressErrorRethrow: true, // Prevent React error overlay
         onError: (error) => {
           setForgotMessage(error.message || 'Failed to process password reset request. Please try again.');
         }

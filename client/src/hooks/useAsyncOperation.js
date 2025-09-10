@@ -21,7 +21,8 @@ const useAsyncOperation = () => {
       errorMessage = 'Operation failed',
       onSuccess,
       onError,
-      finallyCallback
+      finallyCallback,
+      suppressErrorRethrow = false
     } = options;
 
     try {
@@ -60,7 +61,10 @@ const useAsyncOperation = () => {
         onError(error);
       }
 
-      throw error; // Re-throw for caller to handle if needed
+      // Only re-throw if not suppressed
+      if (!suppressErrorRethrow) {
+        throw error; // Re-throw for caller to handle if needed
+      }
     } finally {
       // Clear loading states
       if (useGlobalLoading) {
