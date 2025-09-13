@@ -83,6 +83,8 @@ router.post('/login', async (req, res) => {
         ua.is_active,
         ua.locked_until,
         ua.failed_login_attempts,
+        ua.lockout_timestamp,
+        ua.lockout_duration_minutes,
         ua.employee_code,
         e.employee_id,
         e.honorific,
@@ -133,36 +135,47 @@ router.post('/login', async (req, res) => {
           failed_attempts: user.failed_login_attempts
         });
         
-        return res.status(423).json({ 
-          error: `Cannot log in until cooldown period ends (${remainingTime} minutes remaining)`,
+        console.log('🚫 ACCOUNT IS LOCKED - BLOCKING LOGIN ATTEMPT');
+        const response = {
+          error: `Account locked after ${user.failed_login_attempts} failed login attempts. Please try again in ${remainingTime} minutes.`,
           errorType: 'ACCOUNT_LOCKED',
           lockedUntil: formatForDisplay(lockoutEnd),
           remainingMinutes: remainingTime,
           lockoutDuration: user.lockout_duration_minutes,
           totalFailedAttempts: user.failed_login_attempts,
           lockoutStart: formatForDisplay(lockoutStart)
-        });
+        };
+        console.log('📤 SENDING LOCKOUT RESPONSE:', response);
+        res.status(423).json(response);
+        console.log('✅ LOCKOUT RESPONSE SENT - SHOULD STOP HERE');
+        return;
       } else {
-        // Lockout has expired, clear it
+        // Lockout has expired, clear it and reset failed attempts
         console.log(`🔓 Clearing expired lockout for user ${username}`);
         await executeQuery(`
           UPDATE user_accounts 
           SET 
             locked_until = NULL,
             lockout_timestamp = NULL,
-            lockout_duration_minutes = 0
+            lockout_duration_minutes = 0,
+            failed_login_attempts = 0
           WHERE user_id = ?
         `, [user.id]);
+        
+        // Update the user object to reflect the reset
+        user.failed_login_attempts = 0;
         
         // Continue with login attempt (don't return here)
       }
     }
 
     // Verify password
+    console.log('🔍 VERIFYING PASSWORD FOR USER:', username, 'Current failed attempts:', user.failed_login_attempts);
     const passwordMatch = await bcrypt.compare(password, user.password_hash);
 
     if (!passwordMatch) {
       // Increment failed login attempts first
+      console.log('❌ PASSWORD MISMATCH - INCREMENTING FAILED ATTEMPTS');
       const currentAttempts = user.failed_login_attempts + 1;
       
       let lockoutDuration = 0; // in minutes

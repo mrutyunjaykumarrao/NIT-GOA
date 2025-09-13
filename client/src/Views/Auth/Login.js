@@ -450,7 +450,7 @@ const Login = ({ isModalOpen, onClose }) => {
                   onKeyDown={handleKeyDown}
                   placeholder="Enter your username"
                   required
-                  disabled={isLoading}
+                  disabled={isLoading || cooldownTimer > 0}
                 />
               </div>
             </div>
@@ -470,7 +470,7 @@ const Login = ({ isModalOpen, onClose }) => {
                   placeholder="Enter your password"
                   autoComplete="current-password"
                   required
-                  disabled={isLoading}
+                  disabled={isLoading || cooldownTimer > 0}
                 />
                 <button
                   type="button"
@@ -486,12 +486,17 @@ const Login = ({ isModalOpen, onClose }) => {
             <button 
               type="submit" 
               className="login-button"
-              disabled={isLoading}
+              disabled={isLoading || cooldownTimer > 0}
             >
               {isLoading ? (
                 <>
                   <i className="fas fa-spinner fa-spin"></i>
                   Signing in...
+                </>
+              ) : cooldownTimer > 0 ? (
+                <>
+                  <i className="fas fa-lock"></i>
+                  Account Locked ({Math.ceil(cooldownTimer / 60)}m)
                 </>
               ) : (
                 <>

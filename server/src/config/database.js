@@ -24,6 +24,8 @@ const pool = mysql.createPool({
   timeout: 60000,
   enableKeepAlive: true,
   keepAliveInitialDelay: 0,
+  // Ensure UTC timezone for all connections
+  timezone: '+00:00',
   // Handle JSON columns properly
   typeCast: function (field, next) {
     if (field.type === 'JSON') {
@@ -31,6 +33,12 @@ const pool = mysql.createPool({
     }
     return next();
   }
+});
+
+// Set timezone to UTC for every connection
+pool.on('connection', function (connection) {
+  connection.query('SET time_zone = "+00:00"');
+  console.log('Connection timezone set to UTC');
 });
 
 // Test database connection with enhanced error handling
