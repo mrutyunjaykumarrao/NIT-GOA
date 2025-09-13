@@ -293,7 +293,8 @@ const UsersTab = ({ usersList, onCreateUser, onEditUser, onDeleteUser }) => {
     if (!dateString) return 'N/A';
     try {
       const date = new Date(dateString);
-      return date.toLocaleDateString('en-US', {
+      return date.toLocaleDateString('en-IN', {
+        timeZone: 'Asia/Kolkata',
         year: 'numeric',
         month: 'short',
         day: 'numeric'

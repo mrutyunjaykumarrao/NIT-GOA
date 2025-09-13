@@ -1,18 +1,31 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
+const nodemailer = require('nodemailer');
 const rateLimit = require('express-rate-limit');
+const mysql = require('mysql2/promise');
 const { executeQuery } = require('../config/database');
 const { authenticateToken } = require('../middleware/auth');
 const emailService = require('../utils/emailService');
 
+// Import the centralized timezone utilities
+const { 
+  getUTCNow, 
+  parseFromStorage, 
+  addMinutes, 
+  getMinutesDifference, 
+  formatForStorage,
+  formatForDisplay,
+  isPast
+} = require('../utils/timezone');
+
 const router = express.Router();
 
-// Rate limiting for auth routes
+// Rate limiting for auth routes (very lenient for testing progressive lockout)
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 20, // 20 attempts per window (increased for development)
+  max: 1000, // 1000 attempts per window (very generous for testing)
   message: { error: 'Too many authentication attempts, please try again later' },
   standardHeaders: true,
   legacyHeaders: false,
@@ -42,8 +55,17 @@ const resetPasswordLimiter = rateLimit({
   }
 });
 
-// Login endpoint
-router.post('/login', authLimiter, async (req, res) => {
+// Specific rate limiter for login endpoint (very lenient for testing progressive lockout)
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 1000, // 1000 attempts per window (very generous for testing)
+  message: { error: 'Too many login attempts, please try again later' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+// Login endpoint (rate limiter temporarily disabled for testing)
+router.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body;
 
@@ -81,58 +103,134 @@ router.post('/login', authLimiter, async (req, res) => {
 
     const user = users[0];
 
-    // Check if account is locked
-    if (user.locked_until && new Date(user.locked_until) > new Date()) {
-      const lockedUntil = new Date(user.locked_until);
-      const now = new Date();
-      const remainingTime = Math.ceil((lockedUntil - now) / (1000 * 60)); // minutes
+    // Check if account is locked using lockout_timestamp + duration for accurate calculation
+    if (user.lockout_timestamp && user.lockout_duration_minutes > 0) {
+      const lockoutStart = parseFromStorage(user.lockout_timestamp);
+      const now = getUTCNow();
+      const lockoutEnd = addMinutes(lockoutStart, user.lockout_duration_minutes);
+      const remainingTime = getMinutesDifference(lockoutEnd, now);
       
-      // Debug logging to understand the timezone issue
-      console.log('🔒 LOCKOUT DEBUG:', {
-        locked_until_raw: user.locked_until,
-        locked_until_parsed: lockedUntil.toISOString(),
-        now: now.toISOString(),
-        remaining_minutes: remainingTime,
-        time_diff_hours: ((lockedUntil - now) / (1000 * 60 * 60)).toFixed(2)
+      console.log('🔒 DETAILED LOCKOUT DEBUG (UTC):', {
+        user_lockout_timestamp: user.lockout_timestamp,
+        user_lockout_duration_minutes: user.lockout_duration_minutes,
+        lockout_start_UTC: lockoutStart.toISOString(),
+        now_UTC: now.toISOString(),
+        lockout_end_UTC: lockoutEnd.toISOString(),
+        time_diff_minutes: lockoutEnd.getTime() - now.getTime(),
+        remaining_time_minutes: remainingTime,
+        is_still_locked: remainingTime > 0
       });
       
-      return res.status(423).json({ 
-        error: `Cannot log in until cooldown period ends (${remainingTime} minutes remaining)`,
-        errorType: 'ACCOUNT_LOCKED',
-        lockedUntil: user.locked_until,
-        remainingMinutes: remainingTime
-      });
+      if (remainingTime > 0) {
+        // Debug logging
+        console.log('🔒 LOCKOUT DEBUG:', {
+          lockout_timestamp: user.lockout_timestamp,
+          lockout_start: lockoutStart.toISOString(),
+          lockout_duration_minutes: user.lockout_duration_minutes,
+          lockout_end: lockoutEnd.toISOString(),
+          now: now.toISOString(),
+          remaining_minutes: remainingTime,
+          failed_attempts: user.failed_login_attempts
+        });
+        
+        return res.status(423).json({ 
+          error: `Cannot log in until cooldown period ends (${remainingTime} minutes remaining)`,
+          errorType: 'ACCOUNT_LOCKED',
+          lockedUntil: formatForDisplay(lockoutEnd),
+          remainingMinutes: remainingTime,
+          lockoutDuration: user.lockout_duration_minutes,
+          totalFailedAttempts: user.failed_login_attempts,
+          lockoutStart: formatForDisplay(lockoutStart)
+        });
+      } else {
+        // Lockout has expired, clear it
+        console.log(`🔓 Clearing expired lockout for user ${username}`);
+        await executeQuery(`
+          UPDATE user_accounts 
+          SET 
+            locked_until = NULL,
+            lockout_timestamp = NULL,
+            lockout_duration_minutes = 0
+          WHERE user_id = ?
+        `, [user.id]);
+        
+        // Continue with login attempt (don't return here)
+      }
     }
 
     // Verify password
     const passwordMatch = await bcrypt.compare(password, user.password_hash);
 
     if (!passwordMatch) {
-      // Increment failed login attempts
-      await executeQuery(`
-        UPDATE user_accounts 
-        SET 
-          failed_login_attempts = failed_login_attempts + 1,
-          locked_until = CASE 
-            WHEN failed_login_attempts >= 4 THEN DATE_ADD(UTC_TIMESTAMP(), INTERVAL 20 MINUTE)
-            ELSE NULL
-          END
-        WHERE user_id = ?
-      `, [user.id]);
-
-      return res.status(401).json({ 
-        error: `Invalid credentials for username: ${username}`,
-        errorType: 'WRONG_PASSWORD',
-        username: username
-      });
+      // Increment failed login attempts first
+      const currentAttempts = user.failed_login_attempts + 1;
+      
+      let lockoutDuration = 0; // in minutes
+      let shouldLock = false;
+      
+      // Progressive cooldown logic
+      if (currentAttempts === 4) {
+        // First lockout: 5 minutes
+        lockoutDuration = 5;
+        shouldLock = true;
+        console.log(`🔒 Account locked for user ${username} after 4 failed attempts. Lockout duration: ${lockoutDuration} minutes`);
+      } else if (currentAttempts >= 6) {
+        // Extended lockout: 20 minutes (skipping 5th attempt as grace)
+        lockoutDuration = 20;
+        shouldLock = true;
+        console.log(`🔒 Account locked for user ${username} after ${currentAttempts} failed attempts. Lockout duration: ${lockoutDuration} minutes`);
+      }
+      
+      if (shouldLock) {
+        const lockoutStart = getUTCNow();
+        const lockoutEnd = addMinutes(lockoutStart, lockoutDuration);
+        
+        // Lock the account with progressive cooldown
+        await executeQuery(`
+          UPDATE user_accounts 
+          SET 
+            failed_login_attempts = ?,
+            locked_until = ?,
+            lockout_timestamp = ?,
+            lockout_duration_minutes = ?
+          WHERE user_id = ?
+        `, [currentAttempts, formatForStorage(lockoutEnd), formatForStorage(lockoutStart), lockoutDuration, user.id]);
+        
+        return res.status(423).json({ 
+          error: `Account locked after ${currentAttempts} failed login attempts. Please try again in ${lockoutDuration} minutes.`,
+          errorType: 'ACCOUNT_LOCKED',
+          lockedUntil: formatForDisplay(lockoutEnd),
+          remainingMinutes: lockoutDuration,
+          lockoutDuration: lockoutDuration,
+          lockoutStart: formatForDisplay(lockoutStart),
+          totalFailedAttempts: currentAttempts
+        });
+      } else {
+        // Just increment failed attempts without locking
+        await executeQuery(`
+          UPDATE user_accounts 
+          SET failed_login_attempts = ?
+          WHERE user_id = ?
+        `, [currentAttempts, user.id]);
+        
+        const remainingAttempts = currentAttempts === 5 ? 1 : (4 - currentAttempts); // 5th is grace attempt
+        return res.status(401).json({ 
+          error: `Invalid credentials for username: ${username}. ${remainingAttempts} attempt(s) remaining before lockout.`,
+          errorType: 'WRONG_PASSWORD',
+          username: username,
+          remainingAttempts: remainingAttempts
+        });
+      }
     }
 
-    // Reset failed login attempts on successful login
+    // Reset failed login attempts and lockout fields on successful login
     await executeQuery(`
       UPDATE user_accounts 
       SET 
         failed_login_attempts = 0,
         locked_until = NULL,
+        lockout_timestamp = NULL,
+        lockout_duration_minutes = 0,
         last_login = NOW()
       WHERE user_id = ?
     `, [user.id]);
@@ -358,7 +456,7 @@ router.post('/forgot-password', forgotPasswordLimiter, async (req, res) => {
 
     // Generate reset token
     const resetToken = crypto.randomBytes(32).toString('hex');
-    const resetExpiry = new Date(Date.now() + 60 * 60 * 1000); // 1 hour from now
+    const resetExpiry = addMinutes(getUTCNow(), 60); // 1 hour from now in UTC
 
     // Store reset token
     await executeQuery(`
@@ -369,7 +467,7 @@ router.post('/forgot-password', forgotPasswordLimiter, async (req, res) => {
         reset_token_used = FALSE,
         updated_at = CURRENT_TIMESTAMP
       WHERE user_id = ?
-    `, [resetToken, resetExpiry, user.user_id]);
+    `, [resetToken, formatForStorage(resetExpiry), user.user_id]);
 
     // Log password reset request
     await executeQuery(`
@@ -506,7 +604,7 @@ router.post('/forgot-password-by-username', async (req, res) => {
     console.log('📧 Generating reset token...');
     // Generate reset token
     const resetToken = crypto.randomBytes(32).toString('hex');
-    const resetExpiry = new Date(Date.now() + 60 * 60 * 1000); // 1 hour from now
+    const resetExpiry = addMinutes(getUTCNow(), 60); // 1 hour from now in UTC
     console.log('📧 Reset token generated, updating database...');
 
     // Store reset token
@@ -518,7 +616,7 @@ router.post('/forgot-password-by-username', async (req, res) => {
         reset_token_used = FALSE,
         updated_at = CURRENT_TIMESTAMP
       WHERE user_id = ?
-    `, [resetToken, resetExpiry, user.user_id]);
+    `, [resetToken, formatForStorage(resetExpiry), user.user_id]);
 
     console.log('📧 Database updated with reset token, skipping audit log for now...');
 
@@ -601,7 +699,7 @@ router.get('/verify-reset-token/:token', async (req, res) => {
       return res.status(400).json({ error: 'Reset token has already been used' });
     }
 
-    if (new Date() > new Date(user.reset_token_expires)) {
+    if (getUTCNow() > parseFromStorage(user.reset_token_expires)) {
       return res.status(400).json({ error: 'Reset token has expired' });
     }
 
@@ -649,7 +747,7 @@ router.post('/reset-password', resetPasswordLimiter, async (req, res) => {
       return res.status(400).json({ error: 'Reset token has already been used' });
     }
 
-    if (new Date() > new Date(user.reset_token_expires)) {
+    if (getUTCNow() > parseFromStorage(user.reset_token_expires)) {
       return res.status(400).json({ error: 'Reset token has expired' });
     }
 
@@ -731,6 +829,83 @@ router.get('/debug-lockout/:username', async (req, res) => {
     });
   } catch (error) {
     console.error('Debug lockout error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Lockout status endpoint for frontend polling
+router.post('/lockout-status', async (req, res) => {
+  try {
+    const { username } = req.body;
+    
+    if (!username) {
+      return res.status(400).json({ error: 'Username is required' });
+    }
+    
+    const [users] = await executeQuery(`
+      SELECT 
+        username,
+        failed_login_attempts,
+        locked_until,
+        lockout_timestamp,
+        lockout_duration_minutes
+      FROM user_accounts 
+      WHERE username = ?
+    `, [username]);
+
+    if (users.length === 0) {
+      return res.json({ 
+        locked: false,
+        remainingMinutes: 0,
+        message: 'User not found'
+      });
+    }
+
+    const user = users[0];
+    const now = getUTCNow();
+    
+    // Check lockout using lockout_timestamp + duration for accurate calculation
+    if (user.lockout_timestamp && user.lockout_duration_minutes > 0) {
+      const lockoutStart = parseFromStorage(user.lockout_timestamp);
+      const lockoutEnd = addMinutes(lockoutStart, user.lockout_duration_minutes);
+      const remainingTime = getMinutesDifference(lockoutEnd, now);
+      
+      if (remainingTime > 0) {
+        return res.json({
+          locked: true,
+          remainingMinutes: remainingTime,
+          lockoutDuration: user.lockout_duration_minutes,
+          totalFailedAttempts: user.failed_login_attempts,
+          lockedUntil: lockoutEnd.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+          lockoutStart: lockoutStart.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+        });
+      } else {
+        // Lockout has expired, clear it
+        await executeQuery(`
+          UPDATE user_accounts 
+          SET 
+            locked_until = NULL,
+            lockout_timestamp = NULL,
+            lockout_duration_minutes = 0
+          WHERE username = ?
+        `, [username]);
+        
+        return res.json({
+          locked: false,
+          remainingMinutes: 0,
+          failedAttempts: user.failed_login_attempts,
+          wasExpired: true
+        });
+      }
+    } else {
+      return res.json({
+        locked: false,
+        remainingMinutes: 0,
+        failedAttempts: user.failed_login_attempts
+      });
+    }
+  } catch (error) {
+    console.error('Lockout status error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });

@@ -43,10 +43,10 @@ app.use('/api/', createRateLimiter(
   'Too many requests from this IP, please try again later.'
 ));
 
-// Stricter rate limiting for auth endpoints
+// Stricter rate limiting for auth endpoints (very lenient for testing progressive lockout)
 app.use('/api/auth/', createRateLimiter(
   15 * 60 * 1000, // 15 minutes
-  20, // 20 login attempts per window
+  10000, // 10000 login attempts per window (very generous for testing)
   'Too many authentication attempts, please try again later.'
 ));
 

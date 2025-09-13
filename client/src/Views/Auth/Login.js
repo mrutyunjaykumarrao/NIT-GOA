@@ -49,6 +49,53 @@ const Login = ({ isModalOpen, onClose }) => {
     }
   }, [isAuthenticated, onClose]);
 
+  // Check for existing lockout status on component mount and username change
+  React.useEffect(() => {
+    const checkLockoutStatus = async () => {
+      if (!credentials.username || credentials.username.length < 2) return;
+      
+      try {
+        const response = await fetch('/api/auth/lockout-status', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username: credentials.username })
+        });
+        
+        if (response.ok) {
+          const data = await response.json();
+          if (data.locked && data.remainingMinutes > 0) {
+            // Always sync with server time to prevent drift
+            setCooldownTimer(data.remainingMinutes * 60); // Convert to seconds
+            const duration = data.lockoutDuration || data.remainingMinutes;
+            setError(`Account locked for ${duration} minutes. ${data.remainingMinutes} minutes remaining.`);
+          } else if (!data.locked) {
+            // Clear any lockout state when server says not locked
+            setCooldownTimer(null);
+            setError('');
+          }
+        }
+      } catch (error) {
+        console.log('Failed to check lockout status:', error);
+        // Don't show error to user, just continue
+      }
+    };
+    
+    // Check immediately and then periodically while locked
+    checkLockoutStatus();
+    
+    // Set up polling if user seems to be in a locked state
+    let pollInterval;
+    if (cooldownTimer > 0) {
+      pollInterval = setInterval(checkLockoutStatus, 5000); // Check every 5 seconds for better sync
+    }
+    
+    return () => {
+      if (pollInterval) clearInterval(pollInterval);
+    };
+  }, [credentials.username, cooldownTimer]);
+
   // Close modal on escape key and auto-focus username field
   React.useEffect(() => {
     const handleEscape = (e) => {
@@ -106,15 +153,17 @@ const Login = ({ isModalOpen, onClose }) => {
 
   // Format cooldown timer display
   const formatCooldownTime = (seconds) => {
-    if (!seconds) return '';
+    if (!seconds || seconds <= 0) return '';
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
     const secs = seconds % 60;
     
     if (hours > 0) {
-      return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+      return `${hours}h ${minutes}m ${secs}s`;
+    } else if (minutes > 0) {
+      return `${minutes}m ${secs}s`;
     } else {
-      return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+      return `${secs}s`;
     }
   };
 
@@ -180,22 +229,43 @@ const Login = ({ isModalOpen, onClose }) => {
         showErrorToast: false, // We'll handle errors manually for better UX
         suppressErrorRethrow: true, // Prevent React error overlay
         onError: (error) => {
-          setError(error.message);
-          const newFailedAttempts = failedAttempts + 1;
-          setFailedAttempts(newFailedAttempts);
+          console.log('Login error:', error); // Debug log
           
-          // Show forgot password LINK after 2 failed password attempts (not username not found)
-          if (newFailedAttempts >= 2 && !error.message.includes('username not found')) {
-            setShowForgotPasswordLink(true);
-          }
-          
-          // Handle cooldown timer for locked accounts
-          if (error.message.includes('cooldown period')) {
-            // Extract remaining minutes from error message and start countdown
+          // Handle ACCOUNT_LOCKED responses
+          if (error.errorType === 'ACCOUNT_LOCKED' || error.remainingMinutes) {
+            const remainingMinutes = error.remainingMinutes || 0;
+            const lockoutDuration = error.lockoutDuration || remainingMinutes;
+            const totalAttempts = error.totalFailedAttempts || 'multiple';
+            
+            setCooldownTimer(remainingMinutes * 60); // Convert to seconds
+            setError(`Account locked after ${totalAttempts} failed attempts. Please wait ${remainingMinutes} minutes (${lockoutDuration} minute lockout).`);
+          } else if (error.message.includes('cooldown period')) {
+            // Handle legacy cooldown messages for backward compatibility
             const match = error.message.match(/\((\d+) minutes remaining\)/);
             if (match) {
               const minutes = parseInt(match[1]);
               setCooldownTimer(minutes * 60); // Convert to seconds
+              setError(error.message);
+            }
+          } else if (error.remainingAttempts !== undefined) {
+            // Handle failed attempts with remaining count
+            const newFailedAttempts = failedAttempts + 1;
+            setFailedAttempts(newFailedAttempts);
+            setError(error.message);
+            
+            // Show forgot password LINK after 2 failed password attempts
+            if (newFailedAttempts >= 2) {
+              setShowForgotPasswordLink(true);
+            }
+          } else {
+            // Handle other authentication errors
+            setError(error.message);
+            const newFailedAttempts = failedAttempts + 1;
+            setFailedAttempts(newFailedAttempts);
+            
+            // Show forgot password LINK after 2 failed password attempts (not username not found)
+            if (newFailedAttempts >= 2 && !error.message.includes('username not found')) {
+              setShowForgotPasswordLink(true);
             }
           }
         }
