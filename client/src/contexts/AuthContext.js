@@ -134,6 +134,15 @@ export const AuthProvider = ({ children }) => {
       return { success: true, user: userData, redirectPath };
     } catch (error) {
       console.error('Login error:', error);
+      
+      // For lockout errors (423), return the full response data to preserve lockout details
+      if (error.response?.status === 423 && error.response?.data) {
+        return {
+          success: false,
+          ...error.response.data // This includes errorType, remainingMinutes, lockoutDuration, etc.
+        };
+      }
+      
       return {
         success: false,
         error: error.response?.data?.error || 'Login failed'

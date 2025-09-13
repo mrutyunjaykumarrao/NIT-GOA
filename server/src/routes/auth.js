@@ -14,13 +14,26 @@ const {
   getUTCNow, 
   parseFromStorage, 
   addMinutes, 
-  getMinutesDifference, 
+  getMinutesDifference,
+  getSecondsDifference, 
   formatForStorage,
   formatForDisplay,
   isPast
 } = require('../utils/timezone');
 
 const router = express.Router();
+
+// Helper function to format remaining time with minutes and seconds
+const formatRemainingTime = (remainingSeconds) => {
+  const minutes = Math.floor(remainingSeconds / 60);
+  const seconds = remainingSeconds % 60;
+  
+  if (minutes > 0) {
+    return `${minutes}m ${seconds}s`;
+  } else {
+    return `${seconds}s`;
+  }
+};
 
 // Rate limiting for auth routes (very lenient for testing progressive lockout)
 const authLimiter = rateLimit({
@@ -110,7 +123,8 @@ router.post('/login', async (req, res) => {
       const lockoutStart = parseFromStorage(user.lockout_timestamp);
       const now = getUTCNow();
       const lockoutEnd = addMinutes(lockoutStart, user.lockout_duration_minutes);
-      const remainingTime = getMinutesDifference(lockoutEnd, now);
+      const remainingTimeMinutes = getMinutesDifference(lockoutEnd, now);
+      const remainingTimeSeconds = getSecondsDifference(lockoutEnd, now);
       
       console.log('🔒 DETAILED LOCKOUT DEBUG (UTC):', {
         user_lockout_timestamp: user.lockout_timestamp,
@@ -119,11 +133,12 @@ router.post('/login', async (req, res) => {
         now_UTC: now.toISOString(),
         lockout_end_UTC: lockoutEnd.toISOString(),
         time_diff_minutes: lockoutEnd.getTime() - now.getTime(),
-        remaining_time_minutes: remainingTime,
-        is_still_locked: remainingTime > 0
+        remaining_time_minutes: remainingTimeMinutes,
+        remaining_time_seconds: remainingTimeSeconds,
+        is_still_locked: remainingTimeSeconds > 0
       });
       
-      if (remainingTime > 0) {
+      if (remainingTimeSeconds > 0) {
         // Debug logging
         console.log('🔒 LOCKOUT DEBUG:', {
           lockout_timestamp: user.lockout_timestamp,
@@ -131,16 +146,18 @@ router.post('/login', async (req, res) => {
           lockout_duration_minutes: user.lockout_duration_minutes,
           lockout_end: lockoutEnd.toISOString(),
           now: now.toISOString(),
-          remaining_minutes: remainingTime,
+          remaining_minutes: remainingTimeMinutes,
+          remaining_seconds: remainingTimeSeconds,
           failed_attempts: user.failed_login_attempts
         });
         
         console.log('🚫 ACCOUNT IS LOCKED - BLOCKING LOGIN ATTEMPT');
         const response = {
-          error: `Account locked after ${user.failed_login_attempts} failed login attempts. Please try again in ${remainingTime} minutes.`,
+          error: `Account locked after ${user.failed_login_attempts} failed login attempts. Please try again in ${formatRemainingTime(remainingTimeSeconds)}.`,
           errorType: 'ACCOUNT_LOCKED',
           lockedUntil: formatForDisplay(lockoutEnd),
-          remainingMinutes: remainingTime,
+          remainingMinutes: remainingTimeMinutes,
+          remainingSeconds: remainingTimeSeconds,
           lockoutDuration: user.lockout_duration_minutes,
           totalFailedAttempts: user.failed_login_attempts,
           lockoutStart: formatForDisplay(lockoutStart)
@@ -881,12 +898,14 @@ router.post('/lockout-status', async (req, res) => {
     if (user.lockout_timestamp && user.lockout_duration_minutes > 0) {
       const lockoutStart = parseFromStorage(user.lockout_timestamp);
       const lockoutEnd = addMinutes(lockoutStart, user.lockout_duration_minutes);
-      const remainingTime = getMinutesDifference(lockoutEnd, now);
+      const remainingTimeMinutes = getMinutesDifference(lockoutEnd, now);
+      const remainingTimeSeconds = getSecondsDifference(lockoutEnd, now);
       
-      if (remainingTime > 0) {
+      if (remainingTimeSeconds > 0) {
         return res.json({
           locked: true,
-          remainingMinutes: remainingTime,
+          remainingMinutes: remainingTimeMinutes,
+          remainingSeconds: remainingTimeSeconds,
           lockoutDuration: user.lockout_duration_minutes,
           totalFailedAttempts: user.failed_login_attempts,
           lockedUntil: lockoutEnd.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),

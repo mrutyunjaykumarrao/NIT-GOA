@@ -110,6 +110,16 @@ function getMinutesDifference(laterDate, earlierDate) {
 }
 
 /**
+ * Get difference in seconds between two UTC dates
+ * @param {Date} laterDate - Later UTC date
+ * @param {Date} earlierDate - Earlier UTC date
+ * @returns {number} Difference in seconds
+ */
+function getSecondsDifference(laterDate, earlierDate) {
+  return Math.ceil((laterDate - earlierDate) / 1000);
+}
+
+/**
  * Check if current time is past given UTC timestamp
  * @param {Date|string} utcTimestamp - UTC timestamp to check against
  * @returns {boolean} True if current time is past the timestamp
@@ -142,6 +152,7 @@ module.exports = {
   // Utility functions
   addMinutes,
   getMinutesDifference,
+  getSecondsDifference,
   isPast,
   getISTOffset
 };

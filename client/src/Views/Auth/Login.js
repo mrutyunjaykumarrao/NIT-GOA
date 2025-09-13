@@ -69,9 +69,10 @@ const Login = ({ isModalOpen, onClose }) => {
           
           if (response.ok) {
             const data = await response.json();
-            if (data.locked && data.remainingMinutes > 0) {
-              // Sync with server time
-              setCooldownTimer(Math.max(1, data.remainingMinutes * 60)); // Ensure at least 1 second
+            if (data.locked && (data.remainingSeconds > 0 || data.remainingMinutes > 0)) {
+              // Use precise remaining seconds from server, fallback to minutes * 60
+              const preciseSeconds = data.remainingSeconds || Math.max(1, data.remainingMinutes * 60);
+              setCooldownTimer(preciseSeconds);
             } else if (!data.locked) {
               // Clear lockout state when server says not locked
               setCooldownTimer(null);
@@ -141,12 +142,16 @@ const Login = ({ isModalOpen, onClose }) => {
             setError('');
             return null;
           }
-          return prev - 1;
+          const newTime = prev - 1;
+          // Update error message with current remaining time
+          const totalAttempts = failedAttempts >= 4 ? failedAttempts : 'multiple';
+          setError(`Account locked after ${totalAttempts} failed attempts. Please try again in ${formatCooldownTime(newTime)}.`);
+          return newTime;
         });
       }, 1000);
     }
     return () => clearInterval(interval);
-  }, [cooldownTimer]);
+  }, [cooldownTimer, failedAttempts]);
 
   // Format cooldown timer display
   const formatCooldownTime = (seconds) => {
@@ -216,8 +221,21 @@ const Login = ({ isModalOpen, onClose }) => {
           // Admin -> /admin, Faculty -> /people/faculty/employee_code, Default -> /
           navigate(redirectPath, { replace: true });
         } else {
-          // Use the error directly from the backend
-          throw new Error(result.error);
+          // For lockout errors, throw an error object with all the lockout details
+          if (result.errorType === 'ACCOUNT_LOCKED') {
+            const error = new Error(result.error);
+            // Attach lockout details to the error object
+            error.errorType = result.errorType;
+            error.remainingMinutes = result.remainingMinutes;
+            error.lockoutDuration = result.lockoutDuration;
+            error.totalFailedAttempts = result.totalFailedAttempts;
+            error.lockedUntil = result.lockedUntil;
+            error.lockoutStart = result.lockoutStart;
+            throw error;
+          } else {
+            // Use the error directly from the backend for non-lockout errors
+            throw new Error(result.error);
+          }
         }
       },
       {
@@ -230,15 +248,26 @@ const Login = ({ isModalOpen, onClose }) => {
           
           // Handle ACCOUNT_LOCKED responses
           if (error.errorType === 'ACCOUNT_LOCKED' || error.remainingMinutes) {
-            const remainingMinutes = error.remainingMinutes || 0;
-            const lockoutDuration = error.lockoutDuration || remainingMinutes;
+            console.log('🔒 LOCKOUT ERROR RECEIVED:', error); // Debug log
+            
             const totalAttempts = error.totalFailedAttempts || 'multiple';
             
-            // Use the lockoutDuration (5 or 20 minutes) instead of server remainingMinutes to avoid timezone issues
-            const actualDuration = lockoutDuration === 5 ? 5 * 60 : lockoutDuration === 20 ? 20 * 60 : Math.max(60, remainingMinutes * 60);
+            // Use the exact remaining seconds from backend for accurate countdown
+            const actualDuration = error.remainingSeconds || Math.max(60, (error.remainingMinutes || 0) * 60);
             
-            setCooldownTimer(actualDuration); // Use expected duration, not server calculated remaining time
-            setError(`Account locked after ${totalAttempts} failed attempts. Please wait ${lockoutDuration} minutes.`);
+            console.log('🔒 SETTING COOLDOWN:', actualDuration, 'seconds'); // Debug log
+            setCooldownTimer(actualDuration); // Use exact remaining time from server
+            
+            // Format the initial error message with seconds
+            const formatTime = (seconds) => {
+              const minutes = Math.floor(seconds / 60);
+              const secs = seconds % 60;
+              return minutes > 0 ? `${minutes}m ${secs}s` : `${secs}s`;
+            };
+            
+            const customMessage = `Account locked after ${totalAttempts} failed attempts. Please try again in ${formatTime(actualDuration)}.`;
+            console.log('🔒 CUSTOM MESSAGE:', customMessage); // Debug log
+            setError(customMessage);
           } else if (error.message.includes('cooldown period')) {
             // Handle legacy cooldown messages for backward compatibility
             const match = error.message.match(/\((\d+) minutes remaining\)/);
@@ -496,7 +525,7 @@ const Login = ({ isModalOpen, onClose }) => {
               ) : cooldownTimer > 0 ? (
                 <>
                   <i className="fas fa-lock"></i>
-                  Account Locked ({Math.ceil(cooldownTimer / 60)}m)
+                  Account Locked ({formatCooldownTime(cooldownTimer)})
                 </>
               ) : (
                 <>
