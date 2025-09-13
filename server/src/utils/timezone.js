@@ -54,8 +54,16 @@ function formatForStorage(utcDate = getUTCNow()) {
  */
 function parseFromStorage(timestamp) {
   if (!timestamp) return null;
-  // Treat database timestamp as UTC
-  return new Date(timestamp + 'Z'); // Append Z to ensure UTC parsing
+  
+  // The database connection is set to UTC timezone, so timestamps are already in UTC
+  // Simply parse as-is without any timezone conversion
+  if (typeof timestamp === 'string') {
+    // Handle both 'YYYY-MM-DD HH:mm:ss' and ISO string formats
+    return timestamp.includes('T') ? new Date(timestamp) : new Date(timestamp + 'Z');
+  }
+  
+  // If it's already a Date object, return as-is
+  return new Date(timestamp);
 }
 
 /**

@@ -49,52 +49,49 @@ const Login = ({ isModalOpen, onClose }) => {
     }
   }, [isAuthenticated, onClose]);
 
-  // Check for existing lockout status on component mount and username change
+  // Only check lockout status when cooldownTimer is active (after failed login attempts)
   React.useEffect(() => {
-    const checkLockoutStatus = async () => {
-      if (!credentials.username || credentials.username.length < 2) return;
-      
-      try {
-        const response = await fetch('/api/auth/lockout-status', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ username: credentials.username })
-        });
-        
-        if (response.ok) {
-          const data = await response.json();
-          if (data.locked && data.remainingMinutes > 0) {
-            // Always sync with server time to prevent drift
-            setCooldownTimer(data.remainingMinutes * 60); // Convert to seconds
-            const duration = data.lockoutDuration || data.remainingMinutes;
-            setError(`Account locked for ${duration} minutes. ${data.remainingMinutes} minutes remaining.`);
-          } else if (!data.locked) {
-            // Clear any lockout state when server says not locked
-            setCooldownTimer(null);
-            setError('');
-          }
-        }
-      } catch (error) {
-        console.log('Failed to check lockout status:', error);
-        // Don't show error to user, just continue
-      }
-    };
-    
-    // Check immediately and then periodically while locked
-    checkLockoutStatus();
-    
-    // Set up polling if user seems to be in a locked state
     let pollInterval;
+    
+    // Only poll if we're in a cooldown state
     if (cooldownTimer > 0) {
-      pollInterval = setInterval(checkLockoutStatus, 5000); // Check every 5 seconds for better sync
+      const checkLockoutStatus = async () => {
+        if (!credentials.username) return;
+        
+        try {
+          const response = await fetch('/api/auth/lockout-status', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username: credentials.username })
+          });
+          
+          if (response.ok) {
+            const data = await response.json();
+            if (data.locked && data.remainingMinutes > 0) {
+              // Sync with server time
+              setCooldownTimer(Math.max(1, data.remainingMinutes * 60)); // Ensure at least 1 second
+            } else if (!data.locked) {
+              // Clear lockout state when server says not locked
+              setCooldownTimer(null);
+              setError('');
+            }
+          }
+        } catch (error) {
+          console.log('Failed to check lockout status:', error);
+        }
+      };
+      
+      // Check immediately and then every 10 seconds while locked
+      checkLockoutStatus();
+      pollInterval = setInterval(checkLockoutStatus, 10000);
     }
     
     return () => {
       if (pollInterval) clearInterval(pollInterval);
     };
-  }, [credentials.username, cooldownTimer]);
+  }, [cooldownTimer, credentials.username]);
 
   // Close modal on escape key and auto-focus username field
   React.useEffect(() => {
@@ -237,8 +234,11 @@ const Login = ({ isModalOpen, onClose }) => {
             const lockoutDuration = error.lockoutDuration || remainingMinutes;
             const totalAttempts = error.totalFailedAttempts || 'multiple';
             
-            setCooldownTimer(remainingMinutes * 60); // Convert to seconds
-            setError(`Account locked after ${totalAttempts} failed attempts. Please wait ${remainingMinutes} minutes (${lockoutDuration} minute lockout).`);
+            // Use the lockoutDuration (5 or 20 minutes) instead of server remainingMinutes to avoid timezone issues
+            const actualDuration = lockoutDuration === 5 ? 5 * 60 : lockoutDuration === 20 ? 20 * 60 : Math.max(60, remainingMinutes * 60);
+            
+            setCooldownTimer(actualDuration); // Use expected duration, not server calculated remaining time
+            setError(`Account locked after ${totalAttempts} failed attempts. Please wait ${lockoutDuration} minutes.`);
           } else if (error.message.includes('cooldown period')) {
             // Handle legacy cooldown messages for backward compatibility
             const match = error.message.match(/\((\d+) minutes remaining\)/);
