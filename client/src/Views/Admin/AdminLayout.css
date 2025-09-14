@@ -4,9 +4,13 @@
 
 .admin-layout {
   min-height: 100vh;
-  background: #0f172a;
+  background: #f8fafc;
   display: flex;
   flex-direction: column;
+}
+
+[data-theme="dark"] .admin-layout {
+  background: #0f172a;
 }
 
 /* ========================================================================
@@ -14,12 +18,20 @@
    ======================================================================== */
 
 .admin-layout-header {
-  background: #1e293b;
-  color: white;
+  background: white;
+  color: #1f2937;
   position: sticky;
   top: 0;
   z-index: 1000;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] .admin-layout-header {
+  background: #1e293b;
+  color: white;
   border-bottom: 1px solid #334155;
+  box-shadow: none;
 }
 
 .admin-layout-header-content {
@@ -43,16 +55,24 @@
   margin: 0;
   font-size: 1.75rem;
   font-weight: 700;
-  color: white;
+  color: #111827;
   line-height: 1.2;
+}
+
+[data-theme="dark"] .admin-layout-title-section h1 {
+  color: white;
 }
 
 .admin-layout-subtitle {
   font-size: 0.875rem;
-  color: #94a3b8;
+  color: #6b7280;
   font-weight: 400;
   margin-top: 0.25rem;
   display: block;
+}
+
+[data-theme="dark"] .admin-layout-subtitle {
+  color: #94a3b8;
 }
 
 /* Right side - Controls */
@@ -73,12 +93,17 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #475569;
+  background: #f3f4f6;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #e2e8f0;
+  color: #6b7280;
   font-size: 1.5rem;
+}
+
+[data-theme="dark"] .admin-layout-user-avatar {
+  background: #475569;
+  color: #e2e8f0;
 }
 
 .admin-layout-logout-btn {
@@ -88,15 +113,26 @@
   width: 36px;
   height: 36px;
   background: transparent;
-  border: 1px solid #475569;
+  border: 1px solid #d1d5db;
   border-radius: 8px;
-  color: #94a3b8;
+  color: #6b7280;
   cursor: pointer;
   transition: all 0.2s ease;
   font-size: 0.875rem;
 }
 
 .admin-layout-logout-btn:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+  color: #374151;
+}
+
+[data-theme="dark"] .admin-layout-logout-btn {
+  border: 1px solid #475569;
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .admin-layout-logout-btn:hover {
   background: #374151;
   border-color: #6b7280;
   color: #f3f4f6;
@@ -107,6 +143,11 @@
    ======================================================================== */
 
 .admin-layout-nav-container {
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+}
+
+[data-theme="dark"] .admin-layout-nav-container {
   background: #334155;
   border-top: 1px solid #475569;
 }
@@ -128,10 +169,10 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.25rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: white;
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
-  color: #94a3b8;
+  color: #6b7280;
   font-weight: 500;
   font-size: 0.875rem;
   cursor: pointer;
@@ -141,9 +182,9 @@
 }
 
 .admin-layout-nav-tab:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #e2e8f0;
+  background: #f3f4f6;
+  border-color: #d1d5db;
+  color: #374151;
 }
 
 .admin-layout-nav-tab--active {
@@ -158,6 +199,18 @@
   border-color: #2563eb;
 }
 
+[data-theme="dark"] .admin-layout-nav-tab {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .admin-layout-nav-tab:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #e2e8f0;
+}
+
 .admin-layout-nav-tab i {
   font-size: 1rem;
 }
@@ -165,23 +218,16 @@
 /* Main Content */
 .admin-layout-main {
   flex: 1;
-  background: #0f172a;
+  background: #f8fafc;
   padding: 0;
   overflow-x: hidden;
 }
 
-/* Dark theme support (already dark by default) */
-[data-theme="dark"] .admin-layout {
+[data-theme="dark"] .admin-layout-main {
   background: #0f172a;
 }
 
-[data-theme="dark"] .admin-layout-header {
-  background: #1e293b;
-}
-
-[data-theme="dark"] .admin-layout-nav-container {
-  background: #334155;
-}
+/* Dark theme support - rules now integrated above */
 
 /* Responsive Design */
 @media (max-width: 1024px) {

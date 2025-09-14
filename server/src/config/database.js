@@ -94,7 +94,7 @@ const executeQuery = async (query, params = []) => {
   const connection = await pool.getConnection();
   try {
     const startTime = Date.now();
-    const [rows, fields] = await connection.execute(query, params);
+    const [rows, fields] = await connection.query(query, params);
     const executionTime = Date.now() - startTime;
     
     if (process.env.NODE_ENV === 'development' && executionTime > 1000) {

@@ -6,8 +6,7 @@ import FacultyTab from './components/FacultyTab/FacultyTab';
 import TechnicalStaffTab from './components/TechnicalStaffTab/TechnicalStaffTab';
 import AdministrativeStaffTab from './components/AdministrativeStaffTab/AdministrativeStaffTab';
 import AnalyticsTab from './components/AnalyticsTab/AnalyticsTab';
-import UsersTab from './components/UsersTab/UsersTab';
-import UserManagement from './UserManagement/UserManagement';
+import AccountManagement from './components/AccountManagement/AccountManagement';
 import { UserModal, EmployeeModal, FacultyModal, StaffModal, AdministrativeStaffModal, TechnicalStaffModal, PendingApprovalsModal } from './components/AdminModals';
 import './AdminDashboard.css';
 
@@ -74,8 +73,10 @@ const AdminDashboard = () => {
   const fetchUsers = useCallback(() => {
     return executeAsync(
       async () => {
-        const data = await apiCall('/admin/users');
-        setUsers(data || []);
+        const response = await apiCall('/admin/users');
+        // Handle new paginated format
+        const data = response?.users || response || [];
+        setUsers(data);
         return data;
       },
       {
@@ -497,17 +498,8 @@ const AdminDashboard = () => {
             />
           )}
         
-          {activeTab === 'users' && (
-            <UsersTab 
-              usersList={users}
-              onCreateUser={() => openCreateModal('user')}
-              onEditUser={(user) => openEditModal('user', user)}
-              onDeleteUser={(id) => handleDelete('user', id)}
-            />
-          )}
-
-          {activeTab === 'user-management' && (
-            <UserManagement />
+          {activeTab === 'account-management' && (
+            <AccountManagement />
           )}
           
           {activeTab === 'faculty' && (

@@ -112,55 +112,6 @@ router.get('/website-analytics', async (req, res) => {
 // USER ACCOUNTS MANAGEMENT
 // ======================
 
-// Get all user accounts with employee and department info
-router.get('/users', async (req, res) => {
-  try {
-    console.log('🔍 [ADMIN DEBUG] GET /users - Starting request');
-    const result = await executeQuery(`
-      SELECT 
-        ua.user_id as id,
-        ua.username,
-        ua.access_level as role,
-        ua.is_active,
-        ua.last_login,
-        ua.created_at,
-        ua.updated_at,
-        e.employee_id,
-        e.full_name,
-        e.email,
-        e.phone_mobile as phone,
-        e.role as employee_role,
-        e.job_title as position,
-        CASE 
-          WHEN e.role = 'Faculty' THEN d_f.department_name
-          WHEN e.role IN ('Administrative', 'Technical') THEN d_s.department_name
-          ELSE NULL
-        END as department_name
-      FROM user_accounts ua
-      LEFT JOIN employees e ON ua.username = e.employee_code
-      LEFT JOIN faculty_profiles fp ON e.employee_id = fp.employee_id AND e.role = 'Faculty'
-      LEFT JOIN staff_profiles sp ON e.employee_id = sp.employee_id AND e.role IN ('Administrative', 'Technical')
-      LEFT JOIN departments d_f ON fp.department_id = d_f.department_id
-      LEFT JOIN departments d_s ON sp.department_id = d_s.department_id
-      ORDER BY ua.created_at DESC
-    `);
-    
-    // Handle nested array result structure
-    const users = Array.isArray(result[0]) ? result[0] : result;
-    
-    console.log('🔍 [ADMIN DEBUG] Users query result type:', typeof result);
-    console.log('🔍 [ADMIN DEBUG] Users query result isArray:', Array.isArray(result));
-    console.log('🔍 [ADMIN DEBUG] Users query result[0] isArray:', Array.isArray(result[0]));
-    console.log('🔍 [ADMIN DEBUG] Users final array length:', users.length);
-    console.log('🔍 [ADMIN DEBUG] Users sample:', users.slice(0, 2));
-    
-    res.json(users);
-  } catch (error) {
-    console.error('🚨 [ADMIN DEBUG] Get users error:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
-
 // Create new user account
 router.post('/users', async (req, res) => {
   try {
@@ -226,6 +177,102 @@ router.delete('/users/:id', async (req, res) => {
     res.json({ message: 'User deleted successfully' });
   } catch (error) {
     console.error('Delete user error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Update user details
+router.put('/users/:id', authenticateToken, requireAdmin, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { username, email, access_level, is_active } = req.body;
+
+    // Check if user exists
+    const [existingUsers] = await executeQuery('SELECT user_id FROM user_accounts WHERE user_id = ?', [id]);
+    if (existingUsers.length === 0) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Update user
+    await executeQuery(`
+      UPDATE user_accounts 
+      SET username = ?, email = ?, access_level = ?, is_active = ?, updated_at = CURRENT_TIMESTAMP
+      WHERE user_id = ?
+    `, [username, email, access_level, is_active ? 1 : 0, id]);
+
+    res.json({ message: 'User updated successfully' });
+  } catch (error) {
+    console.error('Update user error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Create new user
+router.post('/users', authenticateToken, requireAdmin, async (req, res) => {
+  try {
+    const { username, email, password, access_level, is_active = true } = req.body;
+
+    // Validate required fields
+    if (!username || !password || !access_level) {
+      return res.status(400).json({ error: 'Username, password, and access level are required' });
+    }
+
+    // Check if username already exists
+    const [existingUsers] = await executeQuery('SELECT username FROM user_accounts WHERE username = ?', [username]);
+    if (existingUsers.length > 0) {
+      return res.status(409).json({ error: 'Username already exists' });
+    }
+
+    // Check if email already exists (if provided)
+    if (email) {
+      const [existingEmails] = await executeQuery('SELECT email FROM user_accounts WHERE email = ?', [email]);
+      if (existingEmails.length > 0) {
+        return res.status(409).json({ error: 'Email already exists' });
+      }
+    }
+
+    // Hash password
+    const bcrypt = require('bcrypt');
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Insert new user
+    const [result] = await executeQuery(`
+      INSERT INTO user_accounts (username, email, password_hash, access_level, is_active, created_at, updated_at)
+      VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    `, [username, email || null, hashedPassword, access_level, is_active ? 1 : 0]);
+
+    res.status(201).json({ 
+      message: 'User created successfully',
+      user_id: result.insertId
+    });
+  } catch (error) {
+    console.error('Create user error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Update user status (activate/deactivate)
+router.put('/users/:id/status', authenticateToken, requireAdmin, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { is_active } = req.body;
+
+    // Check if user exists
+    const [existingUsers] = await executeQuery('SELECT user_id, username FROM user_accounts WHERE user_id = ?', [id]);
+    if (existingUsers.length === 0) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Update user status
+    await executeQuery(`
+      UPDATE user_accounts 
+      SET is_active = ?, updated_at = CURRENT_TIMESTAMP
+      WHERE user_id = ?
+    `, [is_active ? 1 : 0, id]);
+
+    res.json({ message: `User ${is_active ? 'activated' : 'deactivated'} successfully` });
+  } catch (error) {
+    console.error('Update user status error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
@@ -786,18 +833,22 @@ router.delete('/departments/:id', async (req, res) => {
 // USER ACCOUNT MANAGEMENT
 // ======================
 
-// Get all user accounts with lock status
-router.get('/users', async (req, res) => {
+// Simple test route to verify database connectivity (removed for production)
+// This will be available without authentication for debugging
+
+// Get all user accounts with pagination, search, and status filters
+router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
   try {
     const { page = 1, limit = 20, search = '', status = 'all' } = req.query;
     const offset = (parseInt(page) - 1) * parseInt(limit);
 
+    // Build WHERE clause and parameters for filtering
     let whereClause = '';
     const params = [];
 
     // Search filter
     if (search) {
-      whereClause += ' WHERE (ua.username LIKE ? OR e.full_name LIKE ? OR e.email LIKE ? OR ua.email LIKE ?)';
+      whereClause += ' WHERE (ua.username LIKE ? OR ua.email LIKE ? OR e.full_name LIKE ? OR e.email LIKE ?)';
       const searchPattern = `%${search}%`;
       params.push(searchPattern, searchPattern, searchPattern, searchPattern);
     }
@@ -814,7 +865,8 @@ router.get('/users', async (req, res) => {
       }
     }
 
-    const users = await executeQuery(`
+    // Get users with employee data
+    const [userRows] = await executeQuery(`
       SELECT 
         ua.user_id,
         ua.username,
@@ -841,20 +893,22 @@ router.get('/users', async (req, res) => {
       LIMIT ? OFFSET ?
     `, [...params, parseInt(limit), offset]);
 
-    // Get total count
-    const totalCount = await executeQuery(`
+    // Get total count for pagination
+    const [countRows] = await executeQuery(`
       SELECT COUNT(*) as count
       FROM user_accounts ua
       LEFT JOIN employees e ON ua.user_id = e.user_account_id
       ${whereClause}
-    `, params.slice(0, -2)); // Remove limit and offset params
+    `, params);
+
+    const totalCount = countRows[0].count;
 
     res.json({
-      users,
+      users: userRows,
       pagination: {
         currentPage: parseInt(page),
-        totalPages: Math.ceil(totalCount[0].count / parseInt(limit)),
-        totalItems: totalCount[0].count,
+        totalPages: Math.ceil(totalCount / parseInt(limit)),
+        totalItems: totalCount,
         itemsPerPage: parseInt(limit)
       }
     });

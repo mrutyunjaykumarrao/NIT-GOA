@@ -111,8 +111,13 @@ const UserManagement = () => {
         }
 
         const data = await response.json();
-        setUsers(data.users);
-        setPagination(data.pagination);
+        setUsers(data.users || []);
+        setPagination(data.pagination || {
+          currentPage: 1,
+          totalPages: 1,
+          totalItems: 0,
+          itemsPerPage: 20
+        });
       },
       {
         showSuccessToast: false, // Don't show success toast for fetching users
@@ -348,7 +353,7 @@ const UserManagement = () => {
               </tr>
             </thead>
             <tbody>
-              {users.map((userObj) => (
+              {(users || []).map((userObj) => (
                 <tr key={userObj.user_id} className={`user-row ${userObj.status}`}>
                   <td>
                     <div className="user-info">

@@ -122,6 +122,54 @@ app.get('/api/test-db', async (req, res) => {
   }
 });
 
+// Test user_accounts table directly
+app.get('/api/test-users', async (req, res) => {
+  try {
+    const { executeQuery } = require('./src/config/database');
+    // Test the basic count
+    const result = await executeQuery('SELECT COUNT(*) as count FROM user_accounts');
+    
+    // Test parameterized query
+    const paramResult = await executeQuery(`
+      SELECT user_id, username FROM user_accounts LIMIT ?
+    `, [2]);
+    
+    // Test the JOIN query that's failing in admin
+    const joinResult = await executeQuery(`
+      SELECT 
+        ua.user_id,
+        ua.username,
+        ua.email as user_email,
+        ua.access_level,
+        ua.is_active,
+        e.employee_id,
+        e.full_name
+      FROM user_accounts ua
+      LEFT JOIN employees e ON ua.user_id = e.user_account_id
+      LIMIT 1
+    `);
+    
+    console.log('Basic count result:', result);
+    console.log('JOIN result:', joinResult);
+    
+    res.json({ 
+      status: 'success', 
+      basicCount: result[0][0]?.count,
+      paramResult: paramResult[0],
+      joinResult: joinResult[0],
+      message: 'All queries successful' 
+    });
+  } catch (error) {
+    console.error('Test users error:', error);
+    res.status(500).json({ 
+      status: 'error', 
+      message: error.message,
+      sqlMessage: error.sqlMessage,
+      code: error.code
+    });
+  }
+});
+
 // Enhanced health check
 app.get('/api/health', async (req, res) => {
   try {

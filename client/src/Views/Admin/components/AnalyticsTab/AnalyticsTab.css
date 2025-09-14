@@ -227,6 +227,9 @@
 }
 
 .analytics-tab-stat-card {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
   background: var(--admin-dashboard-bg-secondary);
   border-radius: 16px;
   padding: 24px;

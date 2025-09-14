@@ -77,13 +77,9 @@
 }
 
 .users-tab-create-btn:hover {
-  background: #3b82f6;
+  background: var(--admin-dashboard-accent-blue);
   transform: translateY(-1px);
   box-shadow: var(--admin-dashboard-shadow-md);
-}
-
-[data-theme="dark"] .users-tab-create-btn:hover {
-  background: #2563eb;
 }
 
 /* ========================================================================
@@ -219,12 +215,12 @@
 }
 
 .users-tab-clear-filters-btn:hover {
-  background: #dc2626;
+  background: var(--admin-dashboard-accent-danger);
   transform: translateY(-1px);
 }
 
 [data-theme="dark"] .users-tab-clear-filters-btn:hover {
-  background: #dc2626;
+  background: var(--admin-dashboard-accent-danger);
   transform: translateY(-1px);
 }
 
@@ -449,13 +445,13 @@
 
 .users-tab-status-badge--active {
   background: rgba(16, 185, 129, 0.1);
-  color: #10B981;
+  color: var(--admin-dashboard-accent-success);
   border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 .users-tab-status-badge--inactive {
   background: rgba(239, 68, 68, 0.1);
-  color: #EF4444;
+  color: var(--admin-dashboard-accent-danger);
   border: 1px solid rgba(239, 68, 68, 0.3);
 }
 

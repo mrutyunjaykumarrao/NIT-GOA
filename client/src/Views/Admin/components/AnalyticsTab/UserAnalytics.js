@@ -39,8 +39,9 @@ const UserAnalytics = () => {
         
         // Fetch user management data (auth required)
         try {
-          const usersData = await apiCall('/admin/users');
-          setUsers(usersData || []);
+          const response = await apiCall('/admin/users');
+          // Handle new paginated format
+          setUsers(response?.users || response || []);
         } catch (error) {
           console.error('Failed to load users data:', error);
         }
