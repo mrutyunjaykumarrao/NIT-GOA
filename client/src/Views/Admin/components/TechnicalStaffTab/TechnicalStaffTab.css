@@ -146,19 +146,20 @@
 }
 
 .technical-staff-tab-create-btn {
-  background: #3b82f6;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: var(--admin-dashboard-button-radius);
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: all var(--admin-dashboard-transition-normal);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: var(--admin-dashboard-shadow-md);
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all var(--admin-dashboard-transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    box-shadow: var(--admin-dashboard-shadow-md);
 }
 
 .technical-staff-tab-create-btn:hover {

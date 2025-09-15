@@ -7,7 +7,7 @@ import TechnicalStaffTab from './components/TechnicalStaffTab/TechnicalStaffTab'
 import AdministrativeStaffTab from './components/AdministrativeStaffTab/AdministrativeStaffTab';
 import AnalyticsTab from './components/AnalyticsTab/AnalyticsTab';
 import AccountManagement from './components/AccountManagement/AccountManagement';
-import { UserModal, EmployeeModal, FacultyModal, StaffModal, AdministrativeStaffModal, TechnicalStaffModal, PendingApprovalsModal } from './components/AdminModals';
+import { UserModal, FacultyModal, AdministrativeStaffModal, TechnicalStaffModal, PendingApprovalsModal } from './components/AdminModals';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
@@ -27,7 +27,7 @@ const AdminDashboard = () => {
   // Modal states
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState(''); // 'create' or 'edit'
-  const [modalEntity, setModalEntity] = useState(''); // 'user', 'employee', 'faculty', 'staff'
+  const [modalEntity, setModalEntity] = useState(''); // 'user', 'faculty'
   const [selectedItem, setSelectedItem] = useState(null);
 
   // API helper function
@@ -187,14 +187,8 @@ const AdminDashboard = () => {
           case 'user':
             endpoint = '/admin/users';
             break;
-          case 'employee':
-            endpoint = '/admin/employees';
-            break;
           case 'faculty':
             endpoint = '/admin/faculty';
-            break;
-          case 'staff':
-            endpoint = '/admin/staff';
             break;
           default:
             throw new Error('Unknown entity type');
@@ -226,14 +220,8 @@ const AdminDashboard = () => {
           case 'user':
             endpoint = `/admin/users/${id}`;
             break;
-          case 'employee':
-            endpoint = `/admin/employees/${id}`;
-            break;
           case 'faculty':
             endpoint = `/admin/faculty/${id}`;
-            break;
-          case 'staff':
-            endpoint = `/admin/staff/${id}`;
             break;
           default:
             throw new Error('Unknown entity type');
@@ -405,6 +393,66 @@ const AdminDashboard = () => {
     );
   };
 
+  const handleDeleteAdminStaff = (id) => {
+    if (!window.confirm('Are you sure you want to delete this administrative staff member?')) {
+      return;
+    }
+
+    return executeAsync(
+      async () => {
+        const response = await fetch(`/api/admin/employees/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          }
+        });
+
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.error || 'Failed to delete administrative staff');
+        }
+
+        await loadTabData(activeTab);
+      },
+      {
+        showSuccessToast: true,
+        successMessage: 'Administrative staff deleted successfully!',
+        showErrorToast: true,
+        errorMessage: 'Failed to delete administrative staff'
+      }
+    );
+  };
+
+  const handleDeleteTechStaff = (id) => {
+    if (!window.confirm('Are you sure you want to delete this technical staff member?')) {
+      return;
+    }
+
+    return executeAsync(
+      async () => {
+        const response = await fetch(`/api/admin/employees/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          }
+        });
+
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.error || 'Failed to delete technical staff');
+        }
+
+        await loadTabData(activeTab);
+      },
+      {
+        showSuccessToast: true,
+        successMessage: 'Technical staff deleted successfully!',
+        showErrorToast: true,
+        errorMessage: 'Failed to delete technical staff'
+      }
+    );
+  };
+
   const handleDelete = (entity, id) => {
     if (!window.confirm(`Are you sure you want to delete this ${entity}?`)) {
       return;
@@ -418,14 +466,8 @@ const AdminDashboard = () => {
           case 'user':
             endpoint = `/admin/users/${id}`;
             break;
-          case 'employee':
-            endpoint = `/admin/employees/${id}`;
-            break;
           case 'faculty':
             endpoint = `/admin/faculty/${id}`;
-            break;
-          case 'staff':
-            endpoint = `/admin/staff/${id}`;
             break;
           default:
             throw new Error('Unknown entity type');
@@ -516,7 +558,7 @@ const AdminDashboard = () => {
               staffList={staff}
               onCreateStaff={() => openCreateModal('technical-staff')}
               onEditStaff={(staff) => openEditModal('technical-staff', staff)}
-              onDeleteStaff={(id) => handleDelete('staff', id)}
+              onDeleteStaff={handleDeleteTechStaff}
             />
           )}
           
@@ -525,7 +567,7 @@ const AdminDashboard = () => {
               staffList={staff}
               onCreateStaff={() => openCreateModal('administrative-staff')}
               onEditStaff={(staff) => openEditModal('administrative-staff', staff)}
-              onDeleteStaff={(id) => handleDelete('staff', id)}
+              onDeleteStaff={handleDeleteAdminStaff}
             />
           )}
         </div>
@@ -543,37 +585,12 @@ const AdminDashboard = () => {
           employees={employees}
         />
 
-        <EmployeeModal
-          show={showModal && modalEntity === 'employee'}
-          onClose={() => setShowModal(false)}
-          onSubmit={modalType === 'create' ? 
-            (data) => handleCreate('employee', data) : 
-            (data) => handleUpdate('employee', selectedItem?.employee_id, data)
-          }
-          mode={modalType}
-          initialData={selectedItem}
-          departments={departments}
-        />
-
         <FacultyModal
           show={showModal && modalEntity === 'faculty'}
           onClose={() => setShowModal(false)}
           onSubmit={modalType === 'create' ? 
             (data) => handleCreate('faculty', data) : 
             (data) => handleUpdate('faculty', selectedItem?.faculty_id, data)
-          }
-          mode={modalType}
-          initialData={selectedItem}
-          employees={employees}
-          departments={departments}
-        />
-
-        <StaffModal
-          show={showModal && modalEntity === 'staff'}
-          onClose={() => setShowModal(false)}
-          onSubmit={modalType === 'create' ? 
-            (data) => handleCreate('staff', data) : 
-            (data) => handleUpdate('staff', selectedItem?.staff_id, data)
           }
           mode={modalType}
           initialData={selectedItem}

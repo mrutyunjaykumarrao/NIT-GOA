@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../../../contexts/AuthContext';
 import useAsyncOperation from '../../../../hooks/useAsyncOperation';
+import { UserModal } from '../AdminModals';
 import './AccountManagement.css';
 
 const AccountManagement = () => {
@@ -27,27 +28,11 @@ const AccountManagement = () => {
   });
   
   const [selectedUser, setSelectedUser] = useState(null);
-  const [showEditModal, setShowEditModal] = useState(false);
-  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [showUserModal, setShowUserModal] = useState(false);
+  const [userModalMode, setUserModalMode] = useState('create'); // 'create' or 'edit'
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [confirmAction, setConfirmAction] = useState(null);
   const [confirmMessage, setConfirmMessage] = useState('');
-
-  // Form state for editing and creating
-  const [editForm, setEditForm] = useState({
-    username: '',
-    email: '',
-    access_level: '',
-    is_active: true
-  });
-
-  const [createForm, setCreateForm] = useState({
-    username: '',
-    email: '',
-    password: '',
-    access_level: '',
-    is_active: true
-  });
 
   useEffect(() => {
     if (user && token && user.role === 'Admin') {
@@ -121,80 +106,58 @@ const AccountManagement = () => {
   };
 
   const openEditModal = (user) => {
-    setSelectedUser(user);
-    setEditForm({
-      username: user.username || '',
-      email: user.user_email || '',
-      access_level: user.access_level || '',
-      is_active: user.is_active || false
-    });
-    setShowEditModal(true);
+    handleEditUser(user);
   };
 
-  const closeEditModal = () => {
-    setShowEditModal(false);
+  const handleCreateUser = () => {
+    setUserModalMode('create');
     setSelectedUser(null);
-    setEditForm({
-      username: '',
-      email: '',
-      access_level: '',
-      is_active: true
-    });
+    setShowUserModal(true);
   };
 
-  const closeCreateModal = () => {
-    setShowCreateModal(false);
-    setCreateForm({
-      username: '',
-      email: '',
-      password: '',
-      access_level: '',
-      is_active: true
-    });
+  const handleEditUser = (user) => {
+    setUserModalMode('edit');
+    setSelectedUser(user);
+    setShowUserModal(true);
   };
 
-  const handleEditSubmit = async (e) => {
-    e.preventDefault();
-    
-    if (!selectedUser) return;
+  const handleUserModalClose = () => {
+    setShowUserModal(false);
+    setSelectedUser(null);
+    setUserModalMode('create');
+  };
 
+  const handleUserSubmit = async (formData, mode) => {
     await executeAsync(async () => {
-      const response = await fetch(`/api/admin/users/${selectedUser.user_id}`, {
-        method: 'PUT',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(editForm)
-      });
+      if (mode === 'edit' && selectedUser) {
+        const response = await fetch(`/api/admin/users/${selectedUser.user_id}`, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
 
-      if (!response.ok) {
-        throw new Error('Failed to update user');
+        if (!response.ok) {
+          throw new Error('Failed to update user');
+        }
+      } else if (mode === 'create') {
+        const response = await fetch('/api/admin/users', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to create user');
+        }
       }
 
-      closeEditModal();
-      await fetchUsers();
-    });
-  };
-
-  const handleCreateSubmit = async (e) => {
-    e.preventDefault();
-
-    await executeAsync(async () => {
-      const response = await fetch('/api/admin/users', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(createForm)
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to create user');
-      }
-
-      closeCreateModal();
+      handleUserModalClose();
       await fetchUsers();
     });
   };
@@ -315,45 +278,42 @@ const AccountManagement = () => {
 
   return (
     <div className="account-management-container">
-      <div className="account-management-header">
-        <div className="header-content">
-          <div className="header-text">
-            <h2>Account Management</h2>
-            <p>Manage user accounts, roles, and permissions</p>
-          </div>
-          <button 
-            className="btn-primary create-user-btn"
-            onClick={() => setShowCreateModal(true)}
-          >
-            <i className="fas fa-plus"></i>
-            Create User
-          </button>
-        </div>
-      </div>
-
-      {/* Filters */}
-      <div className="account-management-filters">
-        <div className="filter-group">
+      {/* Search and Filters Section - Technical Staff Style */}
+      <div className="search-filters-container">
+        {/* Search Bar */}
+        <div className="search-input-wrapper">
+          <i className="fas fa-search search-icon"></i>
           <input
             type="text"
-            placeholder="Search by username, name, or email..."
+            placeholder="Search by name, email, or employee ID..."
             value={filters.search}
             onChange={(e) => handleFilterChange('search', e.target.value)}
             className="search-input"
           />
         </div>
         
-        <div className="filter-group">
-          <select
-            value={filters.status}
-            onChange={(e) => handleFilterChange('status', e.target.value)}
-            className="status-filter"
+        {/* Filters and Create Button Row */}
+        <div className="filters-and-create">
+          <div className="filter-group">
+            <select
+              value={filters.status}
+              onChange={(e) => handleFilterChange('status', e.target.value)}
+              className="status-filter"
+            >
+              <option value="all">All Users</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+              <option value="locked">Locked</option>
+            </select>
+          </div>
+          
+          <button 
+            className="create-user-btn"
+            onClick={handleCreateUser}
           >
-            <option value="all">All Users</option>
-            <option value="active">Active</option>
-            <option value="inactive">Inactive</option>
-            <option value="locked">Locked</option>
-          </select>
+            <i className="fas fa-plus"></i>
+            Create User
+          </button>
         </div>
       </div>
 
@@ -591,162 +551,14 @@ const AccountManagement = () => {
         </div>
       )}
 
-      {/* Create User Modal */}
-      {showCreateModal && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h3>Create New User</h3>
-              <button className="modal-close" onClick={closeCreateModal}>
-                <i className="fas fa-times"></i>
-              </button>
-            </div>
-            
-            <form onSubmit={handleCreateSubmit} className="create-form">
-              <div className="form-group">
-                <label htmlFor="create-username">Username *</label>
-                <input
-                  type="text"
-                  id="create-username"
-                  value={createForm.username}
-                  onChange={(e) => setCreateForm(prev => ({ ...prev, username: e.target.value }))}
-                  required
-                />
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="create-email">Email</label>
-                <input
-                  type="email"
-                  id="create-email"
-                  value={createForm.email}
-                  onChange={(e) => setCreateForm(prev => ({ ...prev, email: e.target.value }))}
-                />
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="create-password">Password *</label>
-                <input
-                  type="password"
-                  id="create-password"
-                  value={createForm.password}
-                  onChange={(e) => setCreateForm(prev => ({ ...prev, password: e.target.value }))}
-                  required
-                />
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="create-access-level">Role *</label>
-                <select
-                  id="create-access-level"
-                  value={createForm.access_level}
-                  onChange={(e) => setCreateForm(prev => ({ ...prev, access_level: e.target.value }))}
-                  required
-                >
-                  <option value="">Select Role</option>
-                  <option value="Admin">Admin</option>
-                  <option value="Faculty">Faculty</option>
-                  <option value="Staff">Staff</option>
-                  <option value="Student">Student</option>
-                </select>
-              </div>
-              
-              <div className="form-group">
-                <label className="checkbox-label">
-                  <input
-                    type="checkbox"
-                    checked={createForm.is_active}
-                    onChange={(e) => setCreateForm(prev => ({ ...prev, is_active: e.target.checked }))}
-                  />
-                  Active User
-                </label>
-              </div>
-              
-              <div className="modal-actions">
-                <button type="button" onClick={closeCreateModal} className="btn-secondary">
-                  Cancel
-                </button>
-                <button type="submit" className="btn-primary" disabled={isLoading}>
-                  {isLoading ? 'Creating...' : 'Create User'}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
-
-      {/* Edit Modal */}
-      {showEditModal && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h3>Edit User: {selectedUser?.username}</h3>
-              <button className="modal-close" onClick={closeEditModal}>
-                <i className="fas fa-times"></i>
-              </button>
-            </div>
-            
-            <form onSubmit={handleEditSubmit} className="edit-form">
-              <div className="form-group">
-                <label htmlFor="username">Username</label>
-                <input
-                  type="text"
-                  id="username"
-                  value={editForm.username}
-                  onChange={(e) => setEditForm(prev => ({ ...prev, username: e.target.value }))}
-                  required
-                />
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  value={editForm.email}
-                  onChange={(e) => setEditForm(prev => ({ ...prev, email: e.target.value }))}
-                />
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="access_level">Role</label>
-                <select
-                  id="access_level"
-                  value={editForm.access_level}
-                  onChange={(e) => setEditForm(prev => ({ ...prev, access_level: e.target.value }))}
-                  required
-                >
-                  <option value="">Select Role</option>
-                  <option value="Admin">Admin</option>
-                  <option value="Faculty">Faculty</option>
-                  <option value="Staff">Staff</option>
-                  <option value="Student">Student</option>
-                </select>
-              </div>
-              
-              <div className="form-group">
-                <label className="checkbox-label">
-                  <input
-                    type="checkbox"
-                    checked={editForm.is_active}
-                    onChange={(e) => setEditForm(prev => ({ ...prev, is_active: e.target.checked }))}
-                  />
-                  Active User
-                </label>
-              </div>
-              
-              <div className="modal-actions">
-                <button type="button" onClick={closeEditModal} className="btn-secondary">
-                  Cancel
-                </button>
-                <button type="submit" className="btn-primary" disabled={isLoading}>
-                  {isLoading ? 'Updating...' : 'Update User'}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
+      {/* User Modal */}
+      <UserModal
+        show={showUserModal}
+        onClose={handleUserModalClose}
+        onSubmit={handleUserSubmit}
+        mode={userModalMode}
+        initialData={selectedUser}
+      />
 
       {/* Confirmation Modal */}
       {showConfirmModal && (

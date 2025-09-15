@@ -1,24 +1,29 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { useTheme } from '../../contexts/ThemeContext';
 import LanguageSelector from '../../components/LanguageSelector/LanguageSelector';
+import TranslationConfirmDialog from '../../components/TranslationConfirmDialog/TranslationConfirmDialog';
 import ThemeToggle from '../../Views/ThemeToggle/ThemeToggle';
+import ProfileDropdown from '../../components/ProfileDropdown/ProfileDropdown';
 import { useGoogleTranslate } from '../../hooks/useGoogleTranslate';
 import './AdminLayout.css';
 
 const AdminLayout = ({ children, activeTab, setActiveTab }) => {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
   const { theme } = useTheme();
-  const { currentLanguage, changeLanguage, languages } = useGoogleTranslate();
+  const {
+    currentLanguage,
+    languages,
+    showTranslateConfirm,
+    pendingTranslation,
+    handleTranslateConfirm,
+    changeLanguage
+  } = useGoogleTranslate();
   const navigate = useNavigate();
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = React.useState(false);
+  const [forceRender, setForceRender] = React.useState(0);
   const languageDropdownRef = React.useRef(null);
-
-  const handleLogout = () => {
-    logout();
-    navigate('/');
-  };
 
   const handleTabClick = (tab) => {
     if (tab === 'home') {
@@ -46,11 +51,18 @@ const AdminLayout = ({ children, activeTab, setActiveTab }) => {
       {/* Admin Header */}
       <header className="admin-layout-header">
         <div className="admin-layout-header-content">
-          {/* Left side - Title */}
+          {/* Left side - Logo and Title */}
           <div className="admin-layout-left">
-            <div className="admin-layout-title-section">
-              <h1>Admin Dashboard</h1>
-              <span className="admin-layout-subtitle">National Institute of Technology Goa</span>
+            <div className="admin-layout-logo-section">
+              <img 
+                src="/NIT_LOGO.png" 
+                alt="NIT Goa Logo" 
+                className="admin-layout-logo"
+              />
+              <div className="admin-layout-title-section">
+                <h1>Admin Dashboard</h1>
+                <span className="admin-layout-subtitle">National Institute of Technology Goa</span>
+              </div>
             </div>
           </div>
 
@@ -65,6 +77,18 @@ const AdminLayout = ({ children, activeTab, setActiveTab }) => {
               onLanguageChange={(languageCode) => {
                 setIsLanguageDropdownOpen(false);
                 changeLanguage(languageCode);
+                // Force re-render of admin content after language change
+                setTimeout(() => {
+                  setForceRender(prev => prev + 1);
+                  // Trigger Google Translate if available
+                  if (window.google && window.google.translate && window.google.translate.TranslateElement) {
+                    try {
+                      window.location.reload();
+                    } catch (e) {
+                      console.log('Auto-refresh not needed');
+                    }
+                  }
+                }, 100);
               }}
               dropdownRef={languageDropdownRef}
             />
@@ -72,14 +96,9 @@ const AdminLayout = ({ children, activeTab, setActiveTab }) => {
             {/* Theme Toggle */}
             <ThemeToggle />
 
-            {/* User Menu */}
-            <div className="admin-layout-user-menu">
-              <div className="admin-layout-user-avatar">
-                <i className="fas fa-user-circle"></i>
-              </div>
-              <button onClick={handleLogout} className="admin-layout-logout-btn">
-                <i className="fas fa-sign-out-alt"></i>
-              </button>
+            {/* Profile Dropdown */}
+            <div className="admin-profile-section">
+              <ProfileDropdown />
             </div>
           </div>
         </div>
@@ -136,9 +155,18 @@ const AdminLayout = ({ children, activeTab, setActiveTab }) => {
       </header>
 
       {/* Main Content */}
-      <main className="admin-layout-main">
+      <main className="admin-layout-main" key={`admin-content-${currentLanguage}-${forceRender}`}>
         {children}
       </main>
+      
+      {/* Translation Confirmation Dialog */}
+      <TranslationConfirmDialog
+        isOpen={showTranslateConfirm}
+        onConfirm={handleTranslateConfirm}
+        onCancel={() => {}}
+        targetLanguage={pendingTranslation}
+        languages={languages}
+      />
     </div>
   );
 };

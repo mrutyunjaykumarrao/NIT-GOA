@@ -3,7 +3,7 @@
 .profile-dropdown {
   position: relative;
   display: inline-block;
-  z-index: 1000;
+  z-index: 9998;
 }
 
 /* Login Button for Unauthenticated Users */
@@ -171,7 +171,7 @@
   border-right: none;
   overflow: hidden;
   animation: profileDropdownSlideIn 0.55s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 1001;
+  z-index: 9999;
 }
 
 .profile-dropdown-menu-closing {

@@ -11,6 +11,7 @@ const UserModal = ({
 }) => {
   const [formData, setFormData] = useState({
     username: '',
+    email: '',
     password: '',
     access_level: 'Faculty',
     employee_id: '',
@@ -24,6 +25,7 @@ const UserModal = ({
     if (mode === 'edit' && initialData) {
       setFormData({
         username: initialData.username || '',
+        email: initialData.email || initialData.user_email || '',
         password: '', // Don't populate password for security
         access_level: initialData.access_level || initialData.role || 'Faculty',
         employee_id: initialData.employee_id || '',
@@ -32,6 +34,7 @@ const UserModal = ({
     } else {
       setFormData({
         username: '',
+        email: '',
         password: '',
         access_level: 'Faculty',
         employee_id: '',
@@ -133,6 +136,20 @@ const UserModal = ({
                 disabled={mode === 'edit'} // Username shouldn't be editable
               />
               {errors.username && <span className="error-message">{errors.username}</span>}
+            </div>
+
+            <div className="admin-form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                className={errors.email ? 'error' : ''}
+                placeholder="Enter email address"
+              />
+              {errors.email && <span className="error-message">{errors.email}</span>}
             </div>
 
             <div className="admin-form-group">
