@@ -64,8 +64,8 @@
 
 /* Avatar */
 .profile-dropdown-avatar {
-  width: 45px;
-  height: 45px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background: linear-gradient(135deg, #3b82f6, #1d4ed8);
   display: flex;
@@ -78,8 +78,8 @@
 }
 
 .profile-dropdown-avatar-large {
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background: linear-gradient(135deg, #3b82f6, #1d4ed8);
   display: flex;
@@ -208,7 +208,7 @@
   align-items: center;
   gap: 12px;
   padding: 16px 18px;
-  height: 56px; /* Match navbar height */
+  height: 66px; /* Match navbar height */
   box-sizing: border-box;
   background: linear-gradient(135deg, #1e40af, #3b82f6);
   color: white;

@@ -138,7 +138,7 @@ body {
 
 /* Enhanced shadow and positioning when scrolled */
 .navbar-wrapper.navbar-compact {
-  transform: translateY(-56px) translateZ(0);
+  transform: translateY(-66px) translateZ(0);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
@@ -160,7 +160,7 @@ body {
 .navbar-top-header {
   background-color: var(--color-background-gray);
   position: relative;
-  height: 56px;
+  height: 66px;
   z-index: 2100 !important; /* Higher than navbar wrapper for proper layering */
   padding: 8px 0;
   font-size: 14px;

@@ -256,13 +256,13 @@ const AccountManagement = () => {
   };
 
   const getAvatarUrl = (user) => {
-    // Check for employee image first, then try to construct from employee_id
+    // Check for employee image first, then try to construct from employee_code
     if (user.employee_image) {
       return user.employee_image;
     }
-    // Try to construct image path from employee_id if available
-    if (user.employee_id) {
-      return `/images/Faculty/${user.employee_id}.jpg`;
+    // Try to construct image path from employee_code if available
+    if (user.employee_code) {
+      return `/images/Faculty/${user.employee_code}.jpg`;
     }
     return null;
   };
@@ -285,7 +285,7 @@ const AccountManagement = () => {
           <i className="fas fa-search search-icon"></i>
           <input
             type="text"
-            placeholder="Search by name, email, or employee ID..."
+            placeholder="Search by name, email, or employee code..."
             value={filters.search}
             onChange={(e) => handleFilterChange('search', e.target.value)}
             className="search-input"
@@ -333,7 +333,7 @@ const AccountManagement = () => {
               <thead>
                 <tr>
                   <th>Avatar</th>
-                  <th>Employee ID</th>
+                  <th>Employee Code</th>
                   <th>Username & Name</th>
                   <th>Email</th>
                   <th>Role</th>
@@ -364,10 +364,10 @@ const AccountManagement = () => {
                       </div>
                     </td>
                     <td>
-                      {user.employee_id ? (
-                        <span className="employee-id">#{user.employee_id}</span>
+                      {user.employee_code ? (
+                        <span className="employee-id">#{user.employee_code}</span>
                       ) : (
-                        <span className="no-employee-id">No ID</span>
+                        <span className="no-employee-id">No Code</span>
                       )}
                     </td>
                     <td>

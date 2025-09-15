@@ -848,9 +848,9 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
 
     // Search filter
     if (search) {
-      whereClause += ' WHERE (ua.username LIKE ? OR ua.email LIKE ? OR e.full_name LIKE ? OR e.email LIKE ?)';
+      whereClause += ' WHERE (ua.username LIKE ? OR ua.email LIKE ? OR e.full_name LIKE ? OR e.email LIKE ? OR e.employee_code LIKE ?)';
       const searchPattern = `%${search}%`;
-      params.push(searchPattern, searchPattern, searchPattern, searchPattern);
+      params.push(searchPattern, searchPattern, searchPattern, searchPattern, searchPattern);
     }
 
     // Status filter
@@ -878,9 +878,11 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
         ua.locked_until,
         ua.created_at,
         e.employee_id,
+        e.employee_code,
         e.full_name,
         e.email as employee_email,
         e.role as employee_role,
+        e.image_url as employee_image,
         CASE 
           WHEN ua.locked_until > NOW() THEN 'locked'
           WHEN ua.is_active = 0 THEN 'inactive'
