@@ -1,14 +1,13 @@
 /* Faculty Edit Page Styles */
 .faculty-edit-page {
-    min-height: 100vh;
+    /* min-height: 100vh; */
     background: var(--bg-primary);
     color: var(--text-primary);
     padding: 20px;
-    margin-top: 80px;
 }
 
 .faculty-edit-container {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
     background: var(--bg-secondary);
     border-radius: 12px;
