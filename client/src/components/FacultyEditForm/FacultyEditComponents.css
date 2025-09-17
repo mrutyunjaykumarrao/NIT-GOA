@@ -228,6 +228,159 @@
     border-radius: 2px;
 }
 
+/* Profile Layout - Image + Basic Info */
+/* Profile Layout - Passport style */
+.profile-layout {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+    align-items: start;
+}
+
+.profile-image-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-image-container h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary, #1a202c);
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.form-fields-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center; /* Center vertically to match image height */
+    margin-top: 27.2px;
+    height: 200px; /* Match image height */
+}
+
+.passport-image-upload {
+    width: 200px;
+    height: 200px;
+}
+
+.passport-image-upload .image-upload-area {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.passport-image-upload .preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.basic-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr; /* Smaller honorific, larger full name */
+    grid-template-rows: 1fr;
+    gap: 16px;
+    height: auto; /* Auto height for single row */
+}
+
+.basic-info-grid-three {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Three equal columns: Birth Date, Gender, Joining Date */
+    grid-template-rows: 1fr;
+    gap: 16px;
+    height: auto;
+    margin-top: 16px;
+}
+
+.basic-info-grid .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+}
+
+.basic-info-grid .form-group label {
+    font-size: 0.875rem;
+    margin-bottom: 4px;
+}
+
+.basic-info-grid .form-group .form-input {
+    height: 48px; /* Increased height for better readability */
+    font-size: 0.95rem;
+}
+
+.basic-info-grid-three .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+}
+
+.basic-info-grid-three .form-group label {
+    font-size: 0.875rem;
+    margin-bottom: 4px;
+}
+
+.basic-info-grid-three .form-group .form-input {
+    height: 48px;
+    font-size: 0.95rem;
+}
+
+/* Professional row with three fields */
+.professional-row {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr; /* Designation, Department, Joining Date */
+    gap: 16px;
+}
+
+/* Professional row with two fields */
+.professional-row-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Designation, Department */
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.professional-row .form-group-md {
+    flex: 1;
+}
+
+.professional-row .form-group-sm {
+    flex: 0.8;
+}
+
+/* HOD row styling */
+.hod-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.hod-row .hod-group {
+    margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profile-layout {
+        flex-direction: column;
+        gap: 24px;
+        align-items: center;
+    }
+    
+    .profile-image-container {
+        flex: none;
+        align-self: center;
+    }
+    
+    .basic-info-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+        gap: 16px;
+    }
+}
+
 .subsection-title {
     font-size: 1.3rem;
     font-weight: 600;
@@ -279,7 +432,6 @@
     justify-content: center;
     align-items: center;
     min-height: 56px;
-    transform: translateY(35px);
 }
 
 .checkbox-container {

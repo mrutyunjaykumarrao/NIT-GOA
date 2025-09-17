@@ -51,9 +51,6 @@ const forgotPasswordLimiter = rateLimit({
   message: { error: 'Too many password reset attempts, please try again later' },
   standardHeaders: true,
   legacyHeaders: false,
-  onLimitReached: (req, res) => {
-    console.log('Rate limit reached for forgot password:', req.ip);
-  }
 });
 
 // Even more lenient rate limiter for password reset operations (token protected)
@@ -63,9 +60,6 @@ const resetPasswordLimiter = rateLimit({
   message: { error: 'Too many password reset completion attempts, please try again later' },
   standardHeaders: true,
   legacyHeaders: false,
-  onLimitReached: (req, res) => {
-    console.log('Rate limit reached for password reset completion:', req.ip);
-  }
 });
 
 // Specific rate limiter for login endpoint (very lenient for testing progressive lockout)
