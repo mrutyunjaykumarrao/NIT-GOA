@@ -265,14 +265,15 @@ router.get('/faculty/:slug/details', async (req, res) => {
       ORDER BY fe.completion_year DESC
     `, [faculty.faculty_id]);
     
-    // Get research areas
-    const [researchAreas] = await connection.execute(`
-      SELECT 
-        ra.area_name
-      FROM faculty_research_areas fra
-      JOIN research_areas ra ON fra.area_id = ra.area_id
-      WHERE fra.employee_id = ?
-    `, [faculty.faculty_id]);
+    // Get research areas - disabled until faculty_research_areas table is created
+    // const [researchAreas] = await connection.execute(`
+    //   SELECT 
+    //     ra.area_name
+    //   FROM faculty_research_areas fra
+    //   JOIN research_areas ra ON fra.area_id = ra.area_id
+    //   WHERE fra.employee_id = ?
+    // `, [faculty.faculty_id]);
+    const researchAreas = []; // Temporary empty array until faculty_research_areas table exists
     
     await connection.end();
     

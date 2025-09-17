@@ -166,10 +166,10 @@ const parseJsonFields = (data, jsonFields = []) => {
 const validateSchema = async () => {
   try {
     const requiredTables = [
-      'user_accounts', 'departments', 'designations', 'courses', 'research_areas',
+      'user_accounts', 'departments', 'faculty_designations', 'courses', 'research_areas',
       'employees', 'staff_profiles', 'faculty_profiles', 'faculty_education',
       'faculty_publications', 'faculty_generic_sections', 'faculty_custom_sections',
-      'faculty_custom_section_entries', 'faculty_courses_taught', 'faculty_research_areas',
+      'faculty_custom_section_entries', 'faculty_courses_taught',
       'system_settings', 'audit_log', 'file_attachments'
     ];
     
