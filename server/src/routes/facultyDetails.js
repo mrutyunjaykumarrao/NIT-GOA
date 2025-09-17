@@ -25,7 +25,7 @@ router.get('/:slug/details', async (req, res) => {
     // Get basic faculty information
     const [facultyBasic] = await connection.execute(`
       SELECT 
-        e.employee_id as faculty_id,
+        e.employee_code as faculty_id,
         e.employee_code,
         e.full_name,
         e.honorific,
@@ -50,13 +50,16 @@ router.get('/:slug/details', async (req, res) => {
         fp.orcid_id,
         fp.scopus_id,
         fp.research_gate_url,
+        fp.bio_summary,
+        fp.research_interests,
         d.department_name,
         d.department_code,
-        fp.bio_summary,
-        fp.research_interests
+        d.department_id,
+        fd.designation_id
       FROM employees e
-      LEFT JOIN faculty_profiles fp ON e.employee_id = fp.employee_id
+      LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code
       LEFT JOIN departments d ON fp.department_id = d.department_id
+      LEFT JOIN faculty_designations fd ON e.job_title = fd.designation_title
       WHERE e.employee_code = ? AND e.is_active = 1 AND e.role = 'Faculty'
     `, [facultyId]);
     
@@ -83,38 +86,31 @@ router.get('/:slug/details', async (req, res) => {
         fp.issue,
         fp.pages
       FROM faculty_publications fp
-      WHERE fp.employee_id = ? 
+      WHERE fp.employee_code = ? 
       ORDER BY fp.publication_year DESC, fp.title ASC
-    `, [faculty.faculty_id]);
+    `, [faculty.employee_code]);
     
     // Get faculty education/academic background
     const [education] = await connection.execute(`
       SELECT 
         fe.degree,
         fe.institute,
-        fe.subject,
-        fe.completion_year as year,
-        fe.grade_percentage
+        fe.discipline as subject,
+        fe.graduation_year as year
       FROM faculty_education fe
-      WHERE fe.employee_id = ?
-      ORDER BY fe.completion_year DESC
-    `, [faculty.faculty_id]);
+      WHERE fe.employee_code = ?
+      ORDER BY fe.graduation_year DESC
+    `, [faculty.employee_code]);
     
-    // Get research areas
-    const [researchAreas] = await connection.execute(`
-      SELECT 
-        ra.area_name
-      FROM faculty_research_areas fra
-      JOIN research_areas ra ON fra.area_id = ra.area_id
-      WHERE fra.employee_id = ?
-    `, [faculty.faculty_id]);
+    // Research areas are now stored in faculty_profiles.research_interests as text
+    const researchAreas = [];
     
     await connection.end();
     
     // Structure the response data
     const profileData = {
       profile: {
-        faculty_id: faculty.faculty_id,
+        faculty_id: faculty.employee_code,
         name: faculty.honorific ? `${faculty.honorific} ${faculty.full_name}` : faculty.full_name,
         designation: faculty.designation,
         department: faculty.department_name,
@@ -122,16 +118,24 @@ router.get('/:slug/details', async (req, res) => {
         profile_image: faculty.profile_image,
         researchAreaSummary: faculty.research_interests ? 
           (Array.isArray(faculty.research_interests) ? faculty.research_interests : 
-           JSON.parse(faculty.research_interests || '[]')) : []
+           (faculty.research_interests.includes('[') && faculty.research_interests.includes(']') ? 
+            JSON.parse(faculty.research_interests) : 
+            faculty.research_interests.split(',').map(item => item.trim()).filter(item => item))) : []
       },
       personalInformation: {
         name: faculty.honorific ? `${faculty.honorific} ${faculty.full_name}` : faculty.full_name,
+        full_name: faculty.full_name,
+        honorific: faculty.honorific,
         gender: faculty.gender,
         birthDate: faculty.date_of_birth,
         designation: faculty.designation,
+        designation_id: faculty.designation_id,
         department: faculty.department_name,
+        department_id: faculty.department_id,
         dateOfJoining: faculty.date_of_joining,
-        experience: faculty.research_teaching_experience
+        experience: faculty.research_teaching_experience,
+        is_hod: faculty.is_hod,
+        employment_status: faculty.employment_status
       },
       contactInformation: {
         email: faculty.email,

@@ -287,7 +287,9 @@ router.get('/faculty/:slug/details', async (req, res) => {
         profile_image: faculty.profile_image,
         researchAreaSummary: faculty.research_interests ? 
           (Array.isArray(faculty.research_interests) ? faculty.research_interests : 
-           JSON.parse(faculty.research_interests || '[]')) : []
+           (faculty.research_interests.includes('[') && faculty.research_interests.includes(']') ? 
+            JSON.parse(faculty.research_interests) : 
+            faculty.research_interests.split(',').map(item => item.trim()).filter(item => item))) : []
       },
       personalInformation: {
         name: faculty.honorific ? `${faculty.honorific} ${faculty.full_name}` : faculty.full_name,

@@ -6,16 +6,19 @@ const ImageUpload = ({
   onImageSelect, 
   maxSizeKB = 5120, // 5MB default
   acceptedFormats = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
-  disabled = false
+  disabled = false,
+  fallbackImage = null // Default image to show when currentImage fails to load
 }) => {
   const [dragActive, setDragActive] = useState(false);
   const [previewImage, setPreviewImage] = useState(currentImage);
   const [error, setError] = useState('');
+  const [imageLoadError, setImageLoadError] = useState(false);
   const fileInputRef = useRef(null);
 
   // Reset preview image when currentImage prop changes
   useEffect(() => {
     setPreviewImage(currentImage);
+    setImageLoadError(false); // Reset error state when new image is provided
   }, [currentImage]);
 
   const validateFile = (file) => {
@@ -90,9 +93,14 @@ const ImageUpload = ({
     }
   };
 
+  const handleImageError = () => {
+    setImageLoadError(true);
+  };
+
   const handleRemoveImage = () => {
     setPreviewImage(null);
     setError('');
+    setImageLoadError(false);
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
     }
@@ -122,7 +130,18 @@ const ImageUpload = ({
         
         {previewImage ? (
           <div className="image-preview">
-            <img src={previewImage} alt="Preview" className="preview-image" />
+            <img 
+              src={imageLoadError && fallbackImage ? fallbackImage : previewImage} 
+              alt="Preview" 
+              className={`preview-image ${imageLoadError ? 'fallback-active' : ''}`}
+              onError={handleImageError}
+            />
+            {imageLoadError && fallbackImage && (
+              <div className="fallback-indicator">
+                <i className="fas fa-exclamation-triangle"></i>
+                <span>Using default image</span>
+              </div>
+            )}
             <div className="image-overlay">
               <button
                 type="button"

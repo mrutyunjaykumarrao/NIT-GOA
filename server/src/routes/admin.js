@@ -889,7 +889,7 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
           ELSE 'active'
         END as status
       FROM user_accounts ua
-      LEFT JOIN employees e ON ua.user_id = e.user_account_id
+      LEFT JOIN employees e ON ua.employee_code = e.employee_code
       ${whereClause}
       ORDER BY ua.created_at DESC
       LIMIT ? OFFSET ?
@@ -899,7 +899,7 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
     const [countRows] = await executeQuery(`
       SELECT COUNT(*) as count
       FROM user_accounts ua
-      LEFT JOIN employees e ON ua.user_id = e.user_account_id
+      LEFT JOIN employees e ON ua.employee_code = e.employee_code
       ${whereClause}
     `, params);
 
@@ -934,7 +934,7 @@ router.post('/users/:userId/unlock', async (req, res) => {
         e.full_name,
         COALESCE(ua.email, e.email) as primary_email
       FROM user_accounts ua
-      LEFT JOIN employees e ON ua.user_id = e.user_account_id
+      LEFT JOIN employees e ON ua.employee_code = e.employee_code
       WHERE ua.user_id = ?
     `, [userId]);
     

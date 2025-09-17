@@ -209,3 +209,17 @@
 .image-upload-area.drag-active {
   animation: pulse 1s infinite;
 }
+
+/* Fallback indicator styles */
+.fallback-indicator {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  z-index: 10;
+  pointer-events: none;
+}

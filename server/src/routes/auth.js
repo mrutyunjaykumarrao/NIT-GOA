@@ -465,7 +465,7 @@ router.post('/forgot-password', forgotPasswordLimiter, async (req, res) => {
         e.email as employee_email,
         COALESCE(ua.email, e.email) as primary_email
       FROM user_accounts ua
-      LEFT JOIN employees e ON ua.user_id = e.user_account_id
+      LEFT JOIN employees e ON ua.employee_code = e.employee_code
       WHERE (ua.email = ? OR e.email = ?) 
         AND ua.is_active = 1
         AND (ua.locked_until IS NULL OR ua.locked_until <= NOW())
@@ -596,7 +596,7 @@ router.post('/forgot-password-by-username', async (req, res) => {
         e.email as employee_email,
         COALESCE(ua.email, e.email) as primary_email
       FROM user_accounts ua
-      LEFT JOIN employees e ON ua.user_id = e.user_account_id
+      LEFT JOIN employees e ON ua.employee_code = e.employee_code
       WHERE ua.username = ? 
         AND ua.is_active = 1
         AND (ua.locked_until IS NULL OR ua.locked_until <= NOW())

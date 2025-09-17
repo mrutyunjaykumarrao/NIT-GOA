@@ -3,6 +3,14 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useTheme } from '../../../../contexts/ThemeContext';
 import './FacultyEdit.css';
 
+// Import new enhanced form components and CSS
+import '../../../../components/FacultyEditForm/FacultyEditComponents.css';
+import PersonalInformationSection from '../../../../components/FacultyEditForm/PersonalInformationSection';
+import ContactInformationSection from '../../../../components/FacultyEditForm/ContactInformationSection';
+import ResearchAreasSection from '../../../../components/FacultyEditForm/ResearchAreasSection';
+import CoursesTaughtSection from '../../../../components/FacultyEditForm/CoursesTaughtSection';
+import AcademicInformationSection from '../../../../components/FacultyEditForm/AcademicInformationSection';
+
 const FacultyEdit = () => {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -22,7 +30,7 @@ const FacultyEdit = () => {
         designation: '',
         department: '',
         date_of_joining: '',
-        experience: '',
+        research_teaching_experience: '',
         
         // Contact Information
         email: '',
@@ -157,14 +165,18 @@ const FacultyEdit = () => {
     const populateFormData = (data) => {
         setFormData({
             // Personal Information
-            full_name: data.personalInformation?.name || '',
-            honorific: data.profile?.name?.split(' ')[0] || '',
+            full_name: data.personalInformation?.full_name || '',
+            honorific: data.personalInformation?.honorific || '',
             gender: data.personalInformation?.gender || '',
             date_of_birth: data.personalInformation?.birthDate || '',
             designation: data.personalInformation?.designation || '',
+            designation_id: data.personalInformation?.designation_id || '',
             department: data.personalInformation?.department || '',
+            department_id: data.personalInformation?.department_id || '',
             date_of_joining: data.personalInformation?.dateOfJoining || '',
-            experience: data.personalInformation?.experience || '',
+            research_teaching_experience: data.personalInformation?.experience || '',
+            is_hod: data.personalInformation?.is_hod || false,
+            employment_status: data.personalInformation?.employment_status || '',
             
             // Contact Information
             email: data.contactInformation?.email || '',
@@ -297,7 +309,7 @@ const FacultyEdit = () => {
                     designation: formData.designation,
                     department: formData.department,
                     date_of_joining: formData.date_of_joining,
-                    experience: formData.experience,
+                    experience: formData.research_teaching_experience,
                     email: formData.email,
                     phone_mobile: formData.phone_mobile,
                     extension_no: formData.extension_no,
@@ -326,15 +338,35 @@ const FacultyEdit = () => {
 
             console.log('Saving faculty data:', updateData);
 
-            // Call the bulk update API
-            const response = await fetch(`/api/faculty-edit/${id}/bulk-update`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify(updateData)
-            });
+            // Check if there's a selected image file to upload
+            const hasImageFile = formData.selectedImage;
+            let response;
+
+            if (hasImageFile) {
+                // Use FormData for file upload
+                const formDataPayload = new FormData();
+                formDataPayload.append('data', JSON.stringify(updateData));
+                formDataPayload.append('image', formData.selectedImage);
+
+                response = await fetch(`/api/faculty-edit/${id}/bulk-update`, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                        // Don't set Content-Type for FormData, let browser set it
+                    },
+                    body: formDataPayload
+                });
+            } else {
+                // Use JSON for regular data update
+                response = await fetch(`/api/faculty-edit/${id}/bulk-update`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(updateData)
+                });
+            }
 
             // Check if response is ok before trying to parse JSON
             if (!response.ok) {
@@ -346,14 +378,30 @@ const FacultyEdit = () => {
                     // Retry the request with new token
                     const newToken = localStorage.getItem('authToken');
                     if (newToken) {
-                        const retryResponse = await fetch(`/api/faculty-edit/${id}/bulk-update`, {
-                            method: 'PUT',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'Authorization': `Bearer ${newToken}`
-                            },
-                            body: JSON.stringify(updateData)
-                        });
+                        let retryResponse;
+                        
+                        if (hasImageFile) {
+                            const retryFormData = new FormData();
+                            retryFormData.append('data', JSON.stringify(updateData));
+                            retryFormData.append('image', formData.selectedImage);
+                            
+                            retryResponse = await fetch(`/api/faculty-edit/${id}/bulk-update`, {
+                                method: 'PUT',
+                                headers: {
+                                    'Authorization': `Bearer ${newToken}`
+                                },
+                                body: retryFormData
+                            });
+                        } else {
+                            retryResponse = await fetch(`/api/faculty-edit/${id}/bulk-update`, {
+                                method: 'PUT',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'Authorization': `Bearer ${newToken}`
+                                },
+                                body: JSON.stringify(updateData)
+                            });
+                        }
                         
                         if (retryResponse.ok) {
                             const retryResult = await retryResponse.json();
@@ -400,7 +448,8 @@ const FacultyEdit = () => {
         { id: 'personal', label: 'Personal Information', icon: 'fas fa-user' },
         { id: 'contact', label: 'Contact Information', icon: 'fas fa-envelope' },
         { id: 'academic', label: 'Academic Information', icon: 'fas fa-graduation-cap' },
-        { id: 'research', label: 'Research & Publications', icon: 'fas fa-microscope' },
+        { id: 'research', label: 'Research Areas', icon: 'fas fa-microscope' },
+        { id: 'courses', label: 'Courses Taught', icon: 'fas fa-chalkboard-teacher' },
         { id: 'social', label: 'Social Links', icon: 'fas fa-link' }
     ];
 
@@ -449,406 +498,70 @@ const FacultyEdit = () => {
                     </div>
                 </div>
 
-                {/* Tab Navigation */}
-                <div className="tab-navigation">
-                    {tabs.map(tab => (
-                        <button
-                            key={tab.id}
-                            className={`tab-button ${activeTab === tab.id ? 'active' : ''}`}
-                            onClick={() => setActiveTab(tab.id)}
-                        >
-                            <i className={tab.icon}></i>
-                            <span>{tab.label}</span>
-                        </button>
-                    ))}
-                </div>
+                {/* Main Content Area */}
+                <div className="faculty-edit-content">
+                    {/* Vertical Navigation */}
+                    <div className="vertical-navigation">
+                        <nav className="nav-menu">
+                            {tabs.map(tab => (
+                                <button
+                                    key={tab.id}
+                                    className={`nav-item ${activeTab === tab.id ? 'active' : ''}`}
+                                    onClick={() => setActiveTab(tab.id)}
+                                >
+                                    <i className={tab.icon}></i>
+                                    <span>{tab.label}</span>
+                                </button>
+                            ))}
+                        </nav>
+                    </div>
 
-                {/* Tab Content */}
-                <div className="tab-content">
+                    {/* Form Content */}
+                    <div className="form-content">
                     {/* Personal Information Tab */}
                     {activeTab === 'personal' && (
-                        <div className="form-section">
-                            <h2>Personal Information</h2>
-                            <div className="form-grid">
-                                <div className="form-group">
-                                    <label>
-                                        Full Name <span className="required">*</span>
-                                    </label>
-                                    <input
-                                        type="text"
-                                        value={formData.full_name}
-                                        onChange={(e) => handleInputChange('full_name', e.target.value)}
-                                        placeholder="Enter full name"
-                                        required
-                                    />
-                                </div>
-
-                                <div className="form-group">
-                                    <label>Honorific</label>
-                                    <select
-                                        value={formData.honorific}
-                                        onChange={(e) => handleInputChange('honorific', e.target.value)}
-                                    >
-                                        <option value="">Select Honorific</option>
-                                        <option value="Dr.">Dr.</option>
-                                        <option value="Prof.">Prof.</option>
-                                        <option value="Mr.">Mr.</option>
-                                        <option value="Ms.">Ms.</option>
-                                        <option value="Mrs.">Mrs.</option>
-                                    </select>
-                                </div>
-
-                                <div className="form-group">
-                                    <label>Gender</label>
-                                    <select
-                                        value={formData.gender}
-                                        onChange={(e) => handleInputChange('gender', e.target.value)}
-                                    >
-                                        <option value="">Select Gender</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                </div>
-
-                                <div className="form-group">
-                                    <label>Date of Birth</label>
-                                    <input
-                                        type="date"
-                                        value={formData.date_of_birth ? formData.date_of_birth.split('T')[0] : ''}
-                                        onChange={(e) => handleInputChange('date_of_birth', e.target.value)}
-                                    />
-                                </div>
-
-                                <div className="form-group">
-                                    <label>
-                                        Designation <span className="required">*</span>
-                                    </label>
-                                    <input
-                                        type="text"
-                                        value={formData.designation}
-                                        onChange={(e) => handleInputChange('designation', e.target.value)}
-                                        placeholder="Enter designation"
-                                        required
-                                    />
-                                </div>
-
-                                <div className="form-group">
-                                    <label>
-                                        Department <span className="required">*</span>
-                                    </label>
-                                    <input
-                                        type="text"
-                                        value={formData.department}
-                                        onChange={(e) => handleInputChange('department', e.target.value)}
-                                        placeholder="Enter department"
-                                        required
-                                    />
-                                </div>
-
-                                <div className="form-group">
-                                    <label>Date of Joining</label>
-                                    <input
-                                        type="date"
-                                        value={formData.date_of_joining ? formData.date_of_joining.split('T')[0] : ''}
-                                        onChange={(e) => handleInputChange('date_of_joining', e.target.value)}
-                                    />
-                                </div>
-
-                                <div className="form-group full-width">
-                                    <label>Experience</label>
-                                    <textarea
-                                        value={formData.experience}
-                                        onChange={(e) => handleInputChange('experience', e.target.value)}
-                                        placeholder="Enter research/teaching experience"
-                                        rows="3"
-                                    />
-                                </div>
-                            </div>
-                        </div>
+                        <PersonalInformationSection 
+                            formData={formData}
+                            setFormData={setFormData}
+                            loading={loading}
+                        />
                     )}
 
                     {/* Contact Information Tab */}
                     {activeTab === 'contact' && (
-                        <div className="form-section">
-                            <h2>Contact Information</h2>
-                            <div className="form-grid">
-                                <div className="form-group">
-                                    <label>
-                                        Email <span className="required">*</span>
-                                    </label>
-                                    <input
-                                        type="email"
-                                        value={formData.email}
-                                        onChange={(e) => handleInputChange('email', e.target.value)}
-                                        placeholder="Enter email address"
-                                        required
-                                    />
-                                </div>
-
-                                <div className="form-group">
-                                    <label>Mobile Phone</label>
-                                    <input
-                                        type="tel"
-                                        value={formData.phone_mobile}
-                                        onChange={(e) => handleInputChange('phone_mobile', e.target.value)}
-                                        placeholder="Enter mobile number"
-                                    />
-                                </div>
-
-                                <div className="form-group">
-                                    <label>Extension Number</label>
-                                    <input
-                                        type="text"
-                                        value={formData.extension_no}
-                                        onChange={(e) => handleInputChange('extension_no', e.target.value)}
-                                        placeholder="Enter extension number"
-                                    />
-                                </div>
-
-                                <div className="form-group">
-                                    <label>Office Location</label>
-                                    <input
-                                        type="text"
-                                        value={formData.office_location}
-                                        onChange={(e) => handleInputChange('office_location', e.target.value)}
-                                        placeholder="Enter office location"
-                                    />
-                                </div>
-
-                                <div className="form-group">
-                                    <label>Office Hours</label>
-                                    <input
-                                        type="text"
-                                        value={formData.office_hours}
-                                        onChange={(e) => handleInputChange('office_hours', e.target.value)}
-                                        placeholder="e.g., Monday-Friday: 10:00 AM - 5:00 PM"
-                                    />
-                                </div>
-
-                                <div className="form-group full-width">
-                                    <label>Address</label>
-                                    <textarea
-                                        value={formData.address}
-                                        onChange={(e) => handleInputChange('address', e.target.value)}
-                                        placeholder="Enter complete address"
-                                        rows="3"
-                                    />
-                                </div>
-                            </div>
-                        </div>
+                        <ContactInformationSection 
+                            formData={formData}
+                            setFormData={setFormData}
+                            loading={loading}
+                        />
                     )}
 
                     {/* Academic Information Tab */}
                     {activeTab === 'academic' && (
-                        <div className="form-section">
-                            <h2>Academic Information</h2>
-                            
-                            {/* Education Section */}
-                            <div className="dynamic-section">
-                                <div className="section-header">
-                                    <h3>Education</h3>
-                                    <button
-                                        type="button"
-                                        className="add-button"
-                                        onClick={addEducation}
-                                    >
-                                        <i className="fas fa-plus"></i>
-                                        Add Education
-                                    </button>
-                                </div>
-
-                                {formData.education.map((edu, index) => (
-                                    <div key={index} className="dynamic-item">
-                                        <div className="item-header">
-                                            <h4>Education {index + 1}</h4>
-                                            <button
-                                                type="button"
-                                                className="remove-button"
-                                                onClick={() => removeEducation(index)}
-                                            >
-                                                <i className="fas fa-trash"></i>
-                                            </button>
-                                        </div>
-                                        <div className="form-grid">
-                                            <div className="form-group">
-                                                <label>Degree</label>
-                                                <input
-                                                    type="text"
-                                                    value={edu.degree || ''}
-                                                    onChange={(e) => handleEducationChange(index, 'degree', e.target.value)}
-                                                    placeholder="e.g., Ph.D., M.Tech, B.Tech"
-                                                />
-                                            </div>
-                                            <div className="form-group">
-                                                <label>Institute</label>
-                                                <input
-                                                    type="text"
-                                                    value={edu.institute || ''}
-                                                    onChange={(e) => handleEducationChange(index, 'institute', e.target.value)}
-                                                    placeholder="Enter institute name"
-                                                />
-                                            </div>
-                                            <div className="form-group">
-                                                <label>Subject/Specialization</label>
-                                                <input
-                                                    type="text"
-                                                    value={edu.subject || ''}
-                                                    onChange={(e) => handleEducationChange(index, 'subject', e.target.value)}
-                                                    placeholder="Enter subject or specialization"
-                                                />
-                                            </div>
-                                            <div className="form-group">
-                                                <label>Year</label>
-                                                <input
-                                                    type="number"
-                                                    value={edu.year || ''}
-                                                    onChange={(e) => handleEducationChange(index, 'year', e.target.value)}
-                                                    placeholder="Enter completion year"
-                                                />
-                                            </div>
-                                            <div className="form-group">
-                                                <label>Grade/Percentage</label>
-                                                <input
-                                                    type="text"
-                                                    value={edu.grade_percentage || ''}
-                                                    onChange={(e) => handleEducationChange(index, 'grade_percentage', e.target.value)}
-                                                    placeholder="Enter grade or percentage"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+                        <AcademicInformationSection 
+                            formData={formData}
+                            setFormData={setFormData}
+                            loading={loading}
+                        />
                     )}
 
                     {/* Research & Publications Tab */}
                     {activeTab === 'research' && (
-                        <div className="form-section">
-                            <h2>Research & Publications</h2>
-                            
-                            {/* Bio Summary */}
-                            <div className="form-group full-width">
-                                <label>Bio Summary</label>
-                                <textarea
-                                    value={formData.bio_summary}
-                                    onChange={(e) => handleInputChange('bio_summary', e.target.value)}
-                                    placeholder="Enter bio summary"
-                                    rows="4"
-                                />
-                            </div>
+                        <ResearchAreasSection 
+                            formData={formData}
+                            setFormData={setFormData}
+                            loading={loading}
+                        />
+                    )}
 
-                            {/* Research Interests */}
-                            <div className="dynamic-section">
-                                <div className="section-header">
-                                    <h3>Research Interests</h3>
-                                    <button
-                                        type="button"
-                                        className="add-button"
-                                        onClick={() => addArrayItem('research_interests', '')}
-                                    >
-                                        <i className="fas fa-plus"></i>
-                                        Add Interest
-                                    </button>
-                                </div>
-
-                                {formData.research_interests.map((interest, index) => (
-                                    <div key={index} className="array-item">
-                                        <input
-                                            type="text"
-                                            value={interest}
-                                            onChange={(e) => handleArrayFieldChange('research_interests', index, e.target.value)}
-                                            placeholder="Enter research interest"
-                                        />
-                                        <button
-                                            type="button"
-                                            className="remove-button"
-                                            onClick={() => removeArrayItem('research_interests', index)}
-                                        >
-                                            <i className="fas fa-times"></i>
-                                        </button>
-                                    </div>
-                                ))}
-                            </div>
-
-                            {/* Publications */}
-                            <div className="dynamic-section">
-                                <div className="section-header">
-                                    <h3>Publications</h3>
-                                    <button
-                                        type="button"
-                                        className="add-button"
-                                        onClick={addPublication}
-                                    >
-                                        <i className="fas fa-plus"></i>
-                                        Add Publication
-                                    </button>
-                                </div>
-
-                                {formData.publications.map((pub, index) => (
-                                    <div key={index} className="dynamic-item">
-                                        <div className="item-header">
-                                            <h4>Publication {index + 1}</h4>
-                                            <button
-                                                type="button"
-                                                className="remove-button"
-                                                onClick={() => removePublication(index)}
-                                            >
-                                                <i className="fas fa-trash"></i>
-                                            </button>
-                                        </div>
-                                        <div className="form-grid">
-                                            <div className="form-group full-width">
-                                                <label>Title</label>
-                                                <input
-                                                    type="text"
-                                                    value={pub.title || ''}
-                                                    onChange={(e) => handlePublicationChange(index, 'title', e.target.value)}
-                                                    placeholder="Enter publication title"
-                                                />
-                                            </div>
-                                            <div className="form-group">
-                                                <label>Journal Name</label>
-                                                <input
-                                                    type="text"
-                                                    value={pub.journal_name || ''}
-                                                    onChange={(e) => handlePublicationChange(index, 'journal_name', e.target.value)}
-                                                    placeholder="Enter journal name"
-                                                />
-                                            </div>
-                                            <div className="form-group">
-                                                <label>Year</label>
-                                                <input
-                                                    type="number"
-                                                    value={pub.publication_year || ''}
-                                                    onChange={(e) => handlePublicationChange(index, 'publication_year', e.target.value)}
-                                                    placeholder="Enter publication year"
-                                                />
-                                            </div>
-                                            <div className="form-group">
-                                                <label>DOI</label>
-                                                <input
-                                                    type="text"
-                                                    value={pub.doi || ''}
-                                                    onChange={(e) => handlePublicationChange(index, 'doi', e.target.value)}
-                                                    placeholder="Enter DOI"
-                                                />
-                                            </div>
-                                            <div className="form-group full-width">
-                                                <label>Publication Details</label>
-                                                <textarea
-                                                    value={pub.publication_details || ''}
-                                                    onChange={(e) => handlePublicationChange(index, 'publication_details', e.target.value)}
-                                                    placeholder="Enter additional details"
-                                                    rows="2"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+                    {/* Courses Taught Tab - New tab for our enhanced courses section */}
+                    {activeTab === 'courses' && (
+                        <CoursesTaughtSection 
+                            formData={formData}
+                            setFormData={setFormData}
+                            loading={loading}
+                            employeeCode={faculty?.employee_code}
+                        />
                     )}
 
                     {/* Social Links Tab */}
@@ -918,6 +631,7 @@ const FacultyEdit = () => {
                             </div>
                         </div>
                     )}
+                    </div>
                 </div>
 
                 {/* Footer Actions */}

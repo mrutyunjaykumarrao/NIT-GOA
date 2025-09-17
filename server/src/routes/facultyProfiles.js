@@ -36,7 +36,7 @@ router.get('/', async (req, res) => {
         fp.bio_summary,
         fp.research_interests
       FROM employees e
-      LEFT JOIN faculty_profiles fp ON e.employee_id = fp.employee_id
+      LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code
       LEFT JOIN departments d ON fp.department_id = d.department_id
       WHERE e.is_active = 1 AND e.role = 'Faculty'
       ORDER BY 
@@ -82,7 +82,7 @@ router.get('/department/:departmentCode', async (req, res) => {
         fp.bio_summary,
         fp.research_interests
       FROM employees e
-      LEFT JOIN faculty_profiles fp ON e.employee_id = fp.employee_id
+      LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code
       LEFT JOIN departments d ON fp.department_id = d.department_id
       WHERE e.is_active = 1 AND e.role = 'Faculty' AND d.department_code = ?
       ORDER BY 

@@ -118,7 +118,10 @@ const Faculty = () => {
             department: faculty.department_name || 'Department of Computer Science & Engineering',
             email: faculty.email,
             phone: faculty.phone || '0832-2404420',
-            researchAreas: faculty.research_interests ? JSON.parse(faculty.research_interests).join(', ') : '',
+            researchAreas: faculty.research_interests ? 
+                (faculty.research_interests.includes('[') && faculty.research_interests.includes(']') ? 
+                 JSON.parse(faculty.research_interests).join(', ') : 
+                 faculty.research_interests) : '',
             image: getImagePath(faculty.profile_image, deptCode),
             isHOD: faculty.is_hod === 1 || faculty.is_hod === true,
             displayOrder: faculty.display_order || 999
