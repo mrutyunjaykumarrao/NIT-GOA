@@ -93,8 +93,8 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
 
 
     return (
-        <div className="form-section">
-            <h3 className="section-title">Personal Information</h3>
+        <div className="faculty-edit-components-form-section">
+            <h3 className="faculty-edit-section-title">Personal Information</h3>
             
             {/* Profile Layout - Image on left, Basic info on right */}
             <div className="profile-layout">
@@ -117,14 +117,14 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
                 <div className="form-fields-container">
                     {/* Row 1: Honorific | Full Name (1:3 ratio) */}
                     <div className="basic-info-grid">
-                        <div className="form-group">
+                        <div className="faculty-edit-form-group">
                             <label htmlFor="honorific">Honorific/Title</label>
                             <select
                                 id="honorific"
                                 value={formData.honorific || ''}
                                 onChange={(e) => handleInputChange('honorific', e.target.value)}
                                 disabled={loading}
-                                className="form-input"
+                                className="faculty-edit-form-input"
                             >
                                 {honorificOptions.map(option => (
                                     <option key={option.value} value={option.value}>
@@ -134,7 +134,7 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
                             </select>
                         </div>
 
-                        <div className="form-group">
+                        <div className="faculty-edit-form-group">
                             <label htmlFor="full_name">Full Name</label>
                             <input
                                 type="text"
@@ -146,7 +146,7 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
                                 }
                                 onChange={(e) => handleInputChange('full_name', e.target.value)}
                                 disabled={loading}
-                                className="form-input"
+                                className="faculty-edit-form-input"
                                 placeholder="Enter full name without honorific"
                             />
                         </div>
@@ -154,14 +154,14 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
 
                     {/* Row 2: Gender | Date of Birth | Date of Joining (1:1:1 ratio) */}
                     <div className="basic-info-grid-three">
-                        <div className="form-group">
+                        <div className="faculty-edit-form-group">
                             <label htmlFor="gender">Gender</label>
                             <select
                                 id="gender"
                                 value={formData.gender || ''}
                                 onChange={(e) => handleInputChange('gender', e.target.value)}
                                 disabled={loading}
-                                className="form-input"
+                                className="faculty-edit-form-input"
                             >
                                 {genderOptions.map(option => (
                                     <option key={option.value} value={option.value}>
@@ -171,7 +171,7 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
                             </select>
                         </div>
 
-                        <div className="form-group">
+                        <div className="faculty-edit-form-group">
                             <label htmlFor="date_of_birth">Date of Birth</label>
                             <input
                                 type="date"
@@ -179,11 +179,11 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
                                 value={formData.date_of_birth ? formData.date_of_birth.split('T')[0] : ''}
                                 onChange={(e) => handleInputChange('date_of_birth', e.target.value)}
                                 disabled={loading}
-                                className="form-input"
+                                className="faculty-edit-form-input"
                             />
                         </div>
 
-                        <div className="form-group">
+                        <div className="faculty-edit-form-group">
                             <label htmlFor="date_of_joining">Date of Joining</label>
                             <input
                                 type="date"
@@ -191,7 +191,7 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
                                 value={formData.date_of_joining ? formData.date_of_joining.split('T')[0] : ''}
                                 onChange={(e) => handleInputChange('date_of_joining', e.target.value)}
                                 disabled={loading}
-                                className="form-input"
+                                className="faculty-edit-form-input"
                             />
                         </div>
                     </div>
@@ -199,7 +199,7 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
             </div>
             
             {/* Row 3: Designation | Department (1:1 ratio) */}
-            <div className="form-grid">
+            <div className="faculty-edit-form-grid">
                 {/* Professional Information - Compact Row */}
                 <div className="form-row professional-row-two">
                     <div className="form-group form-group-md">
@@ -209,7 +209,7 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
                             value={formData.designation_id || ''}
                             onChange={(e) => handleInputChange('designation_id', e.target.value)}
                             disabled={loading}
-                            className="form-input"
+                            className="faculty-edit-form-input"
                         >
                             <option value="">Select Designation</option>
                             {designations.map(designation => (
@@ -227,7 +227,7 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
                             value={formData.department_id || ''}
                             onChange={(e) => handleInputChange('department_id', e.target.value)}
                             disabled={loading}
-                            className="form-input"
+                            className="faculty-edit-form-input"
                         >
                             <option value="">Select Department</option>
                             {departments.map(department => (
@@ -284,7 +284,7 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
                                 className="checkbox-input"
                             />
                             <span className="checkbox-checkmark"></span>
-                            <span className="checkbox-label">Head of Department (HOD)</span>
+                            <span className="faculty-edit-checkbox-label">Head of Department (HOD)</span>
                         </label>
                     </div>
                 </div>

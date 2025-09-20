@@ -144,10 +144,10 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
   };
 
   const renderPersonalInfo = () => (
-    <div className="form-section">
+    <div className="faculty-edit-form-section">
       <h3>Personal Information</h3>
-      <div className="form-grid">
-        <div className="form-group">
+      <div className="faculty-edit-form-grid">
+        <div className="faculty-edit-form-group">
           <label htmlFor="full_name">Full Name *</label>
           <input
             type="text"
@@ -158,10 +158,10 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
             className={errors.full_name ? 'error' : ''}
             required
           />
-          {errors.full_name && <span className="error-message">{errors.full_name}</span>}
+          {errors.full_name && <span className="faculty-edit-error-message">{errors.full_name}</span>}
         </div>
 
-        <div className="form-group">
+        <div className="faculty-edit-form-group">
           <label htmlFor="first_name">First Name</label>
           <input
             type="text"
@@ -172,7 +172,7 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
           />
         </div>
 
-        <div className="form-group">
+        <div className="faculty-edit-form-group">
           <label htmlFor="last_name">Last Name</label>
           <input
             type="text"
@@ -183,7 +183,7 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
           />
         </div>
 
-        <div className="form-group">
+        <div className="faculty-edit-form-group">
           <label htmlFor="gender">Gender</label>
           <select
             id="gender"
@@ -198,7 +198,7 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
           </select>
         </div>
 
-        <div className="form-group">
+        <div className="faculty-edit-form-group">
           <label htmlFor="date_of_birth">Date of Birth</label>
           <input
             type="date"
@@ -209,7 +209,7 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
           />
         </div>
 
-        <div className="form-group full-width">
+        <div className="faculty-edit-form-group full-width">
           <label htmlFor="bio">Biography</label>
           <textarea
             id="bio"
@@ -225,10 +225,10 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
   );
 
   const renderContactInfo = () => (
-    <div className="form-section">
+    <div className="faculty-edit-form-section">
       <h3>Contact Information</h3>
-      <div className="form-grid">
-        <div className="form-group">
+      <div className="faculty-edit-form-grid">
+        <div className="faculty-edit-form-group">
           <label htmlFor="email">Email *</label>
           <input
             type="email"
@@ -239,10 +239,10 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
             className={errors.email ? 'error' : ''}
             required
           />
-          {errors.email && <span className="error-message">{errors.email}</span>}
+          {errors.email && <span className="faculty-edit-error-message">{errors.email}</span>}
         </div>
 
-        <div className="form-group">
+        <div className="faculty-edit-form-group">
           <label htmlFor="phone">Phone</label>
           <input
             type="tel"
@@ -253,7 +253,7 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
           />
         </div>
 
-        <div className="form-group">
+        <div className="faculty-edit-form-group">
           <label htmlFor="mobile">Mobile</label>
           <input
             type="tel"
@@ -264,7 +264,7 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
           />
         </div>
 
-        <div className="form-group">
+        <div className="faculty-edit-form-group">
           <label htmlFor="office_location">Office Location</label>
           <input
             type="text"
@@ -276,7 +276,7 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
           />
         </div>
 
-        <div className="form-group full-width">
+        <div className="faculty-edit-form-group full-width">
           <label htmlFor="address">Address</label>
           <textarea
             id="address"
@@ -292,10 +292,10 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
   );
 
   const renderProfessionalInfo = () => (
-    <div className="form-section">
+    <div className="faculty-edit-form-section">
       <h3>Professional Information</h3>
-      <div className="form-grid">
-        <div className="form-group">
+      <div className="faculty-edit-form-grid">
+        <div className="faculty-edit-form-group">
           <label htmlFor="designation">Designation *</label>
           <input
             type="text"
@@ -307,10 +307,10 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
             placeholder="e.g., Assistant Professor, Associate Professor"
             required
           />
-          {errors.designation && <span className="error-message">{errors.designation}</span>}
+          {errors.designation && <span className="faculty-edit-error-message">{errors.designation}</span>}
         </div>
 
-        <div className="form-group">
+        <div className="faculty-edit-form-group">
           <label htmlFor="department">Department *</label>
           <select
             id="department"
@@ -329,10 +329,10 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
             <option value="HSS">Humanities & Social Sciences</option>
             <option value="APS">Applied Sciences</option>
           </select>
-          {errors.department && <span className="error-message">{errors.department}</span>}
+          {errors.department && <span className="faculty-edit-error-message">{errors.department}</span>}
         </div>
 
-        <div className="form-group">
+        <div className="faculty-edit-form-group">
           <label htmlFor="experience_years">Experience (Years)</label>
           <input
             type="number"
@@ -344,10 +344,10 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
             min="0"
             placeholder="e.g., 10"
           />
-          {errors.experience_years && <span className="error-message">{errors.experience_years}</span>}
+          {errors.experience_years && <span className="faculty-edit-error-message">{errors.experience_years}</span>}
         </div>
 
-        <div className="form-group">
+        <div className="faculty-edit-form-group">
           <label htmlFor="date_of_joining">Date of Joining</label>
           <input
             type="date"
@@ -358,7 +358,7 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
           />
         </div>
 
-        <div className="form-group full-width">
+        <div className="faculty-edit-form-group full-width">
           <label htmlFor="qualification">Qualification</label>
           <textarea
             id="qualification"
@@ -370,7 +370,7 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
           />
         </div>
 
-        <div className="form-group full-width">
+        <div className="faculty-edit-form-group full-width">
           <label htmlFor="specialization">Specialization</label>
           <textarea
             id="specialization"
@@ -382,7 +382,7 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
           />
         </div>
 
-        <div className="form-group full-width">
+        <div className="faculty-edit-form-group full-width">
           <label htmlFor="research_areas">Research Areas</label>
           <textarea
             id="research_areas"
@@ -394,7 +394,7 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
           />
         </div>
 
-        <div className="form-group full-width">
+        <div className="faculty-edit-form-group full-width">
           <label htmlFor="experience_description">Experience Description</label>
           <textarea
             id="experience_description"
@@ -410,10 +410,10 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
   );
 
   const renderSocialLinks = () => (
-    <div className="form-section">
+    <div className="faculty-edit-form-section">
       <h3>Social Links & Online Presence</h3>
-      <div className="form-grid">
-        <div className="form-group">
+      <div className="faculty-edit-form-grid">
+        <div className="faculty-edit-form-group">
           <label htmlFor="personal_website">Personal Website</label>
           <input
             type="url"
@@ -424,10 +424,10 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
             className={errors.personal_website ? 'error' : ''}
             placeholder="https://example.com"
           />
-          {errors.personal_website && <span className="error-message">{errors.personal_website}</span>}
+          {errors.personal_website && <span className="faculty-edit-error-message">{errors.personal_website}</span>}
         </div>
 
-        <div className="form-group">
+        <div className="faculty-edit-form-group">
           <label htmlFor="linkedin_url">LinkedIn Profile</label>
           <input
             type="url"
@@ -438,10 +438,10 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
             className={errors.linkedin_url ? 'error' : ''}
             placeholder="https://linkedin.com/in/username"
           />
-          {errors.linkedin_url && <span className="error-message">{errors.linkedin_url}</span>}
+          {errors.linkedin_url && <span className="faculty-edit-error-message">{errors.linkedin_url}</span>}
         </div>
 
-        <div className="form-group">
+        <div className="faculty-edit-form-group">
           <label htmlFor="google_scholar_url">Google Scholar</label>
           <input
             type="url"
@@ -452,10 +452,10 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
             className={errors.google_scholar_url ? 'error' : ''}
             placeholder="https://scholar.google.com/citations?user=..."
           />
-          {errors.google_scholar_url && <span className="error-message">{errors.google_scholar_url}</span>}
+          {errors.google_scholar_url && <span className="faculty-edit-error-message">{errors.google_scholar_url}</span>}
         </div>
 
-        <div className="form-group">
+        <div className="faculty-edit-form-group">
           <label htmlFor="researchgate_url">ResearchGate Profile</label>
           <input
             type="url"
@@ -466,10 +466,10 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
             className={errors.researchgate_url ? 'error' : ''}
             placeholder="https://www.researchgate.net/profile/username"
           />
-          {errors.researchgate_url && <span className="error-message">{errors.researchgate_url}</span>}
+          {errors.researchgate_url && <span className="faculty-edit-error-message">{errors.researchgate_url}</span>}
         </div>
 
-        <div className="form-group">
+        <div className="faculty-edit-form-group">
           <label htmlFor="orcid_url">ORCID iD</label>
           <input
             type="url"
@@ -480,7 +480,7 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
             className={errors.orcid_url ? 'error' : ''}
             placeholder="https://orcid.org/0000-0000-0000-0000"
           />
-          {errors.orcid_url && <span className="error-message">{errors.orcid_url}</span>}
+          {errors.orcid_url && <span className="faculty-edit-error-message">{errors.orcid_url}</span>}
         </div>
       </div>
     </div>
@@ -488,9 +488,9 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
 
   return (
     <div className="faculty-edit-form">
-      <div className="form-header">
+      <div className="faculty-edit-form-header">
         <h2>Edit Faculty Profile</h2>
-        <button type="button" className="close-button" onClick={onCancel}>
+        <button type="button" className="faculty-edit-close-button" onClick={onCancel}>
           <i className="fas fa-times"></i>
         </button>
       </div>
@@ -501,11 +501,11 @@ const FacultyEditForm = ({ faculty, onSave, onCancel, section = 'all' }) => {
         {(section === 'all' || section === 'professional') && renderProfessionalInfo()}
         {(section === 'all' || section === 'social') && renderSocialLinks()}
 
-        <div className="form-actions">
-          <button type="button" className="cancel-button" onClick={onCancel} disabled={loading}>
+        <div className="faculty-edit-form-actions">
+          <button type="button" className="faculty-edit-cancel-button" onClick={onCancel} disabled={loading}>
             Cancel
           </button>
-          <button type="submit" className="save-button" disabled={loading}>
+          <button type="submit" className="faculty-edit-save-button" disabled={loading}>
             {loading ? (
               <>
                 <i className="fas fa-spinner fa-spin"></i>

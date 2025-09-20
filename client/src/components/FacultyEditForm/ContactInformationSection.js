@@ -10,9 +10,9 @@ const ContactInformationSection = ({ formData, setFormData, loading }) => {
     };
 
     return (
-        <div className="form-section">
-            <h3 className="section-title">Contact Information</h3>
-            <div className="form-grid">
+        <div className="faculty-edit-components-form-section">
+            <h3 className="faculty-edit-section-title">Contact Information</h3>
+            <div className="faculty-edit-form-grid">
                 {/* Email */}
                 <div className="form-group full-width">
                     <label htmlFor="email">Email Address *</label>
@@ -22,7 +22,7 @@ const ContactInformationSection = ({ formData, setFormData, loading }) => {
                         value={formData.email || ''}
                         onChange={(e) => handleInputChange('email', e.target.value)}
                         disabled={loading}
-                        className="form-input"
+                        className="faculty-edit-form-input"
                         placeholder="Enter official email address"
                         required
                     />
@@ -30,7 +30,7 @@ const ContactInformationSection = ({ formData, setFormData, loading }) => {
 
                 {/* Phone Numbers */}
                 <div className="form-row contact-phones">
-                    <div className="form-group">
+                    <div className="faculty-edit-form-group">
                         <label htmlFor="phone_mobile">Phone (Mobile)</label>
                         <input
                             type="tel"
@@ -38,12 +38,12 @@ const ContactInformationSection = ({ formData, setFormData, loading }) => {
                             value={formData.phone_mobile || ''}
                             onChange={(e) => handleInputChange('phone_mobile', e.target.value)}
                             disabled={loading}
-                            className="form-input"
+                            className="faculty-edit-form-input"
                             placeholder="Enter mobile number"
                         />
                     </div>
 
-                    <div className="form-group">
+                    <div className="faculty-edit-form-group">
                         <label htmlFor="phone_residence">Phone (Residence)</label>
                         <input
                             type="tel"
@@ -51,12 +51,12 @@ const ContactInformationSection = ({ formData, setFormData, loading }) => {
                             value={formData.phone_residence || ''}
                             onChange={(e) => handleInputChange('phone_residence', e.target.value)}
                             disabled={loading}
-                            className="form-input"
+                            className="faculty-edit-form-input"
                             placeholder="Enter residence number"
                         />
                     </div>
 
-                    <div className="form-group">
+                    <div className="faculty-edit-form-group">
                         <label htmlFor="extension_no">Extension No</label>
                         <input
                             type="text"
@@ -64,7 +64,7 @@ const ContactInformationSection = ({ formData, setFormData, loading }) => {
                             value={formData.extension_no || ''}
                             onChange={(e) => handleInputChange('extension_no', e.target.value)}
                             disabled={loading}
-                            className="form-input"
+                            className="faculty-edit-form-input"
                             placeholder="Enter office extension number"
                         />
                     </div>
@@ -86,7 +86,7 @@ const ContactInformationSection = ({ formData, setFormData, loading }) => {
 
                 {/* Office Information */}
                 <div className="form-row office-info">
-                    <div className="form-group">
+                    <div className="faculty-edit-form-group">
                         <label htmlFor="office_location">Office Location</label>
                         <input
                             type="text"
@@ -94,12 +94,12 @@ const ContactInformationSection = ({ formData, setFormData, loading }) => {
                             value={formData.office_location || ''}
                             onChange={(e) => handleInputChange('office_location', e.target.value)}
                             disabled={loading}
-                            className="form-input"
+                            className="faculty-edit-form-input"
                             placeholder="e.g., Room No. 201, Block A"
                         />
                     </div>
 
-                    <div className="form-group">
+                    <div className="faculty-edit-form-group">
                         <label htmlFor="office_hours">Office Hours</label>
                         <input
                             type="text"
@@ -107,7 +107,7 @@ const ContactInformationSection = ({ formData, setFormData, loading }) => {
                             value={formData.office_hours || ''}
                             onChange={(e) => handleInputChange('office_hours', e.target.value)}
                             disabled={loading}
-                            className="form-input"
+                            className="faculty-edit-form-input"
                             placeholder="e.g., Mon-Fri: 9:00 AM - 5:00 PM"
                         />
                     </div>

@@ -24,7 +24,7 @@
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
-.form-header {
+.faculty-edit-form-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,14 +34,14 @@
   padding-bottom: 16px;
 }
 
-.form-header h2 {
+.faculty-edit-form-header h2 {
   margin: 0;
   color: var(--color-primary);
   font-size: 1.5rem;
   font-weight: 600;
 }
 
-.close-button {
+.faculty-edit-close-button {
   background: none;
   border: none;
   font-size: 1.5rem;
@@ -57,17 +57,17 @@
   height: 40px;
 }
 
-.close-button:hover {
+.faculty-edit-close-button:hover {
   background: var(--color-hover);
   color: var(--color-text-primary);
 }
 
-.form-section {
+.faculty-edit-form-section {
   margin-bottom: 32px;
   padding: 0 24px;
 }
 
-.form-section h3 {
+.faculty-edit-form-section h3 {
   margin: 0 0 20px 0;
   color: var(--color-text-primary);
   font-size: 1.25rem;
@@ -77,32 +77,32 @@
   display: inline-block;
 }
 
-.form-grid {
+.faculty-edit-form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   align-items: start;
 }
 
-.form-group {
+.faculty-edit-form-group {
   display: flex;
   flex-direction: column;
 }
 
-.form-group.full-width {
+.faculty-edit-form-group.full-width {
   grid-column: 1 / -1;
 }
 
-.form-group label {
+.faculty-edit-form-group label {
   margin-bottom: 6px;
   font-weight: 500;
   color: var(--color-text-primary);
   font-size: 0.95rem;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
+.faculty-edit-form-group input,
+.faculty-edit-form-group select,
+.faculty-edit-form-group textarea {
   padding: 12px 16px;
   border: 2px solid var(--color-border);
   border-radius: 8px;
@@ -113,27 +113,27 @@
   font-family: inherit;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
+.faculty-edit-form-group input:focus,
+.faculty-edit-form-group select:focus,
+.faculty-edit-form-group textarea:focus {
   outline: none;
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
 }
 
-.form-group input.error,
-.form-group select.error,
-.form-group textarea.error {
+.faculty-edit-form-group input.error,
+.faculty-edit-form-group select.error,
+.faculty-edit-form-group textarea.error {
   border-color: var(--color-error);
   box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
 }
 
-.form-group textarea {
+.faculty-edit-form-group textarea {
   resize: vertical;
   min-height: 80px;
 }
 
-.error-message {
+.faculty-edit-error-message {
   color: var(--color-error);
   font-size: 0.875rem;
   margin-top: 4px;
@@ -142,12 +142,12 @@
   gap: 4px;
 }
 
-.error-message::before {
+.faculty-edit-error-message::before {
   content: "⚠";
   font-size: 0.875rem;
 }
 
-.form-actions {
+.faculty-edit-form-actions {
   display: flex;
   justify-content: flex-end;
   gap: 16px;
@@ -157,7 +157,7 @@
   border-radius: 0 0 12px 12px;
 }
 
-.form-actions button {
+.faculty-edit-form-actions button {
   padding: 12px 24px;
   border: none;
   border-radius: 8px;
@@ -172,38 +172,38 @@
   justify-content: center;
 }
 
-.cancel-button {
+.faculty-edit-cancel-button {
   background: var(--color-background);
   color: var(--color-text-secondary);
   border: 2px solid var(--color-border);
 }
 
-.cancel-button:hover:not(:disabled) {
+.faculty-edit-cancel-button:hover:not(:disabled) {
   background: var(--color-hover);
   color: var(--color-text-primary);
   border-color: var(--color-text-secondary);
 }
 
-.save-button {
+.faculty-edit-save-button {
   background: var(--color-primary);
   color: white;
 }
 
-.save-button:hover:not(:disabled) {
+.faculty-edit-save-button:hover:not(:disabled) {
   background: var(--color-primary-dark);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.3);
 }
 
-.save-button:disabled,
-.cancel-button:disabled {
+.faculty-edit-save-button:disabled,
+.faculty-edit-cancel-button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
 }
 
-.save-button .fa-spinner {
+.faculty-edit-save-button .fa-spinner {
   animation: spin 1s linear infinite;
 }
 
@@ -222,25 +222,25 @@
     max-height: 95vh;
   }
 
-  .form-grid {
+  .faculty-edit-form-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
 
-  .form-header {
+  .faculty-edit-form-header {
     padding: 16px 16px 0;
   }
 
-  .form-section {
+  .faculty-edit-form-section {
     padding: 0 16px;
   }
 
-  .form-actions {
+  .faculty-edit-form-actions {
     padding: 16px;
     flex-direction: column;
   }
 
-  .form-actions button {
+  .faculty-edit-form-actions button {
     width: 100%;
   }
 }
@@ -251,32 +251,32 @@
   color: var(--color-text-dark);
 }
 
-[data-theme="dark"] .form-group input,
-[data-theme="dark"] .form-group select,
-[data-theme="dark"] .form-group textarea {
+[data-theme="dark"] .faculty-edit-form-group input,
+[data-theme="dark"] .faculty-edit-form-group select,
+[data-theme="dark"] .faculty-edit-form-group textarea {
   background: var(--color-background-dark);
   border-color: var(--color-border-dark);
   color: var(--color-text-dark);
 }
 
-[data-theme="dark"] .form-group input:focus,
-[data-theme="dark"] .form-group select:focus,
-[data-theme="dark"] .form-group textarea:focus {
+[data-theme="dark"] .faculty-edit-form-group input:focus,
+[data-theme="dark"] .faculty-edit-form-group select:focus,
+[data-theme="dark"] .faculty-edit-form-group textarea:focus {
   border-color: var(--color-primary);
 }
 
-[data-theme="dark"] .form-actions {
+[data-theme="dark"] .faculty-edit-form-actions {
   background: var(--color-surface-variant-dark);
   border-color: var(--color-border-dark);
 }
 
-[data-theme="dark"] .cancel-button {
+[data-theme="dark"] .faculty-edit-cancel-button {
   background: var(--color-background-dark);
   color: var(--color-text-secondary-dark);
   border-color: var(--color-border-dark);
 }
 
-[data-theme="dark"] .cancel-button:hover:not(:disabled) {
+[data-theme="dark"] .faculty-edit-cancel-button:hover:not(:disabled) {
   background: var(--color-hover-dark);
   color: var(--color-text-dark);
 }

@@ -134,8 +134,8 @@ const CoursesTaughtSection = ({ formData, setFormData, loading, employeeCode }) 
     };
 
     return (
-        <div className="form-section">
-            <h3 className="section-title">Courses Taught</h3>
+        <div className="faculty-edit-components-form-section">
+            <h3 className="faculty-edit-section-title">Courses Taught</h3>
 
             {/* Add Course Buttons */}
             <div className="section-header">
@@ -163,14 +163,14 @@ const CoursesTaughtSection = ({ formData, setFormData, loading, employeeCode }) 
                     <h4>Add New {selectedLevel} Course</h4>
                     
                     {/* Course Search */}
-                    <div className="form-group">
+                    <div className="faculty-edit-form-group">
                         <label>Search Courses</label>
                         <input
                             type="text"
                             placeholder="Enter course code or name to search..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="form-input"
+                            className="faculty-edit-form-input"
                         />
                     </div>
 

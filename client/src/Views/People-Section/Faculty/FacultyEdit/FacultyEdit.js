@@ -501,12 +501,12 @@ const FacultyEdit = () => {
                 {/* Main Content Area */}
                 <div className="faculty-edit-content">
                     {/* Vertical Navigation */}
-                    <div className="vertical-navigation">
-                        <nav className="nav-menu">
+                    <div className="faculty-edit-vertical-navigation">
+                        <nav className="faculty-edit-nav-menu">
                             {tabs.map(tab => (
                                 <button
                                     key={tab.id}
-                                    className={`nav-item ${activeTab === tab.id ? 'active' : ''}`}
+                                    className={`faculty-edit-nav-item ${activeTab === tab.id ? 'active' : ''}`}
                                     onClick={() => setActiveTab(tab.id)}
                                 >
                                     <i className={tab.icon}></i>
@@ -517,7 +517,7 @@ const FacultyEdit = () => {
                     </div>
 
                     {/* Form Content */}
-                    <div className="form-content">
+                    <div className="faculty-edit-form-content">
                     {/* Personal Information Tab */}
                     {activeTab === 'personal' && (
                         <PersonalInformationSection 
@@ -566,10 +566,10 @@ const FacultyEdit = () => {
 
                     {/* Social Links Tab */}
                     {activeTab === 'social' && (
-                        <div className="form-section">
+                        <div className="faculty-edit-components-form-section">
                             <h2>Social Links</h2>
-                            <div className="form-grid">
-                                <div className="form-group">
+                            <div className="faculty-edit-form-grid">
+                                <div className="faculty-edit-form-group">
                                     <label>LinkedIn</label>
                                     <input
                                         type="url"
@@ -579,7 +579,7 @@ const FacultyEdit = () => {
                                     />
                                 </div>
 
-                                <div className="form-group">
+                                <div className="faculty-edit-form-group">
                                     <label>Personal Website</label>
                                     <input
                                         type="url"
@@ -589,7 +589,7 @@ const FacultyEdit = () => {
                                     />
                                 </div>
 
-                                <div className="form-group">
+                                <div className="faculty-edit-form-group">
                                     <label>Google Scholar</label>
                                     <input
                                         type="url"
@@ -599,7 +599,7 @@ const FacultyEdit = () => {
                                     />
                                 </div>
 
-                                <div className="form-group">
+                                <div className="faculty-edit-form-group">
                                     <label>ORCID</label>
                                     <input
                                         type="text"
@@ -609,7 +609,7 @@ const FacultyEdit = () => {
                                     />
                                 </div>
 
-                                <div className="form-group">
+                                <div className="faculty-edit-form-group">
                                     <label>Scopus ID</label>
                                     <input
                                         type="text"
@@ -619,7 +619,7 @@ const FacultyEdit = () => {
                                     />
                                 </div>
 
-                                <div className="form-group">
+                                <div className="faculty-edit-form-group">
                                     <label>ResearchGate</label>
                                     <input
                                         type="url"

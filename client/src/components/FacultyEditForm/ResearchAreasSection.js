@@ -75,8 +75,8 @@ const ResearchAreasSection = ({ formData, setFormData, loading }) => {
     );
 
     return (
-        <div className="form-section">
-            <h3 className="section-title">Research Areas</h3>
+        <div className="faculty-edit-components-form-section">
+            <h3 className="faculty-edit-section-title">Research Areas</h3>
 
             {/* Search and Add New Button */}
             <div className="research-areas-header">
@@ -103,13 +103,13 @@ const ResearchAreasSection = ({ formData, setFormData, loading }) => {
             {/* Add New Area Form */}
             {showAddForm && (
                 <div className="add-area-form">
-                    <div className="form-group">
+                    <div className="faculty-edit-form-group">
                         <input
                             type="text"
                             placeholder="Enter new research area name"
                             value={newAreaName}
                             onChange={(e) => setNewAreaName(e.target.value)}
-                            className="form-input"
+                            className="faculty-edit-form-input"
                             onKeyPress={(e) => e.key === 'Enter' && handleAddNewArea()}
                         />
                     </div>
@@ -200,16 +200,16 @@ const ResearchAreasSection = ({ formData, setFormData, loading }) => {
                             }
                         }}
                         disabled={loading}
-                        className="form-input"
+                        className="faculty-edit-form-input"
                     />
-                    <small className="form-hint">
+                    <small className="faculty-edit-form-hint">
                         Press Enter to add a custom research area
                     </small>
                 </div>
             </div>
 
             {/* Research Interests Text Area (backup) */}
-            <div className="form-group">
+            <div className="faculty-edit-form-group">
                 <label htmlFor="research_interests_text">Research Interests (Text Format)</label>
                 <textarea
                     id="research_interests_text"
@@ -223,7 +223,7 @@ const ResearchAreasSection = ({ formData, setFormData, loading }) => {
                     rows="3"
                     placeholder="Enter research interests separated by commas"
                 />
-                <small className="form-hint">
+                <small className="faculty-edit-form-hint">
                     You can also directly type your research interests here, separated by commas
                 </small>
             </div>

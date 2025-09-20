@@ -106,8 +106,8 @@ const AcademicInformationSection = ({ formData, setFormData, loading }) => {
     });
 
     return (
-        <div className="form-section">
-            <h3 className="section-title">Academic Information</h3>
+        <div className="faculty-edit-components-form-section">
+            <h3 className="faculty-edit-section-title">Academic Information</h3>
 
             {/* Add Education Button */}
             <div className="section-header">
@@ -126,14 +126,14 @@ const AcademicInformationSection = ({ formData, setFormData, loading }) => {
                 <div className="add-education-form fade-in">
                     <h4>Add Education/Qualification</h4>
                     
-                    <div className="form-grid">
-                        <div className="form-row">
-                            <div className="form-group">
+                    <div className="faculty-edit-form-grid">
+                        <div className="faculty-edit-form-row">
+                            <div className="faculty-edit-form-group">
                                 <label>Degree/Qualification *</label>
                                 <select
                                     value={newEducation.degree}
                                     onChange={(e) => setNewEducation(prev => ({ ...prev, degree: e.target.value }))}
-                                    className="form-input"
+                                    className="faculty-edit-form-input"
                                     required
                                 >
                                     {degreeOptions.map(option => (
@@ -144,12 +144,12 @@ const AcademicInformationSection = ({ formData, setFormData, loading }) => {
                                 </select>
                             </div>
 
-                            <div className="form-group">
+                            <div className="faculty-edit-form-group">
                                 <label>Specialization/Discipline</label>
                                 <select
                                     value={newEducation.discipline}
                                     onChange={(e) => setNewEducation(prev => ({ ...prev, discipline: e.target.value }))}
-                                    className="form-input"
+                                    className="faculty-edit-form-input"
                                 >
                                     {specializationOptions.map(option => (
                                         <option key={option.value} value={option.value}>
@@ -163,7 +163,7 @@ const AcademicInformationSection = ({ formData, setFormData, loading }) => {
                                         placeholder="Enter custom specialization"
                                         value={newEducation.customDiscipline || ''}
                                         onChange={(e) => setNewEducation(prev => ({ ...prev, customDiscipline: e.target.value }))}
-                                        className="form-input"
+                                        className="faculty-edit-form-input"
                                         style={{ marginTop: '8px' }}
                                     />
                                 )}
@@ -177,17 +177,17 @@ const AcademicInformationSection = ({ formData, setFormData, loading }) => {
                                 placeholder="Enter institute or university name"
                                 value={newEducation.institute}
                                 onChange={(e) => setNewEducation(prev => ({ ...prev, institute: e.target.value }))}
-                                className="form-input"
+                                className="faculty-edit-form-input"
                                 required
                             />
                         </div>
 
-                        <div className="form-group">
+                        <div className="faculty-edit-form-group">
                             <label>Graduation Year</label>
                             <select
                                 value={newEducation.graduation_year}
                                 onChange={(e) => setNewEducation(prev => ({ ...prev, graduation_year: e.target.value }))}
-                                className="form-input"
+                                className="faculty-edit-form-input"
                             >
                                 <option value="">Select Year</option>
                                 {yearOptions.map(option => (
@@ -234,13 +234,13 @@ const AcademicInformationSection = ({ formData, setFormData, loading }) => {
                                 </div>
                                 
                                 <div className="education-details">
-                                    <div className="form-row">
-                                        <div className="form-group">
+                                    <div className="faculty-edit-form-row">
+                                        <div className="faculty-edit-form-group">
                                             <label>Degree</label>
                                             <select
                                                 value={edu.degree || ''}
                                                 onChange={(e) => handleEditEducation(index, 'degree', e.target.value)}
-                                                className="form-input"
+                                                className="faculty-edit-form-input"
                                                 disabled={loading}
                                             >
                                                 {degreeOptions.map(option => (
@@ -251,12 +251,12 @@ const AcademicInformationSection = ({ formData, setFormData, loading }) => {
                                             </select>
                                         </div>
 
-                                        <div className="form-group">
+                                        <div className="faculty-edit-form-group">
                                             <label>Specialization</label>
                                             <select
                                                 value={edu.discipline || ''}
                                                 onChange={(e) => handleEditEducation(index, 'discipline', e.target.value)}
-                                                className="form-input"
+                                                className="faculty-edit-form-input"
                                                 disabled={loading}
                                             >
                                                 {specializationOptions.map(option => (
@@ -271,7 +271,7 @@ const AcademicInformationSection = ({ formData, setFormData, loading }) => {
                                                     placeholder="Enter custom specialization"
                                                     value={edu.customDiscipline || ''}
                                                     onChange={(e) => handleEditEducation(index, 'customDiscipline', e.target.value)}
-                                                    className="form-input"
+                                                    className="faculty-edit-form-input"
                                                     disabled={loading}
                                                     style={{ marginTop: '8px' }}
                                                 />
@@ -279,24 +279,24 @@ const AcademicInformationSection = ({ formData, setFormData, loading }) => {
                                         </div>
                                     </div>
 
-                                    <div className="form-group">
+                                    <div className="faculty-edit-form-group">
                                         <label>Institute/University</label>
                                         <input
                                             type="text"
                                             value={edu.institute || ''}
                                             onChange={(e) => handleEditEducation(index, 'institute', e.target.value)}
-                                            className="form-input"
+                                            className="faculty-edit-form-input"
                                             disabled={loading}
                                             placeholder="Institute or University name"
                                         />
                                     </div>
 
-                                    <div className="form-group">
+                                    <div className="faculty-edit-form-group">
                                         <label>Graduation Year</label>
                                         <select
                                             value={edu.graduation_year || ''}
                                             onChange={(e) => handleEditEducation(index, 'graduation_year', e.target.value)}
-                                            className="form-input"
+                                            className="faculty-edit-form-input"
                                             disabled={loading}
                                         >
                                             <option value="">Select Year</option>
