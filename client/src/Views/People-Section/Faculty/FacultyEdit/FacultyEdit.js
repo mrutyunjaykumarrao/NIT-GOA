@@ -560,7 +560,7 @@ const FacultyEdit = () => {
                             formData={formData}
                             setFormData={setFormData}
                             loading={loading}
-                            employeeCode={faculty?.employee_code}
+                            employeeCode={id}
                         />
                     )}
 
