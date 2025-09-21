@@ -3,7 +3,7 @@
     /* min-height: 100vh; */
     background: var(--bg-primary);
     color: var(--text-primary);
-    padding: 20px;
+    padding: 0px 20px;
 }
 
 .faculty-edit-container {
@@ -37,6 +37,7 @@
     align-items: center;
     gap: 8px;
     transition: all 0.3s ease;
+    margin: auto 0;
 }
 
 .back-button:hover {
@@ -64,6 +65,7 @@
     align-items: center;
     gap: 8px;
     transition: all 0.3s ease;
+    margin: auto 0;
 }
 
 .header-actions .save-button:hover:not(:disabled) {

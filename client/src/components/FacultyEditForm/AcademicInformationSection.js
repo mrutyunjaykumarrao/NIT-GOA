@@ -127,8 +127,9 @@ const AcademicInformationSection = ({ formData, setFormData, loading }) => {
                     <h4>Add Education/Qualification</h4>
                     
                     <div className="faculty-edit-form-grid">
+                        {/* Row 1: Degree (2) + Specialization (2) + Graduation Year (1) in 2:2:1 ratio */}
                         <div className="faculty-edit-form-row">
-                            <div className="faculty-edit-form-group">
+                            <div className="faculty-edit-form-group" style={{ flex: '2' }}>
                                 <label>Degree/Qualification *</label>
                                 <select
                                     value={newEducation.degree}
@@ -144,7 +145,7 @@ const AcademicInformationSection = ({ formData, setFormData, loading }) => {
                                 </select>
                             </div>
 
-                            <div className="faculty-edit-form-group">
+                            <div className="faculty-edit-form-group" style={{ flex: '2' }}>
                                 <label>Specialization/Discipline</label>
                                 <select
                                     value={newEducation.discipline}
@@ -157,45 +158,54 @@ const AcademicInformationSection = ({ formData, setFormData, loading }) => {
                                         </option>
                                     ))}
                                 </select>
-                                {newEducation.discipline === 'Other' && (
+                            </div>
+
+                            <div className="faculty-edit-form-group" style={{ flex: '1' }}>
+                                <label>Graduation Year</label>
+                                <select
+                                    value={newEducation.graduation_year}
+                                    onChange={(e) => setNewEducation(prev => ({ ...prev, graduation_year: e.target.value }))}
+                                    className="faculty-edit-form-input"
+                                >
+                                    <option value="">Select Year</option>
+                                    {yearOptions.map(option => (
+                                        <option key={option.value} value={option.value}>
+                                            {option.label}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                        </div>
+
+                        {/* Custom specialization input (if "Other" is selected) */}
+                        {newEducation.discipline === 'Other' && (
+                            <div className="faculty-edit-form-row">
+                                <div className="faculty-edit-form-group full-width">
+                                    <label>Custom Specialization</label>
                                     <input
                                         type="text"
                                         placeholder="Enter custom specialization"
                                         value={newEducation.customDiscipline || ''}
                                         onChange={(e) => setNewEducation(prev => ({ ...prev, customDiscipline: e.target.value }))}
                                         className="faculty-edit-form-input"
-                                        style={{ marginTop: '8px' }}
                                     />
-                                )}
+                                </div>
                             </div>
-                        </div>
+                        )}
 
-                        <div className="form-group full-width">
-                            <label>Institute/University *</label>
-                            <input
-                                type="text"
-                                placeholder="Enter institute or university name"
-                                value={newEducation.institute}
-                                onChange={(e) => setNewEducation(prev => ({ ...prev, institute: e.target.value }))}
-                                className="faculty-edit-form-input"
-                                required
-                            />
-                        </div>
-
-                        <div className="faculty-edit-form-group">
-                            <label>Graduation Year</label>
-                            <select
-                                value={newEducation.graduation_year}
-                                onChange={(e) => setNewEducation(prev => ({ ...prev, graduation_year: e.target.value }))}
-                                className="faculty-edit-form-input"
-                            >
-                                <option value="">Select Year</option>
-                                {yearOptions.map(option => (
-                                    <option key={option.value} value={option.value}>
-                                        {option.label}
-                                    </option>
-                                ))}
-                            </select>
+                        {/* Row 2: Institute/University (full width) */}
+                        <div className="faculty-edit-form-row">
+                            <div className="faculty-edit-form-group full-width">
+                                <label>Institute/University *</label>
+                                <input
+                                    type="text"
+                                    placeholder="Enter institute or university name"
+                                    value={newEducation.institute}
+                                    onChange={(e) => setNewEducation(prev => ({ ...prev, institute: e.target.value }))}
+                                    className="faculty-edit-form-input"
+                                    required
+                                />
+                            </div>
                         </div>
                     </div>
 

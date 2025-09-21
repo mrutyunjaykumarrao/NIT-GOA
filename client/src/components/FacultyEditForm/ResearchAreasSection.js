@@ -103,27 +103,31 @@ const ResearchAreasSection = ({ formData, setFormData, loading }) => {
             {/* Add New Area Form */}
             {showAddForm && (
                 <div className="add-area-form">
-                    <div className="faculty-edit-form-group">
-                        <input
-                            type="text"
-                            placeholder="Enter new research area name"
-                            value={newAreaName}
-                            onChange={(e) => setNewAreaName(e.target.value)}
-                            className="faculty-edit-form-input"
-                            onKeyPress={(e) => e.key === 'Enter' && handleAddNewArea()}
-                        />
-                    </div>
-                    <div className="form-actions">
-                        <button type="button" onClick={handleAddNewArea} className="btn btn-primary">
-                            Add Area
-                        </button>
-                        <button 
-                            type="button" 
-                            onClick={() => setShowAddForm(false)} 
-                            className="btn btn-secondary"
-                        >
-                            Cancel
-                        </button>
+                    <div className="faculty-edit-form-row">
+                        <div className="faculty-edit-form-group" style={{ flex: 3 }}>
+                            <input
+                                type="text"
+                                placeholder="Enter new research area name"
+                                value={newAreaName}
+                                onChange={(e) => setNewAreaName(e.target.value)}
+                                className="faculty-edit-form-input"
+                                onKeyPress={(e) => e.key === 'Enter' && handleAddNewArea()}
+                            />
+                        </div>
+                        <div className="faculty-edit-form-group" style={{ flex: 1 }}>
+                            <button type="button" onClick={handleAddNewArea} className="btn btn-primary">
+                                Add Area
+                            </button>
+                        </div>
+                        <div className="faculty-edit-form-group" style={{ flex: 1 }}>
+                            <button 
+                                type="button" 
+                                onClick={() => setShowAddForm(false)} 
+                                className="btn btn-secondary"
+                            >
+                                Cancel
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}
@@ -189,23 +193,18 @@ const ResearchAreasSection = ({ formData, setFormData, loading }) => {
             {/* Custom Area Input */}
             <div className="custom-area-section">
                 <h4>Add Custom Research Area:</h4>
-                <div className="custom-area-input">
-                    <input
-                        type="text"
-                        placeholder="Type a custom research area and press Enter"
-                        onKeyPress={(e) => {
-                            if (e.key === 'Enter') {
-                                handleCustomAreaAdd(e.target.value);
-                                e.target.value = '';
-                            }
-                        }}
-                        disabled={loading}
-                        className="faculty-edit-form-input"
-                    />
-                    <small className="faculty-edit-form-hint">
-                        Press Enter to add a custom research area
-                    </small>
-                </div>
+                <input
+                    type="text"
+                    placeholder="Type a custom research area and press Enter to add it"
+                    onKeyPress={(e) => {
+                        if (e.key === 'Enter') {
+                            handleCustomAreaAdd(e.target.value);
+                            e.target.value = '';
+                        }
+                    }}
+                    disabled={loading}
+                    className="faculty-edit-form-input custom-area-input-full"
+                />
             </div>
 
             {/* Research Interests Text Area (backup) */}
@@ -219,13 +218,13 @@ const ResearchAreasSection = ({ formData, setFormData, loading }) => {
                         setSelectedAreas(e.target.value.split(',').map(s => s.trim()).filter(s => s));
                     }}
                     disabled={loading}
-                    className="form-input form-textarea"
+                    className="faculty-edit-form-input faculty-edit-form-textarea"
                     rows="3"
-                    placeholder="Enter research interests separated by commas"
+                    placeholder="Enter research interests separated by commas (e.g., Machine Learning, Data Science, AI)"
                 />
-                <small className="faculty-edit-form-hint">
-                    You can also directly type your research interests here, separated by commas
-                </small>
+                <div className="faculty-edit-form-hint">
+                    You can directly type your research interests here, separated by commas, or use the selection interface above
+                </div>
             </div>
         </div>
     );

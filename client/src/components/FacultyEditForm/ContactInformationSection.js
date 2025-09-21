@@ -13,23 +13,39 @@ const ContactInformationSection = ({ formData, setFormData, loading }) => {
         <div className="faculty-edit-components-form-section">
             <h3 className="faculty-edit-section-title">Contact Information</h3>
             <div className="faculty-edit-form-grid">
-                {/* Email */}
-                <div className="form-group full-width">
-                    <label htmlFor="email">Email Address *</label>
-                    <input
-                        type="email"
-                        id="email"
-                        value={formData.email || ''}
-                        onChange={(e) => handleInputChange('email', e.target.value)}
-                        disabled={loading}
-                        className="faculty-edit-form-input"
-                        placeholder="Enter official email address"
-                        required
-                    />
+                
+                {/* Row 1: Email (2) and Extension No (1) in 2:1 ratio */}
+                <div className="faculty-edit-form-row">
+                    <div className="faculty-edit-form-group" style={{ flex: '2' }}>
+                        <label htmlFor="email">Email Address *</label>
+                        <input
+                            type="email"
+                            id="email"
+                            value={formData.email || ''}
+                            onChange={(e) => handleInputChange('email', e.target.value)}
+                            disabled={loading}
+                            className="faculty-edit-form-input"
+                            placeholder="Enter official email address"
+                            required
+                        />
+                    </div>
+                    
+                    <div className="faculty-edit-form-group" style={{ flex: '1' }}>
+                        <label htmlFor="extension_no">Extension No</label>
+                        <input
+                            type="text"
+                            id="extension_no"
+                            value={formData.extension_no || ''}
+                            onChange={(e) => handleInputChange('extension_no', e.target.value)}
+                            disabled={loading}
+                            className="faculty-edit-form-input"
+                            placeholder="Enter office extension"
+                        />
+                    </div>
                 </div>
 
-                {/* Phone Numbers */}
-                <div className="form-row contact-phones">
+                {/* Row 2: Phone Mobile and Phone Residence in 1:1 ratio */}
+                <div className="faculty-edit-form-row">
                     <div className="faculty-edit-form-group">
                         <label htmlFor="phone_mobile">Phone (Mobile)</label>
                         <input
@@ -55,37 +71,10 @@ const ContactInformationSection = ({ formData, setFormData, loading }) => {
                             placeholder="Enter residence number"
                         />
                     </div>
-
-                    <div className="faculty-edit-form-group">
-                        <label htmlFor="extension_no">Extension No</label>
-                        <input
-                            type="text"
-                            id="extension_no"
-                            value={formData.extension_no || ''}
-                            onChange={(e) => handleInputChange('extension_no', e.target.value)}
-                            disabled={loading}
-                            className="faculty-edit-form-input"
-                            placeholder="Enter office extension number"
-                        />
-                    </div>
                 </div>
 
-                {/* Address */}
-                <div className="form-group full-width">
-                    <label htmlFor="address">Address</label>
-                    <textarea
-                        id="address"
-                        value={formData.address || ''}
-                        onChange={(e) => handleInputChange('address', e.target.value)}
-                        disabled={loading}
-                        className="form-input form-textarea"
-                        rows="3"
-                        placeholder="Enter complete address"
-                    />
-                </div>
-
-                {/* Office Information */}
-                <div className="form-row office-info">
+                {/* Row 3: Office Location and Office Hours in 1:1 ratio */}
+                <div className="faculty-edit-form-row">
                     <div className="faculty-edit-form-group">
                         <label htmlFor="office_location">Office Location</label>
                         <input
@@ -112,15 +101,36 @@ const ContactInformationSection = ({ formData, setFormData, loading }) => {
                         />
                     </div>
                 </div>
+
+                {/* Row 4: Address (full width) */}
+                <div className="faculty-edit-form-row">
+                    <div className="faculty-edit-form-group full-width">
+                        <label htmlFor="address">Address</label>
+                        <textarea
+                            id="address"
+                            value={formData.address || ''}
+                            onChange={(e) => handleInputChange('address', e.target.value)}
+                            disabled={loading}
+                            className="faculty-edit-form-input faculty-edit-form-textarea"
+                            rows="3"
+                            placeholder="Enter complete address"
+                        />
+                    </div>
+                </div>
             </div>
 
-            {/* Contact Summary */}
+            {/* Contact Information Preview */}
             <div className="contact-summary">
-                <h4>Contact Summary:</h4>
+                <h4>Contact Information Preview</h4>
                 <div className="summary-grid">
                     {formData.email && (
                         <div className="summary-item">
                             <strong>Email:</strong> {formData.email}
+                        </div>
+                    )}
+                    {formData.extension_no && (
+                        <div className="summary-item">
+                            <strong>Extension:</strong> {formData.extension_no}
                         </div>
                     )}
                     {formData.phone_mobile && (
@@ -133,17 +143,22 @@ const ContactInformationSection = ({ formData, setFormData, loading }) => {
                             <strong>Residence:</strong> {formData.phone_residence}
                         </div>
                     )}
-                    {formData.extension_no && (
-                        <div className="summary-item">
-                            <strong>Extension:</strong> {formData.extension_no}
-                        </div>
-                    )}
                     {formData.office_location && (
                         <div className="summary-item">
-                            <strong>Office:</strong> {formData.office_location}
+                            <strong>Office Location:</strong> {formData.office_location}
+                        </div>
+                    )}
+                    {formData.office_hours && (
+                        <div className="summary-item office-hours">
+                            <strong>Office Hours:</strong> <span className="office-hours-text">{formData.office_hours}</span>
                         </div>
                     )}
                 </div>
+                {formData.address && (
+                    <div className="summary-item address-item">
+                        <strong>Address:</strong> {formData.address}
+                    </div>
+                )}
             </div>
         </div>
     );

@@ -1,0 +1,3551 @@
+{
+  "undergraduate_courses": [
+    {
+      "Course_Code": "MA100",
+      "Course_Name": "Matrices and Advanced Calculus",
+      "Course_Credits": 4,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "PH100",
+      "Course_Name": "Engineering Physics",
+      "Course_Credits": 3,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "CS100",
+      "Course_Name": "Computer Programming and Problem Solving",
+      "Course_Credits": 3,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "EE100",
+      "Course_Name": "Basics of Electrical Engineering",
+      "Course_Credits": 2,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "ME100",
+      "Course_Name": "Engineering Mechanics",
+      "Course_Credits": 3,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "HU100",
+      "Course_Name": "Liberal Arts",
+      "Course_Credits": 1,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "PH101",
+      "Course_Name": "Engineering Physics Lab",
+      "Course_Credits": 2,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "CS101",
+      "Course_Name": "Computer Programming Lab",
+      "Course_Credits": 1,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "EE101",
+      "Course_Name": "Basics of Electrical Engineering Lab",
+      "Course_Credits": 1,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "ME101",
+      "Course_Name": "Engineering Drawing",
+      "Course_Credits": 3,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "MA150",
+      "Course_Name": "Differential Equations and Vector Calculus",
+      "Course_Credits": 4,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "CY150",
+      "Course_Name": "Engineering Chemistry",
+      "Course_Credits": 3,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "HU150",
+      "Course_Name": "Professional Communication",
+      "Course_Credits": 4,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "EC150",
+      "Course_Name": "Basics of Electronics Engineering",
+      "Course_Credits": 2,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "ME150",
+      "Course_Name": "Basics of Mechanical and Civil Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "HU151",
+      "Course_Name": "Health & Happiness",
+      "Course_Credits": 2,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "CY151",
+      "Course_Name": "Engineering Chemistry Lab",
+      "Course_Credits": 2,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "EC151",
+      "Course_Name": "Basics of Electronics Engineering Lab",
+      "Course_Credits": 1,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "ME151",
+      "Course_Name": "Workshop Practices",
+      "Course_Credits": 2,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "PE150",
+      "Course_Name": "Physical Education",
+      "Course_Credits": 0,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "MA201",
+      "Course_Name": "Probability, Statistics and Queuing Theory",
+      "Course_Credits": 3,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "CS200",
+      "Course_Name": "Data Structures",
+      "Course_Credits": 4,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "CS201",
+      "Course_Name": "Digital Systems Design",
+      "Course_Credits": 3,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "CS202",
+      "Course_Name": "Discrete Mathematics",
+      "Course_Credits": 4,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "CS203",
+      "Course_Name": "Object Oriented Programming",
+      "Course_Credits": 4,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "CS204",
+      "Course_Name": "Data Structures Lab",
+      "Course_Credits": 2,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "CS205",
+      "Course_Name": "Digital Systems Design Lab",
+      "Course_Credits": 2,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "CS206",
+      "Course_Name": "Object Oriented Programming Lab",
+      "Course_Credits": 2,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "IE250",
+      "Course_Name": "Innovation & Entrepreneurship",
+      "Course_Credits": 1,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "CS250",
+      "Course_Name": "Database Systems",
+      "Course_Credits": 4,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "CS251",
+      "Course_Name": "Software Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "CS252",
+      "Course_Name": "Computer Organization and Architecture",
+      "Course_Credits": 4,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "CS253",
+      "Course_Name": "Theory of Computation",
+      "Course_Credits": 4,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "CS254",
+      "Course_Name": "Microprocessor and Microcontrollers",
+      "Course_Credits": 4,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "CS255",
+      "Course_Name": "Database Systems Lab",
+      "Course_Credits": 2,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "CS256",
+      "Course_Name": "Microprocessor and Microcontrollers Lab",
+      "Course_Credits": 2,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "CS300",
+      "Course_Name": "Operating Systems",
+      "Course_Credits": 4,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "CS301",
+      "Course_Name": "Introduction to Machine Learning",
+      "Course_Credits": 3,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "CS302",
+      "Course_Name": "Design and Analysis of Algorithms",
+      "Course_Credits": 3,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "CS303",
+      "Course_Name": "Number Theory and Cryptography",
+      "Course_Credits": 3,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "CS304",
+      "Course_Name": "Operating Systems Lab",
+      "Course_Credits": 2,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "CS305",
+      "Course_Name": "Design and Analysis of Algorithms Lab",
+      "Course_Credits": 2,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "CS306",
+      "Course_Name": "Seminar",
+      "Course_Credits": 1,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "HU350",
+      "Course_Name": "Professional Ethics and Human Values",
+      "Course_Credits": 1,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "CS350",
+      "Course_Name": "Distributed Systems",
+      "Course_Credits": 3,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "CS351",
+      "Course_Name": "Compiler Design",
+      "Course_Credits": 3,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "CS352",
+      "Course_Name": "Computer Networks",
+      "Course_Credits": 4,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "CS353",
+      "Course_Name": "Compiler Design Lab",
+      "Course_Credits": 2,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "CS354",
+      "Course_Name": "Computer Networks Lab",
+      "Course_Credits": 2,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "HS350",
+      "Course_Name": "Industrial Economics",
+      "Course_Credits": 3,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "ES300",
+      "Course_Name": "Environmental Studies",
+      "Course_Credits": 1,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "CS400",
+      "Course_Name": "Summer Project/Industrial Training",
+      "Course_Credits": 1,
+      "Course_Semester": "VII"
+    },
+    {
+      "Course_Code": "CS401",
+      "Course_Name": "Comprehensive Examination",
+      "Course_Credits": 1,
+      "Course_Semester": "VII"
+    },
+    {
+      "Course_Code": "CS402",
+      "Course_Name": "Major Project I",
+      "Course_Credits": 2,
+      "Course_Semester": "VII"
+    },
+    {
+      "Course_Code": "IKS350",
+      "Course_Name": "Indian Knowledge System",
+      "Course_Credits": 3,
+      "Course_Semester": "VII"
+    },
+    {
+      "Course_Code": "CS450",
+      "Course_Name": "Major Project II",
+      "Course_Credits": 3,
+      "Course_Semester": "VIII"
+    },
+    {
+      "Course_Code": "CS500",
+      "Course_Name": "Object Oriented Analysis and Design (OOAD)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS501",
+      "Course_Name": "Advanced Data Structures (ADS)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS502",
+      "Course_Name": "Advanced Computer Architecture (ACA)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS503",
+      "Course_Name": "Principles of Programming Languages (PPL)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS504",
+      "Course_Name": "Systems Programming",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS505",
+      "Course_Name": "Data Warehousing and Data Mining (DWDM)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS506",
+      "Course_Name": "Advanced Database Systems (ADBS)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS507",
+      "Course_Name": "E-Commerce (EC)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS508",
+      "Course_Name": "Advanced Operating Systems (AOS)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS509",
+      "Course_Name": "Cyber Laws & Intellectual Property Right (CLIPR)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS510",
+      "Course_Name": "Information Theory (IT)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS511",
+      "Course_Name": "Optimization Techniques in Computing (OT)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS512",
+      "Course_Name": "Soft Computing (SC)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS513",
+      "Course_Name": "Software Architecture (SA)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS514",
+      "Course_Name": "Network Management (NM)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS515",
+      "Course_Name": "Applied Algorithms (AA)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS516",
+      "Course_Name": "Web Engineering (WE)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS517",
+      "Course_Name": "Software Project Management (SPM)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS518",
+      "Course_Name": "Advanced Compilers (AC)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS519",
+      "Course_Name": "Computer Vision (CV)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS520",
+      "Course_Name": "Artificial Intelligence (AI)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS521",
+      "Course_Name": "Multimedia & Virtual Reality (MVR)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS522",
+      "Course_Name": "Protocol Engineering (PE)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS523",
+      "Course_Name": "Software Testing (ST)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS524",
+      "Course_Name": "Mobile Communications (MC)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS525",
+      "Course_Name": "Network Security (NS)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS526",
+      "Course_Name": "Parallel Algorithms (PA)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS527",
+      "Course_Name": "Distributed Algorithms (DA)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS528",
+      "Course_Name": "Computer Security Audit and Assurance (CSAA)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS529",
+      "Course_Name": "Big Data Analysis (BDA)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS530",
+      "Course_Name": "Secure Software Engineering (SSE)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS531",
+      "Course_Name": "Computer Graphics (CG)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS532",
+      "Course_Name": "Graph Theory (GT)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS533",
+      "Course_Name": "Distributed Computing Systems (DCS)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS534",
+      "Course_Name": "Virtualization and Cloud Computing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS535",
+      "Course_Name": "Internet of Things",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS536",
+      "Course_Name": "High Performance Computing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS537",
+      "Course_Name": "Cluster and Grid Computing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS538",
+      "Course_Name": "Quantum Computing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS539",
+      "Course_Name": "Advanced topics in IoT",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS540",
+      "Course_Name": "Modern Cryptography",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS541",
+      "Course_Name": "Cryptocurrency and Blockchain Technology",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS542",
+      "Course_Name": "Penetration Testing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS543",
+      "Course_Name": "Cyber Crime Investigation and Digital Forensics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS544",
+      "Course_Name": "Malware Analysis and Mitigation",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS545",
+      "Course_Name": "Design and Analysis of Security Protocols",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS546",
+      "Course_Name": "Privacy Preserving Data Publishing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS547",
+      "Course_Name": "Secure Multi-Party Computation",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS548",
+      "Course_Name": "Public Key Infrastructure and Trust Management",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS549",
+      "Course_Name": "Security Analytics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS550",
+      "Course_Name": "Deep Learning",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "MA202",
+      "Course_Name": "Mathematical Methods for Communication Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "EC200",
+      "Course_Name": "Electromagnetic Theory",
+      "Course_Credits": 4,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "EC201",
+      "Course_Name": "Network Theory and Synthesis",
+      "Course_Credits": 4,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "EC202",
+      "Course_Name": "Digital System Design",
+      "Course_Credits": 3,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "EC203",
+      "Course_Name": "Signals & Systems",
+      "Course_Credits": 3,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "EC204",
+      "Course_Name": "Digital System Design Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "EC205",
+      "Course_Name": "Signals & Systems Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "IE250",
+      "Course_Name": "Innovation & Entrepreneurship",
+      "Course_Credits": 1,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "EC250",
+      "Course_Name": "Numerical Methods for ECE",
+      "Course_Credits": 4,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "EC251",
+      "Course_Name": "Analog Electronics",
+      "Course_Credits": 3,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "EC252",
+      "Course_Name": "Principle of Communication Systems",
+      "Course_Credits": 4,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "EC253",
+      "Course_Name": "Sensor Technologies",
+      "Course_Credits": 3,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "EC254",
+      "Course_Name": "Semiconductor Devices",
+      "Course_Credits": 4,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "EC255",
+      "Course_Name": "Analog Electronics Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "EC256",
+      "Course_Name": "Communication Systems Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "IE250",
+      "Course_Name": "Professional Ethics and Human Values",
+      "Course_Credits": 1,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "EC300",
+      "Course_Name": "Control System",
+      "Course_Credits": 4,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "EC301",
+      "Course_Name": "Digital Signal Processing",
+      "Course_Credits": 3,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "EC302",
+      "Course_Name": "Microprocessor and Microcontroller",
+      "Course_Credits": 3,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "EC303",
+      "Course_Name": "Linear Integrated Circuits",
+      "Course_Credits": 3,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "EC304",
+      "Course_Name": "Digital Signal Processing Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "EC305",
+      "Course_Name": "Microprocessor and Microcontroller Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "EC306",
+      "Course_Name": "Linear Integrated Circuits Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "ES300",
+      "Course_Name": "Environmental Studies",
+      "Course_Credits": 1,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "HS353",
+      "Course_Name": "Industrial Economics",
+      "Course_Credits": 3,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "EC350",
+      "Course_Name": "Digital Communication",
+      "Course_Credits": 3,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "EC351",
+      "Course_Name": "Principles of Antenna and Measurements",
+      "Course_Credits": 4,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "EC352",
+      "Course_Name": "VLSI Circuit Design",
+      "Course_Credits": 3,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "EC353",
+      "Course_Name": "Digital Communication Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "EC354",
+      "Course_Name": "High Frequency Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "EC355",
+      "Course_Name": "VLSI Circuit Design Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "EC356",
+      "Course_Name": "Seminar",
+      "Course_Credits": 1,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "EC400",
+      "Course_Name": "Major Project – I",
+      "Course_Credits": 2,
+      "Course_Semester": "VII"
+    },
+    {
+      "Course_Code": "EC401",
+      "Course_Name": "Summer Project/Industrial Training",
+      "Course_Credits": 1,
+      "Course_Semester": "VII"
+    },
+    {
+      "Course_Code": "EC402",
+      "Course_Name": "Comprehensive Examination",
+      "Course_Credits": 0,
+      "Course_Semester": "VII"
+    },
+    {
+      "Course_Code": "EC450",
+      "Course_Name": "Major Project – II",
+      "Course_Credits": 3,
+      "Course_Semester": "VIII"
+    },
+    {
+      "Course_Code": "EC500",
+      "Course_Name": "Advanced Digital Signal Processing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC501",
+      "Course_Name": "Biomedical Signal Processing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC502",
+      "Course_Name": "Adaptive Signal Processing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC503",
+      "Course_Name": "Statistical Signal Processing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC504",
+      "Course_Name": "Digital Image Processing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC505",
+      "Course_Name": "Computer Vision",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC506",
+      "Course_Name": "Information Theory and Coding",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC507",
+      "Course_Name": "Satellite Communication",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC508",
+      "Course_Name": "Fiber Optical Communication",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC509",
+      "Course_Name": "Spread Spectrum Techniques",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC510",
+      "Course_Name": "Wireless Communication",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC511",
+      "Course_Name": "Wireless and Mobile Communication",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC512",
+      "Course_Name": "Remote Sensing Systems",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC513",
+      "Course_Name": "Radar and Navigation System",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC514",
+      "Course_Name": "Modern Radar System",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC515",
+      "Course_Name": "Microwave Devices and Circuits",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC516",
+      "Course_Name": "Power Electronics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC517",
+      "Course_Name": "VLSI Testing and Testability",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC518",
+      "Course_Name": "Low-Power VLSI",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC519",
+      "Course_Name": "Active Filter Design",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC520",
+      "Course_Name": "Digital System Design using FPGA",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC521",
+      "Course_Name": "Advanced Analog IC Design",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC522",
+      "Course_Name": "Electromagnetic Interference and Compatibility",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC523",
+      "Course_Name": "Computer Architecture and Organization",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC524",
+      "Course_Name": "Array Signal Processing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC525",
+      "Course_Name": "Communication Networks and Switching",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC526",
+      "Course_Name": "Computational Electromagnetics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC591",
+      "Course_Name": "Selected Topics in Communication",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC592",
+      "Course_Name": "Selected Topics in Signal Processing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC593",
+      "Course_Name": "Selected Topics in VLSI",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC594",
+      "Course_Name": "Selected Topics in Electronics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC595",
+      "Course_Name": "Selected Topics in Microelectronics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "MA203",
+      "Course_Name": "Probability, Statistics and Complex Analysis",
+      "Course_Credits": 3,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "EE200",
+      "Course_Name": "Circuit Theory",
+      "Course_Credits": 4,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "EE201",
+      "Course_Name": "Electromagnetic Fields",
+      "Course_Credits": 4,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "EE202",
+      "Course_Name": "Analog and Integrated Circuits",
+      "Course_Credits": 3,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "EE203",
+      "Course_Name": "Electrical and Electronics Measurements",
+      "Course_Credits": 3,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "EE204",
+      "Course_Name": "Simulation Lab",
+      "Course_Credits": 2,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "EE205",
+      "Course_Name": "Electrical and Electronics Measurements Lab",
+      "Course_Credits": 2,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "EE206",
+      "Course_Name": "Tinkering Lab",
+      "Course_Credits": 2,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "IE250",
+      "Course_Name": "Innovation & Entrepreneurship",
+      "Course_Credits": 1,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "EE250",
+      "Course_Name": "Signals and Systems",
+      "Course_Credits": 4,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "EE251",
+      "Course_Name": "Electrical Machines - I",
+      "Course_Credits": 3,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "EE252",
+      "Course_Name": "Digital Systems",
+      "Course_Credits": 3,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "EE253",
+      "Course_Name": "Control Systems",
+      "Course_Credits": 4,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "EE254",
+      "Course_Name": "Computational Methods",
+      "Course_Credits": 3,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "EE255",
+      "Course_Name": "Electrical Machines - I Lab",
+      "Course_Credits": 2,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "EE256",
+      "Course_Name": "Analog and Digital Circuit Lab",
+      "Course_Credits": 2,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "EE257",
+      "Course_Name": "Control System Lab",
+      "Course_Credits": 2,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "ES300",
+      "Course_Name": "Environmental Studies",
+      "Course_Credits": 1,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "HS300",
+      "Course_Name": "Power Electronics",
+      "Course_Credits": 3,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "EE301",
+      "Course_Name": "Electrical Machines - II",
+      "Course_Credits": 3,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "EE302",
+      "Course_Name": "Power Systems - I",
+      "Course_Credits": 4,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "EE303",
+      "Course_Name": "Microprocessor and Microcontrollers",
+      "Course_Credits": 4,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "EE304",
+      "Course_Name": "Electrical Machines and Lab - II",
+      "Course_Credits": 2,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "EE305",
+      "Course_Name": "Microprocessor Lab",
+      "Course_Credits": 2,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "EE306",
+      "Course_Name": "Tinkering Lab - II",
+      "Course_Credits": 2,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "EE307",
+      "Course_Name": "Seminar",
+      "Course_Credits": 1,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "HU350",
+      "Course_Name": "Professional Ethics and Human Values",
+      "Course_Credits": 1,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "EE350",
+      "Course_Name": "Electrical System Design",
+      "Course_Credits": 3,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "EE351",
+      "Course_Name": "Electrical Drives",
+      "Course_Credits": 3,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "EE352",
+      "Course_Name": "Power Systems - II",
+      "Course_Credits": 3,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "EE353",
+      "Course_Name": "Power Electronics and Drives Lab",
+      "Course_Credits": 2,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "EE354",
+      "Course_Name": "Power System Lab",
+      "Course_Credits": 2,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "EE355",
+      "Course_Name": "Electrical and Electronic Design Lab",
+      "Course_Credits": 2,
+      "Course_Semester": "VI"
+    },
+     {
+      "Course_Code": "EE400",
+      "Course_Name": "Major Project -1",
+      "Course_Credits": 2,
+      "Course_Semester": "VII"
+    },
+    {
+      "Course_Code": "EE401",
+      "Course_Name": "Summer Project / Industrial Training",
+      "Course_Credits": 1,
+      "Course_Semester": "VII"
+    },
+    {
+      "Course_Code": "EE402",
+      "Course_Name": "Comprehensive Examination",
+      "Course_Credits": 1,
+      "Course_Semester": "VII"
+    },
+    {
+      "Course_Code": "HS350",
+      "Course_Name": "Industrial Economics",
+      "Course_Credits": 3,
+      "Course_Semester": "VIII"
+    },
+    {
+      "Course_Code": "EE450",
+      "Course_Name": "Major Project - II",
+      "Course_Credits": 3,
+      "Course_Semester": "VIII"
+    },
+    {
+      "Course_Code": "EE500",
+      "Course_Name": "Selected Topics in Electrical Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE501",
+      "Course_Name": "Electrical Safety: Standards and Protocols",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE502",
+      "Course_Name": "Electricity Markets",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE503",
+      "Course_Name": "Energy Auditing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE504",
+      "Course_Name": "Utilization of Electrical Energy & Illumination",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE505",
+      "Course_Name": "Building Management Systems",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE506",
+      "Course_Name": "Power System Protection",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE507",
+      "Course_Name": "Advanced Power System Protection",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE511",
+      "Course_Name": "Power System Operation and Control",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE512",
+      "Course_Name": "Power Quality",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE514",
+      "Course_Name": "Smart Electric Grids",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE515",
+      "Course_Name": "Microgrid Operation and Control",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE516",
+      "Course_Name": "HVDC and FACTS",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE517",
+      "Course_Name": "Power Distribution Systems",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE518",
+      "Course_Name": "High Voltage Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE520",
+      "Course_Name": "Advanced Power Electronics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE521",
+      "Course_Name": "Power Electronic Converters for Renewable Energy",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE522",
+      "Course_Name": "Advanced Electric Drives",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE523",
+      "Course_Name": "Electrical Machine Design",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE524",
+      "Course_Name": "Special Electric Machines",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE530",
+      "Course_Name": "Renewable Energy Systems",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE531",
+      "Course_Name": "Electric Vehicles",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE532",
+      "Course_Name": "Autonomous Vehicles and Drones",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE533",
+      "Course_Name": "Robotics and Automation",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE534",
+      "Course_Name": "Energy Storage Systems",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE540",
+      "Course_Name": "Advanced Control System",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE541",
+      "Course_Name": "Embedded Systems Design",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE542",
+      "Course_Name": "Embedded Control System",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE543",
+      "Course_Name": "Digital Signal Processing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE544",
+      "Course_Name": "Digital Image Processing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE545",
+      "Course_Name": "FPGA based Digital Design",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE550",
+      "Course_Name": "Applied Linear Algebra for Electrical Engineers",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE551",
+      "Course_Name": "Intelligent Systems in Electrical Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE552",
+      "Course_Name": "Optimization Techniques for Electrical Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE553",
+      "Course_Name": "Soft Computing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE555",
+      "Course_Name": "Internet of Things (IoT) in Electrical Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE556",
+      "Course_Name": "IoT, IoV, IoD and IoT Applications in Electrical Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE557",
+      "Course_Name": "Cyber Physical Systems",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE558",
+      "Course_Name": "Cyber Security in Electrical Grids",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE559",
+      "Course_Name": "AI and ML Applications in Electrical Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE560",
+      "Course_Name": "Evolutionary Computation for Electrical Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE561",
+      "Course_Name": "VLSI Technology",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE562",
+      "Course_Name": "Multimedia Systems",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE563",
+      "Course_Name": "Reliability Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE900",
+      "Course_Name": "Electrical System Design for Buildings",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE901",
+      "Course_Name": "General Aspects of Electrical Safety",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE902",
+      "Course_Name": "Introduction to Non-Conventional Energy",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE903",
+      "Course_Name": "Electric Vehicle Technology",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "MA200",
+      "Course_Name": "Advanced Differential Equations and Complex Analysis",
+      "Course_Credits": 3,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "CV200",
+      "Course_Name": "Mechanics of Solids",
+      "Course_Credits": 3,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "CV201",
+      "Course_Name": "Mechanics of Fluids",
+      "Course_Credits": 3,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "CV202",
+      "Course_Name": "Surveying",
+      "Course_Credits": 3,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "CV203",
+      "Course_Name": "Engineering Geology",
+      "Course_Credits": 3,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "CV204",
+      "Course_Name": "Building and Construction Materials",
+      "Course_Credits": 3,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "CV205",
+      "Course_Name": "Material Testing Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "CV206",
+      "Course_Name": "Fluid Mechanics Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "CV207",
+      "Course_Name": "Surveying Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "IX250",
+      "Course_Name": "Innovation and Entrepreneurship",
+      "Course_Credits": 1,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "CV250",
+      "Course_Name": "Computational Methods in Civil Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "CV251",
+      "Course_Name": "Structural Analysis",
+      "Course_Credits": 4,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "CV252",
+      "Course_Name": "Geotechnical Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "CV253",
+      "Course_Name": "Environmental Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "CV254",
+      "Course_Name": "Highway Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "CV255",
+      "Course_Name": "Concrete Technology Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "CV256",
+      "Course_Name": "Building Design and Drafting Studio",
+      "Course_Credits": 3,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "ES300",
+      "Course_Name": "Environmental Studies",
+      "Course_Credits": 1,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "CV301",
+      "Course_Name": "Design of Reinforced Concrete Structures",
+      "Course_Credits": 4,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "CV302",
+      "Course_Name": "Advanced Structural Analysis",
+      "Course_Credits": 4,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "CV303",
+      "Course_Name": "Foundation Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "CV304",
+      "Course_Name": "Waste Water Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "CV300",
+      "Course_Name": "Seminar",
+      "Course_Credits": 1,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "CV305",
+      "Course_Name": "Transportation Engineering Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "CV306",
+      "Course_Name": "Geotechnical Engineering Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "HU300",
+      "Course_Name": "Human Values and Professional Ethics",
+      "Course_Credits": 1,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "CV350",
+      "Course_Name": "Estimation, Costing and Specification",
+      "Course_Credits": 3,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "CV351",
+      "Course_Name": "Design of Steel Structures",
+      "Course_Credits": 4,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "CV352",
+      "Course_Name": "Engineering Hydrology and Irrigation Systems",
+      "Course_Credits": 3,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "CV353",
+      "Course_Name": "Structural Design Studio",
+      "Course_Credits": 2,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "CV354",
+      "Course_Name": "Environmental Engineering Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "CV401",
+      "Course_Name": "Summer Project/Industrial Training",
+      "Course_Credits": 1,
+      "Course_Semester": "VII"
+    },
+    {
+      "Course_Code": "CV402",
+      "Course_Name": "Major Project-1",
+      "Course_Credits": 2,
+      "Course_Semester": "VII"
+    },
+    {
+      "Course_Code": "CV400",
+      "Course_Name": "Comprehensive Examination",
+      "Course_Credits": 1,
+      "Course_Semester": "VII"
+    },
+    {
+      "Course_Code": "HS350",
+      "Course_Name": "Industrial Economics",
+      "Course_Credits": 3,
+      "Course_Semester": "VII"
+    },
+    {
+      "Course_Code": "CV550",
+      "Course_Name": "Major Project-II",
+      "Course_Credits": 3,
+      "Course_Semester": "VIII"
+    },
+    {
+      "Course_Code": "CV503",
+      "Course_Name": "Irrigation and Hydraulic Structures",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV504",
+      "Course_Name": "Prestressed Concrete Structures",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV505",
+      "Course_Name": "Road Safety and Management",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV506",
+      "Course_Name": "Earth Retaining Structures",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV507",
+      "Course_Name": "Construction Planning and Management",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV508",
+      "Course_Name": "Concrete Composite Materials",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV509",
+      "Course_Name": "Solid Waste Management",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV510",
+      "Course_Name": "Groundwater Hydrology",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV511",
+      "Course_Name": "Hazardous Waste Management",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV512",
+      "Course_Name": "Advanced Highway Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV513",
+      "Course_Name": "Geotechnical Investigation of Construction Project",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV514",
+      "Course_Name": "Advanced RCC Structures",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV515",
+      "Course_Name": "Engineering Optimization",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV516",
+      "Course_Name": "Ocean Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV517",
+      "Course_Name": "Structural Stability",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV518",
+      "Course_Name": "Remote Sensing and GIS",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV519",
+      "Course_Name": "Non-Destructive Testing and Evaluation",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV520",
+      "Course_Name": "Finite Element Method",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV521",
+      "Course_Name": "Pavement Design",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV522",
+      "Course_Name": "Advanced Foundation Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV523",
+      "Course_Name": "Environmental Pollution and Control",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV524",
+      "Course_Name": "Quality and Safety in Construction",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV525",
+      "Course_Name": "Structural Dynamics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV526",
+      "Course_Name": "River Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV527",
+      "Course_Name": "Design of Concrete Bridges",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV528",
+      "Course_Name": "Geo-Environmental Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV529",
+      "Course_Name": "Occupational Safety and Health Act",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV530",
+      "Course_Name": "Non-Conventional and Renewable Energy",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV531",
+      "Course_Name": "Water Distribution Systems",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV532",
+      "Course_Name": "Smart Materials and Structures",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV533",
+      "Course_Name": "City and Urban Planning",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV534",
+      "Course_Name": "Pavement Evaluation and Management",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV535",
+      "Course_Name": "Irrigation Structures and Hydropower Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV536",
+      "Course_Name": "Industrial Waste Treatment",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV537",
+      "Course_Name": "Ground Improvement Techniques",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV538",
+      "Course_Name": "Repair and Rehabilitation of Structures",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV539",
+      "Course_Name": "Computational Fluid Dynamics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV540",
+      "Course_Name": "Soil Dynamics and Design of Machine Foundations",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV541",
+      "Course_Name": "Advanced Steel Structures",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV542",
+      "Course_Name": "Structural Health Monitoring",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV543",
+      "Course_Name": "Reinforced Earth and Geosynthetics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV544",
+      "Course_Name": "Urban Stormwater Management",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV545",
+      "Course_Name": "Traffic Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV546",
+      "Course_Name": "Disaster Management and Mitigation",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV547",
+      "Course_Name": "Environmental Impact Assessment of Civil Engineering Projects",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV548",
+      "Course_Name": "Air and Noise Pollution Control",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV549",
+      "Course_Name": "Earthquake Resistant Structures",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV550",
+      "Course_Name": "Rapid Transport System and Smart Cities",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV551",
+      "Course_Name": "Rock Mechanics and Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV552",
+      "Course_Name": "Forensic Structural Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV553",
+      "Course_Name": "Wind Resistant Designs",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV554",
+      "Course_Name": "Tunnel and Underground Structures",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV555",
+      "Course_Name": "Offshore Structures",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV556",
+      "Course_Name": "Numerical Modelling in Geotechnical Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV557",
+      "Course_Name": "Hydro Climatology",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CV558",
+      "Course_Name": "Green Building Design",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "MA200",
+      "Course_Name": "Advanced Differential Equations and Complex Analysis",
+      "Course_Credits": 3,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "ME200",
+      "Course_Name": "Mechanics of Solids",
+      "Course_Credits": 3,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "ME201",
+      "Course_Name": "Materials and Metallurgical Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "ME202",
+      "Course_Name": "Fluid Mechanics",
+      "Course_Credits": 3,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "ME203",
+      "Course_Name": "Mechanics of Machinery",
+      "Course_Credits": 4,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "ME204",
+      "Course_Name": "Engineering Thermodynamics",
+      "Course_Credits": 3,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "ME205",
+      "Course_Name": "Design Lab-1",
+      "Course_Credits": 0,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "ME206",
+      "Course_Name": "Machine Drawing and Computer Graphics",
+      "Course_Credits": 2,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "IE250",
+      "Course_Name": "Innovation & Entrepreneurship",
+      "Course_Credits": 2,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "ME250",
+      "Course_Name": "Computational Methods in Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "ME251",
+      "Course_Name": "Design of Machine Elements – I",
+      "Course_Credits": 3,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "ME252",
+      "Course_Name": "Manufacturing Technology – I",
+      "Course_Credits": 3,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "ME253",
+      "Course_Name": "Machine Dynamics and Vibrations",
+      "Course_Credits": 4,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "ME254",
+      "Course_Name": "Applied Thermodynamics",
+      "Course_Credits": 3,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "ME255",
+      "Course_Name": "Thermal Lab – I",
+      "Course_Credits": 0,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "ME256",
+      "Course_Name": "Machine Shop – I",
+      "Course_Credits": 2,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "ME257",
+      "Course_Name": "Design Lab – II",
+      "Course_Credits": 2,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "ES300",
+      "Course_Name": "Seminar",
+      "Course_Credits": 1,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "ME300",
+      "Course_Name": "Seminar",
+      "Course_Credits": 1,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "ME301",
+      "Course_Name": "Turbomachines",
+      "Course_Credits": 3,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "ME302",
+      "Course_Name": "Manufacturing Technology – II",
+      "Course_Credits": 4,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "ME303",
+      "Course_Name": "Heat Transfer",
+      "Course_Credits": 3,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "ME304",
+      "Course_Name": "Design of machine elements – II",
+      "Course_Credits": 4,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "ME305",
+      "Course_Name": "Machine Shop – II",
+      "Course_Credits": 3,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "ME306",
+      "Course_Name": "Thermal Lab – II",
+      "Course_Credits": 1,
+      "Course_Semester": "V"
+    },
+    {
+      "Course_Code": "HU350",
+      "Course_Name": "Professional Ethics and Human Values",
+      "Course_Credits": 1,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "ME350",
+      "Course_Name": "Metrology",
+      "Course_Credits": 3,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "ME351",
+      "Course_Name": "Computer Aided Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "ME352",
+      "Course_Name": "Industrial Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "ME353",
+      "Course_Name": "Computer Aided Engineering (CAE) Lab",
+      "Course_Credits": 1,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "ME354",
+      "Course_Name": "Metrology Lab",
+      "Course_Credits": 2,
+      "Course_Semester": "VI"
+    },
+    {
+      "Course_Code": "ME400",
+      "Course_Name": "Summer Project/Industrial Training",
+      "Course_Credits": 2,
+      "Course_Semester": "VII"
+    },
+    {
+      "Course_Code": "ME401",
+      "Course_Name": "Comprehensive Examination",
+      "Course_Credits": 1,
+      "Course_Semester": "VII"
+    },
+    {
+      "Course_Code": "ME402",
+      "Course_Name": "Major Project-I",
+      "Course_Credits": 2,
+      "Course_Semester": "VII"
+    },
+    {
+      "Course_Code": "HS350",
+      "Course_Name": "Industrial Economics",
+      "Course_Credits": 3,
+      "Course_Semester": "VII"
+    },
+    {
+      "Course_Code": "ME450",
+      "Course_Name": "Major Project-II",
+      "Course_Credits": 3,
+      "Course_Semester": "VIII"
+    },
+    {
+      "Course_Code": "ME500",
+      "Course_Name": "Automatic Control",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME501",
+      "Course_Name": "Advanced Mechanics of Solids",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME502",
+      "Course_Name": "Agricultural Machinery",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME503",
+      "Course_Name": "Biomechanics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME504",
+      "Course_Name": "Continuum Mechanics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME505",
+      "Course_Name": "Dynamics of Mechanical Systems",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME506",
+      "Course_Name": "Fatigue in Design",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME507",
+      "Course_Name": "Fracture Mechanics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME508",
+      "Course_Name": "Machinery Fault Diagnosis",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME509",
+      "Course_Name": "Synthesis of Mechanisms",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME510",
+      "Course_Name": "Tribology",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME511",
+      "Course_Name": "Automation Technologies",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME512",
+      "Course_Name": "Composite Materials",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME513",
+      "Course_Name": "Design for Manufacturing and Assembly",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME514",
+      "Course_Name": "Ergonomics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME515",
+      "Course_Name": "Introduction to Additive Manufacturing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME516",
+      "Course_Name": "Industrial Robotics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME517",
+      "Course_Name": "Mechatronics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME518",
+      "Course_Name": "Micro-Nano Manufacturing Processes",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME519",
+      "Course_Name": "Non-Destructive Testing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME520",
+      "Course_Name": "Non-Traditional Manufacturing Processes",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME521",
+      "Course_Name": "Production and Operation Management",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME522",
+      "Course_Name": "Tool Design",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME523",
+      "Course_Name": "Aerodynamics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME524",
+      "Course_Name": "Automobile Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME525",
+      "Course_Name": "Power Plant Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME526",
+      "Course_Name": "Solar Energy Utilization",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME527",
+      "Course_Name": "Waste to Energy Conversion Systems",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME528",
+      "Course_Name": "Experimental Methods in Fluid Flow and Heat Transfer",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME529",
+      "Course_Name": "Advanced Thermodynamics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME530",
+      "Course_Name": "Gas Dynamics and Jet Propulsion",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME531",
+      "Course_Name": "Internal Combustion Engines",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME532",
+      "Course_Name": "Introduction to Turbulent Flows",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME533",
+      "Course_Name": "Heating Ventilation and Air Conditioning",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME534",
+      "Course_Name": "Refrigeration and Air-Conditioning",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME535",
+      "Course_Name": "Computational Fluid Dynamics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME536",
+      "Course_Name": "Finite Element Methods",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME500E",
+      "Course_Name": "Microelectromechanical Systems",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME510E",
+      "Course_Name": "Artificial Intelligence in Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME520E",
+      "Course_Name": "Computer Integrated Manufacturing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME503OE",
+      "Course_Name": "Industrial Safety",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME504OE",
+      "Course_Name": "Lean Manufacturing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME505OE",
+      "Course_Name": "Product Design for Engineers",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME506OE",
+      "Course_Name": "Quality Control and Reliability",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME507OE",
+      "Course_Name": "Supply Chain Management",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME508OE",
+      "Course_Name": "Value Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME509OE",
+      "Course_Name": "Engineering Optimization",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME510OE",
+      "Course_Name": "Alternate Fuels and Automotive Emission Control",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME511OE",
+      "Course_Name": "Energy Auditing and Management",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "ME512OE",
+      "Course_Name": "Renewable Energy Systems",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS250M",
+      "Course_Name": "Fundamentals of Data Structures",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS300M",
+      "Course_Name": "Design and Analysis of Algorithms",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS350M",
+      "Course_Name": "Database Management System",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS400M",
+      "Course_Name": "Data Science Fundamentals with Python",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS450M",
+      "Course_Name": "Artificial Intelligence and Machine Learning",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC250M",
+      "Course_Name": "Analog Electronics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC300M",
+      "Course_Name": "Digital Electronics (for MCE and CVE Students)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC301M",
+      "Course_Name": "Semiconductor Devices (for CSE and EEE Students)",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC350M",
+      "Course_Name": "Fundamentals of Communication System",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC400M",
+      "Course_Name": "Sensor Technologies",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC450M",
+      "Course_Name": "Practical Applications of Microcontrollers",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE250M",
+      "Course_Name": "Circuit Theory",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE300M",
+      "Course_Name": "Electrical Machines",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE350M",
+      "Course_Name": "Control System",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE400M",
+      "Course_Name": "Electrical Power System",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE450M",
+      "Course_Name": "Power Electronics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "MA250M",
+      "Course_Name": "Applied Mathematical Methods",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "MA300M",
+      "Course_Name": "Applications of Differential Equations",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "MA350M",
+      "Course_Name": "Linear Programming",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "MA400M",
+      "Course_Name": "Optimization",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "MA450M",
+      "Course_Name": "Advanced Numerical Methods",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    }
+  ],
+  "postgraduate_courses": [
+    {
+      "Course_Code": "CS600",
+      "Course_Name": "Advanced Algorithms & Analysis (AAA)",
+      "Course_Credits": 3,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "CS601",
+      "Course_Name": "Advanced Computer Networks (ACN)",
+      "Course_Credits": 3,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "CS602",
+      "Course_Name": "Mathematical Foundations of Computer Science (MFCS)",
+      "Course_Credits": 3,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "CS603",
+      "Course_Name": "Advanced Algorithms & Analysis Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "CS604",
+      "Course_Name": "Advanced Computer Networks Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "CS605",
+      "Course_Name": "Seminar",
+      "Course_Credits": 2,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "CS650",
+      "Course_Name": "Advanced Database Systems (ADBS)",
+      "Course_Credits": 3,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "CS651",
+      "Course_Name": "Advanced Computer Architecture (ACA)",
+      "Course_Credits": 3,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "CS652",
+      "Course_Name": "Object Oriented Software Engineering (OOSE)",
+      "Course_Credits": 3,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "CS653",
+      "Course_Name": "Advanced Database Systems Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "CS654",
+      "Course_Name": "Object Oriented Software Engineering Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "CS655",
+      "Course_Name": "VIVA",
+      "Course_Credits": 2,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "HU650",
+      "Course_Name": "Communication Skills and Technical Writing (Audit Course)",
+      "Course_Credits": 0,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "CS700",
+      "Course_Name": "Major Project-I",
+      "Course_Credits": 8,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "CS750",
+      "Course_Name": "Major Project-II",
+      "Course_Credits": 14,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "CS800",
+      "Course_Name": "Foundations of Cryptography",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS801",
+      "Course_Name": "Wireless Sensor Networks",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS802",
+      "Course_Name": "Advanced Compiler Design",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS803",
+      "Course_Name": "Distributed Computing Systems",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS804",
+      "Course_Name": "Design of Secure Protocols",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS805",
+      "Course_Name": "Mobile Computing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS806",
+      "Course_Name": "Machine Learning",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS807",
+      "Course_Name": "Health Informatics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS808",
+      "Course_Name": "Soft Computing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS809",
+      "Course_Name": "Service Oriented Architecture & Cloud Computing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS810",
+      "Course_Name": "Big Data Analytics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS811",
+      "Course_Name": "Pattern Recognition",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS812",
+      "Course_Name": "Artificial Neural Networks",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS813",
+      "Course_Name": "Computer Vision",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS814",
+      "Course_Name": "Game Theory",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS815",
+      "Course_Name": "Data Warehousing & Data Mining",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS816",
+      "Course_Name": "E-Commerce",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS817",
+      "Course_Name": "Advanced Operating Systems",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS818",
+      "Course_Name": "Security and Privacy",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS819",
+      "Course_Name": "Bioinformatics Algorithms",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS820",
+      "Course_Name": "Graph Theory",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS821",
+      "Course_Name": "Probability and Statistics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS822",
+      "Course_Name": "Program Analysis and Verification",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS823",
+      "Course_Name": "Linear Algebra",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS824",
+      "Course_Name": "Number Theory",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS825",
+      "Course_Name": "Complexity Theory",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS826",
+      "Course_Name": "Human Computer Interface",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS827",
+      "Course_Name": "Special Module in Computational Geometry",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS828",
+      "Course_Name": "Special Module in Parallel Computation",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS829",
+      "Course_Name": "Special Module in Hardware Systems",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS830",
+      "Course_Name": "Special Module in Theoretical Computer Science",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS831",
+      "Course_Name": "Special Module in Artificial Intelligence",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS832",
+      "Course_Name": "Special Module in High Speed Networks",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS833",
+      "Course_Name": "Special Module in NLP",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS834",
+      "Course_Name": "Special Module in Intelligent Systems",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS835",
+      "Course_Name": "Special Module in Numerical Methods",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "CS836",
+      "Course_Name": "Special Module in CS*E",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC600",
+      "Course_Name": "Digital IC Design",
+      "Course_Credits": 3,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "EC601",
+      "Course_Name": "Analog IC Design",
+      "Course_Credits": 3,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "EC602",
+      "Course_Name": "Semiconductor Device Theory and Modelling",
+      "Course_Credits": 3,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "EC603",
+      "Course_Name": "Digital Signal Processing",
+      "Course_Credits": 3,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "EC604",
+      "Course_Name": "IC Design Laboratory",
+      "Course_Credits": 3,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "EC605",
+      "Course_Name": "Semiconductor Device Simulation Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "EC606",
+      "Course_Name": "Seminar",
+      "Course_Credits": 2,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "EC650",
+      "Course_Name": "VLSI Testing and Testability",
+      "Course_Credits": 3,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "EC651",
+      "Course_Name": "VLSI Technology",
+      "Course_Credits": 3,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "EC652",
+      "Course_Name": "System Design Laboratory",
+      "Course_Credits": 3,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "EC653",
+      "Course_Name": "VIVA-VOCE",
+      "Course_Credits": 2,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "HU650",
+      "Course_Name": "Communication Skills and Technical Writing",
+      "Course_Credits": 0,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "EC700",
+      "Course_Name": "Major Project-I",
+      "Course_Credits": 8,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "EC750",
+      "Course_Name": "Major Project-II",
+      "Course_Credits": 14,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "EC800",
+      "Course_Name": "Optoelectronics and Photonics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC801",
+      "Course_Name": "Architectural Design of IC",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC802",
+      "Course_Name": "Digital Design using FPGA",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC803",
+      "Course_Name": "Systems on Chip",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC804",
+      "Course_Name": "Mixed Signal Design",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC805",
+      "Course_Name": "VLSI Embedded Systems",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC806",
+      "Course_Name": "VLSI Design Automation",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC807",
+      "Course_Name": "Compound Semiconductor Devices",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC808",
+      "Course_Name": "Nano-electronic Device Engineering",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC809",
+      "Course_Name": "Active Filter Design",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC811",
+      "Course_Name": "Power Management IC's",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC812",
+      "Course_Name": "Advanced Topics in VLSI",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC813",
+      "Course_Name": "Memory Design & Testing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC814",
+      "Course_Name": "IC for Broadband communication",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC815",
+      "Course_Name": "CMOS RF IC Design",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC816",
+      "Course_Name": "Advanced Antenna Theory",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC817",
+      "Course_Name": "VLSI Signal Processing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC818",
+      "Course_Name": "Multi-rate Signal Processing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC819",
+      "Course_Name": "Multimedia Systems",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC820",
+      "Course_Name": "Selected Topics in ECE - I",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC821",
+      "Course_Name": "Selected Topics in ECE - II",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC822",
+      "Course_Name": "Selected Topics in ECE - III",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC850",
+      "Course_Name": "Data Structures and Algorithms",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC851",
+      "Course_Name": "Advanced Computer Architecture",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC852",
+      "Course_Name": "Optimization Techniques",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC853",
+      "Course_Name": "Linear Algebra",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EC854",
+      "Course_Name": "Random Processes",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE600",
+      "Course_Name": "Power Electronic Converters & Drives",
+      "Course_Credits": null,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE601",
+      "Course_Name": "Machine Modeling & Analysis",
+      "Course_Credits": null,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE602",
+      "Course_Name": "Advanced Power System Analysis",
+      "Course_Credits": null,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE603",
+      "Course_Name": "Renewable Energy Systems",
+      "Course_Credits": null,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE604",
+      "Course_Name": "Power Electronics Laboratory",
+      "Course_Credits": null,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE605",
+      "Course_Name": "Seminar",
+      "Course_Credits": null,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE650",
+      "Course_Name": "Advanced Electric Drives",
+      "Course_Credits": null,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE651",
+      "Course_Name": "HVDC & FACTS",
+      "Course_Credits": null,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE652",
+      "Course_Name": "Systems & Control Theory",
+      "Course_Credits": null,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE653",
+      "Course_Name": "DSP & FPGA Laboratory",
+      "Course_Credits": null,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE654",
+      "Course_Name": "Electric Drives Laboratory",
+      "Course_Credits": null,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE655",
+      "Course_Name": "Viva",
+      "Course_Credits": null,
+      "Course_Semester": null
+    },{
+      "Course_Code": "EE600",
+      "Course_Name": "Power Electronic Converters & Drives",
+      "Course_Credits": 3,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "EE601",
+      "Course_Name": "Machine Modeling & Analysis",
+      "Course_Credits": 3,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "EE602",
+      "Course_Name": "Advanced Power system Analysis",
+      "Course_Credits": 3,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "EE603",
+      "Course_Name": "Renewable Energy Systems",
+      "Course_Credits": 3,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "EE604",
+      "Course_Name": "Power Electronics Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "EE605",
+      "Course_Name": "Simulation Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "EE606",
+      "Course_Name": "Seminar",
+      "Course_Credits": 2,
+      "Course_Semester": "I"
+    },
+    {
+      "Course_Code": "EE650",
+      "Course_Name": "Advanced Electric Drives",
+      "Course_Credits": 3,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "EE651",
+      "Course_Name": "HVDC & FACTS",
+      "Course_Credits": 3,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "EE652",
+      "Course_Name": "Systems & Control Theory",
+      "Course_Credits": 3,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "EE653",
+      "Course_Name": "DSP & FPGA Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "EE654",
+      "Course_Name": "Electric Drives Laboratory",
+      "Course_Credits": 2,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "EE655",
+      "Course_Name": "Viva",
+      "Course_Credits": 2,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "HU650",
+      "Course_Name": "Communication Skills and Technical Writing",
+      "Course_Credits": 0,
+      "Course_Semester": "II"
+    },
+    {
+      "Course_Code": "EE700",
+      "Course_Name": "Major Project-I",
+      "Course_Credits": 8,
+      "Course_Semester": "III"
+    },
+    {
+      "Course_Code": "EE750",
+      "Course_Name": "Major Project-II",
+      "Course_Credits": 14,
+      "Course_Semester": "IV"
+    },
+    {
+      "Course_Code": "EE801",
+      "Course_Name": "Modelling and Simulation of Power Electronic Systems",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE802",
+      "Course_Name": "Advanced Power Electronics",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE803",
+      "Course_Name": "Photovoltaic and its Applications",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE804",
+      "Course_Name": "Power System Dynamics & Control",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE805",
+      "Course_Name": "Smart Electric Grid",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE806",
+      "Course_Name": "Power Quality",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE807",
+      "Course_Name": "Soft Computing",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE808",
+      "Course_Name": "DSP Controlled Drives",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE809",
+      "Course_Name": "Digital Control Theory",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    },
+    {
+      "Course_Code": "EE810",
+      "Course_Name": "Optimal Control",
+      "Course_Credits": 3,
+      "Course_Semester": null
+    }
+  ]
+}
