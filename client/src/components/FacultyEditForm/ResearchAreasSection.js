@@ -54,10 +54,10 @@ const ResearchAreasSection = ({ formData, setFormData, loading }) => {
                 ? prev.filter(area => area !== areaName)
                 : [...prev, areaName];
             
-            // Update form data
+            // Update form data - store as array for consistency
             setFormData(prevData => ({
                 ...prevData,
-                research_interests: newSelected.join(', ')
+                research_interests: newSelected
             }));
             
             return newSelected;

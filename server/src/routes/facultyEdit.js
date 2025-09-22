@@ -285,12 +285,12 @@ router.put('/:employeeCode/education', authenticateToken, checkEditPermission, a
 
       // Insert new education records
       for (const edu of education) {
-        if (edu.degree || edu.institute || edu.subject || edu.completion_year) {
+        if (edu.degree || edu.institute || edu.discipline || edu.graduation_year) {
           await connection.execute(`
-            INSERT INTO faculty_education (employee_code, degree, institute, subject, completion_year, grade_percentage)
+            INSERT INTO faculty_education (employee_code, degree, institute, discipline, graduation_year, display_order)
             VALUES (?, ?, ?, ?, ?, ?)
-          `, [employeeCode, edu.degree || null, edu.institute || null, edu.subject || null, 
-              edu.completion_year || null, edu.grade_percentage || null]);
+          `, [employeeCode, edu.degree || null, edu.institute || null, edu.discipline || null, 
+              edu.graduation_year || null, edu.display_order || null]);
         }
       }
 
@@ -564,12 +564,12 @@ router.put('/:employeeCode/bulk-update', authenticateToken, checkEditPermission,
         await connection.execute(`DELETE FROM faculty_education WHERE employee_code = ?`, [employeeCode]);
         
         for (const edu of education) {
-          if (edu.degree || edu.institute || edu.subject || edu.completion_year) {
+          if (edu.degree || edu.institute || edu.discipline || edu.graduation_year) {
             await connection.execute(`
-              INSERT INTO faculty_education (employee_code, degree, institute, subject, completion_year, grade_percentage)
+              INSERT INTO faculty_education (employee_code, degree, institute, discipline, graduation_year, display_order)
               VALUES (?, ?, ?, ?, ?, ?)
-            `, [employeeCode, edu.degree || null, edu.institute || null, edu.subject || null, 
-                edu.completion_year || null, edu.grade_percentage || null]);
+            `, [employeeCode, edu.degree || null, edu.institute || null, edu.discipline || null, 
+                edu.graduation_year || null, edu.display_order || null]);
           }
         }
       }

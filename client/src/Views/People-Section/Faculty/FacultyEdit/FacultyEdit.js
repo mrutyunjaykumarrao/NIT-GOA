@@ -326,11 +326,13 @@ const FacultyEdit = () => {
                     profile_image: formData.profile_image
                 },
                 education: formData.education.filter(edu => 
-                    edu.degree || edu.institute || edu.subject || edu.year
+                    edu.degree || edu.institute || edu.discipline || edu.graduation_year
                 ),
-                research_interests: formData.research_interests.filter(interest => 
-                    interest && interest.trim()
-                ),
+                research_interests: Array.isArray(formData.research_interests) 
+                    ? formData.research_interests.filter(interest => interest && interest.trim())
+                    : (typeof formData.research_interests === 'string' && formData.research_interests.trim())
+                        ? formData.research_interests.split(',').map(s => s.trim()).filter(s => s)
+                        : [],
                 publications: formData.publications.filter(pub => 
                     pub.title && pub.title.trim()
                 )

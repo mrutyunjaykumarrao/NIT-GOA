@@ -779,6 +779,45 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* Education Form Button Row Styles */
+.faculty-edit-form-group.button-group {
+    justify-content: flex-end;
+    padding-top: 30px; /* Align with input field including label height */
+}
+
+.faculty-edit-form-group.button-group .btn {
+    height: 49px; /* Match input field height */
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.faculty-edit-form-group.button-group .btn-primary {
+    background: var(--primary-color, #4f46e5);
+    color: white;
+}
+
+.faculty-edit-form-group.button-group .btn-primary:hover {
+    background: var(--primary-hover, #4338ca);
+    transform: translateY(-1px);
+}
+
+.faculty-edit-form-group.button-group .btn-secondary {
+    background: var(--text-secondary, #6b7280);
+    color: white;
+}
+
+.faculty-edit-form-group.button-group .btn-secondary:hover {
+    background: var(--text-primary, #374151);
+    transform: translateY(-1px);
+}
+
 @media (max-width: 768px) {
     .add-education-form .faculty-edit-form-row {
         flex-direction: column;
@@ -1818,7 +1857,7 @@
 
 .education-item {
     background: var(--form-bg);
-    border: 1px solid var(--form-border);
+    border: 2px solid var(--form-border);
     border-radius: 8px;
     padding: 20px;
     box-shadow: var(--input-shadow);
@@ -1845,13 +1884,14 @@
     color: var(--text-primary);
     font-size: 1.1rem;
     font-weight: 600;
+    display: inline;
 }
 
-.discipline {
+.education-title h5 .discipline {
     color: var(--text-muted);
     font-size: 0.9rem;
     font-weight: normal;
-    margin-left: 8px;
+    margin-left: 0;
 }
 
 .education-details {

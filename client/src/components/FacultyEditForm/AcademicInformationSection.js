@@ -10,6 +10,9 @@ const AcademicInformationSection = ({ formData, setFormData, loading }) => {
     });
 
     const education = formData.education || [];
+    
+    // Sort education by display_order for consistent display
+    const sortedEducation = [...education].sort((a, b) => (a.display_order || 0) - (b.display_order || 0));
 
     const handleAddEducation = () => {
         if (!newEducation.degree || !newEducation.institute) {
@@ -26,6 +29,7 @@ const AcademicInformationSection = ({ formData, setFormData, loading }) => {
             institute: newEducation.institute,
             discipline: finalDiscipline,
             graduation_year: newEducation.graduation_year,
+            display_order: education.length + 1, // Set display_order based on current count
             id: Date.now() // Temporary ID for frontend
         };
 
@@ -61,6 +65,51 @@ const AcademicInformationSection = ({ formData, setFormData, loading }) => {
             ...prev,
             education: updatedEducation
         }));
+    };
+
+    const handleReorderEducation = (educationIndex, direction) => {
+        console.log('=== EDUCATION REORDER START ===');
+        console.log('Input:', { educationIndex, direction });
+        
+        // Work with the sorted education array (what user sees)
+        const workingArray = [...sortedEducation];
+        
+        console.log('Education before swap:', workingArray.map(e => e.degree));
+        
+        // Check boundaries
+        if (direction === 'up' && educationIndex === 0) {
+            console.log('Cannot move up - at top');
+            return;
+        }
+        if (direction === 'down' && educationIndex >= workingArray.length - 1) {
+            console.log('Cannot move down - at bottom');
+            return;
+        }
+        
+        // Get the two education entries to swap
+        const education1 = workingArray[educationIndex];
+        const education2Index = direction === 'up' ? educationIndex - 1 : educationIndex + 1;
+        const education2 = workingArray[education2Index];
+        
+        console.log(`Swapping "${education1.degree}" with "${education2.degree}"`);
+        
+        // Simple array swap - just swap their positions
+        workingArray[educationIndex] = education2;
+        workingArray[education2Index] = education1;
+        
+        // Assign new sequential display_order values
+        workingArray.forEach((edu, index) => {
+            edu.display_order = index + 1;
+        });
+        
+        console.log('Education after swap:', workingArray.map(e => e.degree));
+        
+        setFormData(prev => ({
+            ...prev,
+            education: workingArray
+        }));
+        
+        console.log('=== EDUCATION REORDER END ===');
     };
 
     const degreeOptions = [
@@ -193,9 +242,9 @@ const AcademicInformationSection = ({ formData, setFormData, loading }) => {
                             </div>
                         )}
 
-                        {/* Row 2: Institute/University (full width) */}
+                        {/* Row 2: Institute/University with Action Buttons (4:1:1 ratio) */}
                         <div className="faculty-edit-form-row">
-                            <div className="faculty-edit-form-group full-width">
+                            <div className="faculty-edit-form-group" style={{ flex: '4' }}>
                                 <label>Institute/University *</label>
                                 <input
                                     type="text"
@@ -206,16 +255,25 @@ const AcademicInformationSection = ({ formData, setFormData, loading }) => {
                                     required
                                 />
                             </div>
+                            <div className="faculty-edit-form-group button-group" style={{ flex: '1' }}>
+                                <button 
+                                    type="button" 
+                                    onClick={handleAddEducation} 
+                                    className="btn btn-primary"
+                                >
+                                    Add Education
+                                </button>
+                            </div>
+                            <div className="faculty-edit-form-group button-group" style={{ flex: '1' }}>
+                                <button 
+                                    type="button" 
+                                    onClick={() => setShowAddForm(false)} 
+                                    className="btn btn-secondary"
+                                >
+                                    Cancel
+                                </button>
+                            </div>
                         </div>
-                    </div>
-
-                    <div className="form-actions">
-                        <button type="button" onClick={handleAddEducation} className="btn btn-primary">
-                            Add Education
-                        </button>
-                        <button type="button" onClick={() => setShowAddForm(false)} className="btn btn-secondary">
-                            Cancel
-                        </button>
                     </div>
                 </div>
             )}
@@ -224,98 +282,106 @@ const AcademicInformationSection = ({ formData, setFormData, loading }) => {
             <div className="education-list">
                 <h4>Education History ({education.length})</h4>
                 
-                {education.length > 0 ? (
+                {sortedEducation.length > 0 ? (
                     <div className="education-entries">
-                        {education.map((edu, index) => (
+                        {sortedEducation.map((edu, index) => (
                             <div key={edu.id || index} className="education-item">
                                 <div className="education-header">
                                     <div className="education-title">
-                                        <h5>{edu.degree}</h5>
-                                        {edu.discipline && <span className="discipline">in {edu.discipline}</span>}
+                                        <h5>
+                                            {edu.degree}
+                                            {edu.discipline && <span className="discipline"> in {edu.discipline}</span>}
+                                        </h5>
                                     </div>
-                                    <button
-                                        type="button"
-                                        onClick={() => handleRemoveEducation(index)}
-                                        className="btn btn-sm btn-danger"
-                                        disabled={loading}
-                                    >
-                                        Remove
-                                    </button>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                        <button
+                                            type="button"
+                                            onClick={() => handleRemoveEducation(index)}
+                                            className="btn btn-sm btn-danger"
+                                            disabled={loading}
+                                        >
+                                            Remove
+                                        </button>
+                                        <div className="order-controls">
+                                            <button
+                                                type="button"
+                                                className="order-btn"
+                                                onClick={() => handleReorderEducation(index, 'up')}
+                                                disabled={index === 0}
+                                                title="Move up"
+                                            >
+                                                <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                                    <path d="M6 0L12 8H0L6 0Z" fill="currentColor"/>
+                                                </svg>
+                                            </button>
+                                            <button
+                                                type="button"
+                                                className="order-btn"
+                                                onClick={() => handleReorderEducation(index, 'down')}
+                                                disabled={index === sortedEducation.length - 1}
+                                                title="Move down"
+                                            >
+                                                <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                                    <path d="M6 8L0 0H12L6 8Z" fill="currentColor"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                                 
                                 <div className="education-details">
+                                    {/* First row: Degree (2), Specialization (2), Graduation Year (1) in 2:2:1 ratio */}
                                     <div className="faculty-edit-form-row">
-                                        <div className="faculty-edit-form-group">
+                                        <div className="faculty-edit-form-group" style={{ flex: '2' }}>
                                             <label>Degree</label>
-                                            <select
-                                                value={edu.degree || ''}
-                                                onChange={(e) => handleEditEducation(index, 'degree', e.target.value)}
+                                            <input
+                                                type="text"
+                                                value={edu.degree || 'Not specified'}
                                                 className="faculty-edit-form-input"
-                                                disabled={loading}
-                                            >
-                                                {degreeOptions.map(option => (
-                                                    <option key={option.value} value={option.value}>
-                                                        {option.label}
-                                                    </option>
-                                                ))}
-                                            </select>
+                                                disabled={true}
+                                                readOnly
+                                                placeholder="Degree/Qualification"
+                                            />
                                         </div>
 
-                                        <div className="faculty-edit-form-group">
+                                        <div className="faculty-edit-form-group" style={{ flex: '2' }}>
                                             <label>Specialization</label>
-                                            <select
-                                                value={edu.discipline || ''}
-                                                onChange={(e) => handleEditEducation(index, 'discipline', e.target.value)}
+                                            <input
+                                                type="text"
+                                                value={edu.discipline || 'Not specified'}
                                                 className="faculty-edit-form-input"
-                                                disabled={loading}
-                                            >
-                                                {specializationOptions.map(option => (
-                                                    <option key={option.value} value={option.value}>
-                                                        {option.label}
-                                                    </option>
-                                                ))}
-                                            </select>
-                                            {edu.discipline === 'Other' && (
-                                                <input
-                                                    type="text"
-                                                    placeholder="Enter custom specialization"
-                                                    value={edu.customDiscipline || ''}
-                                                    onChange={(e) => handleEditEducation(index, 'customDiscipline', e.target.value)}
-                                                    className="faculty-edit-form-input"
-                                                    disabled={loading}
-                                                    style={{ marginTop: '8px' }}
-                                                />
-                                            )}
+                                                disabled={true}
+                                                readOnly
+                                                placeholder="Specialization/Discipline"
+                                            />
+                                        </div>
+                                        
+                                        <div className="faculty-edit-form-group" style={{ flex: '1' }}>
+                                            <label>Graduation Year</label>
+                                            <input
+                                                type="text"
+                                                value={edu.graduation_year || 'Not specified'}
+                                                className="faculty-edit-form-input"
+                                                disabled={true}
+                                                readOnly
+                                                placeholder="Year"
+                                            />
                                         </div>
                                     </div>
 
-                                    <div className="faculty-edit-form-group">
-                                        <label>Institute/University</label>
-                                        <input
-                                            type="text"
-                                            value={edu.institute || ''}
-                                            onChange={(e) => handleEditEducation(index, 'institute', e.target.value)}
-                                            className="faculty-edit-form-input"
-                                            disabled={loading}
-                                            placeholder="Institute or University name"
-                                        />
-                                    </div>
-
-                                    <div className="faculty-edit-form-group">
-                                        <label>Graduation Year</label>
-                                        <select
-                                            value={edu.graduation_year || ''}
-                                            onChange={(e) => handleEditEducation(index, 'graduation_year', e.target.value)}
-                                            className="faculty-edit-form-input"
-                                            disabled={loading}
-                                        >
-                                            <option value="">Select Year</option>
-                                            {yearOptions.map(option => (
-                                                <option key={option.value} value={option.value}>
-                                                    {option.label}
-                                                </option>
-                                            ))}
-                                        </select>
+                                    {/* Second row: Institute/University (full width) */}
+                                    <div className="faculty-edit-form-row">
+                                        <div className="faculty-edit-form-group full-width">
+                                            <label>Institute/University</label>
+                                            <input
+                                                type="text"
+                                                value={edu.institute || 'Not specified'}
+                                                className="faculty-edit-form-input"
+                                                disabled={true}
+                                                readOnly
+                                                placeholder="Institute or University name"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -334,7 +400,7 @@ const AcademicInformationSection = ({ formData, setFormData, loading }) => {
                     <h4>Summary</h4>
                     <div className="summary-list">
                         {education
-                            .sort((a, b) => (b.graduation_year || 0) - (a.graduation_year || 0))
+                            .sort((a, b) => (a.display_order || 0) - (b.display_order || 0))
                             .map((edu, index) => (
                             <div key={index} className="summary-item">
                                 <strong>{edu.degree}</strong>

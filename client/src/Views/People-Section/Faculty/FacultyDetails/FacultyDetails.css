@@ -644,7 +644,7 @@
 .education-item:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px var(--shadow-medium);
-    border-left-width: 8px;
+    /* border-left-width: 8px; */
 }
 
 .education-item h4 {

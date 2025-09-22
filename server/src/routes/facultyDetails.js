@@ -95,11 +95,12 @@ router.get('/:slug/details', async (req, res) => {
       SELECT 
         fe.degree,
         fe.institute,
-        fe.discipline as subject,
-        fe.graduation_year as year
+        fe.discipline,
+        fe.graduation_year,
+        fe.display_order
       FROM faculty_education fe
       WHERE fe.employee_code = ?
-      ORDER BY fe.graduation_year DESC
+      ORDER BY fe.display_order ASC, fe.graduation_year DESC
     `, [faculty.employee_code]);
     
     // Research areas are now stored in faculty_profiles.research_interests as text
