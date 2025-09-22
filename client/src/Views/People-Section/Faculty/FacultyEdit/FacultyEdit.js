@@ -154,9 +154,11 @@ const FacultyEdit = () => {
                 populateFormData(result);
             } else {
                 console.error('Failed to fetch faculty data:', result.error);
+                alert('Failed to load faculty data. Please try again.');
             }
         } catch (error) {
             console.error('Error fetching faculty data:', error);
+            alert('Error loading faculty data. Please check your connection and try again.');
         } finally {
             setLoading(false);
         }
@@ -181,7 +183,7 @@ const FacultyEdit = () => {
             // Contact Information
             email: data.contactInformation?.email || '',
             phone_mobile: data.contactInformation?.phoneMobile || '',
-            extension_no: data.profile?.phone || '',
+            extension_no: data.contactInformation?.extension_no || '',
             address: data.contactInformation?.address || '',
             office_location: data.contactInformation?.officeLocation || '',
             office_hours: data.contactInformation?.officeHours || '',
@@ -312,6 +314,7 @@ const FacultyEdit = () => {
                     experience: formData.research_teaching_experience,
                     email: formData.email,
                     phone_mobile: formData.phone_mobile,
+                    phone_residence: formData.phone_residence,
                     extension_no: formData.extension_no,
                     address: formData.address,
                     office_location: formData.office_location,

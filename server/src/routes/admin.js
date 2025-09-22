@@ -291,7 +291,7 @@ router.get('/employees', async (req, res) => {
         e.honorific,
         e.email,
         e.phone_mobile as phone,
-        e.phone_office,
+        e.phone_residence,
         e.extension_no,
         e.date_of_joining,
         e.date_of_leaving,
@@ -447,7 +447,7 @@ router.post('/employees', async (req, res) => {
       honorific,
       email,
       phone_mobile,
-      phone_office,
+      phone_residence,
       extension_no,
       date_of_joining,
       role,
@@ -470,7 +470,7 @@ router.post('/employees', async (req, res) => {
       // Insert into employees table
       const employeeResult = await executeQuery(`
         INSERT INTO employees (
-          employee_code, full_name, honorific, email, phone_mobile, phone_office,
+          employee_code, full_name, honorific, email, phone_mobile, phone_residence,
           extension_no, date_of_joining, role, job_title, is_hod, employment_status,
           employment_type, image_url, is_active, is_public_visible, display_order
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -480,7 +480,7 @@ router.post('/employees', async (req, res) => {
         honorific || null, 
         email || null, 
         phone_mobile || null, 
-        phone_office || null,
+        phone_residence || null,
         extension_no || null, 
         date_of_joining || null, 
         role || null, 
@@ -616,7 +616,7 @@ router.get('/faculty', async (req, res) => {
         e.honorific,
         e.email,
         e.phone_mobile as phone,
-        e.phone_office,
+        e.phone_residence,
         e.extension_no,
         e.date_of_joining,
         e.role,
@@ -686,7 +686,7 @@ router.get('/staff', async (req, res) => {
         e.honorific,
         e.email,
         e.phone_mobile as phone,
-        e.phone_office,
+        e.phone_residence,
         e.extension_no,
         e.date_of_joining,
         e.role,
