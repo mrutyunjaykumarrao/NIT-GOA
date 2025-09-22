@@ -10,8 +10,36 @@ async function getDbConnection() {
     host: 'localhost',
     user: 'root',
     password: 'Mrutyu@2026',
-    database: 'updated_nitgoa'
+    database: 'updated_nitgoa',
+    timezone: '+00:00', // Use UTC to avoid timezone conversion issues
+    dateStrings: true   // Return dates as strings instead of Date objects
   });
+}
+
+// Helper function to format dates from database for output (prevents timezone issues)
+function formatDateForOutput(dateValue) {
+  if (!dateValue) return null;
+  
+  // With dateStrings: true, dates should come as strings from MySQL
+  // If it's already a string in YYYY-MM-DD format, return as is
+  if (typeof dateValue === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(dateValue)) {
+    return dateValue;
+  }
+  
+  // If it's an ISO string with time, extract just the date part
+  if (typeof dateValue === 'string' && dateValue.includes('T')) {
+    return dateValue.split('T')[0];
+  }
+  
+  // Fallback: if it's still a JavaScript Date object (shouldn't happen with dateStrings: true)
+  if (dateValue instanceof Date) {
+    const year = dateValue.getFullYear();
+    const month = String(dateValue.getMonth() + 1).padStart(2, '0');
+    const day = String(dateValue.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+  
+  return null;
 }
 
 // Get all departments
@@ -295,10 +323,10 @@ router.get('/faculty/:slug/details', async (req, res) => {
       personalInformation: {
         name: faculty.honorific ? `${faculty.honorific} ${faculty.full_name}` : faculty.full_name,
         gender: faculty.gender,
-        birthDate: faculty.date_of_birth,
+        birthDate: faculty.date_of_birth ? formatDateForOutput(faculty.date_of_birth) : null,
         designation: faculty.designation,
         department: faculty.department_name,
-        dateOfJoining: faculty.date_of_joining,
+        dateOfJoining: faculty.date_of_joining ? formatDateForOutput(faculty.date_of_joining) : null,
         experience: faculty.research_teaching_experience
       },
       contactInformation: {

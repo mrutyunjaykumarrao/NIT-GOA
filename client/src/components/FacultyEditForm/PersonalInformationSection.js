@@ -2,6 +2,58 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import ImageUpload from '../ImageUpload';
 
+// Convert date from dd-mm-yyyy or YYYY-MM-DD to YYYY-MM-DD for HTML date input
+const formatDateForInput = (dateString) => {
+    if (!dateString) return '';
+    
+    // If it's already in YYYY-MM-DD format, return it
+    if (/^\d{4}-\d{2}-\d{2}$/.test(dateString)) {
+        return dateString;
+    }
+    
+    // If it's in dd-mm-yyyy format, convert to YYYY-MM-DD
+    if (/^\d{2}-\d{2}-\d{4}$/.test(dateString)) {
+        const [day, month, year] = dateString.split('-');
+        return `${year}-${month}-${day}`;
+    }
+    
+    // If it's an ISO string with time, extract just the date part
+    if (dateString.includes('T')) {
+        return dateString.split('T')[0];
+    }
+    
+    return '';
+};
+
+// Format date for display (dd-mm-yyyy)
+const formatDateForDisplay = (dateString) => {
+    if (!dateString) return '';
+    
+    // If it's in dd-mm-yyyy format already, return it
+    if (/^\d{2}-\d{2}-\d{4}$/.test(dateString)) {
+        return dateString;
+    }
+    
+    // Convert from YYYY-MM-DD to dd-mm-yyyy
+    const date = formatDateForInput(dateString);
+    if (!date) return '';
+    const [year, month, day] = date.split('-');
+    return `${day}-${month}-${year}`;
+};
+
+// Convert date from HTML input (YYYY-MM-DD) to dd-mm-yyyy for storage
+const formatDateForStorage = (dateString) => {
+    if (!dateString) return '';
+    
+    // If it's from HTML date input (YYYY-MM-DD), convert to dd-mm-yyyy
+    if (/^\d{4}-\d{2}-\d{2}$/.test(dateString)) {
+        const [year, month, day] = dateString.split('-');
+        return `${day}-${month}-${year}`;
+    }
+    
+    return dateString;
+};
+
 const PersonalInformationSection = ({ formData, setFormData, loading }) => {
     const { user } = useAuth();
     const [departments, setDepartments] = useState([]);
@@ -59,6 +111,11 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
     };
 
     const handleInputChange = (field, value) => {
+        // For date fields, convert to dd-mm-yyyy format for storage
+        if (field === 'date_of_birth' || field === 'date_of_joining') {
+            value = formatDateForStorage(value);
+        }
+        
         setFormData(prev => ({
             ...prev,
             [field]: value
@@ -176,7 +233,7 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
                             <input
                                 type="date"
                                 id="date_of_birth"
-                                value={formData.date_of_birth ? formData.date_of_birth.split('T')[0] : ''}
+                                value={formatDateForInput(formData.date_of_birth)}
                                 onChange={(e) => handleInputChange('date_of_birth', e.target.value)}
                                 disabled={loading}
                                 className="faculty-edit-form-input"
@@ -188,7 +245,7 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
                             <input
                                 type="date"
                                 id="date_of_joining"
-                                value={formData.date_of_joining ? formData.date_of_joining.split('T')[0] : ''}
+                                value={formatDateForInput(formData.date_of_joining)}
                                 onChange={(e) => handleInputChange('date_of_joining', e.target.value)}
                                 disabled={loading}
                                 className="faculty-edit-form-input"
@@ -291,7 +348,7 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
             )}
 
             {/* Personal Information Preview */}
-            {(formData.honorific || formData.full_name || formData.designation || formData.department) && (
+            {(formData.honorific || formData.full_name || formData.designation || formData.department || formData.gender || formData.date_of_birth || formData.date_of_joining || formData.employment_status) && (
                 <div className="personal-preview">
                     <h4>Personal Information Summary:</h4>
                     <div className="preview-content">
@@ -299,6 +356,16 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
                             <p className="preview-name">
                                 <strong>Name:</strong> {formData.honorific && `${formData.honorific} `}
                                 {formData.full_name ? formData.full_name.replace(/^(Dr\.|Mr\.|Mrs\.|Ms\.|Prof\.)\s+/i, '') : ''}
+                            </p>
+                        )}
+                        {formData.gender && (
+                            <p className="preview-gender">
+                                <strong>Gender:</strong> {formData.gender}
+                            </p>
+                        )}
+                        {formData.date_of_birth && (
+                            <p className="preview-birth-date">
+                                <strong>Date of Birth:</strong> {formatDateForDisplay(formData.date_of_birth)}
                             </p>
                         )}
                         {formData.designation_id && (
@@ -309,6 +376,21 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
                         {formData.department_id && (
                             <p className="preview-department">
                                 <strong>Department:</strong> {departments.find(d => d.department_id == formData.department_id)?.department_name || formData.department}
+                            </p>
+                        )}
+                        {formData.date_of_joining && (
+                            <p className="preview-joining-date">
+                                <strong>Date of Joining:</strong> {formatDateForDisplay(formData.date_of_joining)}
+                            </p>
+                        )}
+                        {formData.employment_status && (
+                            <p className="preview-employment-status">
+                                <strong>Employment Status:</strong> {formData.employment_status}
+                            </p>
+                        )}
+                        {formData.research_teaching_experience && (
+                            <p className="preview-experience">
+                                <strong>Experience:</strong> {formData.research_teaching_experience.substring(0, 100)}{formData.research_teaching_experience.length > 100 ? '...' : ''}
                             </p>
                         )}
                         {formData.is_hod && (

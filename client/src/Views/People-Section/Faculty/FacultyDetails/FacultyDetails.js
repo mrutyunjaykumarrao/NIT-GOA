@@ -5,6 +5,22 @@ import { EditPermission } from '../../../../components/ConditionalRender/Conditi
 import SocialLinks from '../../../../components/SVGIcons/SocialLinks';
 import './FacultyDetails.css';
 
+// Simple date formatting functions
+const formatDateForDisplay = (dateString) => {
+    if (!dateString) return '';
+    let date = dateString;
+    // If it's an ISO string with time, extract just the date part
+    if (dateString.includes('T')) {
+        date = dateString.split('T')[0];
+    }
+    // Convert YYYY-MM-DD to DD-MM-YYYY
+    if (/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        const [year, month, day] = date.split('-');
+        return `${day}-${month}-${year}`;
+    }
+    return date;
+};
+
 const FacultyDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -340,11 +356,11 @@ const FacultyDetails = () => {
                                     </div>
                                     <div className="info-row">
                                         <span className="info-label">Birth Date :</span>
-                                        <span className="info-value">{faculty.personalInformation?.birthDate || '-'}</span>
+                                        <span className="info-value">{formatDateForDisplay(faculty.personalInformation?.birthDate) || '-'}</span>
                                     </div>
                                     <div className="info-row">
                                         <span className="info-label">Date of Joining :</span>
-                                        <span className="info-value">{faculty.personalInformation?.dateOfJoining}</span>
+                                        <span className="info-value">{formatDateForDisplay(faculty.personalInformation?.dateOfJoining) || '-'}</span>
                                     </div>
                                     <div className="info-row full-width">
                                         <span className="info-label">Research/Teaching Experience :</span>
