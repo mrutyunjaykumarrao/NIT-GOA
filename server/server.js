@@ -82,7 +82,16 @@ app.use('/api/public', require('./src/routes/publicRoutes'));
 app.use('/api/faculty-profiles', require('./src/routes/facultyProfiles'));
 app.use('/api/faculty-details', require('./src/routes/facultyDetails'));
 app.use('/api/faculty-edit', require('./src/routes/facultyEdit'));
-app.use('/api/faculty-data', require('./src/routes/facultyData')); // Helper data routes
+
+// New modular faculty routes
+const { router: facultyCoreRouter } = require('./src/routes/faculty/facultyCore');
+app.use('/api/faculty/core', facultyCoreRouter);
+app.use('/api/faculty/profile', require('./src/routes/faculty/facultyProfile'));
+app.use('/api/faculty/academic', require('./src/routes/faculty/facultyAcademic'));
+app.use('/api/faculty/teaching', require('./src/routes/faculty/facultyTeaching'));
+app.use('/api/faculty/social', require('./src/routes/faculty/facultySocial'));
+app.use('/api/faculty/data', require('./src/routes/faculty/facultyData')); // New static data routes
+
 // app.use('/api/faculty', require('./src/routes/facultyResearch')); // New research & training routes (temporarily disabled - file removed)
 app.use('/api/admin', require('./src/routes/admin'));
 app.use('/api/analytics', require('./src/routes/analytics'));

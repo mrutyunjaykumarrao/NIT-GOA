@@ -129,6 +129,13 @@ const AdminLayout = ({ children, activeTab, setActiveTab }) => {
                 <span>Account Management</span>
               </button>
               <button 
+                className={`admin-layout-nav-tab ${activeTab === 'pending-approvals' ? 'admin-layout-nav-tab--active' : ''}`}
+                onClick={() => handleTabClick('pending-approvals')}
+              >
+                <i className="fas fa-clock"></i>
+                <span>Pending Approvals</span>
+              </button>
+              <button 
                 className={`admin-layout-nav-tab ${activeTab === 'faculty' ? 'admin-layout-nav-tab--active' : ''}`}
                 onClick={() => handleTabClick('faculty')}
               >

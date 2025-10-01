@@ -146,16 +146,73 @@ const FacultyEdit = () => {
     const fetchFacultyData = async () => {
         try {
             setLoading(true);
-            const response = await fetch(`/api/faculty-details/${id}/details`);
-            const result = await response.json();
+            const token = localStorage.getItem('authToken');
             
-            if (response.ok) {
-                setFaculty(result);
-                populateFormData(result);
-            } else {
-                console.error('Failed to fetch faculty data:', result.error);
-                alert('Failed to load faculty data. Please try again.');
-            }
+            // Load data from our new modular APIs
+            const [profileSummary, personalInfo, contactInfo, socialLinks, education, researchAreas] = await Promise.all([
+                // Core profile summary
+                fetch(`/api/faculty/core/${id}/profile-summary`).then(r => r.json()),
+                // Personal information
+                fetch(`/api/faculty/profile/${id}/personal`).then(r => r.json()),
+                // Contact information  
+                fetch(`/api/faculty/profile/${id}/contact`).then(r => r.json()),
+                // Social links (using the dedicated social endpoint)
+                fetch(`/api/faculty/social/${id}/social-links`).then(r => r.json()),
+                // Education
+                fetch(`/api/faculty/academic/${id}/education`).then(r => r.json()),
+                // Research areas (fixed endpoint name)
+                fetch(`/api/faculty/academic/${id}/research-areas`).then(r => r.json())
+            ]);
+            
+            console.log('Fetched data:', { profileSummary, personalInfo, contactInfo, socialLinks, education, researchAreas });
+            
+            // Construct faculty object for backwards compatibility
+            const facultyData = {
+                personalInformation: {
+                    full_name: personalInfo.full_name,
+                    honorific: personalInfo.honorific,
+                    gender: personalInfo.gender,
+                    birthDate: personalInfo.date_of_birth,
+                    designation: personalInfo.designation,
+                    designation_id: personalInfo.designation_id,
+                    department: personalInfo.department,
+                    department_id: personalInfo.department_id,
+                    dateOfJoining: personalInfo.date_of_joining,
+                    experience: personalInfo.research_teaching_experience,
+                    is_hod: personalInfo.is_hod,
+                    employment_status: personalInfo.employment_status,
+                    bio_summary: personalInfo.bio_summary,
+                    research_interests: personalInfo.research_interests
+                },
+                contactInformation: {
+                    email: contactInfo.email,
+                    phoneMobile: contactInfo.phone_mobile,
+                    phoneResidence: contactInfo.phone_residence,
+                    extension_no: contactInfo.extension_no,
+                    address: contactInfo.address,
+                    officeLocation: contactInfo.office_location,
+                    officeHours: contactInfo.office_hours
+                },
+                socialLinks: {
+                    linkedin: socialLinks.linkedin_url || '',
+                    website: socialLinks.personal_website_url || '',
+                    googleScholar: socialLinks.google_scholar_url || '',
+                    orcid: socialLinks.orcid_id || '',
+                    scopus: socialLinks.scopus_id || '',
+                    researchGate: socialLinks.research_gate_url || ''
+                },
+                academicInformation: education || [],
+                researchInterests: researchAreas.research_areas || [],
+                profile: {
+                    profile_image: personalInfo.profile_image,
+                    name: profileSummary.name,
+                    employee_code: profileSummary.employee_code
+                }
+            };
+            
+            setFaculty(facultyData);
+            populateFormData(facultyData);
+            
         } catch (error) {
             console.error('Error fetching faculty data:', error);
             alert('Error loading faculty data. Please check your connection and try again.');
@@ -165,24 +222,31 @@ const FacultyEdit = () => {
     };
 
     const populateFormData = (data) => {
+        console.log('Populating form with data:', data);
+        
         setFormData({
             // Personal Information
+            employee_code: data.profile?.employee_code || '',
             full_name: data.personalInformation?.full_name || '',
             honorific: data.personalInformation?.honorific || '',
             gender: data.personalInformation?.gender || '',
-            date_of_birth: data.personalInformation?.birthDate || '',
+            date_of_birth: data.personalInformation?.birthDate ? 
+                data.personalInformation.birthDate.split('T')[0] : '',
             designation: data.personalInformation?.designation || '',
             designation_id: data.personalInformation?.designation_id || '',
             department: data.personalInformation?.department || '',
             department_id: data.personalInformation?.department_id || '',
-            date_of_joining: data.personalInformation?.dateOfJoining || '',
+            date_of_joining: data.personalInformation?.dateOfJoining ? 
+                data.personalInformation.dateOfJoining.split('T')[0] : '',
             research_teaching_experience: data.personalInformation?.experience || '',
             is_hod: data.personalInformation?.is_hod || false,
             employment_status: data.personalInformation?.employment_status || '',
+            bio_summary: data.personalInformation?.bio_summary || '',
             
             // Contact Information
             email: data.contactInformation?.email || '',
             phone_mobile: data.contactInformation?.phoneMobile || '',
+            phone_residence: data.contactInformation?.phoneResidence || '',
             extension_no: data.contactInformation?.extension_no || '',
             address: data.contactInformation?.address || '',
             office_location: data.contactInformation?.officeLocation || '',
@@ -200,9 +264,8 @@ const FacultyEdit = () => {
             education: data.academicInformation || [],
             
             // Research
-            research_interests: Array.isArray(data.profile?.researchAreaSummary) ? data.profile.researchAreaSummary : [],
-            research_areas: data.researchAreas || [],
-            bio_summary: data.biography || '',
+            research_interests: data.researchInterests || [],
+            research_areas: data.researchInterests || [],
             
             // Publications
             publications: data.publications?.journal || [],
@@ -301,146 +364,156 @@ const FacultyEdit = () => {
                 return;
             }
 
-            // Prepare the data payload
-            const updateData = {
-                profile: {
-                    full_name: formData.full_name,
-                    honorific: formData.honorific,
-                    gender: formData.gender,
-                    date_of_birth: formData.date_of_birth,
-                    designation: formData.designation,
-                    department: formData.department,
-                    date_of_joining: formData.date_of_joining,
-                    experience: formData.research_teaching_experience,
-                    email: formData.email,
-                    phone_mobile: formData.phone_mobile,
-                    phone_residence: formData.phone_residence,
-                    extension_no: formData.extension_no,
-                    address: formData.address,
-                    office_location: formData.office_location,
-                    office_hours: formData.office_hours,
-                    linkedin_url: formData.linkedin_url,
-                    personal_website_url: formData.personal_website_url,
-                    google_scholar_url: formData.google_scholar_url,
-                    orcid_id: formData.orcid_id,
-                    scopus_id: formData.scopus_id,
-                    research_gate_url: formData.research_gate_url,
-                    bio_summary: formData.bio_summary,
-                    profile_image: formData.profile_image
-                },
-                education: formData.education.filter(edu => 
-                    edu.degree || edu.institute || edu.discipline || edu.graduation_year
-                ),
-                research_interests: Array.isArray(formData.research_interests) 
-                    ? formData.research_interests.filter(interest => interest && interest.trim())
-                    : (typeof formData.research_interests === 'string' && formData.research_interests.trim())
-                        ? formData.research_interests.split(',').map(s => s.trim()).filter(s => s)
-                        : [],
-                publications: formData.publications.filter(pub => 
-                    pub.title && pub.title.trim()
-                )
+            const headers = {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             };
 
-            console.log('Saving faculty data:', updateData);
+            // Save to different modular endpoints based on data changes
+            const savePromises = [];
 
-            // Check if there's a selected image file to upload
-            const hasImageFile = formData.selectedImage;
-            let response;
+            // 1. Personal Information
+            const personalData = {
+                full_name: formData.full_name,
+                honorific: formData.honorific,
+                gender: formData.gender,
+                date_of_birth: formData.date_of_birth,
+                designation_id: formData.designation_id,
+                department_id: formData.department_id,
+                date_of_joining: formData.date_of_joining,
+                research_teaching_experience: formData.research_teaching_experience,
+                is_hod: formData.is_hod,
+                employment_status: formData.employment_status
+            };
 
-            if (hasImageFile) {
-                // Use FormData for file upload
-                const formDataPayload = new FormData();
-                formDataPayload.append('data', JSON.stringify(updateData));
-                formDataPayload.append('image', formData.selectedImage);
-
-                response = await fetch(`/api/faculty-edit/${id}/bulk-update`, {
+            savePromises.push(
+                fetch(`/api/faculty/profile/${id}/personal`, {
                     method: 'PUT',
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                        // Don't set Content-Type for FormData, let browser set it
-                    },
-                    body: formDataPayload
-                });
-            } else {
-                // Use JSON for regular data update
-                response = await fetch(`/api/faculty-edit/${id}/bulk-update`, {
+                    headers,
+                    body: JSON.stringify(personalData)
+                })
+            );
+
+            // 2. Contact Information
+            const contactData = {
+                email: formData.email,
+                phone_mobile: formData.phone_mobile,
+                extension_no: formData.extension_no,
+                address: formData.address,
+                office_location: formData.office_location,
+                office_hours: formData.office_hours
+            };
+
+            savePromises.push(
+                fetch(`/api/faculty/profile/${id}/contact`, {
                     method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    },
-                    body: JSON.stringify(updateData)
-                });
+                    headers,
+                    body: JSON.stringify(contactData)
+                })
+            );
+
+            // 3. Social Links
+            const socialData = {
+                linkedin_url: formData.linkedin_url,
+                personal_website_url: formData.personal_website_url,
+                google_scholar_url: formData.google_scholar_url,
+                orcid_id: formData.orcid_id,
+                scopus_id: formData.scopus_id,
+                research_gate_url: formData.research_gate_url
+            };
+
+            savePromises.push(
+                fetch(`/api/faculty/social/${id}/social-links`, {
+                    method: 'PUT',
+                    headers,
+                    body: JSON.stringify(socialData)
+                })
+            );
+
+            // 4. Education
+            if (formData.education && formData.education.length > 0) {
+                const educationData = {
+                    education: formData.education.filter(edu => 
+                        edu.degree || edu.institute || edu.discipline || edu.graduation_year
+                    )
+                };
+
+                savePromises.push(
+                    fetch(`/api/faculty/academic/${id}/education`, {
+                        method: 'PUT',
+                        headers,
+                        body: JSON.stringify(educationData)
+                    })
+                );
             }
 
-            // Check if response is ok before trying to parse JSON
-            if (!response.ok) {
-                if (response.status === 403) {
-                    // Try to re-authenticate
-                    console.log('Authentication failed, attempting auto-login...');
-                    await autoLogin();
-                    
-                    // Retry the request with new token
-                    const newToken = localStorage.getItem('authToken');
-                    if (newToken) {
-                        let retryResponse;
-                        
-                        if (hasImageFile) {
-                            const retryFormData = new FormData();
-                            retryFormData.append('data', JSON.stringify(updateData));
-                            retryFormData.append('image', formData.selectedImage);
-                            
-                            retryResponse = await fetch(`/api/faculty-edit/${id}/bulk-update`, {
-                                method: 'PUT',
-                                headers: {
-                                    'Authorization': `Bearer ${newToken}`
-                                },
-                                body: retryFormData
-                            });
-                        } else {
-                            retryResponse = await fetch(`/api/faculty-edit/${id}/bulk-update`, {
-                                method: 'PUT',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                    'Authorization': `Bearer ${newToken}`
-                                },
-                                body: JSON.stringify(updateData)
-                            });
-                        }
-                        
-                        if (retryResponse.ok) {
-                            const retryResult = await retryResponse.json();
-                            if (retryResult.success) {
-                                alert('Faculty profile updated successfully!');
-                                navigate(`/faculty/${id}`);
-                                return;
-                            }
-                        }
-                    }
-                    throw new Error('Authentication failed. Please refresh the page and try again.');
-                }
+            // 5. Research Interests
+            const researchInterests = Array.isArray(formData.research_interests) 
+                ? formData.research_interests.filter(interest => interest && interest.trim())
+                : (typeof formData.research_interests === 'string' && formData.research_interests.trim())
+                    ? formData.research_interests.split(',').map(s => s.trim()).filter(s => s)
+                    : [];
+
+            if (researchInterests.length > 0) {
+                savePromises.push(
+                    fetch(`/api/faculty/academic/${id}/research-interests`, {
+                        method: 'PUT',
+                        headers,
+                        body: JSON.stringify({ research_interests: researchInterests })
+                    })
+                );
+            }
+
+            // 6. Handle image upload separately if there's a selected image
+            if (formData.selectedImage) {
+                const imageFormData = new FormData();
+                imageFormData.append('image', formData.selectedImage);
+
+                savePromises.push(
+                    fetch(`/api/faculty/profile/${id}/image`, {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                            // Don't set Content-Type for FormData
+                        },
+                        body: imageFormData
+                    })
+                );
+            }
+
+            console.log('Saving faculty data to modular APIs...');
+
+            // Execute all save operations
+            const responses = await Promise.all(savePromises);
+
+            // Check if all responses are successful
+            const failedResponses = responses.filter(response => !response.ok);
+            
+            if (failedResponses.length > 0) {
+                console.error('Some updates failed:', failedResponses);
                 
-                // For other errors, try to get error message from response
-                let errorMessage = `HTTP ${response.status}: ${response.statusText}`;
-                try {
-                    const errorData = await response.json();
-                    errorMessage = errorData.error || errorMessage;
-                } catch (e) {
-                    // If response is not JSON, use status text
-                    errorMessage = response.statusText || `HTTP Error ${response.status}`;
-                }
-                throw new Error(errorMessage);
+                // Try to get error details
+                const errorMessages = await Promise.all(
+                    failedResponses.map(async (response) => {
+                        try {
+                            const errorData = await response.json();
+                            return errorData.error || `HTTP ${response.status}`;
+                        } catch {
+                            return `HTTP ${response.status}`;
+                        }
+                    })
+                );
+                
+                throw new Error(`Some changes could not be saved: ${errorMessages.join(', ')}`);
             }
 
-            const result = await response.json();
+            // All successful
+            alert('Faculty information updated successfully!');
+            console.log('All faculty data saved successfully using modular APIs');
 
-            if (result.success) {
-                alert('Faculty profile updated successfully!');
-                // Navigate back to faculty details page
-                navigate(`/faculty/${id}`);
-            } else {
-                throw new Error(result.error || 'Failed to update faculty profile');
-            }
+            // Navigate back to faculty details page
+            navigate(`/faculty/${id}`);
+
         } catch (error) {
             console.error('Error saving faculty data:', error);
             alert(`Failed to save changes: ${error.message}`);

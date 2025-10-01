@@ -1,5 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
+const fs = require('fs').promises;
+const path = require('path');
 const { executeQuery, withTransaction } = require('../config/database');
 const { authenticateToken, requireAdmin } = require('../middleware/auth');
 const emailService = require('../utils/emailService');
@@ -9,6 +11,270 @@ const router = express.Router();
 // All admin routes require authentication and admin role
 router.use(authenticateToken);
 router.use(requireAdmin);
+
+// ======================
+// DATABASE MIGRATIONS
+// ======================
+
+// POST /api/admin/migrate - Run database migrations (admin only)
+router.post('/migrate', async (req, res) => {
+  try {
+    // Create pending_approvals table
+    const createTableQuery = `
+      CREATE TABLE IF NOT EXISTS pending_approvals (
+          approval_id INT AUTO_INCREMENT PRIMARY KEY,
+          employee_code VARCHAR(50) NOT NULL,
+          approval_type ENUM('profile_image', 'personal_info', 'contact_info', 'other') NOT NULL,
+          current_value TEXT,
+          requested_value TEXT,
+          temp_file_path VARCHAR(500),
+          requested_by VARCHAR(50) NOT NULL,
+          requested_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          reviewed_by VARCHAR(50) NULL,
+          reviewed_at TIMESTAMP NULL,
+          status ENUM('pending', 'approved', 'rejected') DEFAULT 'pending',
+          admin_notes TEXT,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+          
+          INDEX idx_employee_code (employee_code),
+          INDEX idx_status (status),
+          INDEX idx_approval_type (approval_type),
+          INDEX idx_requested_at (requested_at)
+      )
+    `;
+
+    await executeQuery(createTableQuery);
+
+    res.json({
+      success: true,
+      message: 'pending_approvals table created successfully'
+    });
+
+  } catch (error) {
+    console.error('Migration error:', error);
+    res.status(500).json({ 
+      error: 'Migration failed', 
+      details: error.message 
+    });
+  }
+});
+
+// ======================
+// PENDING APPROVALS
+// ======================
+
+// GET /api/admin/pending-approvals - Get all pending approvals
+router.get('/pending-approvals', async (req, res) => {
+  try {
+    const query = `
+      SELECT 
+        pa.approval_id,
+        pa.employee_code,
+        pa.approval_type,
+        pa.current_value as current_image_url,
+        pa.requested_value,
+        pa.temp_file_path,
+        pa.requested_by,
+        pa.requested_at,
+        pa.status,
+        pa.admin_notes,
+        e.full_name,
+        e.role,
+        d.department_code,
+        d.department_name
+      FROM pending_approvals pa
+      JOIN employees e ON pa.employee_code = e.employee_code
+      LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code
+      LEFT JOIN departments d ON fp.department_id = d.department_id
+      WHERE pa.status = 'pending'
+      ORDER BY pa.requested_at DESC
+    `;
+
+    const [result] = await executeQuery(query);
+
+    res.json({
+      success: true,
+      approvals: result
+    });
+
+  } catch (error) {
+    console.error('Get pending approvals error:', error);
+    res.status(500).json({ error: 'Failed to fetch pending approvals' });
+  }
+});
+
+// PUT /api/admin/pending-approvals/:id/approve - Approve a pending request
+router.put('/pending-approvals/:id/approve', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { admin_notes } = req.body;
+    const reviewedBy = req.user?.employeeCode || 'ADMIN'; // In dev mode
+
+    // Get the pending approval details
+    const [pendingResult] = await executeQuery(
+      'SELECT * FROM pending_approvals WHERE approval_id = ? AND status = "pending"',
+      [id]
+    );
+
+    if (pendingResult.length === 0) {
+      return res.status(404).json({ error: 'Pending approval not found' });
+    }
+
+    const approval = pendingResult[0];
+
+    if (approval.approval_type === 'profile_image') {
+      const fs = require('fs').promises;
+      const path = require('path');
+      
+      // Get employee details for proper directory structure
+      const [employeeResult] = await executeQuery(`
+        SELECT 
+          e.employee_code, 
+          e.full_name,
+          e.role, 
+          e.image_url,
+          d.department_code
+        FROM employees e
+        LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code
+        LEFT JOIN departments d ON fp.department_id = d.department_id
+        WHERE e.employee_code = ?
+      `, [approval.employee_code]);
+
+      const employee = employeeResult[0];
+      
+      // Determine target directory structure
+      let roleDir = employee.role === 'Faculty' ? 'Faculty' : 
+                   employee.role === 'Technical' ? 'Technical Staff' : 
+                   'Administrative Staff';
+      
+      let targetDir;
+      if (employee.role === 'Faculty' && employee.department_code) {
+        targetDir = path.join(__dirname, '../../../../client/public/images', roleDir, employee.department_code);
+      } else {
+        targetDir = path.join(__dirname, '../../../../client/public/images', roleDir);
+      }
+
+      // Ensure target directory exists
+      await fs.mkdir(targetDir, { recursive: true });
+
+      // Create proper filename for final image
+      const nameSlug = employee.full_name
+        .toLowerCase()
+        .replace(/\s+/g, '_')
+        .replace(/[^a-z0-9_]/g, '');
+      const tempFilename = approval.requested_value; // Current temp filename
+      const fileExtension = path.extname(tempFilename);
+      const finalFilename = `${nameSlug}${fileExtension}`;
+      
+      const tempPath = approval.temp_file_path; // Full path to temp file
+      const finalPath = path.join(targetDir, finalFilename);
+      
+      // Move old image to deleted directory if exists
+      if (approval.current_value) {
+        const oldImagePath = path.join(__dirname, '../../../../client/public', approval.current_value);
+        const deletedDir = path.join(__dirname, '../../uploads/deleted');
+        await fs.mkdir(deletedDir, { recursive: true });
+        
+        try {
+          const deletedPath = path.join(deletedDir, `approved_replace_${Date.now()}_${path.basename(approval.current_value)}`);
+          await fs.rename(oldImagePath, deletedPath);
+          console.log('Old image moved to deleted:', deletedPath);
+        } catch (error) {
+          console.log('Old image not found or already moved:', oldImagePath);
+        }
+      }
+
+      // Move new image from temp to final location
+      try {
+        await fs.rename(tempPath, finalPath);
+        console.log('New image moved to:', finalPath);
+      } catch (error) {
+        console.error('Failed to move temp image:', error);
+        return res.status(500).json({ error: 'Failed to move image file' });
+      }
+
+      // Construct proper image URL path  
+      const newImageUrl = employee.role === 'Faculty' && employee.department_code ?
+        `images/${roleDir}/${employee.department_code}/${finalFilename}` :
+        `images/${roleDir}/${finalFilename}`;
+
+      // Update employee image_url in database
+      await executeQuery(
+        'UPDATE employees SET image_url = ?, updated_at = NOW() WHERE employee_code = ?',
+        [newImageUrl, approval.employee_code]
+      );
+      
+      console.log('Database updated with new image URL:', newImageUrl);
+    }
+
+    // Update approval status
+    await executeQuery(`
+      UPDATE pending_approvals 
+      SET status = 'approved', reviewed_by = ?, reviewed_at = NOW(), admin_notes = ?
+      WHERE approval_id = ?
+    `, [reviewedBy, admin_notes || null, id]);
+
+    res.json({
+      success: true,
+      message: 'Request approved successfully'
+    });
+
+  } catch (error) {
+    console.error('Approve request error:', error);
+    res.status(500).json({ error: 'Failed to approve request' });
+  }
+});
+
+// PUT /api/admin/pending-approvals/:id/reject - Reject a pending request
+router.put('/pending-approvals/:id/reject', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { admin_notes } = req.body;
+    const reviewedBy = req.user?.employeeCode || 'ADMIN';
+
+    // Get the pending approval details
+    const [pendingResult] = await executeQuery(
+      'SELECT * FROM pending_approvals WHERE approval_id = ? AND status = "pending"',
+      [id]
+    );
+
+    if (pendingResult.length === 0) {
+      return res.status(404).json({ error: 'Pending approval not found' });
+    }
+
+    const approval = pendingResult[0];
+
+    // Move temp file to deleted directory
+    if (approval.temp_file_path) {
+      const deletedDir = path.join(__dirname, '../../uploads/deleted');
+      await fs.mkdir(deletedDir, { recursive: true });
+      
+      try {
+        const deletedPath = path.join(deletedDir, `rejected_${Date.now()}_${path.basename(approval.temp_file_path)}`);
+        await fs.rename(approval.temp_file_path, deletedPath);
+      } catch (error) {
+        console.log('Temp file not found:', approval.temp_file_path);
+      }
+    }
+
+    // Update approval status
+    await executeQuery(`
+      UPDATE pending_approvals 
+      SET status = 'rejected', reviewed_by = ?, reviewed_at = NOW(), admin_notes = ?
+      WHERE approval_id = ?
+    `, [reviewedBy, admin_notes || null, id]);
+
+    res.json({
+      success: true,
+      message: 'Request rejected successfully'
+    });
+
+  } catch (error) {
+    console.error('Reject request error:', error);
+    res.status(500).json({ error: 'Failed to reject request' });
+  }
+});
 
 // ======================
 // ANALYTICS

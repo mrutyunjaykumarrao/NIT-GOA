@@ -45,7 +45,7 @@ const CoursesTaughtSection = ({ formData, setFormData, loading, employeeCode }) 
         
         try {
             const token = localStorage.getItem('authToken');
-            const response = await fetch(`/api/faculty-data/faculty-courses/${employeeCode}`, {
+            const response = await fetch(`/api/faculty/teaching/${employeeCode}/courses`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             
@@ -103,7 +103,7 @@ const CoursesTaughtSection = ({ formData, setFormData, loading, employeeCode }) 
             if (searchTerm) params.append('search', searchTerm);
             if (filters.level) params.append('level', filters.level);
 
-            const response = await fetch(`/api/faculty-data/courses?${params}`, {
+            const response = await fetch(`/api/faculty/data/courses?${params}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             

@@ -83,7 +83,7 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
     const fetchDepartments = async () => {
         try {
             const token = localStorage.getItem('authToken');
-            const response = await fetch('/api/faculty-data/departments', {
+            const response = await fetch('/api/faculty/data/departments', {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await response.json();
@@ -98,7 +98,7 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
     const fetchDesignations = async () => {
         try {
             const token = localStorage.getItem('authToken');
-            const response = await fetch('/api/faculty-data/designations', {
+            const response = await fetch('/api/faculty/data/designations', {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const data = await response.json();
@@ -172,8 +172,23 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
 
                 {/* Form Fields Column */}
                 <div className="form-fields-container">
-                    {/* Row 1: Honorific | Full Name (1:3 ratio) */}
-                    <div className="basic-info-grid">
+                    {/* Row 1: Employee Code | Honorific | Full Name (1:1:4 ratio for admin, 1:3 for faculty) */}
+                    <div className={isAdmin ? "basic-info-grid-admin" : "basic-info-grid"}>
+                        {isAdmin && (
+                            <div className="faculty-edit-form-group">
+                                <label htmlFor="employee_code">Employee Code</label>
+                                <input
+                                    type="text"
+                                    id="employee_code"
+                                    value={formData.employee_code || ''}
+                                    onChange={(e) => handleInputChange('employee_code', e.target.value)}
+                                    disabled={loading}
+                                    className="faculty-edit-form-input"
+                                    placeholder="e.g., FAC001"
+                                />
+                            </div>
+                        )}
+
                         <div className="faculty-edit-form-group">
                             <label htmlFor="honorific">Honorific/Title</label>
                             <select

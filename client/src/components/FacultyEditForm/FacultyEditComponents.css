@@ -273,14 +273,20 @@
 
 .passport-image-upload .preview-image {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
     border-radius: 8px;
 }
 
 .basic-info-grid {
     display: grid;
     grid-template-columns: 1fr 3fr; /* Smaller honorific, larger full name */
+    grid-template-rows: 1fr;
+    gap: 16px;
+    height: auto; /* Auto height for single row */
+}
+
+.basic-info-grid-admin {
+    display: grid;
+    grid-template-columns: 1fr 1fr 4fr; /* Employee Code, Honorific, Full Name (1:1:4 ratio) */
     grid-template-rows: 1fr;
     gap: 16px;
     height: auto; /* Auto height for single row */

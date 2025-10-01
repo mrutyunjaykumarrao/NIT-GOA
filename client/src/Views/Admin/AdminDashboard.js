@@ -7,6 +7,7 @@ import TechnicalStaffTab from './components/TechnicalStaffTab/TechnicalStaffTab'
 import AdministrativeStaffTab from './components/AdministrativeStaffTab/AdministrativeStaffTab';
 import AnalyticsTab from './components/AnalyticsTab/AnalyticsTab';
 import AccountManagement from './components/AccountManagement/AccountManagement';
+import PendingApprovalsTab from './components/PendingApprovalsTab/PendingApprovalsTab';
 import { UserModal, FacultyModal, AdministrativeStaffModal, TechnicalStaffModal, PendingApprovalsModal } from './components/AdminModals';
 import './AdminDashboard.css';
 
@@ -542,6 +543,10 @@ const AdminDashboard = () => {
         
           {activeTab === 'account-management' && (
             <AccountManagement />
+          )}
+          
+          {activeTab === 'pending-approvals' && (
+            <PendingApprovalsTab />
           )}
           
           {activeTab === 'faculty' && (
