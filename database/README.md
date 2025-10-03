@@ -1,6 +1,6 @@
-# NIT GOA Database
+# NIT GOA Database Management System
 
-This directory contains all database-related files for the NIT GOA faculty management system.
+This directory contains comprehensive database management tools for the NIT GOA project, including database initialization, backup, restore, and scheduling capabilities.
 
 ## Directory Structure
 
