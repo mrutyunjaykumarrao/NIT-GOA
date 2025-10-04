@@ -2,11 +2,38 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const fs = require('fs').promises;
 const path = require('path');
-const { executeQuery, withTransaction } = require('../config/database');
+const { pool } = require('../config/database');
 const { authenticateToken, requireAdmin } = require('../middleware/auth');
 const emailService = require('../utils/emailService');
 
 const router = express.Router();
+
+// Helper function for database queries
+async function executeQuery(query, params = []) {
+  const connection = await pool.getConnection();
+  try {
+    const [results] = await connection.execute(query, params);
+    return [results];
+  } finally {
+    connection.release();
+  }
+}
+
+// Helper function for transactions
+async function withTransaction(callback) {
+  const connection = await pool.getConnection();
+  try {
+    await connection.beginTransaction();
+    const result = await callback(connection);
+    await connection.commit();
+    return result;
+  } catch (error) {
+    await connection.rollback();
+    throw error;
+  } finally {
+    connection.release();
+  }
+}
 
 // All admin routes require authentication and admin role
 router.use(authenticateToken);
@@ -560,16 +587,35 @@ router.get('/employees', async (req, res) => {
         e.phone_residence,
         e.extension_no,
         e.date_of_joining,
-        e.date_of_leaving,
+        NULL as date_of_leaving,
         e.role,
-        e.job_title as position,
-        e.is_hod,
-        e.employment_status,
-        e.employment_type,
-        e.image_url,
+        CASE 
+          WHEN e.role = 'Faculty' THEN fd.designation_title
+          WHEN e.role IN ('Administrative', 'Technical') THEN sp.job_title
+          ELSE NULL
+        END as position,
+        CASE 
+          WHEN e.role = 'Faculty' THEN fp.is_hod
+          ELSE 0
+        END as is_hod,
+        CASE 
+          WHEN e.role = 'Faculty' THEN 'Active'
+          WHEN e.role IN ('Administrative', 'Technical') THEN sp.employment_status
+          ELSE NULL
+        END as employment_status,
+        'Full-time' as employment_type,
+        CASE 
+          WHEN e.role = 'Faculty' THEN fp.image_url
+          WHEN e.role IN ('Administrative', 'Technical') THEN sp.image_url
+          ELSE NULL
+        END as image_url,
         e.is_active,
         e.is_public_visible,
-        e.display_order,
+        CASE 
+          WHEN e.role = 'Faculty' THEN fp.display_order
+          WHEN e.role IN ('Administrative', 'Technical') THEN sp.display_order
+          ELSE 0
+        END as display_order,
         e.created_at,
         e.updated_at,
         CASE 
@@ -586,10 +632,11 @@ router.get('/employees', async (req, res) => {
         ua.access_level as user_role,
         ua.is_active as user_active
       FROM employees e
-      LEFT JOIN faculty_profiles fp ON e.employee_id = fp.employee_id AND e.role = 'Faculty'
-      LEFT JOIN staff_profiles sp ON e.employee_id = sp.employee_id AND e.role IN ('Administrative', 'Technical')
+      LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code AND e.role = 'Faculty'
+      LEFT JOIN staff_profiles sp ON e.employee_code = sp.employee_code AND e.role IN ('Administrative', 'Technical')
       LEFT JOIN departments d_f ON fp.department_id = d_f.department_id
       LEFT JOIN departments d_s ON sp.department_id = d_s.department_id
+      LEFT JOIN faculty_designations fd ON fp.designation_id = fd.designation_id
       LEFT JOIN user_accounts ua ON ua.username = e.employee_code
       ORDER BY e.created_at DESC
     `);
@@ -886,19 +933,19 @@ router.get('/faculty', async (req, res) => {
         e.extension_no,
         e.date_of_joining,
         e.role,
-        e.job_title as position,
-        e.is_hod,
-        e.employment_status,
-        e.employment_type,
-        e.image_url,
+        fd.designation_title as position,
+        fp.is_hod,
+        'Active' as employment_status,
+        'Full-time' as employment_type,
+        fp.image_url,
         e.is_active,
         e.is_public_visible,
-        e.display_order,
+        fp.display_order,
         e.created_at,
         e.updated_at,
         fp.department_id,
         fp.designation_id,
-        fp.gender,
+        e.gender,
         fp.date_of_birth,
         fp.research_teaching_experience,
         fp.address,
@@ -918,8 +965,9 @@ router.get('/faculty', async (req, res) => {
         ua.access_level as user_role,
         ua.is_active as user_active
       FROM employees e
-      JOIN faculty_profiles fp ON e.employee_id = fp.employee_id
+      JOIN faculty_profiles fp ON e.employee_code = fp.employee_code
       LEFT JOIN departments d ON fp.department_id = d.department_id
+      LEFT JOIN faculty_designations fd ON fp.designation_id = fd.designation_id
       LEFT JOIN user_accounts ua ON ua.username = e.employee_code
       WHERE e.role = 'Faculty'
       ORDER BY e.created_at DESC
@@ -956,23 +1004,23 @@ router.get('/staff', async (req, res) => {
         e.extension_no,
         e.date_of_joining,
         e.role,
-        e.job_title as position,
-        e.employment_status,
-        e.employment_type,
-        e.image_url,
+        sp.job_title as position,
+        sp.employment_status,
+        'Full-time' as employment_type,
+        sp.image_url,
         e.is_active,
         e.is_public_visible,
-        e.display_order,
+        sp.display_order,
         e.created_at,
         e.updated_at,
         sp.department_id,
-        sp.specialty,
+        sp.responsibilities as specialty,
         d.department_name,
         ua.username,
         ua.access_level as user_role,
         ua.is_active as user_active
       FROM employees e
-      JOIN staff_profiles sp ON e.employee_id = sp.employee_id
+      JOIN staff_profiles sp ON e.employee_code = sp.employee_code
       LEFT JOIN departments d ON sp.department_id = d.department_id
       LEFT JOIN user_accounts ua ON ua.username = e.employee_code
       WHERE e.role IN ('Administrative', 'Technical')
@@ -1003,15 +1051,15 @@ router.get('/departments', async (req, res) => {
         d.department_id as id,
         d.department_name,
         d.department_code,
-        d.description,
+        '' as description,
         d.is_active,
-        d.display_order,
+        0 as display_order,
         d.created_at,
         d.updated_at,
         (SELECT COUNT(*) FROM faculty_profiles fp WHERE fp.department_id = d.department_id) as faculty_count,
         (SELECT COUNT(*) FROM staff_profiles sp WHERE sp.department_id = d.department_id) as staff_count
       FROM departments d
-      ORDER BY d.display_order, d.department_name
+      ORDER BY d.department_name
     `);
     
     // Handle nested array result structure
@@ -1102,6 +1150,43 @@ router.delete('/departments/:id', async (req, res) => {
 // Simple test route to verify database connectivity (removed for production)
 // This will be available without authentication for debugging
 
+
+
+// Test endpoint without auth for debugging
+router.get('/users/test', async (req, res) => {
+  try {
+    console.log('🔍 [TEST] Testing users endpoint without auth...');
+    
+    const connection = await pool.getConnection();
+    try {
+      const [basicResults] = await connection.execute(`
+        SELECT 
+          ua.user_id,
+          ua.username,
+          ua.email as user_email,
+          ua.access_level,
+          ua.is_active,
+          ua.created_at,
+          CASE 
+            WHEN ua.is_active = 0 THEN 'inactive'
+            ELSE 'active'
+          END as status
+        FROM user_accounts ua
+        ORDER BY ua.created_at DESC
+        LIMIT 5
+      `, []);
+      
+      console.log('🔍 [TEST] Basic query successful, users:', basicResults.length);
+      res.json({ success: true, count: basicResults.length, users: basicResults });
+    } finally {
+      connection.release();
+    }
+  } catch (error) {
+    console.error('🔍 [TEST] Test endpoint error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // Get all user accounts with pagination, search, and status filters
 router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
   try {
@@ -1112,15 +1197,15 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
     let whereClause = '';
     const params = [];
 
-    // Search filter
-    if (search) {
-      whereClause += ' WHERE (ua.username LIKE ? OR ua.email LIKE ? OR e.full_name LIKE ? OR e.email LIKE ? OR e.employee_code LIKE ?)';
-      const searchPattern = `%${search}%`;
-      params.push(searchPattern, searchPattern, searchPattern, searchPattern, searchPattern);
+    // Search filter - simplified for user_accounts only
+    if (search && search.trim() !== '') {
+      whereClause = ' WHERE (ua.username LIKE ? OR ua.email LIKE ?)';
+      const searchPattern = `%${search.trim()}%`;
+      params.push(searchPattern, searchPattern);
     }
 
     // Status filter
-    if (status !== 'all') {
+    if (status && status !== 'all') {
       const statusCondition = whereClause ? ' AND ' : ' WHERE ';
       if (status === 'active') {
         whereClause += statusCondition + 'ua.is_active = 1 AND (ua.locked_until IS NULL OR ua.locked_until <= NOW())';
@@ -1131,8 +1216,13 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
       }
     }
 
-    // Get users with employee data
-    const [userRows] = await executeQuery(`
+    // Construct final query and parameters
+    const limitNum = parseInt(limit) || 20;
+    const offsetNum = parseInt(offset) || 0;
+    const finalParams = [...params, limitNum, offsetNum];
+    
+    // Create a simplified query first to test
+    const userQuery = `
       SELECT 
         ua.user_id,
         ua.username,
@@ -1148,7 +1238,7 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
         e.full_name,
         e.email as employee_email,
         e.role as employee_role,
-        e.image_url as employee_image,
+        COALESCE(fp.image_url, sp.image_url) as employee_image,
         CASE 
           WHEN ua.locked_until > NOW() THEN 'locked'
           WHEN ua.is_active = 0 THEN 'inactive'
@@ -1156,20 +1246,102 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
         END as status
       FROM user_accounts ua
       LEFT JOIN employees e ON ua.employee_code = e.employee_code
+      LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code AND e.role = 'Faculty'
+      LEFT JOIN staff_profiles sp ON e.employee_code = sp.employee_code AND e.role IN ('Administrative', 'Technical')
       ${whereClause}
       ORDER BY ua.created_at DESC
       LIMIT ? OFFSET ?
-    `, [...params, parseInt(limit), offset]);
-
-    // Get total count for pagination
-    const [countRows] = await executeQuery(`
-      SELECT COUNT(*) as count
-      FROM user_accounts ua
-      LEFT JOIN employees e ON ua.employee_code = e.employee_code
-      ${whereClause}
-    `, params);
-
-    const totalCount = countRows[0].count;
+    `;
+    
+    console.log('🔍 [USERS DEBUG] Query placeholders count:', (userQuery.match(/\?/g) || []).length);
+    
+    // Simplified approach - try minimal query first
+    const connection = await pool.getConnection();
+    let userRows, totalCount;
+    
+    try {
+      // Step 1: Get basic user data without complex joins
+      const basicQuery = `
+        SELECT 
+          ua.user_id,
+          ua.username,
+          ua.email as user_email,
+          ua.access_level,
+          ua.is_active,
+          ua.last_login,
+          ua.failed_login_attempts,
+          ua.locked_until,
+          ua.created_at,
+          CASE 
+            WHEN ua.locked_until > NOW() THEN 'locked'
+            WHEN ua.is_active = 0 THEN 'inactive'
+            ELSE 'active'
+          END as status
+        FROM user_accounts ua
+        ${whereClause}
+        ORDER BY ua.created_at DESC
+        LIMIT ? OFFSET ?
+      `;
+      
+      const [basicResults] = await connection.execute(basicQuery, finalParams);
+      
+      // Step 2: Get employee data separately and merge
+      const userIds = basicResults.map(u => u.user_id);
+      let employeeData = {};
+      
+      if (userIds.length > 0) {
+        const placeholders = userIds.map(() => '?').join(',');
+        const employeeQuery = `
+          SELECT 
+            ua.user_id,
+            e.employee_id,
+            e.employee_code,
+            e.full_name,
+            e.email as employee_email,
+            e.role as employee_role,
+            CASE 
+              WHEN e.role = 'Faculty' THEN fp.image_url
+              WHEN e.role IN ('Administrative', 'Technical') THEN sp.image_url
+              ELSE NULL
+            END as employee_image
+          FROM user_accounts ua
+          LEFT JOIN employees e ON ua.employee_code = e.employee_code
+          LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code AND e.role = 'Faculty'
+          LEFT JOIN staff_profiles sp ON e.employee_code = sp.employee_code AND e.role IN ('Administrative', 'Technical')
+          WHERE ua.user_id IN (${placeholders})
+        `;
+        
+        const [empResults] = await connection.execute(employeeQuery, userIds);
+        
+        // Create lookup map
+        empResults.forEach(emp => {
+          employeeData[emp.user_id] = emp;
+        });
+      }
+      
+      // Step 3: Merge data
+      userRows = basicResults.map(user => ({
+        ...user,
+        employee_id: employeeData[user.user_id]?.employee_id || null,
+        employee_code: employeeData[user.user_id]?.employee_code || null,
+        full_name: employeeData[user.user_id]?.full_name || null,
+        employee_email: employeeData[user.user_id]?.employee_email || null,
+        employee_role: employeeData[user.user_id]?.employee_role || null,
+        employee_image: employeeData[user.user_id]?.employee_image || null
+      }));
+      
+      // Step 4: Get count
+      const countQuery = `SELECT COUNT(*) as count FROM user_accounts ua ${whereClause}`;
+      const [countResults] = await connection.execute(countQuery, params);
+      totalCount = countResults[0].count;
+      
+      
+    } catch (simplifiedError) {
+      console.error('Get users error:', simplifiedError);
+      throw simplifiedError;
+    } finally {
+      connection.release();
+    }
 
     res.json({
       users: userRows,

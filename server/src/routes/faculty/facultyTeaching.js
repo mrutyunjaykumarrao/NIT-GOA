@@ -1,5 +1,4 @@
 const express = require('express');
-const mysql = require('mysql2/promise');
 const { executeQuery } = require('../../config/database');
 
 const router = express.Router();
@@ -195,49 +194,30 @@ router.put('/:employeeCode/courses/reorder', authenticateToken, checkEditPermiss
     // This endpoint updates display_order without committing to database permanently
     // Mainly used for drag-and-drop preview
     
-    const connection = await mysql.createConnection({
-      host: process.env.DB_HOST || 'localhost',
-      user: process.env.DB_USER || 'root',
-      password: process.env.DB_PASSWORD || '',
-      database: process.env.DB_NAME || 'nitgoa_website'
-    });
-
-    await connection.beginTransaction();
-
-    try {
-      for (let i = 0; i < courseOrder.length; i++) {
-        const courseInfo = courseOrder[i];
-        const newOrder = i + 1;
-        
-        if (courseInfo.is_custom) {
-          await connection.execute(`
-            UPDATE faculty_courses_taught 
-            SET display_order = ? 
-            WHERE employee_code = ? AND custom_course_code = ?
-          `, [newOrder, employeeCode, courseInfo.course_code]);
-        } else {
-          await connection.execute(`
-            UPDATE faculty_courses_taught 
-            SET display_order = ? 
-            WHERE employee_code = ? AND course_id = ?
-          `, [newOrder, employeeCode, courseInfo.course_id]);
-        }
+    for (let i = 0; i < courseOrder.length; i++) {
+      const courseInfo = courseOrder[i];
+      const newOrder = i + 1;
+      
+      if (courseInfo.is_custom) {
+        await executeQuery(`
+          UPDATE faculty_courses_taught 
+          SET display_order = ? 
+          WHERE employee_code = ? AND custom_course_code = ?
+        `, [newOrder, employeeCode, courseInfo.course_code]);
+      } else {
+        await executeQuery(`
+          UPDATE faculty_courses_taught 
+          SET display_order = ? 
+          WHERE employee_code = ? AND course_id = ?
+        `, [newOrder, employeeCode, courseInfo.course_id]);
       }
-      
-      await connection.commit();
-      await connection.end();
-      
-      res.json({ 
-        success: true, 
-        message: 'Course order updated temporarily',
-        employee_code: employeeCode 
-      });
-      
-    } catch (error) {
-      await connection.rollback();
-      await connection.end();
-      throw error;
     }
+    
+    res.json({ 
+      success: true, 
+      message: 'Course order updated temporarily',
+      employee_code: employeeCode 
+    });
 
   } catch (error) {
     console.error('Error reordering courses:', error);
@@ -255,49 +235,30 @@ router.put('/:employeeCode/courses/save-order', authenticateToken, checkEditPerm
       return res.status(400).json({ error: 'Course order must be an array' });
     }
     
-    const connection = await mysql.createConnection({
-      host: process.env.DB_HOST || 'localhost',
-      user: process.env.DB_USER || 'root',
-      password: process.env.DB_PASSWORD || '',
-      database: process.env.DB_NAME || 'nitgoa_website'
-    });
-
-    await connection.beginTransaction();
-
-    try {
-      for (let i = 0; i < courseOrder.length; i++) {
-        const courseInfo = courseOrder[i];
-        const newOrder = i + 1;
-        
-        if (courseInfo.is_custom) {
-          await connection.execute(`
-            UPDATE faculty_courses_taught 
-            SET display_order = ? 
-            WHERE employee_code = ? AND custom_course_code = ?
-          `, [newOrder, employeeCode, courseInfo.course_code]);
-        } else {
-          await connection.execute(`
-            UPDATE faculty_courses_taught 
-            SET display_order = ? 
-            WHERE employee_code = ? AND course_id = ?
-          `, [newOrder, employeeCode, courseInfo.course_id]);
-        }
+    for (let i = 0; i < courseOrder.length; i++) {
+      const courseInfo = courseOrder[i];
+      const newOrder = i + 1;
+      
+      if (courseInfo.is_custom) {
+        await executeQuery(`
+          UPDATE faculty_courses_taught 
+          SET display_order = ? 
+          WHERE employee_code = ? AND custom_course_code = ?
+        `, [newOrder, employeeCode, courseInfo.course_code]);
+      } else {
+        await executeQuery(`
+          UPDATE faculty_courses_taught 
+          SET display_order = ? 
+          WHERE employee_code = ? AND course_id = ?
+        `, [newOrder, employeeCode, courseInfo.course_id]);
       }
-      
-      await connection.commit();
-      await connection.end();
-      
-      res.json({ 
-        success: true, 
-        message: 'Course order saved permanently',
-        employee_code: employeeCode 
-      });
-      
-    } catch (error) {
-      await connection.rollback();
-      await connection.end();
-      throw error;
     }
+    
+    res.json({ 
+      success: true, 
+      message: 'Course order saved permanently',
+      employee_code: employeeCode 
+    });
 
   } catch (error) {
     console.error('Error saving course order:', error);

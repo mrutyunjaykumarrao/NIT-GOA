@@ -1,8 +1,19 @@
 const express = require('express');
-const { executeQuery } = require('../config/database');
+const { pool } = require('../config/database');
 const { authenticateToken } = require('../middleware/auth');
 
 const router = express.Router();
+
+// Helper function for database queries
+async function executeQuery(query, params = []) {
+  const connection = await pool.getConnection();
+  try {
+    const [results] = await connection.execute(query, params);
+    return [results];
+  } finally {
+    connection.release();
+  }
+}
 
 // Get all courses with search capability
 router.get('/courses', async (req, res) => {

@@ -1,20 +1,7 @@
 const express = require('express');
-const mysql = require('mysql2/promise');
-const { executeQuery } = require('../config/database');
+const { pool } = require('../config/database');
 
 const router = express.Router();
-
-// Database connection function
-async function getDbConnection() {
-  return await mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Mrutyu@2026',
-    database: 'updated_nitgoa',
-    timezone: '+00:00', // Use UTC to avoid timezone conversion issues
-    dateStrings: true   // Return dates as strings instead of Date objects
-  });
-}
 
 // Helper function to format dates from database for output (prevents timezone issues)
 function formatDateForOutput(dateValue) {
@@ -45,23 +32,21 @@ function formatDateForOutput(dateValue) {
 // Get all departments
 router.get('/departments', async (req, res) => {
   try {
-    const connection = await getDbConnection();
+    const connection = await pool.getConnection();
     
     const [departments] = await connection.execute(`
       SELECT 
         department_id as id,
         department_name as name,
         department_code as code,
-        description,
-        is_active,
-        display_order
+        is_active
       FROM departments 
       WHERE is_active = 1 
-      ORDER BY display_order ASC, department_name ASC
+      ORDER BY department_name ASC
     `);
 
-    await connection.end();
-    res.json(departments);
+    connection.release();
+    res.json({ success: true, data: departments });
   } catch (error) {
     console.error('Get departments error:', error);
     res.status(500).json({ error: 'Internal server error' });

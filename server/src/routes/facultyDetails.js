@@ -1,19 +1,11 @@
 const express = require('express');
-const mysql = require('mysql2/promise');
+const { pool, executeQuery } = require('../config/database');
 
 const router = express.Router();
 
-// Database connection function
-async function getDbConnection() {
-  return await mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Mrutyu@2026',
-    database: 'updated_nitgoa',
-    timezone: '+00:00', // Use UTC to avoid timezone conversion issues
-    dateStrings: true   // Return dates as strings instead of Date objects
-  });
-}
+
+
+
 
 // Helper function to format dates from database for output (prevents timezone issues)
 function formatDateForOutput(dateValue) {
@@ -43,14 +35,15 @@ function formatDateForOutput(dateValue) {
 
 // Get comprehensive faculty details with all related data
 router.get('/:slug/details', async (req, res) => {
+  let connection;
   try {
     const { slug } = req.params;
-    const connection = await getDbConnection();
     
     // The slug should be the employee_code
     const facultyId = slug;
     
     // Get basic faculty information
+    connection = await pool.getConnection();
     const [facultyBasic] = await connection.execute(`
       SELECT 
         e.employee_code as faculty_id,
@@ -60,13 +53,13 @@ router.get('/:slug/details', async (req, res) => {
         e.email,
         e.phone_mobile,
         e.extension_no as phone,
-        e.job_title as designation,
-        e.employment_status,
-        e.image_url as profile_image,
-        e.is_hod,
-        e.display_order,
+        fd.designation_title as designation,
+        e.role as employment_status,
+        fp.image_url as profile_image,
+        fp.is_hod,
+        fp.display_order,
         e.date_of_joining,
-        fp.gender,
+        e.gender,
         fp.date_of_birth,
         fp.research_teaching_experience,
         fp.address,
@@ -83,16 +76,16 @@ router.get('/:slug/details', async (req, res) => {
         d.department_name,
         d.department_code,
         d.department_id,
-        fd.designation_id
+        fp.designation_id
       FROM employees e
       LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code
       LEFT JOIN departments d ON fp.department_id = d.department_id
-      LEFT JOIN faculty_designations fd ON e.job_title = fd.designation_title
+      LEFT JOIN faculty_designations fd ON fp.designation_id = fd.designation_id
       WHERE e.employee_code = ? AND e.is_active = 1 AND e.role = 'Faculty'
     `, [facultyId]);
     
     if (facultyBasic.length === 0) {
-      await connection.end();
+      connection.release();
       return res.status(404).json({ error: 'Faculty not found' });
     }
     
@@ -131,10 +124,10 @@ router.get('/:slug/details', async (req, res) => {
       ORDER BY fe.display_order ASC, fe.graduation_year DESC
     `, [faculty.employee_code]);
     
+    connection.release();
+    
     // Research areas are now stored in faculty_profiles.research_interests as text
     const researchAreas = [];
-    
-    await connection.end();
     
     // Structure the response data
     const profileData = {
@@ -205,6 +198,7 @@ router.get('/:slug/details', async (req, res) => {
     
     res.json(profileData);
   } catch (error) {
+    if (connection) connection.release();
     console.error('Get comprehensive faculty details error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }

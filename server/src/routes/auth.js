@@ -4,10 +4,20 @@ const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 const rateLimit = require('express-rate-limit');
-const mysql = require('mysql2/promise');
-const { executeQuery } = require('../config/database');
+const { pool } = require('../config/database');
 const { authenticateToken } = require('../middleware/auth');
 const emailService = require('../utils/emailService');
+
+// Helper function for database queries
+async function executeQuery(query, params = []) {
+  const connection = await pool.getConnection();
+  try {
+    const [results] = await connection.execute(query, params);
+    return [results];
+  } finally {
+    connection.release();
+  }
+}
 
 // Import the centralized timezone utilities
 const { 
@@ -97,9 +107,15 @@ router.post('/login', async (req, res) => {
         e.honorific,
         e.full_name as employee_name,
         e.email as employee_email,
-        e.image_url as employee_image
+        CASE 
+          WHEN e.role = 'Faculty' THEN fp.image_url
+          WHEN e.role IN ('Administrative', 'Technical') THEN sp.image_url
+          ELSE NULL
+        END as employee_image
       FROM user_accounts ua
       LEFT JOIN employees e ON ua.employee_code = e.employee_code
+      LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code AND e.role = 'Faculty'
+      LEFT JOIN staff_profiles sp ON e.employee_code = sp.employee_code AND e.role IN ('Administrative', 'Technical')
       WHERE ua.username = ? AND ua.is_active = 1
     `, [username]);
 
@@ -404,7 +420,7 @@ router.post('/change-password', authenticateToken, async (req, res) => {
 
     // Update password
     await executeQuery(
-      'UPDATE user_accounts SET password_hash = ?, password_changed_at = NOW() WHERE id = ?',
+      'UPDATE user_accounts SET password_hash = ?, password_changed_at = NOW() WHERE user_id = ?',
       [newPasswordHash, req.user.userId]
     );
 
@@ -787,6 +803,8 @@ router.post('/reset-password', resetPasswordLimiter, async (req, res) => {
         reset_token_used = TRUE,
         failed_login_attempts = 0,
         locked_until = NULL,
+        lockout_timestamp = NULL,
+        lockout_duration_minutes = 0,
         password_changed_at = CURRENT_TIMESTAMP,
         updated_at = CURRENT_TIMESTAMP
       WHERE user_id = ?
@@ -814,6 +832,8 @@ router.post('/reset-password', resetPasswordLimiter, async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
+
 
 // Debug endpoint to check lockout status (temporary for debugging)
 router.get('/debug-lockout/:username', async (req, res) => {

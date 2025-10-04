@@ -1,5 +1,4 @@
 const express = require('express');
-const mysql = require('mysql2/promise');
 const { executeQuery } = require('../../config/database');
 
 const router = express.Router();
@@ -51,43 +50,24 @@ router.put('/:employeeCode/education', authenticateToken, checkEditPermission, a
       return res.status(400).json({ error: 'Education data must be an array' });
     }
 
-    const connection = await mysql.createConnection({
-      host: process.env.DB_HOST || 'localhost',
-      user: process.env.DB_USER || 'root',
-      password: process.env.DB_PASSWORD || '',
-      database: process.env.DB_NAME || 'nitgoa_website'
-    });
+    // Delete existing education records
+    await executeQuery(`DELETE FROM faculty_education WHERE employee_code = ?`, [employeeCode]);
 
-    await connection.beginTransaction();
-
-    try {
-      // Delete existing education records
-      await connection.execute(`DELETE FROM faculty_education WHERE employee_code = ?`, [employeeCode]);
-
-      // Insert new education records
-      for (const edu of education) {
-        if (edu.degree || edu.institute || edu.discipline || edu.graduation_year) {
-          await connection.execute(`
-            INSERT INTO faculty_education (employee_code, degree, institute, discipline, graduation_year, display_order)
-            VALUES (?, ?, ?, ?, ?, ?)
-          `, [employeeCode, edu.degree || null, edu.institute || null, edu.discipline || null, 
-              edu.graduation_year || null, edu.display_order || null]);
-        }
+    // Insert new education records
+    for (const edu of education) {
+      if (edu.degree || edu.institute || edu.discipline || edu.graduation_year) {
+        await executeQuery(`
+          INSERT INTO faculty_education (employee_code, degree, institute, discipline, graduation_year, display_order)
+          VALUES (?, ?, ?, ?, ?, ?)
+        `, [employeeCode, edu.degree || null, edu.institute || null, edu.discipline || null, 
+            edu.graduation_year || null, edu.display_order || null]);
       }
-
-      await connection.commit();
-      await connection.end();
-
-      res.json({
-        message: 'Education information updated successfully',
-        employee_code: employeeCode
-      });
-
-    } catch (error) {
-      await connection.rollback();
-      await connection.end();
-      throw error;
     }
+
+    res.json({
+      message: 'Education information updated successfully',
+      employee_code: employeeCode
+    });
 
   } catch (error) {
     console.error('Update education error:', error);

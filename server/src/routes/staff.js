@@ -1,33 +1,37 @@
 const express = require('express');
-const { executeQuery } = require('../config/database');
+const { pool } = require('../config/database');
 
 const router = express.Router();
 
 // Get all administrative staff
 router.get('/administrative', async (req, res) => {
   try {
-    const [staff] = await executeQuery(`
+    const connection = await pool.getConnection();
+    
+    const [staff] = await connection.execute(`
       SELECT 
         e.employee_id as id,
+        e.employee_code,
         e.full_name as name,
-        e.job_title as designation,
+        sp.job_title as designation,
         e.email,
         e.extension_no as phone,
-        e.image_url as profile_image,
-        e.employment_status,
+        sp.image_url as profile_image,
+        sp.employment_status,
         e.is_active,
-        e.display_order,
+        sp.display_order,
         COALESCE(d.department_name, 'General Administration') as department_name,
         d.department_code as department_code,
         e.honorific,
-        sp.specialty
+        sp.responsibilities
       FROM employees e
-      LEFT JOIN staff_profiles sp ON e.employee_id = sp.employee_id
+      LEFT JOIN staff_profiles sp ON e.employee_code = sp.employee_code
       LEFT JOIN departments d ON sp.department_id = d.department_id
       WHERE e.is_active = 1 AND e.role = 'Administrative'
-      ORDER BY e.display_order ASC, e.full_name ASC
+      ORDER BY sp.display_order ASC, e.full_name ASC
     `);
     
+    connection.release();
     res.json({ success: true, data: staff });
   } catch (error) {
     console.error('Get administrative staff error:', error);
@@ -38,28 +42,32 @@ router.get('/administrative', async (req, res) => {
 // Get all technical staff
 router.get('/technical', async (req, res) => {
   try {
-    const [staff] = await executeQuery(`
+    const connection = await pool.getConnection();
+    
+    const [staff] = await connection.execute(`
       SELECT 
         e.employee_id as id,
+        e.employee_code,
         e.full_name as name,
-        e.job_title as designation,
+        sp.job_title as designation,
         e.email,
         e.extension_no as phone,
-        e.image_url as profile_image,
-        e.employment_status,
+        sp.image_url as profile_image,
+        sp.employment_status,
         e.is_active,
-        e.display_order,
+        sp.display_order,
         d.department_name,
         d.department_code,
         e.honorific,
-        sp.specialty
+        sp.responsibilities
       FROM employees e
-      LEFT JOIN staff_profiles sp ON e.employee_id = sp.employee_id
+      LEFT JOIN staff_profiles sp ON e.employee_code = sp.employee_code
       LEFT JOIN departments d ON sp.department_id = d.department_id
       WHERE e.is_active = 1 AND e.role = 'Technical'
-      ORDER BY e.display_order ASC, e.full_name ASC
+      ORDER BY sp.display_order ASC, e.full_name ASC
     `);
     
+    connection.release();
     res.json({ success: true, data: staff });
   } catch (error) {
     console.error('Get technical staff error:', error);
@@ -71,29 +79,32 @@ router.get('/technical', async (req, res) => {
 router.get('/technical/department/:department', async (req, res) => {
   try {
     const { department } = req.params;
+    const connection = await pool.getConnection();
     
-    const [staff] = await executeQuery(`
+    const [staff] = await connection.execute(`
       SELECT 
         e.employee_id as id,
+        e.employee_code,
         e.full_name as name,
-        e.job_title as designation,
+        sp.job_title as designation,
         e.email,
         e.extension_no as phone,
-        e.image_url as profile_image,
-        e.employment_status,
+        sp.image_url as profile_image,
+        sp.employment_status,
         e.is_active,
-        e.display_order,
+        sp.display_order,
         d.department_name,
         d.department_code,
         e.honorific,
-        sp.specialty
+        sp.responsibilities
       FROM employees e
-      LEFT JOIN staff_profiles sp ON e.employee_id = sp.employee_id
+      LEFT JOIN staff_profiles sp ON e.employee_code = sp.employee_code
       LEFT JOIN departments d ON sp.department_id = d.department_id
       WHERE e.is_active = 1 AND e.role = 'Technical' AND d.department_code = ?
-      ORDER BY e.display_order ASC, e.full_name ASC
+      ORDER BY sp.display_order ASC, e.full_name ASC
     `, [department]);
     
+    connection.release();
     res.json({ success: true, data: staff });
   } catch (error) {
     console.error('Get technical staff by department error:', error);
