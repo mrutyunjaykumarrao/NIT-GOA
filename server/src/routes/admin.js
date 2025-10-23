@@ -95,27 +95,25 @@ router.post('/migrate', async (req, res) => {
 router.get('/pending-approvals', async (req, res) => {
   try {
     const query = `
-      SELECT 
-        pa.approval_id,
-        pa.employee_code,
-        pa.approval_type,
-        pa.current_value as current_image_url,
-        pa.requested_value,
-        pa.temp_file_path,
-        pa.requested_by,
-        pa.requested_at,
-        pa.status,
-        pa.admin_notes,
-        e.full_name,
-        e.role,
-        d.department_code,
-        d.department_name
-      FROM pending_approvals pa
-      JOIN employees e ON pa.employee_code = e.employee_code
-      LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code
-      LEFT JOIN departments d ON fp.department_id = d.department_id
-      WHERE pa.status = 'pending'
-      ORDER BY pa.requested_at DESC
+        SELECT 
+            pa.approval_id,
+            pa.employee_code,
+            pa.old_image_path AS current_image_url,
+            pa.new_image_path AS requested_image_url,
+            pa.requested_by,
+            pa.requested_at,
+            pa.status,
+            pa.admin_notes,
+            e.full_name,
+            e.role,
+            d.department_code,
+            d.department_name
+        FROM pending_approvals pa
+        JOIN employees e ON pa.employee_code = e.employee_code
+        LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code
+        LEFT JOIN departments d ON fp.department_id = d.department_id
+        WHERE pa.status = 'Pending'
+        ORDER BY pa.requested_at DESC;
     `;
 
     const [result] = await executeQuery(query);
@@ -1254,6 +1252,7 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
     `;
     
     console.log('🔍 [USERS DEBUG] Query placeholders count:', (userQuery.match(/\?/g) || []).length);
+    console.log('🔍 [USERS DEBUG] Parameters:', finalParams);
     
     // Simplified approach - try minimal query first
     const connection = await pool.getConnection();
@@ -1283,7 +1282,24 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
         LIMIT ? OFFSET ?
       `;
       
-      const [basicResults] = await connection.execute(basicQuery, finalParams);
+      // Build parameters for basicQuery (only include search params if whereClause exists)
+      const basicParams = [];
+      if (whereClause && whereClause.includes('?')) {
+        basicParams.push(...params); // Add search parameters if there's a WHERE clause with placeholders
+      }
+      basicParams.push(limitNum, offsetNum); // Always add LIMIT and OFFSET
+      
+      console.log('🔍 [BASIC DEBUG] Query placeholders:', (basicQuery.match(/\?/g) || []).length);
+      console.log('🔍 [BASIC DEBUG] Parameters:', basicParams);
+      
+      // Try using query() instead of execute() to avoid parameter binding issues
+      const basicQueryWithValues = basicQuery.replace('LIMIT ? OFFSET ?', `LIMIT ${limitNum} OFFSET ${offsetNum}`);
+      const searchParams = whereClause && whereClause.includes('?') ? params : [];
+      
+      console.log('🔍 [BASIC DEBUG] Final query:', basicQueryWithValues);
+      console.log('🔍 [BASIC DEBUG] Search parameters only:', searchParams);
+      
+      const [basicResults] = await connection.execute(basicQueryWithValues, searchParams);
       
       // Step 2: Get employee data separately and merge
       const userIds = basicResults.map(u => u.user_id);
@@ -1393,20 +1409,24 @@ router.post('/users/:userId/unlock', async (req, res) => {
     `, [userId]);
 
     // Log the admin action
-    await executeQuery(`
-      INSERT INTO audit_log (table_name, record_id, action, new_values, changed_by, ip_address)
-      VALUES (?, ?, ?, ?, ?, ?)
-    `, [
-      'user_accounts', 
-      userId, 
-      'UNLOCK', 
-      JSON.stringify({ 
-        action: 'account_unlocked_by_admin',
-        unlocked_by: req.user.username 
-      }), 
-      req.user.userId,
-      req.ip
-    ]);
+    try {
+      await executeQuery(`
+        INSERT INTO audit_log (table_name, record_id, action, new_values, user_id, ip_address)
+        VALUES (?, ?, ?, ?, ?, ?)
+      `, [
+        'user_accounts', 
+        userId, 
+        'UNLOCK', 
+        JSON.stringify({ 
+          action: 'account_unlocked_by_admin',
+          unlocked_by: req.user.username 
+        }), 
+        req.user.userId,
+        req.ip
+      ]);
+    } catch (auditError) {
+      console.warn('Audit log failed:', auditError.message);
+    }
 
     // Send email notification if user has email
     if (user.primary_email) {
@@ -1452,20 +1472,24 @@ router.post('/users/:userId/reset-attempts', async (req, res) => {
     `, [userId]);
 
     // Log the admin action
-    await executeQuery(`
-      INSERT INTO audit_log (table_name, record_id, action, new_values, changed_by, ip_address)
-      VALUES (?, ?, ?, ?, ?, ?)
-    `, [
-      'user_accounts', 
-      userId, 
-      'UPDATE', 
-      JSON.stringify({ 
-        action: 'failed_attempts_reset_by_admin',
-        reset_by: req.user.username 
-      }), 
-      req.user.userId,
-      req.ip
-    ]);
+    try {
+      await executeQuery(`
+        INSERT INTO audit_log (table_name, record_id, action, new_values, user_id, ip_address)
+        VALUES (?, ?, ?, ?, ?, ?)
+      `, [
+        'user_accounts', 
+        userId, 
+        'UPDATE', 
+        JSON.stringify({ 
+          action: 'failed_attempts_reset_by_admin',
+          reset_by: req.user.username 
+        }), 
+        req.user.userId,
+        req.ip
+      ]);
+    } catch (auditError) {
+      console.warn('Audit log failed:', auditError.message);
+    }
 
     res.json({ 
       message: `Failed login attempts reset for ${users[0].username}` 
@@ -1502,20 +1526,24 @@ router.post('/users/:userId/toggle-status', async (req, res) => {
     `, [newStatus, userId]);
 
     // Log the admin action
-    await executeQuery(`
-      INSERT INTO audit_log (table_name, record_id, action, new_values, changed_by, ip_address)
-      VALUES (?, ?, ?, ?, ?, ?)
-    `, [
-      'user_accounts', 
-      userId, 
-      'UPDATE', 
-      JSON.stringify({ 
-        action: newStatus ? 'account_activated' : 'account_deactivated',
-        changed_by: req.user.username 
-      }), 
-      req.user.userId,
-      req.ip
-    ]);
+    try {
+      await executeQuery(`
+        INSERT INTO audit_log (table_name, record_id, action, new_values, user_id, ip_address)
+        VALUES (?, ?, ?, ?, ?, ?)
+      `, [
+        'user_accounts', 
+        userId, 
+        'UPDATE', 
+        JSON.stringify({ 
+          action: newStatus ? 'account_activated' : 'account_deactivated',
+          changed_by: req.user.username 
+        }), 
+        req.user.userId,
+        req.ip
+      ]);
+    } catch (auditError) {
+      console.warn('Audit log failed:', auditError.message);
+    }
 
     res.json({ 
       message: `Account ${newStatus ? 'activated' : 'deactivated'} for ${users[0].username}` 
@@ -1559,21 +1587,25 @@ router.put('/users/:userId/email', async (req, res) => {
     `, [email, userId]);
 
     // Log the admin action
-    await executeQuery(`
-      INSERT INTO audit_log (table_name, record_id, action, new_values, changed_by, ip_address)
-      VALUES (?, ?, ?, ?, ?, ?)
-    `, [
-      'user_accounts', 
-      userId, 
-      'UPDATE', 
-      JSON.stringify({ 
-        action: 'email_updated_by_admin',
-        new_email: email,
-        updated_by: req.user.username 
-      }), 
-      req.user.userId,
-      req.ip
-    ]);
+    try {
+      await executeQuery(`
+        INSERT INTO audit_log (table_name, record_id, action, new_values, user_id, ip_address)
+        VALUES (?, ?, ?, ?, ?, ?)
+      `, [
+        'user_accounts', 
+        userId, 
+        'UPDATE', 
+        JSON.stringify({ 
+          action: 'email_updated_by_admin',
+          new_email: email,
+          updated_by: req.user.username 
+        }), 
+        req.user.userId,
+        req.ip
+      ]);
+    } catch (auditError) {
+      console.warn('Audit log failed:', auditError.message);
+    }
 
     res.json({ 
       message: `Email updated for ${users[0].username}` 

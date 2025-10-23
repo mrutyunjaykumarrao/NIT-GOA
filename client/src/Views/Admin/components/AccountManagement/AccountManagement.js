@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../../../../contexts/AuthContext';
 import useAsyncOperation from '../../../../hooks/useAsyncOperation';
 import { UserModal } from '../AdminModals';
@@ -34,11 +34,37 @@ const AccountManagement = () => {
   const [confirmAction, setConfirmAction] = useState(null);
   const [confirmMessage, setConfirmMessage] = useState('');
 
+  const fetchUsers = useCallback(async () => {
+    await executeAsync(async () => {
+      const queryParams = new URLSearchParams({
+        page: pagination.currentPage.toString(),
+        limit: pagination.itemsPerPage.toString(),
+        search: filters.search,
+        status: filters.status
+      });
+
+      const response = await fetch(`/api/admin/users?${queryParams}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch users');
+      }
+
+      const data = await response.json();
+      setUsers(data.users || []);
+      setPagination(prev => ({ ...prev, ...data.pagination }));
+    });
+  }, [executeAsync, pagination.currentPage, pagination.itemsPerPage, filters.search, filters.status, token]);
+
   useEffect(() => {
     if (user && token && user.role === 'Admin') {
       fetchUsers();
     }
-  }, [filters, pagination?.currentPage, user, token]);
+  }, [user, token, fetchUsers]);
 
   // Don't render if user is not authenticated or not an admin
   if (!user || !token) {
@@ -70,31 +96,7 @@ const AccountManagement = () => {
     );
   }
 
-  const fetchUsers = async () => {
-    await executeAsync(async () => {
-      const queryParams = new URLSearchParams({
-        page: pagination.currentPage.toString(),
-        limit: pagination.itemsPerPage.toString(),
-        search: filters.search,
-        status: filters.status
-      });
-
-      const response = await fetch(`/api/admin/users?${queryParams}`, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to fetch users');
-      }
-
-      const data = await response.json();
-      setUsers(data.users || []);
-      setPagination(data.pagination || pagination);
-    });
-  };
+  // Functions defined after early returns are moved above
 
   const handleFilterChange = (key, value) => {
     setFilters(prev => ({ ...prev, [key]: value }));

@@ -66,15 +66,18 @@ const FacultyDetails = () => {
                 // Scroll to top when component mounts
                 window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
                 
-                const response = await fetch(`/api/faculty-details/${id}/details`);
+                const response = await fetch(`/api/faculty-details/${id}`);
                 const result = await response.json();
                 
-                if (response.ok) {
+                if (response.ok && result.success) {
+                    // Extract data from the API response structure
+                    const facultyData = result.data;
+                    
                     // Add image path to the faculty data
                     const facultyWithImage = {
-                        ...result,
-                        image: result.profile?.profile_image ? 
-                            (result.profile.profile_image.startsWith('/') ? result.profile.profile_image : `/${result.profile.profile_image}`) : 
+                        ...facultyData,
+                        image: facultyData.profile?.profile_image ? 
+                            (facultyData.profile.profile_image.startsWith('/') ? facultyData.profile.profile_image : `/${facultyData.profile.profile_image}`) : 
                             '/images/fallback-profile.svg'
                     };
                     setFaculty(facultyWithImage);
@@ -116,6 +119,7 @@ const FacultyDetails = () => {
     // }, []);
 
     // Function to get department code for image path
+    // eslint-disable-next-line no-unused-vars
     const getDepartmentCode = (department) => {
         if (!department) return '';
         
@@ -728,8 +732,8 @@ const FacultyDetails = () => {
                                                 /(DST-SERB|SERB[^,]*)/i,
                                                 /(The PMU Cybersecurity Center[^,]*)/i,
                                                 /(ARTPARK[^,]*)/i,
-                                                /(funded by|funding agency|sponsored by)\s*([^,\n\.]+)/i,
-                                                /\b([A-Z]{2,}[^,\n\.]*(?:Council|Agency|Ministry|Department|Foundation|Fund)[^,\n\.]*)/i
+                                                /(funded by|funding agency|sponsored by)\s*([^,\n.]+)/i,
+                                                /\b([A-Z]{2,}[^,\n.]*(?:Council|Agency|Ministry|Department|Foundation|Fund)[^,\n.]*)/i
                                             ];
                                             
                                             for (let pattern of agencyPatterns) {

@@ -8,18 +8,19 @@ import AdministrativeStaffTab from './components/AdministrativeStaffTab/Administ
 import AnalyticsTab from './components/AnalyticsTab/AnalyticsTab';
 import AccountManagement from './components/AccountManagement/AccountManagement';
 import PendingApprovalsTab from './components/PendingApprovalsTab/PendingApprovalsTab';
-import { UserModal, FacultyModal, AdministrativeStaffModal, TechnicalStaffModal, PendingApprovalsModal } from './components/AdminModals';
+import { UserModal, FacultyModal, AdministrativeStaffModal, TechnicalStaffModal } from './components/AdminModals';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
   const { user, token } = useAuth();
-  const { loading, executeAsync } = useAsyncOperation();
+  const { executeAsync } = useAsyncOperation();
   const [activeTab, setActiveTab] = useState('analytics');
   const [error, setError] = useState(null);
   
   // Data states
   const [analytics, setAnalytics] = useState({});
-  const [users, setUsers] = useState([]);
+  // eslint-disable-next-line no-unused-vars
+  const [users, setUsers] = useState([]); // Used by fetchUsers function for API calls
   const [employees, setEmployees] = useState([]);
   const [faculty, setFaculty] = useState([]);
   const [staff, setStaff] = useState([]);

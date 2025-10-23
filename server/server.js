@@ -77,26 +77,43 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/images', express.static(path.join(__dirname, '../client/public/images')));
 
 // API Routes - New organized structure
-app.use('/api/auth', require('./src/routes/auth'));
-app.use('/api/public', require('./src/routes/publicRoutes'));
-app.use('/api/faculty-profiles', require('./src/routes/facultyProfiles'));
-app.use('/api/faculty-details', require('./src/routes/facultyDetails'));
-app.use('/api/faculty-edit', require('./src/routes/facultyEdit'));
+// ======================
+// NEW ORGANIZED API ROUTES
+// ======================
 
-// New modular faculty routes
+// Authentication routes
+app.use('/api/auth', require('./src/routes/auth'));
+
+// Public display routes (for people section cards, visitor count, etc.)
+app.use('/api/public', require('./src/routes/publicDisplay'));
+
+// Faculty details routes (for faculty detail pages - view and edit)
+app.use('/api/faculty-details', require('./src/routes/facultyDetailsAPI'));
+
+// Admin dashboard routes (analytics, user management, approvals, CRUD operations)
+app.use('/api/admin', require('./src/routes/admin'));
+
+// ======================
+// LEGACY ROUTES (to be phased out)
+// ======================
+
+// Legacy public routes (keeping for backward compatibility)
+app.use('/api/public-legacy', require('./src/routes/publicRoutes'));
+app.use('/api/faculty-profiles', require('./src/routes/facultyProfiles'));
+app.use('/api/faculty-details-legacy', require('./src/routes/facultyDetails'));
+
+// Legacy modular faculty routes
 const { router: facultyCoreRouter } = require('./src/routes/faculty/facultyCore');
 app.use('/api/faculty/core', facultyCoreRouter);
 app.use('/api/faculty/profile', require('./src/routes/faculty/facultyProfile'));
 app.use('/api/faculty/academic', require('./src/routes/faculty/facultyAcademic'));
 app.use('/api/faculty/teaching', require('./src/routes/faculty/facultyTeaching'));
 app.use('/api/faculty/social', require('./src/routes/faculty/facultySocial'));
-app.use('/api/faculty/data', require('./src/routes/faculty/facultyData')); // New static data routes
+app.use('/api/faculty/data', require('./src/routes/faculty/facultyData'));
 
-// app.use('/api/faculty', require('./src/routes/facultyResearch')); // New research & training routes (temporarily disabled - file removed)
-app.use('/api/admin', require('./src/routes/admin'));
+// Legacy admin and other routes
+app.use('/api/admin-legacy', require('./src/routes/admin'));
 app.use('/api/analytics', require('./src/routes/analytics'));
-
-// Currently used routes
 app.use('/api/staff', require('./src/routes/staff'));
 
 // Temporary backward compatibility - will redirect to new endpoints
@@ -133,6 +150,96 @@ app.get('/api/test-db', async (req, res) => {
   }
 });
 
+
+
+
+// Test the actual admin users query execution
+app.get('/api/test-admin-query', async (req, res) => {
+  try {
+    const { executeQuery } = require('./src/config/database');
+    const { pool } = require('./src/config/database');
+    
+    const { page = 1, limit = 20, search = '', status = 'all' } = req.query;
+    const offset = (parseInt(page) - 1) * parseInt(limit);
+
+    // Build WHERE clause and parameters for filtering
+    let whereClause = '';
+    const params = [];
+
+    // Search filter - simplified for user_accounts only
+    if (search && search.trim() !== '') {
+      whereClause = ' WHERE (ua.username LIKE ? OR ua.email LIKE ?)';
+      const searchPattern = `%${search.trim()}%`;
+      params.push(searchPattern, searchPattern);
+    }
+
+    // Status filter
+    if (status && status !== 'all') {
+      const statusCondition = whereClause ? ' AND ' : ' WHERE ';
+      if (status === 'active') {
+        whereClause += statusCondition + 'ua.is_active = 1 AND (ua.locked_until IS NULL OR ua.locked_until <= NOW())';
+      } else if (status === 'inactive') {
+        whereClause += statusCondition + 'ua.is_active = 0';
+      } else if (status === 'locked') {
+        whereClause += statusCondition + 'ua.locked_until > NOW()';
+      }
+    }
+
+    // Construct final query and parameters
+    const limitNum = parseInt(limit) || 20;
+    const offsetNum = parseInt(offset) || 0;
+    const finalParams = [...params, limitNum, offsetNum];
+    
+    const basicQuery = `
+      SELECT 
+        ua.user_id,
+        ua.username,
+        ua.email as user_email,
+        ua.access_level,
+        ua.is_active,
+        ua.last_login,
+        ua.failed_login_attempts,
+        ua.locked_until,
+        ua.created_at,
+        CASE 
+          WHEN ua.locked_until > NOW() THEN 'locked'
+          WHEN ua.is_active = 0 THEN 'inactive'
+          ELSE 'active'
+        END as status
+      FROM user_accounts ua
+      ${whereClause}
+      ORDER BY ua.created_at DESC
+      LIMIT ? OFFSET ?
+    `;
+    
+    // Try to execute the query
+    const connection = await pool.getConnection();
+    try {
+      const [basicResults] = await connection.execute(basicQuery, finalParams);
+      
+      res.json({
+        success: true,
+        users: basicResults,
+        count: basicResults.length,
+        debug: {
+          query: basicQuery,
+          params: finalParams,
+          placeholders: (basicQuery.match(/\?/g) || []).length,
+          paramCount: finalParams.length
+        }
+      });
+    } finally {
+      connection.release();
+    }
+  } catch (error) {
+    res.status(500).json({ 
+      error: error.message,
+      code: error.code,
+      sqlMessage: error.sqlMessage 
+    });
+  }
+});
+
 // Test user_accounts table directly
 app.get('/api/test-users', async (req, res) => {
   try {
@@ -156,7 +263,7 @@ app.get('/api/test-users', async (req, res) => {
         e.employee_id,
         e.full_name
       FROM user_accounts ua
-      LEFT JOIN employees e ON ua.user_id = e.user_account_id
+      LEFT JOIN employees e ON ua.employee_code = e.employee_code
       LIMIT 1
     `);
     
@@ -222,8 +329,9 @@ app.get('/api/health', async (req, res) => {
 app.get('/api/docs', (req, res) => {
   const apiDocs = {
     title: 'NIT Goa API Documentation',
-    version: '2.0.0',
-    description: 'Enhanced API for College Profile Management System',
+    version: '3.0.0',
+    description: 'Organized API for College Profile Management System',
+    lastUpdated: new Date().toISOString(),
     endpoints: {
       authentication: {
         'POST /api/auth/login': 'User login with JWT token generation',
@@ -231,32 +339,59 @@ app.get('/api/docs', (req, res) => {
         'GET /api/auth/validate': 'Validate JWT token',
         'POST /api/auth/logout': 'Logout user'
       },
-      public: {
-        'GET /api/public/employees': 'Get all employees (public data)',
-        'GET /api/public/employees/:id': 'Get employee profile by ID',
-        'GET /api/public/departments': 'Get all departments',
-        'GET /api/public/research-areas': 'Get research areas (hierarchical)',
-        'GET /api/public/settings': 'Get public system settings',
-        'GET /api/public/search': 'Search employees',
-        'GET /api/public/stats': 'Get system statistics'
+      publicDisplay: {
+        description: 'APIs for public-facing components (people section cards, visitor count)',
+        'GET /api/public/people/faculty': 'Get all faculty for display cards',
+        'GET /api/public/people/faculty/:departmentCode': 'Get faculty by department for cards',
+        'GET /api/public/people/technical-staff': 'Get technical staff for display cards',
+        'GET /api/public/people/administrative-staff': 'Get administrative staff for cards',
+        'GET /api/public/departments': 'Get all active departments',
+        'GET /api/public/courses': 'Get courses with optional filtering',
+        'GET /api/public/research-areas': 'Get all research areas',
+        'GET /api/public/visitor-count': 'Get total visitor count for footer'
       },
-      faculty: {
-        'GET /api/faculty/my-profile': 'Get faculty own profile',
-        'PUT /api/faculty/my-profile': 'Update faculty profile',
-        'GET /api/faculty/my-profile/education': 'Get faculty education records',
-        'POST /api/faculty/my-profile/education': 'Add education record',
-        'PUT /api/faculty/my-profile/education/:id': 'Update education record',
-        'DELETE /api/faculty/my-profile/education/:id': 'Delete education record',
-        'GET /api/faculty/my-profile/publications': 'Get faculty publications',
-        'POST /api/faculty/my-profile/publications': 'Add publication',
-        'PUT /api/faculty/my-profile/publications/:id': 'Update publication',
-        'DELETE /api/faculty/my-profile/publications/:id': 'Delete publication'
+      facultyDetails: {
+        description: 'APIs for faculty detail pages (viewing and editing)',
+        'GET /api/faculty-details/:employeeCode': 'Get comprehensive faculty details for detail page'
       },
-      system: {
-        'GET /api/health': 'System health check',
-        'GET /api/test-db': 'Database connection test',
-        'GET /api/docs': 'API documentation'
+      adminDashboard: {
+        description: 'APIs for admin dashboard functionality (requires authentication)',
+        analytics: {
+          'GET /api/admin/analytics/website': 'Get website analytics with optional period filter',
+          'GET /api/admin/analytics/system': 'Get system analytics (users, employees, etc.)'
+        },
+        userManagement: {
+          'GET /api/admin/users': 'Get all user accounts with pagination and filters',
+          'POST /api/admin/users': 'Create new user account',
+          'PUT /api/admin/users/:id': 'Update user account',
+          'DELETE /api/admin/users/:id': 'Delete user account'
+        },
+        pendingApprovals: {
+          'GET /api/admin/pending-approvals': 'Get all pending approval requests',
+          'PUT /api/admin/pending-approvals/:id/approve': 'Approve a pending request',
+          'PUT /api/admin/pending-approvals/:id/reject': 'Reject a pending request'
+        },
+        employeeManagement: {
+          'GET /api/admin/employees': 'Get all employees for admin management',
+          'GET /api/admin/faculty': 'Get all faculty for admin management',
+          'GET /api/admin/staff': 'Get all staff for admin management'
+        }
+      },
+      legacy: {
+        description: 'Legacy endpoints (to be phased out)',
+        'GET /api/public-legacy/*': 'Legacy public routes',
+        'GET /api/faculty-profiles/*': 'Legacy faculty profile routes',
+        'GET /api/faculty/core/*': 'Legacy modular faculty routes',
+        'GET /api/admin-legacy/*': 'Legacy admin routes'
       }
+    },
+    usageGuidelines: {
+      publicApis: 'No authentication required. Return only active/public data.',
+      facultyDetails: 'Public viewing, authentication required for editing.',
+      adminApis: 'Full authentication and admin role required.',
+      responseFormat: 'All responses follow { success: boolean, data?: any, error?: string } format',
+      errorHandling: 'HTTP status codes with descriptive error messages',
+      rateLimit: 'Apply rate limiting for public endpoints'
     },
     authentication: {
       type: 'Bearer Token',

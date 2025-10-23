@@ -3,6 +3,17 @@ const { pool } = require('../config/database');
 
 const router = express.Router();
 
+// Helper function for database queries
+async function executeQuery(query, params = []) {
+  const connection = await pool.getConnection();
+  try {
+    const [results] = await connection.execute(query, params);
+    return [results];
+  } finally {
+    connection.release();
+  }
+}
+
 // Helper function to format dates from database for output (prevents timezone issues)
 function formatDateForOutput(dateValue) {
   if (!dateValue) return null;
@@ -56,7 +67,7 @@ router.get('/departments', async (req, res) => {
 // Get all faculty profiles (public)
 router.get('/faculty', async (req, res) => {
   try {
-    const connection = await getDbConnection();
+    const connection = await pool.getConnection();
     
     const [faculty] = await connection.execute(`
       SELECT 
@@ -66,27 +77,28 @@ router.get('/faculty', async (req, res) => {
         e.honorific,
         e.email,
         e.extension_no as phone,
-        e.job_title as designation,
-        e.employment_status,
-        e.image_url as profile_image,
-        e.is_hod,
-        e.display_order,
+        fd.designation_title as designation,
+        'Faculty' as employment_status,
+        fp.image_url as profile_image,
+        fp.is_hod,
+        fp.display_order,
         d.department_name,
         d.department_code,
         fp.bio_summary,
         fp.research_interests
       FROM employees e
-      LEFT JOIN faculty_profiles fp ON e.employee_id = fp.employee_id
+      LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code
       LEFT JOIN departments d ON fp.department_id = d.department_id
+      LEFT JOIN faculty_designations fd ON fp.designation_id = fd.designation_id
       WHERE e.is_active = 1 AND e.role = 'Faculty'
       ORDER BY 
         d.department_id ASC,
-        CASE WHEN e.display_order = 0 THEN 999999 ELSE e.display_order END ASC,
-        e.is_hod DESC,
+        CASE WHEN fp.display_order = 0 THEN 999999 ELSE fp.display_order END ASC,
+        fp.is_hod DESC,
         e.full_name ASC
     `);
     
-    await connection.end();
+    connection.release();
     
     res.json({
       success: true,
@@ -102,87 +114,145 @@ router.get('/faculty', async (req, res) => {
 router.get('/faculty/department/:departmentCode', async (req, res) => {
   try {
     const { departmentCode } = req.params;
+    const connection = await pool.getConnection();
     
-    const [faculty] = await executeQuery(`
+    const [faculty] = await connection.execute(`
       SELECT 
-        fp.id,
-        fp.faculty_id,
-        e.first_name,
-        e.last_name,
-        CONCAT(e.first_name, ' ', e.last_name) as full_name,
+        e.employee_id as id,
+        e.employee_code,
+        e.full_name,
+        e.honorific,
         e.email,
-        e.phone,
-        fp.designation,
-        fp.specialization,
-        fp.bio,
-        fp.profile_image_url,
+        e.extension_no as phone,
+        fd.designation_title as designation,
+        fp.bio_summary,
+        fp.image_url as profile_image,
         fp.is_hod,
         fp.display_order,
-        d.name as department_name,
-        d.code as department_code
-      FROM faculty_profiles fp
-      JOIN employees e ON fp.employee_id = e.id
-      JOIN departments d ON e.department_id = d.id
-      WHERE fp.is_active = 1 AND e.is_active = 1 AND d.code = ?
-      ORDER BY fp.display_order ASC, e.last_name ASC
+        d.department_name,
+        d.department_code,
+        fp.research_interests
+      FROM employees e
+      LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code
+      LEFT JOIN departments d ON fp.department_id = d.department_id
+      LEFT JOIN faculty_designations fd ON fp.designation_id = fd.designation_id
+      WHERE e.is_active = 1 AND e.role = 'Faculty' AND d.department_code = ?
+      ORDER BY 
+        CASE WHEN fp.display_order = 0 THEN 999999 ELSE fp.display_order END ASC,
+        fp.is_hod DESC,
+        e.full_name ASC
     `, [departmentCode]);
+    
+    connection.release();
     
     if (faculty.length === 0) {
       return res.status(404).json({ error: 'No faculty found for this department' });
     }
     
-    res.json(faculty);
+    res.json({ success: true, data: faculty });
   } catch (error) {
     console.error('Get faculty by department error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
 
-// Get single faculty details
+// Get single faculty details - redirects to dedicated faculty details endpoint
 router.get('/faculty/:id', async (req, res) => {
   try {
     const { id } = req.params;
+    const connection = await pool.getConnection();
     
-    const [faculty] = await executeQuery(`
-      SELECT 
-        fp.*,
-        e.first_name,
-        e.last_name,
-        CONCAT(e.first_name, ' ', e.last_name) as full_name,
-        e.email,
-        e.phone,
-        e.date_of_birth,
-        e.date_of_joining,
-        d.name as department_name,
-        d.code as department_code
-      FROM faculty_profiles fp
-      JOIN employees e ON fp.employee_id = e.id
-      JOIN departments d ON e.department_id = d.id
-      WHERE fp.id = ? AND fp.is_active = 1 AND e.is_active = 1
-    `, [id]);
+    // First check if this is employee_code or employee_id
+    let facultyQuery;
+    let queryParam;
+    
+    if (isNaN(id)) {
+      // Assume it's employee_code (string format)
+      facultyQuery = `
+        SELECT 
+          e.employee_id,
+          e.employee_code,
+          e.full_name,
+          e.honorific,
+          e.email,
+          e.extension_no as phone,
+          e.date_of_joining,
+          fd.designation_title as designation,
+          fp.image_url as profile_image,
+          fp.bio_summary,
+          fp.research_interests,
+          fp.is_hod,
+          fp.display_order,
+          d.department_name,
+          d.department_code
+        FROM employees e
+        LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code
+        LEFT JOIN departments d ON fp.department_id = d.department_id
+        LEFT JOIN faculty_designations fd ON fp.designation_id = fd.designation_id
+        WHERE e.employee_code = ? AND e.is_active = 1 AND e.role = 'Faculty'
+      `;
+      queryParam = id;
+    } else {
+      // Assume it's employee_id (numeric)
+      facultyQuery = `
+        SELECT 
+          e.employee_id,
+          e.employee_code,
+          e.full_name,
+          e.honorific,
+          e.email,
+          e.extension_no as phone,
+          e.date_of_joining,
+          fd.designation_title as designation,
+          fp.image_url as profile_image,
+          fp.bio_summary,
+          fp.research_interests,
+          fp.is_hod,
+          fp.display_order,
+          d.department_name,
+          d.department_code
+        FROM employees e
+        LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code
+        LEFT JOIN departments d ON fp.department_id = d.department_id
+        LEFT JOIN faculty_designations fd ON fp.designation_id = fd.designation_id
+        WHERE e.employee_id = ? AND e.is_active = 1 AND e.role = 'Faculty'
+      `;
+      queryParam = parseInt(id);
+    }
+    
+    const [faculty] = await connection.execute(facultyQuery, [queryParam]);
     
     if (faculty.length === 0) {
+      connection.release();
       return res.status(404).json({ error: 'Faculty not found' });
     }
     
     // Get faculty publications
-    const [publications] = await executeQuery(`
+    const [publications] = await connection.execute(`
       SELECT 
+        publication_id,
         title,
-        authors,
-        journal_name,
+        publication_details,
         publication_year,
+        publication_month,
         publication_type,
+        journal_name,
         doi,
-        url
+        impact_factor,
+        is_featured
       FROM faculty_publications
-      WHERE faculty_profile_id = ? AND is_active = 1
-      ORDER BY publication_year DESC, title ASC
-    `, [id]);
+      WHERE employee_code = ?
+      ORDER BY publication_year DESC, publication_month DESC, title ASC
+    `, [faculty[0].employee_code]);
+    
+    connection.release();
     
     res.json({
-      ...faculty[0],
-      publications
+      success: true,
+      data: {
+        ...faculty[0],
+        publications
+      }
     });
   } catch (error) {
     console.error('Get faculty details error:', error);
@@ -194,10 +264,9 @@ router.get('/faculty/:id', async (req, res) => {
 router.get('/faculty/:slug/details', async (req, res) => {
   try {
     const { slug } = req.params;
-    const connection = await getDbConnection();
+    const connection = await pool.getConnection();
     
-    // Convert slug back to ID or match by slug/name
-    // For now, let's assume the slug is the employee_id
+    // The slug should be the employee_code
     const facultyId = slug;
     
     // Get basic faculty information
@@ -210,13 +279,13 @@ router.get('/faculty/:slug/details', async (req, res) => {
         e.email,
         e.phone_mobile,
         e.extension_no as phone,
-        e.job_title as designation,
-        e.employment_status,
-        e.image_url as profile_image,
-        e.is_hod,
-        e.display_order,
+        fd.designation_title as designation,
+        'Faculty' as employment_status,
+        fp.image_url as profile_image,
+        fp.is_hod,
+        fp.display_order,
         e.date_of_joining,
-        fp.gender,
+        e.gender,
         fp.date_of_birth,
         fp.research_teaching_experience,
         fp.address,
@@ -233,13 +302,14 @@ router.get('/faculty/:slug/details', async (req, res) => {
         fp.bio_summary,
         fp.research_interests
       FROM employees e
-      LEFT JOIN faculty_profiles fp ON e.employee_id = fp.employee_id
+      LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code
       LEFT JOIN departments d ON fp.department_id = d.department_id
+      LEFT JOIN faculty_designations fd ON fp.designation_id = fd.designation_id
       WHERE e.employee_code = ? AND e.is_active = 1 AND e.role = 'Faculty'
     `, [facultyId]);
     
     if (facultyBasic.length === 0) {
-      await connection.end();
+      connection.release();
       return res.status(404).json({ error: 'Faculty not found' });
     }
     
@@ -261,22 +331,23 @@ router.get('/faculty/:slug/details', async (req, res) => {
         fp.issue,
         fp.pages
       FROM faculty_publications fp
-      WHERE fp.employee_id = ? 
+      WHERE fp.employee_code = ? 
       ORDER BY fp.publication_year DESC, fp.title ASC
-    `, [faculty.faculty_id]);
+    `, [faculty.employee_code]);
     
     // Get faculty education/academic background
     const [education] = await connection.execute(`
       SELECT 
+        fe.education_id,
         fe.degree,
         fe.institute,
-        fe.subject,
-        fe.completion_year as year,
-        fe.grade_percentage
+        fe.discipline,
+        fe.graduation_year,
+        fe.display_order
       FROM faculty_education fe
-      WHERE fe.employee_id = ?
-      ORDER BY fe.completion_year DESC
-    `, [faculty.faculty_id]);
+      WHERE fe.employee_code = ?
+      ORDER BY fe.display_order ASC, fe.graduation_year DESC
+    `, [faculty.employee_code]);
     
     // Get research areas - disabled until faculty_research_areas table is created
     // const [researchAreas] = await connection.execute(`
@@ -288,7 +359,7 @@ router.get('/faculty/:slug/details', async (req, res) => {
     // `, [faculty.faculty_id]);
     const researchAreas = []; // Temporary empty array until faculty_research_areas table exists
     
-    await connection.end();
+    connection.release();
     
     // Structure the response data
     const profileData = {
@@ -363,16 +434,15 @@ router.get('/research-areas', async (req, res) => {
   try {
     const [researchAreas] = await executeQuery(`
       SELECT 
-        id,
-        name,
-        description,
-        parent_id
+        area_id as id,
+        area_name as name,
+        is_active
       FROM research_areas 
       WHERE is_active = 1 
-      ORDER BY name ASC
+      ORDER BY area_name ASC
     `);
     
-    res.json(researchAreas);
+    res.json({ success: true, data: researchAreas });
   } catch (error) {
     console.error('Get research areas error:', error);
     res.status(500).json({ error: 'Internal server error' });
@@ -386,29 +456,28 @@ router.get('/courses', async (req, res) => {
     
     let query = `
       SELECT 
-        c.id,
+        c.course_id as id,
         c.course_code,
         c.course_name,
-        c.course_type,
         c.credits,
         c.semester,
-        c.academic_level,
-        d.name as department_name,
-        d.code as department_code
+        c.course_level,
+        d.department_name,
+        d.department_code
       FROM courses c
-      JOIN departments d ON c.department_id = d.id
+      LEFT JOIN departments d ON c.department_id = d.department_id
       WHERE c.is_active = 1
     `;
     
     const params = [];
     
     if (department) {
-      query += ' AND d.code = ?';
+      query += ' AND d.department_code = ?';
       params.push(department);
     }
     
     if (level) {
-      query += ' AND c.academic_level = ?';
+      query += ' AND c.course_level = ?';
       params.push(level);
     }
     
@@ -416,7 +485,7 @@ router.get('/courses', async (req, res) => {
     
     const [courses] = await executeQuery(query, params);
     
-    res.json(courses);
+    res.json({ success: true, data: courses });
   } catch (error) {
     console.error('Get courses error:', error);
     res.status(500).json({ error: 'Internal server error' });

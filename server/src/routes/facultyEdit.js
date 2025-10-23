@@ -1,11 +1,22 @@
 const express = require('express');
-const mysql = require('mysql2/promise');
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const { pool } = require('../config/database');
 
 const router = express.Router();
+
+// Helper function for database queries
+async function executeQuery(query, params = []) {
+  const connection = await pool.getConnection();
+  try {
+    const [results] = await connection.execute(query, params);
+    return [results];
+  } finally {
+    connection.release();
+  }
+}
 
 // Configure multer for image upload
 const storage = multer.diskStorage({
@@ -47,14 +58,20 @@ const formatDate = (dateString) => {
   return isNaN(date.getTime()) ? null : date.toISOString().split('T')[0];
 };
 
-// Database connection function
-async function getDbConnection() {
-  return await mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Mrutyu@2026',
-    database: 'updated_nitgoa'
-  });
+// Helper function for database transactions
+async function withTransaction(callback) {
+  const connection = await pool.getConnection();
+  try {
+    await connection.beginTransaction();
+    const result = await callback(connection);
+    await connection.commit();
+    return result;
+  } catch (error) {
+    await connection.rollback();
+    throw error;
+  } finally {
+    connection.release();
+  }
 }
 
 // Middleware to verify JWT token
@@ -86,10 +103,9 @@ const checkEditPermission = async (req, res, next) => {
 
     // Faculty can only edit their own profile
     if (user.role === 'Faculty') {
-      const connection = await getDbConnection();
       try {
         // Get the employee_code for the logged-in user
-        const [userEmployee] = await connection.execute(`
+        const [userEmployee] = await executeQuery(`
           SELECT e.employee_code 
           FROM employees e 
           JOIN user_accounts ua ON ua.employee_code = e.employee_code 
@@ -106,8 +122,9 @@ const checkEditPermission = async (req, res, next) => {
         }
 
         return next();
-      } finally {
-        await connection.end();
+      } catch (error) {
+        console.error('Permission check error:', error);
+        return res.status(500).json({ error: 'Internal server error' });
       }
     }
 
@@ -148,27 +165,25 @@ router.put('/:employeeCode/profile', authenticateToken, checkEditPermission, asy
       profile_image
     } = req.body;
 
-    const connection = await getDbConnection();
-    
-    try {
-      await connection.beginTransaction();
-
-      // Get current employee data to preserve existing values
+    await withTransaction(async (connection) => {
+      // Get current employee and faculty profile data
       const [currentEmployee] = await connection.execute(`
-        SELECT * FROM employees WHERE employee_code = ?
+        SELECT e.*, fp.* FROM employees e
+        LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code
+        WHERE e.employee_code = ?
       `, [employeeCode]);
 
       if (currentEmployee.length === 0) {
-        return res.status(404).json({ success: false, error: 'Faculty member not found' });
+        throw new Error('Faculty member not found');
       }
 
       const current = currentEmployee[0];
 
-      // Update employees table - only update fields that are provided
+      // Update employees table - only valid fields
       await connection.execute(`
         UPDATE employees 
         SET full_name = ?, honorific = ?, email = ?, phone_mobile = ?, 
-            extension_no = ?, job_title = ?, date_of_joining = ?, image_url = ?
+            extension_no = ?, date_of_joining = ?, gender = ?, updated_at = CURRENT_TIMESTAMP
         WHERE employee_code = ?
       `, [
         full_name || current.full_name,
@@ -176,82 +191,42 @@ router.put('/:employeeCode/profile', authenticateToken, checkEditPermission, asy
         email || current.email,
         phone_mobile || current.phone_mobile,
         extension_no || current.extension_no,
-        designation || current.job_title,
-        date_of_joining || current.date_of_joining,
-        profile_image || current.image_url,
+        formatDate(date_of_joining) || current.date_of_joining,
+        gender || current.gender,
         employeeCode
       ]);
 
       // Update or insert faculty_profiles table
-      const [existingProfile] = await connection.execute(`
-        SELECT fp.employee_code FROM faculty_profiles fp
-        WHERE fp.employee_code = ?
-      `, [employeeCode]);
+      // Update faculty_profiles table with fields that belong there
+      const facultyUpdates = {};
+      if (gender !== undefined) facultyUpdates.gender = gender;
+      if (date_of_birth !== undefined) facultyUpdates.date_of_birth = formatDate(date_of_birth);
+      if (experience !== undefined) facultyUpdates.research_teaching_experience = experience;
+      if (address !== undefined) facultyUpdates.address = address;
+      if (office_location !== undefined) facultyUpdates.office_location = office_location;
+      if (office_hours !== undefined) facultyUpdates.office_hours = office_hours;
+      if (linkedin_url !== undefined) facultyUpdates.linkedin_url = linkedin_url;
+      if (personal_website_url !== undefined) facultyUpdates.personal_website_url = personal_website_url;
+      if (google_scholar_url !== undefined) facultyUpdates.google_scholar_url = google_scholar_url;
+      if (orcid_id !== undefined) facultyUpdates.orcid_id = orcid_id;
+      if (scopus_id !== undefined) facultyUpdates.scopus_id = scopus_id;
+      if (research_gate_url !== undefined) facultyUpdates.research_gate_url = research_gate_url;
+      if (bio_summary !== undefined) facultyUpdates.bio_summary = bio_summary;
+      if (profile_image !== undefined) facultyUpdates.image_url = profile_image;
 
-      if (existingProfile.length > 0) {
-        // Get current profile data
-        const [currentProfile] = await connection.execute(`
-          SELECT fp.* FROM faculty_profiles fp
-          WHERE fp.employee_code = ?
-        `, [employeeCode]);
-
-        const profile = currentProfile[0];
-
-        // Update existing profile - only update fields that are provided
+      if (Object.keys(facultyUpdates).length > 0) {
+        const setClause = Object.keys(facultyUpdates).map(key => `${key} = ?`).join(', ');
+        const values = Object.values(facultyUpdates);
+        
         await connection.execute(`
           UPDATE faculty_profiles 
-          SET gender = ?, date_of_birth = ?, research_teaching_experience = ?,
-              address = ?, office_location = ?, office_hours = ?,
-              linkedin_url = ?, personal_website_url = ?, google_scholar_url = ?,
-              orcid_id = ?, scopus_id = ?, research_gate_url = ?, bio_summary = ?
+          SET ${setClause}, updated_at = CURRENT_TIMESTAMP
           WHERE employee_code = ?
-        `, [
-          gender || profile.gender,
-          date_of_birth || profile.date_of_birth,
-          experience || profile.research_teaching_experience,
-          address || profile.address,
-          office_location || profile.office_location,
-          office_hours || profile.office_hours,
-          linkedin_url || profile.linkedin_url,
-          personal_website_url || profile.personal_website_url,
-          google_scholar_url || profile.google_scholar_url,
-          orcid_id || profile.orcid_id,
-          scopus_id || profile.scopus_id,
-          research_gate_url || profile.research_gate_url,
-          bio_summary || profile.bio_summary,
-          employeeCode
-        ]);
-      } else {
-        // Verify employee exists
-        const [employee] = await connection.execute(`
-          SELECT employee_code FROM employees WHERE employee_code = ?
-        `, [employeeCode]);
-
-        if (employee.length > 0) {
-          // Insert new profile
-          await connection.execute(`
-            INSERT INTO faculty_profiles (
-              employee_code, gender, date_of_birth, research_teaching_experience,
-              address, office_location, office_hours, linkedin_url, personal_website_url,
-              google_scholar_url, orcid_id, scopus_id, research_gate_url, bio_summary
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-          `, [
-            employeeCode, gender || null, date_of_birth || null, experience || null,
-            address || null, office_location || null, office_hours || null, linkedin_url || null,
-            personal_website_url || null, google_scholar_url || null, orcid_id || null,
-            scopus_id || null, research_gate_url || null, bio_summary || null
-          ]);
-        }
+        `, [...values, employeeCode]);
       }
+    });
 
-      await connection.commit();
-      res.json({ success: true, message: 'Profile updated successfully' });
-    } catch (error) {
-      await connection.rollback();
-      throw error;
-    } finally {
-      await connection.end();
-    }
+    res.json({ success: true, message: 'Profile updated successfully' });
   } catch (error) {
     console.error('Error updating faculty profile:', error);
     res.status(500).json({ success: false, error: 'Failed to update profile' });
@@ -264,18 +239,14 @@ router.put('/:employeeCode/education', authenticateToken, checkEditPermission, a
     const { employeeCode } = req.params;
     const { education } = req.body;
 
-    const connection = await getDbConnection();
-    
-    try {
-      await connection.beginTransaction();
-
+    await withTransaction(async (connection) => {
       // Verify employee exists
       const [employee] = await connection.execute(`
         SELECT employee_code FROM employees WHERE employee_code = ?
       `, [employeeCode]);
 
       if (employee.length === 0) {
-        return res.status(404).json({ success: false, error: 'Faculty not found' });
+        throw new Error('Faculty not found');
       }
 
       // Delete existing education records
