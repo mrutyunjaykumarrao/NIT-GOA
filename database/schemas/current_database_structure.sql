@@ -76,6 +76,25 @@ faculty_courses_taught	custom_course_level	enum('Undergraduate','Postgraduate','
 faculty_courses_taught	custom_semester	varchar(20)	YES		NULL
 faculty_courses_taught	created_at	timestamp	YES		CURRENT_TIMESTAMP
 faculty_courses_taught	updated_at	timestamp	YES		CURRENT_TIMESTAMP
+faculty_custom_section_entries	entry_id	int	NO	PRI	NULL
+faculty_custom_section_entries	custom_section_id	int	NO	MUL	NULL
+faculty_custom_section_entries	entry_data	json	NO		NULL
+faculty_custom_section_entries	display_order	int	YES		0
+faculty_custom_section_entries	created_at	datetime	YES		CURRENT_TIMESTAMP
+faculty_custom_section_entries	updated_at	datetime	YES		CURRENT_TIMESTAMP
+faculty_custom_section_fields	field_id	int	NO	PRI	NULL
+faculty_custom_section_fields	custom_section_id	int	NO	MUL	NULL
+faculty_custom_section_fields	field_name	varchar(255)	NO		NULL
+faculty_custom_section_fields	field_type	varchar(50)	YES		text
+faculty_custom_section_fields	display_order	int	YES		0
+faculty_custom_sections	custom_section_id	int	NO	PRI	NULL
+faculty_custom_sections	employee_code	varchar(50)	NO	MUL	NULL
+faculty_custom_sections	section_title	varchar(255)	NO		NULL
+faculty_custom_sections	section_type	enum('table','list','text')	YES		list
+faculty_custom_sections	display_order	int	YES		0
+faculty_custom_sections	is_visible	tinyint(1)	YES		1
+faculty_custom_sections	created_at	datetime	YES		CURRENT_TIMESTAMP
+faculty_custom_sections	updated_at	datetime	YES		CURRENT_TIMESTAMP
 faculty_designations	designation_id	int	NO	PRI	NULL
 faculty_designations	designation_title	varchar(255)	NO	UNI	NULL
 faculty_designations	designation_level	int	YES		0
@@ -95,8 +114,6 @@ faculty_professional_memberships	membership_id	int	NO	PRI	NULL
 faculty_professional_memberships	employee_code	varchar(50)	NO	MUL	NULL
 faculty_professional_memberships	organization_name	varchar(255)	NO	MUL	NULL
 faculty_professional_memberships	membership_type	varchar(100)	YES		NULL
-faculty_professional_memberships	start_date	date	YES		NULL
-faculty_professional_memberships	end_date	date	YES		NULL
 faculty_professional_memberships	is_active	tinyint(1)	YES		1
 faculty_professional_memberships	created_at	timestamp	YES		CURRENT_TIMESTAMP
 faculty_professional_memberships	updated_at	timestamp	YES		CURRENT_TIMESTAMP
@@ -113,8 +130,6 @@ faculty_profiles	office_hours	varchar(255)	YES		NULL
 faculty_profiles	linkedin_url	varchar(255)	YES		NULL
 faculty_profiles	personal_website_url	varchar(255)	YES		NULL
 faculty_profiles	google_scholar_url	varchar(255)	YES		NULL
-faculty_profiles	orcid_id	varchar(50)	YES		NULL
-faculty_profiles	scopus_id	varchar(50)	YES		NULL
 faculty_profiles	research_gate_url	varchar(255)	YES		NULL
 faculty_profiles	other_social_links	json	YES		NULL
 faculty_profiles	bio_summary	text	YES		NULL
@@ -126,19 +141,8 @@ faculty_publications	publication_id	int	NO	PRI	NULL
 faculty_publications	employee_code	varchar(50)	NO	MUL	NULL
 faculty_publications	publication_type	enum('Journal Paper','Conference Proceeding','Book Chapter','Book Authored','Patent','Technical Report')	NO	MUL	NULL
 faculty_publications	title	varchar(500)	NO		NULL
-faculty_publications	publication_details	text	NO		NULL
 faculty_publications	publication_year	year	YES	MUL	NULL
 faculty_publications	publication_month	varchar(20)	YES		NULL
-faculty_publications	journal_name	varchar(255)	YES		NULL
-faculty_publications	impact_factor	decimal(4,2)	YES		NULL
-faculty_publications	doi	varchar(100)	YES		NULL
-faculty_publications	isbn	varchar(20)	YES		NULL
-faculty_publications	volume	varchar(20)	YES		NULL
-faculty_publications	issue	varchar(20)	YES		NULL
-faculty_publications	pages	varchar(50)	YES		NULL
-faculty_publications	citation_count	int	YES		0
-faculty_publications	additional_data	json	YES		NULL
-faculty_publications	is_featured	tinyint(1)	YES	MUL	0
 faculty_publications	display_order	int	YES		0
 faculty_publications	created_at	timestamp	YES		CURRENT_TIMESTAMP
 faculty_publications	updated_at	timestamp	YES		CURRENT_TIMESTAMP
@@ -155,10 +159,8 @@ file_attachments	uploaded_by	varchar(50)	YES	MUL	NULL
 file_attachments	uploaded_at	timestamp	YES		CURRENT_TIMESTAMP
 pending_approvals	approval_id	int	NO	PRI	NULL
 pending_approvals	employee_code	varchar(50)	NO	MUL	NULL
-pending_approvals	approval_type	enum('profile_image','personal_info','contact_info','other')	NO		NULL
-pending_approvals	current_value	text	YES		NULL
-pending_approvals	requested_value	text	YES		NULL
-pending_approvals	temp_file_path	varchar(500)	YES		NULL
+pending_approvals	old_image_path	varchar(255)	YES		NULL
+pending_approvals	new_image_path	varchar(255)	YES		NULL
 pending_approvals	requested_by	varchar(50)	NO		NULL
 pending_approvals	requested_at	timestamp	YES	MUL	CURRENT_TIMESTAMP
 pending_approvals	status	enum('pending','approved','rejected')	YES	MUL	pending
@@ -170,18 +172,6 @@ research_areas	area_name	varchar(255)	NO	UNI	NULL
 research_areas	is_active	tinyint(1)	YES	MUL	1
 research_areas	created_at	timestamp	YES		CURRENT_TIMESTAMP
 research_areas	updated_at	timestamp	YES		CURRENT_TIMESTAMP
-research_areas_backup_20251003_180205	area_id	int	NO		0
-research_areas_backup_20251003_180205	area_name	varchar(255)	NO		NULL
-research_areas_backup_20251003_180205	parent_area_id	int	YES		NULL
-research_areas_backup_20251003_180205	description	text	YES		NULL
-research_areas_backup_20251003_180205	is_active	tinyint(1)	YES		1
-research_areas_backup_20251003_180205	created_at	timestamp	YES		CURRENT_TIMESTAMP
-research_areas_backup_20251003_180205	updated_at	timestamp	YES		CURRENT_TIMESTAMP
-research_areas_backup_20251003_180300	area_id	int	NO		0
-research_areas_backup_20251003_180300	area_name	varchar(255)	NO		NULL
-research_areas_backup_20251003_180300	is_active	tinyint(1)	YES		1
-research_areas_backup_20251003_180300	created_at	timestamp	YES		CURRENT_TIMESTAMP
-research_areas_backup_20251003_180300	updated_at	timestamp	YES		CURRENT_TIMESTAMP
 site_analytics	analytics_id	int	NO	PRI	NULL
 site_analytics	total_visitors	bigint	YES		0
 site_analytics	daily_visitors	int	YES		0
@@ -209,6 +199,7 @@ system_settings	updated_at	timestamp	YES		CURRENT_TIMESTAMP
 user_accounts	user_id	int	NO	PRI	NULL
 user_accounts	username	varchar(100)	NO	UNI	NULL
 user_accounts	password_hash	varchar(255)	NO		NULL
+user_accounts	password_changed_at	timestamp	YES	MUL	NULL
 user_accounts	employee_code	varchar(50)	YES	MUL	NULL
 user_accounts	email	varchar(255)	YES		NULL
 user_accounts	access_level	enum('Admin','Faculty','Staff')	NO		NULL
@@ -218,7 +209,8 @@ user_accounts	failed_login_attempts	int	YES		0
 user_accounts	locked_until	timestamp	YES		NULL
 user_accounts	lockout_timestamp	timestamp	YES		NULL
 user_accounts	lockout_duration_minutes	int	YES		0
-user_accounts	password_reset_token	varchar(255)	YES	MUL	NULL
-user_accounts	password_reset_expires	timestamp	YES		NULL
+user_accounts	reset_token	varchar(255)	YES	MUL	NULL
+user_accounts	reset_token_expires	timestamp	YES		NULL
+user_accounts	reset_token_used	tinyint(1)	YES		0
 user_accounts	created_at	timestamp	YES		CURRENT_TIMESTAMP
 user_accounts	updated_at	timestamp	YES		CURRENT_TIMESTAMP
