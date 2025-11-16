@@ -222,9 +222,9 @@ const FacultyDetails = () => {
             case 'professionalServices':
                 return faculty.professionalServices || faculty.professionalService;
             case 'coursesAttended':
-                return faculty.trainingConferencesAndShortTermCoursesAttended;
+                return faculty.coursesAttended;
             case 'coursesConducted':
-                return faculty.trainingConferencesAndShortTermCoursesConducted;
+                return faculty.coursesConducted;
             default:
                 return null;
         }
@@ -426,6 +426,20 @@ const FacultyDetails = () => {
                         false
                     )}
 
+                    {renderExpandableSection(
+                        "Research Guidance TEST",
+                        "researchGuidance",
+                        <div className="research-guidance-cards">
+                            <p>Research Guidance data count: {faculty.researchGuidance?.length || 0}</p>
+                            {faculty.researchGuidance?.map((student, index) => (
+                                <div key={index} className="guidance-card">
+                                    <p>{student}</p>
+                                </div>
+                            ))}
+                        </div>,
+                        false
+                    )}
+
                                                 {renderExpandableSection(
                                                     "Courses Taught",
                                                     "coursesTaught",
@@ -453,7 +467,10 @@ const FacultyDetails = () => {
                                                                                 <h4>Undergraduate Courses</h4>
                                                                                 <ul>
                                                                                     {faculty.coursesTaught.ug.map((course, index) => (
-                                                                                        <li key={index}>{course}</li>
+                                                                                        <li key={index}>
+                                                                                            {typeof course === 'string' ? course : 
+                                                                                            `${course.course_code} - ${course.course_name} (${course.credits} credits)`}
+                                                                                        </li>
                                                                                     ))}
                                                                                 </ul>
                                                                             </div>
@@ -463,7 +480,10 @@ const FacultyDetails = () => {
                                                                                 <h4>Postgraduate Courses</h4>
                                                                                 <ul>
                                                                                     {faculty.coursesTaught.pg.map((course, index) => (
-                                                                                        <li key={index}>{course}</li>
+                                                                                        <li key={index}>
+                                                                                            {typeof course === 'string' ? course : 
+                                                                                            `${course.course_code} - ${course.course_name} (${course.credits} credits)`}
+                                                                                        </li>
                                                                                     ))}
                                                                                 </ul>
                                                                             </div>
@@ -537,15 +557,19 @@ const FacultyDetails = () => {
                                                                 {faculty.publications.journal.map((pub, index) => {
                                                                     if (!pub) return null; // Skip null/undefined publications
                                                                     
-                                                                    const yearMatch = pub.match ? pub.match(/\b(19|20)\d{2}\b/) : null;
-                                                                    const monthMatch = pub.match ? pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i) : null;
-                                                                    const year = yearMatch ? yearMatch[0] : '-';
-                                                                    const month = monthMatch ? monthMatch[1] : '-';
+                                                                    // Handle both old string format and new object format
+                                                                    const title = typeof pub === 'string' ? pub : pub.title;
+                                                                    const year = typeof pub === 'string' ? 
+                                                                        (pub.match(/\b(19|20)\d{2}\b/) ? pub.match(/\b(19|20)\d{2}\b/)[0] : '-') :
+                                                                        (pub.publication_year || '-');
+                                                                    const month = typeof pub === 'string' ? 
+                                                                        (pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i) ? pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i)[1] : '-') :
+                                                                        (pub.publication_month || '-');
                                                                     
                                                                     return (
-                                                                        <tr key={index}>
+                                                                        <tr key={pub.publication_id || index}>
                                                                             <td>{index + 1}</td>
-                                                                            <td className="publication-title">{pub}</td>
+                                                                            <td className="publication-title">{title}</td>
                                                                             <td className="publication-year">{year}</td>
                                                                             <td className="publication-month">{month}</td>
                                                                         </tr>
@@ -576,15 +600,19 @@ const FacultyDetails = () => {
                                                                 {faculty.publications.proceedings.map((pub, index) => {
                                                                     if (!pub) return null;
                                                                     
-                                                                    const yearMatch = pub.match ? pub.match(/\b(19|20)\d{2}\b/) : null;
-                                                                    const monthMatch = pub.match ? pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i) : null;
-                                                                    const year = yearMatch ? yearMatch[0] : '-';
-                                                                    const month = monthMatch ? monthMatch[1] : '-';
+                                                                    // Handle both old string format and new object format
+                                                                    const title = typeof pub === 'string' ? pub : pub.title;
+                                                                    const year = typeof pub === 'string' ? 
+                                                                        (pub.match(/\b(19|20)\d{2}\b/) ? pub.match(/\b(19|20)\d{2}\b/)[0] : '-') :
+                                                                        (pub.publication_year || '-');
+                                                                    const month = typeof pub === 'string' ? 
+                                                                        (pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i) ? pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i)[1] : '-') :
+                                                                        (pub.publication_month || '-');
                                                                     
                                                                     return (
-                                                                        <tr key={index}>
+                                                                        <tr key={pub.publication_id || index}>
                                                                             <td>{index + 1}</td>
-                                                                            <td className="publication-title">{pub}</td>
+                                                                            <td className="publication-title">{title}</td>
                                                                             <td className="publication-year">{year}</td>
                                                                             <td className="publication-month">{month}</td>
                                                                         </tr>
@@ -613,15 +641,21 @@ const FacultyDetails = () => {
                                             </thead>
                                             <tbody>
                                                 {faculty.publications.bookChapters.map((pub, index) => {
-                                                    const yearMatch = pub.match(/\b(19|20)\d{2}\b/);
-                                                    const monthMatch = pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i);
-                                                    const year = yearMatch ? yearMatch[0] : '-';
-                                                    const month = monthMatch ? monthMatch[1] : '-';
+                                                    if (!pub) return null;
+                                                    
+                                                    // Handle both old string format and new object format
+                                                    const title = typeof pub === 'string' ? pub : pub.title;
+                                                    const year = typeof pub === 'string' ? 
+                                                        (pub.match(/\b(19|20)\d{2}\b/) ? pub.match(/\b(19|20)\d{2}\b/)[0] : '-') :
+                                                        (pub.publication_year || '-');
+                                                    const month = typeof pub === 'string' ? 
+                                                        (pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i) ? pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i)[1] : '-') :
+                                                        (pub.publication_month || '-');
                                                     
                                                     return (
-                                                        <tr key={index}>
+                                                        <tr key={pub.publication_id || index}>
                                                             <td>{index + 1}</td>
-                                                            <td className="publication-title">{pub}</td>
+                                                            <td className="publication-title">{title}</td>
                                                             <td className="publication-year">{year}</td>
                                                             <td className="publication-month">{month}</td>
                                                         </tr>
@@ -650,15 +684,21 @@ const FacultyDetails = () => {
                                             </thead>
                                             <tbody>
                                                 {faculty.publications.booksAuthored.map((pub, index) => {
-                                                    const yearMatch = pub.match(/\b(19|20)\d{2}\b/);
-                                                    const monthMatch = pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i);
-                                                    const year = yearMatch ? yearMatch[0] : '-';
-                                                    const month = monthMatch ? monthMatch[1] : '-';
+                                                    if (!pub) return null;
+                                                    
+                                                    // Handle both old string format and new object format
+                                                    const title = typeof pub === 'string' ? pub : pub.title;
+                                                    const year = typeof pub === 'string' ? 
+                                                        (pub.match(/\b(19|20)\d{2}\b/) ? pub.match(/\b(19|20)\d{2}\b/)[0] : '-') :
+                                                        (pub.publication_year || '-');
+                                                    const month = typeof pub === 'string' ? 
+                                                        (pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i) ? pub.match(/(JAN|FEB|MAR|APRIL|MAY|JUN|JULY|AUG|SEPT|OCT|NOV|DEC)\s+(19|20)\d{2}/i)[1] : '-') :
+                                                        (pub.publication_month || '-');
                                                     
                                                     return (
-                                                        <tr key={index}>
+                                                        <tr key={pub.publication_id || index}>
                                                             <td>{index + 1}</td>
-                                                            <td className="publication-title">{pub}</td>
+                                                            <td className="publication-title">{title}</td>
                                                             <td className="publication-year">{year}</td>
                                                             <td className="publication-month">{month}</td>
                                                         </tr>

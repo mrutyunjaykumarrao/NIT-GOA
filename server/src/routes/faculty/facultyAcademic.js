@@ -226,14 +226,8 @@ router.get('/:employeeCode/publications', async (req, res) => {
         title,
         authors,
         publication_type,
-        journal_name,
-        conference_name,
         publication_year,
-        volume,
-        issue,
-        pages,
-        doi,
-        isbn,
+        publication_month,
         url,
         display_order
       FROM faculty_publications

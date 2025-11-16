@@ -158,8 +158,6 @@ router.put('/:employeeCode/profile', authenticateToken, checkEditPermission, asy
       linkedin_url,
       personal_website_url,
       google_scholar_url,
-      orcid_id,
-      scopus_id,
       research_gate_url,
       bio_summary,
       profile_image
@@ -208,8 +206,6 @@ router.put('/:employeeCode/profile', authenticateToken, checkEditPermission, asy
       if (linkedin_url !== undefined) facultyUpdates.linkedin_url = linkedin_url;
       if (personal_website_url !== undefined) facultyUpdates.personal_website_url = personal_website_url;
       if (google_scholar_url !== undefined) facultyUpdates.google_scholar_url = google_scholar_url;
-      if (orcid_id !== undefined) facultyUpdates.orcid_id = orcid_id;
-      if (scopus_id !== undefined) facultyUpdates.scopus_id = scopus_id;
       if (research_gate_url !== undefined) facultyUpdates.research_gate_url = research_gate_url;
       if (bio_summary !== undefined) facultyUpdates.bio_summary = bio_summary;
       if (profile_image !== undefined) facultyUpdates.image_url = profile_image;
@@ -355,12 +351,14 @@ router.put('/:employeeCode/publications', authenticateToken, checkEditPermission
         if (pub.title && pub.title.trim()) {
           await connection.execute(`
             INSERT INTO faculty_publications (
-              employee_code, title, journal_name, publication_year, 
-              publication_details, doi, publication_type
-            ) VALUES (?, ?, ?, ?, ?, ?, ?)
-          `, [employeeCode, pub.title.trim(), pub.journal_name || null, 
-              pub.publication_year || null, pub.publication_details || null, 
-              pub.doi || null, pub.publication_type || 'Journal Paper']);
+              employee_code, title, publication_year, publication_month,
+              publication_type, display_order
+            ) VALUES (?, ?, ?, ?, ?, ?)
+          `, [employeeCode, pub.title.trim(), 
+              pub.publication_year || null, 
+              pub.publication_month || null,
+              pub.publication_type || 'Journal Paper',
+              pub.display_order || null]);
         }
       }
 
@@ -486,7 +484,7 @@ router.put('/:employeeCode/bulk-update', authenticateToken, checkEditPermission,
             SET gender = ?, date_of_birth = ?, research_teaching_experience = ?,
                 address = ?, office_location = ?, office_hours = ?,
                 linkedin_url = ?, personal_website_url = ?, google_scholar_url = ?,
-                orcid_id = ?, scopus_id = ?, research_gate_url = ?, bio_summary = ?
+                research_gate_url = ?, bio_summary = ?
             WHERE employee_code = ?
           `, [
             profile.gender || profileData.gender || null,
@@ -498,8 +496,6 @@ router.put('/:employeeCode/bulk-update', authenticateToken, checkEditPermission,
             profile.linkedin_url || profileData.linkedin_url || null,
             profile.personal_website_url || profileData.personal_website_url || null,
             profile.google_scholar_url || profileData.google_scholar_url || null,
-            profile.orcid_id || profileData.orcid_id || null,
-            profile.scopus_id || profileData.scopus_id || null,
             profile.research_gate_url || profileData.research_gate_url || null,
             profile.bio_summary || profileData.bio_summary || null,
             employeeCode
@@ -509,8 +505,8 @@ router.put('/:employeeCode/bulk-update', authenticateToken, checkEditPermission,
             INSERT INTO faculty_profiles (
               employee_code, gender, date_of_birth, research_teaching_experience,
               address, office_location, office_hours, linkedin_url, personal_website_url,
-              google_scholar_url, orcid_id, scopus_id, research_gate_url, bio_summary
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+              google_scholar_url, research_gate_url, bio_summary
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
           `, [
             employeeCode,
             profile.gender || null,
@@ -522,8 +518,6 @@ router.put('/:employeeCode/bulk-update', authenticateToken, checkEditPermission,
             profile.linkedin_url || null,
             profile.personal_website_url || null,
             profile.google_scholar_url || null,
-            profile.orcid_id || null,
-            profile.scopus_id || null,
             profile.research_gate_url || null,
             profile.bio_summary || null
           ]);
@@ -568,12 +562,14 @@ router.put('/:employeeCode/bulk-update', authenticateToken, checkEditPermission,
           if (pub.title && pub.title.trim()) {
             await connection.execute(`
               INSERT INTO faculty_publications (
-                employee_code, title, journal_name, publication_year, 
-                publication_details, doi, publication_type
-              ) VALUES (?, ?, ?, ?, ?, ?, ?)
-            `, [employeeCode, pub.title.trim(), pub.journal_name || null, 
-                pub.publication_year || null, pub.publication_details || null, 
-                pub.doi || null, pub.publication_type || 'Journal Paper']);
+                employee_code, title, publication_year, publication_month,
+                publication_type, display_order
+              ) VALUES (?, ?, ?, ?, ?, ?)
+            `, [employeeCode, pub.title.trim(), 
+                pub.publication_year || null, 
+                pub.publication_month || null,
+                pub.publication_type || 'Journal Paper',
+                pub.display_order || null]);
           }
         }
       }

@@ -216,8 +216,6 @@ async function getFacultyDetails(employeeCode) {
       fp.linkedin_url,
       fp.personal_website_url,
       fp.google_scholar_url,
-      fp.orcid_id,
-      fp.scopus_id,
       fp.research_gate_url,
       d.department_name,
       d.department_code,
@@ -241,19 +239,13 @@ async function getFacultyDetails(employeeCode) {
     SELECT 
       fp.publication_id,
       fp.title,
-      fp.publication_details,
-      fp.journal_name,
       fp.publication_year,
       fp.publication_month,
       fp.publication_type,
-      fp.doi,
-      fp.impact_factor,
-      fp.volume,
-      fp.issue,
-      fp.pages
+      fp.display_order
     FROM faculty_publications fp
     WHERE fp.employee_code = ? 
-    ORDER BY fp.publication_year DESC, fp.title ASC
+    ORDER BY fp.publication_year DESC, fp.display_order ASC, fp.title ASC
   `, [faculty.employee_code]);
 
   // Get faculty education
@@ -287,11 +279,61 @@ async function getFacultyDetails(employeeCode) {
     ORDER BY course_level, course_code
   `, [faculty.employee_code]);
 
+  // Get faculty professional memberships
+  const [memberships] = await executeQuery(`
+    SELECT 
+      fpm.membership_id,
+      fpm.organization_name,
+      fpm.membership_type,
+      fpm.is_active
+    FROM faculty_professional_memberships fpm
+    WHERE fpm.employee_code = ? AND fpm.is_active = 1
+    ORDER BY fpm.membership_id DESC
+  `, [faculty.employee_code]);
+
   return {
     ...faculty,
     publications,
     education,
-    courses_taught: courses
+    courses_taught: courses,
+    memberships,
+    // Add placeholder data for sections that don't have database tables yet
+    researchGuidance: [
+      "Ms. Diana Terezinha Miranda, working on \"Medical Image Captioning\" [Ongoing]",
+      "Ms. Naik Gaonkar Manisha babuso, working on \"Spoken term Detection\" [Ongoing]",
+      "Mr. V. Sakthivelsamy. working on \"Polar Weather Data Analysis\" [Ongoing]"
+    ],
+    fundedProjects: [],
+    awardsAndHonors: [],
+    coursesAttended: [
+      {
+        "month": "JUN",
+        "year": "2017", 
+        "info": "Workshop on Machine Learning for Medical Image analysis Focus On: Microscopy Image Processing"
+      },
+      {
+        "month": "JAN",
+        "year": "2017",
+        "info": "Winter School on Speech and Audio Processing Theme: Spatial Audio Processing"
+      },
+      {
+        "month": "JULY",
+        "year": "2016",
+        "info": "Summer School on Deep Learning for Computer Vision, IIIT Hyderabad"
+      }
+    ],
+    coursesConducted: [
+      {
+        "month": "AUG",
+        "year": "2015",
+        "info": "Two day National Workshop on \"LaTeX for Technical Documentation\" from Aug 21-Aug 22, 2015"
+      },
+      {
+        "month": "JULY",
+        "year": "2014",
+        "info": "Short-term Course on Pattern Analysis and Information Security (PAIS), 30 June - 4 July, 2014"
+      }
+    ]
   };
 }
 
@@ -485,8 +527,6 @@ async function getFacultyForAdmin() {
       fp.linkedin_url,
       fp.personal_website_url,
       fp.google_scholar_url,
-      fp.orcid_id,
-      fp.scopus_id,
       fp.research_gate_url,
       fp.bio_summary,
       fp.research_interests,
@@ -738,12 +778,30 @@ function formatFacultyProfile(faculty) {
     ...(faculty.bio_summary && {
       biography: faculty.bio_summary
     }),
+    // Additional sections with data
+    ...(faculty.memberships && faculty.memberships.length > 0 && {
+      memberships: faculty.memberships
+    }),
+    ...(faculty.researchGuidance && faculty.researchGuidance.length > 0 && {
+      researchGuidance: faculty.researchGuidance
+    }),
+    ...(faculty.fundedProjects && {
+      fundedProjects: faculty.fundedProjects
+    }),
+    ...(faculty.awardsAndHonors && {
+      awardsAndHonors: faculty.awardsAndHonors
+    }),
+    ...(faculty.coursesAttended && faculty.coursesAttended.length > 0 && {
+      coursesAttended: faculty.coursesAttended
+    }),
+    ...(faculty.coursesConducted && faculty.coursesConducted.length > 0 && {
+      coursesConducted: faculty.coursesConducted
+    }),
     // Social links
     socialLinks: {
       ...(faculty.linkedin_url && { linkedin: faculty.linkedin_url }),
       ...(faculty.personal_website_url && { website: faculty.personal_website_url }),
       ...(faculty.google_scholar_url && { googleScholar: faculty.google_scholar_url }),
-      ...(faculty.orcid_id && { orcid: faculty.orcid_id }),
       ...(faculty.research_gate_url && { researchGate: faculty.research_gate_url })
     }
   };

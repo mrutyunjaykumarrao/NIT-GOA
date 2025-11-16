@@ -952,8 +952,6 @@ router.get('/faculty', async (req, res) => {
         fp.linkedin_url,
         fp.personal_website_url,
         fp.google_scholar_url,
-        fp.orcid_id,
-        fp.scopus_id,
         fp.research_gate_url,
         fp.other_social_links,
         fp.bio_summary,

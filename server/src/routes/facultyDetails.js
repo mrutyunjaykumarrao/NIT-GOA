@@ -68,8 +68,6 @@ router.get('/:slug/details', async (req, res) => {
         fp.linkedin_url,
         fp.personal_website_url,
         fp.google_scholar_url,
-        fp.orcid_id,
-        fp.scopus_id,
         fp.research_gate_url,
         fp.bio_summary,
         fp.research_interests,
@@ -96,19 +94,13 @@ router.get('/:slug/details', async (req, res) => {
       SELECT 
         fp.publication_id,
         fp.title,
-        fp.publication_details,
-        fp.journal_name,
         fp.publication_year,
         fp.publication_month,
         fp.publication_type,
-        fp.doi,
-        fp.impact_factor,
-        fp.volume,
-        fp.issue,
-        fp.pages
+        fp.display_order
       FROM faculty_publications fp
       WHERE fp.employee_code = ? 
-      ORDER BY fp.publication_year DESC, fp.title ASC
+      ORDER BY fp.publication_year DESC, fp.display_order ASC, fp.title ASC
     `, [faculty.employee_code]);
     
     // Get faculty education/academic background
@@ -191,7 +183,6 @@ router.get('/:slug/details', async (req, res) => {
         ...(faculty.linkedin_url && { linkedin: faculty.linkedin_url }),
         ...(faculty.personal_website_url && { website: faculty.personal_website_url }),
         ...(faculty.google_scholar_url && { googleScholar: faculty.google_scholar_url }),
-        ...(faculty.orcid_id && { orcid: faculty.orcid_id }),
         ...(faculty.research_gate_url && { researchGate: faculty.research_gate_url })
       }
     };

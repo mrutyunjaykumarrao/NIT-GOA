@@ -17,8 +17,6 @@ router.get('/:employeeCode/social-links', async (req, res) => {
         linkedin_url,
         personal_website_url,
         google_scholar_url,
-        orcid_id,
-        scopus_id,
         research_gate_url,
         other_social_links
       FROM faculty_profiles
@@ -48,8 +46,6 @@ router.get('/:employeeCode/social-links', async (req, res) => {
       linkedin_url: faculty.linkedin_url,
       personal_website_url: faculty.personal_website_url,
       google_scholar_url: faculty.google_scholar_url,
-      orcid_id: faculty.orcid_id,
-      scopus_id: faculty.scopus_id,
       research_gate_url: faculty.research_gate_url,
       other_social_links: otherSocialLinks
     };
@@ -69,8 +65,6 @@ router.put('/:employeeCode/social-links', authenticateToken, checkEditPermission
       linkedin_url,
       personal_website_url,
       google_scholar_url,
-      orcid_id,
-      scopus_id,
       research_gate_url,
       other_social_links
     } = req.body;
@@ -89,8 +83,6 @@ router.put('/:employeeCode/social-links', authenticateToken, checkEditPermission
         linkedin_url = ?,
         personal_website_url = ?,
         google_scholar_url = ?,
-        orcid_id = ?,
-        scopus_id = ?,
         research_gate_url = ?,
         other_social_links = ?,
         updated_at = NOW()
@@ -101,8 +93,6 @@ router.put('/:employeeCode/social-links', authenticateToken, checkEditPermission
       linkedin_url || null,
       personal_website_url || null,
       google_scholar_url || null,
-      orcid_id || null,
-      scopus_id || null,
       research_gate_url || null,
       otherSocialLinksJson,
       employeeCode
@@ -129,7 +119,7 @@ router.get('/:employeeCode/professional-memberships', async (req, res) => {
     const { employeeCode } = req.params;
 
     // This will be implemented when professional memberships are added
-    // Expected structure: organization name, role/position, start_date, end_date, status
+    // Expected structure: organization name, role/position, status
     
     res.status(501).json({ 
       message: 'Professional memberships not yet implemented',
@@ -139,8 +129,6 @@ router.get('/:employeeCode/professional-memberships', async (req, res) => {
           {
             organization: "IEEE",
             role: "Member",
-            start_date: "2020-01-01",
-            end_date: null,
             status: "active",
             membership_id: "123456",
             website: "https://ieee.org"
@@ -163,20 +151,8 @@ router.put('/:employeeCode/professional-memberships', authenticateToken, checkEd
 
     // This will be implemented when professional memberships table is created
     /*
-    CREATE TABLE faculty_professional_memberships (
-      membership_id INT PRIMARY KEY AUTO_INCREMENT,
-      employee_code VARCHAR(50) NOT NULL,
-      organization_name VARCHAR(255) NOT NULL,
-      role_title VARCHAR(100),
-      start_date DATE,
-      end_date DATE,
-      status ENUM('active', 'inactive', 'expired') DEFAULT 'active',
-      membership_number VARCHAR(100),
-      website_url VARCHAR(500),
-      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-      FOREIGN KEY (employee_code) REFERENCES employees(employee_code)
-    );
+    Note: faculty_professional_memberships table already exists with:
+      membership_id, employee_code, organization_name, membership_type, is_active
     */
 
     res.status(501).json({ 

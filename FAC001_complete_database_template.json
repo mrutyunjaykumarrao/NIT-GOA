@@ -1,0 +1,621 @@
+{
+  "employee_code": "FAC001",
+  "employee_info": {
+    "honorific": "Dr.",
+    "full_name": "Veena Thenkanidiyoor",
+    "gender": "Female",
+    "role": "Faculty",
+    "email": "veenat@nitgoa.ac.in",
+    "extension_no": "0832-2404432",
+    "phone_mobile": null,
+    "phone_residence": null,
+    "date_of_joining": "2013-06-14",
+    "is_active": true,
+    "is_public_visible": true
+  },
+  "faculty_profile": {
+    "department_id": 1,
+    "designation_id": 25,
+    "date_of_birth": null,
+    "is_hod": true,
+    "image_url": "images/Faculty/CSE/veena_thenkanidiyoor.jpg",
+    "research_teaching_experience": "14 Years and 3 months of Teaching Experience and 3 years and 10 months of Research Experience",
+    "address": "Department of Computer Science & Engineering, National Institute of Technology Goa, Kottamoll Plateau, Cuncolim Municipal Area, Salcete Taluka, South Goa District, Goa - 403703",
+    "office_location": "CSE Department, NIT Goa",
+    "office_hours": "Monday-Friday: 10:00 AM - 5:00 PM",
+    "linkedin_url": "https://www.linkedin.com/in/veena-thenkanidiyoor/",
+    "personal_website_url": "https://nitgoa.ac.in/faculty/veena",
+    "google_scholar_url": "https://scholar.google.com/citations?user=XXXXX",
+    "orcid_id": null,
+    "scopus_id": null,
+    "research_gate_url": "https://www.researchgate.net/profile/Veena-Thenkanidiyoor",
+    "other_social_links": null,
+    "bio_summary": "Dr. Veena Thenkanidiyoor is an Associate Professor and Head of the Department of Computer Science and Engineering at NIT Goa.",
+    "research_interests": "Deep Learning, Kernel Methods, Pattern Recognition, Applied Machine Learning, Computer Vision, Speech Processing, Weather Data Analysis, Content-based Information Retrieval",
+    "display_order": 1
+  },
+  "education": [
+    {
+      "degree": "B.E.",
+      "institute": "Manipal Institute of Technology, Manipal Affiliated to Mangalore University",
+      "discipline": "Biomedical Engineering",
+      "graduation_year": 1998,
+      "display_order": 1
+    },
+    {
+      "degree": "M.E.",
+      "institute": "MS from Manipal Academy of Higher Education, Manipal",
+      "discipline": "Medical Software",
+      "graduation_year": 2000,
+      "display_order": 2
+    },
+    {
+      "degree": "Ph.D.",
+      "institute": "IIT Madras",
+      "discipline": "Computer Science and Engineering",
+      "graduation_year": 2014,
+      "display_order": 3
+    }
+  ],
+  "courses_taught": [
+    {
+      "custom_course_name": "Introduction to Machine Learning",
+      "custom_course_code": "CS301",
+      "custom_credits": 3,
+      "custom_course_level": "Undergraduate",
+      "custom_semester": "Odd"
+    },
+    {
+      "custom_course_name": "Computer Organization and Architecture",
+      "custom_course_code": "CS201",
+      "custom_credits": 4,
+      "custom_course_level": "Undergraduate",
+      "custom_semester": "Even"
+    },
+    {
+      "custom_course_name": "Systems Programming",
+      "custom_course_code": "CS302",
+      "custom_credits": 3,
+      "custom_course_level": "Undergraduate",
+      "custom_semester": "Even"
+    },
+    {
+      "custom_course_name": "Computer Vision",
+      "custom_course_code": "CS401",
+      "custom_credits": 3,
+      "custom_course_level": "Undergraduate",
+      "custom_semester": "Odd"
+    },
+    {
+      "custom_course_name": "Object Oriented Programming",
+      "custom_course_code": "CS202",
+      "custom_credits": 3,
+      "custom_course_level": "Undergraduate",
+      "custom_semester": "Even"
+    },
+    {
+      "custom_course_name": "Computer Networks",
+      "custom_course_code": "CS203",
+      "custom_credits": 3,
+      "custom_course_level": "Undergraduate",
+      "custom_semester": "Odd"
+    },
+    {
+      "custom_course_name": "Soft Computing",
+      "custom_course_code": "CS402",
+      "custom_credits": 3,
+      "custom_course_level": "Undergraduate",
+      "custom_semester": "Even"
+    },
+    {
+      "custom_course_name": "Advanced Java Programming",
+      "custom_course_code": "CS303",
+      "custom_credits": 3,
+      "custom_course_level": "Undergraduate",
+      "custom_semester": "Odd"
+    },
+    {
+      "custom_course_name": "Programming in C",
+      "custom_course_code": "CS101",
+      "custom_credits": 4,
+      "custom_course_level": "Undergraduate",
+      "custom_semester": "Odd"
+    },
+    {
+      "custom_course_name": "Data Structures",
+      "custom_course_code": "CS102",
+      "custom_credits": 4,
+      "custom_course_level": "Undergraduate",
+      "custom_semester": "Even"
+    },
+    {
+      "custom_course_name": "Introduction to Algorithms",
+      "custom_course_code": "CS204",
+      "custom_credits": 3,
+      "custom_course_level": "Undergraduate",
+      "custom_semester": "Odd"
+    },
+    {
+      "custom_course_name": "Machine Learning",
+      "custom_course_code": "CS501",
+      "custom_credits": 3,
+      "custom_course_level": "Postgraduate",
+      "custom_semester": "Odd"
+    },
+    {
+      "custom_course_name": "Advanced Computer Architecture",
+      "custom_course_code": "CS502",
+      "custom_credits": 3,
+      "custom_course_level": "Postgraduate",
+      "custom_semester": "Even"
+    },
+    {
+      "custom_course_name": "Pattern Recognition",
+      "custom_course_code": "CS503",
+      "custom_credits": 3,
+      "custom_course_level": "Postgraduate",
+      "custom_semester": "Even"
+    },
+    {
+      "custom_course_name": "Artificial Neural Networks",
+      "custom_course_code": "CS504",
+      "custom_credits": 3,
+      "custom_course_level": "Postgraduate",
+      "custom_semester": "Odd"
+    },
+    {
+      "custom_course_name": "Image Processing",
+      "custom_course_code": "CS505",
+      "custom_credits": 3,
+      "custom_course_level": "Postgraduate",
+      "custom_semester": "Even"
+    },
+    {
+      "custom_course_name": "Advanced Java Programming",
+      "custom_course_code": "CS506",
+      "custom_credits": 3,
+      "custom_course_level": "Postgraduate",
+      "custom_semester": "Odd"
+    },
+    {
+      "custom_course_name": "Relational Database Management Systems",
+      "custom_course_code": "CS507",
+      "custom_credits": 3,
+      "custom_course_level": "Postgraduate",
+      "custom_semester": "Even"
+    },
+    {
+      "custom_course_name": "Web Application Development-I",
+      "custom_course_code": "CS508",
+      "custom_credits": 3,
+      "custom_course_level": "Postgraduate",
+      "custom_semester": "Odd"
+    },
+    {
+      "custom_course_name": "Web Application Development-II",
+      "custom_course_code": "CS509",
+      "custom_credits": 3,
+      "custom_course_level": "Postgraduate",
+      "custom_semester": "Even"
+    }
+  ],
+  "publications": [
+    {
+      "publication_type": "Journal Paper",
+      "title": "Visual Semantic-Based Representation Learning Using Deep CNNs for Scene Recognition",
+      "publication_details": "Shikha Gupta, Krishan Sharma, A. D. Dileep, Veena Thenkanidiyoor, ACM Transactions on Multimedia Computing, Communications, and Applications, 17(2), June 2021",
+      "publication_year": 2021,
+      "publication_month": "June",
+      "journal_name": "ACM Transactions on Multimedia Computing, Communications, and Applications",
+      "volume": "17",
+      "issue": "2",
+      "pages": null,
+      "citation_count": 0,
+      "is_featured": true,
+      "display_order": 1
+    },
+    {
+      "publication_type": "Journal Paper",
+      "title": "Recognition of varying size scene images using semantic analysis of deep activation maps",
+      "publication_details": "Shikha Gupta, A. D. Dileep, Veena Thenkanidiyoor, Machine Vision and Applications, 32(2), pp. 1-19, March 2021",
+      "publication_year": 2021,
+      "publication_month": "March",
+      "journal_name": "Machine Vision and Applications",
+      "volume": "32",
+      "issue": "2",
+      "pages": "1-19",
+      "citation_count": 0,
+      "is_featured": true,
+      "display_order": 2
+    },
+    {
+      "publication_type": "Journal Paper",
+      "title": "Data Analysis and Visualization in Python for Polar Meteorological Data",
+      "publication_details": "V. Sakthivel Samy, Koyel Pramanick, Veena Thenkanidiyoor, Jeni Victor, International Journal of Electrical, Electronics and Computer Engineering (IJEECE), 2(1), 2021",
+      "publication_year": 2021,
+      "publication_month": null,
+      "journal_name": "International Journal of Electrical, Electronics and Computer Engineering",
+      "volume": "2",
+      "issue": "1",
+      "pages": null,
+      "citation_count": 0,
+      "is_featured": false,
+      "display_order": 3
+    },
+    {
+      "publication_type": "Journal Paper",
+      "title": "Segment-level probabilistic sequence kernel and segment-level pyramid match kernel based extreme learning machine for classification of varying length patterns of speech",
+      "publication_details": "Shikha Gupta, A. Karanath, K. Mahrifa, A. D. Dileep, Veena Thenkanidiyoor, International Journal of Speech Technology, 22(1), pp. 231-249, March 2019",
+      "publication_year": 2019,
+      "publication_month": "March",
+      "journal_name": "International Journal of Speech Technology",
+      "volume": "22",
+      "issue": "1",
+      "pages": "231-249",
+      "citation_count": 0,
+      "is_featured": true,
+      "display_order": 4
+    },
+    {
+      "publication_type": "Conference Proceeding",
+      "title": "Application of machine learning techniques to weather forecasting",
+      "publication_details": "Samy, V.S, Veena Thenkanidiyoor, International Symposium Global Collaboration on Data beyond Disciplines, 23-25 September 2020",
+      "publication_year": 2020,
+      "publication_month": "September",
+      "journal_name": null,
+      "citation_count": 0,
+      "is_featured": false,
+      "display_order": 5
+    },
+    {
+      "publication_type": "Conference Proceeding",
+      "title": "Kernel based Matching and a Novel Training approach for CNN-based QbE-STD",
+      "publication_details": "Prajyot Naik, Manisha Naik Gaonkar, Veena Thenkanidiyoor, Dileep A.D., International Conference on Signal Processing and Communications 2020 (SPCOM 2020), Bengalore, India",
+      "publication_year": 2020,
+      "publication_month": "July",
+      "journal_name": null,
+      "citation_count": 0,
+      "is_featured": false,
+      "display_order": 6
+    },
+    {
+      "publication_type": "Conference Proceeding",
+      "title": "Emotion recognition from varying length patterns of speech using CNN-based segment-level pyramid match kernel based SVMs",
+      "publication_details": "Shikha Gupta, Kishalaya De, A.D. Dileep, Veena Thenkanidiyoor, Proceedings of National Conference on Communications 2019 (NCC 2019), Bangalore, India, 2019, pp. 1-6",
+      "publication_year": 2019,
+      "publication_month": "February",
+      "journal_name": null,
+      "citation_count": 0,
+      "is_featured": false,
+      "display_order": 7
+    },
+    {
+      "publication_type": "Conference Proceeding",
+      "title": "SVM-based Language Diarization for Code-Switched Bilingual Indian Speech using Bottleneck Features",
+      "publication_details": "Spoorthy V, Veena Thenkanidiyoor and Dileep A.D., 6th Workshop on Spoken Language Technologies for Under-resourced Languages, 29-31 August, 2018, Gurugram, India",
+      "publication_year": 2018,
+      "publication_month": "August",
+      "journal_name": null,
+      "citation_count": 0,
+      "is_featured": false,
+      "display_order": 8
+    },
+    {
+      "publication_type": "Conference Proceeding",
+      "title": "A Context-aware Convolutional Natural Language Generation model for Dialogue Systems",
+      "publication_details": "Sourab Magrulkar, Suhani Shrivatsava, Veena Thenkanidiyoor, Dileep Aroor Dinesh, Proceedings of the SIGDIAL 2018, 12-14 July 2018, Melbourne, Australia",
+      "publication_year": 2018,
+      "publication_month": "July",
+      "journal_name": null,
+      "citation_count": 0,
+      "is_featured": false,
+      "display_order": 9
+    },
+    {
+      "publication_type": "Conference Proceeding",
+      "title": "Modified Time Flexible Kernel for Video Activity Recognition using Support Vector Machines",
+      "publication_details": "Ankit Sharma, Apurv Kumar, Sony Allappa, Veena Thenkanidiyoor, Dileep Aroor Dinesh, and Shikha Gupta, 7th International Conference on Pattern Recognition Applications and Methods (ICPRAM 2018), Funchal, Madeira –Portugal",
+      "publication_year": 2018,
+      "publication_month": "January",
+      "journal_name": null,
+      "citation_count": 0,
+      "is_featured": false,
+      "display_order": 10
+    },
+    {
+      "publication_type": "Conference Proceeding",
+      "title": "Deep Spatial Pyramid Match Kernel for Scene Image Classification",
+      "publication_details": "Shikha Gupta, Deepak Kumar Pradhan, Dileep Aroor Dinesh, and Veena Thenkanidiyoor, 7th International Conference on Pattern Recognition Applications and Methods (ICPRAM 2018), Funchal, Madeira –Portugal",
+      "publication_year": 2018,
+      "publication_month": "January",
+      "journal_name": null,
+      "citation_count": 0,
+      "is_featured": false,
+      "display_order": 11
+    },
+    {
+      "publication_type": "Conference Proceeding",
+      "title": "Text Classification using Hierarchical Sparse Representation Classifiers",
+      "publication_details": "Neeraj Sharma, Dileep Aroor Dinesh, and Veena Thenkanidiyoor, 16th International Conference on Machine Learning and Applications (ICMLA 2017), Cancun, Mexico",
+      "publication_year": 2017,
+      "publication_month": "December",
+      "journal_name": null,
+      "citation_count": 0,
+      "is_featured": false,
+      "display_order": 12
+    },
+    {
+      "publication_type": "Conference Proceeding",
+      "title": "Sematic Multinomial Representations for Scene Images using CNN-based Pseudo-concepts and Concept Neural Networks",
+      "publication_details": "Deepak Kumar Pradhan, Shikha Gupta, Veena Thenkanidiyoor, and Dileep Aroor Dinesh, The Sixth National Conference on Computer Vision, Pattern Recognition, Image Processing and Graphics (NCVPRIPG 2017)",
+      "publication_year": 2017,
+      "publication_month": "December",
+      "journal_name": null,
+      "citation_count": 0,
+      "is_featured": false,
+      "display_order": 13
+    },
+    {
+      "publication_type": "Conference Proceeding",
+      "title": "The Semantic Multinomial Representation of Images Obtained Using Dynamic Kernel Based Pseudo-concept SVMs",
+      "publication_details": "Shikha Gupta, A. D. Dileep, Veena Thenaknidiyoor, Proceedings of 23rd National Conference on Communications 2017 (NCC 2017), IIT Madras, Chennai",
+      "publication_year": 2017,
+      "publication_month": "March",
+      "journal_name": null,
+      "citation_count": 0,
+      "is_featured": false,
+      "display_order": 14
+    },
+    {
+      "publication_type": "Conference Proceeding",
+      "title": "Segment-level Probabilistic Sequence Kernel based Support Vector Machines for Classification of Varying Length Patterns of Speech",
+      "publication_details": "Shikha Gupta, Veena Thenaknidiyoor, A. D. Dileep, The 23rd International Conference on Neural Information Processing (ICONIP 2016), Kyoto, Japan",
+      "publication_year": 2016,
+      "publication_month": "October",
+      "journal_name": null,
+      "citation_count": 0,
+      "is_featured": false,
+      "display_order": 15
+    },
+    {
+      "publication_type": "Conference Proceeding",
+      "title": "Text Classification using Combined Sparse Representation Classifiers and Support Vector Machines",
+      "publication_details": "Neeraj Sharma, Anshu Sharma, Veena Thenkanidiyoor, Dileep Aroor Dinesh, 4th International Symposium on Computational and Business Intelligence (ISCBI 2016), Olten, Switzerland",
+      "publication_year": 2016,
+      "publication_month": "September",
+      "journal_name": null,
+      "citation_count": 0,
+      "is_featured": false,
+      "display_order": 16
+    },
+    {
+      "publication_type": "Conference Proceeding",
+      "title": "Segment-Level Pyramid Match Kernels For The Classification of Varying Length Patterns of Speech Using SVMs",
+      "publication_details": "Shikha Gupta, A.D.Dileep, Veena Thenkanidiyoor, 24th European Signal Processing Conference (EUSIPCO 2016), Hilton, Budapest, Hungary",
+      "publication_year": 2016,
+      "publication_month": "August",
+      "journal_name": null,
+      "citation_count": 0,
+      "is_featured": false,
+      "display_order": 17
+    },
+    {
+      "publication_type": "Conference Proceeding",
+      "title": "Spatial Probabilistic Sequence Kernel for Scene Classification using Support Vector Machines",
+      "publication_details": "Shikha Gupta, Veena Thenkanidiyoor, Dileep A. D., CVPR 2016 workshop on Women in Computer Vision 2016 (WiCV 2016), Las Vegas, NV, USA",
+      "publication_year": 2016,
+      "publication_month": "June",
+      "journal_name": null,
+      "citation_count": 0,
+      "is_featured": false,
+      "display_order": 18
+    },
+    {
+      "publication_type": "Conference Proceeding",
+      "title": "Semantic Multinomial Representation for Scene Images using Dynamic Kernel based SVMs",
+      "publication_details": "Shikha Gupta, Samriddhi Jain, Veena Thenkanidiyoor, A. D. Dileep, Scene Understanding Workshop (SUNw 2016), CVPR 2016, Las Vegas, NV, USA",
+      "publication_year": 2016,
+      "publication_month": "June",
+      "journal_name": null,
+      "citation_count": 0,
+      "is_featured": false,
+      "display_order": 19
+    },
+    {
+      "publication_type": "Conference Proceeding",
+      "title": "Example-Specific Density based Matching Kernels for Scene Classification using Support Vector Machines",
+      "publication_details": "Abhijeet Sachdev, Veena Thenkanidiyoor, Dileep A. D. and C. Chandra Sekhar, Proceedings of 14th IEEE International Conference on Machine Learning and Applications (ICMLA 2015), December 09-11, Miami, Florida, USA",
+      "publication_year": 2015,
+      "publication_month": "December",
+      "journal_name": null,
+      "citation_count": 0,
+      "is_featured": false,
+      "display_order": 20
+    },
+    {
+      "publication_type": "Conference Proceeding",
+      "title": "A Family of Example-Specific Density based Matching Kernels for Classification of Varying Length Patterns of Speech using SVMs",
+      "publication_details": "Abhijeet Sachdev, A. D. Dileep, and Veena Thenkanidiyoor, Proceedings of 2nd International Conference on Soft Computing and Machine Intelligence (ISCMI 2015), November 23-24, Hong Kong [WON THE BEST PAPER AWARD]",
+      "publication_year": 2015,
+      "publication_month": "November",
+      "journal_name": null,
+      "citation_count": 0,
+      "is_featured": true,
+      "display_order": 21
+    },
+    {
+      "publication_type": "Conference Proceeding",
+      "title": "Example-Specific Density based Matching Kernel for Classification of Varying Length Patterns of Speech using SVMs",
+      "publication_details": "Abhijeet Sachdev, A. D. Dileep, and Veena Thenkanidiyoor, Proceedings of 22nd International Conference on Neural Information Processing (ICONIP 2015), November 09-12, Istanbul, Turkey",
+      "publication_year": 2015,
+      "publication_month": "November",
+      "journal_name": null,
+      "citation_count": 0,
+      "is_featured": false,
+      "display_order": 22
+    },
+    {
+      "publication_type": "Conference Proceeding",
+      "title": "Matching of images using Gaussian mixture model based intermediate matching kernel for retrieval of scene images",
+      "publication_details": "T. Veena, and C. C. Sekhar, Proceedings of Centenary Conference 2011, Electrical Engineering, Indian Institute of Science, (Bangalore,India), December 2011 pp. 501-506",
+      "publication_year": 2011,
+      "publication_month": "December",
+      "journal_name": null,
+      "citation_count": 0,
+      "is_featured": false,
+      "display_order": 23
+    },
+    {
+      "publication_type": "Conference Proceeding",
+      "title": "Scene Categorization Using Large Margin Gaussian Mixture Models",
+      "publication_details": "T. Veena, A. D. Dileep. and C. Chandra Sekhar, Proceedings of 2010 International Conference on Image Processing, Computer Vision, & Pattern Recognition (IPCV-2010), Las Vegas, Nevada, USA, July 2010, pp. 395-401",
+      "publication_year": 2010,
+      "publication_month": "July",
+      "journal_name": null,
+      "citation_count": 0,
+      "is_featured": false,
+      "display_order": 24
+    },
+    {
+      "publication_type": "Conference Proceeding",
+      "title": "Gaussian Mixture Model based Posterior Probability Support Vector Machines for Speech Emotion Recognition and Image Classification",
+      "publication_details": "S. Chandrakala, T. Veena and C. Chandra Sekhar, Proceedings of Second International Conference on Intelligent Human Computer Interaction, Allahabad, India, January 2010, pp 85-99",
+      "publication_year": 2010,
+      "publication_month": "January",
+      "journal_name": null,
+      "citation_count": 0,
+      "is_featured": false,
+      "display_order": 25
+    },
+    {
+      "publication_type": "Conference Proceeding",
+      "title": "Concept Saliency Score Estimation for Content Based Image Retrieval",
+      "publication_details": "Veena T. and C. Chandra Sekhar, International Conference on Cognitive and Neural Systems (ICCNS-2009), Boston, MA, USA, May 2009",
+      "publication_year": 2009,
+      "publication_month": "May",
+      "journal_name": null,
+      "citation_count": 0,
+      "is_featured": false,
+      "display_order": 26
+    }
+  ],
+  "professional_memberships": [],
+  "research_guidance": [
+    {
+      "student_name": "Ms. Diana Terezinha Miranda",
+      "research_topic": "Medical Image Captioning",
+      "guidance_type": "PhD",
+      "status": "Ongoing",
+      "start_date": null,
+      "completion_date": null
+    },
+    {
+      "student_name": "Ms. Naik Gaonkar Manisha babuso",
+      "research_topic": "Spoken term Detection",
+      "guidance_type": "PhD",
+      "status": "Ongoing",
+      "start_date": null,
+      "completion_date": null
+    },
+    {
+      "student_name": "Mr. V. Sakthivelsamy",
+      "research_topic": "Polar Weather Data Analysis",
+      "guidance_type": "PhD",
+      "status": "Ongoing",
+      "start_date": null,
+      "completion_date": null
+    }
+  ],
+  "funded_projects": [],
+  "awards_and_honors": [],
+  "courses_attended": [
+    {
+      "course_name": "Workshop on Machine Learning for Medical Image analysis",
+      "organizing_institute": "Focus On: Microscopy Image Processing",
+      "start_date": "2017-06-01",
+      "end_date": "2017-06-30",
+      "duration": null,
+      "description": "Workshop on Machine Learning for Medical Image analysis Focus On: Microscopy Image Processing"
+    },
+    {
+      "course_name": "Winter School on Speech and Audio Processing",
+      "organizing_institute": "Theme: Spatial Audio Processing",
+      "start_date": "2017-01-01",
+      "end_date": "2017-01-31",
+      "duration": null,
+      "description": "Winter School on Speech and Audio Processing Theme: Spatial Audio Processing"
+    },
+    {
+      "course_name": "Regional Training and Workshop National Academic Depository",
+      "organizing_institute": "NIT Goa",
+      "start_date": "2016-10-01",
+      "end_date": "2016-10-31",
+      "duration": null,
+      "description": "Regional Training and Workshop National Academic Depository"
+    },
+    {
+      "course_name": "Summer School on Deep Learning for Computer Vision",
+      "organizing_institute": "IIIT Hyderabad",
+      "start_date": "2016-07-01",
+      "end_date": "2016-07-31",
+      "duration": null,
+      "description": "Summer School on Deep Learning for Computer Vision, IIIT Hyderabad"
+    },
+    {
+      "course_name": "Workshop on Machine Learning for Medical Image Analysis",
+      "organizing_institute": "IIT Mandi",
+      "start_date": "2016-06-01",
+      "end_date": "2016-06-30",
+      "duration": null,
+      "description": "Workshop on Machine Learning for Medical Image Analysis, Focussed on Magnetic Resonance Imaging (MRI), IIT Mandi, Mandi, Himachal Pradesh"
+    },
+    {
+      "course_name": "Winter School on Speech and Audio Processing (WiSSAP-2016)",
+      "organizing_institute": "SSN College of Engineering, Chennai",
+      "start_date": "2016-01-01",
+      "end_date": "2016-01-31",
+      "duration": null,
+      "description": "Winter School on Speech and Audio Processing (WiSSAP-2016): Speech Prosody, SSN College of Engineering, Chennai"
+    },
+    {
+      "course_name": "Workshop on Machine Learning for Medical Image Analysis (WMLMIA 2015)",
+      "organizing_institute": "IIT Mandi",
+      "start_date": "2015-06-01",
+      "end_date": "2015-06-30",
+      "duration": null,
+      "description": "Workshop on Machine Learning for Medical Image Analysis (WMLMIA 2015) held at IIT Mandi, Mandi, Himachalpradesh"
+    },
+    {
+      "course_name": "Winter School on Speech and Audio Processing (WiSSAP-2015)",
+      "organizing_institute": "DA-IICT, Gandhinagar",
+      "start_date": "2015-01-01",
+      "end_date": "2015-01-31",
+      "duration": null,
+      "description": "Winter School on Speech and Audio Processing (WiSSAP-2015): Production-Perception based New Models of Speech Analysis at Dhirubhai Ambani Institute of Information and Communication Technology(DA-IICT), Gandhinagar, India"
+    }
+  ],
+  "courses_conducted": [
+    {
+      "course_name": "Two day National Workshop on LaTeX for Technical Documentation",
+      "organizing_role": "Organizer",
+      "start_date": "2015-08-21",
+      "end_date": "2015-08-22",
+      "duration": "2 days",
+      "description": "Two day National Workshop on \"LaTeX for Technical Documentation\" from Aug 21-Aug 22, 2015"
+    },
+    {
+      "course_name": "Short-term Course on Pattern Analysis and Information Security (PAIS)",
+      "organizing_role": "Organizer",
+      "start_date": "2014-06-30",
+      "end_date": "2014-07-04",
+      "duration": "5 days",
+      "description": "Short-term Course on Pattern Analysis and Information Security (PAIS), 30 June - 4 July, 2014"
+    }
+  ],
+  "metadata": {
+    "last_updated": "2025-10-29T00:00:00Z",
+    "data_source": "complete_legacy_json_migration",
+    "validation_status": "pending",
+    "migration_notes": "Complete conversion from legacy JSON format with all 4 journal papers and 22 conference proceedings"
+  }
+}
