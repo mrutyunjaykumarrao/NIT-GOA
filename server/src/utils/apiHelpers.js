@@ -291,49 +291,108 @@ async function getFacultyDetails(employeeCode) {
     ORDER BY fpm.membership_id DESC
   `, [faculty.employee_code]);
 
+  // Get research guidance students
+  const [researchGuidance] = await executeQuery(`
+    SELECT 
+      guidance_id,
+      student_honorific,
+      student_name,
+      research_topic,
+      status,
+      display_order
+    FROM faculty_research_guidance
+    WHERE employee_code = ?
+    ORDER BY display_order ASC
+  `, [faculty.employee_code]);
+
+  // Get training/conferences attended
+  const [trainingAttended] = await executeQuery(`
+    SELECT 
+      training_id,
+      month,
+      year,
+      training_information,
+      display_order
+    FROM faculty_training_attended
+    WHERE employee_code = ?
+    ORDER BY display_order ASC
+  `, [faculty.employee_code]);
+
+  // Get training/conferences conducted
+  const [trainingConducted] = await executeQuery(`
+    SELECT 
+      training_id,
+      month,
+      year,
+      training_information,
+      display_order
+    FROM faculty_training_conducted
+    WHERE employee_code = ?
+    ORDER BY display_order ASC
+  `, [faculty.employee_code]);
+
+  // Get custom sections with their fields and entries
+  const [customSections] = await executeQuery(`
+    SELECT 
+      cs.custom_section_id,
+      cs.section_title,
+      cs.section_type,
+      cs.display_order,
+      cs.is_visible
+    FROM faculty_custom_sections cs
+    WHERE cs.employee_code = ? AND cs.is_visible = 1
+    ORDER BY cs.display_order ASC
+  `, [faculty.employee_code]);
+
+  // For each custom section, get its fields and entries
+  for (let section of customSections) {
+    // Get fields (column definitions)
+    const [fields] = await executeQuery(`
+      SELECT field_id, field_name, field_type, display_order
+      FROM faculty_custom_section_fields
+      WHERE custom_section_id = ?
+      ORDER BY display_order ASC
+    `, [section.custom_section_id]);
+    
+    // Get all cell values for this section
+    const [cellValues] = await executeQuery(`
+      SELECT 
+        e.row_number,
+        e.field_id,
+        e.field_value,
+        f.field_name
+      FROM faculty_custom_section_entries e
+      JOIN faculty_custom_section_fields f ON e.field_id = f.field_id
+      WHERE e.custom_section_id = ?
+      ORDER BY e.row_number ASC, f.display_order ASC
+    `, [section.custom_section_id]);
+    
+    // Organize data by rows
+    const rowsMap = {};
+    for (let cell of cellValues) {
+      if (!rowsMap[cell.row_number]) {
+        rowsMap[cell.row_number] = { row_number: cell.row_number };
+      }
+      rowsMap[cell.row_number][cell.field_name] = cell.field_value;
+    }
+    
+    // Convert to array and sort by row_number
+    const rows = Object.values(rowsMap).sort((a, b) => a.row_number - b.row_number);
+    
+    section.fields = fields;
+    section.entries = rows;
+  }
+
   return {
     ...faculty,
     publications,
     education,
     courses_taught: courses,
     memberships,
-    // Add placeholder data for sections that don't have database tables yet
-    researchGuidance: [
-      "Ms. Diana Terezinha Miranda, working on \"Medical Image Captioning\" [Ongoing]",
-      "Ms. Naik Gaonkar Manisha babuso, working on \"Spoken term Detection\" [Ongoing]",
-      "Mr. V. Sakthivelsamy. working on \"Polar Weather Data Analysis\" [Ongoing]"
-    ],
-    fundedProjects: [],
-    awardsAndHonors: [],
-    coursesAttended: [
-      {
-        "month": "JUN",
-        "year": "2017", 
-        "info": "Workshop on Machine Learning for Medical Image analysis Focus On: Microscopy Image Processing"
-      },
-      {
-        "month": "JAN",
-        "year": "2017",
-        "info": "Winter School on Speech and Audio Processing Theme: Spatial Audio Processing"
-      },
-      {
-        "month": "JULY",
-        "year": "2016",
-        "info": "Summer School on Deep Learning for Computer Vision, IIIT Hyderabad"
-      }
-    ],
-    coursesConducted: [
-      {
-        "month": "AUG",
-        "year": "2015",
-        "info": "Two day National Workshop on \"LaTeX for Technical Documentation\" from Aug 21-Aug 22, 2015"
-      },
-      {
-        "month": "JULY",
-        "year": "2014",
-        "info": "Short-term Course on Pattern Analysis and Information Security (PAIS), 30 June - 4 July, 2014"
-      }
-    ]
+    research_guidance: researchGuidance,
+    training_attended: trainingAttended,
+    training_conducted: trainingConducted,
+    custom_sections: customSections
   };
 }
 
@@ -782,20 +841,18 @@ function formatFacultyProfile(faculty) {
     ...(faculty.memberships && faculty.memberships.length > 0 && {
       memberships: faculty.memberships
     }),
-    ...(faculty.researchGuidance && faculty.researchGuidance.length > 0 && {
-      researchGuidance: faculty.researchGuidance
+    ...(faculty.research_guidance && faculty.research_guidance.length > 0 && {
+      researchGuidance: faculty.research_guidance
     }),
-    ...(faculty.fundedProjects && {
-      fundedProjects: faculty.fundedProjects
+    ...(faculty.training_attended && faculty.training_attended.length > 0 && {
+      trainingAttended: faculty.training_attended
     }),
-    ...(faculty.awardsAndHonors && {
-      awardsAndHonors: faculty.awardsAndHonors
+    ...(faculty.training_conducted && faculty.training_conducted.length > 0 && {
+      trainingConducted: faculty.training_conducted
     }),
-    ...(faculty.coursesAttended && faculty.coursesAttended.length > 0 && {
-      coursesAttended: faculty.coursesAttended
-    }),
-    ...(faculty.coursesConducted && faculty.coursesConducted.length > 0 && {
-      coursesConducted: faculty.coursesConducted
+    // Custom sections (dynamic)
+    ...(faculty.custom_sections && faculty.custom_sections.length > 0 && {
+      customSections: faculty.custom_sections
     }),
     // Social links
     socialLinks: {

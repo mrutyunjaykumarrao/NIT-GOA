@@ -291,13 +291,64 @@ CREATE TABLE `faculty_custom_section_fields` (
 CREATE TABLE `faculty_custom_section_entries` (
   `entry_id` int NOT NULL AUTO_INCREMENT,
   `custom_section_id` int NOT NULL,
-  `entry_data` json NOT NULL,
-  `display_order` int DEFAULT '0',
+  `field_id` int NOT NULL,
+  `row_number` int NOT NULL DEFAULT '1',
+  `field_value` text COLLATE utf8mb4_unicode_ci,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`entry_id`),
+  UNIQUE KEY `unique_section_field_row` (`custom_section_id`,`field_id`,`row_number`),
   KEY `custom_section_id` (`custom_section_id`),
-  CONSTRAINT `faculty_custom_section_entries_ibfk_1` FOREIGN KEY (`custom_section_id`) REFERENCES `faculty_custom_sections` (`custom_section_id`) ON DELETE CASCADE
+  KEY `field_id` (`field_id`),
+  KEY `row_number` (`row_number`),
+  CONSTRAINT `faculty_custom_section_entries_ibfk_1` FOREIGN KEY (`custom_section_id`) REFERENCES `faculty_custom_sections` (`custom_section_id`) ON DELETE CASCADE,
+  CONSTRAINT `faculty_custom_section_entries_ibfk_2` FOREIGN KEY (`field_id`) REFERENCES `faculty_custom_section_fields` (`field_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `faculty_research_guidance` (
+  `guidance_id` int NOT NULL AUTO_INCREMENT,
+  `employee_code` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `student_honorific` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `student_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `research_topic` text COLLATE utf8mb4_unicode_ci,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `display_order` int DEFAULT '0',
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`guidance_id`),
+  KEY `employee_code` (`employee_code`),
+  KEY `idx_display_order` (`display_order`),
+  CONSTRAINT `faculty_research_guidance_ibfk_1` FOREIGN KEY (`employee_code`) REFERENCES `employees` (`employee_code`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `faculty_training_attended` (
+  `training_id` int NOT NULL AUTO_INCREMENT,
+  `employee_code` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `month` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `year` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `training_information` text COLLATE utf8mb4_unicode_ci,
+  `display_order` int DEFAULT '0',
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`training_id`),
+  KEY `employee_code` (`employee_code`),
+  KEY `idx_display_order` (`display_order`),
+  CONSTRAINT `faculty_training_attended_ibfk_1` FOREIGN KEY (`employee_code`) REFERENCES `employees` (`employee_code`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `faculty_training_conducted` (
+  `training_id` int NOT NULL AUTO_INCREMENT,
+  `employee_code` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `month` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `year` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `training_information` text COLLATE utf8mb4_unicode_ci,
+  `display_order` int DEFAULT '0',
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`training_id`),
+  KEY `employee_code` (`employee_code`),
+  KEY `idx_display_order` (`display_order`),
+  CONSTRAINT `faculty_training_conducted_ibfk_1` FOREIGN KEY (`employee_code`) REFERENCES `employees` (`employee_code`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ============================================================
