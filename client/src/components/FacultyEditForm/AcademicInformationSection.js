@@ -120,6 +120,7 @@ const AcademicInformationSection = ({ formData, setFormData, loading }) => {
         { value: 'M.S', label: 'M.S (Master of Science)' },
         { value: 'M.Sc', label: 'M.Sc (Master of Science)' },
         { value: 'MBA', label: 'MBA (Master of Business Administration)' },
+        { value: 'M.Phil', label: 'M.Phil (Master of Philosophy)' },
         { value: 'B.Tech', label: 'B.Tech (Bachelor of Technology)' },
         { value: 'B.E', label: 'B.E (Bachelor of Engineering)' },
         { value: 'B.Sc', label: 'B.Sc (Bachelor of Science)' },

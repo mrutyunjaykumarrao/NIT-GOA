@@ -506,6 +506,7 @@
 /* Dark Theme Adjustments */
 [data-theme="dark"] .faculty-edit-page {
     background: #121212;
+    color: #ffffff;
 }
 
 [data-theme="dark"] .faculty-edit-container {
@@ -514,7 +515,12 @@
 }
 
 [data-theme="dark"] .faculty-edit-header {
-    background: linear-gradient(135deg, #263238, #37474f);
+    background: linear-gradient(135deg, #4dc4ff, #084c6f);
+}
+
+[data-theme="dark"] .faculty-edit-header h1 {
+    color: #ffffff !important;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
 }
 
 [data-theme="dark"] .dynamic-item {
@@ -543,11 +549,11 @@
 }
 
 [data-theme="dark"] .form-group label {
-    color: #b0bec5;
+    color: #4fc3f7 !important;
 }
 
 [data-theme="dark"] .section-header h3 {
-    color: #ffffff;
+    color: #4fc3f7;
 }
 
 [data-theme="dark"] .add-button {
