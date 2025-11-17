@@ -1014,34 +1014,6 @@ const FacultyEdit = () => {
                     )}
                     </div>
                 </div>
-
-                {/* Footer Actions */}
-                <div className="faculty-edit-footer">
-                    <button 
-                        className="cancel-button"
-                        onClick={() => navigate(`/faculty/${id}`)}
-                    >
-                        <i className="fas fa-times"></i>
-                        Cancel
-                    </button>
-                    <button 
-                        className="save-button"
-                        onClick={handleSave}
-                        disabled={saving}
-                    >
-                        {saving ? (
-                            <>
-                                <i className="fas fa-spinner fa-spin"></i>
-                                Saving...
-                            </>
-                        ) : (
-                            <>
-                                <i className="fas fa-save"></i>
-                                Save Changes
-                            </>
-                        )}
-                    </button>
-                </div>
             </div>
         </div>
     );
