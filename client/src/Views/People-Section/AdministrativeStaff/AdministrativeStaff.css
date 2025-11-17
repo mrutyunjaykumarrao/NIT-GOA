@@ -142,6 +142,34 @@
     line-clamp: 2;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
+    background: #f0f7ff;
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    text-align: center;
+    border-left: 3px solid #2196f3;
+}
+
+.administrative-staff-responsibilities {
+    background: #f0f7ff;
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    text-align: center;
+    border-left: 3px solid #2196f3;
+}
+
+.administrative-staff-responsibilities .responsibilities-text {
+    font-size: 13px;
+    color: #424242;
+    line-height: 1.5;
+    margin: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
 }
 
 .administrative-staff-contact {
@@ -390,6 +418,15 @@
 
 .administrative-staff-page.dark .administrative-staff-department {
     color: #78909c;
+}
+
+.administrative-staff-page.dark .administrative-staff-responsibilities {
+    background: #263238;
+    border-left-color: #4fc3f7;
+}
+
+.administrative-staff-page.dark .administrative-staff-responsibilities .responsibilities-text {
+    color: #b0bec5;
 }
 
 .administrative-staff-page.dark .administrative-staff-contact {

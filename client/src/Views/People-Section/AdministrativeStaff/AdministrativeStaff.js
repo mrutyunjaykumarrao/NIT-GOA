@@ -125,6 +125,11 @@ const AdministrativeStaff = () => {
                                      staff.department_name !== 'General Administration' && (
                                         <p className="administrative-staff-department">{staff.department_name}</p>
                                     )}
+                                    {staff.responsibilities && staff.responsibilities.trim() && (
+                                        <div className="administrative-staff-responsibilities">
+                                            <p className="responsibilities-text">{staff.responsibilities}</p>
+                                        </div>
+                                    )}
                                     <div className="administrative-staff-contact">
                                         <p><strong>Email:</strong> <a href={`mailto:${staff.email}`}>{staff.email}</a></p>
                                         <p><strong>Extension No.:</strong> <a href={`tel:${staff.phone}`}>{staff.phone}</a></p>
