@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import useAsyncOperation from '../../hooks/useAsyncOperation';
 import AdminLayout from './AdminLayout';
@@ -13,6 +14,7 @@ import './AdminDashboard.css';
 
 const AdminDashboard = () => {
   const { user, token } = useAuth();
+  const navigate = useNavigate();
   const { executeAsync } = useAsyncOperation();
   const [activeTab, setActiveTab] = useState('analytics');
   const [error, setError] = useState(null);
@@ -499,6 +501,19 @@ const AdminDashboard = () => {
   };
 
   const openEditModal = (entity, item) => {
+    // For faculty, navigate to the edit page instead of opening modal
+    if (entity === 'faculty') {
+      const facultyId = item.faculty_id || item.employee_code;
+      if (!facultyId) {
+        console.error('No faculty ID found:', item);
+        alert('Cannot edit faculty: ID not found');
+        return;
+      }
+      navigate(`/faculty/${facultyId}/edit`);
+      return;
+    }
+    
+    // For other entities, open modal as before
     setModalType('edit');
     setModalEntity(entity);
     setSelectedItem(item);
@@ -594,13 +609,7 @@ const AdminDashboard = () => {
         <FacultyModal
           show={showModal && modalEntity === 'faculty'}
           onClose={() => setShowModal(false)}
-          onSubmit={modalType === 'create' ? 
-            (data) => handleCreate('faculty', data) : 
-            (data) => handleUpdate('faculty', selectedItem?.faculty_id, data)
-          }
-          mode={modalType}
-          initialData={selectedItem}
-          employees={employees}
+          onSubmit={(data) => handleCreate('faculty', data)}
           departments={departments}
         />
 
