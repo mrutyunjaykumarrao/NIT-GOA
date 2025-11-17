@@ -308,7 +308,7 @@ async function getFacultyDetails(employeeCode) {
   // Get training/conferences attended
   const [trainingAttended] = await executeQuery(`
     SELECT 
-      training_id,
+      training_attended_id,
       month,
       year,
       training_information,
@@ -321,7 +321,7 @@ async function getFacultyDetails(employeeCode) {
   // Get training/conferences conducted
   const [trainingConducted] = await executeQuery(`
     SELECT 
-      training_id,
+      training_conducted_id,
       month,
       year,
       training_information,

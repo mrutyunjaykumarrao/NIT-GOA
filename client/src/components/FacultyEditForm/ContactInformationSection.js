@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const ContactInformationSection = ({ formData, setFormData, loading }) => {
+
+    // Debug: Log formData whenever it changes
+    useEffect(() => {
+        console.log('ContactInformationSection received formData:', formData);
+    }, [formData]);
 
     const handleInputChange = (field, value) => {
         setFormData(prev => ({

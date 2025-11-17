@@ -87,43 +87,23 @@ app.use('/api/auth', require('./src/routes/auth'));
 // Public display routes (for people section cards, visitor count, etc.)
 app.use('/api/public', require('./src/routes/publicDisplay'));
 
-// Faculty details routes (for faculty detail pages - view and edit)
+// Faculty list routes (for faculty profile cards display)
+app.use('/api/faculty-list', require('./src/routes/facultyList'));
+
+// Faculty details routes (for complete faculty profile viewing)
 app.use('/api/faculty-details', require('./src/routes/facultyDetailsAPI'));
+
+// Faculty edit routes (authenticated - section-specific editing with preload)
+app.use('/api/faculty-edit', require('./src/routes/facultyEdit'));
+
+// Staff routes (technical and administrative staff)
+app.use('/api/staff', require('./src/routes/staff'));
 
 // Admin dashboard routes (analytics, user management, approvals, CRUD operations)
 app.use('/api/admin', require('./src/routes/admin'));
 
-// ======================
-// LEGACY ROUTES (to be phased out)
-// ======================
-
-// Legacy public routes (keeping for backward compatibility)
-app.use('/api/public-legacy', require('./src/routes/publicRoutes'));
-app.use('/api/faculty-profiles', require('./src/routes/facultyProfiles'));
-app.use('/api/faculty-details-legacy', require('./src/routes/facultyDetails'));
-
-// Legacy modular faculty routes
-const { router: facultyCoreRouter } = require('./src/routes/faculty/facultyCore');
-app.use('/api/faculty/core', facultyCoreRouter);
-app.use('/api/faculty/profile', require('./src/routes/faculty/facultyProfile'));
-app.use('/api/faculty/academic', require('./src/routes/faculty/facultyAcademic'));
-app.use('/api/faculty/teaching', require('./src/routes/faculty/facultyTeaching'));
-app.use('/api/faculty/social', require('./src/routes/faculty/facultySocial'));
-app.use('/api/faculty/data', require('./src/routes/faculty/facultyData'));
-
-// Legacy admin and other routes
-app.use('/api/admin-legacy', require('./src/routes/admin'));
+// Analytics routes
 app.use('/api/analytics', require('./src/routes/analytics'));
-app.use('/api/staff', require('./src/routes/staff'));
-
-// Temporary backward compatibility - will redirect to new endpoints
-app.use('/api/faculty', (req, res) => {
-  if (req.path.includes('/details')) {
-    return res.redirect(`/api/faculty-details${req.path}`);
-  } else {
-    return res.redirect(`/api/faculty-profiles${req.path}`);
-  }
-});
 
 // Database test endpoint
 app.get('/api/test-db', async (req, res) => {

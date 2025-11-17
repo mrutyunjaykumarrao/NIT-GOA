@@ -18,7 +18,7 @@ const Faculty = () => {
         const fetchFaculty = async () => {
             try {
                 setLoading(true);
-                const response = await fetch('/api/faculty-profiles');
+                const response = await fetch('/api/faculty-list');
                 const result = await response.json();
                 
                 if (response.ok && result.success) {
@@ -110,7 +110,7 @@ const Faculty = () => {
         };
         
         acc[deptCode].push({
-            id: faculty.id.toString(),
+            id: faculty.employee_code,
             employee_code: faculty.employee_code,
             name: faculty.full_name,
             formattedName: formatName(faculty),

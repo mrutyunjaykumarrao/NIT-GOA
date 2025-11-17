@@ -10,6 +10,13 @@ import ContactInformationSection from '../../../../components/FacultyEditForm/Co
 import ResearchAreasSection from '../../../../components/FacultyEditForm/ResearchAreasSection';
 import CoursesTaughtSection from '../../../../components/FacultyEditForm/CoursesTaughtSection';
 import AcademicInformationSection from '../../../../components/FacultyEditForm/AcademicInformationSection';
+import PublicationsSection from '../../../../components/FacultyEditForm/PublicationsSection';
+import ResearchGuidanceSection from '../../../../components/FacultyEditForm/ResearchGuidanceSection';
+import MembershipsSection from '../../../../components/FacultyEditForm/MembershipsSection';
+import TrainingSection from '../../../../components/FacultyEditForm/TrainingSection';
+import SocialLinksSection from '../../../../components/FacultyEditForm/SocialLinksSection';
+import CustomSectionsManager from '../../../../components/FacultyEditForm/CustomSectionsManager';
+import CustomSectionEntries from '../../../../components/FacultyEditForm/CustomSectionEntries';
 
 const FacultyEdit = () => {
     const { id } = useParams();
@@ -44,8 +51,6 @@ const FacultyEdit = () => {
         linkedin_url: '',
         personal_website_url: '',
         google_scholar_url: '',
-        orcid_id: '',
-        scopus_id: '',
         research_gate_url: '',
         
         // Academic Information
@@ -58,6 +63,22 @@ const FacultyEdit = () => {
         
         // Publications
         publications: [],
+        
+        // Courses Taught
+        courses_taught: [],
+        
+        // Memberships
+        memberships: [],
+        
+        // Research Guidance
+        research_guidance: [],
+        
+        // Training
+        training_attended: [],
+        training_conducted: [],
+        
+        // Custom Sections
+        custom_sections: [],
         
         // Profile
         profile_image: ''
@@ -148,68 +169,117 @@ const FacultyEdit = () => {
             setLoading(true);
             const token = localStorage.getItem('authToken');
             
-            // Load data from our new modular APIs
-            const [profileSummary, personalInfo, contactInfo, socialLinks, education, researchAreas] = await Promise.all([
-                // Core profile summary
-                fetch(`/api/faculty/core/${id}/profile-summary`).then(r => r.json()),
-                // Personal information
-                fetch(`/api/faculty/profile/${id}/personal`).then(r => r.json()),
-                // Contact information  
-                fetch(`/api/faculty/profile/${id}/contact`).then(r => r.json()),
-                // Social links (using the dedicated social endpoint)
-                fetch(`/api/faculty/social/${id}/social-links`).then(r => r.json()),
-                // Education
-                fetch(`/api/faculty/academic/${id}/education`).then(r => r.json()),
-                // Research areas (fixed endpoint name)
-                fetch(`/api/faculty/academic/${id}/research-areas`).then(r => r.json())
+            // Use new faculty-edit endpoints for complete data
+            const [profileRes, educationRes, researchAreasRes, publicationsRes, 
+                   researchGuidanceRes, trainingAttendedRes, trainingConductedRes, 
+                   membershipsRes, coursesTaughtRes, customSectionsRes] = await Promise.all([
+                fetch(`/api/faculty-edit/${id}/profile`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                }),
+                fetch(`/api/faculty-edit/${id}/education`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                }),
+                fetch(`/api/faculty-edit/${id}/research-areas`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                }),
+                fetch(`/api/faculty-edit/${id}/publications`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                }),
+                fetch(`/api/faculty-edit/${id}/research-guidance`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                }),
+                fetch(`/api/faculty-edit/${id}/training-attended`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                }),
+                fetch(`/api/faculty-edit/${id}/training-conducted`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                }),
+                fetch(`/api/faculty-edit/${id}/memberships`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                }),
+                fetch(`/api/faculty-edit/${id}/courses-taught`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                }),
+                fetch(`/api/faculty-edit/${id}/custom-sections`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                })
             ]);
+
+            const [profile, education, researchAreas, publications, 
+                   researchGuidance, trainingAttended, trainingConducted, 
+                   memberships, coursesTaught, customSections] = await Promise.all([
+                profileRes.json(),
+                educationRes.json(),
+                researchAreasRes.json(),
+                publicationsRes.json(),
+                researchGuidanceRes.json(),
+                trainingAttendedRes.json(),
+                trainingConductedRes.json(),
+                membershipsRes.json(),
+                coursesTaughtRes.json(),
+                customSectionsRes.json()
+            ]);
+
+            console.log('Fetched profile data:', profile);
             
-            console.log('Fetched data:', { profileSummary, personalInfo, contactInfo, socialLinks, education, researchAreas });
+            if (!profile.success) {
+                throw new Error(profile.error || 'Failed to fetch faculty data');
+            }
+
+            const data = profile.data;
             
-            // Construct faculty object for backwards compatibility
+            // Construct faculty object for form population
             const facultyData = {
                 personalInformation: {
-                    full_name: personalInfo.full_name,
-                    honorific: personalInfo.honorific,
-                    gender: personalInfo.gender,
-                    birthDate: personalInfo.date_of_birth,
-                    designation: personalInfo.designation,
-                    designation_id: personalInfo.designation_id,
-                    department: personalInfo.department,
-                    department_id: personalInfo.department_id,
-                    dateOfJoining: personalInfo.date_of_joining,
-                    experience: personalInfo.research_teaching_experience,
-                    is_hod: personalInfo.is_hod,
-                    employment_status: personalInfo.employment_status,
-                    bio_summary: personalInfo.bio_summary,
-                    research_interests: personalInfo.research_interests
+                    full_name: data.full_name || '',
+                    honorific: data.honorific || '',
+                    gender: data.gender || '',
+                    birthDate: data.date_of_birth || '',
+                    designation: data.designation || '',
+                    designation_id: data.designation_id || '',
+                    department: data.department_name || '',
+                    department_id: data.department_id || '',
+                    dateOfJoining: data.date_of_joining || '',
+                    experience: data.research_teaching_experience || '',
+                    is_hod: data.is_hod || false,
+                    bio_summary: data.bio_summary || '',
+                    research_interests: researchAreas.data?.research_interests || ''
                 },
                 contactInformation: {
-                    email: contactInfo.email,
-                    phoneMobile: contactInfo.phone_mobile,
-                    phoneResidence: contactInfo.phone_residence,
-                    extension_no: contactInfo.extension_no,
-                    address: contactInfo.address,
-                    officeLocation: contactInfo.office_location,
-                    officeHours: contactInfo.office_hours
+                    email: data.email || '',
+                    phoneMobile: data.phone_mobile || '',
+                    phoneResidence: data.phone_residence || '',
+                    extension_no: data.extension_no || '',
+                    address: data.address || '',
+                    officeLocation: data.office_location || '',
+                    officeHours: data.office_hours || ''
                 },
                 socialLinks: {
-                    linkedin: socialLinks.linkedin_url || '',
-                    website: socialLinks.personal_website_url || '',
-                    googleScholar: socialLinks.google_scholar_url || '',
-                    orcid: socialLinks.orcid_id || '',
-                    scopus: socialLinks.scopus_id || '',
-                    researchGate: socialLinks.research_gate_url || ''
+                    linkedin: data.linkedin_url || '',
+                    website: data.personal_website_url || '',
+                    googleScholar: data.google_scholar_url || '',
+                    researchGate: data.research_gate_url || ''
                 },
-                academicInformation: education || [],
-                researchInterests: researchAreas.research_areas || [],
+                academicInformation: education.data || [],
+                researchInterests: researchAreas.data?.research_interests || '',
+                publications: publications.data || [],
+                coursesTaught: coursesTaught.data || [],
+                memberships: (memberships.data || []).map(m => ({
+                    ...m,
+                    status: m.is_active === 1 ? 'Active' : 'Inactive'
+                })),
+                researchGuidance: researchGuidance.data || [],
+                trainingAttended: trainingAttended.data || [],
+                trainingConducted: trainingConducted.data || [],
+                customSections: customSections.data || [],
                 profile: {
-                    profile_image: personalInfo.profile_image,
-                    name: profileSummary.name,
-                    employee_code: profileSummary.employee_code
+                    profile_image: data.image_url || '',
+                    name: data.full_name || '',
+                    employee_code: data.employee_code || ''
                 }
             };
             
+            console.log('Setting faculty data:', facultyData);
             setFaculty(facultyData);
             populateFormData(facultyData);
             
@@ -224,7 +294,7 @@ const FacultyEdit = () => {
     const populateFormData = (data) => {
         console.log('Populating form with data:', data);
         
-        setFormData({
+        const newFormData = {
             // Personal Information
             employee_code: data.profile?.employee_code || '',
             full_name: data.personalInformation?.full_name || '',
@@ -242,6 +312,7 @@ const FacultyEdit = () => {
             is_hod: data.personalInformation?.is_hod || false,
             employment_status: data.personalInformation?.employment_status || '',
             bio_summary: data.personalInformation?.bio_summary || '',
+            research_interests: data.personalInformation?.research_interests || '',
             
             // Contact Information
             email: data.contactInformation?.email || '',
@@ -256,23 +327,39 @@ const FacultyEdit = () => {
             linkedin_url: data.socialLinks?.linkedin || '',
             personal_website_url: data.socialLinks?.website || '',
             google_scholar_url: data.socialLinks?.googleScholar || '',
-            orcid_id: data.socialLinks?.orcid || '',
-            scopus_id: data.socialLinks?.scopus || '',
             research_gate_url: data.socialLinks?.researchGate || '',
             
             // Academic Information
             education: data.academicInformation || [],
             
-            // Research
-            research_interests: data.researchInterests || [],
+            // Research Areas
             research_areas: data.researchInterests || [],
             
             // Publications
-            publications: data.publications?.journal || [],
+            publications: data.publications || [],
+            
+            // Courses Taught
+            courses_taught: data.coursesTaught || [],
+            
+            // Memberships
+            memberships: data.memberships || [],
+            
+            // Research Guidance
+            research_guidance: data.researchGuidance || [],
+            
+            // Training
+            training_attended: data.trainingAttended || [],
+            training_conducted: data.trainingConducted || [],
+            
+            // Custom Sections
+            custom_sections: data.customSections || [],
             
             // Profile
             profile_image: data.profile?.profile_image || ''
-        });
+        };
+        
+        console.log('Setting formData to:', newFormData);
+        setFormData(newFormData);
     };
 
     const handleInputChange = (field, value) => {
@@ -355,7 +442,7 @@ const FacultyEdit = () => {
         }));
     };
 
-    const handleSave = async () => {
+    const handleSave = async (section = null) => {
         setSaving(true);
         try {
             const token = localStorage.getItem('authToken');
@@ -364,155 +451,331 @@ const FacultyEdit = () => {
                 return;
             }
 
-            const headers = {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            };
+            // NEW APPROACH: Section-specific saves or save current active tab
+            const sectionToSave = section || activeTab;
+            let response;
+            let successMessage = 'Changes saved successfully!';
 
-            // Save to different modular endpoints based on data changes
-            const savePromises = [];
+            switch (sectionToSave) {
+                case 'personal':
+                case 'contact':
+                    // Combined profile endpoint (personal + contact)
+                    const profileData = {
+                        full_name: formData.full_name,
+                        honorific: formData.honorific,
+                        gender: formData.gender,
+                        date_of_birth: formData.date_of_birth,
+                        designation_id: formData.designation_id,
+                        department_id: formData.department_id,
+                        date_of_joining: formData.date_of_joining,
+                        research_teaching_experience: formData.research_teaching_experience,
+                        email: formData.email,
+                        phone_mobile: formData.phone_mobile,
+                        extension_no: formData.extension_no,
+                        address: formData.address,
+                        office_location: formData.office_location,
+                        office_hours: formData.office_hours,
+                        bio_summary: formData.bio_summary,
+                        linkedin_url: formData.linkedin_url,
+                        personal_website_url: formData.personal_website_url,
+                        google_scholar_url: formData.google_scholar_url,
+                        research_gate_url: formData.research_gate_url
+                    };
 
-            // 1. Personal Information
-            const personalData = {
-                full_name: formData.full_name,
-                honorific: formData.honorific,
-                gender: formData.gender,
-                date_of_birth: formData.date_of_birth,
-                designation_id: formData.designation_id,
-                department_id: formData.department_id,
-                date_of_joining: formData.date_of_joining,
-                research_teaching_experience: formData.research_teaching_experience,
-                is_hod: formData.is_hod,
-                employment_status: formData.employment_status
-            };
-
-            savePromises.push(
-                fetch(`/api/faculty/profile/${id}/personal`, {
-                    method: 'PUT',
-                    headers,
-                    body: JSON.stringify(personalData)
-                })
-            );
-
-            // 2. Contact Information
-            const contactData = {
-                email: formData.email,
-                phone_mobile: formData.phone_mobile,
-                extension_no: formData.extension_no,
-                address: formData.address,
-                office_location: formData.office_location,
-                office_hours: formData.office_hours
-            };
-
-            savePromises.push(
-                fetch(`/api/faculty/profile/${id}/contact`, {
-                    method: 'PUT',
-                    headers,
-                    body: JSON.stringify(contactData)
-                })
-            );
-
-            // 3. Social Links
-            const socialData = {
-                linkedin_url: formData.linkedin_url,
-                personal_website_url: formData.personal_website_url,
-                google_scholar_url: formData.google_scholar_url,
-                orcid_id: formData.orcid_id,
-                scopus_id: formData.scopus_id,
-                research_gate_url: formData.research_gate_url
-            };
-
-            savePromises.push(
-                fetch(`/api/faculty/social/${id}/social-links`, {
-                    method: 'PUT',
-                    headers,
-                    body: JSON.stringify(socialData)
-                })
-            );
-
-            // 4. Education
-            if (formData.education && formData.education.length > 0) {
-                const educationData = {
-                    education: formData.education.filter(edu => 
-                        edu.degree || edu.institute || edu.discipline || edu.graduation_year
-                    )
-                };
-
-                savePromises.push(
-                    fetch(`/api/faculty/academic/${id}/education`, {
-                        method: 'PUT',
-                        headers,
-                        body: JSON.stringify(educationData)
-                    })
-                );
-            }
-
-            // 5. Research Interests
-            const researchInterests = Array.isArray(formData.research_interests) 
-                ? formData.research_interests.filter(interest => interest && interest.trim())
-                : (typeof formData.research_interests === 'string' && formData.research_interests.trim())
-                    ? formData.research_interests.split(',').map(s => s.trim()).filter(s => s)
-                    : [];
-
-            if (researchInterests.length > 0) {
-                savePromises.push(
-                    fetch(`/api/faculty/academic/${id}/research-interests`, {
-                        method: 'PUT',
-                        headers,
-                        body: JSON.stringify({ research_interests: researchInterests })
-                    })
-                );
-            }
-
-            // 6. Handle image upload separately if there's a selected image
-            if (formData.selectedImage) {
-                const imageFormData = new FormData();
-                imageFormData.append('image', formData.selectedImage);
-
-                savePromises.push(
-                    fetch(`/api/faculty/profile/${id}/image`, {
+                    response = await fetch(`/api/faculty-edit/${id}/profile`, {
                         method: 'PUT',
                         headers: {
+                            'Content-Type': 'application/json',
                             'Authorization': `Bearer ${token}`
-                            // Don't set Content-Type for FormData
                         },
-                        body: imageFormData
-                    })
-                );
+                        body: JSON.stringify(profileData)
+                    });
+                    successMessage = 'Profile information updated successfully!';
+                    break;
+
+                case 'academic':
+                    // Education endpoint
+                    const educationData = {
+                        education: formData.education.filter(edu => 
+                            edu.degree || edu.institute || edu.discipline || edu.graduation_year
+                        )
+                    };
+
+                    response = await fetch(`/api/faculty-edit/${id}/education`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify(educationData)
+                    });
+                    successMessage = 'Education information updated successfully!';
+                    break;
+
+                case 'research':
+                    // Research areas endpoint
+                    const researchData = {
+                        research_interests: Array.isArray(formData.research_interests)
+                            ? formData.research_interests.join(', ')
+                            : formData.research_interests
+                    };
+
+                    response = await fetch(`/api/faculty-edit/${id}/research-areas`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify(researchData)
+                    });
+                    successMessage = 'Research interests updated successfully!';
+                    break;
+
+                case 'publications':
+                    // Publications endpoint
+                    const publicationsData = {
+                        publications: formData.publications || []
+                    };
+
+                    response = await fetch(`/api/faculty-edit/${id}/publications`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify(publicationsData)
+                    });
+                    successMessage = 'Publications updated successfully!';
+                    break;
+
+                case 'research-guidance':
+                    // Research Guidance endpoint
+                    const researchGuidanceData = {
+                        students: formData.research_guidance || []
+                    };
+
+                    response = await fetch(`/api/faculty-edit/${id}/research-guidance`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify(researchGuidanceData)
+                    });
+                    successMessage = 'Research guidance updated successfully!';
+                    break;
+
+                case 'courses':
+                    // Courses Taught endpoint
+                    const coursesData = {
+                        courses: formData.courses_taught || []
+                    };
+
+                    response = await fetch(`/api/faculty-edit/${id}/courses-taught`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify(coursesData)
+                    });
+                    successMessage = 'Courses taught updated successfully!';
+                    break;
+
+                case 'memberships':
+                    // Memberships endpoint
+                    const membershipsData = {
+                        memberships: formData.memberships || []
+                    };
+
+                    response = await fetch(`/api/faculty-edit/${id}/memberships`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify(membershipsData)
+                    });
+                    successMessage = 'Memberships updated successfully!';
+                    break;
+
+                case 'training':
+                    // Training endpoints (both attended and conducted)
+                    const trainingAttendedData = {
+                        training: formData.training_attended || []
+                    };
+                    const trainingConductedData = {
+                        training: formData.training_conducted || []
+                    };
+
+                    // Save both in parallel
+                    const [attendedResponse, conductedResponse] = await Promise.all([
+                        fetch(`/api/faculty-edit/${id}/training-attended`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${token}`
+                            },
+                            body: JSON.stringify(trainingAttendedData)
+                        }),
+                        fetch(`/api/faculty-edit/${id}/training-conducted`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${token}`
+                            },
+                            body: JSON.stringify(trainingConductedData)
+                        })
+                    ]);
+
+                    // Check both responses
+                    const attendedResult = await attendedResponse.json();
+                    const conductedResult = await conductedResponse.json();
+
+                    if (!attendedResponse.ok || !conductedResponse.ok) {
+                        throw new Error('Failed to save training data');
+                    }
+
+                    alert('Training data updated successfully!');
+                    setSaving(false);
+                    return; // Exit early since we handled responses
+
+                case 'social':
+                    // Social links are part of profile
+                    const socialData = {
+                        linkedin_url: formData.linkedin_url,
+                        personal_website_url: formData.personal_website_url,
+                        google_scholar_url: formData.google_scholar_url,
+                        research_gate_url: formData.research_gate_url
+                    };
+
+                    response = await fetch(`/api/faculty-edit/${id}/profile`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify(socialData)
+                    });
+                    successMessage = 'Social links updated successfully!';
+                    break;
+
+                case 'custom':
+                    // Custom sections endpoint
+                    const customSectionsData = {
+                        sections: formData.custom_sections || []
+                    };
+
+                    response = await fetch(`/api/faculty-edit/${id}/custom-sections`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify(customSectionsData)
+                    });
+                    successMessage = 'Custom sections updated successfully!';
+                    break;
+
+                default:
+                    // Check if it's a custom section entry tab
+                    if (sectionToSave.startsWith('custom-')) {
+                        // Save specific custom section entries
+                        const customSectionsData = {
+                            sections: formData.custom_sections || []
+                        };
+
+                        response = await fetch(`/api/faculty-edit/${id}/custom-sections`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${token}`
+                            },
+                            body: JSON.stringify(customSectionsData)
+                        });
+                        successMessage = 'Section entries saved successfully!';
+                        break;
+                    }
+
+                    // Fallback: Use bulk-update for complete save
+                    const updateData = {
+                        profile: {
+                            full_name: formData.full_name,
+                            honorific: formData.honorific,
+                            gender: formData.gender,
+                            date_of_birth: formData.date_of_birth,
+                            designation: formData.designation,
+                            department: formData.department,
+                            date_of_joining: formData.date_of_joining,
+                            experience: formData.research_teaching_experience,
+                            email: formData.email,
+                            phone_mobile: formData.phone_mobile,
+                            extension_no: formData.extension_no,
+                            address: formData.address,
+                            office_location: formData.office_location,
+                            office_hours: formData.office_hours,
+                            linkedin_url: formData.linkedin_url,
+                            personal_website_url: formData.personal_website_url,
+                            google_scholar_url: formData.google_scholar_url,
+                            research_gate_url: formData.research_gate_url,
+                            bio_summary: formData.bio_summary,
+                            profile_image: formData.profile_image
+                        },
+                        education: formData.education.filter(edu => 
+                            edu.degree || edu.institute || edu.discipline || edu.graduation_year
+                        ),
+                        research_interests: Array.isArray(formData.research_interests) 
+                            ? formData.research_interests.filter(interest => interest && interest.trim())
+                            : (typeof formData.research_interests === 'string' && formData.research_interests.trim())
+                                ? formData.research_interests.split(',').map(s => s.trim()).filter(s => s)
+                                : [],
+                        publications: formData.publications || []
+                    };
+
+                    // If there's an image, use FormData
+                    if (formData.selectedImage) {
+                        const formDataWithImage = new FormData();
+                        formDataWithImage.append('data', JSON.stringify(updateData));
+                        formDataWithImage.append('image', formData.selectedImage);
+
+                        response = await fetch(`/api/faculty-edit/${id}/bulk-update`, {
+                            method: 'PUT',
+                            headers: {
+                                'Authorization': `Bearer ${token}`
+                            },
+                            body: formDataWithImage
+                        });
+                    } else {
+                        response = await fetch(`/api/faculty-edit/${id}/bulk-update`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${token}`
+                            },
+                            body: JSON.stringify(updateData)
+                        });
+                    }
+                    successMessage = 'All changes saved successfully!';
+                    break;
             }
 
-            console.log('Saving faculty data to modular APIs...');
+            const result = await response.json();
 
-            // Execute all save operations
-            const responses = await Promise.all(savePromises);
-
-            // Check if all responses are successful
-            const failedResponses = responses.filter(response => !response.ok);
-            
-            if (failedResponses.length > 0) {
-                console.error('Some updates failed:', failedResponses);
-                
-                // Try to get error details
-                const errorMessages = await Promise.all(
-                    failedResponses.map(async (response) => {
-                        try {
-                            const errorData = await response.json();
-                            return errorData.error || `HTTP ${response.status}`;
-                        } catch {
-                            return `HTTP ${response.status}`;
-                        }
-                    })
-                );
-                
-                throw new Error(`Some changes could not be saved: ${errorMessages.join(', ')}`);
+            if (!response.ok) {
+                throw new Error(result.error || 'Failed to save changes');
             }
 
-            // All successful
-            alert('Faculty information updated successfully!');
-            console.log('All faculty data saved successfully using modular APIs');
+            alert(successMessage);
+            console.log('Faculty data saved successfully:', result);
 
-            // Navigate back to faculty details page
-            navigate(`/faculty/${id}`);
+            // Optionally refresh data to show saved changes
+            if (sectionToSave === 'all') {
+                // If saving all, navigate back
+                navigate(`/people/faculty/${id}`);
+            } else {
+                // If saving a section, refresh that section's data
+                await fetchFacultyData();
+            }
 
         } catch (error) {
             console.error('Error saving faculty data:', error);
@@ -527,8 +790,21 @@ const FacultyEdit = () => {
         { id: 'contact', label: 'Contact Information', icon: 'fas fa-envelope' },
         { id: 'academic', label: 'Academic Information', icon: 'fas fa-graduation-cap' },
         { id: 'research', label: 'Research Areas', icon: 'fas fa-microscope' },
+        { id: 'publications', label: 'Publications', icon: 'fas fa-book' },
+        { id: 'research-guidance', label: 'Research Guidance', icon: 'fas fa-user-graduate' },
         { id: 'courses', label: 'Courses Taught', icon: 'fas fa-chalkboard-teacher' },
-        { id: 'social', label: 'Social Links', icon: 'fas fa-link' }
+        { id: 'memberships', label: 'Memberships', icon: 'fas fa-certificate' },
+        { id: 'training', label: 'Training & Workshops', icon: 'fas fa-chalkboard' },
+        { id: 'social', label: 'Social Links', icon: 'fas fa-link' },
+        // Add custom sections dynamically
+        ...(formData.custom_sections || []).map(section => ({
+            id: `custom-${section.section_id || section.section_title}`,
+            label: section.section_title,
+            icon: 'fas fa-layer-group',
+            isCustom: true,
+            sectionData: section
+        })),
+        { id: 'custom', label: 'Custom Sections', icon: 'fas fa-plus-circle' }
     ];
 
     if (loading) {
@@ -557,9 +833,10 @@ const FacultyEdit = () => {
                     <h1>Edit Faculty Profile</h1>
                     <div className="header-actions">
                         <button 
-                            className="save-button"
-                            onClick={handleSave}
+                            className="save-section-button"
+                            onClick={() => handleSave()}
                             disabled={saving}
+                            title="Save current section only"
                         >
                             {saving ? (
                                 <>
@@ -569,7 +846,25 @@ const FacultyEdit = () => {
                             ) : (
                                 <>
                                     <i className="fas fa-save"></i>
-                                    Save Changes
+                                    Save Section
+                                </>
+                            )}
+                        </button>
+                        <button 
+                            className="save-all-button"
+                            onClick={() => handleSave('all')}
+                            disabled={saving}
+                            title="Save all changes and return to profile"
+                        >
+                            {saving ? (
+                                <>
+                                    <i className="fas fa-spinner fa-spin"></i>
+                                    Saving...
+                                </>
+                            ) : (
+                                <>
+                                    <i className="fas fa-check-double"></i>
+                                    Save All & Exit
                                 </>
                             )}
                         </button>
@@ -642,72 +937,80 @@ const FacultyEdit = () => {
                         />
                     )}
 
+                    {/* Publications Tab */}
+                    {activeTab === 'publications' && (
+                        <PublicationsSection 
+                            formData={formData}
+                            setFormData={setFormData}
+                            loading={loading}
+                        />
+                    )}
+
+                    {/* Research Guidance Tab */}
+                    {activeTab === 'research-guidance' && (
+                        <ResearchGuidanceSection 
+                            formData={formData}
+                            setFormData={setFormData}
+                            loading={loading}
+                        />
+                    )}
+
+                    {/* Memberships Tab */}
+                    {activeTab === 'memberships' && (
+                        <MembershipsSection 
+                            formData={formData}
+                            setFormData={setFormData}
+                            loading={loading}
+                        />
+                    )}
+
+                    {/* Training & Workshops Tab */}
+                    {activeTab === 'training' && (
+                        <TrainingSection 
+                            formData={formData}
+                            setFormData={setFormData}
+                            loading={loading}
+                        />
+                    )}
+
                     {/* Social Links Tab */}
                     {activeTab === 'social' && (
-                        <div className="faculty-edit-components-form-section">
-                            <h2>Social Links</h2>
-                            <div className="faculty-edit-form-grid">
-                                <div className="faculty-edit-form-group">
-                                    <label>LinkedIn</label>
-                                    <input
-                                        type="url"
-                                        value={formData.linkedin_url}
-                                        onChange={(e) => handleInputChange('linkedin_url', e.target.value)}
-                                        placeholder="https://linkedin.com/in/username"
-                                    />
-                                </div>
+                        <SocialLinksSection 
+                            formData={formData}
+                            setFormData={setFormData}
+                            loading={loading}
+                        />
+                    )}
 
-                                <div className="faculty-edit-form-group">
-                                    <label>Personal Website</label>
-                                    <input
-                                        type="url"
-                                        value={formData.personal_website_url}
-                                        onChange={(e) => handleInputChange('personal_website_url', e.target.value)}
-                                        placeholder="https://yourwebsite.com"
-                                    />
-                                </div>
+                    {/* Dynamic Custom Section Entries Tabs */}
+                    {activeTab.startsWith('custom-') && (() => {
+                        // Extract section identifier from activeTab
+                        const sectionIdentifier = activeTab.replace('custom-', '');
+                        
+                        // Find the section data from formData
+                        const section = formData.custom_sections?.find(s => 
+                            s.section_id?.toString() === sectionIdentifier || 
+                            s.section_title === sectionIdentifier
+                        );
+                        
+                        return (
+                            <CustomSectionEntries 
+                                sectionData={section}
+                                formData={formData}
+                                setFormData={setFormData}
+                                loading={loading}
+                            />
+                        );
+                    })()}
 
-                                <div className="faculty-edit-form-group">
-                                    <label>Google Scholar</label>
-                                    <input
-                                        type="url"
-                                        value={formData.google_scholar_url}
-                                        onChange={(e) => handleInputChange('google_scholar_url', e.target.value)}
-                                        placeholder="https://scholar.google.com/citations?user=..."
-                                    />
-                                </div>
-
-                                <div className="faculty-edit-form-group">
-                                    <label>ORCID</label>
-                                    <input
-                                        type="text"
-                                        value={formData.orcid_id}
-                                        onChange={(e) => handleInputChange('orcid_id', e.target.value)}
-                                        placeholder="0000-0000-0000-0000"
-                                    />
-                                </div>
-
-                                <div className="faculty-edit-form-group">
-                                    <label>Scopus ID</label>
-                                    <input
-                                        type="text"
-                                        value={formData.scopus_id}
-                                        onChange={(e) => handleInputChange('scopus_id', e.target.value)}
-                                        placeholder="Enter Scopus ID"
-                                    />
-                                </div>
-
-                                <div className="faculty-edit-form-group">
-                                    <label>ResearchGate</label>
-                                    <input
-                                        type="url"
-                                        value={formData.research_gate_url}
-                                        onChange={(e) => handleInputChange('research_gate_url', e.target.value)}
-                                        placeholder="https://researchgate.net/profile/..."
-                                    />
-                                </div>
-                            </div>
-                        </div>
+                    {/* Custom Sections Manager Tab */}
+                    {activeTab === 'custom' && (
+                        <CustomSectionsManager 
+                            formData={formData}
+                            setFormData={setFormData}
+                            loading={loading}
+                            employeeCode={id}
+                        />
                     )}
                     </div>
                 </div>

@@ -222,9 +222,9 @@ const FacultyDetails = () => {
             case 'professionalServices':
                 return faculty.professionalServices || faculty.professionalService;
             case 'coursesAttended':
-                return faculty.coursesAttended;
+                return faculty.trainingAttended;
             case 'coursesConducted':
-                return faculty.coursesConducted;
+                return faculty.trainingConducted;
             default:
                 return null;
         }
@@ -427,13 +427,26 @@ const FacultyDetails = () => {
                     )}
 
                     {renderExpandableSection(
-                        "Research Guidance TEST",
+                        "Research Guidance",
                         "researchGuidance",
                         <div className="research-guidance-cards">
-                            <p>Research Guidance data count: {faculty.researchGuidance?.length || 0}</p>
                             {faculty.researchGuidance?.map((student, index) => (
-                                <div key={index} className="guidance-card">
-                                    <p>{student}</p>
+                                <div key={student.guidance_id || index} className="guidance-card">
+                                    <div className="guidance-header">
+                                        <div className="guidance-degree-badge">Ph.D.</div>
+                                        <div className={`guidance-status-badge ${student.status?.toLowerCase().replace(/\s+/g, '-') || 'ongoing'}`}>
+                                            {student.status || 'Ongoing'}
+                                        </div>
+                                    </div>
+                                    <div className="guidance-content">
+                                        <h4 className="student-name">
+                                            {student.student_honorific && `${student.student_honorific} `}
+                                            {student.student_name}
+                                        </h4>
+                                        {student.research_topic && (
+                                            <p className="research-topic">{student.research_topic}</p>
+                                        )}
+                                    </div>
                                 </div>
                             ))}
                         </div>,
@@ -714,41 +727,6 @@ const FacultyDetails = () => {
                     )}
 
                     {renderExpandableSection(
-                        "Research Guidance",
-                        "researchGuidance",
-                        <div className="research-guidance-cards">
-                            {faculty.researchGuidance?.map((student, index) => {
-                                if (!student) return null; // Skip null/undefined entries
-                                
-                                // Extract student name, degree type, and status from the text
-                                const degreeMatch = student.match ? student.match(/(Ph\.?D\.?|M\.?Tech\.?|M\.?S\.?|B\.?Tech\.?)/i) : null;
-                                const statusMatch = student.match ? student.match(/(completed|ongoing|submitted|awarded)/i) : null;
-                                const yearMatch = student.match ? student.match(/\b(19|20)\d{2}\b/) : null;
-                                
-                                const degree = degreeMatch ? degreeMatch[0] : 'Research';
-                                const status = statusMatch ? statusMatch[0] : 'Ongoing';
-                                const year = yearMatch ? yearMatch[0] : '';
-                                
-                                return (
-                                    <div key={index} className="guidance-card">
-                                        <div className="guidance-header">
-                                            <div className="guidance-degree-badge">{degree}</div>
-                                            <div className={`guidance-status-badge ${status.toLowerCase()}`}>
-                                                {status}
-                                            </div>
-                                        </div>
-                                        <div className="guidance-content">
-                                            <p className="guidance-text">{student}</p>
-                                            {year && <div className="guidance-year">{year}</div>}
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>,
-                        false
-                    )}
-
-                    {renderExpandableSection(
                         "Funded Research Project",
                         "fundedProjects",
                         <div className="funded-projects-table-container">
@@ -894,51 +872,20 @@ const FacultyDetails = () => {
                                 <thead>
                                     <tr>
                                         <th>Sr. No.</th>
-                                        <th>Course/Conference Details</th>
+                                        <th>Month</th>
                                         <th>Year</th>
-                                        <th>Duration</th>
-                                        <th>Venue/Place</th>
+                                        <th>Training Attended Information</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {faculty.trainingConferencesAndShortTermCoursesAttended?.map((course, index) => {
-                                        if (!course || !course.info) return null; // Skip null/undefined entries
-                                        
-                                        // Extract year, duration, and venue from course info
-                                        const yearMatch = course.info.match ? course.info.match(/\b(19|20)\d{2}\b/) : null;
-                                        const durationMatch = course.info.match ? course.info.match(/(\d+)\s*(day|week|month)s?/i) : null;
-                                        
-                                        // Enhanced venue extraction - get city/location from end of string
-                                        let venue = '-';
-                                        // Try to extract venue from various patterns
-                                        const venuePatterns = [
-                                            /,\s*([^,\n.]+)\.?\s*$/,  // Last item after comma
-                                            /\),\s*([^,\n.]+)\.?\s*$/,  // After closing parenthesis
-                                            /(Barcelona, Spain|Macau, Hong Kong|Trivandrum|Rourkela|Bhuvaneswar)/i,  // Specific locations
-                                            /\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*),?\s*(?:[A-Z][a-z]+)?\s*\.?$/  // City names at end
-                                        ];
-                                        
-                                        for (let pattern of venuePatterns) {
-                                            const match = course.info.match ? course.info.match(pattern) : null;
-                                            if (match) {
-                                                venue = match[1] ? match[1].trim().replace(/\.$/, '') : match[0].trim().replace(/\.$/, '');
-                                                break;
-                                            }
-                                        }
-                                        
-                                        const year = yearMatch ? yearMatch[0] : '-';
-                                        const duration = durationMatch ? `${durationMatch[1]} ${durationMatch[2]}${durationMatch[1] > 1 ? 's' : ''}` : '-';
-                                        
-                                        return (
-                                            <tr key={index}>
-                                                <td>{index + 1}</td>
-                                                <td className="course-details-cell">{course.info}</td>
-                                                <td className="year-cell">{year}</td>
-                                                <td className="duration-cell">{duration}</td>
-                                                <td className="venue-cell">{venue}</td>
-                                            </tr>
-                                        );
-                                    })}
+                                    {faculty.trainingAttended?.map((training, index) => (
+                                        <tr key={training.training_id || index}>
+                                            <td>{index + 1}</td>
+                                            <td className="month-cell">{training.month || '-'}</td>
+                                            <td className="year-cell">{training.year || '-'}</td>
+                                            <td className="training-details-cell">{training.training_information || '-'}</td>
+                                        </tr>
+                                    ))}
                                 </tbody>
                             </table>
                         </div>,
@@ -953,63 +900,20 @@ const FacultyDetails = () => {
                                 <thead>
                                     <tr>
                                         <th>Sr. No.</th>
-                                        <th>Course/Conference Details</th>
+                                        <th>Month</th>
                                         <th>Year</th>
-                                        <th>Duration</th>
+                                        <th>Training Conducted Information</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {faculty.coursesConducted?.map((course, index) => {
-                                        if (!course || !course.info) return null; // Skip null/undefined entries
-                                        
-                                        // Extract year, duration, and venue from course info
-                                        const yearMatch = course.info.match ? course.info.match(/\b(19|20)\d{2}\b/) : null;
-                                        
-                                        // Enhanced duration extraction for various patterns
-                                        let duration = '-';
-                                        const durationPatterns = [
-                                            /(\d+)\s*-\s*(\d+)\s+(January|February|March|April|May|June|July|August|September|October|November|December)/i,  // Date ranges like "3-13 July"
-                                            /(\d+)(?:st|nd|rd|th)?\s+(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/i,  // Single date like "8th July", "19 Jan"
-                                            /(\d+)\s+(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s*,?\s*(\d{4})/i,  // Single date with year
-                                            /(\d+)\s*-\s*(\d+)\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/i,  // Date ranges with short months like "1-6 April"
-                                            /(\d+)\s*-\s*(\d+)\s+(March|April|May|June|July|December)/i,  // Date ranges with full month names
-                                            /(25\s*-\s*27\s+October|3-13\s+July|March\s+17|5-9\s+December|12-18\s+December|5\s+June|23\s+January|1-6\s+April|4\s*-\s*5\s+March|6-10\s+July|4\s+July|5\s+May)/i  // Specific date patterns
-                                        ];
-                                        
-                                        for (let pattern of durationPatterns) {
-                                            const match = course.info.match ? course.info.match(pattern) : null;
-                                            if (match) {
-                                                if (pattern === durationPatterns[0]) {
-                                                    // Date range like "3-13 July"
-                                                    duration = `${match[1]}-${match[2]} ${match[3]}`;
-                                                } else if (pattern === durationPatterns[1]) {
-                                                    // Single date like "8th July" or "19 Jan"
-                                                    duration = `${match[1]} ${match[2]}`;
-                                                } else if (pattern === durationPatterns[2]) {
-                                                    // Single date with year like "23 January, 2020"
-                                                    duration = `${match[1]} ${match[2]}`;
-                                                } else if (pattern === durationPatterns[3] || pattern === durationPatterns[4]) {
-                                                    // Date ranges like "1-6 April"
-                                                    duration = `${match[1]}-${match[2]} ${match[3]}`;
-                                                } else {
-                                                    // Specific dates
-                                                    duration = match[0];
-                                                }
-                                                break;
-                                            }
-                                        }
-                                        
-                                        const year = yearMatch ? yearMatch[0] : '-';
-                                        
-                                        return (
-                                            <tr key={index}>
-                                                <td>{index + 1}</td>
-                                                <td className="course-details-cell">{course.info}</td>
-                                                <td className="year-cell">{year}</td>
-                                                <td className="duration-cell">{duration}</td>
-                                            </tr>
-                                        );
-                                    })}
+                                    {faculty.trainingConducted?.map((training, index) => (
+                                        <tr key={training.training_id || index}>
+                                            <td>{index + 1}</td>
+                                            <td className="month-cell">{training.month || '-'}</td>
+                                            <td className="year-cell">{training.year || '-'}</td>
+                                            <td className="training-details-cell">{training.training_information || '-'}</td>
+                                        </tr>
+                                    ))}
                                 </tbody>
                             </table>
                         </div>,

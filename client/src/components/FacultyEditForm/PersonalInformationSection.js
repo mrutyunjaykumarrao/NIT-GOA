@@ -64,6 +64,11 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
     // Check if user is admin
     const isAdmin = user?.role === 'Admin';
 
+    // Debug: Log formData whenever it changes
+    useEffect(() => {
+        console.log('PersonalInformationSection received formData:', formData);
+    }, [formData]);
+
     useEffect(() => {
         fetchDepartments();
         fetchDesignations();

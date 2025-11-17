@@ -54,6 +54,48 @@
     transform: translateX(-50%);
 }
 
+.header-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.header-actions .save-section-button,
+.header-actions .save-all-button {
+    color: var(--primary-color);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    margin: auto 0;
+}
+
+.header-actions .save-section-button {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.header-actions .save-all-button {
+    background: white;
+}
+
+.header-actions .save-section-button:hover:not(:disabled),
+.header-actions .save-all-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.header-actions .save-section-button:disabled,
+.header-actions .save-all-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Legacy save button styles for backward compatibility */
 .header-actions .save-button {
     color: var(--primary-color);
     border: none;

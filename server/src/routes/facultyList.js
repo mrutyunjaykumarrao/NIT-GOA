@@ -3,26 +3,41 @@ const { pool } = require('../config/database');
 
 const router = express.Router();
 
-// Get all faculty profiles (public) - Short data for listing
+/**
+ * FACULTY LIST API
+ * Provides minimal data for faculty profile cards display
+ * Used in: Faculty listing page, department-wise faculty display
+ * No authentication required - public endpoint
+ */
+
+// Helper function for database queries
+async function executeQuery(query, params = []) {
+  const connection = await pool.getConnection();
+  try {
+    const [results] = await connection.execute(query, params);
+    return results;
+  } finally {
+    connection.release();
+  }
+}
+
+// GET /api/faculty-list - Get all active faculty with basic card data
 router.get('/', async (req, res) => {
   try {
-    const connection = await pool.getConnection();
-    
-    const [faculty] = await connection.execute(`
+    const faculty = await executeQuery(`
       SELECT 
-        e.employee_id as id,
         e.employee_code,
         e.full_name,
         e.honorific,
         e.email,
         e.extension_no as phone,
         fd.designation_title as designation,
-        'Faculty' as employment_status,
         fp.image_url as profile_image,
         fp.is_hod,
         fp.display_order,
         d.department_name,
         d.department_code,
+        d.department_id,
         fp.bio_summary,
         fp.research_interests
       FROM employees e
@@ -37,39 +52,38 @@ router.get('/', async (req, res) => {
         e.full_name ASC
     `);
     
-    connection.release();
-    
     res.json({
       success: true,
       data: faculty
     });
   } catch (error) {
-    console.error('Get faculty profiles error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error('Get faculty list error:', error);
+    res.status(500).json({ 
+      success: false,
+      error: 'Failed to fetch faculty list' 
+    });
   }
 });
 
-// Get faculty by department - Short data for department-specific listing
+// GET /api/faculty-list/department/:departmentCode - Get faculty by department with basic card data
 router.get('/department/:departmentCode', async (req, res) => {
   try {
     const { departmentCode } = req.params;
-    const connection = await pool.getConnection();
     
-    const [faculty] = await connection.execute(`
+    const faculty = await executeQuery(`
       SELECT 
-        e.employee_id as id,
         e.employee_code,
         e.full_name,
         e.honorific,
         e.email,
         e.extension_no as phone,
         fd.designation_title as designation,
-        'Faculty' as employment_status,
         fp.image_url as profile_image,
         fp.is_hod,
         fp.display_order,
         d.department_name,
         d.department_code,
+        d.department_id,
         fp.bio_summary,
         fp.research_interests
       FROM employees e
@@ -83,10 +97,11 @@ router.get('/department/:departmentCode', async (req, res) => {
         e.full_name ASC
     `, [departmentCode]);
     
-    connection.release();
-    
     if (faculty.length === 0) {
-      return res.status(404).json({ error: 'No faculty found for this department' });
+      return res.status(404).json({ 
+        success: false,
+        error: 'No faculty found for this department' 
+      });
     }
     
     res.json({
@@ -95,7 +110,10 @@ router.get('/department/:departmentCode', async (req, res) => {
     });
   } catch (error) {
     console.error('Get faculty by department error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ 
+      success: false,
+      error: 'Failed to fetch faculty by department' 
+    });
   }
 });
 
