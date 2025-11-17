@@ -270,7 +270,7 @@ const PendingApprovalsTab = () => {
                     <img 
                       src={`/${selectedApproval.current_image_url}`} 
                       alt="Current" 
-                      className="preview-image"
+                      className="pendingApproval-preview-image"
                     />
                   ) : (
                     <div className="no-image">No current image</div>
@@ -282,7 +282,7 @@ const PendingApprovalsTab = () => {
                   <img 
                     src={`/api/faculty/temp-image/${selectedApproval.requested_value}`} 
                     alt="New" 
-                    className="preview-image"
+                    className="pendingApproval-preview-image"
                     onError={(e) => {
                       e.target.style.display = 'none';
                       e.target.parentElement.innerHTML = '<div class="no-image">Image not found</div>';

@@ -53,14 +53,14 @@
 }
 
 /* Back Button */
-.back-button {
+.faculty-details-back-button {
     background: var(--card-gradient);
     border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 12px 20px;
     color: var(--brand-primary);
     font-weight: 600;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
@@ -69,13 +69,13 @@
     box-shadow: 0 4px 12px var(--shadow-light);
 }
 
-.back-button:hover {
+.faculty-details-back-button:hover {
     background: var(--brand-accent);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px var(--shadow-medium);
 }
 
-.back-button i {
+.faculty-details-back-button i {
     font-size: 14px;
 }
 
@@ -89,7 +89,7 @@
 }
 
 .edit-profile-button {
-    background: linear-gradient(135deg, var(--brand-primary), var(--brand-accent));
+    background: linear-gradient(135deg, var(--brand-primary), #1598f8);
     border: none;
     border-radius: 12px;
     padding: 12px 20px;
@@ -106,7 +106,7 @@
 .edit-profile-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
-    background: linear-gradient(135deg, var(--brand-accent), var(--brand-primary));
+    background: linear-gradient(135deg, #1598f8, var(--brand-primary));
 }
 
 .edit-profile-button i {
@@ -114,7 +114,7 @@
 }
 
 /* Loading and Error States */
-.loading-container, .error-container {
+.faculty-details-loading-container, .faculty-details-error-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -123,7 +123,7 @@
     text-align: center;
 }
 
-.loading-spinner {
+.faculty-details-loading-spinner {
     width: 40px;
     height: 40px;
     border: 3px solid var(--border-color);
@@ -151,6 +151,7 @@
     background: var(--card-gradient);
     border-radius: 20px;
     padding: 30px 25px;
+    min-height: 648px;
     text-align: center;
     box-shadow: 0 8px 30px var(--shadow-light);
     height: fit-content;
@@ -176,14 +177,14 @@
 
 .faculty-details-image {
     width: 100%;
-    max-width: 280px;
-    height: 320px;
+    max-width: 260px;
+    height: 260px;
     object-fit: cover;
     border-radius: 15px;
     box-shadow: 0 8px 25px var(--shadow-medium);
     border: 3px solid var(--brand-accent);
     transition: all 0.3s ease;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 .faculty-details-image:hover {
@@ -294,9 +295,20 @@
     box-shadow: 0 10px 30px var(--shadow-medium);
 }
 
+.section-header-main.personalInfo{
+    background: var(--header-gradient);
+    padding: 14px 25px 14px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+}
+
+
 .section-header-main {
     background: var(--header-gradient);
-    padding: 11px 25px 11px 25px;
+    padding: 0px 25px 0px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -349,7 +361,7 @@
     transform: scale(1.05);
 }
 
-.faculty-details-page .info-grid {
+.faculty-details-page .faculty-details-info-grid {
     padding: 25px;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -357,7 +369,7 @@
     background: var(--bg-primary);
 }
 
-.faculty-details-page .info-row {
+.faculty-details-page .faculty-details-info-row {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -369,23 +381,23 @@
     margin-bottom: 0px;
 }
 
-.faculty-details-page .info-row:hover {
+.faculty-details-page .faculty-details-info-row:hover {
     background: var(--brand-accent);
     border-left-width: 4px;
 }
 
-.faculty-details-page .info-row.full-width {
+.faculty-details-page .faculty-details-info-row.full-width {
     grid-column: 1 / -1;
     flex-direction: column;
     align-items: stretch;
 }
 
-.faculty-details-page .info-row.full-width .info-label,
-.faculty-details-page .info-row.full-width .info-value {
+.faculty-details-page .faculty-details-info-row.full-width .faculty-details-info-label,
+.faculty-details-page .faculty-details-info-row.full-width .faculty-details-info-value {
     text-align: left;
 }
 
-.info-label {
+.faculty-details-info-label {
     font-weight: 600;
     color: var(--brand-primary);
     font-size: 14px;
@@ -393,7 +405,7 @@
     flex-shrink: 0;
 }
 
-.info-value {
+.faculty-details-info-value {
     color: var(--text-primary);
     font-size: 14px;
     line-height: 1.4;
@@ -403,14 +415,14 @@
 }
 
 /* Expandable Sections - Clean Professional Design */
-.expandable-sections {
+.faculty-details-expandable-sections {
     margin-top: 30px;
     display: flex;
     flex-direction: column;
     gap: 15px; /* Reduced gap */
 }
 
-.expandable-section {
+.faculty-details-expandable-section {
     background: var(--card-gradient);
     border-radius: 12px;
     border: 1px solid var(--border-color);
@@ -420,12 +432,12 @@
     transition: all 0.2s ease;
 }
 
-.expandable-section:hover {
+.faculty-details-expandable-section:hover {
     box-shadow: 0 6px 18px var(--shadow-medium);
 }
 
-.faculty-details-page .section-header {
-    background: #d0eafe;
+.faculty-details-page .faculty-details-section-header {
+    background: #c8e7ff;
     padding: 15px 20px;
     cursor: pointer;
     display: flex;
@@ -438,11 +450,7 @@
     margin-bottom: 0px;;
 }
 
-.faculty-details-page .section-header:hover {
-    background: var(--brand-accent);
-}
-
-.faculty-details-page .section-header h3 {
+.faculty-details-page .faculty-details-section-header h3 {
     font-size: 20px;
     font-weight: 700;
     color: var(--info-header-color);
@@ -452,13 +460,13 @@
     gap: 12px;
 }
 
-.faculty-details-page .section-header i {
+.faculty-details-page .faculty-details-section-header i {
     color: var(--text-secondary);
     font-size: 14px;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.faculty-details-page .section-content {
+.faculty-details-page .faculty-details-section-content {
     background: var(--bg-primary);
     overflow: hidden;
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -468,14 +476,14 @@
     transform: translateY(-8px);
 }
 
-.faculty-details-page .section-content.expanded {
+.faculty-details-page .faculty-details-section-content.expanded {
     max-height: 3000px;
     opacity: 1;
     padding: 20px;
     transform: translateY(0);
 }
 
-.faculty-details-page .section-content.collapsed {
+.faculty-details-page .faculty-details-section-content.collapsed {
     max-height: 0;
     opacity: 0;
     padding: 0 20px;
@@ -519,7 +527,7 @@
     gap: 12px;
 }
 
-.research-tag {
+.faculty-details-research-tag {
     background: var(--brand-accent);
     color: var(--brand-primary);
     padding: 10px 18px;
@@ -530,7 +538,7 @@
     transition: all 0.3s ease;
 }
 
-.research-tag:hover {
+.faculty-details-research-tag:hover {
     background: var(--brand-primary);
     color: white;
     transform: translateY(-2px);
@@ -979,11 +987,6 @@
     letter-spacing: 0.5px;
 }
 
-.courses-conducted-table th:nth-child(1) { width: 8%; }   /* Sr. No. */
-.courses-conducted-table th:nth-child(2) { width: 60%; }  /* Course Details - wider */
-.courses-conducted-table th:nth-child(3) { width: 16%; }  /* Year - increased */
-.courses-conducted-table th:nth-child(4) { width: 16%; }  /* Duration - increased */
-
 .courses-conducted-table td {
     padding: 15px 12px;
     border-bottom: 1px solid var(--border-color);
@@ -1070,77 +1073,102 @@
 /* Research Guidance Cards Styling */
 .research-guidance-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
 }
 
 .guidance-card {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
     border-radius: 12px;
-    padding: 20px;
+    padding: 24px;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px var(--shadow-light);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .guidance-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px var(--shadow-medium);
-    border-color: var(--brand-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    border-color: #2196f3;
 }
 
 .guidance-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .guidance-degree-badge {
-    background: var(--brand-primary);
+    background: #2196f3;
     color: white;
-    padding: 5px 12px;
+    padding: 6px 16px;
     border-radius: 20px;
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .guidance-status-badge {
-    padding: 4px 10px;
-    border-radius: 15px;
-    font-size: 11px;
-    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 0.3px;
 }
 
-.guidance-status-badge.completed {
-    background: #e8f5e8;
-    color: #2e7d32;
+.guidance-status-badge.completed,
+.guidance-status-badge.awarded {
+    background: transparent;
+    color: #333333;
+    border: none;
 }
 
 .guidance-status-badge.ongoing {
-    background: #fff3e0;
-    color: #f57c00;
+    background: transparent;
+    color: #333333;
+    border: none;
 }
 
 .guidance-status-badge.submitted {
-    background: #e3f2fd;
-    color: #1976d2;
+    background: transparent;
+    color: #2196f3;
+    border: none;
+}
+
+.guidance-content {
+    color: #333333;
+}
+
+.guidance-content h4 {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #333333;
+    margin: 0;
+}
+
+.guidance-content .research-topic {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #666666;
+    margin-top: 8px;
 }
 
 .guidance-text {
-    font-size: 14px;
-    line-height: 1.5;
-    color: var(--text-primary);
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333333;
     margin: 0;
 }
 
 .guidance-year {
     margin-top: 10px;
     font-size: 12px;
-    color: var(--text-secondary);
-    font-weight: 600;
+    color: #999999;
+    font-weight: 500;
 }
 
 /* Awards Timeline Styling */
@@ -1585,11 +1613,11 @@
         flex-shrink: 0;
     }
     
-    .faculty-details-page .section-header {
+    .faculty-details-page .faculty-details-section-header {
         padding: 12px 15px;
     }
     
-    .faculty-details-page .section-header h3 {
+    .faculty-details-page .faculty-details-section-header h3 {
         font-size: 16px;
         line-height: 1.3;
         word-wrap: break-word;
@@ -1598,7 +1626,7 @@
         flex: 1;
     }
     
-    .faculty-details-page .info-grid {
+    .faculty-details-page .faculty-details-info-grid {
         grid-template-columns: 1fr;
     }
     
@@ -1642,7 +1670,8 @@
     }
     
     .research-guidance-cards {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
     }
     
     .memberships-grid {
@@ -1686,21 +1715,26 @@
         flex-shrink: 0;
     }
     
-    .faculty-details-page .section-header {
+    .research-guidance-cards {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .faculty-details-page .faculty-details-section-header {
         padding: 10px 12px;
     }
     
-    .faculty-details-page .section-header h3 {
+    .faculty-details-page .faculty-details-section-header h3 {
         font-size: 14px;
         line-height: 1.4;
         text-align: center;
     }
     
-    .faculty-details-page .section-content {
+    .faculty-details-page .faculty-details-section-content {
         padding: 15px;
     }
     
-    .faculty-details-page .info-grid {
+    .faculty-details-page .faculty-details-info-grid {
         padding: 15px;
     }
     
@@ -1829,31 +1863,27 @@
     color: var(--text-primary);
 }
 
-[data-theme="dark"] .faculty-details-page .info-row {
+[data-theme="dark"] .faculty-details-page .faculty-details-info-row {
     background: rgba(55, 71, 79, 0.3);
     border-left-color: var(--brand-primary);
 }
 
-[data-theme="dark"] .faculty-details-page .info-row:hover {
+[data-theme="dark"] .faculty-details-page .faculty-details-info-row:hover {
     background: var(--brand-accent);
 }
 
-[data-theme="dark"] .faculty-details-page .section-header {
+[data-theme="dark"] .faculty-details-page .faculty-details-section-header {
     background: var(--brand-accent);
     color: var(--text-primary);
 }
 
-[data-theme="dark"] .faculty-details-page .section-header:hover {
-    background: #37474f;
-}
-
-[data-theme="dark"] .research-tag {
+[data-theme="dark"] .faculty-details-research-tag {
     background: var(--brand-accent);
     color: var(--brand-primary);
     border-color: var(--brand-primary);
 }
 
-[data-theme="dark"] .research-tag:hover {
+[data-theme="dark"] .faculty-details-research-tag:hover {
     background: var(--brand-primary);
     color: var(--bg-primary);
 }
@@ -1982,26 +2012,52 @@
 }
 
 /* Dark mode for new card-based components */
-[data-theme="dark"] .guidance-card,
-[data-theme="dark"] .award-content {
-    background: var(--bg-secondary);
-    border-color: var(--border-color);
+[data-theme="dark"] .guidance-card {
+    background: #1e1e1e;
+    border-color: #37474f;
     color: var(--text-primary);
 }
 
-[data-theme="dark"] .guidance-card:hover,
+[data-theme="dark"] .guidance-card:hover {
+    border-color: #4fc3f7;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .guidance-content h4,
+[data-theme="dark"] .guidance-text {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .guidance-content .research-topic {
+    color: #b0bec5;
+}
+
+[data-theme="dark"] .guidance-status-badge.completed,
+[data-theme="dark"] .guidance-status-badge.awarded,
+[data-theme="dark"] .guidance-status-badge.ongoing {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .guidance-status-badge.submitted {
+    color: #4fc3f7;
+}
+
+[data-theme="dark"] .guidance-year {
+    color: #78909c;
+}
+
+[data-theme="dark"] .award-content {
+    background: var(--bg-secondary);
+    border-color: var(--border-color);
+}
+
 [data-theme="dark"] .award-content:hover {
     background: var(--brand-accent);
     border-color: var(--brand-primary);
 }
 
-[data-theme="dark"] .guidance-text,
 [data-theme="dark"] .award-title {
     color: var(--text-primary);
-}
-
-[data-theme="dark"] .guidance-year {
-    color: var(--text-secondary);
 }
 
 [data-theme="dark"] .award-year {

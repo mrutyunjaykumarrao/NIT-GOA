@@ -178,10 +178,10 @@ const FacultyDetails = () => {
         }
 
         return (
-            <div className="expandable-section">
+            <div className="faculty-details-expandable-section">
                 <div className="section-header-main">
                     <div 
-                        className="section-header" 
+                        className="faculty-details-section-header" 
                         onClick={() => toggleSection(key)}
                     >
                         <div className="section-icon">
@@ -191,7 +191,7 @@ const FacultyDetails = () => {
                         <i className={`fas fa-chevron-${expandedSections[key] ? 'up' : 'down'}`}></i>
                     </div>
                 </div>
-                <div className={`section-content ${expandedSections[key] ? 'expanded' : 'collapsed'}`}>
+                <div className={`faculty-details-section-content ${expandedSections[key] ? 'expanded' : 'collapsed'}`}>
                     {content}
                 </div>
             </div>
@@ -248,8 +248,8 @@ const FacultyDetails = () => {
     if (loading) {
         return (
             <div className="faculty-details-page">
-                <div className="loading-container">
-                    <div className="loading-spinner"></div>
+                <div className="faculty-details-loading-container">
+                    <div className="faculty-details-loading-spinner"></div>
                     <p>Loading faculty details...</p>
                 </div>
             </div>
@@ -259,10 +259,10 @@ const FacultyDetails = () => {
     if (error) {
         return (
             <div className="faculty-details-page">
-                <div className="error-container">
+                <div className="faculty-details-error-container">
                     <h2>Error Loading Faculty Details</h2>
                     <p>{error}</p>
-                    <button onClick={handleBackToFaculty} className="back-button">
+                    <button onClick={handleBackToFaculty} className="faculty-details-back-button">
                         ← Back to Faculty
                     </button>
                 </div>
@@ -273,9 +273,9 @@ const FacultyDetails = () => {
     if (!faculty) {
         return (
             <div className="faculty-details-page">
-                <div className="error-container">
+                <div className="faculty-details-error-container">
                     <h2>Faculty member not found</h2>
-                    <button onClick={handleBackToFaculty} className="back-button">
+                    <button onClick={handleBackToFaculty} className="faculty-details-back-button">
                         ← Back to Faculty
                     </button>
                 </div>
@@ -288,7 +288,7 @@ const FacultyDetails = () => {
             <div className="faculty-details-container">
                 {/* Back Button */}
                 <div className="faculty-header-actions">
-                    <button onClick={handleBackToFaculty} className="back-button">
+                    <button onClick={handleBackToFaculty} className="faculty-details-back-button">
                         <i className="fas fa-arrow-left"></i>
                         Back To Faculty
                     </button>
@@ -344,31 +344,31 @@ const FacultyDetails = () => {
                     <div className="faculty-details-content">
                         {/* Personal Information Section */}
                         <div className="info-section personal-info-section">
-                            <div className="section-header-main">
+                            <div className="section-header-main personalInfo">
                                 <h2>Personal Information</h2>
                             </div>
                             
                             {expandedSections.personalInfo && (
-                                <div className="info-grid">
-                                    <div className="info-row">
-                                        <span className="info-label">Name :</span>
-                                        <span className="info-value">{faculty.personalInformation?.name}</span>
+                                <div className="faculty-details-info-grid">
+                                    <div className="faculty-details-info-row">
+                                        <span className="faculty-details-info-label">Name :</span>
+                                        <span className="faculty-details-info-value">{faculty.personalInformation?.name}</span>
                                     </div>
-                                    <div className="info-row">
-                                        <span className="info-label">Gender :</span>
-                                        <span className="info-value">{faculty.personalInformation?.gender}</span>
+                                    <div className="faculty-details-info-row">
+                                        <span className="faculty-details-info-label">Gender :</span>
+                                        <span className="faculty-details-info-value">{faculty.personalInformation?.gender}</span>
                                     </div>
-                                    <div className="info-row">
-                                        <span className="info-label">Birth Date :</span>
-                                        <span className="info-value">{formatDateForDisplay(faculty.personalInformation?.birthDate) || '-'}</span>
+                                    <div className="faculty-details-info-row">
+                                        <span className="faculty-details-info-label">Birth Date :</span>
+                                        <span className="faculty-details-info-value">{formatDateForDisplay(faculty.personalInformation?.birthDate) || '-'}</span>
                                     </div>
-                                    <div className="info-row">
-                                        <span className="info-label">Date of Joining :</span>
-                                        <span className="info-value">{formatDateForDisplay(faculty.personalInformation?.dateOfJoining) || '-'}</span>
+                                    <div className="faculty-details-info-row">
+                                        <span className="faculty-details-info-label">Date of Joining :</span>
+                                        <span className="faculty-details-info-value">{formatDateForDisplay(faculty.personalInformation?.dateOfJoining) || '-'}</span>
                                     </div>
-                                    <div className="info-row full-width">
-                                        <span className="info-label">Research/Teaching Experience :</span>
-                                        <span className="info-value">{faculty.personalInformation?.experience}</span>
+                                    <div className="faculty-details-info-row full-width">
+                                        <span className="faculty-details-info-label">Research/Teaching Experience :</span>
+                                        <span className="faculty-details-info-value">{faculty.personalInformation?.experience}</span>
                                     </div>
                                 </div>
                             )}
@@ -376,31 +376,31 @@ const FacultyDetails = () => {
 
                         {/* Contact Information Section */}
                         <div className="info-section contact-info-section">
-                            <div className="section-header-main">
+                            <div className="section-header-main personalInfo">
                                 <h2>Contact Information</h2>
                             </div>
                             
                             {expandedSections.contactInfo && (
-                                <div className="info-grid">
-                                    <div className="info-row">
-                                        <span className="info-label">Email Address :</span>
-                                        <span className="info-value">{faculty.contactInformation?.email}</span>
+                                <div className="faculty-details-info-grid">
+                                    <div className="faculty-details-info-row">
+                                        <span className="faculty-details-info-label">Email Address :</span>
+                                        <span className="faculty-details-info-value">{faculty.contactInformation?.email}</span>
                                     </div>
-                                    <div className="info-row">
-                                        <span className="info-label">Phone [Residence] :</span>
-                                        <span className="info-value">-</span>
+                                    <div className="faculty-details-info-row">
+                                        <span className="faculty-details-info-label">Phone [Residence] :</span>
+                                        <span className="faculty-details-info-value">-</span>
                                     </div>
-                                    <div className="info-row">
-                                        <span className="info-label">Phone [Mobile] :</span>
-                                        <span className="info-value">{faculty.contactInformation?.phoneMobile}</span>
+                                    <div className="faculty-details-info-row">
+                                        <span className="faculty-details-info-label">Phone [Mobile] :</span>
+                                        <span className="faculty-details-info-value">{faculty.contactInformation?.phoneMobile}</span>
                                     </div>
-                                    <div className="info-row">
-                                        <span className="info-label">Office Extension :</span>
-                                        <span className="info-value">-</span>
+                                    <div className="faculty-details-info-row">
+                                        <span className="faculty-details-info-label">Office Extension :</span>
+                                        <span className="faculty-details-info-value">-</span>
                                     </div>
-                                     <div className="info-row full-width">
-                                        <span className="info-label">Address :</span>
-                                        <span className="info-value">{faculty.contactInformation?.address}</span>
+                                     <div className="faculty-details-info-row full-width">
+                                        <span className="faculty-details-info-label">Address :</span>
+                                        <span className="faculty-details-info-value">{faculty.contactInformation?.address}</span>
                                     </div>
                                 </div>
                             )}
@@ -409,7 +409,7 @@ const FacultyDetails = () => {
                 </div>
 
                 {/* Expandable Sections */}
-                <div className="expandable-sections">
+                <div className="faculty-details-expandable-sections">
                     {renderExpandableSection(
                         "Research Area",
                         "researchAreas",
@@ -418,38 +418,11 @@ const FacultyDetails = () => {
                                 {/* <h4>Primary Research Areas</h4> */}
                                 <div className="research-areas">
                                     {faculty.profile?.researchAreaSummary?.map((area, index) => (
-                                        <span key={index} className="research-tag">{area}</span>
+                                        <span key={index} className="faculty-details-research-tag">{area}</span>
                                     ))}
                                 </div>
                                     </div>
                                 </div>,
-                        false
-                    )}
-
-                    {renderExpandableSection(
-                        "Research Guidance",
-                        "researchGuidance",
-                        <div className="research-guidance-cards">
-                            {faculty.researchGuidance?.map((student, index) => (
-                                <div key={student.guidance_id || index} className="guidance-card">
-                                    <div className="guidance-header">
-                                        <div className="guidance-degree-badge">Ph.D.</div>
-                                        <div className={`guidance-status-badge ${student.status?.toLowerCase().replace(/\s+/g, '-') || 'ongoing'}`}>
-                                            {student.status || 'Ongoing'}
-                                        </div>
-                                    </div>
-                                    <div className="guidance-content">
-                                        <h4 className="student-name">
-                                            {student.student_honorific && `${student.student_honorific} `}
-                                            {student.student_name}
-                                        </h4>
-                                        {student.research_topic && (
-                                            <p className="research-topic">{student.research_topic}</p>
-                                        )}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>,
                         false
                     )}
 
@@ -479,12 +452,24 @@ const FacultyDetails = () => {
                                                                             <div className="course-category">
                                                                                 <h4>Undergraduate Courses</h4>
                                                                                 <ul>
-                                                                                    {faculty.coursesTaught.ug.map((course, index) => (
-                                                                                        <li key={index}>
-                                                                                            {typeof course === 'string' ? course : 
-                                                                                            `${course.course_code} - ${course.course_name} (${course.credits} credits)`}
-                                                                                        </li>
-                                                                                    ))}
+                                                                                    {faculty.coursesTaught.ug.map((course, index) => {
+                                                                                        if (typeof course === 'string') return <li key={index}>{course}</li>;
+                                                                                        
+                                                                                        // Build display string with only available fields
+                                                                                        let displayText = '';
+                                                                                        if (course.course_code) displayText += course.course_code;
+                                                                                        if (course.course_name) {
+                                                                                            displayText += (displayText ? ' - ' : '') + course.course_name;
+                                                                                        }
+                                                                                        if (course.credits) {
+                                                                                            displayText += ` (${course.credits} credits)`;
+                                                                                        }
+                                                                                        if (course.semester) {
+                                                                                            displayText += ` - ${course.semester} Semester`;
+                                                                                        }
+                                                                                        
+                                                                                        return <li key={index}>{displayText || 'Course details not available'}</li>;
+                                                                                    })}
                                                                                 </ul>
                                                                             </div>
                                                                         )}
@@ -492,12 +477,24 @@ const FacultyDetails = () => {
                                                                             <div className="course-category">
                                                                                 <h4>Postgraduate Courses</h4>
                                                                                 <ul>
-                                                                                    {faculty.coursesTaught.pg.map((course, index) => (
-                                                                                        <li key={index}>
-                                                                                            {typeof course === 'string' ? course : 
-                                                                                            `${course.course_code} - ${course.course_name} (${course.credits} credits)`}
-                                                                                        </li>
-                                                                                    ))}
+                                                                                    {faculty.coursesTaught.pg.map((course, index) => {
+                                                                                        if (typeof course === 'string') return <li key={index}>{course}</li>;
+                                                                                        
+                                                                                        // Build display string with only available fields
+                                                                                        let displayText = '';
+                                                                                        if (course.course_code) displayText += course.course_code;
+                                                                                        if (course.course_name) {
+                                                                                            displayText += (displayText ? ' - ' : '') + course.course_name;
+                                                                                        }
+                                                                                        if (course.credits) {
+                                                                                            displayText += ` (${course.credits} credits)`;
+                                                                                        }
+                                                                                        if (course.semester) {
+                                                                                            displayText += ` - ${course.semester} Semester`;
+                                                                                        }
+                                                                                        
+                                                                                        return <li key={index}>{displayText || 'Course details not available'}</li>;
+                                                                                    })}
                                                                                 </ul>
                                                                             </div>
                                                                         )}
@@ -535,10 +532,10 @@ const FacultyDetails = () => {
                                                             <tbody>
                                                                 {faculty.academicInformation?.map((edu, index) => (
                                                                     <tr key={index}>
-                                                                        <td className="degree-cell">{edu.degree}</td>
-                                                                        <td className="institute-cell">{edu.institute}</td>
-                                                                        <td className="subject-cell">{edu.subject}</td>
-                                                                        <td className="year-cell">{edu.year}</td>
+                                                                        <td className="degree-cell">{edu.degree || '-'}</td>
+                                                                        <td className="institute-cell">{edu.institute || '-'}</td>
+                                                                        <td className="subject-cell">{edu.discipline || edu.subject || '-'}</td>
+                                                                        <td className="year-cell">{edu.graduation_year || edu.year || '-'}</td>
                                                                     </tr>
                                                                 ))}
                                                             </tbody>
@@ -727,6 +724,33 @@ const FacultyDetails = () => {
                     )}
 
                     {renderExpandableSection(
+                        "Research Guidance",
+                        "researchGuidance",
+                        <div className="research-guidance-cards">
+                            {faculty.researchGuidance?.map((student, index) => (
+                                <div key={student.guidance_id || index} className="guidance-card">
+                                    <div className="guidance-header">
+                                        <div className="guidance-degree-badge">Ph.D.</div>
+                                        <div className={`guidance-status-badge ${student.status?.toLowerCase().replace(/\s+/g, '-') || 'ongoing'}`}>
+                                            {student.status || 'Ongoing'}
+                                        </div>
+                                    </div>
+                                    <div className="guidance-content">
+                                        <h4 className="student-name">
+                                            {student.student_honorific && `${student.student_honorific} `}
+                                            {student.student_name}
+                                        </h4>
+                                        {student.research_topic && (
+                                            <p className="research-topic">{student.research_topic}</p>
+                                        )}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>,
+                        false
+                    )}
+
+                    {renderExpandableSection(
                         "Funded Research Project",
                         "fundedProjects",
                         <div className="funded-projects-table-container">
@@ -836,12 +860,18 @@ const FacultyDetails = () => {
                         "memberships",
                         <div className="memberships-section">
                             <ul>
-                                {faculty.membershipAndProfessionalSociety && faculty.membershipAndProfessionalSociety.length > 0 
-                                    ? faculty.membershipAndProfessionalSociety.map((membership, index) => (
-                                        <li key={index}>
-                                            {membership}
-                                        </li>
-                                    ))
+                                {faculty.memberships && faculty.memberships.length > 0 
+                                    ? faculty.memberships.map((membership, index) => {
+                                        // Handle both string format and object format
+                                        if (typeof membership === 'string') {
+                                            return <li key={index}>{membership}</li>;
+                                        }
+                                        // Object format from backend: {organization_name, membership_type, is_active}
+                                        const displayText = membership.membership_type 
+                                            ? `${membership.organization_name} (${membership.membership_type})`
+                                            : membership.organization_name;
+                                        return <li key={membership.membership_id || index}>{displayText}</li>;
+                                    })
                                     : <li>No memberships available</li>
                                 }
                             </ul>
