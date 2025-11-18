@@ -102,9 +102,9 @@ const checkEditPermission = async (req, res, next) => {
 
     // Faculty can only edit their own profile
     if (user.role === 'Faculty') {
-      // Get user's employee code from database
+      // Get user's employee code from user_accounts table
       const userEmployeeCode = await executeQuery(
-        'SELECT employee_code FROM employees WHERE user_id = ?',
+        'SELECT employee_code FROM user_accounts WHERE user_id = ?',
         [user.userId]
       );
 

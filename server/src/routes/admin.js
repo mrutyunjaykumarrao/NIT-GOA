@@ -302,6 +302,204 @@ router.put('/pending-approvals/:id/reject', async (req, res) => {
 });
 
 // ======================
+// FACULTY MANAGEMENT
+// ======================
+
+// POST /api/admin/faculty - Create new faculty profile
+router.post('/faculty', async (req, res) => {
+  try {
+    const {
+      full_name,
+      honorific,
+      designation,
+      department,
+      email,
+      gender,
+      extension_no,
+      mobile,
+      display_order,
+      profile_image,
+      create_user_account,
+      username,
+      password,
+      access_level
+    } = req.body;
+
+    // Validation
+    if (!full_name || !designation || !department || !email) {
+      return res.status(400).json({ 
+        error: 'Missing required fields: full_name, designation, department, email' 
+      });
+    }
+
+    // Validate email format
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return res.status(400).json({ error: 'Invalid email format' });
+    }
+
+    await withTransaction(async (connection) => {
+      // Generate employee code - check all possible sources to avoid conflicts
+      const [codeResult] = await connection.execute(`
+        SELECT employee_code FROM (
+          SELECT employee_code FROM employees WHERE role = 'Faculty'
+          UNION
+          SELECT employee_code FROM faculty_profiles
+        ) AS all_codes
+        WHERE employee_code LIKE 'FAC%'
+        ORDER BY employee_code DESC LIMIT 1
+      `);
+      
+      let newEmployeeCode;
+      if (codeResult.length > 0) {
+        const lastCode = codeResult[0].employee_code;
+        const num = parseInt(lastCode.replace('FAC', '')) + 1;
+        newEmployeeCode = `FAC${String(num).padStart(3, '0')}`;
+      } else {
+        newEmployeeCode = 'FAC001';
+      }
+
+      // Get department_id from department name
+      const [deptResult] = await connection.execute(
+        'SELECT department_id FROM departments WHERE department_name = ? OR department_code = ?',
+        [department, department]
+      );
+
+      if (deptResult.length === 0) {
+        throw new Error(`Department not found: ${department}`);
+      }
+
+      const department_id = deptResult[0].department_id;
+
+      // Insert into employees table
+      const [employeeResult] = await connection.execute(`
+        INSERT INTO employees (
+          employee_code, full_name, honorific, email, gender, phone_mobile, extension_no,
+          role, is_active, is_public_visible
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, 'Faculty', TRUE, TRUE)
+      `, [
+        newEmployeeCode,
+        full_name,
+        honorific || null,
+        email,
+        gender || null,
+        mobile || null,
+        extension_no || null
+      ]);
+
+      const employee_id = employeeResult.insertId;
+
+      // Get or create designation
+      let designation_id;
+      const [designationResult] = await connection.execute(
+        'SELECT designation_id FROM faculty_designations WHERE designation_title = ?',
+        [designation]
+      );
+
+      if (designationResult.length > 0) {
+        designation_id = designationResult[0].designation_id;
+      } else {
+        const [newDesignation] = await connection.execute(
+          'INSERT INTO faculty_designations (designation_title) VALUES (?)',
+          [designation]
+        );
+        designation_id = newDesignation.insertId;
+      }
+
+      // Insert into faculty_profiles
+      await connection.execute(`
+        INSERT INTO faculty_profiles (
+          employee_code, department_id, designation_id, display_order, image_url
+        ) VALUES (?, ?, ?, ?, ?)
+      `, [
+        newEmployeeCode,
+        department_id,
+        designation_id,
+        display_order || 999,
+        profile_image || null
+      ]);
+
+      // Optionally create user account if requested
+      if (create_user_account) {
+        const accountUsername = username || newEmployeeCode;
+        const accountPassword = password || newEmployeeCode;
+        const accountAccessLevel = access_level || 'Faculty';
+        
+        const hashedPassword = await bcrypt.hash(accountPassword, 10);
+        await connection.execute(`
+          INSERT INTO user_accounts (
+            username, password_hash, email, access_level, employee_code, is_active
+          ) VALUES (?, ?, ?, ?, ?, TRUE)
+        `, [accountUsername, hashedPassword, email, accountAccessLevel, newEmployeeCode]);
+      }
+    });
+
+    res.status(201).json({ 
+      message: 'Faculty profile created successfully',
+      success: true
+    });
+
+  } catch (error) {
+    console.error('Create faculty error:', error);
+    if (error.code === 'ER_DUP_ENTRY') {
+      res.status(409).json({ error: 'Email or employee code already exists' });
+    } else {
+      res.status(500).json({ 
+        error: 'Failed to create faculty profile',
+        details: error.message 
+      });
+    }
+  }
+});
+
+// DELETE /api/admin/faculty/:employeeCode - Delete faculty profile
+router.delete('/faculty/:employeeCode', async (req, res) => {
+  try {
+    const { employeeCode } = req.params;
+
+    await withTransaction(async (connection) => {
+      // Check if faculty exists
+      const [faculty] = await connection.execute(
+        'SELECT employee_code FROM faculty_profiles WHERE employee_code = ?',
+        [employeeCode]
+      );
+
+      if (faculty.length === 0) {
+        throw new Error('Faculty not found');
+      }
+
+      // Delete user account first (has ON DELETE SET NULL, so we need to explicitly delete)
+      await connection.execute(
+        'DELETE FROM user_accounts WHERE employee_code = ?',
+        [employeeCode]
+      );
+
+      // Delete from employees table - this will CASCADE to all related tables
+      // (faculty_profiles, faculty_education, faculty_publications, etc.)
+      await connection.execute(
+        'DELETE FROM employees WHERE employee_code = ?',
+        [employeeCode]
+      );
+    });
+
+    res.json({ 
+      message: 'Faculty profile deleted successfully',
+      success: true
+    });
+
+  } catch (error) {
+    console.error('Delete faculty error:', error);
+    if (error.message === 'Faculty not found') {
+      res.status(404).json({ error: 'Faculty not found' });
+    } else {
+      res.status(500).json({ 
+        error: 'Failed to delete faculty profile',
+        details: error.message 
+      });
+    }
+  }
+});
+
+// ======================
 // ANALYTICS
 // ======================
 

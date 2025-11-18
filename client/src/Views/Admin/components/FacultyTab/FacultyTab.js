@@ -373,7 +373,7 @@ const FacultyTab = ({ facultyList, onCreateFaculty, onEditFaculty, onDeleteFacul
                       </button>
                       <button 
                         className="faculty-tab-delete-btn" 
-                        onClick={() => onDeleteFaculty(fac.faculty_id || fac.employee_id)}
+                        onClick={() => onDeleteFaculty(fac.employee_code)}
                         title="Delete Faculty Profile"
                       >
                         <i className="fas fa-trash"></i>
