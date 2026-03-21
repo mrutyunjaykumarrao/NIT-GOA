@@ -36,6 +36,33 @@ async function withTransaction(callback) {
   }
 }
 
+// GET /api/admin/temp-image/:filename - Serve temporary images for preview (Must be before auth middleware for <img> tags)
+router.get('/temp-image/:filename', async (req, res) => {
+  try {
+    const filename = req.params.filename;
+    // Do not allow directory traversal
+    if (filename.includes('..') || filename.includes('/')) {
+      return res.status(400).json({ error: 'Invalid filename' });
+    }
+    // Handle 'REMOVE' specifically
+    if (filename === 'REMOVE') {
+      return res.status(404).json({ error: 'Image is marked for removal' });
+    }
+    
+    // Support file paths if that's what was saved
+    const resolvedFilename = require('path').basename(filename);
+    const tempPath = require('path').join(__dirname, '../../uploads/temp', resolvedFilename);
+    const fs = require('fs');
+    if (!fs.existsSync(tempPath)) {
+      return res.status(404).json({ error: 'Temporary image not found' });
+    }
+    res.sendFile(tempPath);
+  } catch (error) {
+    console.error('Error serving temp image:', error);
+    res.status(500).json({ error: 'Failed to serve image' });
+  }
+});
+
 // All admin routes require authentication and admin role
 router.use(authenticateToken);
 router.use(requireAdmin);
@@ -53,6 +80,7 @@ router.post('/migrate', async (req, res) => {
           approval_id INT AUTO_INCREMENT PRIMARY KEY,
           employee_code VARCHAR(50) NOT NULL,
           approval_type ENUM('profile_image', 'personal_info', 'contact_info', 'other') NOT NULL,
+          action_type ENUM('UPDATE','DELETE') DEFAULT 'UPDATE',
           current_value TEXT,
           requested_value TEXT,
           temp_file_path VARCHAR(500),
@@ -100,6 +128,7 @@ router.get('/pending-approvals', async (req, res) => {
             pa.approval_id,
             pa.employee_code,
             pa.approval_type,
+            pa.action_type,
             pa.current_value AS current_image_url,
             pa.requested_value AS requested_image_url,
             pa.requested_by,
@@ -154,57 +183,32 @@ router.put('/pending-approvals/:id/approve', async (req, res) => {
       const fs = require('fs').promises;
       const path = require('path');
       
+      const { action_type, requested_value, temp_file_path, current_value, employee_code } = approval;
+      const isDelete = action_type === 'DELETE' || requested_value === 'REMOVE';
+      
       // Get employee details for proper directory structure
       const [employeeResult] = await executeQuery(`
         SELECT 
           e.employee_code, 
           e.full_name,
           e.role, 
-          e.image_url,
           d.department_code
         FROM employees e
         LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code
         LEFT JOIN departments d ON fp.department_id = d.department_id
         WHERE e.employee_code = ?
-      `, [approval.employee_code]);
+      `, [employee_code]);
 
       const employee = employeeResult[0];
       
-      // Determine target directory structure
-      let roleDir = employee.role === 'Faculty' ? 'Faculty' : 
-                   employee.role === 'Technical' ? 'Technical Staff' : 
-                   'Administrative Staff';
-      
-      let targetDir;
-      if (employee.role === 'Faculty' && employee.department_code) {
-        targetDir = path.join(__dirname, '../../../../client/public/images', roleDir, employee.department_code);
-      } else {
-        targetDir = path.join(__dirname, '../../../../client/public/images', roleDir);
-      }
-
-      // Ensure target directory exists
-      await fs.mkdir(targetDir, { recursive: true });
-
-      // Create proper filename for final image
-      const nameSlug = employee.full_name
-        .toLowerCase()
-        .replace(/\s+/g, '_')
-        .replace(/[^a-z0-9_]/g, '');
-      const tempFilename = approval.requested_value; // Current temp filename
-      const fileExtension = path.extname(tempFilename);
-      const finalFilename = `${nameSlug}${fileExtension}`;
-      
-      const tempPath = approval.temp_file_path; // Full path to temp file
-      const finalPath = path.join(targetDir, finalFilename);
-      
       // Move old image to deleted directory if exists
-      if (approval.current_value) {
-        const oldImagePath = path.join(__dirname, '../../../../client/public', approval.current_value);
+      if (current_value) {
+        const oldImagePath = path.join(__dirname, '../../../client/public', current_value);
         const deletedDir = path.join(__dirname, '../../uploads/deleted');
         await fs.mkdir(deletedDir, { recursive: true });
         
         try {
-          const deletedPath = path.join(deletedDir, `approved_replace_${Date.now()}_${path.basename(approval.current_value)}`);
+          const deletedPath = path.join(deletedDir, `approved_replace_${Date.now()}_${path.basename(current_value)}`);
           await fs.rename(oldImagePath, deletedPath);
           console.log('Old image moved to deleted:', deletedPath);
         } catch (error) {
@@ -212,26 +216,26 @@ router.put('/pending-approvals/:id/approve', async (req, res) => {
         }
       }
 
-      // Move new image from temp to final location
-      try {
-        await fs.rename(tempPath, finalPath);
-        console.log('New image moved to:', finalPath);
-      } catch (error) {
-        console.error('Failed to move temp image:', error);
-        return res.status(500).json({ error: 'Failed to move image file' });
+      let newImageUrl = null;
+      if (!isDelete && temp_file_path) {
+        // Move new image from temp to final location
+        try {
+          newImageUrl = await moveImageToPublic(temp_file_path, employee.full_name, employee.role, employee.department_code);
+          console.log('New image moved to:', newImageUrl);
+        } catch (error) {
+          console.error('Failed to move temp image:', error);
+          return res.status(500).json({ error: 'Failed to move image file' });
+        }
       }
 
-      // Construct proper image URL path  
-      const newImageUrl = employee.role === 'Faculty' && employee.department_code ?
-        `images/${roleDir}/${employee.department_code}/${finalFilename}` :
-        `images/${roleDir}/${finalFilename}`;
+      // Update faculty_profiles or staff_profiles table with the new public image URL
+      const tableName = employee.role === 'Faculty' ? 'faculty_profiles' : 'staff_profiles';
+      await executeQuery(`
+        UPDATE ${tableName}
+        SET image_url = ?
+        WHERE employee_code = ?
+      `, [newImageUrl, employee_code]);
 
-      // Update employee image_url in database
-      await executeQuery(
-        'UPDATE employees SET image_url = ?, updated_at = NOW() WHERE employee_code = ?',
-        [newImageUrl, approval.employee_code]
-      );
-      
       console.log('Database updated with new image URL:', newImageUrl);
     }
 
@@ -359,17 +363,18 @@ router.post('/faculty', upload.single('profile_image'), async (req, res) => {
         newEmployeeCode = 'FAC001';
       }
 
-      // Get department_id from department name
-      const [deptResult] = await connection.execute(
-        'SELECT department_id FROM departments WHERE department_name = ? OR department_code = ?',
-        [department, department]
-      );
+// Get department_id and department_code from department name
+        const [deptResult] = await connection.execute(
+          'SELECT department_id, department_code FROM departments WHERE department_name = ? OR department_code = ?',
+          [department, department]
+        );
 
-      if (deptResult.length === 0) {
-        throw new Error(`Department not found: ${department}`);
-      }
+        if (deptResult.length === 0) {
+          throw new Error(`Department not found: ${department}`);
+        }
 
-      const department_id = deptResult[0].department_id;
+        const department_id = deptResult[0].department_id;
+        const department_code = deptResult[0].department_code;
 
       // Insert into employees table
       const [employeeResult] = await connection.execute(`
@@ -406,22 +411,22 @@ router.post('/faculty', upload.single('profile_image'), async (req, res) => {
         designation_id = newDesignation.insertId;
       }
 
-      // Handle Image Upload
-      let image_url = null;
-      if (req.file) {
-        try {
-          image_url = await moveImageToPublic(req.file.path, newEmployeeCode, 'Faculty');
-        } catch (imgError) {
-          console.error("Failed to process image upload:", imgError);
+        // Handle Image Upload
+        let image_url = null;
+        if (req.file) {
+          try {
+            image_url = await moveImageToPublic(req.file.path, full_name, 'Faculty', department_code);
+          } catch (imgError) {
+            console.error("Failed to process image upload:", imgError);
+          }
         }
-      }
 
-      // Insert into faculty_profiles
-      await connection.execute(`
-        INSERT INTO faculty_profiles (
-          employee_code, department_id, designation_id, display_order, image_url
-        ) VALUES (?, ?, ?, ?, ?)
-      `, [
+        // Insert into faculty_profiles
+        await connection.execute(`
+          INSERT INTO faculty_profiles (
+            employee_code, department_id, designation_id, display_order, image_url
+          ) VALUES (?, ?, ?, ?, ?)
+        `, [
         newEmployeeCode,
         department_id,
         designation_id,

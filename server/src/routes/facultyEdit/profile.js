@@ -178,19 +178,44 @@ router.put('/:employeeCode/profile/image', authenticateToken, checkEditPermissio
       return res.status(400).json(formatErrorResponse('No image file provided', 400));
     }
 
-    // Get old image URL
-    const oldImageResult = await executeQuery('SELECT image_url FROM faculty_profiles WHERE employee_code = ?', [employeeCode]);
-    if (oldImageResult.length === 0) {
+    // Get old image URL and employee info
+    const employeeResult = await executeQuery(`
+      SELECT 
+        fp.image_url, 
+        e.full_name, 
+        e.role, 
+        d.department_code
+      FROM faculty_profiles fp
+      JOIN employees e ON e.employee_code = fp.employee_code
+      LEFT JOIN departments d ON fp.department_id = d.department_id
+      WHERE fp.employee_code = ?
+    `, [employeeCode]);
+    
+    if (employeeResult.length === 0) {
       return res.status(404).json(formatErrorResponse('Faculty profile not found', 404));
     }
-    const oldImage = oldImageResult[0].image_url;
+    
+    const { image_url: oldImage, full_name, role, department_code } = employeeResult[0];
 
     if (userRole === 'Admin') {
       let finalImageUrl = null;
 
-      if (req.file) {
+      // Move old image to deleted
+      if (oldImage) {
+        const oldImagePath = path.join(__dirname, '../../../../client/public', oldImage);
+        try {
+          const deletedDir = path.join(__dirname, '../../../uploads/deleted');
+          await fs.promises.mkdir(deletedDir, { recursive: true });
+          const deletedPath = path.join(deletedDir, `admin_replace_${Date.now()}_${path.basename(oldImage)}`);
+          await fs.promises.rename(oldImagePath, deletedPath);
+        } catch (error) {
+          console.log('Old image not found or already moved:', oldImage);
+        }
+      }
+
+      if (req.file && !isRemoveImage) {
         // Use moveImageToPublic to move from temp dir to public directory
-        finalImageUrl = await moveImageToPublic(req.file.path, employeeCode, 'Faculty');
+        finalImageUrl = await moveImageToPublic(req.file.path, full_name, role || 'Faculty', department_code);
       }
 
       // Update image URL in database (will be NULL if removed)
@@ -207,8 +232,9 @@ router.put('/:employeeCode/profile/image', authenticateToken, checkEditPermissio
 
     } else {
       // User is non-admin Faculty -> Route to Pending Approvals!
-      const requestedValue = req.file ? req.file.filename : null;
-      const tempFilePath = req.file ? req.file.path : null;
+      const requestedValue = req.file && !isRemoveImage ? req.file.filename : null;
+      const tempFilePath = req.file && !isRemoveImage ? req.file.path : null;
+      const actionType = isRemoveImage ? 'DELETE' : 'UPDATE';
 
       // Check if there is already a pending image approval to replace 
       const existingApproval = await executeQuery(`
@@ -220,26 +246,29 @@ router.put('/:employeeCode/profile/image', authenticateToken, checkEditPermissio
         await executeQuery(`
           UPDATE pending_approvals 
           SET 
+            action_type = ?,
             current_value = ?,
             requested_value = ?,
             temp_file_path = ?,
             requested_at = CURRENT_TIMESTAMP
           WHERE approval_id = ?
         `, [
+          actionType,
           oldImage,
-          isRemoveImage ? 'REMOVE' : requestedValue,
+          requestedValue,
           tempFilePath,
           existingApproval[0].approval_id
         ]);
       } else {
         await executeQuery(`
           INSERT INTO pending_approvals (
-            employee_code, approval_type, current_value, requested_value, temp_file_path, requested_by
-          ) VALUES (?, 'profile_image', ?, ?, ?, ?)
+            employee_code, approval_type, action_type, current_value, requested_value, temp_file_path, requested_by
+          ) VALUES (?, 'profile_image', ?, ?, ?, ?, ?)
         `, [
           employeeCode,
+          actionType,
           oldImage,
-          isRemoveImage ? 'REMOVE' : requestedValue,
+          requestedValue,
           tempFilePath,
           employeeCode
         ]);
@@ -254,6 +283,24 @@ router.put('/:employeeCode/profile/image', authenticateToken, checkEditPermissio
   } catch (error) {
     console.error('Update profile image error:', error);
     res.status(500).json(formatErrorResponse(error.message));
+  }
+});
+
+// GET /api/faculty-edit/:employeeCode/pending-requests - Get user's own requests
+router.get('/:employeeCode/pending-requests', authenticateToken, checkEditPermission, async (req, res) => {
+  try {
+    const { employeeCode } = req.params;
+    
+    const requests = await executeQuery(`
+      SELECT * FROM pending_approvals 
+      WHERE employee_code = ? 
+      ORDER BY requested_at DESC
+    `, [employeeCode]);
+    
+    res.json(formatSuccessResponse({ requests }, 'Requests fetched successfully'));
+  } catch (error) {
+    console.error('Fetch pending requests error:', error);
+    res.status(500).json(formatErrorResponse('Failed to fetch pending requests', 500));
   }
 });
 

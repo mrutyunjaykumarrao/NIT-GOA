@@ -17,6 +17,7 @@ import TrainingSection from '../../../../components/FacultyEditForm/TrainingSect
 import SocialLinksSection from '../../../../components/FacultyEditForm/SocialLinksSection';
 import CustomSectionsManager from '../../../../components/FacultyEditForm/CustomSectionsManager';
 import CustomSectionEntries from '../../../../components/FacultyEditForm/CustomSectionEntries';
+import PendingRequestsSection from '../../../../components/FacultyEditForm/PendingRequestsSection';
 
 const FacultyEdit = () => {
     const { id } = useParams();
@@ -836,7 +837,8 @@ const FacultyEdit = () => {
             isCustom: true,
             sectionData: section
         })),
-        { id: 'custom', label: 'Custom Sections', icon: 'fas fa-plus-circle' }
+        { id: 'custom', label: 'Custom Sections', icon: 'fas fa-plus-circle' },
+        { id: 'requests', label: 'Request Statuses', icon: 'fas fa-clipboard-list' }
     ];
 
     if (loading) {
@@ -1042,6 +1044,13 @@ const FacultyEdit = () => {
                             setFormData={setFormData}
                             loading={loading}
                             employeeCode={id}
+                        />
+                    )}
+
+                    {/* Pending Requests Tab */}
+                    {activeTab === 'requests' && (
+                        <PendingRequestsSection 
+                            employeeId={id} 
                         />
                     )}
                     </div>

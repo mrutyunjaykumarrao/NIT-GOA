@@ -266,9 +266,11 @@ const PendingApprovalsTab = () => {
               <div className="preview-comparison">
                 <div className="preview-section">
                   <h4>Current Image</h4>
-                  {selectedApproval.current_image_url ? (
+                  {selectedApproval.current_image_url && selectedApproval.current_image_url !== 'null' ? (
                     <img 
-                      src={`/${selectedApproval.current_image_url}`} 
+                      src={selectedApproval.current_image_url.startsWith('http') || selectedApproval.current_image_url.startsWith('/') 
+                        ? selectedApproval.current_image_url 
+                        : `/${selectedApproval.current_image_url}`}
                       alt="Current" 
                       className="pendingApproval-preview-image"
                     />
@@ -279,15 +281,21 @@ const PendingApprovalsTab = () => {
 
                 <div className="preview-section">
                   <h4>New Image (Pending)</h4>
-                  <img 
-                    src={`/api/faculty/temp-image/${selectedApproval.requested_value}`} 
-                    alt="New" 
-                    className="pendingApproval-preview-image"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.parentElement.innerHTML = '<div class="no-image">Image not found</div>';
-                    }}
-                  />
+                  {selectedApproval.requested_value === 'REMOVE' ? (
+                    <div className="no-image" style={{ color: 'red', fontWeight: 'bold' }}>
+                      Requested Deletion
+                    </div>
+                  ) : (
+                    <img 
+                      src={`/api/admin/temp-image/${selectedApproval.requested_value}`}
+                      alt="New" 
+                      className="pendingApproval-preview-image"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.parentElement.innerHTML = '<div class="no-image">Image not found</div>';
+                      }}
+                    />
+                  )}
                 </div>
               </div>
 

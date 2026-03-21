@@ -49,21 +49,33 @@ const upload = multer({
 });
 
 // Helper function to move approved images to public directory
-const moveImageToPublic = async (tempPath, employeeCode, role) => {
-  const publicDir = path.join(__dirname, '../../uploads/public/images');
-  const roleDir = role === 'Faculty' ? 'Faculty' : 'Technical Staff';
-  const finalDir = path.join(publicDir, roleDir);
+const moveImageToPublic = async (tempPath, nameSlugOrCode, role, departmentCode = null) => {
+  const publicDir = path.join(__dirname, '../../../client/public/images');
+  const roleDir = role === 'Faculty' ? 'Faculty' : 
+                  role === 'Technical' ? 'Technical Staff' : 
+                  'Administrative Staff';
+  
+  let finalDir;
+  if (role === 'Faculty' && departmentCode) {
+    finalDir = path.join(publicDir, roleDir, departmentCode);
+  } else {
+    finalDir = path.join(publicDir, roleDir);
+  }
   
   await ensureDir(finalDir);
   
-  const filename = `${employeeCode}${path.extname(tempPath)}`;
+  const cleanName = nameSlugOrCode.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '');
+  const filename = `${cleanName}${path.extname(tempPath)}`;
   const finalPath = path.join(finalDir, filename);
   
   // Move file from temp to public
   await fs.rename(tempPath, finalPath);
   
   // Return the public URL
-  return `/uploads/public/images/${roleDir}/${filename}`;
+  if (role === 'Faculty' && departmentCode) {
+    return `images/${roleDir}/${departmentCode}/${filename}`;
+  }
+  return `images/${roleDir}/${filename}`;
 };
 
 // Helper function to move rejected images to deleted directory
@@ -84,7 +96,8 @@ const archiveOldImage = async (oldImagePath) => {
   const archiveDir = path.join(__dirname, '../../uploads/archived');
   await ensureDir(archiveDir);
   
-  const oldFullPath = path.join(__dirname, '../../uploads/public', oldImagePath);
+  // oldImagePath should be like images/Faculty/...
+  const oldFullPath = path.join(__dirname, '../../../client/public', oldImagePath);
   const filename = `archived-${Date.now()}-${path.basename(oldImagePath)}`;
   const archivePath = path.join(archiveDir, filename);
   
