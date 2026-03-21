@@ -41,7 +41,7 @@ const PendingApprovalsTab = () => {
   }, [token]);
 
   // Handle approve
-  const handleApprove = async (approvalId) => {
+  const handleApprove = async (approvalId, actionType = 'UPDATE') => {
     try {
       setProcessing(true);
       const response = await fetch(`/api/admin/pending-approvals/${approvalId}/approve`, {
@@ -51,7 +51,9 @@ const PendingApprovalsTab = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          admin_notes: 'Image approved and moved to public directory'
+          admin_notes: actionType === 'DELETE' 
+            ? 'Image deletion approved and file removed' 
+            : 'Image approved and moved to public directory'
         })
       });
 
@@ -69,6 +71,9 @@ const PendingApprovalsTab = () => {
         setSelectedApproval(null);
         setShowPreview(false);
       }
+      
+      // Dispatch event to update the profile dropdown image immediately
+      window.dispatchEvent(new Event('profileImageUpdated'));
       
       alert(`✅ ${result.message}`);
     } catch (error) {
@@ -228,7 +233,7 @@ const PendingApprovalsTab = () => {
               <div className="approval-actions">
                 <button 
                   className="approve-btn"
-                  onClick={() => handleApprove(approval.approval_id)}
+                  onClick={() => handleApprove(approval.approval_id, approval.action_type)}
                   disabled={processing}
                 >
                   <i className="fas fa-check"></i>
@@ -281,13 +286,13 @@ const PendingApprovalsTab = () => {
 
                 <div className="preview-section">
                   <h4>New Image (Pending)</h4>
-                  {selectedApproval.requested_value === 'REMOVE' ? (
+                  {selectedApproval.action_type === 'DELETE' || selectedApproval.requested_image_url === 'REMOVE' || selectedApproval.requested_value === 'REMOVE' ? (
                     <div className="no-image" style={{ color: 'red', fontWeight: 'bold' }}>
                       Requested Deletion
                     </div>
                   ) : (
                     <img 
-                      src={`/api/admin/temp-image/${selectedApproval.requested_value}`}
+                      src={`/api/admin/temp-image/${selectedApproval.requested_image_url || selectedApproval.requested_value}`}
                       alt="New" 
                       className="pendingApproval-preview-image"
                       onError={(e) => {
@@ -302,7 +307,7 @@ const PendingApprovalsTab = () => {
               <div className="preview-actions">
                 <button 
                   className="approve-btn"
-                  onClick={() => handleApprove(selectedApproval.approval_id)}
+                  onClick={() => handleApprove(selectedApproval.approval_id, selectedApproval.action_type)}
                   disabled={processing}
                 >
                   <i className="fas fa-check"></i>

@@ -516,8 +516,11 @@ const FacultyEdit = () => {
                             if (!imageResponse.ok) {
                                 console.error('Failed to update image:', imageResult.message);
                             } else {
-                                if (imageResult.pending) {
+                                if (imageResult.pendingApproval || imageResult.pending) {
                                     successMessage += ' (Image update sent for admin approval).';
+                                } else {
+                                    // Trigger an event so the ProfileDropdown updates its avatar!
+                                    window.dispatchEvent(new Event('profileImageUpdated'));
                                 }
                             }
                         } catch (err) {

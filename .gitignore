@@ -70,3 +70,5 @@ public/uploads/
 
 # Reference Material
 RefrenceMaterial
+# Ignore user-uploaded faculty images
+client/public/images/Faculty/*

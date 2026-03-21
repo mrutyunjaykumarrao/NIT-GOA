@@ -18,73 +18,89 @@ const ProfileDropdown = () => {
 
   // Fetch user image when user data is available
   useEffect(() => {
-    const fetchUserImage = async () => {
-      if (!user?.employee_code || !user?.role) {
-        // If user has employee_image directly from auth, use it
-        if (user?.employee_image) {
-          const imageUrl = user.employee_image.startsWith('/') 
-            ? user.employee_image 
-            : `/${user.employee_image}`;
-          
-          // Test if the image actually exists
-          const img = new Image();
-          img.onload = () => {
-            setUserImage(imageUrl);
-            setImageError(false);
-          };
-          img.onerror = () => {
-            setUserImage(null);
-            setImageError(true);
-          };
-          img.src = imageUrl;
-        }
-        return;
-      }
-      
-      try {
-        let imageUrl = null;
-        
-        // If user already has employee_image from auth response, use it first
-        if (user.employee_image) {
-          imageUrl = user.employee_image.startsWith('/') 
-            ? user.employee_image 
-            : `/${user.employee_image}`;
-        } else if (user.role === 'Faculty') {
-          // For faculty, fetch their profile image from the faculty endpoint
-          const response = await fetch(`/api/public/faculty/${user.employee_code}`);
-          if (response.ok) {
-            const facultyData = await response.json();
-            if (facultyData.profile?.profile_image) {
-              imageUrl = facultyData.profile.profile_image.startsWith('/') 
-                ? facultyData.profile.profile_image 
-                : `/${facultyData.profile.profile_image}`;
+      const fetchUserImage = async (forceRefresh = false) => {
+        if (!user?.employee_code || !user?.role) {
+          if (user?.employee_image) {
+            let imageUrl = user.employee_image.startsWith('/') 
+              ? user.employee_image 
+              : `/${user.employee_image}`;
+            
+            if (forceRefresh) {
+              imageUrl += imageUrl.includes('?') ? `&t=${new Date().getTime()}` : `?t=${new Date().getTime()}`;
             }
+
+            const img = new Image();
+            img.onload = () => {
+              setUserImage(imageUrl);
+              setImageError(false);
+            };
+            img.onerror = () => {
+              setUserImage(null);
+              setImageError(true);
+            };
+            img.src = imageUrl;
           }
+          return;
         }
         
-        if (imageUrl) {
-          // Test if the image actually exists
-          const img = new Image();
-          img.onload = () => {
-            setUserImage(imageUrl);
-            setImageError(false);
-          };
-          img.onerror = () => {
+        try {
+          let imageUrl = null;
+          
+          if (user.role === 'Faculty') {
+            const response = await fetch(`/api/faculty-details/${user.employee_code}`);
+            if (response.ok) {
+              const responseData = await response.json();
+              const facultyProfile = responseData.data?.profile;
+              
+              // If the profile fetch succeeds, we strictly use its result (even if null/empty)
+              // This prevents falling back to stale login token images after a user deletes their picture.
+              if (facultyProfile && facultyProfile.profile_image) {
+                imageUrl = facultyProfile.profile_image.startsWith('/') 
+                  ? facultyProfile.profile_image 
+                  : `/${facultyProfile.profile_image}`;
+              } else if (facultyProfile && !facultyProfile.profile_image) {
+                // They explicitly have no picture anymore
+                imageUrl = null;
+              }
+            }
+          } else if (!imageUrl && user.employee_image) {
+            // Only fallback to the auth token image if they are not Faculty
+            imageUrl = user.employee_image.startsWith('/') 
+              ? user.employee_image 
+              : `/${user.employee_image}`;
+          }
+          
+          if (imageUrl) {
+            if (forceRefresh) {
+              imageUrl += imageUrl.includes('?') ? `&t=${new Date().getTime()}` : `?t=${new Date().getTime()}`;
+            }
+            
+            const img = new Image();
+            img.onload = () => {
+              setUserImage(imageUrl);
+              setImageError(false);
+            };
+            img.onerror = () => {
+              setUserImage(null);
+              setImageError(true);
+            };
+            img.src = imageUrl;
+          } else {
             setUserImage(null);
-            setImageError(true);
-          };
-          img.src = imageUrl;
+          }
+        } catch (error) {
+          console.error('Error fetching user image:', error);
+          setUserImage(null);
+          setImageError(true);
         }
-      } catch (error) {
-        console.error('Error fetching user image:', error);
-        setUserImage(null);
-        setImageError(true);
-      }
-    };
+      };
 
-    fetchUserImage();
-  }, [user?.employee_code, user?.role, user?.employee_image]);
+      fetchUserImage();
 
+      // Listen for profile image updates
+      const handleImageUpdate = () => fetchUserImage(true);
+      window.addEventListener('profileImageUpdated', handleImageUpdate);
+      return () => window.removeEventListener('profileImageUpdated', handleImageUpdate);  }, [user]);
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {

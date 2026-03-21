@@ -25,7 +25,18 @@ const PendingRequestsSection = ({ employeeId }) => {
                 }
                 
                 const data = await response.json();
-                setRequests(data);
+                
+                // Extract requests array correctly
+                let requestsArray = [];
+                if (Array.isArray(data)) {
+                    requestsArray = data;
+                } else if (data.data && Array.isArray(data.data.requests)) {
+                    requestsArray = data.data.requests;
+                } else if (Array.isArray(data.requests)) {
+                    requestsArray = data.requests;
+                }
+                
+                setRequests(requestsArray);
                 setLoading(false);
             } catch (err) {
                 console.error("Error fetching requests:", err);
@@ -113,21 +124,21 @@ const PendingRequestsSection = ({ employeeId }) => {
                             </thead>
                             <tbody>
                                 {requests.map((request, index) => (
-                                    <tr key={request.id || index}>
-                                        <td>{new Date(request.request_date).toLocaleDateString()}</td>
+                                    <tr key={request.approval_id || request.id || index}>
+                                        <td>{new Date(request.requested_at || request.request_date).toLocaleDateString()}</td>
                                         <td>
                                             <span className="badge bg-secondary">
-                                                {request.field_name || request.section_name}
+                                                {request.approval_type || request.field_name || request.section_name}
                                             </span>
                                         </td>
                                         <td>{request.action_type || 'Update'}</td>
                                         <td>
-                                            {request.status === 'pending' && <span className="badge bg-warning text-dark"><i className="fas fa-clock me-1"></i>Pending</span>}
-                                            {request.status === 'approved' && <span className="badge bg-success"><i className="fas fa-check-circle me-1"></i>Approved</span>}
-                                            {request.status === 'rejected' && <span className="badge bg-danger"><i className="fas fa-times-circle me-1"></i>Rejected</span>}
+                                            {request.status?.toLowerCase() === 'pending' && <span className="badge bg-warning text-dark"><i className="fas fa-clock me-1"></i>Pending</span>}
+                                            {request.status?.toLowerCase() === 'approved' && <span className="badge bg-success"><i className="fas fa-check-circle me-1"></i>Approved</span>}
+                                            {request.status?.toLowerCase() === 'rejected' && <span className="badge bg-danger"><i className="fas fa-times-circle me-1"></i>Rejected</span>}
                                         </td>
                                         <td className="text-muted small">
-                                            {request.admin_comments || '-'}
+                                            {request.admin_notes || request.admin_comments || '-'}
                                         </td>
                                     </tr>
                                 ))}
