@@ -491,6 +491,38 @@ const FacultyEdit = () => {
                         body: JSON.stringify(profileData)
                     });
                     successMessage = 'Profile information updated successfully!';
+
+                    // Handle image separately
+                    if (formData.selectedImage || formData.image_removed) {
+                        const imageFormData = new FormData();
+                        if (formData.selectedImage) {
+                            imageFormData.append('image', formData.selectedImage);
+                        }
+                        if (formData.image_removed) {
+                            imageFormData.append('remove_image', 'true');
+                        }
+                        
+                        try {
+                            const imageResponse = await fetch(`/api/faculty-edit/${id}/profile/image`, {
+                                method: 'PUT',
+                                headers: {
+                                    'Authorization': `Bearer ${token}`
+                                },
+                                body: imageFormData
+                            });
+                            
+                            const imageResult = await imageResponse.json();
+                            if (!imageResponse.ok) {
+                                console.error('Failed to update image:', imageResult.message);
+                            } else {
+                                if (imageResult.pending) {
+                                    successMessage += ' (Image update sent for admin approval).';
+                                }
+                            }
+                        } catch (err) {
+                            console.error('Error updating image:', err);
+                        }
+                    }
                     break;
 
                 case 'academic':

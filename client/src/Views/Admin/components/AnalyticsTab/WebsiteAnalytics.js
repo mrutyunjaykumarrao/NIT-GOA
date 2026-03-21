@@ -39,31 +39,31 @@ const WebsiteAnalytics = ({
       return {
         title: `Visitors on ${formattedDate}`,
         subtitle: `Data for ${formattedDate}`,
-        value: targetData?.todays_visitors || 0
+        value: targetData?.daily_visitors || 0
       };
     } else if (selectedPeriod === 'week') {
       return {
         title: "This Week's Visitors",
         subtitle: "Last 7 days",
-        value: targetData?.todays_visitors || 0
+        value: targetData?.daily_visitors || 0
       };
     } else if (selectedPeriod === 'month') {
       return {
         title: "This Month's Visitors",
         subtitle: "Last 30 days",
-        value: targetData?.todays_visitors || 0
+        value: targetData?.daily_visitors || 0
       };
     } else if (selectedPeriod === 'year') {
       return {
         title: "This Year's Visitors",
         subtitle: "Last 365 days",
-        value: targetData?.todays_visitors || 0
+        value: targetData?.daily_visitors || 0
       };
     } else {
       return {
         title: "Today's Visitors",
         subtitle: "New today",
-        value: targetData?.todays_visitors || 0
+        value: targetData?.daily_visitors || 0
       };
     }
   };

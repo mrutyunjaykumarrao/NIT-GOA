@@ -413,22 +413,23 @@ const AnalyticsTab = ({ analytics }) => {
                 />
                 <StatCard
                   title="Today's Visitors"
-                  value={formatNumber(analyticsData?.today?.daily_visitors || 0)}
+                  value={formatNumber(analyticsData?.targetDate?.daily_visitors || 0)}
                   subtitle="New today"
                   icon="fas fa-calendar-day"
                   color="green"
                 />
                 <StatCard
-                  title="Page Views Today"
-                  value={formatNumber(analyticsData?.today?.daily_page_views || 0)}
-                  subtitle="Today"
-                  icon="fas fa-eye"
+                  title="Desktop Traffic"
+                  value={`${analyticsData?.targetDate?.desktop_visits && analyticsData?.targetDate?.mobile_visits ? 
+                    Math.round((analyticsData.targetDate.desktop_visits / (analyticsData.targetDate.mobile_visits + analyticsData.targetDate.desktop_visits)) * 100) : (analyticsData?.targetDate?.desktop_visits ? 100 : 0)}%`}
+                  subtitle="Desktop users"
+                  icon="fas fa-desktop"
                   color="purple"
                 />
                 <StatCard
                   title="Mobile Traffic"
-                  value={`${analyticsData?.today?.mobile_visits && analyticsData?.today?.desktop_visits ? 
-                    Math.round((analyticsData.today.mobile_visits / (analyticsData.today.mobile_visits + analyticsData.today.desktop_visits)) * 100) : 0}%`}
+                  value={`${analyticsData?.targetDate?.mobile_visits && analyticsData?.targetDate?.desktop_visits ? 
+                    Math.round((analyticsData.targetDate.mobile_visits / (analyticsData.targetDate.mobile_visits + analyticsData.targetDate.desktop_visits)) * 100) : (analyticsData?.targetDate?.mobile_visits ? 100 : 0)}%`}
                   subtitle="Mobile users"
                   icon="fas fa-mobile-alt"
                   color="orange"

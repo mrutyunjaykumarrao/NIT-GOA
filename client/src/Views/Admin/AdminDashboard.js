@@ -37,13 +37,19 @@ const AdminDashboard = () => {
   // API helper function
   const apiCall = useCallback(async (endpoint, options = {}) => {
     try {
+      const isFormData = options.body instanceof FormData;
+      const headers = {
+        'Authorization': `Bearer ${token}`,
+        ...options.headers
+      };
+
+      if (!isFormData && !headers['Content-Type']) {
+        headers['Content-Type'] = 'application/json';
+      }
+
       const response = await fetch(`/api${endpoint}`, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-          ...options.headers
-        },
-        ...options
+        ...options,
+        headers
       });
 
       if (!response.ok) {
@@ -198,9 +204,23 @@ const AdminDashboard = () => {
             throw new Error('Unknown entity type');
         }
 
+        const hasFile = Object.values(formData).some(val => val instanceof File);
+        let body;
+        
+        if (hasFile) {
+          body = new FormData();
+          Object.keys(formData).forEach(key => {
+            if (formData[key] !== null && formData[key] !== undefined) {
+              body.append(key, formData[key]);
+            }
+          });
+        } else {
+          body = JSON.stringify(formData);
+        }
+
         await apiCall(endpoint, {
           method: 'POST',
-          body: JSON.stringify(formData)
+          body
         });
 
         setShowModal(false);
@@ -231,9 +251,25 @@ const AdminDashboard = () => {
             throw new Error('Unknown entity type');
         }
 
+        const hasFile = Object.values(formData).some(val => val instanceof File);
+        let body;
+        
+        if (hasFile) {
+          body = new FormData();
+          Object.keys(formData).forEach(key => {
+            if (formData[key] !== null && formData[key] !== undefined && !(typeof formData[key] === 'string' && formData[key].startsWith('http') && key === 'profile_image')) {
+              body.append(key, formData[key]);
+            }
+          });
+        } else {
+          // Exclude profile_image if it's just a string URL to avoid overwriting with the URL string on backend if we decide to handle it
+          const { profile_image, ...restData } = formData;
+          body = JSON.stringify(Object.keys(restData).length ? restData : formData);
+        }
+
         await apiCall(endpoint, {
           method: 'PUT',
-          body: JSON.stringify(formData)
+          body: hasFile ? body : JSON.stringify(formData)
         });
 
         setShowModal(false);

@@ -132,7 +132,9 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
         // Store the selected image file in form data for parent component
         setFormData(prev => ({
             ...prev,
-            selectedImage: file
+            selectedImage: file,
+            image_removed: file === null, // true if user explicitly removed the image
+            profile_image: file === null ? '' : prev.profile_image // immediately clear preview
         }));
     };
 

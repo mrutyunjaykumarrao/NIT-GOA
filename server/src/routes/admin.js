@@ -5,6 +5,7 @@ const path = require('path');
 const { pool } = require('../config/database');
 const { authenticateToken, requireAdmin } = require('../middleware/auth');
 const emailService = require('../utils/emailService');
+const { upload, moveImageToPublic } = require('../middleware/fileUpload');
 
 const router = express.Router();
 
@@ -98,8 +99,9 @@ router.get('/pending-approvals', async (req, res) => {
         SELECT 
             pa.approval_id,
             pa.employee_code,
-            pa.old_image_path AS current_image_url,
-            pa.new_image_path AS requested_image_url,
+            pa.approval_type,
+            pa.current_value AS current_image_url,
+            pa.requested_value AS requested_image_url,
             pa.requested_by,
             pa.requested_at,
             pa.status,
@@ -306,7 +308,7 @@ router.put('/pending-approvals/:id/reject', async (req, res) => {
 // ======================
 
 // POST /api/admin/faculty - Create new faculty profile
-router.post('/faculty', async (req, res) => {
+router.post('/faculty', upload.single('profile_image'), async (req, res) => {
   try {
     const {
       full_name,
@@ -318,7 +320,6 @@ router.post('/faculty', async (req, res) => {
       extension_no,
       mobile,
       display_order,
-      profile_image,
       create_user_account,
       username,
       password,
@@ -405,6 +406,16 @@ router.post('/faculty', async (req, res) => {
         designation_id = newDesignation.insertId;
       }
 
+      // Handle Image Upload
+      let image_url = null;
+      if (req.file) {
+        try {
+          image_url = await moveImageToPublic(req.file.path, newEmployeeCode, 'Faculty');
+        } catch (imgError) {
+          console.error("Failed to process image upload:", imgError);
+        }
+      }
+
       // Insert into faculty_profiles
       await connection.execute(`
         INSERT INTO faculty_profiles (
@@ -415,11 +426,11 @@ router.post('/faculty', async (req, res) => {
         department_id,
         designation_id,
         display_order || 999,
-        profile_image || null
+        image_url
       ]);
 
       // Optionally create user account if requested
-      if (create_user_account) {
+      if (create_user_account === 'true' || create_user_account === true) {
         const accountUsername = username || newEmployeeCode;
         const accountPassword = password || newEmployeeCode;
         const accountAccessLevel = access_level || 'Faculty';

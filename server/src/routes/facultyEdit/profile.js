@@ -1,5 +1,5 @@
 const express = require('express');
-const multer = require('multer');
+const { upload, moveImageToPublic } = require('../../middleware/fileUpload');
 const path = require('path');
 const fs = require('fs');
 const {
@@ -22,39 +22,6 @@ const router = express.Router();
  * Handles personal and contact information editing
  * Includes profile image upload
  */
-
-// Configure multer for image upload
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    const uploadDir = path.join(__dirname, '../../../uploads/faculty');
-    // Ensure directory exists
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
-    }
-    cb(null, uploadDir);
-  },
-  filename: function (req, file, cb) {
-    // Use employee code as filename with original extension
-    const employeeCode = req.params.employeeCode;
-    const ext = path.extname(file.originalname);
-    cb(null, `${employeeCode}${ext}`);
-  }
-});
-
-const upload = multer({
-  storage: storage,
-  limits: {
-    fileSize: 5 * 1024 * 1024, // 5MB limit
-  },
-  fileFilter: (req, file, cb) => {
-    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
-    if (allowedTypes.includes(file.mimetype)) {
-      cb(null, true);
-    } else {
-      cb(new Error('Invalid file type. Only JPEG, PNG, and WebP images are allowed.'));
-    }
-  }
-});
 
 // GET /api/faculty-edit/:employeeCode/profile - Preload profile data for editing
 router.get('/:employeeCode/profile', authenticateToken, checkEditPermission, async (req, res) => {
@@ -203,38 +170,90 @@ router.put('/:employeeCode/profile', authenticateToken, checkEditPermission, asy
 router.put('/:employeeCode/profile/image', authenticateToken, checkEditPermission, upload.single('image'), async (req, res) => {
   try {
     const { employeeCode } = req.params;
+    const userRole = req.user.role;
+    const isRemoveImage = req.body.remove_image === 'true' || req.body.remove_image === true;
 
-    if (!req.file) {
+    // Check if no image and not requesting removal
+    if (!req.file && !isRemoveImage) {
       return res.status(400).json(formatErrorResponse('No image file provided', 400));
     }
 
-    // Get department code for image path
-    const deptResult = await executeQuery(`
-      SELECT d.department_code 
-      FROM faculty_profiles fp
-      JOIN departments d ON fp.department_id = d.department_id
-      WHERE fp.employee_code = ?
-    `, [employeeCode]);
-
-    if (deptResult.length === 0) {
+    // Get old image URL
+    const oldImageResult = await executeQuery('SELECT image_url FROM faculty_profiles WHERE employee_code = ?', [employeeCode]);
+    if (oldImageResult.length === 0) {
       return res.status(404).json(formatErrorResponse('Faculty profile not found', 404));
     }
+    const oldImage = oldImageResult[0].image_url;
 
-    const departmentCode = deptResult[0].department_code;
-    const filename = req.file.filename;
-    const imageUrl = `/images/Faculty/${departmentCode}/${filename}`;
+    if (userRole === 'Admin') {
+      let finalImageUrl = null;
 
-    // Update image URL in database
-    await executeQuery(`
-      UPDATE faculty_profiles 
-      SET image_url = ?
-      WHERE employee_code = ?
-    `, [imageUrl, employeeCode]);
+      if (req.file) {
+        // Use moveImageToPublic to move from temp dir to public directory
+        finalImageUrl = await moveImageToPublic(req.file.path, employeeCode, 'Faculty');
+      }
 
-    res.json(formatSuccessResponse({ image_url: imageUrl }, 'Profile image updated successfully'));
+      // Update image URL in database (will be NULL if removed)
+      await executeQuery(`
+        UPDATE faculty_profiles 
+        SET image_url = ?
+        WHERE employee_code = ?
+      `, [finalImageUrl, employeeCode]);
+
+      return res.json(formatSuccessResponse(
+        { imageUrl: finalImageUrl }, 
+        isRemoveImage ? 'Profile image removed successfully' : 'Profile image updated successfully'
+      ));
+
+    } else {
+      // User is non-admin Faculty -> Route to Pending Approvals!
+      const requestedValue = req.file ? req.file.filename : null;
+      const tempFilePath = req.file ? req.file.path : null;
+
+      // Check if there is already a pending image approval to replace 
+      const existingApproval = await executeQuery(`
+        SELECT approval_id FROM pending_approvals 
+        WHERE employee_code = ? AND approval_type = 'profile_image' AND status = 'pending'
+      `, [employeeCode]);
+
+      if (existingApproval.length > 0) {
+        await executeQuery(`
+          UPDATE pending_approvals 
+          SET 
+            current_value = ?,
+            requested_value = ?,
+            temp_file_path = ?,
+            requested_at = CURRENT_TIMESTAMP
+          WHERE approval_id = ?
+        `, [
+          oldImage,
+          isRemoveImage ? 'REMOVE' : requestedValue,
+          tempFilePath,
+          existingApproval[0].approval_id
+        ]);
+      } else {
+        await executeQuery(`
+          INSERT INTO pending_approvals (
+            employee_code, approval_type, current_value, requested_value, temp_file_path, requested_by
+          ) VALUES (?, 'profile_image', ?, ?, ?, ?)
+        `, [
+          employeeCode,
+          oldImage,
+          isRemoveImage ? 'REMOVE' : requestedValue,
+          tempFilePath,
+          employeeCode
+        ]);
+      }
+
+      return res.json(formatSuccessResponse(
+        { pendingApproval: true }, 
+        'Profile image change submitted to admin for approval'
+      ));
+    }
+
   } catch (error) {
     console.error('Update profile image error:', error);
-    res.status(500).json(formatErrorResponse(error));
+    res.status(500).json(formatErrorResponse(error.message));
   }
 });
 

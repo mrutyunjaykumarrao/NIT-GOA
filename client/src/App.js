@@ -120,7 +120,7 @@ function AppContent() {
   }, [location.pathname]);
 
   // Check if current route should hide navbar and footer
-  const shouldHideNavAndFooter = location.pathname.startsWith('/admin');
+  const shouldHideNavAndFooter = location.pathname === '/admin' || location.pathname.startsWith('/admin/');
 
   return (
     <div className="App">

@@ -14,24 +14,35 @@ router.get('/footer-stats', async (req, res) => {
     try {
         const connection = await pool.getConnection();
         
-        // Get today's visitor count
+        // Get the most recent visitor count
         const [visitorStats] = await connection.execute(`
-            SELECT total_visitors, daily_visitors 
+            SELECT total_visitors, daily_visitors, date_recorded 
             FROM site_analytics 
-            WHERE date_recorded = CURDATE()
-        `);
-
-        // Get the most recent major update
-        const [lastUpdate] = await connection.execute(`
-            SELECT updated_at, update_description 
-            FROM content_updates 
-            WHERE is_major_update = TRUE 
-            ORDER BY updated_at DESC 
+            ORDER BY date_recorded DESC 
             LIMIT 1
         `);
 
-        const totalVisitors = visitorStats.length > 0 ? visitorStats[0].total_visitors : 0;
-        const dailyVisitors = visitorStats.length > 0 ? visitorStats[0].daily_visitors : 0;
+        // Get the most recent update from audit_log
+        const [lastUpdate] = await connection.execute(`
+            SELECT created_at as updated_at, action as update_description 
+            FROM audit_log 
+            WHERE action = 'UPDATE' 
+            ORDER BY created_at DESC 
+            LIMIT 1
+        `);
+
+        const hasRecentData = visitorStats.length > 0;
+        const totalVisitors = hasRecentData ? visitorStats[0].total_visitors : 0;
+        
+        // Determine if the most recent data is from today for daily visitors count
+        let dailyVisitors = 0;
+        if (hasRecentData) {
+            const recordedDate = new Date(visitorStats[0].date_recorded).toISOString().split('T')[0];
+            const today = new Date().toISOString().split('T')[0];
+            if (recordedDate === today) {
+                dailyVisitors = visitorStats[0].daily_visitors;
+            }
+        }
         const lastUpdated = lastUpdate.length > 0 ? lastUpdate[0].updated_at : new Date();
         const lastUpdateDescription = lastUpdate.length > 0 ? lastUpdate[0].update_description : 'Website initialized';
 

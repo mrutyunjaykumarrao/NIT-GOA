@@ -294,7 +294,7 @@ router.post('/login', async (req, res) => {
       `, [
         'user_accounts', 
         user.id, 
-        'UPDATE', 
+        'LOGIN', 
         JSON.stringify({ username, action: 'login' }), 
         user.id,
         req.ip || req.connection.remoteAddress

@@ -63,7 +63,7 @@ const moveImageToPublic = async (tempPath, employeeCode, role) => {
   await fs.rename(tempPath, finalPath);
   
   // Return the public URL
-  return `/images/${roleDir}/${filename}`;
+  return `/uploads/public/images/${roleDir}/${filename}`;
 };
 
 // Helper function to move rejected images to deleted directory
