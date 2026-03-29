@@ -15,149 +15,126 @@ A modern, full-stack web application for the National Institute of Technology, G
 
 ```
 nitgoa/
-├── 📁 client/                    # React.js Frontend
-│   ├── 📁 src/
-│   │   ├── 📁 Views/            # Page components (18 pages)
-│   │   │   ├── Home-Section/    # Homepage with hero carousel
-│   │   │   ├── About/           # Institute information
-│   │   │   ├── Academics-Section/ # Academic programs
-│   │   │   ├── Admission-Section/ # Admission details
-│   │   │   ├── Faculty/         # Faculty directory with filtering
-│   │   │   ├── Campus-Life/     # Campus facilities & activities
-│   │   │   ├── Placement/       # Placement statistics
-│   │   │   ├── Research/        # Research areas & publications
-│   │   │   ├── ContactUs/       # Contact information
-│   │   │   ├── Facilities/      # Infrastructure details
-│   │   │   ├── GIAN/           # Global Initiative programs
-│   │   │   ├── NIRF/           # Ranking information
-│   │   │   ├── Outreach-Activities/ # Community programs
-│   │   │   ├── RTI/            # Right to Information
-│   │   │   ├── Tenders/        # Procurement information
-│   │   │   ├── Academic-Calendar/ # Important dates
-│   │   │   └── Dashboard/       # Admin dashboard (planned)
-│   │   ├── 📁 components/       # Reusable UI components
-│   │   │   ├── 📁 Navbar/       # Enhanced navigation with margins
-│   │   │   ├── 📁 Footer/       # Refactored with footer- prefix classes
-│   │   │   ├── 📁 Auth/         # Login/authentication components (planned)
-│   │   │   ├── 📁 Dashboard/    # Admin dashboard components (planned)
-│   │   │   └── 📁 Faculty/      # Faculty-specific components
-│   │   ├── 📁 contexts/         # React contexts
-│   │   │   ├── ThemeContext.js  # Dark/Light theme management
-│   │   │   ├── AuthContext.js   # Authentication state (planned)
-│   │   │   └── DashboardContext.js # Admin dashboard state (planned)
-│   │   ├── 📁 services/         # API integration
-│   │   │   ├── authService.js   # Login/logout API calls (planned)
-│   │   │   ├── facultyService.js # Faculty CRUD operations (planned)
-│   │   │   ├── contentService.js # Content management APIs (planned)
-│   │   │   └── uploadService.js  # File upload APIs (planned)
-│   │   ├── 📁 utils/           # Utility functions
-│   │   │   ├── navigationConfig.js # Centralized navigation
-│   │   │   ├── permissions.js   # Role permission checks (planned)
-│   │   │   └── constants.js     # Frontend constants
-│   │   └── 📁 assets/          # Images and media assets
-│   │       ├── 📁 images/       # Organized image assets
-│   │       └── 📁 icons/        # Icon assets
-│   ├── 📁 public/              # Static assets
+├── 📁 client/                      # React.js Frontend (Port 3000)
+│   ├── 📁 public/                  # Static assets
 │   │   ├── index.html
 │   │   ├── favicon.ico
 │   │   ├── NIT_LOGO.png
-│   │   ├── 📁 images/          # Campus images, logos
-│   │   └── 📁 pdf/             # Document files
-│   ├── package.json            # Frontend dependencies
-│   ├── .env.local             # Frontend environment variables
-│   └── README.md              # Frontend documentation
-│
-├── 📁 server/                  # Node.js/Express Backend  
+│   │   ├── 📁 images/             # Campus images, logos
+│   │   └── 📁 pdf/                # PDF documents
 │   ├── 📁 src/
-│   │   ├── 📁 controllers/     # API route handlers
-│   │   │   ├── authController.js # Authentication logic
-│   │   │   ├── facultyController.js # Faculty CRUD + profile updates
-│   │   │   ├── adminController.js # Admin-only operations
-│   │   │   ├── contentController.js # Content management
-│   │   │   └── uploadController.js # File upload handling
-│   │   ├── 📁 models/          # Database models
-│   │   │   ├── User.js         # Users with roles (faculty/admin)
-│   │   │   ├── Faculty.js      # Faculty profiles
-│   │   │   ├── Content.js      # Hero images, notices
-│   │   │   └── File.js         # Uploaded files metadata
-│   │   ├── 📁 routes/          # RESTful API routes
-│   │   │   ├── auth.js         # Authentication endpoints
-│   │   │   ├── faculty.js      # Faculty management
-│   │   │   ├── admin.js        # Admin-only routes
-│   │   │   ├── content.js      # Content management
-│   │   │   └── upload.js       # File uploads
-│   │   ├── 📁 middleware/      # Auth & validation
-│   │   │   ├── auth.js         # JWT verification
-│   │   │   ├── roleCheck.js    # Role-based access control
-│   │   │   ├── ownership.js    # Faculty ownership validation
-│   │   │   └── upload.js       # File upload middleware
-│   │   ├── 📁 services/        # Business logic
-│   │   │   ├── emailService.js # Email notifications
-│   │   │   ├── fileUploadService.js # File handling
-│   │   │   └── notificationService.js # User notifications
-│   │   ├── 📁 config/          # Configuration
-│   │   │   ├── database.js     # Database connection
-│   │   │   ├── cloudinary.js   # Image storage config
-│   │   │   └── jwt.js          # JWT configuration
-│   │   └── 📁 utils/           # Helper functions
-│   │       ├── validators.js   # Input validation
-│   │       ├── helpers.js      # Utility functions
-│   │       └── constants.js    # Backend constants
-│   ├── server.js               # Server entry point
-│   ├── package.json            # Backend dependencies
-│   ├── .env                    # Backend environment variables
-│   └── README.md               # Backend documentation
+│   │   ├── 📁 Views/              # Page components (18 views)
+│   │   │   ├── Home-Section/
+│   │   │   ├── About/
+│   │   │   ├── Academics-Section/
+│   │   │   ├── Admission-Section/
+│   │   │   ├── Faculty/
+│   │   │   ├── Campus-Life/
+│   │   │   ├── Placement/
+│   │   │   ├── Research/
+│   │   │   ├── ContactUs/
+│   │   │   ├── Facilities/
+│   │   │   ├── GIAN/
+│   │   │   ├── NIRF/
+│   │   │   ├── Outreach-Activities/
+│   │   │   ├── RTI/
+│   │   │   ├── Tenders/
+│   │   │   ├── Academic-Calendar/
+│   │   │   └── Dashboard/          # Admin dashboard
+│   │   ├── 📁 components/         # Reusable UI components
+│   │   │   ├── Navbar/
+│   │   │   ├── Footer/
+│   │   │   ├── Auth/
+│   │   │   ├── FacultyEditForm/    # Faculty profile editing
+│   │   │   ├── ErrorPages/
+│   │   │   ├── LoadingSpinner/
+│   │   │   ├── ProtectedRoute/
+│   │   │   └── [others]
+│   │   ├── 📁 contexts/           # React Context API
+│   │   │   ├── ThemeContext.js
+│   │   │   ├── AuthContext.js
+│   │   │   └── ErrorContext.js
+│   │   ├── 📁 hooks/              # Custom React hooks
+│   │   │   ├── useErrorHandler.js
+│   │   │   └── usePermissions.js
+│   │   ├── 📁 utils/              # Utilities
+│   │   │   ├── navigationConfig.js
+│   │   │   ├── timezone.js
+│   │   │   └── errorUtils.js
+│   │   ├── 📁 assets/             # Images & media
+│   │   └── index.js               # Entry point
+│   ├── package.json
+│   └── .env.local
 │
-├── 📁 database/                # MySQL Database
-│   ├── 📁 migrations/          # Schema changes
-│   │   ├── 001_create_users_table.sql # Users with roles
-│   │   ├── 002_create_faculty_profiles.sql # Faculty data
-│   │   ├── 003_create_content_table.sql # Content management
-│   │   └── 004_create_files_table.sql # File metadata
-│   ├── 📁 seeds/               # Initial data
-│   │   ├── admin_user.sql      # Default admin account
-│   │   ├── sample_faculty.sql  # Sample faculty data
-│   │   └── departments.sql     # Department structure
-│   ├── 📁 schemas/             # Database design
-│   │   ├── schema.sql          # Complete schema
-│   │   └── relationships.md    # Database relationships
-│   └── 📁 backups/             # Database backups
+├── 📁 server/                      # Node.js/Express Backend (Port 3001)
+│   ├── 📁 src/
+│   │   ├── 📁 config/             # Configuration
+│   │   │   └── database.js        # ⚠️ MySQL→Supabase (MIGRATION TARGET)
+│   │   ├── 📁 middleware/         # Express middleware
+│   │   │   ├── auth.js            # JWT authentication
+│   │   │   ├── fileUpload.js      # File upload handling
+│   │   │   └── validateFacultyUpdate.js
+│   │   ├── 📁 models/             # Database models
+│   │   │   └── index.js
+│   │   ├── 📁 routes/             # API endpoints
+│   │   │   ├── auth.js            # Authentication routes
+│   │   │   ├── facultyData.js     # Faculty CRUD operations
+│   │   │   ├── facultyDetailsAPI.js
+│   │   │   ├── facultyList.js
+│   │   │   ├── staff.js
+│   │   │   ├── publicDisplay.js
+│   │   │   ├── analytics.js
+│   │   │   ├── admin.js
+│   │   │   └── 📁 facultyEdit/    # Faculty editing endpoints
+│   │   │       ├── index.js
+│   │   │       ├── profile.js
+│   │   │       ├── education.js
+│   │   │       ├── publications.js
+│   │   │       ├── customSections.js
+│   │   │       ├── trainingAttended.js
+│   │   │       ├── trainingConducted.js
+│   │   │       ├── memberships.js
+│   │   │       ├── researchGuidance.js
+│   │   │       ├── researchAreas.js
+│   │   │       ├── coursesTaught.js
+│   │   │       └── _middleware.js
+│   │   └── 📁 utils/              # Utilities
+│   │       ├── emailService.js    # Email notifications
+│   │       ├── timezone.js
+│   │       ├── apiHelpers.js
+│   │       └── dbTest.js
+│   ├── server.js                  # Entry point
+│   ├── package.json
+│   ├── .env                       # Environment variables
+│   └── 📁 uploads/                # Uploaded files
 │
-├── 📁 shared/                  # Shared utilities
-│   ├── 📁 constants/           # Shared constants
-│   │   └── index.js            # USER_ROLES, API_ENDPOINTS, FILE_TYPES
-│   ├── 📁 types/               # TypeScript interfaces (planned)
-│   └── 📁 utils/               # Helper functions
-│       ├── validation.js       # Shared validation logic
-│       └── formatting.js       # Data formatting utilities
+├── 📁 database/                    # Database schemas & migrations
+│   ├── 📁 schemas/
+│   │   ├── current_database_structure.sql
+│   │   ├── supabase_database_schema.sql   # ✅ Already migrated
+│   │   └── live_database_schema.sql
+│   ├── 📁 scripts/
+│   │   └── 📁 population/         # Data import scripts
+│   ├── 📁 migrations/
+│   └── 📁 backups/
 │
-├── 📁 docs/                    # Documentation
-│   ├── 📁 development/         # Setup guides
-│   │   ├── DEVELOPMENT_SETUP_GUIDE.md # Complete setup
-│   │   ├── DEVELOPMENT_SCRIPTS_GUIDE.md # Script usage
-│   │   ├── TEAM_REFERENCE_GUIDE.md # Team workflow
-│   │   ├── SIMPLE_TEAM_GUIDE.md # Beginner guide
-│   │   └── QUICK_REFERENCE.md  # Daily cheat sheet
-│   ├── 📁 api/                 # API documentation (planned)
-│   ├── 📁 database/            # DB documentation (planned)
-│   ├── 📁 deployment/          # Deployment guides (planned)
-│   └── README.md               # Documentation index
+├── 📁 docs/                        # Documentation
+│   ├── 📁 development/            # Setup & team guides
+│   ├── 📁 api/                    # API documentation
+│   ├── 📁 database/               # DB documentation
+│   └── README.md
 │
-├── 📁 config/                  # Project-wide configuration
-├── 📁 scripts/                 # Automation scripts
-│   ├── dev.sh                  # Development script (Unix/Linux/macOS)
-│   └── dev.bat                 # Development script (Windows)
+├── 📁 scripts/                     # Utility scripts
+├── 📁 shared/                      # Shared code
+├── 📁 RefrenceMaterial/           # Reference files
 │
-├── 📁 RefrenceMaterial/        # Design references and mockups
-│   ├── 📁 Faculty_LoginPage/   # Login page designs
-│   ├── 📁 Navbar & Footer/     # Navigation designs
-│   └── 📁 Research/            # Research page mockups
-│
-├── package.json                # Workspace manager
-├── .env.example                # Environment template
-├── .gitignore                  # Git ignore rules
-├── .firebaserc                 # Firebase configuration
-├── firebase.json               # Firebase hosting config
+├── MIGRATION_PLAN.md              # 🔄 MySQL→Supabase migration plan
+├── AFFECTED_FILES.md              # 🔄 Files requiring migration
+├── MIGRATION_PRIORITY.md          # 🔄 Migration execution order
+├── package.json                    # Root workspace config
+├── firebase.json                   # Firebase hosting config
+├── .gitignore
+└── README.md                       # Project documentation
 └── README.md                   # Main project documentation
 ```
 
