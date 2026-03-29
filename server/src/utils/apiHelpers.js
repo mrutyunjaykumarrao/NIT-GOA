@@ -7,29 +7,30 @@ const { pool } = require('../config/database');
  */
 
 // Helper function for database queries with connection pooling
+// PostgreSQL version - uses pg client
 async function executeQuery(query, params = []) {
-  const connection = await pool.getConnection();
+  const client = await pool.connect();
   try {
-    const [results] = await connection.execute(query, params);
-    return [results];
+    const result = await client.query(query, params);
+    return [result.rows];
   } finally {
-    connection.release();
+    client.release();
   }
 }
 
 // Helper function for database transactions
 async function withTransaction(callback) {
-  const connection = await pool.getConnection();
+  const client = await pool.connect();
   try {
-    await connection.beginTransaction();
-    const result = await callback(connection);
-    await connection.commit();
+    await client.query('BEGIN');
+    const result = await callback(client);
+    await client.query('COMMIT');
     return result;
   } catch (error) {
-    await connection.rollback();
+    await client.query('ROLLBACK');
     throw error;
   } finally {
-    connection.release();
+    client.release();
   }
 }
 
@@ -120,7 +121,7 @@ async function getFacultyCardsByDepartment(departmentCode) {
     LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code
     LEFT JOIN departments d ON fp.department_id = d.department_id
     LEFT JOIN faculty_designations fd ON fp.designation_id = fd.designation_id
-    WHERE e.is_active = 1 AND e.is_public_visible = 1 AND e.role = 'Faculty' AND d.department_code = ?
+    WHERE e.is_active = 1 AND e.is_public_visible = 1 AND e.role = 'Faculty' AND d.department_code = $1
     ORDER BY 
       CASE WHEN fp.display_order = 0 THEN 999999 ELSE fp.display_order END ASC,
       fp.is_hod DESC,
@@ -225,7 +226,7 @@ async function getFacultyDetails(employeeCode) {
     LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code
     LEFT JOIN departments d ON fp.department_id = d.department_id
     LEFT JOIN faculty_designations fd ON fp.designation_id = fd.designation_id
-    WHERE e.employee_code = ? AND e.is_active = 1 AND e.role = 'Faculty'
+    WHERE e.employee_code = $1 AND e.is_active = 1 AND e.role = 'Faculty'
   `, [employeeCode]);
 
   if (facultyBasic.length === 0) {
@@ -244,7 +245,7 @@ async function getFacultyDetails(employeeCode) {
       fp.publication_type,
       fp.display_order
     FROM faculty_publications fp
-    WHERE fp.employee_code = ? 
+    WHERE fp.employee_code = $1 
     ORDER BY fp.publication_year DESC, fp.display_order ASC, fp.title ASC
   `, [faculty.employee_code]);
 
@@ -258,7 +259,7 @@ async function getFacultyDetails(employeeCode) {
       fe.graduation_year,
       fe.display_order
     FROM faculty_education fe
-    WHERE fe.employee_code = ?
+    WHERE fe.employee_code = $1
     ORDER BY fe.display_order ASC, fe.graduation_year DESC
   `, [faculty.employee_code]);
 
@@ -275,7 +276,7 @@ async function getFacultyDetails(employeeCode) {
       COALESCE(c.semester, fct.custom_semester) as semester
     FROM faculty_courses_taught fct
     LEFT JOIN courses c ON fct.course_id = c.course_id
-    WHERE fct.employee_code = ?
+    WHERE fct.employee_code = $1
     ORDER BY course_level, course_code
   `, [faculty.employee_code]);
 
@@ -287,7 +288,7 @@ async function getFacultyDetails(employeeCode) {
       fpm.membership_type,
       fpm.is_active
     FROM faculty_professional_memberships fpm
-    WHERE fpm.employee_code = ? AND fpm.is_active = 1
+    WHERE fpm.employee_code = $1 AND fpm.is_active = 1
     ORDER BY fpm.membership_id DESC
   `, [faculty.employee_code]);
 
@@ -301,7 +302,7 @@ async function getFacultyDetails(employeeCode) {
       status,
       display_order
     FROM faculty_research_guidance
-    WHERE employee_code = ?
+    WHERE employee_code = $1
     ORDER BY display_order ASC
   `, [faculty.employee_code]);
 
@@ -314,7 +315,7 @@ async function getFacultyDetails(employeeCode) {
       training_information,
       display_order
     FROM faculty_training_attended
-    WHERE employee_code = ?
+    WHERE employee_code = $1
     ORDER BY display_order ASC
   `, [faculty.employee_code]);
 
@@ -327,7 +328,7 @@ async function getFacultyDetails(employeeCode) {
       training_information,
       display_order
     FROM faculty_training_conducted
-    WHERE employee_code = ?
+    WHERE employee_code = $1
     ORDER BY display_order ASC
   `, [faculty.employee_code]);
 
@@ -340,7 +341,7 @@ async function getFacultyDetails(employeeCode) {
       cs.display_order,
       cs.is_visible
     FROM faculty_custom_sections cs
-    WHERE cs.employee_code = ? AND cs.is_visible = 1
+    WHERE cs.employee_code = $1 AND cs.is_visible = 1
     ORDER BY cs.display_order ASC
   `, [faculty.employee_code]);
 
@@ -350,7 +351,7 @@ async function getFacultyDetails(employeeCode) {
     const [fields] = await executeQuery(`
       SELECT field_id, field_name, field_type, display_order
       FROM faculty_custom_section_fields
-      WHERE custom_section_id = ?
+      WHERE custom_section_id = $1
       ORDER BY display_order ASC
     `, [section.custom_section_id]);
     
@@ -363,7 +364,7 @@ async function getFacultyDetails(employeeCode) {
         f.field_name
       FROM faculty_custom_section_entries e
       JOIN faculty_custom_section_fields f ON e.field_id = f.field_id
-      WHERE e.custom_section_id = ?
+      WHERE e.custom_section_id = $1
       ORDER BY e.row_number ASC, f.display_order ASC
     `, [section.custom_section_id]);
     
@@ -438,20 +439,24 @@ async function getCourses(filters = {}) {
   `;
   
   const params = [];
+  let paramIndex = 1; // Track parameter positions for PostgreSQL
   
   if (filters.search) {
-    query += ` AND (c.course_code LIKE ? OR c.course_name LIKE ?)`;
+    query += ` AND (c.course_code LIKE $${paramIndex} OR c.course_name LIKE $${paramIndex + 1})`;
     params.push(`%${filters.search}%`, `%${filters.search}%`);
+    paramIndex += 2;
   }
   
   if (filters.department) {
-    query += ` AND d.department_code = ?`;
+    query += ` AND d.department_code = $${paramIndex}`;
     params.push(filters.department);
+    paramIndex += 1;
   }
   
   if (filters.level) {
-    query += ` AND c.course_level = ?`;
+    query += ` AND c.course_level = $${paramIndex}`;
     params.push(filters.level);
+    paramIndex += 1;
   }
   
   query += ` ORDER BY c.course_code ASC`;

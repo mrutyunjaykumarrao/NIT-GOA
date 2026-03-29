@@ -1,130 +1,125 @@
-const mysql = require('mysql2/promise');
+const { Pool } = require('pg');
 require('dotenv').config();
 
+// PostgreSQL connection configuration for Supabase
 const dbConfig = {
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'updated_nitgoa',
-  port: process.env.DB_PORT || 3306,
-  ssl: process.env.DB_SSL === 'true' ? {
-    rejectUnauthorized: false
-  } : false,
-  charset: 'utf8mb4', // Support for emojis and special characters
-  timezone: '+00:00' // Use UTC
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false // Required for Supabase
+  },
+  max: 20, // Maximum number of clients in the pool
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 60000,
 };
 
-// Create connection pool with enhanced configuration
-const pool = mysql.createPool({
-  ...dbConfig,
-  waitForConnections: true,
-  connectionLimit: 20, // Increased for better performance
-  queueLimit: 0,
-  acquireTimeout: 60000,
-  timeout: 60000,
-  enableKeepAlive: true,
-  keepAliveInitialDelay: 0,
-  // Ensure UTC timezone for all connections
-  timezone: '+00:00',
-  // Handle JSON columns properly
-  typeCast: function (field, next) {
-    if (field.type === 'JSON') {
-      return JSON.parse(field.string());
-    }
-    return next();
-  }
+// Create connection pool
+const pool = new Pool(dbConfig);
+
+// Handle pool errors
+pool.on('error', (err, client) => {
+  console.error('❌ Unexpected error on idle client', err);
+  process.exit(-1);
 });
 
-// Set timezone to UTC for every connection
-pool.on('connection', function (connection) {
-  connection.query('SET time_zone = "+00:00"');
-  console.log('Connection timezone set to UTC');
+// Connection established event
+pool.on('connect', (client) => {
+  // Set timezone to UTC for every new connection
+  client.query('SET timezone = "UTC"');
 });
 
 // Test database connection with enhanced error handling
 const testConnection = async () => {
+  let client;
   try {
-    const connection = await pool.getConnection();
+    client = await pool.connect();
     console.log('✅ Database connected successfully!');
-    console.log(`📊 Connected to database: ${dbConfig.database}`);
+    console.log('📊 Connected to Supabase PostgreSQL');
     
-    // Test if database connection works
-    // Skip database existence check for now - the connection config should handle this
+    // Test a simple query
+    const result = await client.query('SELECT NOW() as current_time, 1 as test');
+    console.log('🔍 Database query test:', result.rows[0].test === 1 ? 'PASSED' : 'FAILED');
+    console.log('⏰ Database time:', result.rows[0].current_time);
     
     // Test if tables exist
-    const [tables] = await connection.execute('SHOW TABLES');
-    console.log('📋 Available tables:', tables.map(t => Object.values(t)[0]));
+    const tablesResult = await client.query(`
+      SELECT table_name 
+      FROM information_schema.tables 
+      WHERE table_schema = 'public'
+      ORDER BY table_name
+    `);
+    
+    const tables = tablesResult.rows.map(row => row.table_name);
+    console.log('📋 Available tables:', tables);
     
     if (tables.length === 0) {
       console.warn('⚠️  No tables found. Database schema may need to be imported.');
     }
     
-    // Test a simple query
-    const [rows] = await connection.execute('SELECT 1 as test');
-    console.log('🔍 Database query test:', rows[0].test === 1 ? 'PASSED' : 'FAILED');
-    
-    connection.release();
     return true;
   } catch (error) {
     console.error('❌ Database connection failed:', error.message);
     
-    // Provide helpful error messages
-    switch (error.code) {
-      case 'ER_ACCESS_DENIED_ERROR':
-        console.log('💡 Check your username and password in the .env file');
-        break;
-      case 'ER_BAD_DB_ERROR':
-        console.log('💡 The database does not exist. Please create it first.');
-        break;
-      case 'ECONNREFUSED':
-        console.log('💡 Cannot connect to MySQL server. Make sure it is running.');
-        break;
-      case 'ETIMEDOUT':
-        console.log('💡 Connection timeout. Check your network and database server.');
-        break;
-      default:
-        console.log('💡 Unexpected database error. Check your configuration.');
+    // Provide helpful error messages based on error code
+    if (error.code === 'ECONNREFUSED') {
+      console.log('💡 Cannot connect to PostgreSQL server. Check your DATABASE_URL.');
+    } else if (error.code === 'ETIMEDOUT') {
+      console.log('💡 Connection timeout. Check your network and database server.');
+    } else if (error.code === '28P01') {
+      console.log('💡 Authentication failed. Check your credentials in DATABASE_URL.');
+    } else if (error.code === '3D000') {
+      console.log('💡 The database does not exist.');
+    } else {
+      console.log('💡 Unexpected database error. Check your configuration.');
     }
     return false;
+  } finally {
+    if (client) {
+      client.release();
+    }
   }
 };
 
 // Enhanced query execution with error handling and logging
+// Returns [rows, fields] to maintain compatibility with MySQL version
 const executeQuery = async (query, params = []) => {
-  const connection = await pool.getConnection();
+  let client;
   try {
+    client = await pool.connect();
     const startTime = Date.now();
-    const [rows, fields] = await connection.query(query, params);
+    const result = await client.query(query, params);
     const executionTime = Date.now() - startTime;
     
     if (process.env.NODE_ENV === 'development' && executionTime > 1000) {
       console.warn(`⚠️  Slow query detected (${executionTime}ms):`, query.substring(0, 100) + '...');
     }
     
-    return [rows, fields];
+    // Return in MySQL-compatible format: [rows, fields]
+    return [result.rows, result.fields];
   } catch (error) {
     console.error('❌ Query execution failed:', error.message);
     console.error('📝 Query:', query);
     console.error('🔍 Parameters:', params);
     throw error;
   } finally {
-    connection.release();
+    if (client) {
+      client.release();
+    }
   }
 };
 
 // Transaction helper
 const withTransaction = async (callback) => {
-  const connection = await pool.getConnection();
+  const client = await pool.connect();
   try {
-    await connection.beginTransaction();
-    const result = await callback(connection);
-    await connection.commit();
+    await client.query('BEGIN');
+    const result = await callback(client);
+    await client.query('COMMIT');
     return result;
   } catch (error) {
-    await connection.rollback();
+    await client.query('ROLLBACK');
     throw error;
   } finally {
-    connection.release();
+    client.release();
   }
 };
 
@@ -168,13 +163,17 @@ const validateSchema = async () => {
     const requiredTables = [
       'user_accounts', 'departments', 'faculty_designations', 'courses', 'research_areas',
       'employees', 'staff_profiles', 'faculty_profiles', 'faculty_education',
-      'faculty_publications', 'faculty_generic_sections', 'faculty_custom_sections',
+      'faculty_publications', 'faculty_custom_sections',
       'faculty_custom_section_entries', 'faculty_courses_taught',
       'system_settings', 'audit_log', 'file_attachments'
     ];
     
-    const [tables] = await executeQuery('SHOW TABLES');
-    const existingTables = tables.map(t => Object.values(t)[0]);
+    const [tables] = await executeQuery(`
+      SELECT table_name 
+      FROM information_schema.tables 
+      WHERE table_schema = 'public'
+    `);
+    const existingTables = tables.map(t => t.table_name);
     
     const missingTables = requiredTables.filter(table => !existingTables.includes(table));
     
