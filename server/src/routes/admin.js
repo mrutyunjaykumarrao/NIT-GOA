@@ -529,10 +529,10 @@ router.get('/analytics', async (req, res) => {
         (SELECT COUNT(*) FROM employees) as total_employees,
         (SELECT COUNT(*) FROM faculty_profiles) as total_faculty,
         (SELECT COUNT(*) FROM staff_profiles) as total_staff,
-        (SELECT COUNT(*) FROM departments WHERE is_active = 1) as active_departments,
-        (SELECT COUNT(*) FROM user_accounts WHERE is_active = 1) as active_users,
-        (SELECT COUNT(*) FROM employees WHERE is_active = 1) as active_employees,
-        (SELECT COUNT(*) FROM user_accounts WHERE last_login >= DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 30 DAY)) as recent_logins
+        (SELECT COUNT(*) FROM departments WHERE is_active = TRUE) as active_departments,
+        (SELECT COUNT(*) FROM user_accounts WHERE is_active = TRUE) as active_users,
+        (SELECT COUNT(*) FROM employees WHERE is_active = TRUE) as active_employees,
+        (SELECT COUNT(*) FROM user_accounts WHERE last_login >= CURRENT_TIMESTAMP - INTERVAL '30 days') as recent_logins
     `);
     
     console.log('🔍 [ADMIN DEBUG] Analytics query result:', analytics[0]);
@@ -563,7 +563,7 @@ router.get('/website-analytics', async (req, res) => {
         DATE(date_recorded) as analytics_date,
         daily_visitors as daily_count
       FROM site_analytics 
-      WHERE date_recorded >= DATE_SUB(CURDATE(), INTERVAL $1 DAY)
+      WHERE date_recorded >= CURRENT_DATE - (INTERVAL '1 day' * $1)
       ORDER BY date_recorded DESC
     `, [days]);
 
@@ -571,7 +571,7 @@ router.get('/website-analytics', async (req, res) => {
     const todayStats = await executeQuery(`
       SELECT total_visitors, daily_visitors, desktop_visits, mobile_visits
       FROM site_analytics 
-      WHERE date_recorded = CURDATE()
+      WHERE date_recorded = CURRENT_DATE
     `);
 
     // Get all-time stats

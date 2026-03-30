@@ -209,7 +209,7 @@ router.get('/dashboard-stats', async (req, res) => {
                 SELECT total_visitors, daily_visitors, 
                        desktop_visits, mobile_visits
                 FROM site_analytics 
-                WHERE date_recorded = CURDATE()
+                WHERE date_recorded = CURRENT_DATE
             `);
             
             targetStats = todayData[0] || {
@@ -226,7 +226,7 @@ router.get('/dashboard-stats', async (req, res) => {
                     SUM(desktop_visits) as desktop_visits,
                     SUM(mobile_visits) as mobile_visits
                 FROM site_analytics 
-                WHERE date_recorded >= DATE_SUB(CURDATE(), INTERVAL 6 DAY)
+                WHERE date_recorded >= CURRENT_DATE - INTERVAL '6 days'
             `);
             
             targetStats = weekData[0] || {
@@ -243,7 +243,7 @@ router.get('/dashboard-stats', async (req, res) => {
                     SUM(desktop_visits) as desktop_visits,
                     SUM(mobile_visits) as mobile_visits
                 FROM site_analytics 
-                WHERE date_recorded >= DATE_SUB(CURDATE(), INTERVAL 29 DAY)
+                WHERE date_recorded >= CURRENT_DATE - INTERVAL '29 days'
             `);
             
             targetStats = monthData[0] || {
@@ -265,7 +265,7 @@ router.get('/dashboard-stats', async (req, res) => {
             SELECT date_recorded, daily_visitors, 
                    desktop_visits, mobile_visits
             FROM site_analytics 
-            WHERE date_recorded >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
+            WHERE date_recorded >= CURRENT_DATE - INTERVAL '30 days'
             ORDER BY date_recorded ASC
         `);
 
@@ -275,7 +275,7 @@ router.get('/dashboard-stats', async (req, res) => {
                 SUM(desktop_visits) as total_desktop,
                 SUM(mobile_visits) as total_mobile
             FROM site_analytics 
-            WHERE date_recorded >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
+            WHERE date_recorded >= CURRENT_DATE - INTERVAL '30 days'
         `);
 
         connection.release();
@@ -327,7 +327,7 @@ router.get('/simple-stats', async (req, res) => {
                 desktop_visits,
                 mobile_visits
             FROM site_analytics 
-            WHERE date_recorded >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
+            WHERE date_recorded >= CURRENT_DATE - INTERVAL '30 days'
             ORDER BY date_recorded ASC
         `);
 
@@ -385,7 +385,7 @@ router.get('/chart-data', async (req, res) => {
                 DATE(date_recorded) as date,
                 daily_visitors as visitors
             FROM site_analytics 
-            WHERE date_recorded >= DATE_SUB(CURDATE(), INTERVAL $1 DAY)
+            WHERE date_recorded >= CURRENT_DATE - (INTERVAL '1 day' * $1)
             ORDER BY date_recorded ASC
         `, [dayRange]);
 
