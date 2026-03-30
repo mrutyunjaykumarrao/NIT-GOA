@@ -11,10 +11,10 @@ const router = express.Router();
 
 // Helper function for database queries
 async function executeQuery(query, params = []) {
-  const connection = await pool.getConnection();
+  const connection = await pool.connect();
   try {
-    const [results] = await connection.execute(query, params);
-    return [results];
+    const result = await connection.query(query, params);
+    return [result.rows];
   } finally {
     connection.release();
   }
@@ -22,14 +22,14 @@ async function executeQuery(query, params = []) {
 
 // Helper function for transactions
 async function withTransaction(callback) {
-  const connection = await pool.getConnection();
+  const connection = await pool.connect();
   try {
-    await connection.beginTransaction();
+    await connection.query('BEGIN');
     const result = await callback(connection);
-    await connection.commit();
+    await connection.query('COMMIT');
     return result;
   } catch (error) {
-    await connection.rollback();
+    await connection.query('ROLLBACK');
     throw error;
   } finally {
     connection.release();
@@ -165,11 +165,11 @@ router.put('/pending-approvals/:id/approve', async (req, res) => {
   try {
     const { id } = req.params;
     const { admin_notes } = req.body;
-    const reviewedBy = req.user?.employeeCode || 'ADMIN'; // In dev mode
+    const reviewedBy = req.user$1.employeeCode || 'ADMIN'; // In dev mode
 
     // Get the pending approval details
     const [pendingResult] = await executeQuery(
-      'SELECT * FROM pending_approvals WHERE approval_id = ? AND status = "pending"',
+      'SELECT * FROM pending_approvals WHERE approval_id = $1 AND status = "pending"',
       [id]
     );
 
@@ -196,7 +196,7 @@ router.put('/pending-approvals/:id/approve', async (req, res) => {
         FROM employees e
         LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code
         LEFT JOIN departments d ON fp.department_id = d.department_id
-        WHERE e.employee_code = ?
+        WHERE e.employee_code = $1
       `, [employee_code]);
 
       const employee = employeeResult[0];
@@ -232,8 +232,8 @@ router.put('/pending-approvals/:id/approve', async (req, res) => {
       const tableName = employee.role === 'Faculty' ? 'faculty_profiles' : 'staff_profiles';
       await executeQuery(`
         UPDATE ${tableName}
-        SET image_url = ?
-        WHERE employee_code = ?
+        SET image_url = $1
+        WHERE employee_code = $1
       `, [newImageUrl, employee_code]);
 
       console.log('Database updated with new image URL:', newImageUrl);
@@ -242,8 +242,8 @@ router.put('/pending-approvals/:id/approve', async (req, res) => {
     // Update approval status
     await executeQuery(`
       UPDATE pending_approvals 
-      SET status = 'approved', reviewed_by = ?, reviewed_at = NOW(), admin_notes = ?
-      WHERE approval_id = ?
+      SET status = 'approved', reviewed_by = $1, reviewed_at = CURRENT_TIMESTAMP, admin_notes = $2
+      WHERE approval_id = $1
     `, [reviewedBy, admin_notes || null, id]);
 
     res.json({
@@ -262,11 +262,11 @@ router.put('/pending-approvals/:id/reject', async (req, res) => {
   try {
     const { id } = req.params;
     const { admin_notes } = req.body;
-    const reviewedBy = req.user?.employeeCode || 'ADMIN';
+    const reviewedBy = req.user$1.employeeCode || 'ADMIN';
 
     // Get the pending approval details
     const [pendingResult] = await executeQuery(
-      'SELECT * FROM pending_approvals WHERE approval_id = ? AND status = "pending"',
+      'SELECT * FROM pending_approvals WHERE approval_id = $1 AND status = "pending"',
       [id]
     );
 
@@ -292,8 +292,8 @@ router.put('/pending-approvals/:id/reject', async (req, res) => {
     // Update approval status
     await executeQuery(`
       UPDATE pending_approvals 
-      SET status = 'rejected', reviewed_by = ?, reviewed_at = NOW(), admin_notes = ?
-      WHERE approval_id = ?
+      SET status = 'rejected', reviewed_by = $1, reviewed_at = CURRENT_TIMESTAMP, admin_notes = $2
+      WHERE approval_id = $1
     `, [reviewedBy, admin_notes || null, id]);
 
     res.json({
@@ -344,7 +344,7 @@ router.post('/faculty', upload.single('profile_image'), async (req, res) => {
 
     await withTransaction(async (connection) => {
       // Generate employee code - check all possible sources to avoid conflicts
-      const [codeResult] = await connection.execute(`
+      const [codeResult] = await connection.query(`
         SELECT employee_code FROM (
           SELECT employee_code FROM employees WHERE role = 'Faculty'
           UNION
@@ -364,8 +364,8 @@ router.post('/faculty', upload.single('profile_image'), async (req, res) => {
       }
 
 // Get department_id and department_code from department name
-        const [deptResult] = await connection.execute(
-          'SELECT department_id, department_code FROM departments WHERE department_name = ? OR department_code = ?',
+        const [deptResult] = await connection.query(
+          'SELECT department_id, department_code FROM departments WHERE department_name = $1 OR department_code = $2',
           [department, department]
         );
 
@@ -377,11 +377,12 @@ router.post('/faculty', upload.single('profile_image'), async (req, res) => {
         const department_code = deptResult[0].department_code;
 
       // Insert into employees table
-      const [employeeResult] = await connection.execute(`
+      const [employeeResult] = await connection.query(`
         INSERT INTO employees (
           employee_code, full_name, honorific, email, gender, phone_mobile, extension_no,
           role, is_active, is_public_visible
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, 'Faculty', TRUE, TRUE)
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7, 'Faculty', TRUE, TRUE)
+        RETURNING employee_id
       `, [
         newEmployeeCode,
         full_name,
@@ -392,23 +393,23 @@ router.post('/faculty', upload.single('profile_image'), async (req, res) => {
         extension_no || null
       ]);
 
-      const employee_id = employeeResult.insertId;
+      const employee_id = employeeResult[0].employee_id;
 
       // Get or create designation
       let designation_id;
-      const [designationResult] = await connection.execute(
-        'SELECT designation_id FROM faculty_designations WHERE designation_title = ?',
+      const [designationResult] = await connection.query(
+        'SELECT designation_id FROM faculty_designations WHERE designation_title = $1',
         [designation]
       );
 
       if (designationResult.length > 0) {
         designation_id = designationResult[0].designation_id;
       } else {
-        const [newDesignation] = await connection.execute(
-          'INSERT INTO faculty_designations (designation_title) VALUES (?)',
+        const [newDesignation] = await connection.query(
+          'INSERT INTO faculty_designations (designation_title) VALUES ($1) RETURNING designation_id',
           [designation]
         );
-        designation_id = newDesignation.insertId;
+        designation_id = newDesignation[0].designation_id;
       }
 
         // Handle Image Upload
@@ -422,10 +423,10 @@ router.post('/faculty', upload.single('profile_image'), async (req, res) => {
         }
 
         // Insert into faculty_profiles
-        await connection.execute(`
+        await connection.query(`
           INSERT INTO faculty_profiles (
             employee_code, department_id, designation_id, display_order, image_url
-          ) VALUES (?, ?, ?, ?, ?)
+          ) VALUES ($1, $2, $3, $4, $5)
         `, [
         newEmployeeCode,
         department_id,
@@ -441,10 +442,10 @@ router.post('/faculty', upload.single('profile_image'), async (req, res) => {
         const accountAccessLevel = access_level || 'Faculty';
         
         const hashedPassword = await bcrypt.hash(accountPassword, 10);
-        await connection.execute(`
+        await connection.query(`
           INSERT INTO user_accounts (
             username, password_hash, email, access_level, employee_code, is_active
-          ) VALUES (?, ?, ?, ?, ?, TRUE)
+          ) VALUES ($1, $2, $3, $4, $5, TRUE)
         `, [accountUsername, hashedPassword, email, accountAccessLevel, newEmployeeCode]);
       }
     });
@@ -474,8 +475,8 @@ router.delete('/faculty/:employeeCode', async (req, res) => {
 
     await withTransaction(async (connection) => {
       // Check if faculty exists
-      const [faculty] = await connection.execute(
-        'SELECT employee_code FROM faculty_profiles WHERE employee_code = ?',
+      const [faculty] = await connection.query(
+        'SELECT employee_code FROM faculty_profiles WHERE employee_code = $1',
         [employeeCode]
       );
 
@@ -484,15 +485,15 @@ router.delete('/faculty/:employeeCode', async (req, res) => {
       }
 
       // Delete user account first (has ON DELETE SET NULL, so we need to explicitly delete)
-      await connection.execute(
-        'DELETE FROM user_accounts WHERE employee_code = ?',
+      await connection.query(
+        'DELETE FROM user_accounts WHERE employee_code = $1',
         [employeeCode]
       );
 
       // Delete from employees table - this will CASCADE to all related tables
       // (faculty_profiles, faculty_education, faculty_publications, etc.)
-      await connection.execute(
-        'DELETE FROM employees WHERE employee_code = ?',
+      await connection.query(
+        'DELETE FROM employees WHERE employee_code = $1',
         [employeeCode]
       );
     });
@@ -531,7 +532,7 @@ router.get('/analytics', async (req, res) => {
         (SELECT COUNT(*) FROM departments WHERE is_active = 1) as active_departments,
         (SELECT COUNT(*) FROM user_accounts WHERE is_active = 1) as active_users,
         (SELECT COUNT(*) FROM employees WHERE is_active = 1) as active_employees,
-        (SELECT COUNT(*) FROM user_accounts WHERE last_login >= DATE_SUB(NOW(), INTERVAL 30 DAY)) as recent_logins
+        (SELECT COUNT(*) FROM user_accounts WHERE last_login >= DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 30 DAY)) as recent_logins
     `);
     
     console.log('🔍 [ADMIN DEBUG] Analytics query result:', analytics[0]);
@@ -562,7 +563,7 @@ router.get('/website-analytics', async (req, res) => {
         DATE(date_recorded) as analytics_date,
         daily_visitors as daily_count
       FROM site_analytics 
-      WHERE date_recorded >= DATE_SUB(CURDATE(), INTERVAL ? DAY)
+      WHERE date_recorded >= DATE_SUB(CURDATE(), INTERVAL $1 DAY)
       ORDER BY date_recorded DESC
     `, [days]);
 
@@ -590,14 +591,14 @@ router.get('/website-analytics', async (req, res) => {
 
     const response = {
       allTime: {
-        total_visitors: allTimeStats[0]?.total_visitors || 0
+        total_visitors: allTimeStats[0]$1.total_visitors || 0
       },
       today: {
-        daily_visitors: todayStats[0]?.daily_visitors || 0
+        daily_visitors: todayStats[0]$1.daily_visitors || 0
       },
       deviceBreakdown: {
-        desktop: allTimeStats[0]?.total_desktop || 0,
-        mobile: allTimeStats[0]?.total_mobile || 0
+        desktop: allTimeStats[0]$1.total_desktop || 0,
+        mobile: allTimeStats[0]$1.total_mobile || 0
       },
       chartData: {
         visitors: chartData
@@ -631,12 +632,13 @@ router.post('/users', async (req, res) => {
     
     const result = await executeQuery(`
       INSERT INTO user_accounts (username, password_hash, access_level, is_active)
-      VALUES (?, ?, ?, ?)
+      VALUES ($1, $2, $3, $4)
+      RETURNING user_id
     `, [username, password_hash, access_level, is_active]);
     
     res.status(201).json({ 
-      id: result.insertId, 
-      message: 'User created successfully' 
+      id: result[0][0].user_id, 
+      message: 'User created successfully'
     });
   } catch (error) {
     console.error('Create user error:', error);
@@ -654,16 +656,17 @@ router.put('/users/:id', async (req, res) => {
     const { id } = req.params;
     const { username, password, access_level, is_active } = req.body;
     
-    let query = 'UPDATE user_accounts SET username = ?, access_level = ?, is_active = ?';
+    let paramIndex = 1;
+    let query = `UPDATE user_accounts SET username = $${paramIndex++}, access_level = $${paramIndex++}, is_active = $${paramIndex++}`;
     let params = [username, access_level, is_active];
     
     if (password) {
       const password_hash = await bcrypt.hash(password, 10);
-      query += ', password_hash = ?';
+      query += `, password_hash = $${paramIndex++}`;
       params.push(password_hash);
     }
     
-    query += ', updated_at = CURRENT_TIMESTAMP WHERE user_id = ?';
+    query += `, updated_at = CURRENT_TIMESTAMP WHERE user_id = $${paramIndex}`;
     params.push(id);
     
     await executeQuery(query, params);
@@ -678,7 +681,7 @@ router.put('/users/:id', async (req, res) => {
 router.delete('/users/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    await executeQuery('DELETE FROM user_accounts WHERE user_id = ?', [id]);
+    await executeQuery('DELETE FROM user_accounts WHERE user_id = $1', [id]);
     res.json({ message: 'User deleted successfully' });
   } catch (error) {
     console.error('Delete user error:', error);
@@ -693,7 +696,7 @@ router.put('/users/:id', authenticateToken, requireAdmin, async (req, res) => {
     const { username, email, access_level, is_active } = req.body;
 
     // Check if user exists
-    const [existingUsers] = await executeQuery('SELECT user_id FROM user_accounts WHERE user_id = ?', [id]);
+    const [existingUsers] = await executeQuery('SELECT user_id FROM user_accounts WHERE user_id = $1', [id]);
     if (existingUsers.length === 0) {
       return res.status(404).json({ error: 'User not found' });
     }
@@ -701,8 +704,8 @@ router.put('/users/:id', authenticateToken, requireAdmin, async (req, res) => {
     // Update user
     await executeQuery(`
       UPDATE user_accounts 
-      SET username = ?, email = ?, access_level = ?, is_active = ?, updated_at = CURRENT_TIMESTAMP
-      WHERE user_id = ?
+      SET username = $1, email = $2, access_level = $3, is_active = $4, updated_at = CURRENT_TIMESTAMP
+      WHERE user_id = $1
     `, [username, email, access_level, is_active ? 1 : 0, id]);
 
     res.json({ message: 'User updated successfully' });
@@ -723,14 +726,14 @@ router.post('/users', authenticateToken, requireAdmin, async (req, res) => {
     }
 
     // Check if username already exists
-    const [existingUsers] = await executeQuery('SELECT username FROM user_accounts WHERE username = ?', [username]);
+    const [existingUsers] = await executeQuery('SELECT username FROM user_accounts WHERE username = $1', [username]);
     if (existingUsers.length > 0) {
       return res.status(409).json({ error: 'Username already exists' });
     }
 
     // Check if email already exists (if provided)
     if (email) {
-      const [existingEmails] = await executeQuery('SELECT email FROM user_accounts WHERE email = ?', [email]);
+      const [existingEmails] = await executeQuery('SELECT email FROM user_accounts WHERE email = $1', [email]);
       if (existingEmails.length > 0) {
         return res.status(409).json({ error: 'Email already exists' });
       }
@@ -743,12 +746,13 @@ router.post('/users', authenticateToken, requireAdmin, async (req, res) => {
     // Insert new user
     const [result] = await executeQuery(`
       INSERT INTO user_accounts (username, email, password_hash, access_level, is_active, created_at, updated_at)
-      VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+      VALUES ($1, $2, $3, $4, $5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+      RETURNING user_id
     `, [username, email || null, hashedPassword, access_level, is_active ? 1 : 0]);
 
     res.status(201).json({ 
       message: 'User created successfully',
-      user_id: result.insertId
+      user_id: result[0].user_id
     });
   } catch (error) {
     console.error('Create user error:', error);
@@ -763,7 +767,7 @@ router.put('/users/:id/status', authenticateToken, requireAdmin, async (req, res
     const { is_active } = req.body;
 
     // Check if user exists
-    const [existingUsers] = await executeQuery('SELECT user_id, username FROM user_accounts WHERE user_id = ?', [id]);
+    const [existingUsers] = await executeQuery('SELECT user_id, username FROM user_accounts WHERE user_id = $1', [id]);
     if (existingUsers.length === 0) {
       return res.status(404).json({ error: 'User not found' });
     }
@@ -771,8 +775,8 @@ router.put('/users/:id/status', authenticateToken, requireAdmin, async (req, res
     // Update user status
     await executeQuery(`
       UPDATE user_accounts 
-      SET is_active = ?, updated_at = CURRENT_TIMESTAMP
-      WHERE user_id = ?
+      SET is_active = $1, updated_at = CURRENT_TIMESTAMP
+      WHERE user_id = $1
     `, [is_active ? 1 : 0, id]);
 
     res.json({ message: `User ${is_active ? 'activated' : 'deactivated'} successfully` });
@@ -876,7 +880,7 @@ router.get('/employees/next-code/:role', async (req, res) => {
     const result = await executeQuery(`
       SELECT employee_code 
       FROM employees 
-      WHERE role = ? AND employee_code IS NOT NULL
+      WHERE role = $1 AND employee_code IS NOT NULL
       ORDER BY employee_code DESC
     `, [role]);
     
@@ -945,14 +949,14 @@ router.get('/employees/next-display-order/:role', async (req, res) => {
     const result = await executeQuery(`
       SELECT COALESCE(MAX(display_order), 0) + 1 as next_display_order
       FROM employees 
-      WHERE role = ?
+      WHERE role = $1
     `, [role]);
     
     console.log(`🔍 [NEXT-DISPLAY-ORDER DEBUG] Raw result:`, result);
     
     // Extract the actual data array (MySQL2 returns [rows, metadata])
     const displayOrderData = Array.isArray(result[0]) ? result[0] : result;
-    const nextDisplayOrder = displayOrderData[0]?.next_display_order || 1;
+    const nextDisplayOrder = displayOrderData[0]$1.next_display_order || 1;
     
     console.log(`🔍 [NEXT-DISPLAY-ORDER DEBUG] Next display order: ${nextDisplayOrder}`);
     
@@ -998,7 +1002,8 @@ router.post('/employees', async (req, res) => {
           employee_code, full_name, honorific, email, phone_mobile, phone_residence,
           extension_no, date_of_joining, role, job_title, is_hod, employment_status,
           employment_type, image_url, is_active, is_public_visible, display_order
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)
+        RETURNING employee_id
       `, [
         employee_code || null, 
         full_name || null, 
@@ -1019,7 +1024,7 @@ router.post('/employees', async (req, res) => {
         display_order || 0
       ], connection);
 
-      const employee_id = employeeResult.insertId;
+      const employee_id = employeeResult[0][0].employee_id;
 
       // Insert into role-specific profile table
       if (role === 'Faculty') {
@@ -1027,14 +1032,14 @@ router.post('/employees', async (req, res) => {
         if (department_id) {
           await executeQuery(`
             INSERT INTO faculty_profiles (employee_id, department_id)
-            VALUES (?, ?)
+            VALUES ($1, $2)
           `, [employee_id, department_id], connection);
         }
       } else if (role === 'Administrative' || role === 'Technical') {
         // Staff profiles - department_id is optional
         await executeQuery(`
           INSERT INTO staff_profiles (employee_id, department_id)
-          VALUES (?, ?)
+          VALUES ($1, $2)
         `, [employee_id, department_id || null], connection);
         
         console.log(`✅ Created staff profile for employee_id: ${employee_id}, department_id: ${department_id || 'null'}`);
@@ -1062,18 +1067,19 @@ router.put('/employees/:id', async (req, res) => {
     await withTransaction(async (connection) => {
       // Update employees table
       if (Object.keys(employeeData).length > 0) {
-        const setClause = Object.keys(employeeData).map(key => `${key} = ?`).join(', ');
+        let paramIndex = 1;
+        const setClause = Object.keys(employeeData).map(key => `${key} = $${paramIndex++}`).join(', ');
         const values = Object.values(employeeData);
         
         await executeQuery(`
-          UPDATE employees SET ${setClause}, updated_at = CURRENT_TIMESTAMP WHERE employee_id = ?
+          UPDATE employees SET ${setClause}, updated_at = CURRENT_TIMESTAMP WHERE employee_id = $${paramIndex}
         `, [...values, id], connection);
       }
 
       // Update department in profile tables if provided
       if (department_id !== undefined) {
         const employee = await executeQuery(
-          'SELECT role FROM employees WHERE employee_id = ?', 
+          'SELECT role FROM employees WHERE employee_id = $1', 
           [id], 
           connection
         );
@@ -1084,13 +1090,13 @@ router.put('/employees/:id', async (req, res) => {
           if (role === 'Faculty') {
             await executeQuery(`
               INSERT INTO faculty_profiles (employee_id, department_id) 
-              VALUES (?, ?) 
+              VALUES ($1, $2) 
               ON DUPLICATE KEY UPDATE department_id = VALUES(department_id)
             `, [id, department_id], connection);
           } else if (role === 'Administrative' || role === 'Technical') {
             await executeQuery(`
               INSERT INTO staff_profiles (employee_id, department_id) 
-              VALUES (?, ?) 
+              VALUES ($1, $2) 
               ON DUPLICATE KEY UPDATE department_id = VALUES(department_id)
             `, [id, department_id], connection);
           }
@@ -1112,11 +1118,11 @@ router.delete('/employees/:id', async (req, res) => {
     
     await withTransaction(async (connection) => {
       // Delete from profile tables first (foreign key constraints)
-      await executeQuery('DELETE FROM faculty_profiles WHERE employee_id = ?', [id], connection);
-      await executeQuery('DELETE FROM staff_profiles WHERE employee_id = ?', [id], connection);
+      await executeQuery('DELETE FROM faculty_profiles WHERE employee_id = $1', [id], connection);
+      await executeQuery('DELETE FROM staff_profiles WHERE employee_id = $1', [id], connection);
       
       // Delete from employees table
-      await executeQuery('DELETE FROM employees WHERE employee_id = ?', [id], connection);
+      await executeQuery('DELETE FROM employees WHERE employee_id = $1', [id], connection);
     });
     
     res.json({ message: 'Employee deleted successfully' });
@@ -1295,11 +1301,12 @@ router.post('/departments', async (req, res) => {
 
     const result = await executeQuery(`
       INSERT INTO departments (department_name, department_code, description, is_active, display_order)
-      VALUES (?, ?, ?, ?, ?)
+      VALUES ($1, $2, $3, $4, $5)
+      RETURNING department_id
     `, [department_name, department_code, description, is_active, display_order]);
     
     res.status(201).json({ 
-      id: result.insertId, 
+      id: result[0][0].department_id, 
       message: 'Department created successfully' 
     });
   } catch (error) {
@@ -1320,9 +1327,9 @@ router.put('/departments/:id', async (req, res) => {
     
     await executeQuery(`
       UPDATE departments 
-      SET department_name = ?, department_code = ?, description = ?, is_active = ?, 
-          display_order = ?, updated_at = CURRENT_TIMESTAMP
-      WHERE department_id = ?
+      SET department_name = $1, department_code = $2, description = $3, is_active = $4, 
+          display_order = $1, updated_at = CURRENT_TIMESTAMP
+      WHERE department_id = $1
     `, [department_name, department_code, description, is_active, display_order, id]);
     
     res.json({ message: 'Department updated successfully' });
@@ -1338,14 +1345,14 @@ router.delete('/departments/:id', async (req, res) => {
     const { id } = req.params;
     
     // Check if department has employees
-    const facultyCount = await executeQuery('SELECT COUNT(*) as count FROM faculty_profiles WHERE department_id = ?', [id]);
-    const staffCount = await executeQuery('SELECT COUNT(*) as count FROM staff_profiles WHERE department_id = ?', [id]);
+    const facultyCount = await executeQuery('SELECT COUNT(*) as count FROM faculty_profiles WHERE department_id = $1', [id]);
+    const staffCount = await executeQuery('SELECT COUNT(*) as count FROM staff_profiles WHERE department_id = $1', [id]);
     
     if (facultyCount[0].count > 0 || staffCount[0].count > 0) {
       return res.status(400).json({ error: 'Cannot delete department with associated employees' });
     }
     
-    await executeQuery('DELETE FROM departments WHERE department_id = ?', [id]);
+    await executeQuery('DELETE FROM departments WHERE department_id = $1', [id]);
     res.json({ message: 'Department deleted successfully' });
   } catch (error) {
     console.error('Delete department error:', error);
@@ -1369,7 +1376,7 @@ router.get('/users/test', async (req, res) => {
     
     const connection = await pool.getConnection();
     try {
-      const [basicResults] = await connection.execute(`
+      const [basicResults] = await connection.query(`
         SELECT 
           ua.user_id,
           ua.username,
@@ -1418,11 +1425,11 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
     if (status && status !== 'all') {
       const statusCondition = whereClause ? ' AND ' : ' WHERE ';
       if (status === 'active') {
-        whereClause += statusCondition + 'ua.is_active = 1 AND (ua.locked_until IS NULL OR ua.locked_until <= NOW())';
+        whereClause += statusCondition + 'ua.is_active = 1 AND (ua.locked_until IS NULL OR ua.locked_until <= CURRENT_TIMESTAMP)';
       } else if (status === 'inactive') {
         whereClause += statusCondition + 'ua.is_active = 0';
       } else if (status === 'locked') {
-        whereClause += statusCondition + 'ua.locked_until > NOW()';
+        whereClause += statusCondition + 'ua.locked_until > CURRENT_TIMESTAMP';
       }
     }
 
@@ -1450,7 +1457,7 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
         e.role as employee_role,
         COALESCE(fp.image_url, sp.image_url) as employee_image,
         CASE 
-          WHEN ua.locked_until > NOW() THEN 'locked'
+          WHEN ua.locked_until > CURRENT_TIMESTAMP THEN 'locked'
           WHEN ua.is_active = 0 THEN 'inactive'
           ELSE 'active'
         END as status
@@ -1460,10 +1467,10 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
       LEFT JOIN staff_profiles sp ON e.employee_code = sp.employee_code AND e.role IN ('Administrative', 'Technical')
       ${whereClause}
       ORDER BY ua.created_at DESC
-      LIMIT ? OFFSET ?
+      LIMIT $1 OFFSET $2
     `;
     
-    console.log('🔍 [USERS DEBUG] Query placeholders count:', (userQuery.match(/\?/g) || []).length);
+    console.log('🔍 [USERS DEBUG] Query placeholders count:', (userQuery.match(/\$1/g) || []).length);
     console.log('🔍 [USERS DEBUG] Parameters:', finalParams);
     
     // Simplified approach - try minimal query first
@@ -1484,14 +1491,14 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
           ua.locked_until,
           ua.created_at,
           CASE 
-            WHEN ua.locked_until > NOW() THEN 'locked'
+            WHEN ua.locked_until > CURRENT_TIMESTAMP THEN 'locked'
             WHEN ua.is_active = 0 THEN 'inactive'
             ELSE 'active'
           END as status
         FROM user_accounts ua
         ${whereClause}
         ORDER BY ua.created_at DESC
-        LIMIT ? OFFSET ?
+        LIMIT $1 OFFSET $2
       `;
       
       // Build parameters for basicQuery (only include search params if whereClause exists)
@@ -1501,7 +1508,7 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
       }
       basicParams.push(limitNum, offsetNum); // Always add LIMIT and OFFSET
       
-      console.log('🔍 [BASIC DEBUG] Query placeholders:', (basicQuery.match(/\?/g) || []).length);
+      console.log('🔍 [BASIC DEBUG] Query placeholders:', (basicQuery.match(/\$1/g) || []).length);
       console.log('🔍 [BASIC DEBUG] Parameters:', basicParams);
       
       // Try using query() instead of execute() to avoid parameter binding issues
@@ -1511,7 +1518,7 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
       console.log('🔍 [BASIC DEBUG] Final query:', basicQueryWithValues);
       console.log('🔍 [BASIC DEBUG] Search parameters only:', searchParams);
       
-      const [basicResults] = await connection.execute(basicQueryWithValues, searchParams);
+      const [basicResults] = await connection.query(basicQueryWithValues, searchParams);
       
       // Step 2: Get employee data separately and merge
       const userIds = basicResults.map(u => u.user_id);
@@ -1539,7 +1546,7 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
           WHERE ua.user_id IN (${placeholders})
         `;
         
-        const [empResults] = await connection.execute(employeeQuery, userIds);
+        const [empResults] = await connection.query(employeeQuery, userIds);
         
         // Create lookup map
         empResults.forEach(emp => {
@@ -1550,17 +1557,17 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
       // Step 3: Merge data
       userRows = basicResults.map(user => ({
         ...user,
-        employee_id: employeeData[user.user_id]?.employee_id || null,
-        employee_code: employeeData[user.user_id]?.employee_code || null,
-        full_name: employeeData[user.user_id]?.full_name || null,
-        employee_email: employeeData[user.user_id]?.employee_email || null,
-        employee_role: employeeData[user.user_id]?.employee_role || null,
-        employee_image: employeeData[user.user_id]?.employee_image || null
+        employee_id: employeeData[user.user_id]$1.employee_id || null,
+        employee_code: employeeData[user.user_id]$1.employee_code || null,
+        full_name: employeeData[user.user_id]$1.full_name || null,
+        employee_email: employeeData[user.user_id]$1.employee_email || null,
+        employee_role: employeeData[user.user_id]$1.employee_role || null,
+        employee_image: employeeData[user.user_id]$1.employee_image || null
       }));
       
       // Step 4: Get count
       const countQuery = `SELECT COUNT(*) as count FROM user_accounts ua ${whereClause}`;
-      const [countResults] = await connection.execute(countQuery, params);
+      const [countResults] = await connection.query(countQuery, params);
       totalCount = countResults[0].count;
       
       
@@ -1601,7 +1608,7 @@ router.post('/users/:userId/unlock', async (req, res) => {
         COALESCE(ua.email, e.email) as primary_email
       FROM user_accounts ua
       LEFT JOIN employees e ON ua.employee_code = e.employee_code
-      WHERE ua.user_id = ?
+      WHERE ua.user_id = $1
     `, [userId]);
     
     if (users.length === 0) {
@@ -1617,14 +1624,14 @@ router.post('/users/:userId/unlock', async (req, res) => {
         locked_until = NULL,
         failed_login_attempts = 0,
         updated_at = CURRENT_TIMESTAMP
-      WHERE user_id = ?
+      WHERE user_id = $1
     `, [userId]);
 
     // Log the admin action
     try {
       await executeQuery(`
         INSERT INTO audit_log (table_name, record_id, action, new_values, user_id, ip_address)
-        VALUES (?, ?, ?, ?, ?, ?)
+        VALUES ($1, $2, $3, $4, $5, $6)
       `, [
         'user_accounts', 
         userId, 
@@ -1669,7 +1676,7 @@ router.post('/users/:userId/reset-attempts', async (req, res) => {
   try {
     const { userId } = req.params;
     
-    const users = await executeQuery('SELECT username FROM user_accounts WHERE user_id = ?', [userId]);
+    const users = await executeQuery('SELECT username FROM user_accounts WHERE user_id = $1', [userId]);
     if (users.length === 0) {
       return res.status(404).json({ error: 'User not found' });
     }
@@ -1680,14 +1687,14 @@ router.post('/users/:userId/reset-attempts', async (req, res) => {
         failed_login_attempts = 0,
         locked_until = NULL,
         updated_at = CURRENT_TIMESTAMP
-      WHERE user_id = ?
+      WHERE user_id = $1
     `, [userId]);
 
     // Log the admin action
     try {
       await executeQuery(`
         INSERT INTO audit_log (table_name, record_id, action, new_values, user_id, ip_address)
-        VALUES (?, ?, ?, ?, ?, ?)
+        VALUES ($1, $2, $3, $4, $5, $6)
       `, [
         'user_accounts', 
         userId, 
@@ -1722,7 +1729,7 @@ router.post('/users/:userId/toggle-status', async (req, res) => {
       return res.status(400).json({ error: 'Cannot disable your own account' });
     }
 
-    const users = await executeQuery('SELECT username, is_active FROM user_accounts WHERE user_id = ?', [userId]);
+    const users = await executeQuery('SELECT username, is_active FROM user_accounts WHERE user_id = $1', [userId]);
     if (users.length === 0) {
       return res.status(404).json({ error: 'User not found' });
     }
@@ -1732,16 +1739,16 @@ router.post('/users/:userId/toggle-status', async (req, res) => {
     await executeQuery(`
       UPDATE user_accounts 
       SET 
-        is_active = ?,
+        is_active = $1,
         updated_at = CURRENT_TIMESTAMP
-      WHERE user_id = ?
+      WHERE user_id = $1
     `, [newStatus, userId]);
 
     // Log the admin action
     try {
       await executeQuery(`
         INSERT INTO audit_log (table_name, record_id, action, new_values, user_id, ip_address)
-        VALUES (?, ?, ?, ?, ?, ?)
+        VALUES ($1, $2, $3, $4, $5, $6)
       `, [
         'user_accounts', 
         userId, 
@@ -1778,14 +1785,14 @@ router.put('/users/:userId/email', async (req, res) => {
 
     // Check if email is already in use
     const existingEmail = await executeQuery(
-      'SELECT user_id FROM user_accounts WHERE email = ? AND user_id != ?',
+      'SELECT user_id FROM user_accounts WHERE email = $1 AND user_id != ?',
       [email, userId]
     );
     if (existingEmail.length > 0) {
       return res.status(400).json({ error: 'Email address is already in use' });
     }
 
-    const users = await executeQuery('SELECT username FROM user_accounts WHERE user_id = ?', [userId]);
+    const users = await executeQuery('SELECT username FROM user_accounts WHERE user_id = $1', [userId]);
     if (users.length === 0) {
       return res.status(404).json({ error: 'User not found' });
     }
@@ -1793,16 +1800,16 @@ router.put('/users/:userId/email', async (req, res) => {
     await executeQuery(`
       UPDATE user_accounts 
       SET 
-        email = ?,
+        email = $1,
         updated_at = CURRENT_TIMESTAMP
-      WHERE user_id = ?
+      WHERE user_id = $1
     `, [email, userId]);
 
     // Log the admin action
     try {
       await executeQuery(`
         INSERT INTO audit_log (table_name, record_id, action, new_values, user_id, ip_address)
-        VALUES (?, ?, ?, ?, ?, ?)
+        VALUES ($1, $2, $3, $4, $5, $6)
       `, [
         'user_accounts', 
         userId, 
