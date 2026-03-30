@@ -563,7 +563,7 @@ router.get('/website-analytics', async (req, res) => {
         DATE(date_recorded) as analytics_date,
         daily_visitors as daily_count
       FROM site_analytics 
-      WHERE date_recorded >= CURRENT_DATE - (INTERVAL '1 day' * $1)
+      WHERE date_recorded >= CURRENT_DATE - ($1 || ' days')::INTERVAL
       ORDER BY date_recorded DESC
     `, [days]);
 
