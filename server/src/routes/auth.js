@@ -10,10 +10,10 @@ const emailService = require('../utils/emailService');
 
 // Helper function for database queries
 async function executeQuery(query, params = []) {
-  const connection = await pool.getConnection();
+  const connection = await pool.connect();
   try {
-    const [results] = await connection.execute(query, params);
-    return [results];
+    const result = await connection.query(query, params);
+    return [result.rows];
   } finally {
     connection.release();
   }
@@ -116,7 +116,7 @@ router.post('/login', async (req, res) => {
       LEFT JOIN employees e ON ua.employee_code = e.employee_code
       LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code AND e.role = 'Faculty'
       LEFT JOIN staff_profiles sp ON e.employee_code = sp.employee_code AND e.role IN ('Administrative', 'Technical')
-      WHERE ua.username = ? AND ua.is_active = 1
+      WHERE ua.username = $1 AND ua.is_active = 1
     `, [username]);
 
     if (users.length === 0) {
@@ -186,7 +186,7 @@ router.post('/login', async (req, res) => {
             lockout_timestamp = NULL,
             lockout_duration_minutes = 0,
             failed_login_attempts = 0
-          WHERE user_id = ?
+          WHERE user_id = $3
         `, [user.id]);
         
         // Update the user object to reflect the reset
@@ -229,11 +229,11 @@ router.post('/login', async (req, res) => {
         await executeQuery(`
           UPDATE user_accounts 
           SET 
-            failed_login_attempts = ?,
-            locked_until = ?,
-            lockout_timestamp = ?,
-            lockout_duration_minutes = ?
-          WHERE user_id = ?
+            failed_login_attempts = $1,
+            locked_until = $2,
+            lockout_timestamp = $3,
+            lockout_duration_minutes = $4
+          WHERE user_id = $5
         `, [currentAttempts, formatForStorage(lockoutEnd), formatForStorage(lockoutStart), lockoutDuration, user.id]);
         
         return res.status(423).json({ 
@@ -249,8 +249,8 @@ router.post('/login', async (req, res) => {
         // Just increment failed attempts without locking
         await executeQuery(`
           UPDATE user_accounts 
-          SET failed_login_attempts = ?
-          WHERE user_id = ?
+          SET failed_login_attempts = $1
+          WHERE user_id = $2
         `, [currentAttempts, user.id]);
         
         const remainingAttempts = currentAttempts === 5 ? 1 : (4 - currentAttempts); // 5th is grace attempt
@@ -271,8 +271,8 @@ router.post('/login', async (req, res) => {
         locked_until = NULL,
         lockout_timestamp = NULL,
         lockout_duration_minutes = 0,
-        last_login = NOW()
-      WHERE user_id = ?
+        last_login = CURRENT_TIMESTAMP
+      WHERE user_id = $3
     `, [user.id]);
 
     // Generate JWT token
@@ -290,7 +290,7 @@ router.post('/login', async (req, res) => {
     try {
       await executeQuery(`
         INSERT INTO audit_log (table_name, record_id, action, new_values, changed_by, ip_address)
-        VALUES (?, ?, ?, ?, ?, ?)
+        VALUES ($1, $2, $3, $4, $5, $6)
       `, [
         'user_accounts', 
         user.id, 
@@ -360,7 +360,7 @@ router.get('/profile', async (req, res) => {
         ua.access_level as role,
         ua.is_active
       FROM user_accounts ua
-      WHERE ua.user_id = ? AND ua.is_active = 1
+      WHERE ua.user_id = $1 AND ua.is_active = 1
     `, [decoded.userId]);
 
     if (users.length === 0) {
@@ -400,7 +400,7 @@ router.post('/change-password', authenticateToken, async (req, res) => {
 
     // Get current password hash
     const [users] = await executeQuery(
-      'SELECT password_hash FROM user_accounts WHERE id = ?',
+      'SELECT password_hash FROM user_accounts WHERE id = $1',
       [req.user.userId]
     );
 
@@ -420,15 +420,15 @@ router.post('/change-password', authenticateToken, async (req, res) => {
 
     // Update password
     await executeQuery(
-      'UPDATE user_accounts SET password_hash = ?, password_changed_at = NOW() WHERE user_id = ?',
+      'UPDATE user_accounts SET password_hash = $1, password_changed_at = CURRENT_TIMESTAMP WHERE user_id = $2',
       [newPasswordHash, req.user.userId]
     );
 
     // Log password change
     await executeQuery(`
       INSERT INTO audit_log (user_id, action, entity_type, details)
-      VALUES (?, 'password_change', 'authentication', ?)
-    `, [req.user.userId, JSON.stringify({ ip: req.ip })]);
+      VALUES ($1, 'password_change', 'authentication', $2)
+    `, [req.user.userId, JSON.stringify({ ip: req.ip})]);
 
     res.json({ message: 'Password changed successfully' });
   } catch (error) {
@@ -443,7 +443,7 @@ router.post('/logout', authenticateToken, async (req, res) => {
     // Log logout
     await executeQuery(`
       INSERT INTO audit_log (user_id, action, entity_type, details)
-      VALUES (?, 'logout', 'authentication', ?)
+      VALUES ($1, 'logout', 'authentication', $2)
     `, [req.user.userId, JSON.stringify({ ip: req.ip })]);
 
     res.json({ message: 'Logged out successfully' });
@@ -476,7 +476,7 @@ router.post('/forgot-password', forgotPasswordLimiter, async (req, res) => {
         COALESCE(ua.email, e.email) as primary_email
       FROM user_accounts ua
       LEFT JOIN employees e ON ua.employee_code = e.employee_code
-      WHERE (ua.email = ? OR e.email = ?) 
+      WHERE (ua.email = $1 OR e.email = $2) 
         AND ua.is_active = 1
         AND (ua.locked_until IS NULL OR ua.locked_until <= NOW())
     `, [email, email]);
@@ -502,11 +502,11 @@ router.post('/forgot-password', forgotPasswordLimiter, async (req, res) => {
     await executeQuery(`
       UPDATE user_accounts 
       SET 
-        reset_token = ?,
-        reset_token_expires = ?,
+        reset_token = $1,
+        reset_token_expires = $2,
         reset_token_used = FALSE,
         updated_at = CURRENT_TIMESTAMP
-      WHERE user_id = ?
+      WHERE user_id = $3
     `, [resetToken, formatForStorage(resetExpiry), user.user_id]);
 
     // Log password reset request
@@ -607,7 +607,7 @@ router.post('/forgot-password-by-username', async (req, res) => {
         COALESCE(ua.email, e.email) as primary_email
       FROM user_accounts ua
       LEFT JOIN employees e ON ua.employee_code = e.employee_code
-      WHERE ua.username = ? 
+      WHERE ua.username = $1 
         AND ua.is_active = 1
         AND (ua.locked_until IS NULL OR ua.locked_until <= NOW())
     `, [username]);
@@ -651,11 +651,11 @@ router.post('/forgot-password-by-username', async (req, res) => {
     await executeQuery(`
       UPDATE user_accounts 
       SET 
-        reset_token = ?,
-        reset_token_expires = ?,
+        reset_token = $1,
+        reset_token_expires = $2,
         reset_token_used = FALSE,
         updated_at = CURRENT_TIMESTAMP
-      WHERE user_id = ?
+      WHERE user_id = $3
     `, [resetToken, formatForStorage(resetExpiry), user.user_id]);
 
     console.log('📧 Database updated with reset token, skipping audit log for now...');
@@ -725,7 +725,7 @@ router.get('/verify-reset-token/:token', async (req, res) => {
         ua.reset_token_expires,
         ua.reset_token_used
       FROM user_accounts ua
-      WHERE ua.reset_token = ? 
+      WHERE ua.reset_token = $1 
         AND ua.is_active = 1
     `, [token]);
 
@@ -773,7 +773,7 @@ router.post('/reset-password', resetPasswordLimiter, async (req, res) => {
         ua.reset_token_expires,
         ua.reset_token_used
       FROM user_accounts ua
-      WHERE ua.reset_token = ? 
+      WHERE ua.reset_token = $1 
         AND ua.is_active = 1
     `, [token]);
 
@@ -799,7 +799,7 @@ router.post('/reset-password', resetPasswordLimiter, async (req, res) => {
     await executeQuery(`
       UPDATE user_accounts 
       SET 
-        password_hash = ?,
+        password_hash = $1,
         reset_token_used = TRUE,
         failed_login_attempts = 0,
         locked_until = NULL,
@@ -807,7 +807,7 @@ router.post('/reset-password', resetPasswordLimiter, async (req, res) => {
         lockout_duration_minutes = 0,
         password_changed_at = CURRENT_TIMESTAMP,
         updated_at = CURRENT_TIMESTAMP
-      WHERE user_id = ?
+      WHERE user_id = $3
     `, [newPasswordHash, user.user_id]);
 
     // Log password reset completion
@@ -848,7 +848,7 @@ router.get('/debug-lockout/:username', async (req, res) => {
         NOW() as current_time,
         UTC_TIMESTAMP() as current_utc_time
       FROM user_accounts 
-      WHERE username = ?
+      WHERE username = $1
     `, [username]);
 
     if (users.length === 0) {
@@ -894,7 +894,7 @@ router.post('/lockout-status', async (req, res) => {
         lockout_timestamp,
         lockout_duration_minutes
       FROM user_accounts 
-      WHERE username = ?
+      WHERE username = $1
     `, [username]);
 
     if (users.length === 0) {
@@ -933,7 +933,7 @@ router.post('/lockout-status', async (req, res) => {
             locked_until = NULL,
             lockout_timestamp = NULL,
             lockout_duration_minutes = 0
-          WHERE username = ?
+          WHERE username = $1
         `, [username]);
         
         return res.json({
