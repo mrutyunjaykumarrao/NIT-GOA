@@ -110,8 +110,8 @@ router.post('/track-visit', async (req, res) => {
                 WHERE date_recorded < $1
             `, [today]);
             
-            const previousTotalVisitors = previousTotal.length > 0 && previousTotal[0].max_total $1 
-                previousTotal[0].max_total : 0;
+            const previousTotalVisitors = previousTotal.rows.length > 0 && previousTotal.rows[0].max_total 
+                ? previousTotal.rows[0].max_total : 0;
             
             // Create new record for today with cumulative total
             await connection.query(`
@@ -292,12 +292,12 @@ router.get('/dashboard-stats', async (req, res) => {
                     mobile_visits: targetStats.mobile_visits || 0
                 },
                 allTime: {
-                    total_visitors: totalStats[0]$1.all_time_visitors || 0
+                    total_visitors: totalStats[0].all_time_visitors || 0
                 },
                 visitorTrends: visitorTrends,
                 deviceBreakdown: {
-                    desktop: deviceStats[0]$1.total_desktop || 0,
-                    mobile: deviceStats[0]$1.total_mobile || 0
+                    desktop: deviceStats[0].total_desktop || 0,
+                    mobile: deviceStats[0].total_mobile || 0
                 }
             }
         });
