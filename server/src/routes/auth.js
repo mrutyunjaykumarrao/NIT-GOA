@@ -272,7 +272,7 @@ router.post('/login', async (req, res) => {
         lockout_timestamp = NULL,
         lockout_duration_minutes = 0,
         last_login = CURRENT_TIMESTAMP
-      WHERE user_id = $3
+      WHERE user_id = $1
     `, [user.id]);
 
     // Generate JWT token
@@ -512,7 +512,7 @@ router.post('/forgot-password', forgotPasswordLimiter, async (req, res) => {
     // Log password reset request
     await executeQuery(`
       INSERT INTO audit_log (table_name, record_id, action, new_values, ip_address)
-      VALUES (?, ?, ?, ?, ?)
+      VALUES ($1, $2, $3, $4, $5)
     `, [
       'user_accounts', 
       user.user_id, 
@@ -539,7 +539,7 @@ router.post('/forgot-password', forgotPasswordLimiter, async (req, res) => {
       // But log the error for admin monitoring
       await executeQuery(`
         INSERT INTO audit_log (table_name, record_id, action, new_values, ip_address)
-        VALUES (?, ?, ?, ?, ?)
+        VALUES ($1, $2, $3, $4, $5)
       `, [
         'user_accounts', 
         user.user_id, 
@@ -807,13 +807,13 @@ router.post('/reset-password', resetPasswordLimiter, async (req, res) => {
         lockout_duration_minutes = 0,
         password_changed_at = CURRENT_TIMESTAMP,
         updated_at = CURRENT_TIMESTAMP
-      WHERE user_id = $3
+      WHERE user_id = $2
     `, [newPasswordHash, user.user_id]);
 
     // Log password reset completion
     await executeQuery(`
       INSERT INTO audit_log (table_name, record_id, action, new_values, ip_address)
-      VALUES (?, ?, ?, ?, ?)
+      VALUES ($1, $2, $3, $4, $5)
     `, [
       'user_accounts', 
       user.user_id, 
