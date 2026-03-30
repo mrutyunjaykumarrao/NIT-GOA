@@ -6,9 +6,9 @@ const router = express.Router();
 // Get all administrative staff
 router.get('/administrative', async (req, res) => {
   try {
-    const connection = await pool.getConnection();
+    const connection = await pool.connect();
     
-    const [staff] = await connection.execute(`
+    const result = await connection.query(`
       SELECT 
         e.employee_id as id,
         e.employee_code,
@@ -32,7 +32,7 @@ router.get('/administrative', async (req, res) => {
     `);
     
     connection.release();
-    res.json({ success: true, data: staff });
+    res.json({ success: true, data: result.rows });
   } catch (error) {
     console.error('Get administrative staff error:', error);
     res.status(500).json({ success: false, error: 'Internal server error' });
