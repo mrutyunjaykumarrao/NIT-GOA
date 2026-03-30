@@ -165,7 +165,7 @@ router.put('/pending-approvals/:id/approve', async (req, res) => {
   try {
     const { id } = req.params;
     const { admin_notes } = req.body;
-    const reviewedBy = req.user$1.employeeCode || 'ADMIN'; // In dev mode
+    const reviewedBy = req.user.employeeCode || 'ADMIN'; // In dev mode
 
     // Get the pending approval details
     const [pendingResult] = await executeQuery(
@@ -262,7 +262,7 @@ router.put('/pending-approvals/:id/reject', async (req, res) => {
   try {
     const { id } = req.params;
     const { admin_notes } = req.body;
-    const reviewedBy = req.user$1.employeeCode || 'ADMIN';
+    const reviewedBy = req.user.employeeCode || 'ADMIN';
 
     // Get the pending approval details
     const [pendingResult] = await executeQuery(
@@ -956,7 +956,7 @@ router.get('/employees/next-display-order/:role', async (req, res) => {
     
     // Extract the actual data array (MySQL2 returns [rows, metadata])
     const displayOrderData = Array.isArray(result[0]) ? result[0] : result;
-    const nextDisplayOrder = displayOrderData[0]$1.next_display_order || 1;
+    const nextDisplayOrder = displayOrderData[0].next_display_order || 1;
     
     console.log(`🔍 [NEXT-DISPLAY-ORDER DEBUG] Next display order: ${nextDisplayOrder}`);
     
@@ -1557,12 +1557,12 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
       // Step 3: Merge data
       userRows = basicResults.map(user => ({
         ...user,
-        employee_id: employeeData[user.user_id]$1.employee_id || null,
-        employee_code: employeeData[user.user_id]$1.employee_code || null,
-        full_name: employeeData[user.user_id]$1.full_name || null,
-        employee_email: employeeData[user.user_id]$1.employee_email || null,
-        employee_role: employeeData[user.user_id]$1.employee_role || null,
-        employee_image: employeeData[user.user_id]$1.employee_image || null
+        employee_id: employeeData[user.user_id].employee_id || null,
+        employee_code: employeeData[user.user_id].employee_code || null,
+        full_name: employeeData[user.user_id].full_name || null,
+        employee_email: employeeData[user.user_id].employee_email || null,
+        employee_role: employeeData[user.user_id].employee_role || null,
+        employee_image: employeeData[user.user_id].employee_image || null
       }));
       
       // Step 4: Get count
