@@ -12,10 +12,10 @@ const router = express.Router();
 
 // Helper function for database queries
 async function executeQuery(query, params = []) {
-  const connection = await pool.getConnection();
+  const connection = await pool.connect();
   try {
-    const [results] = await connection.execute(query, params);
-    return results;
+    const result = await connection.query(query, params);
+    return result.rows;
   } finally {
     connection.release();
   }
