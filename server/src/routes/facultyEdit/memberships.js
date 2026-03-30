@@ -28,7 +28,7 @@ router.get('/:employeeCode/memberships', authenticateToken, checkEditPermission,
         membership_type,
         is_active
       FROM faculty_professional_memberships 
-      WHERE employee_code = ? 
+      WHERE employee_code = $1 
       ORDER BY created_at DESC
     `, [employeeCode]);
 
@@ -51,18 +51,18 @@ router.put('/:employeeCode/memberships', authenticateToken, checkEditPermission,
 
     await withTransaction(async (connection) => {
       // Get existing membership IDs
-      const [existingRecords] = await connection.execute(
-        'SELECT membership_id FROM faculty_professional_memberships WHERE employee_code = ?',
+      const existingRecords = await connection.query(
+        'SELECT membership_id FROM faculty_professional_memberships WHERE employee_code = $1',
         [employeeCode]
       );
-      const existingIds = existingRecords.map(r => r.membership_id);
+      const existingIds = existingRecords.rows.map(r => r.membership_id);
       const submittedIds = memberships.filter(m => m.membership_id).map(m => m.membership_id);
       
       // Delete records that were removed
       const idsToDelete = existingIds.filter(id => !submittedIds.includes(id));
       if (idsToDelete.length > 0) {
-        await connection.execute(
-          `DELETE FROM faculty_professional_memberships WHERE membership_id IN (${idsToDelete.map(() => '?').join(',')})`,
+        await connection.query(
+          `DELETE FROM faculty_professional_memberships WHERE membership_id IN (${idsToDelete.map((_, idx) => `$${idx + 1}`).join(',')})`,
           idsToDelete
         );
       }
@@ -79,12 +79,12 @@ router.put('/:employeeCode/memberships', authenticateToken, checkEditPermission,
 
         if (membership.membership_id) {
           // Update existing record
-          await connection.execute(`
+          await connection.query(`
             UPDATE faculty_professional_memberships 
-            SET organization_name = ?,
-                membership_type = ?,
-                is_active = ?
-            WHERE membership_id = ? AND employee_code = ?
+            SET organization_name = $1,
+                membership_type = $2,
+                is_active = $3
+            WHERE membership_id = $4 AND employee_code = $5
           `, [
             membership.organization_name,
             membership.membership_type || null,
@@ -94,10 +94,10 @@ router.put('/:employeeCode/memberships', authenticateToken, checkEditPermission,
           ]);
         } else {
           // Insert new record
-          await connection.execute(`
+          await connection.query(`
             INSERT INTO faculty_professional_memberships 
             (employee_code, organization_name, membership_type, is_active)
-            VALUES (?, ?, ?, ?)
+            VALUES ($1, $2, $3, $4)
           `, [
             employeeCode,
             membership.organization_name,

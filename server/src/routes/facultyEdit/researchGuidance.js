@@ -31,7 +31,7 @@ router.get('/:employeeCode/research-guidance', authenticateToken, checkEditPermi
         status,
         display_order
       FROM faculty_research_guidance 
-      WHERE employee_code = ? 
+      WHERE employee_code = $1 
       ORDER BY 
         CASE status 
           WHEN 'ongoing' THEN 1 
@@ -60,18 +60,18 @@ router.put('/:employeeCode/research-guidance', authenticateToken, checkEditPermi
 
     await withTransaction(async (connection) => {
       // Get existing guidance IDs
-      const [existingRecords] = await connection.execute(
-        'SELECT guidance_id FROM faculty_research_guidance WHERE employee_code = ?',
+      const existingRecords = await connection.query(
+        'SELECT guidance_id FROM faculty_research_guidance WHERE employee_code = $1',
         [employeeCode]
       );
-      const existingIds = existingRecords.map(r => r.guidance_id);
+      const existingIds = existingRecords.rows.map(r => r.guidance_id);
       const submittedIds = students.filter(s => s.guidance_id).map(s => s.guidance_id);
       
       // Delete records that were removed (exist in DB but not in submitted data)
       const idsToDelete = existingIds.filter(id => !submittedIds.includes(id));
       if (idsToDelete.length > 0) {
-        await connection.execute(
-          `DELETE FROM faculty_research_guidance WHERE guidance_id IN (${idsToDelete.map(() => '?').join(',')})`,
+        await connection.query(
+          `DELETE FROM faculty_research_guidance WHERE guidance_id IN (${idsToDelete.map((_, idx) => `$${idx + 1}`).join(',')})`,
           idsToDelete
         );
       }
@@ -85,14 +85,14 @@ router.put('/:employeeCode/research-guidance', authenticateToken, checkEditPermi
 
         if (student.guidance_id) {
           // Update existing record
-          await connection.execute(`
+          await connection.query(`
             UPDATE faculty_research_guidance 
-            SET student_honorific = ?,
-                student_name = ?,
-                research_topic = ?,
-                status = ?,
-                display_order = ?
-            WHERE guidance_id = ? AND employee_code = ?
+            SET student_honorific = $1,
+                student_name = $2,
+                research_topic = $3,
+                status = $4,
+                display_order = $5
+            WHERE guidance_id = $6 AND employee_code = $7
           `, [
             student.student_honorific || null,
             student.student_name,
@@ -104,10 +104,10 @@ router.put('/:employeeCode/research-guidance', authenticateToken, checkEditPermi
           ]);
         } else {
           // Insert new record
-          await connection.execute(`
+          await connection.query(`
             INSERT INTO faculty_research_guidance 
             (employee_code, student_honorific, student_name, research_topic, status, display_order)
-            VALUES (?, ?, ?, ?, ?, ?)
+            VALUES ($1, $2, $3, $4, $5, $6)
           `, [
             employeeCode,
             student.student_honorific || null,

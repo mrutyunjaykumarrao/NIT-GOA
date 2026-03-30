@@ -31,7 +31,7 @@ router.get('/:employeeCode/publications', authenticateToken, checkEditPermission
         publication_type,
         display_order
       FROM faculty_publications 
-      WHERE employee_code = ? 
+      WHERE employee_code = $1 
       ORDER BY publication_year DESC, display_order ASC, title ASC
     `, [employeeCode]);
 
@@ -54,18 +54,18 @@ router.put('/:employeeCode/publications', authenticateToken, checkEditPermission
 
     await withTransaction(async (connection) => {
       // Get existing publication IDs
-      const [existingRecords] = await connection.execute(
-        'SELECT publication_id FROM faculty_publications WHERE employee_code = ?',
+      const existingRecords = await connection.query(
+        'SELECT publication_id FROM faculty_publications WHERE employee_code = $1',
         [employeeCode]
       );
-      const existingIds = existingRecords.map(r => r.publication_id);
+      const existingIds = existingRecords.rows.map(r => r.publication_id);
       const submittedIds = publications.filter(p => p.publication_id).map(p => p.publication_id);
       
       // Delete records that were removed
       const idsToDelete = existingIds.filter(id => !submittedIds.includes(id));
       if (idsToDelete.length > 0) {
-        await connection.execute(
-          `DELETE FROM faculty_publications WHERE publication_id IN (${idsToDelete.map(() => '?').join(',')})`,
+        await connection.query(
+          `DELETE FROM faculty_publications WHERE publication_id IN (${idsToDelete.map((_, idx) => `$${idx + 1}`).join(',')})`,
           idsToDelete
         );
       }
@@ -80,14 +80,14 @@ router.put('/:employeeCode/publications', authenticateToken, checkEditPermission
 
         if (pub.publication_id) {
           // Update existing record
-          await connection.execute(`
+          await connection.query(`
             UPDATE faculty_publications 
-            SET title = ?,
-                publication_year = ?,
-                publication_month = ?,
-                publication_type = ?,
-                display_order = ?
-            WHERE publication_id = ? AND employee_code = ?
+            SET title = $1,
+                publication_year = $2,
+                publication_month = $3,
+                publication_type = $4,
+                display_order = $5
+            WHERE publication_id = $6 AND employee_code = $7
           `, [
             pub.title,
             pub.publication_year || null,
@@ -99,10 +99,10 @@ router.put('/:employeeCode/publications', authenticateToken, checkEditPermission
           ]);
         } else {
           // Insert new record
-          await connection.execute(`
+          await connection.query(`
             INSERT INTO faculty_publications 
             (employee_code, title, publication_year, publication_month, publication_type, display_order)
-            VALUES (?, ?, ?, ?, ?, ?)
+            VALUES ($1, $2, $3, $4, $5, $6)
           `, [
             employeeCode,
             pub.title,

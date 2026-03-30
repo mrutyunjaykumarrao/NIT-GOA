@@ -35,7 +35,7 @@ router.get('/:employeeCode/courses-taught', authenticateToken, checkEditPermissi
         CASE WHEN fct.course_id IS NULL THEN 1 ELSE 0 END as is_custom
       FROM faculty_courses_taught fct
       LEFT JOIN courses c ON fct.course_id = c.course_id
-      WHERE fct.employee_code = ?
+      WHERE fct.employee_code = $1
       ORDER BY COALESCE(fct.display_order, 999), course_level, course_code
     `, [employeeCode]);
 
@@ -58,18 +58,18 @@ router.put('/:employeeCode/courses-taught', authenticateToken, checkEditPermissi
 
     await withTransaction(async (connection) => {
       // Get existing IDs to compare
-      const [existingRecords] = await connection.execute(
-        'SELECT id FROM faculty_courses_taught WHERE employee_code = ?',
+      const existingRecords = await connection.query(
+        'SELECT id FROM faculty_courses_taught WHERE employee_code = $1',
         [employeeCode]
       );
-      const existingIds = existingRecords.map(r => r.id);
+      const existingIds = existingRecords.rows.map(r => r.id);
       const submittedIds = courses.filter(c => c.id).map(c => c.id);
 
       // Delete removed courses
       const idsToDelete = existingIds.filter(id => !submittedIds.includes(id));
       if (idsToDelete.length > 0) {
-        await connection.execute(
-          `DELETE FROM faculty_courses_taught WHERE id IN (${idsToDelete.map(() => '?').join(',')})`,
+        await connection.query(
+          `DELETE FROM faculty_courses_taught WHERE id IN (${idsToDelete.map((_, idx) => `$${idx + 1}`).join(',')})`,
           idsToDelete
         );
       }
@@ -85,16 +85,16 @@ router.put('/:employeeCode/courses-taught', authenticateToken, checkEditPermissi
 
         if (course.id) {
           // UPDATE existing course
-          await connection.execute(`
+          await connection.query(`
             UPDATE faculty_courses_taught 
             SET 
-              custom_course_code = ?,
-              custom_course_name = ?,
-              custom_course_level = ?,
-              custom_credits = ?,
-              custom_semester = ?,
-              display_order = ?
-            WHERE id = ? AND employee_code = ?
+              custom_course_code = $1,
+              custom_course_name = $2,
+              custom_course_level = $3,
+              custom_credits = $4,
+              custom_semester = $5,
+              display_order = $6
+            WHERE id = $7 AND employee_code = $8
           `, [
             course.course_code || null,
             course.course_name,
@@ -107,10 +107,10 @@ router.put('/:employeeCode/courses-taught', authenticateToken, checkEditPermissi
           ]);
         } else {
           // INSERT new course (always as custom, course_id will be NULL)
-          await connection.execute(`
+          await connection.query(`
             INSERT INTO faculty_courses_taught 
             (employee_code, course_id, custom_course_code, custom_course_name, custom_course_level, custom_credits, custom_semester, display_order)
-            VALUES (?, NULL, ?, ?, ?, ?, ?, ?)
+            VALUES ($1, NULL, $2, $3, $4, $5, $6, $7)
           `, [
             employeeCode,
             course.course_code || null,

@@ -30,7 +30,7 @@ router.get('/:employeeCode/training-conducted', authenticateToken, checkEditPerm
         training_information,
         display_order
       FROM faculty_training_conducted 
-      WHERE employee_code = ? 
+      WHERE employee_code = $1 
       ORDER BY display_order ASC
     `, [employeeCode]);
 
@@ -53,18 +53,18 @@ router.put('/:employeeCode/training-conducted', authenticateToken, checkEditPerm
 
     await withTransaction(async (connection) => {
       // Get existing training IDs
-      const [existingRecords] = await connection.execute(
-        'SELECT training_conducted_id FROM faculty_training_conducted WHERE employee_code = ?',
+      const existingRecords = await connection.query(
+        'SELECT training_conducted_id FROM faculty_training_conducted WHERE employee_code = $1',
         [employeeCode]
       );
-      const existingIds = existingRecords.map(r => r.training_conducted_id);
+      const existingIds = existingRecords.rows.map(r => r.training_conducted_id);
       const submittedIds = training.filter(t => t.training_conducted_id).map(t => t.training_conducted_id);
       
       // Delete records that were removed
       const idsToDelete = existingIds.filter(id => !submittedIds.includes(id));
       if (idsToDelete.length > 0) {
-        await connection.execute(
-          `DELETE FROM faculty_training_conducted WHERE training_conducted_id IN (${idsToDelete.map(() => '?').join(',')})`,
+        await connection.query(
+          `DELETE FROM faculty_training_conducted WHERE training_conducted_id IN (${idsToDelete.map((_, idx) => `$${idx + 1}`).join(',')})`,
           idsToDelete
         );
       }
@@ -79,13 +79,13 @@ router.put('/:employeeCode/training-conducted', authenticateToken, checkEditPerm
 
         if (item.training_conducted_id) {
           // Update existing record
-          await connection.execute(`
+          await connection.query(`
             UPDATE faculty_training_conducted 
-            SET month = ?,
-                year = ?,
-                training_information = ?,
-                display_order = ?
-            WHERE training_conducted_id = ? AND employee_code = ?
+            SET month = $1,
+                year = $2,
+                training_information = $3,
+                display_order = $4
+            WHERE training_conducted_id = $5 AND employee_code = $6
           `, [
             item.month || null,
             item.year || null,
@@ -96,10 +96,10 @@ router.put('/:employeeCode/training-conducted', authenticateToken, checkEditPerm
           ]);
         } else {
           // Insert new record
-          await connection.execute(`
+          await connection.query(`
             INSERT INTO faculty_training_conducted 
             (employee_code, month, year, training_information, display_order)
-            VALUES (?, ?, ?, ?, ?)
+            VALUES ($1, $2, $3, $4, $5)
           `, [
             employeeCode,
             item.month || null,
