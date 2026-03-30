@@ -137,7 +137,7 @@ Each phase must be **completed and confirmed** before proceeding to the next.
 2. **Maintain `.env` toggle** — `DB_TYPE=mysql` can revert
 3. **Git branching**:
    - Keep `main` branch stable (MySQL version)
-   - Work on `supabase-migration` branch
+   - Work on `supabase-implementation` branch
    - Merge only after full validation
 
 ### Rollback Triggers (When to Roll Back)

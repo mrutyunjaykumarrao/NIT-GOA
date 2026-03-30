@@ -31,7 +31,7 @@ router.get('/:employeeCode/education', authenticateToken, checkEditPermission, a
         graduation_year,
         display_order
       FROM faculty_education 
-      WHERE employee_code = ? 
+      WHERE employee_code = $1 
       ORDER BY display_order ASC, graduation_year DESC
     `, [employeeCode]);
 
@@ -54,8 +54,8 @@ router.put('/:employeeCode/education', authenticateToken, checkEditPermission, a
 
     await withTransaction(async (connection) => {
       // Delete existing education records
-      await connection.execute(
-        'DELETE FROM faculty_education WHERE employee_code = ?',
+      await connection.query(
+        'DELETE FROM faculty_education WHERE employee_code = $1',
         [employeeCode]
       );
 
@@ -68,10 +68,10 @@ router.put('/:employeeCode/education', authenticateToken, checkEditPermission, a
         validateRequired(edu.institute, 'Institute');
         if (edu.graduation_year) validateYear(edu.graduation_year);
 
-        await connection.execute(`
+        await connection.query(`
           INSERT INTO faculty_education 
           (employee_code, degree, discipline, institute, graduation_year, display_order)
-          VALUES (?, ?, ?, ?, ?, ?)
+          VALUES ($1, $2, $3, $4, $5, $6)
         `, [
           employeeCode,
           edu.degree,

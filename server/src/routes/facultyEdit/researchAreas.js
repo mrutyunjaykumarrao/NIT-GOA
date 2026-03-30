@@ -22,7 +22,7 @@ router.get('/:employeeCode/research-areas', authenticateToken, checkEditPermissi
     const result = await executeQuery(`
       SELECT research_interests
       FROM faculty_profiles
-      WHERE employee_code = ?
+      WHERE employee_code = $1
     `, [employeeCode]);
 
     if (result.length === 0) {
@@ -46,8 +46,8 @@ router.put('/:employeeCode/research-areas', authenticateToken, checkEditPermissi
 
     await executeQuery(`
       UPDATE faculty_profiles 
-      SET research_interests = ?
-      WHERE employee_code = ?
+      SET research_interests = $1
+      WHERE employee_code = $2
     `, [research_interests || null, employeeCode]);
 
     res.json(formatSuccessResponse(null, 'Research interests updated successfully'));

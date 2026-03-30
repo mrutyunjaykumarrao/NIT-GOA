@@ -12,10 +12,10 @@ const router = express.Router();
 
 // Helper function for database queries
 async function executeQuery(query, params = []) {
-  const connection = await pool.connect();
+  const connection = await pool.getConnection();
   try {
-    const result = await connection.query(query, params);
-    return result.rows;
+    const [results] = await connection.execute(query, params);
+    return results;
   } finally {
     connection.release();
   }
@@ -90,7 +90,7 @@ router.get('/department/:departmentCode', async (req, res) => {
       LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code
       LEFT JOIN departments d ON fp.department_id = d.department_id
       LEFT JOIN faculty_designations fd ON fp.designation_id = fd.designation_id
-      WHERE e.is_active = 1 AND e.role = 'Faculty' AND d.department_code = $1
+      WHERE e.is_active = 1 AND e.role = 'Faculty' AND d.department_code = ?
       ORDER BY 
         CASE WHEN fp.display_order = 0 THEN 999999 ELSE fp.display_order END ASC,
         fp.is_hod DESC,

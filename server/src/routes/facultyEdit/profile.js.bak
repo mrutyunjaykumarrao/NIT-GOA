@@ -1,0 +1,307 @@
+const express = require('express');
+const { upload, moveImageToPublic } = require('../../middleware/fileUpload');
+const path = require('path');
+const fs = require('fs');
+const {
+  executeQuery,
+  authenticateToken,
+  checkEditPermission,
+  formatDateForMySQL,
+  formatDateForOutput,
+  validateRequired,
+  validateEmail,
+  validatePhone,
+  formatSuccessResponse,
+  formatErrorResponse
+} = require('./_middleware');
+
+const router = express.Router();
+
+/**
+ * FACULTY PROFILE EDIT API
+ * Handles personal and contact information editing
+ * Includes profile image upload
+ */
+
+// GET /api/faculty-edit/:employeeCode/profile - Preload profile data for editing
+router.get('/:employeeCode/profile', authenticateToken, checkEditPermission, async (req, res) => {
+  try {
+    const { employeeCode } = req.params;
+
+    const profile = await executeQuery(`
+      SELECT 
+        e.employee_code,
+        e.full_name,
+        e.honorific,
+        e.email,
+        e.phone_mobile,
+        e.extension_no as phone,
+        e.date_of_joining,
+        e.gender,
+        fp.date_of_birth,
+        fp.address,
+        fp.office_location,
+        fp.office_hours,
+        fp.image_url,
+        fp.bio_summary,
+        fp.research_teaching_experience,
+        fp.designation_id,
+        fp.department_id,
+        fd.designation_title,
+        d.department_name,
+        d.department_code
+      FROM employees e
+      LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code
+      LEFT JOIN faculty_designations fd ON fp.designation_id = fd.designation_id
+      LEFT JOIN departments d ON fp.department_id = d.department_id
+      WHERE e.employee_code = $1
+    `, [employeeCode]);
+
+    if (profile.length === 0) {
+      return res.status(404).json(formatErrorResponse('Faculty not found', 404));
+    }
+
+    const profileData = profile[0];
+    
+    // Format dates for frontend
+    if (profileData.date_of_birth) {
+      profileData.date_of_birth = formatDateForOutput(profileData.date_of_birth);
+    }
+    if (profileData.date_of_joining) {
+      profileData.date_of_joining = formatDateForOutput(profileData.date_of_joining);
+    }
+
+    res.json(formatSuccessResponse(profileData));
+  } catch (error) {
+    console.error('Get profile error:', error);
+    res.status(500).json(formatErrorResponse(error));
+  }
+});
+
+// PUT /api/faculty-edit/:employeeCode/profile - Update profile information
+router.put('/:employeeCode/profile', authenticateToken, checkEditPermission, async (req, res) => {
+  try {
+    const { employeeCode } = req.params;
+    const {
+      full_name,
+      honorific,
+      email,
+      phone_mobile,
+      extension_no,
+      date_of_joining,
+      gender,
+      date_of_birth,
+      address,
+      office_location,
+      office_hours,
+      bio_summary,
+      research_teaching_experience,
+      designation_id,
+      department_id
+    } = req.body;
+
+    // Validate required fields
+    validateRequired(full_name, 'Full name');
+    validateRequired(email, 'Email');
+    validateEmail(email);
+
+    if (phone_mobile) validatePhone(phone_mobile);
+
+    // Format dates
+    const formattedDOB = formatDateForMySQL(date_of_birth);
+    const formattedDOJ = formatDateForMySQL(date_of_joining);
+
+    // Update employees table
+    await executeQuery(`
+      UPDATE employees 
+      SET 
+        full_name = ?,
+        honorific = ?,
+        email = ?,
+        phone_mobile = ?,
+        extension_no = ?,
+        date_of_joining = ?,
+        gender = ?
+      WHERE employee_code = $1
+    `, [
+      full_name,
+      honorific || null,
+      email,
+      phone_mobile || null,
+      extension_no || null,
+      formattedDOJ,
+      gender || null,
+      employeeCode
+    ]);
+
+    // Update faculty_profiles table
+    await executeQuery(`
+      UPDATE faculty_profiles 
+      SET 
+        date_of_birth = ?,
+        address = ?,
+        office_location = ?,
+        office_hours = ?,
+        bio_summary = ?,
+        research_teaching_experience = ?,
+        designation_id = ?,
+        department_id = ?
+      WHERE employee_code = $1
+    `, [
+      formattedDOB,
+      address || null,
+      office_location || null,
+      office_hours || null,
+      bio_summary || null,
+      research_teaching_experience || null,
+      designation_id || null,
+      department_id || null,
+      employeeCode
+    ]);
+
+    res.json(formatSuccessResponse(null, 'Profile updated successfully'));
+  } catch (error) {
+    console.error('Update profile error:', error);
+    res.status(400).json(formatErrorResponse(error, 400));
+  }
+});
+
+// PUT /api/faculty-edit/:employeeCode/profile/image - Update profile image
+router.put('/:employeeCode/profile/image', authenticateToken, checkEditPermission, upload.single('image'), async (req, res) => {
+  try {
+    const { employeeCode } = req.params;
+    const userRole = req.user.role;
+    const isRemoveImage = req.body.remove_image === 'true' || req.body.remove_image === true;
+
+    // Check if no image and not requesting removal
+    if (!req.file && !isRemoveImage) {
+      return res.status(400).json(formatErrorResponse('No image file provided', 400));
+    }
+
+    // Get old image URL and employee info
+    const employeeResult = await executeQuery(`
+      SELECT 
+        fp.image_url, 
+        e.full_name, 
+        e.role, 
+        d.department_code
+      FROM faculty_profiles fp
+      JOIN employees e ON e.employee_code = fp.employee_code
+      LEFT JOIN departments d ON fp.department_id = d.department_id
+      WHERE fp.employee_code = $1
+    `, [employeeCode]);
+    
+    if (employeeResult.length === 0) {
+      return res.status(404).json(formatErrorResponse('Faculty profile not found', 404));
+    }
+    
+    const { image_url: oldImage, full_name, role, department_code } = employeeResult[0];
+
+    if (userRole === 'Admin') {
+      let finalImageUrl = null;
+
+      // Move old image to deleted
+      if (oldImage) {
+        const oldImagePath = path.join(__dirname, '../../../../client/public', oldImage);
+        try {
+          const deletedDir = path.join(__dirname, '../../../uploads/deleted');
+          await fs.promises.mkdir(deletedDir, { recursive: true });
+          const deletedPath = path.join(deletedDir, `admin_replace_${Date.now()}_${path.basename(oldImage)}`);
+          await fs.promises.rename(oldImagePath, deletedPath);
+        } catch (error) {
+          console.log('Old image not found or already moved:', oldImage);
+        }
+      }
+
+      if (req.file && !isRemoveImage) {
+        // Use moveImageToPublic to move from temp dir to public directory
+        finalImageUrl = await moveImageToPublic(req.file.path, full_name, role || 'Faculty', department_code);
+      }
+
+      // Update image URL in database (will be NULL if removed)
+      await executeQuery(`
+        UPDATE faculty_profiles 
+        SET image_url = ?
+        WHERE employee_code = $1
+      `, [finalImageUrl, employeeCode]);
+
+      return res.json(formatSuccessResponse(
+        { imageUrl: finalImageUrl }, 
+        isRemoveImage ? 'Profile image removed successfully' : 'Profile image updated successfully'
+      ));
+
+    } else {
+      // User is non-admin Faculty -> Route to Pending Approvals!
+      const requestedValue = req.file && !isRemoveImage ? req.file.filename : null;
+      const tempFilePath = req.file && !isRemoveImage ? req.file.path : null;
+      const actionType = isRemoveImage ? 'DELETE' : 'UPDATE';
+
+      // Check if there is already a pending image approval to replace 
+      const existingApproval = await executeQuery(`
+        SELECT approval_id FROM pending_approvals 
+        WHERE employee_code = $1 AND approval_type = 'profile_image' AND status = 'pending'
+      `, [employeeCode]);
+
+      if (existingApproval.length > 0) {
+        await executeQuery(`
+          UPDATE pending_approvals 
+          SET 
+            action_type = ?,
+            current_value = ?,
+            requested_value = ?,
+            temp_file_path = ?,
+            requested_at = CURRENT_TIMESTAMP
+          WHERE approval_id = $1
+        `, [
+          actionType,
+          oldImage,
+          requestedValue,
+          tempFilePath,
+          existingApproval[0].approval_id
+        ]);
+      } else {
+        await executeQuery(`
+          INSERT INTO pending_approvals (
+            employee_code, approval_type, action_type, current_value, requested_value, temp_file_path, requested_by
+          ) VALUES (?, 'profile_image', ?, ?, ?, ?, ?)
+        `, [
+          employeeCode,
+          actionType,
+          oldImage,
+          requestedValue,
+          tempFilePath,
+          employeeCode
+        ]);
+      }
+
+      return res.json(formatSuccessResponse(
+        { pendingApproval: true }, 
+        'Profile image change submitted to admin for approval'
+      ));
+    }
+
+  } catch (error) {
+    console.error('Update profile image error:', error);
+    res.status(500).json(formatErrorResponse(error.message));
+  }
+});
+
+// GET /api/faculty-edit/:employeeCode/pending-requests - Get user's own requests
+router.get('/:employeeCode/pending-requests', authenticateToken, checkEditPermission, async (req, res) => {
+  try {
+    const { employeeCode } = req.params;
+    
+    const requests = await executeQuery(`
+      SELECT * FROM pending_approvals 
+      WHERE employee_code = ? 
+      ORDER BY requested_at DESC
+    `, [employeeCode]);
+    
+    res.json(formatSuccessResponse({ requests }, 'Requests fetched successfully'));
+  } catch (error) {
+    console.error('Fetch pending requests error:', error);
+    res.status(500).json(formatErrorResponse('Failed to fetch pending requests', 500));
+  }
+});
+
+module.exports = router;

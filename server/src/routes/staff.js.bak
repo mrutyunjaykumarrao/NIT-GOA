@@ -6,9 +6,9 @@ const router = express.Router();
 // Get all administrative staff
 router.get('/administrative', async (req, res) => {
   try {
-    const connection = await pool.connect();
+    const connection = await pool.getConnection();
     
-    const result = await connection.query(`
+    const [staff] = await connection.execute(`
       SELECT 
         e.employee_id as id,
         e.employee_code,
@@ -32,7 +32,7 @@ router.get('/administrative', async (req, res) => {
     `);
     
     connection.release();
-    res.json({ success: true, data: result.rows });
+    res.json({ success: true, data: staff });
   } catch (error) {
     console.error('Get administrative staff error:', error);
     res.status(500).json({ success: false, error: 'Internal server error' });
@@ -42,9 +42,9 @@ router.get('/administrative', async (req, res) => {
 // Get all technical staff
 router.get('/technical', async (req, res) => {
   try {
-    const connection = await pool.connect();
+    const connection = await pool.getConnection();
     
-    const result = await connection.query(`
+    const [staff] = await connection.execute(`
       SELECT 
         e.employee_id as id,
         e.employee_code,
@@ -68,7 +68,7 @@ router.get('/technical', async (req, res) => {
     `);
     
     connection.release();
-    res.json({ success: true, data: result.rows });
+    res.json({ success: true, data: staff });
   } catch (error) {
     console.error('Get technical staff error:', error);
     res.status(500).json({ success: false, error: 'Internal server error' });
@@ -79,9 +79,9 @@ router.get('/technical', async (req, res) => {
 router.get('/technical/department/:department', async (req, res) => {
   try {
     const { department } = req.params;
-    const connection = await pool.connect();
+    const connection = await pool.getConnection();
     
-    const result = await connection.query(`
+    const [staff] = await connection.execute(`
       SELECT 
         e.employee_id as id,
         e.employee_code,
@@ -100,12 +100,12 @@ router.get('/technical/department/:department', async (req, res) => {
       FROM employees e
       LEFT JOIN staff_profiles sp ON e.employee_code = sp.employee_code
       LEFT JOIN departments d ON sp.department_id = d.department_id
-      WHERE e.is_active = 1 AND e.role = 'Technical' AND d.department_code = $1
+      WHERE e.is_active = 1 AND e.role = 'Technical' AND d.department_code = ?
       ORDER BY sp.display_order ASC, e.full_name ASC
     `, [department]);
     
     connection.release();
-    res.json({ success: true, data: result.rows });
+    res.json({ success: true, data: staff });
   } catch (error) {
     console.error('Get technical staff by department error:', error);
     res.status(500).json({ success: false, error: 'Internal server error' });
