@@ -209,10 +209,10 @@ router.get('/dashboard-stats', async (req, res) => {
                 SELECT total_visitors, daily_visitors, 
                        desktop_visits, mobile_visits
                 FROM site_analytics 
-                WHERE date_recorded = CURRENT_DATE
+                WHERE date_recorded::date = CURRENT_DATE
             `);
             
-            targetStats = todayData[0] || {
+            targetStats = todayData.rows[0] || {
                 total_visitors: 0,
                 daily_visitors: 0,
                 desktop_visits: 0,
@@ -226,10 +226,10 @@ router.get('/dashboard-stats', async (req, res) => {
                     SUM(desktop_visits) as desktop_visits,
                     SUM(mobile_visits) as mobile_visits
                 FROM site_analytics 
-                WHERE date_recorded >= CURRENT_DATE - INTERVAL '6 days'
+                WHERE date_recorded::date >= CURRENT_DATE - INTERVAL '6 days'
             `);
             
-            targetStats = weekData[0] || {
+            targetStats = weekData.rows[0] || {
                 total_visitors: 0,
                 daily_visitors: 0,
                 desktop_visits: 0,
@@ -243,10 +243,10 @@ router.get('/dashboard-stats', async (req, res) => {
                     SUM(desktop_visits) as desktop_visits,
                     SUM(mobile_visits) as mobile_visits
                 FROM site_analytics 
-                WHERE date_recorded >= CURRENT_DATE - INTERVAL '29 days'
+                WHERE date_recorded::date >= CURRENT_DATE - INTERVAL '29 days'
             `);
             
-            targetStats = monthData[0] || {
+            targetStats = monthData.rows[0] || {
                 total_visitors: 0,
                 daily_visitors: 0,
                 desktop_visits: 0,
@@ -265,7 +265,7 @@ router.get('/dashboard-stats', async (req, res) => {
             SELECT date_recorded, daily_visitors, 
                    desktop_visits, mobile_visits
             FROM site_analytics 
-            WHERE date_recorded >= CURRENT_DATE - INTERVAL '30 days'
+            WHERE date_recorded::date >= CURRENT_DATE - INTERVAL '30 days'
             ORDER BY date_recorded ASC
         `);
 
@@ -275,7 +275,7 @@ router.get('/dashboard-stats', async (req, res) => {
                 SUM(desktop_visits) as total_desktop,
                 SUM(mobile_visits) as total_mobile
             FROM site_analytics 
-            WHERE date_recorded >= CURRENT_DATE - INTERVAL '30 days'
+            WHERE date_recorded::date >= CURRENT_DATE - INTERVAL '30 days'
         `);
 
         connection.release();
@@ -292,12 +292,12 @@ router.get('/dashboard-stats', async (req, res) => {
                     mobile_visits: targetStats.mobile_visits || 0
                 },
                 allTime: {
-                    total_visitors: totalStats[0].all_time_visitors || 0
+                    total_visitors: totalStats.rows[0]?.all_time_visitors || 0
                 },
-                visitorTrends: visitorTrends,
+                visitorTrends: visitorTrends.rows,
                 deviceBreakdown: {
-                    desktop: deviceStats[0].total_desktop || 0,
-                    mobile: deviceStats[0].total_mobile || 0
+                    desktop: deviceStats.rows[0]?.total_desktop || 0,
+                    mobile: deviceStats.rows[0]?.total_mobile || 0
                 }
             }
         });
@@ -327,7 +327,7 @@ router.get('/simple-stats', async (req, res) => {
                 desktop_visits,
                 mobile_visits
             FROM site_analytics 
-            WHERE date_recorded >= CURRENT_DATE - INTERVAL '30 days'
+            WHERE date_recorded::date >= CURRENT_DATE - INTERVAL '30 days'
             ORDER BY date_recorded ASC
         `);
 
@@ -385,7 +385,7 @@ router.get('/chart-data', async (req, res) => {
                 DATE(date_recorded) as date,
                 daily_visitors as visitors
             FROM site_analytics 
-            WHERE date_recorded >= CURRENT_DATE - ($1 || ' days')::INTERVAL
+            WHERE date_recorded::date >= CURRENT_DATE - ($1 || ' days')::INTERVAL
             ORDER BY date_recorded ASC
         `, [dayRange]);
 
@@ -394,7 +394,7 @@ router.get('/chart-data', async (req, res) => {
         res.json({
             success: true,
             data: {
-                visitors: chartData.map(row => ({
+                visitors: chartData.rows.map(row => ({
                     date: row.date,
                     visitors: row.visitors || 0
                 }))

@@ -529,9 +529,9 @@ router.get('/analytics', async (req, res) => {
         (SELECT COUNT(*) FROM employees) as total_employees,
         (SELECT COUNT(*) FROM faculty_profiles) as total_faculty,
         (SELECT COUNT(*) FROM staff_profiles) as total_staff,
-        (SELECT COUNT(*) FROM departments WHERE is_active = TRUE) as active_departments,
-        (SELECT COUNT(*) FROM user_accounts WHERE is_active = TRUE) as active_users,
-        (SELECT COUNT(*) FROM employees WHERE is_active = TRUE) as active_employees,
+        (SELECT COUNT(*) FROM departments WHERE is_active::integer = 1) as active_departments,
+        (SELECT COUNT(*) FROM user_accounts WHERE is_active::integer = 1) as active_users,
+        (SELECT COUNT(*) FROM employees WHERE is_active::integer = 1) as active_employees,
         (SELECT COUNT(*) FROM user_accounts WHERE last_login >= CURRENT_TIMESTAMP - INTERVAL '30 days') as recent_logins
     `);
     
@@ -563,7 +563,7 @@ router.get('/website-analytics', async (req, res) => {
         DATE(date_recorded) as analytics_date,
         daily_visitors as daily_count
       FROM site_analytics 
-      WHERE date_recorded >= CURRENT_DATE - ($1 || ' days')::INTERVAL
+      WHERE date_recorded::date >= CURRENT_DATE - ($1 || ' days')::INTERVAL
       ORDER BY date_recorded DESC
     `, [days]);
 
@@ -571,7 +571,7 @@ router.get('/website-analytics', async (req, res) => {
     const todayStats = await executeQuery(`
       SELECT total_visitors, daily_visitors, desktop_visits, mobile_visits
       FROM site_analytics 
-      WHERE date_recorded = CURRENT_DATE
+      WHERE date_recorded::date = CURRENT_DATE
     `);
 
     // Get all-time stats
@@ -1416,7 +1416,7 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
 
     // Search filter - simplified for user_accounts only
     if (search && search.trim() !== '') {
-      whereClause = ' WHERE (ua.username LIKE ? OR ua.email LIKE ?)';
+      whereClause = ' WHERE (ua.username LIKE $1 OR ua.email LIKE $2)';
       const searchPattern = `%${search.trim()}%`;
       params.push(searchPattern, searchPattern);
     }
@@ -1425,9 +1425,9 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
     if (status && status !== 'all') {
       const statusCondition = whereClause ? ' AND ' : ' WHERE ';
       if (status === 'active') {
-        whereClause += statusCondition + 'ua.is_active = 1 AND (ua.locked_until IS NULL OR ua.locked_until <= CURRENT_TIMESTAMP)';
+        whereClause += statusCondition + 'ua.is_active::integer = 1 AND (ua.locked_until IS NULL OR ua.locked_until <= CURRENT_TIMESTAMP)';
       } else if (status === 'inactive') {
-        whereClause += statusCondition + 'ua.is_active = 0';
+        whereClause += statusCondition + 'ua.is_active::integer = 0';
       } else if (status === 'locked') {
         whereClause += statusCondition + 'ua.locked_until > CURRENT_TIMESTAMP';
       }
@@ -1458,7 +1458,7 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
         COALESCE(fp.image_url, sp.image_url) as employee_image,
         CASE 
           WHEN ua.locked_until > CURRENT_TIMESTAMP THEN 'locked'
-          WHEN ua.is_active = 0 THEN 'inactive'
+          WHEN ua.is_active::integer = 0 THEN 'inactive'
           ELSE 'active'
         END as status
       FROM user_accounts ua
@@ -1492,40 +1492,30 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
           ua.created_at,
           CASE 
             WHEN ua.locked_until > CURRENT_TIMESTAMP THEN 'locked'
-            WHEN ua.is_active = 0 THEN 'inactive'
+            WHEN ua.is_active::integer = 0 THEN 'inactive'
             ELSE 'active'
           END as status
         FROM user_accounts ua
         ${whereClause}
         ORDER BY ua.created_at DESC
-        LIMIT $1 OFFSET $2
+        LIMIT $${params.length + 1} OFFSET $${params.length + 2}
       `;
       
-      // Build parameters for basicQuery (only include search params if whereClause exists)
-      const basicParams = [];
-      if (whereClause && whereClause.includes('?')) {
-        basicParams.push(...params); // Add search parameters if there's a WHERE clause with placeholders
-      }
-      basicParams.push(limitNum, offsetNum); // Always add LIMIT and OFFSET
+      // Build parameters - add LIMIT and OFFSET at the end
+      const basicParams = [...params, limitNum, offsetNum];
       
-      console.log('🔍 [BASIC DEBUG] Query placeholders:', (basicQuery.match(/\$1/g) || []).length);
+      console.log('🔍 [BASIC DEBUG] Query:', basicQuery);
       console.log('🔍 [BASIC DEBUG] Parameters:', basicParams);
       
-      // Try using query() instead of execute() to avoid parameter binding issues
-      const basicQueryWithValues = basicQuery.replace('LIMIT ? OFFSET ?', `LIMIT ${limitNum} OFFSET ${offsetNum}`);
-      const searchParams = whereClause && whereClause.includes('?') ? params : [];
-      
-      console.log('🔍 [BASIC DEBUG] Final query:', basicQueryWithValues);
-      console.log('🔍 [BASIC DEBUG] Search parameters only:', searchParams);
-      
-      const [basicResults] = await connection.query(basicQueryWithValues, searchParams);
+      const result = await connection.query(basicQuery, basicParams);
+      const basicResults = result.rows;
       
       // Step 2: Get employee data separately and merge
       const userIds = basicResults.map(u => u.user_id);
       let employeeData = {};
       
       if (userIds.length > 0) {
-        const placeholders = userIds.map(() => '?').join(',');
+        const placeholders = userIds.map((_, idx) => `$${idx + 1}`).join(',');
         const employeeQuery = `
           SELECT 
             ua.user_id,
@@ -1546,10 +1536,10 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
           WHERE ua.user_id IN (${placeholders})
         `;
         
-        const [empResults] = await connection.query(employeeQuery, userIds);
+        const empResults = await connection.query(employeeQuery, userIds);
         
         // Create lookup map
-        empResults.forEach(emp => {
+        empResults.rows.forEach(emp => {
           employeeData[emp.user_id] = emp;
         });
       }
@@ -1567,8 +1557,8 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
       
       // Step 4: Get count
       const countQuery = `SELECT COUNT(*) as count FROM user_accounts ua ${whereClause}`;
-      const [countResults] = await connection.query(countQuery, params);
-      totalCount = countResults[0].count;
+      const countResult = await connection.query(countQuery, params);
+      totalCount = parseInt(countResult.rows[0].count);
       
       
     } catch (simplifiedError) {
