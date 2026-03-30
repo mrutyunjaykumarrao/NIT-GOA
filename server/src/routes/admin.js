@@ -1374,7 +1374,7 @@ router.get('/users/test', async (req, res) => {
   try {
     console.log('🔍 [TEST] Testing users endpoint without auth...');
     
-    const connection = await pool.getConnection();
+    const connection = await pool.connect();
     try {
       const [basicResults] = await connection.query(`
         SELECT 
@@ -1474,7 +1474,7 @@ router.get('/users', authenticateToken, requireAdmin, async (req, res) => {
     console.log('🔍 [USERS DEBUG] Parameters:', finalParams);
     
     // Simplified approach - try minimal query first
-    const connection = await pool.getConnection();
+    const connection = await pool.connect();
     let userRows, totalCount;
     
     try {
