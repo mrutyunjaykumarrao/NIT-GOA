@@ -6,12 +6,14 @@ const testDatabaseSetup = async () => {
     console.log('🔍 Testing database setup...');
     
     // Test connection
-    const connection = await pool.getConnection();
+    const connection = await pool.connect();
     console.log('✅ Database connection successful');
     
     // Check if required tables exist
-    const [tables] = await connection.execute('SHOW TABLES');
-    const tableNames = tables.map(t => Object.values(t)[0]);
+    const result = await connection.query(
+      "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'"
+    );
+    const tableNames = result.rows.map(t => t.table_name);
     
     console.log('📋 Available tables:', tableNames);
     
@@ -26,20 +28,24 @@ const testDatabaseSetup = async () => {
     
     // Test table structures
     for (const table of requiredTables) {
-      const [columns] = await connection.execute(`DESCRIBE ${table}`);
-      console.log(`📊 Table '${table}' has ${columns.length} columns`);
+      const result = await connection.query(
+        `SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name = $1`,
+        [table]
+      );
+      console.log(`📊 Table '${table}' has ${result.rows.length} columns`);
     }
     
     // Check if admin user exists
-    const [adminUsers] = await connection.execute(
+    const adminResult = await connection.query(
       "SELECT COUNT(*) as count FROM users WHERE role = 'admin'"
     );
     
-    if (adminUsers[0].count === 0) {
+    const adminCount = parseInt(adminResult.rows[0].count);
+    if (adminCount === 0) {
       console.log('⚠️  No admin user found');
       console.log('💡 Consider creating an admin user');
     } else {
-      console.log(`✅ Found ${adminUsers[0].count} admin user(s)`);
+      console.log(`✅ Found ${adminCount} admin user(s)`);
     }
     
     connection.release();
@@ -65,20 +71,20 @@ const createDefaultAdmin = async () => {
     };
     
     // Check if admin already exists
-    const [existing] = await pool.execute(
-      'SELECT id FROM users WHERE username = ? OR email = ?',
+    const existing = await pool.query(
+      'SELECT id FROM users WHERE username = $1 OR email = $2',
       [adminData.username, adminData.email]
     );
     
-    if (existing.length > 0) {
+    if (existing.rows.length > 0) {
       console.log('ℹ️  Admin user already exists');
       return false;
     }
     
     const hashedPassword = await bcrypt.hash(adminData.password, 12);
     
-    const [result] = await pool.execute(
-      'INSERT INTO users (username, email, password_hash, role) VALUES (?, ?, ?, ?)',
+    const result = await pool.query(
+      'INSERT INTO users (username, email, password_hash, role) VALUES ($1, $2, $3, $4)',
       [adminData.username, adminData.email, hashedPassword, adminData.role]
     );
     
