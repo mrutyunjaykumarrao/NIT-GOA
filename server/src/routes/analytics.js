@@ -12,10 +12,10 @@ const { pool } = require('../config/database');
  */
 router.get('/footer-stats', async (req, res) => {
     try {
-        const connection = await pool.getConnection();
+        const connection = await pool.connect();
         
         // Get the most recent visitor count
-        const [visitorStats] = await connection.execute(`
+        const visitorStats = await connection.query(`
             SELECT total_visitors, daily_visitors, date_recorded 
             FROM site_analytics 
             ORDER BY date_recorded DESC 
@@ -23,7 +23,7 @@ router.get('/footer-stats', async (req, res) => {
         `);
 
         // Get the most recent update from audit_log
-        const [lastUpdate] = await connection.execute(`
+        const lastUpdate = await connection.query(`
             SELECT created_at as updated_at, action as update_description 
             FROM audit_log 
             WHERE action = 'UPDATE' 
@@ -73,13 +73,13 @@ router.get('/footer-stats', async (req, res) => {
  */
 router.post('/track-visit', async (req, res) => {
     try {
-        const connection = await pool.getConnection();
+        const connection = await pool.connect();
         const { device = 'desktop', userAgent = '' } = req.body;
         const today = new Date().toISOString().split('T')[0];
 
         // Get existing record
-        const [existingRecord] = await connection.execute(
-            'SELECT * FROM site_analytics WHERE date_recorded = ?',
+        const existingRecord = await connection.query(
+            'SELECT * FROM site_analytics WHERE date_recorded = $1',
             [today]
         );
 
@@ -93,32 +93,32 @@ router.post('/track-visit', async (req, res) => {
                 mobile_visits: device === 'mobile' ? record.mobile_visits + 1 : record.mobile_visits
             };
 
-            await connection.execute(`
+            await connection.query(`
                 UPDATE site_analytics 
-                SET total_visitors = ?, daily_visitors = ?, 
-                    desktop_visits = ?, mobile_visits = ?
-                WHERE date_recorded = ?
+                SET total_visitors = $1, daily_visitors = $2, 
+                    desktop_visits = $1, mobile_visits = $2
+                WHERE date_recorded = $1
             `, [
                 updateValues.total_visitors, updateValues.daily_visitors,
                 updateValues.desktop_visits, updateValues.mobile_visits, today
             ]);
         } else {
             // Get previous total to make it cumulative
-            const [previousTotal] = await connection.execute(`
+            const previousTotal = await connection.query(`
                 SELECT MAX(total_visitors) as max_total 
                 FROM site_analytics 
-                WHERE date_recorded < ?
+                WHERE date_recorded < $1
             `, [today]);
             
-            const previousTotalVisitors = previousTotal.length > 0 && previousTotal[0].max_total ? 
+            const previousTotalVisitors = previousTotal.length > 0 && previousTotal[0].max_total $1 
                 previousTotal[0].max_total : 0;
             
             // Create new record for today with cumulative total
-            await connection.execute(`
+            await connection.query(`
                 INSERT INTO site_analytics (
                     date_recorded, total_visitors, daily_visitors,
                     desktop_visits, mobile_visits
-                ) VALUES (?, ?, ?, ?, ?)
+                ) VALUES ($1, $2, $3, $4, $5)
             `, [
                 today, previousTotalVisitors + 1, 1,
                 device === 'desktop' ? 1 : 0,
@@ -148,13 +148,13 @@ router.post('/track-visit', async (req, res) => {
  */
 router.post('/content-update', async (req, res) => {
     try {
-        const connection = await pool.getConnection();
+        const connection = await pool.connect();
         const { updateDescription, content_type = 'general', isMajorUpdate = false, updated_by = 'system' } = req.body;
 
-        await connection.execute(`
+        await connection.query(`
             INSERT INTO content_updates (
                 update_description, content_type, is_major_update, updated_by, updated_at
-            ) VALUES (?, ?, ?, ?, NOW())
+            ) VALUES ($1, $2, $3, $4, CURRENT_TIMESTAMP)
         `, [updateDescription, content_type, isMajorUpdate, updated_by]);
 
         connection.release();
@@ -184,18 +184,18 @@ router.post('/content-update', async (req, res) => {
 router.get('/dashboard-stats', async (req, res) => {
     try {
         const { period = 'today', date } = req.query;
-        const connection = await pool.getConnection();
+        const connection = await pool.connect();
         
         let targetStats = {};
         let targetDateValue = new Date().toISOString().split('T')[0];
         
         if (period === 'custom' && date) {
             targetDateValue = date;
-            const [customStats] = await connection.execute(`
+            const customStats = await connection.query(`
                 SELECT total_visitors, daily_visitors, 
                        desktop_visits, mobile_visits
                 FROM site_analytics 
-                WHERE date_recorded = ?
+                WHERE date_recorded = $1
             `, [date]);
             
             targetStats = customStats[0] || {
@@ -205,7 +205,7 @@ router.get('/dashboard-stats', async (req, res) => {
                 mobile_visits: 0
             };
         } else if (period === 'today') {
-            const [todayData] = await connection.execute(`
+            const todayData = await connection.query(`
                 SELECT total_visitors, daily_visitors, 
                        desktop_visits, mobile_visits
                 FROM site_analytics 
@@ -219,7 +219,7 @@ router.get('/dashboard-stats', async (req, res) => {
                 mobile_visits: 0
             };
         } else if (period === 'week') {
-            const [weekData] = await connection.execute(`
+            const weekData = await connection.query(`
                 SELECT 
                     MAX(total_visitors) as total_visitors,
                     SUM(daily_visitors) as daily_visitors,
@@ -236,7 +236,7 @@ router.get('/dashboard-stats', async (req, res) => {
                 mobile_visits: 0
             };
         } else if (period === 'month') {
-            const [monthData] = await connection.execute(`
+            const monthData = await connection.query(`
                 SELECT 
                     MAX(total_visitors) as total_visitors,
                     SUM(daily_visitors) as daily_visitors,
@@ -255,13 +255,13 @@ router.get('/dashboard-stats', async (req, res) => {
         }
 
         // Get total all-time visitors
-        const [totalStats] = await connection.execute(`
+        const totalStats = await connection.query(`
             SELECT MAX(total_visitors) as all_time_visitors 
             FROM site_analytics
         `);
 
         // Get visitor trends for charts
-        const [visitorTrends] = await connection.execute(`
+        const visitorTrends = await connection.query(`
             SELECT date_recorded, daily_visitors, 
                    desktop_visits, mobile_visits
             FROM site_analytics 
@@ -270,7 +270,7 @@ router.get('/dashboard-stats', async (req, res) => {
         `);
 
         // Get device breakdown
-        const [deviceStats] = await connection.execute(`
+        const deviceStats = await connection.query(`
             SELECT 
                 SUM(desktop_visits) as total_desktop,
                 SUM(mobile_visits) as total_mobile
@@ -292,12 +292,12 @@ router.get('/dashboard-stats', async (req, res) => {
                     mobile_visits: targetStats.mobile_visits || 0
                 },
                 allTime: {
-                    total_visitors: totalStats[0]?.all_time_visitors || 0
+                    total_visitors: totalStats[0]$1.all_time_visitors || 0
                 },
                 visitorTrends: visitorTrends,
                 deviceBreakdown: {
-                    desktop: deviceStats[0]?.total_desktop || 0,
-                    mobile: deviceStats[0]?.total_mobile || 0
+                    desktop: deviceStats[0]$1.total_desktop || 0,
+                    mobile: deviceStats[0]$1.total_mobile || 0
                 }
             }
         });
@@ -317,10 +317,10 @@ router.get('/dashboard-stats', async (req, res) => {
  */
 router.get('/simple-stats', async (req, res) => {
     try {
-        const connection = await pool.getConnection();
+        const connection = await pool.connect();
         
         // Get last 30 days visitor data for chart
-        const [visitorData] = await connection.execute(`
+        const visitorData = await connection.query(`
             SELECT 
                 date_recorded,
                 daily_visitors,
@@ -361,7 +361,7 @@ router.get('/simple-stats', async (req, res) => {
 router.get('/chart-data', async (req, res) => {
     try {
         const { period = 'month', date } = req.query;
-        const connection = await pool.getConnection();
+        const connection = await pool.connect();
         
         let dayRange = 30; // Default to 30 days
         
@@ -380,12 +380,12 @@ router.get('/chart-data', async (req, res) => {
         }
         
         // Get visitor data for charts
-        const [chartData] = await connection.execute(`
+        const chartData = await connection.query(`
             SELECT 
                 DATE(date_recorded) as date,
                 daily_visitors as visitors
             FROM site_analytics 
-            WHERE date_recorded >= DATE_SUB(CURDATE(), INTERVAL ? DAY)
+            WHERE date_recorded >= DATE_SUB(CURDATE(), INTERVAL $1 DAY)
             ORDER BY date_recorded ASC
         `, [dayRange]);
 
