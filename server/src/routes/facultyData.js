@@ -6,10 +6,10 @@ const router = express.Router();
 
 // Helper function for database queries
 async function executeQuery(query, params = []) {
-  const connection = await pool.getConnection();
+  const connection = await pool.connect();
   try {
-    const [results] = await connection.execute(query, params);
-    return [results];
+    const result = await connection.query(query, params);
+    return [result.rows];
   } finally {
     connection.release();
   }
@@ -19,6 +19,9 @@ async function executeQuery(query, params = []) {
 router.get('/courses', async (req, res) => {
   try {
     const { search = '', level = '' } = req.query;
+    
+    let paramIndex = 1;
+    const params = [];
     
     let query = `
       SELECT 
@@ -30,8 +33,8 @@ router.get('/courses', async (req, res) => {
         c.course_level,
         d.department_name,
         CASE 
-          WHEN c.course_code LIKE ? THEN 1
-          WHEN c.course_name LIKE ? THEN 2
+          WHEN c.course_code LIKE $${paramIndex} THEN 1
+          WHEN c.course_name LIKE $${paramIndex + 1} THEN 2
           ELSE 3
         END as priority
       FROM courses c
@@ -39,19 +42,22 @@ router.get('/courses', async (req, res) => {
       WHERE c.is_active = 1
     `;
     
-    const params = [];
-    
     if (search) {
-      query += ` AND (c.course_code LIKE ? OR c.course_name LIKE ?)`;
-      params.push(`${search}%`, `%${search}%`, `${search}%`, `%${search}%`);
+      params.push(`${search}%`, `%${search}%`);
+      paramIndex += 2;
+      query += ` AND (c.course_code LIKE $${paramIndex} OR c.course_name LIKE $${paramIndex + 1})`;
+      params.push(`${search}%`, `%${search}%`);
+      paramIndex += 2;
     } else {
       // If no search term, still need to provide params for priority calculation
       params.push('', '');
+      paramIndex += 2;
     }
     
     if (level) {
-      query += ` AND c.course_level = ?`;
+      query += ` AND c.course_level = $${paramIndex}`;
       params.push(level);
+      paramIndex += 1;
     }
     
     query += ` ORDER BY priority ASC, c.course_code ASC`;
@@ -101,21 +107,21 @@ router.get('/research-areas', async (req, res) => {
   try {
     // First check if research_areas table exists
     const [tables] = await executeQuery(`
-      SELECT TABLE_NAME 
-      FROM INFORMATION_SCHEMA.TABLES 
-      WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'research_areas'
+      SELECT table_name 
+      FROM information_schema.tables 
+      WHERE table_schema = 'public' AND table_name = 'research_areas'
     `);
     
     if (tables.length === 0) {
       // Create research_areas table if it doesn't exist
       await executeQuery(`
-        CREATE TABLE research_areas (
-          area_id INT PRIMARY KEY AUTO_INCREMENT,
+        CREATE TABLE IF NOT EXISTS research_areas (
+          area_id SERIAL PRIMARY KEY,
           area_name VARCHAR(255) NOT NULL UNIQUE,
           description TEXT,
-          is_active TINYINT(1) DEFAULT 1,
+          is_active BOOLEAN DEFAULT true,
           created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
       `);
       
@@ -145,7 +151,7 @@ router.get('/research-areas', async (req, res) => {
       
       for (const area of defaultAreas) {
         await executeQuery(`
-          INSERT INTO research_areas (area_name) VALUES (?)
+          INSERT INTO research_areas (area_name) VALUES ($1)
         `, [area]);
       }
     }
@@ -173,14 +179,15 @@ router.post('/research-areas', async (req, res) => {
       return res.status(400).json({ error: 'Area name is required' });
     }
     
-    const [result] = await executeQuery(`
-      INSERT INTO research_areas (area_name, description) VALUES (?, ?)
+    const result = await executeQuery(`
+      INSERT INTO research_areas (area_name, description) VALUES ($1, $2)
+      RETURNING area_id
     `, [area_name, description || null]);
     
     const [newArea] = await executeQuery(`
       SELECT area_id, area_name, description
-      FROM research_areas WHERE area_id = ?
-    `, [result.insertId]);
+      FROM research_areas WHERE area_id = $1
+    `, [result[0][0].area_id]);
     
     res.json({ success: true, researchArea: newArea[0] });
   } catch (error) {
@@ -213,7 +220,7 @@ router.get('/faculty-courses/:employeeCode', async (req, res) => {
         CASE WHEN fct.course_id IS NULL THEN 1 ELSE 0 END as is_custom
       FROM faculty_courses_taught fct
       LEFT JOIN courses c ON fct.course_id = c.course_id
-      WHERE fct.employee_code = ?
+      WHERE fct.employee_code = $1
       ORDER BY course_level, COALESCE(fct.display_order, 999), course_code
     `, [employeeCode]);
     
@@ -251,8 +258,7 @@ router.post('/faculty-courses/:employeeCode', authenticateToken, async (req, res
     const [tableInfo] = await executeQuery(`
       SELECT COLUMN_NAME 
       FROM INFORMATION_SCHEMA.COLUMNS 
-      WHERE TABLE_SCHEMA = DATABASE() 
-      AND TABLE_NAME = 'faculty_courses_taught'
+      WHERE table_schema = 'public' AND table_name = 'faculty_courses_taught'
       AND COLUMN_NAME = 'custom_course_name'
     `);
     
@@ -263,7 +269,7 @@ router.post('/faculty-courses/:employeeCode', authenticateToken, async (req, res
         ADD COLUMN custom_course_name VARCHAR(255) NULL,
         ADD COLUMN custom_course_code VARCHAR(20) NULL,
         ADD COLUMN custom_credits INT NULL,
-        ADD COLUMN custom_course_level ENUM('Undergraduate', 'Postgraduate') NULL,
+        ADD COLUMN custom_course_level VARCHAR(20) CHECK (custom_course_level IN ('Undergraduate', 'Postgraduate')) NULL,
         ADD COLUMN custom_semester VARCHAR(10) NULL
       `);
       console.log('Added custom course fields to faculty_courses_taught table');
@@ -273,7 +279,7 @@ router.post('/faculty-courses/:employeeCode', authenticateToken, async (req, res
     if (course_id) {
       const [existing] = await executeQuery(`
         SELECT * FROM faculty_courses_taught 
-        WHERE employee_code = ? AND course_id = ?
+        WHERE employee_code = $1 AND course_id = $2
       `, [employeeCode, course_id]);
       
       if (existing.length > 0) {
@@ -285,7 +291,7 @@ router.post('/faculty-courses/:employeeCode', authenticateToken, async (req, res
     if (custom_course_code && !course_id) {
       const [existing] = await executeQuery(`
         SELECT * FROM faculty_courses_taught 
-        WHERE employee_code = ? AND custom_course_code = ?
+        WHERE employee_code = $1 AND custom_course_code = $2
       `, [employeeCode, custom_course_code]);
       
       if (existing.length > 0) {
@@ -296,7 +302,7 @@ router.post('/faculty-courses/:employeeCode', authenticateToken, async (req, res
     const [result] = await executeQuery(`
       INSERT INTO faculty_courses_taught 
       (employee_code, course_id, custom_course_name, custom_course_code, custom_credits, custom_course_level, custom_semester)
-      VALUES (?, ?, ?, ?, ?, ?, ?)
+      VALUES ($1, $2, $3, $4, $5, $6, $7)
     `, [employeeCode, course_id || null, custom_course_name || null, custom_course_code || null, custom_credits || null, custom_course_level || null, custom_semester || null]);
     
     // Return the created entry with course details
@@ -314,7 +320,7 @@ router.post('/faculty-courses/:employeeCode', authenticateToken, async (req, res
           fct.created_at
         FROM faculty_courses_taught fct
         JOIN courses c ON fct.course_id = c.course_id
-        WHERE fct.employee_code = ? AND fct.course_id = ?
+        WHERE fct.employee_code = $1 AND fct.course_id = $2
       `, [employeeCode, course_id]);
       
       res.json({ success: true, course: newEntry[0] });
@@ -361,12 +367,12 @@ router.delete('/faculty-courses/:employeeCode/:courseId', authenticateToken, asy
       const customCourseCode = courseId.replace('custom_', '');
       await executeQuery(`
         DELETE FROM faculty_courses_taught 
-        WHERE employee_code = ? AND custom_course_code = ?
+        WHERE employee_code = $1 AND custom_course_code = $2
       `, [employeeCode, customCourseCode]);
     } else {
       await executeQuery(`
         DELETE FROM faculty_courses_taught 
-        WHERE employee_code = ? AND course_id = ?
+        WHERE employee_code = $1 AND course_id = $2
       `, [employeeCode, courseId]);
     }
     
@@ -395,24 +401,24 @@ router.post('/course-requests', async (req, res) => {
     const [tables] = await executeQuery(`
       SELECT TABLE_NAME 
       FROM INFORMATION_SCHEMA.TABLES 
-      WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'course_requests'
+      WHERE table_schema = 'public' AND table_name = 'course_requests'
     `);
     
     if (tables.length === 0) {
       await executeQuery(`
         CREATE TABLE course_requests (
-          request_id INT PRIMARY KEY AUTO_INCREMENT,
+          request_id INT PRIMARY KEY SERIAL,
           employee_code VARCHAR(50) NOT NULL,
           course_code VARCHAR(20) NOT NULL,
           course_name VARCHAR(255) NOT NULL,
-          course_level ENUM('Undergraduate', 'Postgraduate') NOT NULL,
+          course_level VARCHAR(20) CHECK (custom_course_level IN ('Undergraduate', 'Postgraduate')) NOT NULL,
           credits INT NOT NULL,
           semester VARCHAR(10),
           department_id INT,
           justification TEXT,
           status ENUM('pending', 'approved', 'rejected') DEFAULT 'pending',
           created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
           admin_comments TEXT,
           FOREIGN KEY (employee_code) REFERENCES faculty_profiles(employee_code),
           FOREIGN KEY (department_id) REFERENCES departments(department_id)
@@ -448,7 +454,7 @@ router.get('/course-requests/:employeeCode', async (req, res) => {
         d.department_name
       FROM course_requests cr
       LEFT JOIN departments d ON cr.department_id = d.department_id
-      WHERE cr.employee_code = ?
+      WHERE cr.employee_code = $1
       ORDER BY cr.created_at DESC
     `, [employeeCode]);
     
@@ -469,7 +475,7 @@ router.put('/faculty-courses/:employeeCode/reorder', authenticateToken, async (r
     const [currentCourse] = await executeQuery(`
       SELECT id, display_order 
       FROM faculty_courses_taught 
-      WHERE employee_code = ? AND ${isCustom ? 'custom_course_code = ?' : 'id = ?'}
+      WHERE employee_code = $1 AND ${isCustom ? 'custom_course_code = $2' : 'id = $2'}
     `, [employeeCode, courseId]);
     
     if (currentCourse.length === 0) {
@@ -486,7 +492,7 @@ router.put('/faculty-courses/:employeeCode/reorder', authenticateToken, async (r
     const [swapCourse] = await executeQuery(`
       SELECT id, display_order 
       FROM faculty_courses_taught 
-      WHERE employee_code = ? AND display_order ${swapDirection} ?
+      WHERE employee_code = $1 AND display_order ${swapDirection} $2
       ORDER BY display_order ${sortOrder}
       LIMIT 1
     `, [employeeCode, currentOrder]);
@@ -501,14 +507,14 @@ router.put('/faculty-courses/:employeeCode/reorder', authenticateToken, async (r
     // Perform the swap
     await executeQuery(`
       UPDATE faculty_courses_taught 
-      SET display_order = ? 
-      WHERE id = ?
+      SET display_order = $1 
+      WHERE id = $2
     `, [swapOrder, currentId]);
     
     await executeQuery(`
       UPDATE faculty_courses_taught 
-      SET display_order = ? 
-      WHERE id = ?
+      SET display_order = $1 
+      WHERE id = $2
     `, [currentOrder, swapId]);
     
     res.json({ success: true, message: `Course moved ${direction} successfully` });
@@ -533,15 +539,15 @@ router.put('/faculty-courses/:employeeCode/save-order', authenticateToken, async
         // The frontend should send the database id, not the course_code
         await executeQuery(`
           UPDATE faculty_courses_taught 
-          SET display_order = ? 
-          WHERE employee_code = ? AND id = ? AND course_id IS NULL
+          SET display_order = $1 
+          WHERE employee_code = $2 AND id = $3 AND course_id IS NULL
         `, [courseData.displayOrder, employeeCode, courseData.id]);
       } else {
         // For regular courses, use the database id
         await executeQuery(`
           UPDATE faculty_courses_taught 
-          SET display_order = ? 
-          WHERE employee_code = ? AND id = ?
+          SET display_order = $1 
+          WHERE employee_code = $2 AND id = $3
         `, [courseData.displayOrder, employeeCode, courseData.id]);
       }
     }
