@@ -591,14 +591,14 @@ router.get('/website-analytics', async (req, res) => {
 
     const response = {
       allTime: {
-        total_visitors: allTimeStats[0]$1.total_visitors || 0
+        total_visitors: allTimeStats[0].total_visitors || 0
       },
       today: {
-        daily_visitors: todayStats[0]$1.daily_visitors || 0
+        daily_visitors: todayStats[0].daily_visitors || 0
       },
       deviceBreakdown: {
-        desktop: allTimeStats[0]$1.total_desktop || 0,
-        mobile: allTimeStats[0]$1.total_mobile || 0
+        desktop: allTimeStats[0].total_desktop || 0,
+        mobile: allTimeStats[0].total_mobile || 0
       },
       chartData: {
         visitors: chartData
