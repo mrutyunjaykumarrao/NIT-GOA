@@ -8,10 +8,10 @@ const { pool } = require('../../config/database');
 
 // Helper function for database queries
 async function executeQuery(query, params = []) {
-  const connection = await pool.getConnection();
+  const connection = await pool.connect();
   try {
-    const [results] = await connection.execute(query, params);
-    return results;
+    const result = await connection.query(query, params);
+    return result.rows;
   } finally {
     connection.release();
   }
@@ -19,14 +19,14 @@ async function executeQuery(query, params = []) {
 
 // Helper function for database transactions
 async function withTransaction(callback) {
-  const connection = await pool.getConnection();
+  const connection = await pool.connect();
   try {
-    await connection.beginTransaction();
+    await connection.query('BEGIN');
     const result = await callback(connection);
-    await connection.commit();
+    await connection.query('COMMIT');
     return result;
   } catch (error) {
-    await connection.rollback();
+    await connection.query('ROLLBACK');
     throw error;
   } finally {
     connection.release();
@@ -104,7 +104,7 @@ const checkEditPermission = async (req, res, next) => {
     if (user.role === 'Faculty') {
       // Get user's employee code from user_accounts table
       const userEmployeeCode = await executeQuery(
-        'SELECT employee_code FROM user_accounts WHERE user_id = ?',
+        'SELECT employee_code FROM user_accounts WHERE user_id = $1',
         [user.userId]
       );
 

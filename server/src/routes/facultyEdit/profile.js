@@ -54,7 +54,7 @@ router.get('/:employeeCode/profile', authenticateToken, checkEditPermission, asy
       LEFT JOIN faculty_profiles fp ON e.employee_code = fp.employee_code
       LEFT JOIN faculty_designations fd ON fp.designation_id = fd.designation_id
       LEFT JOIN departments d ON fp.department_id = d.department_id
-      WHERE e.employee_code = ?
+      WHERE e.employee_code = $1
     `, [employeeCode]);
 
     if (profile.length === 0) {
@@ -115,14 +115,14 @@ router.put('/:employeeCode/profile', authenticateToken, checkEditPermission, asy
     await executeQuery(`
       UPDATE employees 
       SET 
-        full_name = ?,
-        honorific = ?,
-        email = ?,
-        phone_mobile = ?,
-        extension_no = ?,
-        date_of_joining = ?,
-        gender = ?
-      WHERE employee_code = ?
+        full_name = $1,
+        honorific = $2,
+        email = $3,
+        phone_mobile = $4,
+        extension_no = $5,
+        date_of_joining = $6,
+        gender = $7
+      WHERE employee_code = $8
     `, [
       full_name,
       honorific || null,
@@ -138,15 +138,15 @@ router.put('/:employeeCode/profile', authenticateToken, checkEditPermission, asy
     await executeQuery(`
       UPDATE faculty_profiles 
       SET 
-        date_of_birth = ?,
-        address = ?,
-        office_location = ?,
-        office_hours = ?,
-        bio_summary = ?,
-        research_teaching_experience = ?,
-        designation_id = ?,
-        department_id = ?
-      WHERE employee_code = ?
+        date_of_birth = $1,
+        address = $2,
+        office_location = $3,
+        office_hours = $4,
+        bio_summary = $5,
+        research_teaching_experience = $6,
+        designation_id = $7,
+        department_id = $8
+      WHERE employee_code = $9
     `, [
       formattedDOB,
       address || null,
@@ -188,7 +188,7 @@ router.put('/:employeeCode/profile/image', authenticateToken, checkEditPermissio
       FROM faculty_profiles fp
       JOIN employees e ON e.employee_code = fp.employee_code
       LEFT JOIN departments d ON fp.department_id = d.department_id
-      WHERE fp.employee_code = ?
+      WHERE fp.employee_code = $1
     `, [employeeCode]);
     
     if (employeeResult.length === 0) {
@@ -221,8 +221,8 @@ router.put('/:employeeCode/profile/image', authenticateToken, checkEditPermissio
       // Update image URL in database (will be NULL if removed)
       await executeQuery(`
         UPDATE faculty_profiles 
-        SET image_url = ?
-        WHERE employee_code = ?
+        SET image_url = $1
+        WHERE employee_code = $2
       `, [finalImageUrl, employeeCode]);
 
       return res.json(formatSuccessResponse(
@@ -239,19 +239,19 @@ router.put('/:employeeCode/profile/image', authenticateToken, checkEditPermissio
       // Check if there is already a pending image approval to replace 
       const existingApproval = await executeQuery(`
         SELECT approval_id FROM pending_approvals 
-        WHERE employee_code = ? AND approval_type = 'profile_image' AND status = 'pending'
+        WHERE employee_code = $1 AND approval_type = 'profile_image' AND status = 'pending'
       `, [employeeCode]);
 
       if (existingApproval.length > 0) {
         await executeQuery(`
           UPDATE pending_approvals 
           SET 
-            action_type = ?,
-            current_value = ?,
-            requested_value = ?,
-            temp_file_path = ?,
+            action_type = $1,
+            current_value = $2,
+            requested_value = $3,
+            temp_file_path = $4,
             requested_at = CURRENT_TIMESTAMP
-          WHERE approval_id = ?
+          WHERE approval_id = $5
         `, [
           actionType,
           oldImage,
@@ -263,7 +263,7 @@ router.put('/:employeeCode/profile/image', authenticateToken, checkEditPermissio
         await executeQuery(`
           INSERT INTO pending_approvals (
             employee_code, approval_type, action_type, current_value, requested_value, temp_file_path, requested_by
-          ) VALUES (?, 'profile_image', ?, ?, ?, ?, ?)
+          ) VALUES ($1, 'profile_image', $2, $3, $4, $5, $6)
         `, [
           employeeCode,
           actionType,

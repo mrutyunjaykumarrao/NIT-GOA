@@ -30,7 +30,7 @@ router.get('/:employeeCode/custom-sections', authenticateToken, checkEditPermiss
         section_type,
         display_order
       FROM faculty_custom_sections 
-      WHERE employee_code = ? 
+      WHERE employee_code = $1 
       ORDER BY display_order ASC
     `, [employeeCode]);
 
@@ -46,7 +46,7 @@ router.get('/:employeeCode/custom-sections', authenticateToken, checkEditPermiss
           field_type,
           display_order
         FROM faculty_custom_section_fields 
-        WHERE custom_section_id = ? 
+        WHERE custom_section_id = $1 
         ORDER BY display_order ASC
       `, [section.custom_section_id]);
 
@@ -55,11 +55,11 @@ router.get('/:employeeCode/custom-sections', authenticateToken, checkEditPermiss
         SELECT 
           entry_id,
           field_id,
-          \`row_number\`,
+          row_number,
           field_value
         FROM faculty_custom_section_entries 
-        WHERE custom_section_id = ? 
-        ORDER BY \`row_number\` ASC
+        WHERE custom_section_id = $1 
+        ORDER BY row_number ASC
       `, [section.custom_section_id]);
 
       // Transform normalized data to nested structure
@@ -109,8 +109,8 @@ router.put('/:employeeCode/custom-sections', authenticateToken, checkEditPermiss
 
     await withTransaction(async (connection) => {
       // Delete all existing custom sections (cascade will handle fields and entries)
-      await connection.execute(
-        'DELETE FROM faculty_custom_sections WHERE employee_code = ?',
+      await connection.query(
+        'DELETE FROM faculty_custom_sections WHERE employee_code = $1',
         [employeeCode]
       );
 
@@ -122,10 +122,11 @@ router.put('/:employeeCode/custom-sections', authenticateToken, checkEditPermiss
         validateRequired(section.section_title, 'Section title');
 
         // Insert section
-        const [sectionResult] = await connection.execute(`
+        const sectionResult = await connection.query(`
           INSERT INTO faculty_custom_sections 
           (employee_code, section_title, section_type, display_order)
-          VALUES (?, ?, ?, ?)
+          VALUES ($1, $2, $3, $4)
+          RETURNING custom_section_id
         `, [
           employeeCode,
           section.section_title,
@@ -133,7 +134,7 @@ router.put('/:employeeCode/custom-sections', authenticateToken, checkEditPermiss
           section.display_order || i
         ]);
 
-        const sectionId = sectionResult.insertId;
+        const sectionId = sectionResult.rows[0].custom_section_id;
 
         // Insert fields if any and store field mapping
         const fieldIdMap = {}; // Maps field_name to field_id
@@ -143,10 +144,11 @@ router.put('/:employeeCode/custom-sections', authenticateToken, checkEditPermiss
             
             validateRequired(field.field_name, 'Field name');
 
-            const [fieldResult] = await connection.execute(`
+            const fieldResult = await connection.query(`
               INSERT INTO faculty_custom_section_fields 
               (custom_section_id, field_name, field_type, display_order)
-              VALUES (?, ?, ?, ?)
+              VALUES ($1, $2, $3, $4)
+              RETURNING field_id
             `, [
               sectionId,
               field.field_name,
@@ -154,7 +156,7 @@ router.put('/:employeeCode/custom-sections', authenticateToken, checkEditPermiss
               field.field_order || j
             ]);
             
-            fieldIdMap[field.field_name] = fieldResult.insertId;
+            fieldIdMap[field.field_name] = fieldResult.rows[0].field_id;
           }
         }
 
@@ -169,10 +171,10 @@ router.put('/:employeeCode/custom-sections', authenticateToken, checkEditPermiss
               for (const [fieldName, fieldValue] of Object.entries(entry.cell_data)) {
                 const fieldId = fieldIdMap[fieldName];
                 if (fieldId) {
-                  await connection.execute(`
+                  await connection.query(`
                     INSERT INTO faculty_custom_section_entries 
-                    (custom_section_id, field_id, \`row_number\`, field_value)
-                    VALUES (?, ?, ?, ?)
+                    (custom_section_id, field_id, row_number, field_value)
+                    VALUES ($1, $2, $3, $4)
                   `, [
                     sectionId,
                     fieldId,
@@ -206,10 +208,11 @@ router.post('/:employeeCode/custom-sections', authenticateToken, checkEditPermis
 
     await withTransaction(async (connection) => {
       // Insert section
-      const [sectionResult] = await connection.execute(`
+      const sectionResult = await connection.query(`
         INSERT INTO faculty_custom_sections 
         (employee_code, section_title, section_type, display_order)
-        VALUES (?, ?, ?, ?)
+        VALUES ($1, $2, $3, $4)
+        RETURNING custom_section_id
       `, [
         employeeCode,
         section_title,
@@ -217,7 +220,7 @@ router.post('/:employeeCode/custom-sections', authenticateToken, checkEditPermis
         display_order || 0
       ]);
 
-      sectionId = sectionResult.insertId;
+      sectionId = sectionResult.rows[0].custom_section_id;
 
       // Insert fields if provided and store field mapping
       const fieldIdMap = {};
@@ -226,10 +229,11 @@ router.post('/:employeeCode/custom-sections', authenticateToken, checkEditPermis
           const field = fields[i];
           validateRequired(field.field_name, 'Field name');
 
-          const [fieldResult] = await connection.execute(`
+          const fieldResult = await connection.query(`
             INSERT INTO faculty_custom_section_fields 
             (custom_section_id, field_name, field_type, display_order)
-            VALUES (?, ?, ?, ?)
+            VALUES ($1, $2, $3, $4)
+            RETURNING field_id
           `, [
             sectionId,
             field.field_name,
@@ -237,7 +241,7 @@ router.post('/:employeeCode/custom-sections', authenticateToken, checkEditPermis
             field.field_order || i
           ]);
           
-          fieldIdMap[field.field_name] = fieldResult.insertId;
+          fieldIdMap[field.field_name] = fieldResult.rows[0].field_id;
         }
       }
 
@@ -252,10 +256,10 @@ router.post('/:employeeCode/custom-sections', authenticateToken, checkEditPermis
             for (const [fieldName, fieldValue] of Object.entries(entry.cell_data)) {
               const fieldId = fieldIdMap[fieldName];
               if (fieldId) {
-                await connection.execute(`
+                await connection.query(`
                   INSERT INTO faculty_custom_section_entries 
-                  (custom_section_id, field_id, \`row_number\`, field_value)
-                  VALUES (?, ?, ?, ?)
+                  (custom_section_id, field_id, row_number, field_value)
+                  VALUES ($1, $2, $3, $4)
                 `, [
                   sectionId,
                   fieldId,
@@ -285,7 +289,7 @@ router.delete('/:employeeCode/custom-sections/:sectionId', authenticateToken, ch
     const section = await executeQuery(`
       SELECT custom_section_id 
       FROM faculty_custom_sections 
-      WHERE custom_section_id = ? AND employee_code = ?
+      WHERE custom_section_id = $1 AND employee_code = $2
     `, [sectionId, employeeCode]);
 
     if (section.length === 0) {
@@ -294,7 +298,7 @@ router.delete('/:employeeCode/custom-sections/:sectionId', authenticateToken, ch
 
     // Delete section (cascade will handle fields and entries)
     await executeQuery(
-      'DELETE FROM faculty_custom_sections WHERE custom_section_id = ?',
+      'DELETE FROM faculty_custom_sections WHERE custom_section_id = $1',
       [sectionId]
     );
 
