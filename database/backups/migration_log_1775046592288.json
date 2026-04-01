@@ -1,0 +1,455 @@
+{
+  "total": 111,
+  "succeeded": [
+    {
+      "employeeCode": "TECH012",
+      "oldUrl": "images/Technical Staff/MCE/vijeesh_mce.jpg",
+      "newUrl": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/vijeesh_mce.jpg",
+      "size": 227882
+    }
+  ],
+  "failed": [],
+  "skipped": [],
+  "alreadyMigrated": [
+    {
+      "employeeCode": "FAC001",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CSE/veena_thenkanidiyoor.jpeg"
+    },
+    {
+      "employeeCode": "FAC002",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CSE/damodar_reddy_edla.jpg"
+    },
+    {
+      "employeeCode": "FAC003",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CSE/keshavamurthy_bn.jpeg"
+    },
+    {
+      "employeeCode": "FAC004",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CSE/s_mini.jpg"
+    },
+    {
+      "employeeCode": "FAC005",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CSE/pravati_swain.jpg"
+    },
+    {
+      "employeeCode": "FAC006",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CSE/venkatanareshbabu_kuppili.jpg"
+    },
+    {
+      "employeeCode": "FAC007",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CSE/modi_chirag_navinchandra.jpg"
+    },
+    {
+      "employeeCode": "FAC008",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CSE/sreedivya_i.jpg"
+    },
+    {
+      "employeeCode": "FAC009",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CSE/meenakshi_panda.jpg"
+    },
+    {
+      "employeeCode": "FAC010",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CSE/chandelkar_k_k.jpg"
+    },
+    {
+      "employeeCode": "FAC011",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CSE/antara_dessai.jpg"
+    },
+    {
+      "employeeCode": "FAC012",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CSE/mohd_jahangeer_pasha.jpg"
+    },
+    {
+      "employeeCode": "FAC013",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/ECE/t_veerakumar.jpg"
+    },
+    {
+      "employeeCode": "FAC014",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/ECE/vasantha_mh.jpg"
+    },
+    {
+      "employeeCode": "FAC015",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/ECE/anirban_chatterjee.jpg"
+    },
+    {
+      "employeeCode": "FAC016",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/ECE/nithin_kumar_yb.jpg"
+    },
+    {
+      "employeeCode": "FAC017",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/ECE/trilochan_panigrahi.jpg"
+    },
+    {
+      "employeeCode": "FAC018",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/ECE/shivnarayan_patidar.jpg"
+    },
+    {
+      "employeeCode": "FAC019",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/ECE/prashanth_gr.jpg"
+    },
+    {
+      "employeeCode": "FAC020",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/ECE/lalat_indu_giri.jpg"
+    },
+    {
+      "employeeCode": "FAC021",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/ECE/pragati_patel.jpg"
+    },
+    {
+      "employeeCode": "FAC022",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/ECE/mallikarjun_erramshetty.jpg"
+    },
+    {
+      "employeeCode": "FAC023",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/ECE/lokesh_kumar_bramhane.jpg"
+    },
+    {
+      "employeeCode": "FAC025",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/EEE/suresh_mikkili.jpg"
+    },
+    {
+      "employeeCode": "FAC026",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/EEE/sreeraj_e_s.jpg"
+    },
+    {
+      "employeeCode": "FAC027",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/EEE/amol_d_rahulkar.jpg"
+    },
+    {
+      "employeeCode": "FAC028",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/EEE/cvyjayanthi.jpg"
+    },
+    {
+      "employeeCode": "FAC029",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/EEE/soumitra_das.jpg"
+    },
+    {
+      "employeeCode": "FAC030",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/EEE/anudevi_samuel.jpg"
+    },
+    {
+      "employeeCode": "FAC031",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/EEE/ankeshwarapu_sunil.jpg"
+    },
+    {
+      "employeeCode": "FAC032",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/EEE/shefali_painuli.jpg"
+    },
+    {
+      "employeeCode": "FAC033",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/EEE/goutam_goswami.jpg"
+    },
+    {
+      "employeeCode": "FAC034",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/EEE/amritansh_sagar.jpg"
+    },
+    {
+      "employeeCode": "FAC035",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/EEE/sandeep_chawrasia.jpg"
+    },
+    {
+      "employeeCode": "FAC036",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/EEE/mahi_teja_talluri.jpg"
+    },
+    {
+      "employeeCode": "FAC037",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/MCE/prasenjit_dey.jpg"
+    },
+    {
+      "employeeCode": "FAC038",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/MCE/b_santhi.jpg"
+    },
+    {
+      "employeeCode": "FAC039",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/MCE/abhijit_sarkar.jpg"
+    },
+    {
+      "employeeCode": "FAC040",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/MCE/gaurang_ruhela.jpg"
+    },
+    {
+      "employeeCode": "FAC042",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/MCE/pravin_anandrao_pawar.jpg"
+    },
+    {
+      "employeeCode": "FAC043",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/MCE/animesh_chatterjee.jpg"
+    },
+    {
+      "employeeCode": "FAC044",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/MCE/nadimetla_thirupathi.jpg"
+    },
+    {
+      "employeeCode": "FAC045",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/MCE/hiru_purushothaman_hirudayanathan.jpg"
+    },
+    {
+      "employeeCode": "FAC046",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/MCE/samar_singhal.jpg"
+    },
+    {
+      "employeeCode": "FAC047",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/MCE/chaitanya_vundru.jpg"
+    },
+    {
+      "employeeCode": "FAC048",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CVE/harikumar_m.jpg"
+    },
+    {
+      "employeeCode": "FAC049",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CVE/o_r_jaiswal.jpg"
+    },
+    {
+      "employeeCode": "FAC050",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CVE/saurabh_upadhyay.jpg"
+    },
+    {
+      "employeeCode": "FAC051",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CVE/ranendra_nath_bhowmik.jpg"
+    },
+    {
+      "employeeCode": "FAC052",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CVE/bapi_mondal.jpg"
+    },
+    {
+      "employeeCode": "FAC053",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CVE/vinamra_mishra.jpg"
+    },
+    {
+      "employeeCode": "FAC054",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CVE/sathishraj_mani.jpg"
+    },
+    {
+      "employeeCode": "FAC055",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CVE/duduku_saidulu.jpg"
+    },
+    {
+      "employeeCode": "FAC056",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CVE/guntakala_venkatanaga_chandra.jpg"
+    },
+    {
+      "employeeCode": "FAC057",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CVE/kandalai_srikanth.jpg"
+    },
+    {
+      "employeeCode": "FAC058",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CVE/gaurav_patel.jpg"
+    },
+    {
+      "employeeCode": "FAC059",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/APS/l_shangerganesh.jpg"
+    },
+    {
+      "employeeCode": "FAC060",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/APS/saidi_reddy_parne.jpg"
+    },
+    {
+      "employeeCode": "FAC061",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/APS/velavan_kathirvelu.jpg"
+    },
+    {
+      "employeeCode": "FAC062",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/APS/ragoju_ravi.jpg"
+    },
+    {
+      "employeeCode": "FAC063",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/APS/ravi_prasad_k_j.jpg"
+    },
+    {
+      "employeeCode": "FAC064",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/APS/gundlapally_shiva_kumar_reddy.jpg"
+    },
+    {
+      "employeeCode": "FAC065",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/APS/lasitha_p.jpg"
+    },
+    {
+      "employeeCode": "FAC066",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/HSS/sarani_ghosal_mondal.jpg"
+    },
+    {
+      "employeeCode": "FAC067",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/HSS/sunil_kumar.jpg"
+    },
+    {
+      "employeeCode": "FAC068",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/HSS/unais_kt.jpg"
+    },
+    {
+      "employeeCode": "FAC070",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CSE/mrutyunjay_kumar_rao.jpg"
+    },
+    {
+      "employeeCode": "FAC071",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CSE/debojyoti_bhattacharya.jpg"
+    },
+    {
+      "employeeCode": "FAC072",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/faculty/CSE/nikhil_gajbhiye.jpeg"
+    },
+    {
+      "employeeCode": "ADMIN001",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/amit_kabiraj.jpg"
+    },
+    {
+      "employeeCode": "ADMIN002",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/manmohan_sakhuja.jpg"
+    },
+    {
+      "employeeCode": "ADMIN003",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/digamber_mayekar.jpg"
+    },
+    {
+      "employeeCode": "ADMIN004",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/amit_naik.jpg"
+    },
+    {
+      "employeeCode": "ADMIN005",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/anand_gachchinamath.jpg"
+    },
+    {
+      "employeeCode": "ADMIN006",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/s_kumaraguru.jpg"
+    },
+    {
+      "employeeCode": "ADMIN007",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/shewale_madhukar.jpg"
+    },
+    {
+      "employeeCode": "ADMIN008",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/reshma_castelino.jpg"
+    },
+    {
+      "employeeCode": "ADMIN009",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/lotliker_sarvesh.jpg"
+    },
+    {
+      "employeeCode": "ADMIN010",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/sweta_jadhav.jpg"
+    },
+    {
+      "employeeCode": "ADMIN011",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/namrata_sawant.jpg"
+    },
+    {
+      "employeeCode": "ADMIN012",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/karthikeyan_m.jpg"
+    },
+    {
+      "employeeCode": "ADMIN013",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/tallulah_rodrigues.jpg"
+    },
+    {
+      "employeeCode": "ADMIN014",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/sandeep_jaishwar.jpg"
+    },
+    {
+      "employeeCode": "ADMIN015",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/supriya_tilve.jpg"
+    },
+    {
+      "employeeCode": "ADMIN016",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/teju_shaikh.jpg"
+    },
+    {
+      "employeeCode": "ADMIN017",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/pritam_Nageshkar.jpg"
+    },
+    {
+      "employeeCode": "ADMIN018",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/dipti_gaude.jpg"
+    },
+    {
+      "employeeCode": "ADMIN019",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/asmita_naik.jpg"
+    },
+    {
+      "employeeCode": "ADMIN020",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/vinay_acharya.jpg"
+    },
+    {
+      "employeeCode": "ADMIN021",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/kishor_paryekar.jpg"
+    },
+    {
+      "employeeCode": "ADMIN022",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/atul_milind.jpg"
+    },
+    {
+      "employeeCode": "ADMIN023",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/Suneel_Mudhole.jpg"
+    },
+    {
+      "employeeCode": "ADMIN024",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/archana_misal.jpg"
+    },
+    {
+      "employeeCode": "ADMIN025",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/sai_manoj.jpg"
+    },
+    {
+      "employeeCode": "TECH001",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/Sudharsan.png"
+    },
+    {
+      "employeeCode": "TECH002",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/srinath_lib.jpeg"
+    },
+    {
+      "employeeCode": "TECH003",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/Santosh.png"
+    },
+    {
+      "employeeCode": "TECH004",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/pradhan.jpg"
+    },
+    {
+      "employeeCode": "TECH005",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/Ram.png"
+    },
+    {
+      "employeeCode": "TECH006",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/Nikhil.png"
+    },
+    {
+      "employeeCode": "TECH007",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/Pinaki.png"
+    },
+    {
+      "employeeCode": "TECH008",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/Digambar1.png"
+    },
+    {
+      "employeeCode": "TECH009",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/Rohit.png"
+    },
+    {
+      "employeeCode": "TECH010",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/arjun_singh1.jpg"
+    },
+    {
+      "employeeCode": "TECH011",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/koushik_eee.jpeg"
+    },
+    {
+      "employeeCode": "TECH013",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/rajkumar_aps.jpeg"
+    },
+    {
+      "employeeCode": "TECH014",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/Priyanka.png"
+    },
+    {
+      "employeeCode": "TECH015",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/Venkat.png"
+    },
+    {
+      "employeeCode": "TECH016",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/Rameez.png"
+    },
+    {
+      "employeeCode": "TECH017",
+      "url": "https://prsixfgzxfyeraehtlcj.supabase.co/storage/v1/object/public/nitgoa-images/staff/technical/Nijin.png"
+    }
+  ]
+}

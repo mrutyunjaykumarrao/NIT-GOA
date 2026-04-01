@@ -1,0 +1,674 @@
+{
+  "total": 111,
+  "succeeded": [
+    {
+      "employeeCode": "FAC001",
+      "oldUrl": "images/Faculty/CSE/veena_thenkanidiyoor.jpeg",
+      "newUrl": "[dry-run]",
+      "size": 70398
+    },
+    {
+      "employeeCode": "FAC002",
+      "oldUrl": "images/Faculty/CSE/damodar_reddy_edla.jpg",
+      "newUrl": "[dry-run]",
+      "size": 88021
+    },
+    {
+      "employeeCode": "FAC003",
+      "oldUrl": "images/Faculty/CSE/keshavamurthy_bn.jpeg",
+      "newUrl": "[dry-run]",
+      "size": 26538
+    },
+    {
+      "employeeCode": "FAC004",
+      "oldUrl": "images/Faculty/CSE/s_mini.jpg",
+      "newUrl": "[dry-run]",
+      "size": 183130
+    },
+    {
+      "employeeCode": "FAC005",
+      "oldUrl": "images/Faculty/CSE/pravati_swain.jpg",
+      "newUrl": "[dry-run]",
+      "size": 93414
+    },
+    {
+      "employeeCode": "FAC006",
+      "oldUrl": "images/Faculty/CSE/venkatanareshbabu_kuppili.jpg",
+      "newUrl": "[dry-run]",
+      "size": 234723
+    },
+    {
+      "employeeCode": "FAC007",
+      "oldUrl": "images/Faculty/CSE/modi_chirag_navinchandra.jpg",
+      "newUrl": "[dry-run]",
+      "size": 32201
+    },
+    {
+      "employeeCode": "FAC008",
+      "oldUrl": "images/Faculty/CSE/sreedivya_i.jpg",
+      "newUrl": "[dry-run]",
+      "size": 42563
+    },
+    {
+      "employeeCode": "FAC009",
+      "oldUrl": "images/Faculty/CSE/meenakshi_panda.jpg",
+      "newUrl": "[dry-run]",
+      "size": 13739
+    },
+    {
+      "employeeCode": "FAC010",
+      "oldUrl": "images/Faculty/CSE/chandelkar_k_k.jpg",
+      "newUrl": "[dry-run]",
+      "size": 38242
+    },
+    {
+      "employeeCode": "FAC011",
+      "oldUrl": "images/Faculty/CSE/antara_dessai.jpg",
+      "newUrl": "[dry-run]",
+      "size": 206487
+    },
+    {
+      "employeeCode": "FAC012",
+      "oldUrl": "images/Faculty/CSE/mohd_jahangeer_pasha.jpg",
+      "newUrl": "[dry-run]",
+      "size": 110830
+    },
+    {
+      "employeeCode": "FAC013",
+      "oldUrl": "images/Faculty/ECE/t_veerakumar.jpg",
+      "newUrl": "[dry-run]",
+      "size": 916639
+    },
+    {
+      "employeeCode": "FAC014",
+      "oldUrl": "images/Faculty/ECE/vasantha_mh.jpg",
+      "newUrl": "[dry-run]",
+      "size": 48307
+    },
+    {
+      "employeeCode": "FAC015",
+      "oldUrl": "images/Faculty/ECE/anirban_chatterjee.jpg",
+      "newUrl": "[dry-run]",
+      "size": 148960
+    },
+    {
+      "employeeCode": "FAC016",
+      "oldUrl": "images/Faculty/ECE/nithin_kumar_yb.jpg",
+      "newUrl": "[dry-run]",
+      "size": 339991
+    },
+    {
+      "employeeCode": "FAC017",
+      "oldUrl": "images/Faculty/ECE/trilochan_panigrahi.jpg",
+      "newUrl": "[dry-run]",
+      "size": 56493
+    },
+    {
+      "employeeCode": "FAC018",
+      "oldUrl": "images/Faculty/ECE/shivnarayan_patidar.jpg",
+      "newUrl": "[dry-run]",
+      "size": 229801
+    },
+    {
+      "employeeCode": "FAC019",
+      "oldUrl": "images/Faculty/ECE/prashanth_gr.jpg",
+      "newUrl": "[dry-run]",
+      "size": 27742
+    },
+    {
+      "employeeCode": "FAC020",
+      "oldUrl": "images/Faculty/ECE/lalat_indu_giri.jpg",
+      "newUrl": "[dry-run]",
+      "size": 191968
+    },
+    {
+      "employeeCode": "FAC021",
+      "oldUrl": "images/Faculty/ECE/pragati_patel.jpg",
+      "newUrl": "[dry-run]",
+      "size": 707682
+    },
+    {
+      "employeeCode": "FAC022",
+      "oldUrl": "images/Faculty/ECE/mallikarjun_erramshetty.jpg",
+      "newUrl": "[dry-run]",
+      "size": 51763
+    },
+    {
+      "employeeCode": "FAC023",
+      "oldUrl": "images/Faculty/ECE/lokesh_kumar_bramhane.jpg",
+      "newUrl": "[dry-run]",
+      "size": 48887
+    },
+    {
+      "employeeCode": "FAC025",
+      "oldUrl": "images/Faculty/EEE/suresh_mikkili.jpg",
+      "newUrl": "[dry-run]",
+      "size": 53976
+    },
+    {
+      "employeeCode": "FAC026",
+      "oldUrl": "images/Faculty/EEE/sreeraj_e_s.jpg",
+      "newUrl": "[dry-run]",
+      "size": 109138
+    },
+    {
+      "employeeCode": "FAC027",
+      "oldUrl": "images/Faculty/EEE/amol_d_rahulkar.jpg",
+      "newUrl": "[dry-run]",
+      "size": 43479
+    },
+    {
+      "employeeCode": "FAC028",
+      "oldUrl": "images/Faculty/EEE/cvyjayanthi.jpg",
+      "newUrl": "[dry-run]",
+      "size": 265100
+    },
+    {
+      "employeeCode": "FAC029",
+      "oldUrl": "images/Faculty/EEE/soumitra_das.jpg",
+      "newUrl": "[dry-run]",
+      "size": 869235
+    },
+    {
+      "employeeCode": "FAC030",
+      "oldUrl": "images/Faculty/EEE/anudevi_samuel.jpg",
+      "newUrl": "[dry-run]",
+      "size": 32196
+    },
+    {
+      "employeeCode": "FAC031",
+      "oldUrl": "images/Faculty/EEE/ankeshwarapu_sunil.jpg",
+      "newUrl": "[dry-run]",
+      "size": 41854
+    },
+    {
+      "employeeCode": "FAC032",
+      "oldUrl": "images/Faculty/EEE/shefali_painuli.jpg",
+      "newUrl": "[dry-run]",
+      "size": 272211
+    },
+    {
+      "employeeCode": "FAC033",
+      "oldUrl": "images/Faculty/EEE/goutam_goswami.jpg",
+      "newUrl": "[dry-run]",
+      "size": 130379
+    },
+    {
+      "employeeCode": "FAC034",
+      "oldUrl": "images/Faculty/EEE/amritansh_sagar.jpg",
+      "newUrl": "[dry-run]",
+      "size": 45267
+    },
+    {
+      "employeeCode": "FAC035",
+      "oldUrl": "images/Faculty/EEE/sandeep_chawrasia.jpg",
+      "newUrl": "[dry-run]",
+      "size": 95737
+    },
+    {
+      "employeeCode": "FAC036",
+      "oldUrl": "images/Faculty/EEE/mahi_teja_talluri.jpg",
+      "newUrl": "[dry-run]",
+      "size": 40720
+    },
+    {
+      "employeeCode": "FAC037",
+      "oldUrl": "images/Faculty/MCE/prasenjit_dey.jpg",
+      "newUrl": "[dry-run]",
+      "size": 161214
+    },
+    {
+      "employeeCode": "FAC038",
+      "oldUrl": "images/Faculty/MCE/b_santhi.jpg",
+      "newUrl": "[dry-run]",
+      "size": 37465
+    },
+    {
+      "employeeCode": "FAC039",
+      "oldUrl": "images/Faculty/MCE/abhijit_sarkar.jpg",
+      "newUrl": "[dry-run]",
+      "size": 12589
+    },
+    {
+      "employeeCode": "FAC040",
+      "oldUrl": "images/Faculty/MCE/gaurang_ruhela.jpg",
+      "newUrl": "[dry-run]",
+      "size": 38684
+    },
+    {
+      "employeeCode": "FAC042",
+      "oldUrl": "images/Faculty/MCE/pravin_anandrao_pawar.jpg",
+      "newUrl": "[dry-run]",
+      "size": 60486
+    },
+    {
+      "employeeCode": "FAC043",
+      "oldUrl": "images/Faculty/MCE/animesh_chatterjee.jpg",
+      "newUrl": "[dry-run]",
+      "size": 83747
+    },
+    {
+      "employeeCode": "FAC044",
+      "oldUrl": "images/Faculty/MCE/nadimetla_thirupathi.jpg",
+      "newUrl": "[dry-run]",
+      "size": 34278
+    },
+    {
+      "employeeCode": "FAC045",
+      "oldUrl": "images/Faculty/MCE/hiru_purushothaman_hirudayanathan.jpg",
+      "newUrl": "[dry-run]",
+      "size": 68444
+    },
+    {
+      "employeeCode": "FAC046",
+      "oldUrl": "images/Faculty/MCE/samar_singhal.jpg",
+      "newUrl": "[dry-run]",
+      "size": 30837
+    },
+    {
+      "employeeCode": "FAC047",
+      "oldUrl": "images/Faculty/MCE/chaitanya_vundru.jpg",
+      "newUrl": "[dry-run]",
+      "size": 175396
+    },
+    {
+      "employeeCode": "FAC048",
+      "oldUrl": "images/Faculty/CVE/harikumar_m.jpg",
+      "newUrl": "[dry-run]",
+      "size": 2284760
+    },
+    {
+      "employeeCode": "FAC049",
+      "oldUrl": "images/Faculty/CVE/o_r_jaiswal.jpg",
+      "newUrl": "[dry-run]",
+      "size": 209181
+    },
+    {
+      "employeeCode": "FAC050",
+      "oldUrl": "images/Faculty/CVE/saurabh_upadhyay.jpg",
+      "newUrl": "[dry-run]",
+      "size": 606712
+    },
+    {
+      "employeeCode": "FAC051",
+      "oldUrl": "images/Faculty/CVE/ranendra_nath_bhowmik.jpg",
+      "newUrl": "[dry-run]",
+      "size": 33979
+    },
+    {
+      "employeeCode": "FAC052",
+      "oldUrl": "images/Faculty/CVE/bapi_mondal.jpg",
+      "newUrl": "[dry-run]",
+      "size": 69542
+    },
+    {
+      "employeeCode": "FAC053",
+      "oldUrl": "images/Faculty/CVE/vinamra_mishra.jpg",
+      "newUrl": "[dry-run]",
+      "size": 342289
+    },
+    {
+      "employeeCode": "FAC054",
+      "oldUrl": "images/Faculty/CVE/sathishraj_mani.jpg",
+      "newUrl": "[dry-run]",
+      "size": 32957
+    },
+    {
+      "employeeCode": "FAC055",
+      "oldUrl": "images/Faculty/CVE/duduku_saidulu.jpg",
+      "newUrl": "[dry-run]",
+      "size": 878676
+    },
+    {
+      "employeeCode": "FAC056",
+      "oldUrl": "images/Faculty/CVE/guntakala_venkatanaga_chandra.jpg",
+      "newUrl": "[dry-run]",
+      "size": 94115
+    },
+    {
+      "employeeCode": "FAC057",
+      "oldUrl": "images/Faculty/CVE/kandalai_srikanth.jpg",
+      "newUrl": "[dry-run]",
+      "size": 114673
+    },
+    {
+      "employeeCode": "FAC058",
+      "oldUrl": "images/Faculty/CVE/gaurav_patel.jpg",
+      "newUrl": "[dry-run]",
+      "size": 355314
+    },
+    {
+      "employeeCode": "FAC059",
+      "oldUrl": "images/Faculty/APS/l_shangerganesh.jpg",
+      "newUrl": "[dry-run]",
+      "size": 177843
+    },
+    {
+      "employeeCode": "FAC060",
+      "oldUrl": "images/Faculty/APS/saidi_reddy_parne.jpg",
+      "newUrl": "[dry-run]",
+      "size": 115156
+    },
+    {
+      "employeeCode": "FAC061",
+      "oldUrl": "images/Faculty/APS/velavan_kathirvelu.jpg",
+      "newUrl": "[dry-run]",
+      "size": 236642
+    },
+    {
+      "employeeCode": "FAC062",
+      "oldUrl": "images/Faculty/APS/ragoju_ravi.jpg",
+      "newUrl": "[dry-run]",
+      "size": 52647
+    },
+    {
+      "employeeCode": "FAC063",
+      "oldUrl": "images/Faculty/APS/ravi_prasad_k_j.jpg",
+      "newUrl": "[dry-run]",
+      "size": 46050
+    },
+    {
+      "employeeCode": "FAC064",
+      "oldUrl": "images/Faculty/APS/gundlapally_shiva_kumar_reddy.jpg",
+      "newUrl": "[dry-run]",
+      "size": 37763
+    },
+    {
+      "employeeCode": "FAC065",
+      "oldUrl": "images/Faculty/APS/lasitha_p.jpg",
+      "newUrl": "[dry-run]",
+      "size": 241954
+    },
+    {
+      "employeeCode": "FAC066",
+      "oldUrl": "images/Faculty/HSS/sarani_ghosal_mondal.jpg",
+      "newUrl": "[dry-run]",
+      "size": 247267
+    },
+    {
+      "employeeCode": "FAC067",
+      "oldUrl": "images/Faculty/HSS/sunil_kumar.jpg",
+      "newUrl": "[dry-run]",
+      "size": 66035
+    },
+    {
+      "employeeCode": "FAC068",
+      "oldUrl": "images/Faculty/HSS/unais_kt.jpg",
+      "newUrl": "[dry-run]",
+      "size": 152092
+    },
+    {
+      "employeeCode": "FAC070",
+      "oldUrl": "images/Faculty/CSE/mrutyunjay_kumar_rao.jpg",
+      "newUrl": "[dry-run]",
+      "size": 71246
+    },
+    {
+      "employeeCode": "FAC071",
+      "oldUrl": "images/Faculty/CSE/debojyoti_bhattacharya.jpg",
+      "newUrl": "[dry-run]",
+      "size": 54665
+    },
+    {
+      "employeeCode": "FAC072",
+      "oldUrl": "images/Faculty/CSE/nikhil_gajbhiye.jpeg",
+      "newUrl": "[dry-run]",
+      "size": 453050
+    },
+    {
+      "employeeCode": "ADMIN001",
+      "oldUrl": "images/Administrative Staff/amit_kabiraj.jpg",
+      "newUrl": "[dry-run]",
+      "size": 4430
+    },
+    {
+      "employeeCode": "ADMIN002",
+      "oldUrl": "images/Administrative Staff/manmohan_sakhuja.jpg",
+      "newUrl": "[dry-run]",
+      "size": 904869
+    },
+    {
+      "employeeCode": "ADMIN003",
+      "oldUrl": "images/Administrative Staff/digamber_mayekar.jpg",
+      "newUrl": "[dry-run]",
+      "size": 18252
+    },
+    {
+      "employeeCode": "ADMIN004",
+      "oldUrl": "images/Administrative Staff/amit_naik.jpg",
+      "newUrl": "[dry-run]",
+      "size": 5982
+    },
+    {
+      "employeeCode": "ADMIN005",
+      "oldUrl": "images/Administrative Staff/anand_gachchinamath.jpg",
+      "newUrl": "[dry-run]",
+      "size": 858415
+    },
+    {
+      "employeeCode": "ADMIN006",
+      "oldUrl": "images/Administrative Staff/s_kumaraguru.jpg",
+      "newUrl": "[dry-run]",
+      "size": 75827
+    },
+    {
+      "employeeCode": "ADMIN007",
+      "oldUrl": "images/Administrative Staff/shewale_madhukar.jpg",
+      "newUrl": "[dry-run]",
+      "size": 473400
+    },
+    {
+      "employeeCode": "ADMIN008",
+      "oldUrl": "images/Administrative Staff/reshma_castelino.jpg",
+      "newUrl": "[dry-run]",
+      "size": 115951
+    },
+    {
+      "employeeCode": "ADMIN009",
+      "oldUrl": "images/Administrative Staff/lotliker_sarvesh.jpg",
+      "newUrl": "[dry-run]",
+      "size": 12581
+    },
+    {
+      "employeeCode": "ADMIN010",
+      "oldUrl": "images/Administrative Staff/sweta_jadhav.jpg",
+      "newUrl": "[dry-run]",
+      "size": 8100
+    },
+    {
+      "employeeCode": "ADMIN011",
+      "oldUrl": "images/Administrative Staff/namrata_sawant.jpg",
+      "newUrl": "[dry-run]",
+      "size": 113128
+    },
+    {
+      "employeeCode": "ADMIN012",
+      "oldUrl": "images/Administrative Staff/karthikeyan_m.jpg",
+      "newUrl": "[dry-run]",
+      "size": 18724
+    },
+    {
+      "employeeCode": "ADMIN013",
+      "oldUrl": "images/Administrative Staff/tallulah_rodrigues.jpg",
+      "newUrl": "[dry-run]",
+      "size": 1900422
+    },
+    {
+      "employeeCode": "ADMIN014",
+      "oldUrl": "images/Administrative Staff/sandeep_jaishwar.jpg",
+      "newUrl": "[dry-run]",
+      "size": 173114
+    },
+    {
+      "employeeCode": "ADMIN015",
+      "oldUrl": "images/Administrative Staff/supriya_tilve.jpg",
+      "newUrl": "[dry-run]",
+      "size": 2748192
+    },
+    {
+      "employeeCode": "ADMIN016",
+      "oldUrl": "images/Administrative Staff/teju_shaikh.jpg",
+      "newUrl": "[dry-run]",
+      "size": 788376
+    },
+    {
+      "employeeCode": "ADMIN017",
+      "oldUrl": "images/Administrative Staff/pritam_Nageshkar.jpg",
+      "newUrl": "[dry-run]",
+      "size": 20024
+    },
+    {
+      "employeeCode": "ADMIN018",
+      "oldUrl": "images/Administrative Staff/dipti_gaude.jpg",
+      "newUrl": "[dry-run]",
+      "size": 18722
+    },
+    {
+      "employeeCode": "ADMIN019",
+      "oldUrl": "images/Administrative Staff/asmita_naik.jpg",
+      "newUrl": "[dry-run]",
+      "size": 81607
+    },
+    {
+      "employeeCode": "ADMIN020",
+      "oldUrl": "images/Administrative Staff/vinay_acharya.jpg",
+      "newUrl": "[dry-run]",
+      "size": 181039
+    },
+    {
+      "employeeCode": "ADMIN021",
+      "oldUrl": "images/Administrative Staff/kishor_paryekar.jpg",
+      "newUrl": "[dry-run]",
+      "size": 965756
+    },
+    {
+      "employeeCode": "ADMIN022",
+      "oldUrl": "images/Administrative Staff/atul_milind.jpg",
+      "newUrl": "[dry-run]",
+      "size": 71049
+    },
+    {
+      "employeeCode": "ADMIN023",
+      "oldUrl": "images/Administrative Staff/Suneel_Mudhole.jpg",
+      "newUrl": "[dry-run]",
+      "size": 2057
+    },
+    {
+      "employeeCode": "ADMIN024",
+      "oldUrl": "images/Administrative Staff/archana_misal.jpg",
+      "newUrl": "[dry-run]",
+      "size": 791700
+    },
+    {
+      "employeeCode": "ADMIN025",
+      "oldUrl": "images/Administrative Staff/sai_manoj.jpg",
+      "newUrl": "[dry-run]",
+      "size": 150248
+    },
+    {
+      "employeeCode": "TECH001",
+      "oldUrl": "images/Technical Staff/CSE/Sudharsan.png",
+      "newUrl": "[dry-run]",
+      "size": 78320
+    },
+    {
+      "employeeCode": "TECH002",
+      "oldUrl": "images/Technical Staff/CSE/srinath_lib.jpeg",
+      "newUrl": "[dry-run]",
+      "size": 581626
+    },
+    {
+      "employeeCode": "TECH003",
+      "oldUrl": "images/Technical Staff/CSE/Santosh.png",
+      "newUrl": "[dry-run]",
+      "size": 743345
+    },
+    {
+      "employeeCode": "TECH004",
+      "oldUrl": "images/Technical Staff/ECE/pradhan.jpg",
+      "newUrl": "[dry-run]",
+      "size": 37918
+    },
+    {
+      "employeeCode": "TECH005",
+      "oldUrl": "images/Technical Staff/ECE/Ram.png",
+      "newUrl": "[dry-run]",
+      "size": 82239
+    },
+    {
+      "employeeCode": "TECH006",
+      "oldUrl": "images/Technical Staff/ECE/Nikhil.png",
+      "newUrl": "[dry-run]",
+      "size": 491459
+    },
+    {
+      "employeeCode": "TECH007",
+      "oldUrl": "images/Technical Staff/EEE/Pinaki.png",
+      "newUrl": "[dry-run]",
+      "size": 56218
+    },
+    {
+      "employeeCode": "TECH008",
+      "oldUrl": "images/Technical Staff/EEE/Digambar1.png",
+      "newUrl": "[dry-run]",
+      "size": 114270
+    },
+    {
+      "employeeCode": "TECH009",
+      "oldUrl": "images/Technical Staff/EEE/Rohit.png",
+      "newUrl": "[dry-run]",
+      "size": 110286
+    },
+    {
+      "employeeCode": "TECH010",
+      "oldUrl": "images/Technical Staff/EEE/arjun_singh1.jpg",
+      "newUrl": "[dry-run]",
+      "size": 24832
+    },
+    {
+      "employeeCode": "TECH011",
+      "oldUrl": "images/Technical Staff/EEE/koushik_eee.jpeg",
+      "newUrl": "[dry-run]",
+      "size": 24239
+    },
+    {
+      "employeeCode": "TECH012",
+      "oldUrl": "images/Technical Staff/MCE/vijeesh_mce.jpg",
+      "newUrl": "[dry-run]",
+      "size": 5288498
+    },
+    {
+      "employeeCode": "TECH013",
+      "oldUrl": "images/Technical Staff/CVE/rajkumar_aps.jpeg",
+      "newUrl": "[dry-run]",
+      "size": 744794
+    },
+    {
+      "employeeCode": "TECH014",
+      "oldUrl": "images/Technical Staff/APS & HSS/Priyanka.png",
+      "newUrl": "[dry-run]",
+      "size": 136160
+    },
+    {
+      "employeeCode": "TECH015",
+      "oldUrl": "images/Technical Staff/CCC/Venkat.png",
+      "newUrl": "[dry-run]",
+      "size": 58371
+    },
+    {
+      "employeeCode": "TECH016",
+      "oldUrl": "images/Technical Staff/CCC/Rameez.png",
+      "newUrl": "[dry-run]",
+      "size": 71913
+    },
+    {
+      "employeeCode": "TECH017",
+      "oldUrl": "images/Technical Staff/CCC/Nijin.png",
+      "newUrl": "[dry-run]",
+      "size": 126513
+    }
+  ],
+  "failed": [],
+  "skipped": [],
+  "alreadyMigrated": []
+}
