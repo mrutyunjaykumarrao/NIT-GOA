@@ -1,7 +1,6 @@
 const express = require('express');
-const { upload, moveImageToPublic } = require('../../middleware/fileUpload');
+const { upload, uploadImageToSupabase, uploadToPending, archiveImageInSupabase } = require('../../middleware/fileUpload');
 const path = require('path');
-const fs = require('fs');
 const {
   executeQuery,
   authenticateToken,
@@ -200,22 +199,20 @@ router.put('/:employeeCode/profile/image', authenticateToken, checkEditPermissio
     if (userRole === 'Admin') {
       let finalImageUrl = null;
 
-      // Move old image to deleted
-      if (oldImage) {
-        const oldImagePath = path.join(__dirname, '../../../../client/public', oldImage);
-        try {
-          const deletedDir = path.join(__dirname, '../../../uploads/deleted');
-          await fs.promises.mkdir(deletedDir, { recursive: true });
-          const deletedPath = path.join(deletedDir, `admin_replace_${Date.now()}_${path.basename(oldImage)}`);
-          await fs.promises.rename(oldImagePath, deletedPath);
-        } catch (error) {
-          console.log('Old image not found or already moved:', oldImage);
-        }
+      // Archive old image to deleted folder in Supabase
+      if (oldImage && oldImage.startsWith('https://')) {
+        await archiveImageInSupabase(oldImage);
       }
 
       if (req.file && !isRemoveImage) {
-        // Use moveImageToPublic to move from temp dir to public directory
-        finalImageUrl = await moveImageToPublic(req.file.path, full_name, role || 'Faculty', department_code);
+        // Upload new image directly to Supabase
+        finalImageUrl = await uploadImageToSupabase(
+          req.file.buffer, 
+          full_name, 
+          role || 'Faculty', 
+          department_code,
+          req.file.originalname
+        );
       }
 
       // Update image URL in database (will be NULL if removed)
@@ -232,8 +229,13 @@ router.put('/:employeeCode/profile/image', authenticateToken, checkEditPermissio
 
     } else {
       // User is non-admin Faculty -> Route to Pending Approvals!
-      const requestedValue = req.file && !isRemoveImage ? req.file.filename : null;
-      const tempFilePath = req.file && !isRemoveImage ? req.file.path : null;
+      let pendingImageUrl = null;
+      
+      if (req.file && !isRemoveImage) {
+        // Upload to Supabase pending folder immediately
+        pendingImageUrl = await uploadToPending(req.file.buffer, req.file.originalname);
+      }
+      
       const actionType = isRemoveImage ? 'DELETE' : 'UPDATE';
 
       // Check if there is already a pending image approval to replace 
@@ -255,8 +257,8 @@ router.put('/:employeeCode/profile/image', authenticateToken, checkEditPermissio
         `, [
           actionType,
           oldImage,
-          requestedValue,
-          tempFilePath,
+          pendingImageUrl,
+          pendingImageUrl,
           existingApproval[0].approval_id
         ]);
       } else {
@@ -268,8 +270,8 @@ router.put('/:employeeCode/profile/image', authenticateToken, checkEditPermissio
           employeeCode,
           actionType,
           oldImage,
-          requestedValue,
-          tempFilePath,
+          pendingImageUrl,
+          pendingImageUrl,
           employeeCode
         ]);
       }

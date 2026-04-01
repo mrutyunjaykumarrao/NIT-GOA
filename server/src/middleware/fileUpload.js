@@ -1,31 +1,9 @@
 const multer = require('multer');
 const path = require('path');
-const fs = require('fs').promises;
-const { v4: uuidv4 } = require('uuid');
+const { uploadToSupabase, archiveImageInSupabase } = require('../utils/storageHelper');
 
-// Ensure upload directories exist
-const ensureDir = async (dirPath) => {
-  try {
-    await fs.access(dirPath);
-  } catch {
-    await fs.mkdir(dirPath, { recursive: true });
-  }
-};
-
-// Configure multer for image uploads
-const storage = multer.diskStorage({
-  destination: async (req, file, cb) => {
-    // Create temporary upload directory for pending approvals
-    const tempDir = path.join(__dirname, '../../uploads/temp');
-    await ensureDir(tempDir);
-    cb(null, tempDir);
-  },
-  filename: (req, file, cb) => {
-    // Generate unique filename
-    const uniqueName = `${uuidv4()}-${Date.now()}${path.extname(file.originalname)}`;
-    cb(null, uniqueName);
-  }
-});
+// Configure multer for memory storage (no disk writes)
+const storage = multer.memoryStorage();
 
 // File filter for images only
 const fileFilter = (req, file, cb) => {
@@ -48,71 +26,53 @@ const upload = multer({
   }
 });
 
-// Helper function to move approved images to public directory
-const moveImageToPublic = async (tempPath, nameSlugOrCode, role, departmentCode = null) => {
-  const publicDir = path.join(__dirname, '../../../client/public/images');
-  const roleDir = role === 'Faculty' ? 'Faculty' : 
-                  role === 'Technical' ? 'Technical Staff' : 
-                  'Administrative Staff';
-  
-  let finalDir;
-  if (role === 'Faculty' && departmentCode) {
-    finalDir = path.join(publicDir, roleDir, departmentCode);
-  } else {
-    finalDir = path.join(publicDir, roleDir);
-  }
-  
-  await ensureDir(finalDir);
+/**
+ * Upload image directly to Supabase Storage (for admin uploads)
+ * @param {Buffer} fileBuffer - File data from multer (req.file.buffer)
+ * @param {string} nameSlugOrCode - Filename slug or employee code
+ * @param {string} role - 'Faculty', 'Technical', or 'Administrative'
+ * @param {string} departmentCode - Department code for faculty (optional)
+ * @param {string} originalFilename - Original filename for extension
+ * @returns {Promise<string>} - Full Supabase public URL
+ */
+const uploadImageToSupabase = async (fileBuffer, nameSlugOrCode, role, departmentCode = null, originalFilename = '') => {
+  const roleFolder = role === 'Faculty' ? 'faculty' : 'staff';
+  const staffSubFolder = role === 'Technical' ? 'technical' : 'administrative';
   
   const cleanName = nameSlugOrCode.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '');
-  const filename = `${cleanName}${path.extname(tempPath)}`;
-  const finalPath = path.join(finalDir, filename);
+  const extension = path.extname(originalFilename) || '.jpg';
+  const filename = `${cleanName}${extension}`;
   
-  // Move file from temp to public
-  await fs.rename(tempPath, finalPath);
-  
-  // Return the public URL
+  let destinationPath;
   if (role === 'Faculty' && departmentCode) {
-    return `images/${roleDir}/${departmentCode}/${filename}`;
+    destinationPath = `${roleFolder}/${departmentCode}/${filename}`;
+  } else {
+    destinationPath = `${roleFolder}/${staffSubFolder}/${filename}`;
   }
-  return `images/${roleDir}/${filename}`;
+  
+  const publicUrl = await uploadToSupabase(fileBuffer, destinationPath);
+  return publicUrl;
 };
 
-// Helper function to move rejected images to deleted directory
-const moveImageToDeleted = async (tempPath) => {
-  const deletedDir = path.join(__dirname, '../../uploads/deleted');
-  await ensureDir(deletedDir);
+/**
+ * Upload image to pending folder in Supabase (for faculty self-uploads awaiting approval)
+ * @param {Buffer} fileBuffer - File data from multer
+ * @param {string} originalFilename - Original filename for extension
+ * @returns {Promise<string>} - Full Supabase public URL in pending folder
+ */
+const uploadToPending = async (fileBuffer, originalFilename = '') => {
+  const timestamp = Date.now();
+  const extension = path.extname(originalFilename) || '.jpg';
+  const filename = `pending_${timestamp}${extension}`;
+  const destinationPath = `pending/${filename}`;
   
-  const filename = path.basename(tempPath);
-  const deletedPath = path.join(deletedDir, filename);
-  
-  await fs.rename(tempPath, deletedPath);
-};
-
-// Helper function to move old images to archive
-const archiveOldImage = async (oldImagePath) => {
-  if (!oldImagePath) return;
-  
-  const archiveDir = path.join(__dirname, '../../uploads/archived');
-  await ensureDir(archiveDir);
-  
-  // oldImagePath should be like images/Faculty/...
-  const oldFullPath = path.join(__dirname, '../../../client/public', oldImagePath);
-  const filename = `archived-${Date.now()}-${path.basename(oldImagePath)}`;
-  const archivePath = path.join(archiveDir, filename);
-  
-  try {
-    await fs.access(oldFullPath);
-    await fs.rename(oldFullPath, archivePath);
-  } catch (error) {
-    console.log('Old image not found or already moved:', oldImagePath);
-  }
+  const publicUrl = await uploadToSupabase(fileBuffer, destinationPath);
+  return publicUrl;
 };
 
 module.exports = {
   upload,
-  moveImageToPublic,
-  moveImageToDeleted,
-  archiveOldImage,
-  ensureDir
+  uploadImageToSupabase,
+  uploadToPending,
+  archiveImageInSupabase
 };

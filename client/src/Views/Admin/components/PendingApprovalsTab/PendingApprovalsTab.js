@@ -292,7 +292,7 @@ const PendingApprovalsTab = () => {
                     </div>
                   ) : (
                     <img 
-                      src={`/api/admin/temp-image/${selectedApproval.requested_image_url || selectedApproval.requested_value}`}
+                      src={selectedApproval.temp_file_path || selectedApproval.requested_image_url || selectedApproval.requested_value}
                       alt="New" 
                       className="pendingApproval-preview-image"
                       onError={(e) => {

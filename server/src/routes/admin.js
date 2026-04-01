@@ -1,11 +1,11 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
-const fs = require('fs').promises;
 const path = require('path');
 const { pool } = require('../config/database');
 const { authenticateToken, requireAdmin } = require('../middleware/auth');
 const emailService = require('../utils/emailService');
-const { upload, moveImageToPublic } = require('../middleware/fileUpload');
+const { upload, uploadImageToSupabase, archiveImageInSupabase } = require('../middleware/fileUpload');
+const { moveInSupabase, deleteFromSupabase, extractPathFromUrl } = require('../utils/storageHelper');
 
 const router = express.Router();
 
@@ -35,33 +35,6 @@ async function withTransaction(callback) {
     connection.release();
   }
 }
-
-// GET /api/admin/temp-image/:filename - Serve temporary images for preview (Must be before auth middleware for <img> tags)
-router.get('/temp-image/:filename', async (req, res) => {
-  try {
-    const filename = req.params.filename;
-    // Do not allow directory traversal
-    if (filename.includes('..') || filename.includes('/')) {
-      return res.status(400).json({ error: 'Invalid filename' });
-    }
-    // Handle 'REMOVE' specifically
-    if (filename === 'REMOVE') {
-      return res.status(404).json({ error: 'Image is marked for removal' });
-    }
-    
-    // Support file paths if that's what was saved
-    const resolvedFilename = require('path').basename(filename);
-    const tempPath = require('path').join(__dirname, '../../uploads/temp', resolvedFilename);
-    const fs = require('fs');
-    if (!fs.existsSync(tempPath)) {
-      return res.status(404).json({ error: 'Temporary image not found' });
-    }
-    res.sendFile(tempPath);
-  } catch (error) {
-    console.error('Error serving temp image:', error);
-    res.status(500).json({ error: 'Failed to serve image' });
-  }
-});
 
 // All admin routes require authentication and admin role
 router.use(authenticateToken);
@@ -180,9 +153,6 @@ router.put('/pending-approvals/:id/approve', async (req, res) => {
     const approval = pendingResult[0];
 
     if (approval.approval_type === 'profile_image') {
-      const fs = require('fs').promises;
-      const path = require('path');
-      
       const { action_type, requested_value, temp_file_path, current_value, employee_code } = approval;
       const isDelete = action_type === 'DELETE' || requested_value === 'REMOVE';
       
@@ -201,29 +171,35 @@ router.put('/pending-approvals/:id/approve', async (req, res) => {
 
       const employee = employeeResult[0];
       
-      // Move old image to deleted directory if exists
-      if (current_value) {
-        const oldImagePath = path.join(__dirname, '../../../client/public', current_value);
-        const deletedDir = path.join(__dirname, '../../uploads/deleted');
-        await fs.mkdir(deletedDir, { recursive: true });
-        
-        try {
-          const deletedPath = path.join(deletedDir, `approved_replace_${Date.now()}_${path.basename(current_value)}`);
-          await fs.rename(oldImagePath, deletedPath);
-          console.log('Old image moved to deleted:', deletedPath);
-        } catch (error) {
-          console.log('Old image not found or already moved:', oldImagePath);
-        }
+      // Archive old image to deleted folder in Supabase if exists
+      if (current_value && current_value.startsWith('https://')) {
+        await archiveImageInSupabase(current_value);
+        console.log('Old image archived in Supabase deleted/ folder');
       }
 
       let newImageUrl = null;
-      if (!isDelete && temp_file_path) {
-        // Move new image from temp to final location
+      if (!isDelete && temp_file_path && temp_file_path.startsWith('https://')) {
+        // Move new image from pending/ to final location (faculty/ or staff/)
         try {
-          newImageUrl = await moveImageToPublic(temp_file_path, employee.full_name, employee.role, employee.department_code);
-          console.log('New image moved to:', newImageUrl);
+          const pendingPath = extractPathFromUrl(temp_file_path);
+          const roleFolder = employee.role === 'Faculty' ? 'faculty' : 'staff';
+          const staffSubFolder = employee.role === 'Technical' ? 'technical' : 'administrative';
+          
+          const cleanName = employee.full_name.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '');
+          const extension = path.extname(pendingPath) || '.jpg';
+          const filename = `${cleanName}${extension}`;
+          
+          let finalPath;
+          if (employee.role === 'Faculty' && employee.department_code) {
+            finalPath = `${roleFolder}/${employee.department_code}/${filename}`;
+          } else {
+            finalPath = `${roleFolder}/${staffSubFolder}/${filename}`;
+          }
+          
+          newImageUrl = await moveInSupabase(pendingPath, finalPath);
+          console.log('New image moved from pending to:', newImageUrl);
         } catch (error) {
-          console.error('Failed to move temp image:', error);
+          console.error('Failed to move image from pending:', error);
           return res.status(500).json({ error: 'Failed to move image file' });
         }
       }
@@ -233,7 +209,7 @@ router.put('/pending-approvals/:id/approve', async (req, res) => {
       await executeQuery(`
         UPDATE ${tableName}
         SET image_url = $1
-        WHERE employee_code = $1
+        WHERE employee_code = $2
       `, [newImageUrl, employee_code]);
 
       console.log('Database updated with new image URL:', newImageUrl);
@@ -276,16 +252,14 @@ router.put('/pending-approvals/:id/reject', async (req, res) => {
 
     const approval = pendingResult[0];
 
-    // Move temp file to deleted directory
-    if (approval.temp_file_path) {
-      const deletedDir = path.join(__dirname, '../../uploads/deleted');
-      await fs.mkdir(deletedDir, { recursive: true });
-      
+    // Delete temp file from pending folder in Supabase
+    if (approval.temp_file_path && approval.temp_file_path.startsWith('https://')) {
       try {
-        const deletedPath = path.join(deletedDir, `rejected_${Date.now()}_${path.basename(approval.temp_file_path)}`);
-        await fs.rename(approval.temp_file_path, deletedPath);
+        const pendingPath = extractPathFromUrl(approval.temp_file_path);
+        await deleteFromSupabase(pendingPath);
+        console.log('Pending image deleted from Supabase:', pendingPath);
       } catch (error) {
-        console.log('Temp file not found:', approval.temp_file_path);
+        console.log('Failed to delete pending image:', error.message);
       }
     }
 
@@ -416,7 +390,13 @@ router.post('/faculty', upload.single('profile_image'), async (req, res) => {
         let image_url = null;
         if (req.file) {
           try {
-            image_url = await moveImageToPublic(req.file.path, full_name, 'Faculty', department_code);
+            image_url = await uploadImageToSupabase(
+              req.file.buffer, 
+              full_name, 
+              'Faculty', 
+              department_code,
+              req.file.originalname
+            );
           } catch (imgError) {
             console.error("Failed to process image upload:", imgError);
           }
