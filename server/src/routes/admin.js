@@ -618,38 +618,6 @@ router.get('/website-analytics', async (req, res) => {
 // USER ACCOUNTS MANAGEMENT
 // ======================
 
-// Create new user account
-router.post('/users', async (req, res) => {
-  try {
-    const { username, password, access_level, employee_code, is_active = true } = req.body;
-    
-    if (!username || !password || !access_level) {
-      return res.status(400).json({ error: 'Username, password, and access level are required' });
-    }
-
-    // Hash password
-    const password_hash = await bcrypt.hash(password, 10);
-    
-    const result = await executeQuery(`
-      INSERT INTO user_accounts (username, password_hash, access_level, is_active)
-      VALUES ($1, $2, $3, $4)
-      RETURNING user_id
-    `, [username, password_hash, access_level, is_active]);
-    
-    res.status(201).json({ 
-      id: result[0][0].user_id, 
-      message: 'User created successfully'
-    });
-  } catch (error) {
-    console.error('Create user error:', error);
-    if (error.code === 'ER_DUP_ENTRY') {
-      res.status(409).json({ error: 'Username already exists' });
-    } else {
-      res.status(500).json({ error: 'Internal server error' });
-    }
-  }
-});
-
 // Update user account
 router.put('/users/:id', async (req, res) => {
   try {
@@ -725,26 +693,12 @@ router.post('/users', authenticateToken, requireAdmin, async (req, res) => {
       return res.status(400).json({ error: 'Username, password, and access level are required' });
     }
 
-    // Check if username already exists
-    const [existingUsers] = await executeQuery('SELECT username FROM user_accounts WHERE username = $1', [username]);
-    if (existingUsers.length > 0) {
-      return res.status(409).json({ error: 'Username already exists' });
-    }
-
-    // Check if email already exists (if provided)
-    if (email) {
-      const [existingEmails] = await executeQuery('SELECT email FROM user_accounts WHERE email = $1', [email]);
-      if (existingEmails.length > 0) {
-        return res.status(409).json({ error: 'Email already exists' });
-      }
-    }
-
     // Hash password
     const bcrypt = require('bcrypt');
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Insert new user
-    const [result] = await executeQuery(`
+    // Insert new user (database unique constraints will prevent duplicates)
+    const [rows] = await executeQuery(`
       INSERT INTO user_accounts (username, email, password_hash, access_level, is_active, created_at, updated_at)
       VALUES ($1, $2, $3, $4, $5, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
       RETURNING user_id
@@ -752,11 +706,15 @@ router.post('/users', authenticateToken, requireAdmin, async (req, res) => {
 
     res.status(201).json({ 
       message: 'User created successfully',
-      user_id: result[0].user_id
+      user_id: rows[0].user_id
     });
   } catch (error) {
-    console.error('Create user error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error('Create user ERROR:', error);
+    if (error.code === '23505') { // PostgreSQL unique violation
+      res.status(409).json({ error: 'Username or email already exists' });
+    } else {
+      res.status(500).json({ error: 'Internal server error', message: error.message });
+    }
   }
 });
 

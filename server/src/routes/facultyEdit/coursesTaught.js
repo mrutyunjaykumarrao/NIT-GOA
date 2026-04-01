@@ -29,14 +29,13 @@ router.get('/:employeeCode/courses-taught', authenticateToken, checkEditPermissi
         COALESCE(c.course_code, fct.custom_course_code) as course_code,
         COALESCE(c.course_name, fct.custom_course_name) as course_name,
         COALESCE(c.course_level, fct.custom_course_level) as course_level,
-        COALESCE(c.credits, fct.custom_credits) as credits,
+        COALESCE(c.credits::text, fct.custom_credits::text) as credits,
         COALESCE(c.semester, fct.custom_semester) as semester,
-        fct.display_order,
         CASE WHEN fct.course_id IS NULL THEN 1 ELSE 0 END as is_custom
       FROM faculty_courses_taught fct
       LEFT JOIN courses c ON fct.course_id = c.course_id
       WHERE fct.employee_code = $1
-      ORDER BY COALESCE(fct.display_order, 999), course_level, course_code
+      ORDER BY course_level, course_code
     `, [employeeCode]);
 
     res.json(formatSuccessResponse(courses));

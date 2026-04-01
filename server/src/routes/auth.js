@@ -426,9 +426,9 @@ router.post('/change-password', authenticateToken, async (req, res) => {
 
     // Log password change
     await executeQuery(`
-      INSERT INTO audit_log (user_id, action, entity_type, details)
-      VALUES ($1, 'password_change', 'authentication', $2)
-    `, [req.user.userId, JSON.stringify({ ip: req.ip})]);
+      INSERT INTO audit_log (user_id, action, table_name, ip_address, created_at)
+      VALUES ($1, $2, $3, $4, CURRENT_TIMESTAMP)
+    `, [req.user.userId, 'password_change', 'user_accounts', req.ip || '127.0.0.1']);
 
     res.json({ message: 'Password changed successfully' });
   } catch (error) {
@@ -440,15 +440,20 @@ router.post('/change-password', authenticateToken, async (req, res) => {
 // Logout endpoint (for logging purposes)
 router.post('/logout', authenticateToken, async (req, res) => {
   try {
-    // Log logout
-    await executeQuery(`
-      INSERT INTO audit_log (user_id, action, entity_type, details)
-      VALUES ($1, 'logout', 'authentication', $2)
-    `, [req.user.userId, JSON.stringify({ ip: req.ip })]);
+    // Try to log logout in audit_log (optional - don't fail if table doesn't exist)
+    try {
+      await executeQuery(`
+        INSERT INTO audit_log (user_id, action, table_name, ip_address, created_at)
+        VALUES ($1, $2, $3, $4, CURRENT_TIMESTAMP)
+      `, [req.user.userId, 'logout', 'user_accounts', req.ip || '127.0.0.1']);
+    } catch (auditError) {
+      // Audit logging failed, but don't block logout
+      console.warn('Audit log failed (table may not exist):', auditError.message);
+    }
 
     res.json({ message: 'Logged out successfully' });
   } catch (error) {
-    console.error('Logout error:', error);
+    console.error('Logout error details:', error.message, error.code);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
