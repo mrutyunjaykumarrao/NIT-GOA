@@ -77,7 +77,9 @@ const FacultyDetails = () => {
                     const facultyWithImage = {
                         ...facultyData,
                         image: facultyData.profile?.profile_image ? 
-                            (facultyData.profile.profile_image.startsWith('/') ? facultyData.profile.profile_image : `/${facultyData.profile.profile_image}`) : 
+                            (facultyData.profile.profile_image.startsWith('http://') || facultyData.profile.profile_image.startsWith('https://') ? 
+                                facultyData.profile.profile_image : 
+                                (facultyData.profile.profile_image.startsWith('/') ? facultyData.profile.profile_image : `/${facultyData.profile.profile_image}`)) : 
                             '/images/fallback-profile.svg'
                     };
                     setFaculty(facultyWithImage);

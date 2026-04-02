@@ -295,7 +295,7 @@ router.get('/:employeeCode/pending-requests', authenticateToken, checkEditPermis
     
     const requests = await executeQuery(`
       SELECT * FROM pending_approvals 
-      WHERE employee_code = ? 
+      WHERE employee_code = $1 
       ORDER BY requested_at DESC
     `, [employeeCode]);
     

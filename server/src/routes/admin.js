@@ -318,7 +318,7 @@ router.post('/faculty', upload.single('profile_image'), async (req, res) => {
 
     await withTransaction(async (connection) => {
       // Generate employee code - check all possible sources to avoid conflicts
-      const [codeResult] = await connection.query(`
+      const codeResult = await connection.query(`
         SELECT employee_code FROM (
           SELECT employee_code FROM employees WHERE role = 'Faculty'
           UNION
@@ -329,8 +329,8 @@ router.post('/faculty', upload.single('profile_image'), async (req, res) => {
       `);
       
       let newEmployeeCode;
-      if (codeResult.length > 0) {
-        const lastCode = codeResult[0].employee_code;
+      if (codeResult.rows.length > 0) {
+        const lastCode = codeResult.rows[0].employee_code;
         const num = parseInt(lastCode.replace('FAC', '')) + 1;
         newEmployeeCode = `FAC${String(num).padStart(3, '0')}`;
       } else {
@@ -338,24 +338,24 @@ router.post('/faculty', upload.single('profile_image'), async (req, res) => {
       }
 
 // Get department_id and department_code from department name
-        const [deptResult] = await connection.query(
+        const deptResult = await connection.query(
           'SELECT department_id, department_code FROM departments WHERE department_name = $1 OR department_code = $2',
           [department, department]
         );
 
-        if (deptResult.length === 0) {
+        if (deptResult.rows.length === 0) {
           throw new Error(`Department not found: ${department}`);
         }
 
-        const department_id = deptResult[0].department_id;
-        const department_code = deptResult[0].department_code;
+        const department_id = deptResult.rows[0].department_id;
+        const department_code = deptResult.rows[0].department_code;
 
       // Insert into employees table
-      const [employeeResult] = await connection.query(`
+      const employeeResult = await connection.query(`
         INSERT INTO employees (
           employee_code, full_name, honorific, email, gender, phone_mobile, extension_no,
           role, is_active, is_public_visible
-        ) VALUES ($1, $2, $3, $4, $5, $6, $7, 'Faculty', TRUE, TRUE)
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7, 'Faculty', 1, 1)
         RETURNING employee_id
       `, [
         newEmployeeCode,
@@ -367,23 +367,23 @@ router.post('/faculty', upload.single('profile_image'), async (req, res) => {
         extension_no || null
       ]);
 
-      const employee_id = employeeResult[0].employee_id;
+      const employee_id = employeeResult.rows[0].employee_id;
 
       // Get or create designation
       let designation_id;
-      const [designationResult] = await connection.query(
+      const designationResult = await connection.query(
         'SELECT designation_id FROM faculty_designations WHERE designation_title = $1',
         [designation]
       );
 
-      if (designationResult.length > 0) {
-        designation_id = designationResult[0].designation_id;
+      if (designationResult.rows.length > 0) {
+        designation_id = designationResult.rows[0].designation_id;
       } else {
-        const [newDesignation] = await connection.query(
+        const newDesignation = await connection.query(
           'INSERT INTO faculty_designations (designation_title) VALUES ($1) RETURNING designation_id',
           [designation]
         );
-        designation_id = newDesignation[0].designation_id;
+        designation_id = newDesignation.rows[0].designation_id;
       }
 
         // Handle Image Upload
@@ -425,7 +425,7 @@ router.post('/faculty', upload.single('profile_image'), async (req, res) => {
         await connection.query(`
           INSERT INTO user_accounts (
             username, password_hash, email, access_level, employee_code, is_active
-          ) VALUES ($1, $2, $3, $4, $5, TRUE)
+          ) VALUES ($1, $2, $3, $4, $5, 1)
         `, [accountUsername, hashedPassword, email, accountAccessLevel, newEmployeeCode]);
       }
     });

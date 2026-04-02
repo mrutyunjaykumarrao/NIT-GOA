@@ -77,10 +77,12 @@ const PersonalInformationSection = ({ formData, setFormData, loading }) => {
     // Update current image URL when form data changes
     useEffect(() => {
         if (formData.profile_image) {
-            // Construct proper image URL - add leading slash if not present
-            const imageUrl = formData.profile_image.startsWith('/') 
+            // Construct proper image URL - handle absolute URLs (Supabase) and relative paths
+            const imageUrl = formData.profile_image.startsWith('http://') || formData.profile_image.startsWith('https://') 
                 ? formData.profile_image 
-                : `/${formData.profile_image}`;
+                : (formData.profile_image.startsWith('/') 
+                    ? formData.profile_image 
+                    : `/${formData.profile_image}`);
             setCurrentImageUrl(imageUrl);
         }
     }, [formData.profile_image]);

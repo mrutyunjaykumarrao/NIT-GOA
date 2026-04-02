@@ -21,9 +21,11 @@ const ProfileDropdown = () => {
       const fetchUserImage = async (forceRefresh = false) => {
         if (!user?.employee_code || !user?.role) {
           if (user?.employee_image) {
-            let imageUrl = user.employee_image.startsWith('/') 
+            let imageUrl = user.employee_image.startsWith('http://') || user.employee_image.startsWith('https://') 
               ? user.employee_image 
-              : `/${user.employee_image}`;
+              : (user.employee_image.startsWith('/') 
+                  ? user.employee_image 
+                  : `/${user.employee_image}`);
             
             if (forceRefresh) {
               imageUrl += imageUrl.includes('?') ? `&t=${new Date().getTime()}` : `?t=${new Date().getTime()}`;
@@ -55,9 +57,11 @@ const ProfileDropdown = () => {
               // If the profile fetch succeeds, we strictly use its result (even if null/empty)
               // This prevents falling back to stale login token images after a user deletes their picture.
               if (facultyProfile && facultyProfile.profile_image) {
-                imageUrl = facultyProfile.profile_image.startsWith('/') 
+                imageUrl = facultyProfile.profile_image.startsWith('http://') || facultyProfile.profile_image.startsWith('https://') 
                   ? facultyProfile.profile_image 
-                  : `/${facultyProfile.profile_image}`;
+                  : (facultyProfile.profile_image.startsWith('/') 
+                      ? facultyProfile.profile_image 
+                      : `/${facultyProfile.profile_image}`);
               } else if (facultyProfile && !facultyProfile.profile_image) {
                 // They explicitly have no picture anymore
                 imageUrl = null;
@@ -65,9 +69,11 @@ const ProfileDropdown = () => {
             }
           } else if (!imageUrl && user.employee_image) {
             // Only fallback to the auth token image if they are not Faculty
-            imageUrl = user.employee_image.startsWith('/') 
+            imageUrl = user.employee_image.startsWith('http://') || user.employee_image.startsWith('https://') 
               ? user.employee_image 
-              : `/${user.employee_image}`;
+              : (user.employee_image.startsWith('/') 
+                  ? user.employee_image 
+                  : `/${user.employee_image}`);
           }
           
           if (imageUrl) {

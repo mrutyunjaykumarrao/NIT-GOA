@@ -35,9 +35,27 @@ async function withTransaction(callback) {
 
 // Helper function to format dates for MySQL (YYYY-MM-DD)
 const formatDateForMySQL = (dateString) => {
-  if (!dateString) return null;
+  if (!dateString || dateString.trim() === '') return null;
+  
+  // If it's already in YYYY-MM-DD format, return as is
+  if (/^\d{4}-\d{2}-\d{2}$/.test(dateString)) {
+    return dateString;
+  }
+  
+  // If it's in dd-mm-yyyy format, convert to YYYY-MM-DD
+  if (/^\d{2}-\d{2}-\d{4}$/.test(dateString)) {
+    const [day, month, year] = dateString.split('-');
+    return `${year}-${month}-${day}`;
+  }
+  
+  // Try parsing as a standard date
   const date = new Date(dateString);
-  return isNaN(date.getTime()) ? null : date.toISOString().split('T')[0];
+  if (isNaN(date.getTime())) {
+    console.warn('Invalid date format received:', dateString);
+    return null;
+  }
+  
+  return date.toISOString().split('T')[0];
 };
 
 // Helper function to format dates for output (YYYY-MM-DD)
