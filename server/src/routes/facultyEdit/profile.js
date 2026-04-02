@@ -252,7 +252,8 @@ router.put('/:employeeCode/profile/image', authenticateToken, checkEditPermissio
             current_value = $2,
             requested_value = $3,
             temp_file_path = $4,
-            requested_at = CURRENT_TIMESTAMP
+            requested_at = CURRENT_TIMESTAMP,
+            status = 'pending'
           WHERE approval_id = $5
         `, [
           actionType,
@@ -264,8 +265,9 @@ router.put('/:employeeCode/profile/image', authenticateToken, checkEditPermissio
       } else {
         await executeQuery(`
           INSERT INTO pending_approvals (
-            employee_code, approval_type, action_type, current_value, requested_value, temp_file_path, requested_by
-          ) VALUES ($1, 'profile_image', $2, $3, $4, $5, $6)
+            employee_code, approval_type, action_type, current_value, requested_value, 
+            temp_file_path, requested_by, requested_at, status
+          ) VALUES ($1, 'profile_image', $2, $3, $4, $5, $6, CURRENT_TIMESTAMP, 'pending')
         `, [
           employeeCode,
           actionType,

@@ -1,0 +1,431 @@
+=== ALL TABLES IN DATABASE ===
+
+(node:63358) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Total tables: 27
+1. audit_log
+2. content_updates
+3. course_requests
+4. courses
+5. departments
+6. employees
+7. faculty_courses_taught
+8. faculty_custom_section_entries
+9. faculty_custom_section_fields
+10. faculty_custom_sections
+11. faculty_designations
+12. faculty_education
+13. faculty_professional_memberships
+14. faculty_profiles
+15. faculty_publications
+16. faculty_research_guidance
+17. faculty_training_attended
+18. faculty_training_conducted
+19. file_attachments
+20. pending_approvals
+21. research_areas
+22. research_areas_backup_20251003_180205
+23. research_areas_backup_20251003_180300
+24. site_analytics
+25. staff_profiles
+26. system_settings
+27. user_accounts
+
+=== DETAILED SCHEMA FOR EACH TABLE ===
+
+
+📋 TABLE: audit_log
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+log_id                              integer              NO         nextval('audit_log_log_id_seq'::regclass
+user_id                             integer              YES        NULL
+action                              text                 YES        NULL
+table_name                          text                 YES        NULL
+record_id                           text                 YES        NULL
+old_values                          jsonb                YES        NULL
+new_values                          jsonb                YES        NULL
+ip_address                          text                 YES        NULL
+user_agent                          text                 YES        NULL
+created_at                          timestamp without time zone YES        NULL
+changed_by                          text                 YES        NULL
+
+📋 TABLE: content_updates
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+update_id                           integer              NO         nextval('content_updates_update_id_seq':
+content_type                        text                 YES        NULL
+content_id                          text                 YES        NULL
+employee_code                       text                 YES        NULL
+update_type                         text                 YES        NULL
+update_description                  text                 YES        NULL
+old_data                            jsonb                YES        NULL
+new_data                            jsonb                YES        NULL
+update_reason                       text                 YES        NULL
+updated_by                          text                 YES        NULL
+updated_at                          timestamp without time zone YES        NULL
+is_major_update                     integer              YES        NULL
+
+📋 TABLE: course_requests
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+request_id                          integer              NO         nextval('course_requests_request_id_seq'
+employee_code                       text                 YES        NULL
+course_code                         text                 YES        NULL
+course_name                         text                 YES        NULL
+course_level                        text                 YES        NULL
+credits                             integer              YES        NULL
+semester                            text                 YES        NULL
+department_id                       integer              YES        NULL
+justification                       text                 YES        NULL
+status                              text                 YES        NULL
+reviewed_by                         text                 YES        NULL
+review_comments                     text                 YES        NULL
+created_at                          timestamp without time zone YES        NULL
+updated_at                          timestamp without time zone YES        NULL
+
+📋 TABLE: courses
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+course_id                           integer              NO         nextval('courses_course_id_seq'::regclas
+course_code                         text                 YES        NULL
+course_name                         text                 YES        NULL
+course_level                        text                 YES        NULL
+department_id                       integer              YES        NULL
+credits                             integer              YES        NULL
+semester                            text                 YES        NULL
+is_active                           integer              YES        NULL
+created_at                          timestamp without time zone YES        NULL
+updated_at                          timestamp without time zone YES        NULL
+
+📋 TABLE: departments
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+department_id                       integer              NO         nextval('departments_department_id_seq':
+department_name                     text                 YES        NULL
+department_code                     text                 YES        NULL
+is_active                           integer              YES        NULL
+created_at                          timestamp without time zone YES        NULL
+updated_at                          timestamp without time zone YES        NULL
+
+📋 TABLE: employees
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+employee_id                         integer              NO         nextval('employees_employee_id_seq'::reg
+employee_code                       text                 YES        NULL
+honorific                           text                 YES        NULL
+full_name                           text                 YES        NULL
+gender                              text                 YES        NULL
+role                                text                 YES        NULL
+email                               text                 YES        NULL
+extension_no                        text                 YES        NULL
+phone_mobile                        text                 YES        NULL
+phone_residence                     text                 YES        NULL
+date_of_joining                     text                 YES        NULL
+is_active                           integer              YES        NULL
+is_public_visible                   integer              YES        NULL
+created_at                          timestamp without time zone YES        NULL
+updated_at                          timestamp without time zone YES        NULL
+
+📋 TABLE: faculty_courses_taught
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+id                                  integer              NO         nextval('faculty_courses_taught_id_seq':
+employee_code                       text                 YES        NULL
+course_id                           integer              YES        NULL
+custom_course_name                  text                 YES        NULL
+custom_course_code                  text                 YES        NULL
+custom_credits                      integer              YES        NULL
+custom_course_level                 text                 YES        NULL
+custom_semester                     text                 YES        NULL
+created_at                          timestamp without time zone YES        NULL
+updated_at                          timestamp without time zone YES        NULL
+display_order                       text                 YES        NULL
+
+📋 TABLE: faculty_custom_section_entries
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+entry_id                            integer              NO         nextval('faculty_custom_section_entries_
+custom_section_id                   integer              YES        NULL
+field_id                            integer              YES        NULL
+row_number                          integer              YES        NULL
+field_value                         text                 YES        NULL
+created_at                          timestamp without time zone YES        NULL
+updated_at                          timestamp without time zone YES        NULL
+
+📋 TABLE: faculty_custom_section_fields
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+field_id                            integer              NO         nextval('faculty_custom_section_fields_f
+custom_section_id                   integer              YES        NULL
+field_name                          text                 YES        NULL
+field_type                          text                 YES        NULL
+display_order                       integer              YES        NULL
+
+📋 TABLE: faculty_custom_sections
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+custom_section_id                   integer              NO         nextval('faculty_custom_sections_custom_
+employee_code                       text                 YES        NULL
+section_title                       text                 YES        NULL
+section_type                        text                 YES        NULL
+display_order                       integer              YES        NULL
+is_visible                          integer              YES        NULL
+created_at                          timestamp without time zone YES        NULL
+updated_at                          timestamp without time zone YES        NULL
+
+📋 TABLE: faculty_designations
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+designation_id                      integer              NO         nextval('faculty_designations_designatio
+designation_title                   text                 YES        NULL
+designation_level                   integer              YES        NULL
+is_active                           integer              YES        NULL
+created_at                          timestamp without time zone YES        NULL
+updated_at                          timestamp without time zone YES        NULL
+
+📋 TABLE: faculty_education
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+education_id                        integer              NO         nextval('faculty_education_education_id_
+employee_code                       text                 YES        NULL
+degree                              text                 YES        NULL
+institute                           text                 YES        NULL
+discipline                          text                 YES        NULL
+graduation_year                     text                 YES        NULL
+display_order                       integer              YES        NULL
+created_at                          timestamp without time zone YES        NULL
+updated_at                          timestamp without time zone YES        NULL
+
+📋 TABLE: faculty_professional_memberships
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+membership_id                       integer              NO         nextval('faculty_professional_membership
+employee_code                       text                 YES        NULL
+organization_name                   text                 YES        NULL
+membership_type                     text                 YES        NULL
+is_active                           integer              YES        NULL
+created_at                          timestamp without time zone YES        NULL
+updated_at                          timestamp without time zone YES        NULL
+
+📋 TABLE: faculty_profiles
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+employee_code                       text                 NO         NULL
+department_id                       integer              YES        NULL
+designation_id                      integer              YES        NULL
+date_of_birth                       text                 YES        NULL
+is_hod                              integer              YES        NULL
+image_url                           text                 YES        NULL
+research_teaching_experience        text                 YES        NULL
+address                             text                 YES        NULL
+office_location                     text                 YES        NULL
+office_hours                        text                 YES        NULL
+linkedin_url                        text                 YES        NULL
+personal_website_url                text                 YES        NULL
+google_scholar_url                  text                 YES        NULL
+research_gate_url                   text                 YES        NULL
+other_social_links                  jsonb                YES        NULL
+bio_summary                         text                 YES        NULL
+research_interests                  text                 YES        NULL
+display_order                       integer              YES        NULL
+created_at                          timestamp without time zone YES        NULL
+updated_at                          timestamp without time zone YES        NULL
+
+📋 TABLE: faculty_publications
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+publication_id                      integer              NO         nextval('faculty_publications_publicatio
+employee_code                       text                 YES        NULL
+publication_type                    text                 YES        NULL
+title                               text                 YES        NULL
+publication_year                    text                 YES        NULL
+publication_month                   text                 YES        NULL
+display_order                       integer              YES        NULL
+created_at                          timestamp without time zone YES        NULL
+updated_at                          timestamp without time zone YES        NULL
+
+📋 TABLE: faculty_research_guidance
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+guidance_id                         integer              NO         nextval('faculty_research_guidance_guida
+employee_code                       text                 YES        NULL
+student_honorific                   text                 YES        NULL
+student_name                        text                 YES        NULL
+research_topic                      text                 YES        NULL
+status                              text                 YES        NULL
+display_order                       integer              YES        NULL
+created_at                          timestamp without time zone YES        NULL
+updated_at                          timestamp without time zone YES        NULL
+
+📋 TABLE: faculty_training_attended
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+training_attended_id                integer              NO         nextval('faculty_training_attended_train
+employee_code                       text                 YES        NULL
+month                               text                 YES        NULL
+year                                text                 YES        NULL
+training_information                text                 YES        NULL
+display_order                       integer              YES        NULL
+created_at                          timestamp without time zone YES        NULL
+updated_at                          timestamp without time zone YES        NULL
+
+📋 TABLE: faculty_training_conducted
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+training_conducted_id               integer              NO         nextval('faculty_training_conducted_trai
+employee_code                       text                 YES        NULL
+month                               text                 YES        NULL
+year                                text                 YES        NULL
+training_information                text                 YES        NULL
+display_order                       integer              YES        NULL
+created_at                          timestamp without time zone YES        NULL
+updated_at                          timestamp without time zone YES        NULL
+
+📋 TABLE: file_attachments
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+attachment_id                       integer              NO         nextval('file_attachments_attachment_id_
+entity_type                         text                 YES        NULL
+entity_id                           text                 YES        NULL
+file_name                           text                 YES        NULL
+file_path                           text                 YES        NULL
+file_size                           integer              YES        NULL
+file_type                           text                 YES        NULL
+mime_type                           text                 YES        NULL
+is_public                           integer              YES        NULL
+uploaded_by                         text                 YES        NULL
+uploaded_at                         timestamp without time zone YES        NULL
+
+📋 TABLE: pending_approvals
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+approval_id                         integer              NO         nextval('pending_approvals_approval_id_s
+employee_code                       text                 YES        NULL
+approval_type                       text                 YES        NULL
+current_value                       text                 YES        NULL
+requested_value                     text                 YES        NULL
+temp_file_path                      text                 YES        NULL
+requested_by                        text                 YES        NULL
+requested_at                        timestamp without time zone YES        NULL
+reviewed_by                         text                 YES        NULL
+reviewed_at                         timestamp without time zone YES        NULL
+status                              text                 YES        NULL
+admin_notes                         text                 YES        NULL
+created_at                          timestamp without time zone YES        NULL
+updated_at                          timestamp without time zone YES        NULL
+action_type                         text                 YES        NULL
+
+📋 TABLE: research_areas
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+area_id                             integer              NO         nextval('research_areas_area_id_seq'::re
+area_name                           text                 YES        NULL
+is_active                           integer              YES        NULL
+created_at                          timestamp without time zone YES        NULL
+updated_at                          timestamp without time zone YES        NULL
+
+📋 TABLE: research_areas_backup_20251003_180205
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+area_id                             integer              YES        NULL
+area_name                           text                 YES        NULL
+parent_area_id                      integer              YES        NULL
+description                         text                 YES        NULL
+is_active                           integer              YES        NULL
+created_at                          timestamp without time zone YES        NULL
+updated_at                          timestamp without time zone YES        NULL
+
+📋 TABLE: research_areas_backup_20251003_180300
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+area_id                             integer              YES        NULL
+area_name                           text                 YES        NULL
+is_active                           integer              YES        NULL
+created_at                          timestamp without time zone YES        NULL
+updated_at                          timestamp without time zone YES        NULL
+
+📋 TABLE: site_analytics
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+analytics_id                        integer              NO         nextval('site_analytics_analytics_id_seq
+total_visitors                      integer              YES        NULL
+daily_visitors                      integer              YES        NULL
+desktop_visits                      integer              YES        NULL
+mobile_visits                       integer              YES        NULL
+date_recorded                       text                 YES        NULL
+last_updated                        timestamp without time zone YES        NULL
+
+📋 TABLE: staff_profiles
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+employee_code                       text                 NO         NULL
+department_id                       integer              YES        NULL
+job_title                           text                 YES        NULL
+responsibilities                    text                 YES        NULL
+employment_status                   text                 YES        NULL
+image_url                           text                 YES        NULL
+display_order                       integer              YES        NULL
+created_at                          timestamp without time zone YES        NULL
+updated_at                          timestamp without time zone YES        NULL
+
+📋 TABLE: system_settings
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+setting_id                          integer              NO         nextval('system_settings_setting_id_seq'
+setting_key                         text                 YES        NULL
+setting_value                       text                 YES        NULL
+setting_type                        text                 YES        NULL
+description                         text                 YES        NULL
+is_public                           integer              YES        NULL
+created_at                          timestamp without time zone YES        NULL
+updated_at                          timestamp without time zone YES        NULL
+
+📋 TABLE: user_accounts
+────────────────────────────────────────────────────────────────────────────────────────────────────
+Column Name                         Data Type            Nullable   Default
+────────────────────────────────────────────────────────────────────────────────────────────────────
+user_id                             integer              NO         nextval('user_accounts_user_id_seq'::reg
+username                            text                 YES        NULL
+password_hash                       text                 YES        NULL
+password_changed_at                 timestamp without time zone YES        NULL
+employee_code                       text                 YES        NULL
+email                               text                 YES        NULL
+access_level                        text                 YES        NULL
+is_active                           integer              YES        NULL
+last_login                          timestamp without time zone YES        NULL
+failed_login_attempts               integer              YES        NULL
+locked_until                        timestamp without time zone YES        NULL
+lockout_timestamp                   timestamp without time zone YES        NULL
+lockout_duration_minutes            integer              YES        NULL
+reset_token                         text                 YES        NULL
+reset_token_expires                 timestamp without time zone YES        NULL
+reset_token_used                    integer              YES        NULL
+created_at                          timestamp without time zone YES        NULL
+updated_at                          timestamp without time zone YES        NULL
+___BEGIN___COMMAND_DONE_MARKER___0
